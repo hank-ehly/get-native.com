@@ -8,9 +8,9 @@ Returns the video specified by the `id` query parameter.
 https://get-native.com/videos/show.json?id=123456
 ```
 
-| Parameter | Required | Default Value |
-|-----------|:--------:|---------------|
-| id        | √         |               |
+| Parameter   	| Description                         	| Required 	| Default 	|
+|-------------	|-------------------------------------	|:--------:	|---------	|
+| id          	| The unique ID of the video.          	|     √    	|         	|
 
 ## Example Result
 

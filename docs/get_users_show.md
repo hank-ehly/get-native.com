@@ -2,6 +2,8 @@
 
 Returns information about the user specified by the `user_id` or `screen_name` query parameter.
 
+// TODO: Security. Users are not able to view other users' profiles at the moment.
+
 ## Example Request
 
 ```
@@ -9,10 +11,10 @@ https://get-native.com/users/show.json?id=123456
 https://get-native.com/users/show.json?screen_name=jdoe
 ```
 
-| Parameter   | Required | Default Value |
-|-------------|:--------:|---------------|
-| id          | √         |               |
-| screen_name | √         |               |
+| Parameter   	| Description                         	| Required 	| Default 	|
+|-------------	|-------------------------------------	|:--------:	|---------	|
+| id          	| The unique ID of the user.          	|     √    	|         	|
+| screen_name 	| The unique screen_name of the user. 	|     √    	|         	|
 
 ※ Either the `id` or `screen_name` parameter is required.
 

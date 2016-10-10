@@ -9,16 +9,15 @@ https://get-native.com/videos.json?count=80&trim_likes=true&lang=en
 https://get-native.com/videos.json?count=10&lang=en&max_id=2244994983
 ```
 
-| Parameter       | Required | Default Value |
-|-----------------|:--------:|---------------|
-| count           |          |               |
-| trim_speaker    |          | false         |
-| trim_likes      |          | false         |
-| exclude_speaker |          | false         |
-| exclude_likes   |          | false         |
-| lang            |          |               |
-| max_id          |          |               |
-| since_id        |          |               |
+| Parameter       	| Description                                                                                                                      	| Required 	| Default 	|
+|-----------------	|----------------------------------------------------------------------------------------------------------------------------------	|:--------:	|---------	|
+| count           	| The number of videos to include in the response.                                                                                 	|          	|         	|
+| trim_speaker    	| When true, only the speaker name will be returned -- as opposed to the whole speaker object.                                     	|          	| false   	|
+| trim_likes      	| When true, only the likes count is returned -- as opposed to an array of like objects.                                           	|          	| false   	|
+| exclude_speaker 	| When true, the speaker is not included in the response.                                                                          	|          	| false   	|
+| exclude_likes   	| When true, the likes array is not included in the response.                                                                      	|          	| false   	|
+| lang            	| Restricts videos to the given language, specified by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code. 	|          	|         	|
+| max_id          	| Returns only videos with an ID less than or equal to the max_id.                                                                 	|          	|         	|
 
 ※ The `since_id` parameter is not usable. It is reserved for future use.
 
