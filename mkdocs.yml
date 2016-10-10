@@ -1,7 +1,9 @@
 site_name: Get Native
 pages:
 - Home: index.md
+- DELETE /users/authenticate: delete_users_authenticate.md
 - GET /speakers/show: get_speakers_show.md
 - GET /users/show: get_users_show.md
+- GET /videos: get_videos.md
 - GET /videos/show/:id: get_videos_show_id.md
 theme: readthedocs
