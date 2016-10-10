@@ -6,6 +6,7 @@ pages:
 - POST /account/update_profile: post_account_update_profile.md
 - POST /account/authenticate: post_account_authenticate.md
 - DELETE /account/authenticate: delete_account_authenticate.md
+- DELETE /account: delete_account.md
 - GET /account/verify_credentials: get_account_verify_credentials.md
 - GET /cued_videos/list: get_cued_videos_list.md
 - GET /speakers/show: get_speakers_show.md
