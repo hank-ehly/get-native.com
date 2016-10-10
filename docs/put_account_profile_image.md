@@ -1,4 +1,4 @@
-# POST /account/update_profile_image
+# PUT /account/profile_image
 
 Updates the profile image of the authenticating user.
 

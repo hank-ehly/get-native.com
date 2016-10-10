@@ -1,4 +1,4 @@
-# POST /account/update_profile
+# PUT /account/profile
 
 Sets values that authenticating user can view from their Account page.
 
