@@ -16,11 +16,11 @@ dependencies:
   cache_directories:
     - "node_modules"
 
-test:
-  pre:
-    - sh -e /etc/init.d/xvfb start
-    - nohup bash -c "webdriver-manager start 2>&1 &" # Protractor CI
-  override:
-    - npm run tests.all
-  post:
-    - if [[ ! -z npm-debug.log ]]; then cat npm-debug.log; fi
+#test:
+#  pre:
+#    - sh -e /etc/init.d/xvfb start
+#    - nohup bash -c "webdriver-manager start 2>&1 &" # Protractor CI
+#  override:
+#    - npm run tests.all
+#  post:
+#    - if [[ ! -z npm-debug.log ]]; then cat npm-debug.log; fi
