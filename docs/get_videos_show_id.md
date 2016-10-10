@@ -8,13 +8,13 @@ Returns the video specified by the `id` query parameter.
 https://get-native.com/videos/show.json?id=123456
 ```
 
-| Parameter | Required |
-|-----------|----------|
-| id        | √         |
+| Parameter   	| Description                         	| Required 	| Default 	|
+|-------------	|-------------------------------------	|:--------:	|---------	|
+| id          	| The unique ID of the video.          	|     √    	|         	|
 
 ## Example Result
 
-| Field               | Type        | Description                                                                                        |
+| Data Field          | Type        | Description                                                                                        |
 |---------------------|-------------|----------------------------------------------------------------------------------------------------|
 | favorited           | Boolean     | _Nullable._ Whether the video has been favorited by the user                                       |
 | created_at          | String      | UTC datetime of video creation                                                                     |
@@ -35,13 +35,20 @@ https://get-native.com/videos/show.json?id=123456
 
 ```json
 {
-	data: {
+	"data": {
 		"favorited": true,
 		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 		"id_str": "2244994983",
 		"id": 2244994983,
 		"speaker": {
-			// TODO
+			"id": 123456,
+			"id_str": "123456",
+			"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
+			"name": "Harold Ford",
+			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+			"lang": "en",
+			"gender": "male",
+			"location": "Kansas City, MO"
 		},
 		"lang": "en",
 		"favorite_count": 342,
@@ -54,7 +61,7 @@ https://get-native.com/videos/show.json?id=123456
 		"video_url": "TODO",
 		"has_related_videos": true,
 		"likes": [
-			records: [
+			"records": [
 				{
 					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 					"user": {
@@ -67,11 +74,11 @@ https://get-native.com/videos/show.json?id=123456
 					"id_str": "456"
 				}
 			],
-			size: 10
+			count: 10
 		],
 		"length": 68
 	},
-	success: true,
-	error: ""
+	"success": true,
+	"error": ""
 }
 ```
