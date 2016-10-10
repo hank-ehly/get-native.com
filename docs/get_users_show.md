@@ -53,8 +53,13 @@ https://get-native.com/users/show.json?screen_name=jdoe
 		"favorites_count": 45,
 		"notifications": {
 			"records": [
-				// TODO
-			]
+				{
+					"id": 123456,
+					"id_str": "123456",
+					"text": "This is the body text of a notification",
+					"title": "Welcome to Get Native"
+				}
+			],
 			"count": 10
 		}
 	},

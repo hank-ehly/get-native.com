@@ -53,7 +53,10 @@ https://get-native.com/videos/show.json?id=123456
 		"lang": "en",
 		"favorite_count": 342,
 		"topic": {
-			// TODO
+			"id": 123456,
+			"id_str": "123456",
+			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+			"name": "Talking to customers"
 		},
 		"loop_count": 7156,
 		"loop_velocity": 2.4960000000000004,
@@ -65,10 +68,7 @@ https://get-native.com/videos/show.json?id=123456
 				{
 					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 					"user": {
-						"screen_name": "Phil Barnes",
-						"id": 123,
-						"id_str": "123",
-						// TODO
+						// TODO: Unsafe
 					},
 					"id": 456,
 					"id_str": "456"

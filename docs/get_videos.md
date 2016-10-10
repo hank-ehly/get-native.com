@@ -58,7 +58,10 @@ videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower 
 					"lang": "en",
 					"favorite_count": 342,
 					"topic": {
-						// TODO
+						"id": 123456,
+						"id_str": "123456",
+						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+						"name": "Talking to customers"
 					},
 					"loop_count": 7156,
 					"loop_velocity": 2.4960000000000004,
@@ -73,7 +76,7 @@ videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower 
 									"screen_name": "Phil Barnes",
 									"id": 123,
 									"id_str": "123",
-									// TODO
+									// TODO: Unsafe
 								},
 								"id": 456,
 								"id_str": "456"
