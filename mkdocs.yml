@@ -2,8 +2,8 @@ site_name: Get Native
 pages:
 - Home: index.md
 - Global: global.md
-- POST /account/update_profile_image: post_account_update_profile_image.md
-- POST /account/update_profile: post_account_update_profile.md
+- PUT /account/profile_image: put_account_profile_image.md
+- PUT /account/profile: put_account_profile.md
 - POST /account/authenticate: post_account_authenticate.md
 - DELETE /account/authenticate: delete_account_authenticate.md
 - DELETE /account: delete_account.md
