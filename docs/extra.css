@@ -1,0 +1,7 @@
+.wy-menu-vertical li.current ul {
+    display: none;
+}
+
+code, .rst-content tt {
+    font-size: 100%;
+}
