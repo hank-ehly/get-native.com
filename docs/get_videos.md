@@ -10,7 +10,7 @@ https://get-native.com/videos.json?count=80&trim_likes=true
 
 | Parameter    | Required | Default Value |
 |--------------|----------|---------------|
-| count        |          | TODO          |
+| count        |          |               |
 | trim_speaker |          | false         |
 | trim_likes   |          | false         |
 
