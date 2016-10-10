@@ -14,6 +14,7 @@ https://get-native.com/account/update_profile.json
 | name        	| The users' self-declared real name.                              	|          	|         	|
 | location    	| The users' non-normalized / non-geocoded self-declared location. 	|          	|         	|
 | description 	| A description about the user.                                    	|          	|         	|
+| password    	| The authenticating users' new password.                          	|          	|         	|
 
 ## Example Response
 
