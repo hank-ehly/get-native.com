@@ -15,8 +15,8 @@ https://get-native.com/cued_videos/list.json
 
 ## Example Response
 
-| Data Field 	| Type        	|                        Description                        	|
-|------------	|-------------	|:---------------------------------------------------------:	|
+| Data Field 	| Type        	| Description                                               	|
+|------------	|-------------	|-----------------------------------------------------------	|
 | records    	| [CuedVideo] 	| The array of CuedVideo records.                           	|
 | count      	| Int         	| The number of CuedVideo records included in the response. 	|
 
