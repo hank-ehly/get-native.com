@@ -69,7 +69,7 @@ videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower 
 					"video_url": "TODO",
 					"has_related_videos": true,
 					"likes": [
-						records: [
+						"records": [
 							{
 								"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 								"user": {
@@ -82,7 +82,7 @@ videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower 
 								"id_str": "456"
 							}
 						],
-						count: 10
+						"count": 10
 					],
 					"length": 68
 			}

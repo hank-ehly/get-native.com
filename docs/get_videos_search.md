@@ -61,7 +61,7 @@ https://get-native.com/videos/search?q=Business%20Ethics&lang=en
 				"video_url": "TODO",
 				"has_related_videos": true,
 				"likes": [
-					records: [
+					"records": [
 						{
 							"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 							"user": {
@@ -74,7 +74,7 @@ https://get-native.com/videos/search?q=Business%20Ethics&lang=en
 							"id_str": "456"
 						}
 					],
-					count: 10
+					"count": 10
 				],
 				"length": 68
 			}
