@@ -41,7 +41,14 @@ https://get-native.com/videos/show.json?id=123456
 		"id_str": "2244994983",
 		"id": 2244994983,
 		"speaker": {
-			// TODO
+			"id": 123456,
+			"id_str": "123456",
+			"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
+			"name": "Harold Ford",
+			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+			"lang": "en",
+			"gender": "male",
+			"location": "Kansas City, MO"
 		},
 		"lang": "en",
 		"favorite_count": 342,
@@ -67,7 +74,7 @@ https://get-native.com/videos/show.json?id=123456
 					"id_str": "456"
 				}
 			],
-			size: 10
+			count: 10
 		],
 		"length": 68
 	},
