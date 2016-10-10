@@ -33,7 +33,9 @@
     "e2e.ci": "gulp build.prod --color && gulp build.js.e2e --color && gulp e2e --color",
     "tests.all": "npm test && npm run e2e.ci",
     "webdriver-start": "webdriver-manager start",
-    "webdriver-update": "webdriver-manager update"
+    "webdriver-update": "webdriver-manager update",
+    "build.docs": "if [[ `which mkdocs` ]]; then mkdocs build; else echo \"The command mkdocs was not found in your PATH\"; fi",
+    "serve.docs": "if [[ `which mkdocs` ]]; then mkdocs serve; else echo \"The command mkdocs was not found in your PATH\"; fi"
   },
   "author": "Minko Gechev <mgechev>",
   "license": "MIT",
