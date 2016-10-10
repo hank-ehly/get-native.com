@@ -8,14 +8,18 @@ Returns an array of video objects matching the specified search query.
 https://get-native.com/videos/search?q=Business%20Ethics&lang=en
 ```
 
-| Parameter   | Description                                                                                                                      | Required | Default |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------|----------|---------|
-| lang        | Restricts videos to the given language, specified by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code. |          |         |
-| count       | The number of videos to include in the response. Maximum is 100.                                                                 |          | 15      |
-| max_id      | Returns only videos with an ID less than or equal to the max_id.                                                                 |          |         |
-| topic_id    | Restricts videos to the given topic.                                                                                             |          |         |
-| category_id | Restricts videos to the given category. If the topic_id parameter is also included, the category_id parameter is ignored.        |          |         |
-| q           | A URL-encoded UTF-8 search query. Maximum length is 100 characters.                                                              |          |         |
+| Parameter       | Description                                                                                                                      | Required | Default |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------|----------|---------|
+| lang            | Restricts videos to the given language, specified by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code. |          |         |
+| count           | The number of videos to include in the response. Maximum is 100.                                                                 |          | 15      |
+| trim_speaker    | When true, only the speaker name will be returned -- as opposed to the whole speaker object.                                     |          | false   |
+| trim_likes      | When true, only the likes count is returned -- as opposed to an array of like objects.                                           |          | false   |
+| exclude_speaker | When true, the speaker is not included in the response.                                                                          |          | false   |
+| exclude_likes   | When true, the likes array is not included in the response.                                                                      |          | false   |
+| max_id          | Returns only videos with an ID less than or equal to the max_id.                                                                 |          |         |
+| topic_id        | Restricts videos to the given topic.                                                                                             |          |         |
+| category_id     | Restricts videos to the given category. If the topic_id parameter is also included, the category_id parameter is ignored.        |          |         |
+| q               | A URL-encoded UTF-8 search query. Maximum length is 100 characters.                                                              |          |         |
 
 # Example Response
 
