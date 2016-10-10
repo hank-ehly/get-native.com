@@ -1,22 +1,13 @@
-# GET /users/show
+# GET /account/verify_credentials
 
-Returns information about the user specified by the `user_id` or `screen_name` query parameter.
-
-// TODO: Security. Users are not able to view other users' profiles at the moment.
+Returns a user object corresponding to the authenticating user if authentication is successful.
 
 ## Example Request
 
 ```
-https://get-native.com/users/show.json?id=123456
-https://get-native.com/users/show.json?screen_name=jdoe
+GET
+https://get-native.com/account/verify_credentials.json
 ```
-
-| Parameter   	| Description                         	| Required 	| Default 	|
-|-------------	|-------------------------------------	|:--------:	|---------	|
-| id          	| The unique ID of the user.          	|     √    	|         	|
-| screen_name 	| The unique screen_name of the user. 	|     √    	|         	|
-
-※ Either the `id` or `screen_name` parameter is required.
 
 ## Example Response
 
