@@ -6,6 +6,7 @@ Returns a collection of the most recently created videos in the Get Native datab
 
 ```
 https://get-native.com/videos.json?count=80&trim_likes=true&lang=en
+https://get-native.com/videos.json?count=10&lang=en&max_id=2244994983
 ```
 
 | Parameter       | Required | Default Value |
@@ -16,18 +17,30 @@ https://get-native.com/videos.json?count=80&trim_likes=true&lang=en
 | exclude_speaker |          | false         |
 | exclude_likes   |          | false         |
 | lang            |          |               |
+| max_id          |          |               |
+| since_id        |          |               |
+
+※ The `since_id` parameter is not usable. It is reserved for future use.
+
+### About max_id
+
+Instead of listing videos in "pages," Get Native returns videos according to the `count` and `max_id` parameters. 
+When you've retrieved an initial array of videos using the `/videos` URI, make note of the _lowest_ video ID. 
+When you're ready to _Load More_ videos, specify the lowest video ID in the `max_id` field to retrieve another batch of 
+videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower the video ID, the older the video.
 
 ## Example Response
 
-| Field | Type | Description                                   |
-|-------|------|-----------------------------------------------|
-| count | Int  | The number of videos included in the response |
+| Data Field | Type    | Description                                   |
+|------------|---------|-----------------------------------------------|
+| count      | Int     | The number of videos included in the response |
+| records    | [Video] | The array of video objects                    |
 
 ```json
 {
 	"data": {
 		"count": 80,
-		[
+		"records": [
 			{
 				"favorited": true,
 					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
@@ -72,6 +85,8 @@ https://get-native.com/videos.json?count=80&trim_likes=true&lang=en
 					"length": 68
 			}
 		]
-	}
+	},
+	"success": true,
+	"error": ""
 }
 ```

@@ -35,7 +35,7 @@ https://get-native.com/videos/show.json?id=123456
 
 ```json
 {
-	data: {
+	"data": {
 		"favorited": true,
 		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 		"id_str": "2244994983",
@@ -61,7 +61,7 @@ https://get-native.com/videos/show.json?id=123456
 		"video_url": "TODO",
 		"has_related_videos": true,
 		"likes": [
-			records: [
+			"records": [
 				{
 					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 					"user": {
@@ -78,7 +78,7 @@ https://get-native.com/videos/show.json?id=123456
 		],
 		"length": 68
 	},
-	success: true,
-	error: ""
+	"success": true,
+	"error": ""
 }
 ```
