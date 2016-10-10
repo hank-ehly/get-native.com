@@ -1,8 +1,8 @@
 machine:
-  environment:
-    CHROME_BIN: chromium-browser
-    DISPLAY: :99.0
-    TSD_GITHUB_TOKEN: 9b18c72997769f3867ef2ec470e626d39661795d
+  #environment:
+    #CHROME_BIN: chromium-browser
+    #DISPLAY: :99.0
+    #TSD_GITHUB_TOKEN: 9b18c72997769f3867ef2ec470e626d39661795d
   node:
     version: 6.7.0
 
