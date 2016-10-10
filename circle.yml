@@ -1,8 +1,4 @@
 machine:
-  #environment:
-    #CHROME_BIN: chromium-browser
-    #DISPLAY: :99.0
-    #TSD_GITHUB_TOKEN: 9b18c72997769f3867ef2ec470e626d39661795d
   node:
     version: 6.7.0
 
@@ -17,10 +13,7 @@ dependencies:
     - "node_modules"
 
 test:
-#  pre:
-#    - sh -e /etc/init.d/xvfb start
-#    - nohup bash -c "webdriver-manager start 2>&1 &" # Protractor CI
   override:
     - npm run tests.all
   post:
-    - if [[ ! -z npm-debug.log ]]; then cat npm-debug.log; fi
+    - if [[ ! -s npm-debug.log ]]; then cat npm-debug.log; fi
