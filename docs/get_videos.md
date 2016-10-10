@@ -5,14 +5,17 @@ Returns a collection of the most recently created videos in the Get Native datab
 ## Example Request
 
 ```
-https://get-native.com/videos.json?count=80&trim_likes=true
+https://get-native.com/videos.json?count=80&trim_likes=true&lang=en
 ```
 
-| Parameter    | Required | Default Value |
-|--------------|----------|---------------|
-| count        |          |               |
-| trim_speaker |          | false         |
-| trim_likes   |          | false         |
+| Parameter       | Required | Default Value |
+|-----------------|:--------:|---------------|
+| count           |          |               |
+| trim_speaker    |          | false         |
+| trim_likes      |          | false         |
+| exclude_speaker |          | false         |
+| exclude_likes   |          | false         |
+| lang            |          |               |
 
 ## Example Response
 

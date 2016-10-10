@@ -9,7 +9,7 @@ https://get-native.com/speakers/show.json?id=123456
 ```
 
 | Parameter | Required | Default Value |
-|-----------|----------|---------------|
+|-----------|:--------:|---------------|
 | id        | √         |               |
 
 ## Example Result

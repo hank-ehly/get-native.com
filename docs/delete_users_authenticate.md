@@ -8,9 +8,7 @@ Logout the user
 DELETE https://get-native.com/users/authenticate
 ```
 
-| Parameter | Required | Default Value |
-|-----------|----------|---------------|
-|           |          |               |
+## Example Response
 
 ```json
 {

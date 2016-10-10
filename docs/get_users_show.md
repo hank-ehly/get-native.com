@@ -10,7 +10,7 @@ https://get-native.com/users/show.json?screen_name=jdoe
 ```
 
 | Parameter   | Required | Default Value |
-|-------------|----------|---------------|
+|-------------|:--------:|---------------|
 | id          | √         |               |
 | screen_name | √         |               |
 
