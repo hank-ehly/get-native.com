@@ -14,7 +14,7 @@ https://get-native.com/videos/show.json?id=123456
 
 ## Example Result
 
-| Field               | Type        | Description                                                                                        |
+| Data Field          | Type        | Description                                                                                        |
 |---------------------|-------------|----------------------------------------------------------------------------------------------------|
 | favorited           | Boolean     | _Nullable._ Whether the video has been favorited by the user                                       |
 | created_at          | String      | UTC datetime of video creation                                                                     |

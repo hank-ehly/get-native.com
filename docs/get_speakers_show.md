@@ -14,7 +14,7 @@ https://get-native.com/speakers/show.json?id=123456
 
 ## Example Result
 
-| Field       	| Type   	| Description                                        	|
+| Data Field    | Type   	| Description                                        	|
 |-------------	|--------	|----------------------------------------------------	|
 | id          	| Int64  	| Integer representation of unique speaker ID        	|
 | id_str      	| String 	| String representation of unique speaker ID         	|

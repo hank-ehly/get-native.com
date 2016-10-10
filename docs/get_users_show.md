@@ -18,7 +18,7 @@ https://get-native.com/users/show.json?screen_name=jdoe
 
 ## Example Response
 
-| Field                 | Type         | Description                                        |
+| Data Field            | Type         | Description                                        |
 |-----------------------|--------------|----------------------------------------------------|
 | id                    | Int64        |  Integer representation of unique user ID          |
 | id_str                | String       |  String representation of unique user ID           |
