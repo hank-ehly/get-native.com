@@ -8,9 +8,9 @@ Returns information about the speaker specified by the `id` query parameter.
 https://get-native.com/speakers/show.json?id=123456
 ```
 
-| Parameter | Required |
-|-----------|----------|
-| id        | √         |
+| Parameter | Required | Default Value |
+|-----------|----------|---------------|
+| id        | √         |               |
 
 ## Example Result
 

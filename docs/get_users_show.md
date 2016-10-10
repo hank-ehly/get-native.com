@@ -9,10 +9,10 @@ https://get-native.com/users/show.json?id=123456
 https://get-native.com/users/show.json?screen_name=jdoe
 ```
 
-| Parameter   | Required |
-|-------------|----------|
-| id          | √         |
-| screen_name | √         |
+| Parameter   | Required | Default Value |
+|-------------|----------|---------------|
+| id          | √         |               |
+| screen_name | √         |               |
 
 ※ Either the `id` or `screen_name` parameter is required.
 
