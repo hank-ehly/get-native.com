@@ -1,6 +1,7 @@
 site_name: Get Native
 pages:
 - Home: index.md
+- Global: global.md
 - POST /account/update_profile_image: post_account_update_profile_image.md
 - POST /account/update_profile: post_account_update_profile.md
 - GET /account/verify_credentials: get_account_verify_credentials.md
