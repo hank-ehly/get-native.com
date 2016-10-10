@@ -16,4 +16,4 @@ test:
   override:
     - npm run tests.all
   post:
-    - if [[ ! -s npm-debug.log ]]; then cat npm-debug.log; fi
+    - if [[ -s npm-debug.log ]]; then cat npm-debug.log; fi
