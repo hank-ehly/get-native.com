@@ -1,6 +1,6 @@
 # POST /study/shadowing
 
-Modify the authenticating users shadowing statistics.
+Register the completion of the shadowing session.
 
 ## Example Request
 

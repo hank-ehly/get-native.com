@@ -12,6 +12,7 @@ https://get-native.com/study
 | Parameter 	| Description                                                     	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
 | video     	| The unique ID of the video for the study session                	|     √    	|         	|
+| time        | The user-specified amount of time in seconds of the study session	|     √    	|         	|
 
 ## Example Response
 

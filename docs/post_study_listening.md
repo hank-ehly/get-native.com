@@ -1,6 +1,6 @@
 # POST /study/listening
 
-Modify the authenticating users listening statistics.
+Register the completion of a listening session.
 
 ## Example Request
 

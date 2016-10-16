@@ -1,6 +1,6 @@
 # POST /study/writing
 
-Modify the authenticating users writing statistics.
+Register the completion of a writing session.
 
 ## Example Request
 

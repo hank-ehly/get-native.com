@@ -1,6 +1,6 @@
 # POST /study/speaking
 
-Modify the authenticating users speaking statistics.
+Register the completion of a speaking session.
 
 ## Example Request
 
