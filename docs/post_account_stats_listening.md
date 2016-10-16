@@ -1,4 +1,4 @@
-# POST /stats/listening
+# POST /account/stats/listening
 
 Modify the authenticating users listening statistics.
 
@@ -6,7 +6,7 @@ Modify the authenticating users listening statistics.
 
 ```
 POST
-https://get-native.com/stats/listening
+https://get-native.com/account/stats/listening
 ```
 
 ## Example Response
