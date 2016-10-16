@@ -119,6 +119,8 @@ https://get-native.com/videos/show.json?id=123456
 			"count": 4,
 			"records": [
 				{
+					"id": 123456,
+					"id_str": "123456",
 					"text": "What do you think of this text?",
 					"example_answer": "I think this text is really great. I really do. I think if this text were a person, I would marry it."
 				}
