@@ -10,6 +10,7 @@ pages:
 - DELETE /account/authenticate: delete_account_authenticate.md
 - DELETE /account/notifications/:id: delete_account_notifications_id.md
 - GET /study/stats: get_study_stats.md
+- POST /study: post_study.md
 - POST /study/listening: post_study_listening.md
 - POST /study/shadowing: post_study_shadowing.md
 - POST /study/speaking: post_study_speaking.md
