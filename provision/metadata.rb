@@ -1,9 +1,9 @@
 name 'get-native.com'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'Hank Ehly'
+maintainer_email 'henry.ehly@gmail.com'
 license 'all_rights'
-description 'Installs/Configures get-native.com'
-long_description 'Installs/Configures get-native.com'
+description 'Configures get-native.com'
+long_description 'Configures get-native.com'
 version '0.1.0'
 
 depends 'mysql', '~> 8.0.4'
