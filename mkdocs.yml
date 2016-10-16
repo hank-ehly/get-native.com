@@ -6,4 +6,5 @@ pages:
 - 3. Database Schema: database_schema.md
 - 4. Architecture: architecture.md
 - 5. API: api.md
+- 6. Screens: screens.md
 theme: readthedocs
