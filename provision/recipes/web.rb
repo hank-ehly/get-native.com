@@ -41,12 +41,13 @@ bash 'mod_http2.so' do
         sudo mkdir -p #{extract_path} && cd #{extract_path} && echo '[SUCCESS] cd extract_path'
         sudo apt-get source apache2 && echo '[SUCCESS] sudo apt-get source apache2'
         sudo apt-get build-dep -y apache2 && echo '[SUCCESS] sudo apt-get build-dep -y apache2'
-        cd apache-2.4.18 && echo '[SUCCESS] cd apache-2.4.18'
+        cd #{extract_path}/apache2-2.4.18 && echo '[SUCCESS] cd extract_path/apache2-2.4.18'
         sudo fakeroot debian/rules binary && echo '[SUCCESS] sudo fakeroot debian/rules binary'
         sudo cp debian/apache2-bin/usr/lib/apache2/modules/mod_http2.so /usr/lib/apache2/modules/ && echo '[SUCCESS] sudo cp debian...'
         sudo chown root:root /usr/lib/apache2/modules/mod_http2.so && echo '[SUCCESS] sudo chown root:root ...'
     EOH
     not_if { ::File.exists?('/usr/lib/apache2/modules/mod_http2.so') }
+    notifies :restart, 'service[apache2]', :delayed
 end
 
 web_app 'get-native.com' do
