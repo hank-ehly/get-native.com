@@ -47,7 +47,6 @@ bash 'mod_http2.so' do
         sudo chown root:root /usr/lib/apache2/modules/mod_http2.so && echo '[SUCCESS] sudo chown root:root ...'
     EOH
     not_if { ::File.exists?('/usr/lib/apache2/modules/mod_http2.so') }
-    notifies :restart, 'service[apache2]', :delayed
 end
 
 web_app 'get-native.com' do
