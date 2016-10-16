@@ -42,6 +42,7 @@ dist
 dev
 lib
 test
+!provision/test
 tmp
 
 gulpfile.js
