@@ -5,6 +5,7 @@ Returns information about the speaker specified by the `id` query parameter.
 ## Example Request
 
 ```
+GET
 https://get-native.com/speakers/show.json?id=123456
 ```
 

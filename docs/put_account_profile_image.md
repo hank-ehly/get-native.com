@@ -5,6 +5,7 @@ Updates the profile image of the authenticating user.
 ## Example Request
 
 ```
+PUT
 https://get-native.com/account/update_profile_image
 ```
 

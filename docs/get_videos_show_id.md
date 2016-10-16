@@ -5,6 +5,7 @@ Returns the video specified by the `id` query parameter.
 ## Example Request
 
 ```
+GET
 https://get-native.com/videos/show.json?id=123456
 ```
 

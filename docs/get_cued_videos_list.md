@@ -5,6 +5,7 @@ Returns the 20 most recent **cued videos** added by the user to their dashboard.
 ## Example Request
 
 ```
+GET
 https://get-native.com/cued_videos/list.json
 ```
 

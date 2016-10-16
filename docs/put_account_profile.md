@@ -5,7 +5,7 @@ Sets values that authenticating user can view from their Account page.
 ## Example Request
 
 ```
-POST
+PUT
 https://get-native.com/account/update_profile.json
 ```
 

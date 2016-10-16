@@ -5,6 +5,7 @@ Returns an array of video objects matching the specified search query.
 # Example Request
 
 ```
+GET
 https://get-native.com/videos/search?q=Business%20Ethics&lang=en
 ```
 

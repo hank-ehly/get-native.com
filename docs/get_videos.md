@@ -5,6 +5,7 @@ Returns a collection of the most recently created videos in the Get Native datab
 ## Example Request
 
 ```
+GET
 https://get-native.com/videos.json?count=80&trim_likes=true&lang=en
 https://get-native.com/videos.json?count=10&lang=en&max_id=2244994983
 ```
