@@ -1,11 +1,11 @@
-# POST /account/stats/shadowing
+# PUT /account/stats/shadowing
 
 Modify the authenticating users shadowing statistics.
 
 ## Example Request
 
 ```
-POST
+PUT
 https://get-native.com/account/stats/shadowing
 ```
 

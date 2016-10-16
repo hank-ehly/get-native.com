@@ -1,11 +1,11 @@
-# POST /account/stats/speaking
+# PUT /account/stats/speaking
 
 Modify the authenticating users speaking statistics.
 
 ## Example Request
 
 ```
-POST
+PUT
 https://get-native.com/account/stats/speaking
 ```
 

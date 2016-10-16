@@ -1,11 +1,11 @@
-# POST /account/stats/listening
+# PUT /account/stats/listening
 
 Modify the authenticating users listening statistics.
 
 ## Example Request
 
 ```
-POST
+PUT
 https://get-native.com/account/stats/listening
 ```
 

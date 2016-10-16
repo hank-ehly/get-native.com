@@ -1,11 +1,11 @@
-# POST /account/stats/writing
+# PUT /account/stats/writing
 
 Modify the authenticating users writing statistics.
 
 ## Example Request
 
 ```
-POST
+PUT
 https://get-native.com/account/stats/writing
 ```
 
