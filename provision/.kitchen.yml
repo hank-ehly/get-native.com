@@ -7,9 +7,19 @@ provisioner:
 
 platforms:
   - name: ubuntu-16.04
+    driver:
+      box: 'ubuntu/xenial64'
 
 suites:
   - name: default
     run_list:
       - recipe[get-native.com::default]
+    attributes:
+  - name: web
+    run_list:
+      - recipe[get-native.com::web]
+    attributes:
+  - name: db
+    run_list:
+      - recipe[get-native.com::mysql]
     attributes:
