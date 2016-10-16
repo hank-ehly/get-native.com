@@ -1,6 +1,6 @@
 # GET /study/stats
 
-Returns the authenticating users aggregate study statistics.
+Returns the authenticating users' aggregated study statistics.
 
 ## Example Request
 
