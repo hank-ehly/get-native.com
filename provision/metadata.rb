@@ -1,0 +1,7 @@
+name 'get-native.com'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures get-native.com'
+long_description 'Installs/Configures get-native.com'
+version '0.1.0'
