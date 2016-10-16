@@ -16,7 +16,7 @@ https://get-native.com/account/stats/writing
 | video            	| The unique ID of the current video                     	|     √    	|         	|
 | question         	| The unique ID of the current writing question          	|     √    	|         	|
 | answer           	| The users' text answer to the writing question         	|     √    	|         	|
-| word_count       	|  The number of words or Kanji characters in the answer 	|     √    	|         	|
+| word_count       	| The number of words or Kanji characters in the answer 	|     √    	|         	|
 | words_per_minute 	| The WPM calculated during the current writing section  	|     √    	|         	|
 
 ## Example Response
