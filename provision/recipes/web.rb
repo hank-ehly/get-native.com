@@ -4,6 +4,9 @@
 #
 # Copyright (c) 2016 Hank Ehly, All Rights Reserved.
 
+execute 'sudo apt-get update'
+include_recipe 'build-essential::default'
+
 group node[:user][:primary_group]
 
 user node[:user][:name] do
@@ -24,6 +27,10 @@ include_recipe 'locale::default'
 include_recipe 'apache2::default'
 include_recipe 'apache2::mod_ssl'
 include_recipe 'apache2::mod_http2'
+include_recipe 'apache2::mod_deflate'
+include_recipe 'apache2::mod_rewrite'
 
 include_recipe 'nodejs::nodejs_from_binary'
 include_recipe 'nodejs::npm'
+
+package 'git'
