@@ -2,17 +2,17 @@ site_name: Get Native
 pages:
 - Home: index.md
 - Global: global.md
-- PUT /account/profile_image: put_account_profile_image.md
-- PUT /account/profile: put_account_profile.md
-- POST /account/authenticate: post_account_authenticate.md
-- POST /account/stats/listening: post_account_stats_listening.md
-- POST /account/stats/shadowing: post_account_stats_shadowing.md
-- POST /account/stats/speaking: post_account_stats_speaking.md
-- POST /account/stats/writing: post_account_stats_writing.md
-- DELETE /account/authenticate: delete_account_authenticate.md
-- DELETE /account: delete_account.md
 - GET /account/stats: get_account_stats.md
 - GET /account/verify_credentials: get_account_verify_credentials.md
+- POST /account/authenticate: post_account_authenticate.md
+- PUT /account/profile_image: put_account_profile_image.md
+- PUT /account/profile: put_account_profile.md
+- PUT /account/stats/listening: put_account_stats_listening.md
+- PUT /account/stats/shadowing: put_account_stats_shadowing.md
+- PUT /account/stats/speaking: put_account_stats_speaking.md
+- PUT /account/stats/writing: put_account_stats_writing.md
+- DELETE /account: delete_account.md
+- DELETE /account/authenticate: delete_account_authenticate.md
 - GET /cued_videos/list: get_cued_videos_list.md
 - GET /speakers/show: get_speakers_show.md
 - GET /videos: get_videos.md
