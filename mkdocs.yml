@@ -1,23 +1,9 @@
 site_name: Get Native
 pages:
 - Home: index.md
-- Global: global.md
-- GET /account/verify_credentials: get_account_verify_credentials.md
-- POST /account/authenticate: post_account_authenticate.md
-- PUT /account/profile_image: put_account_profile_image.md
-- PUT /account/profile: put_account_profile.md
-- DELETE /account: delete_account.md
-- DELETE /account/authenticate: delete_account_authenticate.md
-- DELETE /account/notifications/:id: delete_account_notifications_id.md
-- GET /study/stats: get_study_stats.md
-- POST /study: post_study.md
-- POST /study/listening: post_study_listening.md
-- POST /study/shadowing: post_study_shadowing.md
-- POST /study/speaking: post_study_speaking.md
-- POST /study/writing: post_study_writing.md
-- GET /cued_videos/list: get_cued_videos_list.md
-- GET /speakers/show: get_speakers_show.md
-- GET /videos: get_videos.md
-- GET /videos/search: get_videos_search.md
-- GET /videos/show/:id: get_videos_show_id.md
+- 1. Purpose & Goal: purpose_and_goal.md
+- 2. Features: features.md
+- 3. Database Schema: database_schema.md
+- 4. Architecture: architecture.md
+- 5. API: api.md
 theme: readthedocs
