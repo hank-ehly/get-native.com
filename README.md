@@ -52,10 +52,10 @@ This table describes the type of authentication with which a users account is li
 ### 3.2 category
 A category into which videos are grouped. Each video belongs to a topic, and each topic belongs to a category. An example of a category is Business.
 
-### 3.3 collocations
+### 3.3 collocation
 A string of 1 or more words that comes directly from a transcript. 
 
-### 3.4 cued_videos
+### 3.4 cued_video
 Videos have a many-to-many relationship with users through the cued_video table. A cued_video is a video that the user has added to their dashboard. By querying cued_video, we can find the selected videos for each user and prevent them from adding the same video twice.
 
 ### 3.5 followers
@@ -79,7 +79,7 @@ A question is a prompt that appears on the Writing page of the Study Session. Ea
 ### 3.11 shadowing_session
 When a user completes the shadowing portion of the study session, a new listening session record is created to document that completion along with any statistical data was gathered.
 
-### 3.12 speakers
+### 3.12 speaker
 Speakers are video interviewees. Users are able to specify a certain speaker when searching for videos. Users are also able to follow certain speakers and receive notifications when that speaker releases a new video.
 
 ### 3.13 speaking_session
