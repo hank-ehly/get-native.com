@@ -13,6 +13,7 @@ pages:
 - PUT /account/stats/writing: put_account_stats_writing.md
 - DELETE /account: delete_account.md
 - DELETE /account/authenticate: delete_account_authenticate.md
+- DELETE /account/notifications/:id: delete_account_notifications_id.md
 - GET /cued_videos/list: get_cued_videos_list.md
 - GET /speakers/show: get_speakers_show.md
 - GET /videos: get_videos.md
