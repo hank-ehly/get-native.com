@@ -105,3 +105,37 @@ A video record documents the video within the get-native database. It contains i
 
 ### 3.20 writing_session
 When a user completes the writing portion of the study session, a new listening session record is created to document that completion along with any statistical data was gathered. A writing session record will, for example, hold the answer text provided by the user as well as word count and word per minute statistics.
+
+## 4. Architecture
+
+<p><img src="docs/images/architecture.png" alt="Architecture"/></p>
+
+### 4.1 Physical Machines
+The production web server server will be separated from the database server for security reasons.
+
+### 4.2 Operating System
+Both the web server and database server will be built on the Ubuntu 16.04 LTS operating system.
+
+### 4.3 Deployment
+Continuous deployment is performed through Circle CI. 
+A successful staging or production build prompts automatic deployment to Digital Ocean droplet.
+
+### 4.4 Provisioning
+A single Chef recipe is used to provision both staging and production environments.
+
+| Specification                            	|                    	|
+|------------------------------------------	|--------------------	|
+| Operating System                         	| Ubuntu 16.04 LTS   	|
+| Public domain                            	| get-native.com     	|
+| Public API domain                        	| api.get-native.com 	|
+| Production SSL/TLS Certificate Authority 	| letsencrypt.org    	|
+| Web Server                               	| Apache 2.4         	|
+| Web Server Protocol                      	| HTTP 2             	|
+
+| Role                         	| Tool(s)                	| Programming Language  	|
+|------------------------------	|------------------------	|-----------------------	|
+| Deployment                   	| Circle CI / Capistrano 	| Bash / Ruby           	|
+| Server Provisioning          	| Chef                   	| Ruby                  	|
+| Server Application (API)     	| Express                	| JavaScript (Node.js)  	|
+| Client Application (Browser) 	| Angular                	| HTML, CSS, JavaScript 	|
+| Database                     	| MySql                  	| SQL                   	|
