@@ -1,12 +1,12 @@
-# GET /account/stats
+# GET /study/stats
 
-Returns the authenticating users study statistics.
+Returns the authenticating users aggregate study statistics.
 
 ## Example Request
 
 ```
 GET
-https://get-native.com/account/stats
+https://get-native.com/study/stats
 ```
 
 ## Example Response
