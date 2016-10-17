@@ -53,7 +53,6 @@ web_app 'get-native.com' do
     template 'get-native.com.conf.erb'
     server_port '80' # TODO
     server_name 'get-native.com'
-    server_aliases %w(www.get-native.com)
     docroot '/var/www/get-native.com/production/current/dist/prod'
 end
 
