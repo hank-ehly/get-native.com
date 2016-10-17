@@ -62,3 +62,8 @@
   RewriteCond %{SCRIPT_FILENAME} !maintenance.html
   RewriteRule ^.*$ /system/maintenance.html [L,R=503]
 </VirtualHost>
+
+<VirtualHost *:80>
+  ServerName www.<%= @params[:server_name] %>
+  Redirect 301 / http://<%= @params[:server_name] %>
+</VirtualHost>
