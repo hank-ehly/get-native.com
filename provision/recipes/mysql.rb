@@ -7,6 +7,8 @@
 execute 'sudo apt-get update'
 include_recipe 'build-essential::default'
 
+package 'psmisc'
+
 mysql_service 'get-native' do
     version node['get-native']['mysql-version']
     initial_root_password 'root'

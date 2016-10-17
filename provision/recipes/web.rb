@@ -25,6 +25,7 @@ end
 include_recipe 'locale::default'
 
 package 'git'
+package 'psmisc'
 
 include_recipe 'apache2::default'
 include_recipe 'apache2::mod_ssl'
