@@ -4,6 +4,7 @@ default['get-native']['user']['name'] = 'get_native'
 default['get-native']['user']['primary_group'] = 'get_native'
 default['get-native']['user']['initial_password'] = 'get_native'
 default['get-native']['user']['home'] = "/home/#{node['get-native']['user']['name']}"
+default['get-native']['mysql-version'] = '5.7'
 
 default['apache']['listen'] = %w(*:80 *:443)
 default['apache']['version'] = '2.4'

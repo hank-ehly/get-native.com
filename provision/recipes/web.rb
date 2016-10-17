@@ -57,6 +57,7 @@ web_app 'get-native.com' do
 end
 
 mysql_client 'get-native' do
+    version node['get-native']['mysql-version']
     action :create
 end
 
