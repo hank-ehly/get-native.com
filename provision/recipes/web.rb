@@ -56,5 +56,9 @@ web_app 'get-native.com' do
     docroot "/var/www/get-native.com/#{node['get-native']['environment']}/current/dist/prod"
 end
 
+mysql_client 'get-native' do
+    action :create
+end
+
 include_recipe 'nodejs::nodejs_from_binary'
 include_recipe 'nodejs::npm'
