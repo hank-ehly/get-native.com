@@ -1,0 +1,23 @@
+{
+  "name": "web",
+  "chef_environment": "_default",
+  "json_class": "Chef::Node",
+  "automatic": {
+    //    "ipaddress": ""
+  },
+  "normal": {
+  },
+  "chef_type": "node",
+  "default": {
+  },
+  "override": {
+  },
+  "run_list": [
+    "recipe[web]"
+  ],
+  "default_attributes": {
+    "get-native": {
+      "environment": "production"
+    }
+  }
+}

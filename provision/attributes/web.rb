@@ -1,7 +1,9 @@
-default['user']['name'] = 'get_native'
-default['user']['primary_group'] = 'get_native'
-default['user']['password'] = 'get_native'
-default['user']['home'] = "/home/#{node['user']['name']}"
+default['get-native']['environment'] = 'staging'
+
+default['get-native']['user']['name'] = 'get_native'
+default['get-native']['user']['primary_group'] = 'get_native'
+default['get-native']['user']['initial_password'] = 'get_native'
+default['get-native']['user']['home'] = "/home/#{node['user']['name']}"
 
 default['apache']['listen'] = %w(*:80 *:443)
 default['apache']['version'] = '2.4'

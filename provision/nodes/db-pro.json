@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "db",
   "chef_environment": "_default",
   "json_class": "Chef::Node",
   "automatic": {
@@ -13,6 +13,11 @@
   "override": {
   },
   "run_list": [
-    "recipe[web]"
-  ]
+    "recipe[mysql]"
+  ],
+  "default_attributes": {
+    "get-native": {
+      "environment": "production"
+    }
+  }
 }

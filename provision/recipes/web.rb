@@ -7,18 +7,18 @@
 execute 'sudo apt-get update'
 include_recipe 'build-essential::default'
 
-group node[:user][:primary_group]
+group node['get-native']['user']['primary_group']
 
-user node[:user][:name] do
-    group node[:user][:primary_group]
-    home node[:user][:home]
+user node['get-native']['user']['name'] do
+    group node['get-native']['user']['primary_group']
+    home node['get-native']['user']['home']
     manage_home true
-    password node[:user][:password]
+    password node['get-native']['user']['initial_password']
 end
 
 include_recipe 'sudo::default'
 
-sudo node[:user][:name] do
+sudo node['get-native']['user']['name'] do
     template 'sudo-get_native.erb'
 end
 
@@ -50,10 +50,10 @@ bash 'mod_http2.so' do
 end
 
 web_app 'get-native.com' do
-    template 'get-native.com.conf.erb'
+    template "get-native.com-#{node['get-native']['user']['name']}.conf.erb"
     server_port '80' # TODO
     server_name 'get-native.com'
-    docroot '/var/www/get-native.com/production/current/dist/prod'
+    docroot "/var/www/get-native.com/#{node['get-native']['environment']}/current/dist/prod"
 end
 
 include_recipe 'nodejs::nodejs_from_binary'
