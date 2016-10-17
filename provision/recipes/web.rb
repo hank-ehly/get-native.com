@@ -34,17 +34,17 @@ include_recipe 'apache2::mod_rewrite'
 include_recipe 'apache2::mod_http2'
 package 'libnghttp2-dev'
 
-extract_path = Chef::Config[:file_cache_path] + '/apache2'
+extract_path = "#{Chef::Config[:file_cache_path]}/apache2"
 
 bash 'mod_http2.so' do
     code <<-EOH
-        sudo mkdir -p #{extract_path} && cd #{extract_path} && echo '[SUCCESS] cd extract_path'
-        sudo apt-get source apache2 && echo '[SUCCESS] sudo apt-get source apache2'
-        sudo apt-get build-dep -y apache2 && echo '[SUCCESS] sudo apt-get build-dep -y apache2'
-        cd #{extract_path}/apache2-2.4.18 && echo '[SUCCESS] cd extract_path/apache2-2.4.18'
-        sudo fakeroot debian/rules binary && echo '[SUCCESS] sudo fakeroot debian/rules binary'
-        sudo cp debian/apache2-bin/usr/lib/apache2/modules/mod_http2.so /usr/lib/apache2/modules/ && echo '[SUCCESS] sudo cp debian...'
-        sudo chown root:root /usr/lib/apache2/modules/mod_http2.so && echo '[SUCCESS] sudo chown root:root ...'
+        sudo mkdir -p #{extract_path} && cd #{extract_path}
+        sudo apt-get source apache2
+        sudo apt-get build-dep -y apache2
+        cd #{extract_path}/apache2-2.4.18
+        sudo fakeroot debian/rules binary
+        sudo cp debian/apache2-bin/usr/lib/apache2/modules/mod_http2.so /usr/lib/apache2/modules/
+        sudo chown root:root /usr/lib/apache2/modules/mod_http2.so
     EOH
     not_if { ::File.exists?('/usr/lib/apache2/modules/mod_http2.so') }
 end
