@@ -50,7 +50,7 @@ bash 'mod_http2.so' do
 end
 
 web_app 'get-native.com' do
-    template "get-native.com-#{node['get-native']['user']['name']}.conf.erb"
+    template "get-native.com-#{node['get-native']['environment']}.conf.erb"
     server_port '80' # TODO
     server_name 'get-native.com'
     docroot "/var/www/get-native.com/#{node['get-native']['environment']}/current/dist/prod"
