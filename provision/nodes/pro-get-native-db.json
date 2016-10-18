@@ -13,7 +13,7 @@
   "override": {
   },
   "run_list": [
-    "recipe[get-native.com::mysql]"
+    "recipe[get-native.com-cookbook::db-server]"
   ],
   "default_attributes": {
     "get-native": {
