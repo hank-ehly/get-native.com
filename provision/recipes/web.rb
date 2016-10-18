@@ -4,7 +4,9 @@
 #
 # Copyright (c) 2016 Hank Ehly, All Rights Reserved.
 
-execute 'sudo apt-get update'
+execute 'sudo apt-get update -y'
+execute 'sudo apt-get -y upgrade'
+
 include_recipe 'build-essential::default'
 
 group node['get-native']['user']['primary_group']

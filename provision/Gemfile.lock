@@ -95,6 +95,10 @@ GEM
     json (2.0.2)
     kitchen-vagrant (0.20.0)
       test-kitchen (~> 1.4)
+    knife-solo (0.6.0)
+      chef (>= 10.20)
+      erubis (~> 2.7.0)
+      net-ssh (>= 2.7, < 4.0)
     libyajl2 (1.2.0)
     minitar (0.5.4)
     mixlib-archive (0.2.0)
@@ -226,6 +230,7 @@ DEPENDENCIES
   berkshelf (~> 5.1)
   chef (~> 12.15, >= 12.15.19)
   kitchen-vagrant (~> 0.20.0)
+  knife-solo (~> 0.6.0)
   test-kitchen (~> 1.13, >= 1.13.2)
 
 BUNDLED WITH

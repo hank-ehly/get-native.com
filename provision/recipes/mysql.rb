@@ -4,7 +4,9 @@
 #
 # Copyright (c) 2016 Hank Ehly, All Rights Reserved.
 
-execute 'sudo apt-get update'
+execute 'sudo apt-get update -y'
+execute 'sudo apt-get -y upgrade'
+
 include_recipe 'build-essential::default'
 
 package 'psmisc'
@@ -12,8 +14,10 @@ package 'psmisc'
 mysql_service 'get-native' do
     version node['get-native']['mysql-version']
     initial_root_password 'root'
-    bind_address '127.0.0.1'
+    bind_address '0.0.0.0'
     charset 'utf8'
-    notifies :run, 'execute[sudo apt-get update]', :immediately
+    run_group 'mysql'
+    run_user 'mysql'
+    port 3306
     action [:create, :start]
 end
