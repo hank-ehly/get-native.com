@@ -13,7 +13,7 @@
   "override": {
   },
   "run_list": [
-    "recipe[mysql]"
+    "recipe[get-native.com::mysql]"
   ],
   "default_attributes": {
     "get-native": {
