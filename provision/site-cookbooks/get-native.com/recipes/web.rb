@@ -20,8 +20,8 @@ package 'psmisc'
 include_recipe 'locale::default'
 
 group node['get-native']['user']['primary_group'] do
-    notifies :run, 'execute[update]', :immediately
-    notifies :run, 'execute[upgrade]', :immediately
+    notifies :run, 'execute[update]', :before
+    notifies :run, 'execute[upgrade]', :before
 end
 
 user node['get-native']['user']['name'] do

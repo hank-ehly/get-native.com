@@ -25,7 +25,7 @@ mysql_service 'get-native' do
     run_group 'mysql'
     run_user 'mysql'
     port 3306
-    notifies :run, 'execute[update]', :immediately
-    notifies :run, 'execute[upgrade]', :immediately
+    notifies :run, 'execute[update]', :before
+    notifies :run, 'execute[upgrade]', :before
     action [:create, :start]
 end
