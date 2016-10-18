@@ -4,12 +4,25 @@
 #
 # Copyright (c) 2016 Hank Ehly, All Rights Reserved.
 
-execute 'sudo apt-get update -y'
-execute 'sudo apt-get -y upgrade'
+execute 'update' do
+    command 'sudo apt-get update -y'
+    action :nothing
+end
+
+execute 'upgrade' do
+    command 'sudo apt-get -y upgrade'
+    action :nothing
+end
 
 include_recipe 'build-essential::default'
+package 'git'
+package 'psmisc'
+include_recipe 'locale::default'
 
-group node['get-native']['user']['primary_group']
+group node['get-native']['user']['primary_group'] do
+    notifies :run, 'execute[update]', :immediately
+    notifies :run, 'execute[upgrade]', :immediately
+end
 
 user node['get-native']['user']['name'] do
     group node['get-native']['user']['primary_group']
@@ -23,11 +36,6 @@ include_recipe 'sudo::default'
 sudo node['get-native']['user']['name'] do
     template 'sudo-get_native.erb'
 end
-
-include_recipe 'locale::default'
-
-package 'git'
-package 'psmisc'
 
 include_recipe 'apache2::default'
 include_recipe 'apache2::mod_ssl'

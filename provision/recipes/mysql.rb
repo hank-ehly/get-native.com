@@ -4,11 +4,17 @@
 #
 # Copyright (c) 2016 Hank Ehly, All Rights Reserved.
 
-execute 'sudo apt-get update -y'
-execute 'sudo apt-get -y upgrade'
+execute 'update' do
+    command 'sudo apt-get update -y'
+    action :nothing
+end
+
+execute 'upgrade' do
+    command 'sudo apt-get -y upgrade'
+    action :nothing
+end
 
 include_recipe 'build-essential::default'
-
 package 'psmisc'
 
 mysql_service 'get-native' do
@@ -19,5 +25,7 @@ mysql_service 'get-native' do
     run_group 'mysql'
     run_user 'mysql'
     port 3306
+    notifies :run, 'execute[update]', :immediately
+    notifies :run, 'execute[upgrade]', :immediately
     action [:create, :start]
 end
