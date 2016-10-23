@@ -5,17 +5,17 @@ Vagrant.configure("2") do |config|
 	config.vm.box = "ubuntu/xenial64"
 
 	config.vm.define "web", primary: true do |web|
-    config.vm.network "forwarded_port", guest: 80, host: 8080
-    config.vm.network "private_network", ip: "192.168.0.33"
-    config.vm.synced_folder "dist/prod/", "/var/www/get-native.com/production/current/", type: "nfs"
-    config.vm.synced_folder "dist/dev/", "/var/www/get-native.com/development/current/", type: "nfs"
-    config.ssh.host "deb.web.get-native.com"
-    config.ssh.private_key_path "~/.ssh/get-native.com/dev.web.get-native.com"
+    web.vm.network "forwarded_port", guest: 80, host: 8080
+    web.vm.network "private_network", ip: "192.168.0.33"
+    web.vm.synced_folder "../../dist/prod/", "/var/www/get-native.com/production/current/", type: "nfs"
+    web.vm.synced_folder "../../dist/dev/", "/var/www/get-native.com/development/current/", type: "nfs"
+    web.ssh.host = "deb.web.get-native.com"
+    web.ssh.private_key_path = "~/.ssh/get-native.com/dev.web.get-native.com"
 	end
 
 	config.vm.define "db" do |db|
-    config.vm.network "private_network", ip: "192.168.0.44"
-    config.ssh.host "deb.db.get-native.com"
-    config.ssh.private_key_path "~/.ssh/get-native.com/dev.db.get-native.com"
+    db.vm.network "private_network", ip: "192.168.0.44"
+    db.ssh.host = "deb.db.get-native.com"
+    db.ssh.private_key_path = "~/.ssh/get-native.com/dev.db.get-native.com"
 	end
 end
