@@ -1,3 +1,4 @@
 /cookbooks/
 vendor/
 .bundle/
+.vagrant/
