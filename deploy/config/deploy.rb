@@ -9,10 +9,10 @@ set :deploy_to, "/var/www/#{fetch(:application)}/#{fetch(:stage)}"
 set :scm, :git
 set :linked_dirs, fetch(:linked_dirs, []).push('node_modules')
 
-if fetch(:stage) == 'production'
+if fetch(:stage).to_s == 'production' then
     set :keep_releases, 5
     server fetch(:production_host), user: fetch(:production_user), ssh_options: {forward_agent: false}
-elsif fetch(:stage) == 'staging'
+elsif fetch(:stage).to_s == 'staging' then
     set :keep_releases, 3
-    server fetch(:staging_host), user: fetch(:staging_user), ssh_options: {forward_agent: false}
+    server fetch(:staging_host), user: fetch(:staging_user), ssh_options: {forward_agent: true}
 end
