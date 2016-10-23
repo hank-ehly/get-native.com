@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
 	config.vm.box = "ubuntu/xenial64"
-	config.ssh.keys_only = "true"
+	config.ssh.keys_only = false
 	config.ssh.insert_key = false
 
 	config.vm.define "web", primary: true do |web|
@@ -22,3 +22,10 @@ Vagrant.configure("2") do |config|
     db.vm.provision "file", source: "keys/dev.db.get-native.com.pub", destination: "~/.ssh/authorized_keys"
 	end
 end
+
+# Note: The default `vagrant ssh` command is not working for this setup right now. To login directly to the box,
+#       use the following ssh command:
+#
+#       ssh ubuntu@127.0.0.1 -p 2222 -o "UserKnownHostsFile /dev/null" -o "StrictHostKeyChecking no"
+#                                    -o "PasswordAuthentication no" -o "IdentitiesOnly yes" -o "LogLevel FATAL"
+#                                    -o "IdentityFile {file location}"
