@@ -3,7 +3,7 @@
   "chef_environment": "_default",
   "json_class": "Chef::Node",
   "automatic": {
-    "ipaddress": "pro-get-native-web"
+    "ipaddress": "stg.web.get-native.com"
   },
   "normal": {
   },
@@ -17,7 +17,7 @@
   ],
   "default_attributes": {
     "get-native": {
-      "environment": "production"
+      "environment": "staging"
     }
   }
 }
