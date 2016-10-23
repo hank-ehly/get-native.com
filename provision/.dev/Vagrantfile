@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
 
 	config.vm.define "web", primary: true do |web|
     web.vm.network "forwarded_port", guest: 80, host: 5230
+    web.vm.network "forwarded_port", guest: 5555, host: 5235
     web.vm.network "private_network", type: "dhcp"
     web.vm.synced_folder "../../", "/var/www/get-native.com/development/current/", type: "nfs"
     web.ssh.private_key_path = "keys/dev.web.get-native.com"
@@ -16,6 +17,11 @@ Vagrant.configure("2") do |config|
     web.vm.provision "chef_solo" do |chef|
     	chef.cookbooks_path = ["../cookbooks", "../site-cookbooks"]
     	chef.add_recipe "get-native.com-cookbook::web-server"
+    	chef.json = {
+				"get-native" => {
+					"environment" => "development"
+				}
+			}
     end
 	end
 
