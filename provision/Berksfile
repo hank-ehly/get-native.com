@@ -1,0 +1,9 @@
+source "https://api.berkshelf.com"
+
+cookbook 'mysql', '~> 8.0.4'
+cookbook 'locale', '~> 2.0.0'
+cookbook 'apache2', '~> 3.2.2'
+cookbook 'nodejs', '~> 2.4.4'
+cookbook 'sudo', '~> 3.0.0'
+cookbook 'build-essential', '~> 7.0.1'
+cookbook 'get-native.com-cookbook', git: 'git@home.github.com:hank-ehly/get-native.com-cookbook.git'

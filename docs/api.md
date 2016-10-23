@@ -332,7 +332,7 @@ https://get-native.com/videos.json?count=10&lang=en&max_id=2244994983
 
 ※ The `since_id` parameter is not usable. It is reserved for future use.
 
-### About max_id
+**About _max_id_**
 
 Instead of listing videos in "pages," Get Native returns videos according to the `count` and `max_id` parameters. 
 When you've retrieved an initial array of videos using the `/videos` URI, make note of the _lowest_ video ID. 
@@ -622,32 +622,7 @@ https://get-native.com/videos/show.json?id=123456
 	"error": ""
 }
 ```
-# Global
 
-All API responses contain the following root level parameters:
-
-| Parameter 	| Type    	| Meaning                                                                                                                        	|
-|-----------	|---------	|--------------------------------------------------------------------------------------------------------------------------------	|
-| data      	| Object  	| The requested response data.                                                                                                   	|
-| success   	| Boolean 	| When true, this indicates that the request was completed as expected.                                                          	|
-| error     	| String  	| _Nullable._ If "success" is false, error is populated with a UTF-8 error message string describing why the transaction failed. 	|
-
-In the case that a response contains 1 or more arrays, each array will contain a "count" parameter at their same level,
-indicating the number of records included in the array.
-
-```json
-{
-	"data": {
-		"count": 45,
-		"records": [
-			{"id": 123},
-			{"id": 456}
-		]
-	},
-	"success": true,
-	"error": ""
-}
-```
 # POST /account/authenticate
 
 Verify user credentials and create new login session.
@@ -884,7 +859,7 @@ https://get-native.com/study/writing
 | answer        	| The user written text answer to the writing question                            	|          	|         	|
 | question      	| The unique ID of the question to which the user wrote an answer                 	|          	|         	|
 
-### Calculation of words per minute and word count
+**Calculation of _words per minute_ and _word count_**
 
 As opposed to calculating the words per minute and word count of the user provided answer for the current study session
 before sending the request, calculations are performed server side for maximum efficiency.
