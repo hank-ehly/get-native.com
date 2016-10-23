@@ -3,7 +3,7 @@
   "chef_environment": "_default",
   "json_class": "Chef::Node",
   "automatic": {
-    "ipaddress": "stg-get-native-db"
+    "ipaddress": "stg.db.get-native.com"
   },
   "normal": {
   },

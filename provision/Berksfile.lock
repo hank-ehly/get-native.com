@@ -3,7 +3,7 @@ DEPENDENCIES
   build-essential (~> 7.0.1)
   get-native.com-cookbook
     git: git@home.github.com:hank-ehly/get-native.com-cookbook.git
-    revision: 0042f9d5521597b41feb47c6725eb1c4d445bbe5
+    revision: 764e1b46afbabc4ec83ecb3f380e296e1e4ee05e
   locale (~> 2.0.0)
   mysql (~> 8.0.4)
   nodejs (~> 2.4.4)
@@ -21,7 +21,7 @@ GRAPH
     compat_resource (>= 12.14)
     mingw (>= 1.1)
     seven_zip (>= 0.0.0)
-  compat_resource (12.14.7)
+  compat_resource (12.16.1)
   get-native.com-cookbook (0.1.0)
     apache2 (~> 3.2.2)
     build-essential (~> 7.0.1)
@@ -46,6 +46,6 @@ GRAPH
     windows (>= 1.2.2)
   sudo (3.0.0)
   windows (2.0.2)
-  yum (4.0.0)
-  yum-epel (1.0.1)
+  yum (4.1.0)
+  yum-epel (1.0.2)
     yum (>= 3.6)
