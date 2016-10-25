@@ -3,7 +3,7 @@ DEPENDENCIES
   build-essential (~> 7.0.1)
   get-native.com-cookbook
     git: git@home.github.com:hank-ehly/get-native.com-cookbook.git
-    revision: 764e1b46afbabc4ec83ecb3f380e296e1e4ee05e
+    revision: 9fd4dda59f8b8a8c0c85f617d69ad31116e41c62
   locale (~> 2.0.0)
   mysql (~> 8.0.4)
   nodejs (~> 2.4.4)
