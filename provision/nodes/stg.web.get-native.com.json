@@ -16,5 +16,8 @@
     "recipe[get-native.com-cookbook::web-server]"
   ],
   "default_attributes": {
+    "get-native": {
+      "server_port": 80
+    }
   }
 }
