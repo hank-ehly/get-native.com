@@ -17,7 +17,8 @@
   ],
   "default_attributes": {
     "get-native": {
-      "environment": "staging"
+      "environment": "staging",
+      "data_bag": "stg.db.get-native.com"
     }
   }
 }
