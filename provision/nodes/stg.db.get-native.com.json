@@ -16,9 +16,5 @@
     "recipe[get-native.com-cookbook::db-server]"
   ],
   "default_attributes": {
-    "get-native": {
-      "environment": "staging",
-      "data_bag": "stg-db-get-native-com"
-    }
   }
 }

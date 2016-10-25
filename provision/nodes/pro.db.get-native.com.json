@@ -16,9 +16,5 @@
     "recipe[get-native.com-cookbook::db-server]"
   ],
   "default_attributes": {
-    "get-native": {
-      "environment": "production",
-      "data_bag": "pro-db-get-native-com"
-    }
   }
 }

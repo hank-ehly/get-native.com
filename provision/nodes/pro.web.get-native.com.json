@@ -16,9 +16,5 @@
     "recipe[get-native.com-cookbook::web-server]"
   ],
   "default_attributes": {
-    "get-native": {
-      "environment": "production",
-      "data_bag": "pro-web-get-native-com"
-    }
   }
 }
