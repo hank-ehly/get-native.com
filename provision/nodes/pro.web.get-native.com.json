@@ -13,7 +13,7 @@
   "override": {
   },
   "run_list": [
-    "recipe[get-native.com-cookbook::web-server]"
+    "role[web-server]"
   ],
   "default_attributes": {
     "get-native": {
