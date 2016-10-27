@@ -1,6 +1,8 @@
 DEPENDENCIES
+  acme (~> 2.0.0)
   apache2 (~> 3.2.2)
   build-essential (~> 7.0.1)
+  deploy_key (~> 0.3.0)
   get-native.com-cookbook
     git: git@home.github.com:hank-ehly/get-native.com-cookbook.git
     revision: bd20fecf498a4446068495ae11f452175d55a83f
