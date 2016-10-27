@@ -17,8 +17,7 @@
   ],
   "default_attributes": {
     "get-native": {
-      "server_port": 80,
-      "server_name": "localhost:80"
+      "server_name": "stg.get-native.com"
     }
   }
 }

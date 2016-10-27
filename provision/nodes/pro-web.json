@@ -17,7 +17,6 @@
   ],
   "default_attributes": {
     "get-native": {
-      "server_port": 443,
       "server_name": "get-native.com"
     }
   }
