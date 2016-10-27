@@ -1,14 +1,13 @@
 {
-  "name": "dev",
+  "name": "staging",
   "default_attributes": {
     "get-native": {
       "environment": {
-        "short": "dev",
-        "long": "development"
+        "long": "staging"
       }
     }
   },
   "json_class": "Chef::Environment",
-  "description": "The development environment",
+  "description": "The staging environment",
   "chef_type": "environment"
 }
