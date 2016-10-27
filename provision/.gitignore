@@ -4,3 +4,4 @@ vendor/
 .vagrant/
 keys/
 data_bags/*/public_key.json
+data_bags/github/credentials.json
