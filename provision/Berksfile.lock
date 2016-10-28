@@ -5,7 +5,7 @@ DEPENDENCIES
   deploy_key (~> 0.3.0)
   get-native.com-cookbook
     git: git@home.github.com:hank-ehly/get-native.com-cookbook.git
-    revision: e0cc3c60373e94d85029256c9b35f064cd9cba62
+    revision: cccb0e59aa5aac8885cc3ef03ed275d5988961b4
   locale (~> 2.0.0)
   mysql (~> 8.0.4)
   nodejs (~> 2.4.4)
