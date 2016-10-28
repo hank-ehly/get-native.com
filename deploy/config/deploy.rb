@@ -7,7 +7,6 @@ set :repo_url, 'git@github.com:hank-ehly/get-native.com.git'
 set :branch, 'master'
 set :deploy_to, "/var/www/#{fetch(:application).to_s}/#{fetch(:stage)}"
 set :scm, :git
-# set :linked_dirs, fetch(:linked_dirs, []).push('node_modules')
 
 if fetch(:stage).to_s == 'production'
     set :keep_releases, 5
