@@ -1,6 +1,6 @@
 {
   "name": "web",
-  "chef_environment": "_default",
+  "chef_environment": "staging",
   "json_class": "Chef::Node",
   "automatic": {
     "ipaddress": "stg.web.get-native.com"
