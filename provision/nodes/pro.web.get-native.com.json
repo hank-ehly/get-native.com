@@ -1,6 +1,6 @@
 {
   "name": "web",
-  "chef_environment": "production",
+  "chef_environment": "_default",
   "json_class": "Chef::Node",
   "automatic": {
     "ipaddress": "pro.web.get-native.com"

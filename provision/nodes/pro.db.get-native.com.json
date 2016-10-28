@@ -1,6 +1,6 @@
 {
   "name": "db",
-  "chef_environment": "production",
+  "chef_environment": "_default",
   "json_class": "Chef::Node",
   "automatic": {
     "ipaddress": "pro.db.get-native.com"

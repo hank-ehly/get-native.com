@@ -1,6 +1,6 @@
 {
   "name": "db",
-  "chef_environment": "staging",
+  "chef_environment": "_default",
   "json_class": "Chef::Node",
   "automatic": {
     "ipaddress": "stg.db.get-native.com"
