@@ -13,11 +13,12 @@ deployment:
   staging:
     branch: develop
     commands:
-      - cd deploy && bundle exec cap staging deploy
+      - cd deploy && bundle install --path vendor/bundle && bundle exec cap staging deploy
 
 dependencies:
   cache_directories:
     - "node_modules"
+    - "deploy/vendor/bundle"
 
 test:
   override:
