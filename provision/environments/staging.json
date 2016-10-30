@@ -1,0 +1,11 @@
+{
+  "name": "staging",
+  "default_attributes": {
+    "get-native": {
+      "environment": "staging"
+    }
+  },
+  "json_class": "Chef::Environment",
+  "description": "The staging environment",
+  "chef_type": "environment"
+}

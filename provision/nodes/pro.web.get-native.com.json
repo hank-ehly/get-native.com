@@ -6,6 +6,9 @@
     "ipaddress": "pro.web.get-native.com"
   },
   "normal": {
+    "get-native": {
+      "server_name": "get-native.com"
+    }
   },
   "chef_type": "node",
   "default": {
@@ -13,11 +16,6 @@
   "override": {
   },
   "run_list": [
-    "recipe[get-native.com-cookbook::web-server]"
-  ],
-  "default_attributes": {
-    "get-native": {
-      "environment": "production"
-    }
-  }
+    "role[web-server]"
+  ]
 }
