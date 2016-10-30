@@ -18,7 +18,6 @@ deployment:
 dependencies:
   cache_directories:
     - "node_modules"
-    - "deploy/vendor/bundle"
 
 test:
   override:
