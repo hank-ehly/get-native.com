@@ -6,7 +6,13 @@ general:
   branches:
     only:
       - master
+      - develop
       - /feature-.*/
+
+deployment:
+  staging:
+    branch: develop
+    commands: cd deploy && bundle exec cap staging deploy
 
 dependencies:
   cache_directories:
