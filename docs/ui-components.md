@@ -5,15 +5,16 @@
 	* gn-side-menu.component
 	* gn-bottom-toolbar.component
 	* gn-pop-up-language-menu.component
-* gn-footer.component
 * video/
 	* gn-video-object.component
-  * gn-video-object-list.component
+	* gn-video-object-list.component
 * ui-elements/
 	* gn-circular-thumbnail.component
 	* gn-circular-button.component
 	* gn-load-progress-bar.component
 	* gn-switch.component
+* static
+	* gn-footer.component
 
 #### home/
 * gn-home.component
