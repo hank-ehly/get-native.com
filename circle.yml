@@ -7,7 +7,6 @@ general:
     only:
       - master
       - develop
-      - /feature-.*/
 
 deployment:
   staging:
