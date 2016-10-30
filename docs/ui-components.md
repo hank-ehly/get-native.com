@@ -1,4 +1,4 @@
-#### Shared/
+#### shared/
 * menu/
 	* gn-menu-bar.component
 	* gn-drop-down-notifications-list.component
