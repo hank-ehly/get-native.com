@@ -1,4 +1,4 @@
-server 'deploy.stg.web.get-native.com',
+server 'stg.get-native.com',
        user: 'get-native',
        roles: %{web},
        ssh_options: {
