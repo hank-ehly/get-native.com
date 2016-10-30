@@ -4,7 +4,8 @@ namespace :deploy do
     task :build_prod do
         on roles(:web) do |_|
             within "#{current_path}" do
-                execute :npm, 'run', 'build.prod'
+                execute '/usr/local/nodejs-binary/bin/gulp', 'build.prod'
+                # execute :npm, 'run', 'build.prod'
             end
         end
     end
