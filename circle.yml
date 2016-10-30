@@ -8,11 +8,11 @@ general:
       - master
       - develop
 
-deployment:
-  staging:
-    branch: develop
-    commands:
-      - cd deploy && bundle install --path vendor/bundle && bundle exec cap staging deploy
+#deployment:
+#  staging:
+#    branch: develop
+#    commands:
+#      - cd deploy && bundle install --path vendor/bundle && bundle exec cap staging deploy
 
 dependencies:
   cache_directories:
