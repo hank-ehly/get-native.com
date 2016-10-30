@@ -41,6 +41,7 @@ ts-node
 dist
 dev
 lib
+!deploy/lib
 test
 !provision/test
 tmp
