@@ -9,5 +9,6 @@ Documentation is split up into the following five sections.
 ├── 3. Database Schema
 ├── 4. Architecture
 ├── 5. API
-└── 6. Screens
+├── 6. Screens
+└── 7. UI Components
 ```
