@@ -8,4 +8,4 @@ set :scm, :git
 set :keep_releases, 3
 
 after 'deploy:finished', 'deploy:npm_install'
-after 'deploy:finished', 'deploy:build_prod'
+after 'deploy:finished', 'deploy:build_prod_exp'
