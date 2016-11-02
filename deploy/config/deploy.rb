@@ -7,5 +7,5 @@ set :deploy_to, "/var/www/#{fetch(:application).to_s}/#{fetch(:stage)}"
 set :scm, :git
 set :keep_releases, 3
 
-after 'deploy:finished', 'deploy:npm_install'
-after 'deploy:finished', 'deploy:build_prod_exp'
+after 'deploy:updated', 'deploy:npm_install'
+after 'deploy:updated', 'deploy:build_prod_exp'
