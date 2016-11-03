@@ -1,6 +1,6 @@
 set :branch, 'develop'
 
-server 'stg.get-native.com',
+server 'deploy.web.stg.get-native.com',
        user: 'get-native',
        roles: %{web},
        ssh_options: {
