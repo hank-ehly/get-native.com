@@ -7,6 +7,7 @@
 * pop-up-language-menu.component
 * footer.component
 * http-client.service
+* rxjs-operators.ts
 * その他Services
 
 #### shared/
