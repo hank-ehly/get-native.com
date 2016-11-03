@@ -6,7 +6,7 @@
 * bottom-toolbar.component
 * pop-up-language-menu.component
 * footer.component
-* http関連
+* http-client.service
 * その他Services
 
 #### shared/
