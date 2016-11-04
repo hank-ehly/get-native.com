@@ -7,7 +7,7 @@ Source code for get-native.com
 ## Documentation
 
 Documentation is built with MkDocs and is located in root level `docs/` folder.
-To serve the documentation locally, execute `mkdocs serve` or `npm run serve.docs` from the root directory.
+To serve the documentation locally, execute `mkdocs serve` from the root directory.
 
 ## Provisioning
 
