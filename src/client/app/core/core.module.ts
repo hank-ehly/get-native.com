@@ -9,15 +9,18 @@ import { NgModule } from '@angular/core';
 
 import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 @NgModule({
     declarations: [
         ToolbarComponent,
-        NavbarComponent
+        NavbarComponent,
+        SideMenuComponent
     ],
     exports: [
         ToolbarComponent,
-        NavbarComponent
+        NavbarComponent,
+        SideMenuComponent
     ]
 })
 
