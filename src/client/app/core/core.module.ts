@@ -9,8 +9,8 @@ import { NgModule } from '@angular/core';
 
 import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
-import { SideMenuComponent } from './side-menu/side-menu.component';
-import { FooterComponent } from './footer/footer.component';
+import { SideMenuComponent } from './side-menu/index';
+import { FooterComponent } from './footer/index';
 
 @NgModule({
     declarations: [

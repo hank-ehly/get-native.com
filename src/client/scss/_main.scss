@@ -68,23 +68,4 @@ main {
   }
 }
 
-.gn-btn-outline {
-  background: none;
-  border: $gn-btn-outline-border;
-  border-radius: 20px;
-  color: $light-grey;
-  cursor: pointer;
-  font-weight: bold;
-  height: 30px;
-  outline: none;
-  padding: 0;
-  width: 100px;
-}
-
-.gn-btn-outline-green {
-  background-image: linear-gradient(to right, $loading-bar-left, $loading-bar-right);
-  border: transparent;
-  color: $white;
-}
-
 // TODO: Substitute 'padding: 30px' hard-coded values with 'padding: $padding-unit * 2'
