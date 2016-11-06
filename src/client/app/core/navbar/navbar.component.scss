@@ -1,0 +1,85 @@
+@import "../../../css/variables";
+
+header {
+  height: 90px;
+  line-height: 90px;
+  position: relative;
+}
+
+img {
+  vertical-align: middle;
+}
+
+header > * {
+  display: inline-block;
+}
+
+header > div:first-child {
+  float: left;
+  padding-left: 30px;
+  position: fixed;
+
+  img {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.gn-main-navigation-center-objects {
+  display: block;
+  margin: 0 auto;
+  width: $main-width;
+
+  & > li {
+    display: inline-block;
+    width: 300px;
+  }
+
+  .gn-page-title {
+    text-align: center;
+  }
+
+  .gn-navigation-video-options {
+    text-align: right;
+
+    li {
+      display: inline-block;
+    }
+
+    li:first-child {
+      margin-right: 20px;
+    }
+  }
+}
+
+.gn-user-preference-icons {
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  li {
+    display: inline-block;
+  }
+
+  li:first-child {
+    margin-right: 20px;
+  }
+
+  li:last-child {
+    margin-right: 30px;
+  }
+}
+
+.gn-notifications-icon {
+  cursor: pointer;
+  height: 23px;
+  width: 23px;
+}
+
+.gn-user-icon {
+  border-radius: 50%;
+  cursor: pointer;
+  height: 35px;
+  width: 35px;
+}
