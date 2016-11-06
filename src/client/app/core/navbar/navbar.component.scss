@@ -1,7 +1,7 @@
 @import '../../../scss/variables';
 @import '../../../scss/mixins';
+@import "../../../scss/variables";
 
-$header-height: 90px;
 $navbar-center-item-width: 300px;
 $logo-diameter: 30px;
 
@@ -10,47 +10,37 @@ header > * {
 }
 
 header {
-  height: $header-height;
-  line-height: $header-height;
+  @include debug-background-color(blue);
+  @include debug-opacity(0.75);
+
+  height: $navbar-height;
+  line-height: $navbar-height;
   position: relative;
 
   img {
     vertical-align: middle;
   }
-
-  @if ($debug) {
-    background: blue;
-  }
 }
 
 div.gn-logo-container {
+  @include debug-background-color(yellow);
   position: fixed;
   width: $logo-diameter * 3;
-
-  @if ($debug) {
-    background: yellow;
-  }
 }
 
 img.gn-logo {
+  @include debug-background-color(orange);
   cursor: pointer;
   margin-left: $logo-diameter;
   height: $logo-diameter;
   width: $logo-diameter;
-
-  @if ($debug) {
-    background: orange;
-  }
 }
 
 ul.gn-navbar-center-items {
+  @include debug-background-color(green);
   display: block;
   margin: 0 auto;
   width: $main-width;
-
-  @if ($debug) {
-    background: green;
-  }
 }
 
 ul.gn-navbar-center-items li {
@@ -61,23 +51,16 @@ ul.gn-navbar-center-items li {
 }
 
 ul.gn-navbar-center-items li.gn-return-navigation {
-  @if ($debug) {
-    background: pink;
-  }
+  @include debug-background-color(pink);
 }
 
 ul.gn-navbar-center-items li.gn-page-title {
-  @if ($debug) {
-    background: grey;
-  }
+  @include debug-background-color(grey);
 }
 
 ul.gn-navbar-center-items li.gn-video-options-container {
+  @include debug-background-color(purple);
   text-align: center;
-
-  @if ($debug) {
-    background: purple;
-  }
 }
 
 ul.gn-navbar-center-items li.gn-video-options-container ul.gn-video-options li {
