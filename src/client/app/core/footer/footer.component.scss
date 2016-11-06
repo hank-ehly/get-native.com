@@ -1,0 +1,45 @@
+@import "../../../scss/colors";
+
+footer {
+  padding-bottom: 50px;
+  padding-top: 70px;
+}
+
+.gn-hotlinks {
+  display: flex;
+  justify-content: space-around;
+  margin: 25px auto 0;
+  max-width: 300px;
+}
+
+.gn-hotlink {
+  color: $light-green;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(217, 243, 232);
+  }
+}
+
+.gn-copyright,
+.gn-legal-links {
+  color: $light-grey;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.gn-legal-links {
+  a {
+    color: $light-grey;
+    text-decoration-color: $light-grey;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  span {
+    padding: 0 5px;
+  }
+}

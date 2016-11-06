@@ -1,10 +1,19 @@
-.gn-full-screen-image {
-  height: auto;
-  left: 0;
-  min-height: 100%;
-  min-width: 1024px;
+@import "../../scss/variables";
+
+.marketing-banner-container {
+  height: 100vh;
+  top: -100px;
+}
+
+.marketing-banner {
+  height: 100vh;
   position: absolute;
   top: 0;
+  overflow: hidden;
   width: 100%;
   z-index: -1;
+}
+
+.gn-home-section-title {
+  text-align: center;
 }

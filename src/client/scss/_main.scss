@@ -9,6 +9,17 @@ body {
   font-size: $default-font-size;
 }
 
+h1 {
+  font-family: ProximaNovaA-Semibold, sans-serif;
+  font-size: 24px;
+}
+
+.main {
+  display: block;
+  margin: 0 auto;
+  width: $main-width;
+}
+
 .gn-section-header {
   h2 {
     font-size: 30px;
@@ -46,50 +57,6 @@ main {
     h1 {
       font-size: $section-title-font-size;
     }
-  }
-}
-
-footer {
-  padding-bottom: 50px;
-  padding-top: 70px;
-}
-
-.gn-main-site-links {
-  display: flex;
-  justify-content: space-around;
-  margin: 25px auto 0;
-  max-width: 300px;
-}
-
-.gn-site-link {
-  color: $light-green;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-    text-decoration-color: rgb(217, 243, 232);
-  }
-}
-
-.gn-copyright,
-.gn-legal-links {
-  color: $light-grey;
-  margin-top: 25px;
-  text-align: center;
-}
-
-.gn-legal-links {
-  a {
-    color: $light-grey;
-    text-decoration-color: $light-grey;
-
-    &:hover {
-      color: $black;
-    }
-  }
-
-  span {
-    padding: 0 5px;
   }
 }
 
