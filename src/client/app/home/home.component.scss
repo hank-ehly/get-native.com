@@ -1,4 +1,5 @@
 @import "../../scss/variables";
+@import "../../scss/mixins";
 
 .marketing-banner-container {
   height: 100vh;
@@ -39,6 +40,7 @@ div.home-section-info p {
 }
 
 div.home-section-info button {
+  @include rounded-button($background-color: #fff, $color: $light-green, $border-color: $light-green);
   margin-top: 60px;
 }
 
