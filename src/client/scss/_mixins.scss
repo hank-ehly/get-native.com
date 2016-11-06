@@ -1,5 +1,4 @@
-@import "colors";
-@import "variables";
+@import "debug";
 
 @mixin border-radius($radius: 5px) {
   -moz-border-radius: $radius;
@@ -9,13 +8,14 @@
   background-clip: padding-box;
 }
 
-@mixin rounded-button($background-color: $white, $color: $light-grey, $border-color: $rounded-button-default-border-color) {
+$rounded-button-default-border-color: rgb(185, 208, 231);
+@mixin rounded-button($background-color: #fff, $color: #b8b8b8, $border-color: $rounded-button-default-border-color) {
   @include border-radius(20px);
   background: $background-color;
   border: 2px solid $border-color;
   color: $color;
   cursor: pointer;
-  font-size: $sm-font-size;
+  font-size: 14px;
   outline: none;
   padding: 7px 30px;
 }
