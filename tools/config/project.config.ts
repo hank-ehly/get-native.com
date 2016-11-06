@@ -12,7 +12,9 @@ export class ProjectConfig extends SeedConfig {
 
     constructor() {
         super();
-        // this.APP_TITLE = 'Put name of your app here';
+
+        // TODO: Change per page
+        this.APP_TITLE = 'Get Native';
 
         /* Enable typeless compiler runs (faster) between typed compiler runs. */
         // this.TYPED_COMPILE_INTERVAL = 5;
@@ -26,7 +28,7 @@ export class ProjectConfig extends SeedConfig {
 
         // Add `local` third-party libraries to be injected/bundled.
         this.APP_ASSETS = [
-            {src: `${this.CSS_SRC}/reset.css`, inject: true},
+            {src: `${this.CSS_SRC}/vendor/reset.css`, inject: true},
             ...this.APP_ASSETS,
             // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
         ];
