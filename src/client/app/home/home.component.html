@@ -1,4 +1,3 @@
-<!-- TODO: Fix positioning -->
 <div class="marketing-banner">
     <img src="../../assets/mock/elephant.png" alt="">
 </div>
@@ -11,53 +10,18 @@
            iure nobis repellendus. Accusamus consectetur dicta?</p>
     </div>
 
-    <!-- TODO: Provide via Angular -->
-    <ul class="lg-features">
-        <li class="lg-feature-image">
-            <img src="../../assets/mock/screenshot-1.png" alt="">
+    <ul *ngFor="let item of largeDescriptions; let isOdd = odd; let isEven = even" class="lg-features">
+        <li *ngIf="isEven" class="lg-feature-image">
+            <img src="../../assets/mock/{{ item.thumbnail }}" alt="{{ item.title }}">
         </li>
+
         <li class="lg-feature-description">
-            <h3>Video Database</h3>
-            <p>Get native is all about breaking the barrier between fluid speech and native like speech. Our way of
-               breaking the barrier is through intensive observation, pronunciation practice and active learning using
-               video interviews of native speakers. Needless to say in order for this to work we need a lot of interview
-               videos!</p>
-            <p>The get native video database currently contains X video interviews in English and Japanese, and
-               we will continue to add more. The interviews are all related to things innately interesting to language
-               learners and those interested in other cultures. Have an idea for an interesting topic? We'd love to hear
-               what you think.</p>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
         </li>
-    </ul>
-    <ul class="lg-features">
-        <li class="lg-feature-description">
-            <h3>Study like the pros</h3>
-            <p>Wouldn't it be awesome to have an intense language study session in 15 minutes, or even 10? If you're an
-               Advanced learner of the language you may already have your own study routine. But that study routine
-               might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to
-               get all the materials ready!</p>
-            <p>Get native offers study sessions, which are kind of like an "app inside an
-               app." Once you find a video that you’d like to study, specify the amount of time that you'd like to study
-               and Get Native will guide you through a study routine designed to help you improve your pronunciation in
-               fluidity in the target language. </p>
-        </li>
-        <li class="lg-feature-image">
-            <img src="../../assets/mock/screenshot-2.png" alt="">
-        </li>
-    </ul>
-    <ul class="lg-features">
-        <li class="lg-feature-image">
-            <img src="../../assets/mock/screenshot-3.png" alt="">
-        </li>
-        <li class="lg-feature-description">
-            <h3>A tool for advanced language learners</h3>
-            <p>Get Native is most useful to language learners who already have a good command of the target language,
-               yet want to make the speech sound more like that of a native speaker. Finding good study material is easy
-               when you've just set out learning the target language. </p>
-            <p>But as you advance, every day material like
-               newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of
-               your study routine. As a language learner myself, I often wished they were more language learning
-               materials focused on native like pronunciation and vocabulary use. Get native gives you the tools that
-               you need to sound more native-like and use more natural phrases and “collocations.”</p>
+
+        <li *ngIf="isOdd" class="lg-feature-image">
+            <img src="../../assets/mock/{{ item.thumbnail }}" alt="{{ item.title }}">
         </li>
     </ul>
 
@@ -65,40 +29,12 @@
         <h1>That's not all..</h1>
     </div>
 
-    <!-- TODO: Loop through array of features -->
     <!-- TODO: Change SVG fill color to green -->
-    <!-- TODO: Reference 'src' with angular -->
     <ul class="sm-features">
-        <li>
-            <img src="../../assets/svg/globe.svg" alt="Perfect for polyglots">
-            <h5>Perfect for polyglots</h5>
-            <p>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in
-               multiple languages.</p>
-        </li>
-        <li>
-            <img src="../../assets/svg/padlock.svg" alt="Open-source">
-            <h5>Open-source</h5>
-            <p>See the magic happening under the hood on our GitHub page. Pull requests and contributions welcome!</p>
-        </li>
-        <li>
-            <img src="../../assets/svg/check-shield.svg" alt="Security">
-            <h5>Better Security</h5>
-            <p>We take your private information seriously. Get Native uses encryption to protect your data.</p>
-        </li>
-        <li>
-            <img src="../../assets/svg/check-badge.svg" alt="Easy-to-use interface">
-            <h5>Easy-to-use interface</h5>
-            <p>Our designers work hard to design simple and intuitive user interfaces.</p>
-        </li>
-        <li>
-            <img src="../../assets/svg/support.svg" alt="Support">
-            <h5>Support</h5>
-            <p>Questions or feedback? Drop us an email. We’d love to help out in anyway we can.</p>
-        </li>
-        <li>
-            <img src="../../assets/svg/registration.svg" alt="Registration">
-            <h5>Simple registration</h5>
-            <p>Don't want to keep track of another password? Create an account in seconds with Facebook or Gmail.</p>
+        <li *ngFor="let item of smallDescriptions">
+            <img src="../../assets/svg/{{ item.thumbnail }}" alt="Perfect for polyglots">
+            <h5>{{ item.title }}</h5>
+            <p>{{ item.description }}</p>
         </li>
     </ul>
 

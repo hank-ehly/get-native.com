@@ -68,13 +68,4 @@ main {
   }
 }
 
-.cf:before,
-.cf:after {
-  content: " ";
-  display: table;
-}
-.cf:after {
-  clear: both;
-}
-
 // TODO: Substitute 'padding: 30px' hard-coded values with 'padding: $padding-unit * 2'
