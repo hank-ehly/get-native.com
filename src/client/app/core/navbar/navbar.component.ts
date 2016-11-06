@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     moduleId: module.id,
     selector: 'gn-navbar',
     templateUrl: 'navbar.component.html',
-    styleUrls: ['navbar.component.css'],
+    styleUrls: ['navbar.component.css']
 })
 
 export class NavbarComponent {
