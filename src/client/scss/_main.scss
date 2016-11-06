@@ -1,12 +1,8 @@
 @import "fonts";
 @import "variables";
 
-body {
-  font-family: ProximaNovaA-Regular, sans-serif;
-}
-
 html {
-  font-family: 'Proxima Nova Semibold', sans-serif;
+  font-family: ProximaNovaA-Regular, sans-serif;
 }
 
 body {
@@ -114,23 +110,4 @@ footer {
   background-image: linear-gradient(to right, $loading-bar-left, $loading-bar-right);
   border: transparent;
   color: $white;
-}
-
-.gn-global-overlay {
-  display: none;
-}
-
-// kill the scroll feature
-body.gn-show-alert {
-  overflow: hidden;
-
-  // overlay for alerts
-  .gn-global-overlay {
-    width: 100vw;
-    height: 100vh;
-    background: rgba(#000, 0.5);
-    position: fixed;
-    top: 0;
-    display: block;
-  }
 }
