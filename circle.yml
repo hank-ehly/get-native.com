@@ -17,10 +17,11 @@ deployment:
 dependencies:
   cache_directories:
     - "node_modules"
+  dependencies:
+    post:
+      - npm rebuild node-sass
 
 test:
-  pre:
-    - npm rebuild node-sass
   override:
     - npm run tests.all
   post:
