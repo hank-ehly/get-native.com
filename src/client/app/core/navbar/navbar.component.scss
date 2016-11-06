@@ -1,56 +1,86 @@
 @import '../../../scss/variables';
 
-header {
-  height: 90px;
-  line-height: 90px;
-  position: relative;
-}
-
-img {
-  vertical-align: middle;
-}
+$header-height: 90px;
+$navbar-center-item-width: 300px;
+$logo-diameter: 30px;
 
 header > * {
   display: inline-block;
 }
 
-header > div:first-child {
-  float: left;
-  padding-left: 30px;
-  position: fixed;
+header {
+  height: $header-height;
+  line-height: $header-height;
+  position: relative;
 
   img {
-    cursor: pointer;
-    height: 30px;
-    width: 30px;
+    vertical-align: middle;
+  }
+
+  @if ($debug) {
+    background: blue;
   }
 }
 
-.gn-main-navigation-center-objects {
+div.gn-logo-container {
+  position: fixed;
+  width: $logo-diameter * 3;
+
+  @if ($debug) {
+    background: yellow;
+  }
+}
+
+img.gn-logo {
+  cursor: pointer;
+  margin-left: $logo-diameter;
+  height: $logo-diameter;
+  width: $logo-diameter;
+
+  @if ($debug) {
+    background: orange;
+  }
+}
+
+ul.gn-navbar-center-items {
   display: block;
   margin: 0 auto;
   width: $main-width;
 
-  & > li {
-    display: inline-block;
-    width: 300px;
+  @if ($debug) {
+    background: green;
   }
+}
 
-  .gn-page-title {
-    text-align: center;
+ul.gn-navbar-center-items li {
+  display: inline-block;
+  float: left;
+  text-align: center;
+  width: $navbar-center-item-width;
+}
+
+ul.gn-navbar-center-items li.gn-return-navigation {
+  @if ($debug) {
+    background: pink;
   }
+}
 
-  .gn-navigation-video-options {
-    text-align: right;
-
-    li {
-      display: inline-block;
-    }
-
-    li:first-child {
-      margin-right: 20px;
-    }
+ul.gn-navbar-center-items li.gn-page-title {
+  @if ($debug) {
+    background: grey;
   }
+}
+
+ul.gn-navbar-center-items li.gn-video-options-container {
+  text-align: center;
+
+  @if ($debug) {
+    background: purple;
+  }
+}
+
+ul.gn-navbar-center-items li.gn-video-options-container ul.gn-video-options li {
+  width: $navbar-center-item-width / 2;
 }
 
 .gn-user-preference-icons {
