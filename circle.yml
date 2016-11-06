@@ -15,10 +15,10 @@ deployment:
       - cd deploy && bundle install --path vendor/bundle && bundle exec cap staging deploy
 
 dependencies:
+  pre:
+    - npm rebuild node-sass
   cache_directories:
     - "node_modules"
-  post:
-    - npm rebuild node-sass
 
 test:
   override:
