@@ -4,11 +4,17 @@ import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { HomeModule } from './home/home.module';
+import { RouterModule } from '@angular/router';
+
+import { routes } from './app.routes';
 
 @NgModule({
     imports: [
         BrowserModule,
-        CoreModule
+        CoreModule,
+        RouterModule.forRoot(routes),
+        HomeModule
     ],
     declarations: [
         AppComponent
