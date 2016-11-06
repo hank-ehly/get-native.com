@@ -19,6 +19,8 @@ dependencies:
     - "node_modules"
 
 test:
+  pre:
+    - npm rebuild node-sass
   override:
     - npm run tests.all
   post:
