@@ -19,3 +19,15 @@
   outline: none;
   padding: 7px 30px;
 }
+
+@mixin debug-background-color($background-color) {
+  @if ($debug) {
+    background-color: $background-color;
+  }
+}
+
+@mixin debug-opacity($opacity) {
+  @if ($debug) {
+    opacity: $opacity;
+  }
+}

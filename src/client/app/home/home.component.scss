@@ -1,18 +1,21 @@
 @import "../../scss/variables";
 @import "../../scss/mixins";
 
-.marketing-banner-container {
-  height: 100vh;
-  top: -100px;
-}
-
 .marketing-banner {
+  @include debug-background-color(rgba(yellow, 0.5));
   height: 100vh;
-  position: absolute;
-  top: 0;
+  position: relative;
+
+  // TODO: Is this bad?
+  margin-top: -$navbar-height;
+
   overflow: hidden;
   width: 100%;
   z-index: -1;
+
+  img {
+    @include debug-opacity(0.5);
+  }
 }
 
 div.home-section-info {
@@ -22,21 +25,14 @@ div.home-section-info {
 }
 
 div.home-section-info h1 {
-
-  @if ($debug) {
-    background: rgba(red, 0.5);
-  }
+  @include debug-background-color(rgba(red, 0.5));
 }
 
 div.home-section-info p {
-  margin-top: 30px;
-
+  @include debug-background-color(rgba(purple, 0.5));
   // TODO: Globalize line-height if needed
   line-height: 1.5;
-
-  @if ($debug) {
-    background: rgba(purple, 0.5);
-  }
+  margin-top: 30px;
 }
 
 div.home-section-info button {
@@ -59,17 +55,15 @@ div.home-section-info button {
 }
 
 .lg-feature-image {
+  @include debug-background-color(orange);
   img {
     box-shadow: 5px 10px 40px 0 rgba(#000, 0.15);
     width: $main-width / 2;
   }
-
-  @if ($debug) {
-    background: orange;
-  }
 }
 
 .lg-feature-description {
+  @include debug-background-color(green);
   line-height: 1.5;
 
   h3 {
@@ -79,19 +73,12 @@ div.home-section-info button {
   p {
     margin-top: 30px;
   }
-
-  @if ($debug) {
-    background: green;
-  }
 }
 
 .sm-features {
+  @include debug-background-color(rgba(skyblue, 0.5));
   align-items: flex-start;
   flex-flow: row wrap;
-
-  @if ($debug) {
-    background: rgba(skyblue, 0.5);
-  }
 }
 
 .sm-features li {
