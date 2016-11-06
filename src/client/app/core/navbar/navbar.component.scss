@@ -1,4 +1,5 @@
 @import '../../../scss/variables';
+@import '../../../scss/mixins';
 
 $header-height: 90px;
 $navbar-center-item-width: 300px;
@@ -112,4 +113,8 @@ ul.gn-navbar-center-items li.gn-video-options-container ul.gn-video-options li {
   cursor: pointer;
   height: 35px;
   width: 35px;
+}
+
+.gn-video-options li button {
+  @include rounded-button();
 }
