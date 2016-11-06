@@ -7,11 +7,19 @@ html {
 
 body {
   font-size: $default-font-size;
+  box-sizing: border-box;
+}
+
+h1, h3, h5 {
+  font-family: ProximaNovaA-Semibold, sans-serif;
 }
 
 h1 {
-  font-family: ProximaNovaA-Semibold, sans-serif;
   font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
 }
 
 .main {
@@ -78,3 +86,5 @@ main {
   border: transparent;
   color: $white;
 }
+
+// TODO: Substitute 'padding: 30px' hard-coded values with 'padding: $padding-unit * 2'
