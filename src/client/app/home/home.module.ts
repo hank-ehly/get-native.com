@@ -8,10 +8,22 @@
 import { NgModule } from '@angular/core';
 
 import { HomeComponent } from './home.component';
+import { FeatureDescriptionService } from './feature-description/feature-description.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-    declarations: [HomeComponent],
-    exports: [HomeComponent]
+    imports: [
+        CommonModule
+    ],
+    declarations: [
+        HomeComponent
+    ],
+    exports: [
+        HomeComponent
+    ],
+    providers: [
+        FeatureDescriptionService
+    ]
 })
 
 export class HomeModule {
