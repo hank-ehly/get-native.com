@@ -4,3 +4,133 @@
 body {
   font-family: ProximaNovaA-Regular, sans-serif;
 }
+
+html {
+  font-family: 'Proxima Nova Semibold', sans-serif;
+}
+
+body {
+  font-size: $default-font-size;
+}
+
+.gn-section-header {
+  h2 {
+    font-size: 30px;
+    height: 50px;
+    margin-bottom: 30px;
+    width: 410px;
+  }
+
+  .right-column {
+    border: 0;
+    font-size: 16px;
+    height: 30px;
+    outline: none;
+    padding: 0;
+    width: 790px;
+  }
+}
+
+.gn-three-column-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+main {
+  width: 100%;
+
+  section {
+    border-bottom: solid 2px $section-border-color;
+    margin: 0 auto;
+    padding-bottom: 60px;
+    padding-top: 60px;
+    width: 900px;
+
+    h1 {
+      font-size: $section-title-font-size;
+    }
+  }
+}
+
+footer {
+  padding-bottom: 50px;
+  padding-top: 70px;
+}
+
+.gn-main-site-links {
+  display: flex;
+  justify-content: space-around;
+  margin: 25px auto 0;
+  max-width: 300px;
+}
+
+.gn-site-link {
+  color: $light-green;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(217, 243, 232);
+  }
+}
+
+.gn-copyright,
+.gn-legal-links {
+  color: $light-grey;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.gn-legal-links {
+  a {
+    color: $light-grey;
+    text-decoration-color: $light-grey;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  span {
+    padding: 0 5px;
+  }
+}
+
+.gn-btn-outline {
+  background: none;
+  border: $gn-btn-outline-border;
+  border-radius: 20px;
+  color: $light-grey;
+  cursor: pointer;
+  font-weight: bold;
+  height: 30px;
+  outline: none;
+  padding: 0;
+  width: 100px;
+}
+
+.gn-btn-outline-green {
+  background-image: linear-gradient(to right, $loading-bar-left, $loading-bar-right);
+  border: transparent;
+  color: $white;
+}
+
+.gn-global-overlay {
+  display: none;
+}
+
+// kill the scroll feature
+body.gn-show-alert {
+  overflow: hidden;
+
+  // overlay for alerts
+  .gn-global-overlay {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(#000, 0.5);
+    position: fixed;
+    top: 0;
+    display: block;
+  }
+}
