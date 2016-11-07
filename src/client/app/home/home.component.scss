@@ -4,10 +4,8 @@
   @include debug-background-color(rgba(yellow, 0.5));
   height: 100vh;
   position: relative;
-
   // TODO: Is this bad?
   margin-top: -$navbar-height;
-
   overflow: hidden;
   width: 100%;
   z-index: -1;
@@ -17,47 +15,42 @@
   @include debug-opacity(0.5);
 }
 
-.compact-centered {
-  margin: $padding-unit * 4 auto 0;
+.center-compact {
+  margin: $padding-unit-single * 4 auto 0;
   text-align: center;
   width: $main-width * (2/3);
+
+  h1 {
+    @include debug-background-color(rgba(red, 0.5));
+  }
+
+  p {
+    @include debug-background-color(rgba(purple, 0.5));
+    line-height: $line-height-regular;
+    margin-top: $padding-unit-single;
+  }
+
+  button {
+    @include rounded-button($home-sign-in-button-background-color, $home-sign-in-button-color, $home-sign-in-button-border-color);
+    margin-top: $padding-unit-single * 2;
+  }
 }
 
-.compact-centered h1 {
-  @include debug-background-color(rgba(red, 0.5));
-}
-
-.compact-centered p {
-  @include debug-background-color(rgba(purple, 0.5));
-  // TODO: Globalize line-height if needed
-  line-height: $line-height-regular;
-  margin-top: $padding-unit;
-}
-
-.compact-centered button {
-  @include rounded-button(
-          $background-color: $home-sign-in-button-background-color,
-          $color: $home-sign-in-button-color,
-          $border-color: $home-sign-in-button-border-color
-  );
-  margin-top: $padding-unit * 2;
-}
-
-.lg-features, .sm-features {
+.col-2, .col-3 {
   display: flex;
   justify-content: space-between;
-  margin-top: $padding-unit * 2;
+  margin-top: $padding-unit-single * 2;
 }
 
-.lg-features {
+.col-2 {
   align-items: center;
+
+  li {
+    width: $main-width/2 - $padding-unit-single;
+  }
 }
 
-.lg-features li {
-  width: ($main-width / 2) - $padding-unit;
-}
-
-.lg-feature-image {
+.feature-image-large {
   @include debug-background-color(orange);
   img {
     box-shadow: 5px 10px 40px 0 rgba(#000, 0.15);
@@ -65,7 +58,7 @@
   }
 }
 
-.lg-feature-description {
+.feature-detail-large {
   @include debug-background-color(green);
   line-height: $line-height-regular;
 
@@ -74,32 +67,32 @@
   }
 
   p {
-    margin-top: $padding-unit;
+    margin-top: $padding-unit-single;
   }
-}
-
-.sm-features {
-  @include debug-background-color(rgba(skyblue, 0.5));
-  align-items: flex-start;
-  flex-flow: row wrap;
-}
-
-.sm-features li {
-  line-height: 1.5;
-  text-align: center;
-  width: ($main-width / 3) - 20px;
-}
-
-.sm-features li h5, .sm-features li p, .sm-features li img {
-  margin-top: $padding-unit;
-}
-
-.sm-features li img {
-  @include debug-background-color(rgba(orange, 0.5));
-  width: $padding-unit * 2.5;
-  height: $padding-unit * 2.5;
 }
 
 hr {
   @extend %hr;
+}
+
+.col-3 {
+  @include debug-background-color(rgba(skyblue, 0.5));
+  align-items: flex-start;
+  flex-flow: row wrap;
+
+  li {
+    line-height: 1.5;
+    text-align: center;
+    width: ($main-width / 3) - 20px;
+
+    h5, p, img {
+      margin-top: $padding-unit-single;
+    }
+
+    img {
+      @include debug-background-color(rgba(orange, 0.5));
+      width: $padding-unit-single * 2.5;
+      height: $padding-unit-single * 2.5;
+    }
+  }
 }
