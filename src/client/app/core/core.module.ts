@@ -11,20 +11,12 @@ import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
 import { SideMenuComponent } from './side-menu/index';
 import { FooterComponent } from './footer/index';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-    declarations: [
-        ToolbarComponent,
-        NavbarComponent,
-        SideMenuComponent,
-        FooterComponent
-    ],
-    exports: [
-        ToolbarComponent,
-        NavbarComponent,
-        SideMenuComponent,
-        FooterComponent
-    ]
+    imports: [RouterModule],
+    declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent],
+    exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent]
 })
 
 export class CoreModule {

@@ -1,0 +1,18 @@
+@import "../../scss/core";
+
+.ppConsistencies {
+  display: none;
+}
+
+h2, p {
+  margin-top: $padding-unit-single;
+}
+
+h2 {
+  @include debug-background-color(rgba(blue, 0.5));
+}
+
+p {
+  @include debug-background-color(rgba(orange, 0.5));
+  line-height: $line-height-regular;
+}
