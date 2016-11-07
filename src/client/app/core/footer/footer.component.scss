@@ -1,45 +1,43 @@
-@import "../../../scss/colors";
+@import "../../../scss/core";
 
 footer {
   padding-bottom: 50px;
   padding-top: 70px;
-}
-
-.gn-hotlinks {
-  display: flex;
-  justify-content: space-around;
-  margin: 25px auto 0;
-  max-width: 300px;
-}
-
-.gn-hotlink {
-  color: $footer-hotlink-color;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-    text-decoration-color: rgb(217, 243, 232);
-  }
-}
-
-.gn-copyright,
-.gn-legal-links {
-  color: $light-grey;
-  margin-top: 25px;
   text-align: center;
 }
 
-.gn-legal-links {
-  a {
-    color: $light-grey;
-    text-decoration-color: $light-grey;
+.site-links, .copyright, .legal-links {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px auto 0;
+  max-width: $main-width / 3;
+}
 
+.site-links {
+  @include debug-background-color(rgba(brown, 0.5));
+  a {
+    color: $site-link-color;
+    text-decoration: none;
     &:hover {
-      color: $black;
+      text-decoration: underline;
+      text-decoration-color: $site-link-text-decoration-color;
     }
   }
+}
 
-  span {
-    padding: 0 5px;
+.copyright {
+  @include debug-background-color(rgba(orange, 0.5));
+  color: $copyright-color;
+}
+
+.legal-links {
+  @include debug-background-color(rgba($red, 0.5));
+  color: $legal-link-color;
+  a {
+    color: inherit;
+    text-decoration-color: $legal-link-text-decoration-color;
+    &:hover {
+      color: $legal-link-hover-color;
+    }
   }
 }

@@ -1,4 +1,4 @@
-@import "../../../scss/colors";
+@import "../../../scss/core";
 
 .gn-bottom-right-menu {
   bottom: 0;
@@ -8,7 +8,7 @@
 }
 
 .gn-active-language {
-  color: $light-grey;
+  color: $grey;
   display: inline-block;
   font-size: 14px;
   margin-bottom: 20px;

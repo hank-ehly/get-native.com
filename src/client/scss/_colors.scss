@@ -1,36 +1,48 @@
-$red: #f00;
-$ultra-light-grey: #ecf5f7;
-$section-border-color: $ultra-light-grey;
-$library-tabbar-bg-color: $ultra-light-grey;
-$light-grey: #b8b8b8;
-$black: #000;
-$overlay-left: rgba(51, 204, 153, .8);
-$overlay-right: rgba(0, 204, 204, .8);
-$loading-bar-left: rgb(0, 197, 197);
-$loading-bar-right: rgb(42, 197, 145);
-$goals-section-label-green: rgba(51, 204, 153, .8);
-$library-tabbar-text-color: #8f9ca8;
-$video-controls-background-color: rgba(0, 0, 0, .7);
-$video-controls-pause-button-background-color: rgba(0, 0, 0, .5);
-$video-controls-progress-bar-color: #82909d;
-$facebook-color: #3a589a;
-$twitter-color: #50aaf0;
-$gmail-color: #c3d4e5;
-$transcript-slider-color: #3c9;
-$usage-example-highlight-color: #ff9;
-$video-time-font-color: rgba(255, 255, 255, .7);
-$transcript-border-bottom-color: #f0f5f7;
-
-// TODO: define colors as colors like 'light-green' first
-// then set variables referring to their 'function'
-
-// COLORS
-$light-green: #3dcb9a;
-$white: #fff;
+$black: #000000;
+$white: #FFFFFF;
+$grey: #B8B8B8;
+$red: #FF0000;
+$shamrock: #33CC99;
+$spindle: #B9D0E7;
+$picton-blue: #50AAF0;
+$catskill-white: #ECF5F7;
+$pale-canary: #FFFF99;
+$robin-egg-blue: #00CCCC;
+$regent-gray: #8F9CA8;
+$chambray: #3A589A;
+$periwinkle-gray: #C3D4E5;
+$aqua-haze: #F0F5F7;
+$iceberg: #D9F3E8;
 
 // FUNCTIONS
-$footer-hotlink-color: $light-green;
-$home-large-feature-header-color: $light-green;
-$home-sign-in-button-color: $light-green;
-$home-sign-in-button-border-color: $light-green;
+$site-link-color: $shamrock;
+$site-link-text-decoration-color: $iceberg;
+$home-large-feature-header-color: $shamrock;
+$home-sign-in-button-color: $shamrock;
+$home-sign-in-button-border-color: $shamrock;
 $home-sign-in-button-background-color: $white;
+$rounded-button-border-color: $spindle;
+$legal-link-color: $grey;
+$legal-link-text-decoration-color: $grey;
+$legal-link-hover-color: $black;
+$copyright-color: $grey;
+
+// TODO: Rename based on usage
+$twitter-logo-background-color: $picton-blue;
+$section-border-color: $catskill-white;
+$library-tabbar-bg-color: $catskill-white;
+$overlay-left: rgba($shamrock, 0.8);
+$overlay-right: rgba($robin-egg-blue, 0.8);
+$loading-bar-left: $robin-egg-blue;
+$loading-bar-right: $shamrock;
+$goals-section-label-green: rgba($shamrock, 0.8);
+$library-tabbar-text-color: $regent-gray;
+$video-controls-background-color: rgba($black, .7);
+$video-controls-pause-button-background-color: rgba($black, .5);
+$video-controls-progress-bar-color: $regent-gray;
+$facebook-color: $chambray;
+$gmail-color: $periwinkle-gray;
+$transcript-slider-color: $shamrock;
+$usage-example-highlight-color: $pale-canary;
+$video-time-font-color: rgba($white, .7);
+$transcript-border-bottom-color: $aqua-haze;
