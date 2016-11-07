@@ -1,4 +1,4 @@
-@import "../../../scss/colors";
+@import "../../../scss/core";
 
 .gn-vertical-menu {
   height: 100%;
@@ -28,7 +28,7 @@
 }
 
 .gn-vertical-menu-link {
-  color: darken($light-grey, 15%);
+  color: darken($grey, 15%); // TODO: Move
   text-decoration: none;
 
   &.gn-active {

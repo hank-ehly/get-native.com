@@ -1,6 +1,4 @@
-@import "../../scss/variables";
-@import "../../scss/colors";
-@import "../../scss/mixins";
+@import "../../scss/core";
 
 $sm-feature-image-diameter: 75px;
 
@@ -99,12 +97,9 @@ div.home-section-info button {
 }
 
 .sm-features li img {
+  @include debug-background-color(rgba(orange, 0.5));
   width: $sm-feature-image-diameter;
   height: $sm-feature-image-diameter;
-
-  @if ($debug) {
-    background: rgba(orange, 0.5);
-  }
 }
 
 // TODO: Refactor
