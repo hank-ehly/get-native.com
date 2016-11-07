@@ -39,7 +39,11 @@ div.home-section-info p {
 }
 
 div.home-section-info button {
-  @include rounded-button($background-color: #fff, $color: $light-green, $border-color: $light-green);
+  @include rounded-button(
+          $background-color: $home-sign-in-button-background-color,
+          $color: $home-sign-in-button-color,
+          $border-color: $home-sign-in-button-border-color
+  );
   margin-top: 60px;
 }
 
@@ -70,7 +74,7 @@ div.home-section-info button {
   line-height: 1.5;
 
   h3 {
-    color: $light-green;
+    color: $home-large-feature-header-color;
   }
 
   p {
