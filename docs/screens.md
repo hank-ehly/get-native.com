@@ -7,6 +7,9 @@
 # Home (Email)
 <p><img src="/images/00c-home-email.jpg" alt=""/></p>
 
+# Home (Cookies)
+<p><img src="/images/00d-home-cookies.jpg" alt=""/></p>
+
 # Dashboard
 <p><img src="/images/01a-dashboard.jpg" alt=""/></p>
 
@@ -16,17 +19,17 @@
 # Dashboard (Language)
 <p><img src="/images/01c-dashboard-language.jpg" alt=""/></p>
 
-# Dashboard (Category Menu)
-<p><img src="/images/01d-dashboard-category-menu.jpg" alt=""/></p>
-
-# Dashboard (Category Menu Selected)
-<p><img src="/images/01e-dashboard-category-selected.jpg" alt=""/></p>
-
 # Library
 <p><img src="/images/02a-library.jpg" alt=""/></p>
 
 # Library (Rollover)
 <p><img src="/images/02b-library-rollover.jpg" alt=""/></p>
+
+# Library (Category Menu)
+<p><img src="/images/02c-library-category-menu.png" alt=""/></p>
+
+# Library (Search Bar)
+<p><img src="/images/02d-search-bar.png" alt=""/></p>
 
 # Video
 <p><img src="/images/03a-video.jpg" alt=""/></p>
@@ -66,3 +69,10 @@
 
 # Transition
 <p><img src="/images/10c-transition.jpg" alt=""/></p>
+
+# Privacy Policy
+<p><img src="/images/10d-privacy-policy.jpg" alt=""/></p>
+
+# Support
+<p><img src="/images/10e-support.jpg" alt=""/></p>
+
