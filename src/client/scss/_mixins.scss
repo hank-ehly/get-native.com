@@ -13,7 +13,7 @@
   border: 2px solid $border-color;
   color: $color;
   cursor: pointer;
-  font-size: $sm-font-size;
+  font-size: $font-size-small;
   outline: none;
   padding: 7px 30px;
 }
@@ -28,4 +28,14 @@
   @if ($debug) {
     opacity: $opacity;
   }
+}
+
+%hr {
+  border: 0;
+  border-top: 2px solid rgba($black, 0.1);
+  border-top-color: #eeeeee;
+  box-sizing: content-box;
+  height: 0;
+  margin-top: $padding-unit * 3;
+  overflow: visible;
 }
