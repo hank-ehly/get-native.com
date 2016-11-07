@@ -3,48 +3,52 @@
 </div>
 
 <main>
-
-    <div class="home-section-info">
+    <div class="compact-centered">
         <h1>A language learning resource for advanced speakers</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpa ducimus fugiat impedit
            iure nobis repellendus. Accusamus consectetur dicta?</p>
     </div>
 
-    <ul *ngFor="let item of largeDescriptions; let isOdd = odd; let isEven = even" class="lg-features">
-        <li *ngIf="isEven" class="lg-feature-image">
-            <img src="../../assets/mock/{{ item.thumbnail }}" alt="{{ item.title }}">
-        </li>
+    <section>
+        <ul *ngFor="let item of largeDescriptions; let isOdd = odd; let isEven = even" class="lg-features">
+            <li *ngIf="isEven" class="lg-feature-image">
+                <img src="../../assets/mock/{{ item.thumbnail }}" alt="{{ item.title }}">
+            </li>
 
-        <li class="lg-feature-description">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-        </li>
+            <li class="lg-feature-description">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+            </li>
 
-        <li *ngIf="isOdd" class="lg-feature-image">
-            <img src="../../assets/mock/{{ item.thumbnail }}" alt="{{ item.title }}">
-        </li>
-    </ul>
+            <li *ngIf="isOdd" class="lg-feature-image">
+                <img src="../../assets/mock/{{ item.thumbnail }}" alt="{{ item.title }}">
+            </li>
+        </ul>
+    </section>
 
-    <div class="home-section-info">
+    <div class="compact-centered">
         <h1>That's not all..</h1>
     </div>
 
     <!-- TODO: Change SVG fill color to green -->
-    <ul class="sm-features">
-        <li *ngFor="let item of smallDescriptions">
-            <img src="../../assets/svg/{{ item.thumbnail }}" alt="Perfect for polyglots">
-            <h5>{{ item.title }}</h5>
-            <p>{{ item.description }}</p>
-        </li>
-    </ul>
+    <section>
+        <ul class="sm-features">
+            <li *ngFor="let item of smallDescriptions">
+                <img src="../../assets/svg/{{ item.thumbnail }}" alt="Perfect for polyglots">
+                <h5>{{ item.title }}</h5>
+                <p>{{ item.description }}</p>
+            </li>
+        </ul>
+    </section>
 
-    <hr class="home-section-separator">
+    <hr>
 
-    <div class="home-section-info">
+    <div class="compact-centered">
         <h1>Sign up for free</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut,
            consectetur
-           dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit,
+           dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae
+           sit,
            ut!</p>
         <button>Sign in / Sign up</button>
     </div>

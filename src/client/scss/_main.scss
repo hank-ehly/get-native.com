@@ -5,8 +5,14 @@ html {
 }
 
 body {
-  font-size: $md-font-size;
+  font-size: $font-size-regular;
   box-sizing: border-box;
+}
+
+main {
+  display: block;
+  margin: 0 auto;
+  width: $main-width;
 }
 
 @for $index from 1 through 6 {
@@ -16,18 +22,9 @@ body {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: $font-size-x-large;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: $font-size-large;
 }
-
-main {
-  display: block;
-  margin: 0 auto;
-  width: $main-width;
-}
-
-// TODO: Substitute 'padding: 30px' hard-coded values with 'padding: $padding-unit * 2'
-

@@ -1,7 +1,5 @@
 @import "../../scss/core";
 
-$sm-feature-image-diameter: 75px;
-
 .marketing-banner {
   @include debug-background-color(rgba(yellow, 0.5));
   height: 100vh;
@@ -13,42 +11,42 @@ $sm-feature-image-diameter: 75px;
   overflow: hidden;
   width: 100%;
   z-index: -1;
-
-  img {
-    @include debug-opacity(0.5);
-  }
 }
 
-div.home-section-info {
-  margin: 120px auto 0;
+.marketing-banner img {
+  @include debug-opacity(0.5);
+}
+
+.compact-centered {
+  margin: $padding-unit * 4 auto 0;
   text-align: center;
   width: $main-width * (2/3);
 }
 
-div.home-section-info h1 {
+.compact-centered h1 {
   @include debug-background-color(rgba(red, 0.5));
 }
 
-div.home-section-info p {
+.compact-centered p {
   @include debug-background-color(rgba(purple, 0.5));
   // TODO: Globalize line-height if needed
-  line-height: 1.5;
-  margin-top: 30px;
+  line-height: $line-height-regular;
+  margin-top: $padding-unit;
 }
 
-div.home-section-info button {
+.compact-centered button {
   @include rounded-button(
           $background-color: $home-sign-in-button-background-color,
           $color: $home-sign-in-button-color,
           $border-color: $home-sign-in-button-border-color
   );
-  margin-top: 60px;
+  margin-top: $padding-unit * 2;
 }
 
 .lg-features, .sm-features {
   display: flex;
   justify-content: space-between;
-  margin-top: 60px;
+  margin-top: $padding-unit * 2;
 }
 
 .lg-features {
@@ -56,7 +54,7 @@ div.home-section-info button {
 }
 
 .lg-features li {
-  width: ($main-width / 2) - 30px;
+  width: ($main-width / 2) - $padding-unit;
 }
 
 .lg-feature-image {
@@ -69,14 +67,14 @@ div.home-section-info button {
 
 .lg-feature-description {
   @include debug-background-color(green);
-  line-height: 1.5;
+  line-height: $line-height-regular;
 
   h3 {
     color: $home-large-feature-header-color;
   }
 
   p {
-    margin-top: 30px;
+    margin-top: $padding-unit;
   }
 }
 
@@ -93,25 +91,15 @@ div.home-section-info button {
 }
 
 .sm-features li h5, .sm-features li p, .sm-features li img {
-  margin-top: 30px;
+  margin-top: $padding-unit;
 }
 
 .sm-features li img {
   @include debug-background-color(rgba(orange, 0.5));
-  width: $sm-feature-image-diameter;
-  height: $sm-feature-image-diameter;
+  width: $padding-unit * 2.5;
+  height: $padding-unit * 2.5;
 }
 
-// TODO: Refactor
-.home-section-separator {
-  background: orange;
-  margin-top: 90px;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 2px solid rgba(0, 0, 0, 0.1);
-  border-top-color: #eeeeee;
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
+hr {
+  @extend %hr;
 }
