@@ -1,11 +1,9 @@
-$white: #fff;
 $red: #f00;
 $ultra-light-grey: #ecf5f7;
 $section-border-color: $ultra-light-grey;
 $library-tabbar-bg-color: $ultra-light-grey;
 $light-grey: #b8b8b8;
 $black: #000;
-$light-green: rgb(61, 203, 154);
 $overlay-left: rgba(51, 204, 153, .8);
 $overlay-right: rgba(0, 204, 204, .8);
 $loading-bar-left: rgb(0, 197, 197);
@@ -22,3 +20,17 @@ $transcript-slider-color: #3c9;
 $usage-example-highlight-color: #ff9;
 $video-time-font-color: rgba(255, 255, 255, .7);
 $transcript-border-bottom-color: #f0f5f7;
+
+// TODO: define colors as colors like 'light-green' first
+// then set variables referring to their 'function'
+
+// COLORS
+$light-green: #3dcb9a;
+$white: #fff;
+
+// FUNCTIONS
+$footer-hotlink-color: $light-green;
+$home-large-feature-header-color: $light-green;
+$home-sign-in-button-color: $light-green;
+$home-sign-in-button-border-color: $light-green;
+$home-sign-in-button-background-color: $white;
