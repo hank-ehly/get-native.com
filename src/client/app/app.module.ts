@@ -8,13 +8,15 @@ import { HomeModule } from './home/home.module';
 import { RouterModule } from '@angular/router';
 
 import { routes } from './app.routes';
+import { PrivacyPolicyModule } from './privacy-policy/privacy-policy.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         CoreModule,
         RouterModule.forRoot(routes),
-        HomeModule
+        HomeModule,
+        PrivacyPolicyModule
     ],
     declarations: [
         AppComponent
