@@ -6,7 +6,7 @@
  */
 
 import { NgModule } from '@angular/core';
-import { PrivacyPolicyComponent } from './privacy-policy.component';
+import { PrivacyPolicyComponent } from './index';
 
 @NgModule({
     declarations: [PrivacyPolicyComponent],
