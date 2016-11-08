@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
 })
 
 export class PrivacyPolicyComponent {
-    private moderatorEmailAddress: string;
+    moderatorEmailAddress: string;
 
     constructor() {
         this.moderatorEmailAddress = 'getnative.moderator@gmail.com';
