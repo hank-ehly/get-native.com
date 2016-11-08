@@ -19,13 +19,12 @@ export function main() {
             });
         });
 
-        // TODO: title
-        it('should work', async(() => {
+        it('should bind the moderator email address', async(() => {
             TestBed.compileComponents().then(() => {
-                // TODO
-                // let fixture = TestBed.createComponent(TestComponent);
-                // let privacyPolicyDOME1 = fixture.debugElement.children[0].nativeElement;
-                // expect(privacyPolicyDOME1.querySelectorAll('h2')[0].textContent).toEqual('Features');
+                let fixture = TestBed.createComponent(TestComponent);
+                fixture.detectChanges();
+                let privacyPolicyDOME1 = fixture.debugElement.children[0].nativeElement;
+                expect(privacyPolicyDOME1.querySelectorAll('address a')[0].textContent).toEqual('getnative.moderator@gmail.com');
             });
         }));
     });
