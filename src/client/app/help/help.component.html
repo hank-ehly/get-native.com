@@ -1,12 +1,27 @@
 <main>
     <section class="col-2">
+        <!-- TODO: Get 'about' icon -->
         <img src="" alt="">
         <h3>About Get Native</h3>
         <ul>
-            <li *ngFor="let item of items">
-                <!--&#9654;-->
+            <li *ngFor="let item of items; let i = index">
+                <!-- TODO: Create leadingZero pipe -->
+                &#9654;<span>{{ i }}</span><span>{{ item }}</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate, dolores
+                   eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates
+                   voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias
+                   consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus
+                   provident quod tenetur voluptates voluptatibus? Cupiditate, est?</p>
             </li>
         </ul>
     </section>
-    <section class="col-2"></section>
+
+    <section class="col-2">
+        <!-- TODO: Get mail icon -->
+        <img src="" alt="">
+        <h3>Contact</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet ex hic mollitia nihil. Ab dolor
+           doloremque <a href="mailto:{{ moderator }}">{{ moderator }}</a> nam quos. Aut dignissimos dolore dolorem est
+           facilis nam quidem sapiente voluptatem!</p>
+    </section>
 </main>

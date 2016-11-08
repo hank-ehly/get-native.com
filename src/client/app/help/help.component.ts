@@ -20,4 +20,5 @@ export class HelpComponent {
         'Second Item',
         'Third Item'
     ];
+    moderator: string = 'getnative.moderator@gmail.com';
 }
