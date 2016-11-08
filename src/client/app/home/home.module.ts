@@ -12,7 +12,7 @@ import { HomeComponent } from './index';
 import { FeatureDescriptionService } from './feature-description/index';
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule], // TODO:  do you need to import the common module here even though you're importing it in the AppModule?
     declarations: [HomeComponent],
     exports: [HomeComponent],
     providers: [FeatureDescriptionService]
