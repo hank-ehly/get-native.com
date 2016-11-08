@@ -1,7 +1,21 @@
 @import "../../scss/core";
 
-h1, h2, p {
+main {
+  line-height: $line-height-regular;
+}
+
+address,
+.quick-links,
+h1,
+h2,
+p {
   margin-top: $padding-unit-single;
+}
+
+ul {
+  @include debug-background-color(rgba(green, 0.5));
+  list-style-type: disc;
+  padding-left: $padding-unit-single / 2;
 }
 
 h2 {
@@ -10,5 +24,8 @@ h2 {
 
 p {
   @include debug-background-color(rgba(orange, 0.5));
-  line-height: $line-height-regular;
+}
+
+address {
+  font-style: italic;
 }
