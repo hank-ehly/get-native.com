@@ -15,4 +15,9 @@ import { Component } from '@angular/core';
 })
 
 export class HelpComponent {
+    items: string[] = [
+        'First Item',
+        'Second Item',
+        'Third Item'
+    ];
 }
