@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -14,5 +15,13 @@ import { Component } from '@angular/core';
     styleUrls: ['footer.component.css']
 })
 
-export class FooterComponent {
+export class FooterComponent implements OnInit {
+    constructor(private router: Router) {
+    }
+
+    ngOnInit(): void {
+        this.router.events.subscribe(() => {
+            window.scrollTo(0, 0);
+        });
+    }
 }
