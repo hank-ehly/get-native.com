@@ -73,6 +73,6 @@
 # Privacy Policy
 <p><img src="/images/10d-privacy-policy.jpg" alt=""/></p>
 
-# Support
-<p><img src="/images/10e-support.jpg" alt=""/></p>
+# Help
+<p><img src="/images/10e-help.jpg" alt=""/></p>
 
