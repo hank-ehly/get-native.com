@@ -7,11 +7,9 @@
   background-clip: padding-box;
 }
 
-@mixin rounded-button($background-color: $white, $color: $grey, $border-color: $rounded-button-border-color) {
+%rounded-button {
   @include border-radius(20px);
-  background: $background-color;
-  border: 2px solid $border-color;
-  color: $color;
+  border: 2px solid;
   cursor: pointer;
   font-size: $font-size-small;
   outline: none;

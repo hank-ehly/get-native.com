@@ -97,5 +97,5 @@ ul.gn-navbar-center-items li.gn-video-options-container ul.gn-video-options li {
 }
 
 .gn-video-options li button {
-  @include rounded-button();
+  @extend %rounded-button;
 }
