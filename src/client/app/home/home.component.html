@@ -9,7 +9,7 @@
            iure nobis repellendus. Accusamus consectetur dicta?</p>
     </div>
 
-    <section>
+    <section class="main-features">
         <ul *ngFor="let item of largeDescriptions; let odd = odd;" class="col-2">
             <li class="feature-image-large" [style.order]="odd ? 2 : 1">
                 <img src="../../assets/mock/{{ item.thumbnail }}" alt="{{ item.title }}">
@@ -26,7 +26,7 @@
     </div>
 
     <!-- TODO: Change SVG fill color to green -->
-    <section>
+    <section class="secondary-features">
         <ul class="col-3">
             <li *ngFor="let item of smallDescriptions">
                 <img src="../../assets/svg/{{ item.thumbnail }}" alt="{{ item.title }}">
