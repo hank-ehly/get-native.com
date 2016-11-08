@@ -31,7 +31,10 @@
   }
 
   button {
-    @include rounded-button($home-sign-in-button-background-color, $home-sign-in-button-color, $home-sign-in-button-border-color);
+    @extend %rounded-button;
+    background-color: $home-sign-in-button-background-color;
+    border-color: $home-sign-in-button-border-color;
+    color: $home-sign-in-button-color;
     margin-top: $padding-unit-single * 2;
   }
 }
