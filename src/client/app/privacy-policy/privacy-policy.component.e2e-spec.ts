@@ -23,5 +23,4 @@ describe('PrivacyPolicy', () => {
         //noinspection TypeScriptUnresolvedFunction
         expect(element(by.tagName('address')).getText()).toContain('getnative.moderator@gmail.com');
     });
-
 });
