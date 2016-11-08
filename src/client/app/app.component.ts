@@ -8,5 +8,4 @@ import './operators';
 })
 
 export class AppComponent {
-
 }
