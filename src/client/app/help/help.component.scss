@@ -1,0 +1,43 @@
+@import "../../scss/core";
+
+main {
+  @include debug-background-color(rgba(pink, 0.5));
+  display: flex;
+  justify-content: space-between;
+}
+
+section {
+  width: ($main-width / 2) - $padding-unit-single;
+}
+
+.about {
+  @include debug-background-color(rgba(green, 0.5));
+}
+
+.contact {
+  @include debug-background-color(rgba(orange, 0.5));
+}
+
+section img {
+  @include debug-background-color(rgba(red, 0.5));
+  // TODO: Replace with $help-section-icon-diameter
+  width: $padding-unit-single * 2;
+  vertical-align: middle;
+}
+
+section h3 {
+  @include debug-background-color(rgba(blue, 0.5));
+  display: inline-block;
+}
+
+.about p {
+  @include border-radius();
+  background: #f6f5fb;
+  border: 2px solid rgb(231, 230, 235);
+  padding: $padding-unit-single;
+}
+
+.about ul,
+.contact p {
+  margin-top: $padding-unit-single;
+}

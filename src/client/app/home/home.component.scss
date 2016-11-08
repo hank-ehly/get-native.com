@@ -49,7 +49,7 @@
   align-items: center;
 
   li {
-    width: $main-width/2 - $padding-unit-single;
+    width: ($main-width / 2) - $padding-unit-single;
   }
 }
 
