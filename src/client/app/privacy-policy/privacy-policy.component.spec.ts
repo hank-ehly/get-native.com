@@ -19,7 +19,7 @@ export function main() {
             });
         });
 
-        it('should bind the moderator email address', async(() => {
+        it('should display the moderator email address', async(() => {
             TestBed.compileComponents().then(() => {
                 let fixture = TestBed.createComponent(TestComponent);
                 fixture.detectChanges();
