@@ -1,18 +1,33 @@
-$black: #000000;
-$white: #FFFFFF;
-$grey: #B8B8B8;
-$red: #FF0000;
-$shamrock: #33CC99;
-$spindle: #B9D0E7;
-$picton-blue: #50AAF0;
-$catskill-white: #ECF5F7;
-$pale-canary: #FFFF99;
-$robin-egg-blue: #00CCCC;
-$regent-gray: #8F9CA8;
-$chambray: #3A589A;
+/* App colors */
+$black:           #000000;
+$white:           #FFFFFF;
+$grey:            #B8B8B8;
+$red:             #FF0000;
+$shamrock:        #33CC99;
+$spindle:         #B9D0E7;
+$picton-blue:     #50AAF0;
+$catskill-white:  #ECF5F7;
+$pale-canary:     #FFFF99;
+$robin-egg-blue:  #00CCCC;
+$regent-gray:     #8F9CA8;
+$chambray:        #3A589A;
 $periwinkle-gray: #C3D4E5;
-$aqua-haze: #F0F5F7;
-$iceberg: #D9F3E8;
+$aqua-haze:       #F0F5F7;
+$iceberg:         #D9F3E8;
+$athens-gray:     #E7E6EB;
+$white-lilac:     #F6F5FB;
+
+/* Debug colors */
+$dc01: #0048BA;
+$dc02: #B0BF1A;
+$dc03: #7CB9E8;
+$dc04: #AF002A;
+$dc05: #84DE02;
+$dc06: #C46210;
+$dc07: #E52B50;
+$dc08: #E32636;
+$dc09: #FF7E00;
+$dc10: #6E7F80;
 
 $site-link-color: $shamrock;
 $site-link-text-decoration-color: $iceberg;

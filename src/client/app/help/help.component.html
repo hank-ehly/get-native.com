@@ -1,30 +1,45 @@
 <main>
-    <section class="about">
+    <section class="about column">
         <!-- TODO: Get 'about' icon -->
-        <div class="section-heading">
+        <div class="column-heading">
             <img src="../../assets/svg/arrow-next.svg" alt="">
             <h3>About Get Native</h3>
         </div>
         <ul>
             <li *ngFor="let item of items; let i = index; let isOdd = odd">
-                <div class="list-item-heading">
+                <div class="item-heading">
                     <!-- TODO: Create leadingZero pipe -->
-                    <span class="list-item-expansion-indicator">&#9654;</span>
-                    <span class="list-item-number">{{ i }}</span>
-                    <span class="list-item-label">{{ item }}</span>
+                    <span class="item-folding">&#9654;</span>
+                    <span class="item-number">{{ i }}</span>
+                    <span class="item-label">{{ item }}</span>
                 </div>
-                <p class="description" [ngClass]="{'description-visible': isOdd}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate, dolores
-                   eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates
-                   voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias
-                   consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus
-                   provident quod tenetur voluptates voluptatibus? Cupiditate, est?</p>
+                <!-- TODO: Take care of formatting -->
+                <p class="item-detail" [ngClass]="{'visible': isOdd}">Lorem ipsum dolor sit amet,
+                                                                      consectetur adipisicing
+                                                                      elit. Ad, alias consequatur
+                                                                      cupiditate, dolores
+                                                                      eos esse ex in inventore
+                                                                      ipsam laudantium odio odit
+                                                                      possimus provident quod
+                                                                      tenetur voluptates
+                                                                      voluptatibus? Cupiditate,
+                                                                      est? Lorem ipsum dolor sit
+                                                                      amet, consectetur
+                                                                      adipisicing elit. Ad, alias
+                                                                      consequatur cupiditate,
+                                                                      dolores eos esse ex in
+                                                                      inventore ipsam laudantium
+                                                                      odio odit possimus
+                                                                      provident quod tenetur
+                                                                      voluptates voluptatibus?
+                                                                      Cupiditate, est?</p>
             </li>
         </ul>
     </section>
 
-    <section class="contact">
+    <section class="contact column">
         <!-- TODO: Get mail icon -->
-        <div class="section-heading">
+        <div class="column-heading">
             <img src="../../assets/svg/arrow-next.svg" alt="">
             <h3>Contact</h3>
         </div>
