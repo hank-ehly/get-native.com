@@ -4,7 +4,8 @@
 /* Sizes */
 $main-margin-top: 85px;
 $column-width: ($main-width / 2) - ($padding-unit-regular / 2);
-$section-heading-icon-width: 70px;
+$column-heading-icon-width: 70px;
+$item-detail-border-width: 2px;
 
 /* Colors */
 $item-label-color: $shamrock;
@@ -28,7 +29,7 @@ main {
 }
 
 .column-heading img {
-  width: $section-heading-icon-width;
+  width: $column-heading-icon-width;
 }
 
 .column-heading h3 {
@@ -66,7 +67,7 @@ main {
 .item-detail {
   @include border-radius();
   background: $list-item-detail-background-color;
-  border: 2px solid $list-item-detail-border-color;
+  border: $item-detail-border-width solid $list-item-detail-border-color;
   display: none;
   font-size: $font-size-small;
   margin-top: $padding-unit-regular;
