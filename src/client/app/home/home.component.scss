@@ -1,103 +1,102 @@
 @import "../../scss/core";
+@import "./home.component.debug";
 
+/* Sizes */
+$marketing-banner-height: 100vh;
+$marketing-banner-width: 100%;
+$center-content-margin: $padding-unit-regular * 4 auto 0;
+$center-content-width: $main-width * (2/3);
+$center-content-button-margin-top: $padding-unit-regular * 2;
+$small-feature-width: ($main-width / 3) - 20px;
+$small-feature-icon-width: $padding-unit-regular * 2.5;
+$small-feature-icon-height: $padding-unit-regular * 2.5;
+$large-feature-item-width: ($main-width / 2) - $padding-unit-regular;
+$large-feature-image-width: $main-width / 2;
+$large-feature-margin-top: $padding-unit-regular * 2;
+
+/* Colors */
+$large-feature-header-color: $shamrock;
+$sign-in-button-color: $shamrock;
+$sign-in-button-border-color: $shamrock;
+$sign-in-button-background-color: $white;
+
+/* Other */
+$large-feature-image-box-shadow: 5px 10px 40px 0 rgba(#000, 0.15);
+
+/* TODO: Refactor */
 .marketing-banner {
-  @include debug-background-color(rgba(yellow, 0.5));
-  height: 100vh;
+  height: $marketing-banner-height;
   position: relative;
-  // TODO: Is this bad?
   margin-top: -$navbar-height;
   overflow: hidden;
-  width: 100%;
+  width: $marketing-banner-width;
   z-index: -1;
 }
 
-.marketing-banner img {
-  @include debug-opacity(0.5);
-}
-
-main {
-  @include debug-background-color(grey);
-}
-
-.center-compact {
-  margin: $padding-unit-regular * 4 auto 0;
+.centered-content {
+  margin: $center-content-margin;
   text-align: center;
-  width: $main-width * (2/3);
-
-  h1 {
-    @include debug-background-color(rgba(red, 0.5));
-  }
-
-  p {
-    @include debug-background-color(rgba(purple, 0.5));
-    margin-top: $padding-unit-regular;
-  }
-
-  button {
-    @extend %rounded-button;
-    background-color: $home-sign-in-button-background-color;
-    border-color: $home-sign-in-button-border-color;
-    color: $home-sign-in-button-color;
-    margin-top: $padding-unit-regular * 2;
-  }
+  width: $center-content-width;
 }
 
-.col-2, .col-3 {
+.centered-content .content-detail {
+  margin-top: $padding-unit-regular;
+}
+
+.centered-content .content-action {
+  @extend %rounded-button;
+  background-color: $sign-in-button-background-color;
+  border-color: $sign-in-button-border-color;
+  color: $sign-in-button-color;
+  margin-top: $center-content-button-margin-top;
+}
+
+.large-feature {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-top: $padding-unit-regular * 2;
+  margin-top: $large-feature-margin-top;
 }
 
-.col-2 {
-  align-items: center;
-
-  li {
-    width: ($main-width / 2) - $padding-unit-regular;
-  }
+.large-feature li {
+  width: $large-feature-item-width;
 }
 
-.feature-image-large {
-  @include debug-background-color(orange);
-  img {
-    box-shadow: 5px 10px 40px 0 rgba(#000, 0.15);
-    width: $main-width / 2;
-  }
+.large-feature .feature-image {
+  box-shadow: $large-feature-image-box-shadow;
+  width: $large-feature-image-width;
 }
 
-.feature-detail-large {
-  @include debug-background-color(green);
+.large-feature .feature-title {
+  color: $large-feature-header-color;
+}
 
-  h3 {
-    color: $home-large-feature-header-color;
-  }
-
-  p {
-    margin-top: $padding-unit-regular;
-  }
+.large-feature .feature-detail {
+  margin-top: $padding-unit-regular;
 }
 
 hr {
   @extend %hr;
 }
 
-.col-3 {
-  @include debug-background-color(rgba(skyblue, 0.5));
+.small-features-list {
   align-items: flex-start;
+  display: flex;
   flex-flow: row wrap;
+  justify-content: space-between;
+  margin-top: $padding-unit-regular * 2;
+}
 
-  li {
-    line-height: 1.5;
-    text-align: center;
-    width: ($main-width / 3) - 20px;
+.small-feature {
+  text-align: center;
+  width: $small-feature-width;
 
-    h5, p, img {
-      margin-top: $padding-unit-regular;
-    }
-
-    img {
-      @include debug-background-color(rgba(orange, 0.5));
-      width: $padding-unit-regular * 2.5;
-      height: $padding-unit-regular * 2.5;
-    }
+  .feature-title, .feature-detail, .feature-image {
+    margin-top: $padding-unit-regular;
   }
+}
+
+.small-feature .feature-image {
+  width: $small-feature-icon-width;
+  height: $small-feature-icon-height;
 }

@@ -1,0 +1,16 @@
+@import "../../scss/core";
+
+main                                 { @include debug-background-color($dc01); }
+.marketing-banner                    { @include debug-background-color($dc02); }
+.centered-content                    { @include debug-background-color($dc03); }
+.centered-content .content-title     { @include debug-background-color($dc04); }
+.centered-content .content-detail    { @include debug-background-color($dc05); }
+.feature-image-list-item             { @include debug-background-color($dc06); }
+.large-feature .feature-detail       { @include debug-background-color($dc07); }
+.large-feature .feature-title        { @include debug-background-color($dc08); }
+.small-features-list                 { @include debug-background-color($dc09); }
+.small-features-list .feature-image  { @include debug-background-color($dc10); }
+.small-features-list .feature-title  { @include debug-background-color($dc11); }
+.small-features-list .feature-detail { @include debug-background-color($dc12); }
+
+.marketing-banner img { @include debug-opacity(0.5); }
