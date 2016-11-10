@@ -1,13 +1,19 @@
 <main>
     <section class="about">
         <!-- TODO: Get 'about' icon -->
-        <img src="../../assets/svg/arrow-next.svg" alt="">
-        <h3>About Get Native</h3>
+        <div class="section-heading">
+            <img src="../../assets/svg/arrow-next.svg" alt="">
+            <h3>About Get Native</h3>
+        </div>
         <ul>
-            <li *ngFor="let item of items; let i = index">
-                <!-- TODO: Create leadingZero pipe -->
-                &#9654;<span>{{ i }}</span><span>{{ item }}</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate, dolores
+            <li *ngFor="let item of items; let i = index; let isOdd = odd">
+                <div class="list-item-heading">
+                    <!-- TODO: Create leadingZero pipe -->
+                    <span class="list-item-expansion-indicator">&#9654;</span>
+                    <span class="list-item-number">{{ i }}</span>
+                    <span class="list-item-label">{{ item }}</span>
+                </div>
+                <p class="description" [ngClass]="{'description-visible': isOdd}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate, dolores
                    eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates
                    voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias
                    consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus
@@ -18,10 +24,10 @@
 
     <section class="contact">
         <!-- TODO: Get mail icon -->
-        <img src="../../assets/svg/arrow-next.svg" alt="">
-        <h3>Contact</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet ex hic mollitia nihil. Ab dolor
-           doloremque <a href="mailto:{{ moderator }}">{{ moderator }}</a> nam quos. Aut dignissimos dolore dolorem est
-           facilis nam quidem sapiente voluptatem!</p>
+        <div class="section-heading">
+            <img src="../../assets/svg/arrow-next.svg" alt="">
+            <h3>Contact</h3>
+        </div>
+        <p>For all inquiries, please contact us at <a href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
     </section>
 </main>

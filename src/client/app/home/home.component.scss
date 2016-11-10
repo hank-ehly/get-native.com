@@ -15,8 +15,12 @@
   @include debug-opacity(0.5);
 }
 
+main {
+  @include debug-background-color(grey);
+}
+
 .center-compact {
-  margin: $padding-unit-single * 4 auto 0;
+  margin: $padding-unit-regular * 4 auto 0;
   text-align: center;
   width: $main-width * (2/3);
 
@@ -26,8 +30,7 @@
 
   p {
     @include debug-background-color(rgba(purple, 0.5));
-    line-height: $line-height-regular;
-    margin-top: $padding-unit-single;
+    margin-top: $padding-unit-regular;
   }
 
   button {
@@ -35,21 +38,21 @@
     background-color: $home-sign-in-button-background-color;
     border-color: $home-sign-in-button-border-color;
     color: $home-sign-in-button-color;
-    margin-top: $padding-unit-single * 2;
+    margin-top: $padding-unit-regular * 2;
   }
 }
 
 .col-2, .col-3 {
   display: flex;
   justify-content: space-between;
-  margin-top: $padding-unit-single * 2;
+  margin-top: $padding-unit-regular * 2;
 }
 
 .col-2 {
   align-items: center;
 
   li {
-    width: ($main-width / 2) - $padding-unit-single;
+    width: ($main-width / 2) - $padding-unit-regular;
   }
 }
 
@@ -63,14 +66,13 @@
 
 .feature-detail-large {
   @include debug-background-color(green);
-  line-height: $line-height-regular;
 
   h3 {
     color: $home-large-feature-header-color;
   }
 
   p {
-    margin-top: $padding-unit-single;
+    margin-top: $padding-unit-regular;
   }
 }
 
@@ -89,13 +91,13 @@ hr {
     width: ($main-width / 3) - 20px;
 
     h5, p, img {
-      margin-top: $padding-unit-single;
+      margin-top: $padding-unit-regular;
     }
 
     img {
       @include debug-background-color(rgba(orange, 0.5));
-      width: $padding-unit-single * 2.5;
-      height: $padding-unit-single * 2.5;
+      width: $padding-unit-regular * 2.5;
+      height: $padding-unit-regular * 2.5;
     }
   }
 }
