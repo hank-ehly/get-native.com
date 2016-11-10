@@ -15,9 +15,7 @@ import { Component } from '@angular/core';
 })
 
 export class PrivacyComponent {
-    moderator: string;
-
-    constructor() {
-        this.moderator = 'getnative.moderator@gmail.com';
-    }
+    // TODO: Move to global scope
+    moderator: string = 'getnative.moderator@gmail.com';
+    lastEdited: string = '2016-11-07';
 }
