@@ -1,12 +1,12 @@
 <main>
     <section class="about">
-        <div class="column-head">
+        <div class="section-head">
             <!-- TODO: Get 'about' icon -->
             <img class="icon" src="../../assets/svg/arrow-next.svg" alt="">
             <h3 class="title">About Get Native</h3>
         </div>
 
-        <ul class="column-body">
+        <ul class="section-body">
             <li *ngFor="let item of items; let i = index; let isOdd = odd">
                 <div class="item-head">
                     <!-- TODO: Create leadingZero pipe -->
@@ -22,12 +22,12 @@
     </section>
 
     <section class="contact">
-        <div class="column-head">
+        <div class="section-head">
             <!-- TODO: Get mail icon -->
             <img class="icon" src="../../assets/svg/arrow-next.svg" alt="">
             <h3 class="title">Contact</h3>
         </div>
 
-        <p class="column-body">For all inquiries, please contact us at <a href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
+        <p class="section-body">For all inquiries, please contact us at <a href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
     </section>
 </main>
