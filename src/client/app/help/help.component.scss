@@ -28,11 +28,11 @@ main {
   display: flex;
 }
 
-.column-heading img {
+.column-heading .heading-image {
   width: $column-heading-icon-width;
 }
 
-.column-heading h3 {
+.column-heading .heading-title {
   padding-left: $padding-unit-small;
 }
 

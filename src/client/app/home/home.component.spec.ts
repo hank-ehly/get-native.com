@@ -19,21 +19,21 @@ export function main() {
             });
         });
 
-        it('should have 3 main features', async(() => {
+        it('should display 3 large features', async(() => {
             TestBed.compileComponents().then(() => {
                 let fixture = TestBed.createComponent(TestComponent);
                 fixture.detectChanges();
                 let homeDOME1 = fixture.debugElement.children[0].nativeElement;
-                expect(homeDOME1.querySelectorAll('.main-features ul').length).toEqual(3);
+                expect(homeDOME1.querySelectorAll('.large-feature').length).toEqual(3);
             });
         }));
 
-        it('should have 6 secondary features', async(() => {
+        it('should display 6 small features', async(() => {
             TestBed.compileComponents().then(() => {
                 let fixture = TestBed.createComponent(TestComponent);
                 fixture.detectChanges();
                 let homeDOME1 = fixture.debugElement.children[0].nativeElement;
-                expect(homeDOME1.querySelectorAll('.secondary-features li').length).toEqual(6);
+                expect(homeDOME1.querySelectorAll('.small-feature').length).toEqual(6);
             });
         }));
     });

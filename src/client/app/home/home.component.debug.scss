@@ -8,9 +8,9 @@ main                                 { @include debug-background-color($dc01); }
 .feature-image-list-item             { @include debug-background-color($dc06); }
 .large-feature .feature-detail       { @include debug-background-color($dc07); }
 .large-feature .feature-title        { @include debug-background-color($dc08); }
-.small-features-list                 { @include debug-background-color($dc09); }
-.small-features-list .feature-image  { @include debug-background-color($dc10); }
-.small-features-list .feature-title  { @include debug-background-color($dc11); }
-.small-features-list .feature-detail { @include debug-background-color($dc12); }
+.small-features { @include debug-background-color($dc09); }
+.small-features .feature-image  { @include debug-background-color($dc10); }
+.small-features .feature-title  { @include debug-background-color($dc11); }
+.small-features .feature-detail { @include debug-background-color($dc12); }
 
 .marketing-banner img { @include debug-opacity(0.5); }
