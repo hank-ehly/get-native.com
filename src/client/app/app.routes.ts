@@ -8,13 +8,13 @@
 import { Routes } from '@angular/router';
 
 import { HomeRoutes } from './home/index';
-import { PrivacyPolicyRoutes } from './privacy-policy/index';
+import { PrivacyRoutes } from './privacy/index';
 import { HelpRoutes } from './help/index';
 import { TOSRoutes } from './tos/index';
 
 export const routes: Routes = [
     ...HomeRoutes,
-    ...PrivacyPolicyRoutes,
+    ...PrivacyRoutes,
     ...HelpRoutes,
     ...TOSRoutes
 ];
