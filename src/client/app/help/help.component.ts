@@ -21,4 +21,11 @@ export class HelpComponent {
         'Third Item'
     ];
     moderator: string = 'getnative.moderator@gmail.com';
+
+    // TODO: Remove
+    mockDetailText: string = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur ' +
+        'cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur ' +
+        'voluptates voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, ' +
+        'alias consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident ' +
+        'quod tenetur voluptates voluptatibus? Cupiditate, est?';
 }

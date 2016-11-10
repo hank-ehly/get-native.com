@@ -3,8 +3,8 @@
 
 /* Sizes */
 $main-margin-top: 85px;
-$column-width: ($main-width / 2) - ($padding-unit-regular / 2);
-$column-heading-icon-width: 70px;
+$section-width: ($main-width / 2) - ($padding-unit-regular / 2);
+$section-head-icon-width: 70px;
 $item-detail-border-width: 2px;
 
 /* Colors */
@@ -19,44 +19,44 @@ main {
   margin-top: $main-margin-top;
 }
 
-.column  {
-  width: $column-width;
+section  {
+  width: $section-width;
 }
 
-.column-heading {
+.column-head {
   align-items: center;
   display: flex;
 }
 
-.column-heading .heading-image {
-  width: $column-heading-icon-width;
+.column-head .icon {
+  width: $section-head-icon-width;
 }
 
-.column-heading .heading-title {
+.column-head .title {
   padding-left: $padding-unit-small;
 }
 
-.column ul {
+.column-body {
   margin-top: $padding-unit-regular;
 }
 
-.column.about ul li {
+section.about ul li {
   margin-top: $padding-unit-small;
 }
 
 /* Remove whitespace between <span> tags */
-.item-heading {
+.item-head {
   font-size: 0;
   span {
     font-size: $font-size-regular;
   }
 }
 
-.item-folding, .item-number {
+.caret, .item-index {
   margin-right: $padding-unit-x-small;
 }
 
-.item-number {
+.item-index {
   color: $item-number-color;
 }
 
