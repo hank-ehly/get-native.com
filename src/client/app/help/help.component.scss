@@ -1,88 +1,78 @@
 @import "../../scss/core";
+@import "./help.component.debug";
+
+/* Sizes */
+$main-margin-top: 85px;
+$column-width: ($main-width / 2) - ($padding-unit-regular / 2);
+$section-heading-icon-width: 70px;
+
+/* Colors */
+$item-label-color: $shamrock;
+$item-number-color: $grey;
+$list-item-detail-border-color: $athens-gray;
+$list-item-detail-background-color: $white-lilac;
 
 main {
-  @include debug-background-color(grey);
   display: flex;
   justify-content: space-between;
-  margin-top: 85px;
+  margin-top: $main-margin-top;
 }
 
-section {
-  width: ($main-width / 2) - ($padding-unit-regular / 2);
+.column  {
+  width: $column-width;
 }
 
-.about {
-  @include debug-background-color(rgba(green, 0.5));
-}
-
-.contact {
-  @include debug-background-color(rgba(orange, 0.5));
-}
-
-section img {
-  @include debug-background-color(rgba(red, 0.5));
-  // TODO: Replace with $help-section-icon-diameter
-  width: 70px;
-}
-
-.section-heading {
-  @include debug-background-color(pink);
-  display: flex;
+.column-heading {
   align-items: center;
+  display: flex;
 }
 
-section h3 {
-  @include debug-background-color(rgba(blue, 0.5));
+.column-heading img {
+  width: $section-heading-icon-width;
+}
+
+.column-heading h3 {
   padding-left: $padding-unit-small;
 }
 
-.about ul,
-.contact p {
+.column ul {
   margin-top: $padding-unit-regular;
 }
 
-.about ul li {
+.column.about ul li {
   margin-top: $padding-unit-small;
 }
 
-/* Removes whitespace between <span> tags */
-.list-item-heading {
+/* Remove whitespace between <span> tags */
+.item-heading {
   font-size: 0;
   span {
     font-size: $font-size-regular;
   }
 }
 
-.list-item-heading {
-  @include debug-background-color(rgba(red, 0.5));
-}
-
-.list-item-expansion-indicator,
-.list-item-number {
+.item-folding, .item-number {
   margin-right: $padding-unit-x-small;
 }
 
-.list-item-number {
-  // TODO: Check if color is correct
-  // TODO: Replace with feature var
-  color: $grey;
+.item-number {
+  color: $item-number-color;
 }
 
-.list-item-label {
-  // TODO: Replace with feature var
-  color: $shamrock;
+.item-label {
+  color: $item-label-color;
 }
 
-.description {
-  display: none;
-}
-
-.description-visible {
+.item-detail {
   @include border-radius();
-  background: #f6f5fb;
-  border: 2px solid rgb(231, 230, 235);
-  padding: $padding-unit-small;
-  display: block;
-  margin-top: $padding-unit-regular;
+  background: $list-item-detail-background-color;
+  border: 2px solid $list-item-detail-border-color;
+  display: none;
   font-size: $font-size-small;
+  margin-top: $padding-unit-regular;
+  padding: $padding-unit-small;
+}
+
+.visible {
+  display: block;
 }
