@@ -1,48 +1,50 @@
 <div class="marketing-banner">
+    <!-- TODO: Insert image -->
     <img src="../../assets/mock/elephant.png" alt="">
 </div>
 
 <main>
-    <div class="center-compact">
-        <h1>A language learning resource for advanced speakers</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpa ducimus fugiat impedit
+    <div class="centered-content">
+        <h1 class="content-title">A language learning resource for advanced speakers</h1>
+        <!-- TODO: Insert text -->
+        <p class="content-detail">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpa ducimus fugiat impedit
            iure nobis repellendus. Accusamus consectetur dicta?</p>
     </div>
 
-    <section class="main-features">
-        <ul *ngFor="let item of largeDescriptions; let odd = odd;" class="col-2">
-            <li class="feature-image-large" [style.order]="odd ? 2 : 1">
-                <img src="../../assets/mock/{{ item.thumbnail }}" alt="{{ item.title }}">
+    <section class="large-features">
+        <ul *ngFor="let d of largeDescriptions; let odd = odd;" class="large-feature">
+            <li class="feature-image-list-item" [style.order]="odd ? 2 : 1">
+                <img src="../../assets/mock/{{ d.thumbnail }}" alt="{{ d.title }}" class="feature-image">
             </li>
-            <li class="feature-detail-large" [style.order]="odd ? 1 : 2">
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.description }}</p>
+            <li [style.order]="odd ? 1 : 2">
+                <h3 class="feature-title">{{ d.title }}</h3>
+                <p class="feature-detail">{{ d.description }}</p>
             </li>
         </ul>
     </section>
 
-    <div class="center-compact">
-        <h1>That's not all..</h1>
+    <div class="centered-content">
+        <h1 class="content-title">That's not all..</h1>
     </div>
 
-    <section class="secondary-features">
-        <ul class="col-3">
-            <li *ngFor="let item of smallDescriptions">
-                <img src="../../assets/svg/{{ item.thumbnail }}" alt="{{ item.title }}">
-                <h5>{{ item.title }}</h5>
-                <p>{{ item.description }}</p>
+    <section class="small-features-section">
+        <ul class="small-features-list">
+            <li *ngFor="let d of smallDescriptions" class="small-feature">
+                <img src="../../assets/svg/{{ d.thumbnail }}" alt="{{ d.title }}" class="feature-image">
+                <h5 class="feature-title">{{ d.title }}</h5>
+                <p class="feature-detail">{{ d.description }}</p>
             </li>
         </ul>
     </section>
 
     <hr>
 
-    <div class="center-compact">
-        <h1>Sign up for free</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut,
+    <div class="centered-content">
+        <h1 class="content-title">Sign up for free</h1>
+        <p class="content-detail">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut,
            consectetur dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae
            repudiandae sit, ut!</p>
-        <button>Sign in / Sign up</button>
+        <button class="content-action">Sign in / Sign up</button>
     </div>
 
 </main>
