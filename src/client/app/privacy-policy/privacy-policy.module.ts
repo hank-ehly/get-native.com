@@ -6,6 +6,7 @@
  */
 
 import { NgModule } from '@angular/core';
+
 import { PrivacyPolicyComponent } from './index';
 
 @NgModule({
