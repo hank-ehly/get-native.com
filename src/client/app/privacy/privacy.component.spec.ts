@@ -1,5 +1,5 @@
 /**
- * privacy-policy.component.spec
+ * privacy.component.spec
  * get-native.com
  *
  * Created by henryehly on 2016/11/08.
@@ -8,14 +8,14 @@
 import { Component } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
 
-import { PrivacyPolicyModule } from './privacy-policy.module';
+import { PrivacyModule } from './privacy.module';
 
 export function main() {
-    describe('PrivacyPolicyComponent', () => {
+    describe('PrivacyComponent', () => {
         beforeEach(() => {
             TestBed.configureTestingModule({
                 declarations: [TestComponent],
-                imports: [PrivacyPolicyModule]
+                imports: [PrivacyModule]
             });
         });
 
@@ -23,8 +23,8 @@ export function main() {
             TestBed.compileComponents().then(() => {
                 let fixture = TestBed.createComponent(TestComponent);
                 fixture.detectChanges();
-                let privacyPolicyDOME1 = fixture.debugElement.children[0].nativeElement;
-                expect(privacyPolicyDOME1.querySelectorAll('address a')[0].textContent).toEqual('getnative.moderator@gmail.com');
+                let privacyDOME1 = fixture.debugElement.children[0].nativeElement;
+                expect(privacyDOME1.querySelectorAll('address a')[0].textContent).toEqual('getnative.moderator@gmail.com');
             });
         }));
     });
@@ -32,7 +32,7 @@ export function main() {
 
 @Component({
     selector: 'test-cmp',
-    template: '<gn-privacy-policy></gn-privacy-policy>'
+    template: '<gn-privacy></gn-privacy>'
 })
 
 class TestComponent {

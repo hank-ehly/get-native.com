@@ -1,5 +1,5 @@
 /**
- * privacy-policy.component
+ * privacy.component
  * get-native.com
  *
  * Created by henryehly on 2016/11/07.
@@ -9,12 +9,12 @@ import { Component } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-privacy-policy',
-    templateUrl: 'privacy-policy.component.html',
-    styleUrls: ['privacy-policy.component.css']
+    selector: 'gn-privacy',
+    templateUrl: 'privacy.component.html',
+    styleUrls: ['privacy.component.css']
 })
 
-export class PrivacyPolicyComponent {
+export class PrivacyComponent {
     moderator: string;
 
     constructor() {
