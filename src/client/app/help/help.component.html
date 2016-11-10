@@ -1,48 +1,33 @@
 <main>
-    <section class="column about">
-        <div class="column-heading">
+    <section class="about">
+        <div class="column-head">
             <!-- TODO: Get 'about' icon -->
-            <img class="heading-image" src="../../assets/svg/arrow-next.svg" alt="">
-            <h3 class="heading-title">About Get Native</h3>
+            <img class="icon" src="../../assets/svg/arrow-next.svg" alt="">
+            <h3 class="title">About Get Native</h3>
         </div>
-        <ul>
+
+        <ul class="column-body">
             <li *ngFor="let item of items; let i = index; let isOdd = odd">
-                <div class="item-heading">
+                <div class="item-head">
                     <!-- TODO: Create leadingZero pipe -->
-                    <span class="item-folding">&#9654;</span>
-                    <span class="item-number">{{ i }}</span>
+                    <span class="caret">&#9654;</span>
+                    <span class="item-index">{{ i }}</span>
                     <span class="item-label">{{ item }}</span>
                 </div>
+
                 <!-- TODO: Take care of formatting -->
-                <p class="item-detail" [ngClass]="{'visible': isOdd}">Lorem ipsum dolor sit amet,
-                                                                      consectetur adipisicing
-                                                                      elit. Ad, alias consequatur
-                                                                      cupiditate, dolores
-                                                                      eos esse ex in inventore
-                                                                      ipsam laudantium odio odit
-                                                                      possimus provident quod
-                                                                      tenetur voluptates
-                                                                      voluptatibus? Cupiditate,
-                                                                      est? Lorem ipsum dolor sit
-                                                                      amet, consectetur
-                                                                      adipisicing elit. Ad, alias
-                                                                      consequatur cupiditate,
-                                                                      dolores eos esse ex in
-                                                                      inventore ipsam laudantium
-                                                                      odio odit possimus
-                                                                      provident quod tenetur
-                                                                      voluptates voluptatibus?
-                                                                      Cupiditate, est?</p>
+                <p class="item-detail" [ngClass]="{'visible': isOdd}">{{ mockDetailText }}</p>
             </li>
         </ul>
     </section>
 
-    <section class="column contact">
-        <div class="column-heading">
+    <section class="contact">
+        <div class="column-head">
             <!-- TODO: Get mail icon -->
-            <img class="heading-image" src="../../assets/svg/arrow-next.svg" alt="">
-            <h3 class="heading-title">Contact</h3>
+            <img class="icon" src="../../assets/svg/arrow-next.svg" alt="">
+            <h3 class="title">Contact</h3>
         </div>
-        <p>For all inquiries, please contact us at <a href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
+
+        <p class="column-body">For all inquiries, please contact us at <a href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
     </section>
 </main>
