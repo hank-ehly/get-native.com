@@ -4,6 +4,9 @@ main            { @include debug-background-color($dc01); }
 .about          { @include debug-background-color($dc02); }
 .contact        { @include debug-background-color($dc03); }
 section img     { @include debug-background-color($dc04); }
-.column-heading { @include debug-background-color($dc05); }
-section h3      { @include debug-background-color($dc06); }
-.item-heading   { @include debug-background-color($dc07); }
+.item-folding   { @include debug-background-color($dc05); }
+.column-heading { @include debug-background-color($dc06); }
+section h3      { @include debug-background-color($dc07); }
+.item-heading   { @include debug-background-color($dc08); }
+.item-number    { @include debug-background-color($dc09); }
+.item-label     { @include debug-background-color($dc10); }
