@@ -1,25 +1,13 @@
 @import "../../scss/core";
+@import "./privacy-policy.component.debug";
 
-address,
-.quick-links,
-h1,
-h2,
-p {
+address, .quick-links, h1, h2, p {
   margin-top: $padding-unit-regular;
 }
 
 ul {
-  @include debug-background-color(rgba(green, 0.5));
   list-style-type: disc;
   padding-left: $padding-unit-regular / 2;
-}
-
-h2 {
-  @include debug-background-color(rgba(blue, 0.5));
-}
-
-p {
-  @include debug-background-color(rgba(orange, 0.5));
 }
 
 address {
