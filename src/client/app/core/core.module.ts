@@ -6,17 +6,18 @@
  */
 
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
 import { SideMenuComponent } from './side-menu/index';
 import { FooterComponent } from './footer/index';
-import { RouterModule } from '@angular/router';
+import { CookieComplianceComponent } from './cookie-compliance/index';
 
 @NgModule({
     imports: [RouterModule],
-    declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent],
-    exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent]
+    declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent],
+    exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent]
 })
 
 export class CoreModule {
