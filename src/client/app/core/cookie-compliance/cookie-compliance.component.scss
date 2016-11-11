@@ -1,0 +1,41 @@
+@import "../../../scss/core";
+@import "./cookie-compliance.component.debug";
+
+/* Sizes */
+$dialog-padding: 15px;
+$dialog-offset: $padding-unit-regular;
+$tos-link-padding-left: 5px;
+
+/* Colors */
+$tos-link-color: $black;
+$comply-trigger-color: $shamrock;
+$dialog-background-color: $white;
+
+// TODO: White-on-white
+.cookie-compliance-dialog {
+  @include border-radius();
+  background: $dialog-background-color;
+  bottom: $dialog-offset;
+  display: flex;
+  left: $dialog-offset;
+  padding: $dialog-padding;
+  position: fixed;
+  right: $dialog-offset;
+}
+
+.tos-link {
+  color: $tos-link-color;
+  padding-left: $tos-link-padding-left;
+}
+
+.comply-trigger {
+  color: $comply-trigger-color;
+  cursor: pointer;
+
+  /* Sends flex item to far-right */
+  margin-left: auto;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

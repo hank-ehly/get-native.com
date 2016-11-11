@@ -15,4 +15,15 @@ import './operators';
 })
 
 export class AppComponent {
+    isCookieCompliant: boolean = false;
+
+    comply(): void {
+        // TODO: Logger service
+        console.debug('[AppComponent] COMPLY');
+
+        // TODO: Store in cookie / local storage
+        // TODO: Cookie / LocalStorage service
+        // TODO: Animate like iOS (bounce up a little then down and out)
+        this.isCookieCompliant = true;
+    }
 }
