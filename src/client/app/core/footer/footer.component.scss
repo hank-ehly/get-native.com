@@ -4,6 +4,7 @@
 /* Sizes */
 $footer-padding: 70px 0 50px;
 $row-margin: 30px auto 0;
+$legal-links-ampersand-padding: 0 5px;
 
 /* Colors */
 $legal-link-color: $grey;
@@ -40,6 +41,7 @@ footer {
 
 .legal-links {
   color: $legal-link-color;
+  justify-content: center;
 }
 
 .legal-links a {
@@ -48,4 +50,8 @@ footer {
   &:hover {
     color: $legal-link-hover-color;
   }
+}
+
+.legal-links span {
+  padding: $legal-links-ampersand-padding;
 }
