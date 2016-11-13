@@ -10,3 +10,13 @@
   margin-top: pu(3);
   overflow: visible;
 }
+
+%shamrock-link {
+  color: $shamrock;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: $iceberg;
+  }
+}
