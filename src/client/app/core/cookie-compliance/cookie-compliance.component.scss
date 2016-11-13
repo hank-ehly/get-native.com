@@ -9,9 +9,8 @@ $tos-link-padding-left: 5px;
 /* Colors */
 $tos-link-color: $black;
 $comply-trigger-color: $shamrock;
-$dialog-background-color: $white;
+$dialog-background-color: $wild-sand;
 
-// TODO: White-on-white
 .cookie-compliance-dialog {
   @include border-radius();
   background: $dialog-background-color;
