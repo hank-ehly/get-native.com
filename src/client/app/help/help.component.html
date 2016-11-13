@@ -2,21 +2,20 @@
     <section class="about">
         <div class="section-head">
             <div class="icon-container">
-                <img class="icon" src="../../assets/icons/help-about.svg" alt="">
+                <img class="icon" src="../../assets/icons/help-about.svg" alt="about">
             </div>
             <h3 class="title">About Get Native</h3>
         </div>
 
         <ul class="section-body">
-            <li *ngFor="let item of items; let i = index; let isOdd = odd">
+            <li *ngFor="let faq of faqs; let i = index">
                 <div class="item-head">
-                    <img src="../../assets/icons/chevron.svg" alt="chevron" class="chevron">
-                    <span class="item-index">{{ i | number:'2.0-0' }}</span>
-                    <span class="item-label">{{ item }}</span>
+                    <img src="../../assets/icons/chevron.svg" alt="chevron" class="chevron" (click)="setSelectedFaq(faq)"
+                         [@rotation]="chevronRotationForFaq(faq)">
+                    <span class="item-index" (click)="setSelectedFaq(faq)">{{ i | number:'2.0-0' }}</span>
+                    <span class="item-label" (click)="setSelectedFaq(faq)">{{ faq.title }}</span>
                 </div>
-
-                <!-- TODO: Take care of formatting -->
-                <p class="item-detail" [ngClass]="{'visible': isOdd}">{{ mockDetailText }}</p>
+                <p class="item-detail" *ngIf="isSelectedFaq(faq)" [@visible]="isSelectedFaq(faq)">{{ faq.body }}</p>
             </li>
         </ul>
     </section>
@@ -24,11 +23,12 @@
     <section class="contact">
         <div class="section-head">
             <div class="icon-container">
-                <img class="icon" src="../../assets/icons/help-mail.svg" alt="">
+                <img class="icon" src="../../assets/icons/help-mail.svg" alt="mail">
             </div>
             <h3 class="title">Contact</h3>
         </div>
 
-        <p class="section-body">For all inquiries, please contact us at <a class="mail" href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
+        <p class="section-body">For all inquiries, please contact us at
+            <a class="mail" href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
     </section>
 </main>
