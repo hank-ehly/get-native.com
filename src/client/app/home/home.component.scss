@@ -4,24 +4,26 @@
 /* Sizes */
 $marketing-banner-height: 100vh;
 $marketing-banner-width: 100%;
+$main-margin-top: 103px;
 $center-content-margin: $padding-unit-regular * 4 auto 0;
 $center-content-width: $main-width * (2/3);
-$center-content-button-margin-top: $padding-unit-regular * 2;
-$small-feature-width: ($main-width / 3) - 20px;
+$center-content-button-margin-top: 44px;
+$small-feature-width: ($main-width / 3) - $padding-unit-regular;
 $small-feature-icon-width: $padding-unit-regular * 2.5;
 $small-feature-icon-height: $padding-unit-regular * 2.5;
 $large-feature-item-width: ($main-width / 2) - $padding-unit-regular;
 $large-feature-image-width: $main-width / 2;
-$large-feature-margin-top: $padding-unit-regular * 2;
+$large-feature-margin-top: 80px;
 
 /* Colors */
 $large-feature-header-color: $shamrock;
 $sign-in-button-color: $shamrock;
 $sign-in-button-border-color: $shamrock;
 $sign-in-button-background-color: $white;
+$small-feature-detail-color: #6c7680;
 
 /* Other */
-$large-feature-image-box-shadow: 5px 10px 40px 0 rgba(#000, 0.15);
+$large-feature-image-box-shadow: 0 6px 20px 0 rgba($black, 0.15);
 
 /* TODO: Positioning */
 .marketing-banner {
@@ -39,8 +41,16 @@ $large-feature-image-box-shadow: 5px 10px 40px 0 rgba(#000, 0.15);
   width: $center-content-width;
 }
 
+.large-feature-content {
+  margin-top: 100px;
+}
+
+.large-features {
+  margin-top: 100px;
+}
+
 .centered-content .content-detail {
-  margin-top: $padding-unit-regular;
+  margin-top: 40px;
 }
 
 .centered-content .content-action {
@@ -72,7 +82,7 @@ $large-feature-image-box-shadow: 5px 10px 40px 0 rgba(#000, 0.15);
 }
 
 .large-feature .feature-detail {
-  margin-top: $padding-unit-regular;
+  margin-top: 40px;
 }
 
 hr {
@@ -91,8 +101,16 @@ hr {
   text-align: center;
   width: $small-feature-width;
 
-  .feature-title, .feature-detail:first-child, .feature-image {
+  .feature-title, .feature-detail, .feature-image {
     margin-top: $padding-unit-regular;
+  }
+
+  .feature-title {
+    font-size: $font-size-regular;
+  }
+
+  .feature-detail {
+    color: $small-feature-detail-color;
   }
 }
 
