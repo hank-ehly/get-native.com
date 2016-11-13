@@ -13,7 +13,7 @@
   cursor: pointer;
   font-size: $font-size-small;
   outline: none;
-  padding: 7px 30px;
+  padding: 7px pu(3);
 }
 
 @mixin debug-background-color($background-color) {
@@ -26,14 +26,4 @@
   @if ($debug) {
     opacity: $opacity !important;
   }
-}
-
-%hr {
-  border: 0;
-  border-top: 2px solid rgba($black, 0.1);
-  border-top-color: #eeeeee;
-  box-sizing: content-box;
-  height: 0;
-  margin-top: $padding-unit-regular * 3;
-  overflow: visible;
 }

@@ -1,0 +1,12 @@
+@import "colors";
+@import "functions";
+
+%hr {
+  border: 0;
+  border-top: 2px solid rgba($black, 0.1);
+  border-top-color: #eeeeee;
+  box-sizing: content-box;
+  height: 0;
+  margin-top: pu(3);
+  overflow: visible;
+}
