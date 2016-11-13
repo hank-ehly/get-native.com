@@ -43,6 +43,7 @@ section  {
 }
 
 .section-head .title {
+  font-size: $font-size-medium;
   padding-left: pu(2);
 }
 
@@ -85,7 +86,7 @@ section.about ul li {
   display: none;
   font-size: $font-size-small;
   margin-top: pu(3);
-  padding: pu(2);
+  padding: pu(2.4);
 }
 
 .visible {
