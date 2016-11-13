@@ -9,16 +9,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { ToolbarComponent } from './toolbar/index';
-import { NavbarComponent } from './navbar/index';
-import { SideMenuComponent } from './side-menu/index';
-import { FooterComponent } from './footer/index';
-import { CookieComplianceComponent } from './cookie-compliance/index';
+import {
+    ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginComponent
+} from './index';
 
 @NgModule({
     imports: [RouterModule, CommonModule],
-    declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent],
-    exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent]
+    declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginComponent],
+    exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginComponent]
 })
 
 export class CoreModule {
