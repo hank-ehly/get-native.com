@@ -1,7 +1,7 @@
 @import "core";
 
 html {
-  font-family: ProximaNovaA-Regular, sans-serif;
+  font-family: ProximaNova-Regular, sans-serif;
 }
 
 body {
@@ -18,7 +18,7 @@ main {
 
 @for $index from 1 through 6 {
   h#{$index} {
-    font-family: ProximaNovaA-Semibold, sans-serif;
+    font-family: ProximaNova-Semibold, sans-serif;
   }
 }
 

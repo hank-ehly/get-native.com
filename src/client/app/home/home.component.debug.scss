@@ -6,8 +6,8 @@ main                                 { @include debug-background-color($dc01); }
 .centered-content .content-title     { @include debug-background-color($dc04); }
 .centered-content .content-detail    { @include debug-background-color($dc05); }
 .feature-image-list-item             { @include debug-background-color($dc06); }
-.large-feature .feature-detail       { @include debug-background-color($dc07); }
-.large-feature .feature-title        { @include debug-background-color($dc08); }
+.feature .feature-detail       { @include debug-background-color($dc07); }
+.feature .feature-title        { @include debug-background-color($dc08); }
 .small-features { @include debug-background-color($dc09); }
 .small-features .feature-image  { @include debug-background-color($dc10); }
 .small-features .feature-title  { @include debug-background-color($dc11); }
