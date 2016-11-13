@@ -7,6 +7,7 @@
 
 import { Component } from '@angular/core';
 import './operators';
+import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
@@ -17,13 +18,14 @@ import './operators';
 export class AppComponent {
     isCookieCompliant: boolean = false;
 
+    constructor(private logger: Logger) {
+    }
+
     didComply(): void {
-        // TODO: Logger service
-        console.debug('[AppComponent] didComply');
+        this.logger.debug('[AppComponent]: didComply()');
 
         // TODO: Store in cookie / local storage
         // TODO: Cookie / LocalStorage service
-        // TODO: Animate like iOS (bounce up a little then down and out)
         this.isCookieCompliant = true;
     }
 }

@@ -18,12 +18,17 @@ import { HelpModule } from './help/help.module';
 import { TOSModule } from './tos/tos.module';
 
 import { routes } from './app.routes';
+import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2-logger/core';
 
 @NgModule({
-    imports: [BrowserModule, CoreModule, RouterModule.forRoot(routes), HomeModule, PrivacyModule, HelpModule,
-        TOSModule],
+    imports: [BrowserModule, CoreModule, RouterModule.forRoot(routes), HomeModule, PrivacyModule, HelpModule, TOSModule],
     declarations: [AppComponent],
-    providers: [{provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'}],
+    providers: [
+        {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
+        {
+            provide: LoggerOptions,
+            useValue: {level: String('<%= BUILD_TYPE %>') === 'prod' ? LoggerLevel.OFF : LoggerLevel.LOG}
+        }, Logger],
     bootstrap: [AppComponent]
 })
 
