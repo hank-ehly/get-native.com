@@ -10,7 +10,20 @@ describe('Help', () => {
         browser.get('/help');
     });
 
-    // it('should have large features', () => {
-    //     expect(element(by.css('.main-features')).isPresent).toBe(true);
-    // });
+    it('should have visible faq headings', () => {
+        let list = element.all(by.css('.about .section-body li .item-head'));
+        expect(list.count()).toBeGreaterThan(0);
+    });
+
+    it('all faqs should be collapsed', () => {
+        let list = element.all(by.css('.about .section-body li .item-detail'));
+        expect(list.count()).toBe(0);
+    });
+
+    it('should display a faq when selected', () => {
+        //noinspection TypeScriptUnresolvedFunction
+        element.all(by.css('.about .section-body li .item-label')).first().click();
+        let list = element.all(by.css('.about .section-body li .item-detail'));
+        expect(list.count()).toBe(1);
+    });
 });

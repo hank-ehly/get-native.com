@@ -19,6 +19,14 @@ export function main() {
             });
         });
 
+        it('should compile', async(() => {
+            TestBed.compileComponents().then(() => {
+                let fixture = TestBed.createComponent(TestComponent);
+                let compiled = fixture.nativeElement;
+                expect(compiled).toBeTruthy();
+            });
+        }));
+
         it('should display the moderator email address', async(() => {
             TestBed.compileComponents().then(() => {
                 let fixture = TestBed.createComponent(TestComponent);

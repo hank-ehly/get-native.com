@@ -6,17 +6,8 @@
  */
 
 import {
-    Component,
-    Output,
-    EventEmitter,
-    animate,
-    style,
-    transition,
-    trigger,
-    keyframes,
-    AnimationTransitionEvent
+    Component, Output, EventEmitter, animate, style, transition, trigger, keyframes, AnimationTransitionEvent
 } from '@angular/core';
-import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
@@ -40,11 +31,7 @@ export class CookieComplianceComponent {
     @Output() didEndComplyAnimation = new EventEmitter();
     isCompliant: boolean = false;
 
-    constructor(private logger: Logger) {
-    }
-
     close() {
-        this.logger.debug('[CookieComplianceComponent]: close()');
         this.isCompliant = true;
     }
 

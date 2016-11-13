@@ -19,14 +19,21 @@ export function main() {
             });
         });
 
-        it('should work', async(() => {
+        it('should compile', async(() => {
             TestBed.compileComponents().then(() => {
-                // let fixture = TestBed.createComponent(TestComponent);
-                // fixture.detectChanges();
-                // let helpDOME1 = fixture.debugElement.children[0].nativeElement;
-                // expect(helpDOME1.querySelectorAll('.main-features ul').length).toEqual(3);
+                let fixture = TestBed.createComponent(TestComponent);
+                let compiled = fixture.nativeElement;
+                expect(compiled).toBeTruthy();
             });
         }));
+
+        // it('should load the faqs', async(() => {
+        //     TestBed.compileComponents().then(() => {
+        //         let fixture = TestBed.createComponent(TestComponent);
+        //         let compiled = fixture.nativeElement;
+        //         expect(compiled).toBeTruthy();
+        //     });
+        // }));
     });
 }
 
