@@ -1,4 +1,3 @@
-import delayed = protractor.promise.delayed;
 /**
  * cookie-compliance.component.e2e-spec
  * get-native.com
