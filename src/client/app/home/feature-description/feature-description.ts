@@ -7,6 +7,6 @@
 
 export class FeatureDescription {
     title: string;
-    description: string;
+    paragraphs: string[];
     thumbnail: string;
 }
