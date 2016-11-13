@@ -10,3 +10,4 @@ export * from './navbar/index';
 export * from './side-menu/index';
 export * from './toolbar/index';
 export * from './cookie-compliance/index';
+export * from './login/index';
