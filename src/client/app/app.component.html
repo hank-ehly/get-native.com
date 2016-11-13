@@ -1,4 +1,4 @@
 <gn-navbar></gn-navbar>
 <router-outlet></router-outlet>
 <gn-footer></gn-footer>
-<gn-cookie-compliance *ngIf="!isCookieCompliant" (comply)="comply($event)"></gn-cookie-compliance>
+<gn-cookie-compliance *ngIf="!isCookieCompliant" (didEndComplyAnimation)="didComply()"></gn-cookie-compliance>
