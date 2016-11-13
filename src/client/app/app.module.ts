@@ -27,7 +27,7 @@ import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2
         {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
         {
             provide: LoggerOptions,
-            useValue: {level: String('<%= BUILD_TYPE %>') === 'prod' ? LoggerLevel.OFF : LoggerLevel.LOG}
+            useValue: {level: LoggerLevel.LOG} // TODO: Set based on environment
         }, Logger],
     bootstrap: [AppComponent]
 })
