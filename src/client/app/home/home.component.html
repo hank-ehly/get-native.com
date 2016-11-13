@@ -1,5 +1,4 @@
 <div class="marketing-banner">
-    <!-- TODO: Insert image -->
     <img src="../../assets/images/home-background.jpg" alt="home-background">
 </div>
 
@@ -7,8 +6,8 @@
     <div class="centered-content">
         <h1 class="content-title">A language learning resource for advanced speakers</h1>
         <!-- TODO: Insert text -->
-        <p class="content-detail">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpa ducimus fugiat impedit
-           iure nobis repellendus. Accusamus consectetur dicta?</p>
+        <p class="content-detail">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpa
+                                  ducimus fugiat impeditiure nobis repellendus. Accusamus consectetur dicta?</p>
     </div>
 
     <section class="large-features">
@@ -18,7 +17,7 @@
             </li>
             <li [style.order]="odd ? 1 : 2">
                 <h3 class="feature-title">{{ d.title }}</h3>
-                <p class="feature-detail">{{ d.description }}</p>
+                <p class="feature-detail" *ngFor="let p of d.paragraphs">{{ p }}</p>
             </li>
         </ul>
     </section>
@@ -32,7 +31,7 @@
             <li *ngFor="let d of smallDescriptions" class="small-feature">
                 <img src="../../assets/icons/{{ d.thumbnail }}" alt="{{ d.title }}" class="feature-image">
                 <h5 class="feature-title">{{ d.title }}</h5>
-                <p class="feature-detail">{{ d.description }}</p>
+                <p class="feature-detail" *ngFor="let p of d.paragraphs">{{ p }}</p>
             </li>
         </ul>
     </section>
@@ -41,9 +40,9 @@
 
     <div class="centered-content">
         <h1 class="content-title">Sign up for free</h1>
-        <p class="content-detail">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut,
-           consectetur dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae
-           repudiandae sit, ut!</p>
+        <p class="content-detail">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto
+                                  asperiores aut, consectetur dicta doloremque eius error facilis hic modi nulla
+                                  obcaecati odio quis, ratione recusandae repudiandae sit, ut!</p>
         <button class="content-action">Sign in / Sign up</button>
     </div>
 

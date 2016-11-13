@@ -91,7 +91,7 @@ hr {
   text-align: center;
   width: $small-feature-width;
 
-  .feature-title, .feature-detail, .feature-image {
+  .feature-title, .feature-detail:first-child, .feature-image {
     margin-top: $padding-unit-regular;
   }
 }
