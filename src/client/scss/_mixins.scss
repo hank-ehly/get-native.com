@@ -7,15 +7,6 @@
   background-clip: padding-box;
 }
 
-%rounded-button {
-  @include border-radius(20px);
-  border: 2px solid;
-  cursor: pointer;
-  font-size: $font-size-small;
-  outline: none;
-  padding: 7px pu(3);
-}
-
 @mixin debug-background-color($background-color) {
   @if ($debug) {
     background-color: $background-color !important;
