@@ -7,6 +7,18 @@
   background-clip: padding-box;
 }
 
+@mixin border-top-radius($border-radius: $default-border-radius) {
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  background-clip: padding-box;
+}
+
+@mixin border-bottom-radius($border-radius: $default-border-radius) {
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  background-clip: padding-box;
+}
+
 @mixin debug-background-color($background-color) {
   @if ($debug) {
     background-color: $background-color !important;
