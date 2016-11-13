@@ -7,6 +7,7 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
@@ -15,7 +16,7 @@ import { FooterComponent } from './footer/index';
 import { CookieComplianceComponent } from './cookie-compliance/index';
 
 @NgModule({
-    imports: [RouterModule],
+    imports: [RouterModule, CommonModule],
     declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent],
     exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent]
 })

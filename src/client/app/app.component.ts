@@ -11,15 +11,15 @@ import './operators';
 @Component({
     moduleId: module.id,
     selector: 'gn-app',
-    templateUrl: 'app.component.html',
+    templateUrl: 'app.component.html'
 })
 
 export class AppComponent {
     isCookieCompliant: boolean = false;
 
-    comply(): void {
+    didComply(): void {
         // TODO: Logger service
-        console.debug('[AppComponent] COMPLY');
+        console.debug('[AppComponent] didComply');
 
         // TODO: Store in cookie / local storage
         // TODO: Cookie / LocalStorage service

@@ -22,6 +22,7 @@ export class ProjectConfig extends SeedConfig {
         // Add `NPM` third-party libraries to be injected/bundled.
         this.NPM_DEPENDENCIES = [
             ...this.NPM_DEPENDENCIES,
+            {src: 'web-animations-js/web-animations.min.js', inject: 'libs'},
             // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
             // {src: 'lodash/lodash.min.js', inject: 'libs'},
         ];
