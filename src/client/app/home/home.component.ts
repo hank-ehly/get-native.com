@@ -18,12 +18,10 @@ import { FeatureDescription } from './feature-description/feature-description';
 })
 
 export class HomeComponent implements OnInit {
-    largeDescriptions: FeatureDescription[];
-    smallDescriptions: FeatureDescription[];
+    largeDescriptions: FeatureDescription[] = [];
+    smallDescriptions: FeatureDescription[] = [];
 
     constructor(private featureDescriptionService: FeatureDescriptionService) {
-        this.largeDescriptions = [];
-        this.smallDescriptions = [];
     }
 
     ngOnInit(): void {

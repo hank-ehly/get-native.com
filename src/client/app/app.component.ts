@@ -7,6 +7,7 @@
 
 import { Component } from '@angular/core';
 import './operators';
+
 import { Logger } from 'angular2-logger/core';
 
 @Component({
@@ -18,12 +19,10 @@ import { Logger } from 'angular2-logger/core';
 export class AppComponent {
     isCookieCompliant: boolean = false;
 
-    constructor(private logger: Logger) {
-    }
+    constructor(private logger: Logger) {}
 
     didComply(): void {
         this.logger.debug('[AppComponent]: didComply()');
-
         // TODO: Store in cookie / local storage
         // TODO: Cookie / LocalStorage service
         this.isCookieCompliant = true;

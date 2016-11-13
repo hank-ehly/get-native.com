@@ -19,12 +19,20 @@ export function main() {
             });
         });
 
+        it('should compile', async(() => {
+            TestBed.compileComponents().then(() => {
+                let fixture = TestBed.createComponent(TestComponent);
+                let compiled = fixture.nativeElement;
+                expect(compiled).toBeTruthy();
+            });
+        }));
+
         it('should display 3 large features', async(() => {
             TestBed.compileComponents().then(() => {
                 let fixture = TestBed.createComponent(TestComponent);
                 fixture.detectChanges();
                 let homeDOME1 = fixture.debugElement.children[0].nativeElement;
-                expect(homeDOME1.querySelectorAll('.large-feature').length).toEqual(3);
+                expect(homeDOME1.querySelectorAll('.large-features .feature').length).toEqual(3);
             });
         }));
 
@@ -33,7 +41,7 @@ export function main() {
                 let fixture = TestBed.createComponent(TestComponent);
                 fixture.detectChanges();
                 let homeDOME1 = fixture.debugElement.children[0].nativeElement;
-                expect(homeDOME1.querySelectorAll('.small-feature').length).toEqual(6);
+                expect(homeDOME1.querySelectorAll('.small-features .feature').length).toEqual(6);
             });
         }));
     });
