@@ -5,27 +5,64 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
+import { Faq } from './faq/index';
+import { FaqService } from './faq/faq.service';
 
 @Component({
     moduleId: module.id,
     selector: 'gn-help',
     templateUrl: 'help.component.html',
-    styleUrls: ['help.component.css']
+    styleUrls: ['help.component.css'],
+    animations: [
+        trigger('visible', [
+            transition(':enter', [
+                style({
+                    opacity: 0
+                }),
+                animate(300, style({
+                    opacity: 1
+                }))]),
+            transition(':leave', [
+                animate(0, style({
+                    opacity: 0
+                }))])
+        ]),
+        trigger('rotation', [
+            state('collapsed', style({
+                transform: 'rotate(0)'
+            })),
+            state('expanded', style({
+                transform: 'rotate(90deg)'
+            })),
+            transition('collapsed => expanded', animate(100)),
+            transition('expanded => collapsed', animate(0))
+        ])
+    ]
 })
 
-export class HelpComponent {
-    items: string[] = [
-        'First Item',
-        'Second Item',
-        'Third Item'
-    ];
+export class HelpComponent implements OnInit {
+    faqs: Faq[];
     moderator: string = 'getnative.moderator@gmail.com';
+    selectedFaq: Faq;
 
-    // TODO: Remove
-    mockDetailText: string = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur ' +
-        'cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur ' +
-        'voluptates voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, ' +
-        'alias consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident ' +
-        'quod tenetur voluptates voluptatibus? Cupiditate, est?';
+    constructor(private faqService: FaqService) {
+        this.selectedFaq = null;
+    }
+
+    ngOnInit(): void {
+        this.faqs = this.faqService.getFaqs();
+    }
+
+    setSelectedFaq(faq: Faq): void {
+        this.selectedFaq = this.isSelectedFaq(faq) ? null : faq;
+    }
+
+    isSelectedFaq(faq: Faq): boolean {
+        return this.selectedFaq === faq;
+    }
+
+    chevronRotationForFaq(faq: Faq): string { // Use enum for state
+        return this.isSelectedFaq(faq) ? 'expanded' : 'collapsed';
+    }
 }

@@ -9,11 +9,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HelpComponent } from './index';
+import { FaqService } from './faq/index';
 
 @NgModule({
     imports: [CommonModule], // TODO:  do you need to import the common module here even though you're importing it in the AppModule?
     declarations: [HelpComponent],
-    exports: [HelpComponent]
+    exports: [HelpComponent],
+    providers: [FaqService]
 })
 
 export class HelpModule {

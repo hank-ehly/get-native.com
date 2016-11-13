@@ -51,7 +51,7 @@ section  {
   margin-top: pu(3);
 }
 
-section.about ul li {
+section.about li {
   margin-top: pu(2);
 }
 
@@ -84,14 +84,10 @@ section.about ul li {
   @include border-radius();
   background: $list-item-detail-background-color;
   border: $item-detail-border-width solid $list-item-detail-border-color;
-  display: none;
   font-size: $font-size-small;
   margin-top: pu(3);
   padding: pu(2.4);
-}
-
-.visible {
-  display: block;
+  //opacity: 0;
 }
 
 .mail {
