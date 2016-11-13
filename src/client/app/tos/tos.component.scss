@@ -9,6 +9,10 @@ address, .quick-links, h1, h2, p {
   margin-top: $content-margin-top;
 }
 
+.quick-links a {
+  @extend %shamrock-link;
+}
+
 ul, ol {
   padding-left: $list-padding-left;
 }

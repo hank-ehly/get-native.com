@@ -5,6 +5,10 @@ address, .quick-links, h1, h2, p {
   margin-top: $padding-unit-regular;
 }
 
+.quick-links a {
+  @extend %shamrock-link;
+}
+
 ul {
   list-style-type: disc;
   padding-left: $padding-unit-regular / 2;

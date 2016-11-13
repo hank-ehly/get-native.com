@@ -2,8 +2,8 @@
 @import "./footer.component.debug";
 
 /* Sizes */
-$footer-padding: 70px 0 50px;
-$row-margin: 30px auto 0;
+$footer-padding: pu(7) 0 pu(5);
+$row-margin: pu(3) auto 0;
 $legal-links-ampersand-padding: 0 5px;
 
 /* Colors */
@@ -22,17 +22,12 @@ footer {
 .row {
   display: flex;
   justify-content: space-around;
-  margin: 30px auto 0;
+  margin: pu(3) auto 0;
   max-width: $main-width / 3;
 }
 
 .site-links a {
-  color: $site-link-color;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-    text-decoration-color: $site-link-text-decoration-color;
-  }
+  @extend %shamrock-link;
 }
 
 .copyright {

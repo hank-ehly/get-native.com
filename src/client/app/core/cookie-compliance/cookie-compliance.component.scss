@@ -28,13 +28,8 @@ $dialog-background-color: $wild-sand;
 }
 
 .comply-trigger {
-  color: $comply-trigger-color;
-  cursor: pointer;
+  @extend %shamrock-link;
 
   /* Sends flex item to far-right */
   margin-left: auto;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
