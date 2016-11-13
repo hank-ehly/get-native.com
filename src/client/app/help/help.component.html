@@ -10,9 +10,8 @@
         <ul class="section-body">
             <li *ngFor="let item of items; let i = index; let isOdd = odd">
                 <div class="item-head">
-                    <!-- TODO: Create leadingZero pipe -->
                     <img src="../../assets/icons/chevron.svg" alt="chevron" class="chevron">
-                    <span class="item-index">{{ i }}</span>
+                    <span class="item-index">{{ i | number:'2.0-0' }}</span>
                     <span class="item-label">{{ item }}</span>
                 </div>
 
