@@ -6,6 +6,7 @@ $main-margin-top: 85px;
 $section-width: ($main-width / 2) - ($padding-unit-regular / 2);
 $section-head-icon-width: 70px;
 $item-detail-border-width: 2px;
+$chevron-width: 7px;
 
 /* Colors */
 $item-label-color: $shamrock;
@@ -52,7 +53,11 @@ section.about ul li {
   }
 }
 
-.caret, .item-index {
+.chevron {
+  max-width: $chevron-width;
+}
+
+.chevron, .item-index {
   margin-right: $padding-unit-x-small;
 }
 

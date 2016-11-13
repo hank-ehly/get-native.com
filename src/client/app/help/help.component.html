@@ -1,8 +1,7 @@
 <main>
     <section class="about">
         <div class="section-head">
-            <!-- TODO: Get 'about' icon -->
-            <img class="icon" src="../../assets/svg/arrow-next.svg" alt="">
+            <img class="icon" src="../../assets/icons/help-about.svg" alt="">
             <h3 class="title">About Get Native</h3>
         </div>
 
@@ -10,7 +9,7 @@
             <li *ngFor="let item of items; let i = index; let isOdd = odd">
                 <div class="item-head">
                     <!-- TODO: Create leadingZero pipe -->
-                    <span class="caret">&#9654;</span>
+                    <img src="../../assets/icons/chevron.svg" alt="chevron" class="chevron">
                     <span class="item-index">{{ i }}</span>
                     <span class="item-label">{{ item }}</span>
                 </div>
@@ -23,8 +22,7 @@
 
     <section class="contact">
         <div class="section-head">
-            <!-- TODO: Get mail icon -->
-            <img class="icon" src="../../assets/svg/arrow-next.svg" alt="">
+            <img class="icon" src="../../assets/icons/help-mail.svg" alt="">
             <h3 class="title">Contact</h3>
         </div>
 

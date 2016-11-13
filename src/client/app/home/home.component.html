@@ -1,6 +1,6 @@
 <div class="marketing-banner">
     <!-- TODO: Insert image -->
-    <img src="../../assets/mock/elephant.png" alt="">
+    <img src="../../assets/images/home-background.jpg" alt="home-background">
 </div>
 
 <main>
@@ -30,7 +30,7 @@
     <section>
         <ul class="small-features">
             <li *ngFor="let d of smallDescriptions" class="small-feature">
-                <img src="../../assets/svg/{{ d.thumbnail }}" alt="{{ d.title }}" class="feature-image">
+                <img src="../../assets/icons/{{ d.thumbnail }}" alt="{{ d.title }}" class="feature-image">
                 <h5 class="feature-title">{{ d.title }}</h5>
                 <p class="feature-detail">{{ d.description }}</p>
             </li>
