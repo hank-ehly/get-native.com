@@ -38,7 +38,8 @@ $large-feature-image-box-shadow: 0 6px 20px 0 rgba($black, 0.15);
   width: $center-content-width;
 
   .content-detail {
-    margin-top: pu(4);
+    color: #6c7680; // TODO: Variable
+    margin-top: pu(3);
   }
 
   .content-action {
@@ -92,7 +93,7 @@ hr {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  margin-top: pu(6);
+  padding-top: 40px;
 
   .feature {
     text-align: center;
@@ -100,18 +101,18 @@ hr {
 
     .feature-image {
       height: $small-feature-icon-height;
-      margin-top: pu(9);
+      margin-top: pu(3);
       width: $small-feature-icon-width;
     }
 
     .feature-title {
       font-size: $font-size-regular;
-      margin-top: pu(4);
+      margin-top: pu(3);
     }
 
     .feature-detail {
       color: $small-feature-detail-color;
-      margin-top: pu(4);
+      margin-top: pu(3.5);
     }
   }
 }
