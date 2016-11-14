@@ -1,5 +1,5 @@
-<div class="click-off-overlay" (click)="didClickOverlay($event)">
-    <div class="modal-wrapper">
+<div class="click-off-overlay" (click)="onHideLoginModal($event)" *ngIf="isVisible" [@darken]="isVisible">
+    <div class="modal-wrapper" [@present]="isVisible">
 
         <div class="close-button-wrapper">
             <button class="close-button">
