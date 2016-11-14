@@ -20,13 +20,13 @@ header {
   }
 }
 
-div.gn-logo-container {
+.logo-container {
   @include debug-background-color(yellow);
   position: fixed;
   width: $logo-diameter * 3;
 }
 
-img.gn-logo {
+.logo {
   @include debug-background-color(orange);
   cursor: pointer;
   margin-left: $logo-diameter;
@@ -34,38 +34,38 @@ img.gn-logo {
   width: $logo-diameter;
 }
 
-ul.gn-navbar-center-items {
+.navbar-center-items {
   @include debug-background-color(green);
   display: block;
   margin: 0 auto;
   width: $main-width;
 }
 
-ul.gn-navbar-center-items li {
+.navbar-center-items li {
   display: inline-block;
   float: left;
   text-align: center;
   width: $navbar-center-item-width;
 }
 
-ul.gn-navbar-center-items li.gn-return-navigation {
+.navbar-center-items .return-navigation {
   @include debug-background-color(pink);
 }
 
-ul.gn-navbar-center-items li.gn-page-title {
+.navbar-center-items .page-title {
   @include debug-background-color(grey);
 }
 
-ul.gn-navbar-center-items li.gn-video-options-container {
+.navbar-center-items .video-options-container {
   @include debug-background-color(purple);
   text-align: center;
 }
 
-ul.gn-navbar-center-items li.gn-video-options-container ul.gn-video-options li {
+.navbar-center-items .video-options-container .video-options li {
   width: $navbar-center-item-width / 2;
 }
 
-.gn-user-preference-icons {
+.user-preference-icons {
   position: fixed;
   right: 0;
   top: 0;
@@ -83,19 +83,19 @@ ul.gn-navbar-center-items li.gn-video-options-container ul.gn-video-options li {
   }
 }
 
-.gn-notifications-icon {
+.notifications-icon {
   cursor: pointer;
   height: 23px;
   width: 23px;
 }
 
-.gn-user-icon {
+.user-icon {
   border-radius: 50%;
   cursor: pointer;
   height: 35px;
   width: 35px;
 }
 
-.gn-video-options li button {
+.video-options li button {
   @extend %rounded-button;
 }
