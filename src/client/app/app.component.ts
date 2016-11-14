@@ -5,10 +5,11 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import './operators';
 
 import { Logger } from 'angular2-logger/core';
+import { LoginComponent } from './core/login/login.component';
 
 @Component({
     moduleId: module.id,
@@ -21,6 +22,8 @@ export class AppComponent {
     isCookieCompliant: boolean = false;
     shouldShowLoginModal: boolean = false;
 
+    @ViewChild(LoginComponent) private loginComponent: LoginComponent;
+
     constructor(private logger: Logger) {
     }
 
@@ -31,17 +34,18 @@ export class AppComponent {
         this.isCookieCompliant = true;
     }
 
-    showLoginModal(): void {
-        this.logger.debug('[AppComponent]: showLoginModal()');
-
-        this.shouldShowLoginModal = true;
+    showSignInModal(): void {
+        this.logger.debug('[AppComponent]: showSignInModal()');
 
         // TODO: You may have to move the 'gn-app' to the <body> tag to avoid doing this
         document.body.style.overflow = 'hidden';
+
+        this.loginComponent.isVisible = true;
     }
 
-    hideLoginModal(): void {
-        this.shouldShowLoginModal = false;
+    closeLoginModal(): void {
+        this.logger.debug('[AppComponent]: closeLoginModal()');
         document.body.style.overflow = 'visible';
+        this.loginComponent.isVisible = false;
     }
 }
