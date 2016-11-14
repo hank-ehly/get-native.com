@@ -1,4 +1,5 @@
-<header>
+<header class="navbar">
+    <!-- TODO: Temporary
     <div class="logo-container">
         <img src="../../../assets/mock/pokeball.png" alt="logo" class="logo">
     </div>
@@ -20,4 +21,12 @@
         <li><img src="../../../assets/mock/clock-alert.png" alt="" class="notifications-icon"></li>
         <li><img src="../../../assets/mock/man-smiling.jpg" alt="" class="user-icon" (click)="requestShowLoginModal()"></li>
     </ul>
+    -->
+
+    <img src="../../../assets/mock/pokeball.png" alt="logo" class="logo" [routerLink]="''">
+
+    <nav class="quick-links">
+        <a [routerLink]="'help'" class="help">Help</a>
+        <a href="" class="sign-in" (click)="onClickSignIn($event)">Sign in / Sign up</a>
+    </nav>
 </header>

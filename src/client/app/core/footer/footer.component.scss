@@ -2,7 +2,7 @@
 @import "./footer.component.debug";
 
 /* Sizes */
-$footer-padding: pu(7) 0 pu(5);
+$footer-padding: pu(14) 0 pu(5);
 $row-margin: pu(3) auto 0;
 $legal-links-ampersand-padding: 0 5px;
 
@@ -22,7 +22,7 @@ footer {
 .row {
   display: flex;
   justify-content: space-around;
-  margin: pu(3) auto 0;
+  margin: 6px auto 0;
   max-width: $main-width / 3;
 }
 

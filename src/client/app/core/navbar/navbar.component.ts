@@ -9,7 +9,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 export class NavbarComponent {
     @Output() didRequestShowLoginModal = new EventEmitter();
-    requestShowLoginModal(): void {
+    onClickSignIn(e: any): void {
+        e.preventDefault();
         console.log('[NavbarComponent]: requestShowLoginModal()');
         this.didRequestShowLoginModal.emit();
     }
