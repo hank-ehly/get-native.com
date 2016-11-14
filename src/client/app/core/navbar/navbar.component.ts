@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 
 export class NavbarComponent {
+    @Output() didRequestShowLoginModal = new EventEmitter();
+    requestShowLoginModal(): void {
+        console.log('[NavbarComponent]: requestShowLoginModal()');
+        this.didRequestShowLoginModal.emit();
+    }
 }
