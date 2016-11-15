@@ -7,6 +7,7 @@
 
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 import { CookieComplianceComponent } from './cookie-compliance.component';
 import { Logger } from 'angular2-logger/core';
@@ -19,10 +20,15 @@ let loggerStub = {
 export function main() {
     let comp: CookieComplianceComponent;
     let fixture: ComponentFixture<CookieComplianceComponent>;
+    let de: DebugElement;
     let el: HTMLElement;
 
-    function getNativeElement(selector) {
-        return fixture.debugElement.query(By.css(selector)).nativeElement;
+    function getDebugEl(selector: string): DebugElement {
+        return fixture.debugElement.query(By.css(selector));
+    }
+
+    function getNativeEl(selector: string): HTMLElement {
+        return getDebugEl(selector).nativeElement;
     }
 
     describe('CookieComplianceComponent', () => {
@@ -37,24 +43,30 @@ export function main() {
             });
         }));
 
-        it('should by default be non-compliant and thus visible', () => {
-            el = getNativeElement('.cookie-compliance-dialog');
-            expect(el).toBeTruthy();
+        it('should display a detail message', () => {
+            el = getNativeEl('.compliance-detail');
+            expect(el.textContent.length).toBeGreaterThan(0);
         });
 
-        it('should say that this site uses cookies', () => {
-            el = getNativeElement('.compliance-detail');
-            expect(el.textContent).toContain('This site uses cookies.');
+        it('should display a link to TOS', () => {
+            el = getNativeEl('.tos-link');
+            expect(el.textContent.length).toBeGreaterThan(0);
         });
 
-        it('should have a link to the TOS page', () => {
-            el = getNativeElement('.tos-link');
-            expect(el.textContent).toContain('Find out more here');
+        it('should display a close button', () => {
+            el = getNativeEl('.comply-trigger');
+            expect(el.textContent.length).toBeGreaterThan(0);
         });
 
-        it('should have a close button', () => {
-            el = getNativeElement('.comply-trigger');
-            expect(el.textContent).toEqual('Close');
+        it('should become compliant after clicking close button', () => {
+            de = getDebugEl('.comply-trigger');
+            expect(comp.isCompliant).toEqual(false);
+
+            /* Note: (click) and such are triggered this way.
+             * If the handler requires the $event object, pass
+             * one as the 2nd object */
+            de.triggerEventHandler('click', null);
+            expect(comp.isCompliant).toEqual(true);
         });
     });
 }
