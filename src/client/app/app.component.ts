@@ -9,7 +9,7 @@ import { Component, ViewChild } from '@angular/core';
 import './operators';
 
 import { Logger } from 'angular2-logger/core';
-import { LoginComponent, LoginService } from './core/index';
+import { LoginModalComponent, LoginModalService } from './core/index';
 
 @Component({
     moduleId: module.id,
@@ -19,12 +19,11 @@ import { LoginComponent, LoginService } from './core/index';
 
 export class AppComponent {
     isCookieCompliant: boolean = false;
-    shouldShowLoginModal: boolean = false;
 
-    @ViewChild(LoginComponent) loginComponent: LoginComponent;
+    @ViewChild(LoginModalComponent) loginComponent: LoginModalComponent;
 
-    constructor(private logger: Logger, private loginService: LoginService) {
-        loginService.openModal$.subscribe(() => this.showSignInModal());
+    constructor(private logger: Logger, private loginModalService: LoginModalService) {
+        loginModalService.showModal$.subscribe(() => this.showLoginModal());
     }
 
     didComply(): void {
@@ -34,18 +33,18 @@ export class AppComponent {
         this.isCookieCompliant = true;
     }
 
-    showSignInModal(): void {
-        this.logger.debug('[AppComponent]: showSignInModal()');
+    showLoginModal(): void {
+        this.logger.debug('[AppComponent]: showLoginModal()');
 
         // TODO: You may have to move the 'gn-app' to the <body> tag to avoid doing this
         document.body.style.overflow = 'hidden';
 
-        this.loginComponent.isVisible = true;
+        this.loginComponent.isLoginModalVisible = true;
     }
 
-    closeLoginModal(): void {
-        this.logger.debug('[AppComponent]: closeLoginModal()');
+    hideLoginModal(): void {
+        this.logger.debug('[AppComponent]: hideLoginModal()');
         document.body.style.overflow = 'visible';
-        this.loginComponent.isVisible = false;
+        this.loginComponent.isLoginModalVisible = false;
     }
 }

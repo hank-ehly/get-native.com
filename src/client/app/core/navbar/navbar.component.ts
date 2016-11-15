@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
 
-import { LoginService } from '../login/login.service';
+import { LoginModalService } from '../login-modal/login-modal.service';
 
 @Component({
     moduleId: module.id,
@@ -11,12 +11,12 @@ import { LoginService } from '../login/login.service';
 })
 
 export class NavbarComponent {
-    constructor(private loginService: LoginService, private logger: Logger) {
+    constructor(private loginModalService: LoginModalService, private logger: Logger) {
     }
 
-    onShowSignInModal(event: any): void {
+    onShowLoginModal(event: any): void {
         this.logger.debug('[NavbarComponent]: requestShowLoginModal()');
         event.preventDefault();
-        this.loginService.openModal();
+        this.loginModalService.showModal();
     }
 }

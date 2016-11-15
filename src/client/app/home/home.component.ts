@@ -11,7 +11,7 @@ import { FeatureDescriptionService } from './feature-description/index';
 import { FeatureDescription } from './feature-description/feature-description';
 import { Logger } from 'angular2-logger/core';
 
-import { LoginService } from '../core/index';
+import { LoginModalService } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     smallDescriptions: FeatureDescription[] = [];
 
     constructor(private featureDescriptionService: FeatureDescriptionService,
-                private loginService: LoginService,
+                private loginModalService: LoginModalService,
                 private logger: Logger) {
     }
 
@@ -36,6 +36,6 @@ export class HomeComponent implements OnInit {
 
     onShowSignInModal(): void {
         this.logger.debug('[HomeComponent]: onShowSignInModal()');
-        this.loginService.openModal();
+        this.loginModalService.showModal();
     }
 }
