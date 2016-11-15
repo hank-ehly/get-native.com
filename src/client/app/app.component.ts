@@ -21,7 +21,7 @@ export class AppComponent {
     isCookieCompliant: boolean = false;
     shouldShowLoginModal: boolean = false;
 
-    @ViewChild(LoginComponent) private loginComponent: LoginComponent;
+    @ViewChild(LoginComponent) loginComponent: LoginComponent;
 
     constructor(private logger: Logger, private loginService: LoginService) {
         loginService.openModal$.subscribe(() => this.showSignInModal());
