@@ -6,7 +6,7 @@
  */
 
 export function main() {
-    it('should build without a problem', () => {
-        expect(true).toBeTruthy();
+    describe('1st tests', () => {
+        it('true is true', () => expect(true).toBe(true));
     });
 }
