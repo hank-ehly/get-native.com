@@ -15,15 +15,15 @@ import {
     SideMenuComponent,
     FooterComponent,
     CookieComplianceComponent,
-    LoginComponent,
-    LoginService
+    LoginModalComponent,
+    LoginModalService
 } from './index';
 
 @NgModule({
     imports: [RouterModule, CommonModule],
-    declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginComponent],
-    exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginComponent],
-    providers: [LoginService]
+    declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginModalComponent],
+    exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginModalComponent],
+    providers: [LoginModalService]
 })
 
 export class CoreModule {

@@ -1,5 +1,5 @@
 /**
- * login.component
+ * login-modal.component
  * get-native.com
  *
  * Created by henryehly on 2016/11/13.
@@ -10,9 +10,9 @@ import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-login',
-    templateUrl: 'login.component.html',
-    styleUrls: ['login.component.css'],
+    selector: 'gn-login-modal',
+    templateUrl: 'login-modal.component.html',
+    styleUrls: ['login-modal.component.css'],
     animations: [
         /* TODO: Because the overlay contains the modal, the 'darken' effects are affecting the 'present' effects */
         trigger('darken', [
@@ -50,17 +50,17 @@ import { Logger } from 'angular2-logger/core';
     ]
 })
 
-export class LoginComponent {
-    @Output() closeLoginModal = new EventEmitter();
-    isVisible: boolean = false;
+export class LoginModalComponent {
+    @Output() hideLoginModal = new EventEmitter();
+    isLoginModalVisible: boolean = false;
 
     constructor(private logger: Logger) {
     }
 
     onHideLoginModal(className: string): void {
         if (['click-off-overlay', 'close-button'].indexOf(className) !== -1) {
-            this.logger.debug(`[LoginComponent]: onHideLoginModal('${className}')`);
-            this.closeLoginModal.emit();
+            this.logger.debug(`[LoginModalComponent]: onHideLoginModal('${className}')`);
+            this.hideLoginModal.emit();
         }
     }
 }
