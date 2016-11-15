@@ -4,3 +4,5 @@
  *
  * Created by henryehly on 2016/11/13.
  */
+
+export function main() { }
