@@ -22,8 +22,9 @@ $small-feature-detail-color: #6c7680;
 /* Other */
 $large-feature-image-box-shadow: 0 6px 20px 0 rgba($black, 0.15);
 
-/* TODO: Positioning */
 .marketing-banner {
+  background: url("../../assets/images/home-background.jpg") no-repeat center;
+  background-size: cover;
   height: 100vh;
   position: relative;
   margin-top: -$navbar-height;
