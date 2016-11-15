@@ -6,6 +6,7 @@
  */
 
 import { Component } from '@angular/core';
+import { Config } from '../shared/index';
 
 @Component({
     moduleId: module.id,
@@ -15,7 +16,6 @@ import { Component } from '@angular/core';
 })
 
 export class PrivacyComponent {
-    // TODO: Move to global scope
-    moderator: string = 'getnative.moderator@gmail.com';
+    moderator: string = Config.moderator;
     lastEdited: string = '2016-11-07';
 }

@@ -8,6 +8,8 @@
 export interface EnvConfig {
     API?: string;
     ENV?: string;
+
+    moderator?: string;
 }
 
 export const Config: EnvConfig = JSON.parse('<%= ENV_CONFIG %>');

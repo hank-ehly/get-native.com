@@ -1,9 +1,5 @@
-<!-- TODO -->
 <gn-navbar></gn-navbar>
-
 <router-outlet></router-outlet>
 <gn-footer></gn-footer>
-
 <gn-cookie-compliance *ngIf="!isCookieCompliant" (didEndComplyAnimation)="didComply()"></gn-cookie-compliance>
-<!-- TODO: Create transition -->
 <gn-login-modal (hideLoginModal)="hideLoginModal()"></gn-login-modal>

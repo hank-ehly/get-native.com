@@ -39,5 +39,4 @@ export class ProjectConfig extends SeedConfig {
 
         this.ENABLE_SCSS = true;
     }
-
 }
