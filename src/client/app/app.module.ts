@@ -25,10 +25,9 @@ import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2
     declarations: [AppComponent],
     providers: [
         {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-        {
-            provide: LoggerOptions,
-            useValue: {level: LoggerLevel.LOG} // TODO: Set based on environment
-        }, Logger],
+        {provide: LoggerOptions, useValue: {level: LoggerLevel.LOG}},
+        Logger
+    ],
     bootstrap: [AppComponent]
 })
 

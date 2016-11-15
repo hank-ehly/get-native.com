@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Logger } from 'angular2-logger/core';
 
+import { Logger } from 'angular2-logger/core';
 import { LoginModalService } from '../login-modal/login-modal.service';
 
 @Component({
