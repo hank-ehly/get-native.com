@@ -10,13 +10,20 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import {
-    ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginComponent
+    ToolbarComponent,
+    NavbarComponent,
+    SideMenuComponent,
+    FooterComponent,
+    CookieComplianceComponent,
+    LoginComponent,
+    LoginService
 } from './index';
 
 @NgModule({
     imports: [RouterModule, CommonModule],
     declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginComponent],
-    exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginComponent]
+    exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginComponent],
+    providers: [LoginService]
 })
 
 export class CoreModule {

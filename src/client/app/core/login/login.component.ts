@@ -6,6 +6,7 @@
  */
 
 import { Component, Output, EventEmitter, style, keyframes, animate, transition, trigger } from '@angular/core';
+import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
@@ -13,7 +14,6 @@ import { Component, Output, EventEmitter, style, keyframes, animate, transition,
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.css'],
     animations: [
-
         /* TODO: Because the overlay contains the modal, the 'darken' effects are affecting the 'present' effects */
         trigger('darken', [
             transition(':enter', [
@@ -54,10 +54,12 @@ export class LoginComponent {
     @Output() closeLoginModal = new EventEmitter();
     isVisible: boolean = false;
 
-    // TODO: Find 'event' type
-    onHideLoginModal(event: any): void {
-        if (['click-off-overlay', 'close-button', 'close-button-img'].indexOf(event.target.className) !== -1) {
-            console.log('Close');
+    constructor(private logger: Logger) {
+    }
+
+    onHideLoginModal(className: string): void {
+        if (['click-off-overlay', 'close-button'].indexOf(className) !== -1) {
+            this.logger.debug(`[LoginComponent]: onHideLoginModal('${className}')`);
             this.closeLoginModal.emit();
         }
     }

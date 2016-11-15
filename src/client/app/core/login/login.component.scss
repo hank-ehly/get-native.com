@@ -9,11 +9,8 @@
   width: 100%;
   height: 100%;
   z-index: 10001;
-  background: #000;
   background: rgba($black, 0.8);
-  background: radial-gradient(50% 50%, ellipse closest-corner, rgba($black, 0.45) 1%, rgba($black, 0.8) 100%);
-  filter: alpha(opacity=80);
-  transition: 200ms opacity ease; // TODO: Angular animation
+  background: radial-gradient(ellipse closest-side, rgba($black, 0.7) 1%, rgba($black, 0.8) 100%);
   overflow-y: scroll;
   display: block;
   opacity: 1;
@@ -35,18 +32,14 @@
   justify-content: flex-end;
 
   button {
-    padding: 0;
+    align-self: flex-start;
+    background: transparent url("../../../assets/icons/close.svg");
     border: 0;
-    height: 22px;
-    width: 22px;
-    background: transparent;
     cursor: pointer;
+    padding: 0;
+    height: 22px;
     outline: none;
-
-    img {
-      width: 22px;
-      height: 22px;
-    }
+    width: 22px;
   }
 }
 

@@ -5,17 +5,16 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import './operators';
 
 import { Logger } from 'angular2-logger/core';
-import { LoginComponent } from './core/login/login.component';
+import { LoginComponent, LoginService } from './core/index';
 
 @Component({
     moduleId: module.id,
     selector: 'gn-app',
-    templateUrl: 'app.component.html',
-    encapsulation: ViewEncapsulation.None,
+    templateUrl: 'app.component.html'
 })
 
 export class AppComponent {
@@ -24,7 +23,8 @@ export class AppComponent {
 
     @ViewChild(LoginComponent) private loginComponent: LoginComponent;
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private loginService: LoginService) {
+        loginService.openModal$.subscribe(() => this.showSignInModal());
     }
 
     didComply(): void {

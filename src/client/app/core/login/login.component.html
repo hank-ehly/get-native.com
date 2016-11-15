@@ -1,10 +1,8 @@
-<div class="click-off-overlay" (click)="onHideLoginModal($event)" *ngIf="isVisible" [@darken]="isVisible">
+<div class="click-off-overlay" (click)="onHideLoginModal($event.target.className)" *ngIf="isVisible" [@darken]="isVisible">
     <div class="modal-wrapper" [@present]="isVisible">
 
         <div class="close-button-wrapper">
-            <button class="close-button">
-                <img class="close-button-img" src="../../../assets/icons/close.svg" alt="close">
-            </button>
+            <button class="close-button"></button>
         </div>
 
         <div class="modal">

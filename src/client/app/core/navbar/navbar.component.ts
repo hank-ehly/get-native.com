@@ -1,4 +1,7 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { Logger } from 'angular2-logger/core';
+
+import { LoginService } from '../login/login.service';
 
 @Component({
     moduleId: module.id,
@@ -8,11 +11,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class NavbarComponent {
-    @Output() showSignInModal = new EventEmitter<any>();
+    constructor(private loginService: LoginService, private logger: Logger) {
+    }
 
     onShowSignInModal(event: any): void {
-        console.log('[NavbarComponent]: requestShowLoginModal()'); // TODO: Logger service
+        this.logger.debug('[NavbarComponent]: requestShowLoginModal()');
         event.preventDefault();
-        this.showSignInModal.emit();
+        this.loginService.openModal();
     }
 }
