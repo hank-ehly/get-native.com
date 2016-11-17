@@ -12,7 +12,7 @@
     <section class="large-features">
         <ul *ngFor="let d of largeDescriptions; let odd = odd;" class="feature">
             <li class="feature-image-list-item" [style.order]="odd ? 2 : 1">
-                <img src="../../assets/mock/{{ d.thumbnail }}" alt="{{ d.title }}" class="feature-image">
+                <img src="http://placehold.it/435x267" class="feature-image">
             </li>
             <li [style.order]="odd ? 1 : 2">
                 <h3 class="feature-title">{{ d.title }}</h3>
