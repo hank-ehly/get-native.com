@@ -11,7 +11,17 @@ describe('CookieCompliance', () => {
         browser.get('/');
     });
 
-    it('should display the cookie compliance popup', () => {
-        expect(element(by.css('.cookie-compliance-dialog')).isPresent()).toEqual(true);
+    it('should be able to close the popup by pressing a button', () => {
+        let dialog = $('.cookie-compliance-dialog');
+        expect(dialog.isPresent()).toBe(true);
+
+        //noinspection TypeScriptUnresolvedFunction
+        dialog.$('.comply-trigger').click();
+
+        // TODO: Disabling animations is preferable to sleep()
+        //noinspection TypeScriptUnresolvedFunction
+        browser.driver.sleep(250);
+
+        expect(dialog.isPresent()).toBe(false);
     });
 });
