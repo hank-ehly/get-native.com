@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/11.
  */
 
-import { Component, trigger, keyframes, OnDestroy, OnInit, style, animate, transition, Input } from '@angular/core';
+import { Component, trigger, keyframes, style, animate, transition, Input } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
 
 @Component({
@@ -33,18 +33,10 @@ import { Logger } from 'angular2-logger/core';
     ]
 })
 
-export class CookieComplianceComponent implements OnInit, OnDestroy {
+export class CookieComplianceComponent {
     @Input() isVisible: boolean;
 
     constructor(private logger: Logger) {
-    }
-
-    ngOnInit(): void {
-        this.logger.debug('[CookieComplianceComponent]: ngOnInit()');
-    }
-
-    ngOnDestroy(): void {
-        this.logger.debug('[CookieComplianceComponent]: ngOnDestroy()');
     }
 
     onClose(): void {

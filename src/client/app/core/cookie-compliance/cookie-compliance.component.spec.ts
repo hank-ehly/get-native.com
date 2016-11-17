@@ -38,8 +38,9 @@ export function main() {
                 providers: [{provide: Logger, useValue: loggerStub}]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(CookieComplianceComponent);
-                fixture.detectChanges();
                 comp = fixture.componentInstance;
+                comp.isVisible = true;
+                fixture.detectChanges();
             });
         }));
 
@@ -59,19 +60,15 @@ export function main() {
         });
 
         it('should become compliant after clicking close button', () => {
-            // comp.didEndComplyAnimation.subscribe();
-
-
-
-
             de = getDebugEl('.comply-trigger');
-            expect(comp.isCompliant).toEqual(false);
+            expect(comp.isVisible).toEqual(true);
 
             /* Note: (click) and such are triggered this way.
              * If the handler requires the $event object, pass
              * one as the 2nd object */
             de.triggerEventHandler('click', null);
-            expect(comp.isCompliant).toEqual(true);
+
+            expect(comp.isVisible).toEqual(false);
         });
     });
 }
