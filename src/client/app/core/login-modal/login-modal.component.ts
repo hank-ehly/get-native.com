@@ -61,14 +61,16 @@ export class LoginModalComponent implements OnInit {
         this.loginModalService.showModal$.subscribe(() => {
             this.isVisible = true;
 
-            /* TODO: You're not doing this correctly */
-            // document.body.style.overflowY = 'scroll';
-            // document.body.style.overflowX = 'hidden';
+            // Note: Setting the document.body overflow to 'hidden' will inhibit the user from scrolling up and down the
+            // page while the overlay is visible; however, it causes an unpleasant 'jump' effect because the scroll-bar
+            // disappears when the <body> overflow is set to 'hidden.'
         });
     }
 
-    onClose(): void {
-        this.isVisible = false;
-        /* TODO: Return overflow to original value */
+    onClose(e: any): void {
+        this.logger.debug(e.target.className);
+        if (['close', 'overlay'].indexOf(e.target.className) !== -1) {
+            this.isVisible = false;
+        }
     }
 }
