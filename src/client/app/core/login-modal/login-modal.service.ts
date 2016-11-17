@@ -10,7 +10,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class LoginModalService {
-    showModalSource = new Subject<string>();
+    showModalSource = new Subject();
     showModal$ = this.showModalSource.asObservable();
 
     showModal(): void {

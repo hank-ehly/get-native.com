@@ -5,8 +5,10 @@
  * Created by henryehly on 2016/11/13.
  */
 
-import { Component, Output, EventEmitter, style, keyframes, animate, transition, trigger } from '@angular/core';
+import { Component, style, keyframes, animate, transition, trigger, Input, OnInit } from '@angular/core';
+
 import { Logger } from 'angular2-logger/core';
+import { LoginModalService } from './login-modal.service';
 
 @Component({
     moduleId: module.id,
@@ -14,7 +16,6 @@ import { Logger } from 'angular2-logger/core';
     templateUrl: 'login-modal.component.html',
     styleUrls: ['login-modal.component.css'],
     animations: [
-        /* TODO: Because the overlay contains the modal, the 'darken' effects are affecting the 'present' effects */
         trigger('darken', [
             transition(':enter', [
                 animate(200, keyframes([
@@ -31,7 +32,7 @@ import { Logger } from 'angular2-logger/core';
                 ]))
             ])
         ]),
-        trigger('present', [
+        trigger('fadeInOut', [
             transition(':enter', [
                 animate(200, keyframes([
                     style({transform: 'scale(0.9)', offset: 0}),
@@ -50,17 +51,24 @@ import { Logger } from 'angular2-logger/core';
     ]
 })
 
-export class LoginModalComponent {
-    @Output() hideLoginModal = new EventEmitter();
-    isLoginModalVisible: boolean = false;
+export class LoginModalComponent implements OnInit {
+    @Input() isVisible: boolean;
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private loginModalService: LoginModalService) {
     }
 
-    onHideLoginModal(className: string): void {
-        if (['click-off-overlay', 'close-button'].indexOf(className) !== -1) {
-            this.logger.debug(`[LoginModalComponent]: onHideLoginModal('${className}')`);
-            this.hideLoginModal.emit();
-        }
+    ngOnInit(): void {
+        this.loginModalService.showModal$.subscribe(() => {
+            this.isVisible = true;
+
+            /* TODO: You're not doing this correctly */
+            // document.body.style.overflowY = 'scroll';
+            // document.body.style.overflowX = 'hidden';
+        });
+    }
+
+    onClose(): void {
+        this.isVisible = false;
+        /* TODO: Return overflow to original value */
     }
 }

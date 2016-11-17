@@ -1,36 +1,33 @@
-<div class="click-off-overlay" (click)="onHideLoginModal($event.target.className)" *ngIf="isLoginModalVisible"
-     [@darken]="isLoginModalVisible">
-    <div class="modal-wrapper" [@present]="isLoginModalVisible">
+<div class="modal-wrapper" [@fadeInOut] *ngIf="isVisible">
+    <div class="close-button-wrapper">
+        <button class="close-button" (click)="onClose()"></button>
+    </div>
 
-        <div class="close-button-wrapper">
-            <button class="close-button"></button>
-        </div>
+    <div class="modal">
+        <header>
+            <img src="../../../assets/mock/pokeball.png" alt="logo">
+        </header>
 
-        <div class="modal">
-            <header>
-                <img src="../../../assets/mock/pokeball.png" alt="logo">
-            </header>
+        <p>Sign in to Get Native with any of the following providers.</p>
 
-            <p>Sign in to Get Native with any of the following providers.</p>
-
-            <section>
-                <button class="facebook">
-                    <img src="../../../assets/icons/social-facebook.svg" alt="facebook">
-                    <span>Continue with Facebook</span>
-                </button>
-                <button class="twitter">
-                    <img src="../../../assets/icons/social-twitter.svg" alt="twitter">
-                    <span>Continue with Twitter</span>
-                </button>
-                <button class="google">
-                    <img src="../../../assets/icons/social-google.svg" alt="gmail">
-                    <span>Continue with Gmail</span>
-                </button>
-            </section>
-            <footer>
-                <a href="">Sign in with email</a>
-                <a href="">Create a new account</a>
-            </footer>
-        </div>
+        <section>
+            <button class="facebook">
+                <img src="../../../assets/icons/social-facebook.svg" alt="facebook">
+                <span>Continue with Facebook</span>
+            </button>
+            <button class="twitter">
+                <img src="../../../assets/icons/social-twitter.svg" alt="twitter">
+                <span>Continue with Twitter</span>
+            </button>
+            <button class="google">
+                <img src="../../../assets/icons/social-google.svg" alt="gmail">
+                <span>Continue with Gmail</span>
+            </button>
+        </section>
+        <footer>
+            <a href="">Sign in with email</a>
+            <a href="">Create a new account</a>
+        </footer>
     </div>
 </div>
+<div class="click-off-overlay" *ngIf="isVisible" [@darken] (click)="onClose()"></div>
