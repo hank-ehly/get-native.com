@@ -13,8 +13,7 @@ import { CookieComplianceComponent } from './cookie-compliance.component';
 import { Logger } from 'angular2-logger/core';
 
 let loggerStub = {
-    debug: () => {
-    }
+    debug(): void {}
 };
 
 export function main() {
