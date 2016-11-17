@@ -9,10 +9,10 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { Subject } from 'rxjs/Subject';
 
-import { LoginModalComponent } from './login-modal.component';
+import { LoginModalComponent, LoginModalService } from './index';
+import { SpecUtil } from '../../shared/index';
+
 import { Logger } from 'angular2-logger/core';
-import { LoginModalService } from './login-modal.service';
-import { SpecUtil } from '../../shared/spec-util/spec-util';
 
 let stubLogger = {
     debug(message?: any): void {
