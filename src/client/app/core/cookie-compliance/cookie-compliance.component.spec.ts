@@ -6,14 +6,16 @@
  */
 
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { CookieComplianceComponent } from './cookie-compliance.component';
+import { CookieComplianceComponent } from './index';
+import { SpecUtil } from '../../shared/index';
+
 import { Logger } from 'angular2-logger/core';
 
 let loggerStub = {
-    debug(): void {}
+    debug(): void {
+    }
 };
 
 export function main() {
@@ -21,14 +23,7 @@ export function main() {
     let fixture: ComponentFixture<CookieComplianceComponent>;
     let de: DebugElement;
     let el: HTMLElement;
-
-    function getDebugEl(selector: string): DebugElement {
-        return fixture.debugElement.query(By.css(selector));
-    }
-
-    function getNativeEl(selector: string): HTMLElement {
-        return getDebugEl(selector).nativeElement;
-    }
+    let util: SpecUtil;
 
     describe('CookieComplianceComponent', () => {
         beforeEach(async(() => {
@@ -37,6 +32,7 @@ export function main() {
                 providers: [{provide: Logger, useValue: loggerStub}]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(CookieComplianceComponent);
+                util = new SpecUtil(fixture);
                 comp = fixture.componentInstance;
                 comp.isVisible = true;
                 fixture.detectChanges();
@@ -44,22 +40,22 @@ export function main() {
         }));
 
         it('should display a detail message', () => {
-            el = getNativeEl('.compliance-detail');
+            el = util.getNativeEl('.compliance-detail');
             expect(el.textContent.length).toBeGreaterThan(0);
         });
 
         it('should display a link to TOS', () => {
-            el = getNativeEl('.tos-link');
+            el = util.getNativeEl('.tos-link');
             expect(el.textContent.length).toBeGreaterThan(0);
         });
 
         it('should display a close button', () => {
-            el = getNativeEl('.comply-trigger');
+            el = util.getNativeEl('.comply-trigger');
             expect(el.textContent.length).toBeGreaterThan(0);
         });
 
         it('should become compliant after clicking close button', () => {
-            de = getDebugEl('.comply-trigger');
+            de = util.getDebugEl('.comply-trigger');
             expect(comp.isVisible).toEqual(true);
 
             /* Note: (click) and such are triggered this way.
