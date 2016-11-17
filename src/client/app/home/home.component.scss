@@ -9,7 +9,7 @@ $small-feature-width: ($main-width/3) - $padding-unit-regular;
 $small-feature-icon-width: pu(7);
 $small-feature-icon-height: pu(7);
 $large-feature-item-width: ($main-width / 2) - $padding-unit-regular;
-$large-feature-image-width: $main-width / 2;
+$large-feature-image-width: ($main-width / 2) - (pu(3) / 2);
 $large-feature-margin-top: pu(8);
 
 /* Colors */
@@ -78,6 +78,7 @@ $large-feature-image-box-shadow: 0 6px 20px 0 rgba($black, 0.15);
 
   .feature .feature-image {
     box-shadow: $large-feature-image-box-shadow;
+    height: 267px;
     width: $large-feature-image-width;
   }
 
