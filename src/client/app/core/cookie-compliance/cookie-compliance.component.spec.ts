@@ -59,6 +59,11 @@ export function main() {
         });
 
         it('should become compliant after clicking close button', () => {
+            // comp.didEndComplyAnimation.subscribe();
+
+
+
+
             de = getDebugEl('.comply-trigger');
             expect(comp.isCompliant).toEqual(false);
 

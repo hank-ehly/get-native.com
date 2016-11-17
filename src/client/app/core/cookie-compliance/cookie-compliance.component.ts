@@ -5,9 +5,7 @@
  * Created by henryehly on 2016/11/11.
  */
 
-import {
-    Component, Output, EventEmitter, animate, style, transition, trigger, keyframes, AnimationTransitionEvent
-} from '@angular/core';
+import { Component, trigger, keyframes, OnDestroy, OnInit, style, animate, transition, Input } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
 
 @Component({
@@ -16,7 +14,14 @@ import { Logger } from 'angular2-logger/core';
     templateUrl: 'cookie-compliance.component.html',
     styleUrls: ['cookie-compliance.component.css'],
     animations: [
-        trigger('comply', [
+        trigger('enterUpLeaveDown', [
+            transition(':enter', [
+                animate(300, keyframes([
+                    style({opacity: 0, transform: 'translateY(100%)', offset: 0}),
+                    style({opacity: 1, transform: 'translateY(-10px)', offset: 0.7}),
+                    style({opacity: 1, transform: 'translateY(0)', offset: 1.0})
+                ]))
+            ]),
             transition(':leave', [
                 animate(200, keyframes([
                     style({opacity: 1, transform: 'translateY(0)', offset: 0}),
@@ -28,20 +33,22 @@ import { Logger } from 'angular2-logger/core';
     ]
 })
 
-export class CookieComplianceComponent {
-    @Output() didEndComplyAnimation = new EventEmitter(); // TODO: Test
-    isCompliant: boolean = false;
+export class CookieComplianceComponent implements OnInit, OnDestroy {
+    @Input() isVisible: boolean;
 
-    constructor(private logger: Logger) {}
-
-    close() {
-        this.isCompliant = true;
+    constructor(private logger: Logger) {
     }
 
-    complyAnimationDone(event: AnimationTransitionEvent): void {
-        if (event.toState === 'void') {
-            this.logger.debug('[CookieComplianceComponent]: complyAnimationDone()', event);
-            this.didEndComplyAnimation.emit();
-        }
+    ngOnInit(): void {
+        this.logger.debug('[CookieComplianceComponent]: ngOnInit()');
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug('[CookieComplianceComponent]: ngOnDestroy()');
+    }
+
+    onClose(): void {
+        this.logger.debug('[CookieComplianceComponent]: onClose()');
+        this.isVisible = false;
     }
 }
