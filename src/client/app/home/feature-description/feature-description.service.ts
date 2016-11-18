@@ -24,7 +24,7 @@ export class FeatureDescriptionService {
                     learners and those interested in other cultures. Have an idea for an interesting topic? We'd love to 
                     hear what you think.`
                 ],
-                thumbnail: 'screenshot-1.png'
+                thumbnail: 'feature01.jpg'
             },
             {
                 title: 'Study like the pros',
@@ -37,7 +37,7 @@ export class FeatureDescriptionService {
                     video that you'd like to study, specify the amount of time that you'd like to study and Get Native 
                     will guide you through a study routine designed to help you improve your pronunciation in fluidity 
                     in the target language.`],
-                thumbnail: 'screenshot-2.png'
+                thumbnail: 'feature02.jpg'
             },
             {
                 title: 'A tool for advanced language learners',
@@ -50,7 +50,7 @@ export class FeatureDescriptionService {
                     `As a language learner myself, I often wished they were more language learning materials focused on 
                     native like pronunciation and vocabulary use. Get native gives you the tools that you need to sound 
                     more native-like and use more natural phrases and collocations.`],
-                thumbnail: 'screenshot-3.png'
+                thumbnail: 'feature03.jpg'
             }
         ];
     }
