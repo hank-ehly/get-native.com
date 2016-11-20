@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import './operators';
 
 import { Logger } from 'angular2-logger/core';
@@ -23,6 +23,10 @@ export class AppComponent implements OnInit {
 
     constructor(private logger: Logger, private localStorageService: LocalStorageService) {
         this.showLoginModal = false;
+    }
+
+    @HostListener('window:storage', ['$event']) onStorageEvent(ev: StorageEvent) {
+        this.localStorageService.broadcastStorageEvent(ev);
     }
 
     ngOnInit(): void {

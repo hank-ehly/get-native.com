@@ -8,7 +8,12 @@
 import { Component, trigger, keyframes, style, animate, transition, Input, OnInit } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
 
-import { LocalStorageService, kAcceptLocalStorage, LocalStorageProtocol, LocalStorageChange } from '../local-storage/index';
+import {
+    LocalStorageService,
+    kAcceptLocalStorage,
+    LocalStorageProtocol,
+    LocalStorageItem
+} from '../local-storage/index';
 
 @Component({
     moduleId: module.id,
@@ -42,15 +47,29 @@ export class CookieComplianceComponent implements OnInit, LocalStorageProtocol {
     }
 
     ngOnInit(): void {
-        this.localStorageService.setItem$.subscribe(this.localStorageValueChanged.bind(this));
+        this.localStorageService.setItem$.subscribe(this.didSetLocalStorageItem.bind(this));
+        this.localStorageService.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this));
+        this.localStorageService.clearSource$.subscribe(this.didClearStorage.bind(this));
     }
 
-    localStorageValueChanged(change: LocalStorageChange): void {
-        if (change['key'] !== kAcceptLocalStorage) return;
+    didSetLocalStorageItem(item: LocalStorageItem): void {
+        if (item['key'] !== kAcceptLocalStorage) return;
 
-        let isCompliant: boolean = change['data'];
+        let isCompliant = item['data'];
         this.logger.debug(`[CookieComplianceComponent]: localStorageValueChanged(${isCompliant})`);
         this.isVisible = !isCompliant;
+    }
+
+    didReceiveStorageEvent(e: StorageEvent): void {
+        if (e.key !== kAcceptLocalStorage) return;
+
+        let isCompliant = e.newValue === 'true';
+        this.logger.debug(`[CookieComplianceComponent]: didReceiveStorageEvent()`, e);
+        this.isVisible = !isCompliant;
+    }
+
+    didClearStorage(): void {
+        this.isVisible = true;
     }
 
     onClose(): void {

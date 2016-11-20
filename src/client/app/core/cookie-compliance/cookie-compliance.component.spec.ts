@@ -7,14 +7,16 @@
 
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { CookieComplianceComponent } from './index';
 import { SpecUtil } from '../../shared/index';
+import { LocalStorageService } from '../index';
 
 import { Logger } from 'angular2-logger/core';
-import { RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
-import { LocalStorageService } from '../index';
+import { kAcceptLocalStorage } from '../local-storage/local-storage-keys';
+// import { Observable } from 'rxjs/Observable';
 
 /* TODO: Move to 'STUBS' file */
 let loggerStub = {
@@ -25,6 +27,18 @@ let loggerStub = {
 /* TODO: Move to 'STUBS' file */
 let localStorageServiceStub = {
     setItem(key: string, data: any): void {
+    },
+    setItem$: {
+        subscribe(): void {
+        }
+    },
+    storageEvent$: {
+        subscribe(): void {
+        }
+    },
+    clearSource$: {
+        subscribe(): void {
+        }
     }
 };
 
@@ -69,15 +83,10 @@ export function main() {
             expect(el.textContent.length).toBeGreaterThan(0);
         });
 
-        it('should become compliant after clicking close button', () => {
+        it('should become compliant after receiving notification', () => {
             de = util.getDebugEl('.comply-trigger');
             expect(comp.isVisible).toEqual(true);
-
-            /* Note: (click) and such are triggered this way.
-             * If the handler requires the $event object, pass
-             * one as the 2nd object */
-            de.triggerEventHandler('click', null);
-
+            comp.didSetLocalStorageItem({key: kAcceptLocalStorage, data: true});
             expect(comp.isVisible).toEqual(false);
         });
     });

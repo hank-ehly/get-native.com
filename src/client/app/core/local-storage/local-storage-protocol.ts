@@ -5,8 +5,10 @@
  * Created by henryehly on 2016/11/20.
  */
 
-import { LocalStorageChange } from './index';
+import { LocalStorageItem } from './index';
 
 export interface LocalStorageProtocol {
-    localStorageValueChanged(x: LocalStorageChange): void;
+    didSetLocalStorageItem(item: LocalStorageItem): void;
+    didReceiveStorageEvent(event: StorageEvent): void;
+    didClearStorage(): void;
 }
