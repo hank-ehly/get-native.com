@@ -7,7 +7,7 @@
 
 import { Component, trigger, keyframes, style, animate, transition, Input } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
-import { LocalStorageService } from '../local-storage/local-storage.service';
+import { LocalStorageService } from '../local-storage/index';
 
 @Component({
     moduleId: module.id,
@@ -37,12 +37,14 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
 export class CookieComplianceComponent {
     @Input() isVisible: boolean;
 
-    constructor(private logger: Logger /*private localStorageService: LocalStorageService*/) {
+    constructor(private logger: Logger, private localStorageService: LocalStorageService) {
     }
 
     onClose(): void {
         this.logger.debug('[CookieComplianceComponent]: onClose()');
         this.isVisible = false;
-        // this.localStorageService.setItem('accept-cookies', true);
+
+        /* TODO: Replace hard-coded key with constant val */
+        this.localStorageService.setItem('accept-local-storage', true);
     }
 }

@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import './operators';
 
 import { Logger } from 'angular2-logger/core';
+import { LocalStorageService } from './core/index';
 
 @Component({
     moduleId: module.id,
@@ -20,12 +21,11 @@ export class AppComponent implements OnInit {
     showCookieComplianceDialog: boolean;
     showLoginModal: boolean;
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private localStorageService: LocalStorageService) {
         this.showLoginModal = false;
     }
 
     ngOnInit(): void {
-        /* TODO: Determine via service */
-        this.showCookieComplianceDialog = true;
+        this.showCookieComplianceDialog = !this.localStorageService.getItem('accept-local-storage');
     }
 }
