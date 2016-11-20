@@ -9,15 +9,31 @@ import { Injectable } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
 import { Subject } from 'rxjs/Subject';
 
+import { LocalStorageItem } from './local-storage-item';
+
 @Injectable()
 
 /* TODO: Encrypt all stored data */
 /* TODO: Add EncryptionService */
 export class LocalStorageService {
-    setItemSource = new Subject<any>(); // TODO: Replace <any> with type
-    setItem$ = this.setItemSource.asObservable(); // TODO: Test via component that uses this property
+    setItemSource = new Subject<LocalStorageItem>();
+    setItem$ = this.setItemSource.asObservable();
+
+    storageEventSource = new Subject<StorageEvent>();
+    storageEvent$ = this.storageEventSource.asObservable();
+
+    clearSource = new Subject();
+    clearSource$ = this.clearSource.asObservable();
 
     constructor(private logger: Logger) {
+    }
+
+    broadcastStorageEvent(ev: StorageEvent): void {
+        if (ev.key === null && ev.newValue === null && ev.oldValue === null) {
+            this.clearSource.next();
+        } else {
+            this.storageEventSource.next(ev);
+        }
     }
 
     get length(): number {
@@ -28,7 +44,7 @@ export class LocalStorageService {
 
     key(index: number): string {
         let retVal = localStorage.key(index);
-        this.logger.debug(`[LocalStorageService]: key(${index}) - ${retVal}`);
+        this.logger.debug(`[LocalStorageService]: key('${index}) - ${retVal}'`);
         return retVal;
     }
 
@@ -38,7 +54,7 @@ export class LocalStorageService {
     }
 
     setItem(key: string, data: any): void {
-        this.logger.debug(`[LocalStorageService]: setItem(${key}, ${data})`);
+        this.logger.debug(`[LocalStorageService]: setItem('${key}, ${data})'`);
 
         if (data === null || data === undefined) {
             /* TODO: ErrorService */
@@ -53,7 +69,7 @@ export class LocalStorageService {
 
     getItem(key: string): any {
         let retVal = localStorage.getItem(key);
-        this.logger.debug(`[LocalStorageService]: getItem(${key}) - ${retVal}`);
+        this.logger.debug(`[LocalStorageService]: getItem('${key}) - ${retVal}'`);
 
         try {
             return JSON.parse(retVal);
@@ -64,12 +80,12 @@ export class LocalStorageService {
 
     hasItem(key: string): boolean {
         let retVal = this.getItem(key) !== null;
-        this.logger.debug(`[LocalStorageService]: hasItem(${key}) - ${retVal}`);
+        this.logger.debug(`[LocalStorageService]: hasItem('${key}) - ${retVal}'`);
         return retVal;
     }
 
     removeItem(key: string): void {
-        this.logger.debug(`[LocalStorageService]: removeItem(${key})`);
+        this.logger.debug(`[LocalStorageService]: removeItem('${key}')`);
         return localStorage.removeItem(key);
     }
 }
