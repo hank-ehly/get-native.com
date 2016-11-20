@@ -14,9 +14,17 @@ import { SpecUtil } from '../../shared/index';
 import { Logger } from 'angular2-logger/core';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { LocalStorageService } from '../index';
 
+/* TODO: Move to 'STUBS' file */
 let loggerStub = {
     debug(): void {
+    }
+};
+
+/* TODO: Move to 'STUBS' file */
+let localStorageServiceStub = {
+    setItem(key: string, data: any): void {
     }
 };
 
@@ -34,7 +42,8 @@ export function main() {
                 declarations: [CookieComplianceComponent],
                 providers: [
                     {provide: Logger, useValue: loggerStub},
-                    {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'}
+                    {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
+                    {provide: LocalStorageService, useValue: localStorageServiceStub}
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(CookieComplianceComponent);
