@@ -8,8 +8,7 @@
 import { Component, trigger, keyframes, style, animate, transition, Input, OnInit } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
 
-import { LocalStorageService, kAcceptLocalStorage } from '../local-storage/index';
-import { LocalStorageProtocol } from '../local-storage/local-storage-protocol';
+import { LocalStorageService, kAcceptLocalStorage, LocalStorageProtocol, LocalStorageChange } from '../local-storage/index';
 
 @Component({
     moduleId: module.id,
@@ -46,15 +45,11 @@ export class CookieComplianceComponent implements OnInit, LocalStorageProtocol {
         this.localStorageService.setItem$.subscribe(this.localStorageValueChanged.bind(this));
     }
 
-    localStorageValueChanged(change: any): void {
-        if (change['key'] === null || change['key'] === undefined || change['key'] !== kAcceptLocalStorage) {
-            /* TODO: Error service */
-            throw new Error('Invalid key.');
-        }
+    localStorageValueChanged(change: LocalStorageChange): void {
+        if (change['key'] !== kAcceptLocalStorage) return;
 
         let isCompliant: boolean = change['data'];
-
-        this.logger.debug(`[CookieComplianceComponent]: acceptLocalStorageValueChanged(${isCompliant})`);
+        this.logger.debug(`[CookieComplianceComponent]: localStorageValueChanged(${isCompliant})`);
         this.isVisible = !isCompliant;
     }
 

@@ -5,6 +5,8 @@
  * Created by henryehly on 2016/11/20.
  */
 
+import { LocalStorageChange } from './index';
+
 export interface LocalStorageProtocol {
-    localStorageValueChanged(x: any): void;
+    localStorageValueChanged(x: LocalStorageChange): void;
 }
