@@ -1,6 +1,12 @@
 {
-  "extends": "./tools/config/seed.tslint.json",
-  "rules": {
-      "no-empty": false
-  }
+    "extends": "./tools/config/seed.tslint.json",
+    "rules": {
+        "no-empty": false,
+        "one-line": [
+            true,
+            "check-open-brace",
+            "check-catch",
+            "check-whitespace"
+        ]
+    }
 }

@@ -16,14 +16,15 @@ import {
     FooterComponent,
     CookieComplianceComponent,
     LoginModalComponent,
-    LoginModalService
+    LoginModalService,
+    LocalStorageService
 } from './index';
 
 @NgModule({
     imports: [RouterModule, CommonModule],
     declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginModalComponent],
     exports: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent, LoginModalComponent],
-    providers: [LoginModalService]
+    providers: [LoginModalService, LocalStorageService]
 })
 
 export class CoreModule {

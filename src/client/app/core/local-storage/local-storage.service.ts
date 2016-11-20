@@ -7,10 +7,16 @@
 
 import { Injectable } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 
+/* TODO: Encrypt all stored data */
+/* TODO: Add EncryptionService */
 export class LocalStorageService {
+    setItemSource = new Subject<any>(); // TODO: Replace <any> with type
+    setItem$ = this.setItemSource.asObservable(); // TODO: Test via component that uses this property
+
     constructor(private logger: Logger) {
     }
 
@@ -31,15 +37,30 @@ export class LocalStorageService {
         return localStorage.clear();
     }
 
-    setItem(key: string, data: string): void {
+    /* TODO: Be able to input whatever object you want */
+    setItem(key: string, data: any): void {
         this.logger.debug(`[LocalStorageService]: setItem(${key}, ${data})`);
-        return localStorage.setItem(key, data);
+
+        if (data === null || data === undefined) {
+            /* TODO: ErrorService */
+            throw new Error('Cannot store a null or undefined value.');
+        } else if (typeof data !== 'string') {
+            data = JSON.stringify(data);
+        }
+
+        localStorage.setItem(key, data);
+        this.setItemSource.next({key: key, data: data});
     }
 
     getItem(key: string): any {
         let retVal = localStorage.getItem(key);
         this.logger.debug(`[LocalStorageService]: getItem(${key}) - ${retVal}`);
-        return retVal;
+
+        try {
+            return JSON.parse(retVal);
+        } catch (e) {
+            return retVal;
+        }
     }
 
     hasItem(key: string): boolean {
