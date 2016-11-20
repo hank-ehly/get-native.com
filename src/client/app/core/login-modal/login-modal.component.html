@@ -5,32 +5,58 @@
             <button class="close" (click)="onClose($event)"></button>
         </div>
 
-        <div class="modal">
-            <header>
-                <img src="../../../assets/mock/pokeball.png" alt="logo">
-            </header>
+        <div [ngSwitch]="getVisibleView()">
+            <div class="modal modal-social" *ngSwitchDefault>
+                <header>
+                    <img src="../../../assets/mock/pokeball.png" alt="logo">
+                </header>
+                <p>Sign in to Get Native with any of the following providers.</p>
+                <section>
+                    <button class="facebook">
+                        <img src="../../../assets/icons/social-facebook.svg" alt="facebook">
+                        <span>Continue with Facebook</span>
+                    </button>
+                    <button class="twitter">
+                        <img src="../../../assets/icons/social-twitter.svg" alt="twitter">
+                        <span>Continue with Twitter</span>
+                    </button>
+                    <button class="google">
+                        <img src="../../../assets/icons/social-google.svg" alt="gmail">
+                        <span>Continue with Gmail</span>
+                    </button>
+                </section>
+                <footer>
+                    <span (click)="setVisibleView('email')">Sign in with email</span>
+                    <span>Create a new account</span>
+                </footer>
+            </div>
 
-            <p>Sign in to Get Native with any of the following providers.</p>
+            <div class="modal modal-email" *ngSwitchCase="'email'">
+                <header>
+                    <p>Enter your email address and password to sign in.</p>
+                </header>
 
-            <section>
-                <button class="facebook">
-                    <img src="../../../assets/icons/social-facebook.svg" alt="facebook">
-                    <span>Continue with Facebook</span>
-                </button>
-                <button class="twitter">
-                    <img src="../../../assets/icons/social-twitter.svg" alt="twitter">
-                    <span>Continue with Twitter</span>
-                </button>
-                <button class="google">
-                    <img src="../../../assets/icons/social-google.svg" alt="gmail">
-                    <span>Continue with Gmail</span>
-                </button>
-            </section>
-            <footer>
-                <a href="">Sign in with email</a>
-                <a href="">Create a new account</a>
-            </footer>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input id="username" type="text" tabindex="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" tabindex="2">
+                    </div>
+
+                    <input type="submit" value="SIGN IN" tabindex="3">
+                </form>
+
+                <footer>
+                    <span (click)="setVisibleView(null)">Sign in via Facebook, Twitter or Google</span>
+                    <span>Create a new account</span>
+                </footer>
+            </div>
         </div>
+
     </div>
 
 </div>

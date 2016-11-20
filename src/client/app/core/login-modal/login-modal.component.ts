@@ -53,6 +53,16 @@ import { LoginModalService } from './login-modal.service';
 
 export class LoginModalComponent implements OnInit {
     @Input() isVisible: boolean;
+    private _visibleView: string;
+
+    /* TODO: Find out why you're unable to use get/set */
+    getVisibleView(): string {
+        return this._visibleView;
+    }
+
+    setVisibleView(view: string) {
+        this._visibleView = view;
+    }
 
     constructor(private logger: Logger, private loginModalService: LoginModalService) {
     }
@@ -68,7 +78,6 @@ export class LoginModalComponent implements OnInit {
     }
 
     onClose(e: any): void {
-        this.logger.debug(e.target.className);
         if (['close', 'overlay'].indexOf(e.target.className) !== -1) {
             this.isVisible = false;
         }

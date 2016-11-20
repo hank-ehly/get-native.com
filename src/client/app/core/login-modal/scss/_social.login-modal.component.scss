@@ -1,0 +1,88 @@
+@import '../../../../scss/core';
+
+.modal.modal-social header {
+  @include border-top-radius();
+  background: $shamrock;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+
+  img {
+    width: 30px;
+    height: 30px;
+    align-self: center;
+  }
+}
+
+.modal.modal-social section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.modal.modal-social section {
+  margin-top: 40px;
+}
+
+.modal.modal-social section button {
+  @include border-radius();
+  color: $white;
+  width: 360px;
+  height: 60px;
+  display: flex;
+  margin-top: 10px;
+  outline: none;
+  cursor: pointer;
+  justify-content: flex-start;
+  font-size: $font-size-regular;
+}
+
+.modal.modal-social button img {
+  width: 26px;
+  height: 26px;
+  align-self: center;
+  margin-left: 24px;
+}
+
+button span {
+  align-self: center;
+  margin-left: 26px;
+}
+
+.facebook {
+  background: $chambray;
+  border: none;
+  border-bottom: 1px solid $chambray-darker;
+
+  &:hover {
+    background: $chambray-darker;
+  }
+
+  img {
+    background: $white;
+    @include border-radius(50%);
+  }
+}
+
+.twitter {
+  background: $picton-blue;
+  border: none;
+  border-bottom: 1px solid $picton-blue-darker;
+
+  &:hover {
+    background: $picton-blue-darker;
+  }
+}
+
+.google {
+  background: $white;
+  border: 2px solid $aqua-haze;
+
+  &:hover {
+    border-color: $aqua-haze-darker;
+  }
+
+  span {
+    color: $regent-gray;
+  }
+}
