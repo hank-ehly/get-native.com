@@ -12,10 +12,11 @@ describe('CookieCompliance', () => {
 
     it('should be able to close the popup by pressing a button', () => {
         let dialog = $('.cookie-compliance-dialog');
+        let closeButton = dialog.$('.comply-trigger');
         expect(dialog.isPresent()).toBe(true);
 
         //noinspection TypeScriptUnresolvedFunction
-        dialog.$('.comply-trigger').click();
+        closeButton.click();
 
         // TODO: Disabling animations is preferable to sleep()
         //noinspection TypeScriptUnresolvedFunction

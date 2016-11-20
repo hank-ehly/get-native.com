@@ -11,10 +11,10 @@ describe('Home', () => {
     });
 
     it('should have large features', () => {
-        expect(element(by.css('.large-features')).isPresent()).toBe(true);
+        expect($('.large-features').isPresent()).toBe(true);
     });
 
     it('should have small features', () => {
-        expect(element(by.css('.small-features')).isPresent()).toBe(true);
+        expect($('.small-features').isPresent()).toBe(true);
     });
 });
