@@ -68,5 +68,45 @@ export function main() {
             localStorageService.clear();
             expect(localStorageService.length).toEqual(0);
         });
+
+        it('should be able to store a boolean value', () => {
+            let key = 'aKey';
+            let val = true;
+            localStorageService.setItem(key, val);
+            expect(localStorageService.getItem(key)).toEqual(val);
+        });
+
+        it('should be able to store a number value', () => {
+            let key = 'aKey';
+            let val = 576;
+            localStorageService.setItem(key, val);
+            expect(localStorageService.getItem(key)).toEqual(val);
+        });
+
+        it('should be able to store an array', () => {
+            let key = 'aKey';
+            let val = [1, 2, 3];
+            localStorageService.setItem(key, val);
+            expect(localStorageService.getItem(key)).toEqual(val);
+        });
+
+        it('should not be able to store a null value', () => {
+            let key = 'aKey';
+            let val = <any>null;
+            expect(() => localStorageService.setItem(key, val)).toThrowError('Cannot store a null or undefined value.');
+        });
+
+        it('should not be able to store an undefined value', () => {
+            let key = 'aKey';
+            let val = <any>undefined;
+            expect(() => localStorageService.setItem(key, val)).toThrowError('Cannot store a null or undefined value.');
+        });
+
+        it('should be able to store a nested object', () => {
+            let key = 'aKey';
+            let val = {foo: 'bar', baz: ['foo', 'bar', 123]};
+            localStorageService.setItem(key, val);
+            expect(localStorageService.getItem(key)).toEqual(val);
+        });
     });
 }
