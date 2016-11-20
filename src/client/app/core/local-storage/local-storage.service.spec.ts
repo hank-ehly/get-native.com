@@ -18,6 +18,7 @@ export function main() {
 
     describe('LocalStorageService', () => {
         beforeEach(() => {
+            localStorage.clear();
             localStorageService = new LocalStorageService(<Logger>loggerStub);
         });
 
@@ -61,6 +62,8 @@ export function main() {
             let key_2 = 'aKey_2';
             let val_2 = 'aVal_2';
             localStorageService.setItem(key_2, val_2);
+
+            expect(localStorageService.length).toEqual(2);
 
             localStorageService.clear();
             expect(localStorageService.length).toEqual(0);
