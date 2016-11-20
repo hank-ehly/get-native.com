@@ -11,19 +11,20 @@ describe('Help', () => {
     });
 
     it('should have visible faq headings', () => {
-        let list = $$('.about .section-body li .item-head');
+        let list = element.all(by.css('.about .section-body li .item-head'));
         expect(list.count()).toBeGreaterThan(0);
     });
 
     it('all faqs should be collapsed', () => {
-        let itemLabels = $$('.about .section-body li .item-label');
-        expect(itemLabels.count()).toBe(0);
+        let list = $$('.about .section-body li .item-detail');
+        expect(list.count()).toBe(0);
     });
 
     it('should display a faq when selected', () => {
         let itemLabels = $$('.about .section-body li .item-label');
+        let itemDetails = $$('.about .section-body li .item-detail');
         //noinspection TypeScriptUnresolvedFunction
         itemLabels.first().click();
-        expect(itemLabels.count()).toBe(1);
+        expect(itemDetails.count()).toBe(1);
     });
 });
