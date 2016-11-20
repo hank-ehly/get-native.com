@@ -108,6 +108,12 @@ button span {
 .facebook {
   background: $chambray;
   border: none;
+  border-bottom: 1px solid $chambray-darker;
+
+  &:hover {
+    background: $chambray-darker;
+  }
+
   img {
     background: $white;
     @include border-radius(50%);
@@ -117,11 +123,20 @@ button span {
 .twitter {
   background: $picton-blue;
   border: none;
+  border-bottom: 1px solid $picton-blue-darker;
+
+  &:hover {
+    background: $picton-blue-darker;
+  }
 }
 
 .google {
   background: $white;
   border: 2px solid #f0f5f7;
+
+  &:hover {
+    border-color: darken(#f0f5f7, 5%);
+  }
 
   span {
     color: #8f9aa6;

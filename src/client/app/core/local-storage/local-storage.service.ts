@@ -14,7 +14,6 @@ import { LocalStorageItem } from './local-storage-item';
 @Injectable()
 
 /* TODO: Encrypt all stored data */
-/* TODO: Add EncryptionService */
 export class LocalStorageService {
     setItemSource = new Subject<LocalStorageItem>();
     setItem$ = this.setItemSource.asObservable();
