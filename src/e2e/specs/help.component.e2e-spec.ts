@@ -6,8 +6,8 @@
  */
 
 describe('Help', () => {
-    beforeEach( () => {
-        browser.get('/help');
+    beforeEach(async() => {
+        return await browser.get('/help');
     });
 
     it('should have visible faq headings', () => {

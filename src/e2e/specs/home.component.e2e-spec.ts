@@ -1,24 +1,20 @@
+/**
+ * home.component.e2e-spec
+ * get-native.com
+ *
+ * Created by henryehly on 2016/11/08.
+ */
+
 describe('Home', () => {
+    beforeEach(async() => {
+        return await browser.get('/');
+    });
 
-  beforeEach(async () => {
-    return await browser.get('/');
-  });
+    it('should have large features', () => {
+        expect(element(by.css('.large-features')).isPresent()).toBe(true);
+    });
 
-  it('should have an input', () => {
-    expect(element(by.css('sd-home form input')).isPresent()).toEqual(true);
-  });
-
-  it('should have a list of computer scientists', () => {
-    expect(element(by.css('sd-home ul')).getText())
-      .toEqual('Edsger Dijkstra\nDonald Knuth\nAlan Turing\nGrace Hopper');
-  });
-
-  it('should add a name to the list using the form', () => {
-    element(by.css('sd-home form input')).sendKeys('Tim Berners-Lee');
-    element(by.css('sd-home form button')).click();
-
-    expect(element(by.css('sd-home ul')).getText())
-      .toEqual('Edsger Dijkstra\nDonald Knuth\nAlan Turing\nGrace Hopper\nTim Berners-Lee');
-  });
-
+    it('should have small features', () => {
+        expect(element(by.css('.small-features')).isPresent()).toBe(true);
+    });
 });
