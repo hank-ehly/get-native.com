@@ -12,6 +12,8 @@ import { CookieComplianceComponent } from './index';
 import { SpecUtil } from '../../shared/index';
 
 import { Logger } from 'angular2-logger/core';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 let loggerStub = {
     debug(): void {
@@ -28,8 +30,12 @@ export function main() {
     describe('CookieComplianceComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
+                imports: [RouterModule.forRoot([])],
                 declarations: [CookieComplianceComponent],
-                providers: [{provide: Logger, useValue: loggerStub}]
+                providers: [
+                    {provide: Logger, useValue: loggerStub},
+                    {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'}
+                ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(CookieComplianceComponent);
                 util = new SpecUtil(fixture);

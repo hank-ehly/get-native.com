@@ -6,7 +6,6 @@
  */
 
 describe('CookieCompliance', () => {
-
     beforeEach(() => {
         browser.get('/');
     });
