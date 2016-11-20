@@ -6,9 +6,8 @@
  */
 
 describe('TOS', () => {
-
-    beforeEach(() => {
-        browser.get('/tos');
+    beforeEach(async() => {
+        return await browser.get('/tos');
     });
 
     it('should have quick links', () => {

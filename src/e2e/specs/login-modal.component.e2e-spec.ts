@@ -6,8 +6,8 @@
  */
 
 describe('LoginModalComponent', () => {
-    beforeEach(() => {
-        browser.get('/');
+    beforeEach(async() => {
+        return await browser.get('/');
     });
 
     it('should display an overlay', () => {

@@ -6,8 +6,8 @@
  */
 
 describe('CookieCompliance', () => {
-    beforeEach(() => {
-        browser.get('/');
+    beforeEach(async() => {
+        return await browser.get('/');
     });
 
     it('should be able to close the popup by pressing a button', () => {

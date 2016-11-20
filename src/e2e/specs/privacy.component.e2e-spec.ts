@@ -6,9 +6,8 @@
  */
 
 describe('Privacy', () => {
-
-    beforeEach(() => {
-        browser.get('/privacy');
+    beforeEach(async() => {
+        return await browser.get('/privacy');
     });
 
     it('should have quick links', () => {
