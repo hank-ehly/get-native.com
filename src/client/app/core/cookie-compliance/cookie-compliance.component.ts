@@ -5,9 +5,11 @@
  * Created by henryehly on 2016/11/11.
  */
 
-import { Component, trigger, keyframes, style, animate, transition, Input } from '@angular/core';
+import { Component, trigger, keyframes, style, animate, transition, Input, OnInit } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
-import { LocalStorageService } from '../local-storage/index';
+
+import { LocalStorageService, kAcceptLocalStorage } from '../local-storage/index';
+import { LocalStorageProtocol } from '../local-storage/local-storage-protocol';
 
 @Component({
     moduleId: module.id,
@@ -34,17 +36,30 @@ import { LocalStorageService } from '../local-storage/index';
     ]
 })
 
-export class CookieComplianceComponent {
+export class CookieComplianceComponent implements OnInit, LocalStorageProtocol {
     @Input() isVisible: boolean;
 
     constructor(private logger: Logger, private localStorageService: LocalStorageService) {
     }
 
+    ngOnInit(): void {
+        this.localStorageService.setItem$.subscribe(this.localStorageValueChanged.bind(this));
+    }
+
+    localStorageValueChanged(change: any): void {
+        if (change['key'] === null || change['key'] === undefined || change['key'] !== kAcceptLocalStorage) {
+            /* TODO: Error service */
+            throw new Error('Invalid key.');
+        }
+
+        let isCompliant: boolean = change['data'];
+
+        this.logger.debug(`[CookieComplianceComponent]: acceptLocalStorageValueChanged(${isCompliant})`);
+        this.isVisible = !isCompliant;
+    }
+
     onClose(): void {
         this.logger.debug('[CookieComplianceComponent]: onClose()');
-        this.isVisible = false;
-
-        /* TODO: Replace hard-coded key with constant val */
-        this.localStorageService.setItem('accept-local-storage', true);
+        this.localStorageService.setItem(kAcceptLocalStorage, true);
     }
 }

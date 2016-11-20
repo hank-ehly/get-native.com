@@ -37,7 +37,6 @@ export class LocalStorageService {
         return localStorage.clear();
     }
 
-    /* TODO: Be able to input whatever object you want */
     setItem(key: string, data: any): void {
         this.logger.debug(`[LocalStorageService]: setItem(${key}, ${data})`);
 
