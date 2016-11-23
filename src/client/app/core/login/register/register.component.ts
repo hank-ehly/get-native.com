@@ -25,10 +25,6 @@ export class RegisterComponent implements AfterViewChecked {
     @ViewChild(PasswordStrengthComponent) passwordStrengthComponent: PasswordStrengthComponent;
     formRef: NgForm;
 
-    meetsWeakRequirements: boolean = false;
-    meetsGoodRequirements: boolean = false;
-    meetsExcellentRequirements: boolean = false;
-
     credentials: any = {
         email: '',
         password: '',
