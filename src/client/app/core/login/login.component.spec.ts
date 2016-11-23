@@ -12,7 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { Logger } from 'angular2-logger/core';
 
 import { LoginComponent, LoginService, SocialLoginComponent, EmailLoginComponent, RegisterComponent } from './index';
-import { SpecUtil, STUBLogger, STUBLoginService } from '../../shared/index';
+import { SpecUtil, STUBLogger, STUBLoginService, STUBPasswordStrengthService } from '../../shared/index';
+import { PasswordStrengthComponent } from './password-strength/password-strength.component';
+import { PasswordStrengthService } from './password-strength/password-strength.service';
 
 export function main() {
     let comp: LoginComponent;
@@ -25,10 +27,11 @@ export function main() {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [FormsModule],
-                declarations: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent],
+                declarations: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent, PasswordStrengthComponent],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
-                    {provide: LoginService, useValue: STUBLoginService}
+                    {provide: LoginService, useValue: STUBLoginService},
+                    {provide: PasswordStrengthService, useValue: STUBPasswordStrengthService}
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LoginComponent);
