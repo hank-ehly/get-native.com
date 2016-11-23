@@ -11,36 +11,11 @@ import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { CookieComplianceComponent } from './index';
-import { SpecUtil } from '../../shared/index';
 import { LocalStorageService } from '../index';
+import { SpecUtil, STUBLogger, STUBLocalStorageService } from '../../shared/index';
 
 import { Logger } from 'angular2-logger/core';
 import { kAcceptLocalStorage } from '../local-storage/local-storage-keys';
-// import { Observable } from 'rxjs/Observable';
-
-/* TODO: Move to 'STUBS' file */
-let loggerStub = {
-    debug(): void {
-    }
-};
-
-/* TODO: Move to 'STUBS' file */
-let localStorageServiceStub = {
-    setItem(key: string, data: any): void {
-    },
-    setItem$: {
-        subscribe(): void {
-        }
-    },
-    storageEvent$: {
-        subscribe(): void {
-        }
-    },
-    clearSource$: {
-        subscribe(): void {
-        }
-    }
-};
 
 export function main() {
     let comp: CookieComplianceComponent;
@@ -55,9 +30,9 @@ export function main() {
                 imports: [RouterModule.forRoot([])],
                 declarations: [CookieComplianceComponent],
                 providers: [
-                    {provide: Logger, useValue: loggerStub},
+                    {provide: Logger, useValue: STUBLogger},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-                    {provide: LocalStorageService, useValue: localStorageServiceStub}
+                    {provide: LocalStorageService, useValue: STUBLocalStorageService}
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(CookieComplianceComponent);

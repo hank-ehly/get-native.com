@@ -1,5 +1,5 @@
 /**
- * login-modal.component.spec
+ * login.component.spec
  * get-native.com
  *
  * Created by henryehly on 2016/11/13.
@@ -7,39 +7,29 @@
 
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { Subject } from 'rxjs/Subject';
-
-import { LoginModalComponent, LoginModalService } from './index';
-import { SpecUtil } from '../../shared/index';
 
 import { Logger } from 'angular2-logger/core';
 
-let stubLogger = {
-    debug(message?: any): void {
-    }
-};
-
-let stubLoginModalService = {
-    showModal$: new Subject().asObservable()
-};
+import { LoginComponent, LoginService, SocialLoginComponent, EmailLoginComponent, RegisterComponent } from './index';
+import { SpecUtil, STUBLogger, STUBLoginService } from '../../shared/index';
 
 export function main() {
-    let comp: LoginModalComponent;
-    let fixture: ComponentFixture<LoginModalComponent>;
+    let comp: LoginComponent;
+    let fixture: ComponentFixture<LoginComponent>;
     let de: DebugElement;
     let el: HTMLElement;
     let util: SpecUtil;
 
-    describe('LoginModalComponent', () => {
+    describe('LoginComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                declarations: [LoginModalComponent],
+                declarations: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent],
                 providers: [
-                    {provide: Logger, useValue: stubLogger},
-                    {provide: LoginModalService, useValue: stubLoginModalService}
+                    {provide: Logger, useValue: STUBLogger},
+                    {provide: LoginService, useValue: STUBLoginService}
                 ]
             }).compileComponents().then(() => {
-                fixture = TestBed.createComponent(LoginModalComponent);
+                fixture = TestBed.createComponent(LoginComponent);
                 util = new SpecUtil(fixture);
                 comp = fixture.componentInstance;
                 comp.isVisible = true;
@@ -61,8 +51,8 @@ export function main() {
         });
 
         it('should become hidden after clicking the close button', () => {
-            el = util.getNativeEl('.close');
-            de = util.getDebugEl('.close');
+            el = util.getNativeEl('.close-button');
+            de = util.getDebugEl('.close-button');
             de.triggerEventHandler('click', {target: {className: el.className}});
             expect(comp.isVisible).toEqual(false);
         });

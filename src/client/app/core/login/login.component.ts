@@ -1,5 +1,5 @@
 /**
- * login-modal.component
+ * login.component
  * get-native.com
  *
  * Created by henryehly on 2016/11/13.
@@ -8,13 +8,13 @@
 import { Component, style, keyframes, animate, transition, trigger, Input, OnInit } from '@angular/core';
 
 import { Logger } from 'angular2-logger/core';
-import { LoginModalService } from './login-modal.service';
+import { LoginService } from './index';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-login-modal',
-    templateUrl: 'login-modal.component.html',
-    styleUrls: ['login-modal.component.css'],
+    selector: 'gn-login',
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css'],
     animations: [
         trigger('darken', [
             transition(':enter', [
@@ -51,24 +51,15 @@ import { LoginModalService } from './login-modal.service';
     ]
 })
 
-export class LoginModalComponent implements OnInit {
+export class LoginComponent implements OnInit {
     @Input() isVisible: boolean;
-    private _visibleView: string;
+    modalView: string;
 
-    /* TODO: Find out why you're unable to use get/set */
-    getVisibleView(): string {
-        return this._visibleView;
-    }
-
-    setVisibleView(view: string) {
-        this._visibleView = view;
-    }
-
-    constructor(private logger: Logger, private loginModalService: LoginModalService) {
+    constructor(private logger: Logger, private loginService: LoginService) {
     }
 
     ngOnInit(): void {
-        this.loginModalService.showModal$.subscribe(() => {
+        this.loginService.showModal$.subscribe(() => {
             this.isVisible = true;
 
             // Note: Setting the document.body overflow to 'hidden' will inhibit the user from scrolling up and down the
@@ -78,8 +69,13 @@ export class LoginModalComponent implements OnInit {
     }
 
     onClose(e: any): void {
-        if (['close', 'overlay'].indexOf(e.target.className) !== -1) {
+        if (['close-button', 'overlay'].indexOf(e.target.className) !== -1) {
             this.isVisible = false;
         }
+    }
+
+    onSetModalView(view: any) {
+        /* TODO: Make sure view isn't some weird string */
+        this.modalView = view;
     }
 }

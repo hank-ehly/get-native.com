@@ -1,11 +1,11 @@
 /**
- * login-modal.component.e2e-spec
+ * login.component.e2e-spec
  * get-native.com
  *
  * Created by henryehly on 2016/11/13.
  */
 
-describe('LoginModalComponent', () => {
+describe('LoginComponent', () => {
     beforeEach(async() => {
         return await browser.get('/');
     });
@@ -20,7 +20,7 @@ describe('LoginModalComponent', () => {
 
     it('should display the login modal', () => {
         let openButton = $('.sign-in');
-        let modalWrapper = $('.modal-wrapper');
+        let modalWrapper = $('.modal-window');
         //noinspection TypeScriptUnresolvedFunction
         openButton.click();
         expect(modalWrapper.isPresent()).toBe(true);
@@ -29,7 +29,7 @@ describe('LoginModalComponent', () => {
     it ('should close the login modal after clicking the overlay', () => {
         let openButton = $('.sign-in');
         let overlay = $('.overlay');
-        let modalWrapper = $('.modal-wrapper');
+        let modalWrapper = $('.modal-window');
         //noinspection TypeScriptUnresolvedFunction
         openButton.click();
         //noinspection TypeScriptUnresolvedFunction
@@ -41,8 +41,8 @@ describe('LoginModalComponent', () => {
 
     it ('should close the login modal after clicking the close button', () => {
         let openButton = $('.sign-in');
-        let closeButton = $('.close');
-        let modalWrapper = $('.modal-wrapper');
+        let closeButton = $('.close-button');
+        let modalWrapper = $('.modal-window');
         //noinspection TypeScriptUnresolvedFunction
         openButton.click();
         //noinspection TypeScriptUnresolvedFunction
