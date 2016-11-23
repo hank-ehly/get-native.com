@@ -1,7 +1,7 @@
 @import "core";
 
 html {
-  font-family: ProximaNova-Regular, "Helvetica Neue", Helvetica, sans-serif;
+  @include font-weight-regular;
   overflow-y: scroll;
 }
 
@@ -20,7 +20,7 @@ main {
 
 @for $index from 1 through 6 {
   h#{$index} {
-    font-family: ProximaNova-Semibold, "Helvetica Neue", Helvetica, sans-serif;
+    @include font-weight-bold();
   }
 }
 

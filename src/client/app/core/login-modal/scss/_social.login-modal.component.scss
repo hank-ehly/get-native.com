@@ -21,7 +21,7 @@
 }
 
 .modal.modal-social section {
-  margin-top: 40px;
+  margin-top: 22px;
 }
 
 .modal.modal-social section button {
@@ -37,11 +37,10 @@
   font-size: $font-size-regular;
 }
 
-.modal.modal-social button img {
-  width: 26px;
-  height: 26px;
+.modal.modal-social button img,
+.modal.modal-social button .facebook-bg {
   align-self: center;
-  margin-left: 24px;
+  margin-left: 15px;
 }
 
 button span {
@@ -49,7 +48,7 @@ button span {
   margin-left: 26px;
 }
 
-.facebook {
+.modal.modal-social .facebook {
   background: $chambray;
   border: none;
   border-bottom: 1px solid $chambray-darker;
@@ -58,13 +57,25 @@ button span {
     background: $chambray-darker;
   }
 
-  img {
-    background: $white;
+  .facebook-bg {
     @include border-radius(50%);
+    background: $white;
+    height: 22px;
+    position: relative;
+    width: 22px;
+
+    img {
+      height: 24px;
+      width: 24px;
+      position: absolute;
+      margin-left: 0;
+      left: -1px;
+      bottom: -4px;
+    }
   }
 }
 
-.twitter {
+.modal.modal-social .twitter {
   background: $picton-blue;
   border: none;
   border-bottom: 1px solid $picton-blue-darker;
@@ -72,9 +83,14 @@ button span {
   &:hover {
     background: $picton-blue-darker;
   }
+
+  img {
+    height: 28px;
+    width: 28px;
+  }
 }
 
-.google {
+.modal.modal-social .google {
   background: $white;
   border: 2px solid $aqua-haze;
 
@@ -84,5 +100,10 @@ button span {
 
   span {
     color: $regent-gray;
+  }
+
+  img {
+    height: 34px;
+    width: 34px;
   }
 }
