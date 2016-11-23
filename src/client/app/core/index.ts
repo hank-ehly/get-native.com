@@ -10,5 +10,5 @@ export * from './navbar/index';
 export * from './side-menu/index';
 export * from './toolbar/index';
 export * from './cookie-compliance/index';
-export * from './login-modal/index';
+export * from './login/index';
 export * from './local-storage/index';

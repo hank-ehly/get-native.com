@@ -1,0 +1,29 @@
+<div class="modal modal-social">
+    <header>
+        <img src="../../../assets/mock/pokeball.png" alt="logo">
+    </header>
+
+    <p>Sign in to Get Native with any of the following providers.</p>
+
+    <section>
+        <button class="facebook">
+                        <span class="facebook-bg">
+                            <img src="../../../assets/icons/social-facebook.svg" alt="facebook">
+                        </span>
+            <span>Continue with Facebook</span>
+        </button>
+        <button class="twitter">
+            <img src="../../../assets/icons/social-twitter.svg" alt="twitter">
+            <span>Continue with Twitter</span>
+        </button>
+        <button class="google">
+            <img src="../../../assets/icons/social-google.svg" alt="gmail">
+            <span>Continue with Gmail</span>
+        </button>
+    </section>
+
+    <footer>
+        <span (click)="onSetModalView('email')" class="footer-link">Sign in with email</span>
+        <span (click)="onSetModalView('register')" class="footer-link">Create a new account</span>
+    </footer>
+</div>

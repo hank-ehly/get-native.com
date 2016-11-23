@@ -1,0 +1,22 @@
+<div class="modal modal-email">
+    <header>
+        <p>Enter your email address and password to sign in.</p>
+    </header>
+
+    <form>
+        <div class="form-group">
+            <label>Email</label><input type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Password <input type="password"></label>
+        </div>
+
+        <input type="submit" value="SIGN IN">
+    </form>
+
+    <footer>
+        <span (click)="onSetModalView(null)" class="footer-link">Sign in via Facebook, Twitter or Google</span>
+        <span (click)="onSetModalView('register')" class="footer-link">Create a new account</span>
+    </footer>
+</div>

@@ -6,4 +6,5 @@
  */
 
 export * from './config/env.config';
-export * from './spec-util/spec-util';
+export * from './spec/spec-util';
+export * from './spec/stubs';

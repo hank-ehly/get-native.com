@@ -6,12 +6,7 @@
  */
 
 import { LocalStorageService } from './index';
-import { Logger } from 'angular2-logger/core';
-
-let loggerStub = {
-    debug(message?: any, ...optionalParams: any[]): void {
-    }
-};
+import { STUBLogger } from '../../shared/spec/stubs';
 
 export function main() {
     let localStorageService: LocalStorageService;
@@ -19,7 +14,7 @@ export function main() {
     describe('LocalStorageService', () => {
         beforeEach(() => {
             localStorage.clear();
-            localStorageService = new LocalStorageService(<Logger>loggerStub);
+            localStorageService = new LocalStorageService(STUBLogger);
         });
 
         it('should be able to set a key/value pair', () => {
