@@ -1,47 +1,5 @@
 @import '../../../../scss/core';
 
-.modal-register .password-strength-meter {
-  align-items: center;
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 5px;
-  height: 18px;
-}
-
-.modal-register .strength-indicator {
-  background: $aqua-haze;
-  height: 6px;
-  margin-right: 2px;
-  width: ((250/3) - 2) + px;
-
-  &.weak {
-    @include border-left-radius();
-  }
-
-  &.weak.visible {
-    background: $red;
-  }
-
-  &.good.visible {
-    background: $sunglow;
-  }
-
-  &.excellent {
-    @include border-right-radius();
-  }
-
-  &.excellent.visible {
-    background: $malachite;
-  }
-}
-
-.modal-register .strength-label {
-  @include font-weight-bold();
-  color: $pale-sky;
-  font-size: 12px;
-  margin-left: auto;
-}
-
 .modal-register .form-group.confirm-password {
   /* Override to offset password strength-indicator height */
   padding-top: 12px;

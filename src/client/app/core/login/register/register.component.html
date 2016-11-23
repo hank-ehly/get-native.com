@@ -12,13 +12,7 @@
         <div class="form-group">
             <label for="password"><span class="required-indicator">*</span> Password</label>
             <input id="password" type="password" name="password" [(ngModel)]="credentials.password" required>
-            <!-- TODO: Move to separate component ? -->
-            <div class="password-strength-meter">
-                <span class="strength-indicator weak" [ngClass]="{visible: meetsWeakRequirements}"></span>
-                <span class="strength-indicator good" [ngClass]="{visible: meetsGoodRequirements}"></span>
-                <span class="strength-indicator excellent" [ngClass]="{visible: meetsExcellentRequirements}"></span>
-                <span class="strength-label">{{ passwordStrength }}</span>
-            </div>
+            <gn-password-strength></gn-password-strength>
         </div>
 
         <div class="form-group confirm-password">

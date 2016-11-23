@@ -10,6 +10,8 @@ import { NgForm } from '@angular/forms';
 
 import { Logger } from 'angular2-logger/core';
 
+import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-register',
@@ -20,9 +22,9 @@ import { Logger } from 'angular2-logger/core';
 export class RegisterComponent implements AfterViewChecked {
     @Output() setModalView = new EventEmitter<string>();
     @ViewChild('form') currentForm: NgForm;
+    @ViewChild(PasswordStrengthComponent) passwordStrengthComponent: PasswordStrengthComponent;
     formRef: NgForm;
     passwordStrength: string;
-    passwordStrengthNumber: number;
 
     meetsWeakRequirements: boolean = false;
     meetsGoodRequirements: boolean = false;
@@ -82,7 +84,7 @@ export class RegisterComponent implements AfterViewChecked {
         this.logger.debug('Value Change', data);
 
         if (data['password']) {
-            this.calculatePasswordStrength(data['password']);
+            this.passwordStrengthComponent.setStrengthForPassword(data['password']);
         }
 
         if (!this.formRef) return;
@@ -100,32 +102,6 @@ export class RegisterComponent implements AfterViewChecked {
             //         this.formErrors[field] += messages[key] + ' ';
             //     }
             // }
-        }
-    }
-
-    calculatePasswordStrength(password: string): void {
-        if (password.length === 0) return;
-
-        if (password.length >= 8) {
-            this.meetsWeakRequirements = true;
-            this.meetsGoodRequirements = true;
-            this.meetsExcellentRequirements = true;
-            this.passwordStrength = 'EXCELLENT';
-        } else if (password.length >= 5) {
-            this.meetsWeakRequirements = true;
-            this.meetsGoodRequirements = true;
-            this.meetsExcellentRequirements = false;
-            this.passwordStrength = 'GOOD';
-        } else if (password.length >= 2) {
-            this.meetsWeakRequirements = true;
-            this.meetsGoodRequirements = false;
-            this.meetsExcellentRequirements = false;
-            this.passwordStrength = 'WEAK';
-        } else {
-            this.meetsWeakRequirements = false;
-            this.meetsGoodRequirements = false;
-            this.meetsExcellentRequirements = false;
-            this.passwordStrength = 'TOO SHORT';
         }
     }
 }
