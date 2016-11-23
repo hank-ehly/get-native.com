@@ -5,6 +5,7 @@
   display: flex;
   justify-content: flex-start;
   margin-top: 5px;
+  height: 18px;
 }
 
 .modal-register .strength-indicator {
@@ -15,18 +16,21 @@
 
   &.weak {
     @include border-left-radius();
-    /* TODO if */
+  }
+
+  &.weak.visible {
     background: $red;
   }
 
-  &.good {
-    /* TODO if */
+  &.good.visible {
     background: $sunglow;
   }
 
   &.excellent {
     @include border-right-radius();
-    /* TODO if */
+  }
+
+  &.excellent.visible {
     background: $malachite;
   }
 }

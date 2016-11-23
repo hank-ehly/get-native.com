@@ -3,27 +3,30 @@
         <p>Register via email by filling out the following information.</p>
     </header>
 
-    <form>
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
         <div class="form-group">
-            <label><span class="required-indicator">*</span> Email <input type="text"></label>
+            <label for="email"><span class="required-indicator">*</span> Email</label>
+            <input id="email" type="email" name="email" [(ngModel)]="credentials.email" minlength="3" maxlength="254" required>
         </div>
 
         <div class="form-group">
-            <label><span class="required-indicator">*</span> Password <input type="password"></label>
+            <label for="password"><span class="required-indicator">*</span> Password</label>
+            <input id="password" type="password" name="password" [(ngModel)]="credentials.password" required>
             <!-- TODO: Move to separate component ? -->
             <div class="password-strength-meter">
-                <span class="strength-indicator weak"></span>
-                <span class="strength-indicator good"></span>
-                <span class="strength-indicator excellent"></span>
-                <span class="strength-label">EXCELLENT</span>
+                <span class="strength-indicator weak" [ngClass]="{visible: meetsWeakRequirements}"></span>
+                <span class="strength-indicator good" [ngClass]="{visible: meetsGoodRequirements}"></span>
+                <span class="strength-indicator excellent" [ngClass]="{visible: meetsExcellentRequirements}"></span>
+                <span class="strength-label">{{ passwordStrength }}</span>
             </div>
         </div>
 
         <div class="form-group confirm-password">
-            <label><span class="required-indicator">*</span> Password (Confirm) <input type="password"></label>
+            <label for="password-confirm"><span class="required-indicator">*</span> Password (Confirm)</label>
+            <input id="password-confirm" type="password" name="password-confirm" [(ngModel)]="credentials.passwordConfirm" required>
         </div>
 
-        <input type="submit" value="SIGN UP">
+        <button type="submit" [disabled]="!form.valid">SIGN UP</button>
     </form>
 
     <footer>

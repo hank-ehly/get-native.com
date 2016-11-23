@@ -75,7 +75,7 @@
     }
   }
 
-  .modal input[type='text'],
+  .modal input[type='email'],
   .modal input[type='password'] {
     @include border-radius();
     background: $aqua-haze;
@@ -89,7 +89,7 @@
     width: 100%;
   }
 
-  .modal input[type='submit'] {
+  .modal button[type='submit'] {
     @include border-radius(20px);
     @include font-weight-regular;
     align-self: flex-end;
@@ -101,8 +101,7 @@
     font-size: 12px;
     margin-top: 30px;
     outline: none;
-    padding: 0;
-    padding-top: 2px;
+    padding: 2px 0 0;
     line-height: 30px;
     width: 100px;
 
@@ -114,6 +113,11 @@
     &:focus {
       /* TODO: Focus bg color */
       background-image: linear-gradient(to right, darken($robin-egg-blue, 7%), darken($shamrock, 7%));
+    }
+
+    &:disabled {
+      background: $regent-gray;
+      cursor: not-allowed;
     }
   }
 
