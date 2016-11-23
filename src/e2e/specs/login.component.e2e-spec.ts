@@ -11,44 +11,104 @@ describe('LoginComponent', () => {
     });
 
     it('should display an overlay', () => {
-        let openButton = $('.sign-in');
+        let openBtn = $('.sign-in');
         let overlay = $('.overlay');
+
         //noinspection TypeScriptUnresolvedFunction
-        openButton.click();
+        openBtn.click();
+
         expect(overlay.isPresent()).toBe(true);
     });
 
     it('should display the login modal', () => {
-        let openButton = $('.sign-in');
-        let modalWrapper = $('.modal-window');
+        let openBtn = $('.sign-in');
+        let modal = $('.modal-window');
+
         //noinspection TypeScriptUnresolvedFunction
-        openButton.click();
-        expect(modalWrapper.isPresent()).toBe(true);
+        openBtn.click();
+
+        expect(modal.isPresent()).toBe(true);
     });
 
     it ('should close the login modal after clicking the overlay', () => {
-        let openButton = $('.sign-in');
+        let openBtn = $('.sign-in');
         let overlay = $('.overlay');
         let modalWrapper = $('.modal-window');
+
         //noinspection TypeScriptUnresolvedFunction
-        openButton.click();
+        openBtn.click();
+
         //noinspection TypeScriptUnresolvedFunction
         browser.actions().mouseMove(overlay, 1, 0).click().perform();
+
         //noinspection TypeScriptUnresolvedFunction
         browser.driver.sleep(250);
+
         expect(modalWrapper.isPresent()).toBe(false);
     });
 
     it ('should close the login modal after clicking the close button', () => {
-        let openButton = $('.sign-in');
-        let closeButton = $('.close-button');
-        let modalWrapper = $('.modal-window');
+        let openBtn = $('.sign-in');
+        let closeBtn = $('.close-button');
+        let modal = $('.modal-window');
+
         //noinspection TypeScriptUnresolvedFunction
-        openButton.click();
+        openBtn.click();
+
         //noinspection TypeScriptUnresolvedFunction
-        closeButton.click();
+        closeBtn.click();
+
         //noinspection TypeScriptUnresolvedFunction
         browser.driver.sleep(250);
-        expect(modalWrapper.isPresent()).toBe(false);
+
+        expect(modal.isPresent()).toBe(false);
+    });
+
+    it('should transition to and from the email login modal view', () => {
+        let openBtn = $('.sign-in');
+        let emailBtn = $('.modal-social footer .footer-link:nth-child(1)');
+        let socialBtn = $('.modal-email footer .footer-link:nth-child(1)');
+        let socialView = $('.modal-social');
+        let emailView = $('.modal-email');
+
+        //noinspection TypeScriptUnresolvedFunction
+        openBtn.click();
+
+        expect(emailView.isPresent()).toBe(false);
+
+        //noinspection TypeScriptUnresolvedFunction
+        emailBtn.click();
+
+        expect(emailView.isPresent()).toBe(true);
+        expect(socialView.isPresent()).toBe(false);
+
+        //noinspection TypeScriptUnresolvedFunction
+        socialBtn.click();
+
+        expect(socialView.isPresent()).toBe(true);
+    });
+
+    it('should transition to and from the registration modal view', () => {
+        let openBtn = $('.sign-in');
+        let registerBtn = $('.modal-social footer .footer-link:nth-child(2)');
+        let socialBtn = $('.modal-register footer .footer-link:nth-child(1)');
+        let registerView = $('.modal-register');
+        let socialView = $('.modal-social');
+
+        //noinspection TypeScriptUnresolvedFunction
+        openBtn.click();
+
+        expect(registerView.isPresent()).toBe(false);
+
+        //noinspection TypeScriptUnresolvedFunction
+        registerBtn.click();
+
+        expect(registerView.isPresent()).toBe(true);
+        expect(socialView.isPresent()).toBe(false);
+
+        //noinspection TypeScriptUnresolvedFunction
+        socialBtn.click();
+
+        expect(socialView.isPresent()).toBe(true);
     });
 });
