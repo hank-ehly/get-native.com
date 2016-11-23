@@ -30,7 +30,6 @@ export class PasswordStrengthComponent {
 
     strengthDescription(): string {
         let matrix = [
-            [0.0, 0.2, 'TOO SHORT'],
             [0.3, 0.4, 'WEAK'],
             [0.5, 0.7, 'GOOD'],
             [0.8, 1.0, 'EXCELLENT']
@@ -45,5 +44,7 @@ export class PasswordStrengthComponent {
                 return txt.toString();
             }
         }
+
+        return 'TOO SHORT';
     }
 }
