@@ -28,13 +28,13 @@ export class RegisterComponent implements AfterViewChecked {
     meetsGoodRequirements: boolean = false;
     meetsExcellentRequirements: boolean = false;
 
-    credentials = {
+    credentials: any = {
         email: '',
         password: '',
         passwordConfirm: ''
     };
 
-    formErrors = {
+    formErrors: any = {
         'email': '',
         'password': '',
         'password-confirm': ''
