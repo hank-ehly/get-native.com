@@ -13,10 +13,30 @@
   background-clip: padding-box;
 }
 
+@mixin border-right-radius($border-radius: $default-border-radius) {
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  background-clip: padding-box;
+}
+
 @mixin border-bottom-radius($border-radius: $default-border-radius) {
   border-bottom-left-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
   background-clip: padding-box;
+}
+
+@mixin border-left-radius($border-radius: $default-border-radius) {
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+  background-clip: padding-box;
+}
+
+@mixin font-weight-regular() {
+  font-family: ProximaNova-Regular, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+@mixin font-weight-bold() {
+  font-family: ProximaNova-Semibold, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @mixin debug-background-color($background-color) {

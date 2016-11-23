@@ -1,6 +1,7 @@
 <div class="overlay" *ngIf="isVisible" [@darken] (click)="onClose($event)">
 
     <div class="modal-wrapper" [@fadeInOut]>
+
         <div class="close-button-wrapper">
             <button class="close" (click)="onClose($event)"></button>
         </div>
@@ -10,10 +11,14 @@
                 <header>
                     <img src="../../../assets/mock/pokeball.png" alt="logo">
                 </header>
+
                 <p>Sign in to Get Native with any of the following providers.</p>
+
                 <section>
                     <button class="facebook">
-                        <img src="../../../assets/icons/social-facebook.svg" alt="facebook">
+                        <span class="facebook-bg">
+                            <img src="../../../assets/icons/social-facebook.svg" alt="facebook">
+                        </span>
                         <span>Continue with Facebook</span>
                     </button>
                     <button class="twitter">
@@ -25,11 +30,13 @@
                         <span>Continue with Gmail</span>
                     </button>
                 </section>
+
                 <footer>
                     <span (click)="setVisibleView('email')" class="footer-link">Sign in with email</span>
-                    <span class="footer-link">Create a new account</span>
+                    <span (click)="setVisibleView('register')" class="footer-link">Create a new account</span>
                 </footer>
             </div>
+
 
             <div class="modal modal-email" *ngSwitchCase="'email'">
                 <header>
@@ -38,25 +45,56 @@
 
                 <form>
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input id="username" type="text" tabindex="1">
+                        <label>Email</label><input type="text">
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input id="password" type="password" tabindex="2">
+                        <label>Password <input type="password"></label>
                     </div>
 
-                    <input type="submit" value="SIGN IN" tabindex="3">
+                    <input type="submit" value="SIGN IN">
                 </form>
 
                 <footer>
                     <span (click)="setVisibleView(null)" class="footer-link">Sign in via Facebook, Twitter or Google</span>
-                    <span class="footer-link">Create a new account</span>
+                    <span (click)="setVisibleView('register')" class="footer-link">Create a new account</span>
+                </footer>
+            </div>
+
+            <div class="modal modal-register" *ngSwitchCase="'register'">
+                <header>
+                    <p>Register via email by filling out the following information.</p>
+                </header>
+
+                <form>
+                    <div class="form-group">
+                        <label><span class="required-indicator">*</span> Email <input type="text"></label>
+                    </div>
+
+                    <div class="form-group">
+                        <label><span class="required-indicator">*</span> Password <input type="password"></label>
+                        <!-- TODO: Move to component ? -->
+                        <div class="password-strength-meter">
+                            <span class="strength-indicator weak"></span>
+                            <span class="strength-indicator good"></span>
+                            <span class="strength-indicator excellent"></span>
+                            <span class="strength-label">EXCELLENT</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group confirm-password">
+                        <label><span class="required-indicator">*</span> Password (Confirm) <input type="password"></label>
+                    </div>
+
+                    <input type="submit" value="SIGN UP">
+                </form>
+
+                <footer>
+                    <span (click)="setVisibleView(null)" class="footer-link">Sign in via Facebook, Twitter or Google</span>
+                    <span (click)="setVisibleView('email')" class="footer-link">Sign in with email</span>
+                    <p>By signing up, you are agreeing to the <a class="footer-link">privacy policy</a> and <a class="footer-link">terms of service</a></p>
                 </footer>
             </div>
         </div>
-
     </div>
-
 </div>
