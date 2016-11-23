@@ -24,7 +24,6 @@ export class RegisterComponent implements AfterViewChecked {
     @ViewChild('form') currentForm: NgForm;
     @ViewChild(PasswordStrengthComponent) passwordStrengthComponent: PasswordStrengthComponent;
     formRef: NgForm;
-    passwordStrength: string;
 
     meetsWeakRequirements: boolean = false;
     meetsGoodRequirements: boolean = false;
@@ -56,7 +55,6 @@ export class RegisterComponent implements AfterViewChecked {
     // };
 
     constructor(private logger: Logger) {
-        this.passwordStrength = 'TOO SHORT';
     }
 
     ngAfterViewChecked(): void {
@@ -88,12 +86,12 @@ export class RegisterComponent implements AfterViewChecked {
         }
 
         if (!this.formRef) return;
-        const form = this.formRef.form;
+        // const form = this.formRef.form;
 
         for (const field in this.formErrors) {
             /* Reset error messages if present */
             this.formErrors[field] = '';
-            const control = form.get(field);
+            // const control = form.get(field);
 
             // Example
             // if (control && control.dirty && !control.valid) {

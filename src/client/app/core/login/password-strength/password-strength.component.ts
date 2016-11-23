@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { PasswordStrengthService } from './password-strength.service';
 
