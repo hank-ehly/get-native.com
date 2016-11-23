@@ -25,6 +25,9 @@ export class RegisterComponent implements AfterViewChecked {
     @ViewChild(PasswordStrengthComponent) passwordStrengthComponent: PasswordStrengthComponent;
     formRef: NgForm;
 
+    /* Taken from HTML5 Specification */
+    emailPattern: string = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
+
     credentials: any = {
         email: '',
         password: '',
@@ -78,7 +81,7 @@ export class RegisterComponent implements AfterViewChecked {
         this.logger.debug('Value Change', data);
 
         if (data['password']) {
-            this.passwordStrengthComponent.setStrengthForPassword(data['password']);
+            this.passwordStrengthComponent.showStrengthForPassword(data['password']);
         }
 
         if (!this.formRef) return;

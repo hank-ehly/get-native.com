@@ -7,6 +7,8 @@
 
 import { Component } from '@angular/core';
 
+import { Logger } from 'angular2-logger/core';
+
 import { PasswordStrengthService } from './password-strength.service';
 
 @Component({
@@ -17,48 +19,31 @@ import { PasswordStrengthService } from './password-strength.service';
 })
 
 export class PasswordStrengthComponent {
-    showWeak: boolean = false;
-    showGood: boolean = false;
-    showExcellent: boolean = false;
-    strengthLabelText: string = 'TOO SHORT';
+    strength: number = 0;
 
-    constructor(private passwordStrengthService: PasswordStrengthService) {
+    constructor(private passwordStrengthService: PasswordStrengthService, private logger: Logger) {
     }
 
-    setStrengthForPassword(password: string) {
-        let strength = this.passwordStrengthService.calculateStrength(password);
-
-        if (strength < 0.3)                    { this.reset();        }
-        if (strength >= 0.3 && strength < 0.5) { this.setWeak();      }
-        if (strength >= 0.5 && strength < 0.8) { this.setGood();      }
-        if (strength >= 0.8)                   { this.setExcellent(); }
+    showStrengthForPassword(password: string) {
+        this.strength = this.passwordStrengthService.calculateStrength(password);
     }
 
-    private reset(): void {
-        this.showWeak = false;
-        this.showGood = false;
-        this.showExcellent = false;
-        this.strengthLabelText = 'TOO SHORT';
-    }
+    strengthDescription(): string {
+        let matrix = [
+            [0.0, 0.2, 'TOO SHORT'],
+            [0.3, 0.4, 'WEAK'],
+            [0.5, 0.7, 'GOOD'],
+            [0.8, 1.0, 'EXCELLENT']
+        ];
 
-    private setWeak(): void {
-        this.showWeak = true;
-        this.showGood = false;
-        this.showExcellent = false;
-        this.strengthLabelText = 'WEAK';
-    }
+        for (const row in matrix) {
+            let min = matrix[row][0];
+            let max = matrix[row][1];
+            let txt = matrix[row][2];
 
-    private setGood(): void {
-        this.showWeak = true;
-        this.showGood = true;
-        this.showExcellent = false;
-        this.strengthLabelText = 'GOOD';
-    }
-
-    private setExcellent(): void {
-        this.showWeak = true;
-        this.showGood = true;
-        this.showExcellent = true;
-        this.strengthLabelText = 'EXCELLENT';
+            if (this.strength >= min && this.strength <= max) {
+                return txt.toString();
+            }
+        }
     }
 }
