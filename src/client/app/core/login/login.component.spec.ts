@@ -7,6 +7,7 @@
 
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { Logger } from 'angular2-logger/core';
 
@@ -23,6 +24,7 @@ export function main() {
     describe('LoginComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
+                imports: [FormsModule],
                 declarations: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
