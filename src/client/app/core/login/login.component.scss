@@ -79,7 +79,7 @@
   .modal input[type='password'] {
     @include border-radius();
     background: $aqua-haze;
-    border: none;
+    border: 1px solid transparent;
     box-sizing: border-box;
     font-size: $font-size-regular;
     height: 50px;
@@ -99,24 +99,22 @@
     color: $white;
     cursor: pointer;
     font-size: 12px;
+    line-height: 30px;
     margin-top: 30px;
     outline: none;
     padding: 2px 0 0;
-    line-height: 30px;
     width: 100px;
 
     &:hover {
-      /* TODO: hover bg color */
-      background-image: linear-gradient(to right, darken($robin-egg-blue, 5%), darken($shamrock, 5%));
+      background: linear-gradient(to right, darken($robin-egg-blue, 5%), darken($shamrock, 5%));
     }
 
     &:focus {
-      /* TODO: Focus bg color */
-      background-image: linear-gradient(to right, darken($robin-egg-blue, 7%), darken($shamrock, 7%));
+      background: linear-gradient(to right, darken($robin-egg-blue, 7%), darken($shamrock, 7%));
     }
 
     &:disabled {
-      background: $regent-gray;
+      background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
       cursor: not-allowed;
     }
   }
