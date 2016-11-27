@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/13.
  */
 
-import { Component, style, keyframes, animate, transition, trigger, Input, OnInit } from '@angular/core';
+import { Component, style, keyframes, animate, transition, trigger, Input, OnInit, HostListener } from '@angular/core';
 
 import { Logger } from 'angular2-logger/core';
 import { LoginService } from './index';
@@ -77,5 +77,12 @@ export class LoginComponent implements OnInit {
     onSetModalView(view: any) {
         /* TODO: Make sure view isn't some weird string */
         this.modalView = view;
+    }
+
+    @HostListener('document:keyup', ['$event']) onKeyUp(e: KeyboardEvent) {
+        if (e.key === 'Escape' && this.isVisible) {
+            this.logger.debug(`Keyboard event: keyCode: ${e.keyCode}, key: ${e.key}`);
+            this.isVisible = false;
+        }
     }
 }
