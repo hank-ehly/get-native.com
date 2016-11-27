@@ -5,18 +5,20 @@
 
     <form>
         <div class="form-group">
-            <label>Email</label><input type="email">
+            <label for="email">Email</label>
+            <input id="email" type="email" tabindex="1">
         </div>
 
         <div class="form-group">
-            <label>Password <input type="password"></label>
+            <label for="password">Password</label>
+            <input id="password" type="password" tabindex="2">
         </div>
 
-        <button type="submit">SIGN IN</button>
+        <button type="submit" tabindex="3">SIGN IN</button>
     </form>
 
     <footer>
-        <span (click)="onSetModalView(null)" class="footer-link">Sign in via Facebook, Twitter or Google</span>
-        <span (click)="onSetModalView('register')" class="footer-link">Create a new account</span>
+        <span (click)="onSetModalView(null)" class="footer-link" tabindex="4">Sign in via Facebook, Twitter or Google</span>
+        <span (click)="onSetModalView('register')" class="footer-link" tabindex="5">Create a new account</span>
     </footer>
 </div>

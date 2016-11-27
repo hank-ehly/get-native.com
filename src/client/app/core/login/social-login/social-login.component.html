@@ -6,24 +6,22 @@
     <p>Sign in to Get Native with any of the following providers.</p>
 
     <section>
-        <button class="facebook">
-                        <span class="facebook-bg">
-                            <img src="../../../assets/icons/social-facebook.svg" alt="facebook">
-                        </span>
+        <button class="facebook" tabindex="1">
+            <span class="facebook-bg"><img src="../../../assets/icons/social-facebook.svg" alt="facebook"></span>
             <span>Continue with Facebook</span>
         </button>
-        <button class="twitter">
+        <button class="twitter" tabindex="2">
             <img src="../../../assets/icons/social-twitter.svg" alt="twitter">
             <span>Continue with Twitter</span>
         </button>
-        <button class="google">
+        <button class="google" tabindex="3">
             <img src="../../../assets/icons/social-google.svg" alt="gmail">
             <span>Continue with Gmail</span>
         </button>
     </section>
 
     <footer>
-        <span (click)="onSetModalView('email')" class="footer-link">Sign in with email</span>
-        <span (click)="onSetModalView('register')" class="footer-link">Create a new account</span>
+        <span (click)="onSetModalView('email')" class="footer-link" tabindex="4">Sign in with email</span>
+        <span (click)="onSetModalView('register')" class="footer-link" tabindex="5">Create a new account</span>
     </footer>
 </div>
