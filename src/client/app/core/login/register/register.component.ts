@@ -26,7 +26,7 @@ export class RegisterComponent implements AfterViewChecked {
     formRef: NgForm;
 
     /* Taken from HTML5 Specification */
-    emailPattern: string = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
+    HTML5_EMAIL_REGEX: string = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
 
     credentials: any = {
         email: '',
@@ -81,7 +81,7 @@ export class RegisterComponent implements AfterViewChecked {
         this.logger.debug('Value Change', data);
 
         if (data['password']) {
-            this.passwordStrengthComponent.showStrengthForPassword(data['password']);
+            this.passwordStrengthComponent.update(data['password']);
         }
 
         if (!this.formRef) return;

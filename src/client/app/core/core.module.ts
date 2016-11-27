@@ -9,21 +9,42 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+import { LoginModule } from './login/login.module';
 import {
     ToolbarComponent,
     NavbarComponent,
     SideMenuComponent,
     FooterComponent,
     CookieComplianceComponent,
-    LocalStorageService
+    LocalStorageService,
+    StringService
 } from './index';
-import { LoginModule } from './login/login.module';
 
 @NgModule({
-    imports: [RouterModule, CommonModule, LoginModule],
-    declarations: [ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent],
-    exports: [LoginModule, ToolbarComponent, NavbarComponent, SideMenuComponent, FooterComponent, CookieComplianceComponent],
-    providers: [LocalStorageService]
+    imports: [
+        RouterModule,
+        CommonModule,
+        LoginModule
+    ],
+    declarations: [
+        ToolbarComponent,
+        NavbarComponent,
+        SideMenuComponent,
+        FooterComponent,
+        CookieComplianceComponent
+    ],
+    exports: [
+        LoginModule,
+        ToolbarComponent,
+        NavbarComponent,
+        SideMenuComponent,
+        FooterComponent,
+        CookieComplianceComponent
+    ],
+    providers: [
+        LocalStorageService,
+        StringService
+    ]
 })
 
 export class CoreModule {

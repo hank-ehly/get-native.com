@@ -12,3 +12,4 @@ export * from './toolbar/index';
 export * from './cookie-compliance/index';
 export * from './login/index';
 export * from './local-storage/index';
+export * from './string/string.service';
