@@ -59,7 +59,6 @@ export function main() {
         });
 
         it('should become compliant after receiving notification', () => {
-            de = util.getDebugEl('.comply-trigger');
             expect(comp.isVisible).toEqual(true);
             comp.didSetLocalStorageItem({key: kAcceptLocalStorage, data: true});
             expect(comp.isVisible).toEqual(false);
