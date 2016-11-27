@@ -30,3 +30,11 @@ export const STUBLocalStorageService: LocalStorageService = <LocalStorageService
 export const STUBPasswordStrengthService: PasswordStrengthService = <PasswordStrengthService>{
     calculateStrength(password: string): number { return 0; }
 };
+
+export const STUBPasswords = {
+    veryWeak: 'very weak',
+    weak: 'we@k',
+    good: 'go0D12',
+    strong: 'sTr0nG12',
+    veryStrong: 'very_sTr0nG12'
+};
