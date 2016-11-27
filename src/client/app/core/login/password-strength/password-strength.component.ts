@@ -20,6 +20,7 @@ import { PasswordStrengthService } from './password-strength.service';
 
 export class PasswordStrengthComponent {
     score: number = 0;
+    private _strengthLabel: string;
 
     constructor(private passwordStrengthService: PasswordStrengthService, private logger: Logger) {}
 
@@ -32,15 +33,15 @@ export class PasswordStrengthComponent {
             [80, 'VERY STRONG']
         ];
 
-        var desc: string = matrix[0][1];
+        this._strengthLabel = matrix[0][1];
 
         for (const row in matrix) {
             let min = matrix[row][0];
             let txt = matrix[row][1];
-            if (this.score >= min) desc = txt;
+            if (this.score >= min) this._strengthLabel = txt;
         }
 
-        return desc;
+        return this._strengthLabel;
     }
 
     update(password: string) {

@@ -5,7 +5,7 @@
             <button class="close-button" (click)="onClose($event)"></button>
         </div>
 
-        <div [ngSwitch]="modalView">
+        <div [ngSwitch]="activeView">
             <gn-social-login *ngSwitchDefault (setModalView)="onSetModalView($event)"></gn-social-login>
             <gn-email-login *ngSwitchCase="'email'" (setModalView)="onSetModalView($event)"></gn-email-login>
             <gn-register *ngSwitchCase="'register'" (setModalView)="onSetModalView($event)"></gn-register>
