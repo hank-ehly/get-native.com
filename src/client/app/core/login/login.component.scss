@@ -119,6 +119,14 @@
     }
   }
 
+  .modal input.ng-invalid.ng-touched {
+    border-color: $red;
+  }
+
+  .modal input.ng-valid.ng-touched {
+    border-color: $malachite;
+  }
+
   .modal footer {
     margin-top: 30px;
     display: flex;

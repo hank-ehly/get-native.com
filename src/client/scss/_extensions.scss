@@ -24,8 +24,10 @@
 %shamrock-link {
   color: $shamrock;
   cursor: pointer;
+  outline: none;
   text-decoration: none;
-  &:hover {
+
+  &:hover, &:focus {
     text-decoration: underline;
     text-decoration-color: $iceberg;
   }

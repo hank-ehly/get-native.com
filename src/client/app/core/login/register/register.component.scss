@@ -9,14 +9,6 @@
   flex-direction: column;
 }
 
-.modal input.ng-invalid.ng-touched {
-  border-color: $red;
-}
-
-.modal input.ng-valid.ng-touched {
-  border-color: $malachite;
-}
-
 .modal-register .error-messages {
   padding-left: 30px;
   color: red;

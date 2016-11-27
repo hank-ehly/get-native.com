@@ -12,28 +12,29 @@
             <label for="email"><span class="required-indicator">*</span> Email</label>
 
             <input id="email" type="email" name="email" [(ngModel)]="credentials.email" [pattern]="HTML5_EMAIL_REGEX"
-                   maxlength="254" tabindex="1" required>
+                   maxlength="254" tabindex="1" class="tabbable" required>
         </div>
 
         <div class="form-group">
             <label for="password"><span class="required-indicator">*</span> Password (minimum 8 characters)</label>
             <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="credentials.password"
-                   minlength="8" required>
+                   minlength="8" class="tabbable" required>
             <gn-password-strength></gn-password-strength>
         </div>
 
         <div class="form-group confirm-password">
             <label for="password-confirm"><span class="required-indicator">*</span> Password (Confirm)</label>
             <input id="password-confirm" [pattern]="credentials.password" type="password" name="password-confirm"
-                   tabindex="3" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
+                   tabindex="3" class="tabbable" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
         </div>
 
-        <button type="submit" [disabled]="!form.valid" tabindex="4">SIGN UP</button>
+        <button type="submit" tabindex="4" class="tabbable" [disabled]="!form.valid">SIGN UP</button>
     </form>
 
     <footer>
-        <span (click)="onSetModalView(null)" class="footer-link">Sign in via Facebook, Twitter or Google</span>
-        <span (click)="onSetModalView('email')" class="footer-link">Sign in with email</span>
-        <p>By signing up, you are agreeing to the <a class="footer-link">privacy policy</a> and <a class="footer-link">terms of service</a></p>
+        <span (click)="onSetModalView(null)" class="footer-link tabbable" tabindex="5">Sign in via Facebook, Twitter or Google</span>
+        <span (click)="onSetModalView('email')" class="footer-link tabbable" tabindex="6">Sign in with email</span>
+        <p>By signing up, you are agreeing to the <a class="footer-link tabbable" tabindex="7">privacy policy</a> and
+            <a class="footer-link tabbable" tabindex="8">terms of service</a></p>
     </footer>
 </div>
