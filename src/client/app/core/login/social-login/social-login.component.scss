@@ -53,7 +53,7 @@ button span {
   border: none;
   border-bottom: 1px solid $chambray-darker;
 
-  &:hover {
+  &:hover, &:focus {
     background: $chambray-darker;
   }
 
@@ -80,7 +80,7 @@ button span {
   border: none;
   border-bottom: 1px solid $picton-blue-darker;
 
-  &:hover {
+  &:hover, &:focus {
     background: $picton-blue-darker;
   }
 
@@ -94,7 +94,7 @@ button span {
   background: $white;
   border: 2px solid $aqua-haze;
 
-  &:hover {
+  &:hover, &:focus {
     border-color: $aqua-haze-darker;
   }
 

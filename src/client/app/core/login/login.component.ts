@@ -74,15 +74,54 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    onSetModalView(view: any) {
-        /* TODO: Make sure view isn't some weird string */
+    onSetModalView(view: any): void {
         this.modalView = view;
     }
 
-    @HostListener('document:keyup', ['$event']) onKeyUp(e: KeyboardEvent) {
-        if (e.key === 'Escape' && this.isVisible) {
-            this.logger.debug(`Keyboard event: keyCode: ${e.keyCode}, key: ${e.key}`);
-            this.isVisible = false;
+    @HostListener('document:keydown', ['$event']) onKeyDown(e: KeyboardEvent): void {
+        if (!this.isVisible) return;
+
+        this.logger.debug(`KeyboardEvent: ${e.key}`);
+
+        switch (e.key) {
+            case 'Enter': this.onKeydownEnter(e); break;
+            case 'Escape': this.onKeydownEscape(e); break;
+            case 'Tab': this.onKeydownTab(e); break;
+            default: break;
+        }
+    }
+
+    onKeydownEnter(e?: KeyboardEvent): void {
+        let target: HTMLElement = <HTMLElement>e.target;
+        if (target.className.indexOf('tabbable') === -1) return;
+
+        this.logger.warn(`TODO: Perform action for ${target.tagName.toLowerCase()}.${target.className.replace(' ', '.')}`);
+    }
+
+    onKeydownEscape(e?: KeyboardEvent): void {
+        this.isVisible = false;
+    }
+
+    onKeydownTab(e?: KeyboardEvent): void {
+        this.selectNextTabbable(e);
+    }
+
+    selectNextTabbable(e?: KeyboardEvent) {
+        let tabbables = document.querySelectorAll('.tabbable');
+        let first: HTMLElement = <HTMLElement>tabbables[0];
+        let last: HTMLElement = <HTMLElement>tabbables[tabbables.length - 1];
+
+        let isFirstSelection: boolean = true;
+        for (var i = 0; i < tabbables.length; i++) {
+            if (document.activeElement === tabbables[i]) {
+                isFirstSelection = false; break;
+            }
+        }
+
+        if (!e.shiftKey && (isFirstSelection || e.target === last)) {
+            e.preventDefault(); first.focus();
+        } else if (e.shiftKey && (isFirstSelection || e.target === first)) {
+            e.preventDefault(); last.focus();
         }
     }
 }
