@@ -111,4 +111,34 @@ describe('LoginComponent', () => {
 
         expect(socialView.isPresent()).toBe(true);
     });
+
+    it('should not allow registration until all form fields are filled in', () => {
+        let openBtn = $('.sign-in');
+        let registerBtn = $('.modal-social footer .footer-link:nth-child(2)');
+        let emailInput = $('#email');
+        let passwordInput = $('#password');
+        let submitButton = element(by.buttonText('SIGN UP'));
+        let passwordConfirmInput = $('#password-confirm');
+
+
+        openBtn.click();
+
+        //noinspection TypeScriptUnresolvedFunction
+        registerBtn.click();
+
+        //noinspection TypeScriptUnresolvedFunction
+        emailInput.sendKeys('foo@bar');
+
+        //noinspection TypeScriptUnresolvedFunction
+        passwordInput.sendKeys('password12345');
+
+        //noinspection TypeScriptUnresolvedVariable
+        expect(submitButton.getAttribute('disabled')).toBeTruthy();
+
+        //noinspection TypeScriptUnresolvedFunction
+        passwordConfirmInput.sendKeys('password12345');
+
+        //noinspection TypeScriptUnresolvedVariable
+        expect(submitButton.getAttribute('disabled')).toBeFalsy();
+    });
 });
