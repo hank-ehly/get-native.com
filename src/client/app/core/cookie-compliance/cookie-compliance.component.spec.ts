@@ -20,7 +20,6 @@ import { kAcceptLocalStorage } from '../local-storage/local-storage-keys';
 export function main() {
     let comp: CookieComplianceComponent;
     let fixture: ComponentFixture<CookieComplianceComponent>;
-    let de: DebugElement;
     let el: HTMLElement;
     let util: SpecUtil;
 
