@@ -82,8 +82,8 @@ export function main() {
         it('should have a footer with 2 links', () => {
             el = util.getNativeEl('.modal footer');
             expect(el.childElementCount).toEqual(2);
-            expect(el.children[0].className).toEqual('footer-link');
-            expect(el.children[1].className).toEqual('footer-link');
+            expect(el.children[0].className).toContain('footer-link');
+            expect(el.children[1].className).toContain('footer-link');
         });
     });
 }
