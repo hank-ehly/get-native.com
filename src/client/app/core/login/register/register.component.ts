@@ -34,24 +34,7 @@ export class RegisterComponent implements AfterViewChecked {
         passwordConfirm: ''
     };
 
-    formErrors: any = {
-        'email': '',
-        'password': '',
-        'password-confirm': ''
-    };
-
-    // Example
-    // validationMessages = {
-    //     'name': {
-    //         'required':      'Name is required.',
-    //         'minlength':     'Name must be at least 4 characters long.',
-    //         'maxlength':     'Name cannot be more than 24 characters long.',
-    //         'forbiddenName': 'Someone named "Bob" cannot be a hero.'
-    //     },
-    //     'power': {
-    //         'required': 'Power is required.'
-    //     }
-    // };
+    formErrors: string[] = [];
 
     constructor(private logger: Logger) {
     }
@@ -74,7 +57,21 @@ export class RegisterComponent implements AfterViewChecked {
     }
 
     onSubmit(): void {
-        this.logger.debug('Submit!');
+        this.logger.debug('[RegisterComponent]: Submit');
+
+        // TODO: Attempt registration
+        // TODO: Display callback error if present
+        // TODO: Model callback error object (see if you can subclass some angular error object)
+        setTimeout(() => {
+            this.logger.debug('[RegisterComponent]: Received (mock) response.');
+            let mockErrorsObject = [{message: 'This email is already in use', code: 123}];
+            for (let err in mockErrorsObject) {
+                let msg = mockErrorsObject[err]['message'];
+                if (this.formErrors.indexOf(msg) === -1) {
+                    this.formErrors.push(msg);
+                }
+            }
+        }, 1000);
     }
 
     onValueChanged(data?: any) {
@@ -85,21 +82,5 @@ export class RegisterComponent implements AfterViewChecked {
         if (data.hasOwnProperty('password')) {
             this.passwordStrengthComponent.update(data.password);
         }
-
-        // const form = this.formRef.form;
-
-        // for (const field in this.formErrors) {
-        //     /* Reset error messages if present */
-        //     this.formErrors[field] = '';
-        //     const control = form.get(field);
-        //
-        //     // Example
-        //     if (control && control.dirty && !control.valid) {
-        //         // const messages = this.validationMessages[field];
-        //         // for (const key in control.errors) {
-        //         //     this.formErrors[field] += messages[key] + ' ';
-        //         // }
-        //     }
-        // }
     }
 }

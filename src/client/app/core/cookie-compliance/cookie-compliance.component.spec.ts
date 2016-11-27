@@ -6,7 +6,6 @@
  */
 
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
-import { DebugElement } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 

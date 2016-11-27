@@ -4,33 +4,28 @@
     </header>
 
     <ul class="error-messages" *ngIf="formErrors">
-        <li>EMAIL ALREADY IN USE</li>
-        <li>PASSWORDS DON'T MATCH</li>
+        <li *ngFor="let err of formErrors">{{ err | uppercase }}</li>
     </ul>
 
     <form (ngSubmit)="onSubmit()" #form="ngForm">
         <div class="form-group">
             <label for="email"><span class="required-indicator">*</span> Email</label>
 
-            <input id="email"
-                   type="email"
-                   name="email"
-                   [(ngModel)]="credentials.email"
-                   [pattern]="HTML5_EMAIL_REGEX"
-                   maxlength="254"
-                   tabindex="1"
-                   required>
+            <input id="email" type="email" name="email" [(ngModel)]="credentials.email" [pattern]="HTML5_EMAIL_REGEX"
+                   maxlength="254" tabindex="1" required>
         </div>
 
         <div class="form-group">
             <label for="password"><span class="required-indicator">*</span> Password (minimum 8 characters)</label>
-            <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="credentials.password" minlength="8" required>
+            <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="credentials.password"
+                   minlength="8" required>
             <gn-password-strength></gn-password-strength>
         </div>
 
         <div class="form-group confirm-password">
             <label for="password-confirm"><span class="required-indicator">*</span> Password (Confirm)</label>
-            <input id="password-confirm" [pattern]="credentials.password" type="password" name="password-confirm" tabindex="3" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
+            <input id="password-confirm" [pattern]="credentials.password" type="password" name="password-confirm"
+                   tabindex="3" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
         </div>
 
         <button type="submit" [disabled]="!form.valid" tabindex="4">SIGN UP</button>
