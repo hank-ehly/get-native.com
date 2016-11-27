@@ -5,12 +5,13 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Component, EventEmitter, Output, ViewChild, AfterViewChecked } from '@angular/core';
+import { Component, ViewChild, AfterViewChecked } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Logger } from 'angular2-logger/core';
 
 import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
+import { LoginService } from '../login.service';
 
 @Component({
     moduleId: module.id,
@@ -20,7 +21,6 @@ import { PasswordStrengthComponent } from '../password-strength/password-strengt
 })
 
 export class RegisterComponent implements AfterViewChecked {
-    @Output() setModalView = new EventEmitter<string>();
     @ViewChild('form') currentForm: NgForm;
     @ViewChild(PasswordStrengthComponent) passwordStrengthComponent: PasswordStrengthComponent;
     formRef: NgForm;
@@ -36,7 +36,7 @@ export class RegisterComponent implements AfterViewChecked {
 
     formErrors: string[] = [];
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private loginService: LoginService) {
     }
 
     ngAfterViewChecked(): void {
@@ -53,7 +53,7 @@ export class RegisterComponent implements AfterViewChecked {
     }
 
     onSetModalView(view: string) {
-        this.setModalView.emit(view);
+        this.loginService.setActiveView(view);
     }
 
     onSubmit(): void {

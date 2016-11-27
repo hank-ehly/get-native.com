@@ -59,23 +59,16 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.loginService.showModal$.subscribe(() => {
-            this.isVisible = true;
-
-            // Note: Setting the document.body overflow to 'hidden' will inhibit the user from scrolling up and down the
-            // page while the overlay is visible; however, it causes an unpleasant 'jump' effect because the scroll-bar
-            // disappears when the <body> overflow is set to 'hidden.'
-        });
+        this.loginService.showModal$.subscribe(() => this.isVisible = true);
+        this.loginService.hideModal$.subscribe(() => this.isVisible = false);
+        this.loginService.setActiveView$.subscribe((view) => this.activeView = view);
     }
 
-    onClose(e: any): void {
-        if (['close-button', 'overlay'].indexOf(e.target.className) !== -1) {
+    onClickClose(e: MouseEvent): void {
+        let t = <HTMLElement>e.target;
+        if (['close-button', 'overlay'].indexOf(t.className) !== -1) {
             this.isVisible = false;
         }
-    }
-
-    onSetModalView(view: any): void {
-        this.activeView = view;
     }
 
     @HostListener('document:keydown', ['$event']) onKeyDown(e: KeyboardEvent): void {
@@ -119,9 +112,9 @@ export class LoginComponent implements OnInit {
         }
 
         if (!e.shiftKey && (isFirstSelection || e.target === last)) {
-            e.preventDefault(); first.focus();
+            if (e) e.preventDefault(); first.focus();
         } else if (e.shiftKey && (isFirstSelection || e.target === first)) {
-            e.preventDefault(); last.focus();
+            if (e) e.preventDefault(); last.focus();
         }
     }
 }

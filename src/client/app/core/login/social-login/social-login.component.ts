@@ -5,7 +5,9 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { LoginService } from '../login.service';
 
 @Component({
     moduleId: module.id,
@@ -15,9 +17,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class SocialLoginComponent {
-    @Output() setModalView = new EventEmitter<string>();
+    constructor(private loginService: LoginService) {
+    }
 
     onSetModalView(view: string) {
-        this.setModalView.emit(view);
+        this.loginService.setActiveView(view);
     }
 }
