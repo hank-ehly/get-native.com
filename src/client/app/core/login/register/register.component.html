@@ -16,20 +16,20 @@
                    type="email"
                    name="email"
                    [(ngModel)]="credentials.email"
-                   [pattern]="emailPattern"
+                   [pattern]="HTML5_EMAIL_REGEX"
                    maxlength="254"
                    required>
         </div>
 
         <div class="form-group">
             <label for="password"><span class="required-indicator">*</span> Password</label>
-            <input id="password" type="password" name="password" [(ngModel)]="credentials.password" required>
+            <input id="password" type="password" name="password" [(ngModel)]="credentials.password" minlength="8" required>
             <gn-password-strength></gn-password-strength>
         </div>
 
         <div class="form-group confirm-password">
             <label for="password-confirm"><span class="required-indicator">*</span> Password (Confirm)</label>
-            <input id="password-confirm" type="password" name="password-confirm" [(ngModel)]="credentials.passwordConfirm" required>
+            <input id="password-confirm" type="password" name="password-confirm" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
         </div>
 
         <button type="submit" [disabled]="!form.valid">SIGN UP</button>
