@@ -53,7 +53,7 @@ import { LoginService } from './index';
 
 export class LoginComponent implements OnInit {
     @Input() isVisible: boolean;
-    modalView: string;
+    activeView: string;
 
     constructor(private logger: Logger, private loginService: LoginService) {
     }
@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
     }
 
     onSetModalView(view: any): void {
-        this.modalView = view;
+        this.activeView = view;
     }
 
     @HostListener('document:keydown', ['$event']) onKeyDown(e: KeyboardEvent): void {
