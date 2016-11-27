@@ -62,6 +62,7 @@ export class RegisterComponent implements AfterViewChecked {
         // TODO: Attempt registration
         // TODO: Display callback error if present
         // TODO: Model callback error object (see if you can subclass some angular error object)
+        // TODO: Transition to dashboard view on successful login
         setTimeout(() => {
             this.logger.debug('[RegisterComponent]: Received (mock) response.');
             let mockErrorsObject = [{message: 'This email is already in use', code: 123}];
