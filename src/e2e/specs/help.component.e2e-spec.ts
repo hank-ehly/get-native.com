@@ -23,7 +23,7 @@ describe('Help', () => {
     it('should display a faq when selected', () => {
         let itemLabels = $$('.about .section-body li .item-label');
         let itemDetails = $$('.about .section-body li .item-detail');
-        //noinspection TypeScriptUnresolvedFunction
+
         itemLabels.first().click();
         expect(itemDetails.count()).toBe(1);
     });

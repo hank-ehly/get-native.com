@@ -17,7 +17,9 @@ export const STUBLogger: Logger = <Logger>{
 };
 
 export const STUBLoginService: LoginService = <LoginService>{
-    showModal$: new Subject().asObservable()
+    showModal$: new Subject().asObservable(),
+    hideModal$: new Subject().asObservable(),
+    setActiveView$: new Subject<string>().asObservable()
 };
 
 export const STUBLocalStorageService: LocalStorageService = <LocalStorageService>{

@@ -19,7 +19,6 @@ describe('Privacy', () => {
     });
 
     it('should have the moderator email', () => {
-        //noinspection TypeScriptUnresolvedFunction
-        expect(element(by.tagName('address')).getText()).toContain('getnative.moderator@gmail.com');
+        expect($('address').getText()).toContain('getnative.moderator@gmail.com');
     });
 });
