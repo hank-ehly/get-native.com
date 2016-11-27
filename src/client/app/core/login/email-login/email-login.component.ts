@@ -5,8 +5,11 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Logger } from 'angular2-logger/core';
+import { LoginService } from '../login.service';
 
 @Component({
     moduleId: module.id,
@@ -16,8 +19,6 @@ import { Logger } from 'angular2-logger/core';
 })
 
 export class EmailLoginComponent {
-    @Output() setModalView = new EventEmitter<string>();
-
     /* Taken from HTML5 Specification */
     HTML5_EMAIL_REGEX: string = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
 
@@ -28,11 +29,11 @@ export class EmailLoginComponent {
 
     formErrors: string[] = [];
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private router: Router, private loginService: LoginService) {
     }
 
-    onSetModalView(view: string) {
-        this.setModalView.emit(view);
+    onSetModalView(view: string): void {
+        this.loginService.setActiveView(view);
     }
 
     // TODO: API
@@ -40,5 +41,15 @@ export class EmailLoginComponent {
     // TODO: Failure -> Display form error
     onSubmit(): void {
         this.logger.debug('[EmailLoginComponent]: onSubmit()');
+        this.router.navigate(['dashboard']).then((success) => {
+            if (success) {
+                this.logger.debug('Navigation success');
+                this.loginService.hideModal();
+            } else {
+                this.logger.warn('Navigation failed');
+            }
+        }).catch((reason) => {
+            this.logger.warn(reason);
+        });
     }
 }
