@@ -19,32 +19,31 @@ import { PasswordStrengthService } from './password-strength.service';
 })
 
 export class PasswordStrengthComponent {
-    strength: number = 0;
+    score: number = 0;
 
-    constructor(private passwordStrengthService: PasswordStrengthService, private logger: Logger) {
-    }
+    constructor(private passwordStrengthService: PasswordStrengthService, private logger: Logger) {}
 
-    showStrengthForPassword(password: string) {
-        this.strength = this.passwordStrengthService.calculateStrength(password);
-    }
-
-    strengthDescription(): string {
-        let matrix = [
-            [0.3, 0.4, 'WEAK'],
-            [0.5, 0.7, 'GOOD'],
-            [0.8, 1.0, 'EXCELLENT']
+    get strengthLabel(): string {
+        let matrix: [number, string][] = [
+            [0, 'VERY WEAK'],
+            [20, 'WEAK'],
+            [40, 'GOOD'],
+            [60, 'STRONG'],
+            [80, 'VERY STRONG']
         ];
+
+        var desc: string = matrix[0][1];
 
         for (const row in matrix) {
             let min = matrix[row][0];
-            let max = matrix[row][1];
-            let txt = matrix[row][2];
-
-            if (this.strength >= min && this.strength <= max) {
-                return txt.toString();
-            }
+            let txt = matrix[row][1];
+            if (this.score >= min) desc = txt;
         }
 
-        return 'TOO SHORT';
+        return desc;
+    }
+
+    update(password: string) {
+        this.score = this.passwordStrengthService.calculateStrength(password);
     }
 }
