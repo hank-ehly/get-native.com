@@ -78,27 +78,28 @@ export class RegisterComponent implements AfterViewChecked {
     }
 
     onValueChanged(data?: any) {
+        if (!this.formRef) return;
+
         this.logger.debug('Value Change', data);
 
-        if (data['password']) {
-            this.passwordStrengthComponent.update(data['password']);
+        if (data.hasOwnProperty('password')) {
+            this.passwordStrengthComponent.update(data.password);
         }
 
-        if (!this.formRef) return;
         // const form = this.formRef.form;
 
-        for (const field in this.formErrors) {
-            /* Reset error messages if present */
-            this.formErrors[field] = '';
-            // const control = form.get(field);
-
-            // Example
-            // if (control && control.dirty && !control.valid) {
-            //     const messages = this.validationMessages[field];
-            //     for (const key in control.errors) {
-            //         this.formErrors[field] += messages[key] + ' ';
-            //     }
-            // }
-        }
+        // for (const field in this.formErrors) {
+        //     /* Reset error messages if present */
+        //     this.formErrors[field] = '';
+        //     const control = form.get(field);
+        //
+        //     // Example
+        //     if (control && control.dirty && !control.valid) {
+        //         // const messages = this.validationMessages[field];
+        //         // for (const key in control.errors) {
+        //         //     this.formErrors[field] += messages[key] + ' ';
+        //         // }
+        //     }
+        // }
     }
 }
