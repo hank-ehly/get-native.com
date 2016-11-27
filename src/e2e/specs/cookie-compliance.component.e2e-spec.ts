@@ -15,12 +15,11 @@ describe('CookieCompliance', () => {
         let closeButton = dialog.$('.comply-trigger');
         expect(dialog.isPresent()).toBe(true);
 
-        //noinspection TypeScriptUnresolvedFunction
         closeButton.click();
 
         // TODO: Disabling animations is preferable to sleep()
         //noinspection TypeScriptUnresolvedFunction
-        browser.driver.sleep(250);
+        (<protractor.WebDriver>browser.driver).sleep(250);
 
         expect(dialog.isPresent()).toBe(false);
     });

@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/28.
  */
 
-import { DebugElement } from '@angular/core';
+// import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
