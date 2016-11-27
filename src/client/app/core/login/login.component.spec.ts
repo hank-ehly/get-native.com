@@ -11,9 +11,16 @@ import { FormsModule } from '@angular/forms';
 
 import { Logger } from 'angular2-logger/core';
 
-import { LoginComponent, LoginService, SocialLoginComponent, EmailLoginComponent, RegisterComponent } from './index';
+import {
+    LoginComponent,
+    LoginService,
+    SocialLoginComponent,
+    EmailLoginComponent,
+    RegisterComponent,
+    PasswordStrengthComponent,
+    PasswordStrengthService
+} from './index';
 import { SpecUtil, STUBLogger, STUBLoginService, STUBPasswordStrengthService } from '../../shared/index';
-import { PasswordStrengthComponent, PasswordStrengthService } from './index';
 
 export function main() {
     let comp: LoginComponent;
