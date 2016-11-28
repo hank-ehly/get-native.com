@@ -6,16 +6,32 @@
   height: pu(9);
 }
 
+.logo-window {
+  display: flex;
+  height: pu(9);
+  justify-content: center;
+  position: fixed;
+  width: pu(9);
+}
+
 .logo {
   align-self: center;
   cursor: pointer;
   height: pu(3);
-  margin-left: pu(3);
-  position: fixed;
   width: pu(3);
 }
 
-// TODO: Make reusable
+.quick-links {
+  display: flex;
+  height: 100%;
+  margin-left: auto;
+  padding: 0 30px;
+
+  a {
+    align-self: center;
+  }
+}
+
 .quick-links {
   font-size: 0;
   a {
@@ -23,127 +39,15 @@
   }
 }
 
-.quick-links {
-  align-self: center;
-  margin-left: auto;
-  margin-right: 30px;
-
-  /* If you want to fix in place */
-  //position: fixed;
-  //right: 30px;
+.quick-links .sign-in {
+  @extend %shamrock-link;
 }
 
 .quick-links .help {
   color: $black;
+  margin-right: 15px;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
 }
-
-.quick-links .sign-in {
-  @extend %shamrock-link;
-  margin-left: 20px;
-}
-
-
-
-
-/* OLD - Temporarily disabled */
-
-//$navbar-center-item-width: 300px;
-//$logo-diameter: 30px;
-//
-//header > * {
-//  display: inline-block;
-//}
-//
-//header {
-//  height: $navbar-height;
-//  line-height: $navbar-height;
-//  position: relative;
-//
-//  img {
-//    vertical-align: middle;
-//  }
-//}
-//
-//.logo-container {
-//  @include debug-background-color(yellow);
-//  position: fixed;
-//  width: $logo-diameter * 3;
-//}
-//
-//.logo {
-//  @include debug-background-color(orange);
-//  cursor: pointer;
-//  margin-left: $logo-diameter;
-//  height: $logo-diameter;
-//  width: $logo-diameter;
-//}
-//
-//.navbar-center-items {
-//  @include debug-background-color(green);
-//  display: block;
-//  margin: 0 auto;
-//  width: $main-width;
-//}
-//
-//.navbar-center-items li {
-//  display: inline-block;
-//  float: left;
-//  text-align: center;
-//  width: $navbar-center-item-width;
-//}
-//
-//.navbar-center-items .return-navigation {
-//  @include debug-background-color(pink);
-//}
-//
-//.navbar-center-items .page-title {
-//  @include debug-background-color(grey);
-//}
-//
-//.navbar-center-items .video-options-container {
-//  @include debug-background-color(purple);
-//  text-align: center;
-//}
-//
-//.navbar-center-items .video-options-container .video-options li {
-//  width: $navbar-center-item-width / 2;
-//}
-//
-//.user-preference-icons {
-//  position: fixed;
-//  right: 0;
-//  top: 0;
-//
-//  li {
-//    display: inline-block;
-//  }
-//
-//  li:first-child {
-//    margin-right: 20px;
-//  }
-//
-//  li:last-child {
-//    margin-right: 30px;
-//  }
-//}
-//
-//.notifications-icon {
-//  cursor: pointer;
-//  height: 23px;
-//  width: 23px;
-//}
-//
-//.user-icon {
-//  border-radius: 50%;
-//  cursor: pointer;
-//  height: 35px;
-//  width: 35px;
-//}
-//
-//.video-options li button {
-//  @extend %rounded-button;
-//}
