@@ -11,6 +11,8 @@ import { LoginService } from '../login/login.service';
 })
 
 export class NavbarComponent {
+    authenticated: boolean = false;
+
     constructor(private loginService: LoginService, private logger: Logger) {
     }
 
