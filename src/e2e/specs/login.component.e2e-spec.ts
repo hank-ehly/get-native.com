@@ -27,11 +27,8 @@ describe('LoginComponent', () => {
     it ('should close the login modal after clicking the overlay', () => {
         openBtn.click();
 
-        //noinspection TypeScriptUnresolvedFunction
-        browser.actions().mouseMove(overlay, 1, 0).click().perform();
-
-        //noinspection TypeScriptUnresolvedFunction
-        (<protractor.WebDriver>browser.driver).sleep(250);
+        browser.driver.actions().mouseMove(overlay.getWebElement(), {x: 1, y: 0}).click().perform();
+        browser.driver.sleep(250);
 
         expect(modal.isPresent()).toBe(false);
     });
@@ -41,8 +38,7 @@ describe('LoginComponent', () => {
         openBtn.click();
         closeBtn.click();
 
-        //noinspection TypeScriptUnresolvedFunction
-        (<protractor.WebDriver>browser.driver).sleep(250);
+        browser.driver.sleep(250);
 
         expect(modal.isPresent()).toBe(false);
     });
