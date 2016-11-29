@@ -17,4 +17,16 @@ describe('Home', () => {
     it('should have small features', () => {
         expect($('.small-features').isPresent()).toBe(true);
     });
+
+    it('should display the login modal on pressing sign-in/sign-up', () => {
+        let socialLogin = $('gn-social-login');
+
+        $('button.content-action').click();
+        expect(socialLogin.isPresent()).toBe(true);
+
+        $('gn-login .overlay').click();
+        browser.driver.sleep(250);
+
+        expect(socialLogin.isPresent()).toBe(true);
+    });
 });
