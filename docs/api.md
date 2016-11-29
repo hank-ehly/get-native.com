@@ -402,11 +402,13 @@ videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower 
 	"success": true,
 	"error": ""
 }
-```# GET /videos/search
+```
+
+# GET /videos/search
 
 Returns an array of video objects matching the specified search query.
 
-# Example Request
+**Example Request**
 
 ```
 GET
@@ -426,12 +428,13 @@ https://get-native.com/videos/search?q=Business%20Ethics&lang=en
 | category_id     | Restricts videos to the given category. If the topic_id parameter is also included, the category_id parameter is ignored.        |          |         |
 | q               | A URL-encoded UTF-8 search query. Maximum length is 100 characters.                                                              |          |         |
 
-# Example Response
+**Example Response**
 
 | Data Field | Type    | Description                                              |
 |------------|---------|----------------------------------------------------------|
 | count      | Int     | The number of videos included in the response.           |
 | records    | [Video] | The array of video objects relevant to the search query. |
+
 
 ```json
 {
