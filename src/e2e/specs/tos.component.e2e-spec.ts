@@ -19,7 +19,6 @@ describe('TOS', () => {
     });
 
     it('should have the moderator email', () => {
-        //noinspection TypeScriptUnresolvedFunction
         expect($('.mail').getText()).toContain('getnative.moderator@gmail.com');
     });
 });
