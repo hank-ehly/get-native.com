@@ -1,5 +1,5 @@
 /**
- * password-strength.service
+ * password.service
  * get-native.com
  *
  * Created by henryehly on 2016/11/23.
@@ -12,7 +12,7 @@ import { StringService, PasswordBlacklist as Blacklist } from '../index';
 import { Logger } from 'angular2-logger/core';
 
 @Injectable()
-export class PasswordStrengthService {
+export class PasswordService {
     constructor(private logger: Logger, private stringService: StringService) {}
 
     /* Algorithm taken from http://www.passwordmeter.com */

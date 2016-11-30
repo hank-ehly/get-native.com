@@ -7,7 +7,7 @@
 
 import { Component } from '@angular/core';
 
-import { LoginService } from '../../../core/index';
+import { LoginService } from '../../core/index';
 
 @Component({
     moduleId: module.id,

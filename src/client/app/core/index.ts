@@ -8,5 +8,5 @@
 export * from './local-storage/index';
 export * from './string/string.service';
 export * from './spec/index';
-export * from './password-strength/index';
+export * from './password/index';
 export * from './login/login.service';

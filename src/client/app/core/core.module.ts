@@ -7,13 +7,13 @@
 
 import { NgModule } from '@angular/core';
 
-import { LocalStorageService, LoginService, StringService, PasswordStrengthService } from './index';
+import { LocalStorageService, LoginService, StringService, PasswordService } from './index';
 
 @NgModule({
     providers: [
         LocalStorageService,
         LoginService,
-        PasswordStrengthService,
+        PasswordService,
         StringService
     ]
 })

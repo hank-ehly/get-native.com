@@ -1,4 +1,4 @@
-@import '../../../scss/core';
+@import '../../scss/core';
 
 .overlay {
   position: fixed;
@@ -31,7 +31,7 @@
 
   button {
     align-self: flex-start;
-    background: transparent url("../../../assets/icons/close.svg");
+    background: transparent url("../../assets/icons/close.svg");
     border: 0;
     cursor: pointer;
     padding: 0;

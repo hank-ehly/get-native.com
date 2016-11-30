@@ -18,9 +18,20 @@ import {
 } from './index';
 
 @NgModule({
-    imports: [CommonModule, FormsModule],
-    declarations: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent, PasswordStrengthComponent],
-    exports: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent, PasswordStrengthComponent]
+    imports: [
+        CommonModule,
+        FormsModule
+    ],
+    declarations: [
+        LoginComponent,
+        SocialLoginComponent,
+        EmailLoginComponent,
+        RegisterComponent,
+        PasswordStrengthComponent
+    ],
+    exports: [
+        LoginComponent
+    ]
 })
 
 export class LoginModule {

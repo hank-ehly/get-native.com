@@ -7,6 +7,7 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import {
     ComplianceComponent,
@@ -16,14 +17,11 @@ import {
     ToolbarComponent,
     VideoPanelComponent
 } from './index';
-import { LoginModule } from './login/login.module';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule,
-        LoginModule
+        RouterModule
     ],
     declarations: [
         ComplianceComponent,
@@ -36,7 +34,6 @@ import { RouterModule } from '@angular/router';
     exports: [
         CommonModule,
         RouterModule,
-        LoginModule,
         ComplianceComponent,
         FooterComponent,
         NavbarComponent,

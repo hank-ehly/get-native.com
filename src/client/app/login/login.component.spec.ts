@@ -9,8 +9,6 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
-import { Logger } from 'angular2-logger/core';
-
 import {
     LoginComponent,
     SocialLoginComponent,
@@ -22,10 +20,12 @@ import {
     SpecUtil,
     STUBLogger,
     STUBLoginService,
-    STUBPasswordStrengthService,
-    PasswordStrengthService
-} from '../../core/index';
-import { LoginService } from '../../core/index';
+    STUBPasswordService,
+    PasswordService,
+    LoginService
+} from '../core/index';
+
+import { Logger } from 'angular2-logger/core';
 
 export function main() {
     let comp: LoginComponent;
@@ -48,7 +48,7 @@ export function main() {
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
                     {provide: LoginService, useValue: STUBLoginService},
-                    {provide: PasswordStrengthService, useValue: STUBPasswordStrengthService}
+                    {provide: PasswordService, useValue: STUBPasswordService}
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LoginComponent);

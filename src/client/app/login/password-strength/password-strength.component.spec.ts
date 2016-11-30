@@ -8,7 +8,7 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { PasswordStrengthComponent } from './password-strength.component';
-import { SpecUtil, STUBLogger, STUBPasswords, StringService, PasswordStrengthService } from '../../../core/index';
+import { SpecUtil, STUBLogger, STUBPasswords, StringService, PasswordService } from '../../core/index';
 
 import { Logger } from 'angular2-logger/core';
 
@@ -24,7 +24,7 @@ export function main() {
                 declarations: [PasswordStrengthComponent],
                 providers: [
                     StringService,
-                    PasswordStrengthService,
+                    PasswordService,
                     {provide: Logger, useValue: STUBLogger}
                 ]
             }).compileComponents().then(() => {
