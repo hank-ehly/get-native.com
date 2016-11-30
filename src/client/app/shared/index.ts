@@ -8,7 +8,6 @@
 export * from './config/env.config';
 export * from './compliance/index';
 export * from './footer/index';
-export * from './login/index';
 export * from './navbar/index';
 export * from './side-menu/index';
 export * from './toolbar/index';

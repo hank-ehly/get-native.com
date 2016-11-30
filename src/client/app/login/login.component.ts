@@ -7,7 +7,7 @@
 
 import { Component, style, keyframes, animate, transition, trigger, Input, OnInit, HostListener } from '@angular/core';
 
-import { LoginService } from '../../core/index';
+import { LoginService } from '../core/index';
 
 import { Logger } from 'angular2-logger/core';
 
@@ -106,7 +106,7 @@ export class LoginComponent implements OnInit {
         let last: HTMLElement = <HTMLElement>tabbables[tabbables.length - 1];
 
         let isFirstSelection: boolean = true;
-        for (var i = 0; i < tabbables.length; i++) {
+        for (let i = 0; i < tabbables.length; i++) {
             if (document.activeElement === tabbables[i]) {
                 isFirstSelection = false; break;
             }

@@ -6,4 +6,4 @@
  */
 
 export * from './password-blacklist';
-export * from './password-strength.service';
+export * from './password.service';

@@ -7,7 +7,7 @@
 
 import { Subject } from 'rxjs/Subject';
 
-import { LocalStorageService, LoginService, PasswordStrengthService } from '../index';
+import { LocalStorageService, LoginService, PasswordService } from '../index';
 
 import { Logger } from 'angular2-logger/core';
 
@@ -28,7 +28,7 @@ export const STUBLocalStorageService: LocalStorageService = <LocalStorageService
     clearSource$: { subscribe(): void {} }
 };
 
-export const STUBPasswordStrengthService: PasswordStrengthService = <PasswordStrengthService>{
+export const STUBPasswordService: PasswordService = <PasswordService>{
     calculateStrength(password: string): number { return 0; }
 };
 

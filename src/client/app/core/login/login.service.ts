@@ -11,7 +11,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 
-export class LoginService { // TODO: Should this be in core?
+export class LoginService {
     showModalSource = new Subject();
     showModal$ = this.showModalSource.asObservable();
 

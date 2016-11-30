@@ -1,18 +1,18 @@
 /**
- * password-strength.service.spec
+ * password.service.spec
  * get-native.com
  *
  * Created by henryehly on 2016/11/27.
  */
 
-import { STUBLogger, STUBPasswords, StringService, PasswordStrengthService, PasswordBlacklist as Blacklist } from '../index';
+import { STUBLogger, STUBPasswords, StringService, PasswordService, PasswordBlacklist as Blacklist } from '../index';
 
 export function main() {
-    let passwordStrengthService: PasswordStrengthService;
+    let passwordStrengthService: PasswordService;
 
-    describe('PasswordStrengthService', () => {
+    describe('PasswordService', () => {
         beforeEach(() => {
-            passwordStrengthService = new PasswordStrengthService(STUBLogger, new StringService());
+            passwordStrengthService = new PasswordService(STUBLogger, new StringService());
         });
 
         it('should recognize a VERY WEAK password', () => {

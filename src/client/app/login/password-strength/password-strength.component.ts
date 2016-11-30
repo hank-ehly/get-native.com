@@ -7,7 +7,7 @@
 
 import { Component } from '@angular/core';
 
-import { PasswordStrengthService } from '../../../core/index';
+import { PasswordService } from '../../core/index';
 
 import { Logger } from 'angular2-logger/core';
 
@@ -22,7 +22,7 @@ export class PasswordStrengthComponent {
     score: number = 0;
     private _strengthLabel: string;
 
-    constructor(private passwordStrengthService: PasswordStrengthService, private logger: Logger) {}
+    constructor(private passwordService: PasswordService, private logger: Logger) {}
 
     get strengthLabel(): string {
         let matrix: [number, string][] = [
@@ -45,6 +45,6 @@ export class PasswordStrengthComponent {
     }
 
     update(password: string) {
-        this.score = this.passwordStrengthService.calculateStrength(password);
+        this.score = this.passwordService.calculateStrength(password);
     }
 }
