@@ -11,7 +11,7 @@ describe('CookieCompliance', () => {
     });
 
     it('should be able to close the popup by pressing a button', () => {
-        let dialog = $('.cookie-compliance-dialog');
+        let dialog = $('.compliance-dialog');
         let closeButton = dialog.$('.comply-trigger');
 
         expect(dialog.isPresent()).toBe(true);

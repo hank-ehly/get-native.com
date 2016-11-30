@@ -7,9 +7,9 @@
 
 import { Component } from '@angular/core';
 
-import { Logger } from 'angular2-logger/core';
+import { PasswordStrengthService } from '../../../core/index';
 
-import { PasswordStrengthService } from './password-strength.service';
+import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,

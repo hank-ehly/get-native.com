@@ -5,11 +5,8 @@
  * Created by henryehly on 2016/11/06.
  */
 
-export * from './footer/index';
-export * from './navbar/index';
-export * from './side-menu/index';
-export * from './toolbar/index';
-export * from './cookie-compliance/index';
-export * from './login/index';
 export * from './local-storage/index';
 export * from './string/string.service';
+export * from './spec/index';
+export * from './password-strength/index';
+export * from './login/login.service';

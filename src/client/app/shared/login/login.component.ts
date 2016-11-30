@@ -7,8 +7,9 @@
 
 import { Component, style, keyframes, animate, transition, trigger, Input, OnInit, HostListener } from '@angular/core';
 
+import { LoginService } from '../../core/index';
+
 import { Logger } from 'angular2-logger/core';
-import { LoginService } from './index';
 
 @Component({
     moduleId: module.id,

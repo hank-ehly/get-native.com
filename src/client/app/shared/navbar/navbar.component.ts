@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
+import { LoginService } from '../../core/index';
+
 import { Logger } from 'angular2-logger/core';
-import { LoginService } from '../login/login.service';
 
 @Component({
     moduleId: module.id,

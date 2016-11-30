@@ -6,7 +6,7 @@
  */
 
 import { LocalStorageService } from './index';
-import { STUBLogger } from '../../shared/spec/stubs';
+import { STUBLogger } from '../index';
 
 export function main() {
     let localStorageService: LocalStorageService;

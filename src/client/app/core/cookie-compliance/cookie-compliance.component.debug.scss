@@ -1,6 +1,0 @@
-@import "../../../scss/core";
-
-.cookie-compliance-dialog { @include debug-background-color($dc01); }
-.compliance-detail        { @include debug-background-color($dc02); }
-.tos-link                 { @include debug-background-color($dc03); }
-.comply-trigger           { @include debug-background-color($dc04); }

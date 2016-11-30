@@ -6,43 +6,14 @@
  */
 
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
-import { LoginModule } from './login/login.module';
-import {
-    ToolbarComponent,
-    NavbarComponent,
-    SideMenuComponent,
-    FooterComponent,
-    CookieComplianceComponent,
-    LocalStorageService,
-    StringService
-} from './index';
+import { LocalStorageService, LoginService, StringService, PasswordStrengthService } from './index';
 
 @NgModule({
-    imports: [
-        RouterModule,
-        CommonModule,
-        LoginModule
-    ],
-    declarations: [
-        ToolbarComponent,
-        NavbarComponent,
-        SideMenuComponent,
-        FooterComponent,
-        CookieComplianceComponent
-    ],
-    exports: [
-        LoginModule,
-        ToolbarComponent,
-        NavbarComponent,
-        SideMenuComponent,
-        FooterComponent,
-        CookieComplianceComponent
-    ],
     providers: [
         LocalStorageService,
+        LoginService,
+        PasswordStrengthService,
         StringService
     ]
 })

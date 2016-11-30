@@ -10,20 +10,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import {
-    LoginService,
     LoginComponent,
     SocialLoginComponent,
     RegisterComponent,
     EmailLoginComponent,
-    PasswordStrengthComponent,
-    PasswordStrengthService
+    PasswordStrengthComponent
 } from './index';
 
 @NgModule({
     imports: [CommonModule, FormsModule],
     declarations: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent, PasswordStrengthComponent],
-    exports: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent, PasswordStrengthComponent],
-    providers: [LoginService, PasswordStrengthService]
+    exports: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent, PasswordStrengthComponent]
 })
 
 export class LoginModule {

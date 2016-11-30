@@ -7,10 +7,9 @@
 
 import { Subject } from 'rxjs/Subject';
 
-import { Logger } from 'angular2-logger/core';
+import { LocalStorageService, LoginService, PasswordStrengthService } from '../index';
 
-import { LoginService, LocalStorageService } from '../../core/index';
-import { PasswordStrengthService } from '../../core/login/password-strength/password-strength.service';
+import { Logger } from 'angular2-logger/core';
 
 export const STUBLogger: Logger = <Logger>{
     debug(message?: any, ...optionalParams: any[]): void {}
