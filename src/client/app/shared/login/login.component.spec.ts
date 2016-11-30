@@ -13,14 +13,19 @@ import { Logger } from 'angular2-logger/core';
 
 import {
     LoginComponent,
-    LoginService,
     SocialLoginComponent,
     EmailLoginComponent,
     RegisterComponent,
-    PasswordStrengthComponent,
-    PasswordStrengthService
+    PasswordStrengthComponent
 } from './index';
-import { SpecUtil, STUBLogger, STUBLoginService, STUBPasswordStrengthService } from '../../shared/index';
+import {
+    SpecUtil,
+    STUBLogger,
+    STUBLoginService,
+    STUBPasswordStrengthService,
+    PasswordStrengthService
+} from '../../core/index';
+import { LoginService } from '../../core/index';
 
 export function main() {
     let comp: LoginComponent;

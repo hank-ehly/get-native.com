@@ -6,5 +6,10 @@
  */
 
 export * from './config/env.config';
-export * from './spec/spec-util';
-export * from './spec/stubs';
+export * from './compliance/index';
+export * from './footer/index';
+export * from './login/index';
+export * from './navbar/index';
+export * from './side-menu/index';
+export * from './toolbar/index';
+export * from './video-panel/video-panel.component';

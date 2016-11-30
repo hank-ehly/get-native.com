@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Logger } from 'angular2-logger/core';
-import { LoginService } from '../login.service';
+import { LoginService } from '../../../core/index';
 
 @Component({
     moduleId: module.id,

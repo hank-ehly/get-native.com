@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 import { Logger } from 'angular2-logger/core';
 
 import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
-import { LoginService } from '../login.service';
+import { LoginService } from '../../../core/index';
 
 @Component({
     moduleId: module.id,

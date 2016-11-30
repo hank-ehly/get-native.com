@@ -1,5 +1,5 @@
 /**
- * cookie-compliance.component.spec
+ * compliance.component.spec
  * get-native.com
  *
  * Created by henryehly on 2016/11/11.
@@ -9,31 +9,29 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 
-import { CookieComplianceComponent } from './index';
-import { LocalStorageService } from '../index';
-import { SpecUtil, STUBLogger, STUBLocalStorageService } from '../../shared/index';
+import { ComplianceComponent } from './index';
+import { SpecUtil, STUBLogger, STUBLocalStorageService, LocalStorageService, kAcceptLocalStorage } from '../../core/index';
 
 import { Logger } from 'angular2-logger/core';
-import { kAcceptLocalStorage } from '../local-storage/local-storage-keys';
 
 export function main() {
-    let comp: CookieComplianceComponent;
-    let fixture: ComponentFixture<CookieComplianceComponent>;
+    let comp: ComplianceComponent;
+    let fixture: ComponentFixture<ComplianceComponent>;
     let el: HTMLElement;
     let util: SpecUtil;
 
-    describe('CookieComplianceComponent', () => {
+    describe('ComplianceComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [RouterModule.forRoot([])],
-                declarations: [CookieComplianceComponent],
+                declarations: [ComplianceComponent],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     {provide: LocalStorageService, useValue: STUBLocalStorageService}
                 ]
             }).compileComponents().then(() => {
-                fixture = TestBed.createComponent(CookieComplianceComponent);
+                fixture = TestBed.createComponent(ComplianceComponent);
                 util = new SpecUtil(fixture);
                 comp = fixture.componentInstance;
                 comp.isVisible = true;
