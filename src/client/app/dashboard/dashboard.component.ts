@@ -15,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
     videos: any[];
+    answers: any[];
 
     constructor() {
     }
@@ -28,5 +29,6 @@ export class DashboardComponent implements OnInit {
             {isPlaceholder: false},
             {isPlaceholder: true}
         ];
+        this.answers = [1, 2, 3, 4, 5];
     }
 }

@@ -86,3 +86,30 @@ hr {
     }
   }
 }
+
+.answers-list {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.answers-list .answer-list-item {
+  display: flex;
+  padding: 20px;
+
+  &.striped-item {
+    background: $aqua-haze;
+  }
+}
+
+.answers-list .answer-list-item .answer-main {
+  max-width: 700px;
+}
+
+.answers-list .answer-list-item .answer-main .video-title {
+  color: $shamrock;
+}
+
+.answers-list .answer-list-item .answer-aside {
+  color: $regent-gray;
+  margin-left: auto;
+}
