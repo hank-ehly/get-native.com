@@ -2,6 +2,16 @@
 
 /* VIDEOS */
 
+section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+h1 {
+  margin-right: auto;
+}
+
 .video-list {
   display: flex;
   flex-wrap: wrap;
@@ -13,4 +23,16 @@
 .flexible-space {
   height: 100%;
   width: ($main-width - 60px) / 3;
+}
+
+.load-more {
+  @include font-weight-bold;
+  @extend %rounded-button;
+  background: $white;
+  border-color: $periwinkle-gray;
+  color: $regent-gray;
+  font-size: $font-size-x-small;
+  margin-top: 20px;
+  padding-bottom: 6px;
+  padding-top: 6px;
 }
