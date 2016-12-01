@@ -1,39 +1,49 @@
-@import "../../../scss/core";
+@import '../../../scss/core';
+@import './toolbar.component.debug';
 
-.gn-bottom-right-menu {
-  bottom: 0;
+.toolbar {
+  @include font-weight-bold;
+  bottom: 30px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  font-size: $font-size-x-small;
+  margin-right: 30px;
   position: fixed;
   right: 0;
+  width: 120px;
+}
+
+.toolbar .languages-list {
+  @include border-radius();
+  background: $shamrock;
+  color: $white;
+  letter-spacing: $uppercase-label-letter-spacing;
+  line-height: 24px;
+  margin-right: -10px;
+  margin-left: 10px;
+  padding: 10px;
   text-align: right;
 }
 
-.gn-active-language {
-  color: $grey;
-  display: inline-block;
-  font-size: 14px;
-  margin-bottom: 20px;
-  margin-right: 30px;
-
-  &:hover {
-    color: $default-color;
-    transition: color .1s;
-  }
+.toolbar .active-language {
+  color: $regent-gray;
+  letter-spacing: $uppercase-label-letter-spacing;
+  margin-top: 16px;
+  text-align: right;
 }
 
-.gn-options-menu {
-  margin-bottom: 20px;
+.toolbar .toolbar-links {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
 
-  a {
-    display: inline-block;
-    margin-right: 20px;
-  }
+.toolbar .toolbar-links .toolbar-link {
+  margin-left: 20px;
+}
 
-  a:nth-child(3) {
-    margin-right: 30px;
-  }
-
-  img {
-    height: 25px;
-    width: 25px;
-  }
+.toolbar .toolbar-links .toolbar-link img {
+  height: auto;
+  width: 20px;
 }
