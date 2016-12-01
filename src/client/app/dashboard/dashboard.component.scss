@@ -1,1 +1,16 @@
 @import '../../scss/core';
+
+/* VIDEOS */
+
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* TODO */
+.flexible-space {
+  height: 100%;
+  width: ($main-width - 60px) / 3;
+}

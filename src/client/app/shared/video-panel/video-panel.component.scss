@@ -1,83 +1,151 @@
 @import '../../../scss/core';
+@import './video-panel.component.debug';
 
-//.gn-video {
-//  border-radius: 0 20px 20px 0;
-//  margin-bottom: 30px;
-//  overflow: hidden;
-//  position: relative;
-//
-//  .gn-overlay {
-//    background-image: linear-gradient(to right, $overlay-left, $overlay-right);
-//    border-radius: 0 20px 20px 0;
-//    height: 100%;
-//    opacity: 0;
-//    position: absolute;
-//    top: 0;
-//    transition: opacity .1s;
-//    width: 280px;
-//  }
-//
-//  .gn-video-footer {
-//    background-color: $black;
-//    border-radius: 0 0 20px;
-//    bottom: 0;
-//    color: $white;
-//    height: calc(30% - 20px);
-//    padding: 10px;
-//    position: absolute;
-//    width: 260px;
-//
-//    .gn-video-stats {
-//      bottom: 10px;
-//      position: absolute;
-//      width: 260px;
-//
-//      .gn-video-created-on {
-//        float: right;
-//      }
-//    }
-//  }
-//}
-//
-//.gn-video-options {
-//  left: 50%;
-//  position: absolute;
-//  top: 35%;
-//  transform: translate(-50%, -50%);
-//
-//  button {
-//    background: $white;
-//    border: 0;
-//    border-radius: 5px;
-//    color: $light-green;
-//    cursor: pointer;
-//    display: block;
-//    font-size: 16px;
-//    height: 40px;
-//    width: 150px;
-//  }
-//}
-//
-//.gn-minute-btn-container {
-//  display: inline-block;
-//  padding-right: 5px;
-//
-//  .gn-minute-btn {
-//    @include border-radius(2px);
-//    background: $white;
-//    cursor: pointer;
-//    height: 10px;
-//    width: 25px;
-//
-//    &:first-child {
-//      margin-bottom: 2px;
-//    }
-//  }
-//}
-//
-//.gn-study-minutes {
-//  color: $white;
-//  display: inline-block;
-//  line-height: 22px;
-//  vertical-align: top;
-//}
+.video-panel {
+  @include border-right-radius(10px);
+  margin-bottom: 30px;
+  overflow: hidden;
+  position: relative;
+  height: 290px;
+  width: (($main-width - 60px) / 3);
+}
+
+.panel-overlay {
+  @include border-right-radius(10px);
+  background-image: linear-gradient(to right, rgba($shamrock, 0.7), rgba($robin-egg-blue, 0.7));
+  height: 100%;
+  //opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: opacity .1s;
+  width: 100%;
+}
+
+.video-options {
+  display: flex;
+  flex-flow: row wrap;
+  left: 50%;
+  position: absolute;
+  top: 35%;
+  transform: translate(-50%, -50%);
+}
+
+.options-row {
+  display: flex;
+  flex-flow: row nowrap;
+  & > * {
+    align-self: center;
+  }
+}
+
+.video-options .minute-button-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: 12px;
+  width: 20px;
+
+  .minute-button {
+    @include border-radius(2px);
+    background: $white;
+    cursor: pointer;
+    height: 10px;
+    width: 20px;
+  }
+
+  .minute-button:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    width: 0;
+  }
+
+  .minute-button:first-child::after {
+    top: 4px;
+    border-bottom: 4px solid $shamrock;
+  }
+
+  .minute-button:last-child::after {
+    top: 16px;
+    border-top: 4px solid $shamrock;
+  }
+
+  .minute-button:last-child {
+    margin-top: 2px;
+  }
+}
+
+.video-options .study-minutes {
+  color: $white;
+  display: inline-block;
+}
+
+.video-options button {
+  @include border-radius();
+  background: $white;
+  border: 0;
+  color: $shamrock;
+  cursor: pointer;
+  display: block;
+  font-size: $font-size-regular;
+  height: 40px;
+  margin-top: 12px;
+  width: 150px;
+}
+
+.panel-footer {
+  @include border-radius(0 0 10px 0);
+  background-color: $black;
+  bottom: 0;
+  box-sizing: border-box;
+  color: $white;
+  font-size: $font-size-small;
+  height: 100px;
+  padding: 10px;
+  position: absolute;
+  width: 100%;
+}
+
+.video-stats {
+  bottom: 18px;
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: $font-size-x-small;
+  height: 18px;
+  overflow: hidden;
+  position: absolute;
+  width: 260px;
+}
+
+.length, .views {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 60px;
+
+  img {
+    margin-right: 8px;
+  }
+}
+
+.length span, .views span, .video-created-on {
+  /* The bottom side of the <span> contains a 1px gap. This offsets that gap. */
+  padding-top: 1px;
+}
+
+.length img {
+  height: 100%;
+}
+
+.length img, .length span, .views img, .views span {
+  align-self: center;
+}
+
+.views img {
+  height: 62%;
+}
+
+.video-created-on {
+  margin-left: auto;
+}

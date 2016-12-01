@@ -1,10 +1,12 @@
 <main>
-    <h1>Videos</h1>
-
     <section>
-        <ul>
-            <!--<li *ngFor="let video of videos">
-            </li>-->
+        <h1>Videos</h1>
+
+        <ul class="video-list">
+            <li *ngFor="let v of videos">
+                <gn-video-panel *ngIf="!v.isPlaceholder"></gn-video-panel>
+                <div class="flexible-space" *ngIf="v.isPlaceholder"></div>
+            </li>
         </ul>
     </section>
 </main>
