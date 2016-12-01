@@ -1,12 +1,15 @@
-<div class="gn-bottom-right-menu">
-    <ul class="gn-languages">
-        <li>日本語</li>
-        <li>ITALIANO</li>
+<div class="toolbar">
+    <ul class="languages-list">
+        <li class="languages-list-item">日本語</li>
+        <li class="languages-list-item">ITALIANO</li>
+        <li class="languages-list-item">ESPAÑOL</li>
     </ul>
-    <span class="gn-active-language" data-toggle="tooltip" data-placement="top">ENGLISH</span>
-    <nav>
-        <a href=""><img src="../../../assets/icons/settings.svg" alt="settings"></a>
-        <a href=""><img src="../../../assets/icons/help.svg" alt="help"></a>
-        <a href=""><img src="../../../assets/icons/signout.svg" alt="signout"></a>
+
+    <span class="active-language">ENGLISH</span>
+
+    <nav class="toolbar-links">
+        <a class="toolbar-link"><img src="../../../assets/icons/settings.svg" alt="settings"></a>
+        <a class="toolbar-link" [routerLink]="'help'"><img src="../../../assets/icons/help.svg" alt="help"></a>
+        <a class="toolbar-link"><img src="../../../assets/icons/sign-out.svg" alt="sign-out"></a>
     </nav>
 </div>

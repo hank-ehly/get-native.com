@@ -24,6 +24,7 @@
   color: $regent-gray;
   cursor: pointer;
   font-size: $font-size-x-small;
+  letter-spacing: $uppercase-label-letter-spacing;
   margin-right: 20px;
 
   &.active, &:hover {
@@ -42,6 +43,7 @@ hr {
   border-color: $periwinkle-gray;
   color: $regent-gray;
   font-size: $font-size-x-small;
+  letter-spacing: $uppercase-label-letter-spacing/2;
   margin-top: 20px;
   padding-bottom: 6px;
   padding-top: 6px;
@@ -86,6 +88,7 @@ hr {
 .goals-section .goals-list .goals-list-item .goal-label {
   @include font-weight-bold;
   font-size: $font-size-x-small;
+  letter-spacing: $uppercase-label-letter-spacing;
 }
 
 // ---- Answers
