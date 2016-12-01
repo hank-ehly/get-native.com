@@ -14,19 +14,21 @@
   @include border-right-radius(10px);
   background-image: linear-gradient(to right, rgba($shamrock, 0.7), rgba($robin-egg-blue, 0.7));
   height: 100%;
-  //opacity: 0;
+  opacity: 0;
   position: absolute;
   top: 0;
   transition: opacity .1s;
   width: 100%;
 }
 
+.video-panel:hover .panel-overlay {
+  opacity: 1;
+}
+
 .video-options {
-  display: flex;
-  flex-flow: row wrap;
   left: 50%;
   position: absolute;
-  top: 35%;
+  top: 33%;
   transform: translate(-50%, -50%);
 }
 
@@ -39,8 +41,6 @@
 }
 
 .video-options .minute-button-container {
-  display: flex;
-  flex-flow: row wrap;
   margin-right: 12px;
   width: 20px;
 
@@ -63,12 +63,12 @@
   }
 
   .minute-button:first-child::after {
-    top: 4px;
+    top: 5px;
     border-bottom: 4px solid $shamrock;
   }
 
   .minute-button:last-child::after {
-    top: 16px;
+    top: 17px;
     border-top: 4px solid $shamrock;
   }
 
@@ -79,7 +79,7 @@
 
 .video-options .study-minutes {
   color: $white;
-  display: inline-block;
+  padding-top: 2px;
 }
 
 .video-options button {
@@ -92,31 +92,29 @@
   font-size: $font-size-regular;
   height: 40px;
   margin-top: 12px;
+  outline: none;
   width: 150px;
 }
 
 .panel-footer {
   @include border-radius(0 0 10px 0);
-  background-color: $black;
+  background: $black;
   bottom: 0;
   box-sizing: border-box;
   color: $white;
   font-size: $font-size-small;
   height: 100px;
-  padding: 10px;
+  padding: 16px 18px;
   position: absolute;
   width: 100%;
 }
 
-.video-stats {
-  bottom: 18px;
+.panel-footer .video-stats {
   display: flex;
-  flex-flow: row nowrap;
   font-size: $font-size-x-small;
-  height: 18px;
+  height: 16px;
+  margin-top: 8px;
   overflow: hidden;
-  position: absolute;
-  width: 260px;
 }
 
 .length, .views {
