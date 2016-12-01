@@ -46,15 +46,16 @@
             </ul>
         </div>
 
-        <ul>
-            <li>
-                <div>
-                    <h6>Video title</h6>
+        <ul class="answers-list">
+            <li *ngFor="let n of answers; let even = even" [ngClass]="{'striped-item': even}" class="answer-list-item">
+                <div class="answer-main">
+                    <h6 class="video-title">Video Title ({{ n }})</h6>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam, consectetur delectus et ex
                        nemo, praesentium quibusdam quod recusandae reprehenderit sit vel veritatis voluptatum. Assumenda
                        culpa dolores enim quibusdam totam?</p>
                 </div>
-                <span>December 10, 2016</span>
+
+                <span class="answer-aside">December 10, 2016</span>
             </li>
         </ul>
 
