@@ -22,6 +22,9 @@ export class AppComponent implements OnInit {
     showComplianceDialog: boolean;
     showLoginModal: boolean;
 
+    /* TODO */
+    authorized: boolean;
+
     constructor(private logger: Logger, private localStorageService: LocalStorageService) {
         this.showLoginModal = false;
     }
@@ -32,5 +35,8 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.showComplianceDialog = !this.localStorageService.getItem(kAcceptLocalStorage);
+
+        /* TODO */
+        this.authorized = true;
     }
 }
