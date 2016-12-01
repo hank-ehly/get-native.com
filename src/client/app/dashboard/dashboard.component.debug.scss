@@ -1,0 +1,18 @@
+@import '../../scss/core';
+
+.section-title-frame                             { @include debug-background-color($dc01); }
+.section-title-frame .section-title-label        { @include debug-background-color($dc02); }
+.section-title-frame .section-title-menu         { @include debug-background-color($dc03); }
+.section-title-frame .section-title-menu-item    { @include debug-background-color($dc04); }
+.videos-section .videos-list-item.flex-item      { @include debug-background-color($dc05); }
+.videos-section .videos-list                     { @include debug-background-color($dc06); }
+.goals-section .goals-list                       { @include debug-background-color($dc07); }
+.goals-section .goals-list-item                  { @include debug-background-color($dc08); }
+.goals-section .goals-list-item .goal-count      { @include debug-background-color($dc09); }
+.goals-section .goals-list-item .goal-label      { @include debug-background-color($dc10); }
+.answers-section .answers-list                   { @include debug-background-color($dc11); }
+.answers-section .answers-list-item              { @include debug-background-color($dc12); }
+.answers-section .answers-list-item.striped-item { @include debug-background-color($dc01); }
+.answers-section .answer-body                    { @include debug-background-color($dc02); }
+.answers-section .answer-body .video-title       { @include debug-background-color($dc03); }
+.answers-section .answer-aside                   { @include debug-background-color($dc04); }
