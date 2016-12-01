@@ -1,4 +1,5 @@
 @import '../../scss/core';
+@import './dashboard.component.debug';
 
 // ---- Shared
 
@@ -68,21 +69,21 @@ hr {
 
 // ---- Goals
 
-.goals-list {
+.goals-section .goals-list {
   display: flex;
   margin-top: 40px;
 }
 
-.goals-list .goals-list-item {
+.goals-section .goals-list .goals-list-item {
   flex-grow: 1;
 }
 
-.goals-list .goals-list-item .goal-count {
+.goals-section .goals-list .goals-list-item .goal-count {
   color: $shamrock;
   font-size: 30px;
 }
 
-.goals-list .goals-list-item .goal-label {
+.goals-section .goals-list .goals-list-item .goal-label {
   @include font-weight-bold;
   font-size: $font-size-x-small;
 }
