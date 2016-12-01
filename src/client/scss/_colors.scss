@@ -1,4 +1,4 @@
-/* App */
+/* Base */
 $aqua-haze:          #F0F5F7;
 $aqua-haze-darker:   darken($aqua-haze, 5%);
 $atlantis:           #80CC33;
@@ -27,6 +27,10 @@ $robin-egg-blue:     #00CCCC;
 $white:              #FFFFFF;
 $white-lilac:        #F6F5FB;
 $wild-sand:          #F5F5F5;
+
+/* Feature */
+$default-color:      $cod-gray;
+
 /* Debug */
 $dc01:               #0048BA;
 $dc02:               #B0BF1A;

@@ -4,6 +4,7 @@
 .navbar {
   display: flex;
   height: pu(9);
+  z-index: 999;
 }
 
 .logo-window {
@@ -12,6 +13,7 @@
   justify-content: center;
   position: fixed;
   width: pu(9);
+  z-index: 1;
 }
 
 .logo {
@@ -44,7 +46,7 @@
 }
 
 .quick-links .help {
-  color: $black;
+  color: $default-color;
   margin-right: 15px;
   text-decoration: none;
   &:hover {

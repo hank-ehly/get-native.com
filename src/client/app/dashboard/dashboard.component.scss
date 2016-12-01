@@ -1,28 +1,11 @@
 @import '../../scss/core';
 
-/* VIDEOS */
-
-section {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-}
-
 h1 {
   margin-right: auto;
 }
 
-.video-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-/* TODO */
-.flexible-space {
-  height: 100%;
-  width: ($main-width - 60px) / 3;
+hr {
+  margin: 50px auto;
 }
 
 .load-more {
@@ -35,4 +18,71 @@ h1 {
   margin-top: 20px;
   padding-bottom: 6px;
   padding-top: 6px;
+}
+
+.videos-section, .answers-section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.flexible-space {
+  height: 100%;
+  width: ($main-width - 60px) / 3;
+}
+
+.goals-list {
+  display: flex;
+  margin-top: 40px;
+
+  li {
+    flex-grow: 1;
+  }
+}
+
+.goal-count {
+  color: $shamrock;
+  font-size: 30px;
+}
+
+.goal-label {
+  @include font-weight-bold;
+  font-size: $font-size-x-small;
+}
+
+.answers-section .title-frame {
+  display: flex;
+  margin-right: auto;
+
+  h1, ul {
+    align-self: center;
+  }
+
+  h1 {
+    width: 310px;
+  }
+
+  ul {
+    display: flex;
+    width: $main-width - 310px;
+
+    li {
+      @include font-weight-bold;
+      color: $regent-gray;
+      cursor: pointer;
+      font-size: $font-size-x-small;
+      margin-right: 20px;
+
+      &:hover {
+        color: $default-color;
+      }
+    }
+  }
 }

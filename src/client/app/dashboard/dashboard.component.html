@@ -1,14 +1,64 @@
 <main>
-    <section>
-        <h1>Videos</h1>
 
+    <section class="videos-section">
+        <h1>Videos</h1>
         <ul class="video-list">
             <li *ngFor="let v of videos">
                 <gn-video-panel *ngIf="!v.isPlaceholder"></gn-video-panel>
                 <div class="flexible-space" *ngIf="v.isPlaceholder"></div>
             </li>
         </ul>
+        <button class="load-more">LOAD MORE</button>
+    </section>
+
+    <hr>
+
+    <section class="goals-section">
+        <h1>Goals</h1>
+        <ul class="goals-list">
+            <li>
+                <h3 class="goal-count">10"</h3>
+                <span class="goal-label">CURRENT STREAK</span>
+            </li>
+
+            <li>
+                <h3 class="goal-count">126</h3>
+                <span class="goal-label">TOTAL COMPLETIONS</span>
+            </li>
+
+            <li>
+                <h3 class="goal-count">26"</h3>
+                <span class="goal-label">LONGEST STREAK</span>
+            </li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section class="answers-section">
+        <div class="title-frame">
+            <h1>Answers</h1>
+            <ul>
+                <li>LAST 30 DAYS</li>
+                <li>LAST 90 DAYS</li>
+                <li>LAST YEAR</li>
+                <li>ALL TIME</li>
+            </ul>
+        </div>
+
+        <ul>
+            <li>
+                <div>
+                    <h6>Video title</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam, consectetur delectus et ex
+                       nemo, praesentium quibusdam quod recusandae reprehenderit sit vel veritatis voluptatum. Assumenda
+                       culpa dolores enim quibusdam totam?</p>
+                </div>
+                <span>December 10, 2016</span>
+            </li>
+        </ul>
 
         <button class="load-more">LOAD MORE</button>
     </section>
+
 </main>
