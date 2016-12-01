@@ -1,6 +1,7 @@
 @import '../../../scss/core';
 
-.toolbar         { @include debug-background-color($dc01); }
-.languages-list  { @include debug-background-color($dc02); }
-.active-language { @include debug-background-color($dc03); }
-.toolbar-links   { @include debug-background-color($dc04); }
+.toolbar               { @include debug-background-color($dc01); }
+.tooltip               { @include debug-background-color($dc02); }
+.selected-tooltip-item { @include debug-background-color($dc03); }
+.toolbar-links         { @include debug-background-color($dc04); }
+.tooltip-item          { @include debug-background-color($dc05); }
