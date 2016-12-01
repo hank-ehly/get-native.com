@@ -12,8 +12,6 @@ import { Logger } from 'angular2-logger/core';
 })
 
 export class NavbarComponent {
-    authenticated: boolean = false;
-
     constructor(private loginService: LoginService, private logger: Logger) {
     }
 

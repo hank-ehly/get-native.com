@@ -3,52 +3,47 @@
 
 .navbar {
   display: flex;
-  height: pu(9);
-  z-index: 999;
+  height: 90px;
 }
 
-.logo-window {
+.navbar .logo-frame {
   display: flex;
-  height: pu(9);
+  height: 90px;
   justify-content: center;
   position: fixed;
-  width: pu(9);
+  width: 90px;
   z-index: 1;
 }
 
-.logo {
+.navbar .logo-frame .logo-image {
   align-self: center;
   cursor: pointer;
-  height: pu(3);
-  width: pu(3);
+  height: 30px;
+  width: 30px;
 }
 
-.quick-links {
+.navbar .quick-links {
   display: flex;
   height: 100%;
   margin-left: auto;
   padding: 0 30px;
-
-  a {
-    align-self: center;
-  }
-}
-
-.quick-links {
   font-size: 0;
-  a {
-    font-size: $font-size-regular;
-  }
 }
 
-.quick-links .sign-in {
+.navbar .quick-links .quick-link {
+  align-self: center;
+  font-size: $font-size-regular;
+}
+
+.navbar .quick-links .quick-link.login-link {
   @extend %shamrock-link;
 }
 
-.quick-links .help {
+.navbar .quick-links .quick-link.help-link {
   color: $default-color;
   margin-right: 15px;
   text-decoration: none;
+
   &:hover {
     text-decoration: underline;
   }

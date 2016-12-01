@@ -1,16 +1,16 @@
-<header class="navbar unauthenticated" *ngIf="!authenticated">
-    <div class="logo-window">
-        <img src="../../../assets/mock/pokeball.png" alt="logo" class="logo" [routerLink]="''">
+<header class="navbar unauthenticated">
+    <div class="logo-frame">
+        <img src="../../../assets/mock/pokeball.png" alt="logo" class="logo-image" [routerLink]="''">
     </div>
 
     <nav class="quick-links">
-        <a [routerLink]="'help'" class="help">Help</a>
-        <a href="" class="sign-in" (click)="onShowLoginModal($event)">Sign in / Sign up</a>
+        <a [routerLink]="'help'" class="quick-link help-link">Help</a>
+        <a href="" class="quick-link login-link" (click)="onShowLoginModal($event)">Sign in / Sign up</a>
     </nav>
 </header>
 
-<header class="navbar authenticated" *ngIf="authenticated">
-    <img src="../../../assets/mock/pokeball.png" alt="logo" class="logo" [routerLink]="''">
+<!--<header class="navbar authenticated" *ngIf="authenticated">
+    <img src="../../../assets/mock/pokeball.png" alt="logo" class="logo-image" [routerLink]="''">
 
     <ul class="navbar-center-items">
         <li class="return-navigation">
@@ -35,4 +35,4 @@
         <li><img src="../../../assets/mock/man-smiling.jpg" alt="" class="user-icon" (click)="requestShowLoginModal()">
         </li>
     </ul>
-</header>
+</header>-->
