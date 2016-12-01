@@ -1,32 +1,39 @@
 <main>
 
     <section class="videos-section">
-        <h1>Videos</h1>
-        <ul class="video-list">
+        <div class="section-title-frame">
+            <h1 class="section-title-label">Videos</h1>
+        </div>
+
+        <ul class="videos-list">
             <li *ngFor="let v of videos">
-                <gn-video-panel *ngIf="!v.isPlaceholder"></gn-video-panel>
-                <div class="flexible-space" *ngIf="v.isPlaceholder"></div>
+                <gn-video-panel *ngIf="!v.isPlaceholder" class="videos-list-item"></gn-video-panel>
+                <div class="videos-list-item flex-item" *ngIf="v.isPlaceholder"></div>
             </li>
         </ul>
-        <button class="load-more">LOAD MORE</button>
+
+        <button class="load-more-button">LOAD MORE</button>
     </section>
 
     <hr>
 
     <section class="goals-section">
-        <h1>Goals</h1>
+        <div class="section-title-frame">
+            <h1 class="section-title-label">Goals</h1>
+        </div>
+
         <ul class="goals-list">
-            <li>
+            <li class="goals-list-item">
                 <h3 class="goal-count">10"</h3>
                 <span class="goal-label">CURRENT STREAK</span>
             </li>
 
-            <li>
+            <li class="goals-list-item">
                 <h3 class="goal-count">126</h3>
                 <span class="goal-label">TOTAL COMPLETIONS</span>
             </li>
 
-            <li>
+            <li class="goals-list-item">
                 <h3 class="goal-count">26"</h3>
                 <span class="goal-label">LONGEST STREAK</span>
             </li>
@@ -36,19 +43,19 @@
     <hr>
 
     <section class="answers-section">
-        <div class="title-frame">
-            <h1>Answers</h1>
-            <ul>
-                <li>LAST 30 DAYS</li>
-                <li>LAST 90 DAYS</li>
-                <li>LAST YEAR</li>
-                <li>ALL TIME</li>
+        <div class="section-title-frame">
+            <h1 class="section-title-label">Answers</h1>
+            <ul class="section-title-menu">
+                <li class="section-title-menu-item">LAST 30 DAYS</li>
+                <li class="section-title-menu-item">LAST 90 DAYS</li>
+                <li class="section-title-menu-item">LAST YEAR</li>
+                <li class="section-title-menu-item">ALL TIME</li>
             </ul>
         </div>
 
         <ul class="answers-list">
-            <li *ngFor="let n of answers; let even = even" [ngClass]="{'striped-item': even}" class="answer-list-item">
-                <div class="answer-main">
+            <li *ngFor="let n of answers; let even = even" [ngClass]="{'striped-item': even}" class="answers-list-item">
+                <div class="answer-body">
                     <h6 class="video-title">Video Title ({{ n }})</h6>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam, consectetur delectus et ex
                        nemo, praesentium quibusdam quod recusandae reprehenderit sit vel veritatis voluptatum. Assumenda
@@ -59,7 +66,7 @@
             </li>
         </ul>
 
-        <button class="load-more">LOAD MORE</button>
+        <button class="load-more-button">LOAD MORE</button>
     </section>
 
 </main>

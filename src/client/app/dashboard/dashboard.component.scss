@@ -1,14 +1,40 @@
 @import '../../scss/core';
 
-h1 {
+// ---- Shared
+
+.section-title-frame {
+  display: flex;
   margin-right: auto;
+}
+
+.section-title-frame .section-title-label {
+  align-self: center;
+  width: 310px;
+}
+
+.section-title-frame .section-title-menu {
+  align-self: center;
+  display: flex;
+  width: $main-width - 310px;
+}
+
+.section-title-frame .section-title-menu-item {
+  @include font-weight-bold;
+  color: $regent-gray;
+  cursor: pointer;
+  font-size: $font-size-x-small;
+  margin-right: 20px;
+
+  &:hover {
+    color: $default-color;
+  }
 }
 
 hr {
   margin: 50px auto;
 }
 
-.load-more {
+.load-more-button {
   @include font-weight-bold;
   @extend %rounded-button;
   background: $white;
@@ -26,73 +52,49 @@ hr {
   justify-content: center;
 }
 
-.video-list {
+// ---- Videos
+
+.videos-section .videos-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.flexible-space {
+.videos-section .videos-list .videos-list-item.flex-item {
   height: 100%;
   width: ($main-width - 60px) / 3;
 }
 
+// ---- Goals
+
 .goals-list {
   display: flex;
   margin-top: 40px;
-
-  li {
-    flex-grow: 1;
-  }
 }
 
-.goal-count {
+.goals-list .goals-list-item {
+  flex-grow: 1;
+}
+
+.goals-list .goals-list-item .goal-count {
   color: $shamrock;
   font-size: 30px;
 }
 
-.goal-label {
+.goals-list .goals-list-item .goal-label {
   @include font-weight-bold;
   font-size: $font-size-x-small;
 }
 
-.answers-section .title-frame {
-  display: flex;
-  margin-right: auto;
+// ---- Answers
 
-  h1, ul {
-    align-self: center;
-  }
-
-  h1 {
-    width: 310px;
-  }
-
-  ul {
-    display: flex;
-    width: $main-width - 310px;
-
-    li {
-      @include font-weight-bold;
-      color: $regent-gray;
-      cursor: pointer;
-      font-size: $font-size-x-small;
-      margin-right: 20px;
-
-      &:hover {
-        color: $default-color;
-      }
-    }
-  }
-}
-
-.answers-list {
+.answers-section .answers-list {
   margin-top: 40px;
   width: 100%;
 }
 
-.answers-list .answer-list-item {
+.answers-section .answers-list .answers-list-item {
   display: flex;
   padding: 20px;
 
@@ -101,15 +103,15 @@ hr {
   }
 }
 
-.answers-list .answer-list-item .answer-main {
+.answers-section .answers-list .answers-list-item .answer-body {
   max-width: 700px;
+
+  .video-title {
+    color: $shamrock;
+  }
 }
 
-.answers-list .answer-list-item .answer-main .video-title {
-  color: $shamrock;
-}
-
-.answers-list .answer-list-item .answer-aside {
+.answers-section .answers-list .answers-list-item .answer-aside {
   color: $regent-gray;
   margin-left: auto;
 }
