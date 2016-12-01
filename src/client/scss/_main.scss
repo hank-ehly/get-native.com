@@ -31,3 +31,12 @@ h1 {
 h3 {
   font-size: $font-size-large;
 }
+
+hr {
+  border: 0;
+  border-top: 2px solid rgba($black, 0.1);
+  border-top-color: #eeeeee;
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
