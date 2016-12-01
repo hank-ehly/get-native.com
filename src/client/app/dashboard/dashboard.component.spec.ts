@@ -5,23 +5,20 @@
  * Created by henryehly on 2016/11/28.
  */
 
-// import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { SharedModule } from '../shared/shared.module';
 
 export function main() {
     let comp: DashboardComponent;
     let fixture: ComponentFixture<DashboardComponent>;
-    // let de: DebugElement;
-    // let el: HTMLElement;
 
     describe('DashboardComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                declarations: [
-                    DashboardComponent
-                ]
+                imports: [SharedModule],
+                declarations: [DashboardComponent]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(DashboardComponent);
                 comp = fixture.componentInstance;
