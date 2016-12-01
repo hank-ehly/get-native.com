@@ -14,10 +14,12 @@
   width: 120px;
 }
 
-.toolbar .languages-list {
+.toolbar .tooltip {
   @include border-radius();
   background: $shamrock;
   color: $white;
+  display: flex;
+  flex-flow: column wrap;
   letter-spacing: $uppercase-label-letter-spacing;
   line-height: 24px;
   margin-right: -10px;
@@ -26,11 +28,17 @@
   text-align: right;
 }
 
-.toolbar .active-language {
+.toolbar .tooltip .tooltip-item {
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.toolbar .selected-tooltip-item {
+  align-self: flex-end;
   color: $regent-gray;
+  cursor: pointer;
   letter-spacing: $uppercase-label-letter-spacing;
   margin-top: 16px;
-  text-align: right;
 }
 
 .toolbar .toolbar-links {
@@ -44,6 +52,7 @@
 }
 
 .toolbar .toolbar-links .toolbar-link img {
+  cursor: pointer;
   height: auto;
   width: 20px;
 }
