@@ -14,11 +14,19 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-    videos: any[] = [];
+    videos: any[];
 
     constructor() {
     }
 
     ngOnInit() {
+        this.videos = [
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+            {isPlaceholder: true}
+        ];
     }
 }
