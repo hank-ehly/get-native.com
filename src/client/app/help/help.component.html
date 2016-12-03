@@ -1,34 +1,32 @@
-<main>
-    <section class="about">
-        <div class="section-head">
-            <div class="icon-container">
-                <img class="icon" src="../../assets/icons/help-about.svg" alt="about">
+<main class="main">
+    <section class="section about">
+        <header class="section-header">
+            <div class="section-header__icon-frame">
+                <img class="section-header__icon" src="../../assets/icons/help-about.svg" alt="about">
             </div>
-            <h3 class="title">About Get Native</h3>
-        </div>
+            <h3 class="section-header__title">About Get Native</h3>
+        </header>
 
-        <ul class="section-body">
-            <li *ngFor="let faq of faqs; let i = index">
-                <div class="item-head">
-                    <img src="../../assets/icons/chevron.svg" alt="chevron" class="chevron" (click)="setSelectedFaq(faq)"
-                         [@rotation]="chevronRotationForFaq(faq)">
-                    <span class="item-index" (click)="setSelectedFaq(faq)">{{ i | number:'2.0-0' }}</span>
-                    <span class="item-label" (click)="setSelectedFaq(faq)">{{ faq.title }}</span>
+        <ul class="faq-list">
+            <li class="faq-list__faq" *ngFor="let faq of faqs; let i = index">
+                <div class="faq-list__faq-header">
+                    <img src="../../assets/icons/chevron.svg" alt="chevron" class="faq-list__chevron-icon" (click)="setSelectedFaq(faq)" [@rotation]="chevronRotationForFaq(faq)">
+                    <span class="faq-list__faq-number" (click)="setSelectedFaq(faq)">{{ i | number:'2.0-0' }}</span>
+                    <span class="link faq-list__faq-title" (click)="setSelectedFaq(faq)">{{ faq.title }}</span>
                 </div>
-                <p class="item-detail" *ngIf="isSelectedFaq(faq)" [@visible]="isSelectedFaq(faq)">{{ faq.body }}</p>
+                <p class="faq-list__faq-detail" *ngIf="isSelectedFaq(faq)" [@visible]="isSelectedFaq(faq)">{{ faq.body }}</p>
             </li>
         </ul>
     </section>
 
-    <section class="contact">
-        <div class="section-head">
-            <div class="icon-container">
-                <img class="icon" src="../../assets/icons/help-mail.svg" alt="mail">
+    <section class="section">
+        <header class="section-header">
+            <div class="section-header__icon-frame">
+                <img class="section-header__icon" src="../../assets/icons/help-mail.svg" alt="mail">
             </div>
-            <h3 class="title">Contact</h3>
-        </div>
+            <h3 class="section-header__title">Contact</h3>
+        </header>
 
-        <p class="section-body">For all inquiries, please contact us at
-            <a class="mail" href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
+        <p class="section__paragraph">For all inquiries, please contact us at <a class="link" href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
     </section>
 </main>

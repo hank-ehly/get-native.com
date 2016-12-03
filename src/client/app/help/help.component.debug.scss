@@ -8,6 +8,6 @@ section img   { @include debug-background-color($dc04); }
 .section-head { @include debug-background-color($dc06); }
 section h3    { @include debug-background-color($dc07); }
 .item-head    { @include debug-background-color($dc08); }
-.item-index   { @include debug-background-color($dc09); }
-.item-label   { @include debug-background-color($dc10); }
+.faq-list__faq-number   { @include debug-background-color($dc09); }
+.faq-list__faq-title   { @include debug-background-color($dc10); }
 .chevron      { @include debug-background-color($dc11); }
