@@ -1,95 +1,79 @@
 @import "../../scss/core";
 @import "./help.component.debug";
 
-/* Sizes */
-$main-margin-top: pu(9);
-$section-width: ($main-width / 2) - 15px;
-$section-head-icon-width: pu(7);
-$item-detail-border-width: 2px;
-$chevron-width: 6px;
-
-/* Colors */
-$item-number-color: $grey;
-$list-item-detail-border-color: $athens-gray;
-$list-item-detail-background-color: $white-lilac;
-
-main {
+.main {
   display: flex;
   justify-content: space-between;
-  margin-top: $main-margin-top;
+  margin-top: 90px;
 }
 
-section  {
-  width: $section-width;
+.section  {
+  width: ($main-width / 2) - 15px;
 }
 
-.section-head {
+.section-header {
   align-items: center;
   display: flex;
-
-  .icon-container {
-    @include border-radius(50%);
-    display: flex;
-    border: 2px solid #e1e1e6;
-    width: $section-head-icon-width;
-    height: $section-head-icon-width;
-    justify-content: center;
-  }
-
-  .icon {
-    width: 45%;
-    align-self: center;
-  }
 }
 
-.section-head .title {
+.section-header__icon-frame {
+  @include border-radius(50%);
+  display: flex;
+  border: 2px solid #e1e1e6;
+  width: 70px;
+  height: 70px;
+  justify-content: center;
+}
+
+.section-header__icon {
+  width: 45%;
+  align-self: center;
+}
+
+.section-header__title {
   font-size: $font-size-medium;
-  padding-left: pu(2);
+  padding-left: 20px;
 }
 
-.section-body {
-  margin-top: pu(3);
+.faq-list {
+  margin-top: 30px;
 }
 
-section.about li {
-  margin-top: pu(2);
-}
-
-/* Remove whitespace between <span> tags */
-.item-head {
+/* TODO: To fix the padding issue, use flex-box instead */
+.faq-list__faq-header {
   font-size: 0;
-  span {
-    font-size: $font-size-regular;
-  }
 }
 
-.chevron {
-  max-width: $chevron-width;
+.faq-list__faq-number, .faq-list__faq-title {
+  font-size: $font-size-regular;
 }
 
-.chevron, .item-index {
+.faq-list__faq {
+  margin-top: 20px;
+}
+
+.faq-list__chevron-icon {
+  max-width: 6px;
+}
+
+.faq-list__chevron-icon, .faq-list__faq-number {
   cursor: pointer;
-  margin-right: pu();
+  margin-right: 10px;
 }
 
-.item-index {
-  color: $item-number-color;
+.faq-list__faq-number {
+  color: $grey;
 }
 
-.item-label {
-  @extend %shamrock-link;
-}
-
-.item-detail {
+.faq-list__faq-detail {
   @include border-radius();
-  background: $list-item-detail-background-color;
-  border: $item-detail-border-width solid $list-item-detail-border-color;
+  background: $white-lilac;
+  border: 2px solid $athens-gray;
   font-size: $font-size-small;
-  margin-top: pu(3);
-  padding: pu(2.4);
-  //opacity: 0;
+  margin-top: 30px;
+  padding: 24px;
 }
 
-.mail {
-  @extend %shamrock-link;
+.section__paragraph {
+  margin-top: 30px;
 }
