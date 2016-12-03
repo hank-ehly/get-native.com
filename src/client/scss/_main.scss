@@ -1,4 +1,11 @@
-@import "core";
+@import 'core';
+
+@import './blocks/address';
+@import './blocks/header';
+@import './blocks/list';
+@import './blocks/list__link';
+@import './blocks/list_ordered';
+@import './blocks/list_unordered';
 
 html {
   @include font-weight-regular;
@@ -7,7 +14,7 @@ html {
 
 body {
   font-size: $font-size-regular;
-  color: $cod-gray;
+  color: $default-color;
   line-height: $line-height-regular;
   box-sizing: border-box;
   min-width: 992px;
@@ -19,24 +26,10 @@ main {
   width: $main-width;
 }
 
-@for $index from 1 through 6 {
-  h#{$index} {
-    @include font-weight-bold();
-  }
-}
-
-h1 {
-  font-size: $font-size-x-large;
-}
-
-h3 {
-  font-size: $font-size-large;
-}
-
 hr {
   border: 0;
   border-top: 2px solid rgba($black, 0.1);
-  border-top-color: #eeeeee;
+  border-top-color: $gallery;
   box-sizing: content-box;
   height: 0;
   overflow: visible;

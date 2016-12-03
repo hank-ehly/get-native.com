@@ -1,19 +1,10 @@
 @import "../../scss/core";
 @import "./privacy.component.debug";
 
-address, .quick-links, h1, h2, p {
-  margin-top: $padding-unit-regular;
+.list_top, .paragraph, .header, .address {
+  margin-top: 30px;
 }
 
-.quick-links a {
-  @extend %shamrock-link;
-}
-
-ul {
-  list-style-type: disc;
-  padding-left: $padding-unit-regular / 2;
-}
-
-address {
-  font-style: italic;
+.list {
+  padding-left: 15px;
 }

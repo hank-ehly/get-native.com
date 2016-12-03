@@ -1,30 +1,10 @@
 @import "../../scss/core";
 @import "./tos.component.debug";
 
-/* Sizes */
-$list-padding-left: $padding-unit-regular / 2;
-$content-margin-top: $padding-unit-regular;
-
-address, .quick-links, h1, h2, p {
-  margin-top: $content-margin-top;
+.address, .list_top, .header, .paragraph {
+  margin-top: 30px;
 }
 
-.quick-links a {
-  @extend %shamrock-link;
-}
-
-ul, ol {
-  padding-left: $list-padding-left;
-}
-
-ul {
-  list-style-type: disc;
-}
-
-ol {
-  list-style-type: lower-alpha;
-}
-
-address {
-  font-style: italic;
+.list {
+  padding-left: 15px;
 }
