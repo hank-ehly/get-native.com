@@ -73,8 +73,8 @@ export function main() {
         });
 
         it('should become hidden after clicking the close button', () => {
-            el = util.getNativeEl('.close-button');
-            de = util.getDebugEl('.close-button');
+            el = util.getNativeEl('.modal-frame__close-button');
+            de = util.getDebugEl('.modal-frame__close-button');
             de.triggerEventHandler('click', {target: {className: el.className}});
             expect(comp.isVisible).toEqual(false);
         });

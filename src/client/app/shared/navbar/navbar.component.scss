@@ -6,7 +6,7 @@
   height: 90px;
 }
 
-.navbar .logo-frame {
+.navbar__logo-frame {
   display: flex;
   height: 90px;
   justify-content: center;
@@ -15,14 +15,15 @@
   z-index: 1;
 }
 
-.navbar .logo-frame .logo-image {
+.navbar__logo {
   align-self: center;
   cursor: pointer;
   height: 30px;
   width: 30px;
 }
 
-.navbar .quick-links {
+/* TODO: Use flex-box instead of font-size: 0 hack */
+.navbar__nav {
   display: flex;
   height: 100%;
   margin-left: auto;
@@ -30,16 +31,11 @@
   font-size: 0;
 }
 
-.navbar .quick-links .quick-link {
+.navbar__link {
   align-self: center;
-  font-size: $font-size-regular;
 }
 
-.navbar .quick-links .quick-link.login-link {
-  @extend %shamrock-link;
-}
-
-.navbar .quick-links .quick-link.help-link {
+.navbar__link_help {
   color: $default-color;
   margin-right: 15px;
   text-decoration: none;

@@ -6,9 +6,9 @@
  */
 
 describe('LoginComponent', () => {
-    let openBtn = $('.sign-in');
+    let openBtn = $('.navbar__link_login');
     let overlay = $('.overlay');
-    let modal = $('.modal-window');
+    let modalFrame = $('.modal-frame');
 
     beforeEach(async() => {
         return await browser.get('/');
@@ -21,7 +21,7 @@ describe('LoginComponent', () => {
 
     it('should display the login modal', () => {
         openBtn.click();
-        expect(modal.isPresent()).toBe(true);
+        expect(modalFrame.isPresent()).toBe(true);
     });
 
     it ('should close the login modal after clicking the overlay', () => {
@@ -30,22 +30,22 @@ describe('LoginComponent', () => {
         browser.driver.actions().mouseMove(overlay.getWebElement(), {x: 1, y: 0}).click().perform();
         browser.driver.sleep(250);
 
-        expect(modal.isPresent()).toBe(false);
+        expect(modalFrame.isPresent()).toBe(false);
     });
 
     it ('should close the login modal after clicking the close button', () => {
-        let closeBtn = $('.close-button');
+        let closeBtn = $('.modal-frame__close-button');
         openBtn.click();
         closeBtn.click();
 
         browser.driver.sleep(250);
 
-        expect(modal.isPresent()).toBe(false);
+        expect(modalFrame.isPresent()).toBe(false);
     });
 
     it('should transition to and from the email login modal view', () => {
-        let emailBtn = $('.modal-social footer .footer-link:nth-child(1)');
-        let socialBtn = $('.modal-email footer .footer-link:nth-child(1)');
+        let emailBtn = $('.modal-social footer .footer-link:first-child');
+        let socialBtn = $('.modal-email footer .footer-link:first-child');
         let socialView = $('.modal-social');
         let emailView = $('.modal-email');
 
@@ -62,7 +62,7 @@ describe('LoginComponent', () => {
 
     it('should transition to and from the registration modal view', () => {
         let registerBtn = $('.modal-social footer .footer-link:nth-child(2)');
-        let socialBtn = $('.modal-register footer .footer-link:nth-child(1)');
+        let socialBtn = $('.modal-register footer .footer-link:first-child');
         let registerView = $('.modal-register');
         let socialView = $('.modal-social');
 
@@ -96,7 +96,7 @@ describe('LoginComponent', () => {
     });
 
     it('should display the dashboard after successful email login', () => {
-        let emailBtn = $('.modal-social footer .footer-link:nth-child(1)');
+        let emailBtn = $('.modal-social footer .footer-link:first-child');
         let emailInput = $('#email');
         let passwordInput = $('#password');
         let submitButton = element(by.buttonText('SIGN IN'));

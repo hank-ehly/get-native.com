@@ -6,13 +6,24 @@
  */
 
 describe('CookieCompliance', () => {
+    let dialog = $('.dialog');
+
     beforeEach(async() => {
         return await browser.get('/');
     });
 
-    it('should be able to close the popup by pressing a button', () => {
-        let dialog = $('.compliance-dialog');
-        let closeButton = dialog.$('.comply-trigger');
+    it('should not be displayed if the user has already accepted', async() => {
+        await browser.executeScript('return window.localStorage.setItem(\'accept-local-storage\', true);');
+        await browser.refresh();
+
+        expect(dialog.isPresent()).toBe(false);
+    });
+
+    it('should disappear upon pressing the close button', async() => {
+        await browser.executeScript('return window.localStorage.clear();');
+        await browser.refresh();
+
+        let closeButton = $('.dialog__link_close');
 
         expect(dialog.isPresent()).toBe(true);
 

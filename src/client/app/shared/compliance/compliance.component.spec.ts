@@ -40,17 +40,17 @@ export function main() {
         }));
 
         it('should display a detail message', () => {
-            el = util.getNativeEl('.compliance-detail');
+            el = util.getNativeEl('.dialog__paragraph');
             expect(el.textContent.length).toBeGreaterThan(0);
         });
 
         it('should display a link to TOS', () => {
-            el = util.getNativeEl('.tos-link');
+            el = util.getNativeEl('.dialog__link_tos');
             expect(el.textContent.length).toBeGreaterThan(0);
         });
 
         it('should display a close button', () => {
-            el = util.getNativeEl('.comply-trigger');
+            el = util.getNativeEl('.dialog__link_close');
             expect(el.textContent.length).toBeGreaterThan(0);
         });
 
