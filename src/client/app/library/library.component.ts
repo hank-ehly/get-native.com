@@ -19,11 +19,30 @@ import { Logger } from 'angular2-logger/core';
 })
 
 export class LibraryComponent implements OnInit {
+    videos: any[];
+
     constructor(private logger: Logger, private navbarService: NavbarService) {
     }
 
     ngOnInit(): void {
         this.logger.debug('[LibraryComponent]: ngOnInit()');
         this.navbarService.setTitle('Library');
+        this.videos = [
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+
+            {isPlaceholder: false},
+            {isPlaceholder: false},
+            {isPlaceholder: false}
+        ];
     }
 }

@@ -1,3 +1,16 @@
 <main>
-    <h1>Videos</h1>
+    <section class="section">
+        <header class="section-header">
+            <h1 class="section-header__title">Videos</h1>
+        </header>
+
+        <ul class="video-panels">
+            <li *ngFor="let v of videos">
+                <gn-video-panel *ngIf="!v.isPlaceholder"></gn-video-panel>
+                <div class="video-panels__flex-panel" *ngIf="v.isPlaceholder"></div>
+            </li>
+        </ul>
+
+        <button class="button section__button">LOAD MORE</button>
+    </section>
 </main>
