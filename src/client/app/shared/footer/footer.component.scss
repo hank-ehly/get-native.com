@@ -1,52 +1,36 @@
 @import "../../../scss/core";
 @import "./footer.component.debug";
 
-/* Sizes */
-$footer-padding: pu(14) 0 pu(5);
-$row-margin: pu(3) auto 0;
-$legal-links-ampersand-padding: 0 5px;
-
-/* Colors */
-$legal-link-color: $grey;
-$legal-link-text-decoration-color: $grey;
-$legal-link-hover-color: $default-color;
-$copyright-color: $grey;
-$site-link-color: $shamrock;
-$site-link-text-decoration-color: $iceberg;
-
-footer {
-  padding: $footer-padding;
+.footer {
+  padding: 140px 0 50px;
   text-align: center;
 }
 
-.row {
+.footer__row {
   display: flex;
   justify-content: space-around;
   margin: 6px auto 0;
   max-width: $main-width / 3;
 }
 
-.site-links a {
-  @extend %shamrock-link;
+.footer__row_copyright {
+  color: $grey;
 }
 
-.copyright {
-  color: $copyright-color;
-}
-
-.legal-links {
-  color: $legal-link-color;
+.footer__row_legal-links {
+  color: $grey;
   justify-content: center;
 }
 
-.legal-links a {
+.footer__legal-link {
   color: inherit;
-  text-decoration-color: $legal-link-text-decoration-color;
+  text-decoration-color: $grey;
+
   &:hover {
-    color: $legal-link-hover-color;
+    color: $default-color;
   }
 }
 
-.legal-links span {
-  padding: $legal-links-ampersand-padding;
+.footer__legal-link-separator {
+  padding: 0 5px;
 }

@@ -1,11 +1,11 @@
-<header class="navbar unauthenticated">
-    <div class="logo-frame">
-        <img src="../../../assets/mock/pokeball.png" alt="logo" class="logo-image" [routerLink]="''">
+<header class="navbar">
+    <div class="navbar__logo-frame">
+        <img class="navbar__logo" src="../../../assets/mock/pokeball.png" alt="logo" [routerLink]="''">
     </div>
 
-    <nav class="quick-links">
-        <a [routerLink]="'help'" class="quick-link help-link">Help</a>
-        <a href="" class="quick-link login-link" (click)="onShowLoginModal($event)">Sign in / Sign up</a>
+    <nav class="navbar__nav">
+        <a class="link navbar__link navbar__link_help" [routerLink]="'help'">Help</a>
+        <a class="link navbar__link navbar__link_login" href="" (click)="onShowLoginModal($event)">Sign in / Sign up</a>
     </nav>
 </header>
 

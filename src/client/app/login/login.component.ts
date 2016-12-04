@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
 
     onClickClose(e: MouseEvent): void {
         let t = <HTMLElement>e.target;
-        if (['close-button', 'overlay'].indexOf(t.className) !== -1) {
+        if (['overlay', 'modal-frame__close-button'].indexOf(t.className) !== -1) {
             this.isVisible = false;
         }
     }

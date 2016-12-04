@@ -1,36 +1,23 @@
 @import "../../../scss/core";
 @import "./compliance.component.debug";
 
-/* Sizes */
-$dialog-padding: 15px;
-$dialog-offset: $padding-unit-regular;
-$tos-link-padding-left: 5px;
-
-/* Colors */
-$tos-link-color: $default-color;
-$comply-trigger-color: $shamrock;
-$dialog-background-color: $wild-sand;
-
-.compliance-dialog {
+.dialog {
   @include border-radius();
-  background: $dialog-background-color;
-  bottom: $dialog-offset;
+  background: $wild-sand;
+  bottom: 30px;
   display: flex;
-  left: $dialog-offset;
-  padding: $dialog-padding;
+  left: 30px;
+  padding: 15px;
   position: fixed;
-  right: $dialog-offset;
+  right: 30px;
   opacity: 0.95;
 }
 
-.tos-link {
-  color: $tos-link-color;
-  padding-left: $tos-link-padding-left;
+.dialog__link_tos {
+  color: $default-color;
+  padding-left: 5px;
 }
 
-.comply-trigger {
-  @extend %shamrock-link;
-
-  /* Sends flex item to far-right */
+.dialog__link_close {
   margin-left: auto;
 }

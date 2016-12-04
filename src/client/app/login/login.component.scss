@@ -14,7 +14,7 @@
   opacity: 1;
 }
 
-.modal-window {
+.modal-frame {
   position: relative;
   left: 50%;
   margin-top: 80px;
@@ -23,22 +23,22 @@
   margin-left: -200px;
 }
 
-.close-button-window {
+.modal-frame__close-button-frame {
   background: transparent;
   height: 40px;
   display: flex;
   justify-content: flex-end;
+}
 
-  button {
-    align-self: flex-start;
-    background: transparent url("../../assets/icons/close.svg");
-    border: 0;
-    cursor: pointer;
-    padding: 0;
-    height: 20px;
-    outline: none;
-    width: 20px;
-  }
+.modal-frame__close-button {
+  align-self: flex-start;
+  background: transparent url("../../assets/icons/close.svg");
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  height: 20px;
+  outline: none;
+  width: 20px;
 }
 
 :host /deep/ {

@@ -1,14 +1,14 @@
-<footer>
-    <ul class="row site-links">
-        <li><a [routerLink]="['']">Home</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Features</a></li>
-        <li><a [routerLink]="['help']">Contact</a></li>
+<footer class="footer">
+    <ul class="footer__row footer__row_app-links">
+        <li><a class="link" [routerLink]="['']">Home</a></li>
+        <li><a class="link" href="">About</a></li>
+        <li><a class="link" href="">Features</a></li>
+        <li><a class="link" [routerLink]="['help']">Contact</a></li>
     </ul>
-    <div class="row copyright">© 2016 Get Native Inc.</div>
-    <div class="row legal-links">
-        <a [routerLink]="['tos']">Terms of Service</a>
-        <span>&</span>
-        <a [routerLink]="['privacy']">Privacy Policy</a>
+    <div class="footer__row footer__row_copyright">© 2016 Get Native Inc.</div>
+    <div class="footer__row footer__row_legal-links">
+        <a class="footer__legal-link" [routerLink]="['tos']">Terms of Service</a>
+        <span class="footer__legal-link-separator">&</span>
+        <a class="footer__legal-link" [routerLink]="['privacy']">Privacy Policy</a>
     </div>
 </footer>

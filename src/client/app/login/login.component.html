@@ -1,8 +1,8 @@
 <div class="overlay" *ngIf="isVisible" [@darken] (click)="onClickClose($event)">
-    <div class="modal-window" [@fadeInOut]>
+    <div class="modal-frame" [@fadeInOut]>
 
-        <div class="close-button-window">
-            <button class="close-button" (click)="onClickClose($event)"></button>
+        <div class="modal-frame__close-button-frame">
+            <button class="modal-frame__close-button" (click)="onClickClose($event)"></button>
         </div>
 
         <div [ngSwitch]="activeView">
@@ -10,6 +10,5 @@
             <gn-email-login *ngSwitchCase="'email'"></gn-email-login>
             <gn-register *ngSwitchCase="'register'"></gn-register>
         </div>
-
     </div>
 </div>
