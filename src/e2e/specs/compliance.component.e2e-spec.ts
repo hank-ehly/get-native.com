@@ -12,17 +12,7 @@ describe('CookieCompliance', () => {
         return await browser.get('/');
     });
 
-    it('should not be displayed if the user has already accepted', async() => {
-        await browser.executeScript('return window.localStorage.setItem(\'accept-local-storage\', true);');
-        await browser.refresh();
-
-        expect(dialog.isPresent()).toBe(false);
-    });
-
-    it('should disappear upon pressing the close button', async() => {
-        await browser.executeScript('return window.localStorage.clear();');
-        await browser.refresh();
-
+    it('should disappear upon pressing the close button', () => {
         let closeButton = $('.dialog__link_close');
 
         expect(dialog.isPresent()).toBe(true);
