@@ -44,10 +44,10 @@ describe('LoginComponent', () => {
     });
 
     it('should transition to and from the email login modal view', () => {
-        let emailBtn = $('.modal-social footer .footer__link:first-child');
-        let socialBtn = $('.modal-email footer .footer__link:first-child');
-        let socialView = $('.modal-social');
-        let emailView = $('.modal-email');
+        let emailView = $('.modal.modal_email');
+        let socialView = $('.modal.modal_social');
+        let socialBtn = emailView.$('.footer__link:first-child');
+        let emailBtn = socialView.$('.footer__link:first-child');
 
         openBtn.click();
         expect(emailView.isPresent()).toBe(false);
@@ -61,10 +61,10 @@ describe('LoginComponent', () => {
     });
 
     it('should transition to and from the registration modal view', () => {
-        let registerBtn = $('.modal-social footer .footer__link:nth-child(2)');
-        let socialBtn = $('.modal-register footer .footer__link:first-child');
-        let registerView = $('.modal-register');
-        let socialView = $('.modal-social');
+        let socialView = $('.modal.modal_social');
+        let registerView = $('.modal.modal_register');
+        let socialBtn = registerView.$('.footer__link:first-child');
+        let registerBtn = socialView.$('.footer__link:nth-child(2)');
 
         openBtn.click();
         expect(registerView.isPresent()).toBe(false);
@@ -78,7 +78,7 @@ describe('LoginComponent', () => {
     });
 
     it('should not allow registration until all form fields are filled in', () => {
-        let registerBtn = $('.modal-social footer .footer__link:nth-child(2)');
+        let registerBtn = $('.modal.modal_social .footer__link:nth-child(2)');
         let emailInput = $('#email');
         let passwordInput = $('#password');
         let submitButton = element(by.buttonText('SIGN UP'));
@@ -96,7 +96,7 @@ describe('LoginComponent', () => {
     });
 
     it('should display the dashboard after successful email login', () => {
-        let emailBtn = $('.modal-social footer .footer__link:first-child');
+        let emailBtn = $('.modal.modal_social .footer__link:first-child');
         let emailInput = $('#email');
         let passwordInput = $('#password');
         let submitButton = element(by.buttonText('SIGN IN'));
