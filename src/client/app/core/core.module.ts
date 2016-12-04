@@ -7,12 +7,23 @@
 
 import { NgModule } from '@angular/core';
 
-import { LocalStorageService, LoginService, StringService, PasswordService } from './index';
+import {
+    AuthService,
+    LocalStorageService,
+    LoginService,
+    LogoutService,
+    NavbarService,
+    StringService,
+    PasswordService
+} from './index';
 
 @NgModule({
     providers: [
+        AuthService,
         LocalStorageService,
         LoginService,
+        LogoutService,
+        NavbarService,
         PasswordService,
         StringService
     ]

@@ -1,6 +1,7 @@
-<gn-navbar></gn-navbar>
-<gn-side-menu *ngIf="authorized"></gn-side-menu>
-<gn-toolbar *ngIf="authorized"></gn-toolbar>
+<gn-navbar [authenticated]="authenticated"></gn-navbar>
+
+<gn-side-menu *ngIf="authenticated"></gn-side-menu>
+<gn-toolbar *ngIf="authenticated"></gn-toolbar>
 
 <router-outlet></router-outlet>
 

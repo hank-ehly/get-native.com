@@ -14,7 +14,7 @@
         <a class="toolbar__link" [routerLink]="'help'">
             <img class="toolbar_link-icon" src="../../../assets/icons/help.svg" alt="help">
         </a>
-        <a class="toolbar__link">
+        <a class="toolbar__link" (click)="onLogout()">
             <img class="toolbar_link-icon" src="../../../assets/icons/sign-out.svg" alt="sign-out">
         </a>
     </nav>

@@ -1,14 +1,5 @@
 @import 'core';
 
-@import './blocks/address';
-@import './blocks/header';
-@import './blocks/link';
-@import './blocks/list';
-@import './blocks/list__link';
-@import './blocks/list_ordered';
-@import './blocks/list_unordered';
-@import './blocks/section__button';
-
 html {
   @include font-weight-regular;
   overflow-y: scroll;
@@ -36,3 +27,12 @@ hr {
   height: 0;
   overflow: visible;
 }
+
+@import './blocks/address';
+@import './blocks/header';
+@import './blocks/link';
+@import './blocks/list';
+@import './blocks/list__link';
+@import './blocks/list_ordered';
+@import './blocks/list_unordered';
+@import './blocks/button';

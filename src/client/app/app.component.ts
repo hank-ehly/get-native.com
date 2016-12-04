@@ -7,7 +7,7 @@
 
 import { Component, OnInit, HostListener } from '@angular/core';
 
-import { LocalStorageService, kAcceptLocalStorage } from './core/index';
+import { LocalStorageService, kAcceptLocalStorage, AuthService } from './core/index';
 
 import { Logger } from 'angular2-logger/core';
 import './operators';
@@ -23,9 +23,9 @@ export class AppComponent implements OnInit {
     showLoginModal: boolean;
 
     /* TODO */
-    authorized: boolean;
+    authenticated: boolean;
 
-    constructor(private logger: Logger, private localStorageService: LocalStorageService) {
+    constructor(private logger: Logger, private localStorageService: LocalStorageService, private authService: AuthService) {
         this.showLoginModal = false;
     }
 
@@ -34,9 +34,10 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.authService.authenticate$.subscribe((value) => this.authenticated = value);
         this.showComplianceDialog = !this.localStorageService.getItem(kAcceptLocalStorage);
 
         /* TODO */
-        this.authorized = true;
+        this.authenticated = true;
     }
 }

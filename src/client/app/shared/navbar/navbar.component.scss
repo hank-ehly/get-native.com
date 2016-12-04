@@ -2,7 +2,6 @@
 @import './navbar.component.debug';
 
 .navbar {
-  display: flex;
   height: 90px;
 }
 
@@ -25,8 +24,9 @@
 /* TODO: Use flex-box instead of font-size: 0 hack */
 .navbar__nav {
   display: flex;
-  height: 100%;
-  margin-left: auto;
+  position: fixed;
+  height: 90px;
+  right: 0;
   padding: 0 30px;
   font-size: 0;
 }
@@ -43,4 +43,84 @@
   &:hover {
     text-decoration: underline;
   }
+}
+
+// ---------------
+
+.navbar__menu {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  height: inherit;
+  line-height: 90px;
+  width: $main-width;
+}
+
+.navbar__menu_center {
+  margin: 0 auto;
+}
+
+.navbar__menu_center > * {
+  flex-grow: 1;
+}
+
+.back-button-frame {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.navbar__menu-icon_back, .back-button-label {
+  align-self: center;
+  cursor: pointer;
+}
+
+.back-button-label {
+  padding-top: 1px;
+  transform: translateX(20px);
+}
+
+.navbar__menu-icon {
+  width: 30px;
+}
+
+.study-options {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.study-option {
+  align-self: center;
+}
+
+.study-option_start {
+  background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
+  color: $white;
+  border-color: transparent;
+  transform: translateX(-20px);
+}
+
+.navbar__menu_right {
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 0 30px 0 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 160px;
+}
+
+.navbar__menu_right .navbar__menu-icon {
+  cursor: pointer;
+  vertical-align: middle;
+  width: 20px;
+}
+
+.navbar__menu_right .navbar__menu-icon.navbar__menu-icon_account {
+  @include border-radius(50%);
+  height: 30px;
+  width: 30px;
 }

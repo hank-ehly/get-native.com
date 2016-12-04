@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { LoginService } from '../../core/index';
+import { LoginService, NavbarService } from '../../core/index';
 
 import { Logger } from 'angular2-logger/core';
 
@@ -11,8 +11,19 @@ import { Logger } from 'angular2-logger/core';
     styleUrls: ['navbar.component.css']
 })
 
-export class NavbarComponent {
-    constructor(private loginService: LoginService, private logger: Logger) {
+export class NavbarComponent implements OnInit {
+    @Input() authenticated: boolean;
+    title: string;
+    logoLinkPath: string;
+
+    constructor(private loginService: LoginService,
+                private logger: Logger,
+                private navbarService: NavbarService) {
+    }
+
+    ngOnInit(): void {
+        this.navbarService.setTitle$.subscribe((title) => this.title = title);
+        this.logoLinkPath = this.authenticated ? 'dashboard' : '';
     }
 
     onShowLoginModal(event: any): void {
