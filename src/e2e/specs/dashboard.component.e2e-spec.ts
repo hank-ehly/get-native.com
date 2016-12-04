@@ -6,7 +6,7 @@
  */
 
 describe('DashboardComponent', () => {
-    it('should work', () => {
+    it('STUB', () => {
         expect(true).toBeTruthy();
     });
 });

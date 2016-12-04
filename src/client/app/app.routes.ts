@@ -12,11 +12,13 @@ import { PrivacyRoutes }   from './privacy/index';
 import { HelpRoutes }      from './help/index';
 import { TOSRoutes }       from './tos/index';
 import { DashboardRoutes } from './dashboard/index';
+import { LibraryRoutes }   from './library/index';
 
 export const routes: Routes = [
     ...HomeRoutes,
     ...PrivacyRoutes,
     ...HelpRoutes,
     ...TOSRoutes,
-    ...DashboardRoutes
+    ...DashboardRoutes,
+    ...LibraryRoutes
 ];

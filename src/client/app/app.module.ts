@@ -19,6 +19,7 @@ import { PrivacyModule } from './privacy/privacy.module';
 import { HelpModule } from './help/help.module';
 import { TOSModule } from './tos/tos.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { LibraryModule } from './library/library.module';
 import { routes } from './app.routes';
 
 import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2-logger/core';
@@ -34,7 +35,8 @@ import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2
         HelpModule,
         TOSModule,
         DashboardModule,
-        LoginModule
+        LoginModule,
+        LibraryModule
     ],
     declarations: [AppComponent],
     providers: [
