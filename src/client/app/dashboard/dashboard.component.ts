@@ -7,17 +7,20 @@
 
 import { Component, OnInit } from '@angular/core';
 
+import { NavbarService } from '../core/index';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-dashboard',
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
     videos: any[];
     answers: any[];
 
-    constructor() {
+    constructor(private navbarService: NavbarService) {
     }
 
     ngOnInit() {
@@ -30,5 +33,6 @@ export class DashboardComponent implements OnInit {
             {isPlaceholder: true}
         ];
         this.answers = [1, 2, 3, 4, 5];
+        this.navbarService.setTitle('Dashboard');
     }
 }

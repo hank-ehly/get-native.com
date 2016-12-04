@@ -6,6 +6,7 @@
  */
 
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LoginService } from '../../core/index';
 
@@ -17,10 +18,16 @@ import { LoginService } from '../../core/index';
 })
 
 export class SocialLoginComponent {
-    constructor(private loginService: LoginService) {
+    constructor(private loginService: LoginService, private router: Router) {
     }
 
-    onSetModalView(view: string) {
+    onSetModalView(view: string): void {
         this.loginService.setActiveView(view);
+    }
+
+    onLogin(): void {
+        this.loginService.login();
+        this.loginService.hideModal(); // TODO: This should be separate from the business logic LoginService
+        this.router.navigate(['dashboard']);
     }
 }

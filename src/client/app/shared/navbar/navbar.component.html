@@ -1,38 +1,33 @@
 <header class="navbar">
     <div class="navbar__logo-frame">
-        <img class="navbar__logo" src="../../../assets/mock/pokeball.png" alt="logo" [routerLink]="''">
+        <img class="navbar__logo" src="../../../assets/mock/pokeball.png" alt="logo" [routerLink]="logoLinkPath">
     </div>
 
-    <nav class="navbar__nav">
+    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated">
+        <div class="back-button-frame">
+            <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back">
+            <span class="back-button-label">Japanese Conversation</span>
+        </div>
+
+        <span class="page-title">{{ title }}</span>
+
+        <!-- TODO -->
+        <!--<div class="study-progress-frame"></div>-->
+
+        <div class="study-options">
+            <button class="button study-option study-option_start">START</button>
+            <button class="button study-option study-option_save">SAVE</button>
+        </div>
+    </div>
+
+    <nav class="navbar__nav" *ngIf="!authenticated">
         <a class="link navbar__link navbar__link_help" [routerLink]="'help'">Help</a>
         <a class="link navbar__link navbar__link_login" href="" (click)="onShowLoginModal($event)">Sign in / Sign up</a>
     </nav>
+
+    <ul class="navbar__menu navbar__menu_right" *ngIf="authenticated">
+        <li><img class="navbar__menu-icon navbar__menu-icon_search" src="../../../assets/icons/search.svg" alt="search"></li>
+        <li><img class="navbar__menu-icon navbar__menu-icon_notification" src="../../../assets/icons/notification.svg" alt="notification"></li>
+        <li><img class="navbar__menu-icon navbar__menu-icon_account" src="../../../assets/mock/man-smiling.jpg" alt="account"></li>
+    </ul>
 </header>
-
-<!--<header class="navbar authenticated" *ngIf="authenticated">
-    <img src="../../../assets/mock/pokeball.png" alt="logo" class="logo-image" [routerLink]="''">
-
-    <ul class="navbar-center-items">
-        <li class="return-navigation">
-            <div>< Japanese conversation</div>
-        </li>
-        <li class="page-title">
-            <div><h5>Page Title</h5></div>
-        </li>
-        <li class="video-options-container">
-            <ul class="video-options">
-                <li>
-                    <button>START</button>
-                </li>
-                <li>
-                    <button>STOP</button>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <ul class="user-preference-icons">
-        <li><img src="../../../assets/mock/clock-alert.png" alt="" class="notifications-icon"></li>
-        <li><img src="../../../assets/mock/man-smiling.jpg" alt="" class="user-icon" (click)="requestShowLoginModal()">
-        </li>
-    </ul>
-</header>-->

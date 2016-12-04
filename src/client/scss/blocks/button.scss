@@ -1,6 +1,6 @@
 @import '../core';
 
-.section__button {
+.button {
   @include font-weight-bold;
   @extend %rounded-button;
   background: $white;
