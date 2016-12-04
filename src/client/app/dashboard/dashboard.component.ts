@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
             {isPlaceholder: false},
             {isPlaceholder: false},
             {isPlaceholder: false},
+
             {isPlaceholder: false},
             {isPlaceholder: false},
             {isPlaceholder: true}

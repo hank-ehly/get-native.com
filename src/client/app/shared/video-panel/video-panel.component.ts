@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/30.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -15,6 +15,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class VideoPanelComponent implements OnInit {
+    @Input() showOverlay: boolean;
+
     constructor() {
     }
 

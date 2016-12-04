@@ -10,6 +10,10 @@
   width: (($main-width - 60px) / 3);
 }
 
+.video-panel_clickable {
+  cursor: pointer;
+}
+
 .video-panel__overlay {
   @include border-right-radius(10px);
   background-image: linear-gradient(to right, rgba($shamrock, 0.7), rgba($robin-egg-blue, 0.7));
