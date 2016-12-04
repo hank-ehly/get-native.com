@@ -44,7 +44,7 @@
   font-size: 0;
 }
 
-.faq-list__faq-number, .faq-list__faq-title {
+.faqs__faq-number, .faqs__faq-title {
   font-size: $font-size-regular;
 }
 
@@ -56,16 +56,16 @@
   max-width: 6px;
 }
 
-.faq-list__chevron-icon, .faq-list__faq-number {
+.faq-list__chevron-icon, .faqs__faq-number {
   cursor: pointer;
   margin-right: 10px;
 }
 
-.faq-list__faq-number {
+.faqs__faq-number {
   color: $grey;
 }
 
-.faq-list__faq-detail {
+.faqs__faq-detail {
   @include border-radius();
   background: $white-lilac;
   border: 2px solid $athens-gray;

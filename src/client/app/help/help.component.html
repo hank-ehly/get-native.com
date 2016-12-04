@@ -10,11 +10,11 @@
         <ul class="faqs">
             <li class="faqs__faq" *ngFor="let faq of faqs; let i = index">
                 <div class="faqs__faq-header">
-                    <img src="../../assets/icons/chevron.svg" alt="chevron" class="faq-list__chevron-icon" (click)="setSelectedFaq(faq)" [@rotation]="chevronRotationForFaq(faq)">
-                    <span class="faq-list__faq-number" (click)="setSelectedFaq(faq)">{{ i | number:'2.0-0' }}</span>
-                    <span class="link faq-list__faq-title" (click)="setSelectedFaq(faq)">{{ faq.title }}</span>
+                    <img src="../../assets/icons/chevron.svg" alt="chevron" class="faqs__chevron-icon" (click)="setSelectedFaq(faq)" [@rotation]="chevronRotationForFaq(faq)">
+                    <span class="faqs__faq-number" (click)="setSelectedFaq(faq)">{{ i | number:'2.0-0' }}</span>
+                    <span class="link faqs__faq-title" (click)="setSelectedFaq(faq)">{{ faq.title }}</span>
                 </div>
-                <p class="faq-list__faq-detail" *ngIf="isSelectedFaq(faq)" [@visible]="isSelectedFaq(faq)">{{ faq.body }}</p>
+                <p class="faqs__faq-detail" *ngIf="isSelectedFaq(faq)" [@visible]="isSelectedFaq(faq)">{{ faq.body }}</p>
             </li>
         </ul>
     </section>
