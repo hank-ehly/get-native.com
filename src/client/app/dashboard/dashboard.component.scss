@@ -1,121 +1,104 @@
 @import '../../scss/core';
 @import './dashboard.component.debug';
 
-// ---- Shared
+hr {
+  margin: 50px auto;
+}
 
-.section-title-frame {
+.section-header {
   display: flex;
   margin-right: auto;
 }
 
-.section-title-frame .section-title-label {
+.section-header__title {
   align-self: center;
   width: 310px;
 }
 
-.section-title-frame .section-title-menu {
+.section-header__menu {
   align-self: center;
   display: flex;
   width: $main-width - 310px;
 }
 
-.section-title-frame .section-title-menu-item {
+.section-header__menu-item {
   @include font-weight-bold;
   color: $regent-gray;
   cursor: pointer;
   font-size: $font-size-x-small;
   letter-spacing: $uppercase-label-letter-spacing;
   margin-right: 20px;
-
-  &.active, &:hover {
-    color: $default-color;
-  }
 }
 
-hr {
-  margin: 50px auto;
+.section-header__menu-item_active, .section-header__menu-item:hover {
+  color: $default-color;
 }
 
-.load-more-button {
-  @include font-weight-bold;
-  @extend %rounded-button;
-  background: $white;
-  border-color: $periwinkle-gray;
-  color: $regent-gray;
-  font-size: $font-size-x-small;
-  letter-spacing: $uppercase-label-letter-spacing/2;
+.section__button {
   margin-top: 20px;
-  padding-bottom: 6px;
-  padding-top: 6px;
 }
 
-.videos-section, .answers-section {
+.section_video-panels, .section_answers {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
-// ---- Videos
-
-.videos-section .videos-list {
+.video-panels {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.videos-section .videos-list .videos-list-item.flex-item {
+.video-panels__flex-panel {
   height: 100%;
   width: ($main-width - 60px) / 3;
 }
 
-// ---- Goals
-
-.goals-section .goals-list {
+.goals {
   display: flex;
   margin-top: 40px;
 }
 
-.goals-section .goals-list .goals-list-item {
+.goals__goal {
   flex-grow: 1;
 }
 
-.goals-section .goals-list .goals-list-item .goal-count {
+.goals__goal-count {
   color: $shamrock;
   font-size: 30px;
 }
 
-.goals-section .goals-list .goals-list-item .goal-label {
+.goals__goal-title {
   @include font-weight-bold;
   font-size: $font-size-x-small;
   letter-spacing: $uppercase-label-letter-spacing;
 }
 
-// ---- Answers
-
-.answers-section .answers-list {
+.answers {
   margin-top: 40px;
   width: 100%;
 }
 
-.answers-section .answers-list .answers-list-item {
+.answers__answer {
   display: flex;
   padding: 20px;
-
-  &.striped-item {
-    background: $aqua-haze;
-  }
 }
 
-.answers-section .answers-list .answers-list-item .answer-body {
+.answers__answer_striped {
+  background: $aqua-haze;
+}
+
+.answers__answer-body {
   max-width: 700px;
-
-  .video-title {
-    color: $shamrock;
-  }
 }
 
-.answers-section .answers-list .answers-list-item .answer-aside {
+.answers__answer-title {
+  color: $shamrock;
+}
+
+.answers__answer-date {
   color: $regent-gray;
   margin-left: auto;
 }

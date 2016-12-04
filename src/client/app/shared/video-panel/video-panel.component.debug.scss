@@ -1,15 +1,15 @@
 @import '../../../scss/core';
 
-.video-panel             { @include debug-background-color($dc01); }
-.panel-footer            { @include debug-background-color($dc02); }
-.minute-button-container { @include debug-background-color($dc03); }
-.video-stats             { @include debug-background-color($dc04); }
-.video-title             { @include debug-background-color($dc05); }
-.video-speaker           { @include debug-background-color($dc06); }
-.length                  { @include debug-background-color($dc07); }
-.length img              { @include debug-background-color($dc08); }
-.length span             { @include debug-background-color($dc09); }
-.views                   { @include debug-background-color($dc10); }
-.views img               { @include debug-background-color($dc11); }
-.views span              { @include debug-background-color($dc12); }
-.video-created-on        { @include debug-background-color($dc01); }
+.video-panel                             { @include debug-background-color($dc01); }
+.footer                                  { @include debug-background-color($dc02); }
+.options__minute-button-frame            { @include debug-background-color($dc03); }
+.video-stats                             { @include debug-background-color($dc04); }
+.footer__video-title                     { @include debug-background-color($dc05); }
+.footer__video-speaker                   { @include debug-background-color($dc06); }
+.video-stats__length                     { @include debug-background-color($dc07); }
+.video-stats__length .video-stats__icon  { @include debug-background-color($dc08); }
+.video-stats__length .video-stats__label { @include debug-background-color($dc09); }
+.video-stats__views                      { @include debug-background-color($dc10); }
+.video-stats__views .video-stats__icon   { @include debug-background-color($dc11); }
+.video-stats__views .video-stats__label  { @include debug-background-color($dc12); }
+.video-stats__created-on                 { @include debug-background-color($dc01); }

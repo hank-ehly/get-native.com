@@ -35,12 +35,12 @@
   padding-left: 20px;
 }
 
-.faq-list {
+.faqs {
   margin-top: 30px;
 }
 
 /* TODO: To fix the padding issue, use flex-box instead */
-.faq-list__faq-header {
+.faqs__faq-header {
   font-size: 0;
 }
 
@@ -48,7 +48,7 @@
   font-size: $font-size-regular;
 }
 
-.faq-list__faq {
+.faqs__faq {
   margin-top: 20px;
 }
 

@@ -10,7 +10,7 @@
   width: (($main-width - 60px) / 3);
 }
 
-.panel-overlay {
+.video-panel__overlay {
   @include border-right-radius(10px);
   background-image: linear-gradient(to right, rgba($shamrock, 0.7), rgba($robin-egg-blue, 0.7));
   height: 100%;
@@ -21,18 +21,18 @@
   width: 100%;
 }
 
-.video-panel:hover .panel-overlay {
+.video-panel:hover .video-panel__overlay {
   opacity: 1;
 }
 
-.video-options {
+.options {
   left: 50%;
   position: absolute;
   top: 33%;
   transform: translate(-50%, -50%);
 }
 
-.options-row {
+.options > div {
   display: flex;
   flex-flow: row nowrap;
   & > * {
@@ -40,49 +40,49 @@
   }
 }
 
-.video-options .minute-button-container {
+.options .options__minute-button-frame {
   margin-right: 12px;
   width: 20px;
-
-  .minute-button {
-    @include border-radius(2px);
-    background: $white;
-    cursor: pointer;
-    height: 10px;
-    width: 20px;
-  }
-
-  .minute-button:after {
-    content: '';
-    position: absolute;
-    left: 5px;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    width: 0;
-  }
-
-  .minute-button:first-child::after {
-    top: 5px;
-    border-bottom: 4px solid $shamrock;
-  }
-
-  .minute-button:last-child::after {
-    top: 17px;
-    border-top: 4px solid $shamrock;
-  }
-
-  .minute-button:last-child {
-    margin-top: 2px;
-  }
 }
 
-.video-options .study-minutes {
+.options__minute-button {
+  @include border-radius(2px);
+  background: $white;
+  cursor: pointer;
+  height: 10px;
+  width: 20px;
+}
+
+.options__minute-button:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  width: 0;
+}
+
+.options__minute-button:first-child::after {
+  top: 5px;
+  border-bottom: 4px solid $shamrock;
+}
+
+.options__minute-button:last-child::after {
+  top: 17px;
+  border-top: 4px solid $shamrock;
+}
+
+.options__minute-button:last-child {
+  margin-top: 2px;
+}
+
+.options .options__minutes-label {
   color: $white;
   padding-top: 2px;
 }
 
-.video-options button {
+.options__button {
   @include border-radius();
   background: $white;
   border: 0;
@@ -96,7 +96,7 @@
   width: 150px;
 }
 
-.panel-footer {
+.footer {
   @include border-radius(0 0 10px 0);
   background: $black;
   bottom: 0;
@@ -109,7 +109,7 @@
   width: 100%;
 }
 
-.panel-footer .video-stats {
+.footer .video-stats {
   display: flex;
   font-size: $font-size-x-small;
   height: 16px;
@@ -117,33 +117,33 @@
   overflow: hidden;
 }
 
-.length, .views {
+.video-stats__length, .video-stats__views {
   display: flex;
   flex-flow: row nowrap;
   width: 60px;
-
-  img {
-    margin-right: 8px;
-  }
 }
 
-.length span, .views span, .video-created-on {
-  /* The bottom side of the <span> contains a 1px gap. This offsets that gap. */
+/* The bottom side of the <span> contains a 1px gap. This offsets that gap. */
+.video-stats__label {
   padding-top: 1px;
 }
 
-.length img, .length span, .views img, .views span {
+.video-stats__icon {
+  margin-right: 8px;
+}
+
+.video-stats__icon, .video-stats__label {
   align-self: center;
 }
 
-.length img {
+.video-stats__length .video-stats__icon {
   height: 100%;
 }
 
-.views img {
+.video-stats__views .video-stats__icon {
   height: 65%;
 }
 
-.video-created-on {
+.video-stats__created-on {
   margin-left: auto;
 }

@@ -1,5 +1,5 @@
 <main class="main">
-    <section class="section about">
+    <section class="section section_about">
         <header class="section-header">
             <div class="section-header__icon-frame">
                 <img class="section-header__icon" src="../../assets/icons/help-about.svg" alt="about">
@@ -7,9 +7,9 @@
             <h3 class="section-header__title">About Get Native</h3>
         </header>
 
-        <ul class="faq-list">
-            <li class="faq-list__faq" *ngFor="let faq of faqs; let i = index">
-                <div class="faq-list__faq-header">
+        <ul class="faqs">
+            <li class="faqs__faq" *ngFor="let faq of faqs; let i = index">
+                <div class="faqs__faq-header">
                     <img src="../../assets/icons/chevron.svg" alt="chevron" class="faq-list__chevron-icon" (click)="setSelectedFaq(faq)" [@rotation]="chevronRotationForFaq(faq)">
                     <span class="faq-list__faq-number" (click)="setSelectedFaq(faq)">{{ i | number:'2.0-0' }}</span>
                     <span class="link faq-list__faq-title" (click)="setSelectedFaq(faq)">{{ faq.title }}</span>
@@ -19,7 +19,7 @@
         </ul>
     </section>
 
-    <section class="section">
+    <section class="section section_contact">
         <header class="section-header">
             <div class="section-header__icon-frame">
                 <img class="section-header__icon" src="../../assets/icons/help-mail.svg" alt="mail">

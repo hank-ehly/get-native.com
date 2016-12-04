@@ -1,15 +1,21 @@
 <div class="toolbar">
-    <ul class="tooltip">
-        <li class="tooltip-item">日本語</li>
-        <li class="tooltip-item">ITALIANO</li>
-        <li class="tooltip-item">ESPAÑOL</li>
+    <ul class="toolbar__tooltip-languages">
+        <li class="toolbar__language-label">日本語</li>
+        <li class="toolbar__language-label">ITALIANO</li>
+        <li class="toolbar__language-label">ESPAÑOL</li>
     </ul>
 
-    <span class="selected-tooltip-item">ENGLISH</span>
+    <span class="toolbar__language-label toolbar__language-label_selected">ENGLISH</span>
 
-    <nav class="toolbar-links">
-        <a class="toolbar-link"><img src="../../../assets/icons/settings.svg" alt="settings"></a>
-        <a class="toolbar-link" [routerLink]="'help'"><img src="../../../assets/icons/help.svg" alt="help"></a>
-        <a class="toolbar-link"><img src="../../../assets/icons/sign-out.svg" alt="sign-out"></a>
+    <nav class="toolbar__links">
+        <a class="toolbar__link">
+            <img class="toolbar_link-icon" src="../../../assets/icons/settings.svg" alt="settings">
+        </a>
+        <a class="toolbar__link" [routerLink]="'help'">
+            <img class="toolbar_link-icon" src="../../../assets/icons/help.svg" alt="help">
+        </a>
+        <a class="toolbar__link">
+            <img class="toolbar_link-icon" src="../../../assets/icons/sign-out.svg" alt="sign-out">
+        </a>
     </nav>
 </div>

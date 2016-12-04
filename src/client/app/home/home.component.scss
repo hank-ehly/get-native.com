@@ -1,28 +1,7 @@
-@import "../../scss/core";
-@import "home.component.debug";
+@import '../../scss/core';
+@import './home.component.debug';
 
-/* Sizes */
-$center-content-margin: pu(10) auto 0;
-$center-content-width: $main-width * (3/4);
-$center-content-button-margin-top: pu(4);
-$small-feature-width: ($main-width/3) - $padding-unit-regular;
-$small-feature-icon-width: pu(7);
-$small-feature-icon-height: pu(7);
-$large-feature-item-width: ($main-width / 2) - $padding-unit-regular;
-$large-feature-image-width: ($main-width / 2) - (pu(3) / 2);
-$large-feature-margin-top: pu(8);
-
-/* Colors */
-$large-feature-header-color: $shamrock;
-$sign-in-button-color: $shamrock;
-$sign-in-button-border-color: $shamrock;
-$sign-in-button-background-color: $white;
-$small-feature-detail-color: #6c7680;
-
-/* Other */
-$large-feature-image-box-shadow: 0 6px 20px 0 rgba($black, 0.15);
-
-.marketing-banner {
+.banner {
   background: url("../../assets/images/home-background.jpg") no-repeat center;
   background-size: cover;
   height: 100vh;
@@ -33,63 +12,63 @@ $large-feature-image-box-shadow: 0 6px 20px 0 rgba($black, 0.15);
   z-index: -1;
 }
 
-.banner-title {
+.banner__title {
   text-align: center;
   margin: 90px auto 0;
   width: 600px;
 }
 
-.centered-content {
-  margin: $center-content-margin;
+.headline {
+  margin: 100px auto 0;
   text-align: center;
-  width: $center-content-width;
-
-  .content-detail {
-    color: #6c7680; // TODO: Variable
-    margin-top: pu(3);
-  }
-
-  .content-action {
-    @extend %rounded-button;
-    background-color: $sign-in-button-background-color;
-    border-color: $sign-in-button-border-color;
-    color: $sign-in-button-color;
-    margin-top: $center-content-button-margin-top;
-  }
+  width: $main-width * (3/4);
 }
 
-.centered-content.large-feature-content {
+.headline__paragraph {
+  color: #6c7680; // TODO: Variable
+  margin-top: pu(3);
+}
+
+.headline__button {
+  @extend %rounded-button;
+  background-color: $white;
+  border-color: $shamrock;
+  color: $shamrock;
+  margin-top: 40px;
+}
+
+.headline_large-features {
   margin-top: pu(10);
 }
 
-.large-features {
+.section_large-features {
   margin-top: pu(10);
+}
 
-  .feature {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-top: $large-feature-margin-top;
-  }
+.feature.feature_large {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+}
 
-  .feature li {
-    width: $large-feature-item-width;
-  }
+.feature__description-column {
+  width: ($main-width/2) - 30px;
+}
 
-  .feature .feature-image {
-    box-shadow: $large-feature-image-box-shadow;
-    height: 270px;
-    width: $large-feature-image-width;
-  }
+.feature.feature_large .feature__image {
+  box-shadow: 0 6px 20px 0 rgba($black, 0.15);
+  height: 270px;
+  width: ($main-width/2) - 15px;
+}
 
-  .feature .feature-title {
-    color: $large-feature-header-color;
-    font-family: ProximaNova-Regular, sans-serif;
-  }
+.feature.feature_large .feature__title {
+  color: $shamrock;
+  font-family: ProximaNova-Regular, sans-serif;
+}
 
-  .feature .feature-detail {
-    margin-top: pu(4);
-  }
+.feature.feature_large .feature__paragraph {
+  margin-top: pu(4);
 }
 
 hr {
@@ -103,25 +82,25 @@ hr {
   flex-flow: row wrap;
   justify-content: space-between;
   padding-top: 40px;
+}
 
-  .feature {
-    text-align: center;
-    width: $small-feature-width;
+.feature_small {
+  text-align: center;
+  width: ($main-width/3) - 30px;
+}
 
-    .feature-image {
-      height: $small-feature-icon-height;
-      margin-top: pu(3);
-      width: $small-feature-icon-width;
-    }
+.feature.feature_small .feature__image {
+  height: 70px;
+  margin-top: pu(3);
+  width: 70px;
+}
 
-    .feature-title {
-      font-size: $font-size-regular;
-      margin-top: pu(3);
-    }
+.feature.feature_small .feature__title {
+  font-size: $font-size-regular;
+  margin-top: pu(3);
+}
 
-    .feature-detail {
-      color: $small-feature-detail-color;
-      margin-top: pu(3.5);
-    }
-  }
+.feature.feature_small .feature__paragraph {
+  color: $pale-sky;
+  margin-top: pu(3.5);
 }
