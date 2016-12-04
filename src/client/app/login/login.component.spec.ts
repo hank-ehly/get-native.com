@@ -80,15 +80,15 @@ export function main() {
         });
 
         it('should have 3 social-login buttons', () => {
-            el = util.getNativeEl('.modal section');
+            el = util.getNativeEl('.modal__body');
             expect(el.childElementCount).toEqual(3);
         });
 
         it('should have a footer with 2 links', () => {
-            el = util.getNativeEl('.modal footer');
+            el = util.getNativeEl('.footer');
             expect(el.childElementCount).toEqual(2);
-            expect(el.children[0].className).toContain('footer-link');
-            expect(el.children[1].className).toContain('footer-link');
+            expect(el.children[0].className).toContain('footer__link');
+            expect(el.children[1].className).toContain('footer__link');
         });
     });
 }
