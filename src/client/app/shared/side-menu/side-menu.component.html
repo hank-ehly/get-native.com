@@ -1,6 +1,10 @@
 <div class="side-menu">
-    <ul class="side-menu-list">
-        <li class="side-menu-list-item"><a [routerLink]="'dashboard'" class="active">Dashboard</a></li>
-        <li class="side-menu-list-item"><a>Library</a></li>
+    <ul class="side-menu__links">
+        <li class="side-menu__link-frame">
+            <a class="side-menu__link side-menu__link_active" [routerLink]="'dashboard'">Dashboard</a>
+        </li>
+        <li class="side-menu__link-frame">
+            <a class="side-menu__link">Library</a>
+        </li>
     </ul>
 </div>

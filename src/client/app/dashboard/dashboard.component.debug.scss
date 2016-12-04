@@ -1,18 +1,18 @@
 @import '../../scss/core';
 
-.section-title-frame                             { @include debug-background-color($dc01); }
-.section-title-frame .section-title-label        { @include debug-background-color($dc02); }
-.section-title-frame .section-title-menu         { @include debug-background-color($dc03); }
-.section-title-frame .section-title-menu-item    { @include debug-background-color($dc04); }
-.videos-section .videos-list-item.flex-item      { @include debug-background-color($dc05); }
-.videos-section .videos-list                     { @include debug-background-color($dc06); }
-.goals-section .goals-list                       { @include debug-background-color($dc07); }
-.goals-section .goals-list-item                  { @include debug-background-color($dc08); }
-.goals-section .goals-list-item .goal-count      { @include debug-background-color($dc09); }
-.goals-section .goals-list-item .goal-label      { @include debug-background-color($dc10); }
-.answers-section .answers-list                   { @include debug-background-color($dc11); }
-.answers-section .answers-list-item              { @include debug-background-color($dc12); }
-.answers-section .answers-list-item.striped-item { @include debug-background-color($dc01); }
-.answers-section .answer-body                    { @include debug-background-color($dc02); }
-.answers-section .answer-body .video-title       { @include debug-background-color($dc03); }
-.answers-section .answer-aside                   { @include debug-background-color($dc04); }
+.section-header            { @include debug-background-color($dc01); }
+.section__title            { @include debug-background-color($dc02); }
+.section-header__menu      { @include debug-background-color($dc03); }
+.section-header__menu-item { @include debug-background-color($dc04); }
+.video-panels__flex-panel  { @include debug-background-color($dc05); }
+.video-panels              { @include debug-background-color($dc06); }
+.goals                     { @include debug-background-color($dc07); }
+.goals__goal               { @include debug-background-color($dc08); }
+.goals__goal-count         { @include debug-background-color($dc09); }
+.goals__goal-title         { @include debug-background-color($dc10); }
+.answers                   { @include debug-background-color($dc11); }
+.answers__answer           { @include debug-background-color($dc12); }
+.answers__answer_striped   { @include debug-background-color($dc01); }
+.answers__answer-body      { @include debug-background-color($dc02); }
+.answers__answer-title     { @include debug-background-color($dc03); }
+.answers__answer-date      { @include debug-background-color($dc04); }

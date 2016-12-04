@@ -38,13 +38,13 @@ export function main() {
         it('should display a VERY WEAK state color', () => {
             comp.update(STUBPasswords.veryWeak);
             fixture.detectChanges();
-            el = util.getNativeEl('.v-weak');
-            expect(el.className).toContain('visible');
+            el = util.getNativeEl('.meter__segment_very-weak');
+            expect(el.className).toContain('meter__segment_visible');
         });
         it('should display a VERY WEAK state label', () => {
             comp.update(STUBPasswords.veryWeak);
             fixture.detectChanges();
-            el = util.getNativeEl('.right-aligned-text');
+            el = util.getNativeEl('.meter__description');
             expect(el.textContent).toEqual('VERY WEAK');
         });
 
@@ -52,52 +52,52 @@ export function main() {
         it('should display a WEAK state color', () => {
             comp.update(STUBPasswords.weak);
             fixture.detectChanges();
-            el = util.getNativeEl('.weak');
-            expect(el.className).toContain('visible');
+            el = util.getNativeEl('.meter__segment_weak');
+            expect(el.className).toContain('meter__segment_visible');
         });
         it('should display a WEAK state label', () => {
             comp.update(STUBPasswords.weak);
             fixture.detectChanges();
-            el = util.getNativeEl('.right-aligned-text');
+            el = util.getNativeEl('.meter__description');
             expect(el.textContent).toEqual('WEAK');
         });
 
         it('should display a GOOD state color', () => {
             comp.update(STUBPasswords.good);
             fixture.detectChanges();
-            el = util.getNativeEl('.good');
-            expect(el.className).toContain('visible');
+            el = util.getNativeEl('.meter__segment_good');
+            expect(el.className).toContain('meter__segment_visible');
         });
         it('should display a GOOD state label', () => {
             comp.update(STUBPasswords.good);
             fixture.detectChanges();
-            el = util.getNativeEl('.right-aligned-text');
+            el = util.getNativeEl('.meter__description');
             expect(el.textContent).toEqual('GOOD');
         });
 
         it('should display a STRONG state color', () => {
             comp.update(STUBPasswords.strong);
             fixture.detectChanges();
-            el = util.getNativeEl('.strong');
-            expect(el.className).toContain('visible');
+            el = util.getNativeEl('.meter__segment_strong');
+            expect(el.className).toContain('meter__segment_visible');
         });
         it('should display a STRONG state label', () => {
             comp.update(STUBPasswords.strong);
             fixture.detectChanges();
-            el = util.getNativeEl('.right-aligned-text');
+            el = util.getNativeEl('.meter__description');
             expect(el.textContent).toEqual('STRONG');
         });
 
         it('should display a VERY STRONG state color', () => {
             comp.update(STUBPasswords.veryStrong);
             fixture.detectChanges();
-            el = util.getNativeEl('.v-strong');
-            expect(el.className).toContain('visible');
+            el = util.getNativeEl('.meter__segment_very-strong');
+            expect(el.className).toContain('meter__segment_visible');
         });
         it('should display a VERY STRONG state label', () => {
             comp.update(STUBPasswords.veryStrong);
             fixture.detectChanges();
-            el = util.getNativeEl('.right-aligned-text');
+            el = util.getNativeEl('.meter__description');
             expect(el.textContent).toEqual('VERY STRONG');
         });
     });

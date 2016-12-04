@@ -1,26 +1,30 @@
-<div class="modal modal-email">
+<div class="modal modal_email-login">
+
     <header>
-        <p>Enter your email address and password to sign in.</p>
+        <p class="paragraph modal_email-login__paragraph">Enter your email address and password to sign in.</p>
     </header>
 
-    <form (ngSubmit)="onSubmit()" #form="ngForm">
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" [pattern]="HTML5_EMAIL_REGEX" class="tabbable" type="email" name="email" tabindex="1"
+    <form (ngSubmit)="onSubmit()" #form="ngForm" class="form">
+
+        <div class="form__group">
+            <label class="form__label" for="email">Email</label>
+            <input id="email" [pattern]="HTML5_EMAIL_REGEX" class="form__input tabbable" type="email" name="email" tabindex="1"
                    [(ngModel)]="credentials.email" required>
         </div>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input id="password" type="password" class="tabbable" name="password" [(ngModel)]="credentials.password"
+        <div class="form__group">
+            <label class="form__label" for="password">Password</label>
+            <input id="password" type="password" class="form__input tabbable" name="password" [(ngModel)]="credentials.password"
                    tabindex="2" minlength="8" required>
         </div>
 
-        <button type="submit" tabindex="3" class="tabbable" [disabled]="!form.valid">SIGN IN</button>
+        <button type="submit" tabindex="3" class="form__button tabbable" [disabled]="!form.valid">SIGN IN</button>
+
     </form>
 
-    <footer>
-        <span (click)="onSetModalView(null)" class="footer-link tabbable" tabindex="4">Sign in via Facebook, Twitter or Google</span>
-        <span (click)="onSetModalView('register')" class="footer-link tabbable" tabindex="5">Create a new account</span>
+    <footer class="footer">
+        <span (click)="onSetModalView(null)" class="link footer__link tabbable" tabindex="4">Sign in via Facebook, Twitter or Google</span>
+        <span (click)="onSetModalView('register')" class="link footer__link tabbable" tabindex="5">Create a new account</span>
     </footer>
+
 </div>

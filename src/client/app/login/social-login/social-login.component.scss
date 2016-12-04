@@ -1,30 +1,27 @@
 @import '../../../scss/core';
 
-.modal.modal-social header {
+.modal__header {
   @include border-top-radius();
   background: $shamrock;
   display: flex;
   justify-content: center;
   height: 100px;
-
-  img {
-    width: 30px;
-    height: 30px;
-    align-self: center;
-  }
 }
 
-.modal.modal-social section {
+.modal__logo {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+}
+
+.modal__body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.modal.modal-social section {
   margin-top: 22px;
 }
 
-.modal.modal-social section button {
+.modal__button {
   @include border-radius();
   color: $white;
   width: 360px;
@@ -37,18 +34,17 @@
   font-size: $font-size-regular;
 }
 
-.modal.modal-social button img,
-.modal.modal-social button .facebook-bg {
+.modal__button-icon, .modal__button-icon-frame {
   align-self: center;
   margin-left: 15px;
 }
 
-button span {
+.modal__button-text {
   align-self: center;
   margin-left: 26px;
 }
 
-.modal.modal-social .facebook {
+.modal__button_facebook {
   background: $chambray;
   border: none;
   border-bottom: 1px solid $chambray-darker;
@@ -56,26 +52,26 @@ button span {
   &:hover, &:focus {
     background: $chambray-darker;
   }
-
-  .facebook-bg {
-    @include border-radius(50%);
-    background: $white;
-    height: 22px;
-    position: relative;
-    width: 22px;
-
-    img {
-      height: 24px;
-      width: 24px;
-      position: absolute;
-      margin-left: 0;
-      left: -1px;
-      bottom: -4px;
-    }
-  }
 }
 
-.modal.modal-social .twitter {
+.modal__button-icon-frame {
+  @include border-radius(50%);
+  background: $white;
+  height: 22px;
+  position: relative;
+  width: 22px;
+}
+
+.modal__button-icon-frame .modal__button-icon {
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  margin-left: 0;
+  left: -1px;
+  bottom: -4px;
+}
+
+.modal__button_twitter {
   background: $picton-blue;
   border: none;
   border-bottom: 1px solid $picton-blue-darker;
@@ -83,27 +79,27 @@ button span {
   &:hover, &:focus {
     background: $picton-blue-darker;
   }
-
-  img {
-    height: 28px;
-    width: 28px;
-  }
 }
 
-.modal.modal-social .google {
+.modal__button_twitter .modal__button-icon {
+  height: 28px;
+  width: 28px;
+}
+
+.modal__button_google {
   background: $white;
   border: 2px solid $aqua-haze;
 
   &:hover, &:focus {
     border-color: $aqua-haze-darker;
   }
+}
 
-  span {
-    color: $regent-gray;
-  }
+.modal__button_google .modal__button-text {
+  color: $regent-gray;
+}
 
-  img {
-    height: 34px;
-    width: 34px;
-  }
+.modal__button_google .modal__button-icon {
+  height: 34px;
+  width: 34px;
 }

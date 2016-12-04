@@ -1,27 +1,35 @@
-<div class="modal modal-social">
-    <header>
-        <img src="../../../assets/mock/pokeball.png" alt="logo">
+<div class="modal modal_social-login">
+
+    <header class="modal__header">
+        <img class="modal__logo" src="../../../assets/mock/pokeball.png" alt="logo">
     </header>
 
-    <p>Sign in to Get Native with any of the following providers.</p>
+    <p class="paragraph">Sign in to Get Native with any of the following providers.</p>
 
-    <section>
-        <button class="facebook tabbable" tabindex="1">
-            <span class="facebook-bg"><img src="../../../assets/icons/social-facebook.svg" alt="facebook"></span>
-            <span>Continue with Facebook</span>
+    <section class="modal__body">
+
+        <button class="modal__button modal__button_facebook tabbable" tabindex="1">
+            <span class="modal__button-icon-frame">
+                <img class="modal__button-icon" src="../../../assets/icons/social-facebook.svg" alt="facebook">
+            </span>
+            <span class="modal__button-text">Continue with Facebook</span>
         </button>
-        <button class="twitter tabbable" tabindex="2">
-            <img src="../../../assets/icons/social-twitter.svg" alt="twitter">
-            <span>Continue with Twitter</span>
+
+        <button class="modal__button modal__button_twitter tabbable" tabindex="2">
+            <img class="modal__button-icon" src="../../../assets/icons/social-twitter.svg" alt="twitter">
+            <span class="modal__button-text">Continue with Twitter</span>
         </button>
-        <button class="google tabbable" tabindex="3">
-            <img src="../../../assets/icons/social-google.svg" alt="gmail">
-            <span>Continue with Gmail</span>
+
+        <button class="modal__button modal__button_google tabbable" tabindex="3">
+            <img class="modal__button-icon" src="../../../assets/icons/social-google.svg" alt="gmail">
+            <span class="modal__button-text">Continue with Gmail</span>
         </button>
+
     </section>
 
-    <footer>
-        <span (click)="onSetModalView('email')" class="footer-link tabbable" tabindex="4">Sign in with email</span>
-        <span (click)="onSetModalView('register')" class="footer-link tabbable" tabindex="5">Create a new account</span>
+    <footer class="footer">
+        <span (click)="onSetModalView('email')" class="link footer__link tabbable" tabindex="4">Sign in with email</span>
+        <span (click)="onSetModalView('register')" class="link footer__link tabbable" tabindex="5">Create a new account</span>
     </footer>
+
 </div>

@@ -1,13 +1,11 @@
 @import "../../scss/core";
 
-main          { @include debug-background-color($dc01); }
-.about        { @include debug-background-color($dc02); }
-.contact      { @include debug-background-color($dc03); }
-section img   { @include debug-background-color($dc04); }
-.caret        { @include debug-background-color($dc05); }
-.section-head { @include debug-background-color($dc06); }
-section h3    { @include debug-background-color($dc07); }
-.item-head    { @include debug-background-color($dc08); }
-.faq-list__faq-number   { @include debug-background-color($dc09); }
-.faq-list__faq-title   { @include debug-background-color($dc10); }
-.chevron      { @include debug-background-color($dc11); }
+.main                   { @include debug-background-color($dc01); }
+.section_about          { @include debug-background-color($dc02); }
+.section_contact        { @include debug-background-color($dc03); }
+.section-header__icon   { @include debug-background-color($dc04); }
+.faq-list__chevron-icon { @include debug-background-color($dc05); }
+.section-header         { @include debug-background-color($dc06); }
+.section-header__title  { @include debug-background-color($dc07); }
+.faqs__faq-number       { @include debug-background-color($dc08); }
+.faqs__faq-title        { @include debug-background-color($dc09); }

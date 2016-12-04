@@ -1,6 +1,6 @@
 @import '../../../scss/core';
 
 .side-menu             { @include debug-background-color($dc01); }
-.side-menu-list        { @include debug-background-color($dc02); }
-.side-menu-list-item   { @include debug-background-color($dc03); }
-.side-menu-list-item a { @include debug-background-color($dc04); }
+.side-menu__links      { @include debug-background-color($dc02); }
+.side-menu__link-frame { @include debug-background-color($dc03); }
+.side-menu__link       { @include debug-background-color($dc04); }

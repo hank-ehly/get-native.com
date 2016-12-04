@@ -14,7 +14,7 @@
   width: 120px;
 }
 
-.toolbar .tooltip {
+.toolbar__tooltip-languages {
   @include border-radius();
   background: $shamrock;
   color: $white;
@@ -28,12 +28,12 @@
   text-align: right;
 }
 
-.toolbar .tooltip .tooltip-item {
+.toolbar__language-label {
   cursor: pointer;
   align-self: flex-end;
 }
 
-.toolbar .selected-tooltip-item {
+.toolbar__language-label_selected {
   align-self: flex-end;
   color: $regent-gray;
   cursor: pointer;
@@ -41,17 +41,17 @@
   margin-top: 16px;
 }
 
-.toolbar .toolbar-links {
+.toolbar__links {
   margin-top: 16px;
   display: flex;
   justify-content: flex-end;
 }
 
-.toolbar .toolbar-links .toolbar-link {
+.toolbar__link {
   margin-left: 20px;
 }
 
-.toolbar .toolbar-links .toolbar-link img {
+.toolbar_link-icon {
   cursor: pointer;
   height: auto;
   width: 20px;

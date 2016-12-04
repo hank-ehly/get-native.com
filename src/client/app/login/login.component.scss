@@ -49,7 +49,7 @@
     background: $white;
   }
 
-  .modal p {
+  .paragraph {
     text-align: center;
     margin: 0 auto;
     padding-top: 40px;
@@ -57,26 +57,26 @@
     width: 75%;
   }
 
-  .modal form {
+  .form {
     display: flex;
     padding: 0 30px;
     flex-direction: column;
   }
 
-  .modal .form-group {
+  .form__group {
     padding-top: 28px;
   }
 
-  .modal label {
+  .form__label {
     @include font-weight-bold;
     cursor: pointer;
-    .required-indicator {
-      color: $red-orange;
-    }
   }
 
-  .modal input[type='email'],
-  .modal input[type='password'] {
+  .form__required-indicator {
+    color: $red-orange;
+  }
+
+  .form__input {
     @include border-radius();
     background: $aqua-haze;
     border: 1px solid transparent;
@@ -89,7 +89,7 @@
     width: 100%;
   }
 
-  .modal button[type='submit'] {
+  .form__button {
     @include border-radius(20px);
     @include font-weight-regular;
     align-self: flex-end;
@@ -119,37 +119,32 @@
     }
   }
 
-  .modal input.ng-invalid.ng-touched {
+  .form__input.ng-invalid.ng-touched {
     border-color: $red;
   }
 
-  .modal input.ng-valid.ng-touched {
+  .form__input.ng-valid.ng-touched {
     border-color: $malachite;
   }
 
-  .modal footer {
+  .footer {
     margin-top: 30px;
     display: flex;
     justify-content: space-around;
     padding-bottom: 48px;
   }
 
-  .modal .footer-link {
-    @extend %shamrock-link;
-  }
-
-  .modal-email footer,
-  .modal-register footer {
+  .modal_email-login .footer, .modal_register .footer {
     padding-left: 30px;
     padding-right: 30px;
     flex-direction: column;
 
-    .footer-link, p {
+    .footer__link, .paragraph {
       padding-top: 10px;
       align-self: center;
     }
 
-    p {
+    .paragraph {
       margin: 0;
       width: 100%;
     }

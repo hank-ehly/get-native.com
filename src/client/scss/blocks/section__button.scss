@@ -1,0 +1,13 @@
+@import '../core';
+
+.section__button {
+  @include font-weight-bold;
+  @extend %rounded-button;
+  background: $white;
+  border-color: $periwinkle-gray;
+  color: $regent-gray;
+  font-size: $font-size-x-small;
+  letter-spacing: $uppercase-label-letter-spacing/2;
+  padding-bottom: 6px;
+  padding-top: 6px;
+}

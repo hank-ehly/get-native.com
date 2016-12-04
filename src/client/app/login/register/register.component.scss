@@ -1,15 +1,15 @@
 @import '../../../scss/core';
 
-.modal-register .form-group.confirm-password {
-  /* Override to offset password strength indicator height */
+/* Override to offset password strength indicator height */
+.form__group_confirm-password {
   padding-top: 12px;
 }
 
-.modal-register footer {
+.footer {
   flex-direction: column;
 }
 
-.modal-register .error-messages {
+.error-messages {
   padding-left: 30px;
   color: red;
   font-weight: bolder;

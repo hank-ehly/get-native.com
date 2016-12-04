@@ -1,72 +1,70 @@
 <main>
+    <section class="section section_video-panels">
+        <header class="section-header">
+            <h1 class="section-header__title">Videos</h1>
+        </header>
 
-    <section class="videos-section">
-        <div class="section-title-frame">
-            <h1 class="section-title-label">Videos</h1>
-        </div>
-
-        <ul class="videos-list">
+        <ul class="video-panels">
             <li *ngFor="let v of videos">
-                <gn-video-panel *ngIf="!v.isPlaceholder" class="videos-list-item"></gn-video-panel>
-                <div class="videos-list-item flex-item" *ngIf="v.isPlaceholder"></div>
+                <gn-video-panel *ngIf="!v.isPlaceholder"></gn-video-panel>
+                <div class="video-panels__flex-panel" *ngIf="v.isPlaceholder"></div>
             </li>
         </ul>
 
-        <button class="load-more-button">LOAD MORE</button>
+        <button class="section__button">LOAD MORE</button>
     </section>
 
     <hr>
 
-    <section class="goals-section">
-        <div class="section-title-frame">
-            <h1 class="section-title-label">Goals</h1>
-        </div>
+    <section class="section section_goals">
+        <header class="section-header">
+            <h1 class="section-header__title">Goals</h1>
+        </header>
 
-        <ul class="goals-list">
-            <li class="goals-list-item">
-                <h3 class="goal-count">10"</h3>
-                <span class="goal-label">CURRENT STREAK</span>
+        <ul class="goals">
+            <li class="goals__goal">
+                <h3 class="goals__goal-count">10"</h3>
+                <span class="goals__goal-title">CURRENT STREAK</span>
             </li>
 
-            <li class="goals-list-item">
-                <h3 class="goal-count">126</h3>
-                <span class="goal-label">TOTAL COMPLETIONS</span>
+            <li class="goals__goal">
+                <h3 class="goals__goal-count">126</h3>
+                <span class="goals__goal-title">TOTAL COMPLETIONS</span>
             </li>
 
-            <li class="goals-list-item">
-                <h3 class="goal-count">26"</h3>
-                <span class="goal-label">LONGEST STREAK</span>
+            <li class="goals__goal">
+                <h3 class="goals__goal-count">26"</h3>
+                <span class="goals__goal-title">LONGEST STREAK</span>
             </li>
         </ul>
     </section>
 
     <hr>
 
-    <section class="answers-section">
-        <div class="section-title-frame">
-            <h1 class="section-title-label">Answers</h1>
-            <ul class="section-title-menu">
-                <li class="section-title-menu-item active">LAST 30 DAYS</li>
-                <li class="section-title-menu-item">LAST 90 DAYS</li>
-                <li class="section-title-menu-item">LAST YEAR</li>
-                <li class="section-title-menu-item">ALL TIME</li>
+    <section class="section section_answers">
+        <header class="section-header">
+            <h1 class="section-header__title">Answers</h1>
+            <ul class="section-header__menu">
+                <li class="section-header__menu-item section-header__menu-item_active">LAST 30 DAYS</li>
+                <li class="section-header__menu-item">LAST 90 DAYS</li>
+                <li class="section-header__menu-item">LAST YEAR</li>
+                <li class="section-header__menu-item">ALL TIME</li>
             </ul>
-        </div>
+        </header>
 
-        <ul class="answers-list">
-            <li *ngFor="let n of answers; let even = even" [ngClass]="{'striped-item': even}" class="answers-list-item">
-                <div class="answer-body">
-                    <h6 class="video-title">Video Title ({{ n }})</h6>
+        <ul class="answers">
+            <li *ngFor="let n of answers; let even = even" [ngClass]='{"answers__answer_striped": even}' class="answers__answer">
+                <div class="answers__answer-body">
+                    <h6 class="answers__answer-title">Video Title ({{ n }})</h6>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam, consectetur delectus et ex
                        nemo, praesentium quibusdam quod recusandae reprehenderit sit vel veritatis voluptatum. Assumenda
                        culpa dolores enim quibusdam totam?</p>
                 </div>
 
-                <span class="answer-aside">December 10, 2016</span>
+                <span class="answers__answer-date">December 10, 2016</span>
             </li>
         </ul>
 
-        <button class="load-more-button">LOAD MORE</button>
+        <button class="section__button">LOAD MORE</button>
     </section>
-
 </main>
