@@ -19,6 +19,7 @@ import { Logger } from 'angular2-logger/core';
 })
 
 export class LibraryComponent implements OnInit {
+    isDropdownVisible: boolean;
     videos: any[];
 
     constructor(private logger: Logger, private navbarService: NavbarService) {
@@ -44,5 +45,10 @@ export class LibraryComponent implements OnInit {
             {isPlaceholder: false},
             {isPlaceholder: false}
         ];
+    }
+
+    onToggleDropdown(): void {
+        this.logger.debug(`[LibraryComponent]: onToggleDropdown() -> ${!this.isDropdownVisible}`);
+        this.isDropdownVisible = !this.isDropdownVisible;
     }
 }

@@ -8,8 +8,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LogoutService } from '../../core/index';
-
 import { Logger } from 'angular2-logger/core';
 
 @Component({
@@ -20,13 +18,12 @@ import { Logger } from 'angular2-logger/core';
 })
 
 export class ToolbarComponent {
-    constructor(private logger: Logger, private logoutService: LogoutService, private router: Router) {
+    constructor(private logger: Logger, private router: Router) {
     }
 
     /* TODO: Implement */
     onLogout(): void {
         this.logger.info('[ToolbarComponent]: onLogout()');
-        this.logoutService.logout();
         this.router.navigate(['']);
     }
 }

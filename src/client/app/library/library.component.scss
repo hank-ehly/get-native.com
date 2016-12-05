@@ -1,13 +1,24 @@
 @import '../../scss/core';
+@import './library.component.debug';
 
 .section-header {
   display: flex;
-  margin-right: auto;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
 }
 
 .section-header__title {
   align-self: center;
-  width: 310px;
+}
+
+.dropdown-toggle {
+  align-self: center;
+  cursor: pointer;
+}
+
+.dropdown-toggle__icon {
+  width: 15px;
 }
 
 .section__button {
@@ -30,4 +41,46 @@
 .video-panels__flex-panel {
   height: 100%;
   width: ($main-width - 60px) / 3;
+}
+
+.dropdown-menu {
+  background: $white;
+  box-sizing: border-box;
+  box-shadow: 5px 5px 5px 5px rgba($black, 0.2); // distance=12,size=10,spread=0
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  position: absolute;
+  top: 40px;
+  width: $main-width;
+  z-index: 1;
+}
+
+.dropdown-menu__column {
+  border-left: 1px solid $mercury;
+  flex-grow: 1;
+  padding: 0 40px 40px 40px;
+  margin-top: 40px;
+
+  &:first-child {
+    border-left-color: transparent;
+  }
+}
+
+.dropdown-menu__category {
+  margin-top: 40px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.dropdown-menu__subcategory {
+  color: $default-color;
+  margin-top: 10px;
+}
+
+.dropdown-menu__subcategory:hover {
+  text-decoration: underline;
+  text-decoration-color: $grey; // check
 }

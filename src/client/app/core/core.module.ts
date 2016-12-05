@@ -8,10 +8,8 @@
 import { NgModule } from '@angular/core';
 
 import {
-    AuthService,
     LocalStorageService,
     LoginService,
-    LogoutService,
     NavbarService,
     StringService,
     PasswordService
@@ -19,10 +17,8 @@ import {
 
 @NgModule({
     providers: [
-        AuthService,
         LocalStorageService,
         LoginService,
-        LogoutService,
         NavbarService,
         PasswordService,
         StringService
