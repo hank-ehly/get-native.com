@@ -1,3 +1,10 @@
+/**
+ * navbar.component
+ * get-native.com
+ *
+ * Created by henryehly on 2016/11/06.
+ */
+
 import { Component, OnInit, Input } from '@angular/core';
 
 import { LoginService, NavbarService } from '../../core/index';
@@ -10,7 +17,6 @@ import { Logger } from 'angular2-logger/core';
     templateUrl: 'navbar.component.html',
     styleUrls: ['navbar.component.css']
 })
-
 export class NavbarComponent implements OnInit {
     @Input() authenticated: boolean;
     title: string;

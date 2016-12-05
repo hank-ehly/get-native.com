@@ -20,6 +20,7 @@ import { HelpModule } from './help/help.module';
 import { TOSModule } from './tos/tos.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LibraryModule } from './library/library.module';
+import { LibraryDetailModule } from './library-detail/library-detail.module';
 import { routes } from './app.routes';
 
 import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2-logger/core';
@@ -36,7 +37,8 @@ import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2
         TOSModule,
         DashboardModule,
         LoginModule,
-        LibraryModule
+        LibraryModule,
+        LibraryDetailModule
     ],
     declarations: [AppComponent],
     providers: [

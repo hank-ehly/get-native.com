@@ -8,7 +8,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginService } from '../../core/index';
+import { LoginService } from '../../core/login/login.service';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +16,6 @@ import { LoginService } from '../../core/index';
     templateUrl: 'social-login.component.html',
     styleUrls: ['social-login.component.css']
 })
-
 export class SocialLoginComponent {
     constructor(private loginService: LoginService, private router: Router) {
     }
@@ -26,8 +25,7 @@ export class SocialLoginComponent {
     }
 
     onLogin(): void {
-        this.loginService.login();
-        this.loginService.hideModal(); // TODO: This should be separate from the business logic LoginService
+        this.loginService.hideModal();
         this.router.navigate(['dashboard']);
     }
 }

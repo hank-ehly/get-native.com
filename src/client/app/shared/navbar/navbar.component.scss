@@ -21,14 +21,12 @@
   width: 30px;
 }
 
-/* TODO: Use flex-box instead of font-size: 0 hack */
 .navbar__nav {
   display: flex;
   position: fixed;
   height: 90px;
   right: 0;
   padding: 0 30px;
-  font-size: 0;
 }
 
 .navbar__link {

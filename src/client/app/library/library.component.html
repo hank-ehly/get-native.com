@@ -2,6 +2,63 @@
     <section class="section">
         <header class="section-header">
             <h1 class="section-header__title">Videos</h1>
+
+            <div class="dropdown-toggle" (click)="onToggleDropdown()">
+                <span class="dropdown-toggle__text">All categories</span>
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-down.svg" alt="expand" *ngIf="!isDropdownVisible">
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible">
+            </div>
+
+            <div class="dropdown-menu" *ngIf="isDropdownVisible">
+                <div class="dropdown-menu__column">
+                    <h6 class="link dropdown-menu__category">Business</h6>
+                    <ul>
+                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
+                    </ul>
+
+                    <h6 class="link dropdown-menu__category">Holidays</h6>
+                    <ul>
+                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
+                    </ul>
+                </div>
+
+                <div class="dropdown-menu__column">
+                    <h6 class="link dropdown-menu__category">Business</h6>
+                    <ul>
+                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
+                    </ul>
+
+                    <h6 class="link dropdown-menu__category">Holidays</h6>
+                    <ul>
+                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
+                    </ul>
+                </div>
+
+                <div class="dropdown-menu__column">
+                    <h6 class="link dropdown-menu__category">Business</h6>
+                    <ul>
+                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 4</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 5</li>
+                    </ul>
+
+                    <h6 class="link dropdown-menu__category">Holidays</h6>
+                    <ul>
+                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
+                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
+                    </ul>
+                </div>
+            </div>
         </header>
 
         <ul class="video-panels">
