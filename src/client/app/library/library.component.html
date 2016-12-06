@@ -4,9 +4,12 @@
             <h1 class="section-header__title">Videos</h1>
 
             <div class="dropdown-toggle" (click)="onToggleDropdown()">
-                <span class="dropdown-toggle__text">All categories</span>
+                <span class="dropdown-toggle__text">{{ filter || 'All categories' }}</span>
                 <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-down.svg" alt="expand" *ngIf="!isDropdownVisible">
                 <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible">
+
+                <!-- Todo -->
+                <!--<img class="dropdown-toggle__icon" src="../../assets/icons/close.svg" alt="reset">-->
             </div>
 
             <div class="dropdown-menu" *ngIf="isDropdownVisible">
@@ -15,10 +18,10 @@
                     <div class="dropdown-menu__row-group" *ngFor="let category of row"
                          [ngClass]="{'dropdown-menu__row-group_placeholder': category.placeholder}">
 
-                        <h6 class="link dropdown-menu__category" *ngIf="!category.placeholder">{{ category.title }}</h6>
+                        <h6 class="link dropdown-menu__category" (click)="onSelectCategory(category)" *ngIf="!category.placeholder">{{ category.title }}</h6>
                         <ul *ngIf="!category.placeholder">
                             <li class="dropdown-menu__subcategory" *ngFor="let subcategory of category.subcategories">
-                                <span class="link dropdown-menu__subcategory-label">{{ subcategory }}</span>
+                                <span class="link dropdown-menu__subcategory-label" (click)="onSelectSubcategory(subcategory)">{{ subcategory }}</span>
                             </li>
                         </ul>
                     </div>
