@@ -109,16 +109,31 @@
   right: 0;
   top: 0;
   width: 160px;
+  z-index: 1;
 }
 
 .navbar__menu_right .navbar__menu-icon {
   cursor: pointer;
   vertical-align: middle;
-  width: 20px;
+  width: 18px;
 }
 
 .navbar__menu_right .navbar__menu-icon.navbar__menu-icon_account {
   @include border-radius(50%);
   height: 30px;
   width: 30px;
+}
+
+.navbar__menu-icon-frame {
+  position: relative;
+}
+
+.notification-indicator {
+  @include border-radius(50%);
+  position: absolute;
+  top: -3px;
+  background: $red-orange;
+  height: 6px;
+  width: 6px;
+  right: -2px;
 }
