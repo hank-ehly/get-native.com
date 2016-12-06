@@ -9,6 +9,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
+import { NavbarService } from '../core/index';
 
 export function main() {
     let comp: DashboardComponent;
@@ -18,7 +19,8 @@ export function main() {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [SharedModule],
-                declarations: [DashboardComponent]
+                declarations: [DashboardComponent],
+                providers: [NavbarService]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(DashboardComponent);
                 comp = fixture.componentInstance;
