@@ -10,53 +10,18 @@
             </div>
 
             <div class="dropdown-menu" *ngIf="isDropdownVisible">
-                <div class="dropdown-menu__column">
-                    <h6 class="link dropdown-menu__category">Business</h6>
-                    <ul>
-                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
-                    </ul>
 
-                    <h6 class="link dropdown-menu__category">Holidays</h6>
-                    <ul>
-                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
-                    </ul>
-                </div>
+                <div class="dropdown-menu__row" *ngFor="let row of categories">
 
-                <div class="dropdown-menu__column">
-                    <h6 class="link dropdown-menu__category">Business</h6>
-                    <ul>
-                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
-                    </ul>
+                    <div class="dropdown-menu__row-group" *ngFor="let category of row">
 
-                    <h6 class="link dropdown-menu__category">Holidays</h6>
-                    <ul>
-                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
-                    </ul>
-                </div>
-
-                <div class="dropdown-menu__column">
-                    <h6 class="link dropdown-menu__category">Business</h6>
-                    <ul>
-                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 4</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 5</li>
-                    </ul>
-
-                    <h6 class="link dropdown-menu__category">Holidays</h6>
-                    <ul>
-                        <li class="link dropdown-menu__subcategory">Subcategory 1</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 2</li>
-                        <li class="link dropdown-menu__subcategory">Subcategory 3</li>
-                    </ul>
+                        <h6 class="link dropdown-menu__category">{{ category.title }}</h6>
+                        <ul>
+                            <li class="dropdown-menu__subcategory" *ngFor="let subcategory of category.subcategories">
+                                <span class="link dropdown-menu__subcategory-label">{{ subcategory }}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </header>
