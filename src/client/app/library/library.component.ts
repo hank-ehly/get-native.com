@@ -22,7 +22,6 @@ export class LibraryComponent implements OnInit {
     isDropdownVisible: boolean;
     videos: any[];
     categories: any[];
-    filter: string;
 
     constructor(private logger: Logger, private navbarService: NavbarService) {
     }
@@ -31,7 +30,7 @@ export class LibraryComponent implements OnInit {
         this.logger.debug('[LibraryComponent]: ngOnInit()');
         this.navbarService.setTitle('Library');
 
-        /* Todo: (Mock) */
+        /* Mock */
         this.videos = [
             {placeholder: false}, {placeholder: false}, {placeholder: false},
             {placeholder: false}, {placeholder: false}, {placeholder: false},
@@ -39,7 +38,7 @@ export class LibraryComponent implements OnInit {
             {placeholder: false}, {placeholder: false}, {placeholder: false}
         ];
 
-        /* Todo: (Mock) */
+        /* Mock */
         let categories = [
             {title: 'Business',     subcategories: ['Subcategory 1', 'Subcategory 2', 'Subcategory 3', 'Subcategory 4']},
             {title: 'Holidays',     subcategories: ['Subcategory 1', 'Subcategory 2', 'Subcategory 3']},
@@ -50,7 +49,7 @@ export class LibraryComponent implements OnInit {
             {title: 'Sports',       subcategories: ['Subcategory 1']}
         ];
 
-        /* Todo: Move out of component */
+        /* TODO: Move out of component */
         let chunkSize = 3;
         this.categories = categories.map((e, i) => {
             return i % chunkSize === 0 ? categories.slice(i, i + 3) : null;
@@ -75,17 +74,5 @@ export class LibraryComponent implements OnInit {
     onToggleDropdown(): void {
         this.logger.debug(`[LibraryComponent]: onToggleDropdown() -> ${!this.isDropdownVisible}`);
         this.isDropdownVisible = !this.isDropdownVisible;
-    }
-
-    /* Todo: (Mock) */
-    onSelectCategory(category: any): void {
-        this.filter = category.title;
-        this.isDropdownVisible = false;
-    }
-
-    /* Todo: (Mock) */
-    onSelectSubcategory(subcategory: string): void {
-        this.filter = subcategory;
-        this.isDropdownVisible = false;
     }
 }
