@@ -22,7 +22,8 @@ import {
     STUBLoginService,
     STUBPasswordService,
     PasswordService,
-    LoginService
+    LoginService,
+    NavbarService
 } from '../core/index';
 
 import { Logger } from 'angular2-logger/core';
@@ -48,7 +49,8 @@ export function main() {
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
                     {provide: LoginService, useValue: STUBLoginService},
-                    {provide: PasswordService, useValue: STUBPasswordService}
+                    {provide: PasswordService, useValue: STUBPasswordService},
+                    NavbarService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LoginComponent);
