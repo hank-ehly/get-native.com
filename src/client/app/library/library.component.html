@@ -10,13 +10,13 @@
             </div>
 
             <div class="dropdown-menu" *ngIf="isDropdownVisible">
-
                 <div class="dropdown-menu__row" *ngFor="let row of categories">
 
-                    <div class="dropdown-menu__row-group" *ngFor="let category of row">
+                    <div class="dropdown-menu__row-group" *ngFor="let category of row"
+                         [ngClass]="{'dropdown-menu__row-group_placeholder': category.placeholder}">
 
-                        <h6 class="link dropdown-menu__category">{{ category.title }}</h6>
-                        <ul>
+                        <h6 class="link dropdown-menu__category" *ngIf="!category.placeholder">{{ category.title }}</h6>
+                        <ul *ngIf="!category.placeholder">
                             <li class="dropdown-menu__subcategory" *ngFor="let subcategory of category.subcategories">
                                 <span class="link dropdown-menu__subcategory-label">{{ subcategory }}</span>
                             </li>
@@ -28,8 +28,8 @@
 
         <ul class="video-panels">
             <li *ngFor="let v of videos">
-                <gn-video-panel *ngIf="!v.isPlaceholder"></gn-video-panel>
-                <div class="video-panels__flex-panel" *ngIf="v.isPlaceholder"></div>
+                <gn-video-panel *ngIf="!v.placeholder"></gn-video-panel>
+                <div class="video-panels__flex-panel" *ngIf="v.placeholder"></div>
             </li>
         </ul>
 

@@ -6,8 +6,8 @@
 
         <ul class="video-panels">
             <li *ngFor="let v of videos">
-                <gn-video-panel [showOverlay]="true" *ngIf="!v.isPlaceholder"></gn-video-panel>
-                <div class="video-panels__flex-panel" *ngIf="v.isPlaceholder"></div>
+                <gn-video-panel [showOverlay]="true" *ngIf="!v.placeholder"></gn-video-panel>
+                <div class="video-panels__flex-panel" *ngIf="v.placeholder"></div>
             </li>
         </ul>
 
