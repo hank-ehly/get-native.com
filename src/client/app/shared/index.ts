@@ -11,4 +11,5 @@ export * from './footer/index';
 export * from './navbar/index';
 export * from './side-menu/side-menu.component';
 export * from './toolbar/index';
+export * from './video/video.component';
 export * from './video-panel/video-panel.component';
