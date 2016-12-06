@@ -28,7 +28,7 @@
 
         <ul class="video-panels">
             <li *ngFor="let v of videos">
-                <gn-video-panel *ngIf="!v.placeholder"></gn-video-panel>
+                <gn-video-panel *ngIf="!v.placeholder" [routerLink]="['/library', 1]"></gn-video-panel>
                 <div class="video-panels__flex-panel" *ngIf="v.placeholder"></div>
             </li>
         </ul>

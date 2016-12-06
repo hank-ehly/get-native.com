@@ -7,6 +7,10 @@
 
 import { Component, OnInit } from '@angular/core';
 
+import { NavbarService } from '../core/index';
+
+import { Logger } from 'angular2-logger/core';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-library-detail',
@@ -15,9 +19,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LibraryDetailComponent implements OnInit {
-    constructor() {
+    videos: any[];
+
+    constructor(private logger: Logger, private navbarService: NavbarService) {
     }
 
     ngOnInit() {
+        this.logger.debug('[LibraryComponent]: ngOnInit()');
+
+        /* Todo (Mock) */
+        this.navbarService.setTitle('Library Detail');
+
+        /* Todo (Mock) */
+        this.videos = [{placeholder: false}, {placeholder: false}, {placeholder: true}];
     }
 }
