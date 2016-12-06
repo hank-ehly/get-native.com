@@ -1,6 +1,6 @@
-@import "debug";
-@import "colors";
-@import "variables";
+@import './debug';
+@import './colors';
+@import './variables';
 
 @mixin border-radius($border-radius: $default-border-radius) {
   border-radius: $border-radius;

@@ -1,7 +1,6 @@
-@import "colors";
-@import "functions";
-@import "variables";
-@import "mixins";
+@import './colors';
+@import './variables';
+@import './mixins';
 
 %rounded-button {
   @include border-radius(20px);
@@ -9,7 +8,7 @@
   cursor: pointer;
   font-size: $font-size-small;
   outline: none;
-  padding: 9px pu(3) 11px;
+  padding: 9px 30px 11px;
 }
 
 %shamrock-link {
@@ -18,7 +17,6 @@
   font-size: $font-size-regular;
   outline: none;
   text-decoration: none;
-
   &:hover, &:focus {
     text-decoration: underline;
     text-decoration-color: $iceberg;

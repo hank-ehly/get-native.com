@@ -1,4 +1,4 @@
-@import 'core';
+@import './core';
 
 html {
   @include font-weight-regular;
@@ -32,7 +32,5 @@ hr {
 @import './blocks/header';
 @import './blocks/link';
 @import './blocks/list';
-@import './blocks/list__link';
-@import './blocks/list_ordered';
-@import './blocks/list_unordered';
 @import './blocks/button';
+@import './blocks/video_panels';
