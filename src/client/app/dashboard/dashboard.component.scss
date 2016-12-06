@@ -44,18 +44,6 @@ hr {
   justify-content: center;
 }
 
-.video-panels {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.video-panels__flex-panel {
-  height: 100%;
-  width: ($main-width - 60px) / 3;
-}
-
 .goals {
   display: flex;
   margin-top: 40px;

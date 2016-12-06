@@ -26,7 +26,7 @@
 
 .headline__paragraph {
   color: #6c7680; // TODO: Variable
-  margin-top: pu(3);
+  margin-top: 30px;
 }
 
 .headline__button {
@@ -38,11 +38,11 @@
 }
 
 .headline_large-features {
-  margin-top: pu(10);
+  margin-top: 100px;
 }
 
 .section_large-features {
-  margin-top: pu(10);
+  margin-top: 100px;
 }
 
 .feature.feature_large {
@@ -68,12 +68,12 @@
 }
 
 .feature.feature_large .feature__paragraph {
-  margin-top: pu(4);
+  margin-top: 40px;
 }
 
 hr {
-  margin-top: pu(8);
-  padding-bottom: pu(2);
+  margin-top: 80px;
+  padding-bottom: 20px;
 }
 
 .small-features {
@@ -91,16 +91,16 @@ hr {
 
 .feature.feature_small .feature__image {
   height: 70px;
-  margin-top: pu(3);
+  margin-top: 30px;
   width: 70px;
 }
 
 .feature.feature_small .feature__title {
   font-size: $font-size-regular;
-  margin-top: pu(3);
+  margin-top: 30px;
 }
 
 .feature.feature_small .feature__paragraph {
   color: $pale-sky;
-  margin-top: pu(3.5);
+  margin-top: 35px;
 }

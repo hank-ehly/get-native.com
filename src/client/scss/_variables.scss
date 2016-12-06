@@ -1,20 +1,28 @@
-$font-size-x-small: 12px;
-$font-size-small:   14px;
-$font-size-regular: 16px;
-$font-size-medium:  18px;
-$font-size-large:   20px;
-$font-size-x-large: 26px;
-
+/* border-radius */
 $default-border-radius: 5px;
+
+/* font-size */
+$font-size-x-small:    12px;
+$font-size-small:      14px;
+$font-size-regular:    16px;
+$font-size-medium:     18px;
+$font-size-large:      20px;
+$font-size-x-large:    26px;
+
+/* height */
+$navbar-height:        90px;
+
+/* letter-spacing */
 $uppercase-label-letter-spacing: 0.1em;
 
-$navbar-height: 90px;
+/* line-height */
+$line-height-regular:  1.5;
 
-$main-width: 900px;
-
+/* padding */
 $padding-unit-x-small: 10px;
-$padding-unit-small: 20px;
+$padding-unit-small:   20px;
 $padding-unit-regular: 30px;
 $padding-unit-x-large: 60px;
 
-$line-height-regular: 1.5;
+/* width */
+$main-width:           900px;
