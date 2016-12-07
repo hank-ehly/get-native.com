@@ -1,0 +1,130 @@
+@import '../../../scss/core';
+@import './video-player.component.debug';
+
+.player-frame {
+  position: relative;
+  overflow: hidden;
+  /* This creates a 3:2 aspect ratio */
+  padding-bottom: 100% * (2/3);
+  width: 100%;
+}
+
+/* Video is sized dynamically based on parent width */
+.video {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.player-controls {
+  background: rgba($black, 0.7);
+  bottom: 0;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+}
+
+.player-controls__toggle-button {
+  background: $black url('../../../assets/icons/play.svg') no-repeat center;
+  background-size: 28%;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  outline: none;
+  width: 50px;
+}
+
+.play-bar {
+  @include border-radius(4px);
+  align-self: center;
+  background: $black;
+  height: 8px;
+  position: relative;
+  width: 55%;
+}
+
+.play-bar__load-progress-bar {
+  @include border-radius(4px);
+  background: $regent-gray;
+  height: 100%;
+  position: absolute;
+
+  /* Adjust this value as a percentage based on load progress */
+  width: 25%;
+}
+
+.play-bar__play-progress-circle {
+  @include border-radius(4px);
+  background: white;
+  height: 100%;
+
+  /* Adjust this value as a percentage based on playback time */
+  left: 10%;
+
+  position: absolute;
+  width: 8px;
+}
+
+.player-controls__time {
+  align-self: center;
+  display: flex;
+  font-size: $font-size-x-small;
+}
+
+.player-controls__time-elapsed {
+  color: $white;
+}
+
+.player-controls__time-total {
+  color: $regent-gray;
+  padding-left: 8px;
+}
+
+.volume-control {
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 50px;
+}
+
+.volume-control__icon {
+  align-self: center;
+  width: 28%;
+}
+
+.volume-control__tooltip {
+  @include border-radius(10px);
+  background: $black;
+  cursor: auto;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  position: absolute;
+  top: -70px;
+  width: 20px;
+}
+
+.volume-control__volume-bar {
+  align-self: center;
+  background: $tundora;
+  height: 60px;
+  position: relative;
+  width: 6px;
+}
+
+.volume-control__volume {
+  background: $white;
+  bottom: 0;
+
+  /* Adjust this value as a percentage based on video volume */
+  height: 50%;
+
+  position: absolute;
+  width: 100%;
+}

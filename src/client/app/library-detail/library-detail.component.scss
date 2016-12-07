@@ -1,2 +1,10 @@
 @import '../../scss/core';
 @import './library-detail.component.debug';
+
+.section_video-detail {
+  display: flex;
+}
+
+.column {
+  width: ($main-width - 30px) / 2;
+}

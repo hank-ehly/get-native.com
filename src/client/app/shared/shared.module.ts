@@ -15,7 +15,7 @@ import {
     NavbarComponent,
     SideMenuComponent,
     ToolbarComponent,
-    VideoComponent,
+    VideoPlayerComponent,
     VideoPanelComponent
 } from './index';
 
@@ -30,7 +30,7 @@ import {
         NavbarComponent,
         SideMenuComponent,
         ToolbarComponent,
-        VideoComponent,
+        VideoPlayerComponent,
         VideoPanelComponent
     ],
     exports: [
@@ -41,7 +41,7 @@ import {
         NavbarComponent,
         SideMenuComponent,
         ToolbarComponent,
-        VideoComponent,
+        VideoPlayerComponent,
         VideoPanelComponent
     ]
 })
