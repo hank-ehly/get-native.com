@@ -18,15 +18,15 @@ describe('Home', () => {
         expect($('.section_small-features').isPresent()).toBe(true);
     });
 
-    it('should display the login modal on pressing sign-in/sign-up', () => {
+    it('should display the login modal upon pressing sign-in/sign-up', () => {
         let socialLogin = $('gn-social-login');
 
-        $('button.headline__button').click();
+        $('.headline__button').click();
         expect(socialLogin.isPresent()).toBe(true);
 
-        $('gn-login .overlay').click();
+        $('.overlay').click();
+
         browser.driver.sleep(250);
-
-        expect(socialLogin.isPresent()).toBe(true);
+        expect(socialLogin.isPresent()).toBe(false);
     });
 });

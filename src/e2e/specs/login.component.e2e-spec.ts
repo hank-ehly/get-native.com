@@ -46,8 +46,8 @@ describe('LoginComponent', () => {
     it('should transition to and from the email login modal view', () => {
         let emailView = $('.modal.modal_email-login');
         let socialView = $('.modal.modal_social-login');
-        let socialBtn = emailView.$('.footer__link:first-child');
-        let emailBtn = socialView.$('.footer__link:first-child');
+        let socialBtn = emailView.$('.footer__link_social-login');
+        let emailBtn = socialView.$('.footer__link_email-login');
 
         openBtn.click();
         expect(emailView.isPresent()).toBe(false);
@@ -63,8 +63,8 @@ describe('LoginComponent', () => {
     it('should transition to and from the registration modal view', () => {
         let socialView = $('.modal.modal_social-login');
         let registerView = $('.modal.modal_register');
-        let socialBtn = registerView.$('.footer__link:first-child');
-        let registerBtn = socialView.$('.footer__link:nth-child(2)');
+        let socialBtn = registerView.$('.footer__link_social-login');
+        let registerBtn = socialView.$('.footer__link_register');
 
         openBtn.click();
         expect(registerView.isPresent()).toBe(false);
@@ -78,7 +78,7 @@ describe('LoginComponent', () => {
     });
 
     it('should not allow registration until all form fields are filled in', () => {
-        let registerBtn = $('.modal.modal_social-login .footer__link:nth-child(2)');
+        let registerBtn = $('.modal.modal_social-login .footer__link_register');
         let emailInput = $('#email');
         let passwordInput = $('#password');
         let submitButton = element(by.buttonText('SIGN UP'));
@@ -96,7 +96,7 @@ describe('LoginComponent', () => {
     });
 
     it('should display the dashboard after successful email login', () => {
-        let emailBtn = $('.modal.modal_social-login .footer__link:first-child');
+        let emailBtn = $('.modal.modal_social-login .footer__link_email-login');
         let emailInput = $('#email');
         let passwordInput = $('#password');
         let submitButton = element(by.buttonText('SIGN IN'));
