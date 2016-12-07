@@ -5,10 +5,11 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Subject } from 'rxjs/Subject';
+import { NavigationExtras, Router } from '@angular/router';
 
 import { LocalStorageService, LoginService, PasswordService } from '../index';
 
+import { Subject } from 'rxjs/Subject';
 import { Logger } from 'angular2-logger/core';
 
 export const STUBLogger: Logger = <Logger>{
@@ -38,4 +39,10 @@ export const STUBPasswords = {
     good: 'go0D12',
     strong: 'sTr0nG12',
     veryStrong: 'very_sTr0nG12'
+};
+
+export const STUBRouter = <Router>{
+    navigate(commands: any[], extras?: NavigationExtras): Promise<boolean> {
+        return null;
+    }
 };

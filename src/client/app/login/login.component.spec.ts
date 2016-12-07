@@ -8,6 +8,7 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import {
     LoginComponent,
@@ -21,6 +22,7 @@ import {
     STUBLogger,
     STUBLoginService,
     STUBPasswordService,
+    STUBRouter,
     PasswordService,
     LoginService,
     NavbarService
@@ -50,6 +52,7 @@ export function main() {
                     {provide: Logger, useValue: STUBLogger},
                     {provide: LoginService, useValue: STUBLoginService},
                     {provide: PasswordService, useValue: STUBPasswordService},
+                    {provide: Router, useValue: STUBRouter},
                     NavbarService
                 ]
             }).compileComponents().then(() => {
