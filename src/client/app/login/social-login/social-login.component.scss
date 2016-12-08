@@ -47,10 +47,10 @@
 .modal__button_facebook {
   background: $chambray;
   border: none;
-  border-bottom: 1px solid $chambray-darker;
+  border-bottom: 1px solid $chambray-dark;
 
   &:hover, &:focus {
-    background: $chambray-darker;
+    background: $chambray-dark;
   }
 }
 
@@ -74,10 +74,10 @@
 .modal__button_twitter {
   background: $picton-blue;
   border: none;
-  border-bottom: 1px solid $picton-blue-darker;
+  border-bottom: 1px solid $picton-blue-dark;
 
   &:hover, &:focus {
-    background: $picton-blue-darker;
+    background: $picton-blue-dark;
   }
 }
 
@@ -91,7 +91,7 @@
   border: 2px solid $aqua-haze;
 
   &:hover, &:focus {
-    border-color: $aqua-haze-darker;
+    border-color: $aqua-haze-dark;
   }
 }
 

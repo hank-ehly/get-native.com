@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     showComplianceDialog: boolean;
     showLoginModal: boolean;
 
-    authenticated: boolean = false;
+    authenticated: boolean = true;
 
     constructor(private logger: Logger, private localStorageService: LocalStorageService) {
         this.showLoginModal = false;
