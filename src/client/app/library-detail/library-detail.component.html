@@ -1,11 +1,50 @@
-<main>
+<main class="main">
     <section class="section section_video-detail">
         <div class="column column_video">
             <gn-video-player></gn-video-player>
+
+            <section class="column__row">
+                <h6>About this video:</h6>
+                <p class="paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda atque commodi,
+                    deseruntea ex iusto maiores nam nostrum nulla obcaecati repellendus voluptas voluptatem.
+                </p>
+            </section>
+
+            <div class="column__row video-stats">
+                <div class="video-stats__group video-stats__group_views">
+                    <!-- Todo: Get new icon from Michele -->
+                    <img class="video-stats__icon" src="../../assets/icons/view.svg" alt="views">
+                    <span class="video-stats__label">1k Views</span>
+                </div>
+                <div class="video-stats__group video-stats__group_likes">
+                    <img class="video-stats__icon video-stats__icon_like" src="../../assets/icons/like.svg" alt="like">
+                    <span class="video-stats__label">100</span>
+                </div>
+            </div>
+
+            <div class="column__row share-buttons">
+                <button class="share-button share-button_facebook"></button>
+                <button class="share-button share-button_twitter"></button>
+                <button class="share-button share-button_google"></button>
+            </div>
+
+            <hr>
+
+            <div class="column__row speaker__row">
+                <img class="speaker-thumbnail" src="../../assets/mock/man-smiling.jpg" alt="speaker-thumbnail">
+                <div class="speaker__info">
+                    <h6 class="speaker__name-header">Speaker Name</h6>
+                    <div class="speaker__description-text">A short speaker description</div>
+                    <button class="button speaker__follow-button">FOLLOW</button>
+                </div>
+            </div>
         </div>
 
         <div class="column column_transcript"></div>
     </section>
+
+    <hr>
 
     <section class="section section_related-videos">
         <header class="section-header">

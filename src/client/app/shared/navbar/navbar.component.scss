@@ -122,6 +122,7 @@
 .navbar__menu_right .navbar__menu-icon.navbar__menu-icon_account {
   @include border-radius(50%);
   height: 30px;
+  object-fit: cover;
   width: 30px;
 }
 
