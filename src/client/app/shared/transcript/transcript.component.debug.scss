@@ -1,0 +1,12 @@
+@import '../../../scss/core';
+
+.component-frame                            { @include debug-background-color($dc01); };
+.tabs                                       { @include debug-background-color($dc02); };
+.tab-content                                { @include debug-background-color($dc03); };
+.tabs__tab                                  { @include debug-background-color($dc04); };
+.usage-examples-section                     { @include debug-background-color($dc05); };
+.usage-examples-section__header             { @include debug-background-color($dc06); };
+.usage-examples-section__header-title       { @include debug-background-color($dc07); };
+.usage-examples-section__header-collocation { @include debug-background-color($dc08); };
+.usage-examples-section__header-phonetic    { @include debug-background-color($dc09); };
+.usage-example                              { @include debug-background-color($dc10); };
