@@ -8,8 +8,10 @@
 import { NgModule } from '@angular/core';
 
 import { TOSComponent } from './index';
+import { TOSRoutingModule } from './tos-routing.module';
 
 @NgModule({
+    imports: [TOSRoutingModule],
     declarations: [TOSComponent],
     exports: [TOSComponent]
 })

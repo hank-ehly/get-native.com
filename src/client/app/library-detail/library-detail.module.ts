@@ -9,9 +9,10 @@ import { NgModule } from '@angular/core';
 
 import { LibraryDetailComponent } from './library-detail.component';
 import { SharedModule } from '../shared/shared.module';
+import { LibraryDetailRoutingModule } from './library-detail-routing.module';
 
 @NgModule({
-    imports: [SharedModule],
+    imports: [SharedModule, LibraryDetailRoutingModule],
     exports: [LibraryDetailComponent],
     declarations: [LibraryDetailComponent]
 })

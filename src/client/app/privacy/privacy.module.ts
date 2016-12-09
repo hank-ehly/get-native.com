@@ -8,8 +8,10 @@
 import { NgModule } from '@angular/core';
 
 import { PrivacyComponent } from './index';
+import { PrivacyRoutingModule } from './privacy-routing.module';
 
 @NgModule({
+    imports: [PrivacyRoutingModule],
     declarations: [PrivacyComponent],
     exports: [PrivacyComponent]
 })
