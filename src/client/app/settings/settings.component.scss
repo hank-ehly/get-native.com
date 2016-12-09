@@ -1,2 +1,21 @@
 @import '../../scss/core';
 @import './settings.component.debug';
+
+.thumbnail {
+  @include border-radius(50%);
+  height: 110px;
+  object-fit: cover;
+  width: 110px;
+}
+
+.header {
+  color: $regent-gray;
+}
+
+.settings-tabs__tab {
+  color: $regent-gray;
+}
+
+.settings-tabs__tab_active {
+  color: $default-color;
+}
