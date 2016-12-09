@@ -1,3 +1,16 @@
 <main>
-    <h1>settings.component.html</h1>
+    <img src="../../assets/mock/man-smiling.jpg" alt="user-thumbnail">
+    <h6>Lorem ipsum dolor sit amet consectur faciant aliqua magna.</h6>
+
+    <ul>
+        <li (click)="setActiveTab('general')">General</li>
+        <li (click)="setActiveTab('account')">Security</li>
+        <li (click)="setActiveTab('notifications')">Notifications</li>
+    </ul>
+
+    <section [ngSwitch]="activeTab">
+        <gn-general *ngSwitchDefault></gn-general>
+        <gn-account *ngSwitchCase="'account'"></gn-account>
+        <gn-notifications *ngSwitchCase="'notifications'"></gn-notifications>
+    </section>
 </main>
