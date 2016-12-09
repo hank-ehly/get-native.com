@@ -21,7 +21,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { LibraryModule } from './library/library.module';
 import { LibraryDetailModule } from './library-detail/library-detail.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AccountModule } from './account/account.module';
+import { SettingsModule } from './settings/settings.module';
 
 import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2-logger/core';
 
@@ -39,7 +39,7 @@ import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2
         LoginModule,
         LibraryModule,
         LibraryDetailModule,
-        AccountModule
+        SettingsModule
     ],
     declarations: [AppComponent],
     providers: [
