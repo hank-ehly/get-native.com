@@ -10,13 +10,13 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { SettingsComponent } from './settings.component';
 import { SettingsRoutingModule } from './settings-routing.module';
-import { AccountComponent } from './account/account.component';
+import { SecurityComponent } from './security/security.component';
 import { GeneralComponent } from './general/general.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
     imports: [SharedModule, SettingsRoutingModule],
-    declarations: [SettingsComponent, AccountComponent, GeneralComponent, NotificationsComponent],
+    declarations: [SettingsComponent, SecurityComponent, GeneralComponent, NotificationsComponent],
     exports: [SettingsComponent]
 })
 
