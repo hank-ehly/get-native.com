@@ -6,4 +6,3 @@
  */
 
 export * from './library-detail.component';
-export * from './library-detail.routes';

@@ -6,13 +6,14 @@
  */
 
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { HelpComponent } from './index';
 import { FaqService } from './faq/index';
+import { HelpRoutingModule } from './help-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [CommonModule], // TODO:  do you need to import the common module here even though you're importing it in the AppModule?
+    imports: [SharedModule, HelpRoutingModule],
     declarations: [HelpComponent],
     exports: [HelpComponent],
     providers: [FaqService]

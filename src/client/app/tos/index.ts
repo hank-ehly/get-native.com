@@ -6,4 +6,3 @@
  */
 
 export * from './tos.component';
-export * from './tos.routes';

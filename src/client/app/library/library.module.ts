@@ -9,9 +9,10 @@ import { NgModule } from '@angular/core';
 
 import { LibraryComponent } from './index';
 import { SharedModule } from '../shared/shared.module';
+import { LibraryRoutingModule } from './library-routing.module';
 
 @NgModule({
-    imports: [SharedModule],
+    imports: [SharedModule, LibraryRoutingModule],
     declarations: [LibraryComponent],
     exports: [LibraryComponent]
 })

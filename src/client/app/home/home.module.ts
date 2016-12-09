@@ -6,13 +6,14 @@
  */
 
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { HomeComponent } from './index';
 import { FeatureDescriptionService } from './feature-description/index';
+import { HomeRoutingModule } from './home-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [CommonModule], // TODO:  do you need to import the common module here even though you're importing it in the AppModule?
+    imports: [SharedModule, HomeRoutingModule],
     declarations: [HomeComponent],
     exports: [HomeComponent],
     providers: [FeatureDescriptionService]
