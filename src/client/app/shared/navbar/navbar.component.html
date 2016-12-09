@@ -26,14 +26,20 @@
     </nav>
 
     <ul class="navbar__menu navbar__menu_right" *ngIf="authenticated">
-        <li><img class="navbar__menu-icon navbar__menu-icon_search" src="../../../assets/icons/search.svg" alt="search"></li>
+        <li>
+            <img class="navbar__menu-icon navbar__menu-icon_search" src="../../../assets/icons/search.svg" alt="search">
+        </li>
         <li>
             <span class="navbar__menu-icon-frame">
                 <!-- TODO: Remove mock (click) -->
-                <img (click)="toggleNotificationIndicator()" class="navbar__menu-icon navbar__menu-icon_notification" src="../../../assets/icons/notification.svg" alt="notification">
+                <img (click)="toggleNotificationIndicator()" class="navbar__menu-icon navbar__menu-icon_notification"
+                     src="../../../assets/icons/notification.svg" alt="notification">
                 <span class="notification-indicator" *ngIf="isNotificationIndicatorVisible" [@bounceInOut]></span>
             </span>
         </li>
-        <li><img class="navbar__menu-icon navbar__menu-icon_account" src="../../../assets/mock/man-smiling.jpg" alt="account"></li>
+        <li>
+            <img [routerLink]="'account'" class="navbar__menu-icon navbar__menu-icon_account"
+                 src="../../../assets/mock/man-smiling.jpg" alt="account">
+        </li>
     </ul>
 </header>
