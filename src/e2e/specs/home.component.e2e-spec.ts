@@ -21,12 +21,9 @@ describe('Home', () => {
     it('should display the login modal upon pressing sign-in/sign-up', () => {
         let socialLogin = $('gn-social-login');
 
+        expect(socialLogin.isPresent()).toBe(false);
+
         $('.headline__button').click();
         expect(socialLogin.isPresent()).toBe(true);
-
-        $('.overlay').click();
-
-        browser.driver.sleep(250);
-        expect(socialLogin.isPresent()).toBe(false);
     });
 });
