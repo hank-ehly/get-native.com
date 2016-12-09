@@ -5,6 +5,7 @@ $column-width: ($main-width - 30px) / 2;
 
 .section_video-detail {
   display: flex;
+  justify-content: space-between;
 }
 
 .column {
@@ -127,5 +128,5 @@ $column-width: ($main-width - 30px) / 2;
 }
 
 .main > hr {
-  margin-top: 60px;
+  margin: 60px 0;
 }

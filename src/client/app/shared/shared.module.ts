@@ -15,6 +15,7 @@ import {
     NavbarComponent,
     SideMenuComponent,
     ToolbarComponent,
+    TranscriptComponent,
     VideoPlayerComponent,
     VideoPanelComponent
 } from './index';
@@ -30,6 +31,7 @@ import {
         NavbarComponent,
         SideMenuComponent,
         ToolbarComponent,
+        TranscriptComponent,
         VideoPlayerComponent,
         VideoPanelComponent
     ],
@@ -41,6 +43,7 @@ import {
         NavbarComponent,
         SideMenuComponent,
         ToolbarComponent,
+        TranscriptComponent,
         VideoPlayerComponent,
         VideoPanelComponent
     ]
