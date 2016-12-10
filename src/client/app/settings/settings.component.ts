@@ -6,6 +6,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { NavbarService } from '../core/index';
 
@@ -19,18 +20,27 @@ import { Logger } from 'angular2-logger/core';
 })
 
 export class SettingsComponent implements OnInit {
-    activeTab: string;
+    tabs: string[] = ['general', 'security', 'notifications'];
+    selectedTab: any;
 
-    constructor(private logger: Logger, private navbarService: NavbarService) {
+    constructor(private logger: Logger, private navbar: NavbarService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
         this.logger.debug('[SettingsComponent] ngOnInit()');
 
-        this.navbarService.setTitle('Hank Ehly');
+        this.navbar.setTitle('Hank Ehly');
+
+        this.route.params.subscribe((params: Params) => {
+            this.selectedTab = params['tab'];
+            this.logger.debug(`selectedTab: ${this.selectedTab}`);
+        });
     }
 
-    setActiveTab(value: string) {
-        this.activeTab = value;
+    classForTab(title: string) {
+        let isExactMatch = this.selectedTab === title;
+        let isDefault    = title === 'general' && [null, undefined].includes(this.selectedTab);
+
+        return {'tab_active': isExactMatch || isDefault};
     }
 }

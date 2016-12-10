@@ -1,21 +1,49 @@
 @import '../../scss/core';
 @import './settings.component.debug';
 
-.thumbnail {
+.main {
+  width: $main-width * (2/3);
+}
+
+.header {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.header__thumbnail {
   @include border-radius(50%);
+  align-self: center;
   height: 110px;
   object-fit: cover;
   width: 110px;
 }
 
-.header {
+.header__title {
+  @include font-weight-regular;
+  align-self: center;
   color: $regent-gray;
+  margin-top: 30px;
+  width: 260px;
+  text-align: center;
 }
 
-.settings-tabs__tab {
-  color: $regent-gray;
+.tabs {
+  border-bottom: 2px solid $aqua-haze;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin-top: 50px;
+  padding-bottom: 20px;
 }
 
-.settings-tabs__tab_active {
+.tab {
+  @include font-weight-bold;
+  color: $regent-gray;
+  cursor: pointer;
+  font-size: $font-size-x-small;
+  margin-left: 30px;
+}
+
+.tab_active {
   color: $default-color;
 }
