@@ -28,13 +28,13 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit() {
         this.logger.debug('[SettingsComponent] ngOnInit()');
-
         this.navbar.setTitle('Hank Ehly');
+        this.route.params.subscribe(this.paramsChanged.bind(this));
+    }
 
-        this.route.params.subscribe((params: Params) => {
-            this.selectedTab = params['tab'];
-            this.logger.debug(`selectedTab: ${this.selectedTab}`);
-        });
+    paramsChanged(params: Params) {
+        this.selectedTab = params['tab'];
+        this.logger.debug(`selectedTab: ${this.selectedTab}`);
     }
 
     classForTab(title: string) {
