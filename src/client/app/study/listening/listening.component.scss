@@ -1,7 +1,7 @@
 @import '../../../scss/core';
 
 .main {
-  width: 600px;
+  width: $main-width * (2/3);
 }
 
 /deep/ gn-transcript .component-frame {
