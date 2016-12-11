@@ -11,10 +11,11 @@ import { StudyComponent } from './study.component';
 import { SharedModule } from '../shared/shared.module';
 import { StudyRoutingModule } from './study-routing.module';
 import { ListeningComponent } from './listening/listening.component';
+import { ShadowingComponent } from './shadowing/shadowing.component';
 
 @NgModule({
     imports: [SharedModule, StudyRoutingModule],
-    declarations: [StudyComponent, ListeningComponent]
+    declarations: [StudyComponent, ListeningComponent, ShadowingComponent]
 })
 export class StudyModule {
 }
