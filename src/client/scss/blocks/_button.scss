@@ -30,3 +30,17 @@
     cursor: not-allowed;
   }
 }
+
+.button_hollow {
+  border-color: transparent;
+
+  &:hover {
+    background: $aqua-haze;
+    border-color: $aqua-haze;
+  }
+
+  &:focus {
+    background: $aqua-haze-dark;
+    border-color: $aqua-haze-dark;
+  }
+}
