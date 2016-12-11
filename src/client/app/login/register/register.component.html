@@ -11,21 +11,21 @@
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="form">
 
         <div class="form__group">
-            <label class="form__label" for="email"><span class="form__required-indicator">*</span> Email</label>
+            <label class="label" for="email"><span class="form__required-indicator">*</span> Email</label>
 
             <input id="email" type="email" name="email" [(ngModel)]="credentials.email" [pattern]="HTML5_EMAIL_REGEX"
                    maxlength="254" tabindex="1" class="input tabbable" required>
         </div>
 
         <div class="form__group">
-            <label class="form__label" for="password"><span class="form__required-indicator">*</span> Password (minimum 8 characters)</label>
+            <label class="label" for="password"><span class="form__required-indicator">*</span> Password (minimum 8 characters)</label>
             <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="credentials.password"
                    minlength="8" class="input tabbable" required>
             <gn-password-strength></gn-password-strength>
         </div>
 
         <div class="form__group form__group_confirm-password">
-            <label class="form__label" for="password-confirm"><span class="form__required-indicator">*</span> Password (Confirm)</label>
+            <label class="label" for="password-confirm"><span class="form__required-indicator">*</span> Password (Confirm)</label>
             <input id="password-confirm" [pattern]="credentials.password" type="password" name="password-confirm"
                    tabindex="3" class="input tabbable" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
         </div>
