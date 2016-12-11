@@ -1,4 +1,5 @@
 <main class="main" [ngSwitch]="activePage">
     <gn-listening *ngSwitchDefault></gn-listening>
     <gn-shadowing *ngSwitchCase="'shadowing'"></gn-shadowing>
+    <gn-speaking *ngSwitchCase="'speaking'"></gn-speaking>
 </main>
