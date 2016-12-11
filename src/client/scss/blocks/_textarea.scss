@@ -1,6 +1,6 @@
 @import '../core';
 
-.input {
+.textarea {
   @extend %text-input;
-  height: 50px;
+  resize: none;
 }
