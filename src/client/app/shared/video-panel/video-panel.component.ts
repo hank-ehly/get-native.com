@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/30.
  */
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -16,10 +16,15 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class VideoPanelComponent implements OnInit {
     @Input() showOverlay: boolean;
+    @Output() begin = new EventEmitter();
 
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    onBegin(): void {
+        this.begin.emit();
     }
 }
