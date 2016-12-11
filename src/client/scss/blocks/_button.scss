@@ -7,7 +7,26 @@
   border-color: $periwinkle-gray;
   color: $regent-gray;
   font-size: $font-size-x-small;
-  letter-spacing: $uppercase-label-letter-spacing/2;
+  letter-spacing: $uppercase-label-letter-spacing / 2;
   padding-bottom: 6px;
   padding-top: 6px;
+}
+
+.button_opaque {
+  background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
+  color: $white;
+  border-color: transparent;
+
+  &:hover {
+    background: linear-gradient(to right, darken($robin-egg-blue, 5%), darken($shamrock, 5%));
+  }
+
+  &:focus {
+    background: linear-gradient(to right, darken($robin-egg-blue, 7%), darken($shamrock, 7%));
+  }
+
+  &:disabled {
+    background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
+    cursor: not-allowed;
+  }
 }
