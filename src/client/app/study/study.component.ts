@@ -7,6 +7,8 @@
 
 import { Component, OnInit } from '@angular/core';
 
+import { Logger } from 'angular2-logger/core';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-study',
@@ -14,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['study.component.css']
 })
 export class StudyComponent implements OnInit {
-    constructor() {
+    constructor(private logger: Logger) {
     }
 
     ngOnInit() {
