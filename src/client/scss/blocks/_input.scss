@@ -1,0 +1,14 @@
+@import '../core';
+
+.input {
+  @include border-radius();
+  background: $aqua-haze;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  font-size: $font-size-regular;
+  height: 50px;
+  margin-top: 12px;
+  padding-left: 10px;
+  outline: none;
+  width: 100%;
+}

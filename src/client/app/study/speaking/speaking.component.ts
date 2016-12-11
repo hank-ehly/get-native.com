@@ -6,6 +6,8 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from '../../core/navbar/navbar.service';
+import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
@@ -14,9 +16,11 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['speaking.component.css']
 })
 export class SpeakingComponent implements OnInit {
-    constructor() {
+    constructor(private logger: Logger, private navbar: NavbarService) {
     }
 
     ngOnInit() {
+        this.logger.info('[SpeakingComponent] ngOnInit()');
+        this.navbar.setTitle('SPEAKING');
     }
 }

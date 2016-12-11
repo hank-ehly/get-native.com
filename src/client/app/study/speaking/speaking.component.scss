@@ -1,1 +1,31 @@
 @import '../../../scss/core';
+@import './speaking.component.debug';
+
+.main {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 600px;
+}
+
+.collocation-frame {
+  flex-basis: 100%;
+}
+
+.collocation-frame .input {
+  background: transparent;
+  border: 2px solid $aqua-haze;
+}
+
+.completed, .button-group {
+  align-self: center;
+  margin-top: 30px;
+}
+
+.completed {
+  color: $regent-gray;
+}
+
+/deep/ .component-frame {
+  margin-top: 30px;
+}
