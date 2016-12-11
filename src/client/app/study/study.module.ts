@@ -13,10 +13,11 @@ import { StudyRoutingModule } from './study-routing.module';
 import { ListeningComponent } from './listening/listening.component';
 import { ShadowingComponent } from './shadowing/shadowing.component';
 import { SpeakingComponent } from './speaking/speaking.component';
+import { WritingComponent } from './writing/writing.component';
 
 @NgModule({
     imports: [SharedModule, StudyRoutingModule],
-    declarations: [StudyComponent, ListeningComponent, ShadowingComponent, SpeakingComponent]
+    declarations: [StudyComponent, ListeningComponent, ShadowingComponent, SpeakingComponent, WritingComponent]
 })
 export class StudyModule {
 }
