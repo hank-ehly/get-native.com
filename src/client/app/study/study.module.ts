@@ -7,17 +7,18 @@
 
 import { NgModule } from '@angular/core';
 
-import { StudyComponent } from './study.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule }       from '../shared/shared.module';
 import { StudyRoutingModule } from './study-routing.module';
+import { StudyComponent }     from './study.component';
 import { ListeningComponent } from './listening/listening.component';
 import { ShadowingComponent } from './shadowing/shadowing.component';
-import { SpeakingComponent } from './speaking/speaking.component';
-import { WritingComponent } from './writing/writing.component';
+import { SpeakingComponent }  from './speaking/speaking.component';
+import { WritingComponent }   from './writing/writing.component';
+import { ResultsComponent }   from './results/results.component';
 
 @NgModule({
     imports: [SharedModule, StudyRoutingModule],
-    declarations: [StudyComponent, ListeningComponent, ShadowingComponent, SpeakingComponent, WritingComponent]
+    declarations: [StudyComponent, ListeningComponent, ShadowingComponent, SpeakingComponent, WritingComponent, ResultsComponent]
 })
 export class StudyModule {
 }
