@@ -35,7 +35,11 @@ export class SettingsComponent implements OnInit {
             notifications: 'Specify how Get Native should be able to notify you.'
         };
 
-        return titles[this.selectedTab];
+        if (!this.selectedTab) {
+            return titles.general;
+        } else {
+            return titles[this.selectedTab];
+        }
     }
 
     ngOnInit() {
