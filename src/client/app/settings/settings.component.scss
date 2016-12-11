@@ -10,12 +10,45 @@
   flex-flow: column wrap;
 }
 
+.header__thumbnail-picker {
+  align-self: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.header__file-input-label {
+  cursor: pointer;
+  display: block;
+  height: 110px;
+  width: 110px;
+  transition: all 0.5s;
+}
+
+.header__file-input-label:hover:after {
+  @include border-radius(50%);
+  background: rgba($black, 0.2) url('../../assets/icons/avatar.svg') no-repeat center;
+  background-size: 30px;
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.header__file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
 .header__thumbnail {
   @include border-radius(50%);
-  align-self: center;
-  height: 110px;
+  height: inherit;
   object-fit: cover;
-  width: 110px;
+  width: inherit;
 }
 
 .header__title {
