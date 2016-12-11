@@ -6,10 +6,11 @@
  */
 
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
-import { NavbarService } from '../core/index';
+import { NavbarService, STUBRouter } from '../core/index';
 
 export function main() {
     let comp: DashboardComponent;
@@ -20,7 +21,7 @@ export function main() {
             TestBed.configureTestingModule({
                 imports: [SharedModule],
                 declarations: [DashboardComponent],
-                providers: [NavbarService]
+                providers: [NavbarService, {provide: Router, useValue: STUBRouter},]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(DashboardComponent);
                 comp = fixture.componentInstance;
