@@ -8,13 +8,13 @@
 
         <div class="form__group">
             <label class="form__label" for="email">Email</label>
-            <input id="email" [pattern]="HTML5_EMAIL_REGEX" class="form__input tabbable" type="email" name="email" tabindex="1"
+            <input id="email" [pattern]="HTML5_EMAIL_REGEX" class="input tabbable" type="email" name="email" tabindex="1"
                    [(ngModel)]="credentials.email" required>
         </div>
 
         <div class="form__group">
             <label class="form__label" for="password">Password</label>
-            <input id="password" type="password" class="form__input tabbable" name="password" [(ngModel)]="credentials.password"
+            <input id="password" type="password" class="input tabbable" name="password" [(ngModel)]="credentials.password"
                    tabindex="2" minlength="8" required>
         </div>
 

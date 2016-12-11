@@ -10,7 +10,7 @@
   flex: 1 100%;
 }
 
-.email-form .form__input {
+.email-form .input {
   background: transparent;
   color: $regent-gray;
   flex: 1;
@@ -18,7 +18,7 @@
   padding-left: 0;
 }
 
-.email-form .form__input[readonly] {
+.email-form .input[readonly] {
   cursor: not-allowed;
 }
 
@@ -29,20 +29,6 @@
 .form__button-group .button {
   padding: 0 18px;
   height: 30px;
-}
-
-.form__cancel-button {
-  border-color: transparent;
-
-  &:hover {
-    background: $aqua-haze;
-    border-color: $aqua-haze;
-  }
-
-  &:focus {
-    background: $aqua-haze-dark;
-    border-color: $aqua-haze-dark;
-  }
 }
 
 hr {
