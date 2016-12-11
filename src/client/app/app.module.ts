@@ -22,6 +22,7 @@ import { LibraryModule } from './library/library.module';
 import { LibraryDetailModule } from './library-detail/library-detail.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsModule } from './settings/settings.module';
+import { StudyModule } from './study/study.module';
 
 import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2-logger/core';
 
@@ -39,7 +40,8 @@ import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2
         LoginModule,
         LibraryModule,
         LibraryDetailModule,
-        SettingsModule
+        SettingsModule,
+        StudyModule
     ],
     declarations: [AppComponent],
     providers: [
