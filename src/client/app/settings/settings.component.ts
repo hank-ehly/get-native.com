@@ -51,7 +51,7 @@ export class SettingsComponent implements OnInit {
 
     classForTab(title: string) {
         let isExactMatch = this.selectedTab === title;
-        let isDefault    = title === 'general' && [null, undefined].includes(this.selectedTab);
+        let isDefault    = title === 'general' && !this.selectedTab;
 
         return {'tab_active': isExactMatch || isDefault};
     }
