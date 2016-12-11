@@ -1,6 +1,14 @@
 <main class="main">
     <header class="header">
-        <img class="header__thumbnail" src="../../assets/mock/man-smiling.jpg" alt="user-thumbnail">
+
+        <div class="header__thumbnail-picker">
+            <label for="file" class="header__file-input-label">
+                <img class="header__thumbnail" src="../../assets/mock/man-smiling.jpg" alt="user-thumbnail">
+            </label>
+
+            <input id="file" type="file" name="file" class="header__file-input">
+        </div>
+
         <h6 class="header__title">{{ selectedTabDescription }}</h6>
     </header>
 
@@ -10,7 +18,7 @@
         </li>
     </ul>
 
-    <section class="settings-tab-content" [ngSwitch]="selectedTab">
+    <section [ngSwitch]="selectedTab">
         <gn-general *ngSwitchDefault></gn-general>
         <gn-security *ngSwitchCase="'security'"></gn-security>
         <gn-notifications *ngSwitchCase="'notifications'"></gn-notifications>
