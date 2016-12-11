@@ -14,9 +14,15 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['general.component.css']
 })
 export class GeneralComponent implements OnInit {
+    isEditing: boolean = false;
+
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    onToggleEditing(): void {
+        this.isEditing = !this.isEditing;
     }
 }
