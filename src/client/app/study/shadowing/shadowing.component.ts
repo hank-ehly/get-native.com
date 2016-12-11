@@ -14,9 +14,19 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['shadowing.component.css']
 })
 export class ShadowingComponent implements OnInit {
+    isModalVisible: boolean;
+
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    showModal(): void {
+        this.isModalVisible = true;
+    }
+
+    onClose(): void {
+        this.isModalVisible = false;
     }
 }

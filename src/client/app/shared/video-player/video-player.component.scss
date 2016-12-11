@@ -152,11 +152,15 @@
 .tracker__loaded {
   background: $black;
   height: inherit;
+
+  /* Adjust this value as a percentage based on video loading progress */
   width: 75%;
 }
 
 .tracker__progress {
   background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
   height: inherit;
+
+  /* Adjust this value as a percentage based on video playback progress */
   width: 50%;
 }

@@ -8,6 +8,7 @@
 export * from './config/env.config';
 export * from './compliance/index';
 export * from './footer/index';
+export * from './modal/modal.component';
 export * from './navbar/index';
 export * from './side-menu/side-menu.component';
 export * from './switch/switch.component';
