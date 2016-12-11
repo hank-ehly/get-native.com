@@ -26,7 +26,13 @@
   height: 50px;
   justify-content: space-between;
   position: absolute;
+  transform: translateY(50px);
+  transition: transform 0.2s;
   width: 100%;
+}
+
+.player-frame:hover .player-controls {
+  transform: translateY(0);
 }
 
 .player-controls__toggle-button {
@@ -127,4 +133,30 @@
 
   position: absolute;
   width: 100%;
+}
+
+.tracker {
+  background: transparent;
+  bottom: 0;
+  height: 3px;
+  position: absolute;
+  transform: translateY(0);
+  transition: transform 0.2s;
+  width: 100%;
+}
+
+.player-frame:hover .tracker {
+  transform: translateY(3px);
+}
+
+.tracker__loaded {
+  background: $black;
+  height: inherit;
+  width: 75%;
+}
+
+.tracker__progress {
+  background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
+  height: inherit;
+  width: 50%;
 }
