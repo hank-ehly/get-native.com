@@ -1,7 +1,15 @@
 @import '../../../scss/core';
 @import './notifications.component.debug';
 
-.title, .label-button-row {
+.row {
+  margin-top: 50px;
+}
+
+.row:first-child {
+  margin-top: 40px;
+}
+
+.label-button-row {
   margin-top: 30px;
 }
 
