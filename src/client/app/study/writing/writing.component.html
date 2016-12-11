@@ -1,23 +1,26 @@
 <main class="main">
 
-    <section class="answer-section">
-        <form class="form">
-            <div class="form__group">
-                <label for="answer" class="form__label">In your opinion, is America a monolingual society?</label>
-                <textarea name="answer" id="answer" class="textarea answer-section__textarea"></textarea>
+    <section class="section section_answer">
+        <form class="answer-form">
+            <div class="answer-form__group">
+                <label for="answer" class="label">In your opinion, is America a monolingual society?</label>
+                <textarea name="answer" id="answer" class="textarea section_answer__textarea"></textarea>
             </div>
 
-            <span class="answer-section__word-count">120</span>
-            <button class="button button_opaque answer-section__button">FINISH</button>
+            <span class="section_answer__word-count">120</span>
+
+            <button class="button button_opaque section_answer__button">FINISH</button>
         </form>
 
         <hr>
 
-        <label for="example" class="form__label">Example Answer:</label>
-        <textarea name="example" id="example" class="textarea example-textarea" readonly></textarea>
+        <div class="example-answer">
+            <label for="example-answer" class="label">Example Answer:</label>
+            <textarea id="example-answer" class="textarea example-answer__textarea" readonly></textarea>
+        </div>
     </section>
 
-    <section class="collocations-section">
+    <section class="section section_collocations">
         <h6>Collocations</h6>
         <ul class="collocations">
             <li class="collocation">In my opinion</li>
