@@ -60,54 +60,16 @@
   .form {
     display: flex;
     padding: 0 30px;
-    flex-direction: column;
-  }
-
-  .form__group {
-    padding-top: 28px;
-  }
-
-  .form__label {
-    @include font-weight-bold;
-    cursor: pointer;
+    flex-flow: column wrap;
   }
 
   .form__required-indicator {
     color: $red-orange;
   }
 
-  .form__input {
-    @include border-radius();
-    background: $aqua-haze;
-    border: 1px solid transparent;
-    box-sizing: border-box;
-    font-size: $font-size-regular;
-    height: 50px;
-    margin-top: 12px;
-    padding-left: 10px;
-    outline: none;
-    width: 100%;
-  }
-
   .form__button {
     align-self: flex-end;
-    background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
-    border-color: transparent;
-    color: $white;
     margin-top: 30px;
-
-    &:hover {
-      background: linear-gradient(to right, darken($robin-egg-blue, 5%), darken($shamrock, 5%));
-    }
-
-    &:focus {
-      background: linear-gradient(to right, darken($robin-egg-blue, 7%), darken($shamrock, 7%));
-    }
-
-    &:disabled {
-      background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
-      cursor: not-allowed;
-    }
   }
 
   .form__input.ng-invalid.ng-touched {
