@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import {
     ComplianceComponent,
     FooterComponent,
+    ModalComponent,
     NavbarComponent,
     SideMenuComponent,
     SwitchComponent,
@@ -29,6 +30,7 @@ import {
     declarations: [
         ComplianceComponent,
         FooterComponent,
+        ModalComponent,
         NavbarComponent,
         SideMenuComponent,
         SwitchComponent,
@@ -42,6 +44,7 @@ import {
         RouterModule,
         ComplianceComponent,
         FooterComponent,
+        ModalComponent,
         NavbarComponent,
         SideMenuComponent,
         SwitchComponent,

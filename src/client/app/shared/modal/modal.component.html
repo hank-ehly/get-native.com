@@ -1,0 +1,11 @@
+<div class="overlay" *ngIf="isVisible" [@darken] (click)="onClickClose($event)">
+    <div class="modal-frame" [@fadeInOut]>
+        <div class="modal-frame__close-button-frame">
+            <button class="modal-frame__close-button" (click)="onClickClose($event)"></button>
+        </div>
+
+        <div class="modal">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>
