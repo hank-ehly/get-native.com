@@ -1,2 +1,19 @@
 @import '../../../scss/core';
 @import './notifications.component.debug';
+
+.title, .label-button-row {
+  margin-top: 30px;
+}
+
+.paragraph {
+  color: $regent-gray;
+}
+
+.label-button-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  > * {
+    align-self: center;
+  }
+}
