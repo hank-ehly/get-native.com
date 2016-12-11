@@ -1,1 +1,4 @@
 @import '../../../scss/core';
+
+.title     { @include debug-background-color($dc01); };
+.paragraph { @include debug-background-color($dc02); };
