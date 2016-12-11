@@ -20,10 +20,22 @@ import { Logger } from 'angular2-logger/core';
 })
 
 export class SettingsComponent implements OnInit {
-    tabs: string[] = ['general', 'security', 'notifications'];
+    tabs: string[];
     selectedTab: any;
+    private _selectedTabDescription: string;
 
     constructor(private logger: Logger, private navbar: NavbarService, private route: ActivatedRoute) {
+        this.tabs = ['general', 'security', 'notifications'];
+    }
+
+    get selectedTabDescription(): string {
+        let titles: any = {
+            general:       'View and update your login credentials.',
+            security:      'Manage your account privacy settings.',
+            notifications: 'Specify how Get Native should be able to notify you.'
+        };
+
+        return titles[this.selectedTab];
     }
 
     ngOnInit() {
