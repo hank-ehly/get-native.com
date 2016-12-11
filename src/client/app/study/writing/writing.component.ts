@@ -1,5 +1,5 @@
 /**
- * speaking.component
+ * writing.component
  * get-native.com
  *
  * Created by henryehly on 2016/12/11.
@@ -13,16 +13,16 @@ import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-speaking',
-    templateUrl: 'speaking.component.html',
-    styleUrls: ['speaking.component.css']
+    selector: 'gn-writing',
+    templateUrl: 'writing.component.html',
+    styleUrls: ['writing.component.css']
 })
-export class SpeakingComponent implements OnInit {
+export class WritingComponent implements OnInit {
     constructor(private logger: Logger, private navbar: NavbarService) {
     }
 
     ngOnInit() {
-        this.logger.info('[SpeakingComponent] ngOnInit()');
-        this.navbar.setTitle('SPEAKING');
+        this.logger.info('[WritingComponent] ngOnInit()');
+        this.navbar.setTitle('WRITING');
     }
 }
