@@ -8,6 +8,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NavbarService } from '../core/index';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit {
     videos: any[];
     answers: any[];
 
-    constructor(private navbarService: NavbarService) {
+    constructor(private navbar: NavbarService, private router: Router) {
     }
 
     ngOnInit() {
@@ -34,6 +35,10 @@ export class DashboardComponent implements OnInit {
             {isPlaceholder: true}
         ];
         this.answers = [1, 2, 3, 4, 5];
-        this.navbarService.setTitle('Dashboard');
+        this.navbar.setTitle('Dashboard');
+    }
+
+    onBegin(): void {
+        this.router.navigate(['study']);
     }
 }
