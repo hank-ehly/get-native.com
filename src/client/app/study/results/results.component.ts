@@ -7,6 +7,10 @@
 
 import { Component, OnInit } from '@angular/core';
 
+import { NavbarService } from '../../core/navbar/navbar.service';
+
+import { Logger } from 'angular2-logger/core';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-results',
@@ -14,9 +18,11 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['results.component.css']
 })
 export class ResultsComponent implements OnInit {
-    constructor() {
+    constructor(private logger: Logger, private navbar: NavbarService) {
     }
 
     ngOnInit() {
+        this.logger.info('[ResultsComponent] ngOnInit()');
+        this.navbar.setTitle('Results');
     }
 }
