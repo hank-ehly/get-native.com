@@ -1,0 +1,22 @@
+@import '../../../scss/core';
+
+.outer {
+  @include border-radius(30px);
+  background: $aqua-haze;
+  height: 30px;
+  position: relative;
+  width: 70px;
+}
+
+.inner {
+  @include border-radius(30px);
+  @include font-weight-bold;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  height: 30px;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  width: 50px;
+}

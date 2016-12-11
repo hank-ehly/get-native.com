@@ -10,6 +10,7 @@ export * from './compliance/index';
 export * from './footer/index';
 export * from './navbar/index';
 export * from './side-menu/side-menu.component';
+export * from './switch/switch.component';
 export * from './toolbar/index';
 export * from './transcript/transcript.component';
 export * from './video-player/video-player.component';
