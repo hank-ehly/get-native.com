@@ -10,15 +10,3 @@
   outline: none;
   padding: 9px 30px 11px;
 }
-
-%shamrock-link {
-  color: $shamrock;
-  cursor: pointer;
-  font-size: $font-size-regular;
-  outline: none;
-  text-decoration: none;
-  &:hover, &:focus {
-    text-decoration: underline;
-    text-decoration-color: $iceberg;
-  }
-}

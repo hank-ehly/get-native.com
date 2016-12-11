@@ -1,5 +1,14 @@
-@import '../extensions';
+@import '../colors';
+@import '../variables';
 
 .link {
-  @extend %shamrock-link;
+  color: $shamrock;
+  cursor: pointer;
+  font-size: $font-size-regular;
+  outline: none;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    border-bottom: 1px solid $iceberg;
+  }
 }
