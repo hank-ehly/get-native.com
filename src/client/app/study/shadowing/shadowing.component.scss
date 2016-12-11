@@ -4,7 +4,7 @@
   width: $main-width * (2/3);
 }
 
-.link {
+.instructions-link {
   color: $regent-gray;
   display: inline-block;
   font-size: $font-size-small;
@@ -14,4 +14,9 @@
   &:hover {
     border-bottom-color: $aqua-haze-dark;
   }
+}
+
+.paragraph {
+  color: $pale-sky;
+  padding: 40px;
 }

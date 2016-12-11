@@ -1,9 +1,10 @@
 <main class="main">
     <gn-video-player></gn-video-player>
-    <span class="link" (click)="showModal()">Instructions</span>
+    <span class="link instructions-link" (click)="showModal()">Instructions</span>
 
     <gn-modal [isVisible]="isModalVisible" (close)="onClose()">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque
-        delectus dicta earum eligendi eum illum inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.
+        <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur,
+                             culpa cum cumque delectus dicta earum eligendi <span class="link">eum illum</span>
+                             inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.</p>
     </gn-modal>
 </main>
