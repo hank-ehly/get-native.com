@@ -2,14 +2,39 @@
 
 .button {
   @include font-weight-bold;
-  @extend %rounded-button;
-  background: $white;
-  border-color: $periwinkle-gray;
-  color: $regent-gray;
+  @include border-radius(20px);
+  border: 2px solid $periwinkle-gray;
+  cursor: pointer;
   font-size: $font-size-x-small;
+  outline: none;
+  padding: 6px 30px;
+  background: $white;
+  color: $regent-gray;
   letter-spacing: $uppercase-label-letter-spacing / 2;
-  padding-bottom: 6px;
-  padding-top: 6px;
+
+  &:hover {
+    background: $aqua-haze;
+  }
+
+  &:focus {
+    background: $aqua-haze-dark;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.button_hollow {
+  border-color: transparent;
+
+  &:hover {
+    border-color: $aqua-haze;
+  }
+
+  &:focus {
+    border-color: $aqua-haze-dark;
+  }
 }
 
 .button_opaque {
@@ -27,20 +52,5 @@
 
   &:disabled {
     background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
-    cursor: not-allowed;
-  }
-}
-
-.button_hollow {
-  border-color: transparent;
-
-  &:hover {
-    background: $aqua-haze;
-    border-color: $aqua-haze;
-  }
-
-  &:focus {
-    background: $aqua-haze-dark;
-    border-color: $aqua-haze-dark;
   }
 }
