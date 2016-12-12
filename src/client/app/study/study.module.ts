@@ -15,10 +15,22 @@ import { ShadowingComponent } from './shadowing/shadowing.component';
 import { SpeakingComponent }  from './speaking/speaking.component';
 import { WritingComponent }   from './writing/writing.component';
 import { ResultsComponent }   from './results/results.component';
+import { TransitionComponent } from './transition/transition.component';
 
 @NgModule({
-    imports: [SharedModule, StudyRoutingModule],
-    declarations: [StudyComponent, ListeningComponent, ShadowingComponent, SpeakingComponent, WritingComponent, ResultsComponent]
+    imports: [
+        SharedModule,
+        StudyRoutingModule
+    ],
+    declarations: [
+        StudyComponent,
+        ListeningComponent,
+        ShadowingComponent,
+        SpeakingComponent,
+        WritingComponent,
+        ResultsComponent,
+        TransitionComponent
+    ]
 })
 export class StudyModule {
 }
