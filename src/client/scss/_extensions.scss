@@ -2,15 +2,6 @@
 @import './variables';
 @import './mixins';
 
-%rounded-button {
-  @include border-radius(20px);
-  border: 2px solid;
-  cursor: pointer;
-  font-size: $font-size-small;
-  outline: none;
-  padding: 9px 30px 11px;
-}
-
 %text-input {
   @include border-radius();
   background: $aqua-haze;
@@ -19,6 +10,7 @@
   font-size: $font-size-regular;
   margin-top: 12px;
   padding-left: 10px;
+  padding-right: 10px;
   outline: none;
   width: 100%;
 }

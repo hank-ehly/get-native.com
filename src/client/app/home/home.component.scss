@@ -30,10 +30,13 @@
 }
 
 .headline__button {
-  @extend %rounded-button;
-  background-color: $white;
+  @include font-weight-regular;
+  background: $white;
   border-color: $shamrock;
   color: $shamrock;
+  font-size: $font-size-small;
+  padding-top: 9px;
+  padding-bottom: 7px;
   margin-top: 40px;
 }
 
