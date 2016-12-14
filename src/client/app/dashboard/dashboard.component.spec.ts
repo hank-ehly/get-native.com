@@ -21,7 +21,7 @@ export function main() {
             TestBed.configureTestingModule({
                 imports: [SharedModule],
                 declarations: [DashboardComponent],
-                providers: [NavbarService, {provide: Router, useValue: STUBRouter},]
+                providers: [NavbarService, {provide: Router, useValue: STUBRouter}]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(DashboardComponent);
                 comp = fixture.componentInstance;
