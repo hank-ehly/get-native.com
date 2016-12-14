@@ -36,10 +36,8 @@
 .navbar__link_help {
   color: $default-color;
   margin-right: 15px;
-  text-decoration: none;
-
   &:hover {
-    text-decoration: underline;
+    border-color: lighten($default-color, 50%);
   }
 }
 
