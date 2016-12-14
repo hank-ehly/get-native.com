@@ -2,12 +2,12 @@
 
     <div class="tabs-frame">
         <ul class="tabs">
-            <li class="tabs__tab tabs__tab_active">Original Transcript</li>
-            <li class="tabs__tab">English</li>
-            <li class="tabs__tab">日本語</li>
+            <li class="tabs__tab" *ngFor="let title of tabTitles" [ngClass]="{tabs__tab_active: title === activeTabTitle}" (click)="onClickTabTitle(title, $event)">
+                {{ title }}
+            </li>
         </ul>
 
-        <div class="tab-slider"></div>
+        <div class="tab-slider" [ngStyle]="sliderPosition"></div>
     </div>
 
     <div class="tab-content">

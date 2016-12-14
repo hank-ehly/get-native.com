@@ -7,6 +7,8 @@
 
 import { Component, OnInit } from '@angular/core';
 
+import { Logger } from 'angular2-logger/core';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-transcript',
@@ -14,9 +16,32 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['transcript.component.css']
 })
 export class TranscriptComponent implements OnInit {
-    constructor() {
+    tabTitles: string[] = ['Original Transcript', 'English', '日本語'];
+    activeTabTitle: string;
+    activeTabElement: HTMLElement;
+
+    constructor(private logger: Logger) {
+        this.activeTabTitle = this.tabTitles[0];
     }
 
     ngOnInit() {
+        this.logger.info('[TranscriptComponent] ngOnInit()');
+    }
+
+    onClickTabTitle(title: string, e: MouseEvent): void {
+        this.logger.debug(`[TranscriptComponent] onClickTabTitle(title: ${title}, event: ${e})`);
+        this.activeTabTitle = title;
+        this.activeTabElement = <HTMLElement>e.target;
+    }
+
+    get sliderPosition() {
+        if (!this.activeTabElement) {
+            return null;
+        }
+
+        return {
+            left: `${this.activeTabElement.offsetLeft}px`,
+            width: `${this.activeTabElement.offsetWidth}px`
+        };
     }
 }
