@@ -1,8 +1,8 @@
 <div class="player-frame">
-    <video class="video" src="../../../assets/mock/video.mov"></video>
+    <video gnVideo class="video" src="../../../assets/mock/video.mov"></video>
 
     <div class="player-controls">
-        <button class="player-controls__toggle-button"></button>
+        <button class="player-controls__toggle-button" (click)="onTogglePlayback()"></button>
 
         <div class="play-bar">
             <div class="play-bar__load-progress-bar"></div>

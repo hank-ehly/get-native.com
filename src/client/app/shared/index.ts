@@ -15,5 +15,6 @@ export * from './study-progress/study-progress.component';
 export * from './switch/switch.component';
 export * from './toolbar/index';
 export * from './transcript/transcript.component';
+export * from './video/video.directive';
 export * from './video-player/video-player.component';
 export * from './video-panel/video-panel.component';

@@ -19,6 +19,7 @@ import {
     SwitchComponent,
     ToolbarComponent,
     TranscriptComponent,
+    VideoDirective,
     VideoPlayerComponent,
     VideoPanelComponent
 } from './index';
@@ -38,6 +39,7 @@ import {
         SwitchComponent,
         ToolbarComponent,
         TranscriptComponent,
+        VideoDirective,
         VideoPlayerComponent,
         VideoPanelComponent
     ],
