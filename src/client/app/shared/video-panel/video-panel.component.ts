@@ -15,7 +15,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class VideoPanelComponent implements OnInit {
-    @Input() showOverlay: boolean;
+    @Input() showControls: boolean;
     @Output() begin = new EventEmitter();
 
     constructor() {

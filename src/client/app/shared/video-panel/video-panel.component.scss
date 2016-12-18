@@ -3,15 +3,12 @@
 
 .video-panel {
   @include border-right-radius(10px);
+  cursor: pointer;
+  height: 290px;
   margin-bottom: 30px;
   overflow: hidden;
   position: relative;
-  height: 290px;
   width: (($main-width - 60px) / 3);
-}
-
-.video-panel_clickable {
-  cursor: pointer;
 }
 
 .video-panel__overlay {

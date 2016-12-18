@@ -1,9 +1,9 @@
 <!-- TODO: Michele: What should the hover state of a library video panel look like? -->
-<div class="video-panel" [ngClass]="{'video-panel_clickable': !showOverlay}">
+<div class="video-panel">
     <img src="http://lorempixel.com/280/280" alt="video-thumbnail">
 
-    <div class="video-panel__overlay" *ngIf="showOverlay">
-        <div class="options">
+    <div class="video-panel__overlay">
+        <div class="options" *ngIf="showControls">
             <div>
                 <div class="options__minute-button-frame">
                     <div class="options__minute-button" id="placeholder_1"></div>
