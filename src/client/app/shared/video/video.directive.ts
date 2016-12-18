@@ -54,6 +54,14 @@ export class VideoDirective {
         return this.videoEl.duration;
     }
 
+    get volume(): number {
+        return this.videoEl.volume;
+    }
+
+    set volume(value: number) {
+        this.videoEl.volume = value;
+    }
+
     play(): void {
         this.videoEl.play();
         this.triggerAnimationLoop();
