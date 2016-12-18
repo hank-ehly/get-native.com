@@ -1,8 +1,8 @@
-<div class="player-frame">
+<div class="player-frame" (mouseleave)="onMouseLeavePlayerFrame()" (mouseenter)="onMouseEnterPlayerFrame()">
     <video gnVideo loop class="video" src="../../../assets/mock/video.mov"></video>
 
-    <div class="player-controls">
-        <button class="player-controls__toggle-button" (click)="onTogglePlay()" [ngClass]="{'player-controls__toggle-button_paused': video.paused}"></button>
+    <div class="player-controls" *ngIf="!controlsHidden" [@fadeInOut]>
+        <button class="player-controls__toggle-button" (click)="onClickToggleButton()" [ngClass]="{'player-controls__toggle-button_paused': player.paused}"></button>
 
         <div class="play-bar" #playbar>
             <div class="play-bar__load-progress-bar" [ngStyle]="{width: loaded + '%'}"></div>
@@ -13,22 +13,28 @@
         </div>
 
         <div class="player-controls__time">
-            <span class="player-controls__time-elapsed">{{ currentTime }}</span>
-            <span class="player-controls__time-total">{{ duration }}</span>
+            <span class="player-controls__time-elapsed">{{ currentTimeString }}</span>
+            <span class="player-controls__time-total">{{ durationString }}</span>
         </div>
 
-        <div class="volume-control">
+        <div class="volume-control" (click)="onClickVolumeControl($event)" (mouseenter)="onMouseEnterVolumeControl()" (mouseleave)="onMouseLeaveVolumeControl()">
             <img class="volume-control__icon" src="../../../assets/icons/volume.svg" alt="volume">
 
-            <div class="volume-control__tooltip">
-                <div class="volume-control__volume-bar">
-                    <div class="volume-control__volume"></div>
+            <div class="volume-control__tooltip" *ngIf="!tooltipHidden">
+
+                <div #volumebar class="volume-control__volume-bar"
+                     (mousedown) ="onMouseDownVolumeTooltip ($event, volumebar)"
+                     (mousemove) ="onMouseMoveVolumeTooltip ($event, volumebar)"
+                     (mouseup)   ="onMouseUpVolumeTooltip   ($event, volumebar)"
+                     (mouseleave)="onMouseLeaveVolumeTooltip($event, volumebar)">
+
+                    <div class="volume-control__volume" [ngStyle]="{height: (player.volume * 100) + '%'}"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="tracker">
+    <div class="tracker" *ngIf="controlsHidden" [@fadeInOut]>
         <div class="tracker__loaded" [ngStyle]="{width: loaded + '%'}"></div>
         <div class="tracker__progress" [ngStyle]="{width: progress + '%'}"></div>
     </div>
