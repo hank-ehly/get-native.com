@@ -14,26 +14,16 @@ export class TimeFormatService {
 
     fromSeconds(seconds: number): string {
         if (seconds >= 600) {
-            // RangeError
+            throw new RangeError(`${this.constructor.name}.fromSeconds cannot handle values over 600. Value was ${seconds}`);
         }
 
-        let retVal: string;
-        let floor = Math.floor(seconds);
-        if (floor < 10) {
-            retVal = `0:0${floor}`;
-        } else if (floor >=10 && floor < 60) {
-            retVal = `0:${floor}`;
-        } else if (floor >= 60) {
-            let minutes = Math.floor(floor/60);
-            let remainder = floor % 60;
-            if (remainder < 10) {
-                retVal = `${minutes}:0${remainder}`;
-            } else {
-                retVal = `${minutes}:${remainder}`;
-            }
-        } else {
-            // error
-        }
-        return retVal;
+        let nWholeSec = Math.floor(seconds);
+        let nWholeMin = Math.floor(nWholeSec / 60);
+
+        let nRetSec = nWholeSec % 60;
+        let sRetSec = nRetSec < 10 ? `0${nRetSec}` : nRetSec.toString();
+        let sRetMin = nWholeMin < 1 ? '0' : nWholeMin.toString();
+
+        return `${sRetMin}:${sRetSec}`;
     }
 }
