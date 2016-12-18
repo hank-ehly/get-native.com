@@ -39,6 +39,7 @@ export class VideoDirective {
 
         this.videoEl.onloadedmetadata = this.onloadedmetadata.bind(this);
         this.videoEl.onprogress = this.onprogress.bind(this);
+        this.videoEl.onloadeddata = this.onprogress.bind(this);
     }
 
     get paused(): boolean {
@@ -67,10 +68,12 @@ export class VideoDirective {
     }
 
     private onprogress(e: Event): void {
-        if (this.videoEl.readyState === 0) return;
+        if (this.videoEl.readyState < 2) {
+            return;
+        }
 
         let endTime = this.videoEl.buffered.end(0);
-        let loaded = +(endTime/this.duration).toFixed(2);
+        let loaded = +(endTime / this.duration).toFixed(2);
 
         this.loadSource.next(loaded);
     }
@@ -98,7 +101,7 @@ export class VideoDirective {
         }
 
         let progress = time - this.previousStepTime;
-        let minStepProgress = 100;
+        let minStepProgress = 50;
 
         return progress >= minStepProgress;
     }

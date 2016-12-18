@@ -24,6 +24,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     currentTime: string;
     duration: string;
     loaded: number;
+    progress: number;
 
     constructor(private logger: Logger, private timeFormatService: TimeFormatService) {
         this.currentTime = this.duration = '0:00';
@@ -35,7 +36,11 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.video.currentTime$.subscribe(t => this.currentTime = this.timeFormatService.fromSeconds(t));
+        this.video.currentTime$.subscribe(t => {
+            this.currentTime = this.timeFormatService.fromSeconds(t);
+            this.progress = (t / this.video.duration) * 100;
+        });
+
         this.video.metadata$.subscribe(() => this.duration = this.timeFormatService.fromSeconds(this.video.duration));
         this.video.load$.subscribe(v => this.loaded = v * 100);
     }

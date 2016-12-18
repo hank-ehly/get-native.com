@@ -36,7 +36,7 @@
 }
 
 .player-controls__toggle-button {
-  background: $black url('../../../assets/icons/play.svg') no-repeat center;
+  background: $black url('../../../assets/icons/pause.svg') no-repeat center;
   background-size: 28%;
   border: none;
   cursor: pointer;
@@ -45,11 +45,16 @@
   width: 50px;
 }
 
+.player-controls__toggle-button.player-controls__toggle-button_paused {
+  background-image: url('../../../assets/icons/play.svg');
+}
+
 .play-bar {
   @include border-radius(4px);
   align-self: center;
   background: $black;
   height: 8px;
+  overflow: hidden;
   position: relative;
   width: 55%;
 }
@@ -65,13 +70,19 @@
   width: 0;
 }
 
+/* This keeps the circle from leaving the outer edge */
+.play-bar__play-progress-circle-container {
+  height: 100%;
+  position: absolute;
+}
+
 .play-bar__play-progress-circle {
   @include border-radius(4px);
   background: white;
   height: 100%;
 
   /* Adjust this value as a percentage based on playback time */
-  left: 10%;
+  left: 0;
 
   position: absolute;
   width: 8px;
@@ -103,7 +114,7 @@
 
 .volume-control__icon {
   align-self: center;
-  width: 28%;
+  width: 16px;
 }
 
 .volume-control__tooltip {
@@ -163,6 +174,9 @@
 .tracker__progress {
   background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
   height: inherit;
+  transition: 100ms;
+  position: absolute;
+  top: 0;
 
   /* Adjust this value as a percentage based on video playback progress */
   width: 0;
