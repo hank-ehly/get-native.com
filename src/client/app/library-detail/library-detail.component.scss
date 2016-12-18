@@ -40,7 +40,10 @@ $column-width: ($main-width - 30px) / 2;
 }
 
 .video-stats__icon {
-  /* Todo: Adjust after getting new 'views' icon from Michele */
+  width: 30px;
+}
+
+.video-stats__icon.video-stats__icon_like {
   height: 14px;
   width: 16px;
 }
