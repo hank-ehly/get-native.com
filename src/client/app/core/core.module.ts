@@ -11,8 +11,9 @@ import {
     LocalStorageService,
     LoginService,
     NavbarService,
+    PasswordService,
     StringService,
-    PasswordService
+    TimeFormatService
 } from './index';
 
 @NgModule({
@@ -21,7 +22,8 @@ import {
         LoginService,
         NavbarService,
         PasswordService,
-        StringService
+        StringService,
+        TimeFormatService
     ]
 })
 
