@@ -11,14 +11,16 @@
   background: $white;
   color: $regent-gray;
   letter-spacing: $uppercase-label-letter-spacing / 2;
+  transition: 100ms;
 
-  /* Todo: (Design) Show what hover state looks like */
   &:hover {
-    background: $aqua-haze;
+    border-color: $shamrock;
+    color: $shamrock;
   }
 
   &:focus {
-    background: $aqua-haze-dark;
+    border-color: darken($shamrock, 5%);
+    color: darken($shamrock, 5%);
   }
 
   &:disabled {
@@ -30,25 +32,27 @@
   border-color: transparent;
 
   &:hover {
-    border-color: $aqua-haze;
-  }
-
-  &:focus {
-    border-color: $aqua-haze-dark;
+    border-color: transparent;
   }
 }
 
 .button_opaque {
   background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
-  color: $white;
   border-color: transparent;
+  color: $white;
+  transition: 100ms;
 
   &:hover {
-    background: linear-gradient(to right, darken($robin-egg-blue, 5%), darken($shamrock, 5%));
+    /* This is necessary to prevent flickering in Chrome */
+    background: linear-gradient(to right, $shamrock, $shamrock);
+
+    border-color: transparent;
+    color: $white;
   }
 
   &:focus {
-    background: linear-gradient(to right, darken($robin-egg-blue, 7%), darken($shamrock, 7%));
+    background: linear-gradient(to right, darken($shamrock, 5%), darken($shamrock, 5%));
+    color: $white;
   }
 
   &:disabled {
