@@ -13,12 +13,12 @@
 
 .video-panel__overlay {
   @include border-right-radius(10px);
-  background-image: linear-gradient(to right, rgba($shamrock, 0.7), rgba($robin-egg-blue, 0.7));
+  background-image: linear-gradient(to right, rgba($shamrock, 0.8), rgba($robin-egg-blue, 0.8));
   height: 100%;
   opacity: 0;
   position: absolute;
   top: 0;
-  transition: opacity .1s;
+  transition: opacity 100ms;
   width: 100%;
 }
 
