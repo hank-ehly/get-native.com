@@ -1,17 +1,17 @@
 <div class="player-frame">
-    <video gnVideo class="video" src="../../../assets/mock/video.mov"></video>
+    <video gnVideo loop class="video" src="../../../assets/mock/video.mov"></video>
 
     <div class="player-controls">
-        <button class="player-controls__toggle-button" (click)="onTogglePlayback()"></button>
+        <button class="player-controls__toggle-button" (click)="onTogglePlay()"></button>
 
         <div class="play-bar">
-            <div class="play-bar__load-progress-bar"></div>
+            <div class="play-bar__load-progress-bar" [ngStyle]="{width: loaded + '%'}"></div>
             <div class="play-bar__play-progress-circle"></div>
         </div>
 
         <div class="player-controls__time">
-            <span class="player-controls__time-elapsed">0:06</span>
-            <span class="player-controls__time-total">1:00</span>
+            <span class="player-controls__time-elapsed">{{ currentTime }}</span>
+            <span class="player-controls__time-total">{{ duration }}</span>
         </div>
 
         <div class="volume-control">
@@ -27,7 +27,7 @@
     </div>
 
     <div class="tracker">
-        <div class="tracker__loaded">
+        <div class="tracker__loaded" [ngStyle]="{width: loaded + '%'}">
             <div class="tracker__progress"></div>
         </div>
     </div>

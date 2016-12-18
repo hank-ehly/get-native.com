@@ -59,9 +59,10 @@
   background: $regent-gray;
   height: 100%;
   position: absolute;
+  transition: 100ms;
 
   /* Adjust this value as a percentage based on load progress */
-  width: 25%;
+  width: 0;
 }
 
 .play-bar__play-progress-circle {
@@ -84,6 +85,7 @@
 
 .player-controls__time-elapsed {
   color: $white;
+  width: 22px;
 }
 
 .player-controls__time-total {
@@ -152,9 +154,10 @@
 .tracker__loaded {
   background: $black;
   height: inherit;
+  transition: 100ms;
 
   /* Adjust this value as a percentage based on video loading progress */
-  width: 75%;
+  width: 0;
 }
 
 .tracker__progress {
@@ -162,5 +165,5 @@
   height: inherit;
 
   /* Adjust this value as a percentage based on video playback progress */
-  width: 50%;
+  width: 0;
 }

@@ -5,9 +5,10 @@
  * Created by henryehly on 2016/12/07.
  */
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
 import { VideoDirective } from '../video/video.directive';
+import { TimeFormatService } from '../../core/index';
 
 import { Logger } from 'angular2-logger/core';
 
@@ -17,17 +18,29 @@ import { Logger } from 'angular2-logger/core';
     templateUrl: 'video-player.component.html',
     styleUrls: ['video-player.component.css']
 })
-export class VideoPlayerComponent implements OnInit {
+export class VideoPlayerComponent implements OnInit, AfterViewInit {
     @ViewChild(VideoDirective) video: VideoDirective;
 
-    constructor(private logger: Logger) {
+    currentTime: string;
+    duration: string;
+    loaded: number;
+
+    constructor(private logger: Logger, private timeFormatService: TimeFormatService) {
+        this.currentTime = this.duration = '0:00';
+        this.loaded = 0;
     }
 
-    ngOnInit() {
-        this.logger.info('[VideoPlayerComponent] ngOnInit()');
+    ngOnInit(): void {
+        this.logger.info(`[${this.constructor.name}] ngOnInit()`);
     }
 
-    onTogglePlayback(): void {
+    ngAfterViewInit(): void {
+        this.video.currentTime$.subscribe(t => this.currentTime = this.timeFormatService.fromSeconds(t));
+        this.video.metadata$.subscribe(() => this.duration = this.timeFormatService.fromSeconds(this.video.duration));
+        this.video.load$.subscribe(v => this.loaded = v * 100);
+    }
+
+    onTogglePlay(): void {
         this.video.paused ? this.video.play() : this.video.pause();
     }
 }
