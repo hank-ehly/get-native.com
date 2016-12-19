@@ -1,15 +1,17 @@
 <div class="player-frame" (mouseleave)="onMouseLeavePlayerFrame()" (mouseenter)="onMouseEnterPlayerFrame()">
-    <video gnVideo loop class="video" src="../../../assets/mock/video.mov"></video>
 
+    <video gnVideo class="video" src="../../../assets/mock/video.mov"></video>
+
+    <!-- Todo: Try separating the controls into their own component -->
     <div class="player-controls" *ngIf="!controlsHidden" [@fadeInOut]>
-        <button class="player-controls__toggle-button" (click)="onClickToggleButton()" [ngClass]="{'player-controls__toggle-button_paused': player.paused}"></button>
+        <button class="player-controls__toggle-button" (click)="onClickToggleButton()"
+                [ngClass]="{'player-controls__toggle-button_paused': player.paused}"></button>
 
-        <div class="play-bar" #playbar>
-            <div class="play-bar__load-progress-bar" [ngStyle]="{width: loaded + '%'}"></div>
-
-            <div class="play-bar__play-progress-circle-container" [ngStyle]="{width: (playbar.offsetWidth - circle.offsetWidth) + 'px'}">
-                <div class="play-bar__play-progress-circle" #circle [ngStyle]="{left: progress + '%'}"></div>
-            </div>
+        <div class="play-bar">
+            <progress class="play-bar__progress" [value]="progressPercent" max="100"></progress>
+            <label for="play-bar__input" class="sr-only">Seek</label>
+            <input class="play-bar__input" type="range" min="0" max="100" id="play-bar__input" #input [value]="currentTimePercent"
+                   (input)="onInputCurrentTimePercent(input.value)">
         </div>
 
         <div class="player-controls__time">
@@ -17,11 +19,15 @@
             <span class="player-controls__time-total">{{ durationString }}</span>
         </div>
 
-        <div class="volume-control" (click)="onClickVolumeControl($event)" (mouseenter)="onMouseEnterVolumeControl()" (mouseleave)="onMouseLeaveVolumeControl()">
+        <div class="volume-control" (click)="onClickVolumeControl($event)"
+             (mouseenter)="onMouseEnterVolumeControl()"
+             (mouseleave)="onMouseLeaveVolumeControl()">
+
             <img class="volume-control__icon" src="../../../assets/icons/volume.svg" alt="volume">
 
             <div class="volume-control__tooltip" *ngIf="!tooltipHidden">
 
+                <!-- Todo: Replace this chunky code with HTML5 range if you can -->
                 <div #volumebar class="volume-control__volume-bar"
                      (mousedown) ="onMouseDownVolumeTooltip ($event, volumebar)"
                      (mousemove) ="onMouseMoveVolumeTooltip ($event, volumebar)"
@@ -35,7 +41,7 @@
     </div>
 
     <div class="tracker" *ngIf="controlsHidden" [@fadeInOut]>
-        <div class="tracker__loaded" [ngStyle]="{width: loaded + '%'}"></div>
-        <div class="tracker__progress" [ngStyle]="{width: progress + '%'}"></div>
+        <progress class="tracker__progress" [value]="progressPercent" max="100"></progress>
+        <progress class="tracker__current-time" [value]="currentTimePercent" max="100"></progress>
     </div>
 </div>
