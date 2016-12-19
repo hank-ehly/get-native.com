@@ -3,46 +3,41 @@
 .switch {
   @include border-radius(30px);
   background: $aqua-haze;
-  position: relative;
   display: inline-block;
-  width: 70px;
   height: 30px;
+  position: relative;
+  width: 70px;
 }
 
-.switch input {
+.switch__input {
   display: none;
 }
 
-.slider {
+.switch__slider {
   @include border-radius(30px);
-  position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
   bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
   transition: 100ms;
+  right: 0;
 }
 
-.slider-before {
+.switch__title {
   @include border-radius(30px);
   @include font-weight-bold;
-  color: $white;
   background-color: $regent-gray;
-  position: absolute;
-  height: 30px;
-  width: 50px;
-  transition: 100ms;
+  color: $white;
   font-size: 11px;
   line-height: 30px;
+  position: absolute;
   text-align: center;
+  transition: 100ms;
+  width: 50px;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px $aqua-haze;
-}
-
-input:checked + .slider-before {
+.switch__input:checked + .switch__title {
   background: $shamrock;
   transform: translateX(20px);
   transition: 100ms;
