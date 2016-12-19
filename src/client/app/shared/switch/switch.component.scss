@@ -1,22 +1,49 @@
 @import '../../../scss/core';
 
-.outer {
+.switch {
   @include border-radius(30px);
   background: $aqua-haze;
-  height: 30px;
   position: relative;
+  display: inline-block;
   width: 70px;
+  height: 30px;
 }
 
-.inner {
+.switch input {
+  display: none;
+}
+
+.slider {
+  @include border-radius(30px);
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 100ms;
+}
+
+.slider-before {
   @include border-radius(30px);
   @include font-weight-bold;
-  border: none;
   color: $white;
-  cursor: pointer;
-  height: 30px;
-  outline: none;
-  padding: 0;
+  background-color: $regent-gray;
   position: absolute;
+  height: 30px;
   width: 50px;
+  transition: 100ms;
+  font-size: 11px;
+  line-height: 30px;
+  text-align: center;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $aqua-haze;
+}
+
+input:checked + .slider-before {
+  background: $shamrock;
+  transform: translateX(20px);
+  transition: 100ms;
 }

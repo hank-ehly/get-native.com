@@ -8,6 +8,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import {
     ComplianceComponent,
@@ -27,7 +28,8 @@ import {
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        FormsModule
     ],
     declarations: [
         ComplianceComponent,
@@ -46,6 +48,7 @@ import {
     exports: [
         CommonModule,
         RouterModule,
+        FormsModule,
         ComplianceComponent,
         FooterComponent,
         ModalComponent,
