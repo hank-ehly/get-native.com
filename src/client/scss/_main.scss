@@ -1,34 +1,7 @@
-@import './core';
-
-html {
-  @include font-weight-regular;
-  overflow-y: scroll;
-}
-
-body {
-  font-size: $font-size-regular;
-  color: $default-color;
-  line-height: $line-height-regular;
-  box-sizing: border-box;
-  min-width: 992px;
-}
-
-main {
-  display: block;
-  margin: 0 auto;
-  width: $main-width;
-}
-
-hr {
-  border: 0;
-  border-top: 2px solid rgba($black, 0.1);
-  border-top-color: $gallery;
-  box-sizing: content-box;
-  height: 0;
-  margin: 0;
-  overflow: visible;
-}
-
+@import './blocks/html';
+@import './blocks/body';
+@import './blocks/main';
+@import './blocks/hr';
 @import './blocks/address';
 @import './blocks/header';
 @import './blocks/link';
