@@ -1,0 +1,6 @@
+@import '../core';
+
+html {
+  @include font-weight-regular;
+  overflow-y: scroll;
+}

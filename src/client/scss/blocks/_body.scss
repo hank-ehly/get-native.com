@@ -1,0 +1,9 @@
+@import '../core';
+
+body {
+  font-size: $font-size-regular;
+  color: $default-color;
+  line-height: $line-height-regular;
+  box-sizing: border-box;
+  min-width: 992px;
+}
