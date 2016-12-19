@@ -4,12 +4,10 @@
 .player-frame {
   position: relative;
   overflow: hidden;
-  /* This creates a 3:2 aspect ratio */
   padding-bottom: 100% * (2/3);
   width: 100%;
 }
 
-/* Video is sized dynamically based on parent width */
 .video {
   position: absolute;
   bottom: 0;
@@ -48,39 +46,51 @@
   @include border-radius(4px);
   align-self: center;
   background: $black;
+  cursor: pointer;
   height: 8px;
   overflow: hidden;
   position: relative;
   width: 55%;
 }
 
-.play-bar__load-progress-bar {
-  @include border-radius(4px);
+.play-bar__progress {
+  appearance: none;
+  position: absolute;
+  height: inherit;
+  width: 100%;
+}
+
+.play-bar__progress::-webkit-progress-bar {
+  background: #000;
+  border-radius: 4px;
+}
+
+.play-bar__progress::-webkit-progress-value {
   background: $regent-gray;
-  height: 100%;
-  position: absolute;
-  transition: 100ms;
-
-  /* Adjust this value as a percentage based on load progress */
-  width: 0;
+  border-radius: 4px;
 }
 
-/* This keeps the circle from leaving the outer edge */
-.play-bar__play-progress-circle-container {
-  height: 100%;
+.play-bar__input[type=range] {
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: inherit;
+  margin: 0;
   position: absolute;
+  width: 100%;
 }
 
-.play-bar__play-progress-circle {
+.play-bar__input[type=range]::-webkit-slider-thumb {
   @include border-radius(4px);
-  background: white;
-  height: 100%;
-
-  /* Adjust this value as a percentage based on playback time */
-  left: 0;
-
-  position: absolute;
+  appearance: none;
+  background: $white;
+  cursor: pointer;
+  height: 8px;
   width: 8px;
+}
+
+.play-bar__input[type=range]:focus {
+  outline: none;
 }
 
 .player-controls__time {
@@ -156,22 +166,22 @@
   width: 100%;
 }
 
-.tracker__loaded {
-  background: $black;
+.tracker__current-time, .tracker__progress {
+  appearance: none;
   height: inherit;
-  transition: 100ms;
-
-  /* Adjust this value as a percentage based on video loading progress */
-  width: 0;
-}
-
-.tracker__progress {
-  background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
-  height: inherit;
-  transition: 100ms;
   position: absolute;
   top: 0;
+  width: 100%;
+}
 
-  /* Adjust this value as a percentage based on video playback progress */
-  width: 0;
+.tracker__current-time::-webkit-progress-bar, .tracker__progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+.tracker__progress::-webkit-progress-value {
+  background: $black;
+}
+
+.tracker__current-time::-webkit-progress-value {
+  background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
 }

@@ -1,11 +1,12 @@
 @import '../../../scss/core';
 
-.player-frame                   { @include debug-background-color($dc01); };
-.player-controls                { @include debug-background-color($dc02); };
-.player-controls__toggle-button { @include debug-background-color($dc03); };
-.play-bar                       { @include debug-background-color($dc04); };
-.play-bar__load-progress-bar    { @include debug-background-color($dc05); };
-.play-bar__play-progress-circle { @include debug-background-color($dc06); };
-.player-controls__time          { @include debug-background-color($dc07); };
-.volume-control                 { @include debug-background-color($dc08); };
-.volume-control__tooltip        { @include debug-background-color($dc09); };
+.player-frame                             { @include debug-background-color($dc01); };
+.player-controls                          { @include debug-background-color($dc02); };
+.player-controls__toggle-button           { @include debug-background-color($dc03); };
+.play-bar                                 { @include debug-background-color($dc04); };
+.play-bar__progress              { @include debug-background-color($dc05); };
+.play-bar__play-progress-circle           { @include debug-background-color($dc06); };
+.player-controls__time                    { @include debug-background-color($dc07); };
+.volume-control                           { @include debug-background-color($dc08); };
+.volume-control__tooltip                  { @include debug-background-color($dc09); };
+.play-bar__play-progress-circle-container { @include debug-background-color($dc10); };

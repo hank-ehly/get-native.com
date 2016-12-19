@@ -20,8 +20,7 @@ import { Logger } from 'angular2-logger/core';
     animations: [
         trigger('fadeInOut', [
             transition(':enter', [
-                style({opacity: 0}),
-                animate(200, style({opacity: 1}))
+                style({opacity: 0}), animate(200, style({opacity: 1}))
             ]),
             transition(':leave', [
                 animate(200, style({opacity: 0}))
@@ -36,8 +35,10 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     durationString: string;
     tooltipHidden: boolean;
     controlsHidden: boolean;
-    loaded: number;
-    progress: number;
+
+    /* Todo: when you click outside the 'already loaded' area, the progress stops updating correctly (seemingly) */
+    progressPercent: number;
+    currentTimePercent: number;
 
     private tooltipTimeout: NodeJS.Timer;
     private previousVolume: number;
@@ -45,7 +46,8 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
 
     constructor(private logger: Logger, private timeFormatService: TimeFormatService) {
         this.currentTimeString = this.durationString = '0:00';
-        this.loaded = 0;
+        this.progressPercent = 0;
+        this.currentTimePercent = 0;
         this.controlsHidden = false;
         this.tooltipHidden = true;
     }
@@ -55,9 +57,9 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.player.currentTime$.subscribe(this.onUpdateCurrentTime.bind(this));
-        this.player.metadata$.subscribe(() => this.durationString = this.timeFormatService.fromSeconds(this.player.duration));
-        this.player.load$.subscribe(v => this.loaded = v * 100);
+        this.player.currentTime$.subscribe(this.onCurrentTime.bind(this));
+        this.player.loadedMetadata$.subscribe(this.onLoadedMetadata.bind(this));
+        this.player.progress$.subscribe(this.onProgress.bind(this));
     }
 
     onClickToggleButton(): void {
@@ -126,6 +128,11 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
         this.tooltipHasFocus = false;
     }
 
+    onInputCurrentTimePercent(percent: string) {
+        let currentTimeFraction = +percent * 0.01;
+        this.player.currentTime = this.player.duration * currentTimeFraction;
+    }
+
     private updatePlayerVolumeForMouseEvent(e: MouseEvent, bar: HTMLElement): void {
         let offsetY: number = e.offsetY;
 
@@ -160,8 +167,16 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
         this.tooltipTimeout = setTimeout(() => this.tooltipHidden = true, 400);
     }
 
-    private onUpdateCurrentTime(seconds: number): void {
-        this.currentTimeString = this.timeFormatService.fromSeconds(seconds);
-        this.progress = (seconds / this.player.duration) * 100;
+    private onCurrentTime(timeInSeconds: number): void {
+        this.currentTimeString = this.timeFormatService.fromSeconds(timeInSeconds);
+        this.currentTimePercent = (timeInSeconds / this.player.duration) * 100;
+    }
+
+    private onLoadedMetadata() {
+        this.durationString = this.timeFormatService.fromSeconds(this.player.duration);
+    }
+
+    private onProgress(progress: number) {
+        this.progressPercent = progress * 100;
     }
 }
