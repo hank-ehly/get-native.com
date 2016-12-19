@@ -1,3 +1,5 @@
-<div class="outer" (click)="onToggleState()">
-    <button class="inner" [@state]="isOn">{{ isOn ? 'ON' : 'OFF' }}</button>
-</div>
+<label class="switch">
+    <input type="checkbox" [(ngModel)]="on">
+    <div class="slider-before">{{ on ? 'ON' : 'OFF' }}</div>
+    <div class="slider"></div>
+</label>
