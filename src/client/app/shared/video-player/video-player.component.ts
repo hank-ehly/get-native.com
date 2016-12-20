@@ -42,14 +42,13 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
 
     private tooltipTimeout: NodeJS.Timer;
     private previousVolume: number;
-    private tooltipHasFocus: boolean;
 
     constructor(private logger: Logger, private timeFormatService: TimeFormatService) {
         this.currentTimeString = this.durationString = '0:00';
         this.progressPercent = 0;
         this.currentTimePercent = 0;
         this.controlsHidden = false;
-        this.tooltipHidden = true;
+        this.tooltipHidden = false;
     }
 
     ngOnInit(): void {
@@ -91,6 +90,8 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
         } else {
             this.player.volume = 1;
         }
+
+        this.logger.debug(`volume ${this.player.volume}`);
     }
 
     onMouseEnterVolumeControl(): void {
@@ -101,54 +102,9 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
         this.hideTooltip();
     }
 
-    onMouseDownVolumeTooltip(e: MouseEvent, bar: HTMLElement): void {
-        this.updatePlayerVolumeForMouseEvent(e, bar);
-        this.tooltipHasFocus = true;
-    }
-
-    onMouseMoveVolumeTooltip(e: MouseEvent, bar: HTMLElement): void {
-        if (!this.tooltipHasFocus) {
-            return;
-        }
-
-        this.updatePlayerVolumeForMouseEvent(e, bar);
-    }
-
-    onMouseUpVolumeTooltip(e: MouseEvent, bar: HTMLElement): void {
-        this.updatePlayerVolumeForMouseEvent(e, bar);
-        this.tooltipHasFocus = false;
-    }
-
-    onMouseLeaveVolumeTooltip(e: MouseEvent, bar: HTMLElement): void {
-        if (!this.tooltipHasFocus) {
-            return;
-        }
-
-        this.updatePlayerVolumeForMouseEvent(e, bar);
-        this.tooltipHasFocus = false;
-    }
-
     onInputCurrentTimePercent(percent: string) {
-        let currentTimeFraction = +percent * 0.01;
-        this.player.currentTime = this.player.duration * currentTimeFraction;
-    }
-
-    private updatePlayerVolumeForMouseEvent(e: MouseEvent, bar: HTMLElement): void {
-        let offsetY: number = e.offsetY;
-
-        if (e.target !== bar) {
-            let diff = bar.offsetHeight - (<HTMLElement>e.target).clientHeight;
-            let mouseY = bar.offsetHeight - diff - e.offsetY;
-            offsetY = bar.offsetHeight - mouseY;
-        }
-
-        let volume: number = 1 - (offsetY / bar.offsetHeight);
-
-        if (volume > 1) {
-            volume = 1;
-        }
-
-        this.player.volume = volume;
+        let currentTimeUnitInterval = +percent * 0.01;
+        this.player.currentTime = this.player.duration * currentTimeUnitInterval;
     }
 
     private togglePlayback(): void {
@@ -169,14 +125,16 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
 
     private onCurrentTime(timeInSeconds: number): void {
         this.currentTimeString = this.timeFormatService.fromSeconds(timeInSeconds);
-        this.currentTimePercent = (timeInSeconds / this.player.duration) * 100;
+
+        let currentTimeUnitInterval = (timeInSeconds / this.player.duration);
+        this.currentTimePercent = currentTimeUnitInterval * 100;
     }
 
     private onLoadedMetadata() {
         this.durationString = this.timeFormatService.fromSeconds(this.player.duration);
     }
 
-    private onProgress(progress: number) {
-        this.progressPercent = progress * 100;
+    private onProgress(progressUnitInterval: number) {
+        this.progressPercent = progressUnitInterval * 100;
     }
 }

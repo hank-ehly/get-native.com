@@ -19,23 +19,14 @@
             <span class="player-controls__time-total">{{ durationString }}</span>
         </div>
 
-        <div class="volume-control" (click)="onClickVolumeControl($event)"
-             (mouseenter)="onMouseEnterVolumeControl()"
-             (mouseleave)="onMouseLeaveVolumeControl()">
-
+        <div class="volume-control" (click)="onClickVolumeControl($event)" (mouseenter)="onMouseEnterVolumeControl()" (mouseleave)="onMouseLeaveVolumeControl()">
             <img class="volume-control__icon" src="../../../assets/icons/volume.svg" alt="volume">
 
             <div class="volume-control__tooltip" *ngIf="!tooltipHidden">
-
-                <!-- Todo: Replace this chunky code with HTML5 range if you can -->
-                <div #volumebar class="volume-control__volume-bar"
-                     (mousedown) ="onMouseDownVolumeTooltip ($event, volumebar)"
-                     (mousemove) ="onMouseMoveVolumeTooltip ($event, volumebar)"
-                     (mouseup)   ="onMouseUpVolumeTooltip   ($event, volumebar)"
-                     (mouseleave)="onMouseLeaveVolumeTooltip($event, volumebar)">
-
-                    <div class="volume-control__volume" [ngStyle]="{height: (player.volume * 100) + '%'}"></div>
-                </div>
+                <label class="volume-control__label">
+                    <input type="range" min="0" max="1" step="0.01" [(ngModel)]="player.volume" class="volume-control__input">
+                    <span class="volume-control__fill" [ngStyle]="{width: player.volume * 100 + '%'}"></span>
+                </label>
             </div>
         </div>
     </div>

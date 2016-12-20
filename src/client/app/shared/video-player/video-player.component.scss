@@ -129,30 +129,49 @@
   @include border-radius(10px);
   background: $black;
   cursor: auto;
-  display: flex;
   height: 80px;
-  justify-content: center;
   position: absolute;
   top: -70px;
   width: 20px;
 }
 
-.volume-control__volume-bar {
-  align-self: center;
-  background: $tundora;
-  cursor: pointer;
-  height: 60px;
-  position: relative;
-  width: 6px;
+.volume-control__label {
+  height: 6px;
+  left: -20px;
+  overflow: hidden;
+  position: absolute;
+  transform: rotate(-90deg) translateX(-37px);
+  width: 60px;
 }
 
-.volume-control__volume {
+.volume-control__input {
+  border: none;
+  height: 6px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+
+  /* So that the fill color matches the mouse position,
+  increase the width of the input by the diameter of the slider-thumb */
+  transform: translateX(-7.5px);
+  width: 75px;
+}
+
+.volume-control__input::-webkit-slider-runnable-track {
+  background: $tundora;
+  height: 6px;
+  width: 60px;
+}
+
+.volume-control__input::-webkit-slider-thumb {
+  appearance: none;
+}
+
+.volume-control__fill {
   background: $white;
-  bottom: 0;
-
-  /* Adjust this value as a percentage based on video volume */
-  height: 0;
-
+  display: block;
+  height: 6px;
+  pointer-events: none;
   position: absolute;
   width: 100%;
 }
