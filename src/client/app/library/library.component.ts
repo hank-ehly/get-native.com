@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarService } from '../core/navbar/navbar.service';
 
 import { Logger } from 'angular2-logger/core';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -23,7 +24,7 @@ export class LibraryComponent implements OnInit {
     videos: any[];
     categories: any[];
 
-    constructor(private logger: Logger, private navbarService: NavbarService) {
+    constructor(private logger: Logger, private navbarService: NavbarService, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -74,5 +75,9 @@ export class LibraryComponent implements OnInit {
     onToggleDropdown(): void {
         this.logger.debug(`[LibraryComponent]: onToggleDropdown() -> ${!this.isDropdownVisible}`);
         this.isDropdownVisible = !this.isDropdownVisible;
+    }
+
+    onClickVideoPanel(video: any): void {
+        this.router.navigate(['library', 1]);
     }
 }
