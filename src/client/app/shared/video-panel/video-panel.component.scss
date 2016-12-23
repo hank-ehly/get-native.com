@@ -3,7 +3,6 @@
 
 .video-panel {
   @include border-right-radius(10px);
-  cursor: pointer;
   height: 290px;
   margin-bottom: 30px;
   overflow: hidden;
@@ -15,7 +14,6 @@
   @include border-right-radius(10px);
   background-image: linear-gradient(to right, rgba($shamrock, 0.8), rgba($robin-egg-blue, 0.8));
   height: 100%;
-  opacity: 0;
   position: absolute;
   top: 0;
   transition: opacity 100ms;
@@ -26,27 +24,49 @@
   opacity: 1;
 }
 
-.options {
+.controls__input {
+  background: transparent;
+  border: none;
+  color: $white;
+  font-size: $font-size-regular;
+  padding: 0;
+  text-align: center;
+  align-self: center;
+}
+
+.controls__input::-webkit-inner-spin-button,
+.controls__input::-webkit-outer-spin-button
+{
+  appearance: none;
+  margin: 0;
+}
+
+.controls__input:focus {
+  outline: 0;
+}
+
+.controls {
+  display: flex;
+  flex-flow: column wrap;
   left: 50%;
   position: absolute;
   top: 33%;
   transform: translate(-50%, -50%);
 }
 
-.options > div {
+.controls__row {
   display: flex;
-  flex-flow: row nowrap;
-  & > * {
-    align-self: center;
-  }
+  justify-content: flex-start;
 }
 
-.options .options__minute-button-frame {
+.controls__minute-button-frame {
+  align-self: center;
+  height: 22px;
   margin-right: 12px;
   width: 20px;
 }
 
-.options__minute-button {
+.controls__minute-button {
   @include border-radius(2px);
   background: $white;
   cursor: pointer;
@@ -54,7 +74,7 @@
   width: 20px;
 }
 
-.options__minute-button:after {
+.controls__minute-button:after {
   content: '';
   position: absolute;
   left: 5px;
@@ -64,26 +84,28 @@
   width: 0;
 }
 
-.options__minute-button:first-child::after {
-  top: 5px;
+.controls__minute-button:first-child::after {
+  top: 3px;
   border-bottom: 4px solid $shamrock;
 }
 
-.options__minute-button:last-child::after {
-  top: 17px;
+.controls__minute-button:last-child::after {
+  top: 15px;
   border-top: 4px solid $shamrock;
 }
 
-.options__minute-button:last-child {
+.controls__minute-button:last-child {
   margin-top: 2px;
 }
 
-.options .options__minutes-label {
+.controls__minutes-label {
+  align-self: center;
   color: $white;
-  padding-top: 2px;
+  height: 18px;
+  padding-bottom: 1px;
 }
 
-.options__button {
+.controls__button {
   @include border-radius();
   background: $white;
   border: 0;
