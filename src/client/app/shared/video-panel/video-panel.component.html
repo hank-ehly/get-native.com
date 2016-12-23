@@ -9,11 +9,9 @@
                     <div class="controls__minute-button" (click)="onClickMinuteButtonDecrement()"></div>
                 </div>
 
-                <!--<div class="controls__minute-button-form-group">-->
-                    <label for="time" class="sr-only">Time</label>
-                    <input id="time" class="controls__input" [(ngModel)]="time" type="number" [min]="minTime" step="1" [max]="maxTime" readonly>
-                    <span class="controls__minutes-label">minutes</span>
-                <!--</div>-->
+                <label for="time" class="sr-only">Time</label>
+                <input id="time" class="controls__input" [(ngModel)]="time" type="number" [min]="minTime" step="1" [max]="maxTime" readonly>
+                <span class="controls__minutes-label">minutes</span>
             </div>
             <div class="controls__row">
                 <button class="controls__button" (click)="onBegin()">Begin</button>
