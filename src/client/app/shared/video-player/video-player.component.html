@@ -21,8 +21,8 @@
         <div class="volume-control" (click)="onClickVolumeControl($event)"
              (mouseenter)="onMouseEnterVolumeControl()" (mouseleave)="onMouseLeaveVolumeControl()">
 
-            <img class="volume-control__icon" src="../../../assets/icons/volume.svg" alt="volume" *ngIf="player.volume > 0">
-            <img class="volume-control__icon" src="../../../assets/icons/mute.svg" alt="mute" *ngIf="player.volume === 0">
+            <img class="volume-control__icon" src="../../../assets/icons/volume.svg" alt="volume" *ngIf="player.volume">
+            <img class="volume-control__icon" src="../../../assets/icons/mute.svg" alt="mute" *ngIf="!player.volume">
 
             <div class="volume-control__tooltip" *ngIf="!tooltipHidden">
                 <label class="volume-control__label">
