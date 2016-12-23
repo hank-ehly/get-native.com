@@ -36,7 +36,6 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     tooltipHidden: boolean;
     controlsHidden: boolean;
 
-    /* Todo: when you click outside the 'already loaded' area, the progress stops updating correctly (seemingly) */
     progress: UnitInterval;
     currentTime: UnitInterval;
 
