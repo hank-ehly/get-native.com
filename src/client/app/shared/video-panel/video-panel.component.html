@@ -2,15 +2,22 @@
     <img src="http://lorempixel.com/280/280" alt="video-thumbnail">
 
     <div class="video-panel__overlay">
-        <div class="options" *ngIf="showControls">
-            <div>
-                <div class="options__minute-button-frame">
-                    <div class="options__minute-button" id="placeholder_1"></div>
-                    <div class="options__minute-button" id="placeholder_2"></div>
+        <div class="controls" *ngIf="showControls">
+            <div class="controls__row">
+                <div class="controls__minute-button-frame">
+                    <div class="controls__minute-button" (click)="onClickMinuteButtonIncrement()"></div>
+                    <div class="controls__minute-button" (click)="onClickMinuteButtonDecrement()"></div>
                 </div>
-                <span class="options__minutes-label">15 minutes</span>
+
+                <!--<div class="controls__minute-button-form-group">-->
+                    <label for="time" class="sr-only">Time</label>
+                    <input id="time" class="controls__input" [(ngModel)]="time" type="number" [min]="minTime" step="1" [max]="maxTime" readonly>
+                    <span class="controls__minutes-label">minutes</span>
+                <!--</div>-->
             </div>
-            <button class="options__button" (click)="onBegin()">Begin</button>
+            <div class="controls__row">
+                <button class="controls__button" (click)="onBegin()">Begin</button>
+            </div>
         </div>
     </div>
 

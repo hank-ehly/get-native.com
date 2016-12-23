@@ -18,6 +18,10 @@ export class VideoPanelComponent implements OnInit {
     @Input() showControls: boolean;
     @Output() begin = new EventEmitter();
 
+    time: number = 15;
+    minTime: number = 4;
+    maxTime: number = 60;
+
     constructor() {
     }
 
@@ -26,5 +30,17 @@ export class VideoPanelComponent implements OnInit {
 
     onBegin(): void {
         this.begin.emit();
+    }
+
+    onClickMinuteButtonIncrement() {
+        if (this.time < this.maxTime) {
+            this.time = this.time + 1;
+        }
+    }
+
+    onClickMinuteButtonDecrement() {
+        if (this.time > this.minTime) {
+            this.time = this.time - 1;
+        }
     }
 }
