@@ -57,7 +57,7 @@
 }
 
 .navbar__menu_center > * {
-  flex-grow: 1;
+  width: $main-width/3;
 }
 
 .back-button-frame {
@@ -84,7 +84,7 @@
   width: 30px;
 }
 
-.study-options {
+.study-options, .study-progress-frame {
   display: flex;
   justify-content: flex-end;
 }
