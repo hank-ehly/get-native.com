@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/30.
  */
 
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -13,34 +13,32 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     templateUrl: 'video-panel.component.html',
     styleUrls: ['video-panel.component.css']
 })
-
-export class VideoPanelComponent implements OnInit {
+export class VideoPanelComponent {
     @Input() showControls: boolean;
     @Output() begin = new EventEmitter();
+    @Output() clickOverlay = new EventEmitter();
 
     time: number = 15;
-    minTime: number = 4;
-    maxTime: number = 60;
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
+    min: number  = 4;
+    max: number  = 60;
 
     onBegin(): void {
         this.begin.emit();
     }
 
-    onClickMinuteButtonIncrement() {
-        if (this.time < this.maxTime) {
+    onClickMinuteButtonIncrement(): void {
+        if (this.time < this.max) {
             this.time = this.time + 1;
         }
     }
 
-    onClickMinuteButtonDecrement() {
-        if (this.time > this.minTime) {
+    onClickMinuteButtonDecrement(): void {
+        if (this.time > this.min) {
             this.time = this.time - 1;
         }
+    }
+
+    onClickOverlay(): void {
+        this.clickOverlay.emit();
     }
 }

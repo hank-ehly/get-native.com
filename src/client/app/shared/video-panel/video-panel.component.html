@@ -1,7 +1,7 @@
 <div class="video-panel">
     <img src="http://lorempixel.com/280/280" alt="video-thumbnail">
 
-    <div class="video-panel__overlay">
+    <div class="video-panel__overlay" [ngClass]="{'video-panel__overlay_link': !showControls}" (click)="onClickOverlay()">
         <div class="controls" *ngIf="showControls">
             <div class="controls__row">
                 <div class="controls__minute-button-frame">
@@ -10,7 +10,7 @@
                 </div>
 
                 <label for="time" class="sr-only">Time</label>
-                <input id="time" class="controls__input" [(ngModel)]="time" type="number" [min]="minTime" step="1" [max]="maxTime" readonly>
+                <input id="time" class="controls__input" [(ngModel)]="time" type="number" [min]="min" step="1" [max]="max" readonly>
                 <span class="controls__minutes-label">minutes</span>
             </div>
             <div class="controls__row">
