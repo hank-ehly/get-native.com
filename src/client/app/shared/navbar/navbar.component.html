@@ -11,13 +11,14 @@
 
         <span class="page-title">{{ title }}</span>
 
-        <!-- TODO -->
-        <!--<div class="study-progress-frame"></div>-->
+        <div class="study-progress-frame">
+            <gn-study-progress></gn-study-progress>
+        </div>
 
-        <div class="study-options">
+        <!--<div class="study-options">
             <button class="button button_opaque study-option study-option_start">START</button>
             <button class="button study-option study-option_save">SAVE</button>
-        </div>
+        </div>-->
     </div>
 
     <nav class="navbar__nav" *ngIf="!authenticated">
