@@ -5,8 +5,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= APP_TITLE %></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- Todo: Dynamic description -->
+
+<% for (var tag of meta_tags) { %>
+    <meta name="<%= tag.name %>" content="<%= tag.content %>">
+<% } %>
+
+    <!-- Todo: Make dynamic -->
+    <!--<meta name="og:url" content="">-->
+    <!-- Todo: Add once site is available in ja_JP locale -->
+    <!--<meta name="og:locale:alternate" content="ja_JP">-->
+
     <!-- inject:css -->
     <!-- endinject -->
 </head>
