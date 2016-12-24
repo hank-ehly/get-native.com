@@ -5,20 +5,19 @@
 
             <section class="column__row">
                 <h6>About this video:</h6>
-                <p class="paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda atque commodi,
-                    deseruntea ex iusto maiores nam nostrum nulla obcaecati repellendus voluptas voluptatem.
-                </p>
+                <p class="paragraph">{{ videoDescription }}</p>
             </section>
 
             <div class="column__row video-stats">
                 <div class="video-stats__group video-stats__group_views">
                     <img class="video-stats__icon" src="../../assets/icons/view-circle.svg" alt="views">
-                    <span class="video-stats__label">1k Views</span>
+
+                    <!-- Todo: normalize views to '1k' etc.. -->
+                    <span class="video-stats__label">{{ views }} Views</span>
                 </div>
                 <div class="video-stats__group video-stats__group_likes">
                     <img class="video-stats__icon video-stats__icon_like" src="../../assets/icons/like.svg" alt="like">
-                    <span class="video-stats__label">100</span>
+                    <span class="video-stats__label">{{ likes }}</span>
                 </div>
             </div>
 
@@ -33,8 +32,8 @@
             <div class="column__row speaker__row">
                 <img class="speaker-thumbnail" src="../../assets/mock/man-smiling.jpg" alt="speaker-thumbnail">
                 <div class="speaker__info">
-                    <h6 class="speaker__name-header">Speaker Name</h6>
-                    <div class="speaker__description-text">A short speaker description</div>
+                    <h6 class="speaker__name-header">{{ speaker.name }}</h6>
+                    <div class="speaker__description-text">{{ speaker.description }}</div>
                     <button class="button speaker__follow-button">FOLLOW</button>
                 </div>
             </div>

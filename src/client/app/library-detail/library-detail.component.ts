@@ -7,7 +7,9 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { NavbarService, Logger } from '../core/index';
+import { NavbarService, Logger, MockAPI } from '../core/index';
+import { VideosShowId } from '../core/mock-api/videos-show-id';
+import { Speaker } from '../core/models/speaker';
 
 @Component({
     moduleId: module.id,
@@ -18,16 +20,33 @@ import { NavbarService, Logger } from '../core/index';
 export class LibraryDetailComponent implements OnInit {
     videos: any[];
 
-    constructor(private logger: Logger, private navbar: NavbarService) {
+    description: string;
+    views: number;
+    speaker: Speaker;
+    likes: number;
+
+    /* Todo: Model */
+    video: any;
+
+    constructor(private logger: Logger, private navbar: NavbarService, private api: MockAPI) {
+        this.description = '';
+        this.views = 0;
+        this.speaker = new Speaker();
     }
 
     ngOnInit() {
-        this.logger.debug('[LibraryComponent]: ngOnInit()');
-
-        /* Todo (Mock) */
-        this.navbar.setTitle('Library Detail');
+        this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
         /* Todo (Mock) */
         this.videos = [{placeholder: false}, {placeholder: false}, {placeholder: true}];
+
+        /* GET https://get-native.com/videos/show.json?id=123456 */
+        this.api.getVideosShowId(1).subscribe((r: VideosShowId) => {
+            this.navbar.setTitle(r.topic.name);
+            this.description = r.description;
+            this.speaker = r.speaker;
+            this.views = r.loop_count;
+            this.likes = r.likes.count;
+        });
     }
 }
