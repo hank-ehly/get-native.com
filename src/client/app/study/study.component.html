@@ -1,8 +1,1 @@
-<main class="main" [ngSwitch]="activePage">
-    <gn-transition *ngSwitchDefault></gn-transition>
-    <gn-listening *ngSwitchCase="'listening'"></gn-listening>
-    <gn-shadowing *ngSwitchCase="'shadowing'"></gn-shadowing>
-    <gn-speaking *ngSwitchCase="'speaking'"></gn-speaking>
-    <gn-writing *ngSwitchCase="'writing'"></gn-writing>
-    <gn-results *ngSwitchCase="'results'"></gn-results>
-</main>
+<router-outlet></router-outlet>

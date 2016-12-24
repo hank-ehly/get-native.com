@@ -12,7 +12,6 @@ import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-study',
     templateUrl: 'study.component.html',
     styleUrls: ['study.component.css']
 })
