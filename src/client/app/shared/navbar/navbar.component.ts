@@ -39,6 +39,7 @@ import { Logger } from 'angular2-logger/core';
 export class NavbarComponent implements OnInit {
     @Input() authenticated: boolean;
     title: string;
+    searchBarHidden: boolean;
     backButtonTitle: string;
     logoLinkPath: string;
     isNotificationIndicatorVisible: boolean = true;
@@ -47,6 +48,7 @@ export class NavbarComponent implements OnInit {
                 private logger: Logger,
                 private navbarService: NavbarService,
                 private location: Location) {
+        this.searchBarHidden = true;
     }
 
     ngOnInit(): void {
@@ -69,5 +71,9 @@ export class NavbarComponent implements OnInit {
     onClickBack(): void {
         this.logger.debug(`[${this.constructor.name}]: onClickBack()`);
         this.location.back();
+    }
+
+    onToggleSearch(): void {
+        this.searchBarHidden = !this.searchBarHidden;
     }
 }

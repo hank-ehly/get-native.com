@@ -29,7 +29,8 @@
 
     <ul class="navbar__menu navbar__menu_right" *ngIf="authenticated">
         <li>
-            <img class="navbar__menu-icon navbar__menu-icon_search" src="../../../assets/icons/search.svg" alt="search">
+            <img class="navbar__menu-icon navbar__menu-icon_search" src="../../../assets/icons/search.svg" alt="search" *ngIf="searchBarHidden" (click)="onToggleSearch()">
+            <img class="navbar__menu-icon navbar__menu-icon_search" src="../../../assets/icons/close-dark.svg" alt="close" *ngIf="!searchBarHidden" (click)="onToggleSearch()">
         </li>
         <li>
             <span class="navbar__menu-icon-frame">
