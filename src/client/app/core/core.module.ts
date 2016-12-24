@@ -6,10 +6,11 @@
  */
 
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 import {
     LocalStorageService,
     LoginService,
+    MockAPI,
     NavbarService,
     PasswordService,
     StringService,
@@ -18,9 +19,13 @@ import {
 } from './index';
 
 @NgModule({
+    imports: [
+        HttpModule
+    ],
     providers: [
         LocalStorageService,
         LoginService,
+        MockAPI,
         NavbarService,
         PasswordService,
         StringService,

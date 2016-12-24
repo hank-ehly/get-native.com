@@ -12,5 +12,6 @@ export * from './navbar/navbar.service';
 export * from './spec/index';
 export * from './password/index';
 export * from './login/login.service';
+export * from './mock-api/mock-api';
 export * from './time-format/time-format.service';
 export * from './typings/unit-interval';
