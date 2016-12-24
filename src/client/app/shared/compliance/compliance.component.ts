@@ -7,9 +7,7 @@
 
 import { Component, trigger, keyframes, style, animate, transition, Input, OnInit } from '@angular/core';
 
-import { LocalStorageService, kAcceptLocalStorage, LocalStorageProtocol, LocalStorageItem } from '../../core/index';
-
-import { Logger } from 'angular2-logger/core';
+import { LocalStorageService, kAcceptLocalStorage, LocalStorageProtocol, LocalStorageItem, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -35,7 +33,6 @@ import { Logger } from 'angular2-logger/core';
         ])
     ]
 })
-
 export class ComplianceComponent implements OnInit, LocalStorageProtocol {
     @Input() isVisible: boolean;
 

@@ -10,9 +10,7 @@ import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { ComplianceComponent } from './index';
-import { SpecUtil, STUBLogger, STUBLocalStorageService, LocalStorageService, kAcceptLocalStorage } from '../../core/index';
-
-import { Logger } from 'angular2-logger/core';
+import { SpecUtil, STUBLogger, STUBLocalStorageService, LocalStorageService, kAcceptLocalStorage, Logger } from '../../core/index';
 
 export function main() {
     let comp: ComplianceComponent;

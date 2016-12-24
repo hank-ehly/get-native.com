@@ -8,10 +8,8 @@
 import { Component, ViewChild, AfterViewChecked } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Logger } from 'angular2-logger/core';
-
 import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
-import { LoginService } from '../../core/index';
+import { LoginService, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,

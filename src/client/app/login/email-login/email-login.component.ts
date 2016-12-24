@@ -8,8 +8,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger } from 'angular2-logger/core';
-import { LoginService } from '../../core/index';
+import { LoginService, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -17,7 +16,6 @@ import { LoginService } from '../../core/index';
     templateUrl: 'email-login.component.html',
     styleUrls: ['email-login.component.css']
 })
-
 export class EmailLoginComponent {
     /* Taken from HTML5 Specification */
     HTML5_EMAIL_REGEX: string = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';

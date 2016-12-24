@@ -7,9 +7,7 @@
 
 import { Injectable } from '@angular/core';
 
-import { StringService, PasswordBlacklist as Blacklist } from '../index';
-
-import { Logger } from 'angular2-logger/core';
+import { StringService, PasswordBlacklist as Blacklist, Logger } from '../index';
 
 @Injectable()
 export class PasswordService {

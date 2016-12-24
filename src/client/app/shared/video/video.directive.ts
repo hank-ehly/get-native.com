@@ -7,9 +7,10 @@
 
 import { Directive, ElementRef } from '@angular/core';
 
+import { Logger } from '../../core/index';
+
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { Logger } from 'angular2-logger/core';
 
 @Directive({
     selector: '[gnVideo]'

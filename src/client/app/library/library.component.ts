@@ -6,9 +6,9 @@
  */
 
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
-
-import { Logger } from 'angular2-logger/core';
 import { Router } from '@angular/router';
+
+import { Logger } from '../core/index';
 
 @Component({
     moduleId: module.id,

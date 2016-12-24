@@ -7,9 +7,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { NavbarService } from '../core/index';
-
-import { Logger } from 'angular2-logger/core';
+import { NavbarService, Logger } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -17,7 +15,6 @@ import { Logger } from 'angular2-logger/core';
     templateUrl: 'library-detail.component.html',
     styleUrls: ['library-detail.component.css']
 })
-
 export class LibraryDetailComponent implements OnInit {
     videos: any[];
 

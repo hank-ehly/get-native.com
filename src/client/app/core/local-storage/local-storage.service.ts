@@ -6,10 +6,10 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Logger } from 'angular2-logger/core';
-import { Subject } from 'rxjs/Subject';
 
-import { LocalStorageItem } from './local-storage-item';
+import { Logger, LocalStorageItem } from '../index';
+
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 

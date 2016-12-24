@@ -25,10 +25,9 @@ import {
     STUBRouter,
     PasswordService,
     LoginService,
-    NavbarService
+    NavbarService,
+    Logger
 } from '../core/index';
-
-import { Logger } from 'angular2-logger/core';
 
 export function main() {
     let comp: LoginComponent;

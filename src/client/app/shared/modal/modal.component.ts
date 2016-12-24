@@ -5,12 +5,9 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import {
-    Component, OnInit, trigger, transition, animate, keyframes, style, Input, EventEmitter,
-    Output
-} from '@angular/core';
+import { Component, OnInit, trigger, transition, animate, keyframes, style, Input, EventEmitter, Output } from '@angular/core';
 
-import { Logger } from 'angular2-logger/core';
+import { Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,

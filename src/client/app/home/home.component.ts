@@ -9,9 +9,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { FeatureDescriptionService } from './feature-description/index';
 import { FeatureDescription } from './feature-description/feature-description';
-import { Logger } from 'angular2-logger/core';
 
-import { LoginService } from '../core/index';
+import { LoginService, Logger } from '../core/index';
 
 @Component({
     moduleId: module.id,

@@ -5,6 +5,7 @@
  * Created by henryehly on 2016/11/06.
  */
 
+export * from './logger/index'
 export * from './local-storage/index';
 export * from './string/string.service';
 export * from './navbar/navbar.service';

@@ -23,8 +23,7 @@ import { LibraryDetailModule } from './library-detail/library-detail.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsModule } from './settings/settings.module';
 import { StudyModule } from './study/study.module';
-
-import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2-logger/core';
+import { Logger, LoggerConfig, LOG_LEVEL } from './core/index';
 
 @NgModule({
     imports: [
@@ -46,7 +45,7 @@ import { Options as LoggerOptions, Logger, Level as LoggerLevel } from 'angular2
     declarations: [AppComponent],
     providers: [
         {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-        {provide: LoggerOptions, useValue: {level: LoggerLevel.LOG}},
+        {provide: LoggerConfig, useValue: LOG_LEVEL.DEBUG},
         Logger
     ],
     bootstrap: [AppComponent]

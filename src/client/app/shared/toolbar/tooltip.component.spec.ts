@@ -11,9 +11,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
-import { SpecUtil, STUBLogger } from '../../core/index';
-
-import { Logger } from 'angular2-logger/core';
+import { SpecUtil, STUBLogger, Logger } from '../../core/index';
 
 export function main() {
     let comp: ToolbarComponent;
