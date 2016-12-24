@@ -1,6 +1,6 @@
 <div class="player-frame" (mouseleave)="onMouseLeavePlayerFrame()" (mouseenter)="onMouseEnterPlayerFrame()">
 
-    <video gnVideo class="video" src="../../../assets/mock/video.mov"></video>
+    <video gnVideo class="video" src="../../../assets/mock/video.mov" [loop]="loop"></video>
 
     <div class="player-controls" *ngIf="!controlsHidden" [@fadeInOut]>
         <button class="player-controls__toggle-button" (click)="onClickToggleButton()"

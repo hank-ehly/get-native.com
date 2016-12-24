@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/07.
  */
 
-import { Component, OnInit, ViewChild, AfterViewInit, trigger, animate, style, transition } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, trigger, animate, style, transition, Input } from '@angular/core';
 
 import { VideoDirective } from '../video/video.directive';
 import { TimeFormatService, UnitInterval } from '../../core/index';
@@ -29,6 +29,7 @@ import { Logger } from 'angular2-logger/core';
     ]
 })
 export class VideoPlayerComponent implements OnInit, AfterViewInit {
+    @Input() loop: boolean;
     @ViewChild(VideoDirective) player: VideoDirective;
 
     currentTimeString: string;
