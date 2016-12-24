@@ -7,6 +7,7 @@
 
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, Route } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { LocalStorageService, kAcceptLocalStorage } from './core/index';
 import { NavbarService } from './core/navbar/navbar.service';
@@ -23,13 +24,14 @@ export class AppComponent implements OnInit {
     showComplianceDialog: boolean;
     showLoginModal: boolean;
 
-    authenticated: boolean = false;
+    authenticated: boolean = true;
 
     constructor(private logger: Logger,
                 private localStorageService: LocalStorageService,
                 private router: Router,
                 private activatedRoute: ActivatedRoute,
-                private navbar: NavbarService) {
+                private navbar: NavbarService,
+                private titleService: Title) {
         this.showLoginModal = false;
     }
 
@@ -56,6 +58,7 @@ export class AppComponent implements OnInit {
 
                     if (e.hasOwnProperty('title') && e['title']) {
                         this.navbar.setTitle(e['title']);
+                        this.titleService.setTitle(`Get Native | ${e['title']}`);
                     }
                 });
 
