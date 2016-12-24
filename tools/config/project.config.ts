@@ -1,7 +1,6 @@
 import { join } from 'path';
 
 import { SeedConfig } from './seed.config';
-const META_TAGS = require('./meta_tags.json');
 // import { ExtendPackages } from './seed.config.interfaces';
 
 /**
@@ -11,7 +10,7 @@ const META_TAGS = require('./meta_tags.json');
 export class ProjectConfig extends SeedConfig {
 
     PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
-    META_TAGS: any[] = META_TAGS;
+    META_TAGS: any[] = require('./meta_tags.json');
 
     constructor() {
         super();
