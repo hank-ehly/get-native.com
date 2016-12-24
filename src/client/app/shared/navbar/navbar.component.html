@@ -9,22 +9,21 @@
     </div>
 
     <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && searchBarHidden" [@slideInRightOutLeft]>
-        <div class="back-button-frame">
-            <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back"
-                 (click)="onClickBack()" *ngIf="backButtonTitle">
-            <span class="back-button-label" *ngIf="backButtonTitle">{{ backButtonTitle }}</span>
+        <div class="back-button-frame" *ngIf="backButtonTitle">
+            <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back" (click)="onClickBack()">
+            <span class="back-button-label">{{ backButtonTitle }}</span>
         </div>
 
         <span class="page-title">{{ title }}</span>
 
-        <div class="study-progress-frame">
+        <div class="study-progress-frame" *ngIf="!progressBarHidden">
             <gn-study-progress></gn-study-progress>
         </div>
 
-        <!--<div class="study-options">
+        <div class="study-options" *ngIf="!studyOptionsHidden">
             <button class="button button_opaque study-option study-option_start">START</button>
             <button class="button study-option study-option_save">SAVE</button>
-        </div>-->
+        </div>
     </div>
 
     <nav class="navbar__nav" *ngIf="!authenticated">

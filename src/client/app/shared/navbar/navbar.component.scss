@@ -46,7 +46,6 @@
 
 .navbar__menu {
   display: flex;
-  justify-content: space-between;
   align-self: center;
   height: inherit;
   line-height: 90px;
@@ -65,11 +64,14 @@
 .back-button-frame {
   display: flex;
   justify-content: flex-start;
+  left: 0;
   overflow: hidden;
 }
 
 .page-title {
+  left: $main-width/3;
   text-align: center;
+  position: absolute;
 }
 
 .navbar__menu-icon_back, .back-button-label {
@@ -89,6 +91,9 @@
 .study-options, .study-progress-frame {
   display: flex;
   justify-content: flex-end;
+  position: absolute;
+  align-self: center;
+  left: $main-width - ($main-width/3);
 }
 
 .study-option {

@@ -9,7 +9,7 @@
                 <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible">
             </div>
 
-            <div class="dropdown-menu" *ngIf="isDropdownVisible">
+            <div class="dropdown-menu" *ngIf="isDropdownVisible" [@dropdown]>
                 <div class="dropdown-menu__row" *ngFor="let row of categories">
 
                     <div class="dropdown-menu__row-group" *ngFor="let category of row"

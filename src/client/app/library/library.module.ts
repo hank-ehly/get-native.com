@@ -16,6 +16,5 @@ import { LibraryRoutingModule } from './library-routing.module';
     declarations: [LibraryComponent],
     exports: [LibraryComponent]
 })
-
 export class LibraryModule {
 }

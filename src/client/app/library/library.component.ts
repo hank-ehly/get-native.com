@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/05.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
 
 import { Logger } from 'angular2-logger/core';
 import { Router } from '@angular/router';
@@ -14,9 +14,20 @@ import { Router } from '@angular/router';
     moduleId: module.id,
     selector: 'gn-library',
     templateUrl: 'library.component.html',
-    styleUrls: ['library.component.css']
+    styleUrls: ['library.component.css'],
+    animations: [
+        trigger('dropdown', [
+            transition(':enter', [
+                style({opacity: 0, transform: 'translateY(-20px)'}),
+                animate('300ms ease', style({opacity: 1, transform: 'translateY(0)'}))
+            ]),
+            transition(':leave', [
+                style({opacity: 1, transform: 'translateY(0)'}),
+                animate('300ms ease', style({opacity: 0, transform: 'translateY(-20px)'}))
+            ])
+        ])
+    ]
 })
-
 export class LibraryComponent implements OnInit {
     isDropdownVisible: boolean;
     videos: any[];
@@ -26,7 +37,7 @@ export class LibraryComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.logger.debug('[LibraryComponent]: ngOnInit()');
+        this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
         /* Mock */
         this.videos = [
@@ -66,11 +77,11 @@ export class LibraryComponent implements OnInit {
             }
         }
 
-        this.logger.debug('[LibraryComponent]: Categories: ', this.categories);
+        this.logger.debug(`[${this.constructor.name}]: Categories: `, this.categories);
     }
 
     onToggleDropdown(): void {
-        this.logger.debug(`[LibraryComponent]: onToggleDropdown() -> ${!this.isDropdownVisible}`);
+        this.logger.debug(`[${this.constructor.name}]: onToggleDropdown() -> ${!this.isDropdownVisible}`);
         this.isDropdownVisible = !this.isDropdownVisible;
     }
 
