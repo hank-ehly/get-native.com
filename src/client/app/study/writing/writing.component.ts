@@ -11,7 +11,6 @@ import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-writing',
     templateUrl: 'writing.component.html',
     styleUrls: ['writing.component.css']
 })

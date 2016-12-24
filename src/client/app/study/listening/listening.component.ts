@@ -11,7 +11,6 @@ import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-listening',
     templateUrl: 'listening.component.html',
     styleUrls: ['listening.component.css']
 })

@@ -11,7 +11,6 @@ import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-results',
     templateUrl: 'results.component.html',
     styleUrls: ['results.component.css']
 })
