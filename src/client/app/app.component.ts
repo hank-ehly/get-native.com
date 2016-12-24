@@ -85,4 +85,9 @@ export class AppComponent implements OnInit {
             //         }
             //     });
     }
+
+    /* DEBUG */
+    onDebugAuthorize(b: boolean): void {
+        this.authenticated = b;
+    }
 }

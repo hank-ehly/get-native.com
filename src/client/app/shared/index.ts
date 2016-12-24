@@ -5,8 +5,9 @@
  * Created by henryehly on 2016/11/13.
  */
 
-export * from './config/env.config';
 export * from './compliance/index';
+export * from './config/env.config';
+export * from './debug/index';
 export * from './footer/index';
 export * from './modal/modal.component';
 export * from './navbar/index';
