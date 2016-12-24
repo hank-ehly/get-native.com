@@ -23,8 +23,7 @@ import './operators';
 export class AppComponent implements OnInit {
     showComplianceDialog: boolean;
     showLoginModal: boolean;
-
-    authenticated: boolean = false;
+    authenticated: boolean;
 
     constructor(private logger: Logger,
                 private localStorageService: LocalStorageService,
@@ -32,6 +31,7 @@ export class AppComponent implements OnInit {
                 private activatedRoute: ActivatedRoute,
                 private navbar: NavbarService,
                 private titleService: Title) {
+        this.authenticated = false;
         this.showLoginModal = false;
     }
 
@@ -42,48 +42,27 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.showComplianceDialog = !this.localStorageService.getItem(kAcceptLocalStorage);
 
-            /* Dynamically set the navbar title */
-            this.router.events
-                .filter(e => e instanceof NavigationEnd)
-                .map(() => this.activatedRoute)
-                .map(route => {
-                    while (route.firstChild) route = route.firstChild;
-                    return route;
-                })
-                .filter(route => route.outlet === 'primary')
-                .mergeMap(route => route.data)
-                .subscribe(e => {
-                    this.logger.debug('NavigationEnd:', e);
+        /* Dynamically set the navbar title */
+        this.router.events
+            .filter(e => e instanceof NavigationEnd)
+            .map(() => this.activatedRoute)
+            .map(route => {
+                while (route.firstChild) route = route.firstChild;
+                return route;
+            })
+            .filter(route => route.outlet === 'primary')
+            .mergeMap(route => route.data)
+            .subscribe(e => {
+                this.logger.debug('NavigationEnd:', e);
 
-                    if (e.hasOwnProperty('title') && e['title']) {
-                        if (this.authenticated) {
-                            this.navbar.setTitle(e['title']);
-                        }
-
-                        this.titleService.setTitle(`Get Native | ${e['title']}`);
+                if (e.hasOwnProperty('title') && e['title']) {
+                    if (this.authenticated) {
+                        this.navbar.setTitle(e['title']);
                     }
-                });
 
-            /* Todo */
-            // this.router.events
-            //     .filter(e => e instanceof NavigationEnd)
-            //     .map((e) => {
-            //         for (let route of this.router.config) {
-            //             let searchPath = `/${route.path}`;
-            //
-            //             if (e.url === searchPath) {
-            //                 return route.data['title'];
-            //             }
-            //         }
-            //
-            //         return null;
-            //     })
-            //     .pairwise()
-            //     .subscribe(e => {
-            //         if (e instanceof Array && e[0]) {
-            //             this.navbar.setBackButtonTitle(e[0]);
-            //         }
-            //     });
+                    this.titleService.setTitle(`Get Native | ${e['title']}`);
+                }
+            });
     }
 
     /* DEBUG */
