@@ -9,9 +9,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SettingsComponent } from './settings.component';
+import { GeneralComponent } from './general/general.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { SecurityComponent } from './security/security.component';
 
 const settingsRoutes: Routes = [
-    {path: 'settings', component: SettingsComponent, data: {title: 'Settings'}}
+    {
+        path: 'settings',
+        component: SettingsComponent,
+        children: [
+            {path: '', component: GeneralComponent, data: {title: 'Settings'}},
+            {path: 'notifications', component: NotificationsComponent, data: {title: 'Settings'}},
+            {path: 'security', component: SecurityComponent, data: {title: 'Settings'}}
+        ]
+    }
 ];
 
 @NgModule({

@@ -13,14 +13,13 @@
     </header>
 
     <ul class="tabs">
-        <li class="tab" *ngFor="let tab of tabs" [routerLink]="['./', {tab: tab}]" [ngClass]="classForTab(tab)">
-            {{ tab | uppercase }}
+        <li class="tab" *ngFor="let tab of tabs" [routerLink]="[tab.path]" routerLinkActive="tab_active"
+            [routerLinkActiveOptions]="{exact: true}">
+            {{ tab.name | uppercase }}
         </li>
     </ul>
 
-    <section [ngSwitch]="selectedTab">
-        <gn-general *ngSwitchDefault></gn-general>
-        <gn-security *ngSwitchCase="'security'"></gn-security>
-        <gn-notifications *ngSwitchCase="'notifications'"></gn-notifications>
+    <section>
+        <router-outlet></router-outlet>
     </section>
 </main>

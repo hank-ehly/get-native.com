@@ -6,7 +6,6 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
 
 import { Logger } from 'angular2-logger/core';
 
@@ -18,11 +17,15 @@ import { Logger } from 'angular2-logger/core';
 })
 
 export class SettingsComponent implements OnInit {
-    tabs: string[];
+    tabs: any[];
     selectedTab: any;
 
-    constructor(private logger: Logger, private route: ActivatedRoute) {
-        this.tabs = ['general', 'security', 'notifications'];
+    constructor(private logger: Logger) {
+        this.tabs = [
+            {name: 'general', path: './'},
+            {name: 'security', path: 'security'},
+            {name: 'notifications', path: 'notifications'}
+        ];
     }
 
     get selectedTabDescription(): string {
@@ -37,18 +40,5 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit() {
         this.logger.debug('[SettingsComponent] ngOnInit()');
-        this.route.params.subscribe(this.paramsChanged.bind(this));
-    }
-
-    paramsChanged(params: Params) {
-        this.selectedTab = params['tab'];
-        this.logger.debug(`selectedTab: ${this.selectedTab}`);
-    }
-
-    classForTab(title: string) {
-        let isExactMatch = this.selectedTab === title;
-        let isDefault    = title === 'general' && !this.selectedTab;
-
-        return {'tab_active': isExactMatch || isDefault};
     }
 }
