@@ -1,0 +1,54 @@
+[
+    {
+        "name": "description",
+        "content": "Get Native is a language learning resource for advanced foreign language learners. Increase your productivity and cut down on study time by using Get Native's video database and study features."
+    },
+    {
+        "name": "keywords",
+        "content": "Get Native,get-native,language learning apps,language learning software,language learning websites,language learning programs,language learning strategies"
+    },
+    {
+        "name": "viewport",
+        "content": "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    },
+    {
+        "name": "charset",
+        "content": "utf-8"
+    },
+    {
+        "name": "og:site_name",
+        "content": "Get Native"
+    },
+    {
+        "name": "og:title",
+        "content": "Get Native"
+    },
+    {
+        "name": "og:description",
+        "content": "Get Native is a language learning resource for advanced foreign language learners. Increase your productivity and cut down on study time by using Get Native's video database and study features."
+    },
+    {
+        "name": "og:locale",
+        "content": "en_US"
+    },
+    {
+        "name": "og:image",
+        "content": "https://stg.get-native.com/assets/images/home-background.jpg"
+    },
+    {
+        "name": "og:image:secure_url",
+        "content": "https://stg.get-native.com/assets/images/home-background.jpg"
+    },
+    {
+        "name": "og:image:type",
+        "content": "image/jpeg"
+    },
+    {
+        "name": "og:image:width",
+        "content": "2000"
+    },
+    {
+        "name": "og:image:height",
+        "content": "1776"
+    }
+]
