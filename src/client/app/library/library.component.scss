@@ -82,7 +82,6 @@
   color: $default-color;
 
   &:hover {
-    text-decoration: underline;
-    text-decoration-color: $alto;
+    border-bottom-color: $alto;
   }
 }
