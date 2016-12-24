@@ -60,6 +60,8 @@ export class NavbarComponent implements OnInit {
     @Input() authenticated: boolean;
     title: string;
     searchBarHidden: boolean;
+    studyOptionsHidden: boolean;
+    progressBarHidden: boolean;
     backButtonTitle: string;
     logoLinkPath: string;
     isNotificationIndicatorVisible: boolean = true;
@@ -69,6 +71,8 @@ export class NavbarComponent implements OnInit {
                 private navbarService: NavbarService,
                 private location: Location) {
         this.searchBarHidden = true;
+        this.studyOptionsHidden = true;
+        this.progressBarHidden = true;
     }
 
     ngOnInit(): void {
