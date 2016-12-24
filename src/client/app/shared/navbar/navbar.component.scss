@@ -2,13 +2,16 @@
 @import './navbar.component.debug';
 
 .navbar {
+  display: flex;
   height: 90px;
+  justify-content: center;
 }
 
 .navbar__logo-frame {
   display: flex;
   height: 90px;
   justify-content: center;
+  left: 0;
   position: fixed;
   width: 90px;
   z-index: 2;
@@ -41,8 +44,6 @@
   }
 }
 
-// ---------------
-
 .navbar__menu {
   display: flex;
   justify-content: space-between;
@@ -54,6 +55,7 @@
 
 .navbar__menu_center {
   margin: 0 auto;
+  position: absolute;
 }
 
 .navbar__menu_center > * {
