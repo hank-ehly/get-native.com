@@ -7,8 +7,6 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { NavbarService } from '../core/navbar/navbar.service';
-
 import { Logger } from 'angular2-logger/core';
 import { Router } from '@angular/router';
 
@@ -24,12 +22,11 @@ export class LibraryComponent implements OnInit {
     videos: any[];
     categories: any[];
 
-    constructor(private logger: Logger, private navbarService: NavbarService, private router: Router) {
+    constructor(private logger: Logger, private router: Router) {
     }
 
     ngOnInit(): void {
         this.logger.debug('[LibraryComponent]: ngOnInit()');
-        this.navbarService.setTitle('Library');
 
         /* Mock */
         this.videos = [

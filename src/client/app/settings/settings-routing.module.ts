@@ -11,7 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SettingsComponent } from './settings.component';
 
 const settingsRoutes: Routes = [
-    {path: 'settings', component: SettingsComponent}
+    {path: 'settings', component: SettingsComponent, data: {title: 'Settings'}}
 ];
 
 @NgModule({

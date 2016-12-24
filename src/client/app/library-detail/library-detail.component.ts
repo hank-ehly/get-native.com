@@ -6,6 +6,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { NavbarService } from '../core/index';
 
@@ -21,14 +22,14 @@ import { Logger } from 'angular2-logger/core';
 export class LibraryDetailComponent implements OnInit {
     videos: any[];
 
-    constructor(private logger: Logger, private navbarService: NavbarService) {
+    constructor(private logger: Logger, private navbar: NavbarService, private location: Location) {
     }
 
     ngOnInit() {
         this.logger.debug('[LibraryComponent]: ngOnInit()');
 
         /* Todo (Mock) */
-        this.navbarService.setTitle('Library Detail');
+        this.navbar.setTitle('Library Detail');
 
         /* Todo (Mock) */
         this.videos = [{placeholder: false}, {placeholder: false}, {placeholder: true}];
