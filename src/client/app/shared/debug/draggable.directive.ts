@@ -7,10 +7,8 @@
 
 import { Directive, ElementRef, HostListener, OnInit } from '@angular/core';
 
-import { LocalStorageService, kDebugModalPosition } from '../../core/index';
+import { LocalStorageService, kDebugModalPosition, Logger } from '../../core/index';
 import { Coordinate } from './coordinate';
-
-import { Logger } from 'angular2-logger/core';
 
 @Directive({
     selector: '[gnDraggable]'

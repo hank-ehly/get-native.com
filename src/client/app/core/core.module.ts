@@ -13,7 +13,8 @@ import {
     NavbarService,
     PasswordService,
     StringService,
-    TimeFormatService
+    TimeFormatService,
+    Logger
 } from './index';
 
 @NgModule({
@@ -23,7 +24,8 @@ import {
         NavbarService,
         PasswordService,
         StringService,
-        TimeFormatService
+        TimeFormatService,
+        Logger
     ]
 })
 

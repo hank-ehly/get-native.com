@@ -8,9 +8,7 @@
 import { Component, OnInit, Input, trigger, transition, animate, keyframes, style } from '@angular/core';
 import { Location } from '@angular/common';
 
-import { LoginService, NavbarService } from '../../core/index';
-
-import { Logger } from 'angular2-logger/core';
+import { LoginService, NavbarService, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,

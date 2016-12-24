@@ -7,9 +7,7 @@
 
 import { Component } from '@angular/core';
 
-import { PasswordService } from '../../core/index';
-
-import { Logger } from 'angular2-logger/core';
+import { PasswordService, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -17,7 +15,6 @@ import { Logger } from 'angular2-logger/core';
     templateUrl: 'password-strength.component.html',
     styleUrls: ['password-strength.component.css']
 })
-
 export class PasswordStrengthComponent {
     score: number = 0;
     private _strengthLabel: string;

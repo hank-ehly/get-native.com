@@ -134,7 +134,6 @@
     "@angular/platform-browser": "~2.2.3",
     "@angular/platform-browser-dynamic": "~2.2.3",
     "@angular/router": "~3.2.0",
-    "angular2-logger": "^0.5.0",
     "core-js": "^2.4.1",
     "intl": "^1.2.5",
     "reflect-metadata": "^0.1.8",

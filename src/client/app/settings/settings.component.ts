@@ -7,7 +7,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { Logger } from 'angular2-logger/core';
+import { Logger } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -15,7 +15,6 @@ import { Logger } from 'angular2-logger/core';
     templateUrl: 'settings.component.html',
     styleUrls: ['settings.component.css']
 })
-
 export class SettingsComponent implements OnInit {
     tabs: any[];
     selectedTab: any;

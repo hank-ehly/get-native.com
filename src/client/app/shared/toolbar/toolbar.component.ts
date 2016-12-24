@@ -8,7 +8,7 @@
 import { Component, trigger, transition, style, animate, keyframes } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger } from 'angular2-logger/core';
+import { Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -33,7 +33,6 @@ import { Logger } from 'angular2-logger/core';
         ])
     ]
 })
-
 export class ToolbarComponent {
     isTooltipVisible: boolean;
 

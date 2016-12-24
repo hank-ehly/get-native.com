@@ -8,9 +8,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, trigger, animate, style, transition, Input } from '@angular/core';
 
 import { VideoDirective } from '../video/video.directive';
-import { TimeFormatService, UnitInterval } from '../../core/index';
-
-import { Logger } from 'angular2-logger/core';
+import { TimeFormatService, UnitInterval, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,

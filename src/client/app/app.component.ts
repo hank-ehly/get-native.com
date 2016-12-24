@@ -12,7 +12,7 @@ import { Title } from '@angular/platform-browser';
 import { LocalStorageService, kAcceptLocalStorage } from './core/index';
 import { NavbarService } from './core/navbar/navbar.service';
 
-import { Logger } from 'angular2-logger/core';
+import { Logger } from './core/index';
 import './operators';
 
 @Component({

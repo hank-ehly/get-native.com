@@ -7,10 +7,9 @@
 
 import { NavigationExtras, Router } from '@angular/router';
 
-import { LocalStorageService, LoginService, PasswordService } from '../index';
+import { LocalStorageService, LoginService, PasswordService, Logger } from '../index';
 
 import { Subject } from 'rxjs/Subject';
-import { Logger } from 'angular2-logger/core';
 
 export const STUBLogger: Logger = <Logger>{
     debug(message?: any, ...optionalParams: any[]): void {}
