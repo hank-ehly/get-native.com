@@ -6,3 +6,4 @@
  */
 
 export const kAcceptLocalStorage = 'accept-local-storage';
+export const kDebugModalPosition = 'debug-modal-position';

@@ -1,0 +1,12 @@
+<main class="main" gnDraggable>
+
+    <h3 class="header header--logged-in">Logged In</h3>
+    <gn-switch (toggle)="onToggleAuthorized($event)"></gn-switch>
+
+    <h3 class="header">Routes</h3>
+    <ul class="list list_unordered">
+        <li *ngFor="let route of routes">
+            <a [routerLink]="route.name" class="link">{{ route.title }}</a>
+        </li>
+    </ul>
+</main>

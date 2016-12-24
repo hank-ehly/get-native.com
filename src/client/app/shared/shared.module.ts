@@ -22,7 +22,9 @@ import {
     TranscriptComponent,
     VideoDirective,
     VideoPlayerComponent,
-    VideoPanelComponent
+    VideoPanelComponent,
+    DebugComponent,
+    DraggableDirective
 } from './index';
 
 @NgModule({
@@ -43,7 +45,9 @@ import {
         TranscriptComponent,
         VideoDirective,
         VideoPlayerComponent,
-        VideoPanelComponent
+        VideoPanelComponent,
+        DebugComponent,
+        DraggableDirective
     ],
     exports: [
         CommonModule,
@@ -59,7 +63,8 @@ import {
         ToolbarComponent,
         TranscriptComponent,
         VideoPlayerComponent,
-        VideoPanelComponent
+        VideoPanelComponent,
+        DebugComponent
     ]
 })
 

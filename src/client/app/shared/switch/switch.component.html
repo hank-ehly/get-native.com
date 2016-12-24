@@ -1,5 +1,5 @@
 <label class="switch">
-    <input class="switch__input" type="checkbox" [(ngModel)]="on">
+    <input class="switch__input" type="checkbox" [(ngModel)]="on" (change)="onToggle()">
 
     <span class="switch__title">{{ on ? 'ON' : 'OFF' }}</span>
     <span class="switch__slider"></span>
