@@ -1,5 +1,5 @@
 <main class="main">
-    <gn-video-player></gn-video-player>
+    <gn-video-player [loop]="true"></gn-video-player>
     <span class="link instructions-link" (click)="showModal()">Instructions</span>
 
     <gn-modal [isVisible]="isModalVisible" (close)="onClose()">

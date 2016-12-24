@@ -7,8 +7,6 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { NavbarService } from '../../core/navbar/navbar.service';
-
 import { Logger } from 'angular2-logger/core';
 
 @Component({
@@ -18,11 +16,10 @@ import { Logger } from 'angular2-logger/core';
     styleUrls: ['speaking.component.css']
 })
 export class SpeakingComponent implements OnInit {
-    constructor(private logger: Logger, private navbar: NavbarService) {
+    constructor(private logger: Logger) {
     }
 
     ngOnInit() {
         this.logger.info('[SpeakingComponent] ngOnInit()');
-        this.navbar.setTitle('SPEAKING');
     }
 }
