@@ -3,23 +3,25 @@
         <img class="navbar__logo" src="../../../assets/mock/pokeball.png" alt="logo" [routerLink]="logoLinkPath">
     </div>
 
-    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated">
+    <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && !searchBarHidden" [@slideInLeftOutRight]>
         <label for="search-bar" class="sr-only">Search</label>
-        <input type="search" name="search" class="input search-bar" id="search-bar" *ngIf="!searchBarHidden" [@slideInOut] placeholder="Search...">
+        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." autofocus>
+    </div>
 
-        <div class="back-button-frame" *ngIf="searchBarHidden">
+    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && searchBarHidden" [@slideInRightOutLeft]>
+        <div class="back-button-frame">
             <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back"
                  (click)="onClickBack()" *ngIf="backButtonTitle">
             <span class="back-button-label" *ngIf="backButtonTitle">{{ backButtonTitle }}</span>
         </div>
 
-        <span class="page-title" *ngIf="searchBarHidden">{{ title }}</span>
+        <span class="page-title">{{ title }}</span>
 
-        <div class="study-progress-frame" *ngIf="searchBarHidden">
+        <div class="study-progress-frame">
             <gn-study-progress></gn-study-progress>
         </div>
 
-        <!--<div class="study-options" *ngIf="searchBarHidden">
+        <!--<div class="study-options">
             <button class="button button_opaque study-option study-option_start">START</button>
             <button class="button study-option study-option_save">SAVE</button>
         </div>-->
