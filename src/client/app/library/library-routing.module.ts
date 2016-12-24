@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { LibraryComponent } from './library.component';
 
 const libraryRoutes: Routes = [
-    {path: 'library', component: LibraryComponent}
+    {path: 'library', component: LibraryComponent, data: {title: 'Library'}}
 ];
 
 @NgModule({

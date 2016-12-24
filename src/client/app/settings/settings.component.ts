@@ -8,8 +8,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { NavbarService } from '../core/index';
-
 import { Logger } from 'angular2-logger/core';
 
 @Component({
@@ -22,9 +20,8 @@ import { Logger } from 'angular2-logger/core';
 export class SettingsComponent implements OnInit {
     tabs: string[];
     selectedTab: any;
-    private _selectedTabDescription: string;
 
-    constructor(private logger: Logger, private navbar: NavbarService, private route: ActivatedRoute) {
+    constructor(private logger: Logger, private route: ActivatedRoute) {
         this.tabs = ['general', 'security', 'notifications'];
     }
 
@@ -40,7 +37,6 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit() {
         this.logger.debug('[SettingsComponent] ngOnInit()');
-        this.navbar.setTitle('Hank Ehly');
         this.route.params.subscribe(this.paramsChanged.bind(this));
     }
 
