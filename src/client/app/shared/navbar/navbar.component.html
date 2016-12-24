@@ -4,19 +4,22 @@
     </div>
 
     <div class="navbar__menu navbar__menu_center" *ngIf="authenticated">
-        <div class="back-button-frame">
+        <label for="search-bar" class="sr-only">Search</label>
+        <input type="search" name="search" class="input search-bar" id="search-bar" *ngIf="!searchBarHidden" [@slideInOut] placeholder="Search...">
+
+        <div class="back-button-frame" *ngIf="searchBarHidden">
             <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back"
                  (click)="onClickBack()" *ngIf="backButtonTitle">
             <span class="back-button-label" *ngIf="backButtonTitle">{{ backButtonTitle }}</span>
         </div>
 
-        <span class="page-title">{{ title }}</span>
+        <span class="page-title" *ngIf="searchBarHidden">{{ title }}</span>
 
-        <div class="study-progress-frame">
+        <div class="study-progress-frame" *ngIf="searchBarHidden">
             <gn-study-progress></gn-study-progress>
         </div>
 
-        <!--<div class="study-options">
+        <!--<div class="study-options" *ngIf="searchBarHidden">
             <button class="button button_opaque study-option study-option_start">START</button>
             <button class="button study-option study-option_save">SAVE</button>
         </div>-->

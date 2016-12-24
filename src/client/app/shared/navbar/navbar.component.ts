@@ -33,6 +33,16 @@ import { Logger } from 'angular2-logger/core';
                     style({transform: 'scale(0.9)', offset: 1.0})
                 ]))
             ])
+        ]),
+        trigger('slideInOut', [
+            transition(':enter', [
+                style({opacity: 0, transform: 'translateX(350px)'}),
+                animate('500ms ease', style({opacity: 1, transform: 'translateX(0)'}))
+            ]),
+            transition(':leave', [
+                style({opacity: 1, transform: 'translateX(0)'}),
+                animate('400ms ease', style({opacity: 0, transform: 'translateX(350px)'}))
+            ])
         ])
     ]
 })
@@ -48,7 +58,7 @@ export class NavbarComponent implements OnInit {
                 private logger: Logger,
                 private navbarService: NavbarService,
                 private location: Location) {
-        this.searchBarHidden = true;
+        this.searchBarHidden = false;
     }
 
     ngOnInit(): void {

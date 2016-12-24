@@ -134,3 +134,11 @@
   width: 6px;
   right: -2px;
 }
+
+.navbar__menu_center .search-bar {
+  align-self: center;
+  background: $white;
+  color: $regent-gray;
+  margin: 0;
+  padding: 0;
+}
