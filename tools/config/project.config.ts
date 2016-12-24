@@ -1,6 +1,7 @@
 import { join } from 'path';
 
 import { SeedConfig } from './seed.config';
+const META_TAGS = require('./meta_tags.json');
 // import { ExtendPackages } from './seed.config.interfaces';
 
 /**
@@ -10,8 +11,7 @@ import { SeedConfig } from './seed.config';
 export class ProjectConfig extends SeedConfig {
 
     PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
-
-    meta_tags: any[];
+    META_TAGS: any[] = META_TAGS;
 
     constructor() {
         super();
@@ -65,33 +65,6 @@ export class ProjectConfig extends SeedConfig {
         // this.mergeObject(this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false });
 
         this.ENABLE_SCSS = true;
-
-        /* Todo: Rename url once production is up */
-        this.meta_tags = [
-            {
-                name: 'description', content: `Get Native is a language learning resource for advanced foreign language learners. 
-                                      Increase your productivity and cut down on study time by using Get Native\'s video database 
-                                      and study features.`.trim()
-            },
-            {
-                name: 'keywords', content: `Get Native,get-native,language learning apps,language learning software,language learning 
-              websites,language learning programs,language learning strategies`.trim()
-            },
-            {name: 'og:site_name', content: 'Get Native'},
-            {name: 'og:title', content: 'Get Native'},
-            {
-                name: 'og:description', content: `Get Native is a language learning resource for advanced foreign language learners. 
-                                         Increase your productivity and cut down on study time by using Get Native\'s video database 
-                                         and study features.`.trim()
-            },
-            {name: 'og:locale', content: 'en_US'},
-            {name: 'og:image', content: 'https://stg.get-native.com/assets/images/home-background.jpg'},
-            {name: 'og:image:secure_url', content: 'https://stg.get-native.com/assets/images/home-background.jpg'},
-            {name: 'og:image:type', content: 'image/jpeg'},
-            {name: 'og:image:width', content: '2000'},
-            {name: 'og:image:height', content: '1776'},
-            {name: 'viewport', content: 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'}
-        ];
     }
 
 }

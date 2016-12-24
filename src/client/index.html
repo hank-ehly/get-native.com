@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <base href="<%= APP_BASE %>">
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= APP_TITLE %></title>
     <!-- Todo: Dynamic description -->
 
-<% for (var tag of meta_tags) { %>
-    <meta name="<%= tag.name %>" content="<%= tag.content %>">
+<% for (var t of META_TAGS) { %>
+    <meta name="<%= t.name %>" content="<%= t.content %>">
 <% } %>
 
     <!-- Todo: Make dynamic -->
