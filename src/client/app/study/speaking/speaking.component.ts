@@ -11,7 +11,6 @@ import { Logger } from 'angular2-logger/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-speaking',
     templateUrl: 'speaking.component.html',
     styleUrls: ['speaking.component.css']
 })

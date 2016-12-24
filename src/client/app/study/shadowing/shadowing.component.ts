@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'gn-shadowing',
     templateUrl: 'shadowing.component.html',
     styleUrls: ['shadowing.component.css']
 })
