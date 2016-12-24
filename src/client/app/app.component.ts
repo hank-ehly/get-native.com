@@ -42,7 +42,6 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.showComplianceDialog = !this.localStorageService.getItem(kAcceptLocalStorage);
 
-        if (this.authenticated) {
             /* Dynamically set the navbar title */
             this.router.events
                 .filter(e => e instanceof NavigationEnd)
@@ -57,7 +56,10 @@ export class AppComponent implements OnInit {
                     this.logger.debug('NavigationEnd:', e);
 
                     if (e.hasOwnProperty('title') && e['title']) {
-                        this.navbar.setTitle(e['title']);
+                        if (this.authenticated) {
+                            this.navbar.setTitle(e['title']);
+                        }
+
                         this.titleService.setTitle(`Get Native | ${e['title']}`);
                     }
                 });
@@ -82,6 +84,5 @@ export class AppComponent implements OnInit {
             //             this.navbar.setBackButtonTitle(e[0]);
             //         }
             //     });
-        }
     }
 }

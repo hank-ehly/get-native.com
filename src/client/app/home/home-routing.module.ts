@@ -10,7 +10,7 @@ import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 
 const homeRoutes: Routes = [
-    {path: '', component: HomeComponent}
+    {path: '', component: HomeComponent, data: {title: 'Home'}}
 ];
 
 @NgModule({

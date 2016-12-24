@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { TOSComponent } from './tos.component';
 
 const tosRoutes: Routes = [
-    {path: 'tos', component: TOSComponent}
+    {path: 'tos', component: TOSComponent, data: {title: 'Terms of Service'}}
 ];
 
 @NgModule({
