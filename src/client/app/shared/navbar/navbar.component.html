@@ -5,8 +5,9 @@
 
     <div class="navbar__menu navbar__menu_center" *ngIf="authenticated">
         <div class="back-button-frame">
-            <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back">
-            <span class="back-button-label">Japanese Conversation</span>
+            <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back"
+                 (click)="onClickBack()" *ngIf="backButtonTitle">
+            <span class="back-button-label" *ngIf="backButtonTitle">{{ backButtonTitle }}</span>
         </div>
 
         <span class="page-title">{{ title }}</span>

@@ -72,7 +72,6 @@
 
 .navbar__menu-icon_back, .back-button-label {
   align-self: center;
-  cursor: pointer;
 }
 
 .back-button-label {
@@ -81,6 +80,7 @@
 }
 
 .navbar__menu-icon {
+  cursor: pointer;
   width: 30px;
 }
 

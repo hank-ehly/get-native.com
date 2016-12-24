@@ -6,21 +6,19 @@
  */
 
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Router, NavigationEnd, ActivatedRoute, Route } from '@angular/router';
 
 import { LocalStorageService, kAcceptLocalStorage } from './core/index';
+import { NavbarService } from './core/navbar/navbar.service';
 
 import { Logger } from 'angular2-logger/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-
 import './operators';
-import { NavbarService } from './core/navbar/navbar.service';
 
 @Component({
     moduleId: module.id,
     selector: 'gn-app',
     templateUrl: 'app.component.html'
 })
-
 export class AppComponent implements OnInit {
     showComplianceDialog: boolean;
     showLoginModal: boolean;
@@ -42,26 +40,45 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.showComplianceDialog = !this.localStorageService.getItem(kAcceptLocalStorage);
 
-        this.router.events
-            .filter(e => e instanceof NavigationEnd)
-            .map(() => this.activatedRoute)
-            .map(route => {
+        if (this.authenticated) {
+            /* Dynamically set the navbar title */
+            this.router.events
+                .filter(e => e instanceof NavigationEnd)
+                .map(() => this.activatedRoute)
+                .map(route => {
+                    while (route.firstChild) route = route.firstChild;
+                    return route;
+                })
+                .filter(route => route.outlet === 'primary')
+                .mergeMap(route => route.data)
+                .subscribe(e => {
+                    this.logger.debug('NavigationEnd:', e);
 
-                /* Traverse children so that we always get the right 'title' */
-                while (route.firstChild) {
-                    route = route.firstChild;
-                }
+                    if (e.hasOwnProperty('title') && e['title']) {
+                        this.navbar.setTitle(e['title']);
+                    }
+                });
 
-                this.logger.debug('route:', route, 'route.firstChild:', route.firstChild);
-                return route;
-            })
-            .filter(route => route.outlet === 'primary')
-            .mergeMap(route => route.data)
-            .subscribe(e => {
-                this.logger.debug('NavigationEnd:', e);
-                if (e.hasOwnProperty('title')) {
-                    this.navbar.setTitle(e['title']);
-                }
-            });
+            /* Todo */
+            // this.router.events
+            //     .filter(e => e instanceof NavigationEnd)
+            //     .map((e) => {
+            //         for (let route of this.router.config) {
+            //             let searchPath = `/${route.path}`;
+            //
+            //             if (e.url === searchPath) {
+            //                 return route.data['title'];
+            //             }
+            //         }
+            //
+            //         return null;
+            //     })
+            //     .pairwise()
+            //     .subscribe(e => {
+            //         if (e instanceof Array && e[0]) {
+            //             this.navbar.setBackButtonTitle(e[0]);
+            //         }
+            //     });
+        }
     }
 }

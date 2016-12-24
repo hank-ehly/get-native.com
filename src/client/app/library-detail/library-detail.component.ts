@@ -6,7 +6,6 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 
 import { NavbarService } from '../core/index';
 
@@ -22,7 +21,7 @@ import { Logger } from 'angular2-logger/core';
 export class LibraryDetailComponent implements OnInit {
     videos: any[];
 
-    constructor(private logger: Logger, private navbar: NavbarService, private location: Location) {
+    constructor(private logger: Logger, private navbar: NavbarService) {
     }
 
     ngOnInit() {
