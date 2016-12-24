@@ -61,4 +61,10 @@
   cursor: pointer;
   height: auto;
   width: 20px;
+  transform: rotate(0deg);
+  transition: 150ms ease-in-out;
+}
+
+.toolbar__link--settings:hover .toolbar_link-icon {
+  transform: rotate(45deg);
 }
