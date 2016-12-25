@@ -496,7 +496,7 @@ https://get-native.com/videos/search?q=Business%20Ethics&lang=en
 
 Returns the video specified by the `id` query parameter.
 
-**Example Request**
+**Example Request**`
 
 ```
 GET
@@ -512,6 +512,7 @@ https://get-native.com/videos/show.json?id=123456
 | Data Field          | Type         | Description                                                                                        |
 |---------------------|--------------|----------------------------------------------------------------------------------------------------|
 | favorited           | Boolean      | _Nullable._ Whether the video has been favorited by the user                                       |
+| description         | String       | A string description of the video.                                                                 |
 | created_at          | String       | UTC datetime of video creation                                                                     |
 | id_str              | String       | String representation of unique video ID                                                           |
 | id                  | Int64        | Integer representation of unique video ID                                                          |
@@ -535,6 +536,7 @@ https://get-native.com/videos/show.json?id=123456
 {
 	"data": {
 		"favorited": true,
+		"description": "In 'talking to customers,' Harold Ford describes the daily interactions between businessmen and clients.",
 		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 		"id_str": "2244994983",
 		"id": 2244994983,
@@ -561,19 +563,17 @@ https://get-native.com/videos/show.json?id=123456
 		"thumbnail_image_url": "TODO",
 		"video_url": "TODO",
 		"has_related_videos": true,
-		"likes": [
+		"likes": {
 			"records": [
 				{
 					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-					"user": {
-						// TODO: Unsafe
-					},
+					"user": { /* TODO: Unsafe. Remove if not needed. */},
 					"id": 456,
 					"id_str": "456"
 				}
 			],
 			"count": 10
-		],
+		},
 		"length": 68,
 		"category": {
 			"name": "Business",
@@ -582,7 +582,7 @@ https://get-native.com/videos/show.json?id=123456
 			"created_at": "Sat Dec 14 04:35:55 +0000 2015"
 		},
 		"transcripts": {
-			"count": 2
+			"count": 2,
 			"records": [
 				{
 					"id": 123,
