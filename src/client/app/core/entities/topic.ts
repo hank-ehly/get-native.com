@@ -8,6 +8,6 @@
 import { Entity } from './entity';
 
 export class Topic extends Entity {
-    category_id: number;
+    category_id?: number;
     name: string;
 }

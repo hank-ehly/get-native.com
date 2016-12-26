@@ -9,5 +9,5 @@ export class Entity {
     id: number;
     id_str: string;
     created_at: string;
-    updated_at: string;
+    updated_at?: string;
 }

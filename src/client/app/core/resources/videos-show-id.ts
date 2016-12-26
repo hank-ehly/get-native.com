@@ -42,13 +42,13 @@ export class VideosShowId {
     length: number;
 
     /* Todo: Model */
-    category: string;
+    category: any;
 
     /* Todo: Model */
-    transcripts: Transcript[];
+    transcripts: any;
 
     /* Todo: Model */
-    questions: any[];
+    questions: any;
 
     description: string;
 }
