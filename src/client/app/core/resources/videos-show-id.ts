@@ -5,9 +5,7 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { Topic } from '../entities/topic';
-import { Transcript } from '../entities/transcript';
-import { Speaker } from '../entities/speaker';
+import { Speaker, Topic, Transcript } from '../index';
 
 /* Todo: Model each API response (in a clean way) */
 export class VideosShowId {
