@@ -10,5 +10,9 @@ import { Logger } from './logger';
 export const STUBLogger: Logger = <Logger>{
     debug(message?: any, ...optionalParams: any[]): void {
         return;
+    },
+
+    info(message?: any, ...optionalParams: any[]): void {
+        return;
     }
 };
