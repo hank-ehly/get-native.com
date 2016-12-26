@@ -8,8 +8,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Logger } from '../index';
-import { VideosShowId } from '../resources/videos-show-id';
+import { Logger, VideosShowId } from '../index';
 
 import { Observable } from 'rxjs/Observable';
 
