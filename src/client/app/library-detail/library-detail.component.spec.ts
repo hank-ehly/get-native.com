@@ -9,6 +9,17 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { LibraryDetailComponent } from './library-detail.component';
+import { SharedModule } from '../shared/shared.module';
+import {
+    MockAPI,
+    Logger,
+    STUBLogger,
+    NavbarService,
+    STUBNavbarService,
+    STUBMockAPI,
+    STUBTimeFormatService,
+    TimeFormatService
+} from '../core/index';
 
 export function main() {
     let comp: LibraryDetailComponent;
@@ -19,8 +30,13 @@ export function main() {
     describe('LibraryDetailComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                declarations: [
-                    LibraryDetailComponent
+                imports: [SharedModule],
+                declarations: [LibraryDetailComponent],
+                providers: [
+                    {provide: Logger, useValue: STUBLogger},
+                    {provide: NavbarService, useValue: STUBNavbarService},
+                    {provide: MockAPI, useValue: STUBMockAPI},
+                    {provide: TimeFormatService, useValue: STUBTimeFormatService}
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LibraryDetailComponent);
@@ -29,7 +45,7 @@ export function main() {
             });
         }));
 
-        it('should work', () => {
+        it('should compile', () => {
 
         });
     });

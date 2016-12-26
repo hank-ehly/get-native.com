@@ -11,7 +11,7 @@ import { LOG_LEVEL, LoggerConfig } from './index';
 
 @Injectable()
 export class Logger {
-    constructor(@Inject(LoggerConfig) private logLevel: LOG_LEVEL) {
+    constructor(@Inject(LoggerConfig) private logLevel: LOG_LEVEL = LOG_LEVEL.WARN) {
         this.debug(`[${this.constructor.name}] logLevel = ${logLevel}`);
     }
 

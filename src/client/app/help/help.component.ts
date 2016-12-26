@@ -6,8 +6,7 @@
  */
 
 import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
-import { Faq } from './faq/index';
-import { FaqService } from './faq/faq.service';
+import { Faq, FaqService } from './faq/index';
 
 @Component({
     moduleId: module.id,
