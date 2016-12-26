@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 
 export const STUBMockAPI = <MockAPI>{
     getVideosShowId(id: number): Observable<VideosShowId> {
-        return null;
+        return Observable.of();
+        // return null;
     }
 };

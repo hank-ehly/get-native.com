@@ -14,23 +14,17 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LocalStorageService {
-    setItem$: Observable<LocalStorageItem>;
-    storageEvent$: Observable<StorageEvent>;
-    clearSource$: Observable<any>;
+    setItemSource = new Subject<LocalStorageItem>();
+    setItem$ = this.setItemSource.asObservable();
 
-    private clearSource: Subject<any>;
-    private storageEventSource: Subject<StorageEvent>;
-    private setItemSource: Subject<LocalStorageItem>;
+    storageEventSource = new Subject<StorageEvent>();
+    storageEvent$ = this.storageEventSource.asObservable();
+
+    clearSource = new Subject();
+    clearSource$ = this.clearSource.asObservable();
 
     constructor(private logger: Logger) {
-        this.setItemSource = new Subject<LocalStorageItem>();
-        this.setItem$ = this.setItemSource.asObservable();
 
-        this.storageEventSource = new Subject<StorageEvent>();
-        this.storageEvent$ = this.storageEventSource.asObservable();
-
-        this.clearSource = new Subject();
-        this.clearSource$ = this.clearSource.asObservable();
     }
 
     broadcastStorageEvent(ev: StorageEvent): void {

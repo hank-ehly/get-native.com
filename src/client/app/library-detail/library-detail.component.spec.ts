@@ -7,6 +7,8 @@
 
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { LibraryDetailComponent } from './library-detail.component';
 import { SharedModule } from '../shared/shared.module';
@@ -30,13 +32,14 @@ export function main() {
     describe('LibraryDetailComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [SharedModule],
+                imports: [SharedModule, RouterModule.forRoot([])],
                 declarations: [LibraryDetailComponent],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
                     {provide: NavbarService, useValue: STUBNavbarService},
                     {provide: MockAPI, useValue: STUBMockAPI},
-                    {provide: TimeFormatService, useValue: STUBTimeFormatService}
+                    {provide: TimeFormatService, useValue: STUBTimeFormatService},
+                    {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LibraryDetailComponent);
