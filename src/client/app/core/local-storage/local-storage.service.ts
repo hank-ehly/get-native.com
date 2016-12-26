@@ -18,17 +18,18 @@ export class LocalStorageService {
     storageEvent$: Observable<StorageEvent>;
     clearSource$: Observable<any>;
 
-    private setItemSource: Subject<LocalStorageItem>;
-    private storageEventSource: Subject<StorageEvent>;
     private clearSource: Subject<any>;
+    private storageEventSource: Subject<StorageEvent>;
+    private setItemSource: Subject<LocalStorageItem>;
 
     constructor(private logger: Logger) {
         this.setItemSource = new Subject<LocalStorageItem>();
-        this.storageEventSource = new Subject<StorageEvent>();
-        this.clearSource = new Subject<any>();
-
         this.setItem$ = this.setItemSource.asObservable();
+
+        this.storageEventSource = new Subject<StorageEvent>();
         this.storageEvent$ = this.storageEventSource.asObservable();
+
+        this.clearSource = new Subject();
         this.clearSource$ = this.clearSource.asObservable();
     }
 
@@ -53,7 +54,7 @@ export class LocalStorageService {
     }
 
     clear(): void {
-        this.logger.debug('[${this.constructor.name]: clear()');
+        this.logger.debug('[${this.constructor.name}]: clear()');
         return localStorage.clear();
     }
 
