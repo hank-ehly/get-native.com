@@ -5,13 +5,15 @@
  * Created by henryehly on 2016/11/06.
  */
 
-export * from './logger/index'
-export * from './local-storage/index';
 export * from './string/string.service';
-export * from './navbar/index';
-export * from './spec/index';
-export * from './password/index';
+export * from './entities/index';
+export * from './local-storage/index';
+export * from './logger/index'
 export * from './login/index';
-export * from './mock-api/index';
+export * from './mock-http-client/index';
+export * from './navbar/index';
+export * from './password/index';
+export * from './resources/index';
+export * from './spec/index';
 export * from './time-format/index';
 export * from './typings/unit-interval';

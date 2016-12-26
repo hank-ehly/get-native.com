@@ -8,7 +8,6 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-
 export class StringService {
     containsSymbol(char: string): boolean {
         return /[^a-zA-Z0-9_]/g.test(char);

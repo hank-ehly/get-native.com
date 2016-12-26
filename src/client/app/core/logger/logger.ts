@@ -7,7 +7,8 @@
 
 import { Injectable, Inject } from '@angular/core';
 
-import { LOG_LEVEL, LoggerConfig } from './index';
+import { LoggerConfig } from './logger-config';
+import { LOG_LEVEL } from './log-level';
 
 @Injectable()
 export class Logger {

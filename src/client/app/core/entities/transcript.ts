@@ -5,10 +5,10 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { GetNativeEntity } from './get-native-entity';
+import { Entity } from './entity';
 
 /* You shouldn't model this directly off of the DB schema. This should only include the info in the response. */
-export class Transcript extends GetNativeEntity {
+export class Transcript extends Entity {
     text: string;
 
     /* Todo: Create a 'Lang' model */

@@ -10,7 +10,7 @@ import { HttpModule } from '@angular/http';
 import {
     LocalStorageService,
     LoginService,
-    MockAPI,
+    MockHTTPClient,
     NavbarService,
     PasswordService,
     StringService,
@@ -25,7 +25,7 @@ import {
     providers: [
         LocalStorageService,
         LoginService,
-        MockAPI,
+        MockHTTPClient,
         NavbarService,
         PasswordService,
         StringService,
@@ -33,6 +33,5 @@ import {
         Logger
     ]
 })
-
 export class CoreModule {
 }

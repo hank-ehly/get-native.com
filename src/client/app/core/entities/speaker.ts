@@ -5,9 +5,9 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { GetNativeEntity } from './get-native-entity';
+import { Entity } from './entity';
 
-export class Speaker extends GetNativeEntity {
+export class Speaker extends Entity {
     description: string;
     name: string;
 

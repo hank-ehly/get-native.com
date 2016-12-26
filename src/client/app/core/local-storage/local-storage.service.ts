@@ -7,10 +7,10 @@
 
 import { Injectable } from '@angular/core';
 
-import { Logger, LocalStorageItem } from '../index';
+import { LocalStorageItem } from './local-storage-item';
+import { Logger } from '../logger/logger';
 
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LocalStorageService {
@@ -24,7 +24,6 @@ export class LocalStorageService {
     clearSource$ = this.clearSource.asObservable();
 
     constructor(private logger: Logger) {
-
     }
 
     broadcastStorageEvent(ev: StorageEvent): void {

@@ -13,12 +13,12 @@ import { APP_BASE_HREF } from '@angular/common';
 import { LibraryDetailComponent } from './library-detail.component';
 import { SharedModule } from '../shared/shared.module';
 import {
-    MockAPI,
+    MockHTTPClient,
     Logger,
     STUBLogger,
     NavbarService,
     STUBNavbarService,
-    STUBMockAPI,
+    STUBMockHTTPClient,
     STUBTimeFormatService,
     TimeFormatService
 } from '../core/index';
@@ -37,7 +37,7 @@ export function main() {
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
                     {provide: NavbarService, useValue: STUBNavbarService},
-                    {provide: MockAPI, useValue: STUBMockAPI},
+                    {provide: MockHTTPClient, useValue: STUBMockHTTPClient},
                     {provide: TimeFormatService, useValue: STUBTimeFormatService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                 ]
