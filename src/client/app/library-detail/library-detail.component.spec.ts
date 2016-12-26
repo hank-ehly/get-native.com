@@ -20,7 +20,8 @@ import {
     STUBNavbarService,
     STUBMockHTTPClient,
     STUBTimeFormatService,
-    TimeFormatService
+    TimeFormatService,
+    SpecUtil
 } from '../core/index';
 
 export function main() {
@@ -28,6 +29,7 @@ export function main() {
     let fixture: ComponentFixture<LibraryDetailComponent>;
     let de: DebugElement;
     let el: HTMLElement;
+    let util: SpecUtil;
 
     describe('LibraryDetailComponent', () => {
         beforeEach(async(() => {
@@ -43,13 +45,20 @@ export function main() {
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LibraryDetailComponent);
+                util = new SpecUtil(fixture);
                 comp = fixture.componentInstance;
                 fixture.detectChanges();
             });
         }));
 
-        it('should compile', () => {
+        it('should display a video player', () => {
+            let player = util.getNativeEl('video');
+            expect(player).toBeTruthy();
+        });
 
+        it('should display a video description', () => {
+            let description = util.getNativeEl('.section--video-detail .column__row .paragraph');
+            expect(description.textContent.length).toBeGreaterThan(0);
         });
     });
 }
