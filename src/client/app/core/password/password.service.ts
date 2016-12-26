@@ -11,13 +11,14 @@ import { StringService, PasswordBlacklist as Blacklist, Logger } from '../index'
 
 @Injectable()
 export class PasswordService {
-    constructor(private logger: Logger, private stringService: StringService) {}
+    constructor(private logger: Logger, private stringService: StringService) {
+    }
 
     /* Algorithm taken from http://www.passwordmeter.com */
     calculateStrength(password: string): number {
-        if (!password) return 0;
-
-        if (Blacklist.indexOf(password) !== -1) return 0;
+        if (!password || Blacklist.indexOf(password) !== -1) {
+            return 0;
+        }
 
         let nAlphaUC          : number = 0;
         let nAlphaLC          : number = 0;

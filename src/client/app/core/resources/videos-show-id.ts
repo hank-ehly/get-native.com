@@ -5,12 +5,11 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { Topic } from '../models/topic';
-import { Transcript } from '../models/transcript';
-import { Speaker } from '../models/speaker';
+import { Topic } from '../entities/topic';
+import { Transcript } from '../entities/transcript';
+import { Speaker } from '../entities/speaker';
 
 /* Todo: Model each API response (in a clean way) */
-/* Add 'description' to the API documentation (!) */
 export class VideosShowId {
     favorited?: boolean;
 

@@ -1,16 +1,16 @@
 /**
- * mock-api.stub
+ * mock-http-client.stub
  * get-native.com
  *
  * Created by henryehly on 2016/12/26.
  */
 
-import { VideosShowId } from './videos-show-id';
-import { MockAPI } from './mock-api';
+import { VideosShowId } from '../resources/videos-show-id';
+import { MockHTTPClient } from './mock-http-client';
 
 import { Observable } from 'rxjs/Observable';
 
-export const STUBMockAPI = <MockAPI>{
+export const STUBMockHTTPClient = <MockHTTPClient>{
     getVideosShowId(id: number): Observable<VideosShowId> {
         return Observable.of();
         // return null;

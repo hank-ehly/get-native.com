@@ -7,9 +7,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { NavbarService, Logger, MockAPI } from '../core/index';
-import { VideosShowId } from '../core/mock-api/videos-show-id';
-import { Speaker } from '../core/models/speaker';
+import { NavbarService, Logger, MockHTTPClient, VideosShowId, Speaker } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -28,7 +26,7 @@ export class LibraryDetailComponent implements OnInit {
     /* Todo: Model */
     video: any;
 
-    constructor(private logger: Logger, private navbar: NavbarService, private api: MockAPI) {
+    constructor(private logger: Logger, private navbar: NavbarService, private api: MockHTTPClient) {
         this.description = '';
         this.views = 0;
         this.speaker = new Speaker();
