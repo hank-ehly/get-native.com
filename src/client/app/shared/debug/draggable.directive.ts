@@ -7,7 +7,8 @@
 
 import { Directive, ElementRef, HostListener, OnInit } from '@angular/core';
 
-import { LocalStorageService, kDebugModalPosition, Logger } from '../../core/index';
+import { LocalStorageService } from '../../core/local-storage/local-storage.service';
+import { kDebugModalPosition } from '../../core/index';
 import { Coordinate } from './coordinate';
 
 @Directive({
@@ -18,7 +19,7 @@ export class DraggableDirective implements OnInit {
     x: number;
     y: number;
 
-    constructor(private el: ElementRef, private logger: Logger, private localStorage: LocalStorageService) {
+    constructor(private el: ElementRef, private localStorage: LocalStorageService) {
         this.dragging = false;
         this.x = 0;
         this.y = 0;

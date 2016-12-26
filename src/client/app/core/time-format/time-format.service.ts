@@ -9,9 +9,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TimeFormatService {
-    constructor() {
-    }
-
     fromSeconds(seconds: number): string {
         if (seconds >= 600) {
             throw new RangeError(`${this.constructor.name}.fromSeconds cannot handle values over 600. Value was ${seconds}`);

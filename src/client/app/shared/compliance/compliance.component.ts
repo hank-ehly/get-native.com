@@ -7,7 +7,9 @@
 
 import { Component, trigger, keyframes, style, animate, transition, Input, OnInit } from '@angular/core';
 
-import { LocalStorageService, kAcceptLocalStorage, LocalStorageProtocol, LocalStorageItem, Logger } from '../../core/index';
+/* Prevent circular reference (Can this be overcome?) */
+import { LocalStorageService } from '../../core/local-storage/local-storage.service';
+import { kAcceptLocalStorage, LocalStorageProtocol, LocalStorageItem, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,

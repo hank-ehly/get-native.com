@@ -7,3 +7,4 @@
 
 export * from './password-blacklist';
 export * from './password.service';
+export * from './password.service.stub';
