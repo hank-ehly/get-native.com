@@ -563,6 +563,7 @@ https://get-native.com/videos/show.json?id=123456
 		"thumbnail_image_url": "TODO",
 		"video_url": "TODO",
 		"has_related_videos": true,
+		"liked": true,
 		"likes": {
 			"records": [
 				{
