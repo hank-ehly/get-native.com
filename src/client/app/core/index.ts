@@ -16,4 +16,5 @@ export * from './password/index';
 export * from './resources/index';
 export * from './spec/index';
 export * from './date-formatter/index';
+export * from './datetime/datetime.service';
 export * from './typings/unit-interval';
