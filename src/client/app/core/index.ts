@@ -15,5 +15,5 @@ export * from './navbar/index';
 export * from './password/index';
 export * from './resources/index';
 export * from './spec/index';
-export * from './time-format/index';
+export * from './date-formatter/index';
 export * from './typings/unit-interval';

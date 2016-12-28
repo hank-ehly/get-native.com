@@ -7,8 +7,7 @@
 
 import { Directive, ElementRef, HostListener, OnInit } from '@angular/core';
 
-import { LocalStorageService } from '../../core/local-storage/local-storage.service';
-import { kDebugModalPosition } from '../../core/index';
+import { kDebugModalPosition, LocalStorageService } from '../../core/index';
 import { Coordinate } from './coordinate';
 
 @Directive({

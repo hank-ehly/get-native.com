@@ -14,7 +14,7 @@ import {
     NavbarService,
     PasswordService,
     StringService,
-    TimeFormatService,
+    DateFormatter,
     Logger
 } from './index';
 
@@ -29,7 +29,7 @@ import {
         NavbarService,
         PasswordService,
         StringService,
-        TimeFormatService,
+        DateFormatter,
         Logger
     ]
 })

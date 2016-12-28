@@ -496,7 +496,7 @@ https://get-native.com/videos/search?q=Business%20Ethics&lang=en
 
 Returns the video specified by the `id` query parameter.
 
-**Example Request**`
+**Example Request**
 
 ```
 GET
