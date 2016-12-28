@@ -14,7 +14,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MockHTTPClient {
-    baseUrl: string = 'app/core/mock-api';
+    baseUrl: string = 'app/core/resources';
 
     constructor(private logger: Logger, private http: Http) {
     }

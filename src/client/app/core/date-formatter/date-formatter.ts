@@ -24,7 +24,7 @@ export class DateFormatter {
         return `${sRetMin}:${sRetSec}`;
     }
 
-    fromUTCDateTimeToVideoPanelFormat(datetime: string): string {
+    fromDateTimeToVideoPanelFormat(datetime: string): string {
         let parts = datetime.split(' ');
 
         let month = parts[1];
