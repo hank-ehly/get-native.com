@@ -23,4 +23,14 @@ export class DateFormatter {
 
         return `${sRetMin}:${sRetSec}`;
     }
+
+    fromUTCDateTimeToVideoPanelFormat(datetime: string): string {
+        let parts = datetime.split(' ');
+
+        let month = parts[1];
+        let day   = parts[2];
+        let year  = parts[5];
+
+        return [day, month, year].join(' ');
+    }
 }

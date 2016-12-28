@@ -29,5 +29,12 @@ export function main() {
             let result = service.fromSeconds(64.528073);
             expect(result).toEqual('1:04');
         });
+
+        it('should convert UTC DateTime to video panel date format', () => {
+            let given = 'Sat Dec 14 04:35:55 +0000 2017';
+            let expected = '14 Dec 2017';
+            let actual = service.fromUTCDateTimeToVideoPanelFormat(given);
+            expect(actual).toEqual(expected);
+        });
     });
 }
