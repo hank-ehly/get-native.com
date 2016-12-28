@@ -6,14 +6,11 @@
  */
 
 import { Entity } from './entity';
+import { Collocations } from './collocations';
+import { Lang } from '../typings/lang';
 
-/* You shouldn't model this directly off of the DB schema. This should only include the info in the response. */
 export class Transcript extends Entity {
     text: string;
-
-    /* Todo: Create a 'Lang' model */
-    lang: string;
-
-    /* Todo: Create a 'Collocation' model */
-    collocations: any[];
+    lang: Lang;
+    collocations: Collocations;
 }

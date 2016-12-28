@@ -6,13 +6,15 @@
  */
 
 import { Speaker, Topic, Transcript } from '../index';
+import { DateTime } from '../typings/datetime';
+import { Category } from '../entities/category';
+import { Likes } from '../entities/likes';
 
 /* Todo: Model each API response (in a clean way) */
 export class VideosShowId {
     favorited?: boolean;
 
-    /* Todo: Model */
-    created_at: string;
+    created_at: DateTime;
 
     id_str: string;
     id: number;
@@ -24,7 +26,6 @@ export class VideosShowId {
 
     favorite_count?: number;
 
-    /* Todo: Model */
     topic: Topic;
 
     loop_count: number;
@@ -35,14 +36,12 @@ export class VideosShowId {
     /* Todo: (See API documentation) */
     has_related_videos: boolean;
 
-    /* Todo: Model */
-    likes: any;
+    likes: Likes;
 
     liked: boolean;
     length: number;
 
-    /* Todo: Model */
-    category: any;
+    category: Category;
 
     /* Todo: Model */
     transcripts: any;
