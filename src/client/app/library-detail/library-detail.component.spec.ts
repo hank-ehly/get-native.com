@@ -19,8 +19,8 @@ import {
     NavbarService,
     STUBNavbarService,
     STUBMockHTTPClient,
-    STUBTimeFormatService,
-    TimeFormatService,
+    STUBDateFormatter,
+    DateFormatter,
     SpecUtil
 } from '../core/index';
 
@@ -40,7 +40,7 @@ export function main() {
                     {provide: Logger, useValue: STUBLogger},
                     {provide: NavbarService, useValue: STUBNavbarService},
                     {provide: MockHTTPClient, useValue: STUBMockHTTPClient},
-                    {provide: TimeFormatService, useValue: STUBTimeFormatService},
+                    {provide: DateFormatter, useValue: STUBDateFormatter},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                 ]
             }).compileComponents().then(() => {

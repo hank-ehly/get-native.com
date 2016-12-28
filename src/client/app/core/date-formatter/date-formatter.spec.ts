@@ -1,18 +1,18 @@
 /**
- * time-format.service.spec
+ * date-formatter.spec
  * get-native.com
  *
  * Created by henryehly on 2016/12/16.
  */
 
-import { TimeFormatService } from './time-format.service';
+import { DateFormatter } from './date-formatter';
 
 export function main() {
-    let service: TimeFormatService;
+    let service: DateFormatter;
 
-    describe('TimeFormatService', () => {
+    describe('DateFormatter', () => {
         beforeAll(() => {
-            service = new TimeFormatService();
+            service = new DateFormatter();
         });
 
         it('should format the DOMHighResTimeStamp (7.846841) into human-readable seconds (0:07)', () => {
