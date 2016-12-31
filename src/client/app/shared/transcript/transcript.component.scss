@@ -41,6 +41,14 @@
   margin-top: 20px;
 }
 
+.tab-content .content {
+  display: none;
+}
+
+.tab-content .content.active {
+  display: block;
+}
+
 .collocation {
   color: $orange-peel;
 }
