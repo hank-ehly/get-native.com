@@ -48,6 +48,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
     onClickTab(transcript: Transcript, e: MouseEvent): void {
         this.logger.debug(`[${this.constructor.name}] onClickTabTitle => title: ${this.titleForTranscript(transcript)}, event:`, e);
         this.activeTabElement = <HTMLElement>e.target;
+        this.selectedTranscript = transcript;
     }
 
     get sliderPosition() {
