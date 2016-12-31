@@ -6,16 +6,16 @@
  */
 
 import { Entity } from './entity';
+import { LangCode, Gender } from '../typings/index';
 
 export class Speaker extends Entity {
     description: string;
+
     name: string;
 
-    /* Todo: Model (as enum?) */
-    lang: string;
+    lang: LangCode;
 
-    /* Todo: Model (as enum?) */
-    gender: string;
+    gender: Gender;
 
     location: string;
 }

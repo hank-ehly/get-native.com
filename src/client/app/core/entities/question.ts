@@ -9,5 +9,5 @@ import { Entity } from './entity';
 
 export class Question extends Entity {
     text: string;
-    exampleAnswer: string;
+    example_answer: string;
 }

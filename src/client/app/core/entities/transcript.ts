@@ -7,10 +7,12 @@
 
 import { Entity } from './entity';
 import { Collocations } from './collocations';
-import { Lang } from '../typings/lang';
+import { LangCode } from '../typings/lang-code';
 
 export class Transcript extends Entity {
     text: string;
-    lang: Lang;
+
+    /* Todo: Change name to 'code' or 'lang_code' to avoid confusion */
+    lang: LangCode;
     collocations: Collocations;
 }

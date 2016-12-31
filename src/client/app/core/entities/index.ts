@@ -17,6 +17,7 @@ export * from './questions';
 export * from './speaker';
 export * from './topic';
 export * from './transcript';
+export * from './transcripts.stub';
 export * from './transcripts';
 export * from './usage-example';
 export * from './usage-examples';
