@@ -5,9 +5,9 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { Logger } from '../../core/index';
+import { Logger, Transcripts, Transcript, LangService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -15,22 +15,38 @@ import { Logger } from '../../core/index';
     templateUrl: 'transcript.component.html',
     styleUrls: ['transcript.component.css']
 })
-export class TranscriptComponent implements OnInit {
-    tabTitles: string[] = ['Original Transcript', 'English', '日本語'];
-    activeTabTitle: string;
+export class TranscriptComponent implements OnInit, OnChanges {
+    @Input() transcripts: Transcripts;
     activeTabElement: HTMLElement;
+    selectedTranscript: Transcript;
 
-    constructor(private logger: Logger) {
-        this.activeTabTitle = this.tabTitles[0];
+    constructor(private logger: Logger, private langService: LangService) {
     }
 
     ngOnInit() {
-        this.logger.info('[TranscriptComponent] ngOnInit()');
+        this.logger.info(`[${this.constructor.name}] ngOnInit()`);
     }
 
-    onClickTabTitle(title: string, e: MouseEvent): void {
-        this.logger.debug(`[TranscriptComponent] onClickTabTitle(title: ${title}, event: ${e})`);
-        this.activeTabTitle = title;
+    ngOnChanges(changes: SimpleChanges) {
+        if (!changes['transcripts']) {
+            return;
+        }
+
+        let transcripts = <Transcripts>changes['transcripts'].currentValue;
+
+        if (transcripts.count === 0) {
+            return;
+        }
+
+        this.logger.debug(transcripts);
+
+        /* Todo: How can you set the activeTabElement here? */
+
+        this.selectedTranscript = transcripts.records[0];
+    }
+
+    onClickTab(transcript: Transcript, e: MouseEvent): void {
+        this.logger.debug(`[${this.constructor.name}] onClickTabTitle => title: ${this.titleForTranscript(transcript)}, event:`, e);
         this.activeTabElement = <HTMLElement>e.target;
     }
 
@@ -43,5 +59,9 @@ export class TranscriptComponent implements OnInit {
             left: `${this.activeTabElement.offsetLeft}px`,
             width: `${this.activeTabElement.offsetWidth}px`
         };
+    }
+
+    titleForTranscript(transcript: Transcript): string {
+        return this.langService.codeToName(transcript.lang);
     }
 }

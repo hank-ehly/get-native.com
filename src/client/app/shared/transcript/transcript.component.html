@@ -2,22 +2,29 @@
 
     <div class="tabs-frame">
         <ul class="tabs">
-            <li class="tabs__tab" *ngFor="let title of tabTitles" [ngClass]="{tabs__tab_active: title === activeTabTitle}" (click)="onClickTabTitle(title, $event)">
-                {{ title }}
+            <li class="tabs__tab" *ngFor="let transcript of transcripts.records"
+                [ngClass]="{tabs__tab_active: transcript === selectedTranscript}" (click)="onClickTab(transcript, $event)">
+                {{ titleForTranscript(transcript) }}
             </li>
         </ul>
 
         <div class="tab-slider" [ngStyle]="sliderPosition"></div>
     </div>
 
-    <div class="tab-content">
+    <ul class="tab-content">
+        <li class="content" *ngFor="let transcript of transcripts.records" [ngClass]="{active: transcript === selectedTranscript}">
+            {{ transcript.text }}
+        </li>
+    </ul>
+
+    <!--<div class="tab-content">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi atque blanditiis, commodi culpa
         distinctio ducimus fugit iste mollitia nam neque odit qui quibusdam soluta! Dolor ea placeat soluta. Lorem ipsum
         dolor sit amet, consectetur <span class="collocation">adipisicing elit</span>. A, dicta distinctio
         temporibus voluptatum. Aliquam expedita fuga impedit ipsa <span class="collocation">natus</span>.
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis distinctio enim error facere fugit harum,
         ipsum, iure laudan tium, <span class="collocation">omnis rerum</span> tempore ullam ut. Iste iure!
-    </div>
+    </div>-->
 
     <hr>
 
