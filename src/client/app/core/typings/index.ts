@@ -7,5 +7,5 @@
 
 export * from './datetime';
 export * from './gender';
-export * from './lang';
+export * from './lang-code';
 export * from './unit-interval';
