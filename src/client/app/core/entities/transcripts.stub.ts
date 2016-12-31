@@ -13,7 +13,11 @@ export const STUBTranscripts: Transcripts = {
         {
             id: 123,
             id_str: '123',
-            text: 'This is the English transcript. This is the text that will be displayed on the video detail page.',
+            text: `This is the English transcript. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi atque 
+                   blanditiis, commodi culpa distinctio ducimus fugit iste mollitia nam neque odit qui quibusdam soluta! Dolor ea placeat 
+                   soluta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dicta distinctiotemporibus voluptatum. Aliquam 
+                   expedita fuga impedit ipsanatus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis distinctio enim error 
+                   facere fugit harum,ipsum, iure laudan tium, omnis rerum tempore ullam ut. Iste iure!`,
             lang: 'en',
             collocations: {
                 count: 3,
@@ -42,7 +46,10 @@ export const STUBTranscripts: Transcripts = {
         {
             id: 124,
             id_str: '124',
-            text: 'This is the Japanese transcript. This is the text that will be displayed on the video detail page.',
+            text: `じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこうじぱいぽぱいぽぱ
+                   いぽのしゅーりんがんしゅーりんがんのぐーりんだいぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ。じゅげむじゅげむごこうのすりきれかい
+                   じゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこうじぱいぽぱいぽぱいぽのしゅーりんがんしゅーりんがんの
+                   ぐーりんだいぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ。`,
             lang: 'ja',
             collocations: {
                 count: 3,

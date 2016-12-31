@@ -1,10 +1,9 @@
 <div class="component-frame">
 
     <div class="tabs-frame">
-        <ul class="tabs">
-            <li class="tabs__tab" *ngFor="let transcript of transcripts.records"
-                [ngClass]="{tabs__tab_active: transcript === selectedTranscript}" (click)="onClickTab(transcript, $event)">
-                {{ titleForTranscript(transcript) }}
+        <ul class="tabs" #tabs>
+            <li class="tabs__tab" *ngFor="let t of transcripts.records" [ngClass]="{tabs__tab_active: t === selectedTranscript}" (click)="onClickTab(t, $event)">
+                {{ titleForTranscript(t) }}
             </li>
         </ul>
 
@@ -12,19 +11,10 @@
     </div>
 
     <ul class="tab-content">
-        <li class="content" *ngFor="let transcript of transcripts.records" [ngClass]="{active: transcript === selectedTranscript}">
-            {{ transcript.text }}
+        <li class="content" *ngFor="let t of transcripts.records" [ngClass]="{active: t === selectedTranscript}">
+            {{ t.text }}
         </li>
     </ul>
-
-    <!--<div class="tab-content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi atque blanditiis, commodi culpa
-        distinctio ducimus fugit iste mollitia nam neque odit qui quibusdam soluta! Dolor ea placeat soluta. Lorem ipsum
-        dolor sit amet, consectetur <span class="collocation">adipisicing elit</span>. A, dicta distinctio
-        temporibus voluptatum. Aliquam expedita fuga impedit ipsa <span class="collocation">natus</span>.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis distinctio enim error facere fugit harum,
-        ipsum, iure laudan tium, <span class="collocation">omnis rerum</span> tempore ullam ut. Iste iure!
-    </div>-->
 
     <hr>
 
