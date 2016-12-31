@@ -14,8 +14,9 @@ import {
     NavbarService,
     PasswordService,
     StringService,
-    DateFormatter,
-    Logger
+    HighResTimestampService,
+    Logger,
+    LangService
 } from './index';
 
 @NgModule({
@@ -29,8 +30,9 @@ import {
         NavbarService,
         PasswordService,
         StringService,
-        DateFormatter,
-        Logger
+        HighResTimestampService,
+        Logger,
+        LangService
     ]
 })
 export class CoreModule {
