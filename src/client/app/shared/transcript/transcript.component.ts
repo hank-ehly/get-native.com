@@ -17,7 +17,7 @@ import { Logger, Transcripts, Transcript, LangService } from '../../core/index';
 })
 export class TranscriptComponent implements OnInit, OnChanges {
     @Input() transcripts: Transcripts;
-    activeTabElement: HTMLElement;
+    activeTabElement: HTMLLIElement;
     selectedTranscript: Transcript;
 
     constructor(private logger: Logger, private langService: LangService) {
@@ -47,7 +47,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
 
     onClickTab(transcript: Transcript, e: MouseEvent): void {
         this.logger.debug(`[${this.constructor.name}] onClickTabTitle => title: ${this.titleForTranscript(transcript)}, event:`, e);
-        this.activeTabElement = <HTMLElement>e.target;
+        this.activeTabElement = <HTMLLIElement>e.target;
         this.selectedTranscript = transcript;
     }
 
