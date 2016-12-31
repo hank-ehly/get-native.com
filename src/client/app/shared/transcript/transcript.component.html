@@ -1,7 +1,7 @@
 <div class="component-frame">
 
     <div class="tabs-frame">
-        <ul class="tabs" #tabs>
+        <ul class="tabs">
             <li class="tabs__tab" *ngFor="let t of transcripts.records" [ngClass]="{tabs__tab_active: t === selectedTranscript}" (click)="onClickTab(t, $event)">
                 {{ titleForTranscript(t) }}
             </li>
