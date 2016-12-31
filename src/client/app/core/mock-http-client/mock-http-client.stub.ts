@@ -115,13 +115,13 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                                         count: 3,
                                         records: [
                                             {
-                                                text: 'This is the text in which will appear..'
+                                                text: 'じゅげむじゅげむごこうのすりきれ..'
                                             },
                                             {
-                                                text: 'I will tell you that this is the text.'
+                                                text: 'ぱいぽぱいぽぱいぽ'
                                             },
                                             {
-                                                text: 'I don\'t really know if this is the text.'
+                                                text: 'しゅーりんがんしゅーりんがんのぐーりんだいぐーりんだい'
                                             }
                                         ]
                                     }

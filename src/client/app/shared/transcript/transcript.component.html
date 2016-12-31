@@ -18,17 +18,16 @@
 
     <hr>
 
-    <section class="usage-examples-section">
+    <section class="usage-examples-section" *ngIf="selectedCollocation">
         <header class="usage-examples-section__header">
             <h6 class="usage-examples-section__header-title">USAGE EXAMPLES</h6>
-            <h4 class="usage-examples-section__header-collocation collocation">Consectetur
+
+            <h4 class="usage-examples-section__header-collocation collocation">{{ selectedCollocation.text }}
                 <small class="usage-examples-section__header-phonetic">(kəˈnɛkt)</small>
             </h4>
         </header>
-        <ul>
-            <li class="usage-example">"Lorem ipsum dolor sit amet, <span class="collocation">consectetur</span> adipiscing elit, sed do eiusmod."</li>
-            <li class="usage-example">"Ut enim ad minim <span class="collocation">consectetur</span>."</li>
-            <li class="usage-example">"<span class="collocation">Consectetur</span> minim nam neque odit qui quibusdam soluta!."</li>
+        <ul class="usage-examples">
+            <li class="usage-example" *ngFor="let example of selectedCollocation.usage_examples.records">{{ example.text }}</li>
         </ul>
     </section>
 </div>
