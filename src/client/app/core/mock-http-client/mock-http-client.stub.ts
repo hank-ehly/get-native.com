@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 
 export const STUBMockHTTPClient = <MockHTTPClient>{
     getVideosShowId(id: number): Observable<VideosShowId> {
-        return Observable.of({
+        return Observable.of(<VideosShowId>{
             favorited: true,
             created_at: 'Sat Dec 14 04:35:55 +0000 2015',
             id_str: '2244994983',
@@ -46,8 +46,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                 records: [
                     {
                         created_at: 'Sat Dec 14 04:35:55 +0000 2015',
-                        'user': {
-                        },
+                        'user': {},
                         id: 456,
                         id_str: '456'
                     }
