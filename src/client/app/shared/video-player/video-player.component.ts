@@ -8,7 +8,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, trigger, animate, style, transition, Input } from '@angular/core';
 
 import { VideoDirective } from '../video/video.directive';
-import { DateFormatter, UnitInterval, Logger } from '../../core/index';
+import { HighResTimestampService, UnitInterval, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -41,7 +41,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     private tooltipTimeout: NodeJS.Timer;
     private previousVolume: UnitInterval;
 
-    constructor(private logger: Logger, private dateFormatter: DateFormatter) {
+    constructor(private logger: Logger, private timestampService: HighResTimestampService) {
         this.currentTimeString = this.durationString = '0:00';
         this.progress = this.currentTime = 0;
         this.controlsHidden = false;
@@ -123,12 +123,12 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     }
 
     private onCurrentTime(timeInSeconds: number): void {
-        this.currentTimeString = this.dateFormatter.fromSeconds(timeInSeconds);
+        this.currentTimeString = this.timestampService.toHumanReadable(timeInSeconds);
         this.currentTime = (timeInSeconds / this.player.duration);
     }
 
     private onLoadedMetadata() {
-        this.durationString = this.dateFormatter.fromSeconds(this.player.duration);
+        this.durationString = this.timestampService.toHumanReadable(this.player.duration);
     }
 
     private onProgress(progress: UnitInterval) {
