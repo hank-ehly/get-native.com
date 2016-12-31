@@ -20,8 +20,9 @@ import {
     STUBNavbarService,
     STUBMockHTTPClient,
     STUBDateFormatter,
-    DateFormatter,
-    SpecUtil
+    HighResTimestampService,
+    SpecUtil,
+    LangService
 } from '../core/index';
 
 export function main() {
@@ -40,8 +41,9 @@ export function main() {
                     {provide: Logger, useValue: STUBLogger},
                     {provide: NavbarService, useValue: STUBNavbarService},
                     {provide: MockHTTPClient, useValue: STUBMockHTTPClient},
-                    {provide: DateFormatter, useValue: STUBDateFormatter},
+                    {provide: HighResTimestampService, useValue: STUBDateFormatter},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
+                    LangService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LibraryDetailComponent);

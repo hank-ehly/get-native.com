@@ -8,6 +8,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NavbarService, Logger, MockHTTPClient, VideosShowId, Speaker } from '../core/index';
+import { Transcripts } from '../core/entities/transcripts';
 
 @Component({
     moduleId: module.id,
@@ -22,6 +23,7 @@ export class LibraryDetailComponent implements OnInit {
     views: number;
     speaker: Speaker;
     likes: number;
+    transcripts: Transcripts;
 
     /* Todo: Model */
     video: any;
@@ -30,6 +32,7 @@ export class LibraryDetailComponent implements OnInit {
         this.description = '';
         this.views = 0;
         this.speaker = new Speaker();
+        this.transcripts = {records: [], count: 0};
     }
 
     ngOnInit() {
@@ -45,6 +48,7 @@ export class LibraryDetailComponent implements OnInit {
             this.speaker = r.speaker;
             this.views = r.loop_count;
             this.likes = r.likes.count;
+            this.transcripts = r.transcripts;
         });
     }
 }
