@@ -9,8 +9,7 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { TranscriptComponent } from './transcript.component';
-import { STUBTranscripts, STUBLogger, Logger, LangService } from '../../core/index';
-import { SpecUtil } from '../../core/spec/spec-util';
+import { STUBTranscripts, STUBLogger, Logger, LangService, SpecUtil } from '../../core/index';
 
 export function main() {
     let comp: TranscriptComponent;
