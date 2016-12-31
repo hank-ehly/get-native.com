@@ -38,7 +38,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
             return;
         }
 
-        this.logger.debug(transcripts);
+        this.logger.debug(changes);
 
         /* Todo: How can you set the activeTabElement here? */
 

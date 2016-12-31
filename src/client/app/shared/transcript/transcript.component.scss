@@ -33,7 +33,9 @@
   left: 20px;
   position: absolute;
   transition: .2s;
-  width: 132px;
+
+  /* Todo: This should be configured dynamically upon view load */
+  width: 52px;
 }
 
 .tab-content {
