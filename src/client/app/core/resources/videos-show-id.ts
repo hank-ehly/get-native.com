@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { Speaker, Topic, DateTime, Lang, Category, Likes, Transcripts, Questions } from '../index';
+import { Speaker, Topic, DateTime, LangCode, Category, Likes, Transcripts, Questions } from '../index';
 
 export class VideosShowId {
     favorited?: boolean;
@@ -18,7 +18,7 @@ export class VideosShowId {
 
     speaker: Speaker;
 
-    lang?: Lang;
+    lang?: LangCode;
 
     favorite_count?: number;
 
