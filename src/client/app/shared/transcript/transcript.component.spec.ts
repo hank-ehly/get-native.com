@@ -41,5 +41,15 @@ export function main() {
             let content = util.getNativeEl('.tab-content .content');
             expect(content.textContent.length).toBeGreaterThan(0);
         });
+
+        it('should display the selected collocation', () => {
+            let collocation = util.getNativeEl('.usage-examples-section__header-collocation');
+            expect(collocation.textContent.length).toBeGreaterThan(0);
+        });
+
+        it('should display 1+ usage examples', () => {
+            let examples = util.getNativeEl('.usage-examples');
+            expect(examples.children.length).toBeGreaterThanOrEqual(1);
+        });
     });
 }

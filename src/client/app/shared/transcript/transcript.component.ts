@@ -8,6 +8,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Logger, Transcripts, Transcript, LangService } from '../../core/index';
+import { Collocation } from '../../core/entities/collocation';
 
 @Component({
     moduleId: module.id,
@@ -19,6 +20,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
     @Input() transcripts: Transcripts;
     activeTabElement: HTMLLIElement;
     selectedTranscript: Transcript;
+    selectedCollocation: Collocation;
 
     constructor(private logger: Logger, private langService: LangService) {
     }
@@ -43,12 +45,18 @@ export class TranscriptComponent implements OnInit, OnChanges {
         /* Todo: How can you set the activeTabElement here? */
 
         this.selectedTranscript = transcripts.records[0];
+
+        /* Todo: Set active collocation */
+        this.selectedCollocation = transcripts.records[0].collocations.records[0];
     }
 
     onClickTab(transcript: Transcript, e: MouseEvent): void {
         this.logger.debug(`[${this.constructor.name}] onClickTabTitle => title: ${this.titleForTranscript(transcript)}, event:`, e);
         this.activeTabElement = <HTMLLIElement>e.target;
         this.selectedTranscript = transcript;
+
+        /* Todo: If previous selection exists, use that */
+        this.selectedCollocation = transcript.collocations.records[0];
     }
 
     get sliderPosition() {

@@ -12,4 +12,6 @@ export class Collocation extends Entity {
     text: string;
     description: string;
     usage_examples: UsageExamples;
+
+    /* Todo: Add phonetic */
 }
