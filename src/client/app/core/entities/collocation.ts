@@ -11,7 +11,6 @@ import { UsageExamples } from './usage-examples';
 export class Collocation extends Entity {
     text: string;
     description: string;
+    pronunciation: string;
     usage_examples: UsageExamples;
-
-    /* Todo: Add phonetic */
 }
