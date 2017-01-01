@@ -596,6 +596,7 @@ https://get-native.com/videos/show.json?id=123456
 							{
 								"text": "This is the text",
 								"description": "This is the description",
+								"pronunciation": "ˈðɪs ˈɪz ðə ˈtɛkst",
 								"usage_examples": {
 									"count": 3,
 									"records": [

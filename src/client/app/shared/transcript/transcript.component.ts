@@ -7,8 +7,7 @@
 
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { Logger, Transcripts, Transcript, LangService } from '../../core/index';
-import { Collocation } from '../../core/entities/collocation';
+import { Logger, Transcripts, Transcript, LangService, Collocation } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -18,7 +17,7 @@ import { Collocation } from '../../core/entities/collocation';
 })
 export class TranscriptComponent implements OnInit, OnChanges {
     @Input() transcripts: Transcripts;
-    activeTabElement: HTMLLIElement;
+    selectedTab: HTMLLIElement;
     selectedTranscript: Transcript;
     selectedCollocation: Collocation;
 
@@ -42,7 +41,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
 
         this.logger.debug(changes);
 
-        /* Todo: How can you set the activeTabElement here? */
+        /* Todo: How can you set the activeTab here? */
 
         this.selectedTranscript = transcripts.records[0];
 
@@ -52,7 +51,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
 
     onClickTab(transcript: Transcript, e: MouseEvent): void {
         this.logger.debug(`[${this.constructor.name}] onClickTabTitle => title: ${this.titleForTranscript(transcript)}, event:`, e);
-        this.activeTabElement = <HTMLLIElement>e.target;
+        this.selectedTab = <HTMLLIElement>e.target;
         this.selectedTranscript = transcript;
 
         /* Todo: If previous selection exists, use that */
@@ -60,13 +59,13 @@ export class TranscriptComponent implements OnInit, OnChanges {
     }
 
     get sliderPosition() {
-        if (!this.activeTabElement) {
+        if (!this.selectedTab) {
             return null;
         }
 
         return {
-            left: `${this.activeTabElement.offsetLeft}px`,
-            width: `${this.activeTabElement.offsetWidth}px`
+            left: `${this.selectedTab.offsetLeft}px`,
+            width: `${this.selectedTab.offsetWidth}px`
         };
     }
 
