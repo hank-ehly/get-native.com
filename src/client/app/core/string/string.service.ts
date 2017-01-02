@@ -17,11 +17,11 @@ export class StringService {
         return /[0-9]/g.test(char);
     }
 
-    containsAlphaLC(char: string) {
+    containsAlphaLC(char: string): boolean {
         return /[a-z]/g.test(char);
     }
 
-    containsAlphaUC(char: string) {
+    containsAlphaUC(char: string): boolean {
         return /[A-Z]/g.test(char);
     }
 
