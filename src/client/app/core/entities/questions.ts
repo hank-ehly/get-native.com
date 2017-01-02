@@ -5,8 +5,8 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { EntityList } from './entity-list';
+import { Entities } from './entities';
 import { Question } from './question';
 
-export class Questions extends EntityList<Question> {
+export class Questions extends Entities<Question> {
 }
