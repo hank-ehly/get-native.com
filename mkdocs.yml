@@ -7,4 +7,5 @@ pages:
 - 4. Architecture: pages/04_architecture.md
 - 5. API: pages/05_api.md
 - 6. Screens: pages/06_screens.md
+- 7. Saving & Displaying Collocations: pages/07_collocations.md
 theme: readthedocs
