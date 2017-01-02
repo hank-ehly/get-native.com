@@ -35,7 +35,7 @@ TODO: Define specific account deletion technique.
 
 ```
 DELETE
-https://get-native/account
+https://api.get-native/account
 ```
 
 **Example Response**
@@ -55,7 +55,7 @@ Delete the authenticating users' current login session.
 
 ```
 DELETE 
-https://get-native.com/users/authenticate
+https://api.get-native.com/users/authenticate
 ```
 
 **Example Response**
@@ -75,7 +75,7 @@ Delete a notification for the authenticating user.
 
 ```
 DELETE
-https://get-native.com/account/notifications/158
+https://api.get-native.com/account/notifications/158
 ```
 
 **Example Response**
@@ -95,7 +95,7 @@ Returns a user object corresponding to the authenticating user if authentication
 
 ```
 GET
-https://get-native.com/account/verify_credentials.json
+https://api.get-native.com/account/verify_credentials.json
 ```
 
 **Example Response**
@@ -155,7 +155,7 @@ Returns the 20 most recent **cued videos** added by the user to their dashboard.
 
 ```
 GET
-https://get-native.com/cued_videos/list.json
+https://api.get-native.com/cued_videos/list.json
 ```
 
 | Parameter 	| Description                                                      	| Required 	| Default 	|
@@ -234,7 +234,7 @@ Returns information about the speaker specified by the `id` query parameter.
 
 ```
 GET
-https://get-native.com/speakers/show.json?id=123456
+https://api.get-native.com/speakers/show.json?id=123456
 ```
 
 | Parameter   	| Description                   	| Required 	| Default 	|
@@ -279,7 +279,7 @@ Returns the authenticating users' aggregated study statistics.
 
 ```
 GET
-https://get-native.com/study/stats
+https://api.get-native.com/study/stats
 ```
 
 **Example Response**
@@ -316,8 +316,8 @@ Returns a collection of the most recently created videos in the Get Native datab
 
 ```
 GET
-https://get-native.com/videos.json?count=80&trim_likes=true&lang=en
-https://get-native.com/videos.json?count=10&lang=en&max_id=2244994983
+https://api.get-native.com/videos.json?count=80&trim_likes=true&lang=en
+https://api.get-native.com/videos.json?count=10&lang=en&max_id=2244994983
 ```
 
 | Parameter       	| Description                                                                                                                      	| Required 	| Default 	|
@@ -412,7 +412,7 @@ Returns an array of video objects matching the specified search query.
 
 ```
 GET
-https://get-native.com/videos/search?q=Business%20Ethics&lang=en
+https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
 ```
 
 | Parameter       | Description                                                                                                                      | Required | Default |
@@ -500,7 +500,7 @@ Returns the video specified by the `id` query parameter.
 
 ```
 GET
-https://get-native.com/videos/show.json?id=123456
+https://api.get-native.com/videos/show.json?id=123456
 ```
 
 | Parameter   	| Description                         	| Required 	| Default 	|
@@ -638,7 +638,7 @@ TODO: Handle email, facebook, twitter, gmail?
 
 ```
 POST
-https://get-native.com/account/authenticate.json
+https://api.get-native.com/account/authenticate.json
 ```
 
 | Parameter   	| Description                                         	| Required 	| Default 	|
@@ -703,7 +703,7 @@ Create a new study session for the authenticating user.
 
 ```
 POST
-https://get-native.com/study
+https://api.get-native.com/study
 ```
 
 | Parameter 	| Description                                                     	| Required 	| Default 	|
@@ -783,7 +783,7 @@ Register the completion of a listening session.
 
 ```
 POST
-https://get-native.com/account/study/listening
+https://api.get-native.com/account/study/listening
 ```
 
 | Parameter     	| Description                                              	| Required 	| Default 	|
@@ -807,7 +807,7 @@ Register the completion of the shadowing session.
 
 ```
 POST
-https://get-native.com/study/shadowing
+https://api.get-native.com/study/shadowing
 ```
 
 | Parameter     	| Description                                              	| Required 	| Default 	|
@@ -831,7 +831,7 @@ Register the completion of a speaking session.
 
 ```
 POST
-https://get-native.com/account/study/speaking
+https://api.get-native.com/account/study/speaking
 ```
 
 | Parameter     	| Description                                              	| Required 	| Default 	|
@@ -855,7 +855,7 @@ Register the completion of a writing session.
 
 ```
 POST
-https://get-native.com/study/writing
+https://api.get-native.com/study/writing
 ```
 
 | Parameter     	| Description                                                                     	| Required 	| Default 	|
@@ -886,7 +886,7 @@ Sets values that authenticating user can view from their Account page.
 
 ```
 PUT
-https://get-native.com/account/update_profile.json
+https://api.get-native.com/account/update_profile.json
 ```
 
 | Parameter   	| Description                                                      	| Required 	| Default 	|
@@ -953,7 +953,7 @@ Updates the profile image of the authenticating user.
 
 ```
 PUT
-https://get-native.com/account/update_profile_image
+https://api.get-native.com/account/update_profile_image
 ```
 
 | Parameter 	| Description                                               	| Required 	| Default 	|
