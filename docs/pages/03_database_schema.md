@@ -61,3 +61,35 @@ A video record documents the video within the get-native database. It contains i
 
 #### writing_session
 When a user completes the writing portion of the study session, a new listening session record is created to document that completion along with any statistical data was gathered. A writing session record will, for example, hold the answer text provided by the user as well as word count and word per minute statistics.
+
+---
+
+## Creation of Resources
+
+```
+A ... Created by Admin
+U ... Created by User
+D ... Created directly
+I ... Created indirectly
+
+authentication_provider ... AD
+category................... AD
+collocation ............... AI
+cued_video ................ UD
+followers ................. UD
+language .................. AD
+like ...................... UD
+listening_session ......... UI
+notification .............. AD
+question .................. AD
+shadowing_session ......... UI
+speaker ................... AD
+speaking_session .......... UI
+study_session ............. UI
+topic ..................... AD
+transcript ................ AD
+usage_example ............. AI
+user ...................... UD
+video ..................... AD
+writing_session ........... UI
+```
