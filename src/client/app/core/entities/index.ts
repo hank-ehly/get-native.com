@@ -9,7 +9,7 @@ export * from './category';
 export * from './collocation';
 export * from './collocations';
 export * from './entity';
-export * from './entity-list';
+export * from './entities';
 export * from './like';
 export * from './likes';
 export * from './question';

@@ -6,7 +6,7 @@
  */
 
 import { UsageExample } from './usage-example';
-import { EntityList } from './entity-list';
+import { Entities } from './entities';
 
-export class UsageExamples extends EntityList<UsageExample> {
+export class UsageExamples extends Entities<UsageExample> {
 }

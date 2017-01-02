@@ -5,8 +5,8 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { EntityList } from './entity-list';
+import { Entities } from './entities';
 import { Collocation } from './collocation';
 
-export class Collocations extends EntityList<Collocation> {
+export class Collocations extends Entities<Collocation> {
 }

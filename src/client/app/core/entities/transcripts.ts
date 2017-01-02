@@ -5,8 +5,8 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { EntityList } from './entity-list';
+import { Entities } from './entities';
 import { Transcript } from './transcript';
 
-export class Transcripts extends EntityList<Transcript> {
+export class Transcripts extends Entities<Transcript> {
 }
