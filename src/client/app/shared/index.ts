@@ -11,6 +11,7 @@ export * from './debug/index';
 export * from './footer/index';
 export * from './modal/modal.component';
 export * from './navbar/index';
+export * from './password-strength/password-strength.component';
 export * from './side-menu/side-menu.component';
 export * from './study-progress/study-progress.component';
 export * from './switch/switch.component';

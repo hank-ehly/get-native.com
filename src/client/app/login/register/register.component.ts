@@ -8,8 +8,9 @@
 import { Component, ViewChild, AfterViewChecked } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { PasswordStrengthComponent } from '../password-strength/password-strength.component';
+
 import { LoginService, Logger } from '../../core/index';
+import { PasswordStrengthComponent } from '../../shared/index';
 
 @Component({
     moduleId: module.id,
@@ -17,7 +18,6 @@ import { LoginService, Logger } from '../../core/index';
     templateUrl: 'register.component.html',
     styleUrls: ['register.component.css']
 })
-
 export class RegisterComponent implements AfterViewChecked {
     @ViewChild('form') currentForm: NgForm;
     @ViewChild(PasswordStrengthComponent) passwordStrengthComponent: PasswordStrengthComponent;

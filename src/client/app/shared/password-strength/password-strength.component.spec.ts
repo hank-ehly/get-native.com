@@ -36,8 +36,8 @@ export function main() {
         it('should display a VERY WEAK state color', () => {
             comp.update(STUBPasswords.veryWeak);
             fixture.detectChanges();
-            el = util.getNativeEl('.meter__segment_very-weak');
-            expect(el.className).toContain('meter__segment_visible');
+            el = util.getNativeEl('.meter__segment--very-weak');
+            expect(el.className).toContain('meter__segment--visible');
         });
         it('should display a VERY WEAK state label', () => {
             comp.update(STUBPasswords.veryWeak);
@@ -50,8 +50,8 @@ export function main() {
         it('should display a WEAK state color', () => {
             comp.update(STUBPasswords.weak);
             fixture.detectChanges();
-            el = util.getNativeEl('.meter__segment_weak');
-            expect(el.className).toContain('meter__segment_visible');
+            el = util.getNativeEl('.meter__segment--weak');
+            expect(el.className).toContain('meter__segment--visible');
         });
         it('should display a WEAK state label', () => {
             comp.update(STUBPasswords.weak);
@@ -63,8 +63,8 @@ export function main() {
         it('should display a GOOD state color', () => {
             comp.update(STUBPasswords.good);
             fixture.detectChanges();
-            el = util.getNativeEl('.meter__segment_good');
-            expect(el.className).toContain('meter__segment_visible');
+            el = util.getNativeEl('.meter__segment--good');
+            expect(el.className).toContain('meter__segment--visible');
         });
         it('should display a GOOD state label', () => {
             comp.update(STUBPasswords.good);
@@ -76,8 +76,8 @@ export function main() {
         it('should display a STRONG state color', () => {
             comp.update(STUBPasswords.strong);
             fixture.detectChanges();
-            el = util.getNativeEl('.meter__segment_strong');
-            expect(el.className).toContain('meter__segment_visible');
+            el = util.getNativeEl('.meter__segment--strong');
+            expect(el.className).toContain('meter__segment--visible');
         });
         it('should display a STRONG state label', () => {
             comp.update(STUBPasswords.strong);
@@ -89,8 +89,8 @@ export function main() {
         it('should display a VERY STRONG state color', () => {
             comp.update(STUBPasswords.veryStrong);
             fixture.detectChanges();
-            el = util.getNativeEl('.meter__segment_very-strong');
-            expect(el.className).toContain('meter__segment_visible');
+            el = util.getNativeEl('.meter__segment--very-strong');
+            expect(el.className).toContain('meter__segment--visible');
         });
         it('should display a VERY STRONG state label', () => {
             comp.update(STUBPasswords.veryStrong);

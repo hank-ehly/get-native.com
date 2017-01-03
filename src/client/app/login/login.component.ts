@@ -49,7 +49,6 @@ import { LoginService, Logger } from '../core/index';
         ])
     ]
 })
-
 export class LoginComponent implements OnInit {
     @Input() isVisible: boolean;
     activeView: string;
