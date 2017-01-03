@@ -15,6 +15,7 @@ import {
     FooterComponent,
     ModalComponent,
     NavbarComponent,
+    PasswordStrengthComponent,
     SideMenuComponent,
     StudyProgressComponent,
     SwitchComponent,
@@ -38,6 +39,7 @@ import {
         FooterComponent,
         ModalComponent,
         NavbarComponent,
+        PasswordStrengthComponent,
         SideMenuComponent,
         StudyProgressComponent,
         SwitchComponent,
@@ -57,6 +59,7 @@ import {
         FooterComponent,
         ModalComponent,
         NavbarComponent,
+        PasswordStrengthComponent,
         SideMenuComponent,
         StudyProgressComponent,
         SwitchComponent,
@@ -70,4 +73,3 @@ import {
 
 export class SharedModule {
 }
-

@@ -7,7 +7,7 @@
 
 import { Component } from '@angular/core';
 
-import { PasswordService, Logger } from '../../core/index';
+import { PasswordService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -19,7 +19,8 @@ export class PasswordStrengthComponent {
     score: number = 0;
     private _strengthLabel: string;
 
-    constructor(private passwordService: PasswordService, private logger: Logger) {}
+    constructor(private passwordService: PasswordService) {
+    }
 
     get strengthLabel(): string {
         let matrix: [number, string][] = [

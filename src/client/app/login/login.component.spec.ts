@@ -14,8 +14,7 @@ import {
     LoginComponent,
     SocialLoginComponent,
     EmailLoginComponent,
-    RegisterComponent,
-    PasswordStrengthComponent
+    RegisterComponent
 } from './index';
 import {
     SpecUtil,
@@ -44,8 +43,7 @@ export function main() {
                     LoginComponent,
                     SocialLoginComponent,
                     EmailLoginComponent,
-                    RegisterComponent,
-                    PasswordStrengthComponent
+                    RegisterComponent
                 ],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
