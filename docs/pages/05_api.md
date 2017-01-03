@@ -1,6 +1,7 @@
 Todo:
 - Use 'patch' for 'updating resources with partial JSON data.'
 - Use 'put' for replacing resources or collections.
+- Remove '.json' from example requests
 
 # Introduction
 
@@ -946,14 +947,33 @@ PUT https://api.get-native.com/account/update_profile_image
 }
 ```
 
-# PUT /account/update_password
+# PUT /account/password
 
-# PATCH /account/profile
+**Parameters**
+
+| Parameter   	| Description                                                      	| Required 	| Default 	|
+|-------------	|------------------------------------------------------------------	|:--------:	|---------	|
+| password    	| The authenticating users' new password.                          	|    √     	|         	|
+
+```json
+{
+	"password": "8h45lJ0E"
+}
+```
+
+**Response**
+
+```
+Status 204 No Content
+```
+
+
+# PATCH /account
 
 Sets values that authenticating user can view from their Account page.
 
 ```
-PUT https://api.get-native.com/account/update_profile.json
+PATCH https://api.get-native.com/account
 ```
 
 **Parameters**
@@ -969,12 +989,15 @@ PUT https://api.get-native.com/account/update_profile.json
 {
 	"name": "Captain Jack Sparrow",
 	"location": "Caribbean Sea",
-	"description": "A description about me.", // Todo: Not used (?)
-	"password": ""
+	"description": "A description about me." // Todo: Not used (?)
 }
 ```
 
 **Response**
+
+```
+Status 200 OK
+```
 
 | Data Field            | Type           | Description                                                        |
 |-----------------------|----------------|--------------------------------------------------------------------|
