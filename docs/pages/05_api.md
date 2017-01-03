@@ -1,6 +1,10 @@
+Todo:
+- Use 'patch' for 'updating resources with partial JSON data.'
+- Use 'put' for replacing resources or collections.
+
 # Introduction
 
-All API responses contain the following root level parameters:
+With the exception of `204 No Content` responses, all API responses contain the following root level parameters:
 
 | Parameter 	| Type    	| Meaning                                                                                                                        	|
 |-----------	|---------	|--------------------------------------------------------------------------------------------------------------------------------	|
@@ -31,14 +35,11 @@ Deactivate the account of the authenticating user.
 
 TODO: Define specific account deletion technique.
 
-**Example Request**
-
 ```
-DELETE
-https://api.get-native/account
+DELETE https://api.get-native/account
 ```
 
-**Example Response**
+**Response**
 
 ```json
 {
@@ -51,14 +52,11 @@ https://api.get-native/account
 
 Delete the authenticating users' current login session.
 
-**Example Request**
-
 ```
-DELETE 
-https://api.get-native.com/users/authenticate
+DELETE  https://api.get-native.com/users/authenticate
 ```
 
-**Example Response**
+**Response**
 
 ```json
 {
@@ -71,14 +69,11 @@ https://api.get-native.com/users/authenticate
 
 Delete a notification for the authenticating user.
 
-**Example Request**
-
 ```
-DELETE
-https://api.get-native.com/account/notifications/158
+DELETE https://api.get-native.com/account/notifications/158
 ```
 
-**Example Response**
+**Response**
 
 ```json
 {
@@ -91,14 +86,11 @@ https://api.get-native.com/account/notifications/158
 
 Returns a user object corresponding to the authenticating user if authentication is successful.
 
-**Example Request**
-
 ```
-GET
-https://api.get-native.com/account/verify_credentials.json
+GET https://api.get-native.com/account/verify_credentials.json
 ```
 
-**Example Response**
+**Response**
 
 | Data Field            | Type           | Description                                                        |
 |-----------------------|----------------|--------------------------------------------------------------------|
@@ -151,19 +143,18 @@ https://api.get-native.com/account/verify_credentials.json
 
 Returns the 20 most recent **cued videos** added by the user to their dashboard.
 
-**Example Request**
+```
+GET https://api.get-native.com/cued_videos/list.json
+```
 
-```
-GET
-https://api.get-native.com/cued_videos/list.json
-```
+**Parameters**
 
 | Parameter 	| Description                                                      	| Required 	| Default 	|
 |-----------	|------------------------------------------------------------------	|:--------:	|---------	|
 | max_id    	| Returns only videos with an ID less than or equal to the max_id. 	|          	|         	|
 | count     	| The number of video records to retrieve. Maximum is 200.         	|          	| 20      	|
 
-**Example Response**
+**Response**
 
 | Data Field 	| Type        	| Description                                               	|
 |------------	|-------------	|-----------------------------------------------------------	|
@@ -202,22 +193,19 @@ https://api.get-native.com/cued_videos/list.json
 				"thumbnail_image_url": "TODO",
 				"video_url": "TODO",
 				"has_related_videos": true,
-				"likes": [
-					"records": [
-						{
+				"likes": {
+					"records": [{
 							"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 							"user": {
 								"screen_name": "Phil Barnes",
 								"id": 123,
-								"id_str": "123",
-								// TODO: Unsafe
+								"id_str": "123"
 							},
 							"id": 456,
 							"id_str": "456"
-						}
-					],
+					}],
 					"count": 10
-				],
+				},
 				"length": 68
 			}
 		]
@@ -230,18 +218,17 @@ https://api.get-native.com/cued_videos/list.json
 
 Returns information about the speaker specified by the `id` query parameter.
 
-**Example Request**
+```
+GET https://api.get-native.com/speakers/show.json?id=123456
+```
 
-```
-GET
-https://api.get-native.com/speakers/show.json?id=123456
-```
+**Parameters**
 
 | Parameter   	| Description                   	| Required 	| Default 	|
 |-------------	|-------------------------------	|:--------:	|---------	|
 | id          	| The unique ID of the speaker. 	|     √    	|         	|
 
-**Example Result**
+**Response**
 
 | Data Field    | Type   	| Description                                        	|
 |-------------	|--------	|----------------------------------------------------	|
@@ -271,18 +258,17 @@ https://api.get-native.com/speakers/show.json?id=123456
 }
 ```
 
-TODO: Consider followers# GET /study/stats
+TODO: Consider followers
+
+# GET /study/stats
 
 Returns the authenticating users' aggregated study statistics.
 
-**Example Request**
-
 ```
-GET
-https://api.get-native.com/study/stats
+GET https://api.get-native.com/study/stats
 ```
 
-**Example Response**
+**Response**
 
 | Data Field               	| Type   	| Description                                                                                          	|
 |--------------------------	|--------	|------------------------------------------------------------------------------------------------------	|
@@ -312,13 +298,11 @@ https://api.get-native.com/study/stats
 
 Returns a collection of the most recently created videos in the Get Native database.
 
-**Example Request**
+```
+GET https://api.get-native.com/videos.json?count=10&lang=en&max_id=2244994983?trim_likes=true
+```
 
-```
-GET
-https://api.get-native.com/videos.json?count=80&trim_likes=true&lang=en
-https://api.get-native.com/videos.json?count=10&lang=en&max_id=2244994983
-```
+**Parameters**
 
 | Parameter       	| Description                                                                                                                      	| Required 	| Default 	|
 |-----------------	|----------------------------------------------------------------------------------------------------------------------------------	|:--------:	|---------	|
@@ -339,7 +323,7 @@ When you've retrieved an initial array of videos using the `/videos` URI, make n
 When you're ready to _Load More_ videos, specify the lowest video ID in the `max_id` field to retrieve another batch of 
 videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower the video ID, the older the video.
 
-**Example Response**
+**Response**
 
 | Data Field | Type    | Description                                   |
 |------------|---------|-----------------------------------------------|
@@ -379,22 +363,21 @@ videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower 
 					"thumbnail_image_url": "TODO",
 					"video_url": "TODO",
 					"has_related_videos": true,
-					"likes": [
+					"likes": {
 						"records": [
 							{
 								"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-								"user": {
+								"user": { // TODO: Unsafe
 									"screen_name": "Phil Barnes",
 									"id": 123,
-									"id_str": "123",
-									// TODO: Unsafe
+									"id_str": "123"
 								},
 								"id": 456,
 								"id_str": "456"
 							}
 						],
 						"count": 10
-					],
+					},
 					"length": 68
 			}
 		]
@@ -408,12 +391,11 @@ videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower 
 
 Returns an array of video objects matching the specified search query.
 
-**Example Request**
+```
+GET https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
+```
 
-```
-GET
-https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
-```
+**Parameters**
 
 | Parameter       | Description                                                                                                                      | Required | Default |
 |-----------------|----------------------------------------------------------------------------------------------------------------------------------|----------|---------|
@@ -428,7 +410,7 @@ https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
 | category_id     | Restricts videos to the given category. If the topic_id parameter is also included, the category_id parameter is ignored.        |          |         |
 | q               | A URL-encoded UTF-8 search query. Maximum length is 100 characters.                                                              |          |         |
 
-**Example Response**
+**Response**
 
 | Data Field | Type    | Description                                              |
 |------------|---------|----------------------------------------------------------|
@@ -468,22 +450,21 @@ https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
 				"thumbnail_image_url": "TODO",
 				"video_url": "TODO",
 				"has_related_videos": true,
-				"likes": [
+				"likes": {
 					"records": [
 						{
 							"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-							"user": {
+							"user": { // TODO: Unsafe
 								"screen_name": "Phil Barnes",
 								"id": 123,
-								"id_str": "123",
-								// TODO: Unsafe
+								"id_str": "123"
 							},
 							"id": 456,
 							"id_str": "456"
 						}
 					],
 					"count": 10
-				],
+				},
 				"length": 68
 			}
 		]
@@ -496,18 +477,17 @@ https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
 
 Returns the video specified by the `id` query parameter.
 
-**Example Request**
+```
+GET https://api.get-native.com/videos/show.json?id=123456
+```
 
-```
-GET
-https://api.get-native.com/videos/show.json?id=123456
-```
+**Parameters**
 
 | Parameter   	| Description                         	| Required 	| Default 	|
 |-------------	|-------------------------------------	|:--------:	|---------	|
 | id          	| The unique ID of the video.          	|     √    	|         	|
 
-**Example Result**
+**Response**
 
 | Data Field          | Type         | Description                                                                                        |
 |---------------------|--------------|----------------------------------------------------------------------------------------------------|
@@ -634,19 +614,18 @@ Verify user credentials and create new login session.
 
 TODO: Handle email, facebook, twitter, gmail?
 
-**Example Request**
+```
+POST https://api.get-native.com/account/authenticate.json
+```
 
-```
-POST
-https://api.get-native.com/account/authenticate.json
-```
+**Parameters**
 
 | Parameter   	| Description                                         	| Required 	| Default 	|
 |-------------	|-----------------------------------------------------	|:--------:	|---------	|
 | email        	| The email linked to the authenticating users' account	|     √    	|         	|
 | password     	| The users' password                                 	|     √    	|         	|
 
-**Example Response**
+**Response**
 
 | Data Field            | Type           | Description                                                        |
 |-----------------------|----------------|--------------------------------------------------------------------|
@@ -695,25 +674,51 @@ https://api.get-native.com/account/authenticate.json
 	"error": ""
 }
 ```
-# TODO: POST /videos/like/:id
+
+# POST /videos/like/:id
+
+Like a video
+
+```
+POST https://api.get-native.com/videos/like/12345
+```
+
+**Parameters**
+
+| Parameter 	| Description                                                     	| Required 	| Default 	|
+|-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
+| user     	  | The unique ID of the user who likes the video                   	|     √    	|         	|
+| video     	| The unique ID of the video to like                	              |     √    	|         	|
+
+```json
+{
+  "user": 12345,
+  "video": 12345
+}
+```
+
+**Response**
+
+```
+Status: 204 No Content
+```
 
 # POST /study
 
 Create a new study session for the authenticating user.
 
-**Example Request**
+```
+POST https://api.get-native.com/study
+```
 
-```
-POST
-https://api.get-native.com/study
-```
+**Parameters**
 
 | Parameter 	| Description                                                     	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
 | video     	| The unique ID of the video for the study session                	|     √    	|         	|
 | time        | The user-specified amount of time in seconds of the study session	|     √    	|         	|
 
-**Example Response**
+**Response**
 
 | Data Field 	| Type   	| Description                                                       	|
 |------------	|--------	|-------------------------------------------------------------------	|
@@ -754,22 +759,21 @@ https://api.get-native.com/study
 				"thumbnail_image_url": "TODO",
 				"video_url": "TODO",
 				"has_related_videos": true,
-				"likes": [
+				"likes": {
 					"records": [
 						{
 							"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-							"user": {
+							"user": { // TODO: Unsafef
 								"screen_name": "Phil Barnes",
 								"id": 123,
-								"id_str": "123",
-								// TODO: Unsafe
+								"id_str": "123"
 							},
 							"id": 456,
 							"id_str": "456"
 						}
 					],
 					"count": 10
-				],
+				},
 				"length": 68
 		}
 	},
@@ -781,18 +785,17 @@ https://api.get-native.com/study
 
 Register the completion of a listening session.
 
-**Example Request**
+```
+POST https://api.get-native.com/account/study/listening
+```
 
-```
-POST
-https://api.get-native.com/account/study/listening
-```
+**Parameters**
 
 | Parameter     	| Description                                              	| Required 	| Default 	|
 |---------------	|----------------------------------------------------------	|:--------:	|---------	|
 | study_session  	| The unique ID of the current study session              	|     √    	|         	|
 
-**Example Response**
+**Response**
 
 ```json
 {
@@ -805,18 +808,17 @@ https://api.get-native.com/account/study/listening
 
 Register the completion of the shadowing session.
 
-**Example Request**
+```
+POST https://api.get-native.com/study/shadowing
+```
 
-```
-POST
-https://api.get-native.com/study/shadowing
-```
+**Parameters**
 
 | Parameter     	| Description                                              	| Required 	| Default 	|
 |---------------	|----------------------------------------------------------	|:--------:	|---------	|
 | study_session  	| The unique ID of the current study session              	|     √    	|         	|
 
-**Example Response**
+**Response**
 
 ```json
 {
@@ -829,18 +831,17 @@ https://api.get-native.com/study/shadowing
 
 Register the completion of a speaking session.
 
-**Example Request**
+**Parameters**
 
 ```
-POST
-https://api.get-native.com/account/study/speaking
+POST https://api.get-native.com/account/study/speaking
 ```
 
 | Parameter     	| Description                                              	| Required 	| Default 	|
 |---------------	|----------------------------------------------------------	|:--------:	|---------	|
 | study_session  	| The unique ID of the current study session              	|     √    	|         	|
 
-**Example Response**
+**Response**
 
 ```json
 {
@@ -853,12 +854,12 @@ https://api.get-native.com/account/study/speaking
 
 Register the completion of a writing session.
 
-**Example Request**
+```
+POST https://api.get-native.com/study/writing
+```
 
-```
-POST
-https://api.get-native.com/study/writing
-```
+**Parameters**
+
 
 | Parameter     	| Description                                                                     	| Required 	| Default 	|
 |---------------	|---------------------------------------------------------------------------------	|:--------:	|---------	|
@@ -871,7 +872,7 @@ https://api.get-native.com/study/writing
 As opposed to calculating the words per minute and word count of the user provided answer for the current study session
 before sending the request, calculations are performed server side for maximum efficiency.
 
-**Example Response**
+**Response**
 
 ```json
 {
@@ -880,25 +881,22 @@ before sending the request, calculations are performed server side for maximum e
 	"error": ""
 }
 ```
-# PUT /account/profile
 
-Sets values that authenticating user can view from their Account page.
+# PUT /account/profile_image
 
-**Example Request**
+Updates the profile image of the authenticating user.
 
 ```
-PUT
-https://api.get-native.com/account/update_profile.json
+PUT https://api.get-native.com/account/update_profile_image
 ```
 
-| Parameter   	| Description                                                      	| Required 	| Default 	|
-|-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| name        	| The users' self-declared real name.                              	|          	|         	|
-| location    	| The users' non-normalized / non-geocoded self-declared location. 	|          	|         	|
-| description 	| A description about the user.                                    	|          	|         	|
-| password    	| The authenticating users' new password.                          	|          	|         	|
+**Parameters**
 
-**Example Response**
+| Parameter 	| Description                                               	| Required 	| Default 	|
+|-----------	|-----------------------------------------------------------	|:--------:	|---------	|
+| image     	| The base-64 encoded profile image.                        	|     √    	|         	|
+
+**Response**
 
 | Data Field            | Type           | Description                                                        |
 |-----------------------|----------------|--------------------------------------------------------------------|
@@ -931,7 +929,7 @@ https://api.get-native.com/account/update_profile.json
 		"default_profile_image": false,
 		"email": "john_doe@example.com",
 		"favorites_count": 45,
-		"notifications": {
+		"notifications": { // TODO: Is this necessary?
 			"records": [
 				{
 					"id": 123456,
@@ -947,22 +945,36 @@ https://api.get-native.com/account/update_profile.json
 	"error": ""
 }
 ```
-# PUT /account/profile_image
 
-Updates the profile image of the authenticating user.
+# PUT /account/update_password
 
-**Example Request**
+# PATCH /account/profile
+
+Sets values that authenticating user can view from their Account page.
 
 ```
-PUT
-https://api.get-native.com/account/update_profile_image
+PUT https://api.get-native.com/account/update_profile.json
 ```
 
-| Parameter 	| Description                                               	| Required 	| Default 	|
-|-----------	|-----------------------------------------------------------	|:--------:	|---------	|
-| image     	| The base-64 encoded profile image.                        	|     √    	|         	|
+**Parameters**
 
-**Example Response**
+| Parameter   	| Description                                                      	| Required 	| Default 	|
+|-------------	|------------------------------------------------------------------	|:--------:	|---------	|
+| name        	| The users' self-declared real name.                              	|          	|         	|
+| location    	| The users' non-normalized / non-geocoded self-declared location. 	|          	|         	|
+| description 	| A description about the user.                                    	|          	|         	|
+| password    	| The authenticating users' new password.                          	|          	|         	|
+
+```json
+{
+	"name": "Captain Jack Sparrow",
+	"location": "Caribbean Sea",
+	"description": "A description about me.", // Todo: Not used (?)
+	"password": ""
+}
+```
+
+**Response**
 
 | Data Field            | Type           | Description                                                        |
 |-----------------------|----------------|--------------------------------------------------------------------|
