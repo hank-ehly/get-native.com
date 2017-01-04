@@ -1,7 +1,6 @@
 Todo:
 - Use 'patch' for 'updating resources with partial JSON data.'
 - Use 'put' for replacing resources or collections.
-- change 'delete' methods responses to 204
 
 # Introduction
 
