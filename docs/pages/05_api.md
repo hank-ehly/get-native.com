@@ -1,7 +1,7 @@
 Todo:
 - Use 'patch' for 'updating resources with partial JSON data.'
 - Use 'put' for replacing resources or collections.
-- Remove '.json' from example requests
+- change 'delete' methods responses to 204
 
 # Introduction
 
@@ -34,7 +34,7 @@ indicating the number of records included in the array.
 
 Deactivate the account of the authenticating user.
 
-TODO: Define specific account deletion technique.
+Todo: Define specific account deletion technique.
 
 ```
 DELETE https://api.get-native/account
@@ -42,12 +42,8 @@ DELETE https://api.get-native/account
 
 **Response**
 
-```json
-{
-	"data": {},
-	"success": true,
-	"error": ""
-}
+```
+Status: 204 No Content
 ```
 # DELETE /account/authenticate
 
@@ -59,13 +55,10 @@ DELETE  https://api.get-native.com/users/authenticate
 
 **Response**
 
-```json
-{
-	"data": {},
-	"success": true,
-	"error": ""
-}
 ```
+Status: 204 No Content
+```
+
 # DELETE /account/notifications/:id
 
 Delete a notification for the authenticating user.
@@ -76,19 +69,16 @@ DELETE https://api.get-native.com/account/notifications/158
 
 **Response**
 
-```json
-{
-	"data": {},
-	"success": true,
-	"error": ""
-}
 ```
+Status: 204 No Content
+```
+
 # GET /account/verify_credentials
 
 Returns a user object corresponding to the authenticating user if authentication is successful.
 
 ```
-GET https://api.get-native.com/account/verify_credentials.json
+GET https://api.get-native.com/account/verify_credentials
 ```
 
 **Response**
@@ -145,7 +135,7 @@ GET https://api.get-native.com/account/verify_credentials.json
 Returns the 20 most recent **cued videos** added by the user to their dashboard.
 
 ```
-GET https://api.get-native.com/cued_videos/list.json
+GET https://api.get-native.com/cued_videos/list
 ```
 
 **Parameters**
@@ -220,7 +210,7 @@ GET https://api.get-native.com/cued_videos/list.json
 Returns information about the speaker specified by the `id` query parameter.
 
 ```
-GET https://api.get-native.com/speakers/show.json?id=123456
+GET https://api.get-native.com/speakers/show?id=123456
 ```
 
 **Parameters**
@@ -300,7 +290,7 @@ GET https://api.get-native.com/study/stats
 Returns a collection of the most recently created videos in the Get Native database.
 
 ```
-GET https://api.get-native.com/videos.json?count=10&lang=en&max_id=2244994983?trim_likes=true
+GET https://api.get-native.com/videos?count=10&lang=en&max_id=2244994983?trim_likes=true
 ```
 
 **Parameters**
@@ -479,7 +469,7 @@ GET https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
 Returns the video specified by the `id` query parameter.
 
 ```
-GET https://api.get-native.com/videos/show.json?id=123456
+GET https://api.get-native.com/videos/show?id=123456
 ```
 
 **Parameters**
@@ -616,7 +606,7 @@ Verify user credentials and create new login session.
 TODO: Handle email, facebook, twitter, gmail?
 
 ```
-POST https://api.get-native.com/account/authenticate.json
+POST https://api.get-native.com/account/authenticate
 ```
 
 **Parameters**
