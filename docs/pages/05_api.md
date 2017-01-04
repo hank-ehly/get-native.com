@@ -98,6 +98,7 @@ Todo: Parameters
 | profile_image_url     | String         |  HTTPS URI for user profile image                                  |
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
 | email                 | String         | The user's email                                                   |
+| email_verified        | Boolean        | Whether the user has verified their email address.                 |
 | favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
@@ -119,6 +120,7 @@ Status: 200 OK
 		"profile_image_url": "TODO",
 		"default_profile_image": false,
 		"email": "john_doe@example.com",
+		"email_verified": true,
 		"favorites_count": 45,
 		"notifications": {
 			"records": [
@@ -241,6 +243,10 @@ GET https://api.get-native.com/speakers/123456
 | gender      	| String 	| _Nullable._ The gender of the speaker               |
 | location    	| String 	| _Nullable._ The location of the speaker            	|
 
+
+```
+Status: 200 OK
+```
 ```json
 {
 	"data": {
@@ -258,7 +264,7 @@ GET https://api.get-native.com/speakers/123456
 }
 ```
 
-TODO: Consider followers
+Todo: Consider followers
 
 # GET /study/stats
 
@@ -280,6 +286,9 @@ GET https://api.get-native.com/study/stats
 | maximum_words            	| Int    	| The maximum number of words that the authenticating user has typed during a writing session to date  	|
 | maximum_wpm              	| Int    	| The maximum words per minute that the authenticating user has typed during a writing session to date 	|
 
+```
+Status: 200 OK
+```
 ```json
 {
 	"data": {
@@ -293,7 +302,8 @@ GET https://api.get-native.com/study/stats
 	"success": true,
 	"error": ""
 }
-```
+``` 
+
 # GET /videos
 
 Returns a collection of the most recently created videos in the Get Native database.
@@ -330,6 +340,9 @@ videos whose IDs are _lower than or equal to_ the specified `max_id`. The lower 
 | count      | Int     | The number of videos included in the response |
 | records    | [Video] | The array of video objects                    |
 
+```
+Status: 200 OK
+```
 ```json
 {
 	"data": {
@@ -417,7 +430,9 @@ GET https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
 | count      | Int     | The number of videos included in the response.           |
 | records    | [Video] | The array of video objects relevant to the search query. |
 
-
+```
+Status: 200 OK
+```
 ```json
 {
 	"data": {
@@ -512,6 +527,9 @@ GET https://api.get-native.com/videos/123456
 | transcripts         | [Transcript] | An array of transcript objects corresponding to the video.                                         |
 | questions           | [Question]   | An array of question objects used for the writing section of a video.                              |
 
+```
+Status: 200 OK
+```
 ```json
 {
 	"data": {
@@ -640,6 +658,7 @@ POST https://api.get-native.com/account/authenticate
 | profile_image_url     | String         |  HTTPS URI for user profile image                                  |
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
 | email                 | String         | The user's email                                                   |
+| email_verified        | Boolean        | Whether the user has verified their email address.                 |
 | favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
@@ -657,6 +676,7 @@ POST https://api.get-native.com/account/authenticate
 		"profile_image_url": "TODO",
 		"default_profile_image": false,
 		"email": "john_doe@example.com",
+		"email_verified": true,
 		"favorites_count": 45,
 		"notifications": {
 			"records": [
@@ -887,7 +907,7 @@ before sending the request, calculations are performed server side for maximum e
 Updates the profile image of the authenticating user.
 
 ```
-PUT https://api.get-native.com/account/update_profile_image
+PUT https://api.get-native.com/account/profile_image
 ```
 
 **Parameters**
@@ -911,9 +931,13 @@ PUT https://api.get-native.com/account/update_profile_image
 | profile_image_url     | String         |  HTTPS URI for user profile image                                  |
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
 | email                 | String         | The user's email                                                   |
+| email_verified        | Boolean        | Whether the user has verified their email address.                 |
 | favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
+```
+Status: 200 OK
+```
 ```json
 {
 	"data": {
@@ -928,6 +952,7 @@ PUT https://api.get-native.com/account/update_profile_image
 		"profile_image_url": "TODO",
 		"default_profile_image": false,
 		"email": "john_doe@example.com",
+		"email_verified": true,
 		"favorites_count": 45,
 		"notifications": { // TODO: Is this necessary?
 			"records": [
@@ -966,37 +991,30 @@ PUT https://api.get-native.com/account/update_profile_image
 Status 204 No Content
 ```
 
+# PUT /account/email
 
-# PATCH /account
+Todo: Email verification API
+Todo: Email 'not verified yet' message in UI
 
-Sets values that authenticating user can view from their Account page.
+Update the authenticating user's email address.
 
 ```
-PATCH https://api.get-native.com/account
+PUT https://api.get-native.com/account/email
 ```
 
 **Parameters**
 
 | Parameter   	| Description                                                      	| Required 	| Default 	|
 |-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| name        	| The users' self-declared real name.                              	|          	|         	|
-| location    	| The users' non-normalized / non-geocoded self-declared location. 	|          	|         	|
-| description 	| A description about the user.                                    	|          	|         	|
-| password    	| The authenticating users' new password.                          	|          	|         	|
+| email        	| The users' new email address.                                   	|          	|         	|
 
 ```json
 {
-	"name": "Captain Jack Sparrow",
-	"location": "Caribbean Sea",
-	"description": "A description about me." // Todo: Not used (?)
+	"email": "jack.sparrow@email.com"
 }
 ```
 
 **Response**
-
-```
-Status 200 OK
-```
 
 | Data Field            | Type           | Description                                                        |
 |-----------------------|----------------|--------------------------------------------------------------------|
@@ -1011,9 +1029,13 @@ Status 200 OK
 | profile_image_url     | String         |  HTTPS URI for user profile image                                  |
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
 | email                 | String         | The user's email                                                   |
+| email_verified        | Boolean        | Whether the user has verified their email address.                 |
 | favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
+```
+Status 200 OK
+```
 ```json
 {
 	"data": {
@@ -1028,6 +1050,7 @@ Status 200 OK
 		"profile_image_url": "TODO",
 		"default_profile_image": false,
 		"email": "john_doe@example.com",
+		"email_verified": false,
 		"favorites_count": 45,
 		"notifications": {
 			"records": [
