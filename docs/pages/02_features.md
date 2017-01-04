@@ -1,8 +1,10 @@
 ### Registration & Login
-Get Native allows users to register and/or login in 1 of 3 ways:
-Facebook
-Gmail (Google Account)
-Regular Email
+Get Native allows users to register and/or login in 1 of 4 ways:
+
+1. Facebook
+2. Twitter
+3. Gmail (Google Account)
+4. Regular Email
 
 ### Browse / Search Videos
 The focus of Get Native is on studying video interviews. Users can browse and/or filter-search video interviews based on preset criteria. Videos are stored on the origin server and sent to the client using HTTP Range Requests [RFC 7233] via the HTML5 `<video>` interface. Videos are proprietary and are not available for download; however, they are free to view online.
