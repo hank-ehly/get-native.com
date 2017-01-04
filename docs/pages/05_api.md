@@ -81,6 +81,8 @@ Returns a user object corresponding to the authenticating user if authentication
 GET https://api.get-native.com/account/verify_credentials
 ```
 
+Todo: Parameters
+
 **Response**
 
 | Data Field            | Type           | Description                                                        |
@@ -99,6 +101,10 @@ GET https://api.get-native.com/account/verify_credentials
 | favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
+
+```
+Status: 200 OK
+```
 ```json
 {
 	"data": {
@@ -152,6 +158,9 @@ GET https://api.get-native.com/cued_videos/list
 | records    	| [CuedVideo] 	| The array of CuedVideo records.                           	|
 | count      	| Int         	| The number of CuedVideo records included in the response. 	|
 
+```
+Status: 200 OK
+```
 ```json
 {
 	"data": {
@@ -205,12 +214,12 @@ GET https://api.get-native.com/cued_videos/list
 	"error": ""
 }
 ```
-# GET /speakers/show
+# GET /speakers/:id
 
 Returns information about the speaker specified by the `id` query parameter.
 
 ```
-GET https://api.get-native.com/speakers/show?id=123456
+GET https://api.get-native.com/speakers/123456
 ```
 
 **Parameters**
@@ -464,12 +473,12 @@ GET https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
 	"error": ""
 }
 ```
-# GET /videos/show/:id
+# GET /videos/:id
 
 Returns the video specified by the `id` query parameter.
 
 ```
-GET https://api.get-native.com/videos/show?id=123456
+GET https://api.get-native.com/videos/123456
 ```
 
 **Parameters**
