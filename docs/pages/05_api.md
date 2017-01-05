@@ -34,19 +34,6 @@ DELETE https://api.get-native/account
 ```
 Status: 204 No Content
 ```
-# DELETE /account/authenticate
-
-Delete the authenticating users' current login session.
-
-```
-DELETE  https://api.get-native.com/users/authenticate
-```
-
-**Response**
-
-```
-Status: 204 No Content
-```
 
 # DELETE /account/notifications/:id
 
@@ -587,7 +574,7 @@ Status: 200 OK
 }
 ```
 
-# POST /account/authenticate
+# POST /account/login
 
 Verify user credentials and create new login session.
 
@@ -622,6 +609,9 @@ POST https://api.get-native.com/account/authenticate
 | favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
+```
+GN-Access-Token: "xxxx.xxxx.xxxx"
+```
 ```json
 {
 	"id": 2244994983,

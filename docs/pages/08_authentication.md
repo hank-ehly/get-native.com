@@ -48,3 +48,8 @@ the server responds with a client error (4xx) status code and a `WWW-Authenticat
 ```
 WWW-Authenticate: Bearer
 ```
+
+### Logging in vs. Logging out
+
+To login, you use the POST /account/login API endpoint. To logout, no API interaction is necessary.
+By deleting the access token in the local storage, the client forfeits the ability to make authenticated requests.
