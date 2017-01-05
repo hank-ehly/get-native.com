@@ -49,12 +49,12 @@ DELETE https://api.get-native.com/account/notifications/158
 Status: 204 No Content
 ```
 
-# GET /account/verify_credentials
+# GET /account
 
-Returns a user object corresponding to the authenticating user if authentication is successful.
+Returns information about the authenticated user.
 
 ```
-GET https://api.get-native.com/account/verify_credentials
+GET https://api.get-native.com/account
 ```
 
 Todo: Parameters
