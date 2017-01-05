@@ -34,7 +34,7 @@ If verification succeeds, the server performs whatever actions were requested by
 Before responding to the client, the server updates the expiration date of the JWT so that login-time is prolonged.
 It then returns the updated JWT in the `GN-Auth-Token` header.
 
-※ The default expiration time of the JWT is 1 week from time of creation.
+※ The default expiration time of the JWT is 1 hour from time of creation.
 
 Here is a diagram (taken from the Auth0 website) showing the JWT authentication flow.
 
