@@ -14,55 +14,6 @@ indicating the number of records included in the array.
 }
 ```
 
-# DELETE /account
-
-Deactivate the account of the authenticating user.
-
-Todo: Define specific account deletion technique.
-
-```
-DELETE https://api.get-native/account
-```
-
-**Parameters**
-
-| Parameter 	| Description                       | Required 	| Default 	|
-|-----------	|-----------------------------------|:--------:	|---------	|
-| user_id    	| The id of the authenticated user. |     √    	|         	|
-
-```json
-{
-	"user_id": 123
-}
-```
-
-**Response**
-
-```
-Status: 204 No Content
-```
-
-# DELETE /notifications/:id
-
-Delete a notification for the authenticating user.
-
-```
-DELETE https://api.get-native.com/notifications/123456
-```
-
-**Parameters**
-
-| Parameter 	| Description                           | Required 	| Default 	|
-|-----------	|---------------------------------------|:--------:	|---------	|
-| user_id   	| The id of the authenticated user.     |     √    	|         	|
-| id        	| The id of the notification to delete. |     √    	|         	|
-
-**Response**
-
-```
-Status: 204 No Content
-```
-
 # GET /account
 
 Returns information about the authenticated user.
@@ -130,6 +81,189 @@ Status: 200 OK
 	}
 }
 ```
+
+# DELETE /account
+
+Deactivate the account of the authenticating user.
+
+Todo: Define specific account deletion technique.
+
+```
+DELETE https://api.get-native/account
+```
+
+**Parameters**
+
+| Parameter 	| Description                       | Required 	| Default 	|
+|-----------	|-----------------------------------|:--------:	|---------	|
+| user_id    	| The id of the authenticated user. |     √    	|         	|
+
+```json
+{
+	"user_id": 123
+}
+```
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
+# PUT /account/email
+
+Todo: Email verification API
+Todo: Email 'not verified yet' message in UI
+
+Update the authenticating user's email address.
+
+```
+PUT https://api.get-native.com/account/email
+```
+
+**Parameters**
+
+| Parameter   	| Description                                                      	| Required 	| Default 	|
+|-------------	|------------------------------------------------------------------	|:--------:	|---------	|
+| user_id     	| The unique ID of the authenticated user                          	|     √    	|         	|
+| email        	| The users' new email address.                                   	|     √    	|         	|
+
+```json
+{
+	"email": "jack.sparrow@email.com"
+}
+```
+
+**Response**
+
+| Data Field            | Type           | Description                                                        |
+|-----------------------|----------------|--------------------------------------------------------------------|
+| id                    | Int64          |  Integer representation of unique user ID                          |
+| id_str                | String         |  String representation of unique user ID                           |
+| name                  | String         |  The user's self-declared real name                                |
+| created_at            | String         |  UTC datetime of account creation                                  |
+| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
+| lang                  | String         |  BCP 47 code for user declared language                            |
+| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
+| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
+| email                 | String         | The user's email                                                   |
+| email_verified        | Boolean        | Whether the user has verified their email address.                 |
+| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
+| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
+
+```
+Status 200 OK
+```
+```json
+{
+	"id": 2244994983,
+	"id_str": "2244994983",
+	"name": "John Doe",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"utc_offset": 180000,
+	"lang": "en",
+	"profile_image_url": "TODO",
+	"default_profile_image": false,
+	"email": "john_doe@example.com",
+	"email_verified": false,
+	"favorites_count": 45,
+	"notifications": {
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "This is the body text of a notification",
+				"title": "Welcome to Get Native"
+			}
+		],
+		"count": 10
+	}
+}
+```
+
+# PUT /account/password
+
+**Parameters**
+
+| Parameter   	| Description                                                      	| Required 	| Default 	|
+|-------------	|------------------------------------------------------------------	|:--------:	|---------	|
+| user_id     	| The unique ID of the authenticated user                          	|     √    	|         	|
+| password    	| The authenticating users' new password.                          	|     √    	|         	|
+
+```json
+{
+	"password": "8h45lJ0E"
+}
+```
+
+**Response**
+
+```
+Status 204 No Content
+```
+
+# PUT /account/profile_image
+
+Updates the profile image of the authenticating user.
+
+```
+PUT https://api.get-native.com/account/profile_image
+```
+
+**Parameters**
+
+| Parameter 	| Description                                               	| Required 	| Default 	|
+|-----------	|-----------------------------------------------------------	|:--------:	|---------	|
+| user_id    	| The unique ID of the authenticated user                    	|     √    	|         	|
+| image     	| The base-64 encoded profile image.                         	|     √    	|         	|
+
+**Response**
+
+| Data Field            | Type           | Description                                                        |
+|-----------------------|----------------|--------------------------------------------------------------------|
+| id                    | Int64          |  Integer representation of unique user ID                          |
+| id_str                | String         |  String representation of unique user ID                           |
+| name                  | String         |  The user's self-declared real name                                |
+| created_at            | String         |  UTC datetime of account creation                                  |
+| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
+| lang                  | String         |  BCP 47 code for user declared language                            |
+| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
+| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
+| email                 | String         | The user's email                                                   |
+| email_verified        | Boolean        | Whether the user has verified their email address.                 |
+| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
+| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
+
+```
+Status: 200 OK
+```
+```json
+{
+	"id": 2244994983,
+	"id_str": "2244994983",
+	"name": "John Doe",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"utc_offset": 180000,
+	"lang": "en",
+	"profile_image_url": "TODO",
+	"default_profile_image": false,
+	"email": "john_doe@example.com",
+	"email_verified": true,
+	"favorites_count": 45,
+	"notifications": { // TODO: Is this necessary?
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "This is the body text of a notification",
+				"title": "Welcome to Get Native"
+			}
+		],
+		"count": 10
+	}
+}
+```
+
 # GET /cued_videos
 
 Returns the 20 most recent **cued videos** added by the user to their dashboard.
@@ -205,6 +339,156 @@ Status: 200 OK
 	"count": 2
 }
 ```
+
+# POST /login
+
+Verify user credentials and create new login session.
+
+TODO: Handle email, facebook, twitter, gmail?
+
+```
+POST https://api.get-native.com/login
+```
+
+**Parameters**
+
+| Parameter   	| Description                                         	| Required 	| Default 	|
+|-------------	|-----------------------------------------------------	|:--------:	|---------	|
+| email        	| The email linked to the authenticating users' account	|     √    	|         	|
+| password     	| The users' password                                 	|     √    	|         	|
+
+**Response**
+
+| Data Field            | Type           | Description                                                        |
+|-----------------------|----------------|--------------------------------------------------------------------|
+| id                    | Int64          |  Integer representation of unique user ID                          |
+| id_str                | String         |  String representation of unique user ID                           |
+| name                  | String         |  The user's self-declared real name                                |
+| created_at            | String         |  UTC datetime of account creation                                  |
+| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
+| lang                  | String         |  BCP 47 code for user declared language                            |
+| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
+| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
+| email                 | String         | The user's email                                                   |
+| email_verified        | Boolean        | Whether the user has verified their email address.                 |
+| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
+| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
+
+```
+GN-Access-Token: "xxxx.xxxx.xxxx"
+```
+```json
+{
+	"id": 2244994983,
+	"id_str": "2244994983",
+	"name": "John Doe",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"utc_offset": 180000,
+	"lang": "en",
+	"profile_image_url": "TODO",
+	"default_profile_image": false,
+	"email": "john_doe@example.com",
+	"email_verified": true,
+	"favorites_count": 45,
+	"notifications": {
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "This is the body text of a notification",
+				"title": "Welcome to Get Native"
+			}
+		],
+		"count": 10
+	}
+}
+```
+
+# DELETE /notifications/:id
+
+Delete a notification for the authenticating user.
+
+```
+DELETE https://api.get-native.com/notifications/123456
+```
+
+**Parameters**
+
+| Parameter 	| Description                           | Required 	| Default 	|
+|-----------	|---------------------------------------|:--------:	|---------	|
+| user_id   	| The id of the authenticated user.     |     √    	|         	|
+| id        	| The id of the notification to delete. |     √    	|         	|
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
+# POST /register
+
+Create a new user and log them in.
+
+TODO: Handle email, facebook, twitter, gmail?
+
+```
+POST https://api.get-native.com/register
+```
+
+**Parameters**
+
+| Parameter   	| Description                                         	| Required 	| Default 	|
+|-------------	|-----------------------------------------------------	|:--------:	|---------	|
+| email        	| The email linked to the authenticating users' account	|     √    	|         	|
+| password     	| The users' password                                 	|     √    	|         	|
+
+**Response**
+
+| Data Field            | Type           | Description                                                        |
+|-----------------------|----------------|--------------------------------------------------------------------|
+| id                    | Int64          |  Integer representation of unique user ID                          |
+| id_str                | String         |  String representation of unique user ID                           |
+| name                  | String         |  The user's self-declared real name                                |
+| created_at            | String         |  UTC datetime of account creation                                  |
+| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
+| lang                  | String         |  BCP 47 code for user declared language                            |
+| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
+| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
+| email                 | String         | The user's email                                                   |
+| email_verified        | Boolean        | Whether the user has verified their email address.                 |
+| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
+| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
+
+```
+GN-Access-Token: "xxxx.xxxx.xxxx"
+```
+```json
+{
+	"id": 2244994983,
+	"id_str": "2244994983",
+	"name": "John Doe",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"utc_offset": 180000,
+	"lang": "en",
+	"profile_image_url": "TODO",
+	"default_profile_image": false,
+	"email": "john_doe@example.com",
+	"email_verified": true,
+	"favorites_count": 45,
+	"notifications": {
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "This is the body text of a notification",
+				"title": "Welcome to Get Native"
+			}
+		],
+		"count": 10
+	}
+}
+```
+
 # GET /speakers/:id
 
 Returns information about the speaker specified by the `id` query parameter.
@@ -296,6 +580,200 @@ Status: 200 OK
 	"maximum_wpm": 52
 }
 ``` 
+
+# POST /study
+
+Create a new study session for the authenticating user.
+
+```
+POST https://api.get-native.com/study
+```
+
+**Parameters**
+
+| Parameter 	| Description                                                     	| Required 	| Default 	|
+|-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
+| user_id    	| The unique ID of the authenticated user.                         	|     √    	|         	|
+| video_id   	| The unique ID of the video for the study session                	|     √    	|         	|
+| time        | The user-specified amount of time in seconds of the study session	|     √    	|         	|
+
+```json
+{
+	"user_id": 123,
+	"video_id": 456,
+	"time": 900
+}
+```
+
+**Response**
+
+| Data Field 	| Type   	| Description                                                       	|
+|------------	|--------	|-------------------------------------------------------------------	|
+| id         	| Int64  	| The unique ID of the newly created study session                  	|
+| id_str     	| String 	| The string representation of the unique study session ID          	|
+| video      	| Video  	| The video object corresponding to the newly created study session 	|
+
+```json
+{
+	"id": 123456,
+	"id_str": "123456",
+	"video": {
+		"favorited": true,
+			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+			"id_str": "2244994983",
+			"id": 2244994983,
+			"speaker": {
+				"id": 123456,
+				"id_str": "123456",
+				"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
+				"name": "Harold Ford",
+				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+				"lang": "en",
+				"gender": "male",
+				"location": "Kansas City, MO"
+			},
+			"lang": "en",
+			"favorite_count": 342,
+			"topic": {
+				"id": 123456,
+				"id_str": "123456",
+				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+				"name": "Talking to customers"
+			},
+			"loop_count": 7156,
+			"loop_velocity": 2.4960000000000004,
+			"thumbnail_image_url": "TODO",
+			"video_url": "TODO",
+			"has_related_videos": true,
+			"likes": {
+				"records": [
+					{
+						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+						"user": { // TODO: Unsafef
+							"id": 123,
+							"id_str": "123"
+						},
+						"id": 456,
+						"id_str": "456"
+					}
+				],
+				"count": 10
+			},
+			"length": 68
+	}
+}
+```
+# POST /study/listening
+
+Register the completion of a listening session.
+
+```
+POST https://api.get-native.com/account/study/listening
+```
+
+**Parameters**
+
+| Parameter         	| Description                                              	| Required 	| Default 	|
+|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
+| user_id           	| The unique ID of the current study session              	|     √    	|         	|
+| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
+
+```json
+{
+	"user_id": 123,
+	"study_session_id": 456
+}
+```
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
+# POST /study/shadowing
+
+Register the completion of the shadowing session.
+
+```
+POST https://api.get-native.com/study/shadowing
+```
+
+**Parameters**
+
+| Parameter         	| Description                                              	| Required 	| Default 	|
+|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
+| user_id           	| The unique ID of the current study session              	|     √    	|         	|
+| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
+
+```json
+{
+	"user_id": 123,
+	"study_session_id": 456
+}
+```
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
+# POST /study/speaking
+
+Register the completion of a speaking session.
+
+```
+POST https://api.get-native.com/account/study/speaking
+```
+
+**Parameters**
+
+| Parameter         	| Description                                              	| Required 	| Default 	|
+|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
+| user_id           	| The unique ID of the current study session              	|     √    	|         	|
+| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
+
+```json
+{
+	"user_id": 123,
+	"study_session_id": 456
+}
+```
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
+# POST /study/writing
+
+Register the completion of a writing session.
+
+```
+POST https://api.get-native.com/study/writing
+```
+
+**Parameters**
+
+| Parameter         	| Description                                                    	| Required 	| Default 	|
+|-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
+| user_id           	| The unique ID of the authenticated user                        	|     √    	|         	|
+| study_session_id  	| The unique ID of the current study session                     	|     √    	|         	|
+| answer             	| The user written text answer to the writing question           	|          	|         	|
+| question           	| The unique ID of the question to which the user wrote an answer	|          	|         	|
+
+**Calculation of _words per minute_ and _word count_**
+
+As opposed to calculating the words per minute and word count of the user provided answer for the current study session
+before sending the request, calculations are performed server side for maximum efficiency.
+
+**Response**
+
+```
+Status: 204 No Content
+```
 
 # GET /videos
 
@@ -522,6 +1000,34 @@ Status: 200 OK
 }
 ```
 
+# POST /videos/:id/like
+
+Like a video
+
+```
+POST https://api.get-native.com/videos/12345/like
+```
+
+**Parameters**
+
+| Parameter 	| Description                                                     	| Required 	| Default 	|
+|-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
+| user_id  	  | The unique ID of the user who likes the video                   	|     √    	|         	|
+| id         	| The unique ID of the video to like                	              |     √    	|         	|
+
+```json
+{
+  "user_id": 12345,
+  "id": 12345
+}
+```
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
 # GET /videos/search
 
 Returns an array of video objects matching the specified search query.
@@ -604,509 +1110,5 @@ Status: 200 OK
 		}
 	],
 	"count": 1
-}
-```
-
-# POST /login
-
-Verify user credentials and create new login session.
-
-TODO: Handle email, facebook, twitter, gmail?
-
-```
-POST https://api.get-native.com/login
-```
-
-**Parameters**
-
-| Parameter   	| Description                                         	| Required 	| Default 	|
-|-------------	|-----------------------------------------------------	|:--------:	|---------	|
-| email        	| The email linked to the authenticating users' account	|     √    	|         	|
-| password     	| The users' password                                 	|     √    	|         	|
-
-**Response**
-
-| Data Field            | Type           | Description                                                        |
-|-----------------------|----------------|--------------------------------------------------------------------|
-| id                    | Int64          |  Integer representation of unique user ID                          |
-| id_str                | String         |  String representation of unique user ID                           |
-| name                  | String         |  The user's self-declared real name                                |
-| created_at            | String         |  UTC datetime of account creation                                  |
-| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
-| lang                  | String         |  BCP 47 code for user declared language                            |
-| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
-| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
-| email                 | String         | The user's email                                                   |
-| email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
-| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
-
-```
-GN-Access-Token: "xxxx.xxxx.xxxx"
-```
-```json
-{
-	"id": 2244994983,
-	"id_str": "2244994983",
-	"name": "John Doe",
-	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-	"utc_offset": 180000,
-	"lang": "en",
-	"profile_image_url": "TODO",
-	"default_profile_image": false,
-	"email": "john_doe@example.com",
-	"email_verified": true,
-	"favorites_count": 45,
-	"notifications": {
-		"records": [
-			{
-				"id": 123456,
-				"id_str": "123456",
-				"text": "This is the body text of a notification",
-				"title": "Welcome to Get Native"
-			}
-		],
-		"count": 10
-	}
-}
-```
-
-# POST /register
-
-Create a new user and log them in.
-
-TODO: Handle email, facebook, twitter, gmail?
-
-```
-POST https://api.get-native.com/register
-```
-
-**Parameters**
-
-| Parameter   	| Description                                         	| Required 	| Default 	|
-|-------------	|-----------------------------------------------------	|:--------:	|---------	|
-| email        	| The email linked to the authenticating users' account	|     √    	|         	|
-| password     	| The users' password                                 	|     √    	|         	|
-
-**Response**
-
-| Data Field            | Type           | Description                                                        |
-|-----------------------|----------------|--------------------------------------------------------------------|
-| id                    | Int64          |  Integer representation of unique user ID                          |
-| id_str                | String         |  String representation of unique user ID                           |
-| name                  | String         |  The user's self-declared real name                                |
-| created_at            | String         |  UTC datetime of account creation                                  |
-| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
-| lang                  | String         |  BCP 47 code for user declared language                            |
-| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
-| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
-| email                 | String         | The user's email                                                   |
-| email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
-| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
-
-```
-GN-Access-Token: "xxxx.xxxx.xxxx"
-```
-```json
-{
-	"id": 2244994983,
-	"id_str": "2244994983",
-	"name": "John Doe",
-	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-	"utc_offset": 180000,
-	"lang": "en",
-	"profile_image_url": "TODO",
-	"default_profile_image": false,
-	"email": "john_doe@example.com",
-	"email_verified": true,
-	"favorites_count": 45,
-	"notifications": {
-		"records": [
-			{
-				"id": 123456,
-				"id_str": "123456",
-				"text": "This is the body text of a notification",
-				"title": "Welcome to Get Native"
-			}
-		],
-		"count": 10
-	}
-}
-```
-
-# POST /videos/:id/like
-
-Like a video
-
-```
-POST https://api.get-native.com/videos/12345/like
-```
-
-**Parameters**
-
-| Parameter 	| Description                                                     	| Required 	| Default 	|
-|-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
-| user_id  	  | The unique ID of the user who likes the video                   	|     √    	|         	|
-| id         	| The unique ID of the video to like                	              |     √    	|         	|
-
-```json
-{
-  "user_id": 12345,
-  "id": 12345
-}
-```
-
-**Response**
-
-```
-Status: 204 No Content
-```
-
-# POST /study
-
-Create a new study session for the authenticating user.
-
-```
-POST https://api.get-native.com/study
-```
-
-**Parameters**
-
-| Parameter 	| Description                                                     	| Required 	| Default 	|
-|-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
-| user_id    	| The unique ID of the authenticated user.                         	|     √    	|         	|
-| video_id   	| The unique ID of the video for the study session                	|     √    	|         	|
-| time        | The user-specified amount of time in seconds of the study session	|     √    	|         	|
-
-```json
-{
-	"user_id": 123,
-	"video_id": 456,
-	"time": 900
-}
-```
-
-**Response**
-
-| Data Field 	| Type   	| Description                                                       	|
-|------------	|--------	|-------------------------------------------------------------------	|
-| id         	| Int64  	| The unique ID of the newly created study session                  	|
-| id_str     	| String 	| The string representation of the unique study session ID          	|
-| video      	| Video  	| The video object corresponding to the newly created study session 	|
-
-```json
-{
-	"id": 123456,
-	"id_str": "123456",
-	"video": {
-		"favorited": true,
-			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-			"id_str": "2244994983",
-			"id": 2244994983,
-			"speaker": {
-				"id": 123456,
-				"id_str": "123456",
-				"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
-				"name": "Harold Ford",
-				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-				"lang": "en",
-				"gender": "male",
-				"location": "Kansas City, MO"
-			},
-			"lang": "en",
-			"favorite_count": 342,
-			"topic": {
-				"id": 123456,
-				"id_str": "123456",
-				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-				"name": "Talking to customers"
-			},
-			"loop_count": 7156,
-			"loop_velocity": 2.4960000000000004,
-			"thumbnail_image_url": "TODO",
-			"video_url": "TODO",
-			"has_related_videos": true,
-			"likes": {
-				"records": [
-					{
-						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-						"user": { // TODO: Unsafef
-							"id": 123,
-							"id_str": "123"
-						},
-						"id": 456,
-						"id_str": "456"
-					}
-				],
-				"count": 10
-			},
-			"length": 68
-	}
-}
-```
-# POST /study/listening
-
-Register the completion of a listening session.
-
-```
-POST https://api.get-native.com/account/study/listening
-```
-
-**Parameters**
-
-| Parameter         	| Description                                              	| Required 	| Default 	|
-|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
-| user_id           	| The unique ID of the current study session              	|     √    	|         	|
-| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
-
-```json
-{
-	"user_id": 123,
-	"study_session_id": 456
-}
-```
-
-**Response**
-
-```
-Status: 204 No Content
-```
-
-# POST /study/shadowing
-
-Register the completion of the shadowing session.
-
-```
-POST https://api.get-native.com/study/shadowing
-```
-
-**Parameters**
-
-| Parameter         	| Description                                              	| Required 	| Default 	|
-|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
-| user_id           	| The unique ID of the current study session              	|     √    	|         	|
-| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
-
-```json
-{
-	"user_id": 123,
-	"study_session_id": 456
-}
-```
-
-**Response**
-
-```
-Status: 204 No Content
-```
-
-# POST /study/speaking
-
-Register the completion of a speaking session.
-
-```
-POST https://api.get-native.com/account/study/speaking
-```
-
-**Parameters**
-
-| Parameter         	| Description                                              	| Required 	| Default 	|
-|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
-| user_id           	| The unique ID of the current study session              	|     √    	|         	|
-| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
-
-```json
-{
-	"user_id": 123,
-	"study_session_id": 456
-}
-```
-
-**Response**
-
-```
-Status: 204 No Content
-```
-
-# POST /study/writing
-
-Register the completion of a writing session.
-
-```
-POST https://api.get-native.com/study/writing
-```
-
-**Parameters**
-
-| Parameter         	| Description                                                    	| Required 	| Default 	|
-|-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
-| user_id           	| The unique ID of the authenticated user                        	|     √    	|         	|
-| study_session_id  	| The unique ID of the current study session                     	|     √    	|         	|
-| answer             	| The user written text answer to the writing question           	|          	|         	|
-| question           	| The unique ID of the question to which the user wrote an answer	|          	|         	|
-
-**Calculation of _words per minute_ and _word count_**
-
-As opposed to calculating the words per minute and word count of the user provided answer for the current study session
-before sending the request, calculations are performed server side for maximum efficiency.
-
-**Response**
-
-```
-Status: 204 No Content
-```
-
-# PUT /account/profile_image
-
-Updates the profile image of the authenticating user.
-
-```
-PUT https://api.get-native.com/account/profile_image
-```
-
-**Parameters**
-
-| Parameter 	| Description                                               	| Required 	| Default 	|
-|-----------	|-----------------------------------------------------------	|:--------:	|---------	|
-| user_id    	| The unique ID of the authenticated user                    	|     √    	|         	|
-| image     	| The base-64 encoded profile image.                         	|     √    	|         	|
-
-**Response**
-
-| Data Field            | Type           | Description                                                        |
-|-----------------------|----------------|--------------------------------------------------------------------|
-| id                    | Int64          |  Integer representation of unique user ID                          |
-| id_str                | String         |  String representation of unique user ID                           |
-| name                  | String         |  The user's self-declared real name                                |
-| created_at            | String         |  UTC datetime of account creation                                  |
-| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
-| lang                  | String         |  BCP 47 code for user declared language                            |
-| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
-| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
-| email                 | String         | The user's email                                                   |
-| email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
-| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
-
-```
-Status: 200 OK
-```
-```json
-{
-	"id": 2244994983,
-	"id_str": "2244994983",
-	"name": "John Doe",
-	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-	"utc_offset": 180000,
-	"lang": "en",
-	"profile_image_url": "TODO",
-	"default_profile_image": false,
-	"email": "john_doe@example.com",
-	"email_verified": true,
-	"favorites_count": 45,
-	"notifications": { // TODO: Is this necessary?
-		"records": [
-			{
-				"id": 123456,
-				"id_str": "123456",
-				"text": "This is the body text of a notification",
-				"title": "Welcome to Get Native"
-			}
-		],
-		"count": 10
-	}
-}
-```
-
-# PUT /account/password
-
-**Parameters**
-
-| Parameter   	| Description                                                      	| Required 	| Default 	|
-|-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| user_id     	| The unique ID of the authenticated user                          	|     √    	|         	|
-| password    	| The authenticating users' new password.                          	|     √    	|         	|
-
-```json
-{
-	"password": "8h45lJ0E"
-}
-```
-
-**Response**
-
-```
-Status 204 No Content
-```
-
-# PUT /account/email
-
-Todo: Email verification API
-Todo: Email 'not verified yet' message in UI
-
-Update the authenticating user's email address.
-
-```
-PUT https://api.get-native.com/account/email
-```
-
-**Parameters**
-
-| Parameter   	| Description                                                      	| Required 	| Default 	|
-|-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| user_id     	| The unique ID of the authenticated user                          	|     √    	|         	|
-| email        	| The users' new email address.                                   	|     √    	|         	|
-
-```json
-{
-	"email": "jack.sparrow@email.com"
-}
-```
-
-**Response**
-
-| Data Field            | Type           | Description                                                        |
-|-----------------------|----------------|--------------------------------------------------------------------|
-| id                    | Int64          |  Integer representation of unique user ID                          |
-| id_str                | String         |  String representation of unique user ID                           |
-| name                  | String         |  The user's self-declared real name                                |
-| created_at            | String         |  UTC datetime of account creation                                  |
-| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
-| lang                  | String         |  BCP 47 code for user declared language                            |
-| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
-| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
-| email                 | String         | The user's email                                                   |
-| email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
-| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
-
-```
-Status 200 OK
-```
-```json
-{
-	"id": 2244994983,
-	"id_str": "2244994983",
-	"name": "John Doe",
-	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-	"utc_offset": 180000,
-	"lang": "en",
-	"profile_image_url": "TODO",
-	"default_profile_image": false,
-	"email": "john_doe@example.com",
-	"email_verified": false,
-	"favorites_count": 45,
-	"notifications": {
-		"records": [
-			{
-				"id": 123456,
-				"id_str": "123456",
-				"text": "This is the body text of a notification",
-				"title": "Welcome to Get Native"
-			}
-		],
-		"count": 10
-	}
 }
 ```
