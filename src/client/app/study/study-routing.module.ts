@@ -15,15 +15,53 @@ import { ShadowingComponent } from './shadowing/shadowing.component';
 import { SpeakingComponent } from './speaking/speaking.component';
 import { WritingComponent } from './writing/writing.component';
 import { ResultsComponent } from './results/results.component';
+import { AuthGuard } from '../core/index';
 
 const studyRoutes: Routes = [
-    {path: 'study', component: StudyComponent, children: [
-        {path: '', component: TransitionComponent},
-        {path: 'listening', component: ListeningComponent, data: {title: 'Listening'}},
-        {path: 'shadowing', component: ShadowingComponent, data: {title: 'Shadowing'}},
-        {path: 'speaking', component: SpeakingComponent, data: {title: 'Speaking'}},
-        {path: 'writing', component: WritingComponent, data: {title: 'Writing'}},
-        {path: 'results', component: ResultsComponent, data: {title: 'Results'}}
+    {
+        path: 'study',
+        component: StudyComponent,
+        canActivateChild: [AuthGuard],
+        children: [
+        {
+            path: '',
+            component: TransitionComponent
+        },
+        {
+            path: 'listening',
+            component: ListeningComponent,
+            data: {
+                title: 'Listening'
+            }
+        },
+        {
+            path: 'shadowing',
+            component: ShadowingComponent,
+            data: {
+                title: 'Shadowing'
+            }
+        },
+        {
+            path: 'speaking',
+            component: SpeakingComponent,
+            data: {
+                title: 'Speaking'
+            }
+        },
+        {
+            path: 'writing',
+            component: WritingComponent,
+            data: {
+                title: 'Writing'
+            }
+        },
+        {
+            path: 'results',
+            component: ResultsComponent,
+            data: {
+                title: 'Results'
+            }
+        }
     ]}
 ];
 
