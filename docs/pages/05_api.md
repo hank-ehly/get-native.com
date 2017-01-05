@@ -1,5 +1,10 @@
 # Overview
 
+**Response Headers**
+
+X-Frame-Options:deny
+X-Content-Type-Options:nosniff
+
 **Record Lists**
 
 In the case that a response contains 1 or more arrays, each array will contain a "count" parameter at their same level,
@@ -360,7 +365,8 @@ POST https://api.get-native.com/login
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
 ```
-GN-Access-Token: "xxxx.xxxx.xxxx"
+X-GetNative-Auth-Token: "eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAi..."
+X-GetNative-Auth-Expire: 1483658645131
 ```
 ```json
 {
@@ -451,7 +457,8 @@ POST https://api.get-native.com/register
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
 ```
-GN-Access-Token: "xxxx.xxxx.xxxx"
+X-GetNative-Auth-Token: "eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAi..."
+X-GetNative-Auth-Expire: 1483658645131
 ```
 ```json
 {
