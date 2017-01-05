@@ -9,5 +9,6 @@ Documentation is split up into the following five sections.
 ├── 4. Architecture
 ├── 5. API
 ├── 6. Screens
-└── 7. Saving & Displaying Collocations
+├── 7. Saving & Displaying Collocations
+└── 8. Authentication
 ```
