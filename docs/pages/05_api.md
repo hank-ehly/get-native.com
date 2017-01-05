@@ -66,7 +66,6 @@ Todo: Parameters
 | id                    | Int64          |  Integer representation of unique user ID                          |
 | id_str                | String         |  String representation of unique user ID                           |
 | name                  | String         |  The user's self-declared real name                                |
-| screen_name           | String         |  The user's self-declared screen name                              |
 | created_at            | String         |  UTC datetime of account creation                                  |
 | utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
 | lang                  | String         |  BCP 47 code for user declared language                            |
@@ -86,7 +85,6 @@ Status: 200 OK
 	"id": 2244994983,
 	"id_str": "2244994983",
 	"name": "John Doe",
-	"screen_name": "john_doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"utc_offset": 180000,
 	"lang": "en",
@@ -168,7 +166,6 @@ Status: 200 OK
 				"records": [{
 						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 						"user": {
-							"screen_name": "Phil Barnes",
 							"id": 123,
 							"id_str": "123"
 						},
@@ -339,7 +336,6 @@ Status: 200 OK
 						{
 							"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 							"user": { // TODO: Unsafe
-								"screen_name": "Phil Barnes",
 								"id": 123,
 								"id_str": "123"
 							},
@@ -558,7 +554,6 @@ Status: 200 OK
 					{
 						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 						"user": { // TODO: Unsafe
-							"screen_name": "Phil Barnes",
 							"id": 123,
 							"id_str": "123"
 						},
@@ -582,7 +577,7 @@ Verify user credentials and create new login session.
 TODO: Handle email, facebook, twitter, gmail?
 
 ```
-POST https://api.get-native.com/account/authenticate
+POST https://api.get-native.com/account/login
 ```
 
 **Parameters**
@@ -599,7 +594,6 @@ POST https://api.get-native.com/account/authenticate
 | id                    | Int64          |  Integer representation of unique user ID                          |
 | id_str                | String         |  String representation of unique user ID                           |
 | name                  | String         |  The user's self-declared real name                                |
-| screen_name           | String         |  The user's self-declared screen name                              |
 | created_at            | String         |  UTC datetime of account creation                                  |
 | utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
 | lang                  | String         |  BCP 47 code for user declared language                            |
@@ -618,7 +612,70 @@ GN-Access-Token: "xxxx.xxxx.xxxx"
 	"id": 2244994983,
 	"id_str": "2244994983",
 	"name": "John Doe",
-	"screen_name": "john_doe",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"utc_offset": 180000,
+	"lang": "en",
+	"profile_image_url": "TODO",
+	"default_profile_image": false,
+	"email": "john_doe@example.com",
+	"email_verified": true,
+	"favorites_count": 45,
+	"notifications": {
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "This is the body text of a notification",
+				"title": "Welcome to Get Native"
+			}
+		],
+		"count": 10
+	}
+}
+```
+
+# POST /account/register
+
+Create a new user and log them in.
+
+TODO: Handle email, facebook, twitter, gmail?
+
+```
+POST https://api.get-native.com/account/register
+```
+
+**Parameters**
+
+| Parameter   	| Description                                         	| Required 	| Default 	|
+|-------------	|-----------------------------------------------------	|:--------:	|---------	|
+| email        	| The email linked to the authenticating users' account	|     √    	|         	|
+| password     	| The users' password                                 	|     √    	|         	|
+
+**Response**
+
+| Data Field            | Type           | Description                                                        |
+|-----------------------|----------------|--------------------------------------------------------------------|
+| id                    | Int64          |  Integer representation of unique user ID                          |
+| id_str                | String         |  String representation of unique user ID                           |
+| name                  | String         |  The user's self-declared real name                                |
+| created_at            | String         |  UTC datetime of account creation                                  |
+| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
+| lang                  | String         |  BCP 47 code for user declared language                            |
+| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
+| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
+| email                 | String         | The user's email                                                   |
+| email_verified        | Boolean        | Whether the user has verified their email address.                 |
+| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
+| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
+
+```
+GN-Access-Token: "xxxx.xxxx.xxxx"
+```
+```json
+{
+	"id": 2244994983,
+	"id_str": "2244994983",
+	"name": "John Doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"utc_offset": 180000,
 	"lang": "en",
@@ -729,7 +786,6 @@ POST https://api.get-native.com/study
 					{
 						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 						"user": { // TODO: Unsafef
-							"screen_name": "Phil Barnes",
 							"id": 123,
 							"id_str": "123"
 						},
@@ -855,7 +911,6 @@ PUT https://api.get-native.com/account/profile_image
 | id                    | Int64          |  Integer representation of unique user ID                          |
 | id_str                | String         |  String representation of unique user ID                           |
 | name                  | String         |  The user's self-declared real name                                |
-| screen_name           | String         |  The user's self-declared screen name                              |
 | created_at            | String         |  UTC datetime of account creation                                  |
 | utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
 | lang                  | String         |  BCP 47 code for user declared language                            |
@@ -874,7 +929,6 @@ Status: 200 OK
 	"id": 2244994983,
 	"id_str": "2244994983",
 	"name": "John Doe",
-	"screen_name": "john_doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"utc_offset": 180000,
 	"lang": "en",
@@ -947,7 +1001,6 @@ PUT https://api.get-native.com/account/email
 | id                    | Int64          |  Integer representation of unique user ID                          |
 | id_str                | String         |  String representation of unique user ID                           |
 | name                  | String         |  The user's self-declared real name                                |
-| screen_name           | String         |  The user's self-declared screen name                              |
 | created_at            | String         |  UTC datetime of account creation                                  |
 | utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
 | lang                  | String         |  BCP 47 code for user declared language                            |
@@ -966,7 +1019,6 @@ Status 200 OK
 	"id": 2244994983,
 	"id_str": "2244994983",
 	"name": "John Doe",
-	"screen_name": "john_doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"utc_offset": 180000,
 	"lang": "en",
