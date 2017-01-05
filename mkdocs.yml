@@ -8,4 +8,5 @@ pages:
 - 5. API: pages/05_api.md
 - 6. Screens: pages/06_screens.md
 - 7. Saving & Displaying Collocations: pages/07_collocations.md
+- 8. Authentication: pages/08_authentication.md
 theme: readthedocs
