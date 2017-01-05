@@ -1,8 +1,6 @@
-Todo:
-- Use 'patch' for 'updating resources with partial JSON data.'
-- Use 'put' for replacing resources or collections.
+# Overview
 
-# Introduction
+**Record Lists**
 
 In the case that a response contains 1 or more arrays, each array will contain a "count" parameter at their same level,
 indicating the number of records included in the array.
@@ -11,10 +9,7 @@ indicating the number of records included in the array.
 {
 	"videos": {
 		"count": 2,
-		"records": [
-			{"id": 123},
-			{"id": 456}
-		]
+		"records": [{}, {}]
 	}
 }
 ```
@@ -29,6 +24,18 @@ Todo: Define specific account deletion technique.
 DELETE https://api.get-native/account
 ```
 
+**Parameters**
+
+| Parameter 	| Description                       | Required 	| Default 	|
+|-----------	|-----------------------------------|:--------:	|---------	|
+| user_id    	| The id of the authenticated user. |     √    	|         	|
+
+```json
+{
+	"user_id": 123
+}
+```
+
 **Response**
 
 ```
@@ -40,8 +47,15 @@ Status: 204 No Content
 Delete a notification for the authenticating user.
 
 ```
-DELETE https://api.get-native.com/notifications/158
+DELETE https://api.get-native.com/notifications/123456
 ```
+
+**Parameters**
+
+| Parameter 	| Description                           | Required 	| Default 	|
+|-----------	|---------------------------------------|:--------:	|---------	|
+| user_id   	| The id of the authenticated user.     |     √    	|         	|
+| id        	| The id of the notification to delete. |     √    	|         	|
 
 **Response**
 
@@ -57,7 +71,17 @@ Returns information about the authenticated user.
 GET https://api.get-native.com/account
 ```
 
-Todo: Parameters
+**Parameters**
+
+| Parameter 	| Description                       | Required 	| Default 	|
+|-----------	|-----------------------------------|:--------:	|---------	|
+| user_id   	| The id of the authenticated user. |     √    	|         	|
+
+```json
+{
+	"user_id": 123456
+}
+```
 
 **Response**
 
@@ -118,6 +142,7 @@ GET https://api.get-native.com/cued_videos
 
 | Parameter 	| Description                                                      	| Required 	| Default 	|
 |-----------	|------------------------------------------------------------------	|:--------:	|---------	|
+| user_id	    | The id of the authenticated user.                                	|     √    	|         	|
 | max_id    	| Returns only videos with an ID less than or equal to the max_id. 	|          	|         	|
 | count     	| The number of video records to retrieve. Maximum is 200.         	|          	| 20      	|
 
@@ -232,6 +257,18 @@ Returns the authenticating users' aggregated study statistics.
 
 ```
 GET https://api.get-native.com/study/stats
+```
+
+**Parameters**
+
+| Parameter 	| Description                       | Required 	| Default 	|
+|-----------	|-----------------------------------|:--------:	|---------	|
+| user_id    	| The id of the authenticated user. |     √    	|         	|
+
+```json
+{
+	"user_id": 123456
+}
 ```
 
 **Response**
@@ -570,14 +607,14 @@ Status: 200 OK
 }
 ```
 
-# POST /account/login
+# POST /login
 
 Verify user credentials and create new login session.
 
 TODO: Handle email, facebook, twitter, gmail?
 
 ```
-POST https://api.get-native.com/account/login
+POST https://api.get-native.com/login
 ```
 
 **Parameters**
@@ -634,14 +671,14 @@ GN-Access-Token: "xxxx.xxxx.xxxx"
 }
 ```
 
-# POST /account/register
+# POST /register
 
 Create a new user and log them in.
 
 TODO: Handle email, facebook, twitter, gmail?
 
 ```
-POST https://api.get-native.com/account/register
+POST https://api.get-native.com/register
 ```
 
 **Parameters**
@@ -698,25 +735,25 @@ GN-Access-Token: "xxxx.xxxx.xxxx"
 }
 ```
 
-# POST /videos/like/:id
+# POST /videos/:id/like
 
 Like a video
 
 ```
-POST https://api.get-native.com/videos/like/12345
+POST https://api.get-native.com/videos/12345/like
 ```
 
 **Parameters**
 
 | Parameter 	| Description                                                     	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
-| user     	  | The unique ID of the user who likes the video                   	|     √    	|         	|
-| video     	| The unique ID of the video to like                	              |     √    	|         	|
+| user_id  	  | The unique ID of the user who likes the video                   	|     √    	|         	|
+| id         	| The unique ID of the video to like                	              |     √    	|         	|
 
 ```json
 {
-  "user": 12345,
-  "video": 12345
+  "user_id": 12345,
+  "id": 12345
 }
 ```
 
@@ -738,8 +775,17 @@ POST https://api.get-native.com/study
 
 | Parameter 	| Description                                                     	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
-| video     	| The unique ID of the video for the study session                	|     √    	|         	|
+| user_id    	| The unique ID of the authenticated user.                         	|     √    	|         	|
+| video_id   	| The unique ID of the video for the study session                	|     √    	|         	|
 | time        | The user-specified amount of time in seconds of the study session	|     √    	|         	|
+
+```json
+{
+	"user_id": 123,
+	"video_id": 456,
+	"time": 900
+}
+```
 
 **Response**
 
@@ -809,9 +855,17 @@ POST https://api.get-native.com/account/study/listening
 
 **Parameters**
 
-| Parameter     	| Description                                              	| Required 	| Default 	|
-|---------------	|----------------------------------------------------------	|:--------:	|---------	|
-| study_session  	| The unique ID of the current study session              	|     √    	|         	|
+| Parameter         	| Description                                              	| Required 	| Default 	|
+|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
+| user_id           	| The unique ID of the current study session              	|     √    	|         	|
+| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
+
+```json
+{
+	"user_id": 123,
+	"study_session_id": 456
+}
+```
 
 **Response**
 
@@ -829,9 +883,17 @@ POST https://api.get-native.com/study/shadowing
 
 **Parameters**
 
-| Parameter     	| Description                                              	| Required 	| Default 	|
-|---------------	|----------------------------------------------------------	|:--------:	|---------	|
-| study_session  	| The unique ID of the current study session              	|     √    	|         	|
+| Parameter         	| Description                                              	| Required 	| Default 	|
+|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
+| user_id           	| The unique ID of the current study session              	|     √    	|         	|
+| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
+
+```json
+{
+	"user_id": 123,
+	"study_session_id": 456
+}
+```
 
 **Response**
 
@@ -843,15 +905,23 @@ POST https://api.get-native.com/study/shadowing
 
 Register the completion of a speaking session.
 
-**Parameters**
-
 ```
 POST https://api.get-native.com/account/study/speaking
 ```
 
-| Parameter     	| Description                                              	| Required 	| Default 	|
-|---------------	|----------------------------------------------------------	|:--------:	|---------	|
-| study_session  	| The unique ID of the current study session              	|     √    	|         	|
+**Parameters**
+
+| Parameter         	| Description                                              	| Required 	| Default 	|
+|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
+| user_id           	| The unique ID of the current study session              	|     √    	|         	|
+| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
+
+```json
+{
+	"user_id": 123,
+	"study_session_id": 456
+}
+```
 
 **Response**
 
@@ -869,12 +939,12 @@ POST https://api.get-native.com/study/writing
 
 **Parameters**
 
-
-| Parameter     	| Description                                                                     	| Required 	| Default 	|
-|---------------	|---------------------------------------------------------------------------------	|:--------:	|---------	|
-| study_session 	| The unique ID of the study session corresponding to the current writing session 	|     √    	|         	|
-| answer        	| The user written text answer to the writing question                            	|          	|         	|
-| question      	| The unique ID of the question to which the user wrote an answer                 	|          	|         	|
+| Parameter         	| Description                                                    	| Required 	| Default 	|
+|-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
+| user_id           	| The unique ID of the authenticated user                        	|     √    	|         	|
+| study_session_id  	| The unique ID of the current study session                     	|     √    	|         	|
+| answer             	| The user written text answer to the writing question           	|          	|         	|
+| question           	| The unique ID of the question to which the user wrote an answer	|          	|         	|
 
 **Calculation of _words per minute_ and _word count_**
 
@@ -902,7 +972,8 @@ PUT https://api.get-native.com/account/profile_image
 
 | Parameter 	| Description                                               	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------	|:--------:	|---------	|
-| image     	| The base-64 encoded profile image.                        	|     √    	|         	|
+| user_id    	| The unique ID of the authenticated user                    	|     √    	|         	|
+| image     	| The base-64 encoded profile image.                         	|     √    	|         	|
 
 **Response**
 
@@ -957,7 +1028,8 @@ Status: 200 OK
 
 | Parameter   	| Description                                                      	| Required 	| Default 	|
 |-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| password    	| The authenticating users' new password.                          	|    √     	|         	|
+| user_id     	| The unique ID of the authenticated user                          	|     √    	|         	|
+| password    	| The authenticating users' new password.                          	|     √    	|         	|
 
 ```json
 {
@@ -986,7 +1058,8 @@ PUT https://api.get-native.com/account/email
 
 | Parameter   	| Description                                                      	| Required 	| Default 	|
 |-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| email        	| The users' new email address.                                   	|          	|         	|
+| user_id     	| The unique ID of the authenticated user                          	|     √    	|         	|
+| email        	| The users' new email address.                                   	|     √    	|         	|
 
 ```json
 {
