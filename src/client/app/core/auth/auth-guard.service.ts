@@ -6,20 +6,29 @@
  */
 
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-import { Logger } from '../index';
+import { Logger, LocalStorageService, kAuthToken, kAuthTokenExpire } from '../index';
 
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
-        this.logger.debug(`${this.constructor.name}#canActivate ${route}, ${state}`);
-        return true;
+        if (this.localStorage.hasItem(kAuthToken)) {
+            let now = Date.now();
+            let exp = this.localStorage.getItem(kAuthTokenExpire);
+
+            this.logger.debug(`${this.constructor.name}#canActivate ${exp > now}`);
+            return exp > now;
+        }
+
+        this.logger.debug(`${this.constructor.name}#canActivate false`);
+        this.router.navigate(['']);
+        return false;
     }
 
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {

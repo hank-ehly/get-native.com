@@ -5,6 +5,8 @@
  * Created by henryehly on 2016/11/20.
  */
 
-export const kAcceptLocalStorage = 'FCjKY3BsHL6TEDcG2zuT';
-export const kDebugModalPosition = 'x2UeqUbamHCaG29naYD7';
-export const kDebugLoggedIn      = 'B4krtU3wmb3Dpuv2UCJA';
+export const kAcceptLocalStorage = 'FCjKY3';
+export const kDebugModalPosition = 'x2UeqU';
+export const kDebugLoggedIn      = 'B4krtU';
+export const kAuthToken          = '2C9q5J';
+export const kAuthTokenExpire    = 'Jj35Bv';
