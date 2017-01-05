@@ -5,7 +5,10 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { LocalStorageService } from '../../core/local-storage/local-storage.service';
+import { kDebugLoggedIn } from '../../core/local-storage/local-storage-keys';
+import { Logger } from '../../core/logger/logger';
 
 @Component({
     moduleId: module.id,
@@ -13,12 +16,14 @@ import { Component, Output, EventEmitter } from '@angular/core';
     templateUrl: 'debug.component.html',
     styleUrls: ['debug.component.css']
 })
-export class DebugComponent {
+export class DebugComponent implements OnInit {
     @Output() authorize: EventEmitter<boolean>;
     routes: any[];
+    authorized: boolean;
 
-    constructor() {
+    constructor(private localStorage: LocalStorageService, private logger: Logger) {
         this.authorize = new EventEmitter<boolean>();
+        this.authorized = false;
         this.routes = [
             {title: 'Dashboard', name: 'dashboard'},
             {title: 'Help',  name: '/help'},
@@ -36,7 +41,19 @@ export class DebugComponent {
         ];
     }
 
+    ngOnInit(): void {
+        this.authorized = this.localStorage.getItem(kDebugLoggedIn);
+        this.authorize.emit(this.authorized);
+        this.logger.debug(this.localStorage.getItem(kDebugLoggedIn));
+    }
+
     onToggleAuthorized(b: boolean): void {
         this.authorize.emit(b);
+        this.localStorage.setItem(kDebugLoggedIn, b);
+        this.authorized = b;
+    }
+
+    onClickClearStorage(): void {
+        this.localStorage.clear();
     }
 }
