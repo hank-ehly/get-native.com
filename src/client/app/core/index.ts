@@ -10,6 +10,7 @@ export * from './entities/index';
 export * from './lang/lang.service';
 export * from './local-storage/index';
 export * from './logger/index'
+export * from './auth/auth-guard.service';
 export * from './login/index';
 export * from './mock-http-client/index';
 export * from './navbar/index';

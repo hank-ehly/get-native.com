@@ -9,9 +9,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { LibraryComponent } from './library.component';
+import { AuthGuard } from '../core/index';
 
 const libraryRoutes: Routes = [
-    {path: 'library', component: LibraryComponent, data: {title: 'Library'}}
+    {
+        path: 'library',
+        component: LibraryComponent,
+        canActivate: [AuthGuard],
+        data: {
+            title: 'Library'
+        }
+    }
 ];
 
 @NgModule({

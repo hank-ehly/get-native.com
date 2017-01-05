@@ -12,15 +12,35 @@ import { SettingsComponent } from './settings.component';
 import { GeneralComponent } from './general/general.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SecurityComponent } from './security/security.component';
+import { AuthGuard } from '../core/index';
 
 const settingsRoutes: Routes = [
     {
         path: 'settings',
         component: SettingsComponent,
+        canActivateChild: [AuthGuard],
         children: [
-            {path: '', component: GeneralComponent, data: {title: 'Settings'}},
-            {path: 'notifications', component: NotificationsComponent, data: {title: 'Settings'}},
-            {path: 'security', component: SecurityComponent, data: {title: 'Settings'}}
+            {
+                path: '',
+                component: GeneralComponent,
+                data: {
+                    title: 'Settings'
+                }
+            },
+            {
+                path: 'notifications',
+                component: NotificationsComponent,
+                data: {
+                    title: 'Settings'
+                }
+            },
+            {
+                path: 'security',
+                component: SecurityComponent,
+                data: {
+                    title: 'Settings'
+                }
+            }
         ]
     }
 ];
@@ -29,6 +49,5 @@ const settingsRoutes: Routes = [
     imports: [RouterModule.forChild(settingsRoutes)],
     exports: [RouterModule]
 })
-
 export class SettingsRoutingModule {
 }
