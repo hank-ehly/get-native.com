@@ -1,4 +1,4 @@
-# Email & Password
+# Login & Registration
 
 User's can authenticate themselves with an email and a password.
 
@@ -6,7 +6,12 @@ During login, the server searches for users in the database who share the same e
 password included in the request is compared to the encrypted version in the database. If the passwords match, the user is said to be
 authenticated.
 
-# JSON Web Token (JWT)
+### Logging in vs. Logging Out
+
+To login, you use the `POST /account/login` API endpoint. To logout, no API interaction is necessary.
+By deleting the access token in the local storage, the client forfeits the ability to make authenticated requests.
+
+# Accessing Protected Resources
 
 JSON Web Tokens (JWT) are used so that clients aren't required to provide their email & password in each API request.
 
@@ -42,6 +47,8 @@ Here is a diagram (taken from the Auth0 website) showing the JWT authentication 
 
 ### JWT Format for User Authentication
 
+JWTs used for user authentication each contain the following key/value pairs.
+
 | Key | Meaning                | Value                                   |
 |-----|------------------------|-----------------------------------------|
 | iss | Issuer of JWT          | api.get-native.com                      |
@@ -58,7 +65,9 @@ Here is a diagram (taken from the Auth0 website) showing the JWT authentication 
 }
 ```
 
-### Usage of WWW-Authenticate header
+By setting the value of the key `sub` to the unique user id, we can verify which user is making the request.
+
+### Usage of WWW-Authenticate Response Header
 
 If the client requests a protected resource without including an `Authorization` header, 
 the server responds with a client error (4xx) status code and a `WWW-Authenticate` response header using the `Bearer` auth-scheme.
@@ -66,8 +75,3 @@ the server responds with a client error (4xx) status code and a `WWW-Authenticat
 ```
 WWW-Authenticate: Bearer
 ```
-
-### Logging in vs. Logging out
-
-To login, you use the POST /account/login API endpoint. To logout, no API interaction is necessary.
-By deleting the access token in the local storage, the client forfeits the ability to make authenticated requests.
