@@ -82,7 +82,6 @@ Todo: Parameters
 | screen_name           | String         |  The user's self-declared screen name                              |
 | created_at            | String         |  UTC datetime of account creation                                  |
 | utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
-| time_zone             | String         |  _Nullable._ User declared Time Zone                               |
 | lang                  | String         |  BCP 47 code for user declared language                            |
 | profile_image_url     | String         |  HTTPS URI for user profile image                                  |
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
@@ -103,7 +102,6 @@ Status: 200 OK
 	"screen_name": "john_doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"utc_offset": 180000,
-	"time_zone": "Pacific Time (US & Canada)",
 	"lang": "en",
 	"profile_image_url": "TODO",
 	"default_profile_image": false,
@@ -616,7 +614,6 @@ POST https://api.get-native.com/account/authenticate
 | screen_name           | String         |  The user's self-declared screen name                              |
 | created_at            | String         |  UTC datetime of account creation                                  |
 | utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
-| time_zone             | String         |  _Nullable._ User declared Time Zone                               |
 | lang                  | String         |  BCP 47 code for user declared language                            |
 | profile_image_url     | String         |  HTTPS URI for user profile image                                  |
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
@@ -633,7 +630,6 @@ POST https://api.get-native.com/account/authenticate
 	"screen_name": "john_doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"utc_offset": 180000,
-	"time_zone": "Pacific Time (US & Canada)",
 	"lang": "en",
 	"profile_image_url": "TODO",
 	"default_profile_image": false,
@@ -871,7 +867,6 @@ PUT https://api.get-native.com/account/profile_image
 | screen_name           | String         |  The user's self-declared screen name                              |
 | created_at            | String         |  UTC datetime of account creation                                  |
 | utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
-| time_zone             | String         |  _Nullable._ User declared Time Zone                               |
 | lang                  | String         |  BCP 47 code for user declared language                            |
 | profile_image_url     | String         |  HTTPS URI for user profile image                                  |
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
@@ -891,7 +886,6 @@ Status: 200 OK
 	"screen_name": "john_doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"utc_offset": 180000,
-	"time_zone": "Pacific Time (US & Canada)",
 	"lang": "en",
 	"profile_image_url": "TODO",
 	"default_profile_image": false,
@@ -965,7 +959,6 @@ PUT https://api.get-native.com/account/email
 | screen_name           | String         |  The user's self-declared screen name                              |
 | created_at            | String         |  UTC datetime of account creation                                  |
 | utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
-| time_zone             | String         |  _Nullable._ User declared Time Zone                               |
 | lang                  | String         |  BCP 47 code for user declared language                            |
 | profile_image_url     | String         |  HTTPS URI for user profile image                                  |
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
@@ -985,7 +978,6 @@ Status 200 OK
 	"screen_name": "john_doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"utc_offset": 180000,
-	"time_zone": "Pacific Time (US & Canada)",
 	"lang": "en",
 	"profile_image_url": "TODO",
 	"default_profile_image": false,
