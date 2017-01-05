@@ -40,6 +40,24 @@ Here is a diagram (taken from the Auth0 website) showing the JWT authentication 
 
 <p><img src="/images/jwt-diagram.png" alt="JWT Diagram"/></p>
 
+### JWT Format for User Authentication
+
+| Key | Meaning                | Value                                   |
+|-----|------------------------|-----------------------------------------|
+| iss | Issuer of JWT          | api.get-native.com                      |
+| sub | The subject of the JWT | The unique ID of the authenticated user |
+| aud | The intended audience  | (The IP address / User Agent ?)         |
+| exp | The expiration date    | 1 hour from last update                 |
+
+```json
+{
+	"iss": "api.get-native.com",
+	"sub": 123456,
+	"aud": "136.61.59.52",
+	"exp": "1483652706600"
+}
+```
+
 ### Usage of WWW-Authenticate header
 
 If the client requests a protected resource without including an `Authorization` header, 
