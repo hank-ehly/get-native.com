@@ -16,22 +16,10 @@ indicating the number of records included in the array.
 
 # GET /account
 
-Returns information about the authenticated user.
+Returns information about the currently logged in user.
 
 ```
 GET https://api.get-native.com/account
-```
-
-**Parameters**
-
-| Parameter 	| Description                       | Required 	| Default 	|
-|-----------	|-----------------------------------|:--------:	|---------	|
-| user_id   	| The id of the authenticated user. |     √    	|         	|
-
-```json
-{
-	"user_id": 123456
-}
 ```
 
 **Response**
@@ -84,24 +72,12 @@ Status: 200 OK
 
 # DELETE /account
 
-Deactivate the account of the authenticating user.
+Deactivate the account of the currently logged in user.
 
 Todo: Define specific account deletion technique.
 
 ```
 DELETE https://api.get-native/account
-```
-
-**Parameters**
-
-| Parameter 	| Description                       | Required 	| Default 	|
-|-----------	|-----------------------------------|:--------:	|---------	|
-| user_id    	| The id of the authenticated user. |     √    	|         	|
-
-```json
-{
-	"user_id": 123
-}
 ```
 
 **Response**
@@ -125,7 +101,6 @@ PUT https://api.get-native.com/account/email
 
 | Parameter   	| Description                                                      	| Required 	| Default 	|
 |-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| user_id     	| The unique ID of the authenticated user                          	|     √    	|         	|
 | email        	| The users' new email address.                                   	|     √    	|         	|
 
 ```json
@@ -187,7 +162,6 @@ Status 200 OK
 
 | Parameter   	| Description                                                      	| Required 	| Default 	|
 |-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| user_id     	| The unique ID of the authenticated user                          	|     √    	|         	|
 | password    	| The authenticating users' new password.                          	|     √    	|         	|
 
 ```json
@@ -214,8 +188,13 @@ PUT https://api.get-native.com/account/profile_image
 
 | Parameter 	| Description                                               	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------	|:--------:	|---------	|
-| user_id    	| The unique ID of the authenticated user                    	|     √    	|         	|
 | image     	| The base-64 encoded profile image.                         	|     √    	|         	|
+
+```json
+{
+	"image": "sjhg3huhsuhuhfh82h9823ja911hdfjsls0 ..."
+}
+```
 
 **Response**
 
@@ -276,7 +255,6 @@ GET https://api.get-native.com/cued_videos
 
 | Parameter 	| Description                                                      	| Required 	| Default 	|
 |-----------	|------------------------------------------------------------------	|:--------:	|---------	|
-| user_id	    | The id of the authenticated user.                                	|     √    	|         	|
 | max_id    	| Returns only videos with an ID less than or equal to the max_id. 	|          	|         	|
 | count     	| The number of video records to retrieve. Maximum is 200.         	|          	| 20      	|
 
@@ -357,6 +335,13 @@ POST https://api.get-native.com/login
 | email        	| The email linked to the authenticating users' account	|     √    	|         	|
 | password     	| The users' password                                 	|     √    	|         	|
 
+```json
+{
+	"email": "foo@bar.com",
+	"password": "password"
+}
+```
+
 **Response**
 
 | Data Field            | Type           | Description                                                        |
@@ -416,7 +401,6 @@ DELETE https://api.get-native.com/notifications/123456
 
 | Parameter 	| Description                           | Required 	| Default 	|
 |-----------	|---------------------------------------|:--------:	|---------	|
-| user_id   	| The id of the authenticated user.     |     √    	|         	|
 | id        	| The id of the notification to delete. |     √    	|         	|
 
 **Response**
@@ -441,6 +425,13 @@ POST https://api.get-native.com/register
 |-------------	|-----------------------------------------------------	|:--------:	|---------	|
 | email        	| The email linked to the authenticating users' account	|     √    	|         	|
 | password     	| The users' password                                 	|     √    	|         	|
+
+```json
+{
+	"email": "foo@bar.com",
+	"password": "password"
+}
+```
 
 **Response**
 
@@ -543,18 +534,6 @@ Returns the authenticating users' aggregated study statistics.
 GET https://api.get-native.com/study/stats
 ```
 
-**Parameters**
-
-| Parameter 	| Description                       | Required 	| Default 	|
-|-----------	|-----------------------------------|:--------:	|---------	|
-| user_id    	| The id of the authenticated user. |     √    	|         	|
-
-```json
-{
-	"user_id": 123456
-}
-```
-
 **Response**
 
 | Data Field               	| Type   	| Description                                                                                          	|
@@ -593,13 +572,11 @@ POST https://api.get-native.com/study
 
 | Parameter 	| Description                                                     	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
-| user_id    	| The unique ID of the authenticated user.                         	|     √    	|         	|
 | video_id   	| The unique ID of the video for the study session                	|     √    	|         	|
 | time        | The user-specified amount of time in seconds of the study session	|     √    	|         	|
 
 ```json
 {
-	"user_id": 123,
 	"video_id": 456,
 	"time": 900
 }
@@ -675,12 +652,10 @@ POST https://api.get-native.com/account/study/listening
 
 | Parameter         	| Description                                              	| Required 	| Default 	|
 |-------------------	|----------------------------------------------------------	|:--------:	|---------	|
-| user_id           	| The unique ID of the current study session              	|     √    	|         	|
 | study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
 
 ```json
 {
-	"user_id": 123,
 	"study_session_id": 456
 }
 ```
@@ -703,12 +678,10 @@ POST https://api.get-native.com/study/shadowing
 
 | Parameter         	| Description                                              	| Required 	| Default 	|
 |-------------------	|----------------------------------------------------------	|:--------:	|---------	|
-| user_id           	| The unique ID of the current study session              	|     √    	|         	|
 | study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
 
 ```json
 {
-	"user_id": 123,
 	"study_session_id": 456
 }
 ```
@@ -731,12 +704,10 @@ POST https://api.get-native.com/account/study/speaking
 
 | Parameter         	| Description                                              	| Required 	| Default 	|
 |-------------------	|----------------------------------------------------------	|:--------:	|---------	|
-| user_id           	| The unique ID of the current study session              	|     √    	|         	|
 | study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
 
 ```json
 {
-	"user_id": 123,
 	"study_session_id": 456
 }
 ```
@@ -759,10 +730,17 @@ POST https://api.get-native.com/study/writing
 
 | Parameter         	| Description                                                    	| Required 	| Default 	|
 |-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
-| user_id           	| The unique ID of the authenticated user                        	|     √    	|         	|
 | study_session_id  	| The unique ID of the current study session                     	|     √    	|         	|
-| answer             	| The user written text answer to the writing question           	|          	|         	|
-| question           	| The unique ID of the question to which the user wrote an answer	|          	|         	|
+| answer             	| The user written text answer to the writing question           	|     √    	|         	|
+| question           	| The unique ID of the question to which the user wrote an answer	|     √    	|         	|
+
+```json
+{
+	"study_session_id": 123,
+	"answer": "I really like..",
+	"question": "Do you like sports?"
+}
+```
 
 **Calculation of _words per minute_ and _word count_**
 
@@ -1012,15 +990,8 @@ POST https://api.get-native.com/videos/12345/like
 
 | Parameter 	| Description                                                     	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
-| user_id  	  | The unique ID of the user who likes the video                   	|     √    	|         	|
 | id         	| The unique ID of the video to like                	              |     √    	|         	|
 
-```json
-{
-  "user_id": 12345,
-  "id": 12345
-}
-```
 
 **Response**
 
