@@ -36,6 +36,10 @@ It then returns the updated JWT in the `GN-Auth-Token` header.
 
 ※ The default expiration time of the JWT is 1 week from time of creation.
 
+Here is a diagram (taken from the Auth0 website) showing the JWT authentication flow.
+
+<p><img src="/images/jwt-diagram.png" alt="JWT Diagram"/></p>
+
 ### Usage of WWW-Authenticate header
 
 If the client requests a protected resource without including an `Authorization` header, 
