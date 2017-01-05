@@ -869,10 +869,10 @@ POST https://api.get-native.com/account/study/listening
 
 **Response**
 
-```json
-{
-}
 ```
+Status: 204 No Content
+```
+
 # POST /study/shadowing
 
 Register the completion of the shadowing session.
@@ -897,10 +897,10 @@ POST https://api.get-native.com/study/shadowing
 
 **Response**
 
-```json
-{
-}
 ```
+Status: 204 No Content
+```
+
 # POST /study/speaking
 
 Register the completion of a speaking session.
@@ -925,10 +925,10 @@ POST https://api.get-native.com/account/study/speaking
 
 **Response**
 
-```json
-{
-}
 ```
+Status: 204 No Content
+```
+
 # POST /study/writing
 
 Register the completion of a writing session.
@@ -953,11 +953,8 @@ before sending the request, calculations are performed server side for maximum e
 
 **Response**
 
-
-```json
-{
-	
-}
+```
+Status: 204 No Content
 ```
 
 # PUT /account/profile_image
