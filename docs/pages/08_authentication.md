@@ -13,13 +13,13 @@ JSON Web Tokens (JWT) are used so that clients aren't required to provide their 
 During initial authentication, the client sends an email & password to the server via in the 'login' or 'registration' API.
 
 Once the server authenticates the client, it uses a private key to sign a JWT with the RS256 algorithm. 
-The server sends the compactly serialized JWT to the client via the `GN-Auth-Token` header.
+The server sends the compactly serialized JWT to the client via the `GN-Access-Token` header.
 
 ```
-GN-Auth-Token: "eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAi..."
+GN-Access-Token: "eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAi..."
 ```
 
-The client stores the value of `GN-Auth-Token` to local storage.
+The client stores the value of `GN-Access-Token` to local storage.
 
 One subsequent requests, the client checks if it's local storage has a token cached.
 If it does, it sends the token to the server using the `Authorization` request header. 
@@ -32,7 +32,7 @@ Upon receiving a request with an `Authorization` header, the server attempts to 
 If verification succeeds, the server performs whatever actions were requested by the client.
 
 Before responding to the client, the server updates the expiration date of the JWT so that login-time is prolonged.
-It then returns the updated JWT in the `GN-Auth-Token` header.
+It then returns the updated JWT in the `GN-Access-Token` header.
 
 ※ The default expiration time of the JWT is 1 hour from time of creation.
 
