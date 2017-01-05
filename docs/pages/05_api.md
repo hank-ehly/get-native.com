@@ -4,28 +4,18 @@ Todo:
 
 # Introduction
 
-With the exception of `204 No Content` responses, all API responses contain the following root level parameters:
-
-| Parameter 	| Type    	| Meaning                                                                                                                        	|
-|-----------	|---------	|--------------------------------------------------------------------------------------------------------------------------------	|
-| data      	| Object  	| The requested response data.                                                                                                   	|
-| success   	| Boolean 	| When true, this indicates that the request was completed as expected.                                                          	|
-| error     	| String  	| _Nullable._ If "success" is false, error is populated with a UTF-8 error message string describing why the transaction failed. 	|
-
 In the case that a response contains 1 or more arrays, each array will contain a "count" parameter at their same level,
 indicating the number of records included in the array.
 
 ```json
 {
-	"data": {
-		"count": 45,
+	"videos": {
+		"count": 2,
 		"records": [
 			{"id": 123},
 			{"id": 456}
 		]
-	},
-	"success": true,
-	"error": ""
+	}
 }
 ```
 
@@ -107,34 +97,30 @@ Status: 200 OK
 ```
 ```json
 {
-	"data": {
-		"id": 2244994983,
-		"id_str": "2244994983",
-		"name": "John Doe",
-		"screen_name": "john_doe",
-		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-		"utc_offset": 180000,
-		"time_zone": "Pacific Time (US & Canada)",
-		"lang": "en",
-		"profile_image_url": "TODO",
-		"default_profile_image": false,
-		"email": "john_doe@example.com",
-		"email_verified": true,
-		"favorites_count": 45,
-		"notifications": {
-			"records": [
-				{
-					"id": 123456,
-					"id_str": "123456",
-					"text": "This is the body text of a notification",
-					"title": "Welcome to Get Native"
-				}
-			],
-			"count": 10
-		}
-	},
-	"success": true,
-	"error": ""
+	"id": 2244994983,
+	"id_str": "2244994983",
+	"name": "John Doe",
+	"screen_name": "john_doe",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"utc_offset": 180000,
+	"time_zone": "Pacific Time (US & Canada)",
+	"lang": "en",
+	"profile_image_url": "TODO",
+	"default_profile_image": false,
+	"email": "john_doe@example.com",
+	"email_verified": true,
+	"favorites_count": 45,
+	"notifications": {
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "This is the body text of a notification",
+				"title": "Welcome to Get Native"
+			}
+		],
+		"count": 10
+	}
 }
 ```
 # GET /cued_videos/list
@@ -164,55 +150,52 @@ Status: 200 OK
 ```
 ```json
 {
-	"data": {
-		"records": [
-			{
-				"favorited": true,
+	"records": [
+		{
+			"favorited": true,
+			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+			"id_str": "2244994983",
+			"id": 2244994983,
+			"speaker": {
+				"id": 123456,
+				"id_str": "123456",
+				"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
+				"name": "Harold Ford",
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-				"id_str": "2244994983",
-				"id": 2244994983,
-				"speaker": {
-					"id": 123456,
-					"id_str": "123456",
-					"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
-					"name": "Harold Ford",
-					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-					"lang": "en",
-					"gender": "male",
-					"location": "Kansas City, MO"
-				},
 				"lang": "en",
-				"favorite_count": 342,
-				"topic": {
-					"id": 123456,
-					"id_str": "123456",
-					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-					"name": "Talking to customers"
-				},
-				"loop_count": 7156,
-				"loop_velocity": 2.4960000000000004,
-				"thumbnail_image_url": "TODO",
-				"video_url": "TODO",
-				"has_related_videos": true,
-				"likes": {
-					"records": [{
-							"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-							"user": {
-								"screen_name": "Phil Barnes",
-								"id": 123,
-								"id_str": "123"
-							},
-							"id": 456,
-							"id_str": "456"
-					}],
-					"count": 10
-				},
-				"length": 68
-			}
-		]
-	},
-	"success": true,
-	"error": ""
+				"gender": "male",
+				"location": "Kansas City, MO"
+			},
+			"lang": "en",
+			"favorite_count": 342,
+			"topic": {
+				"id": 123456,
+				"id_str": "123456",
+				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+				"name": "Talking to customers"
+			},
+			"loop_count": 7156,
+			"loop_velocity": 2.4960000000000004,
+			"thumbnail_image_url": "TODO",
+			"video_url": "TODO",
+			"has_related_videos": true,
+			"likes": {
+				"records": [{
+						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+						"user": {
+							"screen_name": "Phil Barnes",
+							"id": 123,
+							"id_str": "123"
+						},
+						"id": 456,
+						"id_str": "456"
+				}],
+				"count": 10
+			},
+			"length": 68
+		}
+	],
+	"count": 2
 }
 ```
 # GET /speakers/:id
@@ -248,18 +231,14 @@ Status: 200 OK
 ```
 ```json
 {
-	"data": {
-		"id": 123456,
-		"id_str": "123456",
-		"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
-		"name": "Harold Ford",
-		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-		"lang": "en",
-		"gender": "male",
-		"location": "Kansas City, MO"
-	},
-	"success": true,
-	"error": ""
+	"id": 123456,
+	"id_str": "123456",
+	"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
+	"name": "Harold Ford",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"lang": "en",
+	"gender": "male",
+	"location": "Kansas City, MO"
 }
 ```
 
@@ -290,16 +269,12 @@ Status: 200 OK
 ```
 ```json
 {
-	"data": {
-		"lang": "en",
-		"consecutive_days": 12,
-		"total_study_session": 45,
-		"longest_consecutive_days": 12,
-		"maximum_words": 502,
-		"maximum_wpm": 52
-	},
-	"success": true,
-	"error": ""
+	"lang": "en",
+	"consecutive_days": 12,
+	"total_study_session": 45,
+	"longest_consecutive_days": 12,
+	"maximum_words": 502,
+	"maximum_wpm": 52
 }
 ``` 
 
@@ -344,100 +319,10 @@ Status: 200 OK
 ```
 ```json
 {
-	"data": {
-		"count": 80,
-		"records": [
-			{
-				"favorited": true,
-					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-					"id_str": "2244994983",
-					"id": 2244994983,
-					"speaker": {
-						"id": 123456,
-						"id_str": "123456",
-						"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
-						"name": "Harold Ford",
-						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-						"lang": "en",
-						"gender": "male",
-						"location": "Kansas City, MO"
-					},
-					"lang": "en",
-					"favorite_count": 342,
-					"topic": {
-						"id": 123456,
-						"id_str": "123456",
-						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-						"name": "Talking to customers"
-					},
-					"loop_count": 7156,
-					"loop_velocity": 2.4960000000000004,
-					"thumbnail_image_url": "TODO",
-					"video_url": "TODO",
-					"has_related_videos": true,
-					"likes": {
-						"records": [
-							{
-								"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-								"user": { // TODO: Unsafe
-									"screen_name": "Phil Barnes",
-									"id": 123,
-									"id_str": "123"
-								},
-								"id": 456,
-								"id_str": "456"
-							}
-						],
-						"count": 10
-					},
-					"length": 68
-			}
-		]
-	},
-	"success": true,
-	"error": ""
-}
-```
-
-# GET /videos/search
-
-Returns an array of video objects matching the specified search query.
-
-```
-GET https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
-```
-
-**Parameters**
-
-| Parameter       | Description                                                                                                                      | Required | Default |
-|-----------------|----------------------------------------------------------------------------------------------------------------------------------|----------|---------|
-| lang            | Restricts videos to the given language, specified by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code. |          |         |
-| count           | The number of videos to include in the response. Maximum is 100.                                                                 |          | 15      |
-| trim_speaker    | When true, only the speaker name will be returned -- as opposed to the whole speaker object.                                     |          | false   |
-| trim_likes      | When true, only the likes count is returned -- as opposed to an array of like objects.                                           |          | false   |
-| exclude_speaker | When true, the speaker is not included in the response.                                                                          |          | false   |
-| exclude_likes   | When true, the likes array is not included in the response.                                                                      |          | false   |
-| max_id          | Returns only videos with an ID less than or equal to the max_id.                                                                 |          |         |
-| topic_id        | Restricts videos to the given topic.                                                                                             |          |         |
-| category_id     | Restricts videos to the given category. If the topic_id parameter is also included, the category_id parameter is ignored.        |          |         |
-| q               | A URL-encoded UTF-8 search query. Maximum length is 100 characters.                                                              |          |         |
-
-**Response**
-
-| Data Field | Type    | Description                                              |
-|------------|---------|----------------------------------------------------------|
-| count      | Int     | The number of videos included in the response.           |
-| records    | [Video] | The array of video objects relevant to the search query. |
-
-```
-Status: 200 OK
-```
-```json
-{
-	"data": {
-		"records": [
-			{
-				"favorited": true,
+	"count": 80,
+	"records": [
+		{
+			"favorited": true,
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 				"id_str": "2244994983",
 				"id": 2244994983,
@@ -480,11 +365,94 @@ Status: 200 OK
 					"count": 10
 				},
 				"length": 68
-			}
-		]
-	},
-	"success": true,
-	"error": ""
+		}
+	]
+}
+```
+
+# GET /videos/search
+
+Returns an array of video objects matching the specified search query.
+
+```
+GET https://api.get-native.com/videos/search?q=Business%20Ethics&lang=en
+```
+
+**Parameters**
+
+| Parameter       | Description                                                                                                                      | Required | Default |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------|----------|---------|
+| lang            | Restricts videos to the given language, specified by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code. |          |         |
+| count           | The number of videos to include in the response. Maximum is 100.                                                                 |          | 15      |
+| trim_speaker    | When true, only the speaker name will be returned -- as opposed to the whole speaker object.                                     |          | false   |
+| trim_likes      | When true, only the likes count is returned -- as opposed to an array of like objects.                                           |          | false   |
+| exclude_speaker | When true, the speaker is not included in the response.                                                                          |          | false   |
+| exclude_likes   | When true, the likes array is not included in the response.                                                                      |          | false   |
+| max_id          | Returns only videos with an ID less than or equal to the max_id.                                                                 |          |         |
+| topic_id        | Restricts videos to the given topic.                                                                                             |          |         |
+| category_id     | Restricts videos to the given category. If the topic_id parameter is also included, the category_id parameter is ignored.        |          |         |
+| q               | A URL-encoded UTF-8 search query. Maximum length is 100 characters.                                                              |          |         |
+
+**Response**
+
+| Data Field | Type    | Description                                              |
+|------------|---------|----------------------------------------------------------|
+| count      | Int     | The number of videos included in the response.           |
+| records    | [Video] | The array of video objects relevant to the search query. |
+
+```
+Status: 200 OK
+```
+```json
+{
+	"records": [
+		{
+			"favorited": true,
+			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+			"id_str": "2244994983",
+			"id": 2244994983,
+			"speaker": {
+				"id": 123456,
+				"id_str": "123456",
+				"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
+				"name": "Harold Ford",
+				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+				"lang": "en",
+				"gender": "male",
+				"location": "Kansas City, MO"
+			},
+			"lang": "en",
+			"favorite_count": 342,
+			"topic": {
+				"id": 123456,
+				"id_str": "123456",
+				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+				"name": "Talking to customers"
+			},
+			"loop_count": 7156,
+			"loop_velocity": 2.4960000000000004,
+			"thumbnail_image_url": "TODO",
+			"video_url": "TODO",
+			"has_related_videos": true,
+			"likes": {
+				"records": [
+					{
+						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+						"user": { // TODO: Unsafe
+							"screen_name": "Phil Barnes",
+							"id": 123,
+							"id_str": "123"
+						},
+						"id": 456,
+						"id_str": "456"
+					}
+				],
+				"count": 10
+			},
+			"length": 68
+		}
+	],
+	"count": 1
 }
 ```
 # GET /videos/:id
@@ -531,97 +499,93 @@ Status: 200 OK
 ```
 ```json
 {
-	"data": {
-		"favorited": true,
-		"description": "In 'talking to customers,' Harold Ford describes the daily interactions between businessmen and clients.",
+	"favorited": true,
+	"description": "In 'talking to customers,' Harold Ford describes the daily interactions between businessmen and clients.",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"id_str": "2244994983",
+	"id": 2244994983,
+	"speaker": {
+		"id": 123456,
+		"id_str": "123456",
+		"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
+		"name": "Harold Ford",
 		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-		"id_str": "2244994983",
-		"id": 2244994983,
-		"speaker": {
-			"id": 123456,
-			"id_str": "123456",
-			"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
-			"name": "Harold Ford",
-			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-			"lang": "en",
-			"gender": "male",
-			"location": "Kansas City, MO"
-		},
 		"lang": "en",
-		"favorite_count": 342,
-		"topic": {
-			"id": 123456,
-			"id_str": "123456",
-			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-			"name": "Talking to customers"
-		},
-		"loop_count": 7156,
-		"loop_velocity": 2.4960000000000004,
-		"thumbnail_image_url": "TODO",
-		"video_url": "TODO",
-		"has_related_videos": true,
-		"liked": true,
-		"likes": {
-			"records": [
-				{
-					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-					"user": { /* TODO: Unsafe. Remove if not needed. */},
-					"id": 456,
-					"id_str": "456"
-				}
-			],
-			"count": 10
-		},
-		"length": 68,
-		"category": {
-			"name": "Business",
-			"id": 123456,
-			"id_str": "123456",
-			"created_at": "Sat Dec 14 04:35:55 +0000 2015"
-		},
-		"transcripts": {
-			"count": 2,
-			"records": [
-				{
-					"id": 123,
-					"id_str": "123",
-					"text": "This is the English transcript. This is the text that will be displayed on the video detail page.",
-					"lang": "en",
-					"collocations": {
-						"count": 3,
-						"records": [
-							{
-								"text": "This is the text",
-								"description": "This is the description",
-								"pronunciation": "ˈðɪs ˈɪz ðə ˈtɛkst",
-								"usage_examples": {
-									"count": 3,
-									"records": [
-										{"text": "This is the text in which will appear.."},
-										{"text": "I will tell you that this is the text."},
-										{"text": "I don't really know if this is the text."}
-									]
-								}
-							}
-						]
-					}
-				}
-			]
-		},
-		"questions": {
-			"count": 4,
-			"records": [
-				{
-					"id": 123456,
-					"id_str": "123456",
-					"text": "What do you think of this text?",
-					"example_answer": "I think this text is really great. I really do. I think if this text were a person, I would marry it."
-				}
-			]
-		}
+		"gender": "male",
+		"location": "Kansas City, MO"
 	},
-	"success": true,
-	"error": ""
+	"lang": "en",
+	"favorite_count": 342,
+	"topic": {
+		"id": 123456,
+		"id_str": "123456",
+		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+		"name": "Talking to customers"
+	},
+	"loop_count": 7156,
+	"loop_velocity": 2.4960000000000004,
+	"thumbnail_image_url": "TODO",
+	"video_url": "TODO",
+	"has_related_videos": true,
+	"liked": true,
+	"likes": {
+		"records": [
+			{
+				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+				"user": { /* TODO: Unsafe. Remove if not needed. */},
+				"id": 456,
+				"id_str": "456"
+			}
+		],
+		"count": 10
+	},
+	"length": 68,
+	"category": {
+		"name": "Business",
+		"id": 123456,
+		"id_str": "123456",
+		"created_at": "Sat Dec 14 04:35:55 +0000 2015"
+	},
+	"transcripts": {
+		"count": 2,
+		"records": [
+			{
+				"id": 123,
+				"id_str": "123",
+				"text": "This is the English transcript. This is the text that will be displayed on the video detail page.",
+				"lang": "en",
+				"collocations": {
+					"count": 3,
+					"records": [
+						{
+							"text": "This is the text",
+							"description": "This is the description",
+							"pronunciation": "ˈðɪs ˈɪz ðə ˈtɛkst",
+							"usage_examples": {
+								"count": 3,
+								"records": [
+									{"text": "This is the text in which will appear.."},
+									{"text": "I will tell you that this is the text."},
+									{"text": "I don't really know if this is the text."}
+								]
+							}
+						}
+					]
+				}
+			}
+		]
+	},
+	"questions": {
+		"count": 4,
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "What do you think of this text?",
+				"example_answer": "I think this text is really great. I really do. I think if this text were a person, I would marry it."
+			}
+		]
+	}
 }
 ```
 
@@ -663,34 +627,30 @@ POST https://api.get-native.com/account/authenticate
 
 ```json
 {
-	"data": {
-		"id": 2244994983,
-		"id_str": "2244994983",
-		"name": "John Doe",
-		"screen_name": "john_doe",
-		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-		"utc_offset": 180000,
-		"time_zone": "Pacific Time (US & Canada)",
-		"lang": "en",
-		"profile_image_url": "TODO",
-		"default_profile_image": false,
-		"email": "john_doe@example.com",
-		"email_verified": true,
-		"favorites_count": 45,
-		"notifications": {
-			"records": [
-				{
-					"id": 123456,
-					"id_str": "123456",
-					"text": "This is the body text of a notification",
-					"title": "Welcome to Get Native"
-				}
-			],
-			"count": 10
-		}
-	},
-	"success": true,
-	"error": ""
+	"id": 2244994983,
+	"id_str": "2244994983",
+	"name": "John Doe",
+	"screen_name": "john_doe",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"utc_offset": 180000,
+	"time_zone": "Pacific Time (US & Canada)",
+	"lang": "en",
+	"profile_image_url": "TODO",
+	"default_profile_image": false,
+	"email": "john_doe@example.com",
+	"email_verified": true,
+	"favorites_count": 45,
+	"notifications": {
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "This is the body text of a notification",
+				"title": "Welcome to Get Native"
+			}
+		],
+		"count": 10
+	}
 }
 ```
 
@@ -747,57 +707,53 @@ POST https://api.get-native.com/study
 
 ```json
 {
-	"data": {
-		"id": 123456,
-		"id_str": "123456",
-		"video": {
-			"favorited": true,
+	"id": 123456,
+	"id_str": "123456",
+	"video": {
+		"favorited": true,
+			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+			"id_str": "2244994983",
+			"id": 2244994983,
+			"speaker": {
+				"id": 123456,
+				"id_str": "123456",
+				"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
+				"name": "Harold Ford",
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-				"id_str": "2244994983",
-				"id": 2244994983,
-				"speaker": {
-					"id": 123456,
-					"id_str": "123456",
-					"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
-					"name": "Harold Ford",
-					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-					"lang": "en",
-					"gender": "male",
-					"location": "Kansas City, MO"
-				},
 				"lang": "en",
-				"favorite_count": 342,
-				"topic": {
-					"id": 123456,
-					"id_str": "123456",
-					"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-					"name": "Talking to customers"
-				},
-				"loop_count": 7156,
-				"loop_velocity": 2.4960000000000004,
-				"thumbnail_image_url": "TODO",
-				"video_url": "TODO",
-				"has_related_videos": true,
-				"likes": {
-					"records": [
-						{
-							"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-							"user": { // TODO: Unsafef
-								"screen_name": "Phil Barnes",
-								"id": 123,
-								"id_str": "123"
-							},
-							"id": 456,
-							"id_str": "456"
-						}
-					],
-					"count": 10
-				},
-				"length": 68
-		}
-	},
-	"success": true,
-	"error": ""
+				"gender": "male",
+				"location": "Kansas City, MO"
+			},
+			"lang": "en",
+			"favorite_count": 342,
+			"topic": {
+				"id": 123456,
+				"id_str": "123456",
+				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+				"name": "Talking to customers"
+			},
+			"loop_count": 7156,
+			"loop_velocity": 2.4960000000000004,
+			"thumbnail_image_url": "TODO",
+			"video_url": "TODO",
+			"has_related_videos": true,
+			"likes": {
+				"records": [
+					{
+						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+						"user": { // TODO: Unsafef
+							"screen_name": "Phil Barnes",
+							"id": 123,
+							"id_str": "123"
+						},
+						"id": 456,
+						"id_str": "456"
+					}
+				],
+				"count": 10
+			},
+			"length": 68
+	}
 }
 ```
 # POST /study/listening
@@ -818,9 +774,6 @@ POST https://api.get-native.com/account/study/listening
 
 ```json
 {
-	"data": {},
-	"success": true,
-	"error": ""
 }
 ```
 # POST /study/shadowing
@@ -841,9 +794,6 @@ POST https://api.get-native.com/study/shadowing
 
 ```json
 {
-	"data": {},
-	"success": true,
-	"error": ""
 }
 ```
 # POST /study/speaking
@@ -864,9 +814,6 @@ POST https://api.get-native.com/account/study/speaking
 
 ```json
 {
-	"data": {},
-	"success": true,
-	"error": ""
 }
 ```
 # POST /study/writing
@@ -893,11 +840,10 @@ before sending the request, calculations are performed server side for maximum e
 
 **Response**
 
+
 ```json
 {
-	"data": {},
-	"success": true,
-	"error": ""
+	
 }
 ```
 
@@ -939,34 +885,30 @@ Status: 200 OK
 ```
 ```json
 {
-	"data": {
-		"id": 2244994983,
-		"id_str": "2244994983",
-		"name": "John Doe",
-		"screen_name": "john_doe",
-		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-		"utc_offset": 180000,
-		"time_zone": "Pacific Time (US & Canada)",
-		"lang": "en",
-		"profile_image_url": "TODO",
-		"default_profile_image": false,
-		"email": "john_doe@example.com",
-		"email_verified": true,
-		"favorites_count": 45,
-		"notifications": { // TODO: Is this necessary?
-			"records": [
-				{
-					"id": 123456,
-					"id_str": "123456",
-					"text": "This is the body text of a notification",
-					"title": "Welcome to Get Native"
-				}
-			],
-			"count": 10
-		}
-	},
-	"success": true,
-	"error": ""
+	"id": 2244994983,
+	"id_str": "2244994983",
+	"name": "John Doe",
+	"screen_name": "john_doe",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"utc_offset": 180000,
+	"time_zone": "Pacific Time (US & Canada)",
+	"lang": "en",
+	"profile_image_url": "TODO",
+	"default_profile_image": false,
+	"email": "john_doe@example.com",
+	"email_verified": true,
+	"favorites_count": 45,
+	"notifications": { // TODO: Is this necessary?
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "This is the body text of a notification",
+				"title": "Welcome to Get Native"
+			}
+		],
+		"count": 10
+	}
 }
 ```
 
@@ -1037,33 +979,29 @@ Status 200 OK
 ```
 ```json
 {
-	"data": {
-		"id": 2244994983,
-		"id_str": "2244994983",
-		"name": "John Doe",
-		"screen_name": "john_doe",
-		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-		"utc_offset": 180000,
-		"time_zone": "Pacific Time (US & Canada)",
-		"lang": "en",
-		"profile_image_url": "TODO",
-		"default_profile_image": false,
-		"email": "john_doe@example.com",
-		"email_verified": false,
-		"favorites_count": 45,
-		"notifications": {
-			"records": [
-				{
-					"id": 123456,
-					"id_str": "123456",
-					"text": "This is the body text of a notification",
-					"title": "Welcome to Get Native"
-				}
-			],
-			"count": 10
-		}
-	},
-	"success": true,
-	"error": ""
+	"id": 2244994983,
+	"id_str": "2244994983",
+	"name": "John Doe",
+	"screen_name": "john_doe",
+	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"utc_offset": 180000,
+	"time_zone": "Pacific Time (US & Canada)",
+	"lang": "en",
+	"profile_image_url": "TODO",
+	"default_profile_image": false,
+	"email": "john_doe@example.com",
+	"email_verified": false,
+	"favorites_count": 45,
+	"notifications": {
+		"records": [
+			{
+				"id": 123456,
+				"id_str": "123456",
+				"text": "This is the body text of a notification",
+				"title": "Welcome to Get Native"
+			}
+		],
+		"count": 10
+	}
 }
 ```
