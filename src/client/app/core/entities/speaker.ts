@@ -8,14 +8,10 @@
 import { Entity } from './entity';
 import { LangCode, Gender } from '../typings/index';
 
-export class Speaker extends Entity {
+export interface Speaker extends Entity {
     description: string;
-
     name: string;
-
-    lang: LangCode;
-
-    gender: Gender;
-
-    location: string;
+    lang?: LangCode;
+    gender?: Gender;
+    location?: string;
 }

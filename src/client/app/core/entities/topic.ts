@@ -7,7 +7,7 @@
 
 import { Entity } from './entity';
 
-export class Topic extends Entity {
+export interface Topic extends Entity {
     category_id?: number;
     name: string;
 }

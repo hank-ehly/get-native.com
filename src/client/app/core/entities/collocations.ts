@@ -5,8 +5,7 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { Entities } from './entities';
-import { Collocation } from './collocation';
+import { Entities, Collocation } from './index';
 
-export class Collocations extends Entities<Collocation> {
+export interface Collocations extends Entities<Collocation> {
 }

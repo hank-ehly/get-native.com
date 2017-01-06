@@ -5,8 +5,7 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { Entities } from './entities';
-import { Transcript } from './transcript';
+import { Entities, Transcript } from './index';
 
-export class Transcripts extends Entities<Transcript> {
+export interface Transcripts extends Entities<Transcript> {
 }

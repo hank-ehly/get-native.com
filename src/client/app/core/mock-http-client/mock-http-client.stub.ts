@@ -5,61 +5,37 @@
  * Created by henryehly on 2016/12/26.
  */
 
-import { VideosShowId } from '../resources/videos-show-id';
+import { Video } from '../index';
 import { MockHTTPClient } from './mock-http-client';
 
 import { Observable } from 'rxjs/Observable';
 
 export const STUBMockHTTPClient = <MockHTTPClient>{
-    getVideosShowId(id: number): Observable<VideosShowId> {
-        return Observable.of(<VideosShowId>{
-            favorited: true,
-            created_at: 'Sat Dec 14 04:35:55 +0000 2015',
+    getVideosShowId(id: number): Observable<Video> {
+        return Observable.of(<Video>{
             id_str: '2244994983',
             id: 2244994983,
+            favorited: true,
             speaker: {
                 id: 123456,
                 id_str: '123456',
                 description: 'Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.',
                 name: 'Harold Ford',
-                created_at: 'Sat Dec 14 04:35:55 +0000 2015',
-                lang: 'en',
-                gender: 'male',
-                location: 'Kansas City, MO'
+                thumbnail_image_url: new URL(''),
             },
             description: 'This is a description about the video. This video is a video and I want to tell you that it...',
-            lang: 'en',
-            favorite_count: 342,
             topic: {
                 id: 123456,
                 id_str: '123456',
-                created_at: 'Sat Dec 14 04:35:55 +0000 2015',
                 name: 'Talking to customers'
             },
             loop_count: 7156,
             loop_velocity: 2.4960000000000004,
-            thumbnail_image_url: 'TODO',
-            video_url: 'TODO',
-            has_related_videos: true,
+            thumbnail_image_url: new URL(''),
+            video_url: new URL(''),
             liked: true,
-            likes: {
-                records: [
-                    {
-                        created_at: 'Sat Dec 14 04:35:55 +0000 2015',
-                        'user': {},
-                        id: 456,
-                        id_str: '456'
-                    }
-                ],
-                count: 10
-            },
+            likes_count: 10,
             length: 68,
-            category: {
-                name: 'Business',
-                id: 123456,
-                id_str: '123456',
-                created_at: 'Sat Dec 14 04:35:55 +0000 2015'
-            },
             transcripts: {
                 count: 2,
                 records: [
@@ -130,17 +106,6 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                                 }
                             ]
                         }
-                    }
-                ]
-            },
-            questions: {
-                count: 4,
-                records: [
-                    {
-                        id: 123456,
-                        id_str: '123456',
-                        text: 'What do you think of this text?',
-                        example_answer: 'I think this text is really great. I really do. I think if this text were a person, I would...'
                     }
                 ]
             }

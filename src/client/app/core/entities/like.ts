@@ -7,6 +7,6 @@
 
 import { Entity } from './entity';
 
-export class Like extends Entity {
+export interface Like extends Entity {
     user: any;
 }

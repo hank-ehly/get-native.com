@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/24.
  */
 
-export class Entity {
+export interface Entity {
     id?: number;
     id_str?: string;
     created_at?: string;

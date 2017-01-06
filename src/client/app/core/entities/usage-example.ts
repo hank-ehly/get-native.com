@@ -7,6 +7,6 @@
 
 import { Entity } from './entity';
 
-export class UsageExample extends Entity {
+export interface UsageExample extends Entity {
     text: string;
 }

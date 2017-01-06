@@ -5,8 +5,7 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { Entities } from './entities';
-import { Question } from './question';
+import { Entities, Question } from './index';
 
-export class Questions extends Entities<Question> {
+export interface Questions extends Entities<Question> {
 }
