@@ -1,5 +1,5 @@
 <div class="video-panel">
-    <img src="http://lorempixel.com/280/280" alt="video-thumbnail">
+    <img [src]="video.thumbnail_image_url" alt="video-thumbnail">
 
     <div class="video-panel__overlay" [ngClass]="{'video-panel__overlay_link': !showControls}" (click)="onClickOverlay()">
         <div class="controls" *ngIf="showControls">
@@ -20,8 +20,8 @@
     </div>
 
     <footer class="footer">
-        <h5 class="footer__video-title">The sorcerer's stone</h5>
-        <span class="footer__video-speaker">by Ron Weasley</span>
+        <h5 class="footer__video-title">{{ video.topic.name }}</h5>
+        <span class="footer__video-speaker">by {{ video.speaker.name }}</span>
 
         <div class="video-stats">
             <div class="video-stats__length">
@@ -34,7 +34,7 @@
                 <span class="video-stats__label">1k</span>
             </div>
 
-            <span class="video-stats__label video-stats__created-on">10 Dec 2016</span>
+            <span class="video-stats__label video-stats__created-on">{{ videoCreatedAt }}</span>
         </div>
     </footer>
 </div>

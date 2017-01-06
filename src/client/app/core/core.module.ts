@@ -17,7 +17,8 @@ import {
     StringService,
     HighResTimestampService,
     Logger,
-    LangService
+    LangService,
+    UTCDateService
 } from './index';
 
 @NgModule({
@@ -34,7 +35,8 @@ import {
         StringService,
         HighResTimestampService,
         Logger,
-        LangService
+        LangService,
+        UTCDateService
     ]
 })
 export class CoreModule {
