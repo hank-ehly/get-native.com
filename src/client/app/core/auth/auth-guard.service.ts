@@ -11,6 +11,7 @@ import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnaps
 import { LocalStorageService, kAuthToken, kAuthTokenExpire } from '../index';
 
 import { Observable } from 'rxjs/Observable';
+import { kDebugLoggedIn } from '../local-storage/local-storage-keys';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
@@ -18,6 +19,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
+        if (this.localStorage.hasItem(kDebugLoggedIn) && this.localStorage.getItem(kDebugLoggedIn)) {
+            return true;
+        }
+
         if (this.localStorage.hasItem(kAuthToken)) {
             let now = Date.now();
             let exp = this.localStorage.getItem(kAuthTokenExpire);
