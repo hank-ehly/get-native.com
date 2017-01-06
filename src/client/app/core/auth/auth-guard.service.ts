@@ -8,10 +8,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-import { LocalStorageService, kAuthToken, kAuthTokenExpire } from '../index';
+import { LocalStorageService, kAuthToken, kAuthTokenExpire, kDebugLoggedIn } from '../index';
 
 import { Observable } from 'rxjs/Observable';
-import { kDebugLoggedIn } from '../local-storage/local-storage-keys';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
