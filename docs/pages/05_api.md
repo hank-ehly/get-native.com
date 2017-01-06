@@ -504,7 +504,7 @@ Status: 200 OK
 	"profile_image_url": "TODO",
 	"default_profile_image": false,
 	"email": "john_doe@example.com",
-	"email_verified": true,
+	"email_verified": false,
 	"favorites_count": 45,
 	"notifications": {
 		"records": [
@@ -685,7 +685,7 @@ POST https://api.get-native.com/study
 Register the completion of a listening session.
 
 ```
-POST https://api.get-native.com/account/study/listening
+POST https://api.get-native.com/study/listening
 ```
 
 **Parameters**
@@ -737,7 +737,7 @@ Status: 204 No Content
 Register the completion of a speaking session.
 
 ```
-POST https://api.get-native.com/account/study/speaking
+POST https://api.get-native.com/study/speaking
 ```
 
 **Parameters**
