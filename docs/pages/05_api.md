@@ -2,7 +2,7 @@
 
 **Request Headers**
 
-The following headers are to be included in each request for a _protected_ resource.
+The following headers are to be included in requests for _protected_ resources.
  
 | Key           | Value               |
 | ------------- | ------------------- |
