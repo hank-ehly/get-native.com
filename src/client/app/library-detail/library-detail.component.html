@@ -54,7 +54,7 @@
 
         <ul class="video-panels">
             <li *ngFor="let video of related_videos.records">
-                <gn-video-panel *ngIf="video.length" [routerLink]="['/library', video.id]"></gn-video-panel>
+                <gn-video-panel [video]="video" *ngIf="video.length" [routerLink]="['/library', video.id]"></gn-video-panel>
                 <div class="video-panels__flex-panel" *ngIf="!video.length"></div>
             </li>
         </ul>

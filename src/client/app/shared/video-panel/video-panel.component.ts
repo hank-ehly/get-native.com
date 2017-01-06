@@ -5,7 +5,9 @@
  * Created by henryehly on 2016/11/30.
  */
 
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+
+import { Video, UTCDateService, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -13,14 +15,31 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     templateUrl: 'video-panel.component.html',
     styleUrls: ['video-panel.component.css']
 })
-export class VideoPanelComponent {
+export class VideoPanelComponent implements OnChanges {
     @Input() showControls: boolean;
+    @Input() video: Video;
     @Output() begin = new EventEmitter();
     @Output() clickOverlay = new EventEmitter();
 
     time: number = 15;
     min: number  = 4;
     max: number  = 60;
+
+    videoCreatedAt: string = '';
+
+    constructor(private dateService: UTCDateService, private logger: Logger) {
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        this.logger.debug(changes);
+
+        if (changes['video']) {
+            let video: Video = changes['video'].currentValue;
+            let date = this.dateService.parse(video.created_at);
+            this.videoCreatedAt = `${date.getDay() + 1} ${this.dateService.getTextMonth(date)} ${date.getFullYear()}`;
+            return;
+        }
+    }
 
     onBegin(): void {
         this.begin.emit();
