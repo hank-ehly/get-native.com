@@ -19,7 +19,7 @@ import {
     NavbarService,
     STUBNavbarService,
     STUBMockHTTPClient,
-    STUBDateFormatter,
+    STUBHighResTimestampService,
     HighResTimestampService,
     SpecUtil,
     LangService
@@ -41,7 +41,7 @@ export function main() {
                     {provide: Logger, useValue: STUBLogger},
                     {provide: NavbarService, useValue: STUBNavbarService},
                     {provide: MockHTTPClient, useValue: STUBMockHTTPClient},
-                    {provide: HighResTimestampService, useValue: STUBDateFormatter},
+                    {provide: HighResTimestampService, useValue: STUBHighResTimestampService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     LangService
                 ]
@@ -61,6 +61,11 @@ export function main() {
         it('should display a video description', () => {
             let description = util.getNativeEl('.section--video-detail .column__row .paragraph');
             expect(description.textContent.length).toBeGreaterThan(0);
+        });
+
+        it('should display related videos', () => {
+            let related_videos = util.getNativeEl('.section_related-videos .video-panels');
+            expect(related_videos.children.length).toBeGreaterThan(0);
         });
     });
 }

@@ -9,9 +9,10 @@ import { Entity } from './entity';
 import { LangCode, Gender } from '../typings/index';
 
 export interface Speaker extends Entity {
-    description: string;
+    description?: string;
     name: string;
     lang?: LangCode;
     gender?: Gender;
     location?: string;
+    thumbnail_image_url?: string;
 }

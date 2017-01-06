@@ -7,7 +7,7 @@
 
 import { HighResTimestampService } from './high-res-timestamp.service';
 
-export const STUBDateFormatter = <HighResTimestampService>{
+export const STUBHighResTimestampService = <HighResTimestampService>{
     toHumanReadable(seconds: number): string {
         return '';
     }

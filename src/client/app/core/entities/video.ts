@@ -8,17 +8,17 @@
 import { Entity, Speaker, Topic, Transcripts, Videos } from './index';
 
 export interface Video extends Entity {
-    description: string;
+    description?: string;
     favorited?: boolean;
-    length: number;
-    liked: boolean;
-    likes_count: number;
-    loop_count: number;
+    length?: number;
+    liked?: boolean;
+    likes_count?: number;
+    loop_count?: number;
     loop_velocity?: number;
-    related_videos: Videos;
-    speaker: Speaker;
-    thumbnail_image_url: URL;
-    topic: Topic;
-    transcripts: Transcripts;
-    video_url: URL;
+    related_videos?: Videos;
+    speaker?: Speaker;
+    thumbnail_image_url?: string;
+    topic?: Topic;
+    transcripts?: Transcripts;
+    video_url?: string;
 }

@@ -30,7 +30,7 @@
             <hr>
 
             <div class="column__row speaker__row">
-                <img class="speaker-thumbnail" src="../../assets/mock/man-smiling.jpg" alt="speaker-thumbnail">
+                <img class="speaker-thumbnail" [src]="speaker.thumbnail_image_url" [alt]="speaker.name">
                 <div class="speaker__info">
                     <h6 class="speaker__name-header">{{ speaker.name }}</h6>
                     <div class="speaker__description-text">{{ speaker.description }}</div>
@@ -47,15 +47,15 @@
     <hr>
 
     <section class="section section_related-videos">
+
         <header class="section-header">
             <h1 class="section-header__title">Related Videos</h1>
         </header>
 
-        <!-- Todo: Can't find property 'records' of undefined. But related_videos is initialized in the component? -->
-        <ul class="video-panels" *ngIf="related_videos">
-            <li *ngFor="let v of related_videos.records">
-                <gn-video-panel *ngIf="!v.placeholder" [routerLink]="['/library', 1]"></gn-video-panel>
-                <div class="video-panels__flex-panel" *ngIf="v.placeholder"></div>
+        <ul class="video-panels">
+            <li *ngFor="let video of related_videos.records">
+                <gn-video-panel *ngIf="video.length" [routerLink]="['/library', video.id]"></gn-video-panel>
+                <div class="video-panels__flex-panel" *ngIf="!video.length"></div>
             </li>
         </ul>
     </section>
