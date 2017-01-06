@@ -24,6 +24,7 @@ export class LibraryDetailComponent implements OnInit {
     speaker: Speaker         = {description: '', name: ''};
     transcripts: Transcripts = {records: [], count: 0};
     related_videos: Videos   = {records: [], count: 0};
+    video_url: string        = '';
 
     constructor(private logger: Logger, private navbar: NavbarService, private api: MockHTTPClient) {
     }
@@ -38,6 +39,7 @@ export class LibraryDetailComponent implements OnInit {
             this.loop_count  = video.loop_count;
             this.likes_count = video.likes_count;
             this.transcripts = video.transcripts;
+            this.video_url   = video.video_url;
             this.speaker     = video.speaker;
 
             /* Todo: Move out of component */
