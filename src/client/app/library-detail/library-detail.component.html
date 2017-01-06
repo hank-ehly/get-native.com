@@ -13,11 +13,11 @@
                     <img class="video-stats__icon" src="../../assets/icons/view-circle.svg" alt="views">
 
                     <!-- Todo: normalize views to '1k' etc.. -->
-                    <span class="video-stats__label">{{ views }} Views</span>
+                    <span class="video-stats__label">{{ loop_count }} Views</span>
                 </div>
                 <div class="video-stats__group video-stats__group_likes">
                     <img class="video-stats__icon video-stats__icon_like" src="../../assets/icons/like.svg" alt="like">
-                    <span class="video-stats__label">{{ likes }}</span>
+                    <span class="video-stats__label">{{ likes_count }}</span>
                 </div>
             </div>
 
@@ -51,8 +51,9 @@
             <h1 class="section-header__title">Related Videos</h1>
         </header>
 
-        <ul class="video-panels">
-            <li *ngFor="let v of videos">
+        <!-- Todo: Can't find property 'records' of undefined. But related_videos is initialized in the component? -->
+        <ul class="video-panels" *ngIf="related_videos">
+            <li *ngFor="let v of related_videos.records">
                 <gn-video-panel *ngIf="!v.placeholder" [routerLink]="['/library', 1]"></gn-video-panel>
                 <div class="video-panels__flex-panel" *ngIf="v.placeholder"></div>
             </li>

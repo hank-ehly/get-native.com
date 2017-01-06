@@ -21,3 +21,5 @@ export * from './transcripts.stub';
 export * from './transcripts';
 export * from './usage-example';
 export * from './usage-examples';
+export * from './video';
+export * from './videos';

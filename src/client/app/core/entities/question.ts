@@ -7,7 +7,7 @@
 
 import { Entity } from './entity';
 
-export class Question extends Entity {
+export interface Question extends Entity {
     text: string;
     example_answer: string;
 }

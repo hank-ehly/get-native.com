@@ -5,10 +5,9 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { Entity } from './entity';
-import { UsageExamples } from './usage-examples';
+import { Entity, UsageExamples } from './index';
 
-export class Collocation extends Entity {
+export interface Collocation extends Entity {
     text: string;
     description: string;
     pronunciation: string;

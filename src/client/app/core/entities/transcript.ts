@@ -5,11 +5,10 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { Entity } from './entity';
-import { Collocations } from './collocations';
+import { Entity, Collocations } from './index';
 import { LangCode } from '../typings/lang-code';
 
-export class Transcript extends Entity {
+export interface Transcript extends Entity {
     text: string;
 
     /* Todo: Change name to 'code' or 'lang_code' to avoid confusion */

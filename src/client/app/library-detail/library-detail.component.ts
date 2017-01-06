@@ -7,8 +7,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { NavbarService, Logger, MockHTTPClient, VideosShowId, Speaker } from '../core/index';
-import { Transcripts } from '../core/entities/transcripts';
+import { NavbarService, Logger, MockHTTPClient, Video, Videos, Speaker, Transcripts } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -17,38 +16,31 @@ import { Transcripts } from '../core/entities/transcripts';
     styleUrls: ['library-detail.component.css']
 })
 export class LibraryDetailComponent implements OnInit {
-    videos: any[];
-
-    description: string;
-    views: number;
-    speaker: Speaker;
-    likes: number;
-    transcripts: Transcripts;
-
-    /* Todo: Model */
-    video: any;
+    description: string = '';
+    loop_count: number = 0;
+    likes_count: number = 0;
+    speaker: Speaker = {description: '', name: ''};
+    transcripts: Transcripts = {records: [], count: 0};
+    related_videos: Videos = {records: [], count: 0};
 
     constructor(private logger: Logger, private navbar: NavbarService, private api: MockHTTPClient) {
-        this.description = '';
-        this.views = 0;
-        this.speaker = new Speaker();
-        this.transcripts = {records: [], count: 0};
     }
 
     ngOnInit() {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
         /* Todo (Mock) */
-        this.videos = [{placeholder: false}, {placeholder: false}, {placeholder: true}];
+        // this.related_videos = [{placeholder: false}, {placeholder: false}, {placeholder: true}];
 
-        /* GET https://get-native.com/videos/show.json?id=123456 */
-        this.api.getVideosShowId(1).subscribe((r: VideosShowId) => {
-            this.navbar.setTitle(r.topic.name);
-            this.description = r.description;
-            this.speaker = r.speaker;
-            this.views = r.loop_count;
-            this.likes = r.likes.count;
-            this.transcripts = r.transcripts;
+        /* GET https://get-native.com/videos/123456 */
+        this.api.getVideosShowId(1).subscribe((video: Video) => {
+            this.navbar.setTitle(video.topic.name);
+            this.description = video.description;
+            this.loop_count = video.loop_count;
+            this.likes_count = video.likes_count;
+            this.speaker = video.speaker;
+            this.transcripts = video.transcripts;
+            this.related_videos = video.related_videos;
         });
     }
 }

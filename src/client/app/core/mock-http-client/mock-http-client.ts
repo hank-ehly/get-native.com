@@ -8,20 +8,20 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Logger, VideosShowId } from '../index';
+import { Logger, Video } from '../index';
 
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MockHTTPClient {
-    baseUrl: string = 'app/core/resources';
+    baseUrl: string = 'app/core/mock-http-client';
 
     constructor(private logger: Logger, private http: Http) {
     }
 
-    getVideosShowId(id: number): Observable<VideosShowId> {
+    getVideosShowId(id: number): Observable<Video> {
         return this.http
-            .get(`${this.baseUrl}/videos-show-id.json`)
-            .map((r: Response) => <VideosShowId>r.json()['data']);
+            .get(`${this.baseUrl}/video.json`)
+            .map((r: Response) => <Video>r.json());
     }
 }

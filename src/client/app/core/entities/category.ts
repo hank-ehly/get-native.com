@@ -7,6 +7,6 @@
 
 import { Entity } from './entity';
 
-export class Category extends Entity {
+export interface Category extends Entity {
     name: string;
 }

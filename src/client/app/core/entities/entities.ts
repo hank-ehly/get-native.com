@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/29.
  */
 
-export class Entities<T> {
+export interface Entities<T> {
     records: T[];
     count: number;
 }

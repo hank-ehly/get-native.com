@@ -5,8 +5,7 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { Entities } from './entities';
-import { Like } from './like';
+import { Entities, Like } from './index';
 
-export class Likes extends Entities<Like> {
+export interface Likes extends Entities<Like> {
 }

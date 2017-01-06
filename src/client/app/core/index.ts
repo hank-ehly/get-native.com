@@ -15,7 +15,6 @@ export * from './login/index';
 export * from './mock-http-client/index';
 export * from './navbar/index';
 export * from './password/index';
-export * from './resources/index';
 export * from './spec/index';
 export * from './high-res-timestamp/index';
 export * from './typings/index';
