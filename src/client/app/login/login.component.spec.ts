@@ -10,6 +10,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { SharedModule } from '../shared/shared.module';
 import {
     LoginComponent,
     SocialLoginComponent,
@@ -38,7 +39,7 @@ export function main() {
     describe('LoginComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [FormsModule],
+                imports: [SharedModule, FormsModule],
                 declarations: [
                     LoginComponent,
                     SocialLoginComponent,

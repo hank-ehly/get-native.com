@@ -8,7 +8,7 @@
         "id_str": "123456",
         "description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
         "name": "Harold Ford",
-        "thumbnail_image_url": "XXX"
+        "thumbnail_image_url": "../../assets/mock/man-smiling.jpg"
     },
     "topic": {
         "id": 123456,
@@ -19,6 +19,35 @@
     "loop_velocity": 2.4960000000000004,
     "thumbnail_image_url": "XXX",
     "video_url": "XXX",
+    "related_videos":{
+        "records": [
+            {
+                "id": 2,
+                "id_str": "2",
+                "created_at": "Sat Dec 14 04:35:55 +0000 2015",
+                "length": 68,
+                "topic": {
+                    "name": "Talking to customers"
+                },
+                "speaker": {
+                    "name": "Harold Ford"
+                }
+            },
+            {
+                "id": 3,
+                "id_str": "3",
+                "created_at": "Sun Dec 15 04:35:55 +0000 2015",
+                "length": 68,
+                "topic": {
+                    "name": "Talking to customers"
+                },
+                "speaker": {
+                    "name": "Harold Ford"
+                }
+            }
+        ],
+        "count": 2
+    },
     "liked": false,
     "likes_count": 10,
     "length": 68,

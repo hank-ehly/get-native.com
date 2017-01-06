@@ -28,6 +28,7 @@ export function main() {
                 util = new SpecUtil(fixture);
                 comp = fixture.componentInstance;
                 comp.transcripts = STUBTranscripts;
+                comp.selectedCollocation = STUBTranscripts.records[0].collocations.records[0];
                 fixture.detectChanges();
             });
         }));
