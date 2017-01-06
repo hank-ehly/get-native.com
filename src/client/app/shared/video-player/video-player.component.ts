@@ -28,6 +28,7 @@ import { HighResTimestampService, UnitInterval, Logger } from '../../core/index'
 })
 export class VideoPlayerComponent implements OnInit, AfterViewInit {
     @Input() loop: boolean;
+    @Input() src: string;
     @ViewChild(VideoDirective) player: VideoDirective;
 
     currentTimeString: string;
