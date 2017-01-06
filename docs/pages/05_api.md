@@ -1,9 +1,44 @@
 # Overview
 
+**Request Headers**
+
+The following headers are to be included in each request for a _protected_ resource.
+ 
+| Key           | Value               |
+| ------------- | ------------------- |
+| Authorization | Bearer {Auth Token} |
+
 **Response Headers**
 
-X-Frame-Options:deny
-X-Content-Type-Options:nosniff
+The following headers are included in each API response.
+
+| Key                                                                                                                         | Value                                        |
+| --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">X-Frame-Options</a>                     | deny                                         |
+| <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options">X-Content-Type-Options</a>       | nosniff                                      |
+| <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection">X-XSS-Protection</a>                   | 1; mode=block                                |
+| Access-Control-Allow-Origin                                                                                                 | *                                            |
+| Access-Control-Expose-Headers                                                                                               | authorization                                |
+| Server                                                                                                                      | api.get-native.com                           |
+| <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">Strict-Transport-Security</a> | max-age=31536000; includeSubdomains; preload |
+| X-GetNative-Auth-Token                                                                                                      | A JWT value (eg. g8ka.l0xh.jq1m)             |
+| X-GetNative-Auth-Expire                                                                                                     | A timestamp (eg. 1483658645131)              |
+
+**Handling of `DNT` Request Header**
+
+Clients that set the value of the `DoNotTrack` header to `1` are treated differently.
+Specifically, Get Native does the following upon encountering a `DNT: 1` request header. 
+
+1. Disable Google Analytics 
+
+2. Will not log user in apache logs
+
+```apacheconfig
+# requires mod_headers, mod_setenvif, and mod_rewrite
+
+SetEnvIfNoCase DNT 1 DO_NOT_TRACK
+CustomLog /path/to/access_log common env=!DO_NOT_TRACK
+```
 
 **Record Lists**
 
@@ -365,8 +400,7 @@ POST https://api.get-native.com/login
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
 ```
-X-GetNative-Auth-Token: "eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAi..."
-X-GetNative-Auth-Expire: 1483658645131
+Status: 200 OK
 ```
 ```json
 {
@@ -457,8 +491,7 @@ POST https://api.get-native.com/register
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
 ```
-X-GetNative-Auth-Token: "eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqb2UiLA0KICJleHAi..."
-X-GetNative-Auth-Expire: 1483658645131
+Status: 200 OK
 ```
 ```json
 {
