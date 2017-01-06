@@ -536,16 +536,17 @@ GET https://api.get-native.com/speakers/123456
 
 **Response**
 
-| Data Field    | Type   	| Description                                        	|
-|-------------	|--------	|----------------------------------------------------	|
-| id          	| Int64  	| Integer representation of unique speaker ID        	|
-| id_str      	| String 	| String representation of unique speaker ID         	|
-| description 	| String 	| UTF-8 string description about speaker             	|
-| name        	| String 	| The name of the speaker                            	|
-| created_at  	| String 	| UTC datetime of speaker registration               	|
-| lang        	| String 	| BCP 47 code for speakers' native language          	|
-| gender      	| String 	| _Nullable._ The gender of the speaker               |
-| location    	| String 	| _Nullable._ The location of the speaker            	|
+| Data Field          | Type   	| Description                                        	|
+|-------------------  |--------	|----------------------------------------------------	|
+| id          	      | Int64  	| Integer representation of unique speaker ID        	|
+| id_str      	      | String 	| String representation of unique speaker ID         	|
+| description 	      | String 	| UTF-8 string description about speaker             	|
+| name        	      | String 	| The name of the speaker                            	|
+| created_at  	      | String 	| UTC datetime of speaker registration               	|
+| lang        	      | String 	| BCP 47 code for speakers' native language          	|
+| gender      	      | String 	| _Nullable._ The gender of the speaker               |
+| location    	      | String 	| _Nullable._ The location of the speaker            	|
+| thumbnail_image_url | String  | The HTTPS URL for the speaker thumbnail image       |
 
 
 ```
@@ -560,7 +561,8 @@ Status: 200 OK
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"lang": "en",
 	"gender": "male",
-	"location": "Kansas City, MO"
+	"location": "Kansas City, MO",
+	"thumbnail_image_url": "XXX"
 }
 ```
 
@@ -904,24 +906,19 @@ GET https://api.get-native.com/videos/123456
 |---------------------|--------------|----------------------------------------------------------------------------------------------------|
 | favorited           | Boolean      | _Nullable._ Whether the video has been favorited by the user                                       |
 | description         | String       | A string description of the video.                                                                 |
-| created_at          | String       | UTC datetime of video creation                                                                     |
 | id_str              | String       | String representation of unique video ID                                                           |
 | id                  | Int64        | Integer representation of unique video ID                                                          |
 | speaker             | Speaker      | The speaker of the video                                                                           |
-| lang                | String       | _Nullable._ The BCP 47 identifier of the video language                                            |
-| favorite_count      | Integer      | _Nullable._ The approximate number of times the video has been favorited by other Get Native users |
 | topic               | Topic        | The topic to which the video belongs                                                               |
 | loop_count          | Int          | The number of times a video has reached the end of its length                                      |
 | loop_velocity       | Float        | _Nullable._ The velocity at which the loop count should automatically increase                     |
 | thumbnail_image_url | String       | The HTTPS URL for the video thumbnail image                                                        |
 | video_url           | String       | The HTTPS URL for the actual video data                                                            |
-| has_related_videos  | Boolean      | TODO                                                                                               |
-| likes               | [Like]       | An array containing the Likes associated with the video                                            |
+| related_videos      | [Video]      | An entity list containing Video objects deemed as 'related' to the current video                   |
+| likes_count         | Int64        | Integer representation of number of times video has been 'liked'                                   |
 | liked               | Boolean      | Whether the video has been liked by the user                                                       |
 | length              | Int          | The length of the video in seconds                                                                 |
-| category            | Category     | A representation of the category to which the video belongs.                                       |
 | transcripts         | [Transcript] | An array of transcript objects corresponding to the video.                                         |
-| questions           | [Question]   | An array of question objects used for the writing section of a video.                              |
 
 ```
 Status: 200 OK
@@ -930,7 +927,6 @@ Status: 200 OK
 {
 	"favorited": true,
 	"description": "In 'talking to customers,' Harold Ford describes the daily interactions between businessmen and clients.",
-	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"id_str": "2244994983",
 	"id": 2244994983,
 	"speaker": {
@@ -938,43 +934,49 @@ Status: 200 OK
 		"id_str": "123456",
 		"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
 		"name": "Harold Ford",
-		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-		"lang": "en",
-		"gender": "male",
-		"location": "Kansas City, MO"
+		"thumbnail_image_url": "XXX"
 	},
-	"lang": "en",
-	"favorite_count": 342,
 	"topic": {
 		"id": 123456,
 		"id_str": "123456",
-		"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 		"name": "Talking to customers"
 	},
 	"loop_count": 7156,
 	"loop_velocity": 2.4960000000000004,
-	"thumbnail_image_url": "TODO",
-	"video_url": "TODO",
-	"has_related_videos": true,
-	"liked": true,
-	"likes": {
+	"thumbnail_image_url": "XXX",
+	"video_url": "XXX",
+	"related_videos":{
 		"records": [
 			{
+        "id": 2244994984,
+				"id_str": "2244994984",
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-				"user": { /* TODO: Unsafe. Remove if not needed. */},
-				"id": 456,
-				"id_str": "456"
+				"length": 68,
+				"topic": {
+					"name": "Talking to customers"
+				},
+				"speaker": {
+					"name": "Harold Ford"
+				}
+			},
+			{
+				"id": 2244994985,
+				"id_str": "2244994985",
+				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+				"length": 68,
+				"topic": {
+					"name": "Talking to customers"
+				},
+				"speaker": {
+					"name": "Harold Ford"
+				}
 			}
 		],
-		"count": 10
+		"count": 2
 	},
+	"liked": true,
+	"likes_count": 10,
 	"length": 68,
-	"category": {
-		"name": "Business",
-		"id": 123456,
-		"id_str": "123456",
-		"created_at": "Sat Dec 14 04:35:55 +0000 2015"
-	},
 	"transcripts": {
 		"count": 2,
 		"records": [
@@ -1001,17 +1003,6 @@ Status: 200 OK
 						}
 					]
 				}
-			}
-		]
-	},
-	"questions": {
-		"count": 4,
-		"records": [
-			{
-				"id": 123456,
-				"id_str": "123456",
-				"text": "What do you think of this text?",
-				"example_answer": "I think this text is really great. I really do. I think if this text were a person, I would marry it."
 			}
 		]
 	}
