@@ -36,7 +36,7 @@ export class VideoPanelComponent implements OnChanges {
         if (changes['video']) {
             let video: Video = changes['video'].currentValue;
             let date = this.dateService.parse(video.created_at);
-            this.videoCreatedAt = `${date.getDay() + 1} ${this.dateService.getTextMonth(date)} ${date.getFullYear()}`;
+            this.videoCreatedAt = `${date.getUTCDate()} ${this.dateService.getTextMonth(date)} ${date.getUTCFullYear()}`;
             return;
         }
     }
