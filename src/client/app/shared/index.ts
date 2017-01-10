@@ -9,7 +9,7 @@ export * from './compliance/index';
 export * from './config/env.config';
 export * from './debug/index';
 export * from './footer/index';
-export * from './high-res-timestamp/high-res-timestamp.pipe';
+export * from './digital-time/digital-time.pipe';
 export * from './modal/modal.component';
 export * from './navbar/index';
 export * from './password-strength/password-strength.component';

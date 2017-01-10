@@ -14,8 +14,8 @@
         </div>
 
         <div class="player-controls__time">
-            <span class="player-controls__time-elapsed">{{ player.currentTime | highResTimestamp }}</span>
-            <span class="player-controls__time-total">{{ player.duration | highResTimestamp }}</span>
+            <span class="player-controls__time-elapsed">{{ player.currentTime | digitalTime }}</span>
+            <span class="player-controls__time-total">{{ player.duration | digitalTime }}</span>
         </div>
 
         <div class="volume-control" (click)="onClickVolumeControl($event)"
