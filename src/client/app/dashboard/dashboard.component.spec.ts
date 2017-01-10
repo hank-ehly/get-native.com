@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
-import { NavbarService, STUBRouter } from '../core/index';
+import { NavbarService, STUBRouter, UTCDateService, Logger, STUBLogger } from '../core/index';
 
 export function main() {
     let comp: DashboardComponent;
@@ -21,7 +21,7 @@ export function main() {
             TestBed.configureTestingModule({
                 imports: [SharedModule],
                 declarations: [DashboardComponent],
-                providers: [NavbarService, {provide: Router, useValue: STUBRouter}]
+                providers: [NavbarService, {provide: Router, useValue: STUBRouter}, UTCDateService, {provide: Logger, useValue: STUBLogger}]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(DashboardComponent);
                 comp = fixture.componentInstance;
@@ -29,8 +29,8 @@ export function main() {
             });
         }));
 
-        it('should work', () => {
-
-        });
+        // it('should work', () => {
+        //
+        // });
     });
 }
