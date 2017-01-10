@@ -22,7 +22,8 @@ import {
     STUBHighResTimestampService,
     HighResTimestampService,
     SpecUtil,
-    LangService
+    LangService,
+    UTCDateService
 } from '../core/index';
 
 export function main() {
@@ -43,7 +44,8 @@ export function main() {
                     {provide: MockHTTPClient, useValue: STUBMockHTTPClient},
                     {provide: HighResTimestampService, useValue: STUBHighResTimestampService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-                    LangService
+                    LangService,
+                    UTCDateService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LibraryDetailComponent);
