@@ -6,13 +6,14 @@
  */
 
 import { HighResTimestampService } from './high-res-timestamp.service';
+import { UTCDateService } from '../utc-date/utc-date.service';
 
 export function main() {
     let service: HighResTimestampService;
 
     describe('HighResTimestampService', () => {
         beforeAll(() => {
-            service = new HighResTimestampService();
+            service = new HighResTimestampService(new UTCDateService());
         });
 
         it('should format the DOMHighResTimeStamp (7.846841) into human-readable seconds (0:07)', () => {
