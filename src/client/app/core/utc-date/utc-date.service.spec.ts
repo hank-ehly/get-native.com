@@ -54,5 +54,11 @@ export function main() {
         it('should provide the text representation of the parsed month', () => {
             expect(service.getTextMonth(date)).toEqual('Dec');
         });
+
+        it('should create a Date object from seconds', () => {
+            let date = service.dateFromSeconds(68);
+            expect(date.getSeconds()).toEqual(8);
+            expect(date.getMinutes()).toEqual(1);
+        });
     });
 }
