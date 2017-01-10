@@ -35,4 +35,9 @@ export class UTCDateService {
     getTextMonth(date: Date): string {
         return MONTHS[date.getUTCMonth()];
     }
+
+    dateFromSeconds(seconds: number): Date {
+        let milliseconds = 1000 * seconds;
+        return new Date(milliseconds);
+    }
 }
