@@ -60,5 +60,14 @@ export function main() {
             expect(date.getSeconds()).toEqual(8);
             expect(date.getMinutes()).toEqual(1);
         });
+
+        it('should add a leading zero to seconds', () => {
+            let d9 = service.dateFromSeconds(9);
+            let d10 = service.dateFromSeconds(10);
+            let nine = service.getUTCPaddedSeconds(d9);
+            let ten = service.getUTCPaddedSeconds(d10);
+            expect(nine).toEqual('09');
+            expect(ten).toEqual('10');
+        });
     });
 }
