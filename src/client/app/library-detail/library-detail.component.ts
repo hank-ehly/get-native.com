@@ -20,7 +20,7 @@ import '../operators';
 export class LibraryDetailComponent implements OnInit {
     description: string      = '';
     loop_count: number       = 0;
-    likes_count: number      = 0;
+    like_count: number       = 0;
     speaker: Speaker         = {description: '', name: ''};
     transcripts: Transcripts = {records: [], count: 0};
     related_videos: Videos   = {records: [], count: 0};
@@ -37,7 +37,7 @@ export class LibraryDetailComponent implements OnInit {
             this.navbar.setTitle(video.topic.name);
             this.description = video.description;
             this.loop_count  = video.loop_count;
-            this.likes_count = video.likes_count;
+            this.like_count  = video.like_count;
             this.transcripts = video.transcripts;
             this.video_url   = video.video_url;
             this.speaker     = video.speaker;

@@ -12,7 +12,7 @@ export interface Video extends Entity {
     favorited?: boolean;
     length?: number;
     liked?: boolean;
-    likes_count?: number;
+    like_count?: number;
     loop_count?: number;
     loop_velocity?: number;
     related_videos?: Videos;
