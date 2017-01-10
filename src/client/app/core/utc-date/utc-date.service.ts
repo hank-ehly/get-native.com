@@ -40,4 +40,9 @@ export class UTCDateService {
         let milliseconds = 1000 * seconds;
         return new Date(milliseconds);
     }
+
+    getUTCPaddedSeconds(date: Date): string {
+        let seconds: string = date.getUTCSeconds().toString();
+        return `0${seconds}`.slice(-2);
+    }
 }

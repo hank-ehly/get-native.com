@@ -25,7 +25,8 @@ export class VideoPanelComponent implements OnChanges {
     min: number  = 4;
     max: number  = 60;
 
-    videoCreatedAt: string = '';
+    createdAt: string = '';
+    length: string    = '';
 
     constructor(private dateService: UTCDateService, private logger: Logger) {
     }
@@ -36,7 +37,10 @@ export class VideoPanelComponent implements OnChanges {
         if (changes['video']) {
             let video: Video = changes['video'].currentValue;
             let date = this.dateService.parse(video.created_at);
-            this.videoCreatedAt = `${date.getUTCDate()} ${this.dateService.getTextMonth(date)} ${date.getUTCFullYear()}`;
+            this.createdAt = `${date.getUTCDate()} ${this.dateService.getTextMonth(date)} ${date.getUTCFullYear()}`;
+
+            let d = this.dateService.dateFromSeconds(video.length);
+            this.length = `${d.getUTCMinutes()}:${this.dateService.getUTCPaddedSeconds(d)}`;
             return;
         }
     }
