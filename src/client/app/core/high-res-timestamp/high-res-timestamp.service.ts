@@ -6,21 +6,21 @@
  */
 
 import { Injectable } from '@angular/core';
+import { UTCDateService } from '../utc-date/utc-date.service';
 
 @Injectable()
 export class HighResTimestampService {
+    constructor(private dateService: UTCDateService) {
+    }
+
     toHumanReadable(timestamp: number): string {
         if (timestamp >= 600) {
             throw new RangeError(`${this.constructor.name}.fromSeconds cannot handle values over 600. Value was ${timestamp}`);
         }
 
         let nWholeSec = Math.floor(timestamp);
-        let nWholeMin = Math.floor(nWholeSec / 60);
+        let date = this.dateService.dateFromSeconds(nWholeSec);
 
-        let nRetSec = nWholeSec % 60;
-        let sRetSec = nRetSec < 10 ? `0${nRetSec}` : nRetSec.toString();
-        let sRetMin = nWholeMin < 1 ? '0' : nWholeMin.toString();
-
-        return `${sRetMin}:${sRetSec}`;
+        return `${date.getUTCMinutes()}:${this.dateService.getUTCPaddedSeconds(date)}`;
     }
 }
