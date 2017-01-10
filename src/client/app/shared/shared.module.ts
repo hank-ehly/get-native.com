@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import {
     ComplianceComponent,
     FooterComponent,
+    HighResTimestampPipe,
     ModalComponent,
     NavbarComponent,
     PasswordStrengthComponent,
@@ -37,6 +38,7 @@ import {
     declarations: [
         ComplianceComponent,
         FooterComponent,
+        HighResTimestampPipe,
         ModalComponent,
         NavbarComponent,
         PasswordStrengthComponent,
@@ -57,6 +59,7 @@ import {
         FormsModule,
         ComplianceComponent,
         FooterComponent,
+        HighResTimestampPipe,
         ModalComponent,
         NavbarComponent,
         PasswordStrengthComponent,

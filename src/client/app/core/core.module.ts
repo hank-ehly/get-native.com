@@ -15,7 +15,6 @@ import {
     NavbarService,
     PasswordService,
     StringService,
-    HighResTimestampService,
     Logger,
     LangService,
     UTCDateService
@@ -33,7 +32,6 @@ import {
         NavbarService,
         PasswordService,
         StringService,
-        HighResTimestampService,
         Logger,
         LangService,
         UTCDateService

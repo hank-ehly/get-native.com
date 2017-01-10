@@ -19,8 +19,6 @@ import {
     NavbarService,
     STUBNavbarService,
     STUBMockHTTPClient,
-    STUBHighResTimestampService,
-    HighResTimestampService,
     SpecUtil,
     LangService,
     UTCDateService
@@ -42,7 +40,6 @@ export function main() {
                     {provide: Logger, useValue: STUBLogger},
                     {provide: NavbarService, useValue: STUBNavbarService},
                     {provide: MockHTTPClient, useValue: STUBMockHTTPClient},
-                    {provide: HighResTimestampService, useValue: STUBHighResTimestampService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     LangService,
                     UTCDateService
