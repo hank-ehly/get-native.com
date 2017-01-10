@@ -67,7 +67,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                 'count': 2
             },
             'liked': false,
-            'likes_count': 10,
+            'like_count': 10,
             'length': 68,
             'transcripts': {
                 'count': 2,

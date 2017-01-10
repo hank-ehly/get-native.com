@@ -915,7 +915,7 @@ GET https://api.get-native.com/videos/123456
 | thumbnail_image_url | String       | The HTTPS URL for the video thumbnail image                                                        |
 | video_url           | String       | The HTTPS URL for the actual video data                                                            |
 | related_videos      | [Video]      | An entity list containing Video objects deemed as 'related' to the current video                   |
-| likes_count         | Int64        | Integer representation of number of times video has been 'liked'                                   |
+| like_count         | Int64        | Integer representation of number of times video has been 'liked'                                   |
 | liked               | Boolean      | Whether the video has been liked by the user                                                       |
 | length              | Int          | The length of the video in seconds                                                                 |
 | transcripts         | [Transcript] | An array of transcript objects corresponding to the video.                                         |
@@ -975,7 +975,7 @@ Status: 200 OK
 		"count": 2
 	},
 	"liked": true,
-	"likes_count": 10,
+	"like_count": 10,
 	"length": 68,
 	"transcripts": {
 		"count": 2,
