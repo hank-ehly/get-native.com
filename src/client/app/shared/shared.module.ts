@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import {
     ComplianceComponent,
     FooterComponent,
+    FuzzyNumberPipe,
     DigitalTimePipe,
     ModalComponent,
     NavbarComponent,
@@ -38,6 +39,7 @@ import {
     declarations: [
         ComplianceComponent,
         FooterComponent,
+        FuzzyNumberPipe,
         DigitalTimePipe,
         ModalComponent,
         NavbarComponent,
@@ -59,6 +61,7 @@ import {
         FormsModule,
         ComplianceComponent,
         FooterComponent,
+        FuzzyNumberPipe,
         DigitalTimePipe,
         ModalComponent,
         NavbarComponent,
