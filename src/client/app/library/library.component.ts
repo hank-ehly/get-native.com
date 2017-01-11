@@ -8,7 +8,8 @@
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger, STUBCategories } from '../core/index';
+import { Logger, STUBCategories, Videos, MockHTTPClient } from '../core/index';
+import { Video } from '../core/entities/video';
 
 @Component({
     moduleId: module.id,
@@ -30,22 +31,33 @@ import { Logger, STUBCategories } from '../core/index';
 })
 export class LibraryComponent implements OnInit {
     isDropdownVisible: boolean;
-    videos: any[];
+    videos: Videos = {records: [], count: 0};
     categories: any[];
 
-    constructor(private logger: Logger, private router: Router) {
+    constructor(private logger: Logger, private router: Router, private http: MockHTTPClient) {
     }
 
     ngOnInit(): void {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
-        /* Mock */
-        this.videos = [
-            {placeholder: false}, {placeholder: false}, {placeholder: false},
-            {placeholder: false}, {placeholder: false}, {placeholder: false},
-            {placeholder: false}, {placeholder: false}, {placeholder: false},
-            {placeholder: false}, {placeholder: false}, {placeholder: false}
-        ];
+        this.http.GET_videos().subscribe((videos: Videos) => {
+            /* Todo: Move out of component */
+            if (videos.count % 3 !== 0) {
+                let records: Video[] = videos.records;
+                let diff = 3 - (videos.count % 3);
+                let i = 0;
+
+                while (i < diff) {
+                    records.push({});
+                    i++;
+                }
+
+                let count = records.length;
+                this.videos = {records: records, count: count};
+            } else {
+                this.videos = videos;
+            }
+        });
 
         let categories = STUBCategories;
 
