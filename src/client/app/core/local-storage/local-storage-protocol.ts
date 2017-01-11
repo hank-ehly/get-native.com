@@ -7,8 +7,8 @@
 
 import { LocalStorageItem } from './index';
 
-export interface LocalStorageProtocol {
-    didSetLocalStorageItem(item: LocalStorageItem): void;
-    didReceiveStorageEvent(event: StorageEvent): void;
-    didClearStorage(): void;
+export declare abstract class LocalStorageProtocol {
+    abstract didSetLocalStorageItem(item: LocalStorageItem): void;
+    abstract didReceiveStorageEvent(event: StorageEvent): void;
+    abstract didClearStorage(): void;
 }
