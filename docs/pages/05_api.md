@@ -283,6 +283,62 @@ Status: 200 OK
 }
 ```
 
+# GET /categories
+
+Returns a list of the current video categories and their topics.
+
+```
+GET https://api.get-native.com/categories
+```
+
+**Response**
+
+| Data Field 	| Type        	| Description                                               	|
+|------------	|-------------	|-----------------------------------------------------------  |
+| records    	| [Category]  	| The array of Category records.                            	|
+| count      	| Int         	| The number of Category records included in the response.    |
+
+```
+Status: 200 OK
+```
+```json
+{
+	"records": [
+		{
+			"name": "Business",
+			"topics": {
+				"records": [
+					{
+						"name": "Meeting Preparation"
+					},
+					{
+						"name": "Business Cards"
+					},
+					{
+						"name": "Greeting Co-Workers"
+					}
+				]
+			}
+		},
+		{
+			"name": "Dating",
+			"topics": {
+				"records": [
+					{
+						"name": "Holding Hands"
+					},
+					{
+						"name": "Meeting the Parents"
+					}
+				],
+				"count": 2
+			}
+		}
+	],
+	"count": 2
+}
+```
+
 # GET /cued_videos
 
 Returns the 20 most recent **cued videos** added by the user to their dashboard.
