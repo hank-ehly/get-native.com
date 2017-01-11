@@ -33,7 +33,7 @@ export class LibraryDetailComponent implements OnInit {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
         /* GET https://get-native.com/videos/123456 */
-        this.api.getVideosShowId(1).subscribe((video: Video) => {
+        this.api.GET_video(1).subscribe((video: Video) => {
             this.navbar.setTitle(video.topic.name);
             this.description = video.description;
             this.loop_count  = video.loop_count;
