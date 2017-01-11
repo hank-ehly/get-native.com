@@ -34,7 +34,7 @@ export class Logger {
         }
     };
 
-    debug(message?: any, ...optionalParams: any[]) {
+    debug(message?: any, ...optionalParams: any[]): void {
         if (window.console && this.logLevel >= LOG_LEVEL.DEBUG) {
             console.debug.apply(console, arguments);
         }
