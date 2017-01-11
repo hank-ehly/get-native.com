@@ -20,3 +20,13 @@ export const STUBRouter = <Router>{
         return null;
     }
 };
+
+export const STUBCategories = [
+    {title: 'Business',     subcategories: ['Subcategory 1', 'Subcategory 2', 'Subcategory 3', 'Subcategory 4']},
+    {title: 'Holidays',     subcategories: ['Subcategory 1', 'Subcategory 2', 'Subcategory 3']},
+    {title: 'Negotiations', subcategories: ['Subcategory 1', 'Subcategory 2']},
+    {title: 'Language',     subcategories: ['Subcategory 1', 'Subcategory 2']},
+    {title: 'Hobbies',      subcategories: ['Subcategory 1', 'Subcategory 2', 'Subcategory 3', 'Subcategory 4', 'Subcategory 5']},
+    {title: 'Travel',       subcategories: ['Subcategory 1', 'Subcategory 2']},
+    {title: 'Sports',       subcategories: ['Subcategory 1']}
+];
