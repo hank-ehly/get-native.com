@@ -41,22 +41,7 @@ export class LibraryComponent implements OnInit {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
         this.http.GET_videos().subscribe((videos: Videos) => {
-            /* Todo: Move out of component */
-            if (videos.count % 3 !== 0) {
-                let records: Video[] = videos.records;
-                let diff = 3 - (videos.count % 3);
-                let i = 0;
-
-                while (i < diff) {
-                    records.push({});
-                    i++;
-                }
-
-                let count = records.length;
-                this.videos = {records: records, count: count};
-            } else {
-                this.videos = videos;
-            }
+            this.videos = videos;
         });
 
         let categories = STUBCategories;
@@ -86,9 +71,5 @@ export class LibraryComponent implements OnInit {
     onToggleDropdown(): void {
         this.logger.debug(`[${this.constructor.name}]: onToggleDropdown() -> ${!this.isDropdownVisible}`);
         this.isDropdownVisible = !this.isDropdownVisible;
-    }
-
-    onClickVideoPanel(video: any): void {
-        this.router.navigate(['library', 1]);
     }
 }

@@ -52,11 +52,6 @@
             <h1 class="section-header__title">Related Videos</h1>
         </header>
 
-        <ul class="video-panels">
-            <li *ngFor="let video of related_videos.records">
-                <gn-video-panel [video]="video" *ngIf="video.length" [routerLink]="['/library', video.id]"></gn-video-panel>
-                <div class="video-panels__flex-panel" *ngIf="!video.length"></div>
-            </li>
-        </ul>
+        <gn-video-panel-list [videos]="related_videos" [navigates]="true"></gn-video-panel-list>
     </section>
 </main>
