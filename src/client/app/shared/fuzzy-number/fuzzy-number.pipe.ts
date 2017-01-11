@@ -8,7 +8,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'fuzzyNumber'
+    name: 'fuzzy'
 })
 export class FuzzyNumberPipe implements PipeTransform {
     transform(value: any, args: any[]): any {
