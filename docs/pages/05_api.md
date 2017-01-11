@@ -317,7 +317,8 @@ Status: 200 OK
 					{
 						"name": "Greeting Co-Workers"
 					}
-				]
+				],
+				"count": 3
 			}
 		},
 		{

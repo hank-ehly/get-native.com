@@ -5,8 +5,9 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { Entity } from './entity';
+import { Entity, Topics } from './index';
 
 export interface Category extends Entity {
-    name: string;
+    name?: string;
+    topics?: Topics;
 }

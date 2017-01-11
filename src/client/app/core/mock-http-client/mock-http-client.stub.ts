@@ -9,6 +9,7 @@ import { Video, Videos } from '../index';
 import { MockHTTPClient } from './mock-http-client';
 
 import { Observable } from 'rxjs/Observable';
+import { Categories } from '../entities/categories';
 
 export const STUBMockHTTPClient = <MockHTTPClient>{
 
@@ -231,7 +232,68 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'length': 89
                     }
                 ]
-            }
-        );
+            });
+    },
+
+    GET_categories(): Observable<Categories> {
+        return Observable.of(<Categories>{
+                'records': [
+                    {
+                        'name': 'Business',
+                        'topics': {
+                            'records': [
+                                {
+                                    'name': 'Meeting Preparation'
+                                },
+                                {
+                                    'name': 'Business Cards'
+                                },
+                                {
+                                    'name': 'Greeting Co-Workers'
+                                }
+                            ],
+                            'count': 3
+                        }
+                    },
+                    {
+                        'name': 'Holidays',
+                        'topics': {
+                            'records': [
+                                {
+                                    'name': 'Holding Hands'
+                                },
+                                {
+                                    'name': 'Meeting the Parents'
+                                }
+                            ],
+                            'count': 2
+                        }
+                    },
+                    {
+                        'name': 'Travel',
+                        'topics': {
+                            'records': [
+                                {
+                                    'name': 'Subcategory 1'
+                                },
+                                {
+                                    'name': 'Subcategory 2'
+                                },
+                                {
+                                    'name': 'Subcategory 3'
+                                },
+                                {
+                                    'name': 'Subcategory 4'
+                                },
+                                {
+                                    'name': 'Subcategory 5'
+                                }
+                            ],
+                            'count': 5
+                        }
+                    }
+                ],
+                'count': 3
+            });
     }
 };

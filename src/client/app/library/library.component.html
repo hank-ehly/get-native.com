@@ -10,15 +10,15 @@
             </div>
 
             <div class="dropdown-menu" *ngIf="isDropdownVisible" [@dropdown]>
-                <div class="dropdown-menu__row" *ngFor="let row of categories">
+                <div class="dropdown-menu__row" *ngFor="let row of categoryRows">
 
                     <div class="dropdown-menu__row-group" *ngFor="let category of row"
-                         [ngClass]="{'dropdown-menu__row-group_placeholder': category.placeholder}">
+                         [ngClass]="{'dropdown-menu__row-group_placeholder': !category.name}">
 
-                        <h6 class="link dropdown-menu__category" *ngIf="!category.placeholder">{{ category.title }}</h6>
-                        <ul *ngIf="!category.placeholder">
-                            <li class="dropdown-menu__subcategory" *ngFor="let subcategory of category.subcategories">
-                                <span class="link dropdown-menu__subcategory-label">{{ subcategory }}</span>
+                        <h6 class="link dropdown-menu__category" *ngIf="category.name">{{ category.name }}</h6>
+                        <ul *ngIf="category.name">
+                            <li class="dropdown-menu__topic" *ngFor="let topic of category.topics.records">
+                                <span class="link dropdown-menu__topic-label">{{ topic.name }}</span>
                             </li>
                         </ul>
                     </div>

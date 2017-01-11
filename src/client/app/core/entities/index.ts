@@ -6,6 +6,7 @@
  */
 
 export * from './category';
+export * from './categories';
 export * from './collocation';
 export * from './collocations';
 export * from './entity';
@@ -16,6 +17,7 @@ export * from './question';
 export * from './questions';
 export * from './speaker';
 export * from './topic';
+export * from './topics';
 export * from './transcript';
 export * from './transcripts.stub';
 export * from './transcripts';
