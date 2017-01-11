@@ -38,30 +38,30 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
             'related_videos': {
                 'records': [
                     {
-                        'id': 2244994984,
-                        'id_str': '2244994984',
+                        'id': 2,
+                        'id_str': '2',
                         'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
                         'length': 68,
+                        'loop_count': 25,
                         'topic': {
-                            'name': 'Talking to customers'
+                            'name': 'How to fly a kite'
                         },
                         'speaker': {
-                            'name': 'Harold Ford'
-                        },
-                        'thumbnail_image_url': ''
+                            'name': 'Benjamin Franklin'
+                        }
                     },
                     {
-                        'id': 2244994985,
-                        'id_str': '2244994985',
-                        'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
-                        'length': 68,
+                        'id': 3,
+                        'id_str': '3',
+                        'created_at': 'Tue Jun 9 12:00:00 +0000 2015',
+                        'length': 80,
+                        'loop_count': 1602,
                         'topic': {
-                            'name': 'Talking to customers'
+                            'name': 'Writing a memoir'
                         },
                         'speaker': {
-                            'name': 'Harold Ford'
-                        },
-                        'thumbnail_image_url': ''
+                            'name': 'Thomas Jefferson'
+                        }
                     }
                 ],
                 'count': 2
