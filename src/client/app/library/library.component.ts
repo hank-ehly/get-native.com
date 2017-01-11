@@ -8,7 +8,7 @@
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger } from '../core/index';
+import { Logger, STUBCategories } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -47,16 +47,7 @@ export class LibraryComponent implements OnInit {
             {placeholder: false}, {placeholder: false}, {placeholder: false}
         ];
 
-        /* Mock */
-        let categories = [
-            {title: 'Business',     subcategories: ['Subcategory 1', 'Subcategory 2', 'Subcategory 3', 'Subcategory 4']},
-            {title: 'Holidays',     subcategories: ['Subcategory 1', 'Subcategory 2', 'Subcategory 3']},
-            {title: 'Negotiations', subcategories: ['Subcategory 1', 'Subcategory 2']},
-            {title: 'Language',     subcategories: ['Subcategory 1', 'Subcategory 2']},
-            {title: 'Hobbies',      subcategories: ['Subcategory 1', 'Subcategory 2', 'Subcategory 3', 'Subcategory 4', 'Subcategory 5']},
-            {title: 'Travel',       subcategories: ['Subcategory 1', 'Subcategory 2']},
-            {title: 'Sports',       subcategories: ['Subcategory 1']}
-        ];
+        let categories = STUBCategories;
 
         /* TODO: Move out of component */
         let chunkSize = 3;
