@@ -26,6 +26,7 @@ import {
     VideoDirective,
     VideoPlayerComponent,
     VideoPanelComponent,
+    VideoPanelListComponent,
     DebugComponent,
     DraggableDirective
 } from './index';
@@ -52,6 +53,7 @@ import {
         VideoDirective,
         VideoPlayerComponent,
         VideoPanelComponent,
+        VideoPanelListComponent,
         DebugComponent,
         DraggableDirective
     ],
@@ -73,6 +75,7 @@ import {
         TranscriptComponent,
         VideoPlayerComponent,
         VideoPanelComponent,
+        VideoPanelListComponent,
         DebugComponent
     ]
 })
