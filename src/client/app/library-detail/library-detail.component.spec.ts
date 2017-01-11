@@ -66,5 +66,10 @@ export function main() {
             let related_videos = util.getNativeEl('.section_related-videos .video-panels');
             expect(related_videos.children.length).toBeGreaterThan(0);
         });
+
+        it('should display related videos in multiples of 3', () => {
+            let related_videos = util.getNativeEl('.section_related-videos .video-panels');
+            expect(related_videos.children.length % 3).toEqual(0);
+        });
     });
 }
