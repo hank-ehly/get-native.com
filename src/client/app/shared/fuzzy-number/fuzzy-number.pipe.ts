@@ -16,18 +16,22 @@ export class FuzzyNumberPipe implements PipeTransform {
             throw new TypeError(`[${this.constructor.name}] Value must be a number. Received '${value}' of type '${typeof value}'`);
         }
 
+        let retVal: string = '';
+
         if (value <= 0) {
-            return 0;
+            retVal = '0';
         }
 
         else if (value > 0 && value < 1000) {
-            return value;
+            retVal = value.toString();
         }
 
         else {
             let float = <number>value / 1000;
             let places = value >= 1000 && value < 10000 ? 1 : 0;
-            return float.toFixed(places) + 'k';
+            retVal = float.toFixed(places) + 'k';
         }
+
+        return retVal;
     }
 }
