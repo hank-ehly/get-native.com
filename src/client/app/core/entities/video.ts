@@ -9,7 +9,7 @@ import { Entity, Speaker, Topic, Transcripts, Videos } from './index';
 
 export interface Video extends Entity {
     description?: string;
-    favorited?: boolean;
+    cued?: boolean;
     length?: number;
     liked?: boolean;
     like_count?: number;
