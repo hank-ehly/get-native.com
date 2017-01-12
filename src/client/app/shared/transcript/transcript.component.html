@@ -2,8 +2,9 @@
 
     <div class="tabs-frame">
         <ul class="tabs">
-            <li class="tabs__tab" *ngFor="let t of transcripts.records" [ngClass]="{tabs__tab_active: t === selectedTranscript}" (click)="onClickTab(t, $event)">
-                {{ titleForTranscript(t) }}
+            <li class="tabs__tab" *ngFor="let transcript of transcripts?.records" (click)="onClickTab(transcript, $event)"
+                [ngClass]="{tabs__tab_active: transcript === selectedTranscript}">
+                {{ titleForTranscript(transcript) }}
             </li>
         </ul>
 
@@ -11,8 +12,8 @@
     </div>
 
     <ul class="tab-content">
-        <li class="content" *ngFor="let t of transcripts.records" [ngClass]="{active: t === selectedTranscript}">
-            {{ t.text }}
+        <li class="content" *ngFor="let transcript of transcripts?.records" [ngClass]="{active: transcript === selectedTranscript}">
+            {{ transcript.text }}
         </li>
     </ul>
 

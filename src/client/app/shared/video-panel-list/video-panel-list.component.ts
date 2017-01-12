@@ -33,7 +33,7 @@ export class VideoPanelListComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['videos']) {
+        if (changes['videos'] && changes['videos'].currentValue) {
             this.onVideosChange(<Videos>changes['videos'].currentValue);
         }
     }

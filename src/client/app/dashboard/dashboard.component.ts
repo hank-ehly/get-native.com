@@ -8,8 +8,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger, MockHTTPClient } from '../core/index';
-import { CuedVideos } from '../core/entities/cued-videos';
+import { Logger, MockHTTPClient, CuedVideos } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -18,7 +17,7 @@ import { CuedVideos } from '../core/entities/cued-videos';
     styleUrls: ['dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-    videos: CuedVideos = {records: [], count: 0};
+    videos: CuedVideos;
     answers: any[];
 
     constructor(private logger: Logger, private router: Router, private http: MockHTTPClient) {

@@ -1,23 +1,21 @@
 <main class="main">
     <section class="section section--video-detail">
         <div class="column column_video">
-            <gn-video-player [src]="video_url"></gn-video-player>
+            <gn-video-player [src]="video?.video_url"></gn-video-player>
 
             <section class="column__row">
                 <h6>About this video:</h6>
-                <p class="paragraph">{{ description }}</p>
+                <p class="paragraph">{{ video?.description }}</p>
             </section>
 
             <div class="column__row video-stats">
                 <div class="video-stats__group video-stats__group_views">
                     <img class="video-stats__icon" src="../../assets/icons/view-circle.svg" alt="views">
-
-                    <!-- Todo: normalize views to '1k' etc.. -->
-                    <span class="video-stats__label">{{ loop_count | fuzzy }} Views</span>
+                    <span class="video-stats__label">{{ video?.loop_count | fuzzy }} Views</span>
                 </div>
                 <div class="video-stats__group video-stats__group_likes">
                     <img class="video-stats__icon video-stats__icon_like" src="../../assets/icons/like.svg" alt="like">
-                    <span class="video-stats__label">{{ like_count | fuzzy }}</span>
+                    <span class="video-stats__label">{{ video?.like_count | fuzzy }}</span>
                 </div>
             </div>
 
@@ -30,17 +28,17 @@
             <hr>
 
             <div class="column__row speaker__row">
-                <img class="speaker-thumbnail" [src]="speaker.thumbnail_image_url" [alt]="speaker.name">
+                <img class="speaker-thumbnail" [src]="video?.speaker?.thumbnail_image_url" [alt]="speaker?.name">
                 <div class="speaker__info">
-                    <h6 class="speaker__name-header">{{ speaker.name }}</h6>
-                    <div class="speaker__description-text">{{ speaker.description }}</div>
+                    <h6 class="speaker__name-header">{{ video?.speaker?.name }}</h6>
+                    <div class="speaker__description-text">{{ video?.speaker?.description }}</div>
                     <button class="button speaker__follow-button">FOLLOW</button>
                 </div>
             </div>
         </div>
 
         <div class="column column_transcript">
-            <gn-transcript [transcripts]="transcripts"></gn-transcript>
+            <gn-transcript [transcripts]="video?.transcripts"></gn-transcript>
         </div>
     </section>
 
@@ -52,6 +50,6 @@
             <h1 class="section-header__title">Related Videos</h1>
         </header>
 
-        <gn-video-panel-list [videos]="related_videos" [navigates]="true"></gn-video-panel-list>
+        <gn-video-panel-list [videos]="video?.related_videos" [navigates]="true"></gn-video-panel-list>
     </section>
 </main>

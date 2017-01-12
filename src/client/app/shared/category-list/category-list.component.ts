@@ -16,8 +16,8 @@ import { Logger, Categories, Category } from '../../core/index';
     styleUrls: ['category-list.component.css']
 })
 export class CategoryListComponent implements OnInit, OnChanges {
-    @Input() categories: Categories = {records: [], count: 0};
-    rows: Category[][]              = [];
+    @Input() categories: Categories;
+    rows: Category[][];
 
     constructor(private logger: Logger) {
     }
@@ -27,7 +27,7 @@ export class CategoryListComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes['categories']) {
+        if (changes['categories'] && changes['categories'].currentValue) {
             this.onCategoriesChange(<Categories>changes['categories'].currentValue);
         }
     }

@@ -6,12 +6,8 @@
  */
 
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { Logger, STUBCategories, Videos, MockHTTPClient } from '../core/index';
-import { Video } from '../core/entities/video';
-import { Categories } from '../core/entities/categories';
-import { Category } from '../core/entities/category';
+import { Logger, Videos, MockHTTPClient, Categories } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -32,11 +28,12 @@ import { Category } from '../core/entities/category';
     ]
 })
 export class LibraryComponent implements OnInit {
-    videos: Videos             = {records: [], count: 0};
-    categories: Categories     = {records: [], count: 0};
-    isDropdownVisible: boolean = false;
+    videos: Videos;
+    categories: Categories;
+    isDropdownVisible: boolean;
 
-    constructor(private logger: Logger, private router: Router, private http: MockHTTPClient) {
+    constructor(private logger: Logger, private http: MockHTTPClient) {
+        this.isDropdownVisible = false;
     }
 
     ngOnInit(): void {
