@@ -32,9 +32,7 @@ export class VideoPanelComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        this.logger.debug(changes);
-
-        if (changes['video']) {
+        if (changes['video'] && changes['video'].currentValue) {
             let video: Video = changes['video'].currentValue;
             let date = this.dateService.parse(video.created_at);
             this.createdAt = `${date.getUTCDate()} ${this.dateService.getTextMonth(date)} ${date.getUTCFullYear()}`;

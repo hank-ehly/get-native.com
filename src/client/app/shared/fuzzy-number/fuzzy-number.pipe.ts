@@ -12,7 +12,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FuzzyNumberPipe implements PipeTransform {
     transform(value: any, args: any[]): any {
-        if (typeof value !== 'number') {
+        if (!value) {
+            return '';
+        } else if (typeof value !== 'number') {
             throw new TypeError(`[${this.constructor.name}] Value must be a number. Received '${value}' of type '${typeof value}'`);
         }
 

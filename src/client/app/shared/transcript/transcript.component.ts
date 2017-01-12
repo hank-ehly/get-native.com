@@ -29,7 +29,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (!changes['transcripts']) {
+        if (!changes['transcripts'] || !changes['transcripts'].currentValue) {
             return;
         }
 
