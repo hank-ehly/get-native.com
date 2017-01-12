@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import {
+    CategoryListComponent,
     ComplianceComponent,
     FooterComponent,
     FuzzyNumberPipe,
@@ -38,6 +39,7 @@ import {
         FormsModule
     ],
     declarations: [
+        CategoryListComponent,
         ComplianceComponent,
         FooterComponent,
         FuzzyNumberPipe,
@@ -61,6 +63,7 @@ import {
         CommonModule,
         RouterModule,
         FormsModule,
+        CategoryListComponent,
         ComplianceComponent,
         FooterComponent,
         FuzzyNumberPipe,

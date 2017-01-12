@@ -1,0 +1,12 @@
+<main class="main">
+    <div class="row" *ngFor="let row of rows">
+        <div class="row-group" *ngFor="let category of row" [ngClass]='{"row-group--placeholder": !category.name}'>
+            <h6 class="link category-name" *ngIf="category.name">{{ category.name }}</h6>
+            <ul *ngIf="category.name">
+                <li class="topic" *ngFor="let topic of category.topics.records">
+                    <span class="link topic-name">{{ topic.name }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>

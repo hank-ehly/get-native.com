@@ -5,6 +5,7 @@
  * Created by henryehly on 2016/11/13.
  */
 
+export * from './category-list/category-list.component';
 export * from './compliance/index';
 export * from './config/env.config';
 export * from './debug/index';
