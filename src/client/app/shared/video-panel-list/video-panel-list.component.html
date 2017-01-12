@@ -1,6 +1,6 @@
 <ul class="video-panels">
     <li *ngFor="let video of videos.records">
-        <gn-video-panel [video]="video" *ngIf="video.length" (clickOverlay)="onClickOverlay(video)"></gn-video-panel>
+        <gn-video-panel [video]="video" *ngIf="video.length" [controls]="controls" (clickOverlay)="onClickOverlay(video)"></gn-video-panel>
 
         <div class="video-panels__flex-panel" *ngIf="!video.length"></div>
     </li>

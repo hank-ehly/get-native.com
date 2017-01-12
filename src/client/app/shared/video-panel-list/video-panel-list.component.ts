@@ -20,11 +20,12 @@ export class VideoPanelListComponent implements OnInit, OnChanges {
     @Output() clickOverlay: EventEmitter<Video>;
     @Input() videos: Videos;
     @Input() navigates: boolean;
+    @Input() controls: boolean;
 
     constructor(private logger: Logger, private router: Router) {
         this.clickOverlay = new EventEmitter<Video>();
-        this.videos       = {records: [], count: 0};
         this.navigates    = false;
+        this.controls     = false;
     }
 
     ngOnInit(): void {

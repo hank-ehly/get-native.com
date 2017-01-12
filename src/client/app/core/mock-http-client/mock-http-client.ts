@@ -8,7 +8,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Logger, Video, Videos, Categories } from '../index';
+import { Logger, Video, Videos, Categories, CuedVideos } from '../index';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -29,5 +29,9 @@ export class MockHTTPClient {
 
     GET_categories(): Observable<Categories> {
         return this.http.get(`${this.baseUrl}/categories.json`).map((r: Response) => <Categories>r.json());
+    }
+
+    GET_cued_videos(): Observable<CuedVideos> {
+        return this.http.get(`${this.baseUrl}/cued_videos.json`).map((r: Response) => <CuedVideos>r.json());
     }
 }

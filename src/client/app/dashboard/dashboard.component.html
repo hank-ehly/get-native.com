@@ -4,12 +4,7 @@
             <h1 class="section-header__title">Videos</h1>
         </header>
 
-        <ul class="video-panels">
-            <li *ngFor="let v of videos">
-                <gn-video-panel [showControls]="true" (begin)="onBegin()" *ngIf="!v.placeholder"></gn-video-panel>
-                <div class="video-panels__flex-panel" *ngIf="v.placeholder"></div>
-            </li>
-        </ul>
+        <gn-video-panel-list [videos]="videos" [controls]="true"></gn-video-panel-list>
 
         <button class="button section__button">LOAD MORE</button>
     </section>
