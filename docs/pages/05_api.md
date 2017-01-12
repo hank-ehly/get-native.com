@@ -76,7 +76,6 @@ GET https://api.get-native.com/account
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
 | email                 | String         | The user's email                                                   |
 | email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
 
@@ -95,7 +94,6 @@ Status: 200 OK
 	"default_profile_image": false,
 	"email": "john_doe@example.com",
 	"email_verified": true,
-	"favorites_count": 45,
 	"notifications": {
 		"records": [
 			{
@@ -163,7 +161,6 @@ PUT https://api.get-native.com/account/email
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
 | email                 | String         | The user's email                                                   |
 | email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
 ```
@@ -181,7 +178,6 @@ Status 200 OK
 	"default_profile_image": false,
 	"email": "john_doe@example.com",
 	"email_verified": false,
-	"favorites_count": 45,
 	"notifications": {
 		"records": [
 			{
@@ -250,7 +246,6 @@ PUT https://api.get-native.com/account/profile_image
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
 | email                 | String         | The user's email                                                   |
 | email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
 ```
@@ -268,7 +263,6 @@ Status: 200 OK
 	"default_profile_image": false,
 	"email": "john_doe@example.com",
 	"email_verified": true,
-	"favorites_count": 45,
 	"notifications": { // TODO: Is this necessary?
 		"records": [
 			{
@@ -369,7 +363,7 @@ Status: 200 OK
 {
 	"records": [
 		{
-			"favorited": true,
+			"cued": true,
 			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 			"id_str": "2244994983",
 			"id": 2244994983,
@@ -384,7 +378,6 @@ Status: 200 OK
 				"location": "Kansas City, MO"
 			},
 			"lang": "en",
-			"favorite_count": 342,
 			"topic": {
 				"id": 123456,
 				"id_str": "123456",
@@ -453,7 +446,6 @@ POST https://api.get-native.com/login
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
 | email                 | String         | The user's email                                                   |
 | email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
 ```
@@ -471,7 +463,6 @@ Status: 200 OK
 	"default_profile_image": false,
 	"email": "john_doe@example.com",
 	"email_verified": true,
-	"favorites_count": 45,
 	"notifications": {
 		"records": [
 			{
@@ -544,7 +535,6 @@ POST https://api.get-native.com/register
 | default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
 | email                 | String         | The user's email                                                   |
 | email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| favorites_count       | String         | Aggregate total number of videos favorited by user                 |
 | notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
 
 ```
@@ -562,7 +552,6 @@ Status: 200 OK
 	"default_profile_image": false,
 	"email": "john_doe@example.com",
 	"email_verified": false,
-	"favorites_count": 45,
 	"notifications": {
 		"records": [
 			{
@@ -694,7 +683,7 @@ POST https://api.get-native.com/study
 	"id": 123456,
 	"id_str": "123456",
 	"video": {
-		"favorited": true,
+		"cued": true,
 			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 			"id_str": "2244994983",
 			"id": 2244994983,
@@ -709,7 +698,6 @@ POST https://api.get-native.com/study
 				"location": "Kansas City, MO"
 			},
 			"lang": "en",
-			"favorite_count": 342,
 			"topic": {
 				"id": 123456,
 				"id_str": "123456",
@@ -947,7 +935,7 @@ GET https://api.get-native.com/videos/123456
 
 | Data Field          | Type         | Description                                                                                        |
 |---------------------|--------------|----------------------------------------------------------------------------------------------------|
-| favorited           | Boolean      | _Nullable._ Whether the video has been favorited by the user                                       |
+| cued           | Boolean      | _Nullable._ Whether the video has been cued by the user                                       |
 | description         | String       | A string description of the video.                                                                 |
 | id_str              | String       | String representation of unique video ID                                                           |
 | id                  | Int64        | Integer representation of unique video ID                                                          |
@@ -968,7 +956,7 @@ Status: 200 OK
 ```
 ```json
 {
-	"favorited": true,
+	"cued": true,
 	"description": "In 'talking to customers,' Harold Ford describes the daily interactions between businessmen and clients.",
 	"id_str": "2244994983",
 	"id": 2244994983,

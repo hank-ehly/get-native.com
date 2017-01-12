@@ -17,7 +17,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
         return Observable.of(<Video>{
             'id': 2244994983,
             'id_str': '2244994983',
-            'favorited': true,
+            "cued": true,
             'description': `This is a description about the video. This video is a video and I want to tell you that it is a video as well.
                             If you happen to like videos that this might be a video that you like because you like videos. Of course, if you
                             don\'t like videos then you probably shouldn\'t watch this video.`,
