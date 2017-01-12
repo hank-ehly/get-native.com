@@ -6,8 +6,10 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
+
+import { Logger, MockHTTPClient } from '../core/index';
+import { CuedVideos } from '../core/entities/cued-videos';
 
 @Component({
     moduleId: module.id,
@@ -15,24 +17,20 @@ import { Router } from '@angular/router';
     templateUrl: 'dashboard.component.html',
     styleUrls: ['dashboard.component.css']
 })
-
 export class DashboardComponent implements OnInit {
-    videos: any[];
+    videos: CuedVideos = {records: [], count: 0};
     answers: any[];
 
-    constructor(private router: Router) {
+    constructor(private logger: Logger, private router: Router, private http: MockHTTPClient) {
     }
 
     ngOnInit() {
-        this.videos = [
-            {isPlaceholder: false},
-            {isPlaceholder: false},
-            {isPlaceholder: false},
+        this.logger.debug(`[${this.constructor.name}] OnInit()`);
 
-            {isPlaceholder: false},
-            {isPlaceholder: false},
-            {isPlaceholder: true}
-        ];
+        this.http.GET_cued_videos().subscribe((videos: CuedVideos) => {
+            this.videos = videos;
+        });
+
         this.answers = [1, 2, 3, 4, 5];
     }
 

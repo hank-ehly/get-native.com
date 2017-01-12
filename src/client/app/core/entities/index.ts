@@ -9,6 +9,8 @@ export * from './category';
 export * from './categories';
 export * from './collocation';
 export * from './collocations';
+export * from './cued-video';
+export * from './cued-videos';
 export * from './entity';
 export * from './entities';
 export * from './like';

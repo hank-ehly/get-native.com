@@ -6,31 +6,42 @@
  */
 
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
-import { NavbarService, STUBRouter, UTCDateService, Logger, STUBLogger } from '../core/index';
+import { NavbarService, STUBRouter, UTCDateService, Logger, STUBLogger, SpecUtil } from '../core/index';
 
 export function main() {
     let comp: DashboardComponent;
     let fixture: ComponentFixture<DashboardComponent>;
+    let de: DebugElement;
+    let el: HTMLElement;
+    let util: SpecUtil;
 
     describe('DashboardComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 imports: [SharedModule],
                 declarations: [DashboardComponent],
-                providers: [NavbarService, {provide: Router, useValue: STUBRouter}, UTCDateService, {provide: Logger, useValue: STUBLogger}]
+                providers: [
+                    {provide: Router, useValue: STUBRouter},
+                    {provide: Logger, useValue: STUBLogger},
+                    UTCDateService,
+                    NavbarService
+                ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(DashboardComponent);
+                util = new SpecUtil(fixture);
                 comp = fixture.componentInstance;
                 fixture.detectChanges();
             });
         }));
 
-        // it('should work', () => {
-        //
-        // });
+        it('should display cued videos', () => {
+            el = util.getNativeEl('.video-panels');
+            expect(el.children.length).toBeGreaterThan(0);
+        });
     });
 }

@@ -5,14 +5,12 @@
  * Created by henryehly on 2016/12/26.
  */
 
-import { Video, Videos } from '../index';
 import { MockHTTPClient } from './mock-http-client';
+import { Video, Videos, Categories, CuedVideos } from '../index';
 
 import { Observable } from 'rxjs/Observable';
-import { Categories } from '../entities/categories';
 
 export const STUBMockHTTPClient = <MockHTTPClient>{
-
     GET_video(id: number): Observable<Video> {
         return Observable.of(<Video>{
             'id': 2244994983,
@@ -294,6 +292,78 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                     }
                 ],
                 'count': 3
+            });
+    },
+
+    GET_cued_videos(): Observable<CuedVideos> {
+        return Observable.of(<CuedVideos>{
+                'count': 4,
+                'records': [
+                    {
+                        'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
+                        'id_str': '1',
+                        'id': 1,
+                        'speaker': {
+                            'name': 'Harold Ford'
+                        },
+                        'topic': {
+                            'name': 'Talking to customers'
+                        },
+                        'loop_count': 7156,
+                        'loop_velocity': 2.4960000000000004,
+                        'thumbnail_image_url': 'XXX',
+                        'video_url': '../../../assets/mock/video.mov',
+                        'length': 68
+                    },
+                    {
+                        'created_at': 'Wed Jan 11 04:35:55 +0000 2017',
+                        'id_str': '2',
+                        'id': 2,
+                        'speaker': {
+                            'name': 'Benjamin Franklin'
+                        },
+                        'topic': {
+                            'name': 'How to change a light-bulb'
+                        },
+                        'loop_count': 1011,
+                        'loop_velocity': 2.4960000000000004,
+                        'thumbnail_image_url': 'XXX',
+                        'video_url': '../../../assets/mock/video.mov',
+                        'length': 73
+                    },
+                    {
+                        'created_at': 'Tue Aug 9 04:35:55 +0000 2016',
+                        'id_str': '3',
+                        'id': 3,
+                        'speaker': {
+                            'name': 'Jesse James'
+                        },
+                        'topic': {
+                            'name': 'Robbing a bank'
+                        },
+                        'loop_count': 9941,
+                        'loop_velocity': 2.4960000000000004,
+                        'thumbnail_image_url': 'XXX',
+                        'video_url': '../../../assets/mock/video.mov',
+                        'length': 45
+                    },
+                    {
+                        'created_at': 'Tue Mar 14 04:35:55 +0000 2017',
+                        'id_str': '4',
+                        'id': 4,
+                        'speaker': {
+                            'name': 'Aretha Franklin'
+                        },
+                        'topic': {
+                            'name': 'American Singers'
+                        },
+                        'loop_count': 10503,
+                        'loop_velocity': 2.4960000000000004,
+                        'thumbnail_image_url': 'XXX',
+                        'video_url': '../../../assets/mock/video.mov',
+                        'length': 122
+                    }
+                ]
             });
     }
 };

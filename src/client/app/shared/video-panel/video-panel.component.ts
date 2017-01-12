@@ -16,7 +16,7 @@ import { Video, UTCDateService, Logger } from '../../core/index';
     styleUrls: ['video-panel.component.css']
 })
 export class VideoPanelComponent implements OnChanges {
-    @Input() showControls: boolean;
+    @Input() controls: boolean;
     @Input() video: Video;
     @Output() begin = new EventEmitter();
     @Output() clickOverlay = new EventEmitter();
@@ -28,6 +28,7 @@ export class VideoPanelComponent implements OnChanges {
     createdAt: string = '';
 
     constructor(private dateService: UTCDateService, private logger: Logger) {
+        this.controls = false;
     }
 
     ngOnChanges(changes: SimpleChanges) {
