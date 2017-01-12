@@ -33,8 +33,8 @@ import { Category } from '../core/entities/category';
 })
 export class LibraryComponent implements OnInit {
     videos: Videos             = {records: [], count: 0};
+    categories: Categories     = {records: [], count: 0};
     isDropdownVisible: boolean = false;
-    categoryRows: Category[][] = [];
 
     constructor(private logger: Logger, private router: Router, private http: MockHTTPClient) {
     }
@@ -47,24 +47,7 @@ export class LibraryComponent implements OnInit {
         });
 
         this.http.GET_categories().subscribe((categories: Categories) => {
-            /* TODO: Move out of component */
-            let chunkSize = 3;
-            this.categoryRows = categories.records.map((e, i) => {
-                return i % chunkSize === 0 ? categories.records.slice(i, i + 3) : null;
-            }).filter((e) => e);
-
-            let surplus = categories.count % 3;
-            if (surplus !== 0) {
-                let spaceLeft = chunkSize - surplus;
-
-                let i = 0;
-                while (i < spaceLeft) {
-                    this.categoryRows[this.categoryRows.length - 1].push({});
-                    i++;
-                }
-            }
-
-            this.logger.debug(`[${this.constructor.name}]: Category Rows: `, this.categoryRows);
+            this.categories = categories;
         });
     }
 

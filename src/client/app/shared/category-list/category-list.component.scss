@@ -1,0 +1,52 @@
+@import '../../../scss/core';
+
+.main {
+  background: $white;
+  box-sizing: border-box;
+  box-shadow: 0 12px 10px 0 rgba($black, 0.2);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+
+  &:first-child {
+    padding-top: 40px;
+  }
+}
+
+.row-group {
+  border-left: 1px solid $mercury;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  width: $main-width / 3;
+
+  &:first-child {
+    border-left-color: transparent;
+  }
+}
+
+.category-name {
+  display: inline-block;
+  margin-top: 40px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.topic {
+  margin-top: 10px;
+}
+
+.topic-name {
+  color: $default-color;
+
+  &:hover {
+    border-bottom-color: $alto;
+  }
+}

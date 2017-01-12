@@ -9,21 +9,7 @@
                 <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible">
             </div>
 
-            <div class="dropdown-menu" *ngIf="isDropdownVisible" [@dropdown]>
-                <div class="dropdown-menu__row" *ngFor="let row of categoryRows">
-
-                    <div class="dropdown-menu__row-group" *ngFor="let category of row"
-                         [ngClass]="{'dropdown-menu__row-group_placeholder': !category.name}">
-
-                        <h6 class="link dropdown-menu__category" *ngIf="category.name">{{ category.name }}</h6>
-                        <ul *ngIf="category.name">
-                            <li class="dropdown-menu__topic" *ngFor="let topic of category.topics.records">
-                                <span class="link dropdown-menu__topic-label">{{ topic.name }}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <gn-category-list [categories]="categories" class="dropdown" *ngIf="isDropdownVisible" [@dropdown]></gn-category-list>
         </header>
 
         <gn-video-panel-list [videos]="videos" [navigates]="true"></gn-video-panel-list>
