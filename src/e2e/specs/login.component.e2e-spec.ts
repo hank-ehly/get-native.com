@@ -94,22 +94,4 @@ describe('LoginComponent', () => {
         passwordConfirmInput.sendKeys('password12345');
         expect(submitButton.getAttribute('disabled')).toBeFalsy();
     });
-
-    it('should display the dashboard after successful email login', () => {
-        let emailBtn = $('.modal.modal_social-login .footer__link_email-login');
-        let emailInput = $('#email');
-        let passwordInput = $('#password');
-        let submitButton = element(by.buttonText('SIGN IN'));
-        let dashboardComponent = $('gn-dashboard');
-
-        openBtn.click();
-        emailBtn.click();
-        emailInput.sendKeys('foo@bar');
-        passwordInput.sendKeys('password');
-
-        expect(dashboardComponent.isPresent()).toBe(false);
-
-        submitButton.click();
-        expect(dashboardComponent.isPresent()).toBe(true);
-    });
 });

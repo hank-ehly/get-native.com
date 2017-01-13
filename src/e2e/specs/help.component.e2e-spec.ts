@@ -19,11 +19,4 @@ describe('Help', () => {
         let nExpandedFaqs = $$('.faqs__faq-detail').count();
         expect(nExpandedFaqs).toBe(0);
     });
-
-    it('should display a faq detail when a faq header is selected', () => {
-        $$('.faqs__faq-title').first().click();
-
-        let nExpandedFaqs = $$('.faqs__faq-detail').count();
-        expect(nExpandedFaqs).toBe(1);
-    });
 });
