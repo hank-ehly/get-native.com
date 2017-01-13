@@ -44,5 +44,20 @@ export function main() {
             el = util.getNativeEl('.video-panels');
             expect(el.children.length).toBeGreaterThan(0);
         });
+
+        it('should display the user\'s current streak', () => {
+            el = util.getNativeEl('.goal-value--consecutive-days');
+            expect(el.textContent.length).toBeGreaterThan(0);
+        });
+
+        it('should display the user\'s total completions', () => {
+            el = util.getNativeEl('.goal-value--total-study-sessions');
+            expect(el.textContent.length).toBeGreaterThan(0);
+        });
+
+        it('should display the user\'s longest streak', () => {
+            el = util.getNativeEl('.goal-value--longest-consecutive-days');
+            expect(el.textContent.length).toBeGreaterThan(0);
+        });
     });
 }

@@ -49,16 +49,16 @@ hr {
   margin-top: 40px;
 }
 
-.goals__goal {
+.goal {
   flex-grow: 1;
 }
 
-.goals__goal-count {
+.goal-value {
   color: $shamrock;
   font-size: 30px;
 }
 
-.goals__goal-title {
+.goal-key {
   @include font-weight-bold;
   font-size: $font-size-x-small;
   letter-spacing: $uppercase-label-letter-spacing;

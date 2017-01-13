@@ -7,9 +7,9 @@
 .video-panels__flex-panel  { @include debug-background-color($dc05); }
 .video-panels              { @include debug-background-color($dc06); }
 .goals                     { @include debug-background-color($dc07); }
-.goals__goal               { @include debug-background-color($dc08); }
-.goals__goal-count         { @include debug-background-color($dc09); }
-.goals__goal-title         { @include debug-background-color($dc10); }
+.goal               { @include debug-background-color($dc08); }
+.goal-value         { @include debug-background-color($dc09); }
+.goal-key         { @include debug-background-color($dc10); }
 .answers                   { @include debug-background-color($dc11); }
 .answers__answer           { @include debug-background-color($dc12); }
 .answers__answer_striped   { @include debug-background-color($dc01); }

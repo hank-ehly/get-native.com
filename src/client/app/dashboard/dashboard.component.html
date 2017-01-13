@@ -17,19 +17,21 @@
         </header>
 
         <ul class="goals">
-            <li class="goals__goal">
-                <h3 class="goals__goal-count">10"</h3>
-                <span class="goals__goal-title">CURRENT STREAK</span>
+            <li class="goal">
+                <!-- Todo: Handle pluralization via a pipe or something -->
+                <h3 class="goal-value goal-value--consecutive-days">{{ stats?.consecutive_days }} {{ stats?.consecutive_days === 1 ? 'day' : 'days' }}</h3>
+                <span class="goal-key">CURRENT STREAK</span>
             </li>
 
-            <li class="goals__goal">
-                <h3 class="goals__goal-count">126</h3>
-                <span class="goals__goal-title">TOTAL COMPLETIONS</span>
+            <li class="goal">
+                <h3 class="goal-value goal-value--total-study-sessions">{{ stats?.total_study_sessions }}</h3>
+                <span class="goal-key">TOTAL COMPLETIONS</span>
             </li>
 
-            <li class="goals__goal">
-                <h3 class="goals__goal-count">26"</h3>
-                <span class="goals__goal-title">LONGEST STREAK</span>
+            <li class="goal">
+                <!-- Todo: Handle pluralization via a pipe or something -->
+                <h3 class="goal-value goal-value--longest-consecutive-days">{{ stats?.longest_consecutive_days }} {{ stats?.longest_consecutive_days === 1 ? 'day' : 'days' }}</h3>
+                <span class="goal-key">LONGEST STREAK</span>
             </li>
         </ul>
     </section>
