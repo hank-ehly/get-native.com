@@ -19,6 +19,7 @@ import { Logger, MockHTTPClient, CuedVideos } from '../core/index';
 export class DashboardComponent implements OnInit {
     videos: CuedVideos;
     answers: any[];
+    stats: any;
 
     constructor(private logger: Logger, private router: Router, private http: MockHTTPClient) {
     }
@@ -26,9 +27,9 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         this.logger.debug(`[${this.constructor.name}] OnInit()`);
 
-        this.http.GET_cued_videos().subscribe((videos: CuedVideos) => {
-            this.videos = videos;
-        });
+        this.http.GET_cued_videos().subscribe((videos: CuedVideos) => this.videos = videos);
+
+        this.http.GET_study_stats().subscribe((stats: any) => this.stats = stats);
 
         this.answers = [1, 2, 3, 4, 5];
     }

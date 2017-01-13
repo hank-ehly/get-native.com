@@ -34,4 +34,8 @@ export class MockHTTPClient {
     GET_cued_videos(): Observable<CuedVideos> {
         return this.http.get(`${this.baseUrl}/cued_videos.json`).map((r: Response) => <CuedVideos>r.json());
     }
+
+    GET_study_stats(): Observable<any> {
+        return this.http.get(`${this.baseUrl}/study_stats.json`).map((r: Response) => <any>r.json());
+    }
 }

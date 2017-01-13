@@ -365,5 +365,16 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                     }
                 ]
             });
+    },
+
+    GET_study_stats(): Observable<any> {
+        return Observable.of(<any>{
+                'lang': 'en',
+                'consecutive_days': 12,
+                'total_study_sessions': 45,
+                'longest_consecutive_days': 15,
+                'maximum_words': 502,
+                'maximum_wpm': 52
+            });
     }
 };
