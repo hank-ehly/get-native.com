@@ -5,6 +5,8 @@
  * Created by henryehly on 2016/11/08.
  */
 
+import { browser, $ } from 'protractor';
+
 describe('Home', () => {
     beforeEach(async() => {
         return await browser.get('/');

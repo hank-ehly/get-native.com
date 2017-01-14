@@ -5,6 +5,8 @@
  * Created by henryehly on 2016/11/13.
  */
 
+import { browser, $, element, by } from 'protractor';
+
 describe('LoginComponent', () => {
     let openBtn = $('.navbar__link_login');
     let overlay = $('.overlay');
