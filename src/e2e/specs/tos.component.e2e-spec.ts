@@ -5,6 +5,8 @@
  * Created by henryehly on 2016/11/10.
  */
 
+import { browser, $ } from 'protractor';
+
 describe('TOS', () => {
     beforeEach(async() => {
         return await browser.get('/tos');

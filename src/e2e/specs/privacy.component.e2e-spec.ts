@@ -5,6 +5,8 @@
  * Created by henryehly on 2016/11/07.
  */
 
+import { browser, $ } from 'protractor';
+
 describe('Privacy', () => {
     beforeEach(async() => {
         return await browser.get('/privacy');
