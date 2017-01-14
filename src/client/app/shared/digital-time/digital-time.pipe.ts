@@ -17,7 +17,7 @@ export class DigitalTimePipe implements PipeTransform {
     constructor(private dateService: UTCDateService) {
     }
 
-    transform(value: any, args: any[]): any {
+    transform(value: any, ...args: any[]): any {
         if (value >= 600) {
             throw new RangeError(`${this.constructor.name}.fromSeconds cannot handle values over 600. Value was ${value}`);
         }

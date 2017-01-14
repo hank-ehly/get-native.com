@@ -11,7 +11,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'fuzzy'
 })
 export class FuzzyNumberPipe implements PipeTransform {
-    transform(value: any, args: any[]): any {
+    transform(value: any, ...args: any[]): any {
         if (!value) {
             return '';
         } else if (typeof value !== 'number') {
