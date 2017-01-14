@@ -22,14 +22,6 @@ Prior to running any provisioning commands, please complete the following steps:
     $ bundle exec berks vendor cookbooks/
 ```
 
-To update the cookbooks:
-
-```bash
-    $ cd provision
-    $ bundle exec berks update
-    $ bundle exec berks vendor cookbooks/
-```
-
 - Verify that you are able to successfully SSH into your node without password authentication.
 - Copy provision/data_bags/github/credentials.json{.template,} and enter the appropriate values for each field.
     - Chef uses this information to manage your github deploy key.
@@ -46,5 +38,40 @@ To provision a chef node, execute the following command -- replacing information
 
     $ bundle exec knife solo prepare {user}@{hostname}
     $ bundle exec knife solo cook {user}@{hostname} -E {environment}
+    $ bundle exec knife solo cook root@stg.get-native.com -E development -i ~/.ssh/stg.get-native.com/provision.web
 
 **Note:** Always specify an environment when executing the `cook` command. Possible argument options are listed in provision/environments (exclude the '.json')
+
+### Updating the node.js version
+
+1. Update the web-server node.js attributes in the get-native.com-cookbook repository
+2. Update the cookbooks in get-native.com/provision
+
+```bash
+    $ cd provision
+    $ bundle exec berks update
+    $ bundle exec berks vendor cookbooks/
+```
+
+3. Set the node run-list to _only_ execute the node-js recipe
+
+```json
+{
+	"normal": {
+		"get-native": {
+			"server_name": "stg.get-native.com"
+		}
+	},
+	"run_list": [
+			"recipe[get-native.com-cookbook::nodejs]"
+	],
+	"automatic": {
+		"ipaddress": "stg.get-native.com"
+	}
+}
+```
+
+4. Provision the web-server
+
+
+    $ bundle exec knife solo cook root@stg.get-native.com -E development -i ~/.ssh/stg.get-native.com/provision.web
