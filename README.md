@@ -22,6 +22,14 @@ Prior to running any provisioning commands, please complete the following steps:
     $ bundle exec berks vendor cookbooks/
 ```
 
+To update the cookbooks:
+
+```bash
+    $ cd provision
+    $ bundle exec berks update
+    $ bundle exec berks vendor cookbooks/
+```
+
 - Verify that you are able to successfully SSH into your node without password authentication.
 - Copy provision/data_bags/github/credentials.json{.template,} and enter the appropriate values for each field.
     - Chef uses this information to manage your github deploy key.
