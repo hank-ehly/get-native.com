@@ -7,7 +7,13 @@
 
 import { Injectable } from '@angular/core';
 
+import { MockHTTPClient } from '../mock-http-client/mock-http-client';
+import { Logger } from '../logger/logger';
+
 import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+
+/* Todo: Remove UI logic from Login Service */
 
 @Injectable()
 export class LoginService {
@@ -20,6 +26,9 @@ export class LoginService {
     setActiveViewSource = new Subject<string>();
     setActiveView$ = this.setActiveViewSource.asObservable();
 
+    constructor(private http: MockHTTPClient, private logger: Logger) {
+    }
+
     showModal(): void {
         this.showModalSource.next();
     }
@@ -30,5 +39,11 @@ export class LoginService {
 
     setActiveView(view: string): void {
         this.setActiveViewSource.next(view);
+    }
+
+    login(credentials: any): Observable<any> {
+        this.logger.debug('Received credentials: ', credentials);
+
+        return this.http.POST_login(credentials);
     }
 }

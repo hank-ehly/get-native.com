@@ -34,20 +34,32 @@ export class EmailLoginComponent {
         this.loginService.setActiveView(view);
     }
 
-    // TODO: API
-    // TODO: Success -> Go to dashboard
-    // TODO: Failure -> Display form error
     onSubmit(): void {
-        this.logger.debug('[EmailLoginComponent]: onSubmit()');
-        this.router.navigate(['dashboard']).then((success) => {
-            if (success) {
-                this.logger.debug('Navigation success');
-                this.loginService.hideModal();
-            } else {
-                this.logger.warn('Navigation failed');
-            }
-        }).catch((reason) => {
-            this.logger.warn(reason);
+        this.logger.debug(`[${this.constructor.name}]: onSubmit()`, this.credentials);
+
+        this.loginService.login(this.credentials).subscribe((res) => {
+            /*{
+                "id": 2244994983,
+                "id_str": "2244994983",
+                "lang": "en",
+                "profile_image_url": "XXX",
+                "default_profile_image": false
+            }*/
+
+            this.logger.debug(res);
+            this.logger.info(res.headers);
+
+
+            this.router.navigate(['dashboard']).then((success) => {
+                if (success) {
+                    this.logger.debug('Navigation success');
+                    this.loginService.hideModal();
+                } else {
+                    this.logger.warn('Navigation failed');
+                }
+            }).catch((reason) => {
+                this.logger.warn(reason);
+            });
         });
     }
 }

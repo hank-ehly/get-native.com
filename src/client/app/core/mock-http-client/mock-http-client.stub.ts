@@ -376,5 +376,9 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                 'maximum_words': 502,
                 'maximum_wpm': 52
             });
+    },
+
+    POST_login(credentials: any): Observable<any> {
+        return Observable.of(<any>{});
     }
 };
