@@ -14,32 +14,28 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MockHTTPClient {
-    baseUrl: string = 'app/core/mock-http-client';
+    baseUrl: string = 'http://localhost:3000';
 
     constructor(private logger: Logger, private http: Http) {
     }
 
     GET_video(id: number): Observable<Video> {
-        return this.http.get(`${this.baseUrl}/video.json`).map((r: Response) => <Video>r.json());
+        return this.http.get(`${this.baseUrl}/videos/${id}`).map((r: Response) => <Video>r.json());
     }
 
     GET_videos(): Observable<Videos> {
-        return this.http.get(`${this.baseUrl}/videos.json`).map((r: Response) => <Videos>r.json());
+        return this.http.get(`${this.baseUrl}/videos`).map((r: Response) => <Videos>r.json());
     }
 
     GET_categories(): Observable<Categories> {
-        return this.http.get(`${this.baseUrl}/categories.json`).map((r: Response) => <Categories>r.json());
+        return this.http.get(`${this.baseUrl}/categories`).map((r: Response) => <Categories>r.json());
     }
 
     GET_cued_videos(): Observable<CuedVideos> {
-        return this.http.get(`${this.baseUrl}/cued_videos.json`).map((r: Response) => <CuedVideos>r.json());
+        return this.http.get(`${this.baseUrl}/cued_videos`).map((r: Response) => <CuedVideos>r.json());
     }
 
     GET_study_stats(): Observable<any> {
-        return this.http.get(`${this.baseUrl}/study_stats.json`).map((r: Response) => <any>r.json());
-    }
-
-    GET_account(): Observable<User> {
-        return this.http.get(`${this.baseUrl}/GET_account.json`).map((r: Response) => <User>r.json());
+        return this.http.get(`${this.baseUrl}/study_stats`).map((r: Response) => <any>r.json());
     }
 }
