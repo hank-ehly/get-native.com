@@ -41,7 +41,7 @@
                 <!-- TODO: Remove mock (click) -->
                 <img (click)="toggleNotificationIndicator()" class="navbar__menu-icon navbar__menu-icon_notification"
                      src="../../../assets/icons/notification.svg" alt="notification">
-                <span class="notification-indicator" *ngIf="isNotificationIndicatorVisible" [@bounceInOut]></span>
+                <span class="notification-indicator" [ngClass]="{'notification-indicator--unread': hasUnreadNotifications}"></span>
             </span>
         </li>
         <li>
