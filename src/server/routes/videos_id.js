@@ -9,6 +9,8 @@ const router = require('express').Router();
 const mockRes = require('../mock/video.json');
 
 router.get('/videos/:id', (req, res) => {
+    console.log(mockRes);
+
     res.send(mockRes);
 });
 
