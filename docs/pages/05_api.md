@@ -83,7 +83,7 @@ Status: 200 OK
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"profile_image_url": "...",
 	"default_profile_image": false,
-	"email": "john_doe@example.com",
+	"email": "john.doe@example.com",
 	"email_verified": true,
 	"email_notifications_enabled": true,
 	"browser_notifications_enabled": false
