@@ -21,8 +21,8 @@ The following headers are included in each API response.
 | Access-Control-Expose-Headers                                                                                               | authorization                                |
 | Server                                                                                                                      | api.get-native.com                           |
 | <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">Strict-Transport-Security</a> | max-age=31536000; includeSubdomains; preload |
-| X-GetNative-Auth-Token                                                                                                      | A JWT value (eg. g8ka.l0xh.jq1m)             |
-| X-GetNative-Auth-Expire                                                                                                     | A timestamp (eg. 1483658645131)              |
+| X-GN-Auth-Token                                                                                                             | A JWT value (eg. g8ka.l0xh.jq1m)             |
+| X-GN-Auth-Expire                                                                                                            | A timestamp (eg. 1483658645131)              |
 
 **Handling of `DNT` Request Header**
 
