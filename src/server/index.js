@@ -10,16 +10,26 @@ const bodyParser = require('body-parser');
 
 const routes     = require('./routes');
 
-/* Todo: Is this necessary */
+/* Todo: Create folder for middleware */
+
+/* Todo: What exactly does this do? */
 app.use(bodyParser.json());
 
+/* Todo: Move to separate middleware file */
 app.use((req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
-    res.set('Access-Control-Expose-Headers', 'Authorization');
+
+    /* Todo: Clarify difference between Expose & Allow */
+    res.set('Access-Control-Expose-Headers', 'X-GN-Auth-Token');
+    res.set('Access-Control-Allow-Headers', 'Authorization, Content-Type');
+
     next();
 });
 
-const fs = require('fs');
+/* Todo: Move to middleware */
+/* Todo: Cleanup */
+/* Todo: Implement */
+const fs  = require('fs');
 const jwt = require('jsonwebtoken');
 app.use((req, res, next) => {
 

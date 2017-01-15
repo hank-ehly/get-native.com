@@ -5,12 +5,12 @@
  * Created by henryehly on 2017/01/15.
  */
 
-const router = require('express').Router();
+const router      = require('express').Router();
 
-const login = require('./login');
-const videos_id = require('./videos_id');
-const videos = require('./videos');
-const categories = require('./categories');
+const login       = require('./login');
+const videos_id   = require('./videos_id');
+const videos      = require('./videos');
+const categories  = require('./categories');
 const study_stats = require('./study-stats');
 const cued_videos = require('./cued_videos');
 
