@@ -5,12 +5,16 @@
  * Created by henryehly on 2017/01/15.
  */
 
-const app = require('express')();
+const app        = require('express')();
+const bodyParser = require('body-parser');
 
-const routes = require('./routes');
+const routes     = require('./routes');
+
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
     res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Expose-Headers', 'Authorization');
     next();
 });
 

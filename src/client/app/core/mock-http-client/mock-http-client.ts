@@ -8,7 +8,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Logger, Video, Videos, Categories, CuedVideos, User } from '../index';
+import { Video, Videos, Categories, CuedVideos } from '../index';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -16,7 +16,7 @@ import { Observable } from 'rxjs/Observable';
 export class MockHTTPClient {
     baseUrl: string = 'http://localhost:3000';
 
-    constructor(private logger: Logger, private http: Http) {
+    constructor(private http: Http) {
     }
 
     GET_video(id: number): Observable<Video> {
