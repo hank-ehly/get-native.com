@@ -64,19 +64,15 @@ GET https://api.get-native.com/account
 
 **Response**
 
-| Data Field            | Type           | Description                                                        |
-|-----------------------|----------------|--------------------------------------------------------------------|
-| id                    | Int64          |  Integer representation of unique user ID                          |
-| id_str                | String         |  String representation of unique user ID                           |
-| name                  | String         |  The user's self-declared real name                                |
-| created_at            | String         |  UTC datetime of account creation                                  |
-| utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
-| lang                  | String         |  BCP 47 code for user declared language                            |
-| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
-| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
-| email                 | String         | The user's email                                                   |
-| email_verified        | Boolean        | Whether the user has verified their email address.                 |
-| notifications         | [Notification] | _Nullable._ An array of notifications for the authenticating user. |
+| Data Field                    | Type           | Description                                                        |
+|-------------------------------|----------------|--------------------------------------------------------------------|
+| created_at                    | String         | UTC datetime of account creation                                   |
+| profile_image_url             | String         | HTTPS URI for user profile image                                   |
+| default_profile_image         | Boolean        | If true, the user has not uploaded their own image                 |
+| email                         | String         | The user's email address                                           |
+| email_verified                | Boolean        | Whether the user has verified their email address.                 |
+| email_notifications_enabled   | Boolean        | Whether the user has opted to receive email notifications.         |
+| browser_notifications_enabled | Boolean        | Whether the user allows browser notifications.                     |
 
 
 ```
@@ -84,27 +80,13 @@ Status: 200 OK
 ```
 ```json
 {
-	"id": 2244994983,
-	"id_str": "2244994983",
-	"name": "John Doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-	"utc_offset": 180000,
-	"lang": "en",
-	"profile_image_url": "TODO",
+	"profile_image_url": "...",
 	"default_profile_image": false,
 	"email": "john_doe@example.com",
 	"email_verified": true,
-	"notifications": {
-		"records": [
-			{
-				"id": 123456,
-				"id_str": "123456",
-				"text": "This is the body text of a notification",
-				"title": "Welcome to Get Native"
-			}
-		],
-		"count": 10
-	}
+	"email_notifications_enabled": true,
+	"browser_notifications_enabled": false
 }
 ```
 
