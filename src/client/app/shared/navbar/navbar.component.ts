@@ -16,22 +16,6 @@ import { LoginService, NavbarService, Logger } from '../../core/index';
     templateUrl: 'navbar.component.html',
     styleUrls: ['navbar.component.css'],
     animations: [
-        trigger('bounceInOut', [
-            transition(':enter', [
-                animate(100, keyframes([
-                    style({transform: 'scale(0.9)', offset: 0}),
-                    style({transform: 'scale(1.3)', offset: 0.7}),
-                    style({transform: 'scale(1)', offset: 1.0})
-                ]))
-            ]),
-            transition(':leave', [
-                animate(100, keyframes([
-                    style({transform: 'scale(1)', offset: 0}),
-                    style({transform: 'scale(1.3)', offset: 0.7}),
-                    style({transform: 'scale(0.9)', offset: 1.0})
-                ]))
-            ])
-        ]),
         trigger('slideInLeftOutRight', [
             transition(':enter', [
                 style({opacity: 0, transform: 'translateX(300px)'}),
@@ -62,7 +46,7 @@ export class NavbarComponent implements OnInit {
     progressBarHidden: boolean;
     backButtonTitle: string;
     logoLinkPath: string;
-    isNotificationIndicatorVisible: boolean = true;
+    hasUnreadNotifications: boolean;
 
     constructor(private loginService: LoginService,
                 private logger: Logger,
@@ -87,7 +71,7 @@ export class NavbarComponent implements OnInit {
 
     /* MOCK */
     toggleNotificationIndicator() {
-        this.isNotificationIndicatorVisible = !this.isNotificationIndicatorVisible;
+        this.hasUnreadNotifications = !this.hasUnreadNotifications;
     }
 
     onClickBack(): void {

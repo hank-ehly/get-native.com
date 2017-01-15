@@ -136,10 +136,15 @@
   @include border-radius(50%);
   position: absolute;
   top: -3px;
-  background: $red-orange;
+  background: $regent-gray;
   height: 6px;
   width: 6px;
   right: -2px;
+  transition: background-color 200ms;
+}
+
+.notification-indicator--unread {
+  background: $red-orange;
 }
 
 .navbar__menu_center .search-bar {
