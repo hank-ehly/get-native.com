@@ -1,14 +1,14 @@
 /**
- * study-stats
+ * videos
  * get-native.com
  *
  * Created by henryehly on 2017/01/15.
  */
 
 const router = require('express').Router();
-const mockRes = require('../mock-response/study_stats.json');
+const mockRes = require('../mock/videos.json');
 
-router.get('/study_stats', (req, res) => {
+router.get('/videos', (req, res) => {
     res.send(mockRes);
 });
 

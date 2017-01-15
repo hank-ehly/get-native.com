@@ -5,11 +5,12 @@
  * Created by henryehly on 2017/01/15.
  */
 
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 
 router.post('/login', (req, res) => {
-    res.send('LOGIN\n');
+    console.log(req.body['password']);
+
+    res.json(req.body);
 });
 
 module.exports = router;
