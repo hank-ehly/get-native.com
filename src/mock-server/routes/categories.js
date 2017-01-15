@@ -1,14 +1,14 @@
 /**
- * study-stats
+ * categories
  * get-native.com
  *
  * Created by henryehly on 2017/01/15.
  */
 
 const router = require('express').Router();
-const mockRes = require('./mock-responses/study_stats.json');
+const mockRes = require('../mock-response/categories.json');
 
-router.get('/study_stats', (req, res) => {
+router.get('/categories', (req, res) => {
     res.send(mockRes);
 });
 
