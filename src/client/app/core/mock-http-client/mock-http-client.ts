@@ -8,7 +8,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Logger, Video, Videos, Categories, CuedVideos } from '../index';
+import { Logger, Video, Videos, Categories, CuedVideos, User } from '../index';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -37,5 +37,9 @@ export class MockHTTPClient {
 
     GET_study_stats(): Observable<any> {
         return this.http.get(`${this.baseUrl}/study_stats.json`).map((r: Response) => <any>r.json());
+    }
+
+    GET_account(): Observable<User> {
+        return this.http.get(`${this.baseUrl}/GET_account.json`).map((r: Response) => <User>r.json());
     }
 }

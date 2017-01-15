@@ -14,7 +14,7 @@
             "loop_count": 7156,
             "loop_velocity": 2.4960000000000004,
             "thumbnail_image_url": "XXX",
-            "video_url": "../../../assets/mock/video.mov",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
             "length": 68
         },
         {
@@ -30,7 +30,7 @@
             "loop_count": 1011,
             "loop_velocity": 2.4960000000000004,
             "thumbnail_image_url": "XXX",
-            "video_url": "../../../assets/mock/video.mov",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
             "length": 73
         },
         {
@@ -46,7 +46,7 @@
             "loop_count": 9941,
             "loop_velocity": 2.4960000000000004,
             "thumbnail_image_url": "XXX",
-            "video_url": "../../../assets/mock/video.mov",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
             "length": 45
         },
         {
@@ -62,7 +62,7 @@
             "loop_count": 10503,
             "loop_velocity": 2.4960000000000004,
             "thumbnail_image_url": "XXX",
-            "video_url": "../../../assets/mock/video.mov",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
             "length": 122
         },
         {
@@ -78,7 +78,7 @@
             "loop_count": 3,
             "loop_velocity": 2.4960000000000004,
             "thumbnail_image_url": "XXX",
-            "video_url": "../../../assets/mock/video.mov",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
             "length": 89
         }
     ]
