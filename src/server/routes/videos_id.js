@@ -6,12 +6,12 @@
  */
 
 const router = require('express').Router();
-const mockRes = require('../mock/video.json');
+
+/* Todo: Implement */
+const mock   = require('../mock/video.json');
 
 router.get('/videos/:id', (req, res) => {
-    console.log(mockRes);
-
-    res.send(mockRes);
+    res.send(mock);
 });
 
 module.exports = router;

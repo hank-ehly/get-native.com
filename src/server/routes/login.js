@@ -5,14 +5,18 @@
  * Created by henryehly on 2017/01/15.
  */
 
-const router = require('express').Router();
+const router  = require('express').Router();
 
-const jwt    = require('jsonwebtoken');
-const fs     = require('fs');
+/* Todo: Implement */
+const mock    = require('../mock/login.json');
+
+const jwt     = require('jsonwebtoken');
+const fs      = require('fs');
 
 router.post('/login', (req, res) => {
 
     /* Todo: Validate */
+    console.log(req.body);
     let email = req.body['email'];
     let password = req.body['password'];
     console.log(email, password);
@@ -37,7 +41,7 @@ router.post('/login', (req, res) => {
 
         res.set('X-GN-Auth-Token', token);
 
-        res.send('');
+        res.json(mock);
     });
 });
 
