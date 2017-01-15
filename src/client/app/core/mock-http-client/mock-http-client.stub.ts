@@ -24,7 +24,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                 'id_str': '123456',
                 'description': 'Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.',
                 'name': 'Harold Ford',
-                'thumbnail_image_url': ''
+                'thumbnail_image_url': 'https://stg.get-native.com/assets/mock/man-smiling.jpg'
             },
             'topic': {
                 'id': 123456,
@@ -375,18 +375,6 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                 'longest_consecutive_days': 15,
                 'maximum_words': 502,
                 'maximum_wpm': 52
-            });
-    },
-
-    GET_account(): Observable<User> {
-        return Observable.of(<User>{
-                'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
-                'profile_image_url': '...',
-                'default_profile_image': false,
-                'email': 'john.doe@example.com',
-                'email_verified': true,
-                'email_notifications_enabled': true,
-                'browser_notifications_enabled': false
             });
     }
 };
