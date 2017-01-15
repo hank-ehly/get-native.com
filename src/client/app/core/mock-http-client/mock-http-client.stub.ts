@@ -6,7 +6,7 @@
  */
 
 import { MockHTTPClient } from './mock-http-client';
-import { Video, Videos, Categories, CuedVideos } from '../index';
+import { Video, Videos, Categories, CuedVideos, User } from '../index';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -34,7 +34,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
             'loop_count': 7156,
             'loop_velocity': 2.4960000000000004,
             'thumbnail_image_url': '',
-            'video_url': '',
+            'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
             'related_videos': {
                 'records': [
                     {
@@ -162,7 +162,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'loop_count': 7156,
                         'loop_velocity': 2.4960000000000004,
                         'thumbnail_image_url': 'XXX',
-                        'video_url': '../../../assets/mock/video.mov',
+                        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
                         'length': 68
                     },
                     {
@@ -178,7 +178,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'loop_count': 1011,
                         'loop_velocity': 2.4960000000000004,
                         'thumbnail_image_url': 'XXX',
-                        'video_url': '../../../assets/mock/video.mov',
+                        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
                         'length': 73
                     },
                     {
@@ -194,7 +194,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'loop_count': 9941,
                         'loop_velocity': 2.4960000000000004,
                         'thumbnail_image_url': 'XXX',
-                        'video_url': '../../../assets/mock/video.mov',
+                        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
                         'length': 45
                     },
                     {
@@ -210,7 +210,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'loop_count': 10503,
                         'loop_velocity': 2.4960000000000004,
                         'thumbnail_image_url': 'XXX',
-                        'video_url': '../../../assets/mock/video.mov',
+                        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
                         'length': 122
                     },
                     {
@@ -226,7 +226,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'loop_count': 3,
                         'loop_velocity': 2.4960000000000004,
                         'thumbnail_image_url': 'XXX',
-                        'video_url': '../../../assets/mock/video.mov',
+                        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
                         'length': 89
                     }
                 ]
@@ -312,7 +312,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'loop_count': 7156,
                         'loop_velocity': 2.4960000000000004,
                         'thumbnail_image_url': 'XXX',
-                        'video_url': '../../../assets/mock/video.mov',
+                        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
                         'length': 68
                     },
                     {
@@ -328,7 +328,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'loop_count': 1011,
                         'loop_velocity': 2.4960000000000004,
                         'thumbnail_image_url': 'XXX',
-                        'video_url': '../../../assets/mock/video.mov',
+                        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
                         'length': 73
                     },
                     {
@@ -344,7 +344,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'loop_count': 9941,
                         'loop_velocity': 2.4960000000000004,
                         'thumbnail_image_url': 'XXX',
-                        'video_url': '../../../assets/mock/video.mov',
+                        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
                         'length': 45
                     },
                     {
@@ -360,7 +360,7 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                         'loop_count': 10503,
                         'loop_velocity': 2.4960000000000004,
                         'thumbnail_image_url': 'XXX',
-                        'video_url': '../../../assets/mock/video.mov',
+                        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
                         'length': 122
                     }
                 ]
@@ -375,6 +375,18 @@ export const STUBMockHTTPClient = <MockHTTPClient>{
                 'longest_consecutive_days': 15,
                 'maximum_words': 502,
                 'maximum_wpm': 52
+            });
+    },
+
+    GET_account(): Observable<User> {
+        return Observable.of(<User>{
+                'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
+                'profile_image_url': '...',
+                'default_profile_image': false,
+                'email': 'john.doe@example.com',
+                'email_verified': true,
+                'email_notifications_enabled': true,
+                'browser_notifications_enabled': false
             });
     }
 };

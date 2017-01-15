@@ -18,7 +18,7 @@
     "loop_count": 7156,
     "loop_velocity": 2.4960000000000004,
     "thumbnail_image_url": "XXX",
-    "video_url": "../../../assets/mock/video.mov",
+    "video_url": "https://stg.get-native.com/assets/mock/video.mov",
     "related_videos":{
         "records": [
             {
