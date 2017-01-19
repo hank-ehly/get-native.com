@@ -48,9 +48,7 @@ To provision a chef node, execute the following command -- replacing information
 2. Update the cookbooks in get-native.com/provision
 
 ```bash
-    $ cd provision
-    $ bundle exec berks update
-    $ bundle exec berks vendor cookbooks/
+    $ ./provision/bin/update-berks.bash
 ```
 
 3. Set the node run-list to _only_ execute the node-js recipe
@@ -74,4 +72,4 @@ To provision a chef node, execute the following command -- replacing information
 4. Provision the web-server
 
 
-    $ bundle exec knife solo cook root@stg.get-native.com -E development -i ~/.ssh/stg.get-native.com/provision.web
+    $ ./provision/bin/stg-dev-cook.bash
