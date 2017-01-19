@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
-  "version": "0.0.0",
-  "description": "Modular starter project for Angular 2 (and beyond) with statically typed build and AoT compilation",
+  "name": "get-native.com",
+  "version": "1.0.0",
+  "description": "Source code for get-native.com",
   "repository": {
-    "url": "https://github.com/mgechev/angular-seed"
+    "url": "https://github.com/hank-ehly/get-native.com"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
@@ -41,8 +41,9 @@
     "compodoc": "node_modules/.bin/compodoc -p src/client/tsconfig.json",
     "serve.compodoc": "node_modules/.bin/compodoc -s"
   },
-  "author": "Minko Gechev <mgechev>",
-  "license": "MIT",
+  "author": "Hank Ehly <henry.ehly@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
   "devDependencies": {
     "@angular/compiler-cli": "~2.4.0",
     "@angular/platform-server": "~2.4.0",
