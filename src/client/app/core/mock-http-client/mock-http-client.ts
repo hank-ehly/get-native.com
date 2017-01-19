@@ -9,34 +9,35 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptionsArgs, Headers } from '@angular/http';
 
 import { Video, Videos, Categories, CuedVideos, Logger } from '../index';
+import { Config } from '../../shared/index';
 
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class MockHTTPClient {
-    baseUrl: string = 'http://localhost:3000';
+    base: string = Config.API;
 
     constructor(private http: Http, private logger: Logger) {
     }
 
     GET_video(id: number): Observable<Video> {
-        return this.http.get(`${this.baseUrl}/videos/${id}`).map((r: Response) => <Video>r.json());
+        return this.http.get(`${this.base}/videos/${id}`).map((r: Response) => <Video>r.json());
     }
 
     GET_videos(): Observable<Videos> {
-        return this.http.get(`${this.baseUrl}/videos`).map((r: Response) => <Videos>r.json());
+        return this.http.get(`${this.base}/videos`).map((r: Response) => <Videos>r.json());
     }
 
     GET_categories(): Observable<Categories> {
-        return this.http.get(`${this.baseUrl}/categories`).map((r: Response) => <Categories>r.json());
+        return this.http.get(`${this.base}/categories`).map((r: Response) => <Categories>r.json());
     }
 
     GET_cued_videos(): Observable<CuedVideos> {
-        return this.http.get(`${this.baseUrl}/cued_videos`).map((r: Response) => <CuedVideos>r.json());
+        return this.http.get(`${this.base}/cued_videos`).map((r: Response) => <CuedVideos>r.json());
     }
 
     GET_study_stats(): Observable<any> {
-        return this.http.get(`${this.baseUrl}/study_stats`).map((r: Response) => <any>r.json());
+        return this.http.get(`${this.base}/study_stats`).map((r: Response) => <any>r.json());
     }
 
     POST_login(credentials: any): Observable<any> {
@@ -49,7 +50,7 @@ export class MockHTTPClient {
             headers: headers
         };
 
-        return this.http.post(`${this.baseUrl}/login`, JSON.stringify(credentials), options).map((r: Response) => {
+        return this.http.post(`${this.base}/login`, JSON.stringify(credentials), options).map((r: Response) => {
             this.logger.debug('Received login response: ', r);
 
             /* got it! */
