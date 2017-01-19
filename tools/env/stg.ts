@@ -8,7 +8,7 @@
 import { EnvConfig } from './env-config.interface';
 
 const StgConfig: EnvConfig = {
-    API: 'https://stg-api.get-native.com',
+    API: 'https://api.stg.get-native.com',
     ENV: 'STAGING'
 };
 
