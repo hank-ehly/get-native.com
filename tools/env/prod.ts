@@ -1,8 +1,8 @@
 import { EnvConfig } from './env-config.interface';
 
 const ProdConfig: EnvConfig = {
-  ENV: 'PROD'
+    API: 'https://api.get-native.com',
+    ENV: 'PROD'
 };
 
 export = ProdConfig;
-
