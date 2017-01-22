@@ -15,6 +15,16 @@ const routes = require('../routes');
 module.exports = (callback) => {
     const app = express();
 
+
+    app.use((req, res, next) => {
+        res.set({
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Expose-Headers': 'X-GN-Auth-Token, X-GN-Auth-Expire'
+        });
+
+        next();
+    });
+
     app.use(routes);
 
     // load static resources
