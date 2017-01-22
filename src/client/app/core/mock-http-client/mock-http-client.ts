@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptionsArgs, Headers } from '@angular/http';
 
 import { Video, Videos, Categories, CuedVideos, Logger } from '../index';
-import { Config } from '../../shared/index';
+import { Config } from '../../shared/config/env.config';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -37,7 +37,7 @@ export class MockHTTPClient {
     }
 
     GET_study_stats(): Observable<any> {
-        return this.http.get(`${this.base}/study_stats`).map((r: Response) => <any>r.json());
+        return this.http.get(`${this.base}/study/stats`).map((r: Response) => <any>r.json());
     }
 
     POST_login(credentials: any): Observable<any> {
