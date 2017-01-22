@@ -10,21 +10,13 @@
 // set whatever error handlers
 
 const express = require('express');
-const routes = require('../routes');
+const routes  = require('../routes');
+const cors    = require('../cors');
 
 module.exports = (callback) => {
     const app = express();
 
-
-    app.use((req, res, next) => {
-        res.set({
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Expose-Headers': 'X-GN-Auth-Token, X-GN-Auth-Expire'
-        });
-
-        next();
-    });
-
+    app.use(cors);
     app.use(routes);
 
     // load static resources
