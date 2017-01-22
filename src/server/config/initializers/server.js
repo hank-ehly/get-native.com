@@ -9,15 +9,16 @@
 // configure middleware
 // set whatever error handlers
 
-const express = require('express');
-const routes  = require('../routes');
-const cors    = require('../cors');
-const logger  = require('../logger');
+const express    = require('express');
+const bodyParser = require('body-parser');
+const routes     = require('../routes');
+const cors       = require('../cors');
+const logger     = require('../logger');
 
 module.exports = (callback) => {
     const app = express();
 
-
+    app.use(bodyParser.json());
 
     app.use(cors);
     app.use(routes);

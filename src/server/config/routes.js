@@ -7,12 +7,14 @@
 
 const express     = require('express');
 const controllers = require('../app/controllers');
+const validations = require('./param-validation');
+const validate    = require('express-validation');
 
 const router = express.Router();
 
 // Todo: express-validations
 
-router.post('/login', controllers.auth.login);
+router.post('/login', validate(validations.auth.login), controllers.auth.login);
 router.get('/categories', controllers.categories.list);
 router.get('/cued_videos', controllers.cuedVideos.list);
 router.get('/study/stats', controllers.study.stats);

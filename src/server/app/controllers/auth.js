@@ -5,7 +5,10 @@
  * Created by henryehly on 2017/01/18.
  */
 
+const logger = require('../../config/logger');
+
 module.exports.login = (req, res) => {
+    logger.info(req.body);
     let mock = require('../../mock/login.json');
     res.send(mock);
 };
