@@ -13,5 +13,8 @@
 // start server
 
 const server = require('./config/initializers/server');
+const logger = require('./config/logger');
 
-server();
+server(() => {
+    logger.info('App initialization successful.');
+});
