@@ -14,7 +14,7 @@ namespace :deploy do
             on roles(:web) do
                 within release_path do
                     env_config = fetch(:stage) == 'production' ? 'prod' : 'stg'
-                    execute :npm, 'run', 'build.aot', '--env-config', env_config
+                    execute :npm, 'run', 'build.aot', '--', '--env-config', env_config
                 end
             end
         end
