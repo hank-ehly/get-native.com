@@ -15,7 +15,7 @@ nconf.env();
 
 require('./config/environments/' + (nconf.get('NODE_ENV') || 'development'));
 
-logger.info(`Initializing ${nconf.get('NODE_ENV').toUpperCase()} environment`);
+logger.info(`Initializing ${nconf.get('env').toUpperCase()} environment`);
 
 // Todo: initialize database
 
