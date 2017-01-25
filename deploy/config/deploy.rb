@@ -6,6 +6,10 @@ set :deploy_to, "/var/www/#{fetch(:application)}"
 set :scm, :git
 set :keep_releases, 5
 
-after 'deploy:updated', 'deploy:npm:install'
-after 'deploy:updated', 'deploy:npm:build'
-after 'deploy:updated', 'deploy:pm2:reload'
+after 'deploy:updated', :setup do
+    on roles(:web) do
+        ['npm:install', 'gulp:build', 'pm2:reload'].each do |t|
+            invoke t
+        end
+    end
+end
