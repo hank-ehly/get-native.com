@@ -4,7 +4,7 @@ namespace :gulp do
         on roles(:web) do
             within release_path do
                 env_config = fetch(:stage) == 'production' ? 'prod' : 'stg'
-                execute :gulp, 'build.prod.exp', '--color', '--build-type', 'prod', '--env-config', env_config
+                execute :npm, 'run', 'gulp', 'build.prod.exp', '--color', '--build-type', 'prod', '--env-config', env_config
             end
         end
     end
