@@ -5,16 +5,24 @@
  * Created by henryehly on 2017/01/15.
  */
 
-// Todo
-// handle command line args first (if applicable)
-// load OS ENV vars (if applicable) nconf.env();
-// load vars from config/environments (if applicable)
-// initialize database
-// start server
-
 const server = require('./config/initializers/server');
 const logger = require('./config/logger');
+const nconf  = require('nconf');
 
-server(() => {
-    logger.info('App initialization successful.');
+nconf.use('memory');
+nconf.argv();
+nconf.env();
+
+require('./config/environments/' + (nconf.get('NODE_ENV') || 'development'));
+
+logger.info(`Initializing ${nconf.get('NODE_ENV').toUpperCase()} environment`);
+
+// Todo: initialize database
+
+server((error) => {
+    if (error) {
+        logger.error('Initialization failed: ', error);
+    } else {
+        logger.info('Initialization successful');
+    }
 });
