@@ -4,7 +4,7 @@ namespace :pm2 do
     desc 'Runs pm2 reload all'
     task :reload do
         on roles(:web) do
-            if test('[[ -z $(pm2 list --mini-list) ]]')
+            if !test('[[ $(pm2 show api) ]]')
                 with(NODE_ENV: fetch(:stage)) do
                     execute :pm2, 'start', release_path.join('src/server/index.js'), '-i', 'max', '--name', 'api'
                 end
