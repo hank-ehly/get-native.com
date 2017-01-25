@@ -20,6 +20,7 @@ module.exports = (callback) => {
 
     app.use(bodyParser.json());
 
+    app.disable('x-powered-by');
     app.use(cors);
     app.use(routes);
 
