@@ -1,3 +1,5 @@
+SSHKit.config.command_map[:pm2] = '/usr/local/nodejs-binary/bin/pm2'
+
 namespace :pm2 do
     desc 'Runs pm2 reload all'
     task :reload do
