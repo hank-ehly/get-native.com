@@ -24,7 +24,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { SettingsModule } from './settings/settings.module';
 import { StudyModule } from './study/study.module';
 import { Logger, LoggerConfig, LOG_LEVEL } from './core/index';
-import { Config } from './shared/config/env.config';
 
 @NgModule({
     imports: [
@@ -46,7 +45,7 @@ import { Config } from './shared/config/env.config';
     declarations: [AppComponent],
     providers: [
         {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-        {provide: LoggerConfig, useValue: (Config.ENV === 'DEV' ? LOG_LEVEL.DEBUG : LOG_LEVEL.OFF)},
+        {provide: LoggerConfig, useValue: LOG_LEVEL.DEBUG},
         Logger
     ],
     bootstrap: [AppComponent]
