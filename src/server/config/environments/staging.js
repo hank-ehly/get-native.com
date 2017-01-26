@@ -8,4 +8,5 @@
 const nconf = require('nconf');
 
 nconf.set('env', 'staging');
-nconf.set('allow-origin', 'stg.get-native.com');
+nconf.set('allow-origin', 'https://stg.get-native.com');
+
