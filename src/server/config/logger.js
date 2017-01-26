@@ -7,12 +7,10 @@
 
 const winston = require('winston');
 
-const logger = new (winston.Logger) ({
+const logger = new (winston.Logger)({
     transports: [
         new (winston.transports.Console)({
-            timestamp: () => {
-                return new Date().toTimeString();
-            },
+            timestamp: () => new Date().toTimeString(),
             formatter: (options) => {
                 return `[${options.timestamp()}][${options.level.toUpperCase()}] ${options.message}`;
             }
