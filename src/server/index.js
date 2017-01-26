@@ -5,9 +5,9 @@
  * Created by henryehly on 2017/01/15.
  */
 
+const nconf  = require('nconf');
 const server = require('./config/initializers/server');
 const logger = require('./config/logger');
-const nconf  = require('nconf');
 
 nconf.use('memory');
 nconf.argv();
@@ -23,6 +23,6 @@ server((error) => {
     if (error) {
         logger.error('Initialization failed: ', error);
     } else {
-        logger.info('Initialization successful');
+        logger.info(`Initialization of ${nconf.get('env').toUpperCase()} environment was successful`);
     }
 });

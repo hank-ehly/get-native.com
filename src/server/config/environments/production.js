@@ -8,3 +8,4 @@
 const nconf = require('nconf');
 
 nconf.set('env', 'production');
+nconf.set('allow-origin', 'get-native.com');
