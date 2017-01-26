@@ -6,12 +6,16 @@
  */
 
 const express = require('express');
+const nconf   = require('nconf');
+const logger  = require('./logger');
 const router  = express.Router();
 
 const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': nconf.get('allow-origin'),
     'Access-Control-Expose-Headers': 'X-GN-Auth-Token, X-GN-Auth-Expire'
 };
+
+logger.info(`Set response header: 'Access-Control-Allow-Origin': '${nconf.get('allow-origin')}'`);
 
 router.use((req, res, next) => {
     res.set(corsHeaders);

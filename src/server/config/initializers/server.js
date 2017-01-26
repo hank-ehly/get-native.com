@@ -5,18 +5,16 @@
  * Created by henryehly on 2017/01/18.
  */
 
-// Todo:
-// configure middleware
-// set whatever error handlers
+// Todo: Set default error handlers
 
 const express    = require('express');
 const bodyParser = require('body-parser');
 const routes     = require('../routes');
-const cors       = require('../cors');
 const logger     = require('../logger');
 
 module.exports = (callback) => {
-    const app = express();
+    const app  = express();
+    const cors = require('../cors');
 
     app.use(bodyParser.json());
 

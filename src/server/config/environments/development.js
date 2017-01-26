@@ -8,3 +8,4 @@
 const nconf = require('nconf');
 
 nconf.set('env', 'development');
+nconf.set('allow-origin', '*');
