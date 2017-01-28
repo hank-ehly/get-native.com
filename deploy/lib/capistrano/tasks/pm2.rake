@@ -1,16 +1,11 @@
 SSHKit.config.command_map[:pm2] = '/usr/local/nodejs-binary/bin/pm2'
 
 namespace :pm2 do
-    desc 'Runs pm2 reload all'
+    desc 'Runs pm2 start command'
     task :reload do
         on roles(:web) do
-            if !test('[[ $(/usr/local/nodejs-binary/bin/pm2 show api) ]]')
-                with(NODE_ENV: fetch(:stage)) do
-                    execute :pm2, 'start', release_path.join('src/server/index.js'), '-i', 'max', '--name', 'api'
-                end
-            else
-                execute :pm2, 'reload', 'api'
-            end
+            app_name_suffix = fetch(:stage) == 'production' ? 'prod' : 'stg'
+            execute :pm2, 'start', release_path.join('ecosystem.config.js'), '-i', 'max', '--only', "api.#{app_name_suffix}"
         end
     end
 end
