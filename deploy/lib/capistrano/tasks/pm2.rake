@@ -5,7 +5,7 @@ namespace :pm2 do
     task :reload do
         on roles(:web) do
             app_name_suffix = fetch(:stage) == 'production' ? 'prod' : 'stg'
-            execute :pm2, 'start', release_path.join('ecosystem.config.js'), '-i', 'max', '--only', "api.#{app_name_suffix}"
+            execute :pm2, 'startOrRestart', release_path.join('ecosystem.config.js'), '-i', 'max', '--only', "api.#{app_name_suffix}"
         end
     end
 end
