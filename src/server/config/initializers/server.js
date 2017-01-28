@@ -16,9 +16,12 @@ module.exports = (callback) => {
     const app  = express();
     const cors = require('../cors');
 
-    app.use(bodyParser.json());
+    for (let x of ['x-powered-by', 'etag', 'views', 'view cache']) {
+        app.disable(x);
+    }
 
-    app.disable('x-powered-by');
+    app.use(bodyParser.json());
+    
     app.use(cors);
     app.use(routes);
 
