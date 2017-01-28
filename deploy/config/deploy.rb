@@ -8,8 +8,6 @@ set :keep_releases, 5
 
 after 'deploy:updated', :setup do
     on roles(:web) do
-        %w(npm:install gulp:build pm2:reload).each do |t|
-            invoke t
-        end
+        %w(npm:install gulp:build pm2:reload).each { |t| invoke t }
     end
 end
