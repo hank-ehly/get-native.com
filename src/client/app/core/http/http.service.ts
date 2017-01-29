@@ -7,7 +7,7 @@
 
 import { Injectable } from '@angular/core';
 import { RequestArgs } from '@angular/http/src/interfaces';
-import { Http, Request, RequestOptionsArgs, Response, Headers, ResponseContentType } from '@angular/http';
+import { Http, Request, Response, Headers, ResponseContentType } from '@angular/http';
 
 import { Config } from '../../shared/config/env.config';
 import { Logger, LocalStorageService, kAuthToken, kAuthTokenExpire, Entity } from '../index';
