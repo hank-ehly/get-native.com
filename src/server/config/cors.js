@@ -13,7 +13,7 @@ const router  = express.Router();
 const corsHeaders = {
     'Access-Control-Allow-Origin': nconf.get('allow-origin'),
     'Access-Control-Expose-Headers': 'X-GN-Auth-Token, X-GN-Auth-Expire',
-    'Access-Control-Allow-Headers': 'Content-Type'
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
 };
 
 logger.info(`Set response header: 'Access-Control-Allow-Origin': '${nconf.get('allow-origin')}'`);

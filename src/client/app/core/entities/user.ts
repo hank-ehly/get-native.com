@@ -8,10 +8,10 @@
 import { Entity } from './entity';
 
 export interface User extends Entity {
-    profile_image_url: string;
-    default_profile_image: boolean;
-    email: string;
-    email_verified: boolean;
-    email_notifications_enabled: boolean;
-    browser_notifications_enabled: boolean;
+    profile_image_url?: string;
+    default_profile_image?: boolean;
+    email?: string;
+    email_verified?: boolean;
+    email_notifications_enabled?: boolean;
+    browser_notifications_enabled?: boolean;
 }

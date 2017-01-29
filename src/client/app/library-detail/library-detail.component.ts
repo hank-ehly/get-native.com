@@ -7,7 +7,8 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { NavbarService, Logger, MockHTTPClient, Video } from '../core/index';
+import { NavbarService, Logger, Video, APIHandle } from '../core/index';
+import { HttpService } from '../core/http/http.service';
 
 import '../operators';
 
@@ -20,13 +21,14 @@ import '../operators';
 export class LibraryDetailComponent implements OnInit {
     video: Video;
 
-    constructor(private logger: Logger, private navbar: NavbarService, private api: MockHTTPClient) {
+    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService) {
     }
 
     ngOnInit() {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
-        this.api.GET_video(1).subscribe((video: Video) => {
+        // Todo: parameters
+        this.http.request(APIHandle.VIDEO, {id: 1}).subscribe((video: Video) => {
             this.navbar.setTitle(video.topic.name);
             this.video = video;
         });

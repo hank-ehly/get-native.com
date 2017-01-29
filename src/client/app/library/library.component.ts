@@ -7,7 +7,8 @@
 
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
 
-import { Logger, Videos, MockHTTPClient, Categories } from '../core/index';
+import { Logger, Videos, Categories, APIHandle } from '../core/index';
+import { HttpService } from '../core/http/http.service';
 
 @Component({
     moduleId: module.id,
@@ -32,20 +33,14 @@ export class LibraryComponent implements OnInit {
     categories: Categories;
     isDropdownVisible: boolean;
 
-    constructor(private logger: Logger, private http: MockHTTPClient) {
+    constructor(private logger: Logger, private http: HttpService) {
         this.isDropdownVisible = false;
     }
 
     ngOnInit(): void {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
-
-        this.http.GET_videos().subscribe((videos: Videos) => {
-            this.videos = videos;
-        });
-
-        this.http.GET_categories().subscribe((categories: Categories) => {
-            this.categories = categories;
-        });
+        this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories);
+        this.http.request(APIHandle.VIDEOS).subscribe((videos: Videos) => this.videos = videos);
     }
 
     onToggleDropdown(): void {
