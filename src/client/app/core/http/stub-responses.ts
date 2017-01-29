@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/01/29.
  */
 
-import { Video, Videos, Categories, CuedVideos } from '../index';
+import { Video, Videos, Categories, CuedVideos } from '../entities/index';
 import { APIHandle } from './api-handle';
 
 export const STUBResponses = new Map<APIHandle, any>([
@@ -32,7 +32,7 @@ export const STUBResponses = new Map<APIHandle, any>([
         'loop_count': 7156,
         'loop_velocity': 2.4960000000000004,
         'thumbnail_image_url': '',
-        'video_url': 'https://stg.get-native.com/assets/mock/video.mov',
+        'video_url': '../../assets/mock/video.mov',
         'related_videos': {
             'records': [
                 {
