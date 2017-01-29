@@ -8,7 +8,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginService } from '../../core/login/login.service';
+import { LoginModalService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -17,15 +17,15 @@ import { LoginService } from '../../core/login/login.service';
     styleUrls: ['social-login.component.css']
 })
 export class SocialLoginComponent {
-    constructor(private loginService: LoginService, private router: Router) {
+    constructor(private loginModal: LoginModalService, private router: Router) {
     }
 
     onSetModalView(view: string): void {
-        this.loginService.setActiveView(view);
+        this.loginModal.setActiveView(view);
     }
 
     onLogin(): void {
-        this.loginService.hideModal();
+        this.loginModal.hideModal();
         this.router.navigate(['dashboard']);
     }
 }

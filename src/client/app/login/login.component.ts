@@ -7,7 +7,7 @@
 
 import { Component, style, keyframes, animate, transition, trigger, Input, OnInit, HostListener } from '@angular/core';
 
-import { LoginService, Logger } from '../core/index';
+import { LoginModalService, Logger } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -53,13 +53,13 @@ export class LoginComponent implements OnInit {
     @Input() isVisible: boolean;
     activeView: string;
 
-    constructor(private logger: Logger, private loginService: LoginService) {
+    constructor(private logger: Logger, private loginModal: LoginModalService) {
     }
 
     ngOnInit(): void {
-        this.loginService.showModal$.subscribe(() => this.isVisible = true);
-        this.loginService.hideModal$.subscribe(() => this.isVisible = false);
-        this.loginService.setActiveView$.subscribe((view) => this.activeView = view);
+        this.loginModal.showModal$.subscribe(() => this.isVisible = true);
+        this.loginModal.hideModal$.subscribe(() => this.isVisible = false);
+        this.loginModal.setActiveView$.subscribe((view) => this.activeView = view);
     }
 
     onClickClose(e: MouseEvent): void {

@@ -8,7 +8,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginService, Logger } from '../../core/index';
+import { LoginService, Logger, LoginModalService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -27,11 +27,11 @@ export class EmailLoginComponent {
 
     formErrors: string[] = [];
 
-    constructor(private logger: Logger, private router: Router, private loginService: LoginService) {
+    constructor(private logger: Logger, private router: Router, private loginService: LoginService, private loginModal: LoginModalService) {
     }
 
     onSetModalView(view: string): void {
-        this.loginService.setActiveView(view);
+        this.loginModal.setActiveView(view);
     }
 
     onSubmit(): void {
@@ -53,7 +53,7 @@ export class EmailLoginComponent {
             this.router.navigate(['dashboard']).then((success) => {
                 if (success) {
                     this.logger.debug('Navigation success');
-                    this.loginService.hideModal();
+                    this.loginModal.hideModal();
                 } else {
                     this.logger.warn('Navigation failed');
                 }

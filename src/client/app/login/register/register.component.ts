@@ -9,7 +9,7 @@ import { Component, ViewChild, AfterViewChecked } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 
-import { LoginService, Logger } from '../../core/index';
+import { LoginModalService, Logger } from '../../core/index';
 import { PasswordStrengthComponent } from '../../shared/index';
 
 @Component({
@@ -34,7 +34,7 @@ export class RegisterComponent implements AfterViewChecked {
 
     formErrors: string[] = [];
 
-    constructor(private logger: Logger, private loginService: LoginService) {
+    constructor(private logger: Logger, private loginModal: LoginModalService) {
     }
 
     ngAfterViewChecked(): void {
@@ -51,7 +51,7 @@ export class RegisterComponent implements AfterViewChecked {
     }
 
     onSetModalView(view: string) {
-        this.loginService.setActiveView(view);
+        this.loginModal.setActiveView(view);
     }
 
     onSubmit(): void {
