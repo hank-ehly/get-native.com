@@ -10,35 +10,31 @@ The following headers are to be included in requests for _protected_ resources.
 
 **Response Headers**
 
-The following headers are included in each API response.
+The following headers can be found in all API responses.
 
 | Key                                                                                                                         | Value                                        |
 | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">X-Frame-Options</a>                     | deny                                         |
 | <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options">X-Content-Type-Options</a>       | nosniff                                      |
 | <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection">X-XSS-Protection</a>                   | 1; mode=block                                |
-| Access-Control-Allow-Origin                                                                                                 | *                                            |
-| Access-Control-Expose-Headers                                                                                               | authorization                                |
+| Access-Control-Allow-Origin                                                                                                 | https://{stg.,}get-native.com                |
+| Access-Control-Expose-Headers                                                                                               | X-GN-Auth-Token, X-GN-Auth-Expire            |
 | Server                                                                                                                      | api.get-native.com                           |
-| <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">Strict-Transport-Security</a> | max-age=31536000; includeSubdomains; preload |
+| <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">Strict-Transport-Security</a> | max-age=31536000; includeSubDomains; preload |
+
+The following headers are included in API responses that require authentication.
+
+| Key                                                                                                                         | Value                                        |
+| --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | X-GN-Auth-Token                                                                                                             | A JWT value (eg. g8ka.l0xh.jq1m)             |
 | X-GN-Auth-Expire                                                                                                            | A timestamp (eg. 1483658645131)              |
 
 **Handling of `DNT` Request Header**
 
-Clients that set the value of the `DoNotTrack` header to `1` are treated differently.
+Clients that set the value of the `Do Not Track` header to `1` are treated differently.
 Specifically, Get Native does the following upon encountering a `DNT: 1` request header. 
 
-1. Disable Google Analytics 
-
-2. Will not log user in apache logs
-
-```apacheconfig
-# requires mod_headers, mod_setenvif, and mod_rewrite
-
-SetEnvIfNoCase DNT 1 DO_NOT_TRACK
-CustomLog /path/to/access_log common env=!DO_NOT_TRACK
-```
+1. Disables Google Analytics
+2. Prevents Apache from logging user access
 
 **Record Lists**
 
