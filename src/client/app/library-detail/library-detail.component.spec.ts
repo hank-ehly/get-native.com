@@ -13,16 +13,16 @@ import { APP_BASE_HREF } from '@angular/common';
 import { LibraryDetailComponent } from './library-detail.component';
 import { SharedModule } from '../shared/shared.module';
 import {
-    MockHTTPClient,
     Logger,
     STUBLogger,
     NavbarService,
     STUBNavbarService,
-    STUBMockHTTPClient,
     SpecUtil,
     LangService,
     UTCDateService
 } from '../core/index';
+import { HttpService } from '../core/http/http.service';
+import { STUBHttpService } from '../core/http/http.service.stub';
 
 export function main() {
     let comp: LibraryDetailComponent;
@@ -39,7 +39,7 @@ export function main() {
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
                     {provide: NavbarService, useValue: STUBNavbarService},
-                    {provide: MockHTTPClient, useValue: STUBMockHTTPClient},
+                    {provide: HttpService, useValue: STUBHttpService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     LangService,
                     UTCDateService

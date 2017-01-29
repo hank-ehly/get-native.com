@@ -12,8 +12,8 @@ export * from './local-storage/index';
 export * from './logger/index'
 export * from './auth/auth-guard.service';
 export * from './login-modal/index';
+export * from './http/index';
 export * from './login/index';
-export * from './mock-http-client/index';
 export * from './navbar/index';
 export * from './password/index';
 export * from './spec/index';

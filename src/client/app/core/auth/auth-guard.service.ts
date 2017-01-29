@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
         if (this.localStorage.hasItem(kAuthToken)) {
             let now = Date.now();
-            let exp = this.localStorage.getItem(kAuthTokenExpire);
+            let exp = parseFloat(this.localStorage.getItem(kAuthTokenExpire));
 
             if (exp > now) {
                 return true;

@@ -7,19 +7,15 @@
 
 import { Injectable } from '@angular/core';
 
-import { MockHTTPClient } from '../mock-http-client/mock-http-client';
-import { Logger } from '../logger/logger';
-
 import { Observable } from 'rxjs/Observable';
+import { HttpService, APIHandle, User } from '../index';
 
 @Injectable()
 export class LoginService {
-    constructor(private http: MockHTTPClient, private logger: Logger) {
+    constructor(private httpService: HttpService) {
     }
 
-    login(credentials: any): Observable<any> {
-        this.logger.debug('Received credentials: ', credentials);
-
-        return this.http.POST_login(credentials);
+    login(credentials: any): Observable<User> {
+        return this.httpService.request(APIHandle.LOGIN, credentials);
     }
 }

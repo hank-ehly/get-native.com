@@ -10,8 +10,35 @@ const logger = require('../../config/logger');
 module.exports.login = (req, res) => {
     logger.info(req.body);
     let mock = require('../../mock/login.json');
+
+    authorizeResponse(res);
+
     res.send(mock);
 };
+
+module.exports.authenticate = (req, res, next) => {
+    let authHeader = req.get('Authorization');
+
+    if (!authHeader) {
+        throw new Error('No Authorization provided.');
+    }
+
+    let reqToken = authHeader.split(' ')[1];
+
+    if (!reqToken) {
+        throw new Error('No token provided.');
+    }
+
+    authorizeResponse(res);
+
+    next();
+};
+
+function authorizeResponse(res) {
+    // jwt logic
+    res.set('X-GN-Auth-Token', 'DEVELOPMENT.JWT.TOKEN');
+    res.set('X-GN-Auth-Expire', (Date.now() + (1000 * 60 * 60)).toString());
+}
 
 ////////// old
 

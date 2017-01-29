@@ -8,7 +8,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger, MockHTTPClient, CuedVideos } from '../core/index';
+import { Logger, CuedVideos, APIHandle } from '../core/index';
+import { HttpService } from '../core/http/http.service';
 
 @Component({
     moduleId: module.id,
@@ -21,16 +22,13 @@ export class DashboardComponent implements OnInit {
     answers: any[];
     stats: any;
 
-    constructor(private logger: Logger, private router: Router, private http: MockHTTPClient) {
+    constructor(private logger: Logger, private router: Router, private http: HttpService) {
     }
 
     ngOnInit() {
         this.logger.debug(`[${this.constructor.name}] OnInit()`);
-
-        this.http.GET_cued_videos().subscribe((videos: CuedVideos) => this.videos = videos);
-
-        this.http.GET_study_stats().subscribe((stats: any) => this.stats = stats);
-
+        this.http.request(APIHandle.CUED_VIDEOS).subscribe((videos: CuedVideos) => this.videos = videos);
+        this.http.request(APIHandle.STUDY_STATS).subscribe((stats: any) => this.stats = stats);
         this.answers = [1, 2, 3, 4, 5];
     }
 
