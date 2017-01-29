@@ -1,5 +1,5 @@
 {
-    "name": "web-server",
+    "name": "web",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "description": "The role used to configure the get-native.com web-server",
