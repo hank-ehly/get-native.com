@@ -8,7 +8,7 @@
 import { Component, OnInit, Input, trigger, transition, animate, keyframes, style } from '@angular/core';
 import { Location } from '@angular/common';
 
-import { LoginService, NavbarService, Logger } from '../../core/index';
+import { LoginModalService, NavbarService, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -48,7 +48,7 @@ export class NavbarComponent implements OnInit {
     logoLinkPath: string;
     hasUnreadNotifications: boolean;
 
-    constructor(private loginService: LoginService,
+    constructor(private loginModal: LoginModalService,
                 private logger: Logger,
                 private navbarService: NavbarService,
                 private location: Location) {
@@ -66,7 +66,7 @@ export class NavbarComponent implements OnInit {
     onShowLoginModal(event: any): void {
         this.logger.debug(`[${this.constructor.name}]: requestShowLoginModal()`);
         event.preventDefault();
-        this.loginService.showModal();
+        this.loginModal.showModal();
     }
 
     /* MOCK */

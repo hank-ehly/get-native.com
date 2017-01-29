@@ -21,10 +21,12 @@ import {
     SpecUtil,
     STUBLogger,
     STUBLoginService,
+    STUBLoginModalService,
     STUBPasswordService,
     STUBRouter,
     PasswordService,
     LoginService,
+    LoginModalService,
     NavbarService,
     Logger
 } from '../core/index';
@@ -49,6 +51,7 @@ export function main() {
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
                     {provide: LoginService, useValue: STUBLoginService},
+                    {provide: LoginModalService, useValue: STUBLoginModalService},
                     {provide: PasswordService, useValue: STUBPasswordService},
                     {provide: Router, useValue: STUBRouter},
                     NavbarService

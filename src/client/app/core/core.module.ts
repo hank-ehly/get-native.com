@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import {
     AuthGuard,
     LocalStorageService,
+    LoginModalService,
     LoginService,
     MockHTTPClient,
     NavbarService,
@@ -27,6 +28,7 @@ import {
     providers: [
         AuthGuard,
         LocalStorageService,
+        LoginModalService,
         LoginService,
         MockHTTPClient,
         NavbarService,
