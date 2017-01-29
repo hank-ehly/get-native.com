@@ -5,7 +5,8 @@
  * Created by henryehly on 2017/01/29.
  */
 
-import { APIHandle, Video, Videos, Categories, CuedVideos } from '../index';
+import { Video, Videos, Categories, CuedVideos } from '../index';
+import { APIHandle } from './api-handle';
 
 export const STUBResponses = new Map<APIHandle, any>([
     [APIHandle.LOGIN, {}],

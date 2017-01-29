@@ -5,7 +5,8 @@
  * Created by henryehly on 2017/01/29.
  */
 
-import { Entity, APIHandle, HttpService, STUBResponses } from '../index';
+import { Entity, APIHandle } from '../index';
+import { HttpService, STUBResponses } from './index';
 
 import { Observable } from 'rxjs/Observable';
 

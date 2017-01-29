@@ -10,7 +10,8 @@ import { RequestArgs } from '@angular/http/src/interfaces';
 import { Http, Request, RequestOptionsArgs, Response, Headers, ResponseContentType } from '@angular/http';
 
 import { Config } from '../../shared/config/env.config';
-import { Logger, LocalStorageService, kAuthToken, kAuthTokenExpire, Entity, APIHandle, APIConfig } from '../index';
+import { Logger, LocalStorageService, kAuthToken, kAuthTokenExpire, Entity } from '../index';
+import { APIHandle, APIConfig } from './index';
 
 import { Observable } from 'rxjs/Observable';
 import '../../operators';
