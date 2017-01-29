@@ -7,4 +7,3 @@
 
 export * from './spec-util';
 export * from './stubs';
-export * from './stub-responses';
