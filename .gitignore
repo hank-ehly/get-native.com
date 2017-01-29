@@ -63,5 +63,5 @@ site/
 !src/client/app/core/typings
 
 # mock SSH keys
-src/server/keys/*
+src/server/config/secrets/*
 !**/.gitkeep
