@@ -16,6 +16,6 @@ export class LoginService {
     }
 
     login(credentials: any): Observable<User> {
-        return this.httpService.request(APIHandle.LOGIN, credentials);
+        return this.httpService.request(APIHandle.LOGIN, {body: credentials});
     }
 }
