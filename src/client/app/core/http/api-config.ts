@@ -28,16 +28,16 @@ export const APIConfig = new Map<APIHandle, any>([
     [APIHandle.CATEGORIES, {
         method: RequestMethod.Get,
         url: '/categories',
-        isProtected: false
+        isProtected: true
     }],
     [APIHandle.VIDEOS, {
         method: RequestMethod.Get,
         url: '/videos',
-        isProtected: false
+        isProtected: true
     }],
     [APIHandle.VIDEO, {
         method: RequestMethod.Get,
         url: '/videos/:id',
-        isProtected: false
+        isProtected: true
     }]
 ]);
