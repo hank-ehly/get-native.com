@@ -38,13 +38,7 @@ module.exports.authenticate = (req, res, next) => {
 };
 
 function validateRequest(req, callback) {
-    let authorization = req.get('Authorization');
-
-    if (!authorization) {
-        throw new Error('No Authorization header on request.');
-    }
-
-    let token = authorization.split(' ')[1];
+    let token = req.get('authorization').split(' ')[1];
 
     if (!token) {
         throw new Error('No token provided.');
