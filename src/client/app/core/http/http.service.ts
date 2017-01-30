@@ -30,7 +30,7 @@ export class HttpService {
 
         // Todo: Move to other service
         let matches = endpoint.url.match(/:[a-z]+/g);
-        if (options && matches.length) {
+        if (options && matches) {
             this.logger.debug(matches);
             for (let match of matches) {
                 let key = match.substr(1);
