@@ -1000,7 +1000,7 @@ Status: 200 OK
 
 # POST /videos/:id/like
 
-Like a video
+Like a video.
 
 ```
 POST https://api.get-native.com/videos/12345/like
@@ -1011,6 +1011,27 @@ POST https://api.get-native.com/videos/12345/like
 | Parameter 	| Description                                                     	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
 | id         	| The unique ID of the video to like                	              |     √    	|         	|
+
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
+# POST /videos/:id/unlike
+
+_Unlike_ a previously liked video.
+
+```
+POST https://api.get-native.com/videos/12345/unlike
+```
+
+**Parameters**
+
+| Parameter 	| Description                                                     	| Required 	| Default 	|
+|-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
+| id         	| The unique ID of the video to unlike              	              |     √    	|         	|
 
 
 **Response**
