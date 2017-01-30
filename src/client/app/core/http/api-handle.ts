@@ -10,6 +10,7 @@ export enum APIHandle {
     VIDEO,
     VIDEOS,
     LIKE_VIDEO,
+    UNLIKE_VIDEO,
     STUDY_STATS,
     CUED_VIDEOS,
     CATEGORIES

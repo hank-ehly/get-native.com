@@ -39,5 +39,15 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Get,
         url: '/videos/:id',
         isProtected: true
+    }],
+    [APIHandle.LIKE_VIDEO, {
+        method: RequestMethod.Post,
+        url: '/videos/:id/like',
+        isProtected: true
+    }],
+    [APIHandle.UNLIKE_VIDEO, {
+        method: RequestMethod.Post,
+        url: '/videos/:id/unlike',
+        isProtected: true
     }]
 ]);

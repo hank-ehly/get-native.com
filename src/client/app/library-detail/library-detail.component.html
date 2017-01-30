@@ -14,7 +14,8 @@
                     <span class="video-stats__label">{{ video?.loop_count | fuzzy }} Views</span>
                 </div>
                 <div class="video-stats__group video-stats__group_likes">
-                    <img class="video-stats__icon video-stats__icon_like" src="../../assets/icons/like.svg" alt="like">
+                    <img class="video-stats__icon video-stats__icon_like" src="../../assets/icons/liked.svg" alt="like" (click)="onClickUnlike()" *ngIf="video?.liked">
+                    <img class="video-stats__icon video-stats__icon_like" src="../../assets/icons/like.svg" alt="like" (click)="onClickLike()" *ngIf="!video?.liked">
                     <span class="video-stats__label">{{ video?.like_count | fuzzy }}</span>
                 </div>
             </div>
