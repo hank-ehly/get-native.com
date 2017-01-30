@@ -14,12 +14,12 @@ const router = express.Router();
 
 // Todo: express-validations
 
-router.post('/login', validate(validations.auth.login), controllers.auth.login);
-router.get('/categories', controllers.auth.authenticate, controllers.categories.list);
-router.get('/cued_videos', controllers.auth.authenticate, controllers.cuedVideos.list);
-router.get('/study/stats', controllers.auth.authenticate, controllers.study.stats);
-router.get('/videos', controllers.auth.authenticate, controllers.videos.list);
-router.get('/videos/:id', controllers.auth.authenticate, controllers.videos.show);
-router.post('/videos/:id/like', controllers.auth.authenticate, controllers.videos.like);
+router.post('/login',           validate(validations.auth.login),                                     controllers.auth.login);
+router.get( '/categories',      validate(validations.categories.list), controllers.auth.authenticate, controllers.categories.list);
+router.get( '/cued_videos',                                            controllers.auth.authenticate, controllers.cuedVideos.list);
+router.get( '/study/stats',     validate(validations.study.stats),     controllers.auth.authenticate, controllers.study.stats);
+router.get( '/videos',                                                 controllers.auth.authenticate, controllers.videos.list);
+router.get( '/videos/:id',      validate(validations.videos.show),     controllers.auth.authenticate, controllers.videos.show);
+router.post('/videos/:id/like', validate(validations.videos.like),     controllers.auth.authenticate, controllers.videos.like);
 
 module.exports = router;

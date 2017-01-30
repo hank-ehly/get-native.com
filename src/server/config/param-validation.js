@@ -5,14 +5,46 @@
  * Created by henryehly on 2017/01/22.
  */
 
-const Joi = require('joi');
+const joi = require('joi');
 
 module.exports = {
     auth: {
         login: {
             body: {
-                email: Joi.string().email().required(),
-                password: Joi.string().required()
+                email: joi.string().email().required(),
+                password: joi.string().required()
+            }
+        }
+    },
+    categories: {
+        list: {
+            headers: {
+                authorization: joi.string().required()
+            }
+        }
+    },
+    study: {
+        stats: {
+            headers: {
+                authorization: joi.string().required()
+            }
+        }
+    },
+    videos: {
+        show: {
+            headers: {
+                authorization: joi.string().required()
+            },
+            params: {
+                id: joi.number().integer().required()
+            }
+        },
+        like: {
+            headers: {
+                authorization: joi.string().required()
+            },
+            params: {
+                id: joi.number().integer().required()
             }
         }
     }
