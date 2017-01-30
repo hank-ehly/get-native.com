@@ -5,9 +5,9 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const logger = require('../../config/logger');
+const nconf  = require('nconf');
 const jwt    = require('jsonwebtoken');
-const fs     = require('fs');
+const logger = require('../../config/logger');
 
 module.exports.login = (req, res) => {
     logger.info(req.body);
@@ -16,31 +16,22 @@ module.exports.login = (req, res) => {
     // Todo: obtain from db
     let userId = 123;
 
-    generateTokenForUser(userId, (err, token) => {
-        if (err) {
-            throw new Error(err);
-        }
+    generateTokenForUserId(userId, (err, token) => {
+        if (err) throw new Error(err);
 
         authorizeResponseWithToken(res, token);
-
         res.send(mock);
     });
 };
 
 module.exports.authenticate = (req, res, next) => {
-    // Todo: use promises
     validateRequest(req, (err, token) => {
-        if (err) {
-            throw new Error(err);
-        }
+        if (err) throw new Error(err);
 
         refreshToken(token, (err, token) => {
-            if (err) {
-                throw new Error(err);
-            }
+            if (err) throw new Error(err);
 
             authorizeResponseWithToken(res, token);
-
             next();
         })
     });
@@ -59,16 +50,13 @@ function validateRequest(req, callback) {
         throw new Error('No token provided.');
     }
 
-    // Todo: read into nconf for easier access
-    let publicKey = fs.readFileSync(`${__dirname}/../../config/secrets/id_rsa.pem`);
-
     const args = {
         issuer: 'api.get-native.com',
         audience: '',
         algorithms: ['RS256']
     };
 
-    jwt.verify(token, publicKey, args, callback);
+    jwt.verify(token, nconf.get('publicKey'), args, callback);
 }
 
 function refreshToken(token, callback) {
@@ -78,32 +66,27 @@ function refreshToken(token, callback) {
         aud: token.aud
     };
 
-    let privateKey = fs.readFileSync(`${__dirname}/../../config/secrets/id_rsa`);
-
     const args = {
         algorithm: 'RS256',
         expiresIn: '1h'
     };
 
-    jwt.sign(newToken, privateKey, args, callback);
+    jwt.sign(newToken, nconf.get('privateKey'), args, callback);
 }
 
-function generateTokenForUser(userId, callback) {
+function generateTokenForUserId(userId, callback) {
     let token = {
         iss: 'api.get-native.com',
         sub: userId,
         aud: ''
     };
 
-    // Todo: read into nconf for easier access
-    let privateKey = fs.readFileSync(`${__dirname}/../../config/secrets/id_rsa`);
-
     const args = {
         algorithm: 'RS256',
         expiresIn: '1h'
     };
 
-    jwt.sign(token, privateKey, args, callback);
+    jwt.sign(token, nconf.get('privateKey'), args, callback);
 }
 
 function authorizeResponseWithToken(res, token) {
