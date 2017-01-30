@@ -27,10 +27,24 @@ export class LibraryDetailComponent implements OnInit {
     ngOnInit() {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
-        // Todo: parameters
+        // Todo: Get id from url
         this.http.request(APIHandle.VIDEO, {id: 1}).subscribe((video: Video) => {
             this.navbar.setTitle(video.topic.name);
             this.video = video;
         });
+    }
+
+    onClickLike() {
+        this.logger.debug(`[${this.constructor.name}]: onClickLike()`);
+
+        // Todo: Get id from url
+        this.http.request(APIHandle.LIKE_VIDEO, {id: 1}).subscribe();
+    }
+
+    onClickUnlike() {
+        this.logger.debug(`[${this.constructor.name}]: onClickUnlike()`);
+
+        // Todo: Get id from url
+        this.http.request(APIHandle.UNLIKE_VIDEO, {id: 1}).subscribe();
     }
 }
