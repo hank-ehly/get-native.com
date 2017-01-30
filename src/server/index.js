@@ -13,6 +13,7 @@ nconf.use('memory');
 nconf.argv();
 nconf.env();
 
+require('./config/environments/base');
 require('./config/environments/' + (nconf.get('NODE_ENV') || 'development'));
 
 logger.info(`Initializing ${nconf.get('env').toUpperCase()} environment`);
