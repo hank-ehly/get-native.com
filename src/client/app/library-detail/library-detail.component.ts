@@ -6,11 +6,11 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
-import { NavbarService, Logger, Video, APIHandle } from '../core/index';
-import { HttpService } from '../core/http/http.service';
+import { NavbarService, Logger, Video, APIHandle, HttpService } from '../core/index';
 
-import '../operators';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     moduleId: module.id,
@@ -21,30 +21,30 @@ import '../operators';
 export class LibraryDetailComponent implements OnInit {
     video: Video;
 
-    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService) {
+    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
         // Todo: Get id from url
-        this.http.request(APIHandle.VIDEO, {id: 1}).subscribe((video: Video) => {
+        this.http.request(APIHandle.VIDEO, {id: +this.route.snapshot.params['id']}).subscribe((video: Video) => {
             this.navbar.setTitle(video.topic.name);
             this.video = video;
         });
     }
 
-    onClickLike() {
-        this.logger.debug(`[${this.constructor.name}]: onClickLike()`);
+    onToggleLike() {
+        this.logger.debug(`[${this.constructor.name}] onToggleLike()`);
 
-        // Todo: Get id from url
-        this.http.request(APIHandle.LIKE_VIDEO, {id: 1}).subscribe();
-    }
-
-    onClickUnlike() {
-        this.logger.debug(`[${this.constructor.name}]: onClickUnlike()`);
-
-        // Todo: Get id from url
-        this.http.request(APIHandle.UNLIKE_VIDEO, {id: 1}).subscribe();
+        if (this.video.liked) {
+            this.video.liked = false;
+            this.video.like_count -= 1;
+            this.http.request(APIHandle.UNLIKE_VIDEO, {id: this.video.id}).subscribe();
+        } else {
+            this.video.liked = true;
+            this.video.like_count += 1;
+            this.http.request(APIHandle.LIKE_VIDEO, {id: this.video.id}).subscribe();
+        }
     }
 }

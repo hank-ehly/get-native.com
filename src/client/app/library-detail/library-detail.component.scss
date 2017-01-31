@@ -39,13 +39,22 @@ $column-width: ($main-width - 30px) / 2;
   align-self: center;
 }
 
-.video-stats__icon {
-  width: 30px;
-}
-
-.video-stats__icon.video-stats__icon_like {
+.video-stats__button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
   height: 14px;
   width: 16px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.video-stats__icon {
+  width: 30px;
 }
 
 .video-stats__label {

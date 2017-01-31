@@ -46,6 +46,14 @@ module.exports = {
             params: {
                 id: joi.number().integer().required()
             }
+        },
+        unlike: {
+            headers: {
+                authorization: joi.string().required()
+            },
+            params: {
+                id: joi.number().integer().required()
+            }
         }
     }
 };
