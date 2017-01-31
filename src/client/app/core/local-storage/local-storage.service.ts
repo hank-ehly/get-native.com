@@ -28,8 +28,10 @@ export class LocalStorageService {
 
     broadcastStorageEvent(ev: StorageEvent): void {
         if (ev.key === null && ev.newValue === null && ev.oldValue === null) {
+            this.logger.debug(`[${this.constructor.name}] Storage Event 'clear()'`);
             this.clearSource.next();
         } else {
+            this.logger.debug(`[${this.constructor.name}] Storage Event ${ev.key}`);
             this.storageEventSource.next(ev);
         }
     }
@@ -47,13 +49,14 @@ export class LocalStorageService {
     }
 
     clear(): void {
-        this.logger.debug('[${this.constructor.name}]: clear()');
-        return localStorage.clear();
+        this.logger.debug(`[${this.constructor.name}]: clear()`);
+        localStorage.clear();
+        this.clearSource.next();
     }
 
     /* Todo: Encrypt all stored data */
     setItem(key: string, data: any): void {
-        this.logger.debug(`[${this.constructor.name}]: setItem('${key}, ${data})'`);
+        this.logger.debug(`[${this.constructor.name}]: setItem '${key}'`);
 
         if (data === null || data === undefined) {
             /* Todo: ErrorService */
@@ -68,7 +71,6 @@ export class LocalStorageService {
 
     getItem(key: string): any {
         let retVal = localStorage.getItem(key);
-        this.logger.debug(`[${this.constructor.name}]: getItem('${key}) - ${retVal}'`);
 
         try {
             return JSON.parse(retVal);
@@ -79,12 +81,13 @@ export class LocalStorageService {
 
     hasItem(key: string): boolean {
         let retVal = this.getItem(key) !== null;
-        this.logger.debug(`[${this.constructor.name}]: hasItem('${key}) - ${retVal}'`);
+        this.logger.debug(`[${this.constructor.name}]: hasItem '${key}' ? ${retVal}`);
         return retVal;
     }
 
     removeItem(key: string): void {
         this.logger.debug(`[${this.constructor.name}]: removeItem('${key}')`);
-        return localStorage.removeItem(key);
+        localStorage.removeItem(key);
+        this.setItemSource.next({key: key, data: null});
     }
 }

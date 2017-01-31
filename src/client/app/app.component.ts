@@ -6,13 +6,19 @@
  */
 
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute, Route } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import { LocalStorageService, kAcceptLocalStorage } from './core/index';
-import { NavbarService } from './core/navbar/navbar.service';
+import {
+    LocalStorageService,
+    kAcceptLocalStorage,
+    NavbarService,
+    Logger,
+    LocalStorageItem,
+    kAuthToken,
+    LocalStorageProtocol
+} from './core/index';
 
-import { Logger } from './core/index';
 import './operators';
 
 @Component({
@@ -20,7 +26,7 @@ import './operators';
     selector: 'gn-app',
     templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, LocalStorageProtocol {
     showComplianceDialog: boolean;
     showLoginModal: boolean;
     authenticated: boolean;
@@ -35,12 +41,17 @@ export class AppComponent implements OnInit {
         this.showLoginModal = false;
     }
 
-    @HostListener('window:storage', ['$event']) onStorageEvent(ev: StorageEvent) {
-        this.localStorageService.broadcastStorageEvent(ev);
+    @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
+        this.localStorageService.broadcastStorageEvent(e);
     }
 
     ngOnInit(): void {
         this.showComplianceDialog = !this.localStorageService.getItem(kAcceptLocalStorage);
+
+        // Todo: See if you can use 'super()' somehow to get rid of this.
+        this.localStorageService.setItem$.subscribe(this.didSetLocalStorageItem.bind(this));
+        this.localStorageService.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this));
+        this.localStorageService.clearSource$.subscribe(this.didClearStorage.bind(this));
 
         /* Dynamically set the navbar title */
         this.router.events
@@ -65,8 +76,32 @@ export class AppComponent implements OnInit {
             });
     }
 
-    /* DEBUG */
-    onDebugAuthorize(b: boolean): void {
-        this.authenticated = b;
+    didSetLocalStorageItem(item: LocalStorageItem): void {
+        if (item.key === kAuthToken) {
+            this.handleAuthTokenChange(item.data);
+        }
+    }
+
+    didClearStorage(): void {
+        this.handleAuthTokenChange();
+    }
+
+    didReceiveStorageEvent(event: StorageEvent): void {
+        if (event.key === kAuthToken) {
+            this.handleAuthTokenChange(event.newValue);
+        }
+    }
+
+    handleAuthTokenChange(token?: string) {
+        if (token) {
+            this.logger.info(`[${this.constructor.name}] Auth token has been updated.`);
+            this.authenticated = true;
+        } else {
+            this.logger.debug(`[${this.constructor.name}] Auth token is null. Transitioning to logout state.`);
+            this.authenticated = false;
+            this.router.navigate(['']).then(() => {
+                this.logger.info(`[${this.constructor.name}] Transition to logout state complete.`);
+            });
+        }
     }
 }

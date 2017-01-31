@@ -5,8 +5,9 @@
  * Created by henryehly on 2016/11/20.
  */
 
-export const kAcceptLocalStorage = 'FCjKY3';
-export const kDebugModalPosition = 'x2UeqU';
-export const kDebugLoggedIn      = 'B4krtU';
-export const kAuthToken          = '2C9q5J';
-export const kAuthTokenExpire    = 'Jj35Bv';
+import { Config } from '../../shared/config/env.config';
+
+export const kAcceptLocalStorage = Config.ENV === 'DEV' ? 'accept-local-storage' : 'FCjKY3';
+export const kDebugModalPosition = Config.ENV === 'DEV' ? 'debug-modal-position' : 'x2UeqU';
+export const kAuthToken          = Config.ENV === 'DEV' ? 'auth-token'           : '2C9q5J';
+export const kAuthTokenExpire    = Config.ENV === 'DEV' ? 'auth-token-expire'    : 'Jj35Bv';

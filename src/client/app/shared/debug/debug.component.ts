@@ -5,10 +5,8 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { LocalStorageService } from '../../core/local-storage/local-storage.service';
-import { kDebugLoggedIn } from '../../core/local-storage/local-storage-keys';
-import { Logger } from '../../core/logger/logger';
+import { Component } from '@angular/core';
+import { LocalStorageService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -16,17 +14,13 @@ import { Logger } from '../../core/logger/logger';
     templateUrl: 'debug.component.html',
     styleUrls: ['debug.component.css']
 })
-export class DebugComponent implements OnInit {
-    @Output() authorize: EventEmitter<boolean>;
+export class DebugComponent {
     routes: any[];
-    authorized: boolean;
 
-    constructor(private localStorage: LocalStorageService, private logger: Logger) {
-        this.authorize = new EventEmitter<boolean>();
-        this.authorized = false;
+    constructor(private localStorage: LocalStorageService) {
         this.routes = [
             {title: 'Dashboard', name: 'dashboard'},
-            {title: 'Help',  name: '/help'},
+            {title: 'Help', name: '/help'},
             {title: 'Home', name: ''},
             {title: 'Library', name: '/library'},
             {title: 'Library Detail', name: '/library/1'},
@@ -39,18 +33,6 @@ export class DebugComponent implements OnInit {
             {title: 'Study (Results)', name: '/study/results'},
             {title: 'Study (Transition)', name: '/study'}
         ];
-    }
-
-    ngOnInit(): void {
-        this.authorized = this.localStorage.getItem(kDebugLoggedIn);
-        this.authorize.emit(this.authorized);
-        this.logger.debug(this.localStorage.getItem(kDebugLoggedIn));
-    }
-
-    onToggleAuthorized(b: boolean): void {
-        this.authorize.emit(b);
-        this.localStorage.setItem(kDebugLoggedIn, b);
-        this.authorized = b;
     }
 
     onClickClearStorage(): void {
