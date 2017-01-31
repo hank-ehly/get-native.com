@@ -5,8 +5,8 @@
 
             <div class="dropdown-toggle" (click)="onToggleDropdown()">
                 <span class="dropdown-toggle__text">All categories</span>
-                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-down.svg" alt="expand" *ngIf="!isDropdownVisible">
-                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible">
+                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-down.svg" alt="expand" *ngIf="!isDropdownVisible">
+                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible">
             </div>
 
             <gn-category-list [categories]="categories" class="dropdown" *ngIf="isDropdownVisible" [@dropdown]></gn-category-list>
