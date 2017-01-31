@@ -57,7 +57,8 @@
   position: absolute;
 }
 
-.navbar__menu_center > * {
+.navbar__menu_center > div,
+.navbar__menu_center > span {
   width: $main-width/3;
 }
 
