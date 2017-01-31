@@ -27,8 +27,8 @@ export class LibraryDetailComponent implements OnInit {
     ngOnInit() {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
-        // Todo: Get id from url
-        this.http.request(APIHandle.VIDEO, {id: +this.route.snapshot.params['id']}).subscribe((video: Video) => {
+        let id = +this.route.snapshot.params['id'];
+        this.http.request(APIHandle.VIDEO, {id: id}).subscribe((video: Video) => {
             this.navbar.setTitle(video.topic.name);
             this.video = video;
         });
