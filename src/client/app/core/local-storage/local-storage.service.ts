@@ -12,6 +12,8 @@ import { Logger } from '../logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 
+// Todo: Use 'Map' type so that you can use the 'has' logic
+
 @Injectable()
 export class LocalStorageService {
     setItemSource = new Subject<LocalStorageItem>();
