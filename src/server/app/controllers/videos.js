@@ -18,3 +18,7 @@ module.exports.show = (req, res) => {
 module.exports.like = (req, res) => {
     res.sendStatus(204);
 };
+
+module.exports.unlike = (req, res) => {
+    res.sendStatus(204);
+};

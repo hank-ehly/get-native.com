@@ -14,8 +14,10 @@
                     <span class="video-stats__label">{{ video?.loop_count | fuzzy }} Views</span>
                 </div>
                 <div class="video-stats__group video-stats__group_likes">
-                    <img class="video-stats__icon video-stats__icon_like" src="../../assets/icons/liked.svg" alt="like" (click)="onClickUnlike()" *ngIf="video?.liked">
-                    <img class="video-stats__icon video-stats__icon_like" src="../../assets/icons/like.svg" alt="like" (click)="onClickLike()" *ngIf="!video?.liked">
+                    <button class="video-stats__button" (click)="onToggleLike()" [disabled]="!video">
+                        <img src="../../assets/icons/liked.svg" alt="liked" *ngIf="video?.liked">
+                        <img src="../../assets/icons/like.svg" alt="like" *ngIf="!video?.liked">
+                    </button>
                     <span class="video-stats__label">{{ video?.like_count | fuzzy }}</span>
                 </div>
             </div>
@@ -51,6 +53,7 @@
             <h1 class="section-header__title">Related Videos</h1>
         </header>
 
+        <!-- By default, the router re-uses a component instance when it re-navigates to the same component type without visiting a different component first. -->
         <gn-video-panel-list [videos]="video?.related_videos" [navigates]="true"></gn-video-panel-list>
     </section>
 </main>
