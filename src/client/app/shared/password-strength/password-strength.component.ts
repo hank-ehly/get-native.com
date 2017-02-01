@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { PasswordService } from '../../core/index';
 
@@ -15,7 +15,8 @@ import { PasswordService } from '../../core/index';
     templateUrl: 'password-strength.component.html',
     styleUrls: ['password-strength.component.css']
 })
-export class PasswordStrengthComponent {
+export class PasswordStrengthComponent implements OnChanges {
+    @Input() password: string;
     score: number = 0;
 
     matrix: [number, string][] = [
@@ -31,6 +32,12 @@ export class PasswordStrengthComponent {
     constructor(private passwordService: PasswordService) {
     }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        if (!changes['password']) return;
+
+        this.score = this.passwordService.calculateStrength(changes['password'].currentValue);
+    }
+
     get strengthLabel(): string {
         this._strengthLabel = this.matrix[0][1];
 
@@ -41,9 +48,5 @@ export class PasswordStrengthComponent {
         }
 
         return this._strengthLabel;
-    }
-
-    update(password: string) {
-        this.score = this.passwordService.calculateStrength(password);
     }
 }
