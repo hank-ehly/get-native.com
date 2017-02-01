@@ -8,7 +8,7 @@
 
         <div class="form__group">
             <label class="label" for="email">Email</label>
-            <input id="email" [pattern]="HTML5_EMAIL_REGEX" class="input tabbable" type="email" name="email" tabindex="1"
+            <input id="email" [pattern]="emailRegex" class="input tabbable" type="email" name="email" tabindex="1"
                    [(ngModel)]="credentials.email" required>
         </div>
 

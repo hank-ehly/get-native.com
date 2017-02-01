@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Logger, LoginModalService, APIHandle, HttpService } from '../../core/index';
+import { Config } from '../../shared/config/env.config';
 
 @Component({
     moduleId: module.id,
@@ -17,7 +18,7 @@ import { Logger, LoginModalService, APIHandle, HttpService } from '../../core/in
     styleUrls: ['email-login.component.css']
 })
 export class EmailLoginComponent {
-    HTML5_EMAIL_REGEX: string = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
+    emailRegex = Config.EMAIL_REGEX;
 
     credentials: any = {
         email: '',

@@ -5,10 +5,10 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
 
 import { LoginModalService, Logger } from '../../core/index';
+import { Config } from '../../shared/config/env.config';
 
 @Component({
     moduleId: module.id,
@@ -17,8 +17,7 @@ import { LoginModalService, Logger } from '../../core/index';
     styleUrls: ['register.component.css']
 })
 export class RegisterComponent {
-    /* Taken from HTML5 Specification */
-    HTML5_EMAIL_REGEX: string = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
+    emailRegex = Config.EMAIL_REGEX;
 
     credentials: any = {
         email: '',

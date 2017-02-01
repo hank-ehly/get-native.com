@@ -13,7 +13,7 @@
         <div class="form__group">
             <label class="label" for="email"><span class="form__required-indicator">*</span> Email</label>
 
-            <input id="email" type="email" name="email" [(ngModel)]="credentials.email" [pattern]="HTML5_EMAIL_REGEX"
+            <input id="email" type="email" name="email" [(ngModel)]="credentials.email" [pattern]="emailRegex"
                    maxlength="254" tabindex="1" class="input tabbable" required>
         </div>
 
