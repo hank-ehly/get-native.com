@@ -26,8 +26,4 @@ export class NavbarService {
     setTitle(title: string): void {
         this.setTitleSource.next(title);
     }
-
-    setBackButtonTitle(title: string): void {
-        this.setBackButtonSource.next(title);
-    }
 }
