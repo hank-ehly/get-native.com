@@ -10,6 +10,7 @@ export interface EnvConfig {
     ENV?: string;
 
     moderator?: string;
+    EMAIL_REGEX?: string;
 }
 
 export const Config: EnvConfig = JSON.parse('<%= ENV_CONFIG %>');
