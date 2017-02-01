@@ -5,10 +5,10 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnInit, Input, trigger, transition, animate, keyframes, style } from '@angular/core';
+import { Component, OnInit, Input, trigger, transition, animate, keyframes, style, AfterViewChecked } from '@angular/core';
 import { Location } from '@angular/common';
 
-import { LoginModalService, NavbarService, Logger } from '../../core/index';
+import { LoginModalService, NavbarService, Logger, VideoService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -51,7 +51,8 @@ export class NavbarComponent implements OnInit {
     constructor(private loginModal: LoginModalService,
                 private logger: Logger,
                 private navbarService: NavbarService,
-                private location: Location) {
+                private location: Location,
+                private videoService: VideoService) {
         this.searchBarHidden = true;
         this.studyOptionsHidden = true;
         this.progressBarHidden = true;
@@ -67,6 +68,12 @@ export class NavbarComponent implements OnInit {
         this.logger.debug(`[${this.constructor.name}]: requestShowLoginModal()`);
         event.preventDefault();
         this.loginModal.showModal();
+    }
+
+    onInputSearchQuery(e: Event) {
+        let query = (<HTMLInputElement>e.target).value;
+        this.logger.info(`[${this.constructor.name}] Updating search query to '${query}'`);
+        this.videoService.updateSearchQuery(query);
     }
 
     /* MOCK */

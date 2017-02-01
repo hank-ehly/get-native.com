@@ -33,7 +33,8 @@ export const APIConfig = new Map<APIHandle, any>([
     [APIHandle.VIDEOS, {
         method: RequestMethod.Get,
         url: '/videos',
-        isProtected: true
+        isProtected: true,
+        permitURLSearchParams: ['lang', 'count', 'max_id', 'topic_id', 'category_id', 'q']
     }],
     [APIHandle.VIDEO, {
         method: RequestMethod.Get,

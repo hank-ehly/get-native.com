@@ -6,9 +6,9 @@
  */
 
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
+import { URLSearchParams } from '@angular/http';
 
-import { Logger, Videos, Categories, APIHandle } from '../core/index';
-import { HttpService } from '../core/http/http.service';
+import { Logger, Videos, Categories, APIHandle, VideoService, HttpService } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -33,7 +33,7 @@ export class LibraryComponent implements OnInit {
     categories: Categories;
     isDropdownVisible: boolean;
 
-    constructor(private logger: Logger, private http: HttpService) {
+    constructor(private logger: Logger, private http: HttpService, private videoService: VideoService) {
         this.isDropdownVisible = false;
     }
 
@@ -41,6 +41,15 @@ export class LibraryComponent implements OnInit {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
         this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories);
         this.http.request(APIHandle.VIDEOS).subscribe((videos: Videos) => this.videos = videos);
+        this.videoService.updateSearchQuery$.subscribe(this.onSearchQueryChange.bind(this));
+    }
+
+    onSearchQueryChange(query: string) {
+        let search = new URLSearchParams();
+
+        search.set('q', query);
+
+        this.http.request(APIHandle.VIDEOS, {search: search}).subscribe((videos: Videos) => this.videos = videos);
     }
 
     onToggleDropdown(): void {

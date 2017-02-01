@@ -6,7 +6,6 @@
  */
 
 import { Component, trigger, transition, style, animate, keyframes } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { Logger, LocalStorageService, kAuthToken, kAuthTokenExpire } from '../../core/index';
 
@@ -42,7 +41,7 @@ export class ToolbarComponent {
     /* Todo: Which language should be the default selected language? */
     selectedLang: string;
 
-    constructor(private logger: Logger, private router: Router, private localStorage: LocalStorageService) {
+    constructor(private logger: Logger, private localStorage: LocalStorageService) {
         this.selectedLang = this.languages[0];
     }
 

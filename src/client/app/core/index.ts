@@ -13,9 +13,9 @@ export * from './logger/index'
 export * from './auth/auth-guard.service';
 export * from './login-modal/index';
 export * from './http/index';
-export * from './login/index';
 export * from './navbar/index';
 export * from './password/index';
 export * from './spec/index';
 export * from './typings/index';
 export * from './utc-date/utc-date.service';
+export * from './video/index';

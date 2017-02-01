@@ -12,7 +12,7 @@ import { APP_BASE_HREF } from '@angular/common';
 
 import { LibraryComponent } from './library.component';
 import { SharedModule } from '../shared/shared.module';
-import { SpecUtil, STUBRouter, UTCDateService, Logger, STUBLogger } from '../core/index';
+import { SpecUtil, STUBRouter, UTCDateService, Logger, STUBLogger, VideoService, STUBVideoService } from '../core/index';
 import { HttpService } from '../core/http/http.service';
 import { STUBHttpService } from '../core/http/http.service.stub';
 
@@ -32,6 +32,7 @@ export function main() {
                     {provide: Logger, useValue: STUBLogger},
                     {provide: Router, useValue: STUBRouter},
                     {provide: HttpService, useValue: STUBHttpService},
+                    {provide: VideoService, useValue: STUBVideoService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     UTCDateService
                 ]

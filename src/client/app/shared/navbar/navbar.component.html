@@ -5,7 +5,7 @@
 
     <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && !searchBarHidden" [@slideInLeftOutRight]>
         <label for="search-bar" class="sr-only">Search</label>
-        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." autofocus maxlength="50">
+        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." autofocus maxlength="50" (input)="onInputSearchQuery($event)">
     </div>
 
     <!-- Todo: Prevent animation from happening on title -->
