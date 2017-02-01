@@ -8,7 +8,6 @@
 import { Component } from '@angular/core';
 
 import { LoginModalService, Logger } from '../../core/index';
-import { Config } from '../../shared/config/env.config';
 
 @Component({
     moduleId: module.id,
@@ -17,7 +16,7 @@ import { Config } from '../../shared/config/env.config';
     styleUrls: ['register.component.css']
 })
 export class RegisterComponent {
-    emailRegex = Config.EMAIL_REGEX;
+    emailRegex = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
 
     credentials: any = {
         email: '',
