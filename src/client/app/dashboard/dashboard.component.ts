@@ -8,8 +8,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger, CuedVideos, APIHandle } from '../core/index';
-import { HttpService } from '../core/http/http.service';
+import { Logger, CuedVideos, APIHandle, HttpService } from '../core/index';
 
 @Component({
     moduleId: module.id,
