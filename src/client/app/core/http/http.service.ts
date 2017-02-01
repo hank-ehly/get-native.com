@@ -34,21 +34,21 @@ export class HttpService {
             args.headers = new Headers({'Authorization': `Bearer ${this.localStorage.getItem(kAuthToken)}`});
         }
 
-        if (options) { // move to another function for processing options
-            if (options.params) {
-                args.url = Config.API + this.uriService.generateURIForEndpointWithParams(options.params, endpoint);
-            }
+        if (options && options.params) {
+            args.url = Config.API + this.uriService.generateURIForEndpointWithParams(options.params, endpoint);
+        }
 
-            if (options.body) args.body = options.body;
+        if (options && options.body) {
+            args.body = options.body;
+        }
 
-            if (options.search && endpoint.permitURLSearchParams) {
-                options.search.paramsMap.forEach((value, key) => {
-                    if (endpoint.permitURLSearchParams.indexOf(key) === -1) {
-                        this.logger.debug(`[${this.constructor.name}] Query parameter '${key}' not permitted in url ${endpoint.url}.`);
-                        options.search.paramsMap.delete(key);
-                    }
-                });
-            }
+        if (options && options.search && endpoint.permitURLSearchParams) {
+            options.search.paramsMap.forEach((value, key) => {
+                if (endpoint.permitURLSearchParams.indexOf(key) === -1) {
+                    this.logger.debug(`[${this.constructor.name}] Query parameter '${key}' not permitted in url ${endpoint.url}.`);
+                    options.search.paramsMap.delete(key);
+                }
+            });
         }
 
         let request = new Request(args);
