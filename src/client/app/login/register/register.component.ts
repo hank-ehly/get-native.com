@@ -5,12 +5,10 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Component, ViewChild, AfterViewChecked } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-
 import { LoginModalService, Logger } from '../../core/index';
-import { PasswordStrengthComponent } from '../../shared/index';
 
 @Component({
     moduleId: module.id,
@@ -18,11 +16,7 @@ import { PasswordStrengthComponent } from '../../shared/index';
     templateUrl: 'register.component.html',
     styleUrls: ['register.component.css']
 })
-export class RegisterComponent implements AfterViewChecked {
-    @ViewChild('form') currentForm: NgForm;
-    @ViewChild(PasswordStrengthComponent) passwordStrengthComponent: PasswordStrengthComponent;
-    formRef: NgForm;
-
+export class RegisterComponent {
     /* Taken from HTML5 Specification */
     HTML5_EMAIL_REGEX: string = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
 
@@ -35,19 +29,6 @@ export class RegisterComponent implements AfterViewChecked {
     formErrors: string[] = [];
 
     constructor(private logger: Logger, private loginModal: LoginModalService) {
-    }
-
-    ngAfterViewChecked(): void {
-        this.formChanged();
-    }
-
-    formChanged() {
-        if (this.currentForm === this.formRef) return;
-
-        this.formRef = this.currentForm;
-        if (this.formRef) {
-            this.formRef.valueChanges.subscribe(data => this.onValueChanged(data));
-        }
     }
 
     onSetModalView(view: string) {
@@ -71,15 +52,5 @@ export class RegisterComponent implements AfterViewChecked {
                 }
             }
         }, 1000);
-    }
-
-    onValueChanged(data?: any) {
-        if (!this.formRef) return;
-
-        this.logger.debug('Value Change', data);
-
-        if (data.hasOwnProperty('password')) {
-            this.passwordStrengthComponent.update(data.password);
-        }
     }
 }

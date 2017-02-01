@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -13,14 +13,8 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'general.component.html',
     styleUrls: ['general.component.css']
 })
-export class GeneralComponent implements OnInit {
+export class GeneralComponent {
     isEditing: boolean = false;
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
 
     onToggleEditing(): void {
         this.isEditing = !this.isEditing;

@@ -21,7 +21,7 @@
             <label class="label" for="password"><span class="form__required-indicator">*</span> Password (minimum 8 characters)</label>
             <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="credentials.password"
                    minlength="8" class="input tabbable" required>
-            <gn-password-strength></gn-password-strength>
+            <gn-password-strength [password]="credentials.password"></gn-password-strength>
         </div>
 
         <div class="form__group form__group_confirm-password">

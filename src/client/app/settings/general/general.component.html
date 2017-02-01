@@ -24,8 +24,8 @@
 
     <div class="form__group">
         <label for="new-password" class="label">New Password</label>
-        <input id="new-password" class="input" type="password" name="new-password">
-        <gn-password-strength></gn-password-strength>
+        <input id="new-password" class="input" type="password" name="new-password" [(ngModel)]="password">
+        <gn-password-strength [password]="password"></gn-password-strength>
     </div>
 
     <div class="form__group">
