@@ -18,4 +18,3 @@ export * from './password/index';
 export * from './spec/index';
 export * from './typings/index';
 export * from './utc-date/utc-date.service';
-export * from './video/index';

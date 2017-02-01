@@ -5,10 +5,10 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnInit, Input, trigger, transition, animate, keyframes, style, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, Input, trigger, transition, animate, style } from '@angular/core';
 import { Location } from '@angular/common';
 
-import { LoginModalService, NavbarService, Logger, VideoService } from '../../core/index';
+import { LoginModalService, NavbarService, Logger } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -50,17 +50,16 @@ export class NavbarComponent implements OnInit {
 
     constructor(private loginModal: LoginModalService,
                 private logger: Logger,
-                private navbarService: NavbarService,
-                private location: Location,
-                private videoService: VideoService) {
+                private navbar: NavbarService,
+                private location: Location) {
         this.searchBarHidden = true;
         this.studyOptionsHidden = true;
         this.progressBarHidden = true;
     }
 
     ngOnInit(): void {
-        this.navbarService.setTitle$.subscribe((t) => this.title = t);
-        this.navbarService.setBackButton$.subscribe(t => this.backButtonTitle = t);
+        this.navbar.setTitle$.subscribe((t) => this.title = t);
+        this.navbar.setBackButton$.subscribe(t => this.backButtonTitle = t);
         this.logoLinkPath = this.authenticated ? 'dashboard' : '';
     }
 
@@ -73,7 +72,7 @@ export class NavbarComponent implements OnInit {
     onInputSearchQuery(e: Event) {
         let query = (<HTMLInputElement>e.target).value;
         this.logger.info(`[${this.constructor.name}] Updating search query to '${query}'`);
-        this.videoService.updateSearchQuery(query);
+        this.navbar.updateSearchQuery(query);
     }
 
     /* MOCK */
