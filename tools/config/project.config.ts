@@ -18,9 +18,7 @@ export class ProjectConfig extends SeedConfig {
 
         this.APP_ASSETS = [
             {src: `${this.APP_SRC}/vendor/reset.css`, inject: true},
-            {src: `${this.APP_SRC}/vendor/pace.css`, inject: true},
-            ...this.APP_ASSETS,
-            {src: `${this.APP_SRC}/vendor/pace.min.js`, inject: true, vendor: false}
+            ...this.APP_ASSETS
         ];
 
         this.ENABLE_SCSS = true;
