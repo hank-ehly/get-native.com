@@ -24,8 +24,6 @@ export class RegisterComponent {
         passwordConfirm: ''
     };
 
-    formErrors: string[] = [];
-
     constructor(private logger: Logger, private loginModal: LoginModalService) {
     }
 
@@ -35,20 +33,5 @@ export class RegisterComponent {
 
     onSubmit(): void {
         this.logger.debug('[RegisterComponent]: Submit');
-
-        // TODO: Attempt registration
-        // TODO: Display callback error if present
-        // TODO: Model callback error object (see if you can subclass some angular error object)
-        // TODO: Transition to dashboard view on successful login
-        setTimeout(() => {
-            this.logger.debug('[RegisterComponent]: Received (mock) response.');
-            let mockErrorsObject = [{message: 'This email is already in use', code: 123}];
-            for (let err in mockErrorsObject) {
-                let msg = mockErrorsObject[err]['message'];
-                if (this.formErrors.indexOf(msg) === -1) {
-                    this.formErrors.push(msg);
-                }
-            }
-        }, 1000);
     }
 }
