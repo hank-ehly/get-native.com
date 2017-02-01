@@ -8,7 +8,7 @@
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
-import { Logger, Videos, Categories, APIHandle, VideoService, HttpService } from '../core/index';
+import { Logger, Videos, Categories, APIHandle, HttpService, NavbarService } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -33,7 +33,7 @@ export class LibraryComponent implements OnInit {
     categories: Categories;
     isDropdownVisible: boolean;
 
-    constructor(private logger: Logger, private http: HttpService, private videoService: VideoService) {
+    constructor(private logger: Logger, private http: HttpService, private navbar: NavbarService) {
         this.isDropdownVisible = false;
     }
 
@@ -41,7 +41,7 @@ export class LibraryComponent implements OnInit {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
         this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories);
         this.http.request(APIHandle.VIDEOS).subscribe((videos: Videos) => this.videos = videos);
-        this.videoService.updateSearchQuery$.subscribe(this.onSearchQueryChange.bind(this));
+        this.navbar.updateSearchQuery$.subscribe(this.onSearchQueryChange.bind(this));
     }
 
     onSearchQueryChange(query: string) {

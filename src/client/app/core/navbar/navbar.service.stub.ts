@@ -10,5 +10,15 @@ import { NavbarService } from './navbar.service';
 export const STUBNavbarService = <NavbarService>{
     setTitle(title: string): void {
         return;
+    },
+
+    updateSearchQuery$: {
+        subscribe(): void {
+            return;
+        }
+    },
+
+    updateSearchQuery(query: string): void {
+        return;
     }
 };

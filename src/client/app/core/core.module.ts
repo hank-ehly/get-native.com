@@ -18,8 +18,7 @@ import {
     StringService,
     Logger,
     LangService,
-    UTCDateService,
-    VideoService
+    UTCDateService
 } from './index';
 
 @NgModule({
@@ -37,8 +36,7 @@ import {
         StringService,
         Logger,
         LangService,
-        UTCDateService,
-        VideoService
+        UTCDateService
     ]
 })
 export class CoreModule {
