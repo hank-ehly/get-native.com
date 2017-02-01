@@ -6,57 +6,49 @@
  */
 
 import { Injectable } from '@angular/core';
+import { Http, Request, Response, ResponseContentType, Headers } from '@angular/http';
 import { RequestArgs } from '@angular/http/src/interfaces';
-import { Http, Request, Response, Headers, ResponseContentType } from '@angular/http';
 
 import { Config } from '../../shared/config/env.config';
 import { Logger, LocalStorageService, kAuthToken, kAuthTokenExpire, Entity } from '../index';
-import { APIHandle, APIConfig } from './index';
+import { APIHandle, APIConfig, URIService, GNRequestOptions } from './index';
 
 import { Observable } from 'rxjs/Observable';
 import '../../operators';
 
 @Injectable()
 export class HttpService {
-    constructor(private http: Http, private logger: Logger, private localStorage: LocalStorageService) {
+    constructor(private http: Http, private logger: Logger, private localStorage: LocalStorageService, private uriService: URIService) {
     }
 
-    request(handle: APIHandle, options?: any): Observable<Entity> {
+    request(handle: APIHandle, options?: GNRequestOptions): Observable<Entity> {
         if (!APIConfig.has(handle)) {
             throw new Error(`Endpoint '${handle}' not found in APIConfig.`);
         }
 
         let endpoint = APIConfig.get(handle);
 
-        // Todo: Move to other service
-        let matches = endpoint.url.match(/:[a-z]+/g);
-        if (options && matches) {
-            this.logger.debug(matches);
-            for (let match of matches) {
-                let key = match.substr(1);
-                if (options[key]) {
-                    endpoint.url = endpoint.url.replace(match, options[key]);
-                } else {
-                    throw new Error(`Could not find value for key '${key}' in options.`);
-                }
-            }
-        }
+        let args: RequestArgs = {url: Config.API + endpoint.url, method: endpoint.method, responseType: ResponseContentType.Json};
 
-        let args: RequestArgs = {
-            url: Config.API + endpoint.url,
-            method: endpoint.method,
-            responseType: ResponseContentType.Json
-        };
-
-        if (options && options.body) {
-            args.body = options.body;
-        }
-
-        // Todo: handle when endpoint isn't protected but token is available
         if (endpoint.isProtected) {
-            let token = this.localStorage.getItem(kAuthToken);
-            args.headers = new Headers();
-            args.headers.set('Authorization', `Bearer ${token}`);
+            args.headers = new Headers({'Authorization': `Bearer ${this.localStorage.getItem(kAuthToken)}`});
+        }
+
+        if (options) { // move to another function for processing options
+            if (options.params) {
+                args.url = Config.API + this.uriService.generateURIForEndpointWithParams(options.params, endpoint);
+            }
+
+            if (options.body) args.body = options.body;
+
+            if (options.search && endpoint.permitURLSearchParams) {
+                options.search.paramsMap.forEach((value, key) => {
+                    if (endpoint.permitURLSearchParams.indexOf(key) === -1) {
+                        this.logger.debug(`[${this.constructor.name}] Query parameter '${key}' not permitted in url ${endpoint.url}.`);
+                        options.search.paramsMap.delete(key);
+                    }
+                });
+            }
         }
 
         let request = new Request(args);
@@ -65,7 +57,7 @@ export class HttpService {
 
         return this.http.request(request)
             .map(this.handleResponse.bind(this))
-            .catch(<Response | any>this.handleError.bind(this));
+            .catch(<Response|any>this.handleError.bind(this));
     }
 
     private handleResponse(response: Response): Entity {
@@ -94,6 +86,7 @@ export class HttpService {
         throw new Error(error);
     }
 
+    // Todo: Move to service
     private between(num: number, lowerLimit: number, upperLimit: number) {
         return num >= lowerLimit && num <= upperLimit;
     }

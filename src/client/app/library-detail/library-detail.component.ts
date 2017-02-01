@@ -6,7 +6,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { NavbarService, Logger, Video, APIHandle, HttpService } from '../core/index';
 
@@ -21,14 +21,17 @@ import 'rxjs/add/operator/switchMap';
 export class LibraryDetailComponent implements OnInit {
     video: Video;
 
-    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute) {
+    constructor(private logger: Logger,
+                private navbar: NavbarService,
+                private http: HttpService,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit() {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
 
         let id = +this.route.snapshot.params['id'];
-        this.http.request(APIHandle.VIDEO, {id: id}).subscribe((video: Video) => {
+        this.http.request(APIHandle.VIDEO, {params: {id: id}}).subscribe((video: Video) => {
             this.navbar.setTitle(video.topic.name);
             this.video = video;
         });
@@ -40,11 +43,11 @@ export class LibraryDetailComponent implements OnInit {
         if (this.video.liked) {
             this.video.liked = false;
             this.video.like_count -= 1;
-            this.http.request(APIHandle.UNLIKE_VIDEO, {id: this.video.id}).subscribe();
+            this.http.request(APIHandle.UNLIKE_VIDEO, {params: {id: this.video.id}}).subscribe();
         } else {
             this.video.liked = true;
             this.video.like_count += 1;
-            this.http.request(APIHandle.LIKE_VIDEO, {id: this.video.id}).subscribe();
+            this.http.request(APIHandle.LIKE_VIDEO, {params: {id: this.video.id}}).subscribe();
         }
     }
 }

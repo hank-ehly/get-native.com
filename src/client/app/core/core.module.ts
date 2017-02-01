@@ -11,14 +11,15 @@ import {
     AuthGuard,
     LocalStorageService,
     LoginModalService,
-    LoginService,
+    URIService,
     HttpService,
     NavbarService,
     PasswordService,
     StringService,
     Logger,
     LangService,
-    UTCDateService
+    UTCDateService,
+    VideoService
 } from './index';
 
 @NgModule({
@@ -29,14 +30,15 @@ import {
         AuthGuard,
         LocalStorageService,
         LoginModalService,
-        LoginService,
+        URIService,
         HttpService,
         NavbarService,
         PasswordService,
         StringService,
         Logger,
         LangService,
-        UTCDateService
+        UTCDateService,
+        VideoService
     ]
 })
 export class CoreModule {

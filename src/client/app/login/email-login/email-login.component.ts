@@ -8,7 +8,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginService, Logger, LoginModalService } from '../../core/index';
+import { Logger, LoginModalService, APIHandle, HttpService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -24,7 +24,7 @@ export class EmailLoginComponent {
         password: ''
     };
 
-    constructor(private logger: Logger, private router: Router, private loginService: LoginService, private loginModal: LoginModalService) {
+    constructor(private logger: Logger, private router: Router, private loginModal: LoginModalService, private http: HttpService) {
     }
 
     onSetModalView(view: string): void {
@@ -32,7 +32,7 @@ export class EmailLoginComponent {
     }
 
     onSubmit(): void {
-        this.loginService.login(this.credentials).subscribe(this.onLoginSuccess.bind(this));
+        this.http.request(APIHandle.LOGIN, {body: this.credentials}).subscribe(this.onLoginSuccess.bind(this));
     }
 
     onLoginSuccess(): void {
