@@ -124,7 +124,7 @@ Status: 204 No Content
 Status 204 No Content
 ```
 
-# PUT /account/email
+# POST /account/email
 
 Todo: Email verification API
 Todo: Email 'not verified yet' message in UI
@@ -132,7 +132,7 @@ Todo: Email 'not verified yet' message in UI
 Update the authenticating user's email address.
 
 ```
-PUT https://api.get-native.com/account/email
+POST https://api.get-native.com/account/email
 ```
 
 **Parameters**
@@ -192,7 +192,9 @@ Status 200 OK
 }
 ```
 
-# PUT /account/password
+# POST /account/password
+
+// TODO: Password verification
 
 **Parameters**
 
@@ -212,12 +214,12 @@ Status 200 OK
 Status 204 No Content
 ```
 
-# PUT /account/profile_image
+# POST /account/profile_image
 
 Updates the profile image of the authenticating user.
 
 ```
-PUT https://api.get-native.com/account/profile_image
+POST https://api.get-native.com/account/profile_image
 ```
 
 **Parameters**
