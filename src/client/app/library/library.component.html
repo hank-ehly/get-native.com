@@ -3,10 +3,11 @@
         <header class="section-header">
             <h1 class="section-header__title">Videos</h1>
 
-            <div class="dropdown-toggle" (click)="onToggleDropdown()">
-                <span class="dropdown-toggle__text">All categories</span>
-                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-down.svg" alt="expand" *ngIf="!isDropdownVisible">
-                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible">
+            <div class="dropdown-toggle">
+                <span class="dropdown-toggle__text">{{ dropdownSelection || 'All videos' }}</span>
+                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-down.svg" alt="expand" *ngIf="!isDropdownVisible && !dropdownSelection" (click)="onClickShowDropdown()">
+                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible  && !dropdownSelection" (click)="onClickHideDropdown()">
+                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="/assets/icons/close-green.svg" alt="close" *ngIf="dropdownSelection" (click)="onClickResetDropdownSelection()">
             </div>
 
             <gn-category-list *ngIf="isDropdownVisible" [categories]="categories" class="dropdown"
