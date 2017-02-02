@@ -229,16 +229,24 @@ export const STUBResponses = new Map<APIHandle, any>([
     [APIHandle.CATEGORIES, <Categories>{
         'records': [
             {
+                'id': 1,
+                'id_str': '1',
                 'name': 'Business',
                 'topics': {
                     'records': [
                         {
+                            'id': 1,
+                            'id_str': '1',
                             'name': 'Meeting Preparation'
                         },
                         {
+                            'id': 2,
+                            'id_str': '2',
                             'name': 'Business Cards'
                         },
                         {
+                            'id': 3,
+                            'id_str': '3',
                             'name': 'Greeting Co-Workers'
                         }
                     ],
@@ -246,13 +254,19 @@ export const STUBResponses = new Map<APIHandle, any>([
                 }
             },
             {
+                'id': 2,
+                'id_str': '2',
                 'name': 'Holidays',
                 'topics': {
                     'records': [
                         {
+                            'id': 4,
+                            'id_str': '4',
                             'name': 'Holding Hands'
                         },
                         {
+                            'id': 5,
+                            'id_str': '5',
                             'name': 'Meeting the Parents'
                         }
                     ],
@@ -260,30 +274,92 @@ export const STUBResponses = new Map<APIHandle, any>([
                 }
             },
             {
+                'id': 3,
+                'id_str': '3',
                 'name': 'Travel',
                 'topics': {
                     'records': [
                         {
+                            'id': 6,
+                            'id_str': '6',
                             'name': 'Subcategory 1'
                         },
                         {
+                            'id': 7,
+                            'id_str': '7',
                             'name': 'Subcategory 2'
                         },
                         {
+                            'id': 8,
+                            'id_str': '8',
                             'name': 'Subcategory 3'
                         },
                         {
+                            'id': 9,
+                            'id_str': '9',
                             'name': 'Subcategory 4'
                         },
                         {
+                            'id': 10,
+                            'id_str': '10',
                             'name': 'Subcategory 5'
                         }
                     ],
                     'count': 5
                 }
+            },
+            {
+                'id': 4,
+                'id_str': '4',
+                'name': 'School',
+                'topics': {
+                    'records': [
+                        {
+                            'id': 11,
+                            'id_str': '11',
+                            'name': 'First Day'
+                        },
+                        {
+                            'id': 12,
+                            'id_str': '12',
+                            'name': 'Making Friends'
+                        }
+                    ],
+                    'count': 2
+                }
+            },
+            {
+                'id': 5,
+                'id_str': '5',
+                'name': 'Transportation',
+                'topics': {
+                    'records': [
+                        {
+                            'id': 13,
+                            'id_str': '13',
+                            'name': 'Taking the Train'
+                        },
+                        {
+                            'id': 14,
+                            'id_str': '14',
+                            'name': 'Riding Horses'
+                        },
+                        {
+                            'id': 15,
+                            'id_str': '15',
+                            'name': 'Bus Passes'
+                        },
+                        {
+                            'id': 16,
+                            'id_str': '16',
+                            'name': 'Taking Long Road Trips'
+                        }
+                    ],
+                    'count': 4
+                }
             }
         ],
-        'count': 3
+        'count': 5
     }],
     [APIHandle.CUED_VIDEOS, <CuedVideos>{
         'count': 4,
