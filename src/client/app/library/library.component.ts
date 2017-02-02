@@ -74,6 +74,7 @@ export class LibraryComponent implements OnInit {
     }
 
     onUpdateSearchParams(): void {
+        this.isDropdownVisible = false;
         this.http.request(APIHandle.VIDEOS, {search: this.search}).subscribe((videos: Videos) => this.videos = videos);
     }
 }
