@@ -9,6 +9,8 @@ import { Component, OnInit, trigger, transition, style, animate } from '@angular
 import { URLSearchParams } from '@angular/http';
 
 import { Logger, Videos, Categories, APIHandle, HttpService, NavbarService } from '../core/index';
+import { Category } from '../core/entities/category';
+import { Topic } from '../core/entities/topic';
 
 @Component({
     moduleId: module.id,
@@ -32,9 +34,11 @@ export class LibraryComponent implements OnInit {
     videos: Videos;
     categories: Categories;
     isDropdownVisible: boolean;
+    search: URLSearchParams;
 
     constructor(private logger: Logger, private http: HttpService, private navbar: NavbarService) {
         this.isDropdownVisible = false;
+        this.search = new URLSearchParams();
     }
 
     ngOnInit(): void {
@@ -45,17 +49,31 @@ export class LibraryComponent implements OnInit {
     }
 
     onSearchQueryChange(query: string) {
-        let search = new URLSearchParams();
-
         if (query !== '') {
-            search.set('q', query);
+            this.search.set('q', query);
         }
 
-        this.http.request(APIHandle.VIDEOS, {search: search}).subscribe((videos: Videos) => this.videos = videos);
+        this.onUpdateSearchParams();
     }
 
     onToggleDropdown(): void {
         this.logger.debug(`[${this.constructor.name}]: onToggleDropdown() -> ${!this.isDropdownVisible}`);
         this.isDropdownVisible = !this.isDropdownVisible;
+    }
+
+    onSelectCategory(category: Category): void {
+        this.search.delete('topic_id');
+        this.search.set('category_id', category.id_str);
+        this.onUpdateSearchParams();
+    }
+
+    onSelectTopic(topic: Topic): void {
+        this.search.delete('category_id');
+        this.search.set('topic_id', topic.id_str);
+        this.onUpdateSearchParams();
+    }
+
+    onUpdateSearchParams(): void {
+        this.http.request(APIHandle.VIDEOS, {search: this.search}).subscribe((videos: Videos) => this.videos = videos);
     }
 }
