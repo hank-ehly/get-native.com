@@ -60,16 +60,19 @@ GET https://api.get-native.com/account
 
 **Response**
 
-| Data Field                    | Type           | Description                                                        |
-|-------------------------------|----------------|--------------------------------------------------------------------|
-| created_at                    | String         | UTC datetime of account creation                                   |
-| profile_image_url             | String         | HTTPS URI for user profile image                                   |
-| default_profile_image         | Boolean        | If true, the user has not uploaded their own image                 |
-| email                         | String         | The user's email address                                           |
-| email_verified                | Boolean        | Whether the user has verified their email address.                 |
-| email_notifications_enabled   | Boolean        | Whether the user has opted to receive email notifications.         |
-| browser_notifications_enabled | Boolean        | Whether the user allows browser notifications.                     |
+| Data Field                    | Type           | Description                                                                |
+|-------------------------------|----------------|----------------------------------------------------------------------------|
+| created_at                    | String         | UTC datetime of account creation                                           |
+| profile_image_url             | String         | HTTPS URI for user profile image                                           |
+| default_profile_image         | Boolean        | If true, the user has not uploaded their own image                         |
+| email                         | String         | The user's email address                                                   |
+| email_verified                | Boolean        | Whether the user has verified their email address.                         |
+| email_notifications_enabled   | Boolean        | Whether the user has opted to receive email notifications.                 |
+| browser_notifications_enabled | Boolean        | Whether the user allows browser notifications.                             |
+| default_study_language        | String         | BCP 47 code for the language of videos that the user will see after login. |
+| site_language ※               | String         | BCP 47 code for the user's preferred site language.                        |
 
+※　`site_language` is reserved for future use. As of 2017/02/03, it's value is fixed at the default `en`.
 
 ```
 Status: 200 OK
@@ -82,7 +85,9 @@ Status: 200 OK
 	"email": "john.doe@example.com",
 	"email_verified": true,
 	"email_notifications_enabled": true,
-	"browser_notifications_enabled": false
+	"browser_notifications_enabled": false,
+	"default_study_language": "en",
+	"site_language": "en"
 }
 ```
 
@@ -183,6 +188,23 @@ Status 200 OK
 	"password": "8h45lJ0E"
 }
 ```
+
+**Response**
+
+```
+Status 204 No Content
+```
+
+# PUT /account/preferences
+
+**Parameters**
+
+|  Parameter | Description | Required | Default |
+|  ------ | ------ | ------ | ------ |
+|  email_notifications | A boolean value describing whether the user wishes to receive notifications by email |  |  |
+|  browser_notifications | A boolean value describing whether the user wishes to allow browser notifications |  |  |
+|  site_language | A BCP 47 code denoting the user's preferred language for the website |  |  |
+|  default_study_language | A BCP 47 code describing the language in which videos will appear on user login |  |  |
 
 **Response**
 
