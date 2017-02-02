@@ -14,11 +14,16 @@
 
 .dropdown-toggle {
   align-self: center;
-  cursor: pointer;
 }
 
 .dropdown-toggle__icon {
-  width: 15px;
+  cursor: pointer;
+  margin-left: 5px;
+  width: 12px;
+}
+
+.dropdown-toggle__icon--close {
+  width: 10px;
 }
 
 .section__button {

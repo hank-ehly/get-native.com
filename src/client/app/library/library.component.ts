@@ -8,9 +8,7 @@
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
-import { Logger, Videos, Categories, APIHandle, HttpService, NavbarService } from '../core/index';
-import { Category } from '../core/entities/category';
-import { Topic } from '../core/entities/topic';
+import { Logger, Videos, Categories, APIHandle, HttpService, NavbarService, Category, Topic } from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -35,6 +33,7 @@ export class LibraryComponent implements OnInit {
     categories: Categories;
     isDropdownVisible: boolean;
     search: URLSearchParams;
+    dropdownSelection: string;
 
     constructor(private logger: Logger, private http: HttpService, private navbar: NavbarService) {
         this.isDropdownVisible = false;
@@ -49,27 +48,46 @@ export class LibraryComponent implements OnInit {
     }
 
     onSearchQueryChange(query: string) {
-        if (query !== '') {
-            this.search.set('q', query);
+        let trimmedQuery = query.trim();
+
+        if (trimmedQuery) {
+            this.search.set('q', trimmedQuery);
+        } else {
+            this.search.delete('q');
         }
 
         this.onUpdateSearchParams();
     }
 
-    onToggleDropdown(): void {
-        this.logger.debug(`[${this.constructor.name}]: onToggleDropdown() -> ${!this.isDropdownVisible}`);
+    onClickShowDropdown(): void {
+        this.logger.debug(`[${this.constructor.name}]: onClickShowDropdown()`);
         this.isDropdownVisible = !this.isDropdownVisible;
+    }
+
+    onClickHideDropdown(): void {
+        this.logger.debug(`[${this.constructor.name}]: onClickHideDropdown()`);
+        this.isDropdownVisible = false;
+    }
+
+    onClickResetDropdownSelection(): void {
+        this.logger.debug(`[${this.constructor.name}]: onClickResetDropdownSelection()`);
+        this.dropdownSelection = null;
+        this.search.delete('topic_id');
+        this.search.delete('category_id');
+        this.onUpdateSearchParams();
     }
 
     onSelectCategory(category: Category): void {
         this.search.delete('topic_id');
         this.search.set('category_id', category.id_str);
+        this.dropdownSelection = category.name;
         this.onUpdateSearchParams();
     }
 
     onSelectTopic(topic: Topic): void {
         this.search.delete('category_id');
         this.search.set('topic_id', topic.id_str);
+        this.dropdownSelection = topic.name;
         this.onUpdateSearchParams();
     }
 
