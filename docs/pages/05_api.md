@@ -107,6 +107,23 @@ DELETE https://api.get-native/account
 Status: 204 No Content
 ```
 
+# PATCH /account
+
+**Parameters**
+
+|  Parameter | Description | Required | Default |
+|  ------ | ------ | ------ | ------ |
+|  email_notifications_enabled | A boolean value describing whether the user wishes to receive notifications by email |  |  |
+|  browser_notifications_enabled | A boolean value describing whether the user wishes to allow browser notifications |  |  |
+|  site_language | A BCP 47 code denoting the user's preferred language for the website |  |  |
+|  default_study_language | A BCP 47 code describing the language in which videos will appear on user login |  |  |
+
+**Response**
+
+```
+Status 204 No Content
+```
+
 # PUT /account/email
 
 Todo: Email verification API
@@ -188,23 +205,6 @@ Status 200 OK
 	"password": "8h45lJ0E"
 }
 ```
-
-**Response**
-
-```
-Status 204 No Content
-```
-
-# PUT /account/preferences
-
-**Parameters**
-
-|  Parameter | Description | Required | Default |
-|  ------ | ------ | ------ | ------ |
-|  email_notifications | A boolean value describing whether the user wishes to receive notifications by email |  |  |
-|  browser_notifications | A boolean value describing whether the user wishes to allow browser notifications |  |  |
-|  site_language | A BCP 47 code denoting the user's preferred language for the website |  |  |
-|  default_study_language | A BCP 47 code describing the language in which videos will appear on user login |  |  |
 
 **Response**
 
