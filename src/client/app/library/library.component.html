@@ -9,7 +9,9 @@
                 <img class="dropdown-toggle__icon" src="/assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible">
             </div>
 
-            <gn-category-list [categories]="categories" class="dropdown" *ngIf="isDropdownVisible" [@dropdown]></gn-category-list>
+            <gn-category-list *ngIf="isDropdownVisible" [categories]="categories" class="dropdown"
+                              (selectCategory)="onSelectCategory($event)" (selectTopic)="onSelectTopic($event)"
+                              [@dropdown]></gn-category-list>
         </header>
 
         <gn-video-panel-list [videos]="videos" [navigates]="true"></gn-video-panel-list>
