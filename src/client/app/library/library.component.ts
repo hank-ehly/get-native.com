@@ -47,7 +47,9 @@ export class LibraryComponent implements OnInit {
     onSearchQueryChange(query: string) {
         let search = new URLSearchParams();
 
-        search.set('q', query);
+        if (query !== '') {
+            search.set('q', query);
+        }
 
         this.http.request(APIHandle.VIDEOS, {search: search}).subscribe((videos: Videos) => this.videos = videos);
     }
