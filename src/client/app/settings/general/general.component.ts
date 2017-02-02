@@ -15,6 +15,7 @@ import { Component } from '@angular/core';
 })
 export class GeneralComponent {
     isEditing: boolean = false;
+    password: string = '';
 
     onToggleEditing(): void {
         this.isEditing = !this.isEditing;
