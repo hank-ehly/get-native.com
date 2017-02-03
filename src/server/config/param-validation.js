@@ -8,6 +8,19 @@
 const joi = require('joi');
 
 module.exports = {
+    account: {
+        update: {
+            headers: {
+                authorization: joi.string().required()
+            },
+            body: {
+                email_notifications_enabled: joi.boolean(),
+                browser_notifications_enabled: joi.boolean(),
+                site_language: joi.string(),
+                default_study_language: joi.string()
+            }
+        }
+    },
     auth: {
         login: {
             body: {
