@@ -50,5 +50,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/videos/:id/unlike',
         isProtected: true
+    }],
+    [APIHandle.EDIT_ACCOUNT, {
+        method: RequestMethod.Patch,
+        url: '/account',
+        isProtected: true
     }]
 ]);
