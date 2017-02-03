@@ -13,5 +13,6 @@ export enum APIHandle {
     UNLIKE_VIDEO,
     STUDY_STATS,
     CUED_VIDEOS,
-    CATEGORIES
+    CATEGORIES,
+    EDIT_ACCOUNT
 }
