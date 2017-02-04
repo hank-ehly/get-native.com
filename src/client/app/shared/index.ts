@@ -15,6 +15,7 @@ export * from './digital-time/digital-time.pipe';
 export * from './modal/modal.component';
 export * from './navbar/index';
 export * from './password-strength/password-strength.component';
+export * from './select/select.component';
 export * from './side-menu/side-menu.component';
 export * from './study-progress/study-progress.component';
 export * from './switch/switch.component';
