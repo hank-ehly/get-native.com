@@ -7,10 +7,6 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { Logger } from '../../core/index';
-
-import '../../operators';
-
 @Component({
     moduleId: module.id,
     selector: 'gn-switch',
@@ -18,11 +14,8 @@ import '../../operators';
     styleUrls: ['switch.component.css']
 })
 export class SwitchComponent {
-    @Input() on: boolean;
+    @Input() on: boolean = false;
     @Output() toggle = new EventEmitter<boolean>();
-
-    constructor(private logger: Logger) {
-    }
 
     onToggle(): void {
         this.toggle.emit(this.on);
