@@ -7,25 +7,23 @@
 
 import { Injectable } from '@angular/core';
 
-import { Logger, LangCode, LangCodeNamePair } from '../index';
+import { Logger, Language } from '../index';
 
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ToolbarService {
-    selectLanguage$: Observable<LangCode>;
-    private selectLanguageSource: Subject<LangCode>;
+    selectLanguage$: Observable<Language>;
+    private selectLanguageSource: Subject<Language>;
 
     constructor(private logger: Logger) {
-        this.selectLanguageSource = new Subject<LangCode>();
+        this.selectLanguageSource = new Subject<Language>();
         this.selectLanguage$ = this.selectLanguageSource.asObservable();
     }
 
-    didSelectLanguage(lang: LangCodeNamePair): void {
-        // Todo: Check language code exists
-
+    didSelectLanguage(lang: Language): void {
         this.logger.debug(`[${this.constructor.name}] Selected '${lang.name}' language.`);
-        this.selectLanguageSource.next(lang.code);
+        this.selectLanguageSource.next(lang);
     }
 }

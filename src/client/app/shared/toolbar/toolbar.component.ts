@@ -14,7 +14,7 @@ import {
     kAuthTokenExpire,
     LangCodeNameMap,
     ToolbarService,
-    LangCodeNamePair
+    Language
 } from '../../core/index';
 
 @Component({
@@ -45,7 +45,7 @@ export class ToolbarComponent {
     languages = LangCodeNameMap;
 
     /* Todo: Which language should be the default selected language? */
-    selectedLanguage: LangCodeNamePair;
+    selectedLanguage: Language;
 
     constructor(private logger: Logger, private localStorage: LocalStorageService, private toolbarService: ToolbarService) {
         this.selectedLanguage = this.languages[0];
@@ -69,7 +69,7 @@ export class ToolbarComponent {
         this.isTooltipVisible = !this.isTooltipVisible;
     }
 
-    setSelectedLanguage(lang: LangCodeNamePair): void {
+    setSelectedLanguage(lang: Language): void {
         if (this.selectedLanguage !== lang) {
             this.selectedLanguage = lang;
             this.toolbarService.didSelectLanguage(lang);
