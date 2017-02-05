@@ -15,5 +15,6 @@ export enum APIHandle {
     CUED_VIDEOS,
     CATEGORIES,
     EDIT_ACCOUNT,
-    EDIT_PASSWORD
+    EDIT_PASSWORD,
+    EDIT_EMAIL
 }

@@ -60,5 +60,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/account/password',
         isProtected: true
+    }],
+    [APIHandle.EDIT_EMAIL, {
+        method: RequestMethod.Post,
+        url: '/account/email',
+        isProtected: true
     }]
 ]);
