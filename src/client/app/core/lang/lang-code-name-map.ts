@@ -5,9 +5,9 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { LangCodeNamePair } from '../typings/lang-code-name-pair';
+import { Language } from '../typings/language';
 
-export const LangCodeNameMap: LangCodeNamePair[] = [
+export const LangCodeNameMap: Language[] = [
     {
         code: 'en',
         name: 'English'

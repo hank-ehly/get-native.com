@@ -8,7 +8,18 @@
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
-import { Logger, Videos, Categories, APIHandle, HttpService, NavbarService, Category, Topic } from '../core/index';
+import {
+    Logger,
+    Videos,
+    Categories,
+    APIHandle,
+    HttpService,
+    NavbarService,
+    Category,
+    Topic,
+    ToolbarService,
+    Language
+} from '../core/index';
 
 @Component({
     moduleId: module.id,
@@ -35,7 +46,7 @@ export class LibraryComponent implements OnInit {
     search: URLSearchParams;
     dropdownSelection: string;
 
-    constructor(private logger: Logger, private http: HttpService, private navbar: NavbarService) {
+    constructor(private logger: Logger, private http: HttpService, private navbar: NavbarService, private toolbar: ToolbarService) {
         this.isDropdownVisible = false;
         this.search = new URLSearchParams();
     }
@@ -46,6 +57,7 @@ export class LibraryComponent implements OnInit {
         this.http.request(APIHandle.VIDEOS).subscribe((videos: Videos) => this.videos = videos);
         this.navbar.updateSearchQuery$.subscribe(this.onSearchQueryChange.bind(this));
         this.navbar.toggleSearchBar$.subscribe(this.didToggleSearchBar.bind(this));
+        this.toolbar.selectLanguage$.subscribe(this.didSelectLanguage.bind(this));
     }
 
     onSearchQueryChange(query: string) {
@@ -57,7 +69,7 @@ export class LibraryComponent implements OnInit {
             this.search.delete('q');
         }
 
-        this.onUpdateSearchParams();
+        this.updateSearchResults();
     }
 
     onClickShowDropdown(): void {
@@ -75,24 +87,24 @@ export class LibraryComponent implements OnInit {
         this.dropdownSelection = null;
         this.search.delete('topic_id');
         this.search.delete('category_id');
-        this.onUpdateSearchParams();
+        this.updateSearchResults();
     }
 
     onSelectCategory(category: Category): void {
         this.search.delete('topic_id');
         this.search.set('category_id', category.id_str);
         this.dropdownSelection = category.name;
-        this.onUpdateSearchParams();
+        this.updateSearchResults();
     }
 
     onSelectTopic(topic: Topic): void {
         this.search.delete('category_id');
         this.search.set('topic_id', topic.id_str);
         this.dropdownSelection = topic.name;
-        this.onUpdateSearchParams();
+        this.updateSearchResults();
     }
 
-    onUpdateSearchParams(): void {
+    updateSearchResults(): void {
         this.isDropdownVisible = false;
         this.http.request(APIHandle.VIDEOS, {search: this.search}).subscribe((videos: Videos) => this.videos = videos);
     }
@@ -100,7 +112,12 @@ export class LibraryComponent implements OnInit {
     didToggleSearchBar(hidden: boolean): void {
         if (hidden) {
             this.search.delete('q');
-            this.onUpdateSearchParams();
+            this.updateSearchResults();
         }
+    }
+
+    didSelectLanguage(language: Language) {
+        this.search.set('lang', language.code);
+        this.updateSearchResults();
     }
 }
