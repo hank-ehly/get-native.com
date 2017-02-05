@@ -8,3 +8,7 @@
 module.exports.update = (req, res) => {
     res.sendStatus(204);
 };
+
+module.exports.updatePassword = (req, res) => {
+    res.sendStatus(204);
+};

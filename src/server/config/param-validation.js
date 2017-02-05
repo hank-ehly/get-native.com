@@ -19,6 +19,14 @@ module.exports = {
                 site_language: joi.string(),
                 default_study_language: joi.string()
             }
+        },
+        updatePassword: {
+            headers: {
+                authorization: joi.string().required()
+            },
+            body: {
+                password: joi.string().required()
+            }
         }
     },
     auth: {
