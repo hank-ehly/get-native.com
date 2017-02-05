@@ -72,7 +72,9 @@ export class LibraryComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         // Todo: Request with default language
-        this.onSelectLanguage({code: 'en', name: 'English'});
+        this.search.set('count', '9');
+        this.search.set('lang', 'en');
+        this.lang$.next('en');
     }
 
     onClickShowDropdown(): void {
