@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/05.
  */
 
-import { Component, OnInit, trigger, transition, style, animate, AfterViewInit } from '@angular/core';
+import { Component, OnInit, trigger, transition, style, animate, AfterViewInit, HostListener } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
 import {
@@ -51,6 +51,23 @@ export class LibraryComponent implements OnInit, AfterViewInit {
 
     constructor(private logger: Logger, private http: HttpService, private navbar: NavbarService, private toolbar: ToolbarService,
                 private categoryList: CategoryListService) {
+    }
+
+    @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
+        if (!this.isDropdownVisible) {
+            return;
+        }
+
+        let found = false;
+        let path: any[] = (<any>e).path;
+
+        for (let i = 0; i < path.length; i++) {
+            if (path[i].tagName && path[i].tagName.toLowerCase() === 'gn-category-list') {
+                found = true; break;
+            }
+        }
+
+        this.isDropdownVisible = found;
     }
 
     ngOnInit(): void {
