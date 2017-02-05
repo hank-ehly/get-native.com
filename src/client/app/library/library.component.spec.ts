@@ -22,7 +22,8 @@ import {
     STUBNavbarService,
     HttpService,
     STUBHttpService,
-    ToolbarService
+    ToolbarService,
+    CategoryListService
 } from '../core/index';
 
 export function main() {
@@ -43,8 +44,7 @@ export function main() {
                     {provide: HttpService, useValue: STUBHttpService},
                     {provide: NavbarService, useValue: STUBNavbarService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-                    UTCDateService,
-                    ToolbarService
+                    UTCDateService, ToolbarService, CategoryListService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LibraryComponent);
