@@ -45,6 +45,7 @@
   cursor: pointer;
   letter-spacing: $uppercase-label-letter-spacing;
   margin-top: 16px;
+  user-select: none;
 }
 
 .toolbar__links {
