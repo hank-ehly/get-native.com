@@ -7,12 +7,18 @@
 
 import { Injectable } from '@angular/core';
 
-import { LangCodeNameMap } from './lang-codes';
+import { Languages } from './languages';
 import { LangCode } from '../typings/lang-code';
 
 @Injectable()
 export class LangService {
     codeToName(code: LangCode): string {
-        return <string>LangCodeNameMap[code];
+        for (let lang of Languages) {
+            if (lang.code === code) {
+                return lang.name;
+            }
+        }
+
+        throw new Error(`No language exists with the code '${code}'`);
     }
 }

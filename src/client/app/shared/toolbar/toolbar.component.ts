@@ -12,7 +12,7 @@ import {
     LocalStorageService,
     kAuthToken,
     kAuthTokenExpire,
-    LangCodeNameMap,
+    Languages,
     ToolbarService,
     Language
 } from '../../core/index';
@@ -42,7 +42,7 @@ import {
 })
 export class ToolbarComponent {
     isTooltipVisible: boolean;
-    languages = LangCodeNameMap;
+    languages = Languages;
 
     /* Todo: Which language should be the default selected language? */
     selectedLanguage: Language;
