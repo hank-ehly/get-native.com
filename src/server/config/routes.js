@@ -24,5 +24,6 @@ router.post( '/videos/:id/like',   validate(validations.videos.like),           
 router.post( '/videos/:id/unlike', validate(validations.videos.unlike),          controllers.auth.authenticate, controllers.videos.unlike);
 router.patch('/account',           validate(validations.account.update),         controllers.auth.authenticate, controllers.account.update);
 router.post( '/account/password',  validate(validations.account.updatePassword), controllers.auth.authenticate, controllers.account.updatePassword);
+router.post( '/account/email',     validate(validations.account.updateEmail),    controllers.auth.authenticate, controllers.account.updateEmail);
 
 module.exports = router;

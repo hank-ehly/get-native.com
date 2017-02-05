@@ -27,6 +27,14 @@ module.exports = {
             body: {
                 password: joi.string().required()
             }
+        },
+        updateEmail: {
+            headers: {
+                authorization: joi.string().required()
+            },
+            body: {
+                email: joi.string().email().required()
+            }
         }
     },
     auth: {
