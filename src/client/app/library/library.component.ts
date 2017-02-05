@@ -111,11 +111,13 @@ export class LibraryComponent implements OnInit, AfterViewInit {
     }
 
     private onSelectCategory(category: Category): void {
+        this.search.delete('topic_id');
         this.updateSearchParams('category_id', category.id_str);
         this.category$.next(category.id_str);
     }
 
     private onSelectTopic(topic: Topic): void {
+        this.search.delete('category_id');
         this.updateSearchParams('topic_id', topic.id_str);
         this.topic$.next(topic.id_str);
     }
