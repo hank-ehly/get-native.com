@@ -7,7 +7,7 @@
 
 import { Component } from '@angular/core';
 
-import { Logger } from '../../core/logger/logger';
+import { Logger, HttpService, APIHandle } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -24,7 +24,7 @@ export class GeneralComponent {
         confirm: ''
     };
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private http: HttpService) {
     }
 
     onToggleEditing(): void {
@@ -33,5 +33,7 @@ export class GeneralComponent {
 
     onSubmitPassword(): void {
         this.logger.debug(`[${this.constructor.name}] onSubmitPassword()`);
+
+        this.http.request(APIHandle.EDIT_PASSWORD, {body: {password: this.passwordForm.replace}}).subscribe();
     }
 }

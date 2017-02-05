@@ -14,5 +14,6 @@ export enum APIHandle {
     STUDY_STATS,
     CUED_VIDEOS,
     CATEGORIES,
-    EDIT_ACCOUNT
+    EDIT_ACCOUNT,
+    EDIT_PASSWORD
 }
