@@ -12,6 +12,7 @@ export * from './debug/index';
 export * from './footer/index';
 export * from './fuzzy-number/fuzzy-number.pipe';
 export * from './digital-time/digital-time.pipe';
+export * from './focus/focus.directive';
 export * from './modal/modal.component';
 export * from './navbar/index';
 export * from './password-strength/password-strength.component';
