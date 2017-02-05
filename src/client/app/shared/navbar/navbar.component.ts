@@ -5,10 +5,11 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnInit, Input, trigger, transition, animate, style } from '@angular/core';
+import { Component, OnInit, Input, trigger, transition, animate, style, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { LoginModalService, NavbarService, Logger } from '../../core/index';
+import { FocusDirective } from '../focus/focus.directive';
 
 @Component({
     moduleId: module.id,
@@ -40,6 +41,7 @@ import { LoginModalService, NavbarService, Logger } from '../../core/index';
 })
 export class NavbarComponent implements OnInit {
     @Input() authenticated: boolean;
+    @ViewChild(FocusDirective) searchBar: FocusDirective;
     title: string;
     searchBarHidden: boolean;
     studyOptionsHidden: boolean;
@@ -48,10 +50,7 @@ export class NavbarComponent implements OnInit {
     logoLinkPath: string;
     hasUnreadNotifications: boolean;
 
-    constructor(private loginModal: LoginModalService,
-                private logger: Logger,
-                private navbar: NavbarService,
-                private location: Location) {
+    constructor(private loginModal: LoginModalService, private logger: Logger, private navbar: NavbarService, private location: Location) {
         this.searchBarHidden = true;
         this.studyOptionsHidden = true;
         this.progressBarHidden = true;
@@ -83,6 +82,12 @@ export class NavbarComponent implements OnInit {
     onToggleSearch(): void {
         this.searchBarHidden = !this.searchBarHidden;
         this.logger.debug(`[${this.constructor.name}]: Search bar hidden set to '${this.searchBarHidden}'`);
+
+        /* this.searchBar is not immediately available after becoming 'visible' */
+        setTimeout(() => {
+            if (!this.searchBarHidden) this.searchBar.focus();
+        }, 1);
+
         this.navbar.didToggleSearchBar(this.searchBarHidden);
     }
 
