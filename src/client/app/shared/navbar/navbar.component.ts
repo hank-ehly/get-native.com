@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnInit, Input, trigger, transition, animate, style, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, trigger, transition, animate, style, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { LoginModalService, NavbarService, Logger } from '../../core/index';
@@ -39,7 +39,7 @@ import { FocusDirective } from '../focus/focus.directive';
         ])
     ]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
     @Input() authenticated: boolean;
     @ViewChild(FocusDirective) searchBar: FocusDirective;
     title: string;
@@ -59,7 +59,16 @@ export class NavbarComponent implements OnInit {
     ngOnInit(): void {
         this.navbar.setTitle$.subscribe((t) => this.title = t);
         this.navbar.setBackButton$.subscribe(t => this.backButtonTitle = t);
+        this.logger.debug(`[${this.constructor.name}] this.authenticated = ${this.authenticated}`);
         this.logoLinkPath = this.authenticated ? 'dashboard' : '';
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        this.logger.debug(`[${this.constructor.name}] changes`, changes);
+
+        if (changes['authenticated']) {
+            this.logoLinkPath = changes['authenticated'].currentValue ? 'dashboard' : '';
+        }
     }
 
     onShowLoginModal(event: any): void {
