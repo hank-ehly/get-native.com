@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import { Component, OnInit, trigger, transition, animate, keyframes, style, Input, EventEmitter, Output } from '@angular/core';
+import { Component, trigger, transition, animate, keyframes, style, Input, EventEmitter, Output } from '@angular/core';
 
 import { Logger } from '../../core/index';
 
@@ -49,14 +49,11 @@ import { Logger } from '../../core/index';
         ])
     ]
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent {
     @Input() isVisible: boolean;
     @Output() close = new EventEmitter();
 
     constructor(private logger: Logger) {
-    }
-
-    ngOnInit() {
     }
 
     onClickClose(e: MouseEvent): void {
