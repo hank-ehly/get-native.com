@@ -146,8 +146,8 @@ export const STUBResponses = new Map<APIHandle, any>([
         'records': [
             {
                 'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
-                'id_str': '1',
-                'id': 1,
+                'id_str': '55',
+                'id': 55,
                 'speaker': {
                     'name': 'Harold Ford'
                 },
@@ -162,8 +162,8 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Wed Jan 11 04:35:55 +0000 2017',
-                'id_str': '2',
-                'id': 2,
+                'id_str': '56',
+                'id': 56,
                 'speaker': {
                     'name': 'Benjamin Franklin'
                 },
@@ -178,8 +178,8 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Tue Aug 9 04:35:55 +0000 2016',
-                'id_str': '3',
-                'id': 3,
+                'id_str': '63',
+                'id': 63,
                 'speaker': {
                     'name': 'Jesse James'
                 },
@@ -194,8 +194,8 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Tue Mar 14 04:35:55 +0000 2017',
-                'id_str': '4',
-                'id': 4,
+                'id_str': '84',
+                'id': 84,
                 'speaker': {
                     'name': 'Aretha Franklin'
                 },
@@ -210,8 +210,8 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Thu Jan 12 04:35:55 +0000 2017',
-                'id_str': '5',
-                'id': 5,
+                'id_str': '109',
+                'id': 109,
                 'speaker': {
                     'name': 'Britney Spears'
                 },
@@ -220,6 +220,22 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 'loop_count': 3,
                 'loop_velocity': 2.4960000000000004,
+                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
+                'video_url': '/assets/mock/video.mov',
+                'length': 89
+            },
+            {
+                'created_at': 'Thu Jan 12 04:35:55 +0000 2017',
+                'id_str': '110',
+                'id': 110,
+                'speaker': {
+                    'name': 'Santa Claus'
+                },
+                'topic': {
+                    'name': 'Efficient Elves'
+                },
+                'loop_count': 900,
+                'loop_velocity': 5.4960000000000004,
                 'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
                 'video_url': '/assets/mock/video.mov',
                 'length': 89
