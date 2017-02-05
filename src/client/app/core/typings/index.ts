@@ -10,3 +10,4 @@ export * from './gender';
 export * from './lang-code';
 export * from './unit-interval';
 export * from './email-regex';
+export * from './lang-code-name-pair';
