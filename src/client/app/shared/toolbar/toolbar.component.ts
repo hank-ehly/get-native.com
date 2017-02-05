@@ -7,7 +7,15 @@
 
 import { Component, trigger, transition, style, animate, keyframes } from '@angular/core';
 
-import { Logger, LocalStorageService, kAuthToken, kAuthTokenExpire } from '../../core/index';
+import {
+    Logger,
+    LocalStorageService,
+    kAuthToken,
+    kAuthTokenExpire,
+    LangCodeNameMap,
+    ToolbarService,
+    LangCodeNamePair
+} from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -34,15 +42,13 @@ import { Logger, LocalStorageService, kAuthToken, kAuthTokenExpire } from '../..
 })
 export class ToolbarComponent {
     isTooltipVisible: boolean;
-
-    /* Todo: Where do you get these languages from? */
-    languages: string[] = ['日本語', 'ITALIANO', 'ESPAÑOL', 'ENGLISH'];
+    languages = LangCodeNameMap;
 
     /* Todo: Which language should be the default selected language? */
-    selectedLang: string;
+    selectedLanguage: LangCodeNamePair;
 
-    constructor(private logger: Logger, private localStorage: LocalStorageService) {
-        this.selectedLang = this.languages[0];
+    constructor(private logger: Logger, private localStorage: LocalStorageService, private toolbarService: ToolbarService) {
+        this.selectedLanguage = this.languages[0];
     }
 
     onLogout(): void {
@@ -63,7 +69,10 @@ export class ToolbarComponent {
         this.isTooltipVisible = !this.isTooltipVisible;
     }
 
-    setSelectedLanguage(lang: string) {
-        this.selectedLang = lang;
+    setSelectedLanguage(lang: LangCodeNamePair): void {
+        if (this.selectedLanguage !== lang) {
+            this.selectedLanguage = lang;
+            this.toolbarService.didSelectLanguage(lang);
+        }
     }
 }

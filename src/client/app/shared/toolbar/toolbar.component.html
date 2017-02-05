@@ -1,26 +1,26 @@
 <div class="toolbar" (mouseleave)="onHideTooltip()">
 
     <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="isTooltipVisible">
-        <li class="toolbar__language-label" *ngFor="let language of languages" (click)="setSelectedLanguage(language)">
-            {{ language }}
+        <li class="toolbar__language-label" *ngFor="let lang of languages" (click)="setSelectedLanguage(lang)">
+            {{ lang.name }}
         </li>
     </ul>
 
     <span class="toolbar__language-label toolbar__language-label_selected" (click)="onToggleTooltip()" (mouseenter)="onShowTooltip()">
-        {{ selectedLang }}
+        {{ selectedLanguage.name }}
     </span>
 
     <nav class="toolbar__links">
         <a class="toolbar__link toolbar__link--settings" [routerLink]="'settings'">
-            <img class="toolbar_link-icon" src="../../../assets/icons/settings.svg" alt="settings">
+            <img class="toolbar_link-icon" src="/assets/icons/settings.svg" alt="settings">
         </a>
 
         <a class="toolbar__link" [routerLink]="'help'">
-            <img class="toolbar_link-icon" src="../../../assets/icons/help.svg" alt="help">
+            <img class="toolbar_link-icon" src="/assets/icons/help.svg" alt="help">
         </a>
 
         <a class="toolbar__link" (click)="onLogout()">
-            <img class="toolbar_link-icon" src="../../../assets/icons/sign-out.svg" alt="sign-out">
+            <img class="toolbar_link-icon" src="/assets/icons/sign-out.svg" alt="sign-out">
         </a>
     </nav>
 </div>

@@ -695,41 +695,6 @@ POST https://api.get-native.com/study
 }
 ```
 
-# GET /study/languages
-
-Returns a list of _study languages_ currently supported by get native.
-
-```
-POST https://api.get-native.com/study/languages
-```
-
-**Response**
-
-| Data Field            | Type           | Description                          |
-|-----------------------|----------------|--------------------------------------|
-| languages             | [Language]     |  An array of _Language_ objects      |
-
-```
-Status: 200 OK
-```
-```json
-{
-    "records": [{
-        "id": 1,
-        "id_str": 1,
-        "code": "en",
-        "name": "English"
-    },
-    {
-        "id": 2,
-        "id_str": 2,
-        "code": "ja",
-        "name": "日本語"
-    }],
-    "count": 2
-}
-```
-
 # POST /study/listening
 
 Register the completion of a listening session.

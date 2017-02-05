@@ -8,6 +8,7 @@
 export * from './string/string.service';
 export * from './entities/index';
 export * from './lang/lang.service';
+export * from './lang/lang-code-name-map';
 export * from './local-storage/index';
 export * from './logger/index'
 export * from './auth/index';
@@ -16,5 +17,6 @@ export * from './http/index';
 export * from './navbar/index';
 export * from './password/index';
 export * from './spec/index';
+export * from './toolbar/toolbar.service';
 export * from './typings/index';
 export * from './utc-date/utc-date.service';

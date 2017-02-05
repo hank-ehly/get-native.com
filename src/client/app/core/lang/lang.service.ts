@@ -7,12 +7,12 @@
 
 import { Injectable } from '@angular/core';
 
-import { LangCodes } from './lang-codes';
+import { LangCodeNameMap } from './lang-codes';
 import { LangCode } from '../typings/lang-code';
 
 @Injectable()
 export class LangService {
     codeToName(code: LangCode): string {
-        return <string>LangCodes[code];
+        return <string>LangCodeNameMap[code];
     }
 }
