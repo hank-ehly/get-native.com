@@ -2,7 +2,7 @@
     <div class="form__group">
         <label for="email" class="label">Email</label>
         <input id="email" type="email" name="email" class="input" [readonly]="!isEditing" placeholder="example@email.com"
-               [(ngModel)]="credentials.email" required [pattern]="emailRegex" autofocus gnFocus>
+               [(ngModel)]="credentials.email" required [pattern]="emailRegex" gnFocus>
 
         <div class="form__button-group">
             <button class="button button--opaque" *ngIf="!isEditing" (click)="onClickEdit()">EDIT</button>
