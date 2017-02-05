@@ -29,8 +29,8 @@ import './operators';
 })
 export class AppComponent implements OnInit, LocalStorageProtocol {
     showComplianceDialog: boolean;
-    showLoginModal: boolean;
-    authenticated: boolean;
+    showLoginModal: boolean = false;
+    authenticated: boolean = false;
 
     constructor(private logger: Logger,
                 private localStorage: LocalStorageService,
@@ -38,9 +38,7 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
                 private activatedRoute: ActivatedRoute,
                 private navbar: NavbarService,
                 private titleService: Title,
-    private auth: AuthService) {
-        this.authenticated = false;
-        this.showLoginModal = false;
+                private auth: AuthService) {
     }
 
     @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
@@ -54,7 +52,6 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
 
         this.showComplianceDialog = !this.localStorage.getItem(kAcceptLocalStorage);
 
-        // Todo: See if you can use 'super()' somehow to get rid of this.
         this.localStorage.setItem$.subscribe(this.didSetLocalStorageItem.bind(this));
         this.localStorage.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this));
         this.localStorage.clearSource$.subscribe(this.didClearStorage.bind(this));
