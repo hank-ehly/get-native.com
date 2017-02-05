@@ -38,7 +38,7 @@ export class NavbarService {
     }
 
     updateSearchQuery(query: string): void {
-        this.updateSearchQuerySource.next(query);
+        this.updateSearchQuerySource.next(query.trim());
     }
 
     didToggleSearchBar(hidden: boolean) {
