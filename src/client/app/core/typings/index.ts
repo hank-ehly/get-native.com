@@ -9,3 +9,4 @@ export * from './datetime';
 export * from './gender';
 export * from './lang-code';
 export * from './unit-interval';
+export * from './email-regex';

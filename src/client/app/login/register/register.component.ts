@@ -7,7 +7,7 @@
 
 import { Component } from '@angular/core';
 
-import { LoginModalService, Logger } from '../../core/index';
+import { LoginModalService, Logger, EMAIL_REGEX } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +16,7 @@ import { LoginModalService, Logger } from '../../core/index';
     styleUrls: ['register.component.css']
 })
 export class RegisterComponent {
-    emailRegex = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
+    emailRegex = EMAIL_REGEX;
 
     credentials: any = {
         email: '',
