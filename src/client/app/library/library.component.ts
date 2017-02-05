@@ -40,13 +40,14 @@ export class LibraryComponent implements OnInit, AfterViewInit {
     dropdownSelection: string;
     isDropdownVisible: boolean = false;
 
-    videos$: Observable<Videos>;
+    videos: Videos;
     search: URLSearchParams = new URLSearchParams();
 
     private query$    = new Subject<string>();
     private lang$     = new Subject<LangCode>();
     private category$ = new Subject<string>();
     private topic$    = new Subject<string>();
+    private maxId$    = new Subject<string>();
 
     constructor(private logger: Logger, private http: HttpService, private navbar: NavbarService, private toolbar: ToolbarService,
                 private categoryList: CategoryListService) {
@@ -65,9 +66,10 @@ export class LibraryComponent implements OnInit, AfterViewInit {
         this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this));
         this.categoryList.selectTopic$.subscribe(this.onSelectTopic.bind(this));
 
-        this.videos$ = this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.topic$)
+        this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.topic$).merge(this.maxId$)
             .distinctUntilChanged()
-            .switchMap(this.updateVideoSearchResults.bind(this));
+            .switchMap(this.updateVideoSearchResults.bind(this))
+            .subscribe((videos: Videos) => this.videos = videos);
     }
 
     ngAfterViewInit(): void {
@@ -94,6 +96,16 @@ export class LibraryComponent implements OnInit, AfterViewInit {
         this.search.delete('category_id');
 
         this.isDropdownVisible = false;
+    }
+
+    onClickLoadMore(): void {
+        let oldestVideo = this.videos.records[this.videos.count - 1];
+        let updatedCount = +this.search.get('count') * 2;
+
+        this.search.set('max_id', oldestVideo.id_str);
+        this.search.set('count', updatedCount.toString());
+
+        this.maxId$.next(oldestVideo.id_str);
     }
 
     private onToggleSearchBar(hidden: boolean): void {
