@@ -16,7 +16,8 @@ import {
     Logger,
     LocalStorageItem,
     kAuthToken,
-    LocalStorageProtocol
+    LocalStorageProtocol,
+    AuthService
 } from './core/index';
 
 import './operators';
@@ -32,26 +33,31 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
     authenticated: boolean;
 
     constructor(private logger: Logger,
-                private localStorageService: LocalStorageService,
+                private localStorage: LocalStorageService,
                 private router: Router,
                 private activatedRoute: ActivatedRoute,
                 private navbar: NavbarService,
-                private titleService: Title) {
+                private titleService: Title,
+    private auth: AuthService) {
         this.authenticated = false;
         this.showLoginModal = false;
     }
 
     @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
-        this.localStorageService.broadcastStorageEvent(e);
+        this.localStorage.broadcastStorageEvent(e);
     }
 
     ngOnInit(): void {
-        this.showComplianceDialog = !this.localStorageService.getItem(kAcceptLocalStorage);
+        this.logger.info(`[${this.constructor.name}] ngOnInit()`);
+
+        this.authenticated = this.auth.isLoggedIn();
+
+        this.showComplianceDialog = !this.localStorage.getItem(kAcceptLocalStorage);
 
         // Todo: See if you can use 'super()' somehow to get rid of this.
-        this.localStorageService.setItem$.subscribe(this.didSetLocalStorageItem.bind(this));
-        this.localStorageService.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this));
-        this.localStorageService.clearSource$.subscribe(this.didClearStorage.bind(this));
+        this.localStorage.setItem$.subscribe(this.didSetLocalStorageItem.bind(this));
+        this.localStorage.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this));
+        this.localStorage.clearSource$.subscribe(this.didClearStorage.bind(this));
 
         /* Dynamically set the navbar title */
         this.router.events
@@ -78,30 +84,17 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
 
     didSetLocalStorageItem(item: LocalStorageItem): void {
         if (item.key === kAuthToken) {
-            this.handleAuthTokenChange(item.data);
+            this.authenticated = this.auth.isLoggedIn();
         }
     }
 
     didClearStorage(): void {
-        this.handleAuthTokenChange();
+        this.authenticated = this.auth.isLoggedIn();
     }
 
     didReceiveStorageEvent(event: StorageEvent): void {
         if (event.key === kAuthToken) {
-            this.handleAuthTokenChange(event.newValue);
-        }
-    }
-
-    handleAuthTokenChange(token?: string) {
-        if (token) {
-            this.logger.info(`[${this.constructor.name}] Auth token has been updated.`);
-            this.authenticated = true;
-        } else {
-            this.logger.debug(`[${this.constructor.name}] Auth token is null. Transitioning to logout state.`);
-            this.authenticated = false;
-            this.router.navigate(['']).then(() => {
-                this.logger.info(`[${this.constructor.name}] Transition to logout state complete.`);
-            });
+            this.authenticated = this.auth.isLoggedIn();
         }
     }
 }
