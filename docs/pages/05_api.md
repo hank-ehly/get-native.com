@@ -431,41 +431,6 @@ Status: 200 OK
 }
 ```
 
-# GET /languages
-
-Returns a list of _study languages_ currently supported by get native.
-
-```
-POST https://api.get-native.com/languages
-```
-
-**Response**
-
-| Data Field            | Type           | Description                          |
-|-----------------------|----------------|--------------------------------------|
-| languages             | [Language]     |  An array of _Language_ objects      |
-
-```
-Status: 200 OK
-```
-```json
-{
-    "records": [{
-        "id": 1,
-        "id_str": 1,
-        "code": "en",
-        "name": "English"
-    },
-    {
-        "id": 2,
-        "id_str": 2,
-        "code": "ja",
-        "name": "日本語"
-    }],
-    "count": 2
-}
-```
-
 # POST /login
 
 Verify user credentials and create new login session.
@@ -650,40 +615,6 @@ Status: 200 OK
 
 Todo: Consider followers
 
-# GET /study/stats
-
-Returns the authenticating users' aggregated study statistics.
-
-```
-GET https://api.get-native.com/study/stats
-```
-
-**Response**
-
-| Data Field               	| Type   	| Description                                                                                          	|
-|--------------------------	|--------	|------------------------------------------------------------------------------------------------------	|
-| lang                     	| String 	| The language corresponding to the study session statistics included in the response                  	|
-| total_time_studied       	| Int    	| The total amount of times that the authenticating user has spent studying                            	|
-| consecutive_days         	| Int    	| The current number of consecutive days that the authenticating user has completed a study session    	|
-| total_study_sessions     	| Int    	| The total number of study sessions that the authenticating user has completed to date                	|
-| longest_consecutive_days 	| Int    	| The longest consecutive number of days that the authenticating user has completed a study session    	|
-| maximum_words            	| Int    	| The maximum number of words that the authenticating user has typed during a writing session to date  	|
-| maximum_wpm              	| Int    	| The maximum words per minute that the authenticating user has typed during a writing session to date 	|
-
-```
-Status: 200 OK
-```
-```json
-{
-	"lang": "en",
-	"consecutive_days": 12,
-	"total_study_sessions": 45,
-	"longest_consecutive_days": 12,
-	"maximum_words": 502,
-	"maximum_wpm": 52
-}
-``` 
-
 # POST /study
 
 Create a new study session for the authenticating user.
@@ -763,6 +694,42 @@ POST https://api.get-native.com/study
 	}
 }
 ```
+
+# GET /study/languages
+
+Returns a list of _study languages_ currently supported by get native.
+
+```
+POST https://api.get-native.com/study/languages
+```
+
+**Response**
+
+| Data Field            | Type           | Description                          |
+|-----------------------|----------------|--------------------------------------|
+| languages             | [Language]     |  An array of _Language_ objects      |
+
+```
+Status: 200 OK
+```
+```json
+{
+    "records": [{
+        "id": 1,
+        "id_str": 1,
+        "code": "en",
+        "name": "English"
+    },
+    {
+        "id": 2,
+        "id_str": 2,
+        "code": "ja",
+        "name": "日本語"
+    }],
+    "count": 2
+}
+```
+
 # POST /study/listening
 
 Register the completion of a listening session.
@@ -839,6 +806,40 @@ POST https://api.get-native.com/study/speaking
 
 ```
 Status: 204 No Content
+```
+
+# GET /study/stats
+
+Returns the authenticating users' aggregated study statistics.
+
+```
+GET https://api.get-native.com/study/stats
+```
+
+**Response**
+
+| Data Field               	| Type   	| Description                                                                                          	|
+|--------------------------	|--------	|------------------------------------------------------------------------------------------------------	|
+| lang                     	| String 	| The language corresponding to the study session statistics included in the response                  	|
+| total_time_studied       	| Int    	| The total amount of times that the authenticating user has spent studying                            	|
+| consecutive_days         	| Int    	| The current number of consecutive days that the authenticating user has completed a study session    	|
+| total_study_sessions     	| Int    	| The total number of study sessions that the authenticating user has completed to date                	|
+| longest_consecutive_days 	| Int    	| The longest consecutive number of days that the authenticating user has completed a study session    	|
+| maximum_words            	| Int    	| The maximum number of words that the authenticating user has typed during a writing session to date  	|
+| maximum_wpm              	| Int    	| The maximum words per minute that the authenticating user has typed during a writing session to date 	|
+
+```
+Status: 200 OK
+```
+```json
+{
+	"lang": "en",
+	"consecutive_days": 12,
+	"total_study_sessions": 45,
+	"longest_consecutive_days": 12,
+	"maximum_words": 502,
+	"maximum_wpm": 52
+}
 ```
 
 # POST /study/writing
