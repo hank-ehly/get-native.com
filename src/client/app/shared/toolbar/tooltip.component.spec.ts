@@ -11,7 +11,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
-import { SpecUtil, STUBLogger, Logger, LocalStorageService, STUBLocalStorageService } from '../../core/index';
+import { SpecUtil, STUBLogger, Logger, LocalStorageService, STUBLocalStorageService, ToolbarService } from '../../core/index';
 
 export function main() {
     let comp: ToolbarComponent;
@@ -27,7 +27,8 @@ export function main() {
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
                     {provide: LocalStorageService, useValue: STUBLocalStorageService},
-                    {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'}
+                    {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
+                    ToolbarService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(ToolbarComponent);

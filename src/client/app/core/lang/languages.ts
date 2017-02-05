@@ -1,5 +1,5 @@
 /**
- * lang-code-name-map
+ * languages
  * get-native.com
  *
  * Created by henryehly on 2016/12/29.
@@ -7,7 +7,7 @@
 
 import { Language } from '../typings/language';
 
-export const LangCodeNameMap: Language[] = [
+export const Languages: Language[] = [
     {
         code: 'en',
         name: 'English'

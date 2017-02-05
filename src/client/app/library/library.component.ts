@@ -56,7 +56,7 @@ export class LibraryComponent implements OnInit {
         this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories);
         this.http.request(APIHandle.VIDEOS).subscribe((videos: Videos) => this.videos = videos);
         this.navbar.updateSearchQuery$.subscribe(this.onSearchQueryChange.bind(this));
-        this.navbar.toggleSearchBar$.subscribe(this.didToggleSearchBar.bind(this));
+        this.navbar.toggleSearchBar$.subscribe(this.onToggleSearchBar.bind(this));
         this.toolbar.selectLanguage$.subscribe(this.didSelectLanguage.bind(this));
     }
 
@@ -104,12 +104,7 @@ export class LibraryComponent implements OnInit {
         this.updateSearchResults();
     }
 
-    updateSearchResults(): void {
-        this.isDropdownVisible = false;
-        this.http.request(APIHandle.VIDEOS, {search: this.search}).subscribe((videos: Videos) => this.videos = videos);
-    }
-
-    didToggleSearchBar(hidden: boolean): void {
+    onToggleSearchBar(hidden: boolean): void {
         if (hidden) {
             this.search.delete('q');
             this.updateSearchResults();
@@ -119,5 +114,10 @@ export class LibraryComponent implements OnInit {
     didSelectLanguage(language: Language) {
         this.search.set('lang', language.code);
         this.updateSearchResults();
+    }
+
+    updateSearchResults(): void {
+        this.isDropdownVisible = false;
+        this.http.request(APIHandle.VIDEOS, {search: this.search}).subscribe((videos: Videos) => this.videos = videos);
     }
 }
