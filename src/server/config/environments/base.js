@@ -21,3 +21,5 @@ let privateKey = fs.readFile(secretsDir + '/id_rsa', (err, data) => {
 
     nconf.set('privateKey', data.toString());
 });
+
+nconf.set('PORT', 3000);

@@ -9,11 +9,18 @@
 
 const express    = require('express');
 const bodyParser = require('body-parser');
+const morgan     = require('morgan');
+const nconf      = require('nconf');
 const routes     = require('../routes');
 const logger     = require('../logger');
 
 module.exports = (callback) => {
     const app  = express();
+
+    if (nconf.get('env') === 'development') {
+        app.use(morgan('dev'));
+    }
+
     const cors = require('../cors');
 
     for (let x of ['x-powered-by', 'etag', 'views', 'view cache']) {
@@ -21,15 +28,16 @@ module.exports = (callback) => {
     }
 
     app.use(bodyParser.json());
-    
+
     app.use(cors);
     app.use(routes);
 
     // load static resources
     // app.use(express.static(path.join(__dirname, 'public')));
 
-    app.listen(3000, () => {
-        logger.info('Listening on port 3000');
+    let port = nconf.get('PORT');
+    app.listen(port, () => {
+        logger.info(`Listening on port ${port}`);
 
         if (callback) callback();
     });
