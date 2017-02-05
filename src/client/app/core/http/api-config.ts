@@ -55,5 +55,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Patch,
         url: '/account',
         isProtected: true
+    }],
+    [APIHandle.EDIT_PASSWORD, {
+        method: RequestMethod.Post,
+        url: '/account/password',
+        isProtected: true
     }]
 ]);
