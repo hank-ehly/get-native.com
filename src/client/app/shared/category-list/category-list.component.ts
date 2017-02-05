@@ -5,9 +5,9 @@
  * Created by henryehly on 2017/01/12.
  */
 
-import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 
-import { Logger, Categories, Category, Topic } from '../../core/index';
+import { Logger, Categories, Category, Topic, CategoryListService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -17,13 +17,9 @@ import { Logger, Categories, Category, Topic } from '../../core/index';
 })
 export class CategoryListComponent implements OnInit, OnChanges {
     @Input() categories: Categories;
-    @Output() selectCategory: EventEmitter<Category>;
-    @Output() selectTopic: EventEmitter<Topic>;
     rows: Category[][];
 
-    constructor(private logger: Logger) {
-        this.selectCategory = new EventEmitter<Category>();
-        this.selectTopic    = new EventEmitter<Topic>();
+    constructor(private logger: Logger, private categoryListService: CategoryListService) {
     }
 
     ngOnInit(): void {
@@ -58,11 +54,11 @@ export class CategoryListComponent implements OnInit, OnChanges {
 
     onClickCategory(category: Category): void {
         this.logger.debug(`[${this.constructor.name}] onClickCategory`, category);
-        this.selectCategory.emit(category);
+        this.categoryListService.selectCategory(category);
     }
 
     onClickTopic(topic: Topic): void {
         this.logger.debug(`[${this.constructor.name}] onClickTopic`, topic);
-        this.selectTopic.emit(topic);
+        this.categoryListService.selectTopic(topic);
     }
 }

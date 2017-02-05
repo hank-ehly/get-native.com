@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import {
     AuthGuard,
     AuthService,
+    CategoryListService,
     LocalStorageService,
     LoginModalService,
     URIService,
@@ -30,6 +31,7 @@ import {
     providers: [
         AuthGuard,
         AuthService,
+        CategoryListService,
         LocalStorageService,
         LoginModalService,
         URIService,
