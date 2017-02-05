@@ -8,26 +8,25 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-import { LocalStorageService, kAuthToken, kAuthTokenExpire } from '../index';
+import { AuthService } from './auth.service';
 
 import { Observable } from 'rxjs/Observable';
+import { Logger } from '../logger/logger';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
-    constructor(private localStorage: LocalStorageService, private router: Router) {
+    constructor(private router: Router, private auth: AuthService, private logger: Logger) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
-        if (this.localStorage.hasItem(kAuthToken)) {
-            let now = Date.now();
-            let exp = parseFloat(this.localStorage.getItem(kAuthTokenExpire));
-
-            if (exp > now) {
-                return true;
-            }
+        if (this.auth.isLoggedIn()) {
+            return true;
         }
 
-        this.router.navigate(['']);
+        this.router.navigate(['']).then(() => {
+            this.logger.info(`[${this.constructor.name}] Unable to activate route ${route}. Forced navigation to homepage.`);
+        });
+
         return false;
     }
 

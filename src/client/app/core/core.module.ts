@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import {
     AuthGuard,
+    AuthService,
     LocalStorageService,
     LoginModalService,
     URIService,
@@ -27,6 +28,7 @@ import {
     ],
     providers: [
         AuthGuard,
+        AuthService,
         LocalStorageService,
         LoginModalService,
         URIService,
