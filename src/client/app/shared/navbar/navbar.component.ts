@@ -69,15 +69,10 @@ export class NavbarComponent implements OnInit {
         this.loginModal.showModal();
     }
 
-    onInputSearchQuery(e: Event) {
+    onInputSearchQuery(e: Event): void {
         let query = (<HTMLInputElement>e.target).value;
         this.logger.info(`[${this.constructor.name}] Updating search query to '${query}'`);
         this.navbar.updateSearchQuery(query);
-    }
-
-    /* MOCK */
-    toggleNotificationIndicator() {
-        this.hasUnreadNotifications = !this.hasUnreadNotifications;
     }
 
     onClickBack(): void {
@@ -87,5 +82,12 @@ export class NavbarComponent implements OnInit {
 
     onToggleSearch(): void {
         this.searchBarHidden = !this.searchBarHidden;
+        this.logger.debug(`[${this.constructor.name}]: Search bar hidden set to '${this.searchBarHidden}'`);
+        this.navbar.didToggleSearchBar(this.searchBarHidden);
+    }
+
+    /* MOCK */
+    toggleNotificationIndicator(): void {
+        this.hasUnreadNotifications = !this.hasUnreadNotifications;
     }
 }

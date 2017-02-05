@@ -45,6 +45,7 @@ export class LibraryComponent implements OnInit {
         this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories);
         this.http.request(APIHandle.VIDEOS).subscribe((videos: Videos) => this.videos = videos);
         this.navbar.updateSearchQuery$.subscribe(this.onSearchQueryChange.bind(this));
+        this.navbar.toggleSearchBar$.subscribe(this.didToggleSearchBar.bind(this));
     }
 
     onSearchQueryChange(query: string) {
@@ -94,5 +95,12 @@ export class LibraryComponent implements OnInit {
     onUpdateSearchParams(): void {
         this.isDropdownVisible = false;
         this.http.request(APIHandle.VIDEOS, {search: this.search}).subscribe((videos: Videos) => this.videos = videos);
+    }
+
+    didToggleSearchBar(hidden: boolean): void {
+        if (hidden) {
+            this.search.delete('q');
+            this.onUpdateSearchParams();
+        }
     }
 }

@@ -12,20 +12,25 @@ export class NavbarService {
     setTitle$: Observable<string>;
     setBackButton$: Observable<string>;
     updateSearchQuery$: Observable<string>;
+    toggleSearchBar$: Observable<boolean>;
 
     private setTitleSource: Subject<string>;
     private setBackButtonSource: Subject<string>;
     private updateSearchQuerySource: Subject<string>;
+    private toggleSearchBarSource: Subject<boolean>;
 
     constructor() {
         this.setTitleSource = new Subject<string>();
-        this.setBackButtonSource = new Subject<any>();
-
         this.setTitle$ = this.setTitleSource.asObservable();
+
+        this.setBackButtonSource = new Subject<any>();
         this.setBackButton$ = this.setBackButtonSource.asObservable();
 
-        this.updateSearchQuerySource = new Subject();
+        this.updateSearchQuerySource = new Subject<string>();
         this.updateSearchQuery$ = this.updateSearchQuerySource.asObservable();
+
+        this.toggleSearchBarSource = new Subject<boolean>();
+        this.toggleSearchBar$ = this.toggleSearchBarSource.asObservable();
     }
 
     setTitle(title: string): void {
@@ -34,5 +39,9 @@ export class NavbarService {
 
     updateSearchQuery(query: string): void {
         this.updateSearchQuerySource.next(query);
+    }
+
+    didToggleSearchBar(hidden: boolean) {
+        this.toggleSearchBarSource.next(hidden);
     }
 }
