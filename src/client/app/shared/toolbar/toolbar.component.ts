@@ -7,15 +7,7 @@
 
 import { Component, trigger, transition, style, animate, keyframes } from '@angular/core';
 
-import {
-    Logger,
-    LocalStorageService,
-    kAuthToken,
-    kAuthTokenExpire,
-    Languages,
-    ToolbarService,
-    Language
-} from '../../core/index';
+import { Languages, ToolbarService, Language } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -47,14 +39,12 @@ export class ToolbarComponent {
     /* Todo: Which language should be the default selected language? */
     selectedLanguage: Language;
 
-    constructor(private logger: Logger, private localStorage: LocalStorageService, private toolbarService: ToolbarService) {
+    constructor(private toolbarService: ToolbarService) {
         this.selectedLanguage = this.languages[0];
     }
 
     onLogout(): void {
-        this.logger.info(`[${this.constructor.name}]: onLogout()`);
-        this.localStorage.removeItem(kAuthToken);
-        this.localStorage.removeItem(kAuthTokenExpire);
+        this.toolbarService.logout();
     }
 
     onShowTooltip(): void {
