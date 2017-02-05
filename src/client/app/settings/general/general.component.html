@@ -16,22 +16,25 @@
 
 <gn-select></gn-select>
 
-<form class="form password-form">
+<form class="form password-form" #form="ngForm" (submit)="onSubmitPassword()">
     <div class="form__group">
         <label for="current-password" class="label">Current Password</label>
-        <input id="current-password" class="input" type="password" name="current-password">
+        <input id="current-password" class="input" type="password" name="current-password" minlength="8" required
+               [(ngModel)]="passwordForm.current">
     </div>
 
     <div class="form__group">
         <label for="new-password" class="label">New Password</label>
-        <input id="new-password" class="input" type="password" name="new-password" #password>
+        <input id="new-password" class="input" type="password" name="new-password" #password minlength="8" required
+               [(ngModel)]="passwordForm.replace">
         <gn-password-strength [password]="password.value"></gn-password-strength>
     </div>
 
     <div class="form__group">
         <label for="confirm-password" class="label">Confirm New Password</label>
-        <input id="confirm-password" class="input" type="password" name="confirm-password">
+        <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8" required
+               [(ngModel)]="passwordForm.confirm" [pattern]="passwordForm.replace">
     </div>
 
-    <button class="button button--opaque form__button">UPDATE</button>
+    <button class="button button--opaque form__button" [disabled]="!form.valid">UPDATE</button>
 </form>
