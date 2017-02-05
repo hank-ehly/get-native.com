@@ -57,8 +57,11 @@ export class LibraryComponent implements OnInit, AfterViewInit {
 
         this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories);
 
+        this.navbar.toggleSearchBar$.subscribe(this.onToggleSearchBar.bind(this));
         this.navbar.updateSearchQuery$.subscribe(this.onUpdateSearchQuery.bind(this));
+
         this.toolbar.selectLanguage$.subscribe(this.onSelectLanguage.bind(this));
+
         this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this));
         this.categoryList.selectTopic$.subscribe(this.onSelectTopic.bind(this));
 
@@ -91,7 +94,13 @@ export class LibraryComponent implements OnInit, AfterViewInit {
         this.isDropdownVisible = false;
     }
 
-    private onUpdateSearchQuery(query: string) {
+    private onToggleSearchBar(hidden: boolean): void {
+        if (hidden) {
+            this.onUpdateSearchQuery('');
+        }
+    }
+
+    private onUpdateSearchQuery(query: string): void {
         this.updateSearchParams('q', query);
         this.query$.next(query);
     }
@@ -106,12 +115,12 @@ export class LibraryComponent implements OnInit, AfterViewInit {
         this.category$.next(category.id_str);
     }
 
-    private onSelectTopic(topic: Topic) {
+    private onSelectTopic(topic: Topic): void {
         this.updateSearchParams('topic_id', topic.id_str);
         this.topic$.next(topic.id_str);
     }
 
-    private updateSearchParams(key: string, value: string) {
+    private updateSearchParams(key: string, value: string): void {
         this.isDropdownVisible = false;
 
         if (!value) {
