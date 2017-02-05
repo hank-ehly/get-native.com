@@ -21,7 +21,8 @@ import {
     NavbarService,
     STUBNavbarService,
     HttpService,
-    STUBHttpService
+    STUBHttpService,
+    ToolbarService
 } from '../core/index';
 
 export function main() {
@@ -42,7 +43,8 @@ export function main() {
                     {provide: HttpService, useValue: STUBHttpService},
                     {provide: NavbarService, useValue: STUBNavbarService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-                    UTCDateService
+                    UTCDateService,
+                    ToolbarService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LibraryComponent);
