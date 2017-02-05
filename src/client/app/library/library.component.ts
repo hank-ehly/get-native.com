@@ -5,21 +5,17 @@
  * Created by henryehly on 2016/12/05.
  */
 
-import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
+import { Component, OnInit, trigger, transition, style, animate, AfterViewInit } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
 import {
-    Logger,
-    Videos,
-    Categories,
-    APIHandle,
-    HttpService,
-    NavbarService,
-    Category,
-    Topic,
-    ToolbarService,
-    Language
+    Logger, Videos, Categories, APIHandle, HttpService, NavbarService, Category, Topic, ToolbarService, Language, CategoryListService,
+    LangCode, Entity
 } from '../core/index';
+
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import '../operators';
 
 @Component({
     moduleId: module.id,
@@ -39,37 +35,41 @@ import {
         ])
     ]
 })
-export class LibraryComponent implements OnInit {
-    videos: Videos;
+export class LibraryComponent implements OnInit, AfterViewInit {
     categories: Categories;
-    isDropdownVisible: boolean;
-    search: URLSearchParams;
     dropdownSelection: string;
+    isDropdownVisible: boolean = false;
 
-    constructor(private logger: Logger, private http: HttpService, private navbar: NavbarService, private toolbar: ToolbarService) {
-        this.isDropdownVisible = false;
-        this.search = new URLSearchParams();
+    videos$: Observable<Videos>;
+    search: URLSearchParams = new URLSearchParams();
+
+    private query$    = new Subject<string>();
+    private lang$     = new Subject<LangCode>();
+    private category$ = new Subject<string>();
+    private topic$    = new Subject<string>();
+
+    constructor(private logger: Logger, private http: HttpService, private navbar: NavbarService, private toolbar: ToolbarService,
+                private categoryList: CategoryListService) {
     }
 
     ngOnInit(): void {
         this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
+
         this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories);
-        this.http.request(APIHandle.VIDEOS).subscribe((videos: Videos) => this.videos = videos);
-        this.navbar.updateSearchQuery$.subscribe(this.onSearchQueryChange.bind(this));
-        this.navbar.toggleSearchBar$.subscribe(this.onToggleSearchBar.bind(this));
-        this.toolbar.selectLanguage$.subscribe(this.didSelectLanguage.bind(this));
+
+        this.navbar.updateSearchQuery$.subscribe(this.onUpdateSearchQuery.bind(this));
+        this.toolbar.selectLanguage$.subscribe(this.onSelectLanguage.bind(this));
+        this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this));
+        this.categoryList.selectTopic$.subscribe(this.onSelectTopic.bind(this));
+
+        this.videos$ = this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.topic$)
+            .distinctUntilChanged()
+            .switchMap(this.updateVideoSearchResults.bind(this));
     }
 
-    onSearchQueryChange(query: string) {
-        let trimmedQuery = query.trim();
-
-        if (trimmedQuery) {
-            this.search.set('q', trimmedQuery);
-        } else {
-            this.search.delete('q');
-        }
-
-        this.updateSearchResults();
+    ngAfterViewInit(): void {
+        // Todo: Request with default language
+        this.onSelectLanguage({code: 'en', name: 'English'});
     }
 
     onClickShowDropdown(): void {
@@ -87,37 +87,41 @@ export class LibraryComponent implements OnInit {
         this.dropdownSelection = null;
         this.search.delete('topic_id');
         this.search.delete('category_id');
-        this.updateSearchResults();
+
+        this.isDropdownVisible = false;
     }
 
-    onSelectCategory(category: Category): void {
-        this.search.delete('topic_id');
-        this.search.set('category_id', category.id_str);
-        this.dropdownSelection = category.name;
-        this.updateSearchResults();
+    private onUpdateSearchQuery(query: string) {
+        this.updateSearchParams('q', query);
+        this.query$.next(query);
     }
 
-    onSelectTopic(topic: Topic): void {
-        this.search.delete('category_id');
-        this.search.set('topic_id', topic.id_str);
-        this.dropdownSelection = topic.name;
-        this.updateSearchResults();
+    private onSelectLanguage(lang: Language): void {
+        this.updateSearchParams('lang', lang.code);
+        this.lang$.next(lang.code);
     }
 
-    onToggleSearchBar(hidden: boolean): void {
-        if (hidden) {
-            this.search.delete('q');
-            this.updateSearchResults();
+    private onSelectCategory(category: Category): void {
+        this.updateSearchParams('category_id', category.id_str);
+        this.category$.next(category.id_str);
+    }
+
+    private onSelectTopic(topic: Topic) {
+        this.updateSearchParams('topic_id', topic.id_str);
+        this.topic$.next(topic.id_str);
+    }
+
+    private updateSearchParams(key: string, value: string) {
+        this.isDropdownVisible = false;
+
+        if (!value) {
+            this.search.delete(key);
+        } else {
+            this.search.set(key, value);
         }
     }
 
-    didSelectLanguage(language: Language) {
-        this.search.set('lang', language.code);
-        this.updateSearchResults();
-    }
-
-    updateSearchResults(): void {
-        this.isDropdownVisible = false;
-        this.http.request(APIHandle.VIDEOS, {search: this.search}).subscribe((videos: Videos) => this.videos = videos);
+    private updateVideoSearchResults(): Observable<Entity> {
+        return this.http.request(APIHandle.VIDEOS, {search: this.search});
     }
 }
