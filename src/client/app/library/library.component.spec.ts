@@ -19,7 +19,6 @@ import {
     Logger,
     STUBLogger,
     NavbarService,
-    STUBNavbarService,
     HttpService,
     STUBHttpService,
     ToolbarService,
@@ -42,7 +41,7 @@ export function main() {
                     {provide: Logger, useValue: STUBLogger},
                     {provide: Router, useValue: STUBRouter},
                     {provide: HttpService, useValue: STUBHttpService},
-                    {provide: NavbarService, useValue: STUBNavbarService},
+                    NavbarService,
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     UTCDateService, ToolbarService, CategoryListService
                 ]
@@ -60,9 +59,9 @@ export function main() {
         });
 
         // Todo: This fails because of a typescript imports problem
-        // it('should display videos in multiples of 3', () => {
-        //     let videos = spec.getNativeEl('.video-panels');
-        //     expect (videos.children.length % 3).toEqual(0);
-        // });
+        it('should display videos in multiples of 3', () => {
+            let videos = spec.getNativeEl('.video-panels');
+            expect (videos.children.length % 3).toEqual(0);
+        });
     });
 }

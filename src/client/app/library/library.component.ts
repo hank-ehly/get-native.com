@@ -87,10 +87,7 @@ export class LibraryComponent implements OnInit, AfterViewInit {
             .distinctUntilChanged()
             .switchMap(this.updateVideoSearchResults.bind(this))
             .subscribe((videos: Videos) => this.videos = videos);
-    }
 
-    ngAfterViewInit(): void {
-        // Todo: Request with default language
         this.search.set('count', '9');
         this.search.set('lang', 'en');
         this.lang$.next('en');

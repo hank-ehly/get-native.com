@@ -16,7 +16,6 @@ import {
     Logger,
     STUBLogger,
     NavbarService,
-    STUBNavbarService,
     SpecUtil,
     LangService,
     UTCDateService
@@ -38,7 +37,7 @@ export function main() {
                 declarations: [LibraryDetailComponent],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
-                    {provide: NavbarService, useValue: STUBNavbarService},
+                    NavbarService,
                     {provide: HttpService, useValue: STUBHttpService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     LangService,
