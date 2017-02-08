@@ -21,8 +21,6 @@ import {
 } from './core/index';
 
 import './operators';
-import { ToolbarService } from './core/toolbar/toolbar.service';
-import { kAuthTokenExpire } from './core/local-storage/local-storage-keys';
 
 @Component({
     moduleId: module.id,
@@ -34,14 +32,9 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
     showLoginModal: boolean = false;
     authenticated: boolean = false;
 
-    constructor(private logger: Logger,
-                private localStorage: LocalStorageService,
-                private router: Router,
-                private activatedRoute: ActivatedRoute,
-                private navbar: NavbarService,
-                private titleService: Title,
-                private auth: AuthService,
-                private toolbar: ToolbarService) {
+    constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router,
+                private activatedRoute: ActivatedRoute, private navbar: NavbarService, private titleService: Title,
+                private auth: AuthService) {
     }
 
     @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
@@ -59,8 +52,6 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
         this.localStorage.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this));
         this.localStorage.clearSource$.subscribe(this.didClearStorage.bind(this));
 
-        this.toolbar.logout$.subscribe(this.onToolbarClickLogout.bind(this));
-
         /* Dynamically set the navbar title */
         this.router.events
             .filter(e => e instanceof NavigationEnd)
@@ -74,11 +65,8 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
             .subscribe(e => {
                 this.logger.debug('NavigationEnd:', e);
 
-                if (e.hasOwnProperty('title') && e['title']) {
-                    if (this.authenticated) {
-                        this.navbar.setTitle(e['title']);
-                    }
-
+                if (e && e['title']) {
+                    if (this.authenticated) this.navbar.setTitle(e['title']);
                     this.titleService.setTitle(`Get Native | ${e['title']}`);
                 }
             });
@@ -86,25 +74,29 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
 
     didSetLocalStorageItem(item: LocalStorageItem): void {
         if (item.key === kAuthToken) {
-            this.authenticated = this.auth.isLoggedIn();
-            if (!this.authenticated) this.router.navigate(['']);
+            this.updateLoginStatus();
         }
     }
 
     didClearStorage(): void {
-        this.authenticated = this.auth.isLoggedIn();
-        if (!this.authenticated) this.router.navigate(['']);
+        this.updateLoginStatus();
     }
 
     didReceiveStorageEvent(event: StorageEvent): void {
         if (event.key === kAuthToken) {
-            this.authenticated = this.auth.isLoggedIn();
-            if (!this.authenticated) this.router.navigate(['']);
+            this.updateLoginStatus();
         }
     }
 
-    private onToolbarClickLogout(): void {
-        this.localStorage.removeItem(kAuthTokenExpire);
-        this.localStorage.removeItem(kAuthToken);
+    private updateLoginStatus(): void {
+        this.authenticated = this.auth.isLoggedIn();
+
+        if (this.authenticated) {
+            return;
+        }
+
+        this.router.navigate(['']).then(() => {
+            this.logger.info(`[${this.constructor.name}] Forced navigation to homepage.`);
+        });
     }
 }
