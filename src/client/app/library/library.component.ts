@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/05.
  */
 
-import { Component, OnInit, trigger, transition, style, animate, AfterViewInit, HostListener } from '@angular/core';
+import { Component, OnInit, trigger, transition, style, animate, HostListener } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
 import {
@@ -35,7 +35,7 @@ import '../operators';
         ])
     ]
 })
-export class LibraryComponent implements OnInit, AfterViewInit {
+export class LibraryComponent implements OnInit {
     categories: Categories;
     dropdownSelection: string;
     isDropdownVisible: boolean = false;
