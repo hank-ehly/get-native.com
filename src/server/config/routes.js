@@ -14,16 +14,17 @@ const router = express.Router();
 
 // Todo: express-validations
 
-router.post( '/login',             validate(validations.auth.login),                                            controllers.auth.login);
-router.get(  '/categories',        validate(validations.categories.list),        controllers.auth.authenticate, controllers.categories.list);
-router.get(  '/cued_videos',                                                     controllers.auth.authenticate, controllers.cuedVideos.list);
-router.get(  '/study/stats',       validate(validations.study.stats),            controllers.auth.authenticate, controllers.study.stats);
-router.get(  '/videos',                                                          controllers.auth.authenticate, controllers.videos.list);
-router.get(  '/videos/:id',        validate(validations.videos.show),            controllers.auth.authenticate, controllers.videos.show);
-router.post( '/videos/:id/like',   validate(validations.videos.like),            controllers.auth.authenticate, controllers.videos.like);
-router.post( '/videos/:id/unlike', validate(validations.videos.unlike),          controllers.auth.authenticate, controllers.videos.unlike);
-router.patch('/account',           validate(validations.account.update),         controllers.auth.authenticate, controllers.account.update);
-router.post( '/account/password',  validate(validations.account.updatePassword), controllers.auth.authenticate, controllers.account.updatePassword);
-router.post( '/account/email',     validate(validations.account.updateEmail),    controllers.auth.authenticate, controllers.account.updateEmail);
+router.post( '/login',                 validate(validations.auth.login),                                            controllers.auth.login);
+router.get(  '/categories',            validate(validations.categories.list),        controllers.auth.authenticate, controllers.categories.list);
+router.get(  '/cued_videos',                                                         controllers.auth.authenticate, controllers.cuedVideos.list);
+router.get(  '/study/stats',           validate(validations.study.stats),            controllers.auth.authenticate, controllers.study.stats);
+router.get(  '/study/writing_history', validate(validations.study.writing_history),  controllers.auth.authenticate, controllers.study.writing_history);
+router.get(  '/videos',                                                              controllers.auth.authenticate, controllers.videos.list);
+router.get(  '/videos/:id',            validate(validations.videos.show),            controllers.auth.authenticate, controllers.videos.show);
+router.post( '/videos/:id/like',       validate(validations.videos.like),            controllers.auth.authenticate, controllers.videos.like);
+router.post( '/videos/:id/unlike',     validate(validations.videos.unlike),          controllers.auth.authenticate, controllers.videos.unlike);
+router.patch('/account',               validate(validations.account.update),         controllers.auth.authenticate, controllers.account.update);
+router.post( '/account/password',      validate(validations.account.updatePassword), controllers.auth.authenticate, controllers.account.updatePassword);
+router.post( '/account/email',         validate(validations.account.updateEmail),    controllers.auth.authenticate, controllers.account.updateEmail);
 
 module.exports = router;
