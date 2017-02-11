@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/01/12.
  */
 
-import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Logger, Videos, Video } from '../../core/index';
@@ -16,20 +16,12 @@ import { Logger, Videos, Video } from '../../core/index';
     templateUrl: 'video-panel-list.component.html',
     styleUrls: ['video-panel-list.component.css']
 })
-export class VideoPanelListComponent implements OnInit, OnChanges {
-    @Output() clickOverlay: EventEmitter<Video>;
+export class VideoPanelListComponent implements OnChanges {
     @Input() videos: Videos;
-    @Input() navigates: boolean;
-    @Input() controls: boolean;
+    @Input() navigates: boolean = false;
+    @Input() controls: boolean = false;
 
     constructor(private logger: Logger, private router: Router) {
-        this.clickOverlay = new EventEmitter<Video>();
-        this.navigates    = false;
-        this.controls     = false;
-    }
-
-    ngOnInit(): void {
-        this.logger.debug(`[${this.constructor.name}] OnInit()`);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
