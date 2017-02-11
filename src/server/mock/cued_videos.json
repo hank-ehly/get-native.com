@@ -1,58 +1,42 @@
 {
-    "count": 4,
+    "count": 8,
     "records": [
         {
-            "created_at": "Sat Dec 14 04:35:55 +0000 2015",
-            "id_str": "1",
-            "id": 1,
-            "speaker": {
-                "name": "Harold Ford"
-            },
-            "topic": {
-                "name": "Talking to customers"
-            },
-            "loop_count": 7156,
-            "loop_velocity": 2.4960000000000004,
-            "thumbnail_image_url": "XXX",
-            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
-            "length": 68
-        },
-        {
-            "created_at": "Wed Jan 11 04:35:55 +0000 2017",
-            "id_str": "2",
-            "id": 2,
-            "speaker": {
-                "name": "Benjamin Franklin"
-            },
-            "topic": {
-                "name": "How to change a light-bulb"
-            },
-            "loop_count": 1011,
-            "loop_velocity": 2.4960000000000004,
-            "thumbnail_image_url": "XXX",
-            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
-            "length": 73
-        },
-        {
-            "created_at": "Tue Aug 9 04:35:55 +0000 2016",
-            "id_str": "3",
-            "id": 3,
-            "speaker": {
-                "name": "Jesse James"
-            },
-            "topic": {
-                "name": "Robbing a bank"
-            },
-            "loop_count": 9941,
-            "loop_velocity": 2.4960000000000004,
-            "thumbnail_image_url": "XXX",
-            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
-            "length": 45
-        },
-        {
             "created_at": "Tue Mar 14 04:35:55 +0000 2017",
-            "id_str": "4",
-            "id": 4,
+            "id_str": "130",
+            "id": 130,
+            "speaker": {
+                "name": "Santa Claus"
+            },
+            "topic": {
+                "name": "Efficient Elves"
+            },
+            "loop_count": 900,
+            "loop_velocity": 5.4960000000000004,
+            "thumbnail_image_url": "https://dummyimage.com/280x190/d6aed6/2831a8.png",
+            "video_url": "/assets/mock/video.mov",
+            "length": 89
+        },
+        {
+            "created_at": "Thu Jan 12 05:35:55 +0000 2017",
+            "id_str": "123",
+            "id": 123,
+            "speaker": {
+                "name": "Britney Spears"
+            },
+            "topic": {
+                "name": "High-School Troubles"
+            },
+            "loop_count": 3,
+            "loop_velocity": 2.4960000000000004,
+            "thumbnail_image_url": "https://dummyimage.com/280x190/d6aed6/2831a8.png",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
+            "length": 89
+        },
+        {
+            "created_at": "Thu Jan 12 04:35:55 +0000 2017",
+            "id_str": "110",
+            "id": 110,
             "speaker": {
                 "name": "Aretha Franklin"
             },
@@ -61,9 +45,89 @@
             },
             "loop_count": 10503,
             "loop_velocity": 2.4960000000000004,
-            "thumbnail_image_url": "XXX",
+            "thumbnail_image_url": "https://dummyimage.com/280x190/d6aed6/2831a8.png",
             "video_url": "https://stg.get-native.com/assets/mock/video.mov",
             "length": 122
+        },
+        {
+            "created_at": "Wed Jan 11 04:35:55 +0000 2017",
+            "id_str": "109",
+            "id": 109,
+            "speaker": {
+                "name": "Jesse James"
+            },
+            "topic": {
+                "name": "Robbing a bank"
+            },
+            "loop_count": 9941,
+            "loop_velocity": 2.4960000000000004,
+            "thumbnail_image_url": "https://dummyimage.com/280x190/d6aed6/2831a8.png",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
+            "length": 45
+        },
+        {
+            "created_at": "Tue Aug 9 04:35:55 +0000 2016",
+            "id_str": "89",
+            "id": 89,
+            "speaker": {
+                "name": "Benjamin Franklin"
+            },
+            "topic": {
+                "name": "How to change a light-bulb"
+            },
+            "loop_count": 1011,
+            "loop_velocity": 2.4960000000000004,
+            "thumbnail_image_url": "https://dummyimage.com/280x190/d6aed6/2831a8.png",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
+            "length": 73
+        },
+        {
+            "created_at": "Sat Dec 14 04:35:55 +0000 2015",
+            "id_str": "50",
+            "id": 50,
+            "speaker": {
+                "name": "Harold Ford"
+            },
+            "topic": {
+                "name": "Talking to customers"
+            },
+            "loop_count": 7156,
+            "loop_velocity": 2.4960000000000004,
+            "thumbnail_image_url": "https://dummyimage.com/280x190/d6aed6/2831a8.png",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
+            "length": 68
+        },
+        {
+            "created_at": "Sat Dec 14 03:35:55 +0000 2015",
+            "id_str": "44",
+            "id": 44,
+            "speaker": {
+                "name": "James Franklin"
+            },
+            "topic": {
+                "name": "Becoming someone else"
+            },
+            "loop_count": 120,
+            "loop_velocity": 2.4960000000000004,
+            "thumbnail_image_url": "https://dummyimage.com/280x190/d6aed6/2831a8.png",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
+            "length": 98
+        },
+        {
+            "created_at": "Sat Dec 14 02:35:55 +0000 2015",
+            "id_str": "43",
+            "id": 43,
+            "speaker": {
+                "name": "Phillis Johnson"
+            },
+            "topic": {
+                "name": "Teaching English in Japan"
+            },
+            "loop_count": 1920,
+            "loop_velocity": 2.4960000000000004,
+            "thumbnail_image_url": "https://dummyimage.com/280x190/d6aed6/2831a8.png",
+            "video_url": "https://stg.get-native.com/assets/mock/video.mov",
+            "length": 44
         }
     ]
 }
