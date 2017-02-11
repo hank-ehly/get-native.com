@@ -842,6 +842,37 @@ before sending the request, calculations are performed server side for maximum e
 Status: 204 No Content
 ```
 
+# GET /study/writing_history
+
+Fetch a list of all writing session records associated with the authenticating user.
+
+```
+GET https://api.get-native.com/study/writing_history
+```
+
+Todo: Paging
+
+**Response**
+```
+Status: 200 OK
+```
+```json
+{
+	"count": 1,
+	"records": [
+		{
+			"id": 1,
+			"id_str": "1",
+			"answer_text": "This is a test answer",
+			"created_at": "Wed Jan 11 04:35:55 +0000 2017",
+			"topic": {
+				"name": "How to do things"
+			}
+		}	
+	]
+}
+```
+
 # GET /videos
 
 Returns an array of video objects matching the specified search query. 
