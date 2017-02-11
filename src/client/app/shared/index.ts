@@ -26,3 +26,4 @@ export * from './video/video.directive';
 export * from './video-player/video-player.component';
 export * from './video-panel/video-panel.component';
 export * from './video-panel-list/video-panel-list.component';
+export * from './video-search/video-search.component';

@@ -31,7 +31,8 @@ import {
     VideoPanelComponent,
     VideoPanelListComponent,
     DebugComponent,
-    DraggableDirective
+    DraggableDirective,
+    VideoSearchComponent
 } from './index';
 
 @NgModule({
@@ -61,7 +62,9 @@ import {
         VideoPanelComponent,
         VideoPanelListComponent,
         DebugComponent,
-        DraggableDirective
+        DraggableDirective,
+        VideoSearchComponent
+
     ],
     exports: [
         CommonModule,
@@ -85,7 +88,8 @@ import {
         VideoPlayerComponent,
         VideoPanelComponent,
         VideoPanelListComponent,
-        DebugComponent
+        DebugComponent,
+        VideoSearchComponent
     ]
 })
 

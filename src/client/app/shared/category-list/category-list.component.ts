@@ -19,7 +19,7 @@ export class CategoryListComponent implements OnInit, OnChanges {
     @Input() categories: Categories;
     rows: Category[][];
 
-    constructor(private logger: Logger, private categoryListService: CategoryListService) {
+    constructor(private logger: Logger, private service: CategoryListService) {
     }
 
     ngOnInit(): void {
@@ -49,16 +49,16 @@ export class CategoryListComponent implements OnInit, OnChanges {
             }
         }
 
-        this.logger.debug(`[${this.constructor.name}]: Category Rows: `, this.rows);
+        this.logger.debug(`[${this.constructor.name}] onCategoriesChange`, this.rows);
     }
 
     onClickCategory(category: Category): void {
         this.logger.debug(`[${this.constructor.name}] onClickCategory`, category);
-        this.categoryListService.selectCategory(category);
+        this.service.selectCategory(category);
     }
 
     onClickTopic(topic: Topic): void {
         this.logger.debug(`[${this.constructor.name}] onClickTopic`, topic);
-        this.categoryListService.selectTopic(topic);
+        this.service.selectTopic(topic);
     }
 }

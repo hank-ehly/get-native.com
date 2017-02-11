@@ -1,13 +1,35 @@
 @import '../../scss/core';
 @import './dashboard.component.debug';
 
-hr {
-  margin: 50px auto;
-}
-
 .section-header {
   display: flex;
-  margin-right: auto;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.dropdown {
+  position: absolute;
+  top: 40px;
+  z-index: 1;
+}
+
+.dropdown-toggle {
+  align-self: center;
+}
+
+.dropdown-toggle__icon {
+  cursor: pointer;
+  margin-left: 5px;
+  width: 12px;
+}
+
+.dropdown-toggle__icon--close {
+  width: 10px;
+}
+
+hr {
+  margin: 50px auto;
 }
 
 .section-header__title {

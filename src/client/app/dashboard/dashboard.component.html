@@ -2,11 +2,20 @@
     <section class="section section_video-panels">
         <header class="section-header">
             <h1 class="section-header__title">Videos</h1>
+
+            <div class="dropdown-toggle">
+                <span class="dropdown-toggle__text">{{ dropdownSelection || 'All videos' }}</span>
+                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-down.svg" alt="expand" *ngIf="!isDropdownVisible && !dropdownSelection" (click)="onClickShowDropdown()">
+                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-up.svg" alt="collapse" *ngIf="isDropdownVisible  && !dropdownSelection" (click)="onClickHideDropdown()">
+                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="/assets/icons/close-green.svg" alt="close" *ngIf="dropdownSelection" (click)="onClickResetDropdownSelection()">
+            </div>
+
+            <gn-category-list *ngIf="isDropdownVisible" [categories]="categories" class="dropdown" [@dropdown]></gn-category-list>
         </header>
 
         <gn-video-panel-list [videos]="videos" [controls]="true"></gn-video-panel-list>
 
-        <button class="button section__button">LOAD MORE</button>
+        <button class="button section__button" (click)="onClickLoadMore()">LOAD MORE</button>
     </section>
 
     <hr>
