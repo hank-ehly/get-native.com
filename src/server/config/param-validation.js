@@ -57,6 +57,11 @@ module.exports = {
             headers: {
                 authorization: joi.string().required()
             }
+        },
+        writing_history: {
+            headers: {
+                authorization: joi.string().required()
+            }
         }
     },
     videos: {
