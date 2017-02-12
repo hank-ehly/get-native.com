@@ -869,9 +869,9 @@ Status: 200 OK
 			"id_str": "1",
 			"text": "This is a test answer",
 			"created_at": "Wed Jan 11 04:35:55 +0000 2017",
-			"topic": {
-        "name": "How to do things"
-      }
+			"question": {
+				"text": "How do you ...?"
+			}
 		}	
 	]
 }
