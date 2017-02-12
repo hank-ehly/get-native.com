@@ -34,7 +34,7 @@
                 <span class="video-stats__label">{{ video.loop_count | fuzzy }}</span>
             </div>
 
-            <span class="video-stats__label video-stats__created-at">{{ createdAt }}</span>
+            <span class="video-stats__label video-stats__created-at">{{ video.created_at | gnDate }}</span>
         </div>
     </footer>
 </div>

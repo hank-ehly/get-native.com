@@ -8,6 +8,7 @@
 export * from './category-list/category-list.component';
 export * from './compliance/index';
 export * from './config/env.config';
+export * from './date/date.pipe';
 export * from './debug/index';
 export * from './footer/index';
 export * from './fuzzy-number/fuzzy-number.pipe';
