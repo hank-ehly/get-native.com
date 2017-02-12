@@ -45,4 +45,10 @@ export class UTCDateService {
         let seconds: string = date.getUTCSeconds().toString();
         return `0${seconds}`.slice(-2);
     }
+
+    getDaysAgoFromDate(days: number, since?: Date): number {
+        let daysAgo = 1000 * 60 * 60 * 24 * days;
+        let sinceDate = since ? since : new Date();
+        return sinceDate.getTime() - daysAgo;
+    }
 }
