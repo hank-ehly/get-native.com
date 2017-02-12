@@ -28,7 +28,8 @@ export const APIConfig = new Map<APIHandle, any>([
     [APIHandle.STUDY_WRITING_HISTORY, {
         method: RequestMethod.Get,
         url: '/study/writing_history',
-        isProtected: true
+        isProtected: true,
+        permitURLSearchParams: ['since']
     }],
     [APIHandle.CATEGORIES, {
         method: RequestMethod.Get,

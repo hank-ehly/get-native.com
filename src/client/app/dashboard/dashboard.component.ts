@@ -7,8 +7,10 @@
 
 import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
 import { Router } from '@angular/router';
+import { URLSearchParams } from '@angular/http';
 
-import { Logger, APIHandle, HttpService, CategoryListService, ToolbarService, NavbarService } from '../core/index';
+import { Logger, APIHandle, HttpService, CategoryListService, ToolbarService, NavbarService, WritingSessions,
+    UTCDateService } from '../core/index';
 import { VideoSearchComponent } from '../shared/index';
 
 @Component({
@@ -30,11 +32,12 @@ import { VideoSearchComponent } from '../shared/index';
     ]
 })
 export class DashboardComponent extends VideoSearchComponent implements OnInit {
-    answers: any[] = [1, 2, 3, 4, 5];
     stats: any;
+    answers: WritingSessions;
+    studyWritingHistorySearch: URLSearchParams = new URLSearchParams();
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
-                protected categoryList: CategoryListService, private router: Router) {
+                protected categoryList: CategoryListService, private router: Router, private dateService: UTCDateService) {
         super(logger, http, navbar, toolbar, categoryList);
         this.apiHandle = APIHandle.CUED_VIDEOS;
     }
@@ -45,6 +48,11 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
         this.logger.debug(this, 'ngOnInit()');
 
         this.http.request(APIHandle.STUDY_STATS).subscribe((stats: any) => this.stats = stats);
+
+        this.studyWritingHistorySearch.set('since', this.dateService.getDaysAgoFromDate(30).toString());
+
+        this.http.request(APIHandle.STUDY_WRITING_HISTORY, {search: this.studyWritingHistorySearch})
+            .subscribe((answers: WritingSessions) => this.answers = answers);
 
         this.search.set('count', '9');
         this.search.set('lang', 'en');

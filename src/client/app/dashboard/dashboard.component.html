@@ -59,15 +59,13 @@
         </header>
 
         <ul class="answers">
-            <li *ngFor="let n of answers; let even = even" [ngClass]='{"answers__answer_striped": even}' class="answers__answer">
+            <li *ngFor="let answer of answers?.records; let even = even" [ngClass]='{"answers__answer_striped": even}' class="answers__answer">
                 <div class="answers__answer-body">
-                    <h6 class="answers__answer-title">Video Title ({{ n }})</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam, consectetur delectus et ex
-                       nemo, praesentium quibusdam quod recusandae reprehenderit sit vel veritatis voluptatum. Assumenda
-                       culpa dolores enim quibusdam totam?</p>
+                    <h6 class="answers__answer-title">{{ answer?.question?.text }}</h6>
+                    <p>{{ answer?.text }}</p>
                 </div>
 
-                <span class="answers__answer-date">December 10, 2016</span>
+                <span class="answers__answer-date">{{ answer?.created_at | gnDate }}</span>
             </li>
         </ul>
 
