@@ -69,5 +69,13 @@ export function main() {
             expect(nine).toEqual('09');
             expect(ten).toEqual('10');
         });
+
+        it('should return an integer value in milliseconds of X days since Y', () => {
+            let date = new Date(1486901331613);
+            let actual = service.getDaysAgoFromDate(30, date);
+            let expected = 1484309331613;
+
+            expect(actual).toEqual(expected);
+        });
     });
 }
