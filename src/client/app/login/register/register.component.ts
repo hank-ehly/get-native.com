@@ -32,6 +32,6 @@ export class RegisterComponent {
     }
 
     onSubmit(): void {
-        this.logger.debug('[RegisterComponent]: Submit');
+        this.logger.debug(this, 'onSubmit()');
     }
 }

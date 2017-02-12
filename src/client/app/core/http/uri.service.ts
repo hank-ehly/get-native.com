@@ -21,7 +21,7 @@ export class URIService {
             return endpoint.url;
         }
 
-        this.logger.debug(matches);
+        this.logger.debug(this, matches);
 
         for (let match of matches) {
             let key = match.substr(1);

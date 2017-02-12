@@ -42,7 +42,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     ngOnInit() {
         super.ngOnInit();
 
-        this.logger.debug(`[${this.constructor.name}] ngOnInit()`);
+        this.logger.debug(this, 'ngOnInit()');
 
         this.http.request(APIHandle.STUDY_STATS).subscribe((stats: any) => this.stats = stats);
 

@@ -19,6 +19,6 @@ export class WritingComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.logger.info('[WritingComponent] ngOnInit()');
+        this.logger.info(this, 'ngOnInit()');
     }
 }

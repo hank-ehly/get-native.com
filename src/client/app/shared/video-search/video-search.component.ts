@@ -57,7 +57,7 @@ export class VideoSearchComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
+        this.logger.debug(this, 'ngOnInit()');
 
         this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories);
 
@@ -76,17 +76,17 @@ export class VideoSearchComponent implements OnInit {
     }
 
     onClickShowDropdown(): void {
-        this.logger.debug(`[${this.constructor.name}]: onClickShowDropdown()`);
+        this.logger.debug(this, 'onClickShowDropdown()');
         this.isDropdownVisible = !this.isDropdownVisible;
     }
 
     onClickHideDropdown(): void {
-        this.logger.debug(`[${this.constructor.name}]: onClickHideDropdown()`);
+        this.logger.debug(this, 'onClickHideDropdown()');
         this.isDropdownVisible = false;
     }
 
     onClickResetDropdownSelection(): void {
-        this.logger.debug(`[${this.constructor.name}]: onClickResetDropdownSelection()`);
+        this.logger.debug(this, 'onClickResetDropdownSelection()');
         this.dropdownSelection = null;
         this.search.delete('topic_id');
         this.search.delete('category_id');

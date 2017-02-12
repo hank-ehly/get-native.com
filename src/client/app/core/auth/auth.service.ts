@@ -30,7 +30,7 @@ export class AuthService {
     }
 
     onToolbarLogout(): void {
-        this.logger.debug(`[${this.constructor.name}] onToolbarLogout()`);
+        this.logger.debug(this, 'onToolbarLogout()');
         this.localStorage.removeItem(kAuthTokenExpire);
         this.localStorage.removeItem(kAuthToken);
     }

@@ -28,12 +28,12 @@ export class ToolbarService {
     }
 
     didSelectLanguage(lang: Language): void {
-        this.logger.debug(`[${this.constructor.name}] Selected '${lang.name}' language.`);
+        this.logger.debug(this, `Selected '${lang.name}' language.`);
         this.selectLanguageSource.next(lang);
     }
 
     logout(): void {
-        this.logger.debug(`[${this.constructor.name}] logout()`);
+        this.logger.debug(this, 'logout()');
         this.logoutSource.next();
     }
 }

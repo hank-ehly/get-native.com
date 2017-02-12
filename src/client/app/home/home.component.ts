@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     }
 
     onShowSignInModal(): void {
-        this.logger.debug('[HomeComponent]: onShowSignInModal()');
+        this.logger.debug(this, 'onShowSignInModal()');
         this.loginModal.showModal();
     }
 }

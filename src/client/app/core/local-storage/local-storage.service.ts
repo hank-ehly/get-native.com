@@ -30,35 +30,35 @@ export class LocalStorageService {
 
     broadcastStorageEvent(ev: StorageEvent): void {
         if (ev.key === null && ev.newValue === null && ev.oldValue === null) {
-            this.logger.debug(`[${this.constructor.name}] Storage Event 'clear()'`);
+            this.logger.debug(this, 'Storage Event clear()');
             this.clearSource.next();
         } else {
-            this.logger.debug(`[${this.constructor.name}] Storage Event ${ev.key}`);
+            this.logger.debug(this, `Storage Event ${ev.key}`);
             this.storageEventSource.next(ev);
         }
     }
 
     get length(): number {
         let retVal = localStorage.length;
-        this.logger.debug(`[${this.constructor.name}]: get length() - ${retVal}`);
+        this.logger.debug(this, `get length() - ${retVal}`);
         return retVal;
     }
 
     key(index: number): string {
         let retVal = localStorage.key(index);
-        this.logger.debug(`[${this.constructor.name}]: key('${index}) - ${retVal}'`);
+        this.logger.debug(this, `key('${index}) - ${retVal}'`);
         return retVal;
     }
 
     clear(): void {
-        this.logger.debug(`[${this.constructor.name}]: clear()`);
+        this.logger.debug(this, `clear()`);
         localStorage.clear();
         this.clearSource.next();
     }
 
     /* Todo: Encrypt all stored data */
     setItem(key: string, data: any): void {
-        this.logger.debug(`[${this.constructor.name}]: setItem '${key}'`);
+        this.logger.debug(this, `setItem '${key}'`);
 
         if (data === null || data === undefined) {
             /* Todo: ErrorService */
@@ -83,12 +83,12 @@ export class LocalStorageService {
 
     hasItem(key: string): boolean {
         let retVal = this.getItem(key) !== null;
-        this.logger.debug(`[${this.constructor.name}]: hasItem '${key}' ? ${retVal}`);
+        this.logger.debug(this, `hasItem '${key}' ? ${retVal}`);
         return retVal;
     }
 
     removeItem(key: string): void {
-        this.logger.debug(`[${this.constructor.name}]: removeItem('${key}')`);
+        this.logger.debug(this, `removeItem('${key}')`);
         localStorage.removeItem(key);
         this.setItemSource.next({key: key, data: null});
     }

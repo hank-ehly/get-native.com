@@ -5,7 +5,11 @@
  * Created by henryehly on 2016/12/24.
  */
 
-export enum LOG_LEVEL {
+import { OpaqueToken } from '@angular/core';
+
+export let LogLevelToken = new OpaqueToken('log-level');
+
+export enum LogLevelValue {
     OFF,
     WARN,
     ERROR,

@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
     @HostListener('document:keydown', ['$event']) onKeyDown(e: KeyboardEvent): void {
         if (!this.isVisible) return;
 
-        this.logger.debug(`KeyboardEvent: ${e.key}`);
+        this.logger.debug(this, `KeyboardEvent: ${e.key}`);
 
         switch (e.key) {
             case 'Enter': this.onKeydownEnter(e); break;
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
         let target: HTMLElement = <HTMLElement>e.target;
         if (target.className.indexOf('tabbable') === -1) return;
 
-        this.logger.warn(`TODO: Perform action for ${target.tagName.toLowerCase()}.${target.className.replace(' ', '.')}`);
+        this.logger.warn(this, `TODO: Perform action for ${target.tagName.toLowerCase()}.${target.className.replace(' ', '.')}`);
     }
 
     onKeydownEscape(e?: KeyboardEvent): void {

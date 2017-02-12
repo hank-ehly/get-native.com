@@ -25,7 +25,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
     }
 
     ngOnInit() {
-        this.logger.info(`[${this.constructor.name}] ngOnInit()`);
+        this.logger.info(this, 'ngOnInit()');
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -39,7 +39,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
             return;
         }
 
-        this.logger.debug(changes);
+        this.logger.debug(this, changes);
 
         /* Todo: How can you set the activeTab here? */
 
@@ -50,7 +50,7 @@ export class TranscriptComponent implements OnInit, OnChanges {
     }
 
     onClickTab(transcript: Transcript, e: MouseEvent): void {
-        this.logger.debug(`[${this.constructor.name}] onClickTabTitle => title: ${this.titleForTranscript(transcript)}, event:`, e);
+        this.logger.debug(this, `onClickTabTitle => title: ${this.titleForTranscript(transcript)}, event:`, e);
         this.selectedTab = <HTMLLIElement>e.target;
         this.selectedTranscript = transcript;
 

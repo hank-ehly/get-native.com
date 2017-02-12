@@ -41,7 +41,7 @@ export class LibraryComponent extends VideoSearchComponent implements OnInit {
     ngOnInit(): void {
         super.ngOnInit();
 
-        this.logger.debug(`[${this.constructor.name}] ngOnInit()`);
+        this.logger.debug(this, 'ngOnInit()');
 
         this.search.set('count', '9');
         this.search.set('lang', 'en');

@@ -44,12 +44,12 @@ export class GeneralComponent {
     }
 
     onSubmitEmail(): void {
-        this.logger.debug(`[${this.constructor.name}] onSubmitEmail()`);
+        this.logger.debug(this, 'onSubmitEmail()');
         this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.credentials.email}}).subscribe();
     }
 
     onSubmitPassword(): void {
-        this.logger.debug(`[${this.constructor.name}] onSubmitPassword()`);
+        this.logger.debug(this, 'onSubmitPassword()');
         this.http.request(APIHandle.EDIT_PASSWORD, {body: {password: this.credentials.password.replace}}).subscribe();
     }
 }

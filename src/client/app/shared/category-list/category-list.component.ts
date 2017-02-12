@@ -23,7 +23,7 @@ export class CategoryListComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        this.logger.debug(`[${this.constructor.name}] OnInit()`);
+        this.logger.debug(this, 'OnInit()');
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -49,16 +49,16 @@ export class CategoryListComponent implements OnInit, OnChanges {
             }
         }
 
-        this.logger.debug(`[${this.constructor.name}] onCategoriesChange`, this.rows);
+        this.logger.debug(this, 'onCategoriesChange()', this.rows);
     }
 
     onClickCategory(category: Category): void {
-        this.logger.debug(`[${this.constructor.name}] onClickCategory`, category);
+        this.logger.debug(this, 'onClickCategory()', category);
         this.service.selectCategory(category);
     }
 
     onClickTopic(topic: Topic): void {
-        this.logger.debug(`[${this.constructor.name}] onClickTopic`, topic);
+        this.logger.debug(this, 'onClickTopic()', topic);
         this.service.selectTopic(topic);
     }
 }

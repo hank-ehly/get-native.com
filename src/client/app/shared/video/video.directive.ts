@@ -91,7 +91,7 @@ export class VideoDirective {
 
         this.progressSource.next(loaded);
 
-        this.logger.debug(e.type, loaded);
+        this.logger.debug(this, e.type, loaded);
     }
 
     private triggerAnimationLoop(): void {
