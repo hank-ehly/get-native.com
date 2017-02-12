@@ -843,14 +843,18 @@ Status: 204 No Content
 ```
 
 # GET /study/writing_history
+ 
 
-Fetch a list of all writing session records associated with the authenticating user.
 
 ```
-GET https://api.get-native.com/study/writing_history
+GET https://api.get-native.com/study/writing_history?since=1483658645131
 ```
 
-Todo: Paging
+**Parameters**
+
+| Parameter         	| Description                                                    	| Required 	| Default 	|
+|-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
+| since  	            | UTC datetime specifying the oldest possible search result      	|          	|         	|
 
 **Response**
 ```
@@ -863,11 +867,11 @@ Status: 200 OK
 		{
 			"id": 1,
 			"id_str": "1",
-			"answer_text": "This is a test answer",
+			"text": "This is a test answer",
 			"created_at": "Wed Jan 11 04:35:55 +0000 2017",
 			"topic": {
-				"name": "How to do things"
-			}
+        "name": "How to do things"
+      }
 		}	
 	]
 }
