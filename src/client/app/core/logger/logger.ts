@@ -18,25 +18,25 @@ export class Logger {
 
     warn(_: Object, message?: any, ...optionalParams: any[]): void {
         if (window.console && this.logLevel >= LogLevelValue.WARN && Config.ENV === 'DEV') {
-            console.warn.apply(console, [`[${_.constructor.name}] ${message}`, ...optionalParams]);
+            console.warn.apply(console, [`[${_.constructor.name}]`, message, ...optionalParams]);
         }
     };
 
     error(_: Object, message?: any, ...optionalParams: any[]): void {
         if (window.console && this.logLevel >= LogLevelValue.ERROR && Config.ENV === 'DEV') {
-            console.error.apply(console, [`[${_.constructor.name}] ${message}`, ...optionalParams]);
+            console.error.apply(console, [`[${_.constructor.name}]`, message, ...optionalParams]);
         }
     };
 
     info(_: Object, message?: any, ...optionalParams: any[]): void {
         if (window.console && this.logLevel >= LogLevelValue.INFO && Config.ENV === 'DEV') {
-            console.info.apply(console, [`[${_.constructor.name}] ${message}`, ...optionalParams]);
+            console.info.apply(console, [`[${_.constructor.name}]`, message, ...optionalParams]);
         }
     };
 
     debug(_: Object, message?: any, ...optionalParams: any[]): void {
         if (window.console && this.logLevel >= LogLevelValue.DEBUG && Config.ENV === 'DEV') {
-            console.debug.apply(console, [`[${_.constructor.name}] ${message}`, ...optionalParams]);
+            console.debug.apply(console, [`[${_.constructor.name}]`, message, ...optionalParams]);
         }
     };
 }
