@@ -9,5 +9,5 @@ import { Entity } from './entity';
 
 export interface Question extends Entity {
     text: string;
-    example_answer: string;
+    example_answer?: string;
 }

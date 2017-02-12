@@ -28,3 +28,5 @@ export * from './usage-examples';
 export * from './user';
 export * from './video';
 export * from './videos';
+export * from './writing-session';
+export * from './writing-sessions';
