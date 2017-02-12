@@ -61,6 +61,9 @@ module.exports = {
         writing_history: {
             headers: {
                 authorization: joi.string().required()
+            },
+            params: {
+                since: joi.number().integer()
             }
         }
     },
