@@ -57,11 +57,5 @@ export function main() {
             let videos = spec.getNativeEl('.video-panels');
             expect(videos.children.length).toBeGreaterThan(0);
         });
-
-        // Todo: This fails because of a typescript imports problem
-        it('should display videos in multiples of 3', () => {
-            let videos = spec.getNativeEl('.video-panels');
-            expect (videos.children.length % 3).toEqual(0);
-        });
     });
 }

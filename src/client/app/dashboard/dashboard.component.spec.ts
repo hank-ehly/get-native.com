@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
-import { NavbarService, STUBRouter, UTCDateService, Logger, STUBLogger, SpecUtil } from '../core/index';
+import { NavbarService, STUBRouter, UTCDateService, Logger, STUBLogger, SpecUtil, CategoryListService, ToolbarService } from '../core/index';
 import { STUBHttpService } from '../core/http/http.service.stub';
 import { HttpService } from '../core/http/http.service';
 
@@ -32,6 +32,8 @@ export function main() {
                     {provide: Logger, useValue: STUBLogger},
                     {provide: HttpService, useValue: STUBHttpService},
                     UTCDateService,
+                    CategoryListService,
+                    ToolbarService,
                     NavbarService
                 ]
             }).compileComponents().then(() => {
