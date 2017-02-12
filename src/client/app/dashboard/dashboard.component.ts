@@ -13,6 +13,10 @@ import { Logger, APIHandle, HttpService, CategoryListService, ToolbarService, Na
     UTCDateService } from '../core/index';
 import { VideoSearchComponent } from '../shared/index';
 
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import '../operators';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-dashboard',
@@ -34,7 +38,12 @@ import { VideoSearchComponent } from '../shared/index';
 export class DashboardComponent extends VideoSearchComponent implements OnInit {
     stats: any;
     answers: WritingSessions;
-    studyWritingHistorySearch: URLSearchParams = new URLSearchParams();
+    answerSearchParams: URLSearchParams = new URLSearchParams();
+
+    answers$ = new Subject<number>();
+    answerMenuItems = [{text: 'LAST 30 DAYS', value: 30}, {text: 'LAST 60 DAYS', value: 60}, {text: 'LAST YEAR', value: 365},
+        {text: 'ALL TIME', value: null}];
+    activeAnswerMenuItem: any = this.answerMenuItems[0];
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
                 protected categoryList: CategoryListService, private router: Router, private dateService: UTCDateService) {
@@ -49,17 +58,31 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
 
         this.http.request(APIHandle.STUDY_STATS).subscribe((stats: any) => this.stats = stats);
 
-        this.studyWritingHistorySearch.set('since', this.dateService.getDaysAgoFromDate(30).toString());
 
-        this.http.request(APIHandle.STUDY_WRITING_HISTORY, {search: this.studyWritingHistorySearch})
+        this.answers$
+            .distinctUntilChanged()
+            .switchMap(this.updateAnswersFilter.bind(this))
             .subscribe((answers: WritingSessions) => this.answers = answers);
 
-        this.search.set('count', '9');
-        this.search.set('lang', 'en');
+        this.videoSearchParams.set('count', '9');
+        this.videoSearchParams.set('lang', 'en');
         this.lang$.next('en');
+
+        this.answerSearchParams.set('since', this.dateService.getDaysAgoFromDate(30).toString());
+        this.answers$.next(30);
     }
 
     onBegin(): void {
-        this.router.navigate(['study']);
+        this.router.navigate(['study']).then();
+    }
+
+    setActiveAnswerMenuItem(answer: any): void {
+        this.activeAnswerMenuItem = answer;
+        this.answerSearchParams.set('since', this.dateService.getDaysAgoFromDate(answer.value).toString());
+        this.answers$.next(answer.value);
+    }
+
+    private updateAnswersFilter(): Observable<WritingSessions> {
+        return this.http.request(APIHandle.STUDY_WRITING_HISTORY, {search: this.answerSearchParams});
     }
 }

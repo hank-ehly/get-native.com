@@ -27,7 +27,7 @@ export class VideoSearchComponent implements OnInit {
     apiHandle: APIHandle = APIHandle.VIDEOS;
 
     videos: Videos;
-    search: URLSearchParams = new URLSearchParams();
+    videoSearchParams: URLSearchParams = new URLSearchParams();
 
     protected query$    = new Subject<string>();
     protected lang$     = new Subject<LangCode>();
@@ -71,7 +71,7 @@ export class VideoSearchComponent implements OnInit {
 
         this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.topic$).merge(this.maxId$)
             .distinctUntilChanged()
-            .switchMap(this.updateVideoSearchResults.bind(this))
+            .switchMap(this.updateVideoSearchResults.bind(this)) // Todo: this could be causing the multiple requests
             .subscribe((videos: Videos) => this.videos = videos);
     }
 
@@ -88,18 +88,18 @@ export class VideoSearchComponent implements OnInit {
     onClickResetDropdownSelection(): void {
         this.logger.debug(this, 'onClickResetDropdownSelection()');
         this.dropdownSelection = null;
-        this.search.delete('topic_id');
-        this.search.delete('category_id');
+        this.videoSearchParams.delete('topic_id');
+        this.videoSearchParams.delete('category_id');
 
         this.isDropdownVisible = false;
     }
 
     onClickLoadMore(): void {
         let oldestVideo = this.videos.records[this.videos.count - 1];
-        let updatedCount = +this.search.get('count') * 2;
+        let updatedCount = +this.videoSearchParams.get('count') * 2;
 
-        this.search.set('max_id', oldestVideo.id_str);
-        this.search.set('count', updatedCount.toString());
+        this.videoSearchParams.set('max_id', oldestVideo.id_str);
+        this.videoSearchParams.set('count', updatedCount.toString());
 
         this.maxId$.next(oldestVideo.id_str);
     }
@@ -122,14 +122,14 @@ export class VideoSearchComponent implements OnInit {
 
     private onSelectCategory(category: Category): void {
         this.dropdownSelection = category.name;
-        this.search.delete('topic_id');
+        this.videoSearchParams.delete('topic_id');
         this.updateSearchParams('category_id', category.id_str);
         this.category$.next(category.id_str);
     }
 
     private onSelectTopic(topic: Topic): void {
         this.dropdownSelection = topic.name;
-        this.search.delete('category_id');
+        this.videoSearchParams.delete('category_id');
         this.updateSearchParams('topic_id', topic.id_str);
         this.topic$.next(topic.id_str);
     }
@@ -138,13 +138,13 @@ export class VideoSearchComponent implements OnInit {
         this.isDropdownVisible = false;
 
         if (!value) {
-            this.search.delete(key);
+            this.videoSearchParams.delete(key);
         } else {
-            this.search.set(key, value);
+            this.videoSearchParams.set(key, value);
         }
     }
 
     private updateVideoSearchResults(): Observable<Entity> {
-        return this.http.request(this.apiHandle, {search: this.search});
+        return this.http.request(this.apiHandle, {search: this.videoSearchParams});
     }
 }

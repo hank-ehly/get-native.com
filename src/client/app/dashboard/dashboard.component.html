@@ -51,10 +51,9 @@
         <header class="section-header">
             <h1 class="section-header__title">Answers</h1>
             <ul class="section-header__toggle-button-frame">
-                <li class="section-header__menu-item section-header__menu-item_active">LAST 30 DAYS</li>
-                <li class="section-header__menu-item">LAST 90 DAYS</li>
-                <li class="section-header__menu-item">LAST YEAR</li>
-                <li class="section-header__menu-item">ALL TIME</li>
+                <li *ngFor="let item of answerMenuItems" class="section-header__menu-item"
+                    [ngClass]="{'section-header__menu-item_active': activeAnswerMenuItem === item}"
+                    (click)="setActiveAnswerMenuItem(item)">{{ item.text }}</li>
             </ul>
         </header>
 
