@@ -5,9 +5,9 @@
  * Created by henryehly on 2016/11/30.
  */
 
-import { Component, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { Video, UTCDateService, Logger } from '../../core/index';
+import { Video } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -15,7 +15,7 @@ import { Video, UTCDateService, Logger } from '../../core/index';
     templateUrl: 'video-panel.component.html',
     styleUrls: ['video-panel.component.css']
 })
-export class VideoPanelComponent implements OnChanges {
+export class VideoPanelComponent {
     @Input() controls: boolean;
     @Input() video: Video;
     @Output() begin = new EventEmitter();
@@ -25,18 +25,8 @@ export class VideoPanelComponent implements OnChanges {
     min: number  = 4;
     max: number  = 60;
 
-    createdAt: string = '';
-
-    constructor(private dateService: UTCDateService, private logger: Logger) {
+    constructor() {
         this.controls = false;
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-        if (changes['video'] && changes['video'].currentValue) {
-            let video: Video = changes['video'].currentValue;
-            let date = this.dateService.parse(video.created_at);
-            this.createdAt = `${date.getUTCDate()} ${this.dateService.getTextMonth(date)} ${date.getUTCFullYear()}`;
-        }
     }
 
     onBegin(): void {

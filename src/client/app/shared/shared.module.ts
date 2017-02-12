@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import {
     CategoryListComponent,
     ComplianceComponent,
+    DatePipe,
     FooterComponent,
     FuzzyNumberPipe,
     DigitalTimePipe,
@@ -44,6 +45,7 @@ import {
     declarations: [
         CategoryListComponent,
         ComplianceComponent,
+        DatePipe,
         FooterComponent,
         FuzzyNumberPipe,
         DigitalTimePipe,
@@ -72,6 +74,7 @@ import {
         FormsModule,
         CategoryListComponent,
         ComplianceComponent,
+        DatePipe,
         FooterComponent,
         FuzzyNumberPipe,
         DigitalTimePipe,
