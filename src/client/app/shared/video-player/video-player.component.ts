@@ -52,7 +52,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-        this.logger.info(`[${this.constructor.name}] ngOnInit()`);
+        this.logger.info(this, 'ngOnInit()');
     }
 
     ngAfterViewInit(): void {

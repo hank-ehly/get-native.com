@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         }
 
         this.router.navigate(['']).then(() => {
-            this.logger.info(`[${this.constructor.name}] Unable to activate route ${route}. Forced navigation to homepage.`);
+            this.logger.info(this, `Unable to activate route ${route}. Forced navigation to homepage.`);
         });
 
         return false;

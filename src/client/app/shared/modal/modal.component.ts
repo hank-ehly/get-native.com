@@ -59,7 +59,7 @@ export class ModalComponent {
     onClickClose(e: MouseEvent): void {
         let t = <HTMLElement>e.target;
         if (['overlay', 'modal-frame__close-button'].indexOf(t.className) !== -1) {
-            this.logger.debug('[ModalComponent] onClickClose()');
+            this.logger.debug(this, 'onClickClose()');
             this.isVisible = false;
             this.close.emit();
         }

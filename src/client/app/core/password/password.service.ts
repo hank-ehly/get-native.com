@@ -133,7 +133,7 @@ export class PasswordService {
 
         if (score > 100) score = 100; else if (score < 0) score = 0;
 
-        this.logger.debug(`Password Strength: ${score}`);
+        this.logger.debug(this, `Password Strength: ${score}`);
         return score;
     }
 

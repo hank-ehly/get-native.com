@@ -19,6 +19,6 @@ export class ResultsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.logger.info('[ResultsComponent] ngOnInit()');
+        this.logger.info(this, 'ngOnInit()');
     }
 }

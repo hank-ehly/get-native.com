@@ -59,12 +59,12 @@ export class NavbarComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         this.navbar.setTitle$.subscribe((t) => this.title = t);
         this.navbar.setBackButton$.subscribe(t => this.backButtonTitle = t);
-        this.logger.debug(`[${this.constructor.name}] this.authenticated = ${this.authenticated}`);
+        this.logger.debug(this, `this.authenticated = ${this.authenticated}`);
         this.logoLinkPath = this.authenticated ? 'dashboard' : '';
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        this.logger.debug(`[${this.constructor.name}] changes`, changes);
+        this.logger.debug(this, 'changes', changes);
 
         if (changes['authenticated']) {
             this.logoLinkPath = changes['authenticated'].currentValue ? 'dashboard' : '';
@@ -72,25 +72,25 @@ export class NavbarComponent implements OnInit, OnChanges {
     }
 
     onShowLoginModal(event: any): void {
-        this.logger.debug(`[${this.constructor.name}]: requestShowLoginModal()`);
+        this.logger.debug(this, 'requestShowLoginModal()');
         event.preventDefault();
         this.loginModal.showModal();
     }
 
     onInputSearchQuery(e: Event): void {
         let query = (<HTMLInputElement>e.target).value;
-        this.logger.info(`[${this.constructor.name}] Updating search query to '${query}'`);
+        this.logger.info(this, `Updating search query to '${query}'`);
         this.navbar.updateSearchQuery(query);
     }
 
     onClickBack(): void {
-        this.logger.debug(`[${this.constructor.name}]: onClickBack()`);
+        this.logger.debug(this, 'onClickBack()');
         this.location.back();
     }
 
     onToggleSearch(): void {
         this.searchBarHidden = !this.searchBarHidden;
-        this.logger.debug(`[${this.constructor.name}]: Search bar hidden set to '${this.searchBarHidden}'`);
+        this.logger.debug(this, `Search bar hidden set to '${this.searchBarHidden}'`);
 
         /* this.searchBar is not immediately available after becoming 'visible' */
         setTimeout(() => {

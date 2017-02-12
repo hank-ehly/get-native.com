@@ -38,6 +38,6 @@ export class SettingsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.logger.debug('[SettingsComponent] ngOnInit()');
+        this.logger.debug(this, 'ngOnInit()');
     }
 }

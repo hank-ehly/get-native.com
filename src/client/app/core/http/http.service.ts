@@ -45,7 +45,7 @@ export class HttpService {
         if (options && options.search && endpoint.permitURLSearchParams) {
             options.search.paramsMap.forEach((value, key) => {
                 if (endpoint.permitURLSearchParams.indexOf(key) === -1) {
-                    this.logger.debug(`[${this.constructor.name}] Query parameter '${key}' not permitted in url ${endpoint.url}.`);
+                    this.logger.debug(this, `Query parameter '${key}' not permitted in url ${endpoint.url}.`);
                     options.search.paramsMap.delete(key);
                 }
             });
@@ -55,7 +55,7 @@ export class HttpService {
 
         let request = new Request(args);
 
-        this.logger.debug(request);
+        this.logger.debug(this, request);
 
         return this.http.request(request)
             .map(this.handleResponse.bind(this))
@@ -67,7 +67,7 @@ export class HttpService {
             this.handleError(response);
         }
 
-        this.logger.debug(`[${this.constructor.name}] Response`, response);
+        this.logger.debug(this, 'Response', response);
 
         if (response.headers.has('x-gn-auth-token')) {
             this.localStorage.setItem(kAuthToken, response.headers.get('x-gn-auth-token'));

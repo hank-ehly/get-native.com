@@ -23,7 +23,7 @@ import { LibraryDetailModule } from './library-detail/library-detail.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsModule } from './settings/settings.module';
 import { StudyModule } from './study/study.module';
-import { Logger, LoggerConfig, LOG_LEVEL } from './core/index';
+import { Logger, LogLevelToken, LogLevelValue } from './core/index';
 
 @NgModule({
     imports: [
@@ -45,7 +45,7 @@ import { Logger, LoggerConfig, LOG_LEVEL } from './core/index';
     declarations: [AppComponent],
     providers: [
         {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-        {provide: LoggerConfig, useValue: LOG_LEVEL.DEBUG},
+        {provide: LogLevelToken, useValue: LogLevelValue.DEBUG},
         Logger
     ],
     bootstrap: [AppComponent]

@@ -42,7 +42,7 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
     }
 
     ngOnInit(): void {
-        this.logger.info(`[${this.constructor.name}] ngOnInit()`);
+        this.logger.info(this, 'ngOnInit()');
 
         this.authenticated = this.auth.isLoggedIn();
 
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
             .filter(route => route.outlet === 'primary')
             .mergeMap(route => route.data)
             .subscribe(e => {
-                this.logger.debug('NavigationEnd:', e);
+                this.logger.debug(this, 'NavigationEnd', e);
 
                 if (e && e['title']) {
                     if (this.authenticated) this.navbar.setTitle(e['title']);
@@ -96,7 +96,7 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
         }
 
         this.router.navigate(['']).then(() => {
-            this.logger.info(`[${this.constructor.name}] Forced navigation to homepage.`);
+            this.logger.info(this, 'Forced navigation to homepage.');
         });
     }
 }

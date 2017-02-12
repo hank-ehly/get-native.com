@@ -24,16 +24,16 @@ export class NotificationsComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.logger.warn(`[${this.constructor.name}][TODO] Initialize notification preference values.`);
+        this.logger.warn(this, '[TODO] Initialize notification preference values.');
     }
 
     onToggleEmailNotifications(value: boolean): void {
-        this.logger.debug(`[${this.constructor.name}] onToggleEmailNotifications(${value})`);
+        this.logger.debug(this, `onToggleEmailNotifications(${value})`);
         this.http.request(APIHandle.EDIT_ACCOUNT, {body: {email_notifications_enabled: value}}).subscribe();
     }
 
     onToggleBrowserNotifications(value: boolean): void {
-        this.logger.debug(`[${this.constructor.name}] onToggleBrowserNotifications(${value})`);
+        this.logger.debug(this, `onToggleBrowserNotifications(${value})`);
         this.http.request(APIHandle.EDIT_ACCOUNT, {body: {browser_notifications_enabled: value}}).subscribe();
     }
 }

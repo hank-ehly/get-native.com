@@ -38,13 +38,13 @@ export class EmailLoginComponent {
     onLoginSuccess(): void {
         this.router.navigate(['dashboard']).then((success) => {
             if (success) {
-                this.logger.debug('Navigation success');
+                this.logger.debug(this, 'Navigation success');
                 this.loginModal.hideModal();
             } else {
-                this.logger.warn('Navigation failed');
+                this.logger.debug(this, 'Navigation failed');
             }
         }).catch((reason) => {
-            this.logger.warn(reason);
+            this.logger.debug(this, reason);
         });
     }
 }

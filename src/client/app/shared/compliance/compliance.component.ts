@@ -49,7 +49,7 @@ export class ComplianceComponent implements OnInit, LocalStorageProtocol {
         if (item['key'] !== kAcceptLocalStorage) return;
 
         let isCompliant = item['data'];
-        this.logger.debug(`[CookieComplianceComponent]: localStorageValueChanged(${isCompliant})`);
+        this.logger.debug(this, `localStorageValueChanged(${isCompliant})`);
         this.isVisible = !isCompliant;
     }
 
@@ -57,7 +57,7 @@ export class ComplianceComponent implements OnInit, LocalStorageProtocol {
         if (e.key !== kAcceptLocalStorage) return;
 
         let isCompliant = e.newValue === 'true';
-        this.logger.debug(`[CookieComplianceComponent]: didReceiveStorageEvent()`, e);
+        this.logger.debug(this, 'didReceiveStorageEvent()', e);
         this.isVisible = !isCompliant;
     }
 
@@ -66,7 +66,7 @@ export class ComplianceComponent implements OnInit, LocalStorageProtocol {
     }
 
     onClose(): void {
-        this.logger.debug('[ComplianceComponent]: onClose()');
+        this.logger.debug(this, 'onClose()');
         this.localStorageService.setItem(kAcceptLocalStorage, true);
     }
 }

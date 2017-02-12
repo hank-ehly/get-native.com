@@ -28,7 +28,7 @@ export class LibraryDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.logger.debug(`[${this.constructor.name}]: ngOnInit()`);
+        this.logger.debug(this, 'ngOnInit()');
 
         let id = +this.route.snapshot.params['id'];
         this.http.request(APIHandle.VIDEO, {params: {id: id}}).subscribe((video: Video) => {
@@ -38,7 +38,7 @@ export class LibraryDetailComponent implements OnInit {
     }
 
     onToggleLike() {
-        this.logger.debug(`[${this.constructor.name}] onToggleLike()`);
+        this.logger.debug(this, 'onToggleLike()');
 
         if (this.video.liked) {
             this.video.liked = false;

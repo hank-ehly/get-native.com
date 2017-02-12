@@ -6,6 +6,5 @@
  */
 
 export * from './log-level';
-export * from './logger-config';
 export * from './logger';
 export * from './logger.stub';

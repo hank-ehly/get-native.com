@@ -7,37 +7,36 @@
 
 import { Injectable, Inject } from '@angular/core';
 
-import { LoggerConfig } from './logger-config';
-import { LOG_LEVEL } from './log-level';
+import { LogLevelValue, LogLevelToken } from './log-level';
 import { Config } from '../../shared/config/env.config';
 
 @Injectable()
 export class Logger {
-    constructor(@Inject(LoggerConfig) private logLevel: LOG_LEVEL = LOG_LEVEL.WARN) {
-        if (Config.ENV === 'DEV') this.debug(`[${this.constructor.name}] logLevel = ${logLevel}`);
+    constructor(@Inject(LogLevelToken) private logLevel: LogLevelValue = LogLevelValue.WARN) {
+        this.debug(this, `logLevel = ${logLevel}`);
     }
 
-    warn(message?: any, ...optionalParams: any[]): void {
-        if (window.console && this.logLevel >= LOG_LEVEL.WARN) {
-            if (Config.ENV === 'DEV') console.warn.apply(console, arguments);
+    warn(_: Object, message?: any, ...optionalParams: any[]): void {
+        if (window.console && this.logLevel >= LogLevelValue.WARN && Config.ENV === 'DEV') {
+            console.warn.apply(console, [`[${_.constructor.name}] ${message}`, ...optionalParams]);
         }
     };
 
-    error(message?: any, ...optionalParams: any[]): void {
-        if (window.console && this.logLevel >= LOG_LEVEL.ERROR) {
-            if (Config.ENV === 'DEV') console.error.apply(console, arguments);
+    error(_: Object, message?: any, ...optionalParams: any[]): void {
+        if (window.console && this.logLevel >= LogLevelValue.ERROR && Config.ENV === 'DEV') {
+            console.error.apply(console, [`[${_.constructor.name}] ${message}`, ...optionalParams]);
         }
     };
 
-    info(message?: any, ...optionalParams: any[]): void {
-        if (window.console && this.logLevel >= LOG_LEVEL.INFO) {
-            if (Config.ENV === 'DEV') console.info.apply(console, arguments);
+    info(_: Object, message?: any, ...optionalParams: any[]): void {
+        if (window.console && this.logLevel >= LogLevelValue.INFO && Config.ENV === 'DEV') {
+            console.info.apply(console, [`[${_.constructor.name}] ${message}`, ...optionalParams]);
         }
     };
 
-    debug(message?: any, ...optionalParams: any[]): void {
-        if (window.console && this.logLevel >= LOG_LEVEL.DEBUG) {
-            if (Config.ENV === 'DEV') console.debug.apply(console, arguments);
+    debug(_: Object, message?: any, ...optionalParams: any[]): void {
+        if (window.console && this.logLevel >= LogLevelValue.DEBUG && Config.ENV === 'DEV') {
+            console.debug.apply(console, [`[${_.constructor.name}] ${message}`, ...optionalParams]);
         }
-    }
+    };
 }

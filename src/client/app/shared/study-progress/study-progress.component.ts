@@ -20,6 +20,6 @@ export class StudyProgressComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.logger.info(`[${this.constructor.name}] ngOnInit()`);
+        this.logger.info(this, 'ngOnInit()');
     }
 }

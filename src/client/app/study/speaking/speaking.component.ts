@@ -19,6 +19,6 @@ export class SpeakingComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.logger.info('[SpeakingComponent] ngOnInit()');
+        this.logger.info(this, 'ngOnInit()');
     }
 }

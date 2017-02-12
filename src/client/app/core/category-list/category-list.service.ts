@@ -29,12 +29,12 @@ export class CategoryListService {
     }
 
     selectCategory(category: Category): void {
-        this.logger.debug(`[${this.constructor.name}] Selected '${category.name}' category.`);
+        this.logger.debug(this, `Selected '${category.name}' category.`);
         this.selectCategorySource.next(category);
     }
 
     selectTopic(topic: Topic): void {
-        this.logger.debug(`[${this.constructor.name}] Selected '${topic.name}' topic.`);
+        this.logger.debug(this, `Selected '${topic.name}' topic.`);
         this.selectTopicSource.next(topic);
     }
 }
