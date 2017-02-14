@@ -9,6 +9,6 @@ set :linked_dirs, %w(src/server/config/secrets)
 
 after 'deploy:updated', :setup do
     on roles(:web) do
-        %w(npm:install gulp:build pm2:reload).each { |t| invoke t }
+        %w(npm:install gulp:build pm2:reload mkdocs:build).each { |t| invoke t }
     end
 end
