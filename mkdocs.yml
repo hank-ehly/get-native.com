@@ -10,3 +10,5 @@ pages:
 - 7. Saving & Displaying Collocations: pages/07_collocations.md
 - 8. Authentication: pages/08_authentication.md
 theme: readthedocs
+site_dir: dist/docs
+
