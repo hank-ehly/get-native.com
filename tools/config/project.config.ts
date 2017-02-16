@@ -16,11 +16,6 @@ export class ProjectConfig extends SeedConfig {
             {src: 'web-animations-js/web-animations.min.js', inject: 'libs'}
         ];
 
-        this.APP_ASSETS = [
-            {src: `${this.APP_SRC}/vendor/reset.css`, inject: true},
-            ...this.APP_ASSETS
-        ];
-
         this.ENABLE_SCSS = true;
     }
 }
