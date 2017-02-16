@@ -8,6 +8,9 @@
             "check-catch",
             "check-whitespace"
         ],
-        "no-trailing-whitespace": false
+        "no-trailing-whitespace": false,
+
+        // Enable after fix: https://github.com/mgechev/codelyzer/issues/191
+        "no-access-missing-member": false
     }
 }
