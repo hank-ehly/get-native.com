@@ -6,9 +6,8 @@ module.exports = {
         {
             name: 'api.dev',
             script: './src/server',
-            error_file: './api.dev.err.log',
-            out_file: './api.dev.out.log',
-            pid_file: './api.dev.pid',
+            error_file: './logs/api.dev.err.log',
+            out_file: './logs/api.dev.out.log',
             exec_mode: 'cluster',
             merge_logs: true,
             watch: ['./src/server', './ecosystem.config.js'],
