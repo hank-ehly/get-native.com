@@ -66,8 +66,8 @@
 }
 
 .feature.feature_large .feature__title {
+  @include font-weight-regular;
   color: $shamrock;
-  font-family: ProximaNova-Regular, sans-serif;
 }
 
 .feature.feature_large .feature__paragraph {
