@@ -16,7 +16,7 @@ import { Logger } from '../../core/logger/logger';
     styleUrls: ['select.component.css']
 })
 export class SelectComponent implements OnInit, OnChanges {
-    @Input() options: {value: string, name: string}[];
+    @Input() options: {value: string, title: string}[];
     @Input() selected: string;
 
     select: any;
