@@ -17,5 +17,6 @@ export enum APIHandle {
     CATEGORIES,
     EDIT_ACCOUNT,
     EDIT_PASSWORD,
-    EDIT_EMAIL
+    EDIT_EMAIL,
+    ACCOUNT
 }

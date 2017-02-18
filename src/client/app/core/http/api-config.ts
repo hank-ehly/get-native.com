@@ -71,5 +71,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/account/email',
         isProtected: true
+    }],
+    [APIHandle.ACCOUNT, {
+        method: RequestMethod.Get,
+        url: '/account',
+        isProtected: true
     }]
 ]);

@@ -7,12 +7,27 @@
 
 import { Injectable } from '@angular/core';
 
-import { LocalStorageService, Logger, kAuthToken, kAuthTokenExpire, ToolbarService } from '../index';
+import { LocalStorageService, Logger, kAuthToken, kAuthTokenExpire, ToolbarService, User, HttpService, APIHandle } from '../index';
 
 @Injectable()
 export class AuthService {
+    private _currentUser: User;
 
-    constructor(private logger: Logger, private localStorage: LocalStorageService, private toolbar: ToolbarService) {
+    getCurrentUser(): Promise<User> {
+        return new Promise((resolve, reject) => {
+            if (!this._currentUser) {
+                this.http.request(APIHandle.ACCOUNT).subscribe((user: User) => {
+                    this._currentUser = user;
+                    resolve(user);
+                });
+            } else {
+                resolve(this._currentUser);
+            }
+        });
+    }
+
+    constructor(private logger: Logger, private localStorage: LocalStorageService, private toolbar: ToolbarService,
+                private http: HttpService) {
         this.toolbar.logout$.subscribe(this.onToolbarLogout.bind(this));
     }
 
@@ -34,5 +49,4 @@ export class AuthService {
         this.localStorage.removeItem(kAuthTokenExpire);
         this.localStorage.removeItem(kAuthToken);
     }
-
 }

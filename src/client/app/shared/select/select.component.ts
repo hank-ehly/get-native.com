@@ -30,6 +30,8 @@ export class SelectComponent implements OnChanges {
     }
 
     onSelect(option: string) {
-        this.select.emit(option);
+        if (option.length) {
+            this.select.emit(option);
+        }
     }
 }

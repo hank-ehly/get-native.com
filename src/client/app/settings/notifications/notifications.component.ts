@@ -5,10 +5,10 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 
 import { SwitchComponent } from '../../shared/switch/switch.component';
-import { Logger, HttpService, APIHandle } from '../../core/index';
+import { Logger, HttpService, APIHandle, AuthService, User } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -16,15 +16,18 @@ import { Logger, HttpService, APIHandle } from '../../core/index';
     templateUrl: 'notifications.component.html',
     styleUrls: ['notifications.component.css']
 })
-export class NotificationsComponent implements AfterViewInit {
+export class NotificationsComponent implements OnInit {
     @ViewChild('emailSwitch') emailSwitch: SwitchComponent;
     @ViewChild('browserSwitch') browserSwitch: SwitchComponent;
+    user: User;
 
-    constructor(private logger: Logger, private http: HttpService) {
+    constructor(private logger: Logger, private http: HttpService, private auth: AuthService) {
     }
 
-    ngAfterViewInit() {
+    ngOnInit() {
         this.logger.warn(this, '[TODO] Initialize notification preference values.');
+
+        this.auth.getCurrentUser().then((u: User) => this.user = u);
     }
 
     onToggleEmailNotifications(value: boolean): void {

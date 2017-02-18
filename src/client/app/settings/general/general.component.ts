@@ -5,9 +5,9 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 
-import { Logger, HttpService, APIHandle, EMAIL_REGEX, ObjectService, Languages, LangCode } from '../../core/index';
+import { Logger, HttpService, APIHandle, EMAIL_REGEX, ObjectService, Languages, LangCode, User, AuthService } from '../../core/index';
 import { FocusDirective } from '../../shared/focus/focus.directive';
 
 @Component({
@@ -16,19 +16,27 @@ import { FocusDirective } from '../../shared/focus/focus.directive';
     templateUrl: 'general.component.html',
     styleUrls: ['general.component.css']
 })
-export class GeneralComponent {
+export class GeneralComponent implements OnInit {
     @ViewChild(FocusDirective) emailInput: FocusDirective;
     emailRegex = EMAIL_REGEX;
     isEditing: boolean = false;
     studyLanguageOptions: any;
+    user: User;
 
     credentials: any = {
         email: '',
         password: {current: '', replace: '', confirm: ''}
     };
 
-    constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService) {
+    constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService, private auth: AuthService) {
         this.studyLanguageOptions = objectService.renameProperty(Languages, [['code', 'value'], ['name', 'title']]);
+    }
+
+    ngOnInit(): void {
+        this.logger.debug(this, 'ngOnInit()');
+
+        // Use async pipe if you don't need to handle this data directly
+        this.auth.getCurrentUser().then((user: User) => this.user = user);
     }
 
     onClickEdit(): void {
@@ -48,6 +56,7 @@ export class GeneralComponent {
 
     onSelectDefaultStudyLanguage(code: LangCode): void {
         this.logger.debug(this, `Selected new default study language: ${code}`);
+        this.http.request(APIHandle.EDIT_ACCOUNT, {body: {default_study_language: code}}).subscribe();
     }
 
     onSubmitPassword(): void {
