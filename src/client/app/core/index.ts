@@ -17,6 +17,7 @@ export * from './category-list/category-list.service';
 export * from './login-modal/index';
 export * from './http/index';
 export * from './navbar/navbar.service';
+export * from './object/object.service';
 export * from './password/index';
 export * from './spec/index';
 export * from './typings/index';
