@@ -9,6 +9,11 @@ const joi = require('joi');
 
 module.exports = {
     account: {
+        index: {
+            headers: {
+                authorization: joi.string().required()
+            }
+        },
         update: {
             headers: {
                 authorization: joi.string().required()
