@@ -5,7 +5,9 @@
  * Created by henryehly on 2017/02/04.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+
+import { Logger } from '../../core/logger/logger';
 
 @Component({
     moduleId: module.id,
@@ -14,14 +16,16 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['select.component.css']
 })
 export class SelectComponent implements OnInit {
-    constructor() {
+    @Input() options: {value: string, name: string}[] = [{value: 'foo', name: 'bar'}];
+    select: any;
+
+    constructor(private logger: Logger) {
     }
 
     ngOnInit() {
     }
 
-    // event on change that passes new value
-
-    // takes key-value list as input
-    // ex. {'ja': 'Japanese'} would create <option value='ja'>Japanese</option>
+    onSelect(option: string) {
+        this.logger.debug(this, `Selected ${option}`);
+    }
 }
