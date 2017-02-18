@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/02/04.
  */
 
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
 
@@ -15,16 +15,14 @@ import { Logger } from '../../core/logger/logger';
     templateUrl: 'select.component.html',
     styleUrls: ['select.component.css']
 })
-export class SelectComponent implements OnInit, OnChanges {
+export class SelectComponent implements OnChanges {
     @Input() options: {value: string, title: string}[];
     @Input() selected: string;
+    @Output() select: EventEmitter<string> = new EventEmitter<string>();
 
-    select: any;
+    selectModel: any;
 
     constructor(private logger: Logger) {
-    }
-
-    ngOnInit() {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -32,6 +30,6 @@ export class SelectComponent implements OnInit, OnChanges {
     }
 
     onSelect(option: string) {
-        this.logger.debug(this, `Selected '${option}'`);
+        this.select.emit(option);
     }
 }

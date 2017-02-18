@@ -7,9 +7,8 @@
 
 import { Component, ViewChild } from '@angular/core';
 
-import { Logger, HttpService, APIHandle, EMAIL_REGEX, ObjectService } from '../../core/index';
+import { Logger, HttpService, APIHandle, EMAIL_REGEX, ObjectService, Languages, LangCode } from '../../core/index';
 import { FocusDirective } from '../../shared/focus/focus.directive';
-import { Languages } from '../../core/lang/languages';
 
 @Component({
     moduleId: module.id,
@@ -25,11 +24,7 @@ export class GeneralComponent {
 
     credentials: any = {
         email: '',
-        password: {
-            current: '',
-            replace: '',
-            confirm: ''
-        }
+        password: {current: '', replace: '', confirm: ''}
     };
 
     constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService) {
@@ -49,6 +44,10 @@ export class GeneralComponent {
     onSubmitEmail(): void {
         this.logger.debug(this, 'onSubmitEmail()');
         this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.credentials.email}}).subscribe();
+    }
+
+    onSelectDefaultStudyLanguage(code: LangCode): void {
+        this.logger.debug(this, `Selected new default study language: ${code}`);
     }
 
     onSubmitPassword(): void {

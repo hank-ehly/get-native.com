@@ -1,5 +1,5 @@
 <label class="label">
-    <select class="input" [ngModel]="select" (ngModelChange)="onSelect($event)">
+    <select class="input" [ngModel]="selectModel" (ngModelChange)="onSelect($event)">
         <option></option>
         <option *ngFor="let option of options" [ngValue]="option.value" [selected]="option.value === selected">{{ option.title }}</option>
     </select>
