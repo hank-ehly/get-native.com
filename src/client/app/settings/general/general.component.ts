@@ -7,8 +7,9 @@
 
 import { Component, ViewChild } from '@angular/core';
 
-import { Logger, HttpService, APIHandle, EMAIL_REGEX } from '../../core/index';
+import { Logger, HttpService, APIHandle, EMAIL_REGEX, ObjectService } from '../../core/index';
 import { FocusDirective } from '../../shared/focus/focus.directive';
+import { Languages } from '../../core/lang/languages';
 
 @Component({
     moduleId: module.id,
@@ -20,6 +21,7 @@ export class GeneralComponent {
     @ViewChild(FocusDirective) emailInput: FocusDirective;
     emailRegex = EMAIL_REGEX;
     isEditing: boolean = false;
+    studyLanguageOptions: any;
 
     credentials: any = {
         email: '',
@@ -30,7 +32,8 @@ export class GeneralComponent {
         }
     };
 
-    constructor(private logger: Logger, private http: HttpService) {
+    constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService) {
+        this.studyLanguageOptions = objectService.renameProperty(Languages, [['code', 'value'], ['name', 'title']]);
     }
 
     onClickEdit(): void {
