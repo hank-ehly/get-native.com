@@ -15,26 +15,26 @@
     </div>
 </form>
 
-<gn-select></gn-select>
+<div class="default-study-language">
+    <label class="label default-study-language__label">Default Study Language</label>
+    <gn-select></gn-select>
+</div>
 
 <form class="form password-form" #passwordForm="ngForm" (submit)="onSubmitPassword()">
     <div class="form__group">
         <label for="current-password" class="label">Current Password</label>
-        <input id="current-password" class="input" type="password" name="current-password" minlength="8" required
-               [(ngModel)]="credentials.password.current">
+        <input id="current-password" class="input" type="password" name="current-password" minlength="8"  maxlength="50" required [(ngModel)]="credentials.password.current">
     </div>
 
     <div class="form__group">
         <label for="new-password" class="label">New Password</label>
-        <input id="new-password" class="input" type="password" name="new-password" minlength="8" required
-               [(ngModel)]="credentials.password.replace">
+        <input id="new-password" class="input" type="password" name="new-password" minlength="8"  maxlength="50" required [(ngModel)]="credentials.password.replace">
         <gn-password-strength [password]="credentials.password.replace"></gn-password-strength>
     </div>
 
     <div class="form__group">
         <label for="confirm-password" class="label">Confirm New Password</label>
-        <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8" required
-               [(ngModel)]="credentials.password.confirm" [pattern]="credentials.password.replace">
+        <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8"  maxlength="50" required [(ngModel)]="credentials.password.confirm">
     </div>
 
     <button class="button button--opaque form__button" type="submit" [disabled]="!passwordForm.valid">UPDATE</button>

@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/02/04.
  */
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
 
@@ -15,8 +15,10 @@ import { Logger } from '../../core/logger/logger';
     templateUrl: 'select.component.html',
     styleUrls: ['select.component.css']
 })
-export class SelectComponent implements OnInit {
-    @Input() options: {value: string, name: string}[] = [{value: 'foo', name: 'bar'}];
+export class SelectComponent implements OnInit, OnChanges {
+    @Input() options: {value: string, name: string}[];
+    @Input() selected: string;
+
     select: any;
 
     constructor(private logger: Logger) {
@@ -25,7 +27,11 @@ export class SelectComponent implements OnInit {
     ngOnInit() {
     }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        this.logger.debug(this, 'ngOnChanges', changes);
+    }
+
     onSelect(option: string) {
-        this.logger.debug(this, `Selected ${option}`);
+        this.logger.debug(this, `Selected '${option}'`);
     }
 }
