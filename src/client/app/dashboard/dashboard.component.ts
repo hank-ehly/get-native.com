@@ -56,13 +56,12 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
 
         this.logger.debug(this, 'ngOnInit()');
 
-        this.http.request(APIHandle.STUDY_STATS).subscribe((stats: any) => this.stats = stats);
+        this.subscriptions.push(
+            this.http.request(APIHandle.STUDY_STATS).subscribe((stats: any) => this.stats = stats),
 
-
-        this.answers$
-            .distinctUntilChanged()
-            .switchMap(this.updateAnswersFilter.bind(this))
-            .subscribe((answers: WritingSessions) => this.answers = answers);
+            this.answers$.distinctUntilChanged().switchMap(this.updateAnswersFilter.bind(this))
+                .subscribe((answers: WritingSessions) => this.answers = answers)
+        );
 
         this.videoSearchParams.set('count', '9');
         this.videoSearchParams.set('lang', 'en');

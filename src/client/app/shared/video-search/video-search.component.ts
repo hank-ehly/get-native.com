@@ -36,7 +36,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     protected topic$ = new Subject<string>();
     protected maxId$ = new Subject<string>();
 
-    private _subscriptions: Subscription[] = [];
+    protected subscriptions: Subscription[] = [];
 
     @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
         if (!this.isDropdownVisible) {
@@ -66,15 +66,14 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy');
-
-        for (let subscription of this._subscriptions) {
+        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
+        for (let subscription of this.subscriptions) {
             subscription.unsubscribe();
         }
     }
 
     setupSubscriptions(): void {
-        this._subscriptions.push(
+        this.subscriptions.push(
             this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories),
 
             this.navbar.toggleSearchBar$.subscribe(this.onToggleSearchBar.bind(this)),
@@ -84,8 +83,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
             this.categoryList.selectTopic$.subscribe(this.onSelectTopic.bind(this)),
 
             this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.topic$).merge(this.maxId$)
-                .distinctUntilChanged()
-                .switchMap(this.updateVideoSearchResults.bind(this))
+                .distinctUntilChanged().switchMap(this.updateVideoSearchResults.bind(this))
                 .subscribe((videos: Videos) => this.videos = videos)
         );
     }

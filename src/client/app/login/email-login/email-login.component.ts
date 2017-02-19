@@ -5,10 +5,12 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Logger, LoginModalService, APIHandle, HttpService, EMAIL_REGEX } from '../../core/index';
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +18,7 @@ import { Logger, LoginModalService, APIHandle, HttpService, EMAIL_REGEX } from '
     templateUrl: 'email-login.component.html',
     styleUrls: ['email-login.component.css']
 })
-export class EmailLoginComponent {
+export class EmailLoginComponent implements OnDestroy {
     emailRegex = EMAIL_REGEX;
 
     credentials: any = {
@@ -24,7 +26,16 @@ export class EmailLoginComponent {
         password: ''
     };
 
+    private subscriptions: Subscription[] = [];
+
     constructor(private logger: Logger, private router: Router, private loginModal: LoginModalService, private http: HttpService) {
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
+        for (let subscription of this.subscriptions) {
+            subscription.unsubscribe();
+        }
     }
 
     onSetModalView(view: string): void {
@@ -32,7 +43,9 @@ export class EmailLoginComponent {
     }
 
     onSubmit(): void {
-        this.http.request(APIHandle.LOGIN, {body: this.credentials}).subscribe(this.onLoginSuccess.bind(this));
+        this.subscriptions.push(
+            this.http.request(APIHandle.LOGIN, {body: this.credentials}).subscribe(this.onLoginSuccess.bind(this))
+        );
     }
 
     onLoginSuccess(): void {

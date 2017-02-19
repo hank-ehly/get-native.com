@@ -5,11 +5,15 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnInit, Input, trigger, transition, animate, style, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import {
+    Component, OnInit, Input, trigger, transition, animate, style, ViewChild, OnChanges, SimpleChanges, OnDestroy
+} from '@angular/core';
 import { Location } from '@angular/common';
 
 import { LoginModalService, NavbarService, Logger } from '../../core/index';
 import { FocusDirective } from '../focus/focus.directive';
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id,
@@ -39,7 +43,7 @@ import { FocusDirective } from '../focus/focus.directive';
         ])
     ]
 })
-export class NavbarComponent implements OnInit, OnChanges {
+export class NavbarComponent implements OnInit, OnChanges, OnDestroy {
     @Input() authenticated: boolean;
     @ViewChild(FocusDirective) searchBar: FocusDirective;
     title: string;
@@ -50,6 +54,8 @@ export class NavbarComponent implements OnInit, OnChanges {
     logoLinkPath: string;
     hasUnreadNotifications: boolean;
 
+    private subscriptions: Subscription[] = [];
+
     constructor(private loginModal: LoginModalService, private logger: Logger, private navbar: NavbarService, private location: Location) {
         this.searchBarHidden = true;
         this.studyOptionsHidden = true;
@@ -57,10 +63,20 @@ export class NavbarComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        this.navbar.setTitle$.subscribe((t) => this.title = t);
-        this.navbar.setBackButton$.subscribe(t => this.backButtonTitle = t);
+        this.subscriptions.push(
+            this.navbar.setTitle$.subscribe((t) => this.title = t),
+            this.navbar.setBackButton$.subscribe(t => this.backButtonTitle = t)
+        );
+
         this.logger.debug(this, `this.authenticated = ${this.authenticated}`);
         this.logoLinkPath = this.authenticated ? 'dashboard' : '';
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
+        for (let subscription of this.subscriptions) {
+            subscription.unsubscribe();
+        }
     }
 
     ngOnChanges(changes: SimpleChanges): void {
