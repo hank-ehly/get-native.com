@@ -5,10 +5,12 @@
  * Created by henryehly on 2016/12/07.
  */
 
-import { Component, OnInit, ViewChild, AfterViewInit, trigger, animate, style, transition, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, trigger, animate, style, transition, Input, OnDestroy } from '@angular/core';
 
 import { VideoDirective } from '../video/video.directive';
 import { UnitInterval, Logger } from '../../core/index';
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id,
@@ -26,7 +28,7 @@ import { UnitInterval, Logger } from '../../core/index';
         ])
     ]
 })
-export class VideoPlayerComponent implements OnInit, AfterViewInit {
+export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input() loop: boolean;
     @Input() src: string;
     @ViewChild(VideoDirective) player: VideoDirective;
@@ -39,6 +41,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
 
     private tooltipTimeout: NodeJS.Timer;
     private previousVolume: UnitInterval;
+    private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger) {
         this.progress = this.currentTime = 0;
@@ -55,9 +58,18 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
         this.logger.info(this, 'ngOnInit()');
     }
 
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
+        for (let subscription of this.subscriptions) {
+            subscription.unsubscribe();
+        }
+    }
+
     ngAfterViewInit(): void {
-        this.player.currentTime$.subscribe(this.onCurrentTime.bind(this));
-        this.player.progress$.subscribe(this.onProgress.bind(this));
+        this.subscriptions.push(
+            this.player.currentTime$.subscribe(this.onCurrentTime.bind(this)),
+            this.player.progress$.subscribe(this.onProgress.bind(this))
+        );
     }
 
     onClickToggleButton(): void {

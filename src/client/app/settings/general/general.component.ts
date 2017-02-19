@@ -5,10 +5,12 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 
-import { Logger, HttpService, APIHandle, EMAIL_REGEX, ObjectService, Languages, LangCode, User, AuthService } from '../../core/index';
+import { Logger, HttpService, APIHandle, EMAIL_REGEX, ObjectService, Languages, LangCode, User, UserService } from '../../core/index';
 import { FocusDirective } from '../../shared/focus/focus.directive';
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +18,7 @@ import { FocusDirective } from '../../shared/focus/focus.directive';
     templateUrl: 'general.component.html',
     styleUrls: ['general.component.css']
 })
-export class GeneralComponent implements OnInit {
+export class GeneralComponent implements OnInit, OnDestroy {
     @ViewChild(FocusDirective) emailInput: FocusDirective;
     emailRegex = EMAIL_REGEX;
     isEditing: boolean = false;
@@ -28,15 +30,21 @@ export class GeneralComponent implements OnInit {
         password: {current: '', replace: '', confirm: ''}
     };
 
-    constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService, private auth: AuthService) {
+    private subscriptions: Subscription[] = [];
+
+    constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService, private userService: UserService) {
         this.studyLanguageOptions = objectService.renameProperty(Languages, [['code', 'value'], ['name', 'title']]);
     }
 
     ngOnInit(): void {
-        this.logger.debug(this, 'ngOnInit()');
+        this.userService.current.then(u => this.user = u);
+    }
 
-        // Use async pipe if you don't need to handle this data directly
-        this.auth.getCurrentUser().then((user: User) => this.user = user);
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
+        for (let subscription of this.subscriptions) {
+            subscription.unsubscribe();
+        }
     }
 
     onClickEdit(): void {
@@ -51,16 +59,22 @@ export class GeneralComponent implements OnInit {
 
     onSubmitEmail(): void {
         this.logger.debug(this, 'onSubmitEmail()');
-        this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.credentials.email}}).subscribe();
+        this.subscriptions.push(
+            this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.credentials.email}}).subscribe()
+        );
     }
 
     onSelectDefaultStudyLanguage(code: LangCode): void {
         this.logger.debug(this, `Selected new default study language: ${code}`);
-        this.http.request(APIHandle.EDIT_ACCOUNT, {body: {default_study_language: code}}).subscribe();
+        this.subscriptions.push(
+            this.http.request(APIHandle.EDIT_ACCOUNT, {body: {default_study_language: code}}).subscribe()
+        );
     }
 
     onSubmitPassword(): void {
         this.logger.debug(this, 'onSubmitPassword()');
-        this.http.request(APIHandle.EDIT_PASSWORD, {body: {password: this.credentials.password.replace}}).subscribe();
+        this.subscriptions.push(
+            this.http.request(APIHandle.EDIT_PASSWORD, {body: {password: this.credentials.password.replace}}).subscribe()
+        );
     }
 }

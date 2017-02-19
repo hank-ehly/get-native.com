@@ -5,9 +5,11 @@
  * Created by henryehly on 2016/11/11.
  */
 
-import { Component, trigger, keyframes, style, animate, transition, Input, OnInit } from '@angular/core';
+import { Component, trigger, keyframes, style, animate, transition, Input, OnInit, OnDestroy } from '@angular/core';
 
 import { LocalStorageService, kAcceptLocalStorage, LocalStorageProtocol, LocalStorageItem, Logger } from '../../core/index';
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id,
@@ -33,16 +35,27 @@ import { LocalStorageService, kAcceptLocalStorage, LocalStorageProtocol, LocalSt
         ])
     ]
 })
-export class ComplianceComponent implements OnInit, LocalStorageProtocol {
+export class ComplianceComponent implements OnInit, LocalStorageProtocol, OnDestroy {
     @Input() isVisible: boolean;
+
+    private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private localStorageService: LocalStorageService) {
     }
 
     ngOnInit(): void {
-        this.localStorageService.setItem$.subscribe(this.didSetLocalStorageItem.bind(this));
-        this.localStorageService.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this));
-        this.localStorageService.clearSource$.subscribe(this.didClearStorage.bind(this));
+        this.subscriptions.push(
+            this.localStorageService.setItem$.subscribe(this.didSetLocalStorageItem.bind(this)),
+            this.localStorageService.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this)),
+            this.localStorageService.clearSource$.subscribe(this.didClearStorage.bind(this))
+        );
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
+        for (let subscription of this.subscriptions) {
+            subscription.unsubscribe();
+        }
     }
 
     didSetLocalStorageItem(item: LocalStorageItem): void {

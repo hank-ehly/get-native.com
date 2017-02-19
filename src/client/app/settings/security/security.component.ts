@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -13,10 +13,5 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'security.component.html',
     styleUrls: ['security.component.css']
 })
-export class SecurityComponent implements OnInit {
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
+export class SecurityComponent {
 }

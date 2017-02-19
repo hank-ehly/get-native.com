@@ -5,10 +5,12 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 
 import { SwitchComponent } from '../../shared/switch/switch.component';
-import { Logger, HttpService, APIHandle, AuthService, User } from '../../core/index';
+import { Logger, HttpService, APIHandle, User, UserService } from '../../core/index';
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id,
@@ -16,27 +18,39 @@ import { Logger, HttpService, APIHandle, AuthService, User } from '../../core/in
     templateUrl: 'notifications.component.html',
     styleUrls: ['notifications.component.css']
 })
-export class NotificationsComponent implements OnInit {
+export class NotificationsComponent implements OnInit, OnDestroy {
     @ViewChild('emailSwitch') emailSwitch: SwitchComponent;
     @ViewChild('browserSwitch') browserSwitch: SwitchComponent;
     user: User;
 
-    constructor(private logger: Logger, private http: HttpService, private auth: AuthService) {
+    private subscriptions: Subscription[] = [];
+
+    constructor(private logger: Logger, private http: HttpService, private userService: UserService) {
     }
 
     ngOnInit() {
         this.logger.warn(this, '[TODO] Initialize notification preference values.');
+        this.userService.current.then(u => this.user = u);
+    }
 
-        this.auth.getCurrentUser().then((u: User) => this.user = u);
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
+        for (let subscription of this.subscriptions) {
+            subscription.unsubscribe();
+        }
     }
 
     onToggleEmailNotifications(value: boolean): void {
         this.logger.debug(this, `onToggleEmailNotifications(${value})`);
-        this.http.request(APIHandle.EDIT_ACCOUNT, {body: {email_notifications_enabled: value}}).subscribe();
+        this.subscriptions.push(
+            this.http.request(APIHandle.EDIT_ACCOUNT, {body: {email_notifications_enabled: value}}).subscribe()
+        );
     }
 
     onToggleBrowserNotifications(value: boolean): void {
         this.logger.debug(this, `onToggleBrowserNotifications(${value})`);
-        this.http.request(APIHandle.EDIT_ACCOUNT, {body: {browser_notifications_enabled: value}}).subscribe();
+        this.subscriptions.push(
+            this.http.request(APIHandle.EDIT_ACCOUNT, {body: {browser_notifications_enabled: value}}).subscribe()
+        );
     }
 }

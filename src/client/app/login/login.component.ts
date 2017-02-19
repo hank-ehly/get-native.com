@@ -5,9 +5,10 @@
  * Created by henryehly on 2016/11/13.
  */
 
-import { Component, style, keyframes, animate, transition, trigger, Input, OnInit, HostListener } from '@angular/core';
+import { Component, style, keyframes, animate, transition, trigger, Input, OnInit, HostListener, OnDestroy } from '@angular/core';
 
 import { LoginModalService, Logger } from '../core/index';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id,
@@ -49,17 +50,28 @@ import { LoginModalService, Logger } from '../core/index';
         ])
     ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
     @Input() isVisible: boolean;
     activeView: string;
+
+    private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private loginModal: LoginModalService) {
     }
 
     ngOnInit(): void {
-        this.loginModal.showModal$.subscribe(() => this.isVisible = true);
-        this.loginModal.hideModal$.subscribe(() => this.isVisible = false);
-        this.loginModal.setActiveView$.subscribe((view) => this.activeView = view);
+        this.subscriptions.push(
+            this.loginModal.showModal$.subscribe(() => this.isVisible = true),
+            this.loginModal.hideModal$.subscribe(() => this.isVisible = false),
+            this.loginModal.setActiveView$.subscribe((view) => this.activeView = view)
+        );
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
+        for (let subscription of this.subscriptions) {
+            subscription.unsubscribe();
+        }
     }
 
     onClickClose(e: MouseEvent): void {
@@ -75,10 +87,17 @@ export class LoginComponent implements OnInit {
         this.logger.debug(this, `KeyboardEvent: ${e.key}`);
 
         switch (e.key) {
-            case 'Enter': this.onKeydownEnter(e); break;
-            case 'Escape': this.onKeydownEscape(e); break;
-            case 'Tab': this.onKeydownTab(e); break;
-            default: break;
+            case 'Enter':
+                this.onKeydownEnter(e);
+                break;
+            case 'Escape':
+                this.onKeydownEscape(e);
+                break;
+            case 'Tab':
+                this.onKeydownTab(e);
+                break;
+            default:
+                break;
         }
     }
 
@@ -105,14 +124,17 @@ export class LoginComponent implements OnInit {
         let isFirstSelection: boolean = true;
         for (let i = 0; i < tabbables.length; i++) {
             if (document.activeElement === tabbables[i]) {
-                isFirstSelection = false; break;
+                isFirstSelection = false;
+                break;
             }
         }
 
         if (!e.shiftKey && (isFirstSelection || e.target === last)) {
-            if (e) e.preventDefault(); first.focus();
+            if (e) e.preventDefault();
+            first.focus();
         } else if (e.shiftKey && (isFirstSelection || e.target === first)) {
-            if (e) e.preventDefault(); last.focus();
+            if (e) e.preventDefault();
+            last.focus();
         }
     }
 }
