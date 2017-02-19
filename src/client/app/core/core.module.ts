@@ -22,7 +22,8 @@ import {
     ToolbarService,
     Logger,
     LangService,
-    UTCDateService
+    UTCDateService,
+    UserService
 } from './index';
 
 @NgModule({
@@ -44,7 +45,8 @@ import {
         ToolbarService,
         Logger,
         LangService,
-        UTCDateService
+        UTCDateService,
+        UserService
     ]
 })
 export class CoreModule {
