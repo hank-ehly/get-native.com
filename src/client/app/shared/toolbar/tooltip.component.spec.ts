@@ -29,7 +29,7 @@ export function main() {
                 declarations: [ToolbarComponent],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
-                    {provide: LocalStorageService, useValue: STUBLocalStorageService},
+                    {provide: LocalStorageService, useClass: STUBLocalStorageService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     {provide: UserService, useClass: STUBUserService},
                     {provide: HttpService, useValue: STUBHttpService},
