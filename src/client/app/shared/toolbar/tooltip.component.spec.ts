@@ -11,7 +11,10 @@ import { APP_BASE_HREF } from '@angular/common';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
-import { SpecUtil, STUBLogger, Logger, LocalStorageService, STUBLocalStorageService, ToolbarService } from '../../core/index';
+import {
+    SpecUtil, STUBLogger, Logger, LocalStorageService, STUBLocalStorageService, ToolbarService, STUBUserService, UserService,
+    STUBHttpService, HttpService, LangService
+} from '../../core/index';
 
 export function main() {
     let comp: ToolbarComponent;
@@ -28,7 +31,9 @@ export function main() {
                     {provide: Logger, useValue: STUBLogger},
                     {provide: LocalStorageService, useValue: STUBLocalStorageService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-                    ToolbarService
+                    {provide: UserService, useClass: STUBUserService},
+                    {provide: HttpService, useValue: STUBHttpService},
+                    LangService, ToolbarService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(ToolbarComponent);
@@ -43,7 +48,7 @@ export function main() {
             expect(de).toBeNull();
         });
 
-        it ('should initialize the tooltip after the visibility property becomes \'true\'', () => {
+        it('should initialize the tooltip after the visibility property becomes \'true\'', () => {
             comp.isTooltipVisible = true;
             fixture.detectChanges();
 

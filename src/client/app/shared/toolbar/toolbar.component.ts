@@ -5,9 +5,9 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, trigger, transition, style, animate, keyframes } from '@angular/core';
+import { Component, trigger, transition, style, animate, keyframes, OnInit } from '@angular/core';
 
-import { Languages, ToolbarService, Language } from '../../core/index';
+import { Languages, ToolbarService, Language, UserService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -32,15 +32,27 @@ import { Languages, ToolbarService, Language } from '../../core/index';
         ])
     ]
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnInit {
     isTooltipVisible: boolean;
-    languages = Languages;
-
-    /* Todo: Which language should be the default selected language? */
+    languages: Language[];
     selectedLanguage: Language;
 
-    constructor(private toolbarService: ToolbarService) {
+    constructor(private toolbarService: ToolbarService, private user: UserService) {
+        this.languages = Languages;
         this.selectedLanguage = this.languages[0];
+    }
+
+    ngOnInit(): void {
+        this.user.defaultStudyLanguage.then(l => this.selectedLanguage = l);
+    }
+
+    setSelectedLanguage(language: Language): void {
+        if (this.selectedLanguage === language) {
+            return;
+        }
+
+        this.selectedLanguage = language;
+        this.toolbarService.didSelectLanguage(language);
     }
 
     onLogout(): void {
@@ -57,12 +69,5 @@ export class ToolbarComponent {
 
     onToggleTooltip(): void {
         this.isTooltipVisible = !this.isTooltipVisible;
-    }
-
-    setSelectedLanguage(lang: Language): void {
-        if (this.selectedLanguage !== lang) {
-            this.selectedLanguage = lang;
-            this.toolbarService.didSelectLanguage(lang);
-        }
     }
 }
