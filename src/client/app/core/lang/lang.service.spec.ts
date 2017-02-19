@@ -6,6 +6,7 @@
  */
 
 import { LangService } from './lang.service';
+import { Languages } from './languages';
 
 export function main() {
     let service: LangService;
@@ -24,6 +25,15 @@ export function main() {
         it('should convert \'ja\' to \'日本語\'', () => {
             let expected = '日本語';
             let actual = service.codeToName('ja');
+            expect(actual).toEqual(expected);
+        });
+
+        it('should return the appropriate Language given a language code', () => {
+            let expected = Languages[0];
+
+            let langCode = Languages[0].code;
+            let actual = service.languageForCode(langCode);
+
             expect(actual).toEqual(expected);
         });
     });
