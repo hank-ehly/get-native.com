@@ -11,23 +11,7 @@ import { LocalStorageService, Logger, kAuthToken, kAuthTokenExpire, ToolbarServi
 
 @Injectable()
 export class AuthService {
-    private _currentUser: User;
-
-    getCurrentUser(): Promise<User> {
-        return new Promise((resolve, reject) => {
-            if (!this._currentUser) {
-                this.http.request(APIHandle.ACCOUNT).subscribe((user: User) => {
-                    this._currentUser = user;
-                    resolve(user);
-                });
-            } else {
-                resolve(this._currentUser);
-            }
-        });
-    }
-
-    constructor(private logger: Logger, private localStorage: LocalStorageService, private toolbar: ToolbarService,
-                private http: HttpService) {
+    constructor(private logger: Logger, private localStorage: LocalStorageService, private toolbar: ToolbarService) {
         this.toolbar.logout$.subscribe(this.onToolbarLogout.bind(this));
     }
 
