@@ -1,8 +1,8 @@
 <div class="toolbar" (mouseleave)="onHideTooltip()">
 
     <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="isTooltipVisible">
-        <li class="toolbar__language-label" *ngFor="let lang of languages" (click)="setSelectedLanguage(lang)">
-            {{ lang.name }}
+        <li class="toolbar__language-label" *ngFor="let language of languages" (click)="setSelectedLanguage(language)">
+            {{ language.name }}
         </li>
     </ul>
 
