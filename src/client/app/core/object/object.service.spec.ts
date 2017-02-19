@@ -6,6 +6,7 @@
  */
 
 import { ObjectService } from './object.service';
+import { Languages } from '../lang/languages';
 
 export function main() {
     let service: ObjectService;
@@ -51,6 +52,12 @@ export function main() {
             let actual = service.renameProperty(fixture, [['foo', 'hip'], ['bar', 'hop']]);
 
             expect(actual).toEqual(expected);
+        });
+
+        it('Copies the target object', () => {
+            const beforeLanguages = Languages;
+            let alteredLanguages = service.renameProperty(beforeLanguages, [['code', 'foo']]);
+            expect(beforeLanguages).not.toEqual(alteredLanguages);
         });
     });
 }

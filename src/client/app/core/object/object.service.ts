@@ -14,22 +14,28 @@ const NEW_P_NAME = 1;
 export class ObjectService {
 
     renameProperty(obj: any, mappings: any[]): any {
+        let objCopy = Object.assign({}, obj);
+
         if (obj.length === undefined) {
-            return this.renamePropertySingle(obj, mappings);
+            return this.renamePropertySingle(objCopy, mappings);
         }
 
-        let arr = obj;
-        for (let i = 0; i < arr.length; i++) {
-            let item = arr[i];
+        let arrCopy: any[] = [];
+        for (let o of obj) {
+            arrCopy.push(Object.assign({}, o));
+        }
+
+        for (let i = 0; i < arrCopy.length; i++) {
+            let item = arrCopy[i];
             item = this.renamePropertySingle(item, mappings);
         }
 
-        return arr;
+        return arrCopy;
     }
 
     private renamePropertySingle(obj: any, mappings: any[]): any {
-        for (let j = 0; j < mappings.length; j++) {
-            let mapping = mappings[j];
+        for (let i = 0; i < mappings.length; i++) {
+            let mapping = mappings[i];
 
             if (obj.hasOwnProperty(mapping[OLD_P_NAME])) {
                 obj[mapping[NEW_P_NAME]] = obj[mapping[OLD_P_NAME]];
