@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/02/11.
  */
 
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
 import {
@@ -15,12 +15,13 @@ import {
 
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import '../../operators';
 
 @Component({
     template: ''
 })
-export class VideoSearchComponent implements OnInit {
+export class VideoSearchComponent implements OnInit, OnDestroy {
     categories: Categories;
     dropdownSelection: string;
     isDropdownVisible: boolean = false;
@@ -29,11 +30,13 @@ export class VideoSearchComponent implements OnInit {
     videos: Videos;
     videoSearchParams: URLSearchParams = new URLSearchParams();
 
-    protected query$    = new Subject<string>();
-    protected lang$     = new Subject<LangCode>();
+    protected query$ = new Subject<string>();
+    protected lang$ = new Subject<LangCode>();
     protected category$ = new Subject<string>();
-    protected topic$    = new Subject<string>();
-    protected maxId$    = new Subject<string>();
+    protected topic$ = new Subject<string>();
+    protected maxId$ = new Subject<string>();
+
+    private _subscriptions: Subscription[] = [];
 
     @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
         if (!this.isDropdownVisible) {
@@ -45,7 +48,8 @@ export class VideoSearchComponent implements OnInit {
 
         for (let i = 0; i < path.length; i++) {
             if (path[i].tagName && path[i].tagName.toLowerCase() === 'gn-category-list') {
-                found = true; break;
+                found = true;
+                break;
             }
         }
 
@@ -58,21 +62,32 @@ export class VideoSearchComponent implements OnInit {
 
     ngOnInit() {
         this.logger.debug(this, 'ngOnInit()');
+        this.setupSubscriptions();
+    }
 
-        this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories);
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'ngOnDestroy');
 
-        this.navbar.toggleSearchBar$.subscribe(this.onToggleSearchBar.bind(this));
-        this.navbar.updateSearchQuery$.subscribe(this.onUpdateSearchQuery.bind(this));
+        for (let subscription of this._subscriptions) {
+            subscription.unsubscribe();
+        }
+    }
 
-        this.toolbar.selectLanguage$.subscribe(this.onSelectLanguage.bind(this));
+    setupSubscriptions(): void {
+        this._subscriptions.push(
+            this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories),
 
-        this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this));
-        this.categoryList.selectTopic$.subscribe(this.onSelectTopic.bind(this));
+            this.navbar.toggleSearchBar$.subscribe(this.onToggleSearchBar.bind(this)),
+            this.navbar.updateSearchQuery$.subscribe(this.onUpdateSearchQuery.bind(this)),
+            this.toolbar.selectLanguage$.subscribe(this.onSelectLanguage.bind(this)),
+            this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this)),
+            this.categoryList.selectTopic$.subscribe(this.onSelectTopic.bind(this)),
 
-        this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.topic$).merge(this.maxId$)
-            .distinctUntilChanged()
-            .switchMap(this.updateVideoSearchResults.bind(this)) // Todo: this could be causing the multiple requests
-            .subscribe((videos: Videos) => this.videos = videos);
+            this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.topic$).merge(this.maxId$)
+                .distinctUntilChanged()
+                .switchMap(this.updateVideoSearchResults.bind(this))
+                .subscribe((videos: Videos) => this.videos = videos)
+        );
     }
 
     onClickShowDropdown(): void {
