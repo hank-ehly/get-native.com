@@ -27,7 +27,7 @@ export function main() {
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-                    {provide: LocalStorageService, useValue: STUBLocalStorageService}
+                    {provide: LocalStorageService, useClass: STUBLocalStorageService}
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(ComplianceComponent);

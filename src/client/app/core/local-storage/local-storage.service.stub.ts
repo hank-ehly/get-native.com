@@ -7,26 +7,14 @@
 
 import { LocalStorageService } from './local-storage.service';
 
-export const STUBLocalStorageService: LocalStorageService = <LocalStorageService>{
+import { Observable } from 'rxjs/Observable';
+
+export class STUBLocalStorageService extends LocalStorageService {
+    setItem$: Observable<any>;
+    storageEvent$: Observable<any>;
+    clearSource$: Observable<any>;
+
     setItem(key: string, data: any): void {
         return;
-    },
-
-    setItem$: {
-        subscribe(): void {
-            return;
-        }
-    },
-
-    storageEvent$: {
-        subscribe(): void {
-            return;
-        }
-    },
-
-    clearSource$: {
-        subscribe(): void {
-            return;
-        }
     }
-};
+}
