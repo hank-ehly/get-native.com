@@ -27,7 +27,8 @@
         FB.init({
             appId      : '<%= ENV_CONFIG.facebookAppId %>',
             xfbml      : true,
-            version    : 'v2.8'
+            version    : 'v2.8',
+            status     : true
         });
         FB.AppEvents.logPageView();
     };
