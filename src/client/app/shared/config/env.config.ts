@@ -9,6 +9,7 @@ export interface EnvConfig {
     API?: string;
     ENV?: string;
     moderator?: string;
+    facebookAppId?: string;
 }
 
 export const Config: EnvConfig = JSON.parse('<%= ENV_CONFIG %>');

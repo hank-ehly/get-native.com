@@ -9,7 +9,8 @@ import { EnvConfig } from './env-config.interface';
 
 const StgConfig: EnvConfig = {
     API: 'https://api.stg.get-native.com',
-    ENV: 'STAGING'
+    ENV: 'STAGING',
+    facebookAppId: '215585938915345'
 };
 
 export = StgConfig;
