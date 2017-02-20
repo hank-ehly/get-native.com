@@ -107,7 +107,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.isDropdownVisible = false;
     }
 
-    onClickLoadMore(): void {
+    onClickLoadMoreVideos(): void {
         let oldestVideo = this.videos.records[this.videos.count - 1];
         let updatedCount = +this.videoSearchParams.get('count') * 2;
 
