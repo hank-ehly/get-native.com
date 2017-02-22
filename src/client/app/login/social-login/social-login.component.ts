@@ -6,9 +6,9 @@
  */
 
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { LoginModalService } from '../../core/index';
+import { Logger } from '../../core/logger/logger';
 
 @Component({
     moduleId: module.id,
@@ -17,15 +17,14 @@ import { LoginModalService } from '../../core/index';
     styleUrls: ['social-login.component.css']
 })
 export class SocialLoginComponent {
-    constructor(private loginModal: LoginModalService, private router: Router) {
+    constructor(private loginModal: LoginModalService, private logger: Logger) {
     }
 
     onSetModalView(view: string): void {
         this.loginModal.setActiveView(view);
     }
 
-    onLogin(): void {
-        this.loginModal.hideModal();
-        this.router.navigate(['dashboard']);
+    onClickFacebook(): void {
+        this.logger.debug(this, 'Clicked Facebook');
     }
 }

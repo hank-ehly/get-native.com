@@ -7,7 +7,7 @@
 
 import { Injectable } from '@angular/core';
 
-import { LocalStorageService, Logger, kAuthToken, kAuthTokenExpire, ToolbarService, User, HttpService, APIHandle } from '../index';
+import { LocalStorageService, Logger, kAuthToken, kAuthTokenExpire, ToolbarService } from '../index';
 
 @Injectable()
 export class AuthService {
