@@ -24,8 +24,7 @@
     "types": [
       "node",
       "jasmine",
-      "systemjs",
-      "facebook-js-sdk"
+      "systemjs"
     ]
   },
   "exclude": [
