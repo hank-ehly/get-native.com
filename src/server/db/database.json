@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "get_native",
+    "password": "get_native",
+    "database": "get_native_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "staging": {
+    "username": "get_native",
+    "password": "get_native",
+    "database": "get_native_staging",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "get_native",
+    "password": "get_native",
+    "database": "get_native_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
