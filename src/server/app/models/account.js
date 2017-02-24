@@ -6,7 +6,7 @@
  */
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('accounts', {
+    return sequelize.define('Account', {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
