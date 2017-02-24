@@ -27,10 +27,3 @@ let privateKey = fs.readFile(secretsDir + '/id_rsa', (err, data) => {
 });
 
 nconf.set('PORT', 3000);
-
-let dbToken = 'get_native_' + nconf.get('NODE_ENV').toLowerCase();
-nconf.set('db:name', dbToken);
-nconf.set('db:user', dbToken);
-nconf.set('db:pass', dbToken);
-nconf.set('db:port', 3306);
-nconf.set('db:host', 'localhost');
