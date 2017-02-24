@@ -17,9 +17,6 @@ const defaultTableConfig = {
 
 let env = nconf.get('env');
 
-logger.info('************');
-logger.info(nconf.get('env'));
-
 const sequelize = new Sequelize(conf[env].database, conf[env].username, conf[env].password, {
     host: conf[env].host,
     dialect: conf[env].dialect,
