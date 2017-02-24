@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 this.belongsTo(models.Speaker, {
-                    foreignKey: 'speaker_pictures_speaker_id_fk',
+                    foreignKey: 'speaker_pictures_speakers_id_fk',
                     targetKey: 'id',
                     as: 'speaker_id'
                 });
