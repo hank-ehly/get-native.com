@@ -1,0 +1,39 @@
+/**
+ * 20170224002054-create-notification
+ * get-native.com
+ *
+ * Created by henryehly on 2017/01/24.
+ */
+
+module.exports = {
+    up: function(queryInterface, Sequelize) {
+        return queryInterface.createTable('notifications', {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER
+            },
+            title: {
+                type: Sequelize.STRING,
+                allowNull: false,
+                defaultValue: ''
+            },
+            content: {
+                type: Sequelize.TEXT,
+                allowNull: false
+            },
+            created_at: {
+                allowNull: false,
+                type: Sequelize.DATE
+            },
+            updated_at: {
+                allowNull: false,
+                type: Sequelize.DATE
+            }
+        });
+    },
+    down: function(queryInterface, Sequelize) {
+        return queryInterface.dropTable('notifications');
+    }
+};
