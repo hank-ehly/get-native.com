@@ -7,29 +7,29 @@
 
 const Sequelize = require('sequelize');
 const nconf     = require('nconf');
+const conf      = require('../../db/database.json');
 const logger    = require('../logger');
 
 const defaultTableConfig = {
     timestamps: true,
-    underscored: true,
-    freezeTableName: true,
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    }
+    freezeTableName: true
 };
 
-const sequelize = new Sequelize(nconf.get('db:name'), nconf.get('db:user'), nconf.get('db:pass'), {
-    host: nconf.get('db:host'),
-    dialect: 'mysql',
-    port: nconf.get('db:port'),
+let env = nconf.get('env');
+
+logger.info('************');
+logger.info(nconf.get('env'));
+
+const sequelize = new Sequelize(conf[env].database, conf[env].username, conf[env].password, {
+    host: conf[env].host,
+    dialect: conf[env].dialect,
+    port: 3306,
     logging: logger.info,
     define: defaultTableConfig
 });
 
-module.exports.init = function(callback) {
-    sequelize.authenticate().then(() => callback()).catch(e => callback(e.toString()));
+module.exports.init = function(cb) {
+    sequelize.authenticate().then(() => cb()).catch(e => cb(e.toString()));
 };
 
 module.exports.sequelize = sequelize;

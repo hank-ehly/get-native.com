@@ -7,7 +7,6 @@
 
 const nconf  = require('nconf');
 const server = require('./config/initializers/server');
-const database = require('./config/initializers/database');
 const logger = require('./config/logger');
 
 //noinspection JSUnresolvedFunction
@@ -20,13 +19,15 @@ nconf.env();
 require('./config/environments/base');
 require('./config/environments/' + (nconf.get('NODE_ENV') || 'development'));
 
+const database = require('./config/initializers/database');
+
 logger.info(`Initializing ${nconf.get('env').toUpperCase()} environment`);
 
 server((error) => {
     if (!error) {
         logger.info(`Initialization of ${nconf.get('env').toUpperCase()} server was successful.`);
 
-        database((error) => {
+        database.init((error) => {
             if (!error) {
                 logger.info(`Initialization of ${nconf.get('env').toUpperCase()} database was successful.`);
             } else {
