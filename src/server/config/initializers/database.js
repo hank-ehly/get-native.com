@@ -10,19 +10,13 @@ const nconf     = require('nconf');
 const conf      = require('../../db/database.json');
 const logger    = require('../logger');
 
-const defaultTableConfig = {
-    timestamps: true,
-    freezeTableName: true
-};
-
 let env = nconf.get('env');
 
 const sequelize = new Sequelize(conf[env].database, conf[env].username, conf[env].password, {
     host: conf[env].host,
     dialect: conf[env].dialect,
     port: 3306,
-    logging: logger.info,
-    define: defaultTableConfig
+    logging: logger.info
 });
 
 module.exports.init = function(cb) {
