@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
         classMethods: {
             associate: function(models) {
-                this.belongsTo(models.Picture, {
+                this.belongsTo(models.Speaker, {
                     foreignKey: 'speaker_pictures_speaker_id_fk',
                     targetKey: 'id',
                     as: 'speaker_id'
