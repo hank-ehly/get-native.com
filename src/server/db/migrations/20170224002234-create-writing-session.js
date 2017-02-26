@@ -2,7 +2,7 @@
  * 20170224002234-create-writing-session
  * get-native.com
  *
- * Created by henryehly on 2017/01/24.
+ * Created by henryehly on 2017/02/24.
  */
 
 module.exports = {
