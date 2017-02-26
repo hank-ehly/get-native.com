@@ -5,21 +5,20 @@
  * Created by henryehly on 2017/02/26.
  */
 
-// FIX: https://github.com/sequelize/sequelize/issues/5212
-// module.exports = {
-//     up: function(queryInterface, Sequelize) {
-//         return queryInterface.addColumn('transcripts', 'video_id', {
-//             type: Sequelize.INTEGER,
-//             references: {
-//                 model: 'videos',
-//                 key: 'id'
-//             },
-//             onUpdate: 'restrict',
-//             onDelete: 'restrict'
-//         });
-//     },
-//
-//     down: function(queryInterface, Sequelize) {
-//         return queryInterface.removeColumn('transcripts', 'video_id');
-//     }
-// };
+module.exports = {
+    up: function(queryInterface, Sequelize) {
+        return queryInterface.addColumn('transcripts', 'video_id', {
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'videos',
+                key: 'id'
+            },
+            onUpdate: 'restrict',
+            onDelete: 'restrict'
+        });
+    },
+
+    down: function(queryInterface, Sequelize) {
+        return queryInterface.removeColumn('transcripts', 'video_id');
+    }
+};
