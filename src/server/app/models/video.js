@@ -29,7 +29,6 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 this.belongsTo(models.Subcategory);
-                this.belongsTo(models.Language);
                 this.belongsTo(models.Speaker);
                 this.hasOne(models.Transcript);
                 this.hasOne(models.WritingQuestion);

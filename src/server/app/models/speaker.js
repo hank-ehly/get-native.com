@@ -31,7 +31,6 @@ module.exports = function(sequelize, DataTypes) {
         underscored: true,
         classMethods: {
             associate: function(models) {
-                this.hasOne(models.Language, {foreignKey: 'speakers_language_id_foreign_idx'});
                 this.hasOne(models.SpeakerPicture);
                 this.belongsTo(models.Video);
                 this.hasMany(models.Follower);
