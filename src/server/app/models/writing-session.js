@@ -14,6 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         words_per_minute: DataTypes.INTEGER,
         word_count: DataTypes.INTEGER
     }, {
+        tableName: 'writing_sessions',
         underscored: true,
         classMethods: {
             associate: function(models) {
