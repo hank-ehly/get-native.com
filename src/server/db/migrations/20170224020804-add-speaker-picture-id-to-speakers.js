@@ -2,7 +2,7 @@
  * 20170224020804-add-speaker-picture-id-to-speakers
  * get-native.com
  *
- * Created by henryehly on 2017/01/24.
+ * Created by henryehly on 2017/02/24.
  */
 
 module.exports = {
