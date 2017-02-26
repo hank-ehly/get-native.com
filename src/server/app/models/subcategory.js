@@ -13,15 +13,12 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: ''
         }
     }, {
-        tableName: 'subcategories',
+        tableName: 'subcateGories',
         underscored: true,
         classMethods: {
             associate: function(models) {
-                this.belongsTo(models.Category, {
-                    foreignKey: 'subcategories_ibfk_1',
-                    targetKey: 'id',
-                    as: 'category_id'
-                });
+                this.belongsTo(models.Category);
+                this.hasMany(models.Video);
             }
         }
     });

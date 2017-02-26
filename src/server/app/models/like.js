@@ -9,6 +9,12 @@ module.exports = function(sequelize, DataTypes) {
     return sequelize.define('Like', {}, {
         tableName: 'likes',
         underscored: true,
-        updatedAt: false
+        updatedAt: false,
+        classMethods: {
+            associate: function(models) {
+                this.belongsTo(models.Account);
+                this.belongsTo(models.Video);
+            }
+        }
     });
 };

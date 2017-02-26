@@ -12,17 +12,8 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false,
         classMethods: {
             associate: function(models) {
-                this.belongsTo(models.Speaker, {
-                    foreignKey: 'followers_ibfk_1',
-                    targetKey: 'id',
-                    as: 'speaker_id'
-                });
-
-                this.belongsTo(models.Account, {
-                    foreignKey: 'followers_ibfk_2',
-                    targetKey: 'id',
-                    as: 'account_id'
-                });
+                this.belongsTo(models.Speaker);
+                this.belongsTo(models.Account);
             }
         }
     });

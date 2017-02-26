@@ -6,23 +6,23 @@
  */
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('SpeakerPicture', {}, {
+    return sequelize.define('SpeakerPicture', {
+        url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: ''
+        },
+        is_silhouette: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: 1
+        }
+    }, {
         tableName: 'speaker_pictures',
         underscored: true,
-        timestamps: false,
         classMethods: {
             associate: function(models) {
-                this.belongsTo(models.Speaker, {
-                    foreignKey: 'speaker_pictures_speakers_id_fk',
-                    targetKey: 'id',
-                    as: 'speaker_id'
-                });
-
-                this.belongsTo(models.Picture, {
-                    foreignKey: 'speaker_pictures_pictures_id_fk',
-                    targetKey: 'id',
-                    as: 'picture_id'
-                });
+                this.belongsTo(models.Speaker);
             }
         }
     });

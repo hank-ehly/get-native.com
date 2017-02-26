@@ -16,7 +16,9 @@ module.exports = function(sequelize, DataTypes) {
         underscored: true,
         classMethods: {
             associate: function(models) {
-                // associations can be defined here
+                this.belongsTo(models.Language); // this may be better as lang-code instead. You don't need to call Language.all.transcripts
+                this.belongsTo(models.Video);
+                this.hasMany(models.Collocation);
             }
         }
     });

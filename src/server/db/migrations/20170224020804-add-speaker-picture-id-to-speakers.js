@@ -11,7 +11,7 @@ module.exports = {
             type: Sequelize.INTEGER,
             references: {
                 model: 'speaker_pictures',
-                key: 'speaker_id'
+                key: 'id'
             },
             onUpdate: 'restrict',
             onDelete: 'restrict'
