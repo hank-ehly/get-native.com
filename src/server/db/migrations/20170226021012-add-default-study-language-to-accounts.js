@@ -7,18 +7,14 @@
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return queryInterface.addColumn('accounts', 'default_study_language_id', {
-            type: Sequelize.INTEGER,
-            references: {
-                model: 'languages',
-                key: 'id'
-            },
-            onUpdate: 'restrict',
-            onDelete: 'restrict'
+        return queryInterface.addColumn('accounts', 'default_study_language', {
+            type: Sequelize.STRING,
+            allowNull: false,
+            defaultValue: ''
         });
     },
 
     down: function(queryInterface, Sequelize) {
-        return queryInterface.removeColumn('accounts', 'default_study_language_id');
+        return queryInterface.removeColumn('accounts', 'default_study_language');
     }
 };
