@@ -19,6 +19,6 @@ module.exports = {
     },
 
     down: function(queryInterface, Sequelize) {
-        return queryInterface.removeColumn('usage_examples', 'transcript_id');
+        return queryInterface.removeColumn('collocations', 'transcript_id');
     }
 };
