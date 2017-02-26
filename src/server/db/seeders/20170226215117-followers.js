@@ -2,7 +2,7 @@
  * 20170226215117-followers
  * get-native.com
  *
- * Created by henryehly on 2017/02/26.
+ * Created by henryehly on 2017/02/27.
  */
 
 const models = require('../../app/models');
