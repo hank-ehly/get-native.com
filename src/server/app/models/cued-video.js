@@ -8,6 +8,12 @@
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define('CuedVideo', {}, {
         tableName: 'cued_videos',
-        underscored: true
+        underscored: true,
+        classMethods: {
+            associate: function(models) {
+                this.belongsTo(models.Account);
+                this.hasOne(models.Video); // is this accurate?
+            }
+        }
     });
 };

@@ -8,6 +8,11 @@
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define('ListeningSession', {}, {
         tableName: 'listening_sessions',
-        underscored: true
+        underscored: true,
+        classMethods: {
+            associate: function(models) {
+                this.belongsTo(models.StudySession);
+            }
+        }
     });
 };

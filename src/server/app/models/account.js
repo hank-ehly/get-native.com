@@ -37,7 +37,12 @@ module.exports = function(sequelize, DataTypes) {
         underscored: true,
         classMethods: {
             associate: function(models) {
-                // associations can be defined here
+                this.hasMany(model.Follower);
+                this.hasMany(model.Notification);
+                this.hasMany(model.Like);
+                this.hasMany(model.CuedVideo);
+                this.hasMany(model.StudySession);
+                this.hasOne(model.AccountPicture);
             }
         }
     });

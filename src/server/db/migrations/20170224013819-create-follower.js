@@ -11,8 +11,7 @@ module.exports = {
             speaker_id: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'speakers',
-                    key: 'id'
+                    model: 'speakers'
                 },
                 onUpdate: 'restrict',
                 onDelete: 'restrict'
@@ -20,11 +19,18 @@ module.exports = {
             account_id: {
                 type: Sequelize.INTEGER,
                 references: {
-                    model: 'accounts',
-                    key: 'id'
+                    model: 'accounts'
                 },
                 onUpdate: 'restrict',
                 onDelete: 'restrict'
+            },
+            created_at: {
+                allowNull: false,
+                type: Sequelize.DATE
+            },
+            updated_at: {
+                allowNull: false,
+                type: Sequelize.DATE
             }
         });
     },

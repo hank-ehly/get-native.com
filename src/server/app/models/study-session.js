@@ -17,7 +17,12 @@ module.exports = function(sequelize, DataTypes) {
         underscored: true,
         classMethods: {
             associate: function(models) {
-                // associations can be defined here
+                this.hasOne(models.ListeningSession);
+                this.hasOne(models.ShadowingSession);
+                this.hasOne(models.SpeakingSession);
+                this.hasOne(models.WritingSession);
+                this.belongsTo(models.Account);
+                this.belongsTo(models.Video);
             }
         }
     });

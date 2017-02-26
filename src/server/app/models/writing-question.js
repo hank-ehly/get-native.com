@@ -18,6 +18,12 @@ module.exports = function(sequelize, DataTypes) {
         }
     }, {
         tableName: 'writing_questions',
-        underscored: true
+        underscored: true,
+        classMethods: {
+            associate: function(models) {
+                this.belongsTo(models.Video);
+                this.hasMany(models.WritingSession);
+            }
+        }
     });
 };

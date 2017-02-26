@@ -1,5 +1,5 @@
 /**
- * 20170224001358-create-picture
+ * 20170224001359-create-speaker-picture
  * get-native.com
  *
  * Created by henryehly on 2017/02/24.
@@ -7,7 +7,7 @@
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return queryInterface.createTable('pictures', {
+        return queryInterface.createTable('speaker_pictures', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -35,6 +35,6 @@ module.exports = {
         });
     },
     down: function(queryInterface, Sequelize) {
-        return queryInterface.dropTable('pictures');
+        return queryInterface.dropTable('speaker_pictures');
     }
 };
