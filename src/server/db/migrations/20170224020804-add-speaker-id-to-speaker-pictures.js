@@ -1,5 +1,5 @@
 /**
- * 20170224020804-add-speaker-picture-id-to-speakers
+ * 20170224020804-add-speaker-id-to-speaker-pictures
  * get-native.com
  *
  * Created by henryehly on 2017/02/24.
@@ -7,10 +7,10 @@
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return queryInterface.addColumn('speakers', 'speaker_picture_id', {
+        return queryInterface.addColumn('speaker_pictures', 'speaker_id', {
             type: Sequelize.INTEGER,
             references: {
-                model: 'speaker_pictures',
+                model: 'speakers',
                 key: 'id'
             },
             onUpdate: 'restrict',
@@ -19,6 +19,6 @@ module.exports = {
     },
 
     down: function(queryInterface, Sequelize) {
-        return queryInterface.removeColumn('speakers', 'speaker_picture_id');
+        return queryInterface.removeColumn('speaker_pictures', 'speaker_id');
     }
 };
