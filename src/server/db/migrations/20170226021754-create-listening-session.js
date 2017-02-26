@@ -8,6 +8,12 @@
 module.exports = {
     up: function(queryInterface, Sequelize) {
         return queryInterface.createTable('listening_sessions', {
+            id: {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+                type: Sequelize.INTEGER
+            },
             study_session_id: {
                 type: Sequelize.INTEGER,
                 references: {
