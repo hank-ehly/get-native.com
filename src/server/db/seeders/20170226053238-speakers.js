@@ -13,7 +13,7 @@ module.exports = {
         const speakers = [];
 
         for (let i = 0; i < 150; i++) {
-            let bGender = chance.pickone([true, false]);
+            let bGender = chance.bool();
 
             speakers.push({
                 name: chance.name({gender: bGender ? "male" : "female"}),
