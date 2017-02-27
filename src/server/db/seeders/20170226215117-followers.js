@@ -16,7 +16,7 @@ module.exports = {
         return Promise.all([Account.min('id'), Account.max('id'), Speaker.min('id'), Speaker.max('id')]).then((x) => {
             let followers = [];
 
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 5000; i++) {
                 followers.push({speaker_id: helper.rand(x[2], x[3])});
             }
 
