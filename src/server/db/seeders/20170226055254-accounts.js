@@ -5,10 +5,23 @@
  * Created by henryehly on 2017/02/26.
  */
 
-let accounts = require('../seed-data/accounts.json');
+const chance = require('chance').Chance();
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
+        const accounts = [];
+
+        for (let i = 0; i < 20000; i++) {
+            accounts.push({
+                email: chance.email(),
+                password: chance.string({length: 20}),
+                browser_notifications_enabled: chance.bool(),
+                email_notifications_enabled: chance.bool(),
+                email_verified: chance.bool({likelihood: 80}),
+                default_study_language_code: chance.pickone(['en', 'ja'])
+            });
+        }
+
         return queryInterface.bulkInsert('accounts', accounts);
     },
 
