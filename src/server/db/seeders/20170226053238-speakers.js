@@ -6,7 +6,6 @@
  */
 
 const chance = require('chance').Chance();
-const Helper = require('../seed-helper');
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
@@ -20,7 +19,8 @@ module.exports = {
                 location: chance.country({full: true}),
                 gender: bGender,
                 language_code: chance.pickone(['en', 'ja']),
-                description: chance.paragraph()
+                description: chance.paragraph(),
+                picture_url: 'https://dummyimage.com/100x100.png/5fa2dd/ffffff'
             });
         }
 

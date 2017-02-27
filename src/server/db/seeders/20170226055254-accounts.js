@@ -18,7 +18,8 @@ module.exports = {
                 browser_notifications_enabled: chance.bool(),
                 email_notifications_enabled: chance.bool(),
                 email_verified: chance.bool({likelihood: 80}),
-                default_study_language_code: chance.pickone(['en', 'ja'])
+                default_study_language_code: chance.pickone(['en', 'ja']),
+                picture_url: 'https://dummyimage.com/100x100.png/5fa2dd/ffffff'
             });
         }
 
