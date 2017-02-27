@@ -10,15 +10,24 @@ const models = require('../../app/models');
 const Speaker = models.Speaker;
 const Subcategory = models.Subcategory;
 
-const videos = require('../seed-data/videos.json');
-const Helper = require('../seed-helper');
+const chance = require('chance').Chance();
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
         return Promise.all([Speaker.min('id'), Speaker.max('id'), Subcategory.min('id'), Subcategory.max('id')]).then(x => {
-            for (let i = 0; i < videos.length; i++) {
-                videos[i].speaker_id = Helper.rand(x[0], x[1]);
-                videos[i].subcategory_id = Helper.rand(x[2], x[3]);
+            const videos = [];
+
+            for (let i = 0; i < 2000; i++) {
+                videos.push({
+                    length: chance.integer({min: 30, max: 150}),
+                    thumbnail_image_url: 'https://dummyimage.com/450x300.png/5fa2dd/ffffff',
+                    loop_count: chance.integer({min: 10, max: 30000}),
+                    video_url: 'https://youtu.be/' + chance.pickone(['SqyDRXVd5Jo', 'clpOP8f3Jc8', 'q9k_QgYA-bo', 'rF-MsURy9q8', 'W2G68H3xRyE']),
+                    description: chance.paragraph(),
+                    speaker_id: chance.integer({min: x[0], max: x[1]}),
+                    language_code: chance.pickone(['en', 'ja']),
+                    subcategory_id: chance.integer({min: x[2], max: x[3]})
+                });
             }
 
             return queryInterface.bulkInsert('videos', videos);
