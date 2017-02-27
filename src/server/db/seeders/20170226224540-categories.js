@@ -5,11 +5,18 @@
  * Created by henryehly on 2017/02/27.
  */
 
-const categories = require('../seed-data/categories.json');
-
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return queryInterface.bulkInsert('categories', categories);
+        return queryInterface.bulkInsert('categories', [
+            {"name": "Business"},
+            {"name": "Food"},
+            {"name": "Culture"},
+            {"name": "Language"},
+            {"name": "Sports"},
+            {"name": "Entertainment"},
+            {"name": "Family"},
+            {"name": "Religion"}
+        ]);
     },
 
     down: function(queryInterface, Sequelize) {
