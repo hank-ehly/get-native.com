@@ -5,8 +5,8 @@
  * Created by henryehly on 2017/02/27.
  */
 
+const chance = require('chance').Chance();
 const models = require('../../app/models');
-const helper = require('../seed-helper');
 
 const Speaker = models.Speaker;
 const Account = models.Account;
@@ -17,11 +17,11 @@ module.exports = {
             let followers = [];
 
             for (let i = 0; i < 5000; i++) {
-                followers.push({speaker_id: helper.rand(x[2], x[3])});
+                followers.push({speaker_id: chance.integer({min: x[2], max: x[3]})});
             }
 
             for (let i = 0; i < followers.length; i++) {
-                followers[i].account_id = helper.rand(x[0], x[1]);
+                followers[i].account_id = chance.integer({min: x[0], max: x[1]});
             }
 
             return queryInterface.bulkInsert('followers', followers);

@@ -6,14 +6,27 @@
  */
 
 const Account = require('../../app/models').Account;
-const notifications = require('../seed-data/notifications.json');
-const Helper = require('../seed-helper');
+const chance = require('chance').Chance();
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
         return Promise.all([Account.min('id'), Account.max('id')]).then((x) => {
-            for (let i = 0; i < notifications.length; i++) {
-                notifications[i].account_id = Helper.rand(x[0], x[1]);
+            const notifications = [];
+
+            for (let i = 0; i < 40000; i++) {
+                notifications.push({
+                    account_id: chance.integer({
+                        min: x[0],
+                        max: x[1]
+                    }),
+                    title: chance.sentence({
+                        words: chance.integer({
+                            min: 2,
+                            max: 5
+                        })
+                    }),
+                    content: chance.paragraph()
+                });
             }
 
             return queryInterface.bulkInsert('notifications', notifications);
