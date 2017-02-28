@@ -43,7 +43,8 @@
     "webdriver-update": "webdriver-manager update",
     "compodoc": "node_modules/.bin/compodoc -p src/client/tsconfig.json",
     "serve.compodoc": "node_modules/.bin/compodoc -s",
-    "serve.docs": "test `which mkdocs` && mkdocs serve"
+    "serve.docs": "test `which mkdocs` && mkdocs serve",
+    "sequelize": "sequelize"
   },
   "author": "Hank Ehly <henry.ehly@gmail.com>",
   "license": "UNLICENSED",
