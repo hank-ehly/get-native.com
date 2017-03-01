@@ -1,5 +1,5 @@
 /**
- * 20170226002733-add-study-session-id-to-writing-sessions
+ * 20170226002733-add-study-session-id-to-writing-answers
  * get-native.com
  *
  * Created by henryehly on 2017/02/26.
@@ -7,7 +7,7 @@
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return queryInterface.addColumn('writing_sessions', 'study_session_id', {
+        return queryInterface.addColumn('writing_answers', 'study_session_id', {
             type: Sequelize.INTEGER,
             references: {
                 model: 'study_sessions',
@@ -19,6 +19,6 @@ module.exports = {
     },
 
     down: function(queryInterface, Sequelize) {
-        return queryInterface.removeColumn('writing_sessions', 'study_session_id');
+        return queryInterface.removeColumn('writing_answers', 'study_session_id');
     }
 };
