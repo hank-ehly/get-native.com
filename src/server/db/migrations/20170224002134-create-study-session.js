@@ -14,11 +14,6 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            is_complete: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-                defaultValue: 0
-            },
             study_time: {
                 allowNull: false,
                 type: Sequelize.INTEGER,
