@@ -11,7 +11,7 @@ module.exports = {
     up: function(queryInterface, Sequelize) {
         const speakers = [];
 
-        for (let i = 0; i < 150; i++) {
+        for (let i = 0; i < 50; i++) {
             let bGender = chance.bool();
 
             speakers.push({

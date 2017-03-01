@@ -11,7 +11,7 @@ module.exports = {
     up: function(queryInterface, Sequelize) {
         const accounts = [];
 
-        for (let i = 0; i < 5000; i++) {
+        for (let i = 0; i < 2500; i++) {
             accounts.push({
                 email: chance.email(),
                 password: chance.string({length: 20}),

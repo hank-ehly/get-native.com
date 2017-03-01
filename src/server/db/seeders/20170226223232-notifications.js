@@ -13,20 +13,19 @@ module.exports = {
         return Promise.all([Account.min('id'), Account.max('id')]).then((x) => {
             const notifications = [];
 
-            for (let i = 0; i < 40000; i++) {
-                notifications.push({
-                    account_id: chance.integer({
-                        min: x[0],
-                        max: x[1]
-                    }),
-                    title: chance.sentence({
-                        words: chance.integer({
-                            min: 2,
-                            max: 5
-                        })
-                    }),
-                    content: chance.paragraph()
-                });
+            // for each user
+            for (let i = x[0]; i < x[1]; i++) {
+
+                // create between 1 ~ 10 notifications
+                let numNotifications = chance.integer({min: 1, max: 10});
+
+                for (let j = 0; j < numNotifications; j++) {
+                    notifications.push({
+                        account_id: chance.integer({min: x[0], max: x[1]}),
+                        title: chance.sentence({words: chance.integer({min: 2, max: 5})}),
+                        content: chance.paragraph()
+                    });
+                }
             }
 
             return queryInterface.bulkInsert('notifications', notifications);
