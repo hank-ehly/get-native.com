@@ -680,10 +680,6 @@ POST https://api.get-native.com/study
 				"records": [
 					{
 						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-						"user": { // TODO: Unsafef
-							"id": 123,
-							"id_str": "123"
-						},
 						"id": 456,
 						"id_str": "456"
 					}
@@ -693,84 +689,6 @@ POST https://api.get-native.com/study
 			"length": 68
 	}
 }
-```
-
-# POST /study/listening
-
-Register the completion of a listening session.
-
-```
-POST https://api.get-native.com/study/listening
-```
-
-**Parameters**
-
-| Parameter         	| Description                                              	| Required 	| Default 	|
-|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
-| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
-
-```json
-{
-	"study_session_id": 456
-}
-```
-
-**Response**
-
-```
-Status: 204 No Content
-```
-
-# POST /study/shadowing
-
-Register the completion of the shadowing session.
-
-```
-POST https://api.get-native.com/study/shadowing
-```
-
-**Parameters**
-
-| Parameter         	| Description                                              	| Required 	| Default 	|
-|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
-| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
-
-```json
-{
-	"study_session_id": 456
-}
-```
-
-**Response**
-
-```
-Status: 204 No Content
-```
-
-# POST /study/speaking
-
-Register the completion of a speaking session.
-
-```
-POST https://api.get-native.com/study/speaking
-```
-
-**Parameters**
-
-| Parameter         	| Description                                              	| Required 	| Default 	|
-|-------------------	|----------------------------------------------------------	|:--------:	|---------	|
-| study_session_id  	| The unique ID of the current study session              	|     √    	|         	|
-
-```json
-{
-	"study_session_id": 456
-}
-```
-
-**Response**
-
-```
-Status: 204 No Content
 ```
 
 # GET /study/stats
@@ -807,12 +725,12 @@ Status: 200 OK
 }
 ```
 
-# POST /study/writing
+# POST /study/writing_answers
 
-Register the completion of a writing session.
+Register a writing answer.
 
 ```
-POST https://api.get-native.com/study/writing
+POST https://api.get-native.com/study/writing_answers
 ```
 
 **Parameters**
@@ -820,14 +738,14 @@ POST https://api.get-native.com/study/writing
 | Parameter         	| Description                                                    	| Required 	| Default 	|
 |-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
 | study_session_id  	| The unique ID of the current study session                     	|     √    	|         	|
+| writing_question_id | The unique ID of the question to which the user wrote an answer	|     √    	|         	|
 | answer             	| The user written text answer to the writing question           	|     √    	|         	|
-| question           	| The unique ID of the question to which the user wrote an answer	|     √    	|         	|
 
 ```json
 {
 	"study_session_id": 123,
-	"answer": "I really like..",
-	"question": "Do you like sports?"
+	"writing_question_id": 456,
+	"answer": "I really like.."
 }
 ```
 
@@ -842,12 +760,10 @@ before sending the request, calculations are performed server side for maximum e
 Status: 204 No Content
 ```
 
-# GET /study/writing_history
- 
-
+# GET /study/writing_answers
 
 ```
-GET https://api.get-native.com/study/writing_history?since=1483658645131
+GET https://api.get-native.com/study/writing_answers?since=1483658645131
 ```
 
 **Parameters**
