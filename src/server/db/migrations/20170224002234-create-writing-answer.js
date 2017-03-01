@@ -1,5 +1,5 @@
 /**
- * 20170224002234-create-writing-session
+ * 20170224002234-create-writing-answer
  * get-native.com
  *
  * Created by henryehly on 2017/02/24.
@@ -7,7 +7,7 @@
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return queryInterface.createTable('writing_sessions', {
+        return queryInterface.createTable('writing_answers', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
@@ -37,6 +37,6 @@ module.exports = {
         });
     },
     down: function(queryInterface, Sequelize) {
-        return queryInterface.dropTable('writing_sessions');
+        return queryInterface.dropTable('writing_answers');
     }
 };
