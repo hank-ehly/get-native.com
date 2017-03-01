@@ -1,4 +1,9 @@
-'use strict';
+/**
+ * 20170301025901-study-sessions
+ * get-native.com
+ *
+ * Created by henryehly on 2017/03/01.
+ */
 
 const chance = require('chance').Chance();
 const models = require('../../app/models');
