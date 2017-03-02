@@ -37,9 +37,9 @@ module.exports = () => {
         // app.use(express.static(path.join(__dirname, 'public')));
 
         let port = nconf.get('PORT');
-        app.listen(port, () => {
+        let server = app.listen(port, () => {
             logger.info(`Listening on port ${port}`);
-            resolve(app);
+            resolve(server);
         });
     });
 };
