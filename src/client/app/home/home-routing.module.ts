@@ -6,11 +6,20 @@
  */
 
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 
+import { HomeComponent } from './home.component';
+import { AuthGuard } from '../core/auth/auth-guard.service';
+
 const homeRoutes: Routes = [
-    {path: '', component: HomeComponent, data: {title: 'Home'}}
+    {
+        path: '',
+        canActivate: [AuthGuard],
+        component: HomeComponent,
+        data: {
+            title: 'Home'
+        }
+    }
 ];
 
 @NgModule({
