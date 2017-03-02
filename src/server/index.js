@@ -5,9 +5,10 @@
  * Created by henryehly on 2017/01/15.
  */
 
-const nconf  = require('nconf');
-const server = require('./config/initializers/server');
-const logger = require('./config/logger');
+const nconf    = require('nconf');
+const server   = require('./config/initializers/server');
+const logger   = require('./config/logger');
+const database = require('./config/initializers/database');
 
 //noinspection JSUnresolvedFunction
 nconf.use('memory');
@@ -19,23 +20,12 @@ nconf.env();
 require('./config/environments/base');
 require('./config/environments/' + (nconf.get('NODE_ENV') || 'development'));
 
-const database = require('./config/initializers/database');
-
 logger.info(`Initializing ${nconf.get('env').toUpperCase()} environment`);
 
-server((error) => {
-    if (!error) {
-        logger.info(`Initialization of ${nconf.get('env').toUpperCase()} server was successful.`);
-
-        database.init((error) => {
-            if (!error) {
-                logger.info(`Initialization of ${nconf.get('env').toUpperCase()} database was successful.`);
-            } else {
-                logger.error('Failed to start database: ', error);
-            }
-        });
-
-    } else {
-        logger.error('Failed to start server: ', error);
-    }
+module.exports = Promise.all([server(), database()]).then(app => {
+    logger.info('Server/Database initialization successful.');
+    return app;
+}).catch(error => {
+    logger.info('Server/Database initialization failed with error', error, {json: true});
+    return error;
 });
