@@ -22,7 +22,8 @@ require('./config/environments/' + (nconf.get('NODE_ENV') || 'development'));
 
 logger.info(`Initializing ${nconf.get('env').toUpperCase()} environment`);
 
-module.exports = Promise.all([server(), database()]).then(app => {
+module.exports = Promise.all([server(), database()]).then(result => {
+    let app = result[0];
     logger.info('Server/Database initialization successful.');
     return app;
 }).catch(error => {
