@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
     ngOnInit(): void {
         this.logger.info(this, 'ngOnInit()');
 
-        this.authenticated = this.auth.isLoggedIn();
+        this.updateLoginStatus();
 
         this.showComplianceDialog = !this.localStorage.getItem(kAcceptLocalStorage);
 
