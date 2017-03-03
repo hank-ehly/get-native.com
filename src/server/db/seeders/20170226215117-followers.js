@@ -16,12 +16,24 @@ module.exports = {
         return Promise.all([Account.min('id'), Account.max('id'), Speaker.min('id'), Speaker.max('id')]).then((x) => {
             let followers = [];
 
-            for (let i = 0; i < 5000; i++) {
-                followers.push({speaker_id: chance.integer({min: x[2], max: x[3]})});
+            for (let i = x[0]; i < x[1]; i++) {
+                let numFollowers = chance.integer({min: 0, max: 5});
+
+                for (let j = 0; j < numFollowers; j++) {
+                    followers.push({
+                        speaker_id: chance.integer({
+                            min: x[2],
+                            max: x[3]
+                        })
+                    });
+                }
             }
 
             for (let i = 0; i < followers.length; i++) {
-                followers[i].account_id = chance.integer({min: x[0], max: x[1]});
+                followers[i].account_id = chance.integer({
+                    min: x[0],
+                    max: x[1]
+                });
             }
 
             return queryInterface.bulkInsert('followers', followers);
