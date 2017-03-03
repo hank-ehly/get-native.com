@@ -17,7 +17,9 @@ module.exports = {
         return Promise.all([Speaker.min('id'), Speaker.max('id'), Subcategory.min('id'), Subcategory.max('id')]).then(x => {
             const videos = [];
 
-            for (let i = 0; i < 500; i++) {
+            let numVideos = process.env.NODE_ENV === 'test' ? 50 : 500;
+
+            for (let i = 0; i < numVideos; i++) {
                 videos.push({
                     length: chance.integer({min: 30, max: 150}),
                     thumbnail_image_url: 'https://dummyimage.com/450x300.png/5fa2dd/ffffff',
