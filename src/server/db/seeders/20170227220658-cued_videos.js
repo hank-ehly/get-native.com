@@ -17,11 +17,19 @@ module.exports = {
         return Promise.all([Video.min('id'), Video.max('id'), Account.min('id'), Account.max('id')]).then(x => {
             const cuedVideos = [];
 
-            for (let i = 0; i < 5000; i++) {
-                cuedVideos.push({
-                    video_id: chance.integer({min: x[0], max: x[1]}),
-                    account_id: chance.integer({min: x[2], max: x[3]})
-                });
+            // for each user
+            for (let i = x[2]; i < x[3]; i++) {
+
+                // create between 0 ~ 10 cuedVideos
+                let numCuedVideos = chance.integer({min: 0, max: 10});
+                for (let j = 0; j < numCuedVideos; j++) {
+
+                    // this could result in 1 user having 2+ cued_videos that point to the same video
+                    cuedVideos.push({
+                        video_id: chance.integer({min: x[0], max: x[1]}),
+                        account_id: i
+                    });
+                }
             }
 
             return queryInterface.bulkInsert('cued_videos', cuedVideos);
