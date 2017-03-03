@@ -6,19 +6,17 @@
  */
 
 const Sequelize = require('sequelize');
-const nconf     = require('nconf');
-const dbconf    = require('../../db/database.json');
-const logger    = require('../logger');
+const nconf = require('nconf');
+const dbconf = require('../../db/database.json');
 
 module.exports = () => {
-    let env = nconf.get('env');
+    let e = nconf.get('env');
 
-    const sequelize = new Sequelize(dbconf[env].database, dbconf[env].username, dbconf[env].password, {
-        host: dbconf[env].host,
-        dialect: dbconf[env].dialect,
-        port: 3306,
-        logging: logger.info
+    const sequelize = new Sequelize(dbconf[e].database, dbconf[e].username, dbconf[e].password, {
+        host: dbconf[e].host,
+        dialect: dbconf[e].dialect,
+        port: 3306
     });
 
-    return sequelize.authenticate()
+    return sequelize.authenticate();
 };
