@@ -11,7 +11,23 @@ module.exports = {
     up: function(queryInterface, Sequelize) {
         const accounts = [];
 
-        for (let i = 0; i < 2500; i++) {
+        let numAccounts = 2500;
+
+        if (process.env.NODE_ENV === 'test') {
+            numAccounts = 10;
+
+            accounts.push({
+                email: 'test@email.com',
+                password: 'test_password',
+                browser_notifications_enabled: false,
+                email_notifications_enabled: false,
+                email_verified: false,
+                default_study_language_code: 'en',
+                picture_url: 'https://dummyimage.com/100x100.png/5fa2dd/ffffff'
+            });
+        }
+
+        for (let i = 0; i < numAccounts; i++) {
             accounts.push({
                 email: chance.email(),
                 password: chance.string({length: 20}),
