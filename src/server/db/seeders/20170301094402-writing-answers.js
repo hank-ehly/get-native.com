@@ -12,8 +12,6 @@ const StudySession = models.StudySession;
 const WritingQuestion = models.WritingQuestion;
 
 module.exports = {
-
-    // Todo: Allocation failed - JavaScript heap out of memory
     up: function(queryInterface, Sequelize) {
         return Promise.all([StudySession.min('id'), StudySession.max('id'), WritingQuestion.min('id'), WritingQuestion.max('id')]).then(x => {
             const writingAnswers = [];
