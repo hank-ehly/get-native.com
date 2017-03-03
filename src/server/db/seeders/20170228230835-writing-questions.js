@@ -15,15 +15,12 @@ module.exports = {
 
             for (let i = x[0]; i < x[1]; i++) {
 
-                let j = 0;
-                while (j < 5) {
+                for (let j = 0; j < 5; j++) {
                     writingQuestions.push({
                         text: chance.sentence().replace(/\.$/, '?'),
                         example_answer: chance.paragraph(),
                         subcategory_id: i
                     });
-
-                    j++;
                 }
             }
 
