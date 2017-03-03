@@ -18,4 +18,6 @@ const logger = new (winston.Logger)({
     ]
 });
 
+logger.transports.console.level = (process.env.NODE_ENV === 'test' ? 'error' : 'debug');
+
 module.exports = logger;
