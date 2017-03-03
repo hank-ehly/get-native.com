@@ -65,3 +65,5 @@ site/
 # mock SSH keys
 src/server/config/secrets/*
 !**/.gitkeep
+
+npm-debug.log*
