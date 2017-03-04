@@ -29,7 +29,7 @@ database:
 test:
   pre:
     - ssh-keygen -t rsa -N "" -f src/server/config/secrets/id_rsa -q
-    - ssh-keygen -f /src/server/config/secrets/id_rsa.pub -e -m pem > /src/server/config/secrets/id_rsa.pem
+    - ssh-keygen -f src/server/config/secrets/id_rsa.pub -e -m pem > src/server/config/secrets/id_rsa.pem
   override:
     - npm run tests.all
   post:
