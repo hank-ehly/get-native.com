@@ -7,5 +7,4 @@
 
 const nconf = require('nconf');
 
-nconf.set('env', 'production');
 nconf.set('allow-origin', 'https://get-native.com');
