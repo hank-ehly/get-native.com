@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 import { NavbarService, Logger, Video, APIHandle, HttpService } from '../core/index';
 
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/switchMap';
 
 @Component({
     moduleId: module.id,
@@ -55,6 +54,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
         let subscription: Subscription = null;
 
+        /* Todo: This will make many subscriptions if you press repeatedly */
         if (this.video.liked) {
             this.video.like_count -= 1;
             subscription = this.http.request(APIHandle.UNLIKE_VIDEO, {params: {id: this.video.id}}).subscribe();
