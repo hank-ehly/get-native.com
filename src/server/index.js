@@ -13,12 +13,19 @@ nconf.argv();
 //noinspection JSUnresolvedFunction
 nconf.env();
 
+const fs       = require('fs');
+const confPath = './config/environments/';
+const baseConf = confPath + 'base';
+const envConf  = confPath + (nconf.get('env') || 'development');
+
+require(baseConf);
+if (fs.existsSync(envConf)) {
+    require(envConf);
+}
+
 const logger   = require('./config/logger');
 const server   = require('./config/initializers/server');
 const database = require('./config/initializers/database');
-
-require('./config/environments/base');
-require('./config/environments/' + (nconf.get('NODE_ENV') || 'development'));
 
 logger.info(`Initializing ${nconf.get('env').toUpperCase()} environment`);
 
