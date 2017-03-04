@@ -21,6 +21,12 @@
         "dialect": "mysql",
         "logging": false
     },
+    "circle_ci": {
+        "username": "ubuntu",
+        "database": "circle_test",
+        "dialect": "mysql",
+        "logging": false
+    },
     "production": {
         "username": "get_native",
         "password": "get_native",

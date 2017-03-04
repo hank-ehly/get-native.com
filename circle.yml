@@ -1,4 +1,6 @@
 machine:
+  environment:
+    NODE_ENV: circle_ci
   node:
     version: 6.9.4
 
@@ -19,6 +21,10 @@ dependencies:
     - npm rebuild node-sass
   cache_directories:
     - "node_modules"
+
+database:
+  override:
+    - npm run sequelize db:migrate
 
 test:
   override:
