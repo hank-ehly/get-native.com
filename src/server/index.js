@@ -5,17 +5,17 @@
  * Created by henryehly on 2017/01/15.
  */
 
-const nconf    = require('nconf');
-const server   = require('./config/initializers/server');
-const logger   = require('./config/logger');
-const database = require('./config/initializers/database');
-
+const nconf = require('nconf');
 //noinspection JSUnresolvedFunction
 nconf.use('memory');
 //noinspection JSUnresolvedFunction
 nconf.argv();
 //noinspection JSUnresolvedFunction
 nconf.env();
+
+const logger   = require('./config/logger');
+const server   = require('./config/initializers/server');
+const database = require('./config/initializers/database');
 
 require('./config/environments/base');
 require('./config/environments/' + (nconf.get('NODE_ENV') || 'development'));
