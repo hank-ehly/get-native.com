@@ -6,6 +6,7 @@
  */
 
 const winston = require('winston');
+const nconf   = require('nconf');
 
 const logger = new (winston.Logger)({
     transports: [
@@ -18,6 +19,6 @@ const logger = new (winston.Logger)({
     ]
 });
 
-logger.transports.console.level = (process.env.NODE_ENV === 'test' ? 'error' : 'debug');
+logger.transports.console.level = (nconf.get('env') === 'test' ? 'error' : 'debug');
 
 module.exports = logger;
