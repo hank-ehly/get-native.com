@@ -19,6 +19,6 @@ const logger = new (winston.Logger)({
     ]
 });
 
-logger.transports.console.level = (nconf.get('env') === 'test' ? 'error' : 'debug');
+logger.transports.console.level = (['test', 'circle_ci'].includes(nconf.get('env')) ? 'error' : 'debug');
 
 module.exports = logger;
