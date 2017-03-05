@@ -21,11 +21,23 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
         this.logger.info(this, route, state);
 
-        if (this.auth.isLoggedIn()) {
+        const isLoggedIn = this.auth.isLoggedIn();
+
+        if (isLoggedIn && state.url === '/') {
+            this.router.navigate(['dashboard']);
+            return false;
+        }
+
+        if (isLoggedIn) {
             return true;
         }
 
-        this.router.navigate(['']).then(() => this.logger.debug('Forcing redirect to homepage.'));
+        if (!isLoggedIn && state.url === '/') {
+            this.logger.debug(this, 'Allowing redirection to homepage because user is not logged in.');
+            return true;
+        }
+
+        this.router.navigate(['']).then(() => this.logger.debug(this, 'Forcing redirect to homepage.'));
         return false;
     }
 
