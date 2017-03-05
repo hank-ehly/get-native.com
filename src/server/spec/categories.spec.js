@@ -40,9 +40,57 @@ describe('/categories', function() {
             .expect(200, done);
     });
 
-    it('should contain a top-level \'count\' property', function() {
+    it('should respond with an object containing a top-level \'count\' property of integer type', function() {
         return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-            assert(res.body.hasOwnProperty('count'));
+            assert(new RegExp(/[0-9]+/).test(res.body.count));
+        });
+    });
+
+    it('should respond with an object containing a top-level \'records\' property of array type', function() {
+        return request(server).get('/categories').set('authorization', authorization).then(function(res) {
+            assert(new RegExp(/[0-9]+/).test(res.body.records.length));
+        });
+    });
+
+    it('should respond with an object containing a sub-level \'subcategories\' property for the first object in the top-level \'records\' array', function() {
+        return request(server).get('/categories').set('authorization', authorization).then(function(res) {
+            assert(typeof res.body.records[0].subcategories === 'object');
+        });
+    });
+
+    it('should respond with an object containing a sub-level \'count\' property of integer type for the first object in the top-level \'records\' array', function() {
+        return request(server).get('/categories').set('authorization', authorization).then(function(res) {
+            assert(new RegExp(/[0-9]+/).test(res.body.records[0].subcategories['count']));
+        });
+    });
+
+    it('should respond with an object containing a sub-level \'records\' property of array type for the first object in the top-level \'records\' array', function() {
+        return request(server).get('/categories').set('authorization', authorization).then(function(res) {
+            assert(new RegExp(/[0-9]+/).test(res.body.records[0].subcategories.records['length']));
+        });
+    });
+
+    it('should return more than 0 subcategories for the first few categories', function() {
+        return request(server).get('/categories').set('authorization', authorization).then(function(res) {
+            assert(res.body.records[0].subcategories.records.length > 0);
+            assert(res.body.records[1].subcategories.records.length > 0);
+            assert(res.body.records[2].subcategories.records.length > 0);
+        });
+    });
+
+    it('should set the count integer value to the number of top-level records', function() {
+        return request(server).get('/categories').set('authorization', authorization).then(function(res) {
+            let count = res.body.count;
+            let recordsLength = res.body.records.length;
+            assert(count === recordsLength);
+        });
+    });
+
+    it('should set the count integer value for a topic to the number of subcategories included in the category', function() {
+        return request(server).get('/categories').set('authorization', authorization).then(function(res) {
+            let count = res.body.records[0].subcategories.count;
+            let recordsLength = res.body.records[0].subcategories.records.length;
+            assert(count === recordsLength);
         });
     });
 });
