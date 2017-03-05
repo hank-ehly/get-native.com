@@ -16,6 +16,11 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             defaultValue: 0
         },
+        language_code: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: ''
+        },
         location: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -25,15 +30,19 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: ''
+        },
+        picture_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: ''
         }
     }, {
         tableName: 'speakers',
         underscored: true,
         classMethods: {
             associate: function(models) {
-                this.hasOne(models.SpeakerPicture);
-                this.belongsTo(models.Video);
                 this.hasMany(models.Follower);
+                this.hasMany(models.Video);
             }
         }
     });

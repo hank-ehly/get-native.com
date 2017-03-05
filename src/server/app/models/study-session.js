@@ -7,22 +7,15 @@
 
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define('StudySession', {
-        is_complete: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: 0
-        }
+        study_time: DataTypes.INTEGER
     }, {
         tableName: 'study_sessions',
         underscored: true,
         classMethods: {
             associate: function(models) {
-                this.hasOne(models.ListeningSession);
-                this.hasOne(models.ShadowingSession);
-                this.hasOne(models.SpeakingSession);
-                this.hasOne(models.WritingSession);
                 this.belongsTo(models.Account);
                 this.belongsTo(models.Video);
+                this.hasOne(models.WritingAnswer);
             }
         }
     });

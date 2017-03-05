@@ -10,6 +10,11 @@ module.exports = function(sequelize, DataTypes) {
         text: {
             type: DataTypes.TEXT,
             allowNull: false
+        },
+        language_code: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: ''
         }
     }, {
         tableName: 'transcripts',

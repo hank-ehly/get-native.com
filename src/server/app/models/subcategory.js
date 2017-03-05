@@ -13,12 +13,13 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: ''
         }
     }, {
-        tableName: 'subcateGories',
+        tableName: 'subcategories',
         underscored: true,
         classMethods: {
             associate: function(models) {
                 this.belongsTo(models.Category);
                 this.hasMany(models.Video);
+                this.hasMany(models.WritingQuestion);
             }
         }
     });
