@@ -19,6 +19,7 @@ describe('/categories', function() {
     });
 
     beforeEach(function(done) {
+        this.timeout(0);
         util.login(function(_server, _authorization) {
             server = _server;
             authorization = _authorization;
