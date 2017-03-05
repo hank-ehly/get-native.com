@@ -41,8 +41,8 @@ module.exports = function(sequelize, DataTypes) {
         underscored: true,
         classMethods: {
             associate: function(models) {
-                this.hasMany(models.Follower);
-                this.hasMany(models.Video);
+                this.hasMany(models.Follower, {as: 'followers'});
+                this.hasMany(models.Video, {as: 'videos'});
             }
         }
     });
