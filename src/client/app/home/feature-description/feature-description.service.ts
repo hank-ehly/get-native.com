@@ -21,7 +21,7 @@ export class FeatureDescriptionService {
                     of interview videos!`,
                     `The get native video database currently contains X video interviews in English and Japanese, and we 
                     will continue to add more. The interviews are all related to things innately interesting to language 
-                    learners and those interested in other cultures. Have an idea for an interesting topic? We'd love to 
+                    learners and those interested in other cultures. Have an idea for an interesting subcategory? We'd love to 
                     hear what you think.`
                 ],
                 thumbnail: 'feature01.jpg'

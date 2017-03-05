@@ -7,7 +7,7 @@
 
 import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 
-import { Logger, Categories, Category, Topic, CategoryListService } from '../../core/index';
+import { Logger, Categories, Category, Subcategory, CategoryListService } from '../../core/index';
 
 @Component({
     moduleId: module.id,
@@ -57,8 +57,8 @@ export class CategoryListComponent implements OnInit, OnChanges {
         this.service.selectCategory(category);
     }
 
-    onClickTopic(topic: Topic): void {
-        this.logger.debug(this, 'onClickTopic()', topic);
-        this.service.selectTopic(topic);
+    onClickSubcategory(subcategory: Subcategory): void {
+        this.logger.debug(this, 'onClickSubcategory()', subcategory);
+        this.service.selectSubcategory(subcategory);
     }
 }

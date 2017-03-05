@@ -7,7 +7,7 @@
 
 import { Injectable } from '@angular/core';
 
-import { Logger, Topic, Category } from '../index';
+import { Logger, Subcategory, Category } from '../index';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -15,17 +15,17 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class CategoryListService {
     selectCategory$: Observable<Category>;
-    selectTopic$: Observable<Topic>;
+    selectSubcategory$: Observable<Subcategory>;
 
     private selectCategorySource: Subject<Category>;
-    private selectTopicSource: Subject<Topic>;
+    private selectSubcategorySource: Subject<Subcategory>;
 
     constructor(private logger: Logger) {
         this.selectCategorySource = new Subject<Category>();
-        this.selectTopicSource = new Subject<Topic>();
+        this.selectSubcategorySource = new Subject<Subcategory>();
 
         this.selectCategory$ = this.selectCategorySource.asObservable();
-        this.selectTopic$ = this.selectTopicSource.asObservable();
+        this.selectSubcategory$ = this.selectSubcategorySource.asObservable();
     }
 
     selectCategory(category: Category): void {
@@ -33,8 +33,8 @@ export class CategoryListService {
         this.selectCategorySource.next(category);
     }
 
-    selectTopic(topic: Topic): void {
-        this.logger.debug(this, `Selected '${topic.name}' topic.`);
-        this.selectTopicSource.next(topic);
+    selectSubcategory(subcategory: Subcategory): void {
+        this.logger.debug(this, `Selected '${subcategory.name}' subcategory.`);
+        this.selectSubcategorySource.next(subcategory);
     }
 }
