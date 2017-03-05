@@ -22,18 +22,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         this.logger.info(this, route, state);
 
         if (this.auth.isLoggedIn()) {
-            if (state.url === '/') {
-                this.router.navigate(['dashboard']);
-
-                return false;
-            }
             return true;
         }
 
-        this.router.navigate(['']).then(() => {
-            this.logger.info(this, `Unable to activate route ${route}. Forced navigation to homepage.`);
-        });
-
+        this.router.navigate(['']).then(() => this.logger.debug('Forcing redirect to homepage.'));
         return false;
     }
 
