@@ -1,5 +1,5 @@
 <div class="video-panel">
-    <img [src]="video.thumbnail_image_url" alt="video-thumbnail">
+    <img [src]="video?.thumbnail_image_url" alt="video-thumbnail">
 
     <div class="video-panel__overlay" [ngClass]="{'video-panel__overlay_link': !controls}" (click)="onClickOverlay()">
         <div class="controls" *ngIf="controls">
@@ -20,18 +20,18 @@
     </div>
 
     <footer class="footer">
-        <h5 class="footer__video-title">{{ video.subcategory.name }}</h5>
-        <span class="footer__video-speaker">by {{ video.speaker.name }}</span>
+        <h5 class="footer__video-title">{{ video?.subcategory?.name }}</h5>
+        <span class="footer__video-speaker">by {{ video?.speaker?.name }}</span>
 
         <div class="video-stats">
             <div class="video-stats__length">
                 <img class="video-stats__icon" src="../../../assets/icons/time.svg" alt="time">
-                <span class="video-stats__label">{{ video.length | digitalTime }}</span>
+                <span class="video-stats__label">{{ video?.length | digitalTime }}</span>
             </div>
 
             <div class="video-stats__views">
                 <img class="video-stats__icon" src="../../../assets/icons/view.svg" alt="views">
-                <span class="video-stats__label">{{ video.loop_count | fuzzy }}</span>
+                <span class="video-stats__label">{{ video?.loop_count | fuzzy }}</span>
             </div>
 
             <span class="video-stats__label video-stats__created-at">{{ video.created_at | gnDate }}</span>
