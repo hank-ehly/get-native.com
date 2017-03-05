@@ -1,6 +1,6 @@
 <header class="navbar">
     <div class="navbar__logo-frame">
-        <img class="navbar__logo" src="/assets/mock/pokeball.png" alt="logo" [routerLink]="logoLinkPath">
+        <img class="navbar__logo" src="/assets/mock/pokeball.png" alt="logo" [routerLink]="'/'">
     </div>
 
     <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && !searchBarHidden" [@slideInLeftOutRight]>

@@ -5,9 +5,7 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import {
-    Component, OnInit, Input, trigger, transition, animate, style, ViewChild, OnChanges, SimpleChanges, OnDestroy
-} from '@angular/core';
+import { Component, OnInit, Input, trigger, transition, animate, style, ViewChild, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { LoginModalService, NavbarService, Logger } from '../../core/index';
@@ -43,7 +41,7 @@ import { Subscription } from 'rxjs/Subscription';
         ])
     ]
 })
-export class NavbarComponent implements OnInit, OnChanges, OnDestroy {
+export class NavbarComponent implements OnInit, OnDestroy {
     @Input() authenticated: boolean;
     @ViewChild(FocusDirective) searchBar: FocusDirective;
     title: string;
@@ -51,7 +49,6 @@ export class NavbarComponent implements OnInit, OnChanges, OnDestroy {
     studyOptionsHidden: boolean;
     progressBarHidden: boolean;
     backButtonTitle: string;
-    logoLinkPath: string;
     hasUnreadNotifications: boolean;
 
     private subscriptions: Subscription[] = [];
@@ -69,21 +66,12 @@ export class NavbarComponent implements OnInit, OnChanges, OnDestroy {
         );
 
         this.logger.debug(this, `this.authenticated = ${this.authenticated}`);
-        this.logoLinkPath = this.authenticated ? 'dashboard' : '';
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
         for (let subscription of this.subscriptions) {
             subscription.unsubscribe();
-        }
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        this.logger.debug(this, 'changes', changes);
-
-        if (changes['authenticated']) {
-            this.logoLinkPath = changes['authenticated'].currentValue ? 'dashboard' : '';
         }
     }
 
