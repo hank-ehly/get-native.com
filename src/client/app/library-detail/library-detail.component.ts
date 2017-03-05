@@ -45,7 +45,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     }
 
     onVideoResponse(video: Video): void {
-        this.navbar.setTitle(video.topic.name);
+        this.navbar.setTitle(video.subcategory.name);
         this.video = video;
     }
 

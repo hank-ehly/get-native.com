@@ -9,7 +9,7 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
 import {
-    Logger, Videos, Categories, APIHandle, HttpService, NavbarService, Category, Topic, ToolbarService, Language, CategoryListService,
+    Logger, Videos, Categories, APIHandle, HttpService, NavbarService, Category, Subcategory, ToolbarService, Language, CategoryListService,
     LangCode, Entity
 } from '../../core/index';
 
@@ -33,7 +33,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     protected query$ = new Subject<string>();
     protected lang$ = new Subject<LangCode>();
     protected category$ = new Subject<string>();
-    protected topic$ = new Subject<string>();
+    protected subcategory$ = new Subject<string>();
     protected maxId$ = new Subject<string>();
 
     protected subscriptions: Subscription[] = [];
@@ -80,9 +80,9 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
             this.navbar.updateSearchQuery$.subscribe(this.onUpdateSearchQuery.bind(this)),
             this.toolbar.selectLanguage$.subscribe(this.onSelectLanguage.bind(this)),
             this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this)),
-            this.categoryList.selectTopic$.subscribe(this.onSelectTopic.bind(this)),
+            this.categoryList.selectSubcategory$.subscribe(this.onSelectSubcategory.bind(this)),
 
-            this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.topic$).merge(this.maxId$)
+            this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.subcategory$).merge(this.maxId$)
                 .distinctUntilChanged().switchMap(this.updateVideoSearchResults.bind(this))
                 .subscribe((videos: Videos) => this.videos = videos)
         );
@@ -101,7 +101,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     onClickResetDropdownSelection(): void {
         this.logger.debug(this, 'onClickResetDropdownSelection()');
         this.dropdownSelection = null;
-        this.videoSearchParams.delete('topic_id');
+        this.videoSearchParams.delete('subcategory_id');
         this.videoSearchParams.delete('category_id');
 
         this.isDropdownVisible = false;
@@ -135,16 +135,16 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     private onSelectCategory(category: Category): void {
         this.dropdownSelection = category.name;
-        this.videoSearchParams.delete('topic_id');
+        this.videoSearchParams.delete('subcategory_id');
         this.updateSearchParams('category_id', category.id.toString());
         this.category$.next(category.id.toString());
     }
 
-    private onSelectTopic(topic: Topic): void {
-        this.dropdownSelection = topic.name;
+    private onSelectSubcategory(subcategory: Subcategory): void {
+        this.dropdownSelection = subcategory.name;
         this.videoSearchParams.delete('category_id');
-        this.updateSearchParams('topic_id', topic.id.toString());
-        this.topic$.next(topic.id.toString());
+        this.updateSearchParams('subcategory_id', subcategory.id.toString());
+        this.subcategory$.next(subcategory.id.toString());
     }
 
     private updateSearchParams(key: string, value: string): void {

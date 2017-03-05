@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/01/06.
  */
 
-import { Entity, Speaker, Topic, Transcripts, Videos } from './index';
+import { Entity, Speaker, Subcategory, Transcripts, Videos } from './index';
 
 export interface Video extends Entity {
     description?: string;
@@ -18,7 +18,7 @@ export interface Video extends Entity {
     related_videos?: Videos;
     speaker?: Speaker;
     thumbnail_image_url?: string;
-    topic?: Topic;
+    subcategory?: Subcategory;
     transcripts?: Transcripts;
     video_url?: string;
 }

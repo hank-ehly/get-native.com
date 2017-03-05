@@ -22,7 +22,7 @@ export const STUBResponses = new Map<APIHandle, any>([
             'name': 'Harold Ford',
             'thumbnail_image_url': '/assets/mock/man-smiling.jpg'
         },
-        'topic': {
+        'subcategory': {
             'id': 123456,
             'name': 'Talking to customers'
         },
@@ -37,7 +37,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                     'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
                     'length': 68,
                     'loop_count': 25,
-                    'topic': {
+                    'subcategory': {
                         'name': 'How to fly a kite'
                     },
                     'speaker': {
@@ -49,7 +49,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                     'created_at': 'Tue Jun 9 12:00:00 +0000 2015',
                     'length': 80,
                     'loop_count': 1602,
-                    'topic': {
+                    'subcategory': {
                         'name': 'Writing a memoir'
                     },
                     'speaker': {
@@ -143,7 +143,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Harold Ford'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'Talking to customers'
                 },
                 'loop_count': 7156,
@@ -158,7 +158,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Benjamin Franklin'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'How to change a light-bulb'
                 },
                 'loop_count': 1011,
@@ -173,7 +173,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Jesse James'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'Robbing a bank'
                 },
                 'loop_count': 9941,
@@ -188,7 +188,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Aretha Franklin'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'American Singers'
                 },
                 'loop_count': 10503,
@@ -203,7 +203,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Britney Spears'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'High-School Troubles'
                 },
                 'loop_count': 3,
@@ -218,7 +218,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Santa Claus'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'Efficient Elves'
                 },
                 'loop_count': 900,
@@ -234,7 +234,7 @@ export const STUBResponses = new Map<APIHandle, any>([
             {
                 'id': 1,
                 'name': 'Business',
-                'topics': {
+                'subcategories': {
                     'records': [
                         {
                             'id': 1,
@@ -255,7 +255,7 @@ export const STUBResponses = new Map<APIHandle, any>([
             {
                 'id': 2,
                 'name': 'Holidays',
-                'topics': {
+                'subcategories': {
                     'records': [
                         {
                             'id': 4,
@@ -272,7 +272,7 @@ export const STUBResponses = new Map<APIHandle, any>([
             {
                 'id': 3,
                 'name': 'Travel',
-                'topics': {
+                'subcategories': {
                     'records': [
                         {
                             'id': 6,
@@ -301,7 +301,7 @@ export const STUBResponses = new Map<APIHandle, any>([
             {
                 'id': 4,
                 'name': 'School',
-                'topics': {
+                'subcategories': {
                     'records': [
                         {
                             'id': 11,
@@ -318,7 +318,7 @@ export const STUBResponses = new Map<APIHandle, any>([
             {
                 'id': 5,
                 'name': 'Transportation',
-                'topics': {
+                'subcategories': {
                     'records': [
                         {
                             'id': 13,
@@ -352,7 +352,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Harold Ford'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'Talking to customers'
                 },
                 'loop_count': 7156,
@@ -367,7 +367,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Benjamin Franklin'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'How to change a light-bulb'
                 },
                 'loop_count': 1011,
@@ -382,7 +382,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Jesse James'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'Robbing a bank'
                 },
                 'loop_count': 9941,
@@ -397,7 +397,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 'speaker': {
                     'name': 'Aretha Franklin'
                 },
-                'topic': {
+                'subcategory': {
                     'name': 'American Singers'
                 },
                 'loop_count': 10503,

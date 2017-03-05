@@ -3,8 +3,8 @@
         <div class="row-group" *ngFor="let category of row" [ngClass]='{"row-group--placeholder": !category?.name}'>
             <h6 class="link category-name" *ngIf="category?.name" (click)="onClickCategory(category)">{{ category?.name }}</h6>
             <ul>
-                <li class="topic" *ngFor="let topic of category?.topics?.records">
-                    <span class="link topic-name" (click)="onClickTopic(topic)">{{ topic?.name }}</span>
+                <li class="subcategory" *ngFor="let subcategory of category?.subcategories?.records">
+                    <span class="link subcategory-name" (click)="onClickSubcategory(subcategory)">{{ subcategory?.name }}</span>
                 </li>
             </ul>
         </div>
