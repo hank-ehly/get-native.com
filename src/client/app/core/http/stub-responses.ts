@@ -12,21 +12,18 @@ export const STUBResponses = new Map<APIHandle, any>([
     [APIHandle.LOGIN, {}],
     [APIHandle.VIDEO, <Video>{
         'id': 2244994983,
-        'id_str': '2244994983',
         'cued': true,
         'description': `This is a description about the video. This video is a video and I want to tell you that it is a video as well.
                         If you happen to like videos that this might be a video that you like because you like videos. Of course, if you
                         don\'t like videos then you probably shouldn\'t watch this video.`,
         'speaker': {
             'id': 123456,
-            'id_str': '123456',
             'description': 'Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.',
             'name': 'Harold Ford',
             'thumbnail_image_url': '/assets/mock/man-smiling.jpg'
         },
         'topic': {
             'id': 123456,
-            'id_str': '123456',
             'name': 'Talking to customers'
         },
         'loop_count': 7156,
@@ -37,7 +34,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             'records': [
                 {
                     'id': 2,
-                    'id_str': '2',
                     'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
                     'length': 68,
                     'loop_count': 25,
@@ -50,7 +46,6 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 {
                     'id': 3,
-                    'id_str': '3',
                     'created_at': 'Tue Jun 9 12:00:00 +0000 2015',
                     'length': 80,
                     'loop_count': 1602,
@@ -72,7 +67,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             'records': [
                 {
                     'id': 123,
-                    'id_str': '123',
                     'text': `This is the English transcript. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi
                              atque blanditiis, commodi culpa distinctio ducimus fugit iste mollitia nam neque odit qui quibusdam soluta!
                              Dolor ea placeat soluta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dicta distinctio
@@ -107,7 +101,6 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 {
                     'id': 124,
-                    'id_str': '124',
                     'text': `じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこ
                              うじぱいぽぱいぽぱいぽのしゅーりんがんしゅーりんがんのぐーりんだいぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ。
                              じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこ
@@ -146,7 +139,6 @@ export const STUBResponses = new Map<APIHandle, any>([
         'records': [
             {
                 'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
-                'id_str': '55',
                 'id': 55,
                 'speaker': {
                     'name': 'Harold Ford'
@@ -162,7 +154,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Wed Jan 11 04:35:55 +0000 2017',
-                'id_str': '56',
                 'id': 56,
                 'speaker': {
                     'name': 'Benjamin Franklin'
@@ -178,7 +169,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Tue Aug 9 04:35:55 +0000 2016',
-                'id_str': '63',
                 'id': 63,
                 'speaker': {
                     'name': 'Jesse James'
@@ -194,7 +184,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Tue Mar 14 04:35:55 +0000 2017',
-                'id_str': '84',
                 'id': 84,
                 'speaker': {
                     'name': 'Aretha Franklin'
@@ -210,7 +199,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Thu Jan 12 04:35:55 +0000 2017',
-                'id_str': '109',
                 'id': 109,
                 'speaker': {
                     'name': 'Britney Spears'
@@ -226,7 +214,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Thu Jan 12 04:35:55 +0000 2017',
-                'id_str': '110',
                 'id': 110,
                 'speaker': {
                     'name': 'Santa Claus'
@@ -246,23 +233,19 @@ export const STUBResponses = new Map<APIHandle, any>([
         'records': [
             {
                 'id': 1,
-                'id_str': '1',
                 'name': 'Business',
                 'topics': {
                     'records': [
                         {
                             'id': 1,
-                            'id_str': '1',
                             'name': 'Meeting Preparation'
                         },
                         {
                             'id': 2,
-                            'id_str': '2',
                             'name': 'Business Cards'
                         },
                         {
                             'id': 3,
-                            'id_str': '3',
                             'name': 'Greeting Co-Workers'
                         }
                     ],
@@ -271,18 +254,15 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'id': 2,
-                'id_str': '2',
                 'name': 'Holidays',
                 'topics': {
                     'records': [
                         {
                             'id': 4,
-                            'id_str': '4',
                             'name': 'Holding Hands'
                         },
                         {
                             'id': 5,
-                            'id_str': '5',
                             'name': 'Meeting the Parents'
                         }
                     ],
@@ -291,33 +271,27 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'id': 3,
-                'id_str': '3',
                 'name': 'Travel',
                 'topics': {
                     'records': [
                         {
                             'id': 6,
-                            'id_str': '6',
                             'name': 'Subcategory 1'
                         },
                         {
                             'id': 7,
-                            'id_str': '7',
                             'name': 'Subcategory 2'
                         },
                         {
                             'id': 8,
-                            'id_str': '8',
                             'name': 'Subcategory 3'
                         },
                         {
                             'id': 9,
-                            'id_str': '9',
                             'name': 'Subcategory 4'
                         },
                         {
                             'id': 10,
-                            'id_str': '10',
                             'name': 'Subcategory 5'
                         }
                     ],
@@ -326,18 +300,15 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'id': 4,
-                'id_str': '4',
                 'name': 'School',
                 'topics': {
                     'records': [
                         {
                             'id': 11,
-                            'id_str': '11',
                             'name': 'First Day'
                         },
                         {
                             'id': 12,
-                            'id_str': '12',
                             'name': 'Making Friends'
                         }
                     ],
@@ -346,28 +317,23 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'id': 5,
-                'id_str': '5',
                 'name': 'Transportation',
                 'topics': {
                     'records': [
                         {
                             'id': 13,
-                            'id_str': '13',
                             'name': 'Taking the Train'
                         },
                         {
                             'id': 14,
-                            'id_str': '14',
                             'name': 'Riding Horses'
                         },
                         {
                             'id': 15,
-                            'id_str': '15',
                             'name': 'Bus Passes'
                         },
                         {
                             'id': 16,
-                            'id_str': '16',
                             'name': 'Taking Long Road Trips'
                         }
                     ],
@@ -382,7 +348,6 @@ export const STUBResponses = new Map<APIHandle, any>([
         'records': [
             {
                 'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
-                'id_str': '1',
                 'id': 1,
                 'speaker': {
                     'name': 'Harold Ford'
@@ -398,7 +363,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Wed Jan 11 04:35:55 +0000 2017',
-                'id_str': '2',
                 'id': 2,
                 'speaker': {
                     'name': 'Benjamin Franklin'
@@ -414,7 +378,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Tue Aug 9 04:35:55 +0000 2016',
-                'id_str': '3',
                 'id': 3,
                 'speaker': {
                     'name': 'Jesse James'
@@ -430,7 +393,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             },
             {
                 'created_at': 'Tue Mar 14 04:35:55 +0000 2017',
-                'id_str': '4',
                 'id': 4,
                 'speaker': {
                     'name': 'Aretha Franklin'
