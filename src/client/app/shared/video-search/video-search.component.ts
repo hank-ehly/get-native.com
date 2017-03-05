@@ -111,10 +111,10 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         let oldestVideo = this.videos.records[this.videos.count - 1];
         let updatedCount = +this.videoSearchParams.get('count') * 2;
 
-        this.videoSearchParams.set('max_id', oldestVideo.id_str);
+        this.videoSearchParams.set('max_id', oldestVideo.id.toString());
         this.videoSearchParams.set('count', updatedCount.toString());
 
-        this.maxId$.next(oldestVideo.id_str);
+        this.maxId$.next(oldestVideo.id.toString());
     }
 
     private onToggleSearchBar(hidden: boolean): void {
@@ -136,15 +136,15 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     private onSelectCategory(category: Category): void {
         this.dropdownSelection = category.name;
         this.videoSearchParams.delete('topic_id');
-        this.updateSearchParams('category_id', category.id_str);
-        this.category$.next(category.id_str);
+        this.updateSearchParams('category_id', category.id.toString());
+        this.category$.next(category.id.toString());
     }
 
     private onSelectTopic(topic: Topic): void {
         this.dropdownSelection = topic.name;
         this.videoSearchParams.delete('category_id');
-        this.updateSearchParams('topic_id', topic.id_str);
-        this.topic$.next(topic.id_str);
+        this.updateSearchParams('topic_id', topic.id.toString());
+        this.topic$.next(topic.id.toString());
     }
 
     private updateSearchParams(key: string, value: string): void {

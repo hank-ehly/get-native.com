@@ -87,7 +87,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     }
 
     onClickLoadMoreAnswers(): void {
-        let maxId = this.answers.records[this.answers.count - 1].id_str;
+        let maxId = this.answers.records[this.answers.count - 1].id.toString();
         this.answerSearchParams.set('max_id', maxId);
         this.answersMaxId$.next(maxId);
     }

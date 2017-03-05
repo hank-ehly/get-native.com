@@ -53,8 +53,8 @@ export class VideoPanelListComponent implements OnChanges {
             return;
         }
 
-        this.logger.debug(this, `onClickOverlay(${video.id_str})`);
-        this.router.navigate(['library', video.id_str]).then(isFulfilled => {
+        this.logger.debug(this, `onClickOverlay(${video.id})`);
+        this.router.navigate(['library', video.id]).then(isFulfilled => {
             this.logger.debug(this, `navigation fulfilled = ${isFulfilled}`);
         });
     }
