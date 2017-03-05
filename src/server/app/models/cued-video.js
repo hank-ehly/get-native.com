@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 this.belongsTo(models.Account);
-                this.hasOne(models.Video); // is this accurate?
+                this.belongsTo(models.Video);
             }
         }
     });

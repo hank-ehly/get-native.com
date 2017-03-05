@@ -31,6 +31,16 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: 0
+        },
+        default_study_language_code: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: 'en'
+        },
+        picture_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: ''
         }
     }, {
         tableName: 'accounts',
@@ -39,10 +49,9 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 this.hasMany(model.Follower);
                 this.hasMany(model.Notification);
-                this.hasMany(model.Like);
                 this.hasMany(model.CuedVideo);
+                this.hasMany(model.Like);
                 this.hasMany(model.StudySession);
-                this.hasOne(model.AccountPicture);
             }
         }
     });

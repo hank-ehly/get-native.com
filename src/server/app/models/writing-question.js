@@ -21,8 +21,8 @@ module.exports = function(sequelize, DataTypes) {
         underscored: true,
         classMethods: {
             associate: function(models) {
-                this.belongsTo(models.Video);
-                this.hasMany(models.WritingSession);
+                this.belongsTo(models.Subcategory);
+                this.hasMany(models.WritingAnswer);
             }
         }
     });

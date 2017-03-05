@@ -1,12 +1,12 @@
 /**
- * writing-session
+ * writing-answer
  * get-native.com
  *
  * Created by henryehly on 2017/02/24.
  */
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('WritingSession', {
+    return sequelize.define('WritingAnswer', {
         answer: {
             type: DataTypes.TEXT,
             allowNull: false
@@ -14,11 +14,12 @@ module.exports = function(sequelize, DataTypes) {
         words_per_minute: DataTypes.INTEGER,
         word_count: DataTypes.INTEGER
     }, {
-        tableName: 'writing_sessions',
+        tableName: 'writing_answers',
         underscored: true,
         classMethods: {
             associate: function(models) {
                 this.belongsTo(models.StudySession);
+                this.belongsTo(models.WritingQuestion);
             }
         }
     });

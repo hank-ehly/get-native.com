@@ -22,19 +22,23 @@ module.exports = function(sequelize, DataTypes) {
         description: {
             type: DataTypes.TEXT,
             allowNull: false
+        },
+        language_code: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: ''
         }
     }, {
         tableName: 'videos',
         underscored: true,
         classMethods: {
             associate: function(models) {
-                this.belongsTo(models.Subcategory);
                 this.belongsTo(models.Speaker);
-                this.hasOne(models.Transcript);
-                this.hasOne(models.WritingQuestion);
-                this.hasMany(models.Like);
-                this.hasMany(models.StudySession);
+                this.belongsTo(models.Subcategory);
                 this.hasMany(models.CuedVideo);
+                this.hasMany(models.Like);
+                this.hasOne(models.Transcript);
+                this.hasMany(models.StudySession);
             }
         }
     });
