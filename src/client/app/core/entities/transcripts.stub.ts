@@ -12,7 +12,6 @@ export const STUBTranscripts: Transcripts = {
     records: [
         {
             id: 123,
-            id_str: '123',
             text: `This is the English transcript. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi atque 
                    blanditiis, commodi culpa distinctio ducimus fugit iste mollitia nam neque odit qui quibusdam soluta! Dolor ea placeat 
                    soluta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dicta distinctiotemporibus voluptatum. Aliquam 
@@ -46,7 +45,6 @@ export const STUBTranscripts: Transcripts = {
         },
         {
             id: 124,
-            id_str: '124',
             text: `じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこうじぱいぽぱいぽぱ
                    いぽのしゅーりんがんしゅーりんがんのぐーりんだいぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ。じゅげむじゅげむごこうのすりきれかい
                    じゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこうじぱいぽぱいぽぱいぽのしゅーりんがんしゅーりんがんの
