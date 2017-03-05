@@ -7,40 +7,36 @@
 
 const models = require('../models');
 
-const Category = models.Category;
-const Subcategory = models.Subcategory;
-
 module.exports.list = (req, res) => {
-    Category.findAll().then(categories => {
-        Subcategory.findAll().then(subcategories => {
+    models.Category.findAll({
+        attributes: ['id', 'name'],
+        include: [{model: models.Subcategory, as: 'subcategories', attributes: ['name']}]
+    }).then(categories => {
+        let response = {
+            records: [],
+            count: categories.length
+        };
 
-            let response = {
-                records: categories,
-                count: categories.length
+        for (let i = 0; i < categories.length; i++) {
+            response.records[i] = {
+                id: categories[i].id,
+                name: categories[i].name,
+                subcategories: {
+                    records: [],
+                    count: categories[i].subcategories.length
+                },
             };
 
-            for (let i = 0; i < response.records.length; i++) {
-                let record = response.records[i];
-
-                record.topics = {
-                    records: [],
-                    count: 0
+            for (let j = 0; j < categories[i].subcategories.length; j++) {
+                response.records[i].subcategories.records[j] = {
+                    name: categories[i].subcategories[j].name
                 };
-
-                for (let j = 0; j < subcategories.length; j++) {
-                    if (subcategories[j].category_id === record.id) {
-                        record.topics.records.push({
-                            id: subcategories[j].id,
-                            id_str: subcategories[j].id,
-                            name: subcategories[j].name
-                        });
-
-                        record.topics.count += 1;
-                    }
-                }
             }
+        }
 
-            res.send(response);
-        });
+        res.send(response);
+    }).catch((error) => {
+        res.send(error);
+        throw new Error(error);
     });
 };
