@@ -6,11 +6,11 @@
  */
 
 const request = require('supertest');
-const assert  = require('assert');
-const util  = require('./spec-util');
+const assert = require('assert');
+const util = require('./spec-util');
 
 describe('/categories', function() {
-    let server = null;
+    let server        = null;
     let authorization = null;
 
     before(function(done) {
@@ -19,20 +19,10 @@ describe('/categories', function() {
     });
 
     beforeEach(function(done) {
-        delete require.cache[require.resolve('../index')];
-
-        require('../index').then(function(_) {
-            server = _;
-
-            const message = {
-                email: 'test@email.com',
-                password: 'test_password'
-            };
-
-            request(_).post('/login').send(message).then(res => {
-                authorization = 'Bearer: ' + res.header['x-gn-auth-token'];
-                done();
-            });
+        util.login(function(_server, _authorization) {
+            server = _server;
+            authorization = _authorization;
+            done();
         });
     });
 
