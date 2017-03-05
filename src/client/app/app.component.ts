@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -21,16 +21,19 @@ import {
 } from './core/index';
 
 import './operators';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     moduleId: module.id,
     selector: 'gn-app',
     templateUrl: 'app.component.html'
 })
-export class AppComponent implements OnInit, LocalStorageProtocol {
+export class AppComponent implements OnInit, LocalStorageProtocol, OnDestroy {
     showComplianceDialog: boolean;
     showLoginModal: boolean = false;
     authenticated: boolean = false;
+
+    private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router,
                 private activatedRoute: ActivatedRoute, private navbar: NavbarService, private titleService: Title,
@@ -48,28 +51,27 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
 
         this.showComplianceDialog = !this.localStorage.getItem(kAcceptLocalStorage);
 
-        this.localStorage.setItem$.subscribe(this.didSetLocalStorageItem.bind(this));
-        this.localStorage.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this));
-        this.localStorage.clearSource$.subscribe(this.didClearStorage.bind(this));
-
-        /* Dynamically set the navbar title */
-        this.router.events
+        let routeDataObservable = this.router.events
             .filter(e => e instanceof NavigationEnd)
-            .map(() => this.activatedRoute)
-            .map(route => {
+            .map(() => this.activatedRoute).map(route => {
                 while (route.firstChild) route = route.firstChild;
                 return route;
-            })
-            .filter(route => route.outlet === 'primary')
-            .mergeMap(route => route.data)
-            .subscribe(e => {
-                this.logger.debug(this, 'NavigationEnd', e);
+            }).filter(route => route.outlet === 'primary')
+            .mergeMap(route => route.data);
 
-                if (e && e['title']) {
-                    if (this.authenticated) this.navbar.setTitle(e['title']);
-                    this.titleService.setTitle(`Get Native | ${e['title']}`);
-                }
-            });
+        this.subscriptions.push(
+            this.localStorage.setItem$.subscribe(this.didSetLocalStorageItem.bind(this)),
+            this.localStorage.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this)),
+            this.localStorage.clearSource$.subscribe(this.didClearStorage.bind(this)),
+            routeDataObservable.subscribe(this.onNavigationEnd.bind(this))
+        );
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
+        for (let subscription of this.subscriptions) {
+            subscription.unsubscribe();
+        }
     }
 
     didSetLocalStorageItem(item: LocalStorageItem): void {
@@ -85,6 +87,15 @@ export class AppComponent implements OnInit, LocalStorageProtocol {
     didReceiveStorageEvent(event: StorageEvent): void {
         if (event.key === kAuthToken) {
             this.updateLoginStatus();
+        }
+    }
+
+    private onNavigationEnd(e: any) {
+        this.logger.debug(this, 'NavigationEnd', e);
+
+        if (e && e['title']) {
+            if (this.authenticated) this.navbar.setTitle(e['title']);
+            this.titleService.setTitle(`Get Native | ${e['title']}`);
         }
     }
 
