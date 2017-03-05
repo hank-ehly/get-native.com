@@ -47,11 +47,11 @@ module.exports = function(sequelize, DataTypes) {
         underscored: true,
         classMethods: {
             associate: function(models) {
-                this.hasMany(model.Follower);
-                this.hasMany(model.Notification);
-                this.hasMany(model.CuedVideo);
-                this.hasMany(model.Like);
-                this.hasMany(model.StudySession);
+                this.hasMany(models.Follower);
+                this.hasMany(models.Notification);
+                this.hasMany(models.CuedVideo);
+                this.hasMany(models.Like);
+                this.hasMany(models.StudySession);
             }
         }
     });
