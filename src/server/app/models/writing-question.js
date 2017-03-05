@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 this.belongsTo(models.Subcategory);
-                this.hasMany(models.WritingAnswer);
+                this.hasMany(models.WritingAnswer, {as: 'writing_answers'});
             }
         }
     });

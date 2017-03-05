@@ -35,10 +35,10 @@ module.exports = function(sequelize, DataTypes) {
             associate: function(models) {
                 this.belongsTo(models.Speaker);
                 this.belongsTo(models.Subcategory);
-                this.hasMany(models.CuedVideo);
-                this.hasMany(models.Like);
+                this.hasMany(models.CuedVideo, {as: 'cued_videos'});
+                this.hasMany(models.Like, {as: 'likes'});
+                this.hasMany(models.StudySession, {as: 'study_sessions'});
                 this.hasOne(models.Transcript);
-                this.hasMany(models.StudySession);
             }
         }
     });

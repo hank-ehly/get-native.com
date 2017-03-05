@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 this.belongsTo(models.Video);
-                this.hasMany(models.Collocation);
+                this.hasMany(models.Collocation, {as: 'collocations'});
             }
         }
     });

@@ -18,8 +18,8 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 this.belongsTo(models.Category);
-                this.hasMany(models.Video);
-                this.hasMany(models.WritingQuestion);
+                this.hasMany(models.Video, {as: 'videos'});
+                this.hasMany(models.WritingQuestion, {as: 'writing_questions'});
             }
         }
     });
