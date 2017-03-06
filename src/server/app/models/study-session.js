@@ -11,12 +11,10 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'study_sessions',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Account);
-                this.belongsTo(models.Video);
-                this.hasOne(models.WritingAnswer);
-            }
+        associations: function(models) {
+            models.StudySession.belongsTo(models.Account);
+            models.StudySession.belongsTo(models.Video);
+            models.StudySession.hasOne(models.WritingAnswer);
         }
     });
 };

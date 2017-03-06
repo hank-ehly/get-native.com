@@ -19,11 +19,9 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'writing_questions',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Subcategory);
-                this.hasMany(models.WritingAnswer, {as: 'writing_answers'});
-            }
+        associations: function(models) {
+            models.WritingQuestion.belongsTo(models.Subcategory);
+            models.WritingQuestion.hasMany(models.WritingAnswer, {as: 'writing_answers'});
         }
     });
 };

@@ -15,12 +15,10 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'subcategories',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Category);
-                this.hasMany(models.Video, {as: 'videos'});
-                this.hasMany(models.WritingQuestion, {as: 'writing_questions'});
-            }
+        associations: function(models) {
+            models.Subcategory.belongsTo(models.Category);
+            models.Subcategory.hasMany(models.Video, {as: 'videos'});
+            models.Subcategory.hasMany(models.WritingQuestion, {as: 'writing_questions'});
         }
     });
 };

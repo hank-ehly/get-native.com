@@ -9,11 +9,9 @@ module.exports = function(sequelize, DataTypes) {
     return sequelize.define('Follower', {}, {
         tableName: 'followers',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Speaker);
-                this.belongsTo(models.Account);
-            }
+        associations: function(models) {
+            models.Follower.belongsTo(models.Speaker);
+            models.Follower.belongsTo(models.Account);
         }
     });
 };
