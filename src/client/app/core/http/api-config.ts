@@ -25,9 +25,9 @@ export const APIConfig = new Map<APIHandle, any>([
         url: '/study/stats',
         isProtected: true
     }],
-    [APIHandle.STUDY_WRITING_HISTORY, {
+    [APIHandle.WRITING_ANSWERS, {
         method: RequestMethod.Get,
-        url: '/study/writing_history',
+        url: '/study/writing_answers',
         isProtected: true,
         permitURLSearchParams: ['since', 'max_id']
     }],

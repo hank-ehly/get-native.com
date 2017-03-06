@@ -100,6 +100,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     }
 
     private updateAnswersFilter(): Observable<WritingSessions> {
-        return this.http.request(APIHandle.STUDY_WRITING_HISTORY, {search: this.answerSearchParams});
+        return this.http.request(APIHandle.WRITING_ANSWERS, {search: this.answerSearchParams});
     }
 }
