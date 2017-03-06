@@ -7,7 +7,7 @@
 
 const Sequelize = require('sequelize');
 const nconf = require('nconf');
-const dbconf = require('../../db/database.json');
+const dbconf = require('../../db/database.js');
 
 module.exports = () => {
     let e = nconf.get('env');
