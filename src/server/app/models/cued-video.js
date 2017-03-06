@@ -9,11 +9,9 @@ module.exports = function(sequelize, DataTypes) {
     return sequelize.define('CuedVideo', {}, {
         tableName: 'cued_videos',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Account);
-                this.belongsTo(models.Video);
-            }
+        associations: function(models) {
+            models.CuedVideo.belongsTo(models.Account);
+            models.CuedVideo.belongsTo(models.Video);
         }
     });
 };

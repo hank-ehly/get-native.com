@@ -31,15 +31,13 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'videos',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Speaker);
-                this.belongsTo(models.Subcategory);
-                this.hasMany(models.CuedVideo, {as: 'cued_videos'});
-                this.hasMany(models.Like, {as: 'likes'});
-                this.hasMany(models.StudySession, {as: 'study_sessions'});
-                this.hasOne(models.Transcript);
-            }
+        associations: function(models) {
+            models.Video.belongsTo(models.Speaker);
+            models.Video.belongsTo(models.Subcategory);
+            models.Video.hasMany(models.CuedVideo, {as: 'cued_videos'});
+            models.Video.hasMany(models.Like, {as: 'likes'});
+            models.Video.hasMany(models.StudySession, {as: 'study_sessions'});
+            models.Video.hasOne(models.Transcript);
         }
     });
 };

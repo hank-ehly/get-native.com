@@ -16,11 +16,9 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'writing_answers',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.StudySession);
-                this.belongsTo(models.WritingQuestion);
-            }
+        associations: function(models) {
+            models.WritingAnswer.belongsTo(models.StudySession);
+            models.WritingAnswer.belongsTo(models.WritingQuestion);
         }
     });
 };

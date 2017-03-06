@@ -10,11 +10,9 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'likes',
         underscored: true,
         updatedAt: false,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Account);
-                this.belongsTo(models.Video);
-            }
+        associations: function(models) {
+            models.Like.belongsTo(models.Account);
+            models.Like.belongsTo(models.Video);
         }
     });
 };

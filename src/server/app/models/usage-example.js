@@ -14,10 +14,8 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'usage_examples',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Collocation);
-            }
+        associations: function(models) {
+            models.UsageExample.belongsTo(models.Collocation);
         }
     });
 };

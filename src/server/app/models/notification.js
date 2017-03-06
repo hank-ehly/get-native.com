@@ -19,10 +19,8 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'notifications',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Account);
-            }
+        associations: function(models) {
+            models.Notification.belongsTo(models.Account);
         }
     });
 };

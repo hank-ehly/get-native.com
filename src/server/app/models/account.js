@@ -45,14 +45,12 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'accounts',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.hasMany(models.Follower, {as: 'followers'});
-                this.hasMany(models.Notification, {as: 'notifications'});
-                this.hasMany(models.CuedVideo, {as: 'cued_videos'});
-                this.hasMany(models.Like, {as: 'likes'});
-                this.hasMany(models.StudySession, {as: 'study_sessions'});
-            }
+        associations: function(models) {
+            models.Account.hasMany(models.Follower, {as: 'followers'});
+            models.Account.hasMany(models.Notification, {as: 'notifications'});
+            models.Account.hasMany(models.CuedVideo, {as: 'cued_videos'});
+            models.Account.hasMany(models.Like, {as: 'likes'});
+            models.Account.hasMany(models.StudySession, {as: 'study_sessions'});
         }
     });
 };

@@ -39,11 +39,9 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'speakers',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.hasMany(models.Follower, {as: 'followers'});
-                this.hasMany(models.Video, {as: 'videos'});
-            }
+        associations: function(models) {
+            models.Speaker.hasMany(models.Follower, {as: 'followers'});
+            models.Speaker.hasMany(models.Video, {as: 'videos'});
         }
     });
 };

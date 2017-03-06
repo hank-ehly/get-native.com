@@ -19,11 +19,9 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'transcripts',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.belongsTo(models.Video);
-                this.hasMany(models.Collocation, {as: 'collocations'});
-            }
+        associations: function(models) {
+            models.Transcript.belongsTo(models.Video);
+            models.Transcript.hasMany(models.Collocation, {as: 'collocations'});
         }
     });
 };

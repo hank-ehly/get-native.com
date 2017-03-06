@@ -19,11 +19,9 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'collocations',
         underscored: true,
-        classMethods: {
-            associate: function(models) {
-                this.hasMany(models.UsageExample, {as: 'usage_examples'});
-                this.belongsTo(models.Transcript);
-            }
+        associations: function(models) {
+            models.Collocation.hasMany(models.UsageExample, {as: 'usage_examples'});
+            models.Collocation.belongsTo(models.Transcript);
         }
     });
 };
