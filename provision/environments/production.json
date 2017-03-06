@@ -1,11 +1,14 @@
 {
-  "name": "production",
-  "default_attributes": {
-    "get-native": {
-      "environment": "production"
-    }
-  },
-  "json_class": "Chef::Environment",
-  "description": "The production environment",
-  "chef_type": "environment"
+    "name": "production",
+    "default_attributes": {
+        "get-native": {
+            "environment": "production",
+            "mysql": {
+                "bind-address": "127.0.0.1"
+            }
+        }
+    },
+    "json_class": "Chef::Environment",
+    "description": "The production environment",
+    "chef_type": "environment"
 }

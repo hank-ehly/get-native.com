@@ -1,11 +1,14 @@
 {
-  "name": "development",
-  "default_attributes": {
-    "get-native": {
-      "environment": "development"
-    }
-  },
-  "json_class": "Chef::Environment",
-  "description": "The development environment",
-  "chef_type": "environment"
+    "name": "development",
+    "default_attributes": {
+        "get-native": {
+            "environment": "development",
+            "mysql": {
+                "bind-address": "*"
+            }
+        }
+    },
+    "json_class": "Chef::Environment",
+    "description": "The development environment",
+    "chef_type": "environment"
 }
