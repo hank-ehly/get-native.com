@@ -10,7 +10,7 @@ module.exports.stats = (req, res) => {
     res.send(mock);
 };
 
-module.exports.writing_history = (req, res) => {
-    let mock = require('../../mock/study_writing_history.json');
+module.exports.writing_answers = (req, res) => {
+    let mock = require('../../mock/study_writing_answers.json');
     res.send(mock);
 };

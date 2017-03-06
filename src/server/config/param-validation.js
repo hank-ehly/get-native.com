@@ -63,7 +63,7 @@ module.exports = {
                 authorization: joi.string().required()
             }
         },
-        writing_history: {
+        writing_answers: {
             headers: {
                 authorization: joi.string().required()
             },
