@@ -10,7 +10,7 @@ let path = require('path');
 let Sequelize = require('sequelize');
 let basename = path.basename(module.filename);
 let env = process.env.NODE_ENV || 'development';
-let config = require(__dirname + '/../../db/database.json')[env];
+let config = require(__dirname + '/../../db/database.js')[env];
 let db = {};
 
 let sequelize = new Sequelize(config.database, config.username, config.password, config);
