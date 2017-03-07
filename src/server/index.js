@@ -15,10 +15,10 @@ nconf.env();
 
 const fs       = require('fs');
 const confPath = './config/environments/';
-const baseConf = confPath + 'base';
-const envConf  = confPath + (nconf.get('env') || 'development');
 
-require(baseConf);
+require(confPath + 'base');
+
+const envConf  = confPath + (nconf.get('env') || 'development');
 if (fs.existsSync(envConf)) {
     require(envConf);
 }
