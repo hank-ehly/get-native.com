@@ -14,7 +14,7 @@ module.exports = {
         let numAccounts = 2500;
 
         if (process.env.NODE_ENV === 'test') {
-            numAccounts = 10;
+            numAccounts = 5;
 
             accounts.push({
                 email: 'test@email.com',
@@ -23,7 +23,8 @@ module.exports = {
                 email_notifications_enabled: false,
                 email_verified: false,
                 default_study_language_code: 'en',
-                picture_url: 'https://dummyimage.com/100x100.png/5fa2dd/ffffff'
+                picture_url: 'https://dummyimage.com/100x100.png/5fa2dd/ffffff',
+                is_silhouette_picture: false
             });
         }
 
@@ -35,7 +36,8 @@ module.exports = {
                 email_notifications_enabled: chance.bool(),
                 email_verified: chance.bool({likelihood: 80}),
                 default_study_language_code: chance.pickone(['en', 'ja']),
-                picture_url: 'https://dummyimage.com/100x100.png/5fa2dd/ffffff'
+                picture_url: 'https://dummyimage.com/100x100.png/5fa2dd/ffffff',
+                is_silhouette_picture: chance.bool()
             });
         }
 
