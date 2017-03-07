@@ -33,7 +33,7 @@ module.exports = {
                 email: 'test@email.com',
                 password: 'test_password'
             }).then(function(response) {
-                cb(_, 'Bearer: ' + response.header['x-gn-auth-token']);
+                cb(_, 'Bearer: ' + response.header['x-gn-auth-token'], response.body);
             });
         });
     }
