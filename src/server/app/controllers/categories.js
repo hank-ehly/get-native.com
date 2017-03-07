@@ -12,7 +12,20 @@ module.exports.list = (req, res) => {
         attributes: ['id', 'name'],
         include: [{model: models.Subcategory, as: 'subcategories', attributes: ['name']}]
     }).then(categories => {
-        let response = {
+        console.log('**********');
+        console.dir(categories[0].toJSON());
+
+        // by calling categories[0].toJSON() you get:
+        // { id: 11,
+        //   name: 'Culture',
+        //   subcategories:
+        //       [ { name: 'libero non mattis' },
+        //         { name: 'justo lacinia' },
+        //         { name: 'luctus rutrum nulla tellus' },
+        //         { name: 'faucibus orci luctus' } ] }
+        // http://docs.sequelizejs.com/en/latest/api/instance/#tojson-object
+
+    let response = {
             records: [],
             count: categories.length
         };

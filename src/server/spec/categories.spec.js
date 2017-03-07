@@ -71,11 +71,9 @@ describe('/categories', function() {
         });
     });
 
-    it('should return more than 0 subcategories for the first few categories', function() {
+    it('should return more than 0 subcategories', function() {
         return request(server).get('/categories').set('authorization', authorization).then(function(res) {
             assert(res.body.records[0].subcategories.records.length > 0);
-            assert(res.body.records[1].subcategories.records.length > 0);
-            assert(res.body.records[2].subcategories.records.length > 0);
         });
     });
 
