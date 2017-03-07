@@ -9,6 +9,8 @@ const request = require('supertest');
 const exec = require('child_process').exec;
 
 module.exports = {
+    defaultTimeout: 30000,
+
     seedAll: function(done) {
         this.seedAllUndo(function() {
             exec('npm run sequelize db:seed:all', function() {
