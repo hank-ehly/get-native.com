@@ -16,12 +16,12 @@ describe('/study/writing_answers', function() {
     let user = null;
 
     before(function(done) {
-        this.timeout(0);
+        this.timeout(10000);
         util.seedAll(done);
     });
 
     beforeEach(function(done) {
-        this.timeout(0);
+        this.timeout(10000);
         util.login(function(_server, _authorization, _user) {
             server = _server;
             authorization = _authorization;
@@ -35,7 +35,7 @@ describe('/study/writing_answers', function() {
     });
 
     after(function(done) {
-        this.timeout(0);
+        this.timeout(10000);
         util.seedAllUndo(done);
     });
 
