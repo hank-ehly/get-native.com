@@ -12,9 +12,6 @@ module.exports.list = (req, res) => {
         attributes: ['id', 'name'],
         include: [{model: models.Subcategory, as: 'subcategories', attributes: ['name']}]
     }).then(categories => {
-        console.log('**********');
-        console.dir(categories[0].toJSON());
-
         // by calling categories[0].toJSON() you get:
         // { id: 11,
         //   name: 'Culture',
