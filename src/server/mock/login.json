@@ -1,6 +1,10 @@
 {
     "id": 2244994983,
-    "lang": "en",
-    "profile_image_url": "https://dummyimage.com/100x100/d6aed6/2831a8.png",
-    "default_profile_image": false
+    "email": "test@email.com",
+    "browser_notifications_enabled": false,
+    "email_notifications_enabled": false,
+    "email_verified": false,
+    "default_study_language_code": "en",
+    "picture_url": "https://dummyimage.com/100x100.png/5fa2dd/ffffff",
+    "picture_is_silhouette": false
 }
