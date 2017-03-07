@@ -457,24 +457,29 @@ POST https://api.get-native.com/login
 
 **Response**
 
-| Data Field            | Type           | Description                                                        |
-|-----------------------|----------------|--------------------------------------------------------------------|
-| id                    | Int64          |  Integer representation of unique user ID                          |
-| id_str                | String         |  String representation of unique user ID                           |
-| lang                  | String         |  BCP 47 code for user declared language                            |
-| profile_image_url     | String         |  HTTPS URI for user profile image                                  |
-| default_profile_image | Boolean        | If true, the user has not uploaded their own image                 |
+| Data Field                    | Type           | Description                                                        |
+|-------------------------------|----------------|--------------------------------------------------------------------|
+| id                            | Int64          |  Integer representation of unique user ID                          |
+| email                         | String         |  The user's email address                                          |
+| browser_notifications_enabled | Boolean        |  Whether the user allows browser notifications.                    |
+| email_notifications_enabled   | Boolean        |  Whether the user allows email notifications.                      |
+| default_study_language_code   | String         |  BCP 47 code for user default study language                       |
+| picture_url                   | String         |  HTTPS URI for user profile image                                  |
+| is_silhouette_picture         | Boolean        | If true, the user has not uploaded their own image                 |
 
 ```
 Status: 200 OK
 ```
 ```json
 {
-	"id": 2244994983,
-	"id_str": "2244994983",
-	"lang": "en",
-	"profile_image_url": "XXX",
-	"default_profile_image": false
+    "id": 2244994983,
+    "email": "test@email.com",
+    "browser_notifications_enabled": false,
+    "email_notifications_enabled": false,
+    "email_verified": false,
+    "default_study_language_code": "en",
+    "picture_url": "https://dummyimage.com/100x100.png/5fa2dd/ffffff",
+    "is_silhouette_picture": false
 }
 ```
 
