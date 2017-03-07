@@ -6,12 +6,14 @@
  */
 
 const request = require('supertest');
-const assert = require('assert');
-const util = require('./spec-util');
+const assert  = require('assert');
+const util    = require('./spec-util');
+const db      = require('../app/models');
 
 describe('/study/writing_answers', function() {
     let server = null;
     let authorization = null;
+    let user = null;
 
     before(function(done) {
         this.timeout(0);
@@ -20,9 +22,10 @@ describe('/study/writing_answers', function() {
 
     beforeEach(function(done) {
         this.timeout(0);
-        util.login(function(_server, _authorization) {
+        util.login(function(_server, _authorization, _user) {
             server = _server;
             authorization = _authorization;
+            user = _user;
             done();
         });
     });
@@ -59,36 +62,62 @@ describe('/study/writing_answers', function() {
         });
     });
 
-    it('should have an non-null \'id\' number for each record (only checks first 3)', function() {
+    it('should have an non-null \'id\' number for each record', function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
             assert(new RegExp(/[0-9]+/).test(res.body.records[0].id));
-            assert(new RegExp(/[0-9]+/).test(res.body.records[1].id));
-            assert(new RegExp(/[0-9]+/).test(res.body.records[2].id));
         });
     });
 
-    it('should have a non-null \'text\' string for each record (only checks first 3)', function() {
+    it('should have a non-null \'text\' string for each record', function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
             assert(res.body.records[0].text.length > 0);
-            assert(res.body.records[1].text.length > 0);
-            assert(res.body.records[2].text.length > 0);
         });
     });
 
-    it('should have a non-null \'created_at\' datetime for each record (only checks first 3)', function() {
+    it('should have a non-null \'created_at\' datetime for each record', function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
-            let date_01 = new Date(res.body.records[0].created_at);
-            let date_02 = new Date(res.body.records[1].created_at);
-            let date_03 = new Date(res.body.records[2].created_at);
-
-            assert(date_01.toDateString() !== 'Invalid Date');
-            assert(date_02.toDateString() !== 'Invalid Date');
-            assert(date_03.toDateString() !== 'Invalid Date');
+            let date = new Date(res.body.records[0].created_at);
+            assert(date.toDateString() !== 'Invalid Date');
         });
     });
 
-    it('should have a \'question\' object with a non-null \'text\' string for each record');
+    it('should have a \'question\' object with a non-null \'text\' string for each record', function() {
+        return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
+            assert(res.body.records[0].question.text.length > 0);
+        });
+    });
 
-    // maximum?
-    // load more?
+    it('should respond with records whose creation date is equal to or greater than the \'since\' query parameter', function() {
+        let thirtyDaysAgo = new Date().getTime() - (1000 * 60 * 60 * 24 * 30);
+        return request(server).get(`/study/writing_answers?since=${thirtyDaysAgo}`).set('authorization', authorization).then(function(res) {
+            let lastRecord = res.body.records[res.body.count - 1];
+            let oldestRecordTimestamp = new Date(lastRecord.created_at).getTime();
+            assert(oldestRecordTimestamp >= thirtyDaysAgo);
+        });
+    });
+
+    it('should only return 10 or less answers by default', function() {
+        return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
+            assert(res.body.records.length <= 10, res.body.records.length);
+        });
+    });
+
+    it('should return 10 or less answers whose IDs are less than the \'max_id\' query parameter', function() {
+        let query = `
+            SELECT * 
+            FROM writing_answers 
+            WHERE study_session_id IN (
+                SELECT id 
+                FROM study_sessions 
+                WHERE account_id=${user.id}
+            );
+        `;
+
+        return db.sequelize.query(query).then(function(answers) {
+            let midUserAnswerId = answers[answers.length / 2].id;
+            return request(server).get(`/study/writing_answers?max_id=${midUserAnswerId}`).set('authorization', authorization).then(function(res) {
+                assert(res.body.records.length <= 10);
+            });
+        });
+    });
 });
