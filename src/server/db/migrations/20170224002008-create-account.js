@@ -44,6 +44,11 @@ module.exports = {
                 allowNull: false,
                 defaultValue: ''
             },
+            is_silhouette_picture: {
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                defaultValue: 1
+            },
             created_at: {
                 allowNull: false,
                 type: Sequelize.DATE,

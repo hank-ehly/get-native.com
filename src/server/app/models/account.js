@@ -41,6 +41,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: ''
+        },
+        is_silhouette_picture: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: 1
         }
     }, {
         tableName: 'accounts',
