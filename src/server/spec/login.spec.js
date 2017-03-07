@@ -19,12 +19,12 @@ describe('/login', function() {
     };
 
     before(function(done) {
-        this.timeout(10000);
+        this.timeout(util.defaultTimeout);
         util.seedAll(done);
     });
 
     beforeEach(function(done) {
-        this.timeout(10000);
+        this.timeout(util.defaultTimeout);
         delete require.cache[require.resolve('../index')];
         require('../index').then(function(_) {
             server = _;
@@ -37,7 +37,7 @@ describe('/login', function() {
     });
 
     after(function(done) {
-        this.timeout(10000);
+        this.timeout(util.defaultTimeout);
         util.seedAllUndo(done);
     });
 

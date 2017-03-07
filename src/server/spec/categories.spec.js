@@ -14,12 +14,12 @@ describe('/categories', function() {
     let authorization = null;
 
     before(function(done) {
-        this.timeout(10000);
+        this.timeout(util.defaultTimeout);
         util.seedAll(done);
     });
 
     beforeEach(function(done) {
-        this.timeout(10000);
+        this.timeout(util.defaultTimeout);
         util.login(function(_server, _authorization) {
             server = _server;
             authorization = _authorization;
@@ -32,7 +32,7 @@ describe('/categories', function() {
     });
 
     after(function(done) {
-        this.timeout(10000);
+        this.timeout(util.defaultTimeout);
         util.seedAllUndo(done);
     });
 
