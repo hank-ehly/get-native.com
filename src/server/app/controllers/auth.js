@@ -5,22 +5,41 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const nconf  = require('nconf');
-const jwt    = require('jsonwebtoken');
-const logger = require('../../config/logger');
+const nconf   = require('nconf');
+const jwt     = require('jsonwebtoken');
+const logger  = require('../../config/logger');
+const Account = require('../models').Account;
 
 module.exports.login = (req, res) => {
     logger.info(req.body);
-    let mock = require('../../mock/login.json');
 
-    // Todo: obtain from db
-    let userId = 123;
+    // todo: defend against sql injection
+    const email = req.body['email'];
 
-    generateTokenForUserId(userId, (err, token) => {
-        if (err) throw new Error(err);
+    Account.find({where: {email: email}}).then(account => {
+        generateTokenForAccountId(account.id, (err, token) => {
+            if (err) {
+                throw new Error(err);
+            }
 
-        authorizeResponseWithToken(res, token);
-        res.send(mock);
+            authorizeResponseWithToken(res, token);
+
+            // todo: account.toJSON()?
+            res.send({
+                id: account.id,
+                email: account.email,
+                browser_notifications_enabled: account.browser_notifications_enabled,
+                email_notifications_enabled: account.email_notifications_enabled,
+                email_verified: account.email_verified,
+                default_study_language_code: account.default_study_language_code,
+                picture_url: account.picture_url,
+                is_silhouette_picture: account.is_silhouette_picture
+            });
+        });
+    }).catch(error => {
+        logger.error('Unable to find account.');
+        // todo: send uniform error response to client
+        res.send(error);
     });
 };
 
@@ -68,10 +87,10 @@ function refreshToken(token, callback) {
     jwt.sign(newToken, nconf.get('privateKey'), args, callback);
 }
 
-function generateTokenForUserId(userId, callback) {
+function generateTokenForAccountId(accountId, callback) {
     let token = {
         iss: 'api.get-native.com',
-        sub: userId,
+        sub: accountId,
         aud: ''
     };
 

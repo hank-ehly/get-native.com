@@ -53,9 +53,10 @@ describe('/login', function() {
 
     it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
         return request(server).post('/login').send(credentials).then(function(res) {
-            let timestamp = res.header['x-gn-auth-expire'];
+            let timestamp = +res.header['x-gn-auth-expire'];
             let date = new Date(timestamp);
-            assert(date.toDateString() !== 'Invalid Date');
+            let dateString = date.toDateString();
+            assert(dateString !== 'Invalid Date');
         });
     });
 
@@ -108,4 +109,6 @@ describe('/login', function() {
             assert(new RegExp(/[a-z]+/).test(res.body.is_silhouette_picture));
         });
     });
+
+    it('should respond with a ??? error if the user is not found');
 });
