@@ -17,7 +17,7 @@ module.exports = {
         return Promise.all([Speaker.min('id'), Speaker.max('id'), Subcategory.min('id'), Subcategory.max('id')]).then(x => {
             const videos = [];
 
-            let numVideos = process.env.NODE_ENV === 'test' ? 50 : 500;
+            let numVideos = ['test', 'circle_ci'].includes(process.env.NODE_ENV) ? 50 : 500;
 
             for (let i = 0; i < numVideos; i++) {
                 videos.push({
