@@ -22,7 +22,7 @@ module.exports.login = (req, res) => {
                 throw new Error(err);
             }
 
-            authorizeResponseWithToken(res, token);
+            setAuthHeadersOnResponseWithToken(res, token);
 
             // todo: account.toJSON()?
             res.send({
@@ -50,7 +50,7 @@ module.exports.authenticate = (req, res, next) => {
         refreshToken(token, (err, token) => {
             if (err) throw new Error(err);
 
-            authorizeResponseWithToken(res, token);
+            setAuthHeadersOnResponseWithToken(res, token);
             next();
         })
     });
@@ -63,6 +63,7 @@ function validateRequest(req, callback) {
         throw new Error('No token provided.');
     }
 
+    // todo: change issuer based on environment
     const args = {
         issuer: 'api.get-native.com',
         audience: '',
@@ -73,6 +74,10 @@ function validateRequest(req, callback) {
 }
 
 function refreshToken(token, callback) {
+
+    // todo: use Object.assign
+    // let objCopy = Object.assign({}, obj);
+
     const newToken = {
         iss: token.iss,
         sub: token.sub,
@@ -102,7 +107,7 @@ function generateTokenForAccountId(accountId, callback) {
     jwt.sign(token, nconf.get('privateKey'), args, callback);
 }
 
-function authorizeResponseWithToken(res, token) {
+function setAuthHeadersOnResponseWithToken(res, token) {
     res.set('X-GN-Auth-Token', token);
     res.set('X-GN-Auth-Expire', (Date.now() + (1000 * 60 * 60)).toString());
 }
