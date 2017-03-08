@@ -10,7 +10,13 @@ const models = require('../models');
 module.exports.list = (req, res) => {
     models.Category.findAll({
         attributes: ['id', 'name'],
-        include: [{model: models.Subcategory, as: 'subcategories', attributes: ['name']}]
+        include: [
+            {
+                model: models.Subcategory,
+                as: 'subcategories',
+                attributes: ['name']
+            }
+        ]
     }).then(categories => {
         // by calling categories[0].toJSON() you get:
         // { id: 11,
@@ -22,7 +28,7 @@ module.exports.list = (req, res) => {
         //         { name: 'faucibus orci luctus' } ] }
         // http://docs.sequelizejs.com/en/latest/api/instance/#tojson-object
 
-    let response = {
+        let response = {
             records: [],
             count: categories.length
         };
