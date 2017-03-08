@@ -105,7 +105,7 @@ describe('/login', function() {
 
     it('should respond with an object containing the user\'s preference for using the profile picture or silhouette image', function() {
         return request(server).post('/login').send(credentials).then(function(res) {
-            assert(new RegExp(/[a-z]+/).test(res.body.picture_is_silhouette));
+            assert(new RegExp(/[a-z]+/).test(res.body.is_silhouette_picture));
         });
     });
 });

@@ -6,5 +6,5 @@
     "email_verified": false,
     "default_study_language_code": "en",
     "picture_url": "https://dummyimage.com/100x100.png/5fa2dd/ffffff",
-    "picture_is_silhouette": false
+    "is_silhouette_picture": false
 }
