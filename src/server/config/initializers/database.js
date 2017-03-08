@@ -7,7 +7,7 @@
 
 const Sequelize = require('sequelize');
 const nconf = require('nconf');
-const dbconf = require('../../db/database.js');
+const dbconf = require('../database');
 const logger = require('../logger');
 
 module.exports = () => {
