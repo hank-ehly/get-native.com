@@ -3,7 +3,7 @@ namespace :sequelize do
     task 'migrate' do
         on roles(:web) do
             within release_path do
-                execute :npm, 'sequelize', 'db:migrate'
+                execute :npm, 'run', 'sequelize', 'db:migrate'
             end
         end
     end
@@ -12,7 +12,7 @@ namespace :sequelize do
     task 'migrate:undo:all' do
         on roles(:web) do
             within release_path do
-                execute :npm, 'sequelize', 'db:migrate:undo:all'
+                execute :npm, 'run', 'sequelize', 'db:migrate:undo:all'
             end
         end
     end
@@ -22,7 +22,7 @@ namespace :sequelize do
     task 'seed:all' do
         on roles(:web) do
             within release_path do
-                execute :npm, 'sequelize', 'db:seed:all'
+                execute :npm, 'run', 'sequelize', 'db:seed:all'
             end
         end
     end
@@ -31,7 +31,7 @@ namespace :sequelize do
     task 'seed:undo:all' do
         on roles(:web) do
             within release_path do
-                execute :npm, 'sequelize', 'db:seed:undo:all'
+                execute :npm, 'run', 'sequelize', 'db:seed:undo:all'
             end
         end
     end
