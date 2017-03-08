@@ -45,8 +45,8 @@ module.exports = {
     auth: {
         login: {
             body: {
-                email: joi.string().email().required(),
-                password: joi.string().required()
+                email: joi.string().regex(/[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*/).required(),
+                password: joi.string().required().min(8)
             }
         }
     },
