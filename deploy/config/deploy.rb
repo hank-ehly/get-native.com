@@ -8,7 +8,17 @@ set :keep_releases, 5
 set :linked_dirs, %w(src/server/config/secrets)
 
 after 'deploy:updated', :setup do
+    tasks = %w(npm:install gulp:build)
+
+    if fetch(:stage).to_s == 'staging'
+        tasks.push('sequelize:migrate:undo:all', 'sequelize:migrate', 'sequelize:seed:all')
+    else
+        tasks.push('sequelize:migrate')
+    end
+
+    tasks.push('mkdocs:build', 'pm2:reload')
+
     on roles(:web) do
-        %w(npm:install gulp:build pm2:reload mkdocs:build).each { |t| invoke t }
+        tasks.each { |t| invoke t }
     end
 end
