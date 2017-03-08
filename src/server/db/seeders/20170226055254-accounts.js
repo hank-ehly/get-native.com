@@ -13,7 +13,7 @@ module.exports = {
 
         let numAccounts = 2500;
 
-        if (process.env.NODE_ENV === 'test') {
+        if (['test', 'circle_ci'].includes(process.env.NODE_ENV)) {
             numAccounts = 5;
 
             accounts.push({
