@@ -14,7 +14,7 @@ deployment:
   staging:
     branch: develop
     commands:
-      - NODE_ENV=staging cd deploy && bundle install --path vendor/bundle && bundle exec cap staging deploy
+      - cd deploy && bundle install --path vendor/bundle && bundle exec cap staging deploy
 
 dependencies:
   pre:
