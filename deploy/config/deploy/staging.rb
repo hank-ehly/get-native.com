@@ -1,5 +1,9 @@
 set :branch, :develop
 
+set :default_env, {
+        NODE_ENV: 'staging'
+}
+
 server 'stg.get-native.com',
        user: 'get-native',
        roles: %w(web),
