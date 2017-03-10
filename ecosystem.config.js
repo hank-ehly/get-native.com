@@ -1,5 +1,5 @@
 const currentDir = '/var/www/get-native.com/current';
-const logDir     = '/var/log';
+const logDir = '/var/log';
 
 module.exports = {
     apps: [
@@ -15,8 +15,7 @@ module.exports = {
             env: {
                 NODE_ENV: 'development'
             }
-        },
-        {
+        }, {
             name: 'api.stg',
             script: `${currentDir}/src/server/index.js`,
             cwd: currentDir,
