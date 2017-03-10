@@ -67,3 +67,5 @@ src/server/config/secrets/*
 !**/.gitkeep
 
 npm-debug.log*
+
+src/server/config/database.json
