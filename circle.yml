@@ -24,6 +24,7 @@ dependencies:
 
 database:
   override:
+    - cp src/server/config/database.json.template src/server/config/database.json
     - npm run sequelize db:migrate
 
 test:
