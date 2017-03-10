@@ -1,11 +1,11 @@
-lock '3.6.1'
+lock '3.8.0'
 
 set :application, 'get-native.com'
 set :repo_url, 'git@github.com:hank-ehly/get-native.com.git'
 set :deploy_to, "/var/www/#{fetch(:application)}"
-set :scm, :git
 set :keep_releases, 5
-set :linked_dirs, %w(src/server/config/secrets)
+append :linked_files, 'src/server/config/database.json'
+append :linked_dirs, 'src/server/config/secrets'
 
 after 'deploy:updated', :setup do
     tasks = %w(npm:install gulp:build)
