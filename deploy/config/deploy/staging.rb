@@ -9,5 +9,6 @@ server 'stg.get-native.com',
        roles: %w(web),
        ssh_options: {
                forward_agent: false,
-               auth_methods: %w(publickey)
+               auth_methods: %w(publickey),
+               keys: %w(~/.ssh/stg.get-native.com/deploy.web)
        }
