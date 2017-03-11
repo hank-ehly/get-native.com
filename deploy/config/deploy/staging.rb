@@ -4,11 +4,10 @@ set :default_env, {
         NODE_ENV: 'staging'
 }
 
-server 'stg.get-native.com',
+server '45.79.159.54',
        user: 'get-native',
        roles: %w(web),
        ssh_options: {
                forward_agent: false,
-               auth_methods: %w(publickey),
-               keys: %w(~/.ssh/stg.get-native.com/deploy.web)
+               auth_methods: %w(publickey)
        }
