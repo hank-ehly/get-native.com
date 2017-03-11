@@ -11,7 +11,7 @@ module.exports = {
     up: function(queryInterface, Sequelize) {
         const accounts = [];
 
-        let numAccounts = 2500;
+        let numAccounts = 500;
 
         if (['test', 'circle_ci'].includes(process.env.NODE_ENV)) {
             numAccounts = 5;
