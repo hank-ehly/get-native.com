@@ -13,8 +13,7 @@ const Account = require('../models').Account;
 module.exports.login = (req, res) => {
     logger.info(req.body);
 
-    // todo: defend against sql injection
-    const email = req.body['email'];
+    const email = req.body.email;
 
     Account.find({where: {email: email}}).then(account => {
         generateTokenForAccountId(account.id, (err, token) => {
