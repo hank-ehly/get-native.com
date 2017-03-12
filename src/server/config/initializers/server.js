@@ -13,6 +13,7 @@ const morgan = require('morgan');
 const nconf = require('nconf');
 const routes = require('../routes');
 const logger = require('../logger');
+const ev = require('express-validation');
 
 module.exports = () => {
     return new Promise((resolve) => {
@@ -33,8 +34,9 @@ module.exports = () => {
         app.use(cors);
         app.use(routes);
 
-        // load static resources
-        // app.use(express.static(path.join(__dirname, 'public')));
+        app.use(logErrors);
+        app.use(clientErrorHandler);
+        app.use(fallbackErrorHandler);
 
         let port = nconf.get('PORT');
         let server = app.listen(port, () => {
@@ -43,3 +45,17 @@ module.exports = () => {
         });
     });
 };
+
+function logErrors(err, req, res, next) {
+    next(err);
+}
+
+function clientErrorHandler(err, req, res, next) {
+    if (err instanceof ev.ValidationError) {
+        return res.status(err.status).json(err);
+    }
+}
+
+function fallbackErrorHandler(err, req, res, next) {
+    next(err);
+}
