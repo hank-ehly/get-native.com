@@ -5,96 +5,96 @@
  * Created by henryehly on 2017/01/22.
  */
 
-const joi = require('joi');
+const Joi = require('joi');
 
 module.exports = {
     account: {
         index: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             }
         },
         update: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             },
             body: {
-                email_notifications_enabled: joi.boolean(),
-                browser_notifications_enabled: joi.boolean(),
-                site_language: joi.string(),
-                default_study_language: joi.string()
+                email_notifications_enabled: Joi.boolean(),
+                browser_notifications_enabled: Joi.boolean(),
+                site_language: Joi.string(),
+                default_study_language: Joi.string()
             }
         },
         updatePassword: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             },
             body: {
-                password: joi.string().required()
+                password: Joi.string().required()
             }
         },
         updateEmail: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             },
             body: {
-                email: joi.string().email().required()
+                email: Joi.string().email().required()
             }
         }
     },
     auth: {
         login: {
             body: {
-                email: joi.string().regex(/[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*/).required(),
-                password: joi.string().required().min(8)
+                email: Joi.string().regex(/[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*/).required(),
+                password: Joi.string().required().min(8)
             }
         }
     },
     categories: {
         list: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             }
         }
     },
     study: {
         stats: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             }
         },
         writing_answers: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             },
             params: {
-                since: joi.number().integer()
+                since: Joi.number().integer()
             }
         }
     },
     videos: {
         show: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             },
             params: {
-                id: joi.number().integer().required()
+                id: Joi.number().integer().required()
             }
         },
         like: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             },
             params: {
-                id: joi.number().integer().required()
+                id: Joi.number().integer().required()
             }
         },
         unlike: {
             headers: {
-                authorization: joi.string().required()
+                authorization: Joi.string().required()
             },
             params: {
-                id: joi.number().integer().required()
+                id: Joi.number().integer().required()
             }
         }
     }
