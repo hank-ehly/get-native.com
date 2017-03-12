@@ -51,11 +51,5 @@ module.exports.list = (req, res) => {
         }
 
         res.send(response);
-    }).catch((error) => {
-
-        // Todo: What should you return to the client?
-        res.send(error);
-
-        throw new Error(error);
-    });
+    }).catch(err => next(err));
 };
