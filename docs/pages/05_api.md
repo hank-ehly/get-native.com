@@ -28,6 +28,41 @@ The following headers are included in API responses that require authentication.
 | X-GN-Auth-Token                                                                                                             | A JWT value (eg. g8ka.l0xh.jq1m)             |
 | X-GN-Auth-Expire                                                                                                            | A timestamp (eg. 1483658645131)              |
 
+**Client Errors**
+
+`4xx` responses (client errors) are in JSON format and always contain a top-level "message" property with a string value explaining what went wrong.
+In some cases where more information is needed, a top-level "errors" property containing an array of error objects is included in the response.
+
+Sending a flat-out invalid JSON object in the request will trigger a `400 Bad Request` response.
+
+```
+HTTP/1.1 400 Bad Request
+{"message":"Problems parsing JSON"}
+```
+
+Sending a valid JSON object with the incorrect type of JSON values will also trigger a `400 Bad Request` response.
+
+```
+HTTP/1.1 400 Bad Request
+{"message":"Body should be a JSON object"}
+```
+
+Invalid fields in a JSON request object will result in a `422 Unprocessable Entity` response.
+
+```
+HTTP/1.1 422 Unprocessable Entity
+{
+  "message": "Validation Failed",
+  "errors": [
+    {
+      "resource": "Issue",
+      "field": "title",
+      "code": "missing_field"
+    }
+  ]
+}
+```
+
 **Handling of `DNT` Request Header**
 
 Clients that set the value of the `Do Not Track` header to `1` are treated differently.
@@ -45,7 +80,7 @@ indicating the number of records included in the array.
 {
 	"videos": {
 		"count": 2,
-		"records": [{}, {}]
+		"records": [ /* Object, Object */ ]
 	}
 }
 ```
