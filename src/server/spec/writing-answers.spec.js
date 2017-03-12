@@ -68,9 +68,9 @@ describe('/study/writing_answers', function() {
         });
     });
 
-    it('should have a non-null \'text\' string for each record', function() {
+    it('should have a non-null \'answer\' string for each record', function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
-            assert(res.body.records[0].text.length > 0);
+            assert(res.body.records[0].answer.length > 0);
         });
     });
 
@@ -81,9 +81,9 @@ describe('/study/writing_answers', function() {
         });
     });
 
-    it('should have a \'question\' object with a non-null \'text\' string for each record', function() {
+    it('should have a \'writing_question\' object with a non-null \'text\' string for each record', function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
-            assert(res.body.records[0].question.text.length > 0);
+            assert(res.body.records[0]['writing_question'].text.length > 0);
         });
     });
 
@@ -114,8 +114,8 @@ describe('/study/writing_answers', function() {
         `;
 
         return db.sequelize.query(query).then(function(answers) {
-            let midUserAnswerId = answers[answers.length / 2].id;
-            return request(server).get(`/study/writing_answers?max_id=${midUserAnswerId}`).set('authorization', authorization).then(function(res) {
+            let midWritingAnswerId = answers[answers.length / 2].id;
+            return request(server).get(`/study/writing_answers?max_id=${midWritingAnswerId}`).set('authorization', authorization).then(function(res) {
                 assert(res.body.records.length <= 10);
             });
         });
