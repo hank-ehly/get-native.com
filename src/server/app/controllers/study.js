@@ -34,6 +34,7 @@ module.exports.writing_answers = (req, res) => {
 
         res.send(response);
     }).catch(error => {
+        // Todo: Send decided error response
         res.send(error);
     });
 };
