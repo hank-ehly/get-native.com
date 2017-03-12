@@ -259,23 +259,19 @@ Status: 200 OK
     "records": [
         {
             "id": 1,
-            "id_str": "1",
             "name": "Business",
             "topics": {
                 "records": [
                     {
                         "id": 1,
-                        "id_str": "1",
                         "name": "Meeting Preparation"
                     },
                     {
                         "id": 2,
-                        "id_str": "2",
                         "name": "Business Cards"
                     },
                     {
                         "id": 3,
-                        "id_str": "3",
                         "name": "Greeting Co-Workers"
                     }
                 ],
@@ -284,18 +280,15 @@ Status: 200 OK
         },
         {
             "id": 2,
-            "id_str": "2",
             "name": "Holidays",
             "topics": {
                 "records": [
                     {
                         "id": 4,
-                        "id_str": "4",
                         "name": "Holding Hands"
                     },
                     {
                         "id": 5,
-                        "id_str": "5",
                         "name": "Meeting the Parents"
                     }
                 ],
@@ -304,33 +297,27 @@ Status: 200 OK
         },
         {
             "id": 3,
-            "id_str": "3",
             "name": "Travel",
             "topics": {
                 "records": [
                     {
                         "id": 6,
-                        "id_str": "6",
                         "name": "Subcategory 1"
                     },
                     {
                         "id": 7,
-                        "id_str": "7",
                         "name": "Subcategory 2"
                     },
                     {
                         "id": 8,
-                        "id_str": "8",
                         "name": "Subcategory 3"
                     },
                     {
                         "id": 9,
-                        "id_str": "9",
                         "name": "Subcategory 4"
                     },
                     {
                         "id": 10,
-                        "id_str": "10",
                         "name": "Subcategory 5"
                     }
                 ],
@@ -339,18 +326,15 @@ Status: 200 OK
         },
         {
             "id": 4,
-            "id_str": "4",
             "name": "School",
             "topics": {
                 "records": [
                     {
                         "id": 11,
-                        "id_str": "11",
                         "name": "First Day"
                     },
                     {
                         "id": 12,
-                        "id_str": "12",
                         "name": "Making Friends"
                     }
                 ],
@@ -359,28 +343,23 @@ Status: 200 OK
         },
         {
             "id": 5,
-            "id_str": "5",
             "name": "Transportation",
             "topics": {
                 "records": [
                     {
                         "id": 13,
-                        "id_str": "13",
                         "name": "Taking the Train"
                     },
                     {
                         "id": 14,
-                        "id_str": "14",
                         "name": "Riding Horses"
                     },
                     {
                         "id": 15,
-                        "id_str": "15",
                         "name": "Bus Passes"
                     },
                     {
                         "id": 16,
-                        "id_str": "16",
                         "name": "Taking Long Road Trips"
                     }
                 ],
@@ -423,11 +402,9 @@ Status: 200 OK
 		{
 			"cued": true,
 			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-			"id_str": "2244994983",
 			"id": 2244994983,
 			"speaker": {
 				"id": 123456,
-				"id_str": "123456",
 				"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
 				"name": "Harold Ford",
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
@@ -438,7 +415,6 @@ Status: 200 OK
 			"lang": "en",
 			"topic": {
 				"id": 123456,
-				"id_str": "123456",
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 				"name": "Talking to customers"
 			},
@@ -451,11 +427,9 @@ Status: 200 OK
 				"records": [{
 						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 						"user": {
-							"id": 123,
-							"id_str": "123"
+							"id": 123
 						},
-						"id": 456,
-						"id_str": "456"
+						"id": 456
 				}],
 				"count": 10
 			},
@@ -567,7 +541,6 @@ POST https://api.get-native.com/register
 | Data Field            | Type           | Description                                                        |
 |-----------------------|----------------|--------------------------------------------------------------------|
 | id                    | Int64          |  Integer representation of unique user ID                          |
-| id_str                | String         |  String representation of unique user ID                           |
 | name                  | String         |  The user's self-declared real name                                |
 | created_at            | String         |  UTC datetime of account creation                                  |
 | utc_offset            | Int            |  _Nullable._ Offset in seconds from UTC                            |
@@ -584,7 +557,6 @@ Status: 200 OK
 ```json
 {
 	"id": 2244994983,
-	"id_str": "2244994983",
 	"name": "John Doe",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 	"utc_offset": 180000,
@@ -597,7 +569,6 @@ Status: 200 OK
 		"records": [
 			{
 				"id": 123456,
-				"id_str": "123456",
 				"text": "This is the body text of a notification",
 				"title": "Welcome to Get Native"
 			}
@@ -626,7 +597,6 @@ GET https://api.get-native.com/speakers/123456
 | Data Field          | Type   	| Description                                        	|
 |-------------------  |--------	|----------------------------------------------------	|
 | id          	      | Int64  	| Integer representation of unique speaker ID        	|
-| id_str      	      | String 	| String representation of unique speaker ID         	|
 | description 	      | String 	| UTF-8 string description about speaker             	|
 | name        	      | String 	| The name of the speaker                            	|
 | created_at  	      | String 	| UTC datetime of speaker registration               	|
@@ -642,7 +612,6 @@ Status: 200 OK
 ```json
 {
 	"id": 123456,
-	"id_str": "123456",
 	"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
 	"name": "Harold Ford",
 	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
@@ -682,21 +651,17 @@ POST https://api.get-native.com/study
 | Data Field 	| Type   	| Description                                                       	|
 |------------	|--------	|-------------------------------------------------------------------	|
 | id         	| Int64  	| The unique ID of the newly created study session                  	|
-| id_str     	| String 	| The string representation of the unique study session ID          	|
 | video      	| Video  	| The video object corresponding to the newly created study session 	|
 
 ```json
 {
 	"id": 123456,
-	"id_str": "123456",
 	"video": {
 		"cued": true,
 			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-			"id_str": "2244994983",
 			"id": 2244994983,
 			"speaker": {
 				"id": 123456,
-				"id_str": "123456",
 				"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
 				"name": "Harold Ford",
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
@@ -707,7 +672,6 @@ POST https://api.get-native.com/study
 			"lang": "en",
 			"topic": {
 				"id": 123456,
-				"id_str": "123456",
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 				"name": "Talking to customers"
 			},
@@ -720,8 +684,7 @@ POST https://api.get-native.com/study
 				"records": [
 					{
 						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-						"id": 456,
-						"id_str": "456"
+						"id": 456
 					}
 				],
 				"count": 10
@@ -822,7 +785,6 @@ Status: 200 OK
 	"records": [
 		{
 			"id": 1,
-			"id_str": "1",
 			"text": "This is a test answer",
 			"created_at": "Wed Jan 11 04:35:55 +0000 2017",
 			"question": {
@@ -876,7 +838,6 @@ Status: 200 OK
 	"records": [
 		{
 			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-			"id_str": "1",
 			"id": 1,
 			"speaker": {
 					"name": "Harold Ford"
@@ -892,7 +853,6 @@ Status: 200 OK
 		},
 		{
 			"created_at": "Wed Jan 11 04:35:55 +0000 2017",
-			"id_str": "2",
 			"id": 2,
 			"speaker": {
 					"name": "Benjamin Franklin"
@@ -930,7 +890,6 @@ GET https://api.get-native.com/videos/123456
 |---------------------|--------------|----------------------------------------------------------------------------------------------------|
 | cued           | Boolean      | _Nullable._ Whether the video has been cued by the user                                       |
 | description         | String       | A string description of the video.                                                                 |
-| id_str              | String       | String representation of unique video ID                                                           |
 | id                  | Int64        | Integer representation of unique video ID                                                          |
 | speaker             | Speaker      | The speaker of the video                                                                           |
 | topic               | Topic        | The topic to which the video belongs                                                               |
@@ -951,18 +910,15 @@ Status: 200 OK
 {
 	"cued": true,
 	"description": "In 'talking to customers,' Harold Ford describes the daily interactions between businessmen and clients.",
-	"id_str": "2244994983",
 	"id": 2244994983,
 	"speaker": {
 		"id": 123456,
-		"id_str": "123456",
 		"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
 		"name": "Harold Ford",
 		"thumbnail_image_url": "XXX"
 	},
 	"topic": {
 		"id": 123456,
-		"id_str": "123456",
 		"name": "Talking to customers"
 	},
 	"loop_count": 7156,
@@ -973,7 +929,6 @@ Status: 200 OK
 		"records": [
 			{
 				"id": 2,
-				"id_str": "2",
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 				"length": 68,
 				"loop_count": 25,
@@ -986,7 +941,6 @@ Status: 200 OK
 			},
 			{
 				"id": 3,
-				"id_str": "3",
 				"created_at": "Tue Jun 9 12:00:00 +0000 2015",
 				"length": 80,
 				"loop_count": 102,
@@ -1008,7 +962,6 @@ Status: 200 OK
 		"records": [
 			{
 				"id": 123,
-				"id_str": "123",
 				"text": "This is the English transcript. This is the text that will be displayed on the video detail page.",
 				"lang": "en",
 				"collocations": {
