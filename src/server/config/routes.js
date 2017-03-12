@@ -6,24 +6,24 @@
  */
 
 const express     = require('express');
-const controllers = require('../app/controllers');
+const ctrl = require('../app/controllers');
 const validations = require('./param-validation');
-const validate    = require('express-validation');
+const ev          = require('express-validation');
 
 const router = express.Router();
 
-router.post( '/login',                 validate(validations.auth.login),                                            controllers.auth.login);
-router.get(  '/categories',            validate(validations.categories.list),        controllers.auth.authenticate, controllers.categories.list);
-router.get(  '/cued_videos',                                                         controllers.auth.authenticate, controllers.cuedVideos.list);
-router.get(  '/study/stats',           validate(validations.study.stats),            controllers.auth.authenticate, controllers.study.stats);
-router.get(  '/study/writing_answers', validate(validations.study.writing_answers),  controllers.auth.authenticate, controllers.study.writing_answers);
-router.get(  '/videos',                                                              controllers.auth.authenticate, controllers.videos.list);
-router.get(  '/videos/:id',            validate(validations.videos.show),            controllers.auth.authenticate, controllers.videos.show);
-router.post( '/videos/:id/like',       validate(validations.videos.like),            controllers.auth.authenticate, controllers.videos.like);
-router.post( '/videos/:id/unlike',     validate(validations.videos.unlike),          controllers.auth.authenticate, controllers.videos.unlike);
-router.get(  '/account',               validate(validations.account.index),          controllers.auth.authenticate, controllers.account.index);
-router.patch('/account',               validate(validations.account.update),         controllers.auth.authenticate, controllers.account.update);
-router.post( '/account/password',      validate(validations.account.updatePassword), controllers.auth.authenticate, controllers.account.updatePassword);
-router.post( '/account/email',         validate(validations.account.updateEmail),    controllers.auth.authenticate, controllers.account.updateEmail);
+router.get(  '/account',               ev(validations.account.index),          ctrl.auth.authenticate, ctrl.account.index);
+router.patch('/account',               ev(validations.account.update),         ctrl.auth.authenticate, ctrl.account.update);
+router.post( '/account/password',      ev(validations.account.updatePassword), ctrl.auth.authenticate, ctrl.account.updatePassword);
+router.post( '/account/email',         ev(validations.account.updateEmail),    ctrl.auth.authenticate, ctrl.account.updateEmail);
+router.get(  '/categories',            ev(validations.categories.list),        ctrl.auth.authenticate, ctrl.categories.list);
+router.get(  '/cued_videos',                                                   ctrl.auth.authenticate, ctrl.cuedVideos.list);
+router.post( '/login',                 ev(validations.auth.login),                                     ctrl.auth.login);
+router.get(  '/study/stats',           ev(validations.study.stats),            ctrl.auth.authenticate, ctrl.study.stats);
+router.get(  '/study/writing_answers', ev(validations.study.writing_answers),  ctrl.auth.authenticate, ctrl.study.writing_answers);
+router.get(  '/videos',                                                        ctrl.auth.authenticate, ctrl.videos.list);
+router.get(  '/videos/:id',            ev(validations.videos.show),            ctrl.auth.authenticate, ctrl.videos.show);
+router.post( '/videos/:id/like',       ev(validations.videos.like),            ctrl.auth.authenticate, ctrl.videos.like);
+router.post( '/videos/:id/unlike',     ev(validations.videos.unlike),          ctrl.auth.authenticate, ctrl.videos.unlike);
 
 module.exports = router;
