@@ -55,13 +55,31 @@ HTTP/1.1 422 Unprocessable Entity
   "message": "Validation Failed",
   "errors": [
     {
-      "resource": "Issue",
-      "field": "title",
-      "code": "missing_field"
+      "entity": "Account",
+      "field": "email",
+      "code": "already_exists"
     }
   ]
 }
 ```
+
+An error object contains the following top-level properties:
+
+| Name   | Value                                                    |
+|--------|----------------------------------------------------------|
+| entity | The name of the entity that triggered the error.         |
+| field  | The name of the field that triggered the error.          |
+| code   | A code that let's you know what is wrong with the field. |
+
+Possible code values are as follows.
+
+Todo: Would numeric error codes be better? How should the client and server share the meaning of numeric error codes?
+
+| Name           | Description                                                              |
+|----------------|--------------------------------------------------------------------------|
+| missing_field  | A required field is missing.                                             |
+| invalid_format | The format of the field is invalid.                                      |
+| already_exists | Another entity already has the same value as this field (ex. user email) |
 
 **Handling of `DNT` Request Header**
 
