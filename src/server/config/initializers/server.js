@@ -5,15 +5,13 @@
  * Created by henryehly on 2017/01/18.
  */
 
-// Todo: Set default error handlers
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const nconf = require('nconf');
 const routes = require('../routes');
 const logger = require('../logger');
-const ev = require('express-validation');
+const middleware = require('../../app/middleware');
 
 module.exports = () => {
     return new Promise((resolve) => {
@@ -23,20 +21,18 @@ module.exports = () => {
             app.use(morgan('dev'));
         }
 
-        const cors = require('../cors');
-
         for (let x of ['x-powered-by', 'etag', 'views', 'view cache']) {
             app.disable(x);
         }
 
         app.use(bodyParser.json());
 
-        app.use(cors);
+        app.use(middleware['cors']);
+        app.use(middleware['param-validation']);
+
         app.use(routes);
 
-        app.use(logErrors);
-        app.use(clientErrorHandler);
-        app.use(fallbackErrorHandler);
+        app.use(middleware['error']);
 
         let port = nconf.get('PORT');
         let server = app.listen(port, () => {
@@ -45,17 +41,3 @@ module.exports = () => {
         });
     });
 };
-
-function logErrors(err, req, res, next) {
-    next(err);
-}
-
-function clientErrorHandler(err, req, res, next) {
-    if (err instanceof ev.ValidationError) {
-        return res.status(err.status).json(err);
-    }
-}
-
-function fallbackErrorHandler(err, req, res, next) {
-    next(err);
-}

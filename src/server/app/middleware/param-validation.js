@@ -5,9 +5,9 @@
  * Created by henryehly on 2017/01/22.
  */
 
-const Joi = require('joi');
+const Joi    = require('joi');
 
-module.exports = {
+const schema = {
     account: {
         index: {
             headers: {
@@ -99,3 +99,16 @@ module.exports = {
         }
     }
 };
+
+const ev     = require('express-validation');
+const router = require('express').Router();
+
+for (let ctrl in schema) {
+    for (let method in ctrl) {
+        if (ctrl.hasOwnProperty(method)) {
+            router.use(ev(method));
+        }
+    }
+}
+
+module.exports = router;
