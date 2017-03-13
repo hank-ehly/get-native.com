@@ -7,7 +7,7 @@
 
 const request = require('supertest');
 const assert = require('assert');
-const util = require('./spec-util');
+const util = require('../spec-util');
 
 describe('/categories', function() {
     let server        = null;
