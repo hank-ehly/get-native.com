@@ -18,16 +18,6 @@ module.exports.list = (req, res) => {
             }
         ]
     }).then(categories => {
-        // by calling categories[0].toJSON() you get:
-        // { id: 11,
-        //   name: 'Culture',
-        //   subcategories:
-        //       [ { name: 'libero non mattis' },
-        //         { name: 'justo lacinia' },
-        //         { name: 'luctus rutrum nulla tellus' },
-        //         { name: 'faucibus orci luctus' } ] }
-        // http://docs.sequelizejs.com/en/latest/api/instance/#tojson-object
-
         let response = {
             records: [],
             count: categories.length
@@ -51,5 +41,5 @@ module.exports.list = (req, res) => {
         }
 
         res.send(response);
-    }).catch(err => next(err));
+    });
 };

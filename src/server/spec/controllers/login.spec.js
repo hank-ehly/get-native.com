@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/03/08.
  */
 
-const util = require('./spec-util');
+const util = require('../spec-util');
 const request = require('supertest');
 const assert = require('assert');
 const url = require('url');
@@ -25,8 +25,8 @@ describe('/login', function() {
 
     beforeEach(function(done) {
         this.timeout(util.defaultTimeout);
-        delete require.cache[require.resolve('../index')];
-        require('../index').then(function(_) {
+        delete require.cache[require.resolve('../../index')];
+        require('../../index').then(function(_) {
             server = _;
             done();
         });
