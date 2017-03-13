@@ -42,6 +42,7 @@ module.exports.login = (req, res) => {
     });
 };
 
+// Todo: Move to /app/middleware
 module.exports.authenticate = (req, res, next) => {
     validateRequest(req, (err, token) => {
         if (err) throw new Error(err);

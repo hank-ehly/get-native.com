@@ -7,7 +7,7 @@
 
 const express = require('express');
 const nconf   = require('nconf');
-const logger  = require('./logger');
+const logger  = require('../../config/logger');
 const router  = express.Router();
 
 const corsHeaders = {
