@@ -43,13 +43,13 @@ describe('/categories', function() {
 
     it('should respond with an object containing a top-level \'count\' property of integer type', function() {
         return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/[0-9]+/).test(res.body.count));
+            assert(new RegExp(/^[0-9]+$/).test(res.body.count));
         });
     });
 
     it('should respond with an object containing a top-level \'records\' property of array type', function() {
         return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/[0-9]+/).test(res.body.records.length));
+            assert(new RegExp(/^[0-9]+$/).test(res.body.records.length));
         });
     });
 
@@ -61,13 +61,13 @@ describe('/categories', function() {
 
     it('should respond with an object containing a sub-level \'count\' property of integer type for the first object in the top-level \'records\' array', function() {
         return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/[0-9]+/).test(res.body.records[0].subcategories['count']));
+            assert(new RegExp(/^[0-9]+$/).test(res.body.records[0].subcategories['count']));
         });
     });
 
     it('should respond with an object containing a sub-level \'records\' property of array type for the first object in the top-level \'records\' array', function() {
         return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/[0-9]+/).test(res.body.records[0].subcategories.records['length']));
+            assert(new RegExp(/^[0-9]+$/).test(res.body.records[0].subcategories.records['length']));
         });
     });
 

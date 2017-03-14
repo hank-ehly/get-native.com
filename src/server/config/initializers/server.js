@@ -34,7 +34,7 @@ module.exports = () => {
 
         app.use(middleware['error']);
 
-        let port = nconf.get('PORT');
+        let port = nconf.get('port');
         let server = app.listen(port, () => {
             logger.info(`Listening on port ${port}`);
             resolve(server);
