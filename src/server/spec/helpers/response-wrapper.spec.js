@@ -77,18 +77,25 @@ describe('response-wrapper', function() {
             assert.throws(() => ResponseWrapper.deepWrap([{foo: {bar: ['baz']}}], ['jig']), ReferenceError);
         });
 
-        it('should wrap each sub-property', () => {
-            let obj = [
-                {
-                    name: 'Hank',
-                    hobbies: [{name: 'Table Tennis'}, {name: 'Programming'}],
-                    friends: [{name: 'Pat'}, {name: 'Jackson'}, {name: 'Sean'}]
-                }
-            ];
+        it('should wrap each sub-property so that each sub-property has a \'records\' array', () => {
+            let obj = [{
+                name: 'Hank',
+                hobbies: [{name: 'Table Tennis'}, {name: 'Programming'}],
+                friends: [{name: 'Pat'}, {name: 'Jackson'}, {name: 'Sean'}]
+            }];
 
             let result = ResponseWrapper.deepWrap(obj, ['hobbies', 'friends']);
-
             assert.deepEqual(obj[0], result.records[0]);
+        });
+
+        it('should wrap each sub-property to that each sub-property has a \'count\' integer property', () => {
+            let obj = [{
+                name: 'Hank',
+                hobbies: [{name: 'Table Tennis'}, {name: 'Programming'}],
+                friends: [{name: 'Pat'}, {name: 'Jackson'}, {name: 'Sean'}]
+            }];
+
+            let result = ResponseWrapper.deepWrap(obj, ['hobbies', 'friends']);
             assert.equal(obj.length, result.count);
         });
     });
