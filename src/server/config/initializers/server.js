@@ -28,11 +28,12 @@ module.exports = () => {
         app.use(bodyParser.json());
 
         app.use(middleware['cors']);
-        app.use(middleware['param-validation']);
 
         app.use(routes);
 
-        app.use(middleware['error']);
+        app.use(middleware['error'].logErrors);
+        app.use(middleware['error'].clientErrorHandler);
+        app.use(middleware['error'].fallbackErrorHandler);
 
         let port = nconf.get('port');
         let server = app.listen(port, () => {
