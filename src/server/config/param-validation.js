@@ -7,7 +7,7 @@
 
 const Joi = require('joi');
 
-const config = {
+module.exports = {
     account: {
         index: {
             headers: {
@@ -51,7 +51,7 @@ const config = {
         }
     },
     categories: {
-        list: {
+        index: {
             headers: {
                 authorization: Joi.string().required()
             }
@@ -99,14 +99,3 @@ const config = {
         }
     }
 };
-
-const ev     = require('express-validation');
-const router = require('express').Router();
-
-for (let rootLevelObject in config) {
-    for (let schema of rootLevelObject) {
-        router.use(ev(schema));
-    }
-}
-
-module.exports = router;

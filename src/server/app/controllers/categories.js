@@ -8,7 +8,7 @@
 const models = require('../models');
 const ResponseWrapper = require('../helpers')['response-wrapper'];
 
-module.exports.list = (req, res) => {
+module.exports.index = (req, res) => {
     models.Category.findAll({
         attributes: ['id', 'name'],
         include: [

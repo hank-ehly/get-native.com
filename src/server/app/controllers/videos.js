@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/01/18.
  */
 
-module.exports.list = (req, res) => {
+module.exports.index = (req, res) => {
     let mock = require('../../mock/videos.json');
     res.send(mock);
 };
