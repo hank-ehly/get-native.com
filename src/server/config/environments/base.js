@@ -27,5 +27,7 @@ let privateKey = fs.readFile(secretsDir + '/id_rsa', (err, data) => {
 });
 
 nconf.set('env', process.env.NODE_ENV.toLowerCase());
-nconf.set('PORT', 3000);
+
+nconf.defaults({port: 3000});
+
 nconf.set('allow-origin', '*');

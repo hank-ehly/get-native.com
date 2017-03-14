@@ -6,6 +6,7 @@
  */
 
 const models = require('../models');
+const EntityList = require('../helpers/entity-list');
 
 module.exports.list = (req, res) => {
     models.Category.findAll({
@@ -18,28 +19,7 @@ module.exports.list = (req, res) => {
             }
         ]
     }).then(categories => {
-        let response = {
-            records: [],
-            count: categories.length
-        };
-
-        for (let i = 0; i < categories.length; i++) {
-            response.records[i] = {
-                id: categories[i].id,
-                name: categories[i].name,
-                subcategories: {
-                    records: [],
-                    count: categories[i].subcategories.length
-                },
-            };
-
-            for (let j = 0; j < categories[i].subcategories.length; j++) {
-                response.records[i].subcategories.records[j] = {
-                    name: categories[i].subcategories[j].name
-                };
-            }
-        }
-
+        let response = EntityList.deepWrap(categories, ['subcategories']);
         res.send(response);
     });
 };
