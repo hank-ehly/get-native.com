@@ -8,6 +8,7 @@
 const models = require('../models');
 const WritingAnswer = models.WritingAnswer;
 const WritingQuestion = models.WritingQuestion;
+const ResponseWrapper = require('../helpers')['response-wrapper'];
 
 module.exports.stats = (req, res) => {
     let mock = require('../../mock/study_stats.json');
@@ -27,14 +28,8 @@ module.exports.writing_answers = (req, res) => {
         ],
         limit: 10
     }).then(answers => {
-        let response = {
-            count: answers.length,
-            records: answers
-        };
-
-        res.send(response);
-    }).catch(error => {
-        // Todo: Send decided error response
-        res.send(error);
+        let answersAsJson = answers.map(a => a.toJSON());
+        let wrappedResponse = ResponseWrapper.wrap(answersAsJson);
+        res.send(wrappedResponse);
     });
 };
