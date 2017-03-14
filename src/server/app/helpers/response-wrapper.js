@@ -1,5 +1,5 @@
 /**
- * entity-list
+ * response-wrapper
  * get-native.com
  *
  * Created by henryehly on 2017/03/14.
@@ -11,18 +11,15 @@ module.exports = {
     wrap(list) {
         let listType = util.typeof(list);
         if (listType !== 'array') {
-            throw new TypeError(`Argument must be an array. Received ${listType}`);
+            throw new TypeError(`Argument must be an array. Received: ${listType}`);
         }
 
-        let wrappedList = {
-            records: [],
-            count: 0
-        };
+        let wrappedList = {records: [], count: 0};
 
         for (let item of list) {
             let itemType = util.typeof(item);
-            if (util.typeof(item) !== 'object') {
-                throw new TypeError(`Item must be an object. Received ${itemType}`);
+            if (itemType !== 'object') {
+                throw new TypeError(`Item must be an object. Received: ${itemType}`);
             }
 
             wrappedList.records.push(item);
@@ -56,8 +53,6 @@ module.exports = {
                 record[p] = this.wrap(record[p]);
             }
         }
-
-        console.log(wrappedList);
 
         return wrappedList;
     }

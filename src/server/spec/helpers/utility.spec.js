@@ -5,8 +5,7 @@
  * Created by henryehly on 2017/03/14.
  */
 
-// todo: use barrel
-const util = require('../../app/helpers/utility');
+const util = require('../../app/helpers')['utility'];
 const assert = require('assert');
 
 describe('utility', () => {
@@ -28,5 +27,9 @@ describe('utility', () => {
 
     it('should return \'number\' if passed a number', () => {
         assert.equal(util.typeof(90), 'number');
+    });
+
+    it('should return \'function\' if passed a function', () => {
+        assert.equal(util.typeof(function() {}), 'function');
     });
 });

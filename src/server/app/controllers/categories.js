@@ -6,7 +6,7 @@
  */
 
 const models = require('../models');
-const EntityList = require('../helpers/entity-list');
+const ResponseWrapper = require('../helpers')['response-wrapper'];
 
 module.exports.list = (req, res) => {
     models.Category.findAll({
@@ -19,7 +19,8 @@ module.exports.list = (req, res) => {
             }
         ]
     }).then(categories => {
-        let response = EntityList.deepWrap(categories, ['subcategories']);
-        res.send(response);
+        let categoriesAsJson = categories.map(c => c.toJSON());
+        let wrappedResponse = ResponseWrapper.deepWrap(categoriesAsJson, ['subcategories']);
+        res.send(wrappedResponse);
     });
 };

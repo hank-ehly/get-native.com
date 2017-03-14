@@ -14,9 +14,6 @@ const corsHeaders = {
     'Access-Control-Allow-Origin': nconf.get('allow-origin'),
     'Access-Control-Expose-Headers': 'X-GN-Auth-Token, X-GN-Auth-Expire',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-
-    // 安全ではないメソッドが、コントロールの対象となります。（PUT, DELETE など）
-    // 単純なメソッドは、常に許可されます。（GET, POST, HEAD, OPTIONS など）
     'Access-Control-Allow-Methods': 'PATCH'
 };
 
