@@ -43,7 +43,7 @@
     "serve.compodoc": "node_modules/.bin/compodoc -s",
     "serve.dev.api": "/usr/bin/env pm2 start ecosystem.config.js --no-daemon -i max --only api.dev",
     "tests.all": "npm test && npm run test.api && npm run e2e.ci",
-    "test.api": "mocha -R spec --recursive  src/server/spec/**/*.spec.js",
+    "test.api": "mocha -R spec --recursive  src/server/spec",
     "serve.docs": "test `which mkdocs` && mkdocs serve",
     "sequelize": "sequelize",
     "mocha": "mocha"
