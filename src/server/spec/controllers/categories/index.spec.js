@@ -1,5 +1,5 @@
 /**
- * categories
+ * index
  * get-native.com
  *
  * Created by henryehly on 2017/03/02.
@@ -7,9 +7,9 @@
 
 const request = require('supertest');
 const assert = require('assert');
-const util = require('../spec-util');
+const util = require('../../spec-util');
 
-describe('/categories', function() {
+describe('GET /categories', function() {
     let server        = null;
     let authorization = null;
 

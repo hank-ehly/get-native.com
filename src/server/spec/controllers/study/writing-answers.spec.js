@@ -7,10 +7,10 @@
 
 const request = require('supertest');
 const assert  = require('assert');
-const util    = require('../spec-util');
-const db      = require('../../app/models');
+const util    = require('../../spec-util');
+const db      = require('../../../app/models');
 
-describe('/study/writing_answers', function() {
+describe('GET /study/writing_answers', function() {
     let server = null;
     let authorization = null;
     let user = null;
