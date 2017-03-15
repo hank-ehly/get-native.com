@@ -5,7 +5,8 @@
  * Created by henryehly on 2017/03/08.
  */
 
-const util = require('../../spec-util');
+const SpecUtil = require('../../spec-util');
+const Utility  = require('../../../app/helpers').Utility;
 const request = require('supertest');
 const assert = require('assert');
 const url = require('url');
@@ -19,12 +20,12 @@ describe('POST /login', function() {
     };
 
     before(function(done) {
-        this.timeout(util.defaultTimeout);
-        util.seedAll(done);
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.seedAll(done);
     });
 
     beforeEach(function(done) {
-        this.timeout(util.defaultTimeout);
+        this.timeout(SpecUtil.defaultTimeout);
         delete require.cache[require.resolve('../../../index')];
         require('../../../index').then(function(_) {
             server = _;
@@ -37,8 +38,8 @@ describe('POST /login', function() {
     });
 
     after(function(done) {
-        this.timeout(util.defaultTimeout);
-        util.seedAllUndo(done);
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.seedAllUndo(done);
     });
 
     it('should respond with 200 OK', function(done) {
@@ -106,7 +107,7 @@ describe('POST /login', function() {
 
     it('should respond with an object containing the user\'s preference for using the profile picture or silhouette image', function() {
         return request(server).post('/login').send(credentials).then(function(res) {
-            assert(new RegExp(/[a-z]+/).test(res.body.is_silhouette_picture));
+            assert.equal(Utility.typeof(res.body.is_silhouette_picture), 'boolean');
         });
     });
 

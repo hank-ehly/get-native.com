@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/02/03.
  */
 
-const util    = require('../helpers')['utility'];
+const util    = require('../helpers').Utility;
 const Account = require('../models').Account;
 const jwt     = require('jsonwebtoken');
 
@@ -16,7 +16,7 @@ module.exports.index = (req, res) => {
     Account.findById(accountId, {
         attributes: {exclude: ['password', 'created_at', 'updated_at']}
     }).then((account) => {
-        let accountAsJson = account.toJSON();
+        const accountAsJson = account.toJSON();
         res.send(accountAsJson);
     });
 };
