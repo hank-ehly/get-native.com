@@ -67,8 +67,9 @@ module.exports = {
             headers: {
                 authorization: Joi.string().required()
             },
-            params: {
-                since: Joi.number().integer()
+            query: {
+                since: Joi.date().max('now').timestamp('javascript'),
+                max_id: Joi.number().integer().min(1)
             }
         }
     },
