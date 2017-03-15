@@ -16,8 +16,22 @@ module.exports.stats = (req, res) => {
 };
 
 module.exports.writing_answers = (req, res) => {
+    const conditions = {};
+
+    if (req.query.max_id) {
+        conditions.id = {
+            $gte: +req.query.max_id
+        };
+    }
+
+    if (req.query.since) {
+        conditions.created_at = {
+            $gte: new Date(req.query.since)
+        }
+    }
+
     WritingAnswer.findAll({
-        where: {},
+        where: conditions,
         attributes: ['id', 'answer', 'created_at'],
         include: [
             {

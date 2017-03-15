@@ -96,14 +96,27 @@ describe('/study/writing_answers', function() {
         });
     });
 
-    it('should only return 10 or less answers by default', function() {
+    it('should return a 400 response if the \'since\' query parameter value is a future date', (done) => {
+        let twoDaysLater = new Date().getTime() + (1000 * 60 * 60 * 24 * 2);
+        request(server).get(`/study/writing_answers?since=${twoDaysLater}`).set('authorization', authorization).expect(400, done);
+    });
+
+    it('should return a 400 response if the \'max_id\' query param value is 0', (done) => {
+        request(server).get('/study/writing_answers?max_id=0').set('authorization', authorization).expect(400, done);
+    });
+
+    it('should return a 400 response if the \'max_id\' query param value is a negative number', (done) => {
+        request(server).get('/study/writing_answers?max_id=-1000').set('authorization', authorization).expect(400, done);
+    });
+
+    it('should only return 10 or less answers', function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
             assert(res.body.records.length <= 10, res.body.records.length);
         });
     });
 
-    it('should return 10 or less answers whose IDs are less than the \'max_id\' query parameter', function() {
-        let query = `
+    it('should return only records whose IDs are less than the \'max_id\' query parameter', function() {
+        let allUserWritingAnswers = `
             SELECT * 
             FROM writing_answers 
             WHERE study_session_id IN (
@@ -113,10 +126,11 @@ describe('/study/writing_answers', function() {
             );
         `;
 
-        return db.sequelize.query(query).then(function(answers) {
-            let midWritingAnswerId = answers[answers.length / 2].id;
+        return db.sequelize.query(allUserWritingAnswers).then(function(answers) {
+            let midWritingAnswerId = answers[0][Math.floor(answers[0].length / 2)].id;
             return request(server).get(`/study/writing_answers?max_id=${midWritingAnswerId}`).set('authorization', authorization).then(function(res) {
-                assert(res.body.records.length <= 10);
+                let lastId = res.body.records[res.body.count - 1].id;
+                assert(lastId >= midWritingAnswerId);
             });
         });
     });
