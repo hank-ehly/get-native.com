@@ -42,7 +42,6 @@ module.exports.login = (req, res) => {
     });
 };
 
-// Todo: Move to /app/middleware
 module.exports.authenticate = (req, res, next) => {
     validateRequest(req, (err, token) => {
         if (err) throw new Error(err);
@@ -109,5 +108,8 @@ function generateTokenForAccountId(accountId, callback) {
 
 function setAuthHeadersOnResponseWithToken(res, token) {
     res.set('X-GN-Auth-Token', token);
-    res.set('X-GN-Auth-Expire', (Date.now() + (1000 * 60 * 60)).toString());
+
+    const oneHour = (1000 * 60 * 60);
+    const oneHourFromNow = Date.now() + oneHour;
+    res.set('X-GN-Auth-Expire', oneHourFromNow.toString());
 }
