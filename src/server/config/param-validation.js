@@ -5,6 +5,8 @@
  * Created by henryehly on 2017/01/22.
  */
 
+// todo: Regex validation of Authorization header
+
 const Joi = require('joi');
 
 module.exports = {
@@ -57,6 +59,16 @@ module.exports = {
             }
         }
     },
+    speakers: {
+        show: {
+            headers: {
+                authorization: Joi.string().required()
+            },
+            params: {
+                id: Joi.number().integer().min(1).required()
+            }
+        }
+    },
     study: {
         stats: {
             headers: {
@@ -79,7 +91,7 @@ module.exports = {
                 authorization: Joi.string().required()
             },
             params: {
-                id: Joi.number().integer().required()
+                id: Joi.number().integer().min(1).required()
             }
         },
         like: {
@@ -87,7 +99,7 @@ module.exports = {
                 authorization: Joi.string().required()
             },
             params: {
-                id: Joi.number().integer().required()
+                id: Joi.number().integer().min(1).required()
             }
         },
         unlike: {
@@ -95,7 +107,7 @@ module.exports = {
                 authorization: Joi.string().required()
             },
             params: {
-                id: Joi.number().integer().required()
+                id: Joi.number().integer().min(1).required()
             }
         }
     }
