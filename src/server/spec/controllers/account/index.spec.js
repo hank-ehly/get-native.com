@@ -5,10 +5,11 @@
  * Created by henryehly on 2017/03/15.
  */
 
-const util    = require('../../spec-util');
-const request = require('supertest');
-const assert  = require('assert');
-const url     = require('url');
+const SpecUtil = require('../../spec-util');
+const request  = require('supertest');
+const assert   = require('assert');
+const url      = require('url');
+const Utility  = require('../../../app/helpers').Utility;
 
 describe('GET /account', () => {
     let server        = null;
@@ -16,13 +17,13 @@ describe('GET /account', () => {
     let emailRegex = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
 
     before(function(done) {
-        this.timeout(util.defaultTimeout);
-        util.seedAll(done);
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.seedAll(done);
     });
 
     beforeEach(function(done) {
-        this.timeout(util.defaultTimeout);
-        util.login(function(_server, _authorization) {
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.login(function(_server, _authorization) {
             server = _server;
             authorization = _authorization;
             done();
@@ -34,8 +35,8 @@ describe('GET /account', () => {
     });
 
     after(function(done) {
-        this.timeout(util.defaultTimeout);
-        util.seedAllUndo(done);
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.seedAllUndo(done);
     });
 
     it('should respond with 200 OK', function(done) {
@@ -89,7 +90,7 @@ describe('GET /account', () => {
 
     it('should respond with an object containing the user\'s default study language code', function() {
         return request(server).get('/account').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/[a-z]+/).test(res.body.default_study_language_code));
+            assert(new RegExp(/^[a-z]+$/).test(res.body.default_study_language_code));
         });
     });
 
@@ -103,7 +104,7 @@ describe('GET /account', () => {
 
     it('should respond with an object containing the user\'s preference for using the profile picture or silhouette image', function() {
         return request(server).get('/account').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/[a-z]+/).test(res.body.is_silhouette_picture));
+            assert.equal(Utility.typeof(res.body.is_silhouette_picture), 'boolean');
         });
     });
 });

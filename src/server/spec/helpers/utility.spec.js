@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/03/14.
  */
 
-const util = require('../../app/helpers')['utility'];
+const util = require('../../app/helpers').Utility;
 const assert = require('assert');
 
 describe('utility', () => {

@@ -8,7 +8,7 @@
 const models = require('../models');
 const WritingAnswer = models.WritingAnswer;
 const WritingQuestion = models.WritingQuestion;
-const ResponseWrapper = require('../helpers')['response-wrapper'];
+const ResponseWrapper = require('../helpers').ResponseWrapper;
 
 module.exports.stats = (req, res) => {
     let mock = require('../../mock/study_stats.json');
