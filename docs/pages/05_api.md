@@ -113,34 +113,29 @@ GET https://api.get-native.com/account
 
 **Response**
 
-| Data Field                    | Type           | Description                                                                |
-|-------------------------------|----------------|----------------------------------------------------------------------------|
-| created_at                    | String         | UTC datetime of account creation                                           |
-| profile_image_url             | String         | HTTPS URI for user profile image                                           |
-| default_profile_image         | Boolean        | If true, the user has not uploaded their own image                         |
-| email                         | String         | The user's email address                                                   |
-| email_verified                | Boolean        | Whether the user has verified their email address.                         |
-| email_notifications_enabled   | Boolean        | Whether the user has opted to receive email notifications.                 |
-| browser_notifications_enabled | Boolean        | Whether the user allows browser notifications.                             |
-| default_study_language        | String         | BCP 47 code for the language of videos that the user will see after login. |
-| site_language ※               | String         | BCP 47 code for the user's preferred site language.                        |
-
-※　`site_language` is reserved for future use. As of 2017/02/03, it's value is fixed at the default `en`.
+| Data Field                    | Type           | Description                                                        |
+|-------------------------------|----------------|--------------------------------------------------------------------|
+| id                            | Int64          |  Integer representation of unique user ID                          |
+| email                         | String         |  The user's email address                                          |
+| browser_notifications_enabled | Boolean        |  Whether the user allows browser notifications.                    |
+| email_notifications_enabled   | Boolean        |  Whether the user allows email notifications.                      |
+| default_study_language_code   | String         |  BCP 47 code for user default study language                       |
+| picture_url                   | String         |  HTTPS URI for user profile image                                  |
+| is_silhouette_picture         | Boolean        | If true, the user has not uploaded their own image                 |
 
 ```
 Status: 200 OK
 ```
 ```json
 {
-	"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-	"profile_image_url": "...",
-	"default_profile_image": false,
-	"email": "john.doe@example.com",
-	"email_verified": true,
-	"email_notifications_enabled": true,
-	"browser_notifications_enabled": false,
-	"default_study_language": "en",
-	"site_language": "en"
+    "id": 2244994983,
+    "email": "test@email.com",
+    "browser_notifications_enabled": false,
+    "email_notifications_enabled": false,
+    "email_verified": false,
+    "default_study_language_code": "en",
+    "picture_url": "https://dummyimage.com/100x100.png/5fa2dd/ffffff",
+    "is_silhouette_picture": false
 }
 ```
 
