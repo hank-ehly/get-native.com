@@ -5,12 +5,12 @@
  * Created by henryehly on 2017/03/08.
  */
 
-const util = require('../spec-util');
+const util = require('../../spec-util');
 const request = require('supertest');
 const assert = require('assert');
 const url = require('url');
 
-describe('/login', function() {
+describe('POST /login', function() {
     let server = null;
     const emailRegex = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
     const credentials = {
@@ -25,8 +25,8 @@ describe('/login', function() {
 
     beforeEach(function(done) {
         this.timeout(util.defaultTimeout);
-        delete require.cache[require.resolve('../../index')];
-        require('../../index').then(function(_) {
+        delete require.cache[require.resolve('../../../index')];
+        require('../../../index').then(function(_) {
             server = _;
             done();
         });
@@ -62,7 +62,7 @@ describe('/login', function() {
 
     it('should respond with an object containing the user\'s ID', function() {
         return request(server).post('/login').send(credentials).then(function(res) {
-            assert(new RegExp(/[0-9]+/).test(res.body.id));
+            assert(new RegExp(/^[0-9]+$/).test(res.body.id));
         });
     });
 
