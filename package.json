@@ -45,7 +45,8 @@
     "tests.all": "npm test && npm run test.api && npm run e2e.ci",
     "test.api": "mocha -R spec --recursive  src/server/spec/**/*.spec.js",
     "serve.docs": "test `which mkdocs` && mkdocs serve",
-    "sequelize": "sequelize"
+    "sequelize": "sequelize",
+    "mocha": "mocha"
   },
   "author": "Hank Ehly <henry.ehly@gmail.com>",
   "license": "UNLICENSED",
