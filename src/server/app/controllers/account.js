@@ -5,9 +5,20 @@
  * Created by henryehly on 2017/02/03.
  */
 
+const util    = require('../helpers')['utility'];
+const Account = require('../models').Account;
+const jwt     = require('jsonwebtoken');
+
 module.exports.index = (req, res) => {
-    let mock = require('../../mock/account.json');
-    res.send(mock);
+    let authToken = util.extractAuthTokenFromRequest(req);
+    let accountId = jwt.decode(authToken).sub;
+
+    Account.findById(accountId, {
+        attributes: {exclude: ['password', 'created_at', 'updated_at']}
+    }).then((account) => {
+        let accountAsJson = account.toJSON();
+        res.send(accountAsJson);
+    });
 };
 
 module.exports.update = (req, res) => {
