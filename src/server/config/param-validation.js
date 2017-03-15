@@ -8,7 +8,7 @@
 const Joi = require('joi');
 
 module.exports = {
-    account: {
+    accounts: {
         index: {
             headers: {
                 authorization: Joi.string().required()
