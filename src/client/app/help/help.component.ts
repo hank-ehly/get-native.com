@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Faq, FaqService } from './faq/index';
 
 @Component({

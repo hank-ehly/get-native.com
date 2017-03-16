@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, trigger, transition, style, animate, keyframes, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 
 import { Languages, ToolbarService, Language, UserService } from '../../core/index';
 

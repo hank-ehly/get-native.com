@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/11/13.
  */
 
-import { Component, style, keyframes, animate, transition, trigger, Input, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { style, keyframes, animate, transition, trigger } from '@angular/animations';
 
 import { LoginModalService, Logger } from '../core/index';
 import { Subscription } from 'rxjs/Subscription';
