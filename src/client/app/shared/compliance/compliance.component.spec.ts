@@ -8,6 +8,7 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ComplianceComponent } from './compliance.component';
 import { Logger } from '../../core/logger/logger';
@@ -26,7 +27,7 @@ export function main() {
     describe('ComplianceComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [RouterModule.forRoot([])],
+                imports: [RouterModule.forRoot([]), BrowserAnimationsModule],
                 declarations: [ComplianceComponent],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},

@@ -9,6 +9,7 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { LibraryDetailComponent } from './library-detail.component';
 import { SharedModule } from '../shared/shared.module';
@@ -31,7 +32,7 @@ export function main() {
     describe('LibraryDetailComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [SharedModule, RouterModule.forRoot([])],
+                imports: [SharedModule, RouterModule.forRoot([]), BrowserAnimationsModule],
                 declarations: [LibraryDetailComponent],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},

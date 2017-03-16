@@ -7,6 +7,7 @@
 
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from '../shared/shared.module';
 import { HelpComponent } from './help.component';
@@ -21,7 +22,7 @@ export function main() {
     describe('HelpComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [SharedModule],
+                imports: [SharedModule, BrowserAnimationsModule],
                 declarations: [HelpComponent],
                 providers: [FaqService]
             }).compileComponents().then(() => {
