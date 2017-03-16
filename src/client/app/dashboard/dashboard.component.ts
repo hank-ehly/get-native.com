@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/11/28.
  */
 
-import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { trigger, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
 import { URLSearchParams } from '@angular/http';
 

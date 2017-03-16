@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/12/05.
  */
 
-import { Component, OnInit, trigger, transition, style, animate } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 import { Logger, HttpService, NavbarService, ToolbarService, CategoryListService, APIHandle } from '../core/index';
 import { VideoSearchComponent } from '../shared/index';

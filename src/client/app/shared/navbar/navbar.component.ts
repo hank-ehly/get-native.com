@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnInit, Input, trigger, transition, animate, style, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
+import { trigger, transition, animate, style } from '@angular/animations';
 import { Location } from '@angular/common';
 
 import { LoginModalService, NavbarService, Logger } from '../../core/index';

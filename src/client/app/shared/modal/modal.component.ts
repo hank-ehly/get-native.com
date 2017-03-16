@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import { Component, trigger, transition, animate, keyframes, style, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { trigger, transition, animate, keyframes, style } from '@angular/animations';
 
 import { Logger } from '../../core/index';
 

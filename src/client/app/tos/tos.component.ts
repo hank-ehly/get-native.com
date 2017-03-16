@@ -6,6 +6,7 @@
  */
 
 import { Component } from '@angular/core';
+
 import { Config } from '../shared/index';
 
 @Component({
@@ -14,7 +15,6 @@ import { Config } from '../shared/index';
     templateUrl: 'tos.component.html',
     styleUrls: ['tos.component.css']
 })
-
 export class TOSComponent {
     moderator: string = Config.moderator;
     lastEdited: string = '2016-11-11';

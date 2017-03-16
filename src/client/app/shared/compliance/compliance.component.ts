@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/11/11.
  */
 
-import { Component, trigger, keyframes, style, animate, transition, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { trigger, keyframes, style, animate, transition } from '@angular/animations';
 
 import { LocalStorageService, kAcceptLocalStorage, LocalStorageProtocol, LocalStorageItem, Logger } from '../../core/index';
 
