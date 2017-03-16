@@ -44,50 +44,50 @@ describe('GET /study/writing_answers', function() {
             .expect(200, done);
     });
 
-    it('should respond with an object containing a top-level \'records\' array value', function() {
+    it(`should respond with an object containing a top-level 'records' array value`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/[0-9]+/).test(res.body.records.length));
+            assert(new RegExp(/^[0-9]+$/).test(res.body.records.length));
         });
     });
 
-    it('should respond with an object containing a top-level \'count\' integer value', function() {
+    it(`should respond with an object containing a top-level 'count' integer value`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/[0-9]+/).test(res.body.count));
+            assert(new RegExp(/^[0-9]+$/).test(res.body.count));
         });
     });
 
-    it('should have the same number of records as shown in \'count\'', function() {
+    it(`should have the same number of records as shown in 'count'`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
             assert(res.body.count === res.body.records.length);
         });
     });
 
-    it('should have an non-null \'id\' number for each record', function() {
+    it(`should have an non-null 'id' number for each record`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/[0-9]+/).test(res.body.records[0].id));
+            assert(new RegExp(/^[0-9]+$/).test(res.body.records[0].id));
         });
     });
 
-    it('should have a non-null \'answer\' string for each record', function() {
+    it(`should have a non-null 'answer' string for each record`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
             assert(res.body.records[0].answer.length > 0);
         });
     });
 
-    it('should have a non-null \'created_at\' datetime for each record', function() {
+    it(`should have a non-null 'created_at' datetime for each record`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
             let date = new Date(res.body.records[0].created_at);
             assert(date.toDateString() !== 'Invalid Date');
         });
     });
 
-    it('should have a \'writing_question\' object with a non-null \'text\' string for each record', function() {
+    it(`should have a 'writing_question' object with a non-null 'text' string for each record`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(res) {
             assert(res.body.records[0]['writing_question'].text.length > 0);
         });
     });
 
-    it('should respond with records whose creation date is equal to or greater than the \'since\' query parameter', function() {
+    it(`should respond with records whose creation date is equal to or greater than the 'since' query parameter`, function() {
         let thirtyDaysAgo = new Date().getTime() - (1000 * 60 * 60 * 24 * 30);
         return request(server).get(`/study/writing_answers?since=${thirtyDaysAgo}`).set('authorization', authorization).then(function(res) {
             let lastRecord = res.body.records[res.body.count - 1];
@@ -96,16 +96,16 @@ describe('GET /study/writing_answers', function() {
         });
     });
 
-    it('should return a 400 response if the \'since\' query parameter value is a future date', (done) => {
+    it(`should return a 400 response if the 'since' query parameter value is a future date`, (done) => {
         let twoDaysLater = new Date().getTime() + (1000 * 60 * 60 * 24 * 2);
         request(server).get(`/study/writing_answers?since=${twoDaysLater}`).set('authorization', authorization).expect(400, done);
     });
 
-    it('should return a 400 response if the \'max_id\' query param value is 0', (done) => {
+    it(`should return a 400 response if the 'max_id' query param value is 0`, (done) => {
         request(server).get('/study/writing_answers?max_id=0').set('authorization', authorization).expect(400, done);
     });
 
-    it('should return a 400 response if the \'max_id\' query param value is a negative number', (done) => {
+    it(`should return a 400 response if the 'max_id' query param value is a negative number`, (done) => {
         request(server).get('/study/writing_answers?max_id=-1000').set('authorization', authorization).expect(400, done);
     });
 
@@ -115,7 +115,7 @@ describe('GET /study/writing_answers', function() {
         });
     });
 
-    it('should return only records whose IDs are less than the \'max_id\' query parameter', function() {
+    it(`should return only records whose IDs are less than or equal to the 'max_id' query parameter`, function() {
         let allUserWritingAnswers = `
             SELECT * 
             FROM writing_answers 
