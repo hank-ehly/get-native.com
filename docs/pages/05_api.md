@@ -817,8 +817,8 @@ GET https://api.get-native.com/videos?q=Business%20Ethics&lang=en
 
 | Parameter       	| Description                                                                                                                      	| Required 	| Default 	|
 |-----------------	|----------------------------------------------------------------------------------------------------------------------------------	|:--------:	|---------	|
-| lang            	| Restricts videos to the given language, specified by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code. 	|          	|         	|
-| count           	| The number of videos to include in the response.                                                                                 	|          	|         	|
+| lang            	| Restricts videos to the given language, specified by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code. 	|          	|    en    	|
+| count           	| The number of videos to include in the response.                                                                                 	|          	|    9    	|
 | max_id          	| Returns only videos with an ID less than or equal to the max_id.                                                                 	|          	|         	|
 | topic_id          | Restricts videos to the given topic.                                                                                              |           |           |
 | category_id       | Restricts videos to the given category. If the topic_id parameter is also included, the category_id parameter is ignored.         |           |           |
