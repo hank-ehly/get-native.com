@@ -1,5 +1,5 @@
 /**
- * tooltip.component.spec
+ * toolbar.component.spec
  * get-native.com
  *
  * Created by henryehly on 2016/12/14.
@@ -9,6 +9,7 @@ import { DebugElement } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToolbarComponent } from './toolbar.component';
 import { Logger } from '../../core/logger/logger';
@@ -32,7 +33,7 @@ export function main() {
     describe('ToolbarComponent', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
-                imports: [RouterModule.forRoot([])],
+                imports: [RouterModule.forRoot([]), BrowserAnimationsModule],
                 declarations: [ToolbarComponent],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},
@@ -51,12 +52,12 @@ export function main() {
             });
         }));
 
-        it('should hide the tooltip by default', () => {
+        it('should hide the toolbar by default', () => {
             de = util.getDebugEl('.toolbar__tooltip-languages');
             expect(de).toBeNull();
         });
 
-        it('should initialize the tooltip after the visibility property becomes \'true\'', () => {
+        it('should initialize the toolbar after the visibility property becomes \'true\'', () => {
             comp.isTooltipVisible = true;
             fixture.detectChanges();
 
