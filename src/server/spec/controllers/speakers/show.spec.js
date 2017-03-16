@@ -47,6 +47,23 @@ describe('GET /speakers/:id', () => {
         specUtil.seedAllUndo(done);
     });
 
+    describe('headers', function() {
+        it('should respond with an X-GN-Auth-Token header', function() {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert(speaker.header['x-gn-auth-token'].length > 0);
+            });
+        });
+
+        it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                let timestamp = +speaker.header['x-gn-auth-expire'];
+                let date = new Date(timestamp);
+                let dateString = date.toDateString();
+                assert(dateString !== 'Invalid Date');
+            });
+        });
+    });
+
     it('should return a single object', () => {
         return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
             assert.equal(Utility.typeof(speaker.body), 'object');

@@ -42,23 +42,25 @@ describe('POST /login', function() {
         SpecUtil.seedAllUndo(done);
     });
 
+    describe('headers', function() {
+        it('should respond with an X-GN-Auth-Token header', function() {
+            return request(server).post('/login').send(credentials).then(function(res) {
+                assert(res.header['x-gn-auth-token'].length > 0);
+            });
+        });
+
+        it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
+            return request(server).post('/login').send(credentials).then(function(res) {
+                let timestamp = +res.header['x-gn-auth-expire'];
+                let date = new Date(timestamp);
+                let dateString = date.toDateString();
+                assert(dateString !== 'Invalid Date');
+            });
+        });
+    });
+
     it('should respond with 200 OK', function(done) {
         request(server).post('/login').send(credentials).expect(200, done);
-    });
-
-    it('should respond with an X-GN-Auth-Token header', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            assert(res.header['x-gn-auth-token'].length > 0);
-        });
-    });
-
-    it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            let timestamp = +res.header['x-gn-auth-expire'];
-            let date = new Date(timestamp);
-            let dateString = date.toDateString();
-            assert(dateString !== 'Invalid Date');
-        });
     });
 
     it('should respond with an object containing the user\'s ID', function() {
