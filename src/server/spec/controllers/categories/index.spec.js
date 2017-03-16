@@ -36,6 +36,23 @@ describe('GET /categories', function() {
         util.seedAllUndo(done);
     });
 
+    describe('headers', function() {
+        it('should respond with an X-GN-Auth-Token header', function() {
+            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
+                assert(res.header['x-gn-auth-token'].length > 0);
+            });
+        });
+
+        it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
+            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
+                let timestamp = +res.header['x-gn-auth-expire'];
+                let date = new Date(timestamp);
+                let dateString = date.toDateString();
+                assert(dateString !== 'Invalid Date');
+            });
+        });
+    });
+
     it('should return a 200 response', function(done) {
         request(server).get('/categories').set('authorization', authorization)
             .expect(200, done);
