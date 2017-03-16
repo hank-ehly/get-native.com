@@ -13,7 +13,7 @@
   justify-content: center;
   left: 0;
   position: fixed;
-  width: 90px;
+  padding-left: 20px;
   z-index: 2;
 }
 
@@ -21,7 +21,7 @@
   align-self: center;
   cursor: pointer;
   height: 30px;
-  width: 30px;
+  outline: none;
 }
 
 .navbar__nav {
