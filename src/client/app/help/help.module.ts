@@ -7,8 +7,8 @@
 
 import { NgModule } from '@angular/core';
 
-import { HelpComponent } from './index';
-import { FaqService } from './faq/index';
+import { HelpComponent } from './help.component';
+import { FaqService } from './faq/faq.service';
 import { HelpRoutingModule } from './help-routing.module';
 import { SharedModule } from '../shared/shared.module';
 

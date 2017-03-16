@@ -8,7 +8,9 @@
 import { Component, Input, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { style, keyframes, animate, transition, trigger } from '@angular/animations';
 
-import { LoginModalService, Logger } from '../core/index';
+import { Logger } from '../core/logger/logger';
+import { LoginModalService } from '../core/login-modal/login-modal.service';
+
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -64,7 +66,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
             this.loginModal.showModal$.subscribe(() => this.isVisible = true),
             this.loginModal.hideModal$.subscribe(() => this.isVisible = false),
-            this.loginModal.setActiveView$.subscribe((view) => this.activeView = view)
+            this.loginModal.setActiveView$.subscribe((view: any) => this.activeView = view)
         );
     }
 

@@ -7,7 +7,7 @@
 
 import { Directive, ElementRef } from '@angular/core';
 
-import { Logger } from '../../core/index';
+import { Logger } from '../../core/logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';

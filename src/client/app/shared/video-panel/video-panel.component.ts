@@ -7,7 +7,7 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { Video } from '../../core/index';
+import { Video } from '../../core/entities/video';
 
 @Component({
     moduleId: module.id,

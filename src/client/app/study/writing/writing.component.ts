@@ -7,7 +7,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { Logger } from '../../core/index';
+import { Logger } from '../../core/logger/logger';
 
 @Component({
     moduleId: module.id,

@@ -7,11 +7,17 @@
 
 import { Injectable } from '@angular/core';
 import { Http, Request, Response, ResponseContentType, Headers } from '@angular/http';
-import { RequestArgs } from '@angular/http/src/interfaces';
+import { RequestArgs } from '@angular/http/typings/src/interfaces';
 
 import { Config } from '../../shared/config/env.config';
-import { Logger, LocalStorageService, kAuthToken, kAuthTokenExpire, Entity } from '../index';
-import { APIHandle, APIConfig, URIService, GNRequestOptions } from './index';
+import { Logger } from '../logger/logger';
+import { LocalStorageService } from '../local-storage/local-storage.service';
+import { Entity } from '../entities/entity';
+import { GNRequestOptions } from './gn-request-options';
+import { APIHandle } from './api-handle';
+import { APIConfig } from './api-config';
+import { URIService } from './uri.service';
+import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-keys';
 
 import { Observable } from 'rxjs/Observable';
 import '../../operators';
@@ -50,7 +56,8 @@ export class HttpService {
                 }
             });
 
-            args.search = options.search;
+            // todo: 'search' was deprecated. reflect naming in your own code.
+            args.params = options.search;
         }
 
         let request = new Request(args);

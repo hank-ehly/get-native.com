@@ -11,10 +11,16 @@ import { Router } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
-import { NavbarService, STUBRouter, UTCDateService, Logger, STUBLogger, SpecUtil, CategoryListService,
-    ToolbarService } from '../core/index';
 import { STUBHttpService } from '../core/http/http.service.stub';
 import { HttpService } from '../core/http/http.service';
+import { SpecUtil } from '../core/spec/spec-util';
+import { STUBRouter } from '../core/spec/stubs';
+import { Logger } from '../core/logger/logger';
+import { STUBLogger } from '../core/logger/logger.stub';
+import { UTCDateService } from '../core/utc-date/utc-date.service';
+import { CategoryListService } from '../core/category-list/category-list.service';
+import { ToolbarService } from '../core/toolbar/toolbar.service';
+import { NavbarService } from '../core/navbar/navbar.service';
 
 export function main() {
     let comp: DashboardComponent;

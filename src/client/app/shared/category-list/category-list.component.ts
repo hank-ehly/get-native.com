@@ -7,7 +7,11 @@
 
 import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 
-import { Logger, Categories, Category, Subcategory, CategoryListService } from '../../core/index';
+import { Category } from '../../core/entities/category';
+import { Logger } from '../../core/logger/logger';
+import { Categories } from '../../core/entities/categories';
+import { CategoryListService } from '../../core/category-list/category-list.service';
+import { Subcategory } from '../../core/entities/subcategory';
 
 @Component({
     moduleId: module.id,

@@ -7,7 +7,8 @@
 
 import { Injectable } from '@angular/core';
 
-import { LangCode, Language } from '../typings/index';
+import { LangCode } from '../typings/lang-code';
+import { Language } from '../typings/language';
 import { Languages } from './languages';
 
 @Injectable()

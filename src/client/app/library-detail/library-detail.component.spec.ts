@@ -12,16 +12,14 @@ import { APP_BASE_HREF } from '@angular/common';
 
 import { LibraryDetailComponent } from './library-detail.component';
 import { SharedModule } from '../shared/shared.module';
-import {
-    Logger,
-    STUBLogger,
-    NavbarService,
-    SpecUtil,
-    LangService,
-    UTCDateService
-} from '../core/index';
 import { HttpService } from '../core/http/http.service';
 import { STUBHttpService } from '../core/http/http.service.stub';
+import { SpecUtil } from '../core/spec/spec-util';
+import { Logger } from '../core/logger/logger';
+import { STUBLogger } from '../core/logger/logger.stub';
+import { NavbarService } from '../core/navbar/navbar.service';
+import { LangService } from '../core/lang/lang.service';
+import { UTCDateService } from '../core/utc-date/utc-date.service';
 
 export function main() {
     let comp: LibraryDetailComponent;

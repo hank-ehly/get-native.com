@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { Entity, Collocations } from './index';
+import { Entity } from './entity';
+import { Collocations } from './collocations';
 import { LangCode } from '../typings/lang-code';
 
 export interface Transcript extends Entity {

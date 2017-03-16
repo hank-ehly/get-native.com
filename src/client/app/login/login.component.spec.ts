@@ -11,23 +11,20 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
-import {
-    LoginComponent,
-    SocialLoginComponent,
-    EmailLoginComponent,
-    RegisterComponent
-} from './index';
-import {
-    SpecUtil,
-    STUBLogger,
-    STUBLoginModalService,
-    STUBPasswordService,
-    STUBRouter,
-    PasswordService,
-    LoginModalService,
-    NavbarService,
-    Logger
-} from '../core/index';
+import { LoginComponent } from './login.component';
+import { SpecUtil } from '../core/spec/spec-util';
+import { SocialLoginComponent } from './social-login/social-login.component';
+import { EmailLoginComponent } from './email-login/email-login.component';
+import { RegisterComponent } from './register/register.component';
+import { Logger } from '../core/logger/logger';
+import { STUBLogger } from '../core/logger/logger.stub';
+import { LoginModalService } from '../core/login-modal/login-modal.service';
+import { STUBLoginModalService } from '../core/login-modal/login-modal.service.stub';
+import { PasswordService } from '../core/password/password.service';
+import { STUBPasswordService } from '../core/password/password.service.stub';
+import { STUBRouter } from '../core/spec/stubs';
+import { NavbarService } from '../core/navbar/navbar.service';
+
 
 export function main() {
     let comp: LoginComponent;

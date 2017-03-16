@@ -7,7 +7,8 @@
 
 import { Injectable } from '@angular/core';
 
-import { Logger, Language } from '../index';
+import { Language } from '../typings/language';
+import { Logger } from '../logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';

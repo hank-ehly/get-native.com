@@ -5,8 +5,8 @@
  * Created by henryehly on 2016/11/20.
  */
 
-import { LocalStorageService } from './index';
-import { STUBLogger } from '../index';
+import { LocalStorageService } from './local-storage.service';
+import { STUBLogger } from '../logger/logger.stub';
 
 export function main() {
     let localStorageService: LocalStorageService;

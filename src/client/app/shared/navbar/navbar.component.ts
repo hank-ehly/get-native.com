@@ -9,7 +9,9 @@ import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
 import { Location } from '@angular/common';
 
-import { LoginModalService, NavbarService, Logger } from '../../core/index';
+import { LoginModalService } from '../../core/login-modal/login-modal.service';
+import { NavbarService } from '../../core/navbar/navbar.service';
+import { Logger } from '../../core/logger/logger';
 import { FocusDirective } from '../focus/focus.directive';
 
 import { Subscription } from 'rxjs/Subscription';

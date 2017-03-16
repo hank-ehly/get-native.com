@@ -6,7 +6,8 @@
  */
 
 import { Injectable } from '@angular/core';
-import { Faq } from './index';
+
+import { Faq } from './faq';
 
 @Injectable()
 export class FaqService {

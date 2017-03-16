@@ -6,7 +6,8 @@
  */
 
 import { Entity } from './entity';
-import { LangCode, Gender } from '../typings/index';
+import { LangCode } from '../typings/lang-code';
+import { Gender } from '../typings/gender';
 
 export interface Speaker extends Entity {
     description?: string;

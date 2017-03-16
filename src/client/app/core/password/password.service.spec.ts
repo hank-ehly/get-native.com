@@ -5,7 +5,11 @@
  * Created by henryehly on 2016/11/27.
  */
 
-import { STUBLogger, STUBPasswords, StringService, PasswordService, PasswordBlacklist as Blacklist } from '../index';
+import { PasswordService } from './password.service';
+import { STUBLogger } from '../logger/logger.stub';
+import { StringService } from '../string/string.service';
+import { STUBPasswords } from '../spec/stubs';
+import { PasswordBlacklist as Blacklist } from './password-blacklist';
 
 export function main() {
     let passwordStrengthService: PasswordService;

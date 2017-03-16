@@ -5,7 +5,8 @@
  * Created by henryehly on 2017/02/12.
  */
 
-import { Entity, Question } from './index';
+import { Entity } from './entity';
+import { Question } from './question';
 
 export interface WritingSession extends Entity {
     text: string;

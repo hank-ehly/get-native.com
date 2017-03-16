@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { LibraryDetailComponent } from './library-detail.component';
-import { AuthGuard } from '../core/index';
+import { AuthGuard } from '../core/auth/auth-guard.service';
 
 const libraryDetailRoutes: Routes = [
     {

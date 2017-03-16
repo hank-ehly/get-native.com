@@ -9,9 +9,13 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 
-import { ComplianceComponent } from './index';
-import { LocalStorageService, STUBLocalStorageService } from '../../core/local-storage/index';
-import { SpecUtil, STUBLogger, kAcceptLocalStorage, Logger } from '../../core/index';
+import { ComplianceComponent } from './compliance.component';
+import { Logger } from '../../core/logger/logger';
+import { STUBLogger } from '../../core/logger/logger.stub';
+import { SpecUtil } from '../../core/spec/spec-util';
+import { STUBLocalStorageService } from '../../core/local-storage/local-storage.service.stub';
+import { LocalStorageService } from '../../core/local-storage/local-storage.service';
+import { kAcceptLocalStorage } from '../../core/local-storage/local-storage-keys';
 
 export function main() {
     let comp: ComplianceComponent;

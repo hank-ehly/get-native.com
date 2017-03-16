@@ -12,18 +12,16 @@ import { APP_BASE_HREF } from '@angular/common';
 
 import { LibraryComponent } from './library.component';
 import { SharedModule } from '../shared/shared.module';
-import {
-    SpecUtil,
-    STUBRouter,
-    UTCDateService,
-    Logger,
-    STUBLogger,
-    NavbarService,
-    HttpService,
-    STUBHttpService,
-    ToolbarService,
-    CategoryListService
-} from '../core/index';
+import { SpecUtil } from '../core/spec/spec-util';
+import { Logger } from '../core/logger/logger';
+import { STUBLogger } from '../core/logger/logger.stub';
+import { STUBRouter } from '../core/spec/stubs';
+import { HttpService } from '../core/http/http.service';
+import { STUBHttpService } from '../core/http/http.service.stub';
+import { NavbarService } from '../core/navbar/navbar.service';
+import { UTCDateService } from '../core/utc-date/utc-date.service';
+import { ToolbarService } from '../core/toolbar/toolbar.service';
+import { CategoryListService } from '../core/category-list/category-list.service';
 
 export function main() {
     let comp: LibraryComponent;
@@ -43,7 +41,9 @@ export function main() {
                     {provide: HttpService, useValue: STUBHttpService},
                     NavbarService,
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-                    UTCDateService, ToolbarService, CategoryListService
+                    UTCDateService,
+                    ToolbarService,
+                    CategoryListService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LibraryComponent);

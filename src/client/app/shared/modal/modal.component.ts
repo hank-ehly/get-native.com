@@ -8,7 +8,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { trigger, transition, animate, keyframes, style } from '@angular/animations';
 
-import { Logger } from '../../core/index';
+import { Logger } from '../../core/logger/logger';
 
 @Component({
     moduleId: module.id,

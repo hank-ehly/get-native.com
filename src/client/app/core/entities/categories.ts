@@ -5,7 +5,8 @@
  * Created by henryehly on 2017/01/12.
  */
 
-import { Entities, Category } from './index';
+import { Entities } from './entities';
+import { Category } from './category';
 
 export interface Categories extends Entities<Category> {
 }

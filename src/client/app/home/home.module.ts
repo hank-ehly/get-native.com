@@ -7,8 +7,8 @@
 
 import { NgModule } from '@angular/core';
 
-import { HomeComponent } from './index';
-import { FeatureDescriptionService } from './feature-description/index';
+import { HomeComponent } from './home.component';
+import { FeatureDescriptionService } from './feature-description/feature-description.service';
 import { HomeRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
