@@ -5,8 +5,10 @@
  * Created by henryehly on 2017/01/29.
  */
 
-import { Entity, APIHandle } from '../index';
-import { HttpService, STUBResponses } from './index';
+import { HttpService } from './http.service';
+import { Entity } from '../entities/entity';
+import { APIHandle } from './api-handle';
+import { STUBResponses } from './stub-responses';
 
 import { Observable } from 'rxjs/Observable';
 

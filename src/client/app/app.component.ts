@@ -9,16 +9,13 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
-import {
-    LocalStorageService,
-    kAcceptLocalStorage,
-    NavbarService,
-    Logger,
-    LocalStorageItem,
-    kAuthToken,
-    LocalStorageProtocol,
-    AuthService
-} from './core/index';
+import { LocalStorageProtocol } from './core/local-storage/local-storage-protocol';
+import { Logger } from './core/logger/logger';
+import { LocalStorageService } from './core/local-storage/local-storage.service';
+import { NavbarService } from './core/navbar/navbar.service';
+import { AuthService } from './core/auth/auth.service';
+import { kAcceptLocalStorage, kAuthToken } from './core/local-storage/local-storage-keys';
+import { LocalStorageItem } from './core/local-storage/local-storage-item';
 
 import './operators';
 import { Subscription } from 'rxjs/Subscription';

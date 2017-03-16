@@ -8,7 +8,11 @@
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 
 import { SwitchComponent } from '../../shared/switch/switch.component';
-import { Logger, HttpService, APIHandle, User, UserService } from '../../core/index';
+import { User } from '../../core/entities/user';
+import { Logger } from '../../core/logger/logger';
+import { HttpService } from '../../core/http/http.service';
+import { UserService } from '../../core/user/user.service';
+import { APIHandle } from '../../core/http/api-handle';
 
 import { Subscription } from 'rxjs/Subscription';
 

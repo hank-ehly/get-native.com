@@ -9,7 +9,11 @@ import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { TranscriptComponent } from './transcript.component';
-import { STUBTranscripts, STUBLogger, Logger, LangService, SpecUtil } from '../../core/index';
+import { SpecUtil } from '../../core/spec/spec-util';
+import { Logger } from '../../core/logger/logger';
+import { STUBLogger } from '../../core/logger/logger.stub';
+import { LangService } from '../../core/lang/lang.service';
+import { STUBTranscripts } from '../../core/entities/transcripts.stub';
 
 export function main() {
     let comp: TranscriptComponent;

@@ -8,8 +8,13 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
-import { Logger, HttpService, NavbarService, ToolbarService, CategoryListService, APIHandle } from '../core/index';
-import { VideoSearchComponent } from '../shared/index';
+import { VideoSearchComponent } from '../shared/video-search/video-search.component';
+import { Logger } from '../core/logger/logger';
+import { HttpService } from '../core/http/http.service';
+import { NavbarService } from '../core/navbar/navbar.service';
+import { ToolbarService } from '../core/toolbar/toolbar.service';
+import { CategoryListService } from '../core/category-list/category-list.service';
+import { APIHandle } from '../core/http/api-handle';
 
 import '../operators';
 

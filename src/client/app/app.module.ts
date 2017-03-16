@@ -7,6 +7,7 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
@@ -23,11 +24,13 @@ import { LibraryDetailModule } from './library-detail/library-detail.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsModule } from './settings/settings.module';
 import { StudyModule } from './study/study.module';
-import { Logger, LogLevelToken, LogLevelValue } from './core/index';
+import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
+import { Logger } from './core/logger/logger';
 
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         CoreModule,
         AppRoutingModule,
         SharedModule,

@@ -8,7 +8,9 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger, Videos, Video } from '../../core/index';
+import { Logger } from '../../core/logger/logger';
+import { Videos } from '../../core/entities/videos';
+import { Video } from '../../core/entities/video';
 
 @Component({
     moduleId: module.id,

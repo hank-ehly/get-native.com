@@ -10,11 +10,15 @@ import { trigger, style, transition, animate } from '@angular/animations';
 import { Router } from '@angular/router';
 import { URLSearchParams } from '@angular/http';
 
-import {
-    Logger, APIHandle, HttpService, CategoryListService, ToolbarService, NavbarService, WritingSessions,
-    UTCDateService
-} from '../core/index';
-import { VideoSearchComponent } from '../shared/index';
+import { VideoSearchComponent } from '../shared/video-search/video-search.component';
+import { WritingSessions } from '../core/entities/writing-sessions';
+import { Logger } from '../core/logger/logger';
+import { HttpService } from '../core/http/http.service';
+import { NavbarService } from '../core/navbar/navbar.service';
+import { ToolbarService } from '../core/toolbar/toolbar.service';
+import { CategoryListService } from '../core/category-list/category-list.service';
+import { UTCDateService } from '../core/utc-date/utc-date.service';
+import { APIHandle } from '../core/http/api-handle';
 
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';

@@ -12,7 +12,7 @@ import { SettingsComponent } from './settings.component';
 import { GeneralComponent } from './general/general.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SecurityComponent } from './security/security.component';
-import { AuthGuard } from '../core/index';
+import { AuthGuard } from '../core/auth/auth-guard.service';
 
 const settingsRoutes: Routes = [
     {

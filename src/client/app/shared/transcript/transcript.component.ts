@@ -7,7 +7,11 @@
 
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { Logger, Transcripts, Transcript, LangService, Collocation } from '../../core/index';
+import { Transcripts } from '../../core/entities/transcripts';
+import { Transcript } from '../../core/entities/transcript';
+import { Collocation } from '../../core/entities/collocation';
+import { Logger } from '../../core/logger/logger';
+import { LangService } from '../../core/lang/lang.service';
 
 @Component({
     moduleId: module.id,

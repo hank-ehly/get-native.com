@@ -9,12 +9,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
-import {
-    LoginComponent,
-    SocialLoginComponent,
-    RegisterComponent,
-    EmailLoginComponent
-} from './index';
+import { LoginComponent } from './login.component';
+import { SocialLoginComponent } from './social-login/social-login.component';
+import { EmailLoginComponent } from './email-login/email-login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     imports: [

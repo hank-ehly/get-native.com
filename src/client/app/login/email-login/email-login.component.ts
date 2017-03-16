@@ -8,7 +8,11 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger, LoginModalService, APIHandle, HttpService, EMAIL_REGEX } from '../../core/index';
+import { Logger } from '../../core/logger/logger';
+import { LoginModalService } from '../../core/login-modal/login-modal.service';
+import { HttpService } from '../../core/http/http.service';
+import { EMAIL_REGEX } from '../../core/typings/email-regex';
+import { APIHandle } from '../../core/http/api-handle';
 
 import { Subscription } from 'rxjs/Subscription';
 

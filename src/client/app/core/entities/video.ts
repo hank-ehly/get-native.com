@@ -5,7 +5,11 @@
  * Created by henryehly on 2017/01/06.
  */
 
-import { Entity, Speaker, Subcategory, Transcripts, Videos } from './index';
+import { Entity } from './entity';
+import { Videos } from './videos';
+import { Speaker } from './speaker';
+import { Subcategory } from './subcategory';
+import { Transcripts } from './transcripts';
 
 export interface Video extends Entity {
     description?: string;

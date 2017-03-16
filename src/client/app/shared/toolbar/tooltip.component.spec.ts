@@ -11,10 +11,17 @@ import { APP_BASE_HREF } from '@angular/common';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
-import {
-    SpecUtil, STUBLogger, Logger, LocalStorageService, STUBLocalStorageService, ToolbarService, STUBUserService, UserService,
-    STUBHttpService, HttpService, LangService
-} from '../../core/index';
+import { Logger } from '../../core/logger/logger';
+import { LocalStorageService } from '../../core/local-storage/local-storage.service';
+import { STUBLocalStorageService } from '../../core/local-storage/local-storage.service.stub';
+import { STUBUserService } from '../../core/user/user.service.stub';
+import { STUBHttpService } from '../../core/http/http.service.stub';
+import { ToolbarService } from '../../core/toolbar/toolbar.service';
+import { LangService } from '../../core/lang/lang.service';
+import { HttpService } from '../../core/http/http.service';
+import { SpecUtil } from '../../core/spec/spec-util';
+import { UserService } from '../../core/user/user.service';
+import { STUBLogger } from '../../core/logger/logger.stub';
 
 export function main() {
     let comp: ToolbarComponent;
@@ -33,7 +40,8 @@ export function main() {
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     {provide: UserService, useClass: STUBUserService},
                     {provide: HttpService, useValue: STUBHttpService},
-                    LangService, ToolbarService
+                    LangService,
+                    ToolbarService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(ToolbarComponent);

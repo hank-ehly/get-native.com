@@ -8,10 +8,19 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
-import {
-    Logger, Videos, Categories, APIHandle, HttpService, NavbarService, Category, Subcategory, ToolbarService, Language, CategoryListService,
-    LangCode, Entity
-} from '../../core/index';
+import { Categories } from '../../core/entities/categories';
+import { APIHandle } from '../../core/http/api-handle';
+import { Videos } from '../../core/entities/videos';
+import { LangCode } from '../../core/typings/lang-code';
+import { Logger } from '../../core/logger/logger';
+import { CategoryListService } from '../../core/category-list/category-list.service';
+import { HttpService } from '../../core/http/http.service';
+import { NavbarService } from '../../core/navbar/navbar.service';
+import { ToolbarService } from '../../core/toolbar/toolbar.service';
+import { Entity } from '../../core/entities/entity';
+import { Subcategory } from '../../core/entities/subcategory';
+import { Category } from '../../core/entities/category';
+import { Language } from '../../core/typings/language';
 
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';

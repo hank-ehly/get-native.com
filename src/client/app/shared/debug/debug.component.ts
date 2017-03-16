@@ -6,7 +6,8 @@
  */
 
 import { Component } from '@angular/core';
-import { LocalStorageService } from '../../core/index';
+
+import { LocalStorageService } from '../../core/local-storage/local-storage.service';
 
 @Component({
     moduleId: module.id,

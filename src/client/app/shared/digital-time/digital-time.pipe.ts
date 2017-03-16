@@ -7,12 +7,11 @@
 
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { UTCDateService } from '../../core/index';
+import { UTCDateService } from '../../core/utc-date/utc-date.service';
 
 @Pipe({
     name: 'digitalTime'
 })
-
 export class DigitalTimePipe implements PipeTransform {
     constructor(private dateService: UTCDateService) {
     }

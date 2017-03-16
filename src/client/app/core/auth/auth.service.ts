@@ -7,7 +7,10 @@
 
 import { Injectable } from '@angular/core';
 
-import { LocalStorageService, Logger, kAuthToken, kAuthTokenExpire, ToolbarService } from '../index';
+import { Logger } from '../logger/logger';
+import { LocalStorageService } from '../local-storage/local-storage.service';
+import { ToolbarService } from '../toolbar/toolbar.service';
+import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-keys';
 
 @Injectable()
 export class AuthService {

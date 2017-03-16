@@ -8,7 +8,11 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { trigger, keyframes, style, animate, transition } from '@angular/animations';
 
-import { LocalStorageService, kAcceptLocalStorage, LocalStorageProtocol, LocalStorageItem, Logger } from '../../core/index';
+import { Logger } from '../../core/logger/logger';
+import { LocalStorageService } from '../../core/local-storage/local-storage.service';
+import { LocalStorageProtocol } from '../../core/local-storage/local-storage-protocol';
+import { LocalStorageItem } from '../../core/local-storage/local-storage-item';
+import { kAcceptLocalStorage } from '../../core/local-storage/local-storage-keys';
 
 import { Subscription } from 'rxjs/Subscription';
 

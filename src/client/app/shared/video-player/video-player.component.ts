@@ -9,7 +9,8 @@ import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy } from '@
 import { trigger, animate, style, transition } from '@angular/animations';
 
 import { VideoDirective } from '../video/video.directive';
-import { UnitInterval, Logger } from '../../core/index';
+import { UnitInterval } from '../../core/typings/unit-interval';
+import { Logger } from '../../core/logger/logger';
 
 import { Subscription } from 'rxjs/Subscription';
 

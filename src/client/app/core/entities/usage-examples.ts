@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { UsageExample, Entities } from './index';
+import { Entities } from './entities';
+import { UsageExample } from './usage-example';
 
 export interface UsageExamples extends Entities<UsageExample> {
 }

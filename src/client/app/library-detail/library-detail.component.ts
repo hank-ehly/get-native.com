@@ -8,7 +8,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { NavbarService, Logger, Video, APIHandle, HttpService } from '../core/index';
+import { Video } from '../core/entities/video';
+import { Logger } from '../core/logger/logger';
+import { NavbarService } from '../core/navbar/navbar.service';
+import { HttpService } from '../core/http/http.service';
+import { APIHandle } from '../core/http/api-handle';
 
 import { Subscription } from 'rxjs/Subscription';
 

@@ -7,7 +7,7 @@
 
 import { NgModule } from '@angular/core';
 
-import { TOSComponent } from './index';
+import { TOSComponent } from './tos.component';
 import { TOSRoutingModule } from './tos-routing.module';
 
 @NgModule({

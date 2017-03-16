@@ -7,7 +7,7 @@
 
 import { NgModule } from '@angular/core';
 
-import { PrivacyComponent } from './index';
+import { PrivacyComponent } from './privacy.component';
 import { PrivacyRoutingModule } from './privacy-routing.module';
 
 @NgModule({

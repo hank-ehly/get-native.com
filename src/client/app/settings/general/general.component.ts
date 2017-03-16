@@ -7,8 +7,16 @@
 
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 
-import { Logger, HttpService, APIHandle, EMAIL_REGEX, ObjectService, Languages, LangCode, User, UserService } from '../../core/index';
 import { FocusDirective } from '../../shared/focus/focus.directive';
+import { EMAIL_REGEX } from '../../core/typings/email-regex';
+import { User } from '../../core/entities/user';
+import { Logger } from '../../core/logger/logger';
+import { HttpService } from '../../core/http/http.service';
+import { ObjectService } from '../../core/object/object.service';
+import { UserService } from '../../core/user/user.service';
+import { Languages } from '../../core/lang/languages';
+import { APIHandle } from '../../core/http/api-handle';
+import { LangCode } from '../../core/typings/lang-code';
 
 import { Subscription } from 'rxjs/Subscription';
 

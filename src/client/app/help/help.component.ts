@@ -7,7 +7,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Faq, FaqService } from './faq/index';
+
+import { Faq } from './faq/faq';
+import { FaqService } from './faq/faq.service';
 
 @Component({
     moduleId: module.id,
@@ -62,7 +64,7 @@ export class HelpComponent implements OnInit {
         return this.selectedFaq === faq;
     }
 
-    chevronRotationForFaq(faq: Faq): string { // Use enum for state
+    chevronRotationForFaq(faq: Faq): string { // todo: Use enum for state
         return this.isSelectedFaq(faq) ? 'expanded' : 'collapsed';
     }
 }

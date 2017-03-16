@@ -7,7 +7,9 @@
 
 import { Component } from '@angular/core';
 
-import { LoginModalService, Logger, EMAIL_REGEX } from '../../core/index';
+import { EMAIL_REGEX } from '../../core/typings/email-regex';
+import { Logger } from '../../core/logger/logger';
+import { LoginModalService } from '../../core/login-modal/login-modal.service';
 
 @Component({
     moduleId: module.id,

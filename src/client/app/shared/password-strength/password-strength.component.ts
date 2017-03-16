@@ -7,7 +7,7 @@
 
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { PasswordService } from '../../core/index';
+import { PasswordService } from '../../core/password/password.service';
 
 @Component({
     moduleId: module.id,

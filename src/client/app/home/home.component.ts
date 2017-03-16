@@ -7,10 +7,10 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { FeatureDescriptionService } from './feature-description/index';
+import { FeatureDescriptionService } from './feature-description/feature-description.service';
 import { FeatureDescription } from './feature-description/feature-description';
-
-import { LoginModalService, Logger } from '../core/index';
+import { Logger } from '../core/logger/logger';
+import { LoginModalService } from '../core/login-modal/login-modal.service';
 
 @Component({
     moduleId: module.id,

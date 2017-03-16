@@ -5,8 +5,11 @@
  * Created by henryehly on 2017/01/29.
  */
 
-import { Video, Videos, Categories, CuedVideos } from '../entities/index';
 import { APIHandle } from './api-handle';
+import { Video } from '../entities/video';
+import { Videos } from '../entities/videos';
+import { Categories } from '../entities/categories';
+import { CuedVideos } from '../entities/cued-videos';
 
 export const STUBResponses = new Map<APIHandle, any>([
     [APIHandle.LOGIN, {}],

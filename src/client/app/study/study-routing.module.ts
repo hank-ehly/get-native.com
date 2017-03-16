@@ -15,7 +15,7 @@ import { ShadowingComponent } from './shadowing/shadowing.component';
 import { SpeakingComponent } from './speaking/speaking.component';
 import { WritingComponent } from './writing/writing.component';
 import { ResultsComponent } from './results/results.component';
-import { AuthGuard } from '../core/index';
+import { AuthGuard } from '../core/auth/auth-guard.service';
 
 const studyRoutes: Routes = [
     {

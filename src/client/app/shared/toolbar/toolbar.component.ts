@@ -8,7 +8,10 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 
-import { Languages, ToolbarService, Language, UserService } from '../../core/index';
+import { Language } from '../../core/typings/language';
+import { ToolbarService } from '../../core/toolbar/toolbar.service';
+import { UserService } from '../../core/user/user.service';
+import { Languages } from '../../core/lang/languages';
 
 @Component({
     moduleId: module.id,

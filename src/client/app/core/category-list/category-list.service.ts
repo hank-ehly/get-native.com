@@ -7,7 +7,9 @@
 
 import { Injectable } from '@angular/core';
 
-import { Logger, Subcategory, Category } from '../index';
+import { Category } from '../entities/category';
+import { Subcategory } from '../entities/subcategory';
+import { Logger } from '../logger/logger';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
