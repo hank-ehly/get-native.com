@@ -14,13 +14,21 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            length: Sequelize.INTEGER,
+            length: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                defaultValue: 0
+            },
             thumbnail_image_url: {
                 type: Sequelize.STRING,
                 allowNull: false,
                 defaultValue: ''
             },
-            loop_count: Sequelize.INTEGER,
+            loop_count: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                defaultValue: 0
+            },
             video_url: {
                 type: Sequelize.STRING,
                 allowNull: false,

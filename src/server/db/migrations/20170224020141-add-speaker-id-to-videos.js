@@ -9,6 +9,7 @@ module.exports = {
     up: function(queryInterface, Sequelize) {
         return queryInterface.addColumn('videos', 'speaker_id', {
             type: Sequelize.INTEGER,
+            allowNull: false,
             references: {
                 model: 'speakers',
                 key: 'id'
