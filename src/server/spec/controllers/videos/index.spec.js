@@ -62,12 +62,16 @@ describe('GET /videos', function() {
             request(server).get('/videos?max_id=notANumber').set('authorization', authorization).expect(422, done);
         });
 
-        it(`should return a 422 Unprocessable Entity response if the request contains a non-numeric 'topic_id' parameter`, function(done) {
-            request(server).get('/videos?topic_id=notANumber').set('authorization', authorization).expect(422, done);
+        it(`should return a 422 Unprocessable Entity response if the request contains a non-numeric 'subcategory_id' parameter`, function(done) {
+            request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).expect(422, done);
         });
 
         it(`should return a 422 Unprocessable Entity response if the request contains a non-numeric 'category_id' parameter`, function(done) {
             request(server).get('/videos?category_id=notANumber').set('authorization', authorization).expect(422, done);
+        });
+
+        it(`should return a 422 Unprocessable Entity response if the 'count' is above 9`, function(done) {
+            return request(server).get(`/videos?count=11`).set('authorization', authorization).expect(422, done);
         });
 
         it(`should respond with a 422 Unprocessable Entity if the 'q' parameter is longer than 100 characters`, function(done) {
@@ -112,13 +116,13 @@ describe('GET /videos', function() {
         });
 
         it(`should respond with an object containing a top-level 'count' integer value`, function() {
-            return request(server).get('/response').set('authorization', authorization).then(function(response) {
+            return request(server).get('/videos').set('authorization', authorization).then(function(response) {
                 assert(SpecUtil.isNumber(response.body.count));
             });
         });
 
         it(`should have the same number of records as shown in 'count'`, function() {
-            return request(server).get('/response').set('authorization', authorization).then(function(response) {
+            return request(server).get('/videos').set('authorization', authorization).then(function(response) {
                 assert(response.body.count === response.body.records.length);
             });
         });
@@ -148,15 +152,15 @@ describe('GET /videos', function() {
             });
         });
 
-        it(`should contain a non-null object for 'topic' on each record`, function() {
+        it(`should contain a non-null object for 'subcategory' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].topic), 'object');
+                assert.equal(Utility.typeof(response.body.records[0].subcategory), 'object');
             });
         });
 
-        it(`should contain a non-null string for 'topic.name' on each record`, function() {
+        it(`should contain a non-null string for 'subcategory.name' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].topic.name), 'string');
+                assert.equal(Utility.typeof(response.body.records[0].subcategory.name), 'string');
                 assert.notEqual(response.body.records[0].speaker.name.length, 0);
             });
         });
@@ -195,7 +199,7 @@ describe('GET /videos', function() {
             let extremeValue = '99999999';
             let requestURLString = `/videos?max_id=${extremeValue}&category_id=${extremeValue}&lang=ja&q=${extremeValue}`;
             return request(server).get(requestURLString).set('authorization', authorization).then(function(response) {
-                assert.equal(response.body.records, []);
+                assert.equal(response.body.records.length, 0);
             });
         });
 
@@ -217,7 +221,7 @@ describe('GET /videos', function() {
             });
         });
 
-        it(`should return no more than 9 video records if the request contains no 'count' parameter`, function() {
+        it(`should return no more than 9 video records`, function() {
             return request(server).get(`/videos`).set('authorization', authorization).then(function(response) {
                 assert(response.body.count <= 9);
             });
@@ -226,22 +230,21 @@ describe('GET /videos', function() {
         it(`should return only English videos if the request contains no 'lang' parameter`, function() {
             return request(server).get(`/videos`).set('authorization', authorization).then(function(response) {
                 let firstVideoId = response.body.records[0].id;
-
                 return db.sequelize.query(`SELECT language_code FROM videos WHERE videos.id = ${firstVideoId} LIMIT 1`).then(function(result) {
-                    console.log(result);
-                    assert.equal(result[0].language_code, 'en');
+                    let videoLanguageCode = result[0][0].language_code;
+                    assert.equal(videoLanguageCode, 'en');
                 });
             });
         });
 
-        it(`ignores the 'category_id' parameter if a 'topic_id' parameter is also included in the request`);
+        // todo e2e (check the category_id and subcategory_id don't conflict
 
         // q
         // full text search
         // transcript
         // collocations
         // category title
-        // topic title
+        // subcategory title
         // speaker name
     });
 });

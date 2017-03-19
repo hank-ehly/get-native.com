@@ -86,6 +86,17 @@ module.exports = {
         }
     },
     videos: {
+        index: {
+            headers: {
+                authorization: Joi.string().required()
+            },
+            query: {
+                max_id: Joi.number().integer().min(1),
+                category_id: Joi.number().integer().min(1),
+                subcategory_id: Joi.number().integer().min(1),
+                lang: Joi.string()
+            }
+        },
         show: {
             headers: {
                 authorization: Joi.string().required()
