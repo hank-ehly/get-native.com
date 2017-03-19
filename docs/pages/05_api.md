@@ -251,7 +251,7 @@ Status 204 No Content
 
 # GET /categories
 
-Returns a list of the current video categories and their topics.
+Returns a list of the current video categories and their subcategories.
 
 ```
 GET https://api.get-native.com/categories
@@ -273,7 +273,7 @@ Status: 200 OK
         {
             "id": 1,
             "name": "Business",
-            "topics": {
+            "subcategories": {
                 "records": [
                     {
                         "id": 1,
@@ -294,7 +294,7 @@ Status: 200 OK
         {
             "id": 2,
             "name": "Holidays",
-            "topics": {
+            "subcategories": {
                 "records": [
                     {
                         "id": 4,
@@ -311,7 +311,7 @@ Status: 200 OK
         {
             "id": 3,
             "name": "Travel",
-            "topics": {
+            "subcategories": {
                 "records": [
                     {
                         "id": 6,
@@ -340,7 +340,7 @@ Status: 200 OK
         {
             "id": 4,
             "name": "School",
-            "topics": {
+            "subcategories": {
                 "records": [
                     {
                         "id": 11,
@@ -357,7 +357,7 @@ Status: 200 OK
         {
             "id": 5,
             "name": "Transportation",
-            "topics": {
+            "subcategories": {
                 "records": [
                     {
                         "id": 13,
@@ -426,7 +426,7 @@ Status: 200 OK
 				"location": "Kansas City, MO"
 			},
 			"lang": "en",
-			"topic": {
+			"subcategory": {
 				"id": 123456,
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 				"name": "Talking to customers"
@@ -679,7 +679,7 @@ POST https://api.get-native.com/study
 				"location": "Kansas City, MO"
 			},
 			"lang": "en",
-			"topic": {
+			"subcategory": {
 				"id": 123456,
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 				"name": "Talking to customers"
@@ -820,8 +820,8 @@ GET https://api.get-native.com/videos?q=Business%20Ethics&lang=en
 | lang            	| Restricts videos to the given language, specified by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code. 	|          	|    en    	|
 | count           	| The number of videos to include in the response.                                                                                 	|          	|    9    	|
 | max_id          	| Returns only videos with an ID less than or equal to the max_id.                                                                 	|          	|         	|
-| topic_id          | Restricts videos to the given topic.                                                                                              |           |           |
-| category_id       | Restricts videos to the given category. If the topic_id parameter is also included, the category_id parameter is ignored.         |           |           |
+| subcategory_id          | Restricts videos to the given subcategory.                                                                                              |           |           |
+| category_id       | Restricts videos to the given category. If the subcategory_id parameter is also included, the category_id parameter is ignored.         |           |           |
 | q                 | A URL-encoded UTF-8 search query. Maximum length is 100 characters.                                                               |           |           |
 
 **About _max_id_**
@@ -851,7 +851,7 @@ Status: 200 OK
 			"speaker": {
 					"name": "Harold Ford"
 			},
-			"topic": {
+			"subcategory": {
 					"name": "Talking to customers"
 			},
 			"loop_count": 7156,
@@ -866,7 +866,7 @@ Status: 200 OK
 			"speaker": {
 					"name": "Benjamin Franklin"
 			},
-			"topic": {
+			"subcategory": {
 					"name": "How to change a light-bulb"
 			},
 			"loop_count": 1011,
@@ -901,7 +901,7 @@ GET https://api.get-native.com/videos/123456
 | description         | String       | A string description of the video.                                                                 |
 | id                  | Int64        | Integer representation of unique video ID                                                          |
 | speaker             | Speaker      | The speaker of the video                                                                           |
-| topic               | Topic        | The topic to which the video belongs                                                               |
+| subcategory               | subcategory        | The subcategory to which the video belongs                                                               |
 | loop_count          | Int          | The number of times a video has reached the end of its length                                      |
 | loop_velocity       | Float        | _Nullable._ The velocity at which the loop count should automatically increase                     |
 | thumbnail_image_url | String       | The HTTPS URL for the video thumbnail image                                                        |
@@ -926,7 +926,7 @@ Status: 200 OK
 		"name": "Harold Ford",
 		"thumbnail_image_url": "XXX"
 	},
-	"topic": {
+	"subcategory": {
 		"id": 123456,
 		"name": "Talking to customers"
 	},
@@ -941,7 +941,7 @@ Status: 200 OK
 				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
 				"length": 68,
 				"loop_count": 25,
-				"topic": {
+				"subcategory": {
 					"name": "How to fly a kite"
 				},
 				"speaker": {
@@ -953,7 +953,7 @@ Status: 200 OK
 				"created_at": "Tue Jun 9 12:00:00 +0000 2015",
 				"length": 80,
 				"loop_count": 102,
-				"topic": {
+				"subcategory": {
 					"name": "Writing a memoir"
 				},
 				"speaker": {
