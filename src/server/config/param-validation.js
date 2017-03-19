@@ -5,8 +5,6 @@
  * Created by henryehly on 2017/01/22.
  */
 
-// todo: Regex validation of Authorization header
-
 const Joi = require('joi');
 
 module.exports = {
@@ -94,7 +92,8 @@ module.exports = {
                 max_id: Joi.number().integer().min(1),
                 category_id: Joi.number().integer().min(1),
                 subcategory_id: Joi.number().integer().min(1),
-                lang: Joi.string()
+                lang: Joi.string(),
+                count: Joi.number().integer().max(9)
             }
         },
         show: {

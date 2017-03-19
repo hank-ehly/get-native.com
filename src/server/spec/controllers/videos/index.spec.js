@@ -227,6 +227,12 @@ describe('GET /videos', function() {
             });
         });
 
+        it(`should return 1 or less videos if count is 1`, function() {
+            return request(server).get(`/videos?count=1`).set('authorization', authorization).then(function(response) {
+                assert(response.body.count <= 1);
+            });
+        });
+
         it(`should return only English videos if the request contains no 'lang' parameter`, function() {
             return request(server).get(`/videos`).set('authorization', authorization).then(function(response) {
                 let firstVideoId = response.body.records[0].id;
