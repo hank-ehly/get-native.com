@@ -71,7 +71,7 @@ describe('GET /videos', function() {
         });
 
         it(`should return a 422 Unprocessable Entity response if the 'count' is above 9`, function(done) {
-            return request(server).get(`/videos?count=11`).set('authorization', authorization).expect(422, done);
+            return request(server).get(`/videos?count=11`).set('authorization', authorization).then((res) => console.log(res.body)).expect(422, done);
         });
 
         it(`should respond with a 422 Unprocessable Entity if the 'q' parameter is longer than 100 characters`, function(done) {
@@ -86,7 +86,11 @@ describe('GET /videos', function() {
             });
         });
 
-        it(`should return 1 or more 'error' objects in a 422 Unprocessable Entity response`);
+        it(`should return 1 or more 'error' objects in a 422 Unprocessable Entity response`, function() {
+            request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).then(function(response) {
+                assert(response.errors.length > 0);
+            });
+        });
 
         // todo: can't include the same parameter more than once
     });
