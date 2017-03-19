@@ -11,7 +11,7 @@ import { URLSearchParams } from '@angular/http';
 import { Categories } from '../../core/entities/categories';
 import { APIHandle } from '../../core/http/api-handle';
 import { Videos } from '../../core/entities/videos';
-import { LangCode } from '../../core/typings/lang-code';
+import { LanguageCode } from '../../core/typings/language-code';
 import { Logger } from '../../core/logger/logger';
 import { CategoryListService } from '../../core/category-list/category-list.service';
 import { HttpService } from '../../core/http/http.service';
@@ -40,7 +40,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     videoSearchParams: URLSearchParams = new URLSearchParams();
 
     protected query$ = new Subject<string>();
-    protected lang$ = new Subject<LangCode>();
+    protected lang$ = new Subject<LanguageCode>();
     protected category$ = new Subject<string>();
     protected subcategory$ = new Subject<string>();
     protected maxId$ = new Subject<string>();

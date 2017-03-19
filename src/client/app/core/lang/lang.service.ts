@@ -7,14 +7,14 @@
 
 import { Injectable } from '@angular/core';
 
-import { LangCode } from '../typings/lang-code';
+import { LanguageCode } from '../typings/language-code';
 import { Language } from '../typings/language';
 import { Languages } from './languages';
 
 @Injectable()
 export class LangService {
 
-    codeToName(code: LangCode): string {
+    codeToName(code: LanguageCode): string {
         for (let lang of Languages) {
             if (lang.code === code) {
                 return lang.name;
@@ -24,7 +24,7 @@ export class LangService {
         throw new Error(`No language exists with the code '${code}'`);
     }
 
-    languageForCode(code: LangCode): Language {
+    languageForCode(code: LanguageCode): Language {
         let retLang: Language = null;
 
         for (let i = 0; i < Languages.length; i++) {
