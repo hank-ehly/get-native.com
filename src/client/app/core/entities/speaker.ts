@@ -6,13 +6,13 @@
  */
 
 import { Entity } from './entity';
-import { LangCode } from '../typings/lang-code';
+import { LanguageCode } from '../typings/language-code';
 import { Gender } from '../typings/gender';
 
 export interface Speaker extends Entity {
     description?: string;
     name: string;
-    lang?: LangCode;
+    lang?: LanguageCode;
     gender?: Gender;
     location?: string;
     thumbnail_image_url?: string;

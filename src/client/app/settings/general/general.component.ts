@@ -16,7 +16,7 @@ import { ObjectService } from '../../core/object/object.service';
 import { UserService } from '../../core/user/user.service';
 import { Languages } from '../../core/lang/languages';
 import { APIHandle } from '../../core/http/api-handle';
-import { LangCode } from '../../core/typings/lang-code';
+import { LanguageCode } from '../../core/typings/language-code';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -72,7 +72,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
         );
     }
 
-    onSelectDefaultStudyLanguage(code: LangCode): void {
+    onSelectDefaultStudyLanguage(code: LanguageCode): void {
         this.logger.debug(this, `Selected new default study language: ${code}`);
         this.subscriptions.push(
             this.http.request(APIHandle.EDIT_ACCOUNT, {body: {default_study_language: code}}).subscribe()
