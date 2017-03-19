@@ -7,7 +7,7 @@
 
 import { Injectable } from '@angular/core';
 import { Http, Request, Response, ResponseContentType, Headers } from '@angular/http';
-import { RequestArgs } from '@angular/http/typings/src/interfaces';
+import { RequestArgs } from '@angular/http/src/interfaces';
 
 import { Config } from '../../shared/config/env.config';
 import { Logger } from '../logger/logger';
