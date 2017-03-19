@@ -11,20 +11,19 @@ const logger  = require('../../config/logger');
 const ev      = require('express-validation');
 
 module.exports.logErrors = function(err, req, res, next) {
-    logger.info('logErrors called');
     next(err);
 };
 
 module.exports.clientErrorHandler = function(err, req, res, next) {
-    logger.info('clientErrorHandler called');
+
+    // todo: remove dependency on express-validation
     if (err instanceof ev.ValidationError) {
-        return res.status(err.status).json(err);
+        return res.status(422).json(err);
     }
 
     next(err);
 };
 
 module.exports.fallbackErrorHandler = function(err, req, res, next) {
-    logger.info('fallbackErrorHandler called');
     next(err);
 };
