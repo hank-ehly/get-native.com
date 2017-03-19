@@ -22,7 +22,7 @@ module.exports = {
             for (let i = 0; i < numVideos; i++) {
                 videos.push({
                     length: chance.integer({min: 30, max: 150}),
-                    thumbnail_image_url: 'https://dummyimage.com/450x300.png/5fa2dd/ffffff',
+                    picture_url: 'https://dummyimage.com/450x300.png/5fa2dd/ffffff',
                     loop_count: chance.integer({min: 10, max: 20000}),
                     video_url: 'https://youtu.be/' + chance.pickone(['SqyDRXVd5Jo', 'clpOP8f3Jc8', 'q9k_QgYA-bo', 'rF-MsURy9q8', 'W2G68H3xRyE']),
                     description: chance.paragraph(),

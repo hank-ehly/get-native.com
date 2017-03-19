@@ -19,7 +19,7 @@ module.exports = {
                 allowNull: false,
                 defaultValue: 0
             },
-            thumbnail_image_url: {
+            picture_url: {
                 type: Sequelize.STRING,
                 allowNull: false,
                 defaultValue: ''
