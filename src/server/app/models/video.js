@@ -8,7 +8,7 @@
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define('Video', {
         length: DataTypes.INTEGER,
-        thumbnail_image_url: {
+        picture_url: {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: ''
