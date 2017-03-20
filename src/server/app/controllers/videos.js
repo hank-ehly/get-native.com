@@ -50,19 +50,20 @@ module.exports.index = (req, res, next) => {
             res.send(videosAsJson);
         });
     }).catch(err => { // todo: Pass all catches to an error helper
-        const errObj = {
+        next({
             message: 'Error',
             errors: [{message: `Failed to process search conditions: ${req.query}`}]
-        };
-        next(errObj)
+        });
     });
 };
 
 module.exports.show = (req, res, next) => {
     const accountId = AuthHelper.extractAccountIdFromRequest(req);
-    const likeCountAllPromise = Like.count({where: ['video_id = ?', +req.params.id]});
-    const likeCountMePromise = Like.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
+
+    const likeCountAllPromise   = Like.count({where: ['video_id = ?', +req.params.id]});
+    const likeCountMePromise    = Like.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
     const cuedVideoCountPromise = CuedVideo.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
+
     const videoPromise = Video.findById(+req.params.id, {
         include: [
             {
@@ -112,14 +113,10 @@ module.exports.show = (req, res, next) => {
         videoAsJson.transcripts = ResponseWrapper.wrap(videoAsJson.transcripts);
         res.send(videoAsJson);
     }).catch(err => {
-        console.log(err);
-
-        const errObj = {
+        next({
             message: 'Data Error',
             errors: [{message: `Unable to find video for id ${req.params.id}`}]
-        };
-
-        next(errObj)
+        });
     });
 };
 
