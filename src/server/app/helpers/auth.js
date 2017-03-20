@@ -25,6 +25,8 @@ module.exports.validateRequest = function(req, callback) {
 module.exports.refreshToken = function(token, callback) {
     const newToken = Object.assign({}, token);
 
+    delete newToken.exp;
+
     const args = {
         algorithm: 'RS256',
         expiresIn: '1h'
