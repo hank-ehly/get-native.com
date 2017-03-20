@@ -43,9 +43,7 @@ module.exports.index = (req, res, next) => {
             let videosAsJson = ResponseWrapper.wrap(videos);
             res.send(videosAsJson);
         });
-    }).catch(e => {
-        return next(e);
-    });
+    }).catch(e => next(e));
 };
 
 module.exports.show = (req, res) => {
