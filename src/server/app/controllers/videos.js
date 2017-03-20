@@ -44,6 +44,7 @@ module.exports.index = (req, res, next) => {
                 {model: Speaker,     attributes: ['name'], as: 'speaker'},
                 {model: Subcategory, attributes: ['name'], as: 'subcategory'}
             ],
+            order: [['created_at', 'DESC']],
             limit: limit
         }).then(videos => {
             let videosAsJson = ResponseWrapper.wrap(videos);
