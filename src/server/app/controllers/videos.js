@@ -15,7 +15,9 @@ const Like            = db.Like;
 const Transcript      = db.Transcript;
 const Collocation     = db.Collocation;
 const UsageExample    = db.UsageExample;
+const CuedVideo       = db.CuedVideo;
 const ResponseWrapper = require('../helpers').ResponseWrapper;
+const AuthHelper      = require('../helpers').Auth;
 
 module.exports.index = (req, res, next) => {
     const conditions = {};
@@ -57,19 +59,21 @@ module.exports.index = (req, res, next) => {
 };
 
 module.exports.show = (req, res, next) => {
-    Video.findById(+req.params.id, {
+    const accountId = AuthHelper.extractAccountIdFromRequest(req);
+    const likeCountAllPromise = Like.count({where: ['video_id = ?', +req.params.id]});
+    const likeCountMePromise = Like.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
+    const cuedVideoCountPromise = CuedVideo.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
+    const videoPromise = Video.findById(+req.params.id, {
         include: [
             {
                 model: Speaker,
                 attributes: ['id', 'description', 'name', 'picture_url'],
                 as: 'speaker'
-            },
-            {
+            }, {
                 model: Subcategory,
                 attributes: ['id', 'name'],
                 as: 'subcategory'
-            },
-            {
+            }, {
                 model: Transcript,
                 attributes: ['id', 'text', 'language_code'],
                 as: 'transcripts',
@@ -85,16 +89,20 @@ module.exports.show = (req, res, next) => {
                 }
             }
         ],
-        attributes: [
-            'description',
-            'id',
-            'loop_count',
-            'picture_url',
-            'video_url',
-            'length'
-        ]
-    }).then(video => {
-        let videoAsJson = video.toJSON();
+        attributes: ['description', 'id', 'loop_count', 'picture_url', 'video_url', 'length']
+    });
+
+    return Promise.all([likeCountAllPromise, likeCountMePromise, cuedVideoCountPromise, videoPromise]).then(result => {
+        const likeCountAll   = result[0];
+        const likeCountMe    = result[1];
+        const cuedVideoCount = result[2];
+        const video          = result[3];
+
+        const videoAsJson = video.toJSON();
+
+        videoAsJson.like_count = likeCountAll;
+        videoAsJson.liked      = likeCountMe === 1;
+        videoAsJson.cued       = cuedVideoCount === 1;
 
         for (let i = 0; i < videoAsJson.transcripts.length; i++) {
             let transcript = videoAsJson.transcripts[i];
@@ -104,10 +112,13 @@ module.exports.show = (req, res, next) => {
         videoAsJson.transcripts = ResponseWrapper.wrap(videoAsJson.transcripts);
         res.send(videoAsJson);
     }).catch(err => {
+        console.log(err);
+
         const errObj = {
             message: 'Data Error',
             errors: [{message: `Unable to find video for id ${req.params.id}`}]
         };
+
         next(errObj)
     });
 };

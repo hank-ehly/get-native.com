@@ -5,17 +5,16 @@
  * Created by henryehly on 2017/02/03.
  */
 
-const util    = require('../helpers').Utility;
-const Account = require('../models').Account;
-const jwt     = require('jsonwebtoken');
+const Utility    = require('../helpers').Utility;
+const Account    = require('../models').Account;
+const AuthHelper = require('../helpers').Auth;
 
 module.exports.index = (req, res) => {
-    let authToken = util.extractAuthTokenFromRequest(req);
-    let accountId = jwt.decode(authToken).sub;
+    let accountId = AuthHelper.extractAccountIdFromRequest(req);
 
     Account.findById(accountId, {
         attributes: {exclude: ['password', 'created_at', 'updated_at']}
-    }).then((account) => {
+    }).then(account => {
         const accountAsJson = account.toJSON();
         res.send(accountAsJson);
     });

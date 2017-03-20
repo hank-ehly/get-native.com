@@ -57,3 +57,8 @@ module.exports.setAuthHeadersOnResponseWithToken = function(res, token) {
     const oneHourFromNow = Date.now() + oneHour;
     res.set('X-GN-Auth-Expire', oneHourFromNow.toString());
 };
+
+module.exports.extractAccountIdFromRequest = function(req) {
+    let authToken = Utility.extractAuthTokenFromRequest(req);
+    return jwt.decode(authToken).sub;
+};

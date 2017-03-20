@@ -6,7 +6,7 @@
  */
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('Follower', {}, {
+    const Follower = sequelize.define('Follower', {}, {
         tableName: 'followers',
         underscored: true,
         associations: function(models) {
@@ -14,4 +14,8 @@ module.exports = function(sequelize, DataTypes) {
             models.Follower.belongsTo(models.Account);
         }
     });
+
+    Follower.removeAttribute('id');
+
+    return Follower;
 };

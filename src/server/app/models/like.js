@@ -6,7 +6,7 @@
  */
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('Like', {}, {
+    const Like = sequelize.define('Like', {}, {
         tableName: 'likes',
         underscored: true,
         updatedAt: false,
@@ -15,4 +15,8 @@ module.exports = function(sequelize, DataTypes) {
             models.Like.belongsTo(models.Video);
         }
     });
+
+    Like.removeAttribute('id');
+
+    return Like;
 };
