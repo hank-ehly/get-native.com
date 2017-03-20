@@ -6,24 +6,29 @@
  */
 
 const express = require('express');
-const router  = express.Router();
-const logger  = require('../../config/logger');
-const ev      = require('express-validation');
+const router = express.Router();
+const logger = require('../../config/logger');
+const nconf = require('nconf');
 
 module.exports.logErrors = function(err, req, res, next) {
+    logger.info(err, {json: true});
     next(err);
 };
 
 module.exports.clientErrorHandler = function(err, req, res, next) {
-
-    // todo: remove dependency on express-validation
-    if (err instanceof ev.ValidationError) {
+    if (err.errors && err.errors.length > 0) {
         return res.status(422).json(err);
+    } else if (err.message) {
+        return res.status(400).json(err);
     }
 
     next(err);
 };
 
 module.exports.fallbackErrorHandler = function(err, req, res, next) {
-    next(err);
+    if (nconf.get('env') !== 'production') {
+        return res.status(500).send(err.stack);
+    }
+
+    return res.status(500);
 };
