@@ -5,12 +5,16 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const models          = require('../models');
-const Video           = models.Video;
-const Speaker         = models.Speaker;
-const Category        = models.Category;
-const Subcategory     = models.Subcategory;
-const Language        = models.Language;
+const db              = require('../models');
+const Video           = db.Video;
+const Speaker         = db.Speaker;
+const Category        = db.Category;
+const Subcategory     = db.Subcategory;
+const Language        = db.Language;
+const Like            = db.Like;
+const Transcript      = db.Transcript;
+const Collocation     = db.Collocation;
+const UsageExample    = db.UsageExample;
 const ResponseWrapper = require('../helpers').ResponseWrapper;
 
 module.exports.index = (req, res, next) => {
@@ -52,14 +56,52 @@ module.exports.index = (req, res, next) => {
     });
 };
 
-module.exports.show = (req, res) => {
+module.exports.show = (req, res, next) => {
     Video.findById(+req.params.id, {
         include: [
-            {model: Speaker, attributes: ['id', 'description', 'name', 'picture_url'], as: 'speaker'},
-            {model: Subcategory, attributes: ['id', 'name'], as: 'subcategory'}
+            {
+                model: Speaker,
+                attributes: ['id', 'description', 'name', 'picture_url'],
+                as: 'speaker'
+            },
+            {
+                model: Subcategory,
+                attributes: ['id', 'name'],
+                as: 'subcategory'
+            },
+            {
+                model: Transcript,
+                attributes: ['id', 'text', 'language_code'],
+                as: 'transcripts',
+                include: {
+                    model: Collocation,
+                    attributes: ['text', 'description', 'ipa_spelling'],
+                    as: 'collocations',
+                    include: {
+                        model: UsageExample,
+                        attributes: ['text'],
+                        as: 'usage_examples'
+                    }
+                }
+            }
+        ],
+        attributes: [
+            'description',
+            'id',
+            'loop_count',
+            'picture_url',
+            'video_url',
+            'length'
         ]
     }).then(video => {
         let videoAsJson = video.toJSON();
+
+        for (let i = 0; i < videoAsJson.transcripts.length; i++) {
+            let transcript = videoAsJson.transcripts[i];
+            transcript.collocations = ResponseWrapper.deepWrap(transcript.collocations, ['usage_examples']);
+        }
+
+        videoAsJson.transcripts = ResponseWrapper.wrap(videoAsJson.transcripts);
         res.send(videoAsJson);
     }).catch(err => {
         const errObj = {
