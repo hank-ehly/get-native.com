@@ -8,3 +8,4 @@
 const nconf = require('nconf');
 
 nconf.set('allow-origin', 'https://get-native.com');
+nconf.set('hostname', 'api.get-native.com');
