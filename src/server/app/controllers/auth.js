@@ -9,99 +9,35 @@ const nconf   = require('nconf');
 const jwt     = require('jsonwebtoken');
 const logger  = require('../../config/logger');
 const Account = require('../models').Account;
+const AuthHelper = require('../helpers').Auth;
 
-module.exports.login = (req, res) => {
-    Account.find({where: {email: req.body.email}}).then(account => {
-        generateTokenForAccountId(account.id, (err, token) => {
+module.exports.login = (req, res, next) => {
+    const attributes = [
+        'id', 'email', 'browser_notifications_enabled', 'email_notifications_enabled', 'email_verified', 'default_study_language_code',
+        'picture_url', 'is_silhouette_picture'
+    ];
+
+    Account.find({where: {email: req.body.email}, attributes: attributes}).then(account => {
+        AuthHelper.generateTokenForAccountId(account.id, (err, token) => {
             if (err) {
                 throw new Error(err);
             }
 
-            setAuthHeadersOnResponseWithToken(res, token);
-
-            // todo: account.toJSON()?
-            res.send({
-                id: account.id,
-                email: account.email,
-                browser_notifications_enabled: account.browser_notifications_enabled,
-                email_notifications_enabled: account.email_notifications_enabled,
-                email_verified: account.email_verified,
-                default_study_language_code: account.default_study_language_code,
-                picture_url: account.picture_url,
-                is_silhouette_picture: account.is_silhouette_picture
-            });
+            AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
+            res.send(account.toJSON());
         });
-    });
+    }).catch(e => next({message: 'Authentication Error', errors: [{message: 'Account does not exist'}]}));
 };
 
 module.exports.authenticate = (req, res, next) => {
-    validateRequest(req, (err, token) => {
+    AuthHelper.validateRequest(req, (err, token) => {
         if (err) throw new Error(err);
 
-        refreshToken(token, (err, token) => {
+        AuthHelper.refreshToken(token, (err, token) => {
             if (err) throw new Error(err);
 
-            setAuthHeadersOnResponseWithToken(res, token);
+            AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
             next();
         })
     });
 };
-
-function validateRequest(req, callback) {
-    let token = req.get('authorization').split(' ')[1];
-
-    if (!token) {
-        throw new Error('No token provided.');
-    }
-
-    // todo: change issuer based on environment
-    const args = {
-        issuer: 'api.get-native.com',
-        audience: '',
-        algorithms: ['RS256']
-    };
-
-    jwt.verify(token, nconf.get('publicKey'), args, callback);
-}
-
-function refreshToken(token, callback) {
-
-    // todo: use Object.assign
-    // let objCopy = Object.assign({}, obj);
-
-    const newToken = {
-        iss: token.iss,
-        sub: token.sub,
-        aud: token.aud
-    };
-
-    const args = {
-        algorithm: 'RS256',
-        expiresIn: '1h'
-    };
-
-    jwt.sign(newToken, nconf.get('privateKey'), args, callback);
-}
-
-function generateTokenForAccountId(accountId, callback) {
-    let token = {
-        iss: 'api.get-native.com',
-        sub: accountId,
-        aud: ''
-    };
-
-    const args = {
-        algorithm: 'RS256',
-        expiresIn: '1h'
-    };
-
-    jwt.sign(token, nconf.get('privateKey'), args, callback);
-}
-
-function setAuthHeadersOnResponseWithToken(res, token) {
-    res.set('X-GN-Auth-Token', token);
-
-    const oneHour = (1000 * 60 * 60);
-    const oneHourFromNow = Date.now() + oneHour;
-    res.set('X-GN-Auth-Expire', oneHourFromNow.toString());
-}

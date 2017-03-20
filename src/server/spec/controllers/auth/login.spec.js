@@ -63,6 +63,12 @@ describe('POST /login', function() {
         request(server).post('/login').send(credentials).expect(200, done);
     });
 
+    it('should respond with a 422 Unprocessable Entity response if the user is not found', function(done) {
+        let badCredentials = Object.assign({}, credentials);
+        badCredentials.email = 'unregistered_user@email.com';
+        request(server).post('/login').send(badCredentials).expect(422, done);
+    });
+
     it('should respond with an object containing the user\'s ID', function() {
         return request(server).post('/login').send(credentials).then(function(res) {
             assert(new RegExp(/^[0-9]+$/).test(res.body.id));
@@ -112,6 +118,4 @@ describe('POST /login', function() {
             assert.equal(Utility.typeof(res.body.is_silhouette_picture), 'boolean');
         });
     });
-
-    it('should respond with a ??? error if the user is not found');
 });

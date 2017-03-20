@@ -8,3 +8,4 @@
 const nconf = require('nconf');
 
 nconf.set('allow-origin', 'https://stg.get-native.com');
+nconf.set('hostname', 'stg.api.get-native.com');

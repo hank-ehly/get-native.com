@@ -47,8 +47,7 @@ module.exports.index = (req, res, next) => {
 };
 
 module.exports.show = (req, res) => {
-    let mock = require('../../mock/video.json');
-    res.send(mock);
+    res.send({});
 };
 
 module.exports.like = (req, res) => {
