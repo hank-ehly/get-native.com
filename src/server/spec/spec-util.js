@@ -7,6 +7,7 @@
 
 const request = require('supertest');
 const exec    = require('child_process').exec;
+const url     = require('url');
 
 module.exports.defaultTimeout = 30000;
 
@@ -45,4 +46,9 @@ module.exports.isNumber = function(value) {
 
 module.exports.isParsableDateValue = function(value) {
     return new Date(value).toDateString() !== 'Invalid Date';
+};
+
+module.exports.isValidURL = function(value) {
+    let parsedURL = url.parse(value);
+    return parsedURL.protocol && parsedURL.hostname;
 };
