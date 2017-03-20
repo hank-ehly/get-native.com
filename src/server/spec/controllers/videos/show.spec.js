@@ -196,7 +196,14 @@ describe('GET /videos/:id', function() {
 
         it(`related_videos.records.length and related_videos.count should be equal`, function() {
             return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.related_videos.records.length), response.body.related_videos.count);
+                assert.equal(response.body.related_videos.records.length, response.body.related_videos.count);
+            });
+        });
+
+        it(`should return at most 3 related videos`, function() {
+            return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
+                assert(response.body.related_videos.count <= 3);
+                assert(response.body.related_videos.records.length <= 3);
             });
         });
 
