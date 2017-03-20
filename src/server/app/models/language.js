@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
         underscored: true
     });
 
-    Language.validateLanguageCode = function(code) {
+    Language.fetchLanguageCode = function(code) {
         return new Promise((resolve, reject) => {
             if (!code) {
                 return resolve('en');

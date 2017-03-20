@@ -21,7 +21,7 @@ module.exports.index = (req, res, next) => {
         conditions.id = {$gte: +req.query.max_id};
     }
 
-    return Promise.all([Language.validateLanguageCode(req.query.lang), Subcategory.findIdsForCategoryIdOrSubcategoryId(req.query)]).then(results => {
+    return Promise.all([Language.fetchLanguageCode(req.query.lang), Subcategory.findIdsForCategoryIdOrSubcategoryId(req.query)]).then(results => {
         const languageCode   = results[0];
         const subcategoryIds = results[1];
 
