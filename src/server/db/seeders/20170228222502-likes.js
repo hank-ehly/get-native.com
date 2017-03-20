@@ -20,7 +20,7 @@ module.exports = {
             for (let i = x[2]; i < x[3]; i++) {
 
                 // picker N unique videos
-                let numVideoIds = chance.integer({min: 0, max: 20});
+                let numVideoIds = chance.integer({min: 1, max: 20});
                 let videoIds = chance.unique(chance.integer, numVideoIds, {min: x[0], max: x[1]});
 
                 // the user likes each of those videos

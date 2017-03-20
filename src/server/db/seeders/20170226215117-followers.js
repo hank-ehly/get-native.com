@@ -17,7 +17,7 @@ module.exports = {
             let followers = [];
 
             for (let i = x[0]; i < x[1]; i++) {
-                let numFollowers = chance.integer({min: 0, max: 5});
+                let numFollowers = chance.integer({min: 1, max: 5});
 
                 for (let j = 0; j < numFollowers; j++) {
                     followers.push({
