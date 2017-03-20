@@ -156,7 +156,6 @@
     "body-parser": "^1.17.1",
     "core-js": "^2.4.1",
     "express": "^4.15.2",
-    "express-validation": "^1.0.2",
     "intl": "^1.2.5",
     "joi": "^10.2.2",
     "jsonwebtoken": "^7.3.0",
