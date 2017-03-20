@@ -92,8 +92,9 @@ module.exports = {
                 max_id: Joi.number().integer().min(1),
                 category_id: Joi.number().integer().min(1),
                 subcategory_id: Joi.number().integer().min(1),
-                lang: Joi.string(),
-                count: Joi.number().integer().max(9)
+                lang: Joi.string().lowercase(),
+                count: Joi.number().integer().min(1).max(9),
+                q: Joi.string().lowercase().max(100)
             }
         },
         show: {

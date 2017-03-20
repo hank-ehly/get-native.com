@@ -71,7 +71,11 @@ describe('GET /videos', function() {
         });
 
         it(`should return a 422 Unprocessable Entity response if the 'count' is above 9`, function(done) {
-            return request(server).get(`/videos?count=11`).set('authorization', authorization).then((res) => console.log(res.body)).expect(422, done);
+            request(server).get(`/videos?count=11`).set('authorization', authorization).expect(422, done);
+        });
+
+        it(`should return a 422 Unprocessable Entity response if the 'count' is 0`, function(done) {
+            request(server).get(`/videos?count=0`).set('authorization', authorization).expect(422, done);
         });
 
         it(`should respond with a 422 Unprocessable Entity if the 'q' parameter is longer than 100 characters`, function(done) {
@@ -231,9 +235,9 @@ describe('GET /videos', function() {
             });
         });
 
-        it(`should return 1 or less videos if count is 1`, function() {
+        it(`should return 1 video if count is 1`, function() {
             return request(server).get(`/videos?count=1`).set('authorization', authorization).then(function(response) {
-                assert(response.body.count <= 1);
+                assert.equal(response.body.count, 1);
             });
         });
 
