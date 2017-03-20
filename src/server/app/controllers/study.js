@@ -26,20 +26,14 @@ module.exports.writing_answers = (req, res) => {
 
     if (req.query.since) {
         conditions.created_at = {
-            $gte: new Date(req.query.since)
-        }
+            $gte: new Date(+req.query.since)
+        };
     }
 
     WritingAnswer.findAll({
         where: conditions,
         attributes: ['id', 'answer', 'created_at'],
-        include: [
-            {
-                model: WritingQuestion,
-                as: 'writing_question',
-                attributes: ['text']
-            }
-        ],
+        include: [{model: WritingQuestion, as: 'writing_question', attributes: ['text']}],
         limit: 10
     }).then(answers => {
         let answersAsJson = answers.map(a => a.toJSON());
