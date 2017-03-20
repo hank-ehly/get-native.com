@@ -11,11 +11,7 @@ const logger  = require('../../config/logger');
 const Account = require('../models').Account;
 
 module.exports.login = (req, res) => {
-    logger.info(req.body);
-
-    const email = req.body.email;
-
-    Account.find({where: {email: email}}).then(account => {
+    Account.find({where: {email: req.body.email}}).then(account => {
         generateTokenForAccountId(account.id, (err, token) => {
             if (err) {
                 throw new Error(err);
@@ -35,10 +31,6 @@ module.exports.login = (req, res) => {
                 is_silhouette_picture: account.is_silhouette_picture
             });
         });
-    }).catch(error => {
-        logger.error('Unable to find account.');
-        // todo: send uniform error response to client
-        res.send(error);
     });
 };
 
