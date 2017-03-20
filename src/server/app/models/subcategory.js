@@ -6,7 +6,7 @@
  */
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('Subcategory', {
+    const Subcategory = sequelize.define('Subcategory', {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,4 +21,28 @@ module.exports = function(sequelize, DataTypes) {
             models.Subcategory.hasMany(models.WritingQuestion, {as: 'writing_questions'});
         }
     });
+
+    Subcategory.findIdsForCategoryIdOrSubcategoryId = function(options) {
+        const categoryId    = options.category_id;
+        const subcategoryId = options.subcategory_id;
+
+        return new Promise((resolve, reject) => {
+            if (subcategoryId) {
+                resolve([subcategoryId]);
+            } else if (categoryId) {
+                resolve(_findIdsForCategoryId(categoryId));
+            } else {
+                resolve([]);
+            }
+        });
+    };
+
+    function _findIdsForCategoryId(categoryId) {
+        return Subcategory.findAll({
+            where: {category_id: categoryId},
+            attributes: ['id']
+        }).then(subcategory_ids => subcategory_ids);
+    }
+
+    return Subcategory;
 };

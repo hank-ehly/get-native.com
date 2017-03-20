@@ -5,17 +5,8 @@
  * Created by henryehly on 2017/03/20.
  */
 
-const Joi = require('joi');
-
-const joiOptions = {
-    abortEarly: false,
-    convert: true,
-    allowUnknown: true,
-    skipFunctions: false,
-    stripUnknown: false,
-    presence: 'optional',
-    noDefaults: false
-};
+const Joi     = require('joi');
+const options = require('../../config/joi.json');
 
 module.exports = function(schema) {
     if (!schema) throw new Error('No schema found!');
@@ -26,7 +17,7 @@ module.exports = function(schema) {
         ['headers', 'body', 'query', 'params'].forEach(key => {
             if (!schema[key]) return;
 
-            Joi.validate(req[key], schema[key], joiOptions, err => {
+            Joi.validate(req[key], schema[key], options, err => {
                 if (err === null) return;
 
                 let details = err.details.map(obj => {
