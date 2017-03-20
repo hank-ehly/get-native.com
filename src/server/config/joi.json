@@ -1,0 +1,9 @@
+{
+    "abortEarly": false,
+    "convert": true,
+    "allowUnknown": true,
+    "skipFunctions": false,
+    "stripUnknown": false,
+    "presence": "optional",
+    "noDefaults": false
+}
