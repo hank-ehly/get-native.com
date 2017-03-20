@@ -43,11 +43,31 @@ module.exports.index = (req, res, next) => {
             let videosAsJson = ResponseWrapper.wrap(videos);
             res.send(videosAsJson);
         });
-    }).catch(e => next(e));
+    }).catch(err => { // todo: Pass all catches to an error helper
+        const errObj = {
+            message: 'Error',
+            errors: [{message: `Failed to process search conditions: ${req.query}`}]
+        };
+        next(errObj)
+    });
 };
 
 module.exports.show = (req, res) => {
-    res.send({});
+    Video.findById(+req.params.id, {
+        include: [
+            {model: Speaker, attributes: ['id', 'description', 'name', 'picture_url'], as: 'speaker'},
+            {model: Subcategory, attributes: ['id', 'name'], as: 'subcategory'}
+        ]
+    }).then(video => {
+        let videoAsJson = video.toJSON();
+        res.send(videoAsJson);
+    }).catch(err => {
+        const errObj = {
+            message: 'Data Error',
+            errors: [{message: `Unable to find video for id ${req.params.id}`}]
+        };
+        next(errObj)
+    });
 };
 
 module.exports.like = (req, res) => {
