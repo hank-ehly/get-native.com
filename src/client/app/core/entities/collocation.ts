@@ -11,6 +11,6 @@ import { UsageExamples } from './usage-examples';
 export interface Collocation extends Entity {
     text: string;
     description: string;
-    pronunciation: string;
+    ipa_spelling: string;
     usage_examples: UsageExamples;
 }

@@ -24,7 +24,7 @@ export const STUBTranscripts: Transcripts = {
                     {
                         text: 'This is the text',
                         description: 'This is the description',
-                        pronunciation: 'ˈðɪs ˈɪz ðə ˈtɛkst',
+                        ipa_spelling: 'ˈðɪs ˈɪz ðə ˈtɛkst',
                         usage_examples: {
                             count: 3,
                             records: [
@@ -56,7 +56,7 @@ export const STUBTranscripts: Transcripts = {
                     {
                         text: 'This is the text',
                         description: 'This is the description',
-                        pronunciation: 'ˈtɛkst ˈtɛkst',
+                        ipa_spelling: 'ˈtɛkst ˈtɛkst',
                         usage_examples: {
                             count: 3,
                             records: [
