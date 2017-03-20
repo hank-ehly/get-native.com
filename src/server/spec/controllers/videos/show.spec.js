@@ -304,10 +304,10 @@ describe('GET /videos/:id', function() {
             });
         });
 
-        it(`should contain a non-null 'transcripts.records[N].collocations.records[N].pronunciation' string`, function() {
+        it(`should contain a non-null 'transcripts.records[N].collocations.records[N].ipa_spelling' string`, function() {
             return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.transcripts.records[0].collocations.records[0].pronunciation), 'string');
-                assert(![null, undefined].includes(response.body.transcripts.records[0].collocations.records[0].pronunciation));
+                assert.equal(Utility.typeof(response.body.transcripts.records[0].collocations.records[0].ipa_spelling), 'string');
+                assert(![null, undefined].includes(response.body.transcripts.records[0].collocations.records[0].ipa_spelling));
             });
         });
 

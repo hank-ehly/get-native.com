@@ -23,6 +23,11 @@ module.exports = {
                 type: Sequelize.TEXT,
                 allowNull: false
             },
+            ipa_spelling: {
+                type: Sequelize.STRING,
+                allowNull: false,
+                defaultValue: ''
+            },
             created_at: {
                 allowNull: false,
                 type: Sequelize.DATE,
