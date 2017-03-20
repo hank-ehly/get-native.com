@@ -15,6 +15,11 @@ module.exports = function(sequelize, DataTypes) {
         text: {
             type: DataTypes.TEXT,
             allowNull: false
+        },
+        ipa_spelling: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: ''
         }
     }, {
         tableName: 'collocations',

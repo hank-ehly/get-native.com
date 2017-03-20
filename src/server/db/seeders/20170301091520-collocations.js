@@ -12,6 +12,7 @@ module.exports = {
     up: function(queryInterface, Sequelize) {
         return Promise.all([Transcript.min('id'), Transcript.max('id')]).then(x => {
             const collocations = [];
+            const ipa_pool = 'ɑæɐɑ̃βɓʙɕçðd͡ʒɖɗəɚɵɘɛɜɝɛ̃ɞɠʛɢɥɦɧħʜɪɪ̈ɨʝɟʄɫʟɬɭɮɱŋɲɴɳɔœøɒɔ̃ɶɸɐɾʁɹɻʀɽɺʃʂθt͡ʃt͡sʈʊʊ̈ʉʌʋⱱʍɯɰχʎʏʏɤɣʒʐʑʔʕʢʡ';
 
             // for each transcript
             for (let i = x[0]; i < x[1]; i++) {
@@ -23,7 +24,8 @@ module.exports = {
                     collocations.push({
                         description: chance.sentence(),
                         text: chance.sentence({words: chance.integer({min: 1, max: 4})}),
-                        transcript_id: i
+                        transcript_id: i,
+                        ipa_spelling: chance.string({pool: ipa_pool})
                     });
                 }
             }
