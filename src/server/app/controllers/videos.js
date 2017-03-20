@@ -60,9 +60,26 @@ module.exports.index = (req, res, next) => {
 module.exports.show = (req, res, next) => {
     const accountId = AuthHelper.extractAccountIdFromRequest(req);
 
-    const likeCountAllPromise   = Like.count({where: ['video_id = ?', +req.params.id]});
-    const likeCountMePromise    = Like.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
+    const likeCountAllPromise = Like.count({where: ['video_id = ?', +req.params.id]});
+    const likeCountMePromise = Like.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
     const cuedVideoCountPromise = CuedVideo.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
+
+    const relatedVideosPromise = Video.findAll({
+        limit: 3,
+        order: [['loop_count', 'DESC']],
+        attributes: ['id', 'created_at', 'length', 'loop_count'],
+        include: [
+            {
+                model: Speaker,
+                attributes: ['name'],
+                as: 'speaker'
+            }, {
+                model: Subcategory,
+                attributes: ['name'],
+                as: 'subcategory'
+            }
+        ]
+    });
 
     const videoPromise = Video.findById(+req.params.id, {
         include: [
@@ -93,17 +110,19 @@ module.exports.show = (req, res, next) => {
         attributes: ['description', 'id', 'loop_count', 'picture_url', 'video_url', 'length']
     });
 
-    return Promise.all([likeCountAllPromise, likeCountMePromise, cuedVideoCountPromise, videoPromise]).then(result => {
+    return Promise.all([likeCountAllPromise, likeCountMePromise, cuedVideoCountPromise, relatedVideosPromise, videoPromise]).then(result => {
         const likeCountAll   = result[0];
         const likeCountMe    = result[1];
         const cuedVideoCount = result[2];
-        const video          = result[3];
+        const relatedVideos  = result[3];
+        const video          = result[4];
 
         const videoAsJson = video.toJSON();
 
-        videoAsJson.like_count = likeCountAll;
-        videoAsJson.liked      = likeCountMe === 1;
-        videoAsJson.cued       = cuedVideoCount === 1;
+        videoAsJson.like_count     = likeCountAll;
+        videoAsJson.liked          = likeCountMe === 1;
+        videoAsJson.cued           = cuedVideoCount === 1;
+        videoAsJson.related_videos = ResponseWrapper.wrap(relatedVideos);
 
         for (let i = 0; i < videoAsJson.transcripts.length; i++) {
             let transcript = videoAsJson.transcripts[i];
