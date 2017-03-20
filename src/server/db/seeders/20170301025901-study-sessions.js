@@ -20,7 +20,7 @@ module.exports = {
             for (let i = x[0]; i < x[1]; i++) {
 
                 // create N study sessions with min/max video_id
-                let numStudySessions = chance.integer({min: 0, max: 365});
+                let numStudySessions = chance.integer({min: 1, max: 365});
 
                 for (let j = 0; j < numStudySessions; j++) {
 

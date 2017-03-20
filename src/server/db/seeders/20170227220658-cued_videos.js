@@ -20,8 +20,8 @@ module.exports = {
             // for each user
             for (let i = x[2]; i < x[3]; i++) {
 
-                // create between 0 ~ 10 cuedVideos
-                let numCuedVideos = chance.integer({min: 0, max: 10});
+                // create between 1 ~ 10 cuedVideos
+                let numCuedVideos = chance.integer({min: 1, max: 10});
                 for (let j = 0; j < numCuedVideos; j++) {
 
                     // this could result in 1 user having 2+ cued_videos that point to the same video
