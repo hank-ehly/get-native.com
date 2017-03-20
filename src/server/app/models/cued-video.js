@@ -6,7 +6,7 @@
  */
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('CuedVideo', {}, {
+    const CuedVideo = sequelize.define('CuedVideo', {}, {
         tableName: 'cued_videos',
         underscored: true,
         associations: function(models) {
@@ -14,4 +14,8 @@ module.exports = function(sequelize, DataTypes) {
             models.CuedVideo.belongsTo(models.Video);
         }
     });
+
+    CuedVideo.removeAttribute('id');
+
+    return CuedVideo;
 };

@@ -15,6 +15,7 @@ module.exports.stats = (req, res) => {
     res.send(mock);
 };
 
+// todo: you're returning other users' writing answers!!
 module.exports.writing_answers = (req, res) => {
     const conditions = {};
 
