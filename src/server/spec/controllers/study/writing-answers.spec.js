@@ -82,6 +82,14 @@ describe('GET /study/writing_answers', function() {
         });
     });
 
+    // The study_session_id value is not used in the client application,
+    // but is necessary to confirm the relationship between Account and WritingAnswer.
+    it(`should have an non-null 'study_session_id' number for each record`, function() {
+        return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(response) {
+            assert(SpecUtil.isNumber(response.body.records[0].id));
+        });
+    });
+
     it(`should have a non-null 'answer' string for each record`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(response) {
             assert(response.body.records[0].answer.length > 0);
@@ -128,6 +136,16 @@ describe('GET /study/writing_answers', function() {
         });
     });
 
+    it(`should only return answers that belong to the authenticated user`, function() {
+        return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(response) {
+            const firstStudySessionId = response.body.records[0].study_session_id;
+            return db.sequelize.query(`SELECT account_id FROM study_sessions WHERE id = ${firstStudySessionId}`).then(function(result) {
+                const responseAccountId = result[0][0].account_id;
+                assert.equal(responseAccountId, user.id);
+            });
+        });
+    });
+
     it(`should return only records whose IDs are less than or equal to the 'max_id' query parameter`, function() {
         let allUserWritingAnswers = `
             SELECT * 
@@ -135,7 +153,7 @@ describe('GET /study/writing_answers', function() {
             WHERE study_session_id IN (
                 SELECT id 
                 FROM study_sessions 
-                WHERE account_id=${user.id}
+                WHERE account_id = ${user.id}
             );
         `;
 
