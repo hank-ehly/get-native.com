@@ -17,7 +17,7 @@ module.exports = () => {
         host: dbconf[e].host,
         dialect: dbconf[e].dialect,
         port: 3306,
-        logging: ['test', 'circle_ci'].includes(e) ? false : logger.info
+        logging: dbconf[e].logging === false ? dbconf[e].logging : logger.info
     });
 
     return sequelize.authenticate();
