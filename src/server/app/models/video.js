@@ -38,6 +38,21 @@ module.exports = function(sequelize, DataTypes) {
             models.Video.hasMany(models.Like, {as: 'likes'});
             models.Video.hasMany(models.StudySession, {as: 'study_sessions'});
             models.Video.hasMany(models.Transcript, {as: 'transcripts'});
+        },
+        scopes: {
+            cued: function(cuedOnly, accountId) {
+                if (!cuedOnly) {
+                    return {};
+                }
+
+                return {
+                    where: {
+                        id: {
+                            $in: [sequelize.literal('SELECT `video_id` FROM `cued_videos` WHERE `account_id` = ' + accountId)]
+                        }
+                    }
+                };
+            }
         }
     });
 };

@@ -37,8 +37,15 @@ module.exports.index = (req, res, next) => {
             conditions.subcategory_id = {$in: subcategoryIds};
         }
 
-        Video.findAll({
-            attributes: {exclude: ['speaker_id', 'subcategory_id', 'language_code', 'updated_at']},
+        const accountId = AuthHelper.extractAccountIdFromRequest(req);
+
+        const cued = [
+            db.sequelize.literal('EXISTS(SELECT `video_id` FROM `cued_videos` WHERE `video_id` = `Video`.`id` AND `account_id` = ' + accountId + ')'),
+            'cued'
+        ];
+
+        Video.scope({method: ['cued', req.query.cued_only, accountId]}).findAll({
+            attributes: ['created_at', 'id', 'loop_count', 'picture_url', 'video_url', 'length', cued],
             where: conditions,
             include: [
                 {model: Speaker,     attributes: ['name'], as: 'speaker'},
@@ -47,6 +54,11 @@ module.exports.index = (req, res, next) => {
             order: [['created_at', 'DESC']],
             limit: limit
         }).then(videos => {
+            for (let i = 0; i < videos.length; i++) {
+                videos[i] = videos[i].toJSON(); // todo: works, create helper
+                videos[i].cued = videos[i]['cued'] === 1;
+            }
+
             let videosAsJson = ResponseWrapper.wrap(videos);
             res.send(videosAsJson);
         });

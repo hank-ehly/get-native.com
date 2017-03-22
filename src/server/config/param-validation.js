@@ -94,7 +94,8 @@ module.exports = {
                 subcategory_id: Joi.number().integer().min(1),
                 lang: Joi.string().lowercase(),
                 count: Joi.number().integer().min(1).max(9),
-                q: Joi.string().lowercase().max(100)
+                q: Joi.string().lowercase().max(100),
+                cued_only: Joi.boolean()
             }
         },
         show: {
