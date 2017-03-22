@@ -50,6 +50,10 @@ describe('GET /videos', function() {
             request(server).get('/videos?lang=notALangCode').set('authorization', authorization).expect(422, done);
         });
 
+        it(`should return a 422 Unprocessable Entity response if the request contains a value for 'cued_only' that is not 'true' or 'false'`, function(done) {
+            request(server).get('/videos?cued_only=notABoolean').set('authorization', authorization).expect(422, done);
+        });
+
         it(`should return a 422 Unprocessable Entity response if the request contains a non-numeric 'count' parameter`, function(done) {
             request(server).get('/videos?count=notANumber').set('authorization', authorization).expect(422, done);
         });
@@ -138,6 +142,20 @@ describe('GET /videos', function() {
         it(`should have an non-null 'id' number for each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
                 assert(SpecUtil.isNumber(response.body.records[0].id));
+            });
+        });
+
+        it(`should contain a non-null 'cued' boolean`, function() {
+            return request(server).get(`/videos`).set('authorization', authorization).then(function(response) {
+                assert.equal(Utility.typeof(response.body.records[0].cued), 'boolean');
+                assert(![null, undefined].includes(response.body.records[0].cued));
+            });
+        });
+
+        it(`should only return cued videos if the 'cued_only' parameter is set to 'true'`, function() {
+            return request(server).get(`/videos?cued_only=true`).set('authorization', authorization).then(function(response) {
+                console.log(response.body.records);
+                assert.equal(response.body.records[0].cued, true);
             });
         });
 

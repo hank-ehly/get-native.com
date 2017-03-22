@@ -384,75 +384,6 @@ Status: 200 OK
 }
 ```
 
-# GET /cued_videos
-
-Returns the 20 most recent **cued videos** added by the user to their dashboard.
-
-```
-GET https://api.get-native.com/cued_videos
-```
-
-**Parameters**
-
-| Parameter 	| Description                                                      	| Required 	| Default 	|
-|-----------	|------------------------------------------------------------------	|:--------:	|---------	|
-| max_id    	| Returns only videos with an ID less than or equal to the max_id. 	|          	|         	|
-| count     	| The number of video records to retrieve. Maximum is 200.         	|          	| 20      	|
-
-**Response**
-
-| Data Field 	| Type        	| Description                                               	|
-|------------	|-------------	|-----------------------------------------------------------	|
-| records    	| [CuedVideo] 	| The array of CuedVideo records.                           	|
-| count      	| Int         	| The number of CuedVideo records included in the response. 	|
-
-```
-Status: 200 OK
-```
-```json
-{
-	"records": [
-		{
-			"cued": true,
-			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-			"id": 2244994983,
-			"speaker": {
-				"id": 123456,
-				"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
-				"name": "Harold Ford",
-				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-				"lang": "en",
-				"gender": "male",
-				"location": "Kansas City, MO"
-			},
-			"lang": "en",
-			"subcategory": {
-				"id": 123456,
-				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-				"name": "Talking to customers"
-			},
-			"loop_count": 7156,
-			"loop_velocity": 2.4960000000000004,
-			"thumbnail_image_url": "TODO",
-			"video_url": "TODO",
-			"has_related_videos": true,
-			"likes": {
-				"records": [{
-						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-						"user": {
-							"id": 123
-						},
-						"id": 456
-				}],
-				"count": 10
-			},
-			"length": 68
-		}
-	],
-	"count": 2
-}
-```
-
 # POST /login
 
 Verify user credentials and create new login session.
@@ -810,7 +741,7 @@ Returns an array of video objects matching the specified search query.
 If no search query is present, returns a list of the most recently created videos.
 
 ```
-GET https://api.get-native.com/videos?q=Business%20Ethics&lang=en
+GET https://api.get-native.com/videos?q=Business%20Ethics&lang=en&cued_only=true
 ```
 
 **Parameters**
@@ -820,9 +751,10 @@ GET https://api.get-native.com/videos?q=Business%20Ethics&lang=en
 | lang            	| Restricts videos to the given language, specified by an [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code. 	|          	|    en    	|
 | count           	| The number of videos to include in the response.                                                                                 	|          	|    9    	|
 | max_id          	| Returns only videos with an ID less than or equal to the max_id.                                                                 	|          	|         	|
-| subcategory_id          | Restricts videos to the given subcategory.                                                                                              |           |           |
-| category_id       | Restricts videos to the given category. If the subcategory_id parameter is also included, the category_id parameter is ignored.         |           |           |
+| subcategory_id    | Restricts videos to the given subcategory.                                                                                        |           |           |
+| category_id       | Restricts videos to the given category. If the subcategory_id parameter is also included, the category_id parameter is ignored.   |           |           |
 | q                 | A URL-encoded UTF-8 search query. Maximum length is 100 characters.                                                               |           |           |
+| cued_only         | Either 'true' or 'false' -- whether to return only videos in the authenticated users' cue.                                        |           |   false   |
 
 **About _max_id_**
 
@@ -858,7 +790,8 @@ Status: 200 OK
 			"loop_velocity": 2.4960000000000004,
 			"thumbnail_image_url": "XXX",
 			"video_url": "../../../assets/mock/video.mov",
-			"length": 68
+			"length": 68,
+			"cued": true
 		},
 		{
 			"created_at": "Wed Jan 11 04:35:55 +0000 2017",
@@ -873,7 +806,8 @@ Status: 200 OK
 			"loop_velocity": 2.4960000000000004,
 			"thumbnail_image_url": "XXX",
 			"video_url": "../../../assets/mock/video.mov",
-			"length": 73
+			"length": 73,
+			"cued": false
 		}
 	]
 }

@@ -15,7 +15,6 @@ router.patch('/account',               validate(pv.accounts.update),         ctr
 router.post( '/account/password',      validate(pv.accounts.updatePassword), ctrl.auth.authenticate, ctrl.accounts.updatePassword);
 router.post( '/account/email',         validate(pv.accounts.updateEmail),    ctrl.auth.authenticate, ctrl.accounts.updateEmail);
 router.get(  '/categories',            validate(pv.categories.index),        ctrl.auth.authenticate, ctrl.categories.index);
-router.get(  '/cued_videos',                                                 ctrl.auth.authenticate, ctrl.cuedVideos.list);
 router.post( '/login',                 validate(pv.auth.login),                                      ctrl.auth.login);
 router.get(  '/study/stats',           validate(pv.study.stats),             ctrl.auth.authenticate, ctrl.study.stats);
 router.get(  '/study/writing_answers', validate(pv.study.writing_answers),   ctrl.auth.authenticate, ctrl.study.writing_answers);
