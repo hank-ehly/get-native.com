@@ -20,18 +20,15 @@ describe('POST /videos/:id/like', function() {
         this.timeout(SpecUtil.defaultTimeout);
         SpecUtil.seedAll(() => {
             db.sequelize.query(`
-                SELECT id 
-                FROM videos 
-                WHERE id NOT IN (
-                    SELECT video_id 
-                    FROM likes 
-                    WHERE account_id = (
-                        SELECT id 
-                        FROM accounts 
-                        WHERE email = 'test@email.com'
-                    )
-                ) LIMIT 1`).then(r => {
-                requestVideoId = r[0][0].id;
+                SELECT video_id 
+                FROM likes 
+                WHERE account_id != (
+                    SELECT id 
+                    FROM accounts 
+                    WHERE email = 'test@email.com'
+                ) LIMIT 1                
+            `).then(r => {
+                requestVideoId = r[0][0].video_id;
                 done();
             });
         });
@@ -62,7 +59,7 @@ describe('POST /videos/:id/like', function() {
         });
 
         it(`should return 422 Unprocessable Entity if the required :id is 0`, function(done) {
-            request(server).post(`/videos/${requestVideoId}/like`).set('authorization', authorization).expect(204, done);
+            request(server).post(`/videos/0/like`).set('authorization', authorization).expect(422, done);
         });
     });
 
@@ -84,10 +81,8 @@ describe('POST /videos/:id/like', function() {
     });
 
     describe('response.body', function() {
-        it(`should respond with 204 No Content if the request succeeds`, function() {
-            it(`should return 422 Unprocessable Entity if the required :id is not a number`, function(done) {
-                request(server).post(`/videos/${requestVideoId}/like`).set('authorization', authorization).expect(204, done);
-            });
+        it(`should respond with 204 No Content if the request succeeds`, function(done) {
+            request(server).post(`/videos/${requestVideoId}/like`).set('authorization', authorization).expect(204, done);
         });
 
         it(`should return 404 Not Found if the specified video is not found`, function(done) {
@@ -96,14 +91,14 @@ describe('POST /videos/:id/like', function() {
 
         it(`should increment the video's 'like_count' by 1`, function() {
             // get current like_count
-            return db.sequelize.query(`SELECT COUNT(*) AS \`like_count\` FROM \`likes\` AS \`Like\` WHERE video_id = ${requestVideoId}`).then(r => {
+            return db.sequelize.query(`SELECT COUNT(*) AS \`like_count\` FROM \`likes\` WHERE video_id = ${requestVideoId}`).then(r => {
                 const beforeLikeCount = parseInt(r[0][0].like_count);
 
                 // perform request
                 return request(server).post(`/videos/${requestVideoId}/like`).set('authorization', authorization).then(() => {
 
                     // get incremented like_count
-                    return db.sequelize.query(`SELECT COUNT(*) AS \`like_count\` FROM \`likes\` AS \`Like\` WHERE video_id = ${requestVideoId}`).then(r => {
+                    return db.sequelize.query(`SELECT COUNT(*) AS \`like_count\` FROM \`likes\` WHERE video_id = ${requestVideoId}`).then(r => {
                         const afterLikeCount = parseInt(r[0][0].like_count);
 
                         assert.equal(afterLikeCount, beforeLikeCount + 1);
