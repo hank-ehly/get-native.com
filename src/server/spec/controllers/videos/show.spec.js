@@ -207,6 +207,13 @@ describe('GET /videos/:id', function() {
             });
         });
 
+        it(`should contains a non-null 'related_videos.records[N].cued boolean`, function() {
+            return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
+                assert.equal(Utility.typeof(response.body.related_videos.records[0].cued), 'boolean');
+                assert(![null, undefined].includes(response.body.related_videos.records[0].cued));
+            });
+        });
+
         it(`should contain a non-null 'like_count' integer`, function() {
             return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
                 assert.equal(Utility.typeof(response.body.like_count), 'number');
