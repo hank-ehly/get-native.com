@@ -154,7 +154,6 @@ describe('GET /videos', function() {
 
         it(`should only return cued videos if the 'cued_only' parameter is set to 'true'`, function() {
             return request(server).get(`/videos?cued_only=true`).set('authorization', authorization).then(function(response) {
-                console.log(response.body.records);
                 assert.equal(response.body.records[0].cued, true);
             });
         });
