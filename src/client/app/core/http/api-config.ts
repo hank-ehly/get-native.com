@@ -15,11 +15,6 @@ export const APIConfig = new Map<APIHandle, any>([
         url: '/login',
         isProtected: false
     }],
-    [APIHandle.CUED_VIDEOS, {
-        method: RequestMethod.Get,
-        url: '/cued_videos',
-        isProtected: true
-    }],
     [APIHandle.STUDY_STATS, {
         method: RequestMethod.Get,
         url: '/study/stats',
@@ -40,7 +35,7 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Get,
         url: '/videos',
         isProtected: true,
-        permitURLSearchParams: ['lang', 'count', 'max_id', 'subcategory_id', 'category_id', 'q']
+        permitURLSearchParams: ['lang', 'count', 'max_id', 'subcategory_id', 'category_id', 'q', 'cued_only']
     }],
     [APIHandle.VIDEO, {
         method: RequestMethod.Get,

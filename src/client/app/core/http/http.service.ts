@@ -66,7 +66,7 @@ export class HttpService {
 
         return this.http.request(request)
             .map(this.handleResponse.bind(this))
-            .catch(<Response|any>this.handleError.bind(this));
+            .catch(<any>this.handleError.bind(this));
     }
 
     private handleResponse(response: Response): Entity {
@@ -91,7 +91,7 @@ export class HttpService {
         return <Entity>response.json();
     }
 
-    private handleError(error: Response | any) {
+    private handleError(error: any) {
         throw new Error(error);
     }
 

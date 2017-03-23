@@ -9,7 +9,6 @@ import { APIHandle } from './api-handle';
 import { Video } from '../entities/video';
 import { Videos } from '../entities/videos';
 import { Categories } from '../entities/categories';
-import { CuedVideos } from '../entities/cued-videos';
 
 export const STUBResponses = new Map<APIHandle, any>([
     [APIHandle.LOGIN, {}],
@@ -345,71 +344,6 @@ export const STUBResponses = new Map<APIHandle, any>([
             }
         ],
         'count': 5
-    }],
-    [APIHandle.CUED_VIDEOS, <CuedVideos>{
-        'count': 4,
-        'records': [
-            {
-                'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
-                'id': 1,
-                'speaker': {
-                    'name': 'Harold Ford'
-                },
-                'subcategory': {
-                    'name': 'Talking to customers'
-                },
-                'loop_count': 7156,
-                'loop_velocity': 2.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 68
-            },
-            {
-                'created_at': 'Wed Jan 11 04:35:55 +0000 2017',
-                'id': 2,
-                'speaker': {
-                    'name': 'Benjamin Franklin'
-                },
-                'subcategory': {
-                    'name': 'How to change a light-bulb'
-                },
-                'loop_count': 1011,
-                'loop_velocity': 2.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 73
-            },
-            {
-                'created_at': 'Tue Aug 9 04:35:55 +0000 2016',
-                'id': 3,
-                'speaker': {
-                    'name': 'Jesse James'
-                },
-                'subcategory': {
-                    'name': 'Robbing a bank'
-                },
-                'loop_count': 9941,
-                'loop_velocity': 2.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 45
-            },
-            {
-                'created_at': 'Tue Mar 14 04:35:55 +0000 2017',
-                'id': 4,
-                'speaker': {
-                    'name': 'Aretha Franklin'
-                },
-                'subcategory': {
-                    'name': 'American Singers'
-                },
-                'loop_count': 10503,
-                'loop_velocity': 2.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 122
-            }
-        ]
     }],
     [APIHandle.STUDY_STATS, <any>{
         'lang': 'en',
