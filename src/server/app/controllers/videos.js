@@ -64,8 +64,8 @@ module.exports.index = (req, res, next) => {
 module.exports.show = (req, res, next) => {
     const accountId = AuthHelper.extractAccountIdFromRequest(req);
 
-    const likeCountAllPromise = Like.count({where: ['video_id = ?', +req.params.id]});
-    const likeCountMePromise = Like.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
+    const likeCountAllPromise   = Like.count({where: ['video_id = ?', +req.params.id]});
+    const likeCountMePromise    = Like.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
     const cuedVideoCountPromise = CuedVideo.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
 
     const cued = [db.sequelize.literal('EXISTS(SELECT `video_id` FROM `cued_videos` WHERE `video_id` = `Video`.`id` AND `account_id` = ' + accountId + ')'), 'cued'];
@@ -135,13 +135,24 @@ module.exports.show = (req, res, next) => {
     }).catch(err => {
         next({
             message: 'Data Error',
-            errors: [{message: `Unable to find video for id ${req.params.id}`}]
+            errors: [{message: `Unable to find video with id ${req.params.id}`}]
         });
     });
 };
 
-module.exports.like = (req, res) => {
-    res.sendStatus(204);
+module.exports.like = (req, res, next) => {
+    Video.findById(+req.params.id).then(video => {
+        const accountId = AuthHelper.extractAccountIdFromRequest(req);
+        Like.create({video_id: video.id, account_id: accountId}).then(result => {
+            res.sendStatus(204);
+        }).catch(e => {
+            res.status(500);
+            next();
+        });
+    }).catch(e => {
+        res.status(404);
+        next();
+    });
 };
 
 module.exports.unlike = (req, res) => {
