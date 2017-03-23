@@ -52,6 +52,31 @@ module.exports = function(sequelize, DataTypes) {
                         }
                     }
                 };
+            },
+            orderNewestFirst: {
+                order: [['created_at', 'DESC']]
+            },
+            withSpeakerName: function(Speaker) {
+                return {
+                    include: [
+                        {
+                            model: Speaker,
+                            attributes: ['name'],
+                            as: 'speaker'
+                        }
+                    ]
+                }
+            },
+            withSubcategoryName: function(Subcategory) {
+                return {
+                    include: [
+                        {
+                            model: Subcategory,
+                            attributes: ['name'],
+                            as: 'subcategory'
+                        }
+                    ]
+                }
             }
         }
     });

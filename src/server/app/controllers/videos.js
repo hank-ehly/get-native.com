@@ -38,20 +38,11 @@ module.exports.index = (req, res, next) => {
         }
 
         const accountId = AuthHelper.extractAccountIdFromRequest(req);
+        const cued = [db.sequelize.literal('EXISTS(SELECT `video_id` FROM `cued_videos` WHERE `video_id` = `Video`.`id` AND `account_id` = ' + accountId + ')'), 'cued'];
 
-        const cued = [
-            db.sequelize.literal('EXISTS(SELECT `video_id` FROM `cued_videos` WHERE `video_id` = `Video`.`id` AND `account_id` = ' + accountId + ')'),
-            'cued'
-        ];
-
-        Video.scope({method: ['cued', req.query.cued_only, accountId]}).findAll({
+        Video.scope('orderNewestFirst', {method: ['cued', req.query.cued_only, accountId]}, {method: ['withSubcategoryName', Subcategory]}, {method: ['withSpeakerName', Speaker]}).findAll({
             attributes: ['created_at', 'id', 'loop_count', 'picture_url', 'video_url', 'length', cued],
             where: conditions,
-            include: [
-                {model: Speaker,     attributes: ['name'], as: 'speaker'},
-                {model: Subcategory, attributes: ['name'], as: 'subcategory'}
-            ],
-            order: [['created_at', 'DESC']],
             limit: limit
         }).then(videos => {
             for (let i = 0; i < videos.length; i++) {
@@ -77,21 +68,12 @@ module.exports.show = (req, res, next) => {
     const likeCountMePromise = Like.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
     const cuedVideoCountPromise = CuedVideo.count({where: ['video_id = ? AND account_id = ?', +req.params.id, accountId]});
 
-    const relatedVideosPromise = Video.findAll({
+    const cued = [db.sequelize.literal('EXISTS(SELECT `video_id` FROM `cued_videos` WHERE `video_id` = `Video`.`id` AND `account_id` = ' + accountId + ')'), 'cued'];
+
+    const relatedVideosPromise = Video.scope({method: ['withSubcategoryName', Subcategory]}, {method: ['withSpeakerName', Speaker]}).findAll({
         limit: 3,
         order: [['loop_count', 'DESC']],
-        attributes: ['id', 'created_at', 'length', 'loop_count'],
-        include: [
-            {
-                model: Speaker,
-                attributes: ['name'],
-                as: 'speaker'
-            }, {
-                model: Subcategory,
-                attributes: ['name'],
-                as: 'subcategory'
-            }
-        ]
+        attributes: ['id', 'created_at', 'length', 'loop_count', cued]
     });
 
     const videoPromise = Video.findById(+req.params.id, {
@@ -132,9 +114,15 @@ module.exports.show = (req, res, next) => {
 
         const videoAsJson = video.toJSON();
 
-        videoAsJson.like_count     = likeCountAll;
-        videoAsJson.liked          = likeCountMe === 1;
-        videoAsJson.cued           = cuedVideoCount === 1;
+        videoAsJson.like_count = likeCountAll;
+        videoAsJson.liked      = likeCountMe === 1;
+        videoAsJson.cued       = cuedVideoCount === 1;
+
+        for (let i = 0; i < relatedVideos.length; i++) {
+            relatedVideos[i] = relatedVideos[i].toJSON();
+            relatedVideos[i].cued = relatedVideos[i].cued === 1;
+        }
+
         videoAsJson.related_videos = ResponseWrapper.wrap(relatedVideos);
 
         for (let i = 0; i < videoAsJson.transcripts.length; i++) {
