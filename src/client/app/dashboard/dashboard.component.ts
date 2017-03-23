@@ -60,7 +60,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
                 protected categoryList: CategoryListService, private router: Router, private dateService: UTCDateService) {
         super(logger, http, navbar, toolbar, categoryList);
-        this.apiHandle = APIHandle.CUED_VIDEOS;
     }
 
     ngOnInit() {
@@ -81,6 +80,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
 
         this.videoSearchParams.set('count', '9');
         this.videoSearchParams.set('lang', 'en');
+        this.videoSearchParams.set('cued_only', true.toString());
         this.lang$.next('en');
 
         this.answerSearchParams.set('since', this.dateService.getDaysAgoFromDate(30).toString());
