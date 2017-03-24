@@ -52,3 +52,8 @@ module.exports.isValidURL = function(value) {
     let parsedURL = url.parse(value);
     return parsedURL.protocol && parsedURL.hostname;
 };
+
+module.exports.isValidEmail = function(value) {
+    let regex = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
+    return new RegExp(emailRegex).test(value);
+};
