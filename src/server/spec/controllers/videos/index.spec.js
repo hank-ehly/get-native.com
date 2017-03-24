@@ -112,10 +112,7 @@ describe('GET /videos', function() {
 
         it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                let timestamp = +response.header['x-gn-auth-expire'];
-                let date = new Date(timestamp);
-                let dateString = date.toDateString();
-                assert(dateString !== 'Invalid Date');
+                assert(SpecUtil.isParsableDateValue(+response.header['x-gn-auth-expire']));
             });
         });
     });
