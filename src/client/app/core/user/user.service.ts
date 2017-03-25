@@ -31,7 +31,7 @@ export class UserService {
     }
 
     get defaultStudyLanguage(): Promise<Language> {
-        return this.current.then((u) => this.langService.languageForCode(u.default_study_language));
+        return this.current.then((u) => this.langService.languageForCode(u.default_study_language_code));
     }
 
     constructor(private http: HttpService, private langService: LangService) {

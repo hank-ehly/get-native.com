@@ -75,7 +75,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
     onSelectDefaultStudyLanguage(code: LanguageCode): void {
         this.logger.debug(this, `Selected new default study language: ${code}`);
         this.subscriptions.push(
-            this.http.request(APIHandle.EDIT_ACCOUNT, {body: {default_study_language: code}}).subscribe()
+            this.http.request(APIHandle.EDIT_ACCOUNT, {body: {default_study_language_code: code}}).subscribe()
         );
     }
 
