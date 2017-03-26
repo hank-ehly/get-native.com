@@ -10,6 +10,7 @@ module.exports = {
         return queryInterface.createTable('cued_videos', {
             video_id: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
                     model: 'videos',
                     key: 'id'
@@ -19,6 +20,7 @@ module.exports = {
             },
             account_id: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
                     model: 'accounts',
                     key: 'id'
@@ -27,11 +29,6 @@ module.exports = {
                 onDelete: 'restrict'
             },
             created_at: {
-                allowNull: false,
-                type: Sequelize.DATE,
-                defaultValue: Sequelize.fn('NOW')
-            },
-            updated_at: {
                 allowNull: false,
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.fn('NOW')

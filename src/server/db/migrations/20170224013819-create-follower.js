@@ -10,6 +10,7 @@ module.exports = {
         return queryInterface.createTable('followers', {
             speaker_id: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
                     model: 'speakers'
                 },
@@ -18,6 +19,7 @@ module.exports = {
             },
             account_id: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
                     model: 'accounts'
                 },
@@ -25,11 +27,6 @@ module.exports = {
                 onDelete: 'restrict'
             },
             created_at: {
-                allowNull: false,
-                type: Sequelize.DATE,
-                defaultValue: Sequelize.fn('NOW')
-            },
-            updated_at: {
                 allowNull: false,
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.fn('NOW')
