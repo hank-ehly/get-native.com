@@ -7,7 +7,7 @@
 
 const request  = require('supertest');
 const url      = require('url');
-const specUtil = require('../../spec-util');
+const SpecUtil = require('../../spec-util');
 const assert   = require('assert');
 const Speaker  = require('../../../app/models').Speaker;
 const Utility  = require('../../../app/helpers').Utility;
@@ -18,8 +18,8 @@ describe('GET /speakers/:id', () => {
     let testSpeaker   = null;
 
     before(function(done) {
-        this.timeout(specUtil.defaultTimeout);
-        specUtil.seedAll(function() {
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.seedAll(function() {
             Speaker.findOne().then(function(speaker) {
                 testSpeaker = speaker.toJSON();
                 done();
@@ -30,8 +30,8 @@ describe('GET /speakers/:id', () => {
     });
 
     beforeEach(function(done) {
-        this.timeout(specUtil.defaultTimeout);
-        specUtil.login(function(_server, _authorization) {
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.login(function(_server, _authorization) {
             server = _server;
             authorization = _authorization;
             done();
@@ -43,23 +43,20 @@ describe('GET /speakers/:id', () => {
     });
 
     after(function(done) {
-        this.timeout(specUtil.defaultTimeout);
-        specUtil.seedAllUndo(done);
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.seedAllUndo(done);
     });
 
     describe('headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
-            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                assert(speaker.header['x-gn-auth-token'].length > 0);
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(response) {
+                assert(response.header['x-gn-auth-token'].length > 0);
             });
         });
 
         it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
-            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                let timestamp = +speaker.header['x-gn-auth-expire'];
-                let date = new Date(timestamp);
-                let dateString = date.toDateString();
-                assert(dateString !== 'Invalid Date');
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(response) {
+                assert(SpecUtil.isParsableDateValue(+response.header['x-gn-auth-expire']));
             });
         });
     });

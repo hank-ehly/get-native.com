@@ -14,7 +14,7 @@ const Utility  = require('../../../app/helpers').Utility;
 describe('GET /account', () => {
     let server        = null;
     let authorization = null;
-    let emailRegex = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
+    let emailRegex    = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
 
     before(function(done) {
         this.timeout(SpecUtil.defaultTimeout);
@@ -41,17 +41,14 @@ describe('GET /account', () => {
 
     describe('headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
-            return request(server).get('/account').set('authorization', authorization).then(function(res) {
-                assert(res.header['x-gn-auth-token'].length > 0);
+            return request(server).get('/account').set('authorization', authorization).then(function(response) {
+                assert(response.header['x-gn-auth-token'].length > 0);
             });
         });
 
         it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
-            return request(server).get('/account').set('authorization', authorization).then(function(res) {
-                let timestamp = +res.header['x-gn-auth-expire'];
-                let date = new Date(timestamp);
-                let dateString = date.toDateString();
-                assert(dateString !== 'Invalid Date');
+            return request(server).get('/account').set('authorization', authorization).then(function(response) {
+                assert(SpecUtil.isParsableDateValue(+response.header['x-gn-auth-expire']));
             });
         });
     });

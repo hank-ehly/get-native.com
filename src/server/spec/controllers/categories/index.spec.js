@@ -7,20 +7,20 @@
 
 const request = require('supertest');
 const assert = require('assert');
-const util = require('../../spec-util');
+const SpecUtil = require('../../spec-util');
 
 describe('GET /categories', function() {
     let server        = null;
     let authorization = null;
 
     before(function(done) {
-        this.timeout(util.defaultTimeout);
-        util.seedAll(done);
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.seedAll(done);
     });
 
     beforeEach(function(done) {
-        this.timeout(util.defaultTimeout);
-        util.login(function(_server, _authorization) {
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.login(function(_server, _authorization) {
             server = _server;
             authorization = _authorization;
             done();
@@ -32,23 +32,20 @@ describe('GET /categories', function() {
     });
 
     after(function(done) {
-        this.timeout(util.defaultTimeout);
-        util.seedAllUndo(done);
+        this.timeout(SpecUtil.defaultTimeout);
+        SpecUtil.seedAllUndo(done);
     });
 
     describe('headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                assert(res.header['x-gn-auth-token'].length > 0);
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                assert(response.header['x-gn-auth-token'].length > 0);
             });
         });
 
         it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                let timestamp = +res.header['x-gn-auth-expire'];
-                let date = new Date(timestamp);
-                let dateString = date.toDateString();
-                assert(dateString !== 'Invalid Date');
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                assert(SpecUtil.isParsableDateValue(+response.header['x-gn-auth-expire']));
             });
         });
     });
