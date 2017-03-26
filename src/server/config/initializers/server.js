@@ -5,40 +5,37 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const express = require('express');
+const express    = require('express');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const nconf = require('nconf');
-const routes = require('../routes');
-const logger = require('../logger');
+const morgan     = require('morgan');
+const nconf      = require('nconf');
+const routes     = require('../routes');
+const logger     = require('../logger');
 const middleware = require('../../app/middleware');
+const Promise    = require('bluebird');
+const k          = require('../keys.json');
 
 module.exports = () => {
-    return new Promise((resolve) => {
-        const app = express();
+    const app = express();
 
-        if (nconf.get('env') === 'development') {
-            app.use(morgan('dev'));
-        }
+    if (nconf.get('env') === 'development') {
+        app.use(morgan('dev'));
+    }
 
-        for (let x of ['x-powered-by', 'etag', 'views', 'view cache']) {
-            app.disable(x);
-        }
+    for (let x of ['x-powered-by', 'etag', 'views', 'view cache']) {
+        app.disable(x);
+    }
 
-        app.use(bodyParser.json());
+    app.use(bodyParser.json());
+    app.use(middleware.Cors);
+    app.use(routes);
 
-        app.use(middleware.Cors);
+    app.use(middleware.Error.logErrors);
+    app.use(middleware.Error.clientErrorHandler);
+    app.use(middleware.Error.fallbackErrorHandler);
 
-        app.use(routes);
-
-        app.use(middleware.Error.logErrors);
-        app.use(middleware.Error.clientErrorHandler);
-        app.use(middleware.Error.fallbackErrorHandler);
-
-        let port = nconf.get('port');
-        let server = app.listen(port, () => {
-            logger.info(`Listening on port ${port}`);
-            resolve(server);
-        });
+    return new Promise(resolve => {
+        const port = nconf.get(k.Port);
+        resolve(app.listen(port, () => logger.info(`Listening on port ${port}`)));
     });
 };
