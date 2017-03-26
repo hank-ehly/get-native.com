@@ -19,26 +19,7 @@ module.exports.stats = (req, res) => {
 module.exports.writing_answers = (req, res) => {
     const accountId = AuthHelper.extractAccountIdFromRequest(req);
 
-    const conditions = {
-        study_session_id: {
-            $in: models.sequelize.literal(`(SELECT \`id\` FROM \`study_sessions\` WHERE \`account_id\` = ${accountId})`)
-        }
-    };
-
-    if (req.query.max_id) {
-        conditions.id = {
-            $gte: +req.query.max_id
-        };
-    }
-
-    if (req.query.since) {
-        conditions.created_at = {
-            $gte: new Date(+req.query.since)
-        };
-    }
-
-    WritingAnswer.findAll({
-        where: conditions,
+    WritingAnswer.scope('newestFirst', {method: ['forAccount', accountId]}, {method: ['since', req.query.since]}, {method: ['maxId', req.query.max_id]}).findAll({
         attributes: ['id', 'answer', 'created_at', 'study_session_id'],
         include: [{model: WritingQuestion, as: 'writing_question', attributes: ['text']}],
         limit: 10
@@ -46,7 +27,10 @@ module.exports.writing_answers = (req, res) => {
         let answersAsJson = answers.map(a => a.toJSON());
         let wrappedResponse = ResponseWrapper.wrap(answersAsJson);
         res.send(wrappedResponse);
-    }).catch(e => {
-       console.log(e); // todo
+    }).catch(() => {
+        next({
+            message: 'Error',
+            errors: [{message: `Failed to process search conditions: ${req.query}`}]
+        });
     });
 };
