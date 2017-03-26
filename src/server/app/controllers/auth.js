@@ -43,11 +43,11 @@ module.exports.login = (req, res, next) => {
             throw new Error(`Password incorrect`);
         }
 
-        delete account.password;
         return AuthHelper.generateTokenForAccountId(account.id);
     }).then(token => {
         AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
         const accountAsJson = account.get({plain: true});
+        delete accountAsJson.password;
         res.send(accountAsJson);
     }).catch(e => {
         return next({
