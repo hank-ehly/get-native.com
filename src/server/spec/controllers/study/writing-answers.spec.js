@@ -9,15 +9,16 @@ const request  = require('supertest');
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const db       = require('../../../app/models');
+const Promise  = require('bluebird');
 
 describe('GET /study/writing_answers', function() {
-    let server = null;
+    let server        = null;
     let authorization = null;
-    let user = null;
+    let user          = null;
 
-    before(function(done) {
+    before(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAll(done);
+        return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
     });
 
     beforeEach(function(done) {
@@ -34,9 +35,9 @@ describe('GET /study/writing_answers', function() {
         server.close(done);
     });
 
-    after(function(done) {
+    after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAllUndo(done);
+        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
     describe('headers', function() {

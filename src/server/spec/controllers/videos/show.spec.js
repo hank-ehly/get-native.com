@@ -5,21 +5,22 @@
  * Created by henryehly on 2017/03/20.
  */
 
-const db     = require('../../../app/models');
-const assert = require('assert');
+const db       = require('../../../app/models');
+const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/helpers').Utility;
 const request  = require('supertest');
+const Promise  = require('bluebird');
 
 describe('GET /videos/:id', function() {
-    let server = null;
-    let authorization = null;
-    let user = null;
+    let server         = null;
+    let authorization  = null;
+    let user           = null;
     let requestVideoId = null;
 
     before(function(done) {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAll(() => {
+        Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]).then(() => {
             db.sequelize.query('SELECT id FROM videos LIMIT 1').then(r => {
                 requestVideoId = r[0][0].id;
                 done();
@@ -41,9 +42,9 @@ describe('GET /videos/:id', function() {
         server.close(done);
     });
 
-    after(function(done) {
+    after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAllUndo(done);
+        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
     describe('request', function() {

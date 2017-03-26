@@ -9,6 +9,7 @@ const request  = require('supertest');
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const db       = require('../../../app/models');
+const Promise  = require('bluebird');
 
 describe('POST /videos/:id/unlike', function() {
     let server         = null;
@@ -18,7 +19,7 @@ describe('POST /videos/:id/unlike', function() {
 
     before(function(done) {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAll(() => {
+        Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]).then(() => {
             db.sequelize.query(`
                 SELECT video_id 
                 FROM likes 
@@ -48,9 +49,9 @@ describe('POST /videos/:id/unlike', function() {
         server.close(done);
     });
 
-    after(function(done) {
+    after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAllUndo(done);
+        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
     describe('request', function() {
