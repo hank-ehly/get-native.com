@@ -168,6 +168,7 @@
     "nodemailer": "^3.1.8",
     "rxjs": "^5.2.0",
     "sequelize": "4.0.0-2",
+    "sodium": "^2.0.1",
     "systemjs": "0.19.41",
     "web-animations-js": "^2.2.2",
     "winston": "^2.3.1",
