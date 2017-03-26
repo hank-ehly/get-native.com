@@ -5,6 +5,8 @@
  * Created by henryehly on 2017/02/24.
  */
 
+const Utility = require('../helpers').Utility;
+
 module.exports = function(sequelize, DataTypes) {
     const Account = sequelize.define('Account', {
         email: {
@@ -60,7 +62,11 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Account.existsForEmail = function(email) {
-        return Account.find({where: {email: email}}).then(numExistingAccounts => numExistingAccounts !== 0);
+        if (Utility.typeof(email) !== 'string') {
+            throw new TypeError(`Argument 'email' must be a string`);
+        }
+
+        return Account.count({where: {email: email}}).then(numExistingAccounts => numExistingAccounts !== 0);
     };
 
     return Account;
