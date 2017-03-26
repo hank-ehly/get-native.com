@@ -11,6 +11,7 @@ const SpecUtil = require('../../spec-util');
 const assert   = require('assert');
 const Speaker  = require('../../../app/models').Speaker;
 const Utility  = require('../../../app/helpers').Utility;
+const Promise  = require('bluebird');
 
 describe('GET /speakers/:id', () => {
     let server        = null;
@@ -19,7 +20,7 @@ describe('GET /speakers/:id', () => {
 
     before(function(done) {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAll(function() {
+        Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]).then(() => {
             Speaker.findOne().then(function(speaker) {
                 testSpeaker = speaker.toJSON();
                 done();
@@ -42,9 +43,9 @@ describe('GET /speakers/:id', () => {
         server.close(done);
     });
 
-    after(function(done) {
+    after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAllUndo(done);
+        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
     describe('headers', function() {

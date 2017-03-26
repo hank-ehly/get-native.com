@@ -5,9 +5,10 @@
  * Created by henryehly on 2017/03/26.
  */
 
-const assert  = require('assert');
+const assert   = require('assert');
 const SpecUtil = require('../spec-util');
-const Account = require('../../app/models').Account;
+const Account  = require('../../app/models').Account;
+const Promise  = require('bluebird');
 
 describe('Account', function() {
     let existingAccountEmail      = null;
@@ -15,8 +16,7 @@ describe('Account', function() {
 
     before(function(done) {
         this.timeout(SpecUtil.defaultTimeout);
-
-        SpecUtil.seedAll(() => {
+        Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]).then(() => {
             Account.findOne().then(a => {
                 console.log(a.email);
                 existingAccountEmail = a.email;
@@ -25,9 +25,9 @@ describe('Account', function() {
         });
     });
 
-    after(function(done) {
+    after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAllUndo(done);
+        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
     it(`should return true if a user exists for a given email address`, function() {

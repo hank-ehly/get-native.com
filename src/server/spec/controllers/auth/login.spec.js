@@ -10,15 +10,16 @@ const Utility  = require('../../../app/helpers').Utility;
 const request  = require('supertest');
 const assert   = require('assert');
 const url      = require('url');
+const Promise  = require('bluebird');
 
 describe('POST /login', function() {
     let server        = null;
     const emailRegex  = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
     const credentials = {email: 'test@email.com', password: 'test_password'};
 
-    before(function(done) {
+    before(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAll(done);
+        return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
     });
 
     beforeEach(function(done) {
@@ -34,9 +35,9 @@ describe('POST /login', function() {
         server.close(done);
     });
 
-    after(function(done) {
+    after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAllUndo(done);
+        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
     describe('headers', function() {

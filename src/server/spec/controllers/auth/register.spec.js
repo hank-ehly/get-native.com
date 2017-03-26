@@ -11,13 +11,14 @@ const request  = require('supertest');
 const assert   = require('assert');
 const MailDev  = require('maildev');
 const Promise  = require('bluebird');
+const nconf    = require('nconf');
 const db       = require('../../../app/models');
+const k        = require('../../../config/keys.json');
 
 // todo: You don't want to allow someone to make 10,000 accounts via the commandline (check user agent?)
 // todo: Should User-Agents like 'curl' be allowed to use the API at all?
 describe('POST /register', function() {
-    let server = null;
-    let maildev = null;
+    let server  = null;
 
     const newAccountCredentials = {
         email: 'new.user@email.com',
@@ -26,16 +27,7 @@ describe('POST /register', function() {
 
     before(function() {
         this.timeout(SpecUtil.defaultTimeout);
-
-        maildev = new MailDev({
-            smtp: 1025,
-            web: 1080
-        });
-
-        return Promise.all([
-            Promise.promisify(SpecUtil.seedAll)(),
-            Promise.promisify(maildev.listen, {multiArgs: true})()
-        ]);
+        return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
     });
 
     beforeEach(function(done) {
@@ -73,11 +65,7 @@ describe('POST /register', function() {
 
     after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-
-        return Promise.all([
-            Promise.promisify(SpecUtil.seedAllUndo)(),
-            Promise.promisify(maildev.end)()
-        ]);
+        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
     describe('headers', function() {
@@ -95,18 +83,9 @@ describe('POST /register', function() {
     });
 
     describe('confirmation email', function() {
-        // Hack to allow maildev to fetch emails
-        function fetchAllEmail(callback) {
-            setTimeout(function() {
-                maildev.getAllEmail(function(error, emails) {
-                    callback(error, emails);
-                });
-            }, 1);
-        }
-
         it(`should send a confirmation email to the newly registered user after successful registration`, function(done) {
             request(server).post('/register').send(newAccountCredentials).then(function() {
-                fetchAllEmail(function(error, emails) {
+                SpecUtil.getAllEmail(function(error, emails) {
                     const recipientEmailAddress = emails[0].envelope.to[0].address;
                     assert.equal(recipientEmailAddress, newAccountCredentials.email);
                     done();
@@ -116,9 +95,9 @@ describe('POST /register', function() {
 
         it(`should send a confirmation email from the get-native noreply account after successful registration`, function(done) {
             request(server).post('/register').send(newAccountCredentials).then(function() {
-                fetchAllEmail(function(error, emails) {
+                SpecUtil.getAllEmail(function(error, emails) {
                     const senderEmailAddress = emails[0].envelope.from.address;
-                    const noreplyEmailAddress = ''; // todo
+                    const noreplyEmailAddress = nconf.get(k.NoReply);
                     assert.equal(senderEmailAddress, noreplyEmailAddress);
                     done();
                 });

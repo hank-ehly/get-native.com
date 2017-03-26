@@ -11,15 +11,16 @@ const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/helpers').Utility;
 const db       = require('../../../app/models');
 const url      = require('url');
+const Promise  = require('bluebird');
 
 describe('GET /videos', function() {
     let server = null;
     let authorization = null;
     let user = null;
 
-    before(function(done) {
+    before(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAll(done);
+        return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
     });
 
     beforeEach(function(done) {
@@ -36,9 +37,9 @@ describe('GET /videos', function() {
         server.close(done);
     });
 
-    after(function(done) {
+    after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.seedAllUndo(done);
+        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
     describe('request', function() {
