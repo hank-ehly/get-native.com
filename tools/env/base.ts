@@ -1,7 +1,7 @@
 import { EnvConfig } from './env-config.interface';
 
 const BaseConfig: EnvConfig = {
-    moderator: 'getnative.moderator@gmail.com',
+    moderator: 'admin@get-native.com',
     facebookSDKSrc: '//connect.facebook.net/en_US/sdk.js'
 };
 
