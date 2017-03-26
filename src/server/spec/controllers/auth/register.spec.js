@@ -162,8 +162,8 @@ describe('POST /register', function() {
         });
 
         it(`should create a new user whose email is the same as specified in the request`, function() {
-            return db.Account.findOne({where: {email: newAccountCredentials.email}}).then(function(account) {
-                assert(account);
+            return request(server).post('/register').send(newAccountCredentials).then(function(response) {
+                assert.equal(response.body.email, newAccountCredentials.email);
             });
         });
 
