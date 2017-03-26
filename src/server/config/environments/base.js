@@ -7,27 +7,22 @@
 
 const nconf = require('nconf');
 const fs    = require('fs');
+const k     = require('../keys.json');
 
 const secretsDir = __dirname + '/../secrets';
 
-let publicKey = fs.readFile(secretsDir + '/id_rsa.pem', (err, data) => {
-    if (err) {
-        throw new Error(err);
-    }
-
-    nconf.set('publicKey', data.toString());
+const publicKey = fs.readFile(secretsDir + '/id_rsa.pem', (err, data) => {
+    if (err) throw new Error(err);
+    nconf.set(k.PublicKey, data.toString());
 });
 
-let privateKey = fs.readFile(secretsDir + '/id_rsa', (err, data) => {
-    if (err) {
-        throw new Error(err);
-    }
-
-    nconf.set('privateKey', data.toString());
+const privateKey = fs.readFile(secretsDir + '/id_rsa', (err, data) => {
+    if (err) throw new Error(err);
+    nconf.set(k.PrivateKey, data.toString());
 });
 
 nconf.set('env', process.env.NODE_ENV.toLowerCase());
-
-nconf.defaults({port: 3000});
-
+nconf.set('port', 3000);
+nconf.set('smtp:host', 'localhost');
+nconf.set('smtp:port', 1025);
 nconf.set('allow-origin', '*');
