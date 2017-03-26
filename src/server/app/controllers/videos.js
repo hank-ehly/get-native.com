@@ -48,12 +48,12 @@ module.exports.index = (req, res, next) => {
             attributes: attributes,
             where: conditions
         }).then(videos => {
-            for (let i = 0; i < videos.length; i++) {
-                videos[i] = videos[i].toJSON(); // todo: works, create helper
-                videos[i].cued = videos[i]['cued'] === 1;
-            }
+            const videosAsJson = ResponseWrapper.wrap(videos.map(v => {
+                v = v.get({plain: true});
+                v.cued = v.cued === 1;
+                return v;
+            }));
 
-            let videosAsJson = ResponseWrapper.wrap(videos);
             res.send(videosAsJson);
         });
     }).catch(() => { // todo: Pass all catches to an error helper
@@ -96,14 +96,14 @@ module.exports.show = (req, res, next) => {
     });
 
     return Promise.all([likeCount, liked, cued, relatedVideos, video]).spread((likeCount, liked, cued, relatedVideos, video) => {
-        video = video.toJSON();
+        video = video.get({plain: true});
 
         video.like_count = likeCount;
         video.liked      = liked;
         video.cued       = cued;
 
         video.related_videos = ResponseWrapper.wrap(relatedVideos.map(r => {
-            r = r.toJSON();
+            r = r.get({plain: true});
             r.cued = r.cued === 1;
             return r;
         }));

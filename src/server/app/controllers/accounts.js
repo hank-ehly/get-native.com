@@ -15,8 +15,8 @@ module.exports.index = (req, res) => {
     Account.findById(accountId, {
         attributes: {exclude: ['password', 'created_at', 'updated_at']}
     }).then(account => {
-        account = account.toJSON();
-        res.send(account);
+        const accountAsJSON = account.get({plain: true});
+        res.send(accountAsJSON);
     }).catch(() => {
         next({
             message: 'Error',

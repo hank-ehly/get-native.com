@@ -24,9 +24,8 @@ module.exports.writing_answers = (req, res) => {
         include: [{model: WritingQuestion, as: 'writing_question', attributes: ['text']}],
         limit: 10
     }).then(answers => {
-        let answersAsJson = answers.map(a => a.toJSON());
-        let wrappedResponse = ResponseWrapper.wrap(answersAsJson);
-        res.send(wrappedResponse);
+        const answersAsJson = ResponseWrapper.wrap(answers.map(a => a.get({plain: true})));
+        res.send(answersAsJson);
     }).catch(() => {
         next({
             message: 'Error',
