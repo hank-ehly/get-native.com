@@ -10,7 +10,7 @@ const Utility  = require('../../../app/helpers').Utility;
 const request  = require('supertest');
 const assert   = require('assert');
 
-describe('POST /login', function() {
+describe('POST /register', function() {
     let server = null;
 
     // todo
