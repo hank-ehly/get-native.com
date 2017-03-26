@@ -6,7 +6,7 @@
  */
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('Video', {
+    const Video = sequelize.define('Video', {
         length: DataTypes.INTEGER,
         picture_url: {
             type: DataTypes.STRING,
@@ -40,6 +40,9 @@ module.exports = function(sequelize, DataTypes) {
             models.Video.hasMany(models.Transcript, {as: 'transcripts'});
         },
         scopes: {
+            count: function(count) {
+                return {limit: count ? +count : 9};
+            },
             cued: function(cuedOnly, accountId) {
                 if (!cuedOnly) {
                     return {};
@@ -53,31 +56,63 @@ module.exports = function(sequelize, DataTypes) {
                     }
                 };
             },
-            orderNewestFirst: {
+            maxId: function(maxId) {
+                return maxId ? {where: {id: {$gte: +maxId}}} : {};
+            },
+            newestFirst: {
                 order: [['created_at', 'DESC']]
             },
-            withSpeakerName: function(Speaker) {
-                return {
-                    include: [
-                        {
-                            model: Speaker,
-                            attributes: ['name'],
-                            as: 'speaker'
-                        }
-                    ]
-                }
+            includeSpeakerName: function(Speaker) {
+                return {include: [{model: Speaker, attributes: ['name'], as: 'speaker'}]}
             },
-            withSubcategoryName: function(Subcategory) {
+            includeSubcategoryName: function(Subcategory) {
+                return {include: [{model: Subcategory, attributes: ['name'], as: 'subcategory'}]}
+            },
+            orderMostViewed: {
+                order: [['loop_count', 'DESC']]
+            },
+            includeTranscripts: function(db) {
                 return {
                     include: [
                         {
-                            model: Subcategory,
-                            attributes: ['name'],
-                            as: 'subcategory'
+                            model: db.Transcript,
+                            attributes: ['id', 'text', 'language_code'],
+                            as: 'transcripts',
+                            include: {
+                                model: db.Collocation,
+                                attributes: ['text', 'description', 'ipa_spelling'],
+                                as: 'collocations',
+                                include: {
+                                    model: db.UsageExample,
+                                    attributes: ['text'],
+                                    as: 'usage_examples'
+                                }
+                            }
                         }
                     ]
                 }
             }
         }
     });
+
+    Video.getCuedAttributeForAccountId = function(accountId) {
+        const queryString = 'EXISTS(SELECT `video_id` FROM `cued_videos` WHERE `video_id` = `Video`.`id` AND `account_id` = ' + accountId + ')';
+        return [sequelize.literal(queryString), 'cued'];
+    };
+
+    Video.isLikedByAccount = function(db, videoId, accountId) {
+        // todo: use EXISTS
+        return db.Like.count({where: ['video_id = ? AND account_id = ?', videoId, accountId]}).then(c => c === 1);
+    };
+
+    Video.isCuedByAccount = function(db, videoId, accountId) {
+        // todo: use EXISTS
+        return db.CuedVideo.count({where: ['video_id = ? AND account_id = ?', videoId, accountId]}).then(c => c === 1);
+    };
+
+    Video.getLikeCount = function(db, videoId) {
+        return db.Like.count({where: ['video_id = ?', videoId]});
+    };
+
+    return Video;
 };
