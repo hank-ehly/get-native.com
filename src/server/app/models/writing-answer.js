@@ -19,6 +19,46 @@ module.exports = function(sequelize, DataTypes) {
         associations: function(models) {
             models.WritingAnswer.belongsTo(models.StudySession, {as: 'study_session'});
             models.WritingAnswer.belongsTo(models.WritingQuestion, {as: 'writing_question'});
+        },
+        scopes: {
+            newestFirst: {
+                order: [['created_at', 'DESC']]
+            },
+            forAccount: function(accountId) {
+                return {
+                    where: {
+                        study_session_id: {
+                            $in: sequelize.literal(`(SELECT \`id\` FROM   \`study_sessions\` WHERE  \`account_id\` = ${accountId})`)
+                        }
+                    }
+                };
+            },
+            since: function(since) {
+                if (!since) {
+                    return {};
+                }
+
+                return {
+                    where: {
+                        created_at: {
+                            $gte: new Date(+since)
+                        }
+                    }
+                }
+            },
+            maxId: function(maxId) {
+                if (!maxId) {
+                    return {};
+                }
+
+                return {
+                    where: {
+                        id: {
+                            $gte: +maxId
+                        }
+                    }
+                }
+            }
         }
     });
 };
