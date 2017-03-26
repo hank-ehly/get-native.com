@@ -7,17 +7,14 @@
 
 const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/helpers').Utility;
-const request = require('supertest');
-const assert = require('assert');
-const url = require('url');
+const request  = require('supertest');
+const assert   = require('assert');
+const url      = require('url');
 
 describe('POST /login', function() {
-    let server = null;
-    const emailRegex = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
-    const credentials = {
-        email: 'test@email.com',
-        password: 'test_password'
-    };
+    let server        = null;
+    const emailRegex  = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
+    const credentials = {email: 'test@email.com', password: 'test_password'};
 
     before(function(done) {
         this.timeout(SpecUtil.defaultTimeout);
