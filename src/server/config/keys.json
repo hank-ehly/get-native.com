@@ -1,0 +1,15 @@
+{
+    "PrivateKey": "private_key",
+    "PublicKey": "public_key",
+    "Attr": {
+        "BrowserNotificationsEnabled": "browser_notifications_enabled",
+        "DefaultStudyLanguageCode": "default_study_language_code",
+        "Email": "email",
+        "EmailNotificationsEnabled": "email_notifications_enabled",
+        "EmailVerified": "email_verified",
+        "Id": "id",
+        "IsSilhouettePicture": "is_silhouette_picture",
+        "Password": "password",
+        "PictureUrl": "picture_url"
+    }
+}
