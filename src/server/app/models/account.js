@@ -6,7 +6,7 @@
  */
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('Account', {
+    const Account = sequelize.define('Account', {
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -58,4 +58,10 @@ module.exports = function(sequelize, DataTypes) {
             models.Account.hasMany(models.StudySession, {as: 'study_sessions'});
         }
     });
+
+    Account.existsForEmail = function(email) {
+        return Account.find({where: {email: email}}).then(numExistingAccounts => numExistingAccounts !== 0);
+    };
+
+    return Account;
 };
