@@ -5,6 +5,8 @@
  * Created by henryehly on 2017/01/15.
  */
 
+const Promise = require('bluebird');
+
 const nconf = require('nconf');
 //noinspection JSUnresolvedFunction
 nconf.use('memory');
@@ -26,14 +28,14 @@ if (fs.existsSync(envConf)) {
 const logger   = require('./config/logger');
 const server   = require('./config/initializers/server');
 const database = require('./config/initializers/database');
+const mailer   = require('./config/initializers/mailer');
 
 logger.info(`Initializing ${nconf.get('env').toUpperCase()} environment`);
 
-module.exports = Promise.all([server(), database()]).then(result => {
-    let server = result[0];
-    logger.info('Server/Database initialization successful.');
+module.exports = Promise.all([server(), database(), Promise.promisify(mailer.verify)()]).spread((server) => {
+    logger.info('Initialization successful.');
     return server;
-}).catch(error => {
-    logger.info('Server/Database initialization failed with error', error, {json: true});
-    return error;
+}).catch(e => {
+    logger.info('Initialization failed with error', e, {json: true});
+    return e;
 });
