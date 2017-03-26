@@ -5,12 +5,11 @@
  * Created by henryehly on 2017/03/20.
  */
 
-const jwt   = require('jsonwebtoken');
-const nconf = require('nconf');
+const jwt     = require('jsonwebtoken');
+const nconf   = require('nconf');
 const Utility = require('./utility');
 const Promise = require('bluebird');
-const kPublicKey = require('../../config/strings.js').kPublicKey;
-const kPrivateKey = require('../../config/strings.js').kPrivateKey;
+const k       = require('../../config/keys.json');
 
 module.exports.validateRequest = function(req, callback) {
     let token = Utility.extractAuthTokenFromRequest(req);
@@ -22,7 +21,7 @@ module.exports.validateRequest = function(req, callback) {
         algorithms: ['RS256']
     };
 
-    jwt.verify(token, nconf.get(kPublicKey), args, callback);
+    jwt.verify(token, nconf.get(k.PublicKey), args, callback);
 };
 
 module.exports.refreshToken = function(token, callback) {
@@ -35,7 +34,7 @@ module.exports.refreshToken = function(token, callback) {
         expiresIn: '1h'
     };
 
-    jwt.sign(newToken, nconf.get(kPrivateKey), args, callback);
+    jwt.sign(newToken, nconf.get(k.PrivateKey), args, callback);
 };
 
 module.exports.generateTokenForAccountId = function(accountId) {
@@ -50,7 +49,7 @@ module.exports.generateTokenForAccountId = function(accountId) {
         expiresIn: '1h'
     };
 
-    return Promise.promisify(jwt.sign)(token, nconf.get(kPrivateKey), args);
+    return Promise.promisify(jwt.sign)(token, nconf.get(k.PrivateKey), args);
 };
 
 module.exports.setAuthHeadersOnResponseWithToken = function(res, token) {
