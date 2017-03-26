@@ -9,7 +9,7 @@ const Speaker = require('../models').Speaker;
 
 module.exports.show = (req, res, next) => {
     Speaker.findById(req.params.id, {attributes: {exclude: ['created_at', 'updated_at']}}).then(speaker => {
-        let speakerAsJson = speaker.toJSON();
+        const speakerAsJson = speaker.get({plain: true});
         res.send(speakerAsJson);
     }).catch(() => {
         next({

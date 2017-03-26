@@ -24,8 +24,8 @@ module.exports.login = (req, res, next) => {
             }
 
             AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
-            account = account.toJSON();
-            res.send(account);
+            const accountAsJson = account.get({plain: true});
+            res.send(accountAsJson);
         });
     }).catch(() => {
         next({

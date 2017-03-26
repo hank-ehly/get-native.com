@@ -13,8 +13,7 @@ module.exports.index = (req, res) => {
         attributes: ['id', 'name'],
         include: [{model: models.Subcategory, as: 'subcategories', attributes: ['name']}]
     }).then(categories => {
-        let categoriesAsJson = categories.map(c => c.toJSON());
-        let wrappedResponse = ResponseWrapper.deepWrap(categoriesAsJson, ['subcategories']);
-        res.send(wrappedResponse);
+        const categoriesAsJson = ResponseWrapper.deepWrap(categories.map(c => c.get({plain: true})), ['subcategories']);
+        res.send(categoriesAsJson);
     });
 };
