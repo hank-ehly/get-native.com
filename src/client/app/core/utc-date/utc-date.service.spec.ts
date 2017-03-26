@@ -15,7 +15,7 @@ export function main() {
     describe('UTCDateService', () => {
         beforeAll(() => {
             service = new UTCDateService();
-            datetime = 'Thu Dec 14 04:35:55 +0000 2017';
+            datetime = 'Thu Dec 14 04:35:55 +0000 2017'; // 2017-03-22T23:06:38.000Z
             date = service.parse(datetime);
         });
 
