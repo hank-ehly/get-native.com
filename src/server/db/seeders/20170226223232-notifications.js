@@ -6,23 +6,33 @@
  */
 
 const Account = require('../../app/models').Account;
-const chance = require('chance').Chance();
+const chance  = require('chance').Chance();
+const Promise = require('bluebird');
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return Promise.all([Account.min('id'), Account.max('id')]).then((x) => {
+        return Promise.all([Account.min('id'), Account.max('id')]).spread((minAccountId, maxAccountId) => {
             const notifications = [];
 
-            // for each user
-            for (let i = x[0]; i < x[1]; i++) {
+            for (let i = minAccountId; i < maxAccountId; i++) {
 
-                // create between 1 ~ 10 notifications
-                let numNotifications = chance.integer({min: 1, max: 10});
+                let numNotifications = chance.integer({
+                    min: 1,
+                    max: 10
+                });
 
                 for (let j = 0; j < numNotifications; j++) {
                     notifications.push({
-                        account_id: chance.integer({min: x[0], max: x[1]}),
-                        title: chance.sentence({words: chance.integer({min: 2, max: 5})}),
+                        account_id: chance.integer({
+                            min: minAccountId,
+                            max: maxAccountId
+                        }),
+                        title: chance.sentence({
+                            words: chance.integer({
+                                min: 2,
+                                max: 5
+                            })
+                        }),
                         content: chance.paragraph()
                     });
                 }

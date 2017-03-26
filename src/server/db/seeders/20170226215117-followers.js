@@ -5,25 +5,30 @@
  * Created by henryehly on 2017/02/27.
  */
 
-const chance = require('chance').Chance();
-const models = require('../../app/models');
-
+const chance  = require('chance').Chance();
+const models  = require('../../app/models');
 const Speaker = models.Speaker;
 const Account = models.Account;
+const Promise = require('bluebird');
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return Promise.all([Account.min('id'), Account.max('id'), Speaker.min('id'), Speaker.max('id')]).then((x) => {
+        const promises = [Account.min('id'), Account.max('id'), Speaker.min('id'), Speaker.max('id')];
+
+        return Promise.all(promises).spread((minAccountId, maxAccountId, minSpeakerId, maxSpeakerId) => {
             let followers = [];
 
-            for (let i = x[0]; i < x[1]; i++) {
-                let numFollowers = chance.integer({min: 1, max: 5});
+            for (let i = minAccountId; i < maxAccountId; i++) {
+                let numFollowers = chance.integer({
+                    min: 1,
+                    max: 5
+                });
 
                 for (let j = 0; j < numFollowers; j++) {
                     followers.push({
                         speaker_id: chance.integer({
-                            min: x[2],
-                            max: x[3]
+                            min: minSpeakerId,
+                            max: maxSpeakerId
                         })
                     });
                 }
@@ -31,8 +36,8 @@ module.exports = {
 
             for (let i = 0; i < followers.length; i++) {
                 followers[i].account_id = chance.integer({
-                    min: x[0],
-                    max: x[1]
+                    min: minAccountId,
+                    max: maxAccountId
                 });
             }
 
