@@ -6,20 +6,21 @@
  */
 
 const Collocation = require('../../app/models').Collocation;
-const chance = require('chance').Chance();
+const chance      = require('chance').Chance();
+const Promise     = require('bluebird');
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return Promise.all([Collocation.min('id'), Collocation.max('id')]).then(x => {
+        return Promise.all([Collocation.min('id'), Collocation.max('id')]).spread((minCollocationId, maxCollocationId) => {
             const usageExamples = [];
 
-            // for each collocation
-            for (let i = x[0]; i < x[1]; i++) {
+            for (let i = minCollocationId; i < maxCollocationId; i++) {
+                let numUsageExamples = chance.integer({
+                    min: 2,
+                    max: 4
+                });
 
-                // create 2 ~ 4 usage examples
-                let numUsageExamples = chance.integer({min: 2, max: 4});
                 for (let j = 0; j < numUsageExamples; j++) {
-
                     usageExamples.push({
                         text: chance.sentence(),
                         collocation_id: i

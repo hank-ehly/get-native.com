@@ -6,15 +6,15 @@
  */
 
 const Subcategory = require('../../app/models').Subcategory;
-const chance = require('chance').Chance();
+const chance      = require('chance').Chance();
+const Promise     = require('bluebird');
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return Promise.all([Subcategory.min('id'), Subcategory.max('id')]).then(x => {
+        return Promise.all([Subcategory.min('id'), Subcategory.max('id')]).spread((minSubcategoryId, maxSubcategoryId) => {
             const writingQuestions = [];
 
-            for (let i = x[0]; i < x[1]; i++) {
-
+            for (let i = minSubcategoryId; i < maxSubcategoryId; i++) {
                 for (let j = 0; j < 5; j++) {
                     writingQuestions.push({
                         text: chance.sentence().replace(/\.$/, '?'),

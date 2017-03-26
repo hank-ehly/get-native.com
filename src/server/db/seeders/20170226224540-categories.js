@@ -8,14 +8,14 @@
 module.exports = {
     up: function(queryInterface, Sequelize) {
         return queryInterface.bulkInsert('categories', [
-            {"name": "Business"},
-            {"name": "Food"},
-            {"name": "Culture"},
-            {"name": "Language"},
-            {"name": "Sports"},
-            {"name": "Entertainment"},
-            {"name": "Family"},
-            {"name": "Religion"}
+            {name: 'Business'},
+            {name: 'Food'},
+            {name: 'Culture'},
+            {name: 'Language'},
+            {name: 'Sports'},
+            {name: 'Entertainment'},
+            {name: 'Family'},
+            {name: 'Religion'}
         ]);
     },
 
