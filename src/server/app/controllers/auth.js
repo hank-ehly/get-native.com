@@ -26,7 +26,8 @@ module.exports.login = (req, res, next) => {
         k.Attr.EmailVerified,
         k.Attr.DefaultStudyLanguageCode,
         k.Attr.PictureUrl,
-        k.Attr.IsSilhouettePicture
+        k.Attr.IsSilhouettePicture,
+        k.Attr.Password
     ];
 
     let account = null;
@@ -36,21 +37,28 @@ module.exports.login = (req, res, next) => {
         }
 
         account = _account;
+
+        // todo: error handling
+        if (!AuthHelper.verifyPassword(account.password, req.body[k.Attr.Password])) {
+            throw new Error(`Password incorrect`);
+        }
+
+        delete account.password;
         return AuthHelper.generateTokenForAccountId(account.id);
     }).then(token => {
         AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
         const accountAsJson = account.get({plain: true});
         res.send(accountAsJson);
-    }).catch(() => {
+    }).catch(e => {
         return next({
             message: 'Authentication Error',
-            errors: [{message: 'Account does not exist'}]
+            errors: [{message: e}]
         });
     });
 };
 
 function generateWelcomeEmailForRequest(req, callback) {
-    const locale           = req.headers['accept-language'] || 'en';
+    const locale           = 'en'; // req.headers['accept-language']
     const localeModule     = require(__dirname + '/../../config/locales/' + locale + '.json');
     const templatesDir     = __dirname + '/../templates/';
     const textTemplatePath = templatesDir + 'welcome.txt';
@@ -96,9 +104,11 @@ module.exports.register = (req, res, next) => {
             });
         }
 
+        const securePassword = AuthHelper.hashPassword(req.body[k.Attr.Password]);
+
         return Account.create({
             email: req.body[k.Attr.Email],
-            password: req.body[k.Attr.Password]
+            password: securePassword
         });
     }).then(_account => {
         if (!_account) {
