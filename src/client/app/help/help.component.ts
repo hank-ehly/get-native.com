@@ -45,7 +45,7 @@ import { FaqService } from './faq/faq.service';
 
 export class HelpComponent implements OnInit {
     faqs: Faq[];
-    moderator: string = 'getnative.moderator@gmail.com';
+    moderator: string = 'admin@get-native.com';
     selectedFaq: Faq;
 
     constructor(private faqService: FaqService) {
