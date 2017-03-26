@@ -16,6 +16,7 @@ router.post( '/account/password',      validate(pv.accounts.updatePassword), ctr
 router.post( '/account/email',         validate(pv.accounts.updateEmail),    ctrl.auth.authenticate, ctrl.accounts.updateEmail);
 router.get(  '/categories',            validate(pv.categories.index),        ctrl.auth.authenticate, ctrl.categories.index);
 router.post( '/login',                 validate(pv.auth.login),                                      ctrl.auth.login);
+router.post( '/register',              validate(pv.auth.register),                                   ctrl.auth.register);
 router.get(  '/study/stats',           validate(pv.study.stats),             ctrl.auth.authenticate, ctrl.study.stats);
 router.get(  '/study/writing_answers', validate(pv.study.writing_answers),   ctrl.auth.authenticate, ctrl.study.writing_answers);
 router.get(  '/speakers/:id',          validate(pv.speakers.show),           ctrl.auth.authenticate, ctrl.speakers.show);

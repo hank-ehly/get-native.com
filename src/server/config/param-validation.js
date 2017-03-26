@@ -5,7 +5,8 @@
  * Created by henryehly on 2017/01/22.
  */
 
-const Joi = require('joi');
+const Joi        = require('joi');
+const emailRegex = /[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*/;
 
 module.exports = {
     accounts: {
@@ -45,7 +46,13 @@ module.exports = {
     auth: {
         login: {
             body: {
-                email: Joi.string().regex(/[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*/).required(),
+                email: Joi.string().regex(emailRegex).required(),
+                password: Joi.string().required().min(8)
+            }
+        },
+        register: {
+            body: {
+                email: Joi.string().regex(emailRegex).required(),
                 password: Joi.string().required().min(8)
             }
         }
