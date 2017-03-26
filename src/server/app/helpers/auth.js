@@ -10,6 +10,7 @@ const nconf   = require('nconf');
 const Utility = require('./utility');
 const Promise = require('bluebird');
 const k       = require('../../config/keys.json');
+const sodium  = require('sodium').api;
 
 module.exports.validateRequest = function(req, callback) {
     let token = Utility.extractAuthTokenFromRequest(req);
@@ -64,4 +65,42 @@ module.exports.setAuthHeadersOnResponseWithToken = function(res, token) {
 module.exports.extractAccountIdFromRequest = function(req) {
     let authToken = Utility.extractAuthTokenFromRequest(req);
     return jwt.decode(authToken).sub;
+};
+
+module.exports.hashPassword = function(password) {
+    if (!password) {
+        throw new ReferenceError('No password provided');
+    }
+
+    if (Utility.typeof(password) !== 'string') {
+        throw new TypeError('Password must be a string');
+    }
+
+    const passwordBuffer = new Buffer(password);
+    const pwhash = sodium.crypto_pwhash_str(
+        passwordBuffer,
+        sodium.crypto_pwhash_OPSLIMIT_INTERACTIVE,
+        sodium.crypto_pwhash_MEMLIMIT_INTERACTIVE
+    );
+
+    return pwhash.toString();
+};
+
+module.exports.verifyPassword = function(pwhash, password) {
+    if (!pwhash || !password) {
+        throw new ReferenceError('Hash and password are required');
+    }
+
+    if (Utility.typeof(pwhash) !== 'string' || Utility.typeof(password) !== 'string') {
+        throw new TypeError('Hash and password must both be strings');
+    }
+
+    const pwhashBuffer   = new Buffer(pwhash);
+    const passwordBuffer = new Buffer(password);
+
+    try {
+        return sodium.crypto_pwhash_str_verify(pwhashBuffer, passwordBuffer);
+    } catch (e) {
+        return false;
+    }
 };
