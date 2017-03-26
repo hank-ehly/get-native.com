@@ -1,6 +1,8 @@
 {
     "PrivateKey": "private_key",
     "PublicKey": "public_key",
+    "NoReply": "no_reply",
+    "Port": "port",
     "Attr": {
         "BrowserNotificationsEnabled": "browser_notifications_enabled",
         "DefaultStudyLanguageCode": "default_study_language_code",
