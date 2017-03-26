@@ -9,6 +9,7 @@ module.exports = {
     up: function(queryInterface, Sequelize) {
         return queryInterface.addColumn('writing_questions', 'subcategory_id', {
             type: Sequelize.INTEGER,
+            allowNull: false,
             references: {
                 model: 'subcategories',
                 key: 'id'

@@ -10,6 +10,7 @@ module.exports = {
         return queryInterface.createTable('likes', {
             video_id: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
                     model: 'videos',
                     key: 'id'
@@ -19,6 +20,7 @@ module.exports = {
             },
             account_id: {
                 type: Sequelize.INTEGER,
+                allowNull: false,
                 references: {
                     model: 'accounts',
                     key: 'id'
