@@ -8,6 +8,9 @@
 const jwt   = require('jsonwebtoken');
 const nconf = require('nconf');
 const Utility = require('./utility');
+const Promise = require('bluebird');
+const kPublicKey = require('../../config/strings.js').kPublicKey;
+const kPrivateKey = require('../../config/strings.js').kPrivateKey;
 
 module.exports.validateRequest = function(req, callback) {
     let token = Utility.extractAuthTokenFromRequest(req);
@@ -19,7 +22,7 @@ module.exports.validateRequest = function(req, callback) {
         algorithms: ['RS256']
     };
 
-    jwt.verify(token, nconf.get('publicKey'), args, callback);
+    jwt.verify(token, nconf.get(kPublicKey), args, callback);
 };
 
 module.exports.refreshToken = function(token, callback) {
@@ -32,10 +35,10 @@ module.exports.refreshToken = function(token, callback) {
         expiresIn: '1h'
     };
 
-    jwt.sign(newToken, nconf.get('privateKey'), args, callback);
+    jwt.sign(newToken, nconf.get(kPrivateKey), args, callback);
 };
 
-module.exports.generateTokenForAccountId = function(accountId, callback) {
+module.exports.generateTokenForAccountId = function(accountId) {
     let token = {
         iss: nconf.get('hostname'),
         sub: accountId,
@@ -47,12 +50,13 @@ module.exports.generateTokenForAccountId = function(accountId, callback) {
         expiresIn: '1h'
     };
 
-    jwt.sign(token, nconf.get('privateKey'), args, callback);
+    return Promise.promisify(jwt.sign)(token, nconf.get(kPrivateKey), args);
 };
 
 module.exports.setAuthHeadersOnResponseWithToken = function(res, token) {
     res.set('X-GN-Auth-Token', token);
 
+    // todo: move to Utility & add test
     const oneHour = (1000 * 60 * 60);
     const oneHourFromNow = Date.now() + oneHour;
     res.set('X-GN-Auth-Expire', oneHourFromNow.toString());
