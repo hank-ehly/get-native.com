@@ -32,7 +32,7 @@ export function main() {
                 let fixture = TestBed.createComponent(TestComponent);
                 fixture.detectChanges();
                 let privacyDOME1 = fixture.debugElement.children[0].nativeElement;
-                expect(privacyDOME1.querySelectorAll('address a')[0].textContent).toEqual('getnative.moderator@gmail.com');
+                expect(privacyDOME1.querySelectorAll('address a')[0].textContent).toEqual('admin@get-native.com');
             });
         }));
     });
