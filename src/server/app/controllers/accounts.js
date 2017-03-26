@@ -15,8 +15,13 @@ module.exports.index = (req, res) => {
     Account.findById(accountId, {
         attributes: {exclude: ['password', 'created_at', 'updated_at']}
     }).then(account => {
-        const accountAsJson = account.toJSON();
-        res.send(accountAsJson);
+        account = account.toJSON();
+        res.send(account);
+    }).catch(() => {
+        next({
+            message: 'Error',
+            errors: [{message: 'Failed to fetch account'}]
+        })
     });
 };
 
