@@ -24,9 +24,15 @@ module.exports.login = (req, res, next) => {
             }
 
             AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
-            res.send(account.toJSON());
+            account = account.toJSON();
+            res.send(account);
         });
-    }).catch(e => next({message: 'Authentication Error', errors: [{message: 'Account does not exist'}]}));
+    }).catch(() => {
+        next({
+            message: 'Authentication Error',
+            errors: [{message: 'Account does not exist'}]
+        })
+    });
 };
 
 module.exports.authenticate = (req, res, next) => {
