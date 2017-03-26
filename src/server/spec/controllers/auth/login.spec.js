@@ -14,7 +14,6 @@ const Promise  = require('bluebird');
 
 describe('POST /login', function() {
     let server        = null;
-    const emailRegex  = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
     const credentials = {email: 'test@email.com', password: 'test_password'};
 
     before(function() {
@@ -59,58 +58,58 @@ describe('POST /login', function() {
     });
 
     it('should respond with a 422 Unprocessable Entity response if the user is not found', function(done) {
-        let badCredentials = Object.assign({}, credentials);
-        badCredentials.email = 'unregistered_user@email.com';
-        request(server).post('/login').send(badCredentials).expect(422, done);
+        request(server).post('/login').send({email: 'bad@email.com', password: credentials.password}).expect(422, done);
+    });
+    
+    it(`should respond with a 422 Unprocessable Entity if the provided login password is incorrect`, function(done) {
+        request(server).post('/login').send({email: credentials.email, password: 'incorrect'}).expect(422, done);
     });
 
     it('should respond with an object containing the user\'s ID', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            assert(new RegExp(/^[0-9]+$/).test(res.body.id));
+        return request(server).post('/login').send(credentials).then(function(response) {
+            assert(SpecUtil.isNumber(response.body.id));
         });
     });
 
     it('should respond with an object containing the user\'s email address', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            assert(new RegExp(emailRegex).test(res.body.email));
+        return request(server).post('/login').send(credentials).then(function(response) {
+            assert(SpecUtil.isValidEmail(response.body.email));
         });
     });
 
     it('should respond with an object containing the user\'s preference for receiving browser notifications', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            assert([true, false].includes(res.body.browser_notifications_enabled));
+        return request(server).post('/login').send(credentials).then(function(response) {
+            assert.equal(Utility.typeof(response.body.browser_notifications_enabled), 'boolean');
         });
     });
 
     it('should respond with an object containing the user\'s preference for receiving email notifications', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            assert([true, false].includes(res.body.email_notifications_enabled));
+        return request(server).post('/login').send(credentials).then(function(response) {
+            assert.equal(Utility.typeof(response.body.email_notifications_enabled), 'boolean');
         });
     });
 
     it('should respond with an object containing the user\'s email validity status', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            assert([true, false].includes(res.body.email_verified));
+        return request(server).post('/login').send(credentials).then(function(response) {
+            assert.equal(Utility.typeof(response.body.email_verified), 'boolean');
         });
     });
 
     it('should respond with an object containing the user\'s default study language code', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            assert(new RegExp(/[a-z]+/).test(res.body.default_study_language_code));
+        return request(server).post('/login').send(credentials).then(function(response) {
+            assert(new RegExp(/[a-z]+/).test(response.body.default_study_language_code));
         });
     });
 
     it('should respond with an object containing the user\'s profile picture URL', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            let parsedURL = url.parse(res.body.picture_url);
-            assert(parsedURL.protocol);
-            assert(parsedURL.hostname);
+        return request(server).post('/login').send(credentials).then(function(response) {
+            assert(SpecUtil.isValidURL(response.body.picture_url));
         });
     });
 
     it('should respond with an object containing the user\'s preference for using the profile picture or silhouette image', function() {
-        return request(server).post('/login').send(credentials).then(function(res) {
-            assert.equal(Utility.typeof(res.body.is_silhouette_picture), 'boolean');
+        return request(server).post('/login').send(credentials).then(function(response) {
+            assert.equal(Utility.typeof(response.body.is_silhouette_picture), 'boolean');
         });
     });
 });

@@ -5,7 +5,8 @@
  * Created by henryehly on 2017/02/26.
  */
 
-const chance = require('chance').Chance();
+const chance     = require('chance').Chance();
+const AuthHelper = require('../../app/helpers').Auth;
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
@@ -18,7 +19,7 @@ module.exports = {
 
             accounts.push({
                 email: 'test@email.com',
-                password: 'test_password',
+                password: AuthHelper.hashPassword('test_password'),
                 browser_notifications_enabled: false,
                 email_notifications_enabled: false,
                 email_verified: false,
@@ -31,7 +32,7 @@ module.exports = {
         for (let i = 0; i < numAccounts; i++) {
             accounts.push({
                 email: chance.email(),
-                password: chance.string({length: 20}),
+                password: AuthHelper.hashPassword(chance.string({length: 20})),
                 browser_notifications_enabled: chance.bool(),
                 email_notifications_enabled: chance.bool(),
                 email_verified: chance.bool({likelihood: 80}),
