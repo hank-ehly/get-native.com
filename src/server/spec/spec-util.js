@@ -8,21 +8,54 @@
 const request = require('supertest');
 const exec    = require('child_process').exec;
 const url     = require('url');
+const MailDev = require('maildev');
+const Promise = require('bluebird');
+
+let _maildev = null;
 
 module.exports.defaultTimeout = 30000;
 
-module.exports.seedAll = function(done) {
-    module.exports.seedAllUndo(function() {
-        exec('npm run sequelize db:seed:all', function() {
-            done();
+module.exports.seedAll = function() {
+    return new Promise((resolve, reject) => {
+        module.exports.seedAllUndo().then(() => {
+            exec('npm run sequelize db:seed:all', function(e) {
+                if (e) {
+                    reject(e);
+                } else {
+                    resolve();
+                }
+            });
         });
     });
 };
 
-module.exports.seedAllUndo = function(done) {
-    exec('npm run sequelize db:seed:undo:all', function() {
-        done();
+module.exports.seedAllUndo = function() {
+    return new Promise((resolve, reject) => {
+        exec('npm run sequelize db:seed:undo:all', function(e) {
+            if (e) {
+                reject(e);
+            } else {
+                resolve();
+            }
+        });
     });
+};
+
+module.exports.startMailServer = function() {
+    _maildev = new MailDev({silent: true});
+    return Promise.promisify(_maildev.listen)();
+};
+
+module.exports.stopMailServer = function() {
+    return Promise.promisify(_maildev.end)();
+};
+
+module.exports.getAllEmail = function(callback) {
+    setTimeout(function() {
+        _maildev.getAllEmail(function(error, emails) {
+            callback(error, emails);
+        });
+    }, 1);
 };
 
 module.exports.login = function(cb) {
