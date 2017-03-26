@@ -12,7 +12,7 @@ const url     = require('url');
 module.exports.defaultTimeout = 30000;
 
 module.exports.seedAll = function(done) {
-    this.seedAllUndo(function() {
+    module.exports.seedAllUndo(function() {
         exec('npm run sequelize db:seed:all', function() {
             done();
         });
@@ -55,5 +55,5 @@ module.exports.isValidURL = function(value) {
 
 module.exports.isValidEmail = function(value) {
     let regex = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
-    return new RegExp(emailRegex).test(value);
+    return new RegExp(regex).test(value);
 };
