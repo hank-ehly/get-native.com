@@ -15,6 +15,11 @@ export const APIConfig = new Map<APIHandle, any>([
         url: '/login',
         isProtected: false
     }],
+    [APIHandle.REGISTER, {
+        method: RequestMethod.Post,
+        url: '/register',
+        isProtected: false
+    }],
     [APIHandle.STUDY_STATS, {
         method: RequestMethod.Get,
         url: '/study/stats',
