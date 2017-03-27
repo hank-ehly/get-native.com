@@ -91,6 +91,7 @@ module.exports.isValidEmail = function(value) {
     return regex.test(value);
 };
 
+// 'Thu Dec 14 04:35:55 +0000 2017'
 module.exports.isClientFriendlyDateString = function(value) {
     let regex = /[A-Z][a-z][a-z]\s[A-Z][a-z][a-z]\s[0-3][0-9]\s[0-2][0-9]:[0-5][0-9]:[0-5][0-9]\s\+[0-9][0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]/g
     return regex.test(value);
