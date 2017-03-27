@@ -19,6 +19,8 @@ const CuedVideo       = db.CuedVideo;
 const ResponseWrapper = require('../helpers').ResponseWrapper;
 const AuthHelper      = require('../helpers').Auth;
 const Promise         = require('bluebird');
+const ModelHelper     = require('../helpers').Model(db);
+const k               = require('../../config/keys.json');
 
 module.exports.index = (req, res, next) => {
     const conditions          = {};
@@ -33,8 +35,9 @@ module.exports.index = (req, res, next) => {
         }
 
         const accountId  = AuthHelper.extractAccountIdFromRequest(req);
+        const createdAt  = ModelHelper.getFormattedDateAttrForTableColumn(k.Model.Video, k.Attr.CreatedAt);
         const cued       = Video.getCuedAttributeForAccountId(accountId);
-        const attributes = ['created_at', 'id', 'loop_count', 'picture_url', 'video_url', 'length', cued];
+        const attributes = [createdAt, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length, cued];
         const scopes     = [
             'newestFirst',
             {method: ['cued', req.query.cued_only, accountId]},
@@ -70,10 +73,13 @@ module.exports.show = (req, res, next) => {
     const liked     = Video.isLikedByAccount(db, req.params.id, accountId);
     const cued      = Video.isCuedByAccount(db, req.params.id, accountId);
 
+    const relatedCreatedAt = ModelHelper.getFormattedDateAttrForTableColumn(k.Model.Video, k.Attr.CreatedAt);
+    const relatedCued      = Video.getCuedAttributeForAccountId(accountId);
+
     const relatedVideos = Video.scope([
         'orderMostViewed', {method: ['includeSubcategoryName', Subcategory]}, {method: ['includeSpeakerName', Speaker]}
     ]).findAll({
-        attributes: ['id', 'created_at', 'length', 'loop_count', Video.getCuedAttributeForAccountId(accountId)],
+        attributes: [k.Attr.Id, relatedCreatedAt, k.Attr.Length, k.Attr.LoopCount, relatedCued],
         limit: 3
     }).catch(() => {
         next({
@@ -84,10 +90,10 @@ module.exports.show = (req, res, next) => {
 
     const video = Video.scope({method: ['includeTranscripts', db]}).findById(+req.params.id, {
         include: [
-            {model: Speaker, attributes: ['id', 'description', 'name', 'picture_url'], as: 'speaker'},
-            {model: Subcategory, attributes: ['id', 'name'], as: 'subcategory'}
+            {model: Speaker, attributes: [k.Attr.Id, k.Attr.Description, k.Attr.Name, k.Attr.PictureUrl], as: 'speaker'},
+            {model: Subcategory, attributes: [k.Attr.Id, k.Attr.Name], as: 'subcategory'}
         ],
-        attributes: ['description', 'id', 'loop_count', 'picture_url', 'video_url', 'length']
+        attributes: [k.Attr.Description, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length]
     }).catch(() => {
         next({
             message: 'Data Error',
