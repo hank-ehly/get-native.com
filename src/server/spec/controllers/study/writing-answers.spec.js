@@ -97,9 +97,9 @@ describe('GET /study/writing_answers', function() {
         });
     });
 
-    it(`should have a non-null 'created_at' datetime for each record`, function() {
+    it(`should have a non-null 'created_at' client-friendly datetime for each record`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(response) {
-            assert(SpecUtil.isParsableDateValue(response.body.records[0].created_at));
+            assert(SpecUtil.isClientFriendlyDateString(response.body.records[0].created_at));
         });
     });
 
@@ -115,13 +115,6 @@ describe('GET /study/writing_answers', function() {
             let lastRecord = response.body.records[response.body.count - 1];
             let oldestRecordTimestamp = new Date(lastRecord.created_at).getTime();
             assert(oldestRecordTimestamp >= thirtyDaysAgo);
-        });
-    });
-
-    it(`should return the 'created_at' date in the format 'Thu Dec 14 04:35:55 +0000 2017'`, function() {
-        return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(response) {
-            let rawDateString = response.body.records[0].created_at;
-            assert(SpecUtil.isClientFriendlyDateString(rawDateString));
         });
     });
 
