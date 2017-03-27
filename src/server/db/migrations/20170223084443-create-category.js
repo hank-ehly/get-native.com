@@ -29,6 +29,9 @@ module.exports = {
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.fn('NOW')
             }
+        }, {
+            engine: 'InnoDB',
+            charset: 'utf8'
         });
     },
     down: function(queryInterface, Sequelize) {
