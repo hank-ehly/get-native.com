@@ -1,24 +1,33 @@
 {
-    "Env": {
-        "Key": "env",
-        "Development": "development"
-    },
-    "PrivateKey": "private_key",
-    "PublicKey": "public_key",
-    "NoReply": "no_reply",
-    "Port": "port",
     "Attr": {
         "Answer": "answer",
         "BrowserNotificationsEnabled": "browser_notifications_enabled",
         "CreatedAt": "created_at",
         "DefaultStudyLanguageCode": "default_study_language_code",
+        "Description": "description",
         "Email": "email",
         "EmailNotificationsEnabled": "email_notifications_enabled",
         "EmailVerified": "email_verified",
         "Id": "id",
         "IsSilhouettePicture": "is_silhouette_picture",
+        "Length": "length",
+        "LoopCount": "loop_count",
+        "Name": "name",
         "Password": "password",
         "PictureUrl": "picture_url",
-        "StudySessionId": "study_session_id"
-    }
+        "StudySessionId": "study_session_id",
+        "VideoUrl": "video_url"
+    },
+    "Env": {
+        "Key": "env",
+        "Development": "development"
+    },
+    "Model": {
+        "WritingAnswer": "WritingAnswer",
+        "Video": "Video"
+    },
+    "NoReply": "no_reply",
+    "PrivateKey": "private_key",
+    "PublicKey": "public_key",
+    "Port": "port"
 }
