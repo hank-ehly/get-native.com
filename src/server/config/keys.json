@@ -8,7 +8,9 @@
     "NoReply": "no_reply",
     "Port": "port",
     "Attr": {
+        "Answer": "answer",
         "BrowserNotificationsEnabled": "browser_notifications_enabled",
+        "CreatedAt": "created_at",
         "DefaultStudyLanguageCode": "default_study_language_code",
         "Email": "email",
         "EmailNotificationsEnabled": "email_notifications_enabled",
@@ -16,6 +18,7 @@
         "Id": "id",
         "IsSilhouettePicture": "is_silhouette_picture",
         "Password": "password",
-        "PictureUrl": "picture_url"
+        "PictureUrl": "picture_url",
+        "StudySessionId": "study_session_id"
     }
 }
