@@ -87,6 +87,11 @@ module.exports.isValidURL = function(value) {
 };
 
 module.exports.isValidEmail = function(value) {
-    let regex = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
-    return new RegExp(regex).test(value);
+    let regex = new RegExp('[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*');
+    return regex.test(value);
+};
+
+module.exports.isClientFriendlyDateString = function(value) {
+    let regex = /[A-Z][a-z][a-z]\s[A-Z][a-z][a-z]\s[0-3][0-9]\s[0-2][0-9]:[0-5][0-9]:[0-5][0-9]\s\+[0-9][0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]/g
+    return regex.test(value);
 };

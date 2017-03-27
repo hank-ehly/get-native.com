@@ -118,6 +118,13 @@ describe('GET /study/writing_answers', function() {
         });
     });
 
+    it(`should return the 'created_at' date in the format 'Thu Dec 14 04:35:55 +0000 2017'`, function() {
+        return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(response) {
+            let rawDateString = response.body.records[0].created_at;
+            assert(SpecUtil.isClientFriendlyDateString(rawDateString));
+        });
+    });
+
     it(`should return a 422 response if the 'since' query parameter value is a future date`, (done) => {
         let twoDaysLater = new Date().getTime() + (1000 * 60 * 60 * 24 * 2);
         request(server).get(`/study/writing_answers?since=${twoDaysLater}`).set('authorization', authorization).expect(422, done);

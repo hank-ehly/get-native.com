@@ -162,6 +162,13 @@ describe('GET /videos', function() {
             });
         });
 
+        it(`should return the 'created_at' date in the format 'Thu Dec 14 04:35:55 +0000 2017'`, function() {
+            return request(server).get('/videos').set('authorization', authorization).then(function(response) {
+                let rawDateString = response.body.records[0].created_at;
+                assert(SpecUtil.isClientFriendlyDateString(rawDateString));
+            });
+        });
+
         it(`should contain a non-null object for 'speaker' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
                 assert.equal(Utility.typeof(response.body.records[0].speaker), 'object');
