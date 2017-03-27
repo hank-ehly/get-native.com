@@ -5,13 +5,13 @@
  * Created by henryehly on 2017/02/23.
  */
 
-let fs = require('fs');
-let path = require('path');
+let fs        = require('fs');
+let path      = require('path');
 let Sequelize = require('sequelize');
-let basename = path.basename(module.filename);
-let env = process.env.NODE_ENV || 'development';
-let config = require(__dirname + '/../../config/database.json')[env];
-let db = {};
+let basename  = path.basename(module.filename);
+let env       = process.env.NODE_ENV || 'development';
+let config    = require(__dirname + '/../../config/database.json')[env];
+let db        = {};
 
 let sequelize = new Sequelize(config.database, config.username, config.password, config);
 

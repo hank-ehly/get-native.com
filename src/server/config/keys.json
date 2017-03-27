@@ -1,4 +1,8 @@
 {
+    "Env": {
+        "Key": "env",
+        "Development": "development"
+    },
     "PrivateKey": "private_key",
     "PublicKey": "public_key",
     "NoReply": "no_reply",
