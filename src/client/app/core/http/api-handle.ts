@@ -17,5 +17,6 @@ export enum APIHandle {
     EDIT_ACCOUNT,
     EDIT_PASSWORD,
     EDIT_EMAIL,
-    ACCOUNT
+    ACCOUNT,
+    REGISTER
 }
