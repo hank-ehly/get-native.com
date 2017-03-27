@@ -205,6 +205,12 @@ describe('GET /videos/:id', function() {
             });
         });
 
+        it(`should return related videos whose 'created_at' property is a client-friendly datetime string`, function() {
+            return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
+                assert(SpecUtil.isClientFriendlyDateString(response.body.related_videos.records[0].created_at));
+            });
+        });
+
         it(`should contains a non-null 'related_videos.records[N].cued boolean`, function() {
             return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
                 assert.equal(Utility.typeof(response.body.related_videos.records[0].cued), 'boolean');
