@@ -98,10 +98,7 @@ module.exports.register = (req, res, next) => {
     Account.existsForEmail(req.body[k.Attr.Email]).then(exists => {
         // todo: throw to catch
         if (exists) {
-            return next({
-                message: 'Error',
-                errors: [{message: 'Account already exists'}]
-            });
+            throw new Error('Account already exists!');
         }
 
         const securePassword = AuthHelper.hashPassword(req.body[k.Attr.Password]);
@@ -124,6 +121,7 @@ module.exports.register = (req, res, next) => {
     }).then(token => {
         AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
         const accountAsJson = account.get({plain: true});
+        delete accountAsJson.password;
         res.send(accountAsJson);
     }).catch((e) => {
         next({

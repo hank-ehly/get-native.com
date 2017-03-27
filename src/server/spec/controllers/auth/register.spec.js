@@ -140,6 +140,12 @@ describe('POST /register', function() {
             });
         });
 
+        it(`should not include the account password in the response`, function() {
+            return request(server).post('/register').send(newAccountCredentials).then(function(response) {
+                assert(!response.body.password);
+            });
+        });
+
         it(`should create a new user whose email is the same as specified in the request`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function(response) {
                 assert.equal(response.body.email, newAccountCredentials.email);
