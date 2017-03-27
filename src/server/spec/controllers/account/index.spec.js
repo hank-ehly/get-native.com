@@ -15,7 +15,6 @@ const Promise  = require('bluebird');
 describe('GET /account', () => {
     let server        = null;
     let authorization = null;
-    let emailRegex    = '[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*';
 
     before(function() {
         this.timeout(SpecUtil.defaultTimeout);
@@ -60,31 +59,31 @@ describe('GET /account', () => {
 
     it('should respond with an object containing the user\'s ID', function() {
         return request(server).get('/account').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(/^[0-9]+$/).test(res.body.id));
+            assert(SpecUtil.isNumber(res.body.id));
         });
     });
 
     it('should respond with an object containing the user\'s email address', function() {
         return request(server).get('/account').set('authorization', authorization).then(function(res) {
-            assert(new RegExp(emailRegex).test(res.body.email));
+            assert(SpecUtil.isValidEmail(res.body.email));
         });
     });
 
     it('should respond with an object containing the user\'s preference for receiving browser notifications', function() {
         return request(server).get('/account').set('authorization', authorization).then(function(res) {
-            assert([true, false].includes(res.body.browser_notifications_enabled));
+            assert.equal(Utility.typeof(res.body.browser_notifications_enabled), 'boolean');
         });
     });
 
     it('should respond with an object containing the user\'s preference for receiving email notifications', function() {
         return request(server).get('/account').set('authorization', authorization).then(function(res) {
-            assert([true, false].includes(res.body.email_notifications_enabled));
+            assert.equal(Utility.typeof(res.body.email_notifications_enabled), 'boolean');
         });
     });
 
     it('should respond with an object containing the user\'s email validity status', function() {
         return request(server).get('/account').set('authorization', authorization).then(function(res) {
-            assert([true, false].includes(res.body.email_verified));
+            assert.equal(Utility.typeof(res.body.email_verified), 'boolean');
         });
     });
 
@@ -96,9 +95,7 @@ describe('GET /account', () => {
 
     it('should respond with an object containing the user\'s profile picture URL', function() {
         return request(server).get('/account').set('authorization', authorization).then(function(res) {
-            let parsedURL = url.parse(res.body.picture_url);
-            assert(parsedURL.protocol);
-            assert(parsedURL.hostname);
+            assert(SpecUtil.isValidURL(res.body.picture_url));
         });
     });
 
