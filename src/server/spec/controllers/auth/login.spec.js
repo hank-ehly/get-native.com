@@ -85,7 +85,6 @@ describe('POST /login', function() {
 
     it(`should not include the account password in the response`, function() {
         return request(server).post('/login').send(credentials).then(function(response) {
-            console.log(response.body);
             assert(!response.body.password);
         });
     });
