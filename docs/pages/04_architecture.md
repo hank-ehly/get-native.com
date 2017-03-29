@@ -27,15 +27,14 @@ The following DNS records are in place to prevent our emails from being spoofed 
 
 ### Hostnames
 Hostnames follow the below naming scheme:
-`{purpose}-{type}.{location}.{vendor}.{domain}`
+`{type}.{location}.{vendor}.{domain}`
 
-The staging environment database servers' host name is `stg-db.nnj.ln.get-native.com`
+The staging environment database servers' host name is `db.nnj.ln.stg.get-native.com`
 
-- `stg` because the purpose of this server is to be a staging environment host
 - `db` because it is a database server
 - `nnj` for Newark NJ
 - `ln` for Linode
-- `get-native.com` for our domain name
+- `stg.get-native.com` for our staging environment domain name
 
 ### Other
 
