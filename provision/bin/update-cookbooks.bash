@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
 
-bundle exec berks update && bundle exec berks vendor cookbooks
+set -e
+
+if [ -d cookbooks ]; then 
+    rm -rf cookbooks
+fi
+
+bundle exec berks update
+bundle exec berks vendor cookbooks
 
