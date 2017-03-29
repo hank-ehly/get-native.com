@@ -1,17 +1,31 @@
 <p><img src="/images/architecture.png" alt="Architecture"/></p>
 
 ### Physical Machines
-The production web server server will be separated from the database server for security reasons.
+The production web server is hosted on a separate physical machine from the database server for security reasons.
 
 ### Operating System
-Both the web server and database server will be built on the Ubuntu 16.04 LTS operating system.
+Both the web server and database server will be built on Ubuntu 16.04 LTS.
 
 ### Deployment
 Continuous deployment is performed through Circle CI. 
-A successful staging or production build prompts automatic deployment to Digital Ocean droplet.
+A successful staging or production build prompts automatic deployment to the appropriate machine.
 
 ### Provisioning
-A single Chef recipe is used to provision both staging and production environments.
+**Chef** is used to provision staging and production machines.
+
+### DNS
+Domain names and DNS settings are managed with <a href="https://www.namecheap.com/">**namecheap**</a>.
+
+The following DNS records are in place to prevent our emails from being spoofed or filtered as spam.
+
+| Record Type | Purpose                                                                                  |
+|-------------|------------------------------------------------------------------------------------------|
+| SPF         | Validates email sender to prevent spoofing                                               |
+| DKIM        | Signs emails coming from your domain and tells everyone _how_ your signiture should look |
+| ADSP        | An extension to DKIM which tells the receiver what to do if DKIM authentication fails    |
+| DMARC       | Policy determining what should happen if one or both SPF & DKIM checks failed            |
+
+### Other
 
 | Specification                            	|                    	|
 |------------------------------------------	|--------------------	|
