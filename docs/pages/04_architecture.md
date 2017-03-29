@@ -25,6 +25,18 @@ The following DNS records are in place to prevent our emails from being spoofed 
 | ADSP        | An extension to DKIM which tells the receiver what to do if DKIM authentication fails    |
 | DMARC       | Policy determining what should happen if one or both SPF & DKIM checks failed            |
 
+### Hostnames
+Hostnames follow the below naming scheme:
+`{purpose}-{type}.{location}.{vendor}.{domain}`
+
+The staging environment database servers' host name is `stg-db.nnj.ln.get-native.com`
+
+- `stg` because the purpose of this server is to be a staging environment host
+- `db` because it is a database server
+- `nnj` for Newark NJ
+- `ln` for Linode
+- `get-native.com` for our domain name
+
 ### Other
 
 | Specification                            	|                    	|
