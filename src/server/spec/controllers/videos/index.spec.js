@@ -164,10 +164,11 @@ describe('GET /videos', function() {
 
         it(`should return the 'created_at' date in the format 'Thu Dec 14 04:35:55 +0000 2017'`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                let rawDateString = response.body.records[0].created_at;
-                assert(SpecUtil.isClientFriendlyDateString(rawDateString));
+                assert(SpecUtil.isClientFriendlyDateString(response.body.records[0].created_at));
             });
         });
+
+        it(`should set the timezone offset of the 'created_at' value to that of the account's preferred timezone`);
 
         it(`should contain a non-null object for 'speaker' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {

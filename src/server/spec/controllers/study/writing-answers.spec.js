@@ -103,6 +103,8 @@ describe('GET /study/writing_answers', function() {
         });
     });
 
+    it(`should set the timezone offset of the 'created_at' value to that of the account's preferred timezone`);
+
     it(`should have a 'writing_question' object with a non-null 'text' string for each record`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(response) {
             assert(response.body.records[0]['writing_question'].text.length > 0);

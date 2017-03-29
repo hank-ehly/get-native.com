@@ -211,6 +211,8 @@ describe('GET /videos/:id', function() {
             });
         });
 
+        it(`should set the timezone offset of the related videos 'created_at' value to that of the account's preferred timezone`);
+
         it(`should contains a non-null 'related_videos.records[N].cued boolean`, function() {
             return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
                 assert.equal(Utility.typeof(response.body.related_videos.records[0].cued), 'boolean');
