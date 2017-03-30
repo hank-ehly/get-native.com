@@ -6,21 +6,23 @@
  */
 
 module.exports = (db) => {
-    return {
-        getFormattedDateAttrForTableColumn(table, column) {
-            return _getFormattedDateForTableColumn(db, table, column);
-        }
-    }
+    const Utility = require('../helpers').Utility;
+    const module  = {};
+
+    module.getFormattedSequelizeDateAttributeForTableColumnTimezoneOffset = function(table, column, timeZoneOffset) {
+        const fn  = db.sequelize.fn;
+        const col = db.sequelize.col([table, column].join('.'));
+
+        const UTCOffset    = '+00:00';
+        const clientOffset = Utility.browserTimezoneOffsetToSQLFormat(timeZoneOffset);
+        const offsetDateCol = fn('CONVERT_TZ', col, UTCOffset, clientOffset);
+
+        const dateHead   = fn('DATE_FORMAT', offsetDateCol, '%a %b %d %H:%i:%S ');
+        const dateTail   = fn('DATE_FORMAT', offsetDateCol, ' %Y');
+        const dateString = fn('CONCAT', dateHead, clientOffset.replace(':', ''), dateTail);
+
+        return [dateString, column];
+    };
+
+    return module;
 };
-
-function _getFormattedDateForTableColumn(db, table, column) {
-    const fn  = db.sequelize.fn;
-    const col = db.sequelize.col([table, column].join('.'));
-
-    const timeZone   = fn('TIME_FORMAT', fn('TIMEDIFF', fn('NOW'), fn('UTC_TIMESTAMP')), '%H%i');
-    const dateHead   = fn('DATE_FORMAT', col, '%a %b %d %H:%i:%S +');
-    const dateTail   = fn('DATE_FORMAT', col, ' %Y');
-    const dateString = fn('CONCAT', dateHead, timeZone, dateTail);
-
-    return [dateString, column];
-}
