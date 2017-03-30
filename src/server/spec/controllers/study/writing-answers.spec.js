@@ -103,7 +103,12 @@ describe('GET /study/writing_answers', function() {
         });
     });
 
-    it(`should apply the timezone offset in the request to 'created_at'`);
+    it(`should apply the timezone offset in the request to 'created_at'`, function() {
+        return request(server).get(`/study/writing_answers?time_zone_offset=-540`).set('authorization', authorization).then(function(response) {
+            const timeZoneOffset = response.body.records[0].created_at.split(' ')[4];
+            assert.equal('+0900', timeZoneOffset);
+        });
+    });
 
     it(`should have a 'writing_question' object with a non-null 'text' string for each record`, function() {
         return request(server).get('/study/writing_answers').set('authorization', authorization).then(function(response) {

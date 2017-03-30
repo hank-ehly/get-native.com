@@ -86,5 +86,9 @@ describe('utility', () => {
         it(`should return the timezone offset as '+08:45' provided a value in minutes as '-525'`, function() {
             assert.equal(util.browserTimezoneOffsetToSQLFormat('-525'), '+08:45');
         });
+
+        it(`should return the timezone offset as '+00:00' if no value is provided`, function() {
+            assert.equal(util.browserTimezoneOffsetToSQLFormat(null), '+00:00');
+        });
     });
 });

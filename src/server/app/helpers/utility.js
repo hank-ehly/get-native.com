@@ -32,6 +32,8 @@ module.exports.extractAuthTokenFromRequest = function(req) {
 };
 
 module.exports.browserTimezoneOffsetToSQLFormat = function(offsetInMinutes) {
+    if (!offsetInMinutes) return '+00:00';
+
     // The offset is positive if the local timezone is behind UTC and negative if it is ahead
     const minutes = -parseInt(offsetInMinutes);
     const hours   = minutes / 60;
