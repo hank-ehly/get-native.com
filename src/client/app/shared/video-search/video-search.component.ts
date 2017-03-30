@@ -71,6 +71,10 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.logger.debug(this, 'ngOnInit()');
+
+        this.videoSearchParams.set('count', `${9}`);
+        this.videoSearchParams.set('time_zone_offset', new Date().getTimezoneOffset().toString());
+
         this.setupSubscriptions();
     }
 
@@ -112,7 +116,6 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.dropdownSelection = null;
         this.videoSearchParams.delete('subcategory_id');
         this.videoSearchParams.delete('category_id');
-
         this.isDropdownVisible = false;
     }
 

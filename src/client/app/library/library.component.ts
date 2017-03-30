@@ -46,10 +46,9 @@ export class LibraryComponent extends VideoSearchComponent implements OnInit {
 
     ngOnInit(): void {
         super.ngOnInit();
-
         this.logger.debug(this, 'ngOnInit()');
 
-        this.videoSearchParams.set('count', '9');
+        // todo: get language dynamically
         this.videoSearchParams.set('lang', 'en');
         this.lang$.next('en');
     }

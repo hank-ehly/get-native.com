@@ -29,7 +29,7 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Get,
         url: '/study/writing_answers',
         isProtected: true,
-        permitURLSearchParams: ['since', 'max_id']
+        permitURLSearchParams: ['since', 'max_id', 'time_zone_offset']
     }],
     [APIHandle.CATEGORIES, {
         method: RequestMethod.Get,
@@ -40,12 +40,13 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Get,
         url: '/videos',
         isProtected: true,
-        permitURLSearchParams: ['lang', 'count', 'max_id', 'subcategory_id', 'category_id', 'q', 'cued_only']
+        permitURLSearchParams: ['lang', 'count', 'max_id', 'subcategory_id', 'category_id', 'q', 'cued_only', 'time_zone_offset']
     }],
     [APIHandle.VIDEO, {
         method: RequestMethod.Get,
         url: '/videos/:id',
-        isProtected: true
+        isProtected: true,
+        permitURLSearchParams: ['time_zone_offset']
     }],
     [APIHandle.LIKE_VIDEO, {
         method: RequestMethod.Post,
