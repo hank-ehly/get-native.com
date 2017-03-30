@@ -21,7 +21,7 @@ export interface Video extends Entity {
     loop_velocity?: number;
     related_videos?: Videos;
     speaker?: Speaker;
-    thumbnail_image_url?: string;
+    picture_url?: string;
     subcategory?: Subcategory;
     transcripts?: Transcripts;
     video_url?: string;

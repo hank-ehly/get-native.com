@@ -1,5 +1,5 @@
 <div class="video-panel">
-    <img [src]="video?.thumbnail_image_url" alt="video-thumbnail">
+    <img [src]="video?.picture_url" alt="video-thumbnail">
 
     <div class="video-panel__overlay" [ngClass]="{'video-panel__overlay_link': !controls}" (click)="onClickOverlay()">
         <div class="controls" *ngIf="controls">
@@ -34,7 +34,7 @@
                 <span class="video-stats__label">{{ video?.loop_count | fuzzy }}</span>
             </div>
 
-            <span class="video-stats__label video-stats__created-at">{{ video.created_at | gnDate }}</span>
+            <span class="video-stats__label video-stats__created-at">{{ video?.created_at | gnDate }}</span>
         </div>
     </footer>
 </div>

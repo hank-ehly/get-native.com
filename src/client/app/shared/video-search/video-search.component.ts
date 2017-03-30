@@ -67,6 +67,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
                 protected categoryList: CategoryListService) {
+        this.videos = {records: [], count: 0};
     }
 
     ngOnInit() {
@@ -97,7 +98,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
             this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.subcategory$).merge(this.maxId$)
                 .distinctUntilChanged().switchMap(this.updateVideoSearchResults.bind(this))
-                .subscribe((videos: Videos) => this.videos = videos)
+                .subscribe(this.addNewVideosToVideoList.bind(this))
         );
     }
 
@@ -121,11 +122,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     onClickLoadMoreVideos(): void {
         let oldestVideo = this.videos.records[this.videos.count - 1];
-        let updatedCount = +this.videoSearchParams.get('count') * 2;
-
         this.videoSearchParams.set('max_id', oldestVideo.id.toString());
-        this.videoSearchParams.set('count', updatedCount.toString());
-
         this.maxId$.next(oldestVideo.id.toString());
     }
 
@@ -145,6 +142,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.lang$.next(lang.code);
     }
 
+    // todo (critical) Add category:id to response
     private onSelectCategory(category: Category): void {
         this.dropdownSelection = category.name;
         this.videoSearchParams.delete('subcategory_id');
@@ -152,7 +150,9 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.category$.next(category.id.toString());
     }
 
+    // todo (critical) Add subcategory:id to response
     private onSelectSubcategory(subcategory: Subcategory): void {
+        this.logger.debug(this, subcategory);
         this.dropdownSelection = subcategory.name;
         this.videoSearchParams.delete('category_id');
         this.updateSearchParams('subcategory_id', subcategory.id.toString());
@@ -171,5 +171,11 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     private updateVideoSearchResults(): Observable<Entity> {
         return this.http.request(this.apiHandle, {search: this.videoSearchParams});
+    }
+
+    private addNewVideosToVideoList(videos: Videos): void {
+        this.videos.records = this.videos.records.concat(videos.records);
+        this.videos.count = this.videos.count + videos.count;
+        this.logger.debug(this, this.videos);
     }
 }
