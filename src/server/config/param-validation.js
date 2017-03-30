@@ -5,8 +5,12 @@
  * Created by henryehly on 2017/01/22.
  */
 
-const Joi        = require('joi');
-const emailRegex = /[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*/;
+const Joi = require('joi');
+
+const regex = {
+    email:    /[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*/,
+    timeZoneOffset: /^-*[0-9]+$/
+};
 
 module.exports = {
     accounts: {
@@ -39,20 +43,20 @@ module.exports = {
                 authorization: Joi.string().required()
             },
             body: {
-                email: Joi.string().email().required()
+                email: Joi.string().regex(regex.email).required(),
             }
         }
     },
     auth: {
         login: {
             body: {
-                email: Joi.string().regex(emailRegex).required(),
+                email: Joi.string().regex(regex.email).required(),
                 password: Joi.string().required().min(8)
             }
         },
         register: {
             body: {
-                email: Joi.string().regex(emailRegex).required(),
+                email: Joi.string().regex(regex.email).required(),
                 password: Joi.string().required().min(8)
             }
         }
@@ -86,7 +90,8 @@ module.exports = {
             },
             query: {
                 since: Joi.date().max('now').timestamp('javascript'),
-                max_id: Joi.number().integer().min(1)
+                max_id: Joi.number().integer().min(1),
+                time_zone_offset: Joi.string().regex(regex.timeZoneOffset)
             }
         }
     },
@@ -102,7 +107,8 @@ module.exports = {
                 lang: Joi.string().lowercase(),
                 count: Joi.number().integer().min(1).max(9),
                 q: Joi.string().lowercase().max(100),
-                cued_only: Joi.boolean()
+                cued_only: Joi.boolean(),
+                time_zone_offset: Joi.string().regex(regex.timeZoneOffset)
             }
         },
         show: {
@@ -111,6 +117,9 @@ module.exports = {
             },
             params: {
                 id: Joi.number().integer().min(1).required()
+            },
+            query: {
+                time_zone_offset: Joi.string().regex(regex.timeZoneOffset)
             }
         },
         like: {
