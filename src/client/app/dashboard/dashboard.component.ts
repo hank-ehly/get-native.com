@@ -7,7 +7,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
-import { Router } from '@angular/router';
 import { URLSearchParams } from '@angular/http';
 
 import { VideoSearchComponent } from '../shared/video-search/video-search.component';
@@ -57,8 +56,12 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     ];
     activeAnswerMenuItem: any = this.answerMenuItems[0];
 
-    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
-                protected categoryList: CategoryListService, private router: Router, private dateService: UTCDateService) {
+    constructor(protected logger: Logger,
+                protected http: HttpService,
+                protected navbar: NavbarService,
+                protected toolbar: ToolbarService,
+                protected categoryList: CategoryListService,
+                private dateService: UTCDateService) {
         super(logger, http, navbar, toolbar, categoryList);
     }
 
@@ -78,17 +81,20 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
                 .subscribe((a: WritingSessions) => this.answers = a)
         );
 
-        this.videoSearchParams.set('count', '9');
-        this.videoSearchParams.set('lang', 'en');
         this.videoSearchParams.set('cued_only', true.toString());
+
+        // todo: get current language dynamically
+        this.videoSearchParams.set('lang', 'en');
+        // todo: redundant. make something like a 'trigger request' function or something..
         this.lang$.next('en');
 
         this.answerSearchParams.set('since', this.dateService.getDaysAgoFromDate(30).toString());
+        this.answerSearchParams.set('time_zone_offset', new Date().getTimezoneOffset().toString());
         this.answersMenu$.next(30);
     }
 
     onBegin(): void {
-        this.router.navigate(['study']).then();
+        this.logger.debug(this, 'onBegin()');
     }
 
     onClickLoadMoreAnswers(): void {
@@ -105,6 +111,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     }
 
     private updateAnswersFilter(): Observable<WritingSessions> {
+        // set the new key, value HERE instead of first setting it above then calling 'next'
         return this.http.request(APIHandle.WRITING_ANSWERS, {search: this.answerSearchParams});
     }
 }
