@@ -30,3 +30,29 @@ module.exports.extractAuthTokenFromRequest = function(req) {
 
     return splitAuthHeader[1];
 };
+
+module.exports.browserTimezoneOffsetToSQLFormat = function(offsetInMinutes) {
+    // The offset is positive if the local timezone is behind UTC and negative if it is ahead
+    const minutes = -parseInt(offsetInMinutes);
+    const hours   = minutes / 60;
+
+    const wholeHours    = Math[hours > 0 ? 'floor' : 'ceil'](hours);
+    const absoluteHours = Math.abs(wholeHours);
+
+    const wholeMinutes    = (hours % 1) * 60;
+    const absoluteMinutes = Math.abs(wholeMinutes);
+
+    const symbol        = hours >= 0 ? '+' : '-';
+    const paddedHours   = pad(absoluteHours, 2);
+    const paddedMinutes = pad(absoluteMinutes, 2);
+
+    return [symbol, paddedHours, ':', paddedMinutes].join('');
+};
+
+function pad(num, size) {
+    let s = num + '';
+    while (s.length < size) {
+        s = '0' + s;
+    }
+    return s;
+}

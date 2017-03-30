@@ -69,4 +69,22 @@ describe('utility', () => {
             assert(retVal.length > 0);
         });
     });
+
+    describe('browserTimezoneOffsetToSQLFormat', () => {
+        it(`should return the timezone offset as '+09:00' provided a value in minutes as '-540'`, function() {
+            assert.equal(util.browserTimezoneOffsetToSQLFormat('-540'), '+09:00');
+        });
+
+        it(`should return the timezone offset as '-03:30' provided a value in minutes as '210'`, function() {
+            assert.equal(util.browserTimezoneOffsetToSQLFormat('210'), '-03:30');
+        });
+
+        it(`should return the timezone offset as '+00:00' provided a value in minutes as '0'`, function() {
+            assert.equal(util.browserTimezoneOffsetToSQLFormat('0'), '+00:00');
+        });
+
+        it(`should return the timezone offset as '+08:45' provided a value in minutes as '-525'`, function() {
+            assert.equal(util.browserTimezoneOffsetToSQLFormat('-525'), '+08:45');
+        });
+    });
 });
