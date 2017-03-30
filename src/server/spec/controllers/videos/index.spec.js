@@ -168,7 +168,7 @@ describe('GET /videos', function() {
             });
         });
 
-        it(`should set the timezone offset of the 'created_at' value to that of the account's preferred timezone`);
+        it(`should apply the timezone offset in the request to 'created_at'`);
 
         it(`should contain a non-null object for 'speaker' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
