@@ -21,12 +21,12 @@ const privateKey = fs.readFile(secretsDir + '/id_rsa', (err, data) => {
     nconf.set(k.PrivateKey, data.toString());
 });
 
-nconf.set('env', process.env.NODE_ENV.toLowerCase());
+nconf.set(k.Env.Key, process.env.NODE_ENV.toLowerCase());
 
-let kPort = k.Port;
-nconf.defaults({kPort: 3000});
+let kAPIPort = k.APIPort;
+nconf.defaults({kAPIPort: 3000});
 
-nconf.set('smtp:host', 'localhost');
-nconf.set(`smtp:${k.Port}`, 1025);
+nconf.set(k.SMTP.Host, 'localhost');
+nconf.set(k.SMTP.Port, 1025);
 nconf.set('allow-origin', '*');
 nconf.set(k.NoReply, 'test@email.com');

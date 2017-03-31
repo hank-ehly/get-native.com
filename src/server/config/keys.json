@@ -29,5 +29,9 @@
     "NoReply": "no_reply",
     "PrivateKey": "private_key",
     "PublicKey": "public_key",
-    "Port": "port"
+    "SMTP": {
+        "Port": "smtp:port",
+        "Host": "smtp:host"
+    },
+    "APIPort": "API_PORT"
 }

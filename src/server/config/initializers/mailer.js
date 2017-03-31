@@ -7,10 +7,11 @@
 
 const nconf      = require('nconf');
 const nodemailer = require('nodemailer');
+const k          = require('../keys.json');
 
 const smtpConfig = {
-    host: nconf.get('smtp').host,
-    port: nconf.get('smtp').port,
+    host: nconf.get(k.SMTP.Host),
+    port: nconf.get(k.SMTP.Port),
     secure: false,
     tls: {
         rejectUnauthorized: false
