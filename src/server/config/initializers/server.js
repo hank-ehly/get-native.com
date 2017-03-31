@@ -35,7 +35,7 @@ module.exports = () => {
     app.use(middleware.Error.fallbackErrorHandler);
 
     return new Promise(resolve => {
-        const port = nconf.get(k.Port);
+        const port = nconf.get(k.APIPort);
         resolve(app.listen(port, () => logger.info(`Listening on port ${port}`)));
     });
 };
