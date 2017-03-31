@@ -15,5 +15,7 @@ module.exports.index = (req, res) => {
     }).then(categories => {
         const categoriesAsJson = ResponseWrapper.deepWrap(categories.map(c => c.get({plain: true})), ['subcategories']);
         res.send(categoriesAsJson);
+    }).catch(e => {
+        next(e);
     });
 };
