@@ -26,6 +26,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import '../../operators';
+import * as _ from 'lodash';
 
 @Component({
     template: ''
@@ -41,8 +42,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     protected query$ = new Subject<string>();
     protected lang$ = new Subject<LanguageCode>();
-    protected category$ = new Subject<string>();
-    protected subcategory$ = new Subject<string>();
+    protected categorySubcategoryFilter$ = new Subject<string>();
     protected maxId$ = new Subject<string>();
 
     protected subscriptions: Subscription[] = [];
@@ -96,9 +96,17 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
             this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this)),
             this.categoryList.selectSubcategory$.subscribe(this.onSelectSubcategory.bind(this)),
 
-            this.query$.debounceTime(300).merge(this.lang$).merge(this.category$).merge(this.subcategory$).merge(this.maxId$)
-                .distinctUntilChanged().switchMap(this.updateVideoSearchResults.bind(this))
-                .subscribe(this.addNewVideosToVideoList.bind(this))
+            this.maxId$
+                .distinctUntilChanged()
+                .switchMap(this.updateVideoSearchResults.bind(this))
+                .subscribe(this.addNewVideosToVideoList.bind(this)),
+
+            this.query$.debounceTime(300)
+                .merge(this.lang$)
+                .merge(this.categorySubcategoryFilter$)
+                .distinctUntilChanged()
+                .switchMap(this.updateVideoSearchResults.bind(this))
+                .subscribe((videos: Videos) => this.videos = videos)
         );
     }
 
@@ -118,11 +126,12 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.videoSearchParams.delete('subcategory_id');
         this.videoSearchParams.delete('category_id');
         this.isDropdownVisible = false;
+        this.categorySubcategoryFilter$.next('');
     }
 
     onClickLoadMoreVideos(): void {
         let oldestVideo = this.videos.records[this.videos.count - 1];
-        this.videoSearchParams.set('max_id', oldestVideo.id.toString());
+        this.videoSearchParams.set('max_id', oldestVideo.id.toString()); // todo: Cannot read property 'toString' of undefined
         this.maxId$.next(oldestVideo.id.toString());
     }
 
@@ -142,21 +151,19 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.lang$.next(lang.code);
     }
 
-    // todo (critical) Add category:id to response
     private onSelectCategory(category: Category): void {
         this.dropdownSelection = category.name;
         this.videoSearchParams.delete('subcategory_id');
         this.updateSearchParams('category_id', category.id.toString());
-        this.category$.next(category.id.toString());
+        this.categorySubcategoryFilter$.next(category.id.toString());
     }
 
-    // todo (critical) Add subcategory:id to response
     private onSelectSubcategory(subcategory: Subcategory): void {
         this.logger.debug(this, subcategory);
         this.dropdownSelection = subcategory.name;
         this.videoSearchParams.delete('category_id');
         this.updateSearchParams('subcategory_id', subcategory.id.toString());
-        this.subcategory$.next(subcategory.id.toString());
+        this.categorySubcategoryFilter$.next(subcategory.id.toString());
     }
 
     private updateSearchParams(key: string, value: string): void {
@@ -174,8 +181,8 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     }
 
     private addNewVideosToVideoList(videos: Videos): void {
-        this.videos.records = this.videos.records.concat(videos.records);
+        this.videos.records = _.union(this.videos.records, videos.records);
         this.videos.count = this.videos.count + videos.count;
-        this.logger.debug(this, this.videos);
+        this.logger.debug(this, `this.videos.count = ${this.videos.count}`);
     }
 }

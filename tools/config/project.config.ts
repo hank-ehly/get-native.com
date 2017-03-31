@@ -1,6 +1,7 @@
 import { join } from 'path';
 import { argv } from 'yargs';
 import { SeedConfig } from './seed.config';
+import { ExtendPackages } from './seed.config.interfaces';
 
 export class ProjectConfig extends SeedConfig {
 
@@ -17,6 +18,13 @@ export class ProjectConfig extends SeedConfig {
             ...this.NPM_DEPENDENCIES,
             {src: 'web-animations-js/web-animations.min.js', inject: 'libs'}
         ];
+
+        let additionalPackages: ExtendPackages[] = [{
+            name: 'lodash',
+            path: 'node_modules/lodash/lodash.js'
+        }];
+
+        this.addPackagesBundles(additionalPackages);
 
         this.ENABLE_SCSS = true;
     }
