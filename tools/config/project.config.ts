@@ -1,11 +1,13 @@
 import { join } from 'path';
-
+import { argv } from 'yargs';
 import { SeedConfig } from './seed.config';
 
 export class ProjectConfig extends SeedConfig {
 
     PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
     META_TAGS: any[] = require('./meta_tags.json');
+
+    API_PORT = argv['api-port'] || 3000;
 
     constructor() {
         super();
