@@ -22,7 +22,7 @@ export const STUBResponses = new Map<APIHandle, any>([
             'id': 123456,
             'description': 'Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.',
             'name': 'Harold Ford',
-            'thumbnail_image_url': '/assets/mock/man-smiling.jpg'
+            'picture_url': '/assets/mock/man-smiling.jpg'
         },
         'subcategory': {
             'id': 123456,
@@ -30,7 +30,7 @@ export const STUBResponses = new Map<APIHandle, any>([
         },
         'loop_count': 7156,
         'loop_velocity': 2.4960000000000004,
-        'thumbnail_image_url': '',
+        'picture_url': '',
         'video_url': '/assets/mock/video.mov',
         'related_videos': {
             'records': [
@@ -150,7 +150,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 'loop_count': 7156,
                 'loop_velocity': 2.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
+                'picture_url': '/assets/mock/man-smiling.jpg',
                 'video_url': '/assets/mock/video.mov',
                 'length': 68
             },
@@ -165,7 +165,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 'loop_count': 1011,
                 'loop_velocity': 2.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
+                'picture_url': '/assets/mock/man-smiling.jpg',
                 'video_url': '/assets/mock/video.mov',
                 'length': 73
             },
@@ -180,7 +180,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 'loop_count': 9941,
                 'loop_velocity': 2.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
+                'picture_url': '/assets/mock/man-smiling.jpg',
                 'video_url': '/assets/mock/video.mov',
                 'length': 45
             },
@@ -195,7 +195,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 'loop_count': 10503,
                 'loop_velocity': 2.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
+                'picture_url': '/assets/mock/man-smiling.jpg',
                 'video_url': '/assets/mock/video.mov',
                 'length': 122
             },
@@ -210,7 +210,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 'loop_count': 3,
                 'loop_velocity': 2.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
+                'picture_url': '/assets/mock/man-smiling.jpg',
                 'video_url': '/assets/mock/video.mov',
                 'length': 89
             },
@@ -225,7 +225,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 'loop_count': 900,
                 'loop_velocity': 5.4960000000000004,
-                'thumbnail_image_url': '/assets/mock/man-smiling.jpg',
+                'picture_url': '/assets/mock/man-smiling.jpg',
                 'video_url': '/assets/mock/video.mov',
                 'length': 89
             }
