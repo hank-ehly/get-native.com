@@ -15,5 +15,5 @@ export interface Speaker extends Entity {
     lang?: LanguageCode;
     gender?: Gender;
     location?: string;
-    thumbnail_image_url?: string;
+    picture_url?: string;
 }
