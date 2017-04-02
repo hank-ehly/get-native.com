@@ -13,14 +13,14 @@ const Speaker  = require('../../../app/models').Speaker;
 const Utility  = require('../../../app/helpers').Utility;
 const Promise  = require('bluebird');
 
-describe('GET /speakers/:id', () => {
+describe('GET /speakers/:id', function() {
     let server        = null;
     let authorization = null;
     let testSpeaker   = null;
 
     before(function(done) {
         this.timeout(SpecUtil.defaultTimeout);
-        Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]).then(() => {
+        Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]).then(function() {
             Speaker.findOne().then(function(speaker) {
                 testSpeaker = speaker.toJSON();
                 done();
@@ -30,12 +30,11 @@ describe('GET /speakers/:id', () => {
         });
     });
 
-    beforeEach(function(done) {
+    beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.login(function(_server, _authorization) {
-            server = _server;
+        return SpecUtil.login().then(function(initGroup, _authorization) {
+            server = initGroup.server;
             authorization = _authorization;
-            done();
         });
     });
 
@@ -48,7 +47,7 @@ describe('GET /speakers/:id', () => {
         return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
-    describe('headers', function() {
+    describe('response.headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
             return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(response) {
                 assert(response.header['x-gn-auth-token'].length > 0);
@@ -62,65 +61,73 @@ describe('GET /speakers/:id', () => {
         });
     });
 
-    it('should return a single object', () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            assert.equal(Utility.typeof(speaker.body), 'object');
+    describe('response.failure', function() {
+        it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
+            return request(server).get(`/speakers/${testSpeaker.id}`).expect(401, done);
         });
     });
 
-    it(`should return an object containing the same 'id' value as the URL parameter`, () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            assert.equal(speaker.body.id, testSpeaker.id);
+    describe('response.success', function() {
+        it('should return a single object', () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert.equal(Utility.typeof(speaker.body), 'object');
+            });
         });
-    });
 
-    it('should return an object containing a string description about the speaker', () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            assert.equal(Utility.typeof(speaker.body.description), 'string');
+        it(`should return an object containing the same 'id' value as the URL parameter`, () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert.equal(speaker.body.id, testSpeaker.id);
+            });
         });
-    });
 
-    it(`should not return a blank 'description'`, () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            assert(speaker.body.description.length > 0);
+        it('should return an object containing a string description about the speaker', () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert.equal(Utility.typeof(speaker.body.description), 'string');
+            });
         });
-    });
 
-    it(`should return an object containing the speaker's string 'name' property`, () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            assert.equal(Utility.typeof(speaker.body.name), 'string');
+        it(`should not return a blank 'description'`, () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert(speaker.body.description.length > 0);
+            });
         });
-    });
 
-    it(`should not return a blank 'name'`, () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            assert(speaker.body.name.length > 0);
+        it(`should return an object containing the speaker's string 'name' property`, () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert.equal(Utility.typeof(speaker.body.name), 'string');
+            });
         });
-    });
 
-    it(`should return an object containing the speaker's string location`, () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            assert.equal(Utility.typeof(speaker.body.location), 'string');
+        it(`should not return a blank 'name'`, () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert(speaker.body.name.length > 0);
+            });
         });
-    });
 
-    it(`should not return a blank 'location'`, () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            assert(speaker.body.location.length > 0);
+        it(`should return an object containing the speaker's string location`, () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert.equal(Utility.typeof(speaker.body.location), 'string');
+            });
         });
-    });
 
-    it(`should return an object containing the speaker's valid picture url`, () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            let parsedURL = url.parse(speaker.body.picture_url);
-            assert(parsedURL.protocol);
-            assert(parsedURL.hostname);
+        it(`should not return a blank 'location'`, () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert(speaker.body.location.length > 0);
+            });
         });
-    });
 
-    it(`should return an object containing a boolean value denoting whether or not the speaker has chosen to use a custom picture`, () => {
-        return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-            assert.equal(Utility.typeof(speaker.body.is_silhouette_picture), 'boolean');
+        it(`should return an object containing the speaker's valid picture url`, () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                let parsedURL = url.parse(speaker.body.picture_url);
+                assert(parsedURL.protocol);
+                assert(parsedURL.hostname);
+            });
+        });
+
+        it(`should return an object containing a boolean value denoting whether or not the speaker has chosen to use a custom picture`, () => {
+            return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
+                assert.equal(Utility.typeof(speaker.body.is_silhouette_picture), 'boolean');
+            });
         });
     });
 });

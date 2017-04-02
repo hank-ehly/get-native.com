@@ -9,16 +9,16 @@ const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/helpers').Utility;
 const request  = require('supertest');
 const assert   = require('assert');
-const MailDev  = require('maildev');
 const Promise  = require('bluebird');
 const nconf    = require('nconf');
-const db       = require('../../../app/models');
 const k        = require('../../../config/keys.json');
 
 // todo: You don't want to allow someone to make 10,000 accounts via the commandline (check user agent?)
 // todo: Should User-Agents like 'curl' be allowed to use the API at all?
 describe('POST /register', function() {
     let server  = null;
+    let db      = null;
+    let maildev = null;
 
     const newAccountCredentials = {
         email: 'new.user@email.com',
@@ -30,12 +30,12 @@ describe('POST /register', function() {
         return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
     });
 
-    beforeEach(function(done) {
+    beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        delete require.cache[require.resolve('../../../index')];
-        require('../../../index').then(function(_) {
-            server = _;
-            done();
+        return SpecUtil.startServer().then(initGroup => {
+            server  = initGroup.server;
+            db      = initGroup.db;
+            maildev = initGroup.maildev;
         });
     });
 
@@ -68,7 +68,7 @@ describe('POST /register', function() {
         return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
-    describe('headers', function() {
+    describe('response.headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
             return request(server).post('/register').send(newAccountCredentials).then(function(response) {
                 assert(response.header['x-gn-auth-token'].length > 0);
@@ -82,48 +82,21 @@ describe('POST /register', function() {
         });
     });
 
-    describe('confirmation email', function() {
-        it(`should send a confirmation email to the newly registered user after successful registration`, function(done) {
-            request(server).post('/register').send(newAccountCredentials).then(function() {
-                SpecUtil.getAllEmail(function(error, emails) {
-                    const recipientEmailAddress = emails[0].envelope.to[0].address;
-                    assert.equal(recipientEmailAddress, newAccountCredentials.email);
-                    done();
-                });
-            });
+    describe('response.failure', function() {
+        it(`should respond with a 400 Bad Request response the 'email' field is missing`, function(done) {
+            request(server).post('/register').send({password: newAccountCredentials.password}).expect(400, done);
         });
 
-        it(`should send a confirmation email from the get-native noreply account after successful registration`, function(done) {
-            request(server).post('/register').send(newAccountCredentials).then(function() {
-                SpecUtil.getAllEmail(function(error, emails) {
-                    const senderEmailAddress = emails[0].envelope.from.address;
-                    const noreplyEmailAddress = nconf.get(k.NoReply);
-                    assert.equal(senderEmailAddress, noreplyEmailAddress);
-                    done();
-                });
-            });
-        });
-    });
-
-    describe('request', function() {
-        it('should respond with 200 OK for a successful request', function(done) {
-            request(server).post('/register').send(newAccountCredentials).expect(200, done);
+        it(`should respond with 400 Bad Request if the 'email' field is not an email`, function(done) {
+            request(server).post('/register').send({password: newAccountCredentials.password, email: 'not_an_email'}).expect(400, done);
         });
 
-        it(`should respond with a 422 Unprocessable Entity response the 'email' field is missing`, function(done) {
-            request(server).post('/register').send({password: newAccountCredentials.password}).expect(422, done);
+        it(`should respond with a 400 Bad Request response the 'password' field is missing`, function(done) {
+            request(server).post('/register').send({email: newAccountCredentials.email}).expect(400, done);
         });
 
-        it(`should respond with 422 Unprocessable Entity if the 'email' field is not an email`, function(done) {
-            request(server).post('/register').send({password: newAccountCredentials.password, email: 'not_an_email'}).expect(422, done);
-        });
-
-        it(`should respond with a 422 Unprocessable Entity response the 'password' field is missing`, function(done) {
-            request(server).post('/register').send({email: newAccountCredentials.email}).expect(422, done);
-        });
-
-        it(`should respond with a 422 Unprocessable Entity response the 'password' is less than 8 characters`, function(done) {
-            request(server).post('/register').send({email: newAccountCredentials.email, password: 'lt8char'}).expect(422, done);
+        it(`should respond with a 400 Bad Request response the 'password' is less than 8 characters`, function(done) {
+            request(server).post('/register').send({email: newAccountCredentials.email, password: 'lt8char'}).expect(400, done);
         });
 
         it(`should send a 422 Unprocessable Entity response if the registration email is already in use`, function(done) {
@@ -133,7 +106,11 @@ describe('POST /register', function() {
         });
     });
 
-    describe('response.body', function() {
+    describe('response.success', function() {
+        it('should respond with 200 OK for a successful request', function(done) {
+            request(server).post('/register').send(newAccountCredentials).expect(200, done);
+        });
+
         it(`should respond with an object containing the user's ID`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function(response) {
                 assert(SpecUtil.isNumber(response.body.id));
@@ -195,10 +172,33 @@ describe('POST /register', function() {
         });
     });
 
-    it(`should store the new users' password in an encrypted format that is not equal to the request`, function() {
-        return request(server).post('/register').send(newAccountCredentials).then(function(response) {
-            return db.Account.findOne({where: {email: newAccountCredentials.email}}).then(function(account) {
-                assert.notEqual(account.password, newAccountCredentials.password);
+    describe('other', function() {
+        it(`should send a confirmation email to the newly registered user after successful registration`, function(done) {
+            request(server).post('/register').send(newAccountCredentials).then(function() {
+                SpecUtil.getAllEmail(maildev, function(error, emails) {
+                    const recipientEmailAddress = emails[0].envelope.to[0].address;
+                    assert.equal(recipientEmailAddress, newAccountCredentials.email);
+                    done();
+                });
+            });
+        });
+
+        it(`should send a confirmation email from the get-native noreply account after successful registration`, function(done) {
+            request(server).post('/register').send(newAccountCredentials).then(function() {
+                SpecUtil.getAllEmail(maildev, function(error, emails) {
+                    const senderEmailAddress = emails[0].envelope.from.address;
+                    const noreplyEmailAddress = nconf.get(k.NoReply);
+                    assert.equal(senderEmailAddress, noreplyEmailAddress);
+                    done();
+                });
+            });
+        });
+
+        it(`should store the new users' password in an encrypted format that is not equal to the request`, function() {
+            return request(server).post('/register').send(newAccountCredentials).then(function(response) {
+                return db.Account.findOne({where: {email: newAccountCredentials.email}}).then(function(account) {
+                    assert.notEqual(account.password, newAccountCredentials.password);
+                });
             });
         });
     });
