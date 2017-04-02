@@ -6,5 +6,6 @@
  */
 
 const nconf = require('nconf');
+const k     = require('../keys.json');
 
-nconf.set('hostname', 'localhost');
+nconf.set(k.API.Hostname, 'localhost');

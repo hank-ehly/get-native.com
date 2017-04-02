@@ -17,7 +17,7 @@ module.exports.validateRequest = function(req, callback) {
 
     // todo: audience?
     const args = {
-        issuer: nconf.get('hostname'),
+        issuer: nconf.get(k.API.Hostname),
         audience: '',
         algorithms: ['RS256']
     };

@@ -18,12 +18,12 @@ const k          = require('../keys.json');
 module.exports = () => {
     const app = express();
 
-    if (nconf.get('env') === 'development') {
+    if (nconf.get(k.API.ENV) === k.Env.Development) {
         app.use(morgan('dev'));
     }
 
-    for (let x of ['x-powered-by', 'etag', 'views', 'view cache']) {
-        app.disable(x);
+    for (let key of ['x-powered-by', 'etag', 'views', 'view cache']) {
+        app.disable(key);
     }
 
     app.use(bodyParser.json());
@@ -35,7 +35,7 @@ module.exports = () => {
     app.use(middleware.Error.fallbackErrorHandler);
 
     return new Promise(resolve => {
-        const port = nconf.get(k.APIPort);
+        const port = nconf.get(k.API.Port);
         resolve(app.listen(port, () => logger.info(`Listening on port ${port}`)));
     });
 };
