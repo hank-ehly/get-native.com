@@ -12,6 +12,8 @@ const regex = {
     timeZoneOffset: /^-*[0-9]+$/
 };
 
+const validLangCodes = ['en', 'ja'];
+
 module.exports = {
     accounts: {
         index: {
@@ -104,7 +106,7 @@ module.exports = {
                 max_id: Joi.number().integer().min(1),
                 category_id: Joi.number().integer().min(1),
                 subcategory_id: Joi.number().integer().min(1),
-                lang: Joi.string().lowercase().valid(['en', 'ja']),
+                lang: Joi.string().lowercase().valid(validLangCodes),
                 count: Joi.number().integer().min(1).max(9),
                 q: Joi.string().lowercase().max(100),
                 cued_only: Joi.boolean(),
