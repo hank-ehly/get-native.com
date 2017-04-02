@@ -1,4 +1,5 @@
 {
+    "APIPort": "API_PORT",
     "Attr": {
         "Answer": "answer",
         "BrowserNotificationsEnabled": "browser_notifications_enabled",
@@ -22,6 +23,9 @@
         "Key": "env",
         "Development": "development"
     },
+    "Header": {
+        "AllowOrigin": "allow-origin"
+    },
     "Model": {
         "WritingAnswer": "WritingAnswer",
         "Video": "Video"
@@ -32,9 +36,5 @@
     "SMTP": {
         "Port": "smtp:port",
         "Host": "smtp:host"
-    },
-    "APIPort": "API_PORT",
-    "Header": {
-        "AllowOrigin": "allow-origin"
     }
 }
