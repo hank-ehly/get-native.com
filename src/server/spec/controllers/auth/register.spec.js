@@ -173,23 +173,21 @@ describe('POST /register', function() {
     });
 
     describe('other', function() {
-        it(`should send a confirmation email to the newly registered user after successful registration`, function(done) {
-            request(server).post('/register').send(newAccountCredentials).then(function() {
-                SpecUtil.getAllEmail(maildev, function(error, emails) {
+        it(`should send a confirmation email to the newly registered user after successful registration`, function() {
+            return request(server).post('/register').send(newAccountCredentials).then(function() {
+                return SpecUtil.getAllEmail().then(function(emails) {
                     const recipientEmailAddress = emails[0].envelope.to[0].address;
                     assert.equal(recipientEmailAddress, newAccountCredentials.email);
-                    done();
                 });
             });
         });
 
-        it(`should send a confirmation email from the get-native noreply account after successful registration`, function(done) {
-            request(server).post('/register').send(newAccountCredentials).then(function() {
-                SpecUtil.getAllEmail(maildev, function(error, emails) {
+        it(`should send a confirmation email from the get-native noreply account after successful registration`, function() {
+            return request(server).post('/register').send(newAccountCredentials).then(function() {
+                return SpecUtil.getAllEmail().then(function(emails) {
                     const senderEmailAddress = emails[0].envelope.from.address;
                     const noreplyEmailAddress = nconf.get(k.NoReply);
                     assert.equal(senderEmailAddress, noreplyEmailAddress);
-                    done();
                 });
             });
         });

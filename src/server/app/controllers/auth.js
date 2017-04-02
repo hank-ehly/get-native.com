@@ -90,26 +90,24 @@ module.exports.register = (req, res, next) => {
 
     // todo: shouldn't this be done by db validations?
     Account.existsForEmail(req.body[k.Attr.Email]).then(exists => {
-        // todo: throw to catch
         if (exists) {
-            throw new Error('Account already exists!');
+            throw new GetNativeError(k.Error.AccountAlreadyExists);
         }
 
-        const securePassword = AuthHelper.hashPassword(req.body[k.Attr.Password]);
+        const hashedPassword = AuthHelper.hashPassword(req.body[k.Attr.Password]);
 
         return Account.create({
             email: req.body[k.Attr.Email],
-            password: securePassword
+            password: hashedPassword
         });
     }).then(_account => {
-        if (!_account) {
-            return next(new Error('Missing account!'));
+        account = _account;
+
+        if (!account) {
+            throw new Error('Failed to create new account');
         }
 
-        account = _account;
-        generateWelcomeEmailForRequest(req, mail => {
-            return mailer.sendMail(mail);
-        });
+        generateWelcomeEmailForRequest(req, mail => mailer.sendMail(mail));
     }).then(() => {
         return AuthHelper.generateTokenForAccountId(account.id);
     }).then(token => {
@@ -117,11 +115,12 @@ module.exports.register = (req, res, next) => {
         const accountAsJson = account.get({plain: true});
         delete accountAsJson.password;
         res.send(accountAsJson);
-    }).catch((e) => {
-        next({
-            message: 'Error',
-            errors: [{message: e}]
-        });
+    }).catch(GetNativeError, e => {
+        if (e.code === k.Error.AccountAlreadyExists) {
+            next({body: e, status: 422});
+        }
+    }).catch(e => {
+        next(e);
     });
 };
 
