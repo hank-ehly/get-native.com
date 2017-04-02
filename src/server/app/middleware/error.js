@@ -30,7 +30,7 @@ module.exports.clientErrorHandler = function(error, req, res, next) {
 };
 
 module.exports.fallbackErrorHandler = function(err, req, res) {
-    if (nconf.get('env') !== k.Env.Production) {
+    if (nconf.get(k.API.ENV) !== k.Env.Production) {
         return res.status(500).send(err.stack);
     }
 
