@@ -22,11 +22,11 @@ describe('GET /videos', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(initGroup, _authorization, _user) {
-            server = initGroup.server;
-            db = initGroup.db;
-            authorization = _authorization;
-            user = _user;
+        return SpecUtil.login().then(function(_) {
+            server = _.server;
+            db = _.db;
+            authorization = _.authorization;
+            user = _.response.body;
         });
     });
 
@@ -71,7 +71,7 @@ describe('GET /videos', function() {
         });
 
         it(`should return a 400 Bad Request Entity response if the request contains a non-numeric 'max_id' parameter`, function(done) {
-            request(server).get('/videos?max_id=notANumber').set('authorization', authorization).expect(422, done);
+            request(server).get('/videos?max_id=notANumber').set('authorization', authorization).expect(400, done);
         });
 
         it(`should return a 400 Bad Request response if the request contains a non-numeric 'subcategory_id' parameter`, function(done) {
