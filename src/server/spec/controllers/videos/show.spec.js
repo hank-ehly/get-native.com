@@ -25,11 +25,11 @@ describe('GET /videos/:id', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(initGroup, _authorization, _user) {
-            server = initGroup.server;
-            db = initGroup.db;
-            authorization = _authorization;
-            user = _user;
+        return SpecUtil.login().then(function(_) {
+            server = _.server;
+            db = _.db;
+            authorization = _.authorization;
+            user = _.response.body;
 
             return db.sequelize.query('SELECT id FROM videos LIMIT 1').then(r => {
                 requestVideoId = r[0][0].id;
