@@ -22,13 +22,13 @@ describe('POST /videos/:id/unlike', function() {
         return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
     });
 
-    beforeEach(function(done) {
+    beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(initGroup, _authorization, _user) {
-            server = initGroup.server;
-            db = initGroup.db;
-            authorization = _authorization;
-            user = _user;
+        return SpecUtil.login().then(function(_) {
+            server = _.server;
+            db = _.db;
+            authorization = _.authorization;
+            user = _.response.body;
 
             return db.sequelize.query(`
                 SELECT video_id 
@@ -38,9 +38,7 @@ describe('POST /videos/:id/unlike', function() {
                     FROM accounts 
                     WHERE email = 'test@email.com'
                 ) LIMIT 1
-            `).then(r => {
-                requestVideoId = r[0][0].video_id;
-            });
+            `).then(r => requestVideoId = r[0][0].video_id);
         });
     });
 
@@ -55,13 +53,13 @@ describe('POST /videos/:id/unlike', function() {
 
     describe('response.headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
-            return request(server).get(`/videos/${requestVideoId}/unlike`).set('authorization', authorization).then(function(response) {
+            return request(server).post(`/videos/${requestVideoId}/unlike`).set('authorization', authorization).then(function(response) {
                 assert(response.header['x-gn-auth-token'].length > 0);
             });
         });
 
         it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
-            return request(server).get(`/videos/${requestVideoId}/unlike`).set('authorization', authorization).then(function(response) {
+            return request(server).post(`/videos/${requestVideoId}/unlike`).set('authorization', authorization).then(function(response) {
                 assert(SpecUtil.isParsableDateValue(+response.header['x-gn-auth-expire']));
             });
         });
@@ -77,7 +75,7 @@ describe('POST /videos/:id/unlike', function() {
         });
 
         it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
-            request(server).get(`/videos/${requestVideoId}/unlike`).expect(401, done);
+            request(server).post(`/videos/${requestVideoId}/unlike`).expect(401, done);
         });
     });
 
