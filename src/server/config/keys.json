@@ -26,12 +26,13 @@
     "Debug": "DEBUG",
     "Error": {
         "JWT": {
-            "Verify"  : 100,
-            "Sign"    : 101
+            "Verify": 100,
+            "Sign": 101
         },
         "RequestParam": 102,
-        "Auth"        : 103,
-        "UserNamePasswordIncorrect": 104
+        "Auth": 103,
+        "UserNamePasswordIncorrect": 104,
+        "AccountAlreadyExists": 105
     },
     "Env": {
         "Development": "development",

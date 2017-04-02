@@ -11,7 +11,8 @@
         "100": "An error occurred while processing JWT",
         "101": "An error occurred while processing JWT",
         "102": "-",
-        "103": "-",
-        "104": "Username or password is incorrect"
+        "103": "Authorization error",
+        "104": "Username or password is incorrect",
+        "105": "Account already exists"
     }
 }

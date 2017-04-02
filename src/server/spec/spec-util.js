@@ -43,10 +43,14 @@ module.exports.stopMailServer = function() {
     return Promise.promisify(maildev.end)();
 };
 
-module.exports.getAllEmail = function(_maildev, cb) {
-    setTimeout(function() {
-        _maildev.getAllEmail(cb)
-    }, 1);
+module.exports.getAllEmail = function() {
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            maildev.getAllEmail((errors, store) => {
+                return errors ? reject(errors) : resolve(store);
+            });
+        }, 1);
+    });
 };
 
 module.exports.startServer = function() {
