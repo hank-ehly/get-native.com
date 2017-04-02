@@ -24,11 +24,7 @@ const k               = require('../../config/keys.json');
 const GetNativeError  = require('../helpers').GetNativeError;
 
 module.exports.index = (req, res, next) => {
-    const conditions = {};
-
-    if (req.query.lang) {
-        conditions.language_code = req.query.lang;
-    }
+    const conditions = {language_code: req.query.lang || 'en'};
 
     return Subcategory.findIdsForCategoryIdOrSubcategoryId(req.query).then(subcategoryIds => {
         if (subcategoryIds.length) {
@@ -78,12 +74,7 @@ module.exports.show = (req, res, next) => {
     ]).findAll({
         attributes: [k.Attr.Id, relatedCreatedAt, k.Attr.Length, k.Attr.LoopCount, relatedCued],
         limit: 3
-    }).catch(() => {
-        next({
-            message: 'Data Error',
-            errors: [{message: `Unable to find related videos`}]
-        });
-    });
+    }).catch(next);
 
     const video = Video.scope({method: ['includeTranscripts', db]}).findById(+req.params.id, {
         include: [
@@ -91,12 +82,7 @@ module.exports.show = (req, res, next) => {
             {model: Subcategory, attributes: [k.Attr.Id, k.Attr.Name], as: 'subcategory'}
         ],
         attributes: [k.Attr.Description, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length]
-    }).catch(() => {
-        next({
-            message: 'Data Error',
-            errors: [{message: `Unable to find video with id ${req.params.id}`}]
-        });
-    });
+    }).catch(next);
 
     return Promise.all([likeCount, liked, cued, relatedVideos, video]).spread((likeCount, liked, cued, relatedVideos, video) => {
         video = video.get({plain: true});
@@ -117,12 +103,7 @@ module.exports.show = (req, res, next) => {
         }));
 
         res.send(video);
-    }).catch(err => {
-        next({
-            message: 'Error',
-            errors: [{message: `Unknown error`}]
-        });
-    });
+    }).catch(next);
 };
 
 module.exports.like = (req, res, next) => {
