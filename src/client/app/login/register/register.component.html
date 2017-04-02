@@ -4,6 +4,10 @@
         <p class="paragraph">Register via email by filling out the following information.</p>
     </header>
 
+    <!--<ul class="modal__form-errors" *ngIf="formErrors">-->
+        <!--<li *ngFor="let err of formErrors">{{ err | uppercase }}</li>-->
+    <!--</ul>-->
+
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="form">
 
         <div class="form__group">
