@@ -24,17 +24,15 @@ describe('GET /speakers/:id', function() {
             Speaker.findOne().then(function(speaker) {
                 testSpeaker = speaker.toJSON();
                 done();
-            }).catch(function(error) {
-                done(error);
-            });
+            }).catch(done);
         });
     });
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(initGroup, _authorization) {
-            server = initGroup.server;
-            authorization = _authorization;
+        return SpecUtil.login().then(function(_) {
+            server        = _.server;
+            authorization = _.authorization;
         });
     });
 
