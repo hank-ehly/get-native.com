@@ -8,6 +8,6 @@
 const nconf = require('nconf');
 const k     = require('../keys.json');
 
-nconf.set('allow-origin', 'https://stg.get-native.com');
-nconf.set('hostname', 'stg.api.get-native.com');
+nconf.set(k.Header.AllowOrigin, 'https://stg.get-native.com');
+nconf.set(k.API.Hostname, 'stg.api.get-native.com');
 nconf.set(k.NoReply, 'noreply@stg.get-native.com');

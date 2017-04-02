@@ -7,6 +7,7 @@
 
 const winston = require('winston');
 const nconf   = require('nconf');
+const k       = require('./keys.json');
 
 const logger = new (winston.Logger)({
     transports: [
@@ -20,11 +21,11 @@ const logger = new (winston.Logger)({
 });
 
 function _getConsoleLevel() {
-    if (!nconf.get('debug')) {
-        return (['test', 'circle_ci'].includes(nconf.get('env')) ? 'error' : 'debug');
+    if (nconf.get(k.Debug)) {
+        return 'debug';
     }
 
-    return 'debug';
+    return ([k.Env.Test, k.Env.CircleCI].includes(nconf.get(k.API.ENV)) ? 'error' : 'debug');
 }
 
 logger.transports.console.level = _getConsoleLevel();

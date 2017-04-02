@@ -1,5 +1,9 @@
 {
-    "APIPort": "API_PORT",
+    "API": {
+        "Port": "API_PORT",
+        "Hostname": "API_HOSTNAME",
+        "ENV": "API_ENV"
+    },
     "Attr": {
         "Answer": "answer",
         "BrowserNotificationsEnabled": "browser_notifications_enabled",
@@ -19,9 +23,11 @@
         "StudySessionId": "study_session_id",
         "VideoUrl": "video_url"
     },
+    "Debug": "DEBUG",
     "Env": {
-        "Key": "env",
-        "Development": "development"
+        "Development": "development",
+        "Test": "test",
+        "CircleCI": "circle_ci"
     },
     "Header": {
         "AllowOrigin": "allow-origin"

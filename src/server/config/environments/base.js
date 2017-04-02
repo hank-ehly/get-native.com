@@ -21,8 +21,8 @@ const privateKey = fs.readFile(secretsDir + '/id_rsa', (err, data) => {
     nconf.set(k.PrivateKey, data.toString());
 });
 
-nconf.set(k.Env.Key, process.env.NODE_ENV.toLowerCase());
-nconf.set(k.APIPort, 3000);
+nconf.set(k.API.ENV, process.env.NODE_ENV.toLowerCase());
+nconf.set(k.API.Port, 3000);
 nconf.set(k.SMTP.Host, 'localhost');
 nconf.set(k.SMTP.Port, 1025);
 nconf.set(k.Header.AllowOrigin, '*');
