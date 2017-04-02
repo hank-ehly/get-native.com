@@ -6,7 +6,6 @@
  */
 
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { trigger, transition, animate, keyframes, style } from '@angular/animations';
 
 import { Logger } from '../../core/logger/logger';
 
@@ -14,41 +13,7 @@ import { Logger } from '../../core/logger/logger';
     moduleId: module.id,
     selector: 'gn-modal',
     templateUrl: 'modal.component.html',
-    styleUrls: ['modal.component.css'],
-    animations: [
-        trigger('darken', [
-            transition(':enter', [
-                animate(200, keyframes([
-                    style({opacity: 0, offset: 0}),
-                    style({opacity: 1, offset: 0.7}),
-                    style({opacity: 1, offset: 1.0})
-                ]))
-            ]),
-            transition(':leave', [
-                animate(200, keyframes([
-                    style({opacity: 1, offset: 0}),
-                    style({opacity: 1, offset: 0.7}),
-                    style({opacity: 0, offset: 1.0})
-                ]))
-            ])
-        ]),
-        trigger('fadeInOut', [
-            transition(':enter', [
-                animate(200, keyframes([
-                    style({transform: 'scale(0.9) translate(-55%, -55%)', offset: 0}),
-                    style({transform: 'scale(1.025) translate(-48.75%, -48.75%)', offset: 0.7}),
-                    style({transform: 'scale(1) translate(-50%, -50%)', offset: 1.0})
-                ]))
-            ]),
-            transition(':leave', [
-                animate(200, keyframes([
-                    style({transform: 'scale(1) translate(-50%, -50%)', offset: 0}),
-                    style({transform: 'scale(1.025) translate(-48.75%, -48.75%)', offset: 0.7}),
-                    style({transform: 'scale(0.9) translate(-55%, -55%)', offset: 1.0})
-                ]))
-            ])
-        ])
-    ]
+    styleUrls: ['modal.component.css']
 })
 export class ModalComponent {
     @Input() isVisible: boolean;
