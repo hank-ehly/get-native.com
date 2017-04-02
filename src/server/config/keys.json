@@ -33,5 +33,8 @@
         "Port": "smtp:port",
         "Host": "smtp:host"
     },
-    "APIPort": "API_PORT"
+    "APIPort": "API_PORT",
+    "Header": {
+        "AllowOrigin": "allow-origin"
+    }
 }
