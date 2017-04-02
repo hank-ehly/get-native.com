@@ -31,13 +31,13 @@ describe('POST /videos/:id/like', function() {
             user = _.response.body;
 
             return db.sequelize.query(`
-                SELECT video_id 
-                FROM likes 
+                SELECT video_id
+                FROM likes
                 WHERE account_id != (
-                    SELECT id 
-                    FROM accounts 
+                    SELECT id
+                    FROM accounts
                     WHERE email = 'test@email.com'
-                ) LIMIT 1                
+                ) LIMIT 1
             `).then(r => requestVideoId = r[0][0].video_id);
         });
     });
@@ -90,14 +90,14 @@ describe('POST /videos/:id/like', function() {
 
         it(`should increment the video's 'like_count' by 1`, function() {
             // get current like_count
-            return db.sequelize.query(`SELECT COUNT(*) AS \`like_count\` FROM \`likes\` WHERE video_id = ${requestVideoId}`).then(r => {
+            return db.sequelize.query(`SELECT COUNT(*) AS \`like_count\` FROM \`likes\` WHERE \`video_id\` = ${requestVideoId}`).then(r => {
                 const beforeLikeCount = parseInt(r[0][0].like_count);
 
                 // perform request
                 return request(server).post(`/videos/${requestVideoId}/like`).set('authorization', authorization).then(() => {
 
                     // get incremented like_count
-                    return db.sequelize.query(`SELECT COUNT(*) AS \`like_count\` FROM \`likes\` WHERE video_id = ${requestVideoId}`).then(r => {
+                    return db.sequelize.query(`SELECT COUNT(*) AS \`like_count\` FROM \`likes\` WHERE \`video_id\` = ${requestVideoId}`).then(r => {
                         const afterLikeCount = parseInt(r[0][0].like_count);
 
                         assert.equal(afterLikeCount, beforeLikeCount + 1);

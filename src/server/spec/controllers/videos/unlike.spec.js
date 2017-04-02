@@ -38,7 +38,9 @@ describe('POST /videos/:id/unlike', function() {
                     FROM accounts 
                     WHERE email = 'test@email.com'
                 ) LIMIT 1
-            `).then(r => requestVideoId = r[0][0].video_id);
+            `).then(r => {
+                requestVideoId = r[0][0].video_id;
+            });
         });
     });
 

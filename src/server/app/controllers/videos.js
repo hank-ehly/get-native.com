@@ -126,14 +126,14 @@ module.exports.show = (req, res, next) => {
 };
 
 module.exports.like = (req, res, next) => {
+    const accountId = AuthHelper.extractAccountIdFromRequest(req);
     Video.findById(+req.params.id).then(video => {
-        const accountId = AuthHelper.extractAccountIdFromRequest(req);
-        Like.create({video_id: video.id, account_id: accountId}).then(() => {
+        Like.create({
+            video_id: video.id,
+            account_id: accountId
+        }).then(() => {
             res.sendStatus(204);
-        }).catch(() => {
-            res.status(500);
-            next();
-        });
+        }).catch(next);
     }).catch(() => {
         res.status(404);
         next();
@@ -141,16 +141,19 @@ module.exports.like = (req, res, next) => {
 };
 
 module.exports.unlike = (req, res, next) => {
+    const accountId = AuthHelper.extractAccountIdFromRequest(req);
     Video.findById(+req.params.id).then(video => {
-        const accountId = AuthHelper.extractAccountIdFromRequest(req);
-        Like.destroy({where: {video_id: video.id, account_id: accountId}, limit: 1}).then(() => {
+        Like.destroy({
+            where: {
+                video_id: video.id,
+                account_id: accountId
+            },
+            limit: 1
+        }).then(() => {
             res.sendStatus(204);
-        }).catch(() => {
-            res.status(500);
-            next();
-        });
-    }).catch(() => {
+        }).catch(next);
+    }).catch(e => {
         res.status(404);
-        next();
+        next(e);
     });
 };
