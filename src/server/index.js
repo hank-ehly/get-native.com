@@ -10,8 +10,7 @@ const nconf   = require('nconf');
 const fs      = require('fs');
 const k       = require('./config/keys.json');
 
-nconf.env();
-nconf.use('memory');
+nconf.env([k.APIPort]).use('memory');
 
 const confPath = __dirname + '/config/environments/';
 
