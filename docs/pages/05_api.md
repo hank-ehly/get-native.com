@@ -28,60 +28,33 @@ The following headers are included in API responses that require authentication.
 | X-GN-Auth-Token                                                                                                             | A JWT value (eg. g8ka.l0xh.jq1m)             |
 | X-GN-Auth-Expire                                                                                                            | A timestamp (eg. 1483658645131)              |
 
-**Client Errors**
+**Error Codes & Responses**
 
-`4xx` responses (client errors) are in JSON format and always contain a top-level "message" property with a string value explaining what went wrong.
-In some cases where more information is needed, a top-level "errors" property containing an array of error objects is included in the response.
+| Code | Text                  | Description                                                                                 |
+|------|-----------------------|---------------------------------------------------------------------------------------------|
+| 200  | OK                    | The request was successful.                                                                 |
+| 204  | No Content            | The request was successful but no response body is sent.                                    |
+| 400  | Bad Request           | The request failed because it was invalid. The specific reason is included in the response. |
+| 401  | Unauthorized          | The request authentication credentials were missing or invalid.                             |
+| 404  | Not Found             | The requested resource for the given request method does not exist.                         |
+| 500  | Internal Server Error | The request failed because something has gone wrong on the server side.                     |
 
-Sending a flat-out invalid JSON object in the request will trigger a `400 Bad Request` response.
+**Error Messages**
 
-```
-HTTP/1.1 400 Bad Request
-{"message":"Problems parsing JSON"}
-```
+Error messages may accompany responses to failed requests. If the response contains an error message, it will be in the following JSON format:
 
-Sending a valid JSON object with the incorrect type of JSON values will also trigger a `400 Bad Request` response.
-
-```
-HTTP/1.1 400 Bad Request
-{"message":"Body should be a JSON object"}
-```
-
-Invalid fields in a JSON request object will result in a `422 Unprocessable Entity` response.
-
-```
-HTTP/1.1 422 Unprocessable Entity
+```json
 {
-  "message": "Validation Failed",
-  "errors": [
-    {
-      "entity": "Account",
-      "field": "email",
-      "code": "already_exists"
-    }
-  ]
+    "errors": [
+        {
+            "message": "This email address is already in use.",
+            "code": 121
+        }
+    ]
 }
 ```
 
-An error object contains the following top-level properties:
-
-| Name   | Value                                                    |
-|--------|----------------------------------------------------------|
-| entity | The name of the entity that triggered the error.         |
-| field  | The name of the field that triggered the error.          |
-| code   | A code that let's you know what is wrong with the field. |
-
-Possible code values are as follows.
-
-Todo: Would numeric error codes be better? How should the client and server share the meaning of numeric error codes?
-
-| Name           | Description                                                              |
-|----------------|--------------------------------------------------------------------------|
-| missing_field  | A required field is missing.                                             |
-| invalid_format | The format of the field is invalid.                                      |
-| already_exists | Another entity already has the same value as this field (ex. user email) |
-
-**Handling of `DNT` Request Header**
+**Handling of the `DNT` Request Header**
 
 Clients that set the value of the `Do Not Track` header to `1` are treated differently.
 Specifically, Get Native does the following upon encountering a `DNT: 1` request header. 
