@@ -22,9 +22,9 @@ describe('GET /categories', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(initGroup, _authorization) {
-            server = initGroup.server;
-            authorization = _authorization;
+        return SpecUtil.login().then(function(_) {
+            server        = _.server;
+            authorization = _.authorization;
         });
     });
 
