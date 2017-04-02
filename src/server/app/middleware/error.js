@@ -10,12 +10,7 @@ const nconf = require('nconf');
 const k  = require('../../config/keys.json');
 
 module.exports.logErrors = function(error, req, res, next) {
-    if (error.raw) {
-        logger.info(error.raw, {json: true});
-    } else {
-        logger.info(error, {json: true});
-    }
-
+    logger.info(error, {json: true});
     next(error);
 };
 
@@ -29,9 +24,9 @@ module.exports.clientErrorHandler = function(error, req, res, next) {
     next(error);
 };
 
-module.exports.fallbackErrorHandler = function(err, req, res) {
+module.exports.fallbackErrorHandler = function(error, req, res) {
     if (nconf.get(k.API.ENV) !== k.Env.Production) {
-        return res.status(500).send(err.stack);
+        return res.status(500).send(error.stack);
     }
 
     return res.status(500);

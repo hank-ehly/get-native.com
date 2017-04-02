@@ -8,7 +8,7 @@
 const Joi = require('joi');
 
 const regex = {
-    email:    /[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*/,
+    email: /[a-z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*/,
     timeZoneOffset: /^-*[0-9]+$/
 };
 
@@ -104,7 +104,7 @@ module.exports = {
                 max_id: Joi.number().integer().min(1),
                 category_id: Joi.number().integer().min(1),
                 subcategory_id: Joi.number().integer().min(1),
-                lang: Joi.string().lowercase(),
+                lang: Joi.string().lowercase().valid(['en', 'ja']),
                 count: Joi.number().integer().min(1).max(9),
                 q: Joi.string().lowercase().max(100),
                 cued_only: Joi.boolean(),

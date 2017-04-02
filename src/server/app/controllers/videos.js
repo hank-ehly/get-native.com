@@ -21,15 +21,16 @@ const AuthHelper      = require('../helpers').Auth;
 const Promise         = require('bluebird');
 const ModelHelper     = require('../helpers').Model(db);
 const k               = require('../../config/keys.json');
+const GetNativeError  = require('../helpers').GetNativeError;
 
 module.exports.index = (req, res, next) => {
-    const conditions          = {};
-    const langCodeQuery       = Language.fetchLanguageCode(req.query.lang);
-    const subcategoryIdsQuery = Subcategory.findIdsForCategoryIdOrSubcategoryId(req.query);
+    const conditions = {};
 
-    return Promise.all([langCodeQuery, subcategoryIdsQuery]).spread((languageCode, subcategoryIds) => {
-        conditions.language_code = languageCode;
+    if (req.query.lang) {
+        conditions.language_code = req.query.lang;
+    }
 
+    return Subcategory.findIdsForCategoryIdOrSubcategoryId(req.query).then(subcategoryIds => {
         if (subcategoryIds.length) {
             conditions.subcategory_id = {$in: subcategoryIds};
         }
@@ -38,7 +39,8 @@ module.exports.index = (req, res, next) => {
         const createdAt  = ModelHelper.getFormattedSequelizeDateAttributeForTableColumnTimezoneOffset(k.Model.Video, k.Attr.CreatedAt, req.query.time_zone_offset);
         const cued       = Video.getCuedAttributeForAccountId(accountId);
         const attributes = [createdAt, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length, cued];
-        const scopes     = [
+
+        const scopes = [
             'newestFirst',
             {method: ['cued', req.query.cued_only, accountId]},
             {method: ['count', req.query.count]},
@@ -47,7 +49,7 @@ module.exports.index = (req, res, next) => {
             {method: ['includeSpeakerName', Speaker]}
         ];
 
-        Video.scope(scopes).findAll({
+        return Video.scope(scopes).findAll({
             attributes: attributes,
             where: conditions
         }).then(videos => {
@@ -58,13 +60,8 @@ module.exports.index = (req, res, next) => {
             }));
 
             res.send(videosAsJson);
-        });
-    }).catch(() => { // todo: Pass all catches to an error helper
-        next({
-            message: 'Error',
-            errors: [{message: `Failed to process search conditions: ${req.query}`}]
-        });
-    });
+        }).catch(next);
+    }).catch(next);
 };
 
 module.exports.show = (req, res, next) => {
