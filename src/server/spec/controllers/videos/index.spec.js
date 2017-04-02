@@ -9,9 +9,6 @@ const request  = require('supertest');
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/helpers').Utility;
-const db       = require('../../../app/models');
-const url      = require('url');
-const Promise  = require('bluebird');
 
 describe('GET /videos', function() {
     let server = null;
@@ -23,13 +20,13 @@ describe('GET /videos', function() {
         return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
     });
 
-    beforeEach(function(done) {
+    beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.login(function(_server, _authorization, _user) {
-            server = _server;
+        return SpecUtil.login().then(function(initGroup, _authorization, _user) {
+            server = initGroup.server;
+            db = initGroup.db;
             authorization = _authorization;
             user = _user;
-            done();
         });
     });
 
@@ -42,69 +39,7 @@ describe('GET /videos', function() {
         return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
-    describe('request', function() {
-        it('should receive a 200 OK response for a valid request', function(done) {
-            request(server).get('/videos').set('authorization', authorization).expect(200, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the request contains an unidentifiable 'lang' code parameter`, function(done) {
-            request(server).get('/videos?lang=notALangCode').set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the request contains a value for 'cued_only' that is not 'true' or 'false'`, function(done) {
-            request(server).get('/videos?cued_only=notABoolean').set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the request contains a non-numeric 'count' parameter`, function(done) {
-            request(server).get('/videos?count=notANumber').set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 200 OK response regardless of whether the 'lang' parameter value is upper or lower case`, function(done) {
-            request(server).get('/videos?lang=eN').set('authorization', authorization).expect(200, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the request contains a non-numeric 'max_id' parameter`, function(done) {
-            request(server).get('/videos?max_id=notANumber').set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the request contains a non-numeric 'subcategory_id' parameter`, function(done) {
-            request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the request contains a non-numeric 'category_id' parameter`, function(done) {
-            request(server).get('/videos?category_id=notANumber').set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the 'count' is above 9`, function(done) {
-            request(server).get(`/videos?count=11`).set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the 'count' is 0`, function(done) {
-            request(server).get(`/videos?count=0`).set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should respond with a 422 Unprocessable Entity if the 'q' parameter is longer than 100 characters`, function(done) {
-            let q = '01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789';
-            request(server).get(`/videos?q=${q}`).set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return an object with a non-null 'message' string in a 422 Unprocessable Entity response`, function() {
-            return request(server).get(`/videos?lang=notALangCode`).set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.message), 'string');
-                assert.notEqual(response.body.message.length, 0);
-            });
-        });
-
-        it(`should return 1 or more 'error' objects in a 422 Unprocessable Entity response`, function() {
-            request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).then(function(response) {
-                assert(response.errors.length > 0);
-            });
-        });
-
-        // todo: can't include the same parameter more than once
-    });
-
-    describe('response.header', function() {
+    describe('response.headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
                 assert(response.header['x-gn-auth-token'].length > 0);
@@ -118,7 +53,78 @@ describe('GET /videos', function() {
         });
     });
 
-    describe('response.body', function() {
+    describe('response.failure', function() {
+        it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
+            return request(server).get('/videos').expect(401, done);
+        });
+
+        it(`should return a 400 Bad Request response if the request contains an unidentifiable 'lang' code parameter`, function(done) {
+            request(server).get('/videos?lang=notALangCode').set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return a 400 Bad Request response if the request contains a value for 'cued_only' that is not 'true' or 'false'`, function(done) {
+            request(server).get('/videos?cued_only=notABoolean').set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return a 400 Bad Request response if the request contains a non-numeric 'count' parameter`, function(done) {
+            request(server).get('/videos?count=notANumber').set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return a 400 Bad Request Entity response if the request contains a non-numeric 'max_id' parameter`, function(done) {
+            request(server).get('/videos?max_id=notANumber').set('authorization', authorization).expect(422, done);
+        });
+
+        it(`should return a 400 Bad Request response if the request contains a non-numeric 'subcategory_id' parameter`, function(done) {
+            request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return a 400 Bad Request response if the request contains a non-numeric 'category_id' parameter`, function(done) {
+            request(server).get('/videos?category_id=notANumber').set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return a 400 Bad Request response if the 'count' is above 9`, function(done) {
+            request(server).get(`/videos?count=11`).set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return a 400 Bad Request response if the 'count' is 0`, function(done) {
+            request(server).get(`/videos?count=0`).set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should respond with a 400 Bad Request if the 'q' parameter is longer than 100 characters`, function(done) {
+            let q = '01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789';
+            request(server).get(`/videos?q=${q}`).set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return an error object with a top-level 'errors' array`, function() {
+            request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).then(function(response) {
+                assert.equal(Utility.typeof(response.errors), 'array');
+            });
+        });
+
+        it(`should return a 'message' string inside the error object`, function() {
+            request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).then(function(response) {
+                assert.equal(Utility.typeof(response.errors[0].message), 'string');
+            });
+        });
+
+        it(`should return a 'code' number inside the error object`, function() {
+            request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).then(function(response) {
+                assert.equal(Utility.typeof(response.errors[0].code), 'number');
+            });
+        });
+
+        // todo: can't include the same parameter more than once
+    });
+
+    describe('response.success', function() {
+        it('should receive a 200 OK response for a valid request', function(done) {
+            request(server).get('/videos').set('authorization', authorization).expect(200, done);
+        });
+
+        it(`should return a 200 OK response regardless of whether the 'lang' parameter value is upper or lower case`, function(done) {
+            request(server).get('/videos?lang=eN').set('authorization', authorization).expect(200, done);
+        });
+
         it(`should respond with an object containing a top-level 'records' array value`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
                 assert(SpecUtil.isNumber(response.body.records.length));
@@ -210,17 +216,13 @@ describe('GET /videos', function() {
 
         it(`should contain a valid URI string for 'picture_url' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                let parsedURL = url.parse(response.body.records[0].picture_url);
-                assert(parsedURL.protocol);
-                assert(parsedURL.hostname);
+                assert(SpecUtil.isValidURL(response.body.records[0].picture_url));
             });
         });
 
         it(`should contain a valid URI string for 'video_url' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                let parsedURL = url.parse(response.body.records[0].video_url);
-                assert(parsedURL.protocol);
-                assert(parsedURL.hostname);
+                assert(SpecUtil.isValidURL(response.body.records[0].video_url));
             });
         });
 

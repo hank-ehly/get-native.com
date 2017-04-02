@@ -5,7 +5,6 @@
  * Created by henryehly on 2017/03/20.
  */
 
-const db       = require('../../../app/models');
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/helpers').Utility;
@@ -17,24 +16,24 @@ describe('GET /videos/:id', function() {
     let authorization  = null;
     let user           = null;
     let requestVideoId = null;
+    let db             = null;
 
-    before(function(done) {
+    before(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]).then(() => {
-            db.sequelize.query('SELECT id FROM videos LIMIT 1').then(r => {
-                requestVideoId = r[0][0].id;
-                done();
-            });
-        });
+        return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
     });
 
-    beforeEach(function(done) {
+    beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.login(function(_server, _authorization, _user) {
-            server = _server;
+        return SpecUtil.login().then(function(initGroup, _authorization, _user) {
+            server = initGroup.server;
+            db = initGroup.db;
             authorization = _authorization;
             user = _user;
-            done();
+
+            return db.sequelize.query('SELECT id FROM videos LIMIT 1').then(r => {
+                requestVideoId = r[0][0].id;
+            });
         });
     });
 
@@ -47,21 +46,7 @@ describe('GET /videos/:id', function() {
         return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
-    describe('request', function() {
-        it(`should return a 200 OK response given a valid request`, function(done) {
-            request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).expect(200, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the :id parameter is not an integer`, function(done) {
-            request(server).get('/videos/notAnInteger').set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 422 Unprocessable Entity response if the :id parameter is 0`, function(done) {
-            request(server).get('/videos/0').set('authorization', authorization).expect(422, done);
-        });
-    });
-
-    describe('response.header', function() {
+    describe('response.headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
             return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
                 assert(response.header['x-gn-auth-token'].length > 0);
@@ -75,7 +60,25 @@ describe('GET /videos/:id', function() {
         });
     });
 
-    describe('response.body', function() {
+    describe('response.failure', function() {
+        it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
+            return request(server).get(`/videos/${requestVideoId}`).expect(401, done);
+        });
+
+        it(`should return a 400 Bad Request response if the :id parameter is not an integer`, function(done) {
+            request(server).get('/videos/notAnInteger').set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return a 400 Bad Request response if the :id parameter is 0`, function(done) {
+            request(server).get('/videos/0').set('authorization', authorization).expect(400, done);
+        });
+    });
+
+    describe('response.success', function() {
+        it(`should return a 200 OK response given a valid request`, function(done) {
+            request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).expect(200, done);
+        });
+
         it(`should contain a non-null 'cued' boolean`, function() {
             return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
                 assert.equal(Utility.typeof(response.body.cued), 'boolean');

@@ -5,70 +5,67 @@
  * Created by henryehly on 2017/03/03.
  */
 
-const request = require('supertest');
-const exec    = require('child_process').exec;
 const url     = require('url');
-const MailDev = require('maildev');
+const request = require('supertest');
 const Promise = require('bluebird');
+const exec    = require('child_process').exec;
+const MailDev = require('maildev');
 
-let _maildev = null;
+let maildev = null;
 
 module.exports.defaultTimeout = 30000;
+module.exports.credentials    = {email: 'test@email.com', password: 'test_password'};
 
 module.exports.seedAll = function() {
-    return new Promise((resolve, reject) => {
-        module.exports.seedAllUndo().then(() => {
+    return new Promise(function(resolve, reject) {
+        module.exports.seedAllUndo().then(function() {
             exec('npm run sequelize db:seed:all', function(e) {
-                if (e) {
-                    reject(e);
-                } else {
-                    resolve();
-                }
+                return e ? reject(e) : resolve();
             });
         });
     });
 };
 
 module.exports.seedAllUndo = function() {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
         exec('npm run sequelize db:seed:undo:all', function(e) {
-            if (e) {
-                reject(e);
-            } else {
-                resolve();
-            }
+            return e ? reject(e) : resolve();
         });
     });
 };
 
 module.exports.startMailServer = function() {
-    _maildev = new MailDev({silent: true});
-    return Promise.promisify(_maildev.listen)();
+    maildev = new MailDev({silent: true});
+    return Promise.promisify(maildev.listen)();
 };
 
 module.exports.stopMailServer = function() {
-    return Promise.promisify(_maildev.end)();
+    return Promise.promisify(maildev.end)();
 };
 
-module.exports.getAllEmail = function(callback) {
+module.exports.getAllEmail = function(_maildev, cb) {
     setTimeout(function() {
-        _maildev.getAllEmail(function(error, emails) {
-            callback(error, emails);
-        });
+        _maildev.getAllEmail(cb)
     }, 1);
 };
 
-module.exports.login = function(cb) {
-    delete require.cache[require.resolve('../index')];
+module.exports.startServer = function() {
+    return new Promise(function(resolve, reject) {
+        const initPath = '../index';
+        delete require.cache[require.resolve(initPath)];
+        return require(initPath).then(resolve).catch(reject);
+    });
+};
 
-    require('../index').then(function(_) {
-        server = _;
-
-        request(_).post('/login').send({
-            email: 'test@email.com',
-            password: 'test_password'
-        }).then(function(response) {
-            cb(_, 'Bearer: ' + response.header['x-gn-auth-token'], response.body);
+module.exports.login = function() {
+    return new Promise(function(resolve, reject) {
+        return module.exports.startServer().then(function(initGroup) {
+            return request(initGroup.server).post('/login').send(module.exports.credentials).then(function(response) {
+                const retObj         = initGroup;
+                retObj.authorization = 'Bearer: ' + response.headers['x-gn-auth-token'];
+                retObj.response      = response;
+                resolve(retObj);
+            }).catch(reject);
         });
     });
 };
@@ -91,7 +88,7 @@ module.exports.isValidEmail = function(value) {
     return regex.test(value);
 };
 
-// 'Thu Dec 14 04:35:55 +0000 2017'
+// Example: 'Thu Dec 14 04:35:55 +0000 2017'
 module.exports.isClientFriendlyDateString = function(value) {
     let regex = /[A-Z][a-z][a-z]\s[A-Z][a-z][a-z]\s[0-3][0-9]\s[0-2][0-9]:[0-5][0-9]:[0-5][0-9]\s\+[0-9][0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]/g
     return regex.test(value);

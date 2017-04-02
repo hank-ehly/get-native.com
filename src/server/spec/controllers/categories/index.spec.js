@@ -8,8 +8,8 @@
 const request  = require('supertest');
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
-const Promise  = require('bluebird');
 const Utility  = require('../../../app/helpers').Utility;
+const Promise  = require('bluebird');
 
 describe('GET /categories', function() {
     let server        = null;
@@ -20,12 +20,11 @@ describe('GET /categories', function() {
         return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
     });
 
-    beforeEach(function(done) {
+    beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        SpecUtil.login(function(_server, _authorization) {
-            server = _server;
+        return SpecUtil.login().then(function(initGroup, _authorization) {
+            server = initGroup.server;
             authorization = _authorization;
-            done();
         });
     });
 
@@ -38,7 +37,7 @@ describe('GET /categories', function() {
         return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
-    describe('headers', function() {
+    describe('response.headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
             return request(server).get('/categories').set('authorization', authorization).then(function(response) {
                 assert(response.header['x-gn-auth-token'].length > 0);
@@ -52,7 +51,13 @@ describe('GET /categories', function() {
         });
     });
 
-    describe('response.body', function() {
+    describe('response.failure', function() {
+        it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
+            return request(server).get('/categories').expect(401, done);
+        });
+    });
+
+    describe('response.success', function() {
         it('should return a 200 response for a valid request', function(done) {
             request(server).get('/categories').set('authorization', authorization).expect(200, done);
         });
