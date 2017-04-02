@@ -45,13 +45,13 @@ module.exports.browserTimezoneOffsetToSQLFormat = function(offsetInMinutes) {
     const absoluteMinutes = Math.abs(wholeMinutes);
 
     const symbol        = hours >= 0 ? '+' : '-';
-    const paddedHours   = pad(absoluteHours, 2);
-    const paddedMinutes = pad(absoluteMinutes, 2);
+    const paddedHours   = _pad(absoluteHours, 2);
+    const paddedMinutes = _pad(absoluteMinutes, 2);
 
     return [symbol, paddedHours, ':', paddedMinutes].join('');
 };
 
-function pad(num, size) {
+function _pad(num, size) {
     let s = num + '';
     while (s.length < size) {
         s = '0' + s;

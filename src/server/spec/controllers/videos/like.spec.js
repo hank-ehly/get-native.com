@@ -67,7 +67,7 @@ describe('POST /videos/:id/like', function() {
 
     describe('response.failure', function() {
         it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
-            return request(server).get(`/videos/${requestVideoId}/like`).expect(401, done);
+            request(server).get(`/videos/${requestVideoId}/like`).expect(401, done);
         });
 
         it(`should return 404 Not Found if the specified video is not found`, function(done) {

@@ -5,28 +5,32 @@
  * Created by henryehly on 2017/03/13.
  */
 
-const express = require('express');
-const router = express.Router();
 const logger = require('../../config/logger');
 const nconf = require('nconf');
+const k  = require('../../config/keys.json');
 
-module.exports.logErrors = function(err, req, res, next) {
-    logger.info(err, {json: true});
-    next(err);
-};
-
-module.exports.clientErrorHandler = function(err, req, res, next) {
-    if (err.errors && err.errors.length > 0) {
-        return res.status(422).json(err);
-    } else if (err.message) {
-        return res.status(400).json(err);
+module.exports.logErrors = function(error, req, res, next) {
+    if (error.raw) {
+        logger.info(error.raw, {json: true});
+    } else {
+        logger.info(error, {json: true});
     }
 
-    next(err);
+    next(error);
 };
 
-module.exports.fallbackErrorHandler = function(err, req, res, next) {
-    if (nconf.get('env') !== 'production') {
+module.exports.clientErrorHandler = function(error, req, res, next) {
+    if (error.status && error.errors) {
+        return res.status(error.status).json(error.errors);
+    } else if (error.status && error.body) {
+        return res.status(error.status).json({message: error.body.message, code: error.body.code});
+    }
+
+    next(error);
+};
+
+module.exports.fallbackErrorHandler = function(err, req, res) {
+    if (nconf.get('env') !== k.Env.Production) {
         return res.status(500).send(err.stack);
     }
 
