@@ -23,11 +23,11 @@ describe('GET /study/writing_answers', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(initGroup, _authorization, _user) {
-            server = initGroup.server;
-            db = initGroup.db;
-            authorization = _authorization;
-            user = _user;
+        return SpecUtil.login().then(function(_) {
+            server = _.server;
+            db = _.db;
+            authorization = _.authorization;
+            user = _.response.body;
         });
     });
 
@@ -57,6 +57,19 @@ describe('GET /study/writing_answers', function() {
     describe('response.failure', function() {
         it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
             request(server).get('/study/writing_answers').expect(401, done);
+        });
+
+        it(`should return a 400 response if the 'since' query parameter value is a future date`, function(done) {
+            let twoDaysLater = new Date().getTime() + (1000 * 60 * 60 * 24 * 2);
+            request(server).get(`/study/writing_answers?since=${twoDaysLater}`).set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return a 400 response if the 'max_id' query param value is 0`, function(done) {
+            request(server).get('/study/writing_answers?max_id=0').set('authorization', authorization).expect(400, done);
+        });
+
+        it(`should return a 400 response if the 'max_id' query param value is a negative number`, function(done) {
+            request(server).get('/study/writing_answers?max_id=-1000').set('authorization', authorization).expect(400, done);
         });
     });
 
@@ -129,19 +142,6 @@ describe('GET /study/writing_answers', function() {
                 let oldestRecordTimestamp = new Date(lastRecord.created_at).getTime();
                 assert(oldestRecordTimestamp >= thirtyDaysAgo);
             });
-        });
-
-        it(`should return a 422 response if the 'since' query parameter value is a future date`, (done) => {
-            let twoDaysLater = new Date().getTime() + (1000 * 60 * 60 * 24 * 2);
-            request(server).get(`/study/writing_answers?since=${twoDaysLater}`).set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 422 response if the 'max_id' query param value is 0`, (done) => {
-            request(server).get('/study/writing_answers?max_id=0').set('authorization', authorization).expect(422, done);
-        });
-
-        it(`should return a 422 response if the 'max_id' query param value is a negative number`, (done) => {
-            request(server).get('/study/writing_answers?max_id=-1000').set('authorization', authorization).expect(422, done);
         });
 
         it('should only return 10 or less answers', function() {
