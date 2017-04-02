@@ -24,11 +24,11 @@ describe('POST /videos/:id/like', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(initGroup, _authorization, _user) {
-            server = initGroup.server;
-            db = initGroup.db;
-            authorization = _authorization;
-            user = _user;
+        return SpecUtil.login().then(function(_) {
+            server = _.server;
+            db = _.db;
+            authorization = _.authorization;
+            user = _.response.body;
 
             return db.sequelize.query(`
                 SELECT video_id 
@@ -53,13 +53,13 @@ describe('POST /videos/:id/like', function() {
 
     describe('response.headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
-            return request(server).get(`/videos/${requestVideoId}/like`).set('authorization', authorization).then(function(response) {
+            return request(server).post(`/videos/${requestVideoId}/like`).set('authorization', authorization).then(function(response) {
                 assert(response.header['x-gn-auth-token'].length > 0);
             });
         });
 
         it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
-            return request(server).get(`/videos/${requestVideoId}/like`).set('authorization', authorization).then(function(response) {
+            return request(server).post(`/videos/${requestVideoId}/like`).set('authorization', authorization).then(function(response) {
                 assert(SpecUtil.isParsableDateValue(+response.header['x-gn-auth-expire']));
             });
         });
@@ -67,7 +67,7 @@ describe('POST /videos/:id/like', function() {
 
     describe('response.failure', function() {
         it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
-            request(server).get(`/videos/${requestVideoId}/like`).expect(401, done);
+            request(server).post(`/videos/${requestVideoId}/like`).expect(401, done);
         });
 
         it(`should return 404 Not Found if the specified video is not found`, function(done) {
