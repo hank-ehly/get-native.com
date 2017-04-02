@@ -62,7 +62,7 @@ describe('GET /videos/:id', function() {
 
     describe('response.failure', function() {
         it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
-            return request(server).get(`/videos/${requestVideoId}`).expect(401, done);
+            request(server).get(`/videos/${requestVideoId}`).expect(401, done);
         });
 
         it(`should return a 400 Bad Request response if the :id parameter is not an integer`, function(done) {

@@ -16,6 +16,7 @@ const mailer     = require('../../config/initializers/mailer');
 const fs         = Promise.promisifyAll(require('fs'));
 const k          = require('../../config/keys.json');
 const _          = require('lodash');
+const GetNativeError = require('../helpers').GetNativeError;
 
 module.exports.login = (req, res, next) => {
     const attributes = [
@@ -32,15 +33,10 @@ module.exports.login = (req, res, next) => {
 
     let account = null;
     Account.find({where: {email: req.body[k.Attr.Email]}, attributes: attributes}).then(_account => {
-        if (!_account) {
-            throw new Error(`No account found for email '${req.body[k.Attr.Email]}'`);
-        }
-
         account = _account;
 
-        // todo: error handling
-        if (!AuthHelper.verifyPassword(account.password, req.body[k.Attr.Password])) {
-            throw new Error(`Password incorrect`);
+        if (!account || !AuthHelper.verifyPassword(account.password, req.body[k.Attr.Password])) {
+            throw new GetNativeError(k.Error.UserNamePasswordIncorrect);
         }
 
         return AuthHelper.generateTokenForAccountId(account.id);
@@ -49,12 +45,10 @@ module.exports.login = (req, res, next) => {
         const accountAsJson = account.get({plain: true});
         delete accountAsJson.password;
         res.send(accountAsJson);
-    }).catch(e => {
-        return next({
-            message: 'Authentication Error',
-            errors: [{message: e}]
-        });
-    });
+    }).catch(GetNativeError, e => next({
+        body: e,
+        status: 404
+    })).catch(e => next(e));
 };
 
 function generateWelcomeEmailForRequest(req, callback) {
@@ -132,14 +126,14 @@ module.exports.register = (req, res, next) => {
 };
 
 module.exports.authenticate = (req, res, next) => {
-    AuthHelper.validateRequest(req, (err, token) => {
-        if (err) {
-            return next(err);
+    AuthHelper.validateRequest(req, (error, token) => {
+        if (error) {
+            return next({raw: error, status: 401, body: new GetNativeError(k.Error.JWT.Verify)});
         }
 
         AuthHelper.refreshToken(token, (err, token) => {
-            if (err) {
-                return next(err);
+            if (error) {
+                return next({raw: error, status: 401, body: new GetNativeError(k.Error.JWT.Sign)});
             }
 
             AuthHelper.setAuthHeadersOnResponseWithToken(res, token);

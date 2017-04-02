@@ -53,7 +53,7 @@ describe('GET /categories', function() {
 
     describe('response.failure', function() {
         it(`should respond with 401 Unauthorized if the request does not contain an 'authorization' header`, function(done) {
-            return request(server).get('/categories').expect(401, done);
+            request(server).get('/categories').expect(401, done);
         });
     });
 

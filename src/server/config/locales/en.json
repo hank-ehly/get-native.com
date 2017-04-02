@@ -6,5 +6,12 @@
             "confirmationLinkLabel": "Confirm Email Address",
             "footer": "Footer.."
         }
+    },
+    "errors": {
+        "100": "An error occurred while processing JWT",
+        "101": "An error occurred while processing JWT",
+        "102": "-",
+        "103": "-",
+        "104": "Username or password is incorrect"
     }
 }

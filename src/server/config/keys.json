@@ -24,10 +24,20 @@
         "VideoUrl": "video_url"
     },
     "Debug": "DEBUG",
+    "Error": {
+        "JWT": {
+            "Verify"  : 100,
+            "Sign"    : 101
+        },
+        "RequestParam": 102,
+        "Auth"        : 103,
+        "UserNamePasswordIncorrect": 104
+    },
     "Env": {
         "Development": "development",
         "Test": "test",
-        "CircleCI": "circle_ci"
+        "CircleCI": "circle_ci",
+        "Production": "production"
     },
     "Header": {
         "AllowOrigin": "allow-origin"

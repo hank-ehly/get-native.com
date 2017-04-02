@@ -21,7 +21,10 @@ describe('POST /login', function() {
     });
 
     beforeEach(function() {
-        return SpecUtil.login().then((_, __, _response) => response = _response);
+        return SpecUtil.login().then(_ => {
+            server   = _.server;
+            response = _.response;
+        });
     });
 
     afterEach(function(done) {
@@ -35,11 +38,11 @@ describe('POST /login', function() {
 
     describe('response.headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
-            assert(response.header['x-gn-auth-token'].length > 0);
+            assert(response.headers['x-gn-auth-token'].length > 0);
         });
 
         it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
-            assert(SpecUtil.isParsableDateValue(+response.header['x-gn-auth-expire']));
+            assert(SpecUtil.isParsableDateValue(+response.headers['x-gn-auth-expire']));
         });
     });
 
@@ -51,11 +54,11 @@ describe('POST /login', function() {
             }).expect(404, done);
         });
 
-        it(`should respond with a 401 Unauthorized if the provided login password is incorrect`, function(done) {
+        it(`should respond with a 404 Not Found if the provided login password is incorrect`, function(done) {
             request(server).post('/login').send({
                 email: SpecUtil.credentials.email,
                 password: 'incorrect'
-            }).expect(401, done);
+            }).expect(404, done);
         });
     });
 
