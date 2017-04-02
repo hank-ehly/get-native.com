@@ -7,6 +7,7 @@
 
 const chance     = require('chance').Chance();
 const AuthHelper = require('../../app/helpers').Auth;
+const k          = require('../../config/keys.json');
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
@@ -14,7 +15,7 @@ module.exports = {
 
         let numAccounts = 500;
 
-        if (['test', 'circle_ci'].includes(process.env.NODE_ENV)) {
+        if ([k.Env.Test, k.Env.CircleCI].includes(process.env.NODE_ENV)) {
             numAccounts = 5;
 
             accounts.push({
