@@ -41,12 +41,16 @@ The following headers are included in API responses that require authentication.
 
 **Error Messages**
 
-An error message may accompany responses to failed requests. If the response contains an error message, it will be in the following JSON format:
+Error messages may accompany responses to failed requests. If the response contains an error message, it will be in the following JSON format:
 
 ```json
 {
-		"message": "This email address is already in use.",
-		"code": 121
+    "errors": [
+        {
+            "message": "This email address is already in use.",
+            "code": 121
+        }
+    ]
 }
 ```
 
