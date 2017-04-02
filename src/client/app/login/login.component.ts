@@ -6,7 +6,6 @@
  */
 
 import { Component, Input, OnInit, HostListener, OnDestroy } from '@angular/core';
-import { style, keyframes, animate, transition, trigger } from '@angular/animations';
 
 import { Logger } from '../core/logger/logger';
 import { LoginModalService } from '../core/login-modal/login-modal.service';
@@ -17,41 +16,7 @@ import { Subscription } from 'rxjs/Subscription';
     moduleId: module.id,
     selector: 'gn-login',
     templateUrl: 'login.component.html',
-    styleUrls: ['login.component.css'],
-    animations: [
-        trigger('darken', [
-            transition(':enter', [
-                animate(200, keyframes([
-                    style({opacity: 0, offset: 0}),
-                    style({opacity: 1, offset: 0.7}),
-                    style({opacity: 1, offset: 1.0})
-                ]))
-            ]),
-            transition(':leave', [
-                animate(200, keyframes([
-                    style({opacity: 1, offset: 0}),
-                    style({opacity: 1, offset: 0.7}),
-                    style({opacity: 0, offset: 1.0})
-                ]))
-            ])
-        ]),
-        trigger('fadeInOut', [
-            transition(':enter', [
-                animate(200, keyframes([
-                    style({transform: 'scale(0.9)', offset: 0}),
-                    style({transform: 'scale(1.025)', offset: 0.7}),
-                    style({transform: 'scale(1)', offset: 1.0})
-                ]))
-            ]),
-            transition(':leave', [
-                animate(200, keyframes([
-                    style({transform: 'scale(1)', offset: 0}),
-                    style({transform: 'scale(1.025)', offset: 0.7}),
-                    style({transform: 'scale(0.9)', offset: 1.0})
-                ]))
-            ])
-        ])
-    ]
+    styleUrls: ['login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy {
     @Input() isVisible: boolean;
