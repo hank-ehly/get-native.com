@@ -13,6 +13,8 @@ import { Categories } from '../../core/entities/categories';
 import { CategoryListService } from '../../core/category-list/category-list.service';
 import { Subcategory } from '../../core/entities/subcategory';
 
+import * as _ from 'lodash';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-category-list',
@@ -37,22 +39,13 @@ export class CategoryListComponent implements OnInit, OnChanges {
     }
 
     onCategoriesChange(categories: Categories): void {
-        let chunkSize = 3;
-        this.rows = categories.records.map((e, i) => {
-            return i % chunkSize === 0 ? categories.records.slice(i, i + 3) : null;
-        }).filter((e) => e);
+        const rowSize  = 3;
+        const unfilled =  rowSize - (categories.count % rowSize);
+        const rows     = _.chunk(categories.records, rowSize);
 
-        let surplus = categories.count % 3;
-        if (surplus !== 0) {
-            let spaceLeft = chunkSize - surplus;
+        for (let i = 0; i < unfilled; i++) _.last(rows).push({});
 
-            let i = 0;
-            while (i < spaceLeft) {
-                this.rows[this.rows.length - 1].push({});
-                i++;
-            }
-        }
-
+        this.rows = rows;
         this.logger.debug(this, 'onCategoriesChange()', this.rows);
     }
 
