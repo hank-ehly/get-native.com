@@ -28,8 +28,7 @@ module.exports = {
             body: {
                 email_notifications_enabled: Joi.boolean(),
                 browser_notifications_enabled: Joi.boolean(),
-                site_language: Joi.string(),
-                default_study_language_code: Joi.string()
+                default_study_language_code: Joi.string().lowercase().valid(validLangCodes)
             }
         },
         updatePassword: {
