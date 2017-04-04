@@ -608,12 +608,16 @@ POST https://api.get-native.com/study
 }
 ```
 
-# GET /study/stats
+# GET /study/stats/:language_code
 
 Returns the authenticating users' aggregated study statistics.
 
+| Parameter         	| Description                                                    	| Required 	| Default 	|
+|-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
+| language_code      	| The language for which the study stats are presented           	|     √    	|         	|
+
 ```
-GET https://api.get-native.com/study/stats
+GET https://api.get-native.com/study/stats/en
 ```
 
 **Response**
