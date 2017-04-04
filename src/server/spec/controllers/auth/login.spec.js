@@ -42,7 +42,7 @@ describe('POST /login', function() {
         });
 
         it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
-            assert(SpecUtil.isParsableDateValue(+response.headers['x-gn-auth-expire']));
+            assert(SpecUtil.isParsableTimestamp(+response.headers['x-gn-auth-expire']));
         });
     });
 
