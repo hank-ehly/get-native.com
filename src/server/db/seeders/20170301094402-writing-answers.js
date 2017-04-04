@@ -19,7 +19,7 @@ module.exports = {
             // todo: try splitting the number of bulk inserts into 3 or 4 so that this array doesn't get too big
             const writingAnswers = [];
 
-            for (let i = minStudySessionId; i < maxStudySessionId; i++) {
+            for (let i = minStudySessionId; i <= maxStudySessionId; i++) {
                 let answerText = chance.paragraph();
 
                 writingAnswers.push({

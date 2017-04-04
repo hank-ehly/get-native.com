@@ -14,7 +14,7 @@ module.exports = {
         return Promise.all([Account.min('id'), Account.max('id')]).spread((minAccountId, maxAccountId) => {
             const notifications = [];
 
-            for (let i = minAccountId; i < maxAccountId; i++) {
+            for (let i = minAccountId; i <= maxAccountId; i++) {
 
                 let numNotifications = chance.integer({
                     min: 1,

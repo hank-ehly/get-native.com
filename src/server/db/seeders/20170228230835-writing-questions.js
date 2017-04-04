@@ -14,7 +14,7 @@ module.exports = {
         return Promise.all([Subcategory.min('id'), Subcategory.max('id')]).spread((minSubcategoryId, maxSubcategoryId) => {
             const writingQuestions = [];
 
-            for (let i = minSubcategoryId; i < maxSubcategoryId; i++) {
+            for (let i = minSubcategoryId; i <= maxSubcategoryId; i++) {
                 for (let j = 0; j < 5; j++) {
                     writingQuestions.push({
                         text: chance.sentence().replace(/\.$/, '?'),

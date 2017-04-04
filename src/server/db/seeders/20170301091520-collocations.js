@@ -15,7 +15,7 @@ module.exports = {
             const collocations = [];
             const ipa_pool     = 'ɑæɐɑ̃βɓʙɕçðd͡ʒɖɗəɚɵɘɛɜɝɛ̃ɞɠʛɢɥɦɧħʜɪɪ̈ɨʝɟʄɫʟɬɭɮɱŋɲɴɳɔœøɒɔ̃ɶɸɐɾʁɹɻʀɽɺʃʂθt͡ʃt͡sʈʊʊ̈ʉʌʋⱱʍɯɰχʎʏʏɤɣʒʐʑʔʕʢʡ';
 
-            for (let i = minTranscriptId; i < maxTranscriptId; i++) {
+            for (let i = minTranscriptId; i <= maxTranscriptId; i++) {
                 let numCollocations = chance.integer({
                     min: 5,
                     max: 10

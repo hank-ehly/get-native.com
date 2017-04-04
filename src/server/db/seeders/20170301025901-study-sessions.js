@@ -18,7 +18,7 @@ module.exports = {
         return Promise.all(promises).spread((minAccountId, maxAccountId, minVideoId, maxVideoId) => {
             const studySessions = [];
 
-            for (let i = minAccountId; i < maxAccountId; i++) {
+            for (let i = minAccountId; i <= maxAccountId; i++) {
                 let numStudySessions = chance.integer({
                     min: 1,
                     max: 365
