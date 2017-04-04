@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/01/30.
  */
 
-const k       = require('../keys.json');
+const k = require('../keys.json');
 
 const defaults = {};
 
