@@ -175,17 +175,19 @@ Status 204 No Content
 
 # POST /account/password
 
-// TODO: Password verification
+Updates the authenticating users' login password.
 
 **Parameters**
 
-| Parameter   	| Description                                                      	| Required 	| Default 	|
-|-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| password    	| The authenticating users' new password.                          	|     √    	|         	|
+| Parameter        	| Description                                                      	| Required 	| Default 	|
+|------------------	|------------------------------------------------------------------	|:--------:	|---------	|
+| new_password    	| The authenticating users' new password.                          	|     √    	|         	|
+| current_password 	| The authenticating users' current password.                      	|     √    	|         	|
 
 ```json
 {
-	"password": "8h45lJ0E"
+	"new_password": "8h45lJ0E",
+	"current_password": "12345678"
 }
 ```
 
