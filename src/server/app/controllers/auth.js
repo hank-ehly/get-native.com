@@ -5,18 +5,18 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const config     = require('../../config');
-const jwt        = require('jsonwebtoken');
-const logger     = require('../../config/logger');
-const Account    = require('../models').Account;
-const AuthHelper = require('../helpers').Auth;
-const nodemailer = require('nodemailer');
-const Promise    = require('bluebird');
-const mailer     = require('../../config/initializers/mailer');
-const fs         = Promise.promisifyAll(require('fs'));
-const k          = require('../../config/keys.json');
-const _          = require('lodash');
 const GetNativeError = require('../helpers').GetNativeError;
+const config         = require('../../config');
+const jwt            = require('jsonwebtoken');
+const logger         = require('../../config/logger');
+const Account        = require('../models').Account;
+const AuthHelper     = require('../helpers').Auth;
+const nodemailer     = require('nodemailer');
+const Promise        = require('bluebird');
+const mailer         = require('../../config/initializers/mailer');
+const fs             = Promise.promisifyAll(require('fs'));
+const k              = require('../../config/keys.json');
+const _              = require('lodash');
 
 module.exports.login = (req, res, next) => {
     const attributes = [
@@ -78,10 +78,7 @@ function generateWelcomeEmailForRequest(req, callback) {
             html: templates.htmlTemplate
         });
     }).catch((e) => {
-        return next({
-            message: 'Error',
-            errors: [{message: e}]
-        });
+        throw e; // todo
     });
 }
 
@@ -119,9 +116,7 @@ module.exports.register = (req, res, next) => {
         if (e.code === k.Error.AccountAlreadyExists) {
             next({body: e, status: 422});
         }
-    }).catch(e => {
-        next(e);
-    });
+    }).catch(next);
 };
 
 module.exports.authenticate = (req, res, next) => {
