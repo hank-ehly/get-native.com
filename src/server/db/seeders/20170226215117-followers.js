@@ -18,7 +18,7 @@ module.exports = {
         return Promise.all(promises).spread((minAccountId, maxAccountId, minSpeakerId, maxSpeakerId) => {
             let followers = [];
 
-            for (let i = minAccountId; i < maxAccountId; i++) {
+            for (let i = minAccountId; i <= maxAccountId; i++) {
                 let numFollowers = chance.integer({
                     min: 1,
                     max: 5

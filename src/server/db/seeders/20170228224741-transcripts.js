@@ -18,7 +18,7 @@ module.exports = {
         return Promise.all(promises).spread((minVideoId, maxVideoId, languages) => {
             const transcripts = [];
 
-            for (let i = minVideoId; i < maxVideoId; i++) {
+            for (let i = minVideoId; i <= maxVideoId; i++) {
                 for (let j = 0; j < languages.length; j++) {
                     transcripts.push({
                         text: chance.paragraph() + chance.paragraph(),

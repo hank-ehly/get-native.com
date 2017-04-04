@@ -14,7 +14,7 @@ module.exports = {
         return Promise.all([Collocation.min('id'), Collocation.max('id')]).spread((minCollocationId, maxCollocationId) => {
             const usageExamples = [];
 
-            for (let i = minCollocationId; i < maxCollocationId; i++) {
+            for (let i = minCollocationId; i <= maxCollocationId; i++) {
                 let numUsageExamples = chance.integer({
                     min: 2,
                     max: 4
