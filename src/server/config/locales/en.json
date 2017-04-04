@@ -13,6 +13,7 @@
         "102": "-",
         "103": "Authorization error",
         "104": "Username or password is incorrect",
-        "105": "Account already exists"
+        "105": "Account already exists",
+        "106": "That password is incorrect"
     }
 }

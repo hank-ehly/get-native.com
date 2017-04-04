@@ -7,6 +7,7 @@
         "Answer": "answer",
         "BrowserNotificationsEnabled": "browser_notifications_enabled",
         "Code": "code",
+        "CurrentPassword": "current_password",
         "CreatedAt": "created_at",
         "DefaultStudyLanguageCode": "default_study_language_code",
         "Description": "description",
@@ -18,6 +19,7 @@
         "Length": "length",
         "LoopCount": "loop_count",
         "Name": "name",
+        "NewPassword": "new_password",
         "Password": "password",
         "PictureUrl": "picture_url",
         "StudySessionId": "study_session_id",
@@ -33,7 +35,8 @@
         "RequestParam": 102,
         "Auth": 103,
         "UserNamePasswordIncorrect": 104,
-        "AccountAlreadyExists": 105
+        "AccountAlreadyExists": 105,
+        "PasswordIncorrect": 106
     },
     "Env": {
         "Development": "development",
