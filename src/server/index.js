@@ -6,8 +6,8 @@
  */
 
 const nconf = require('nconf');
-const k     = require('./config/keys.json');
 const fs    = require('fs');
+const k     = require('./config/keys.json');
 
 // Initialize nconf memory store
 nconf.env([k.API.Port, k.Debug]).use('memory');
