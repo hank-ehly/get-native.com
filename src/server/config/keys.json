@@ -1,8 +1,7 @@
 {
     "API": {
         "Port": "API_PORT",
-        "Hostname": "API_HOSTNAME",
-        "ENV": "API_ENV"
+        "Hostname": "API_HOSTNAME"
     },
     "Attr": {
         "Answer": "answer",
@@ -42,12 +41,13 @@
         "Production": "production"
     },
     "Header": {
-        "AllowOrigin": "allow-origin"
+        "AccessControlAllowOrigin": "allow-origin"
     },
     "Model": {
         "WritingAnswer": "WritingAnswer",
         "Video": "Video"
     },
+    "NODE_ENV": "NODE_ENV",
     "NoReply": "no_reply",
     "PrivateKey": "private_key",
     "PublicKey": "public_key",

@@ -18,7 +18,6 @@ describe('Account', function() {
         this.timeout(SpecUtil.defaultTimeout);
         Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]).then(() => {
             Account.findOne().then(a => {
-                console.log(a.email);
                 existingAccountEmail = a.email;
                 done();
             });

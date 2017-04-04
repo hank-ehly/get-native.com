@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const nconf      = require('nconf');
+const config     = require('../../config');
 const jwt        = require('jsonwebtoken');
 const logger     = require('../../config/logger');
 const Account    = require('../models').Account;
@@ -71,7 +71,7 @@ function generateWelcomeEmailForRequest(req, callback) {
         });
 
         callback({
-            from: nconf.get(k.NoReply),
+            from: config.get(k.NoReply),
             to: req.body[k.Attr.Email],
             subject: localeModule.templates.welcome.title,
             text: templates.textTemplate,

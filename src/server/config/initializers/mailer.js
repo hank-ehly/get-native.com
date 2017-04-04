@@ -5,17 +5,22 @@
  * Created by henryehly on 2017/03/26.
  */
 
-const nconf      = require('nconf');
 const nodemailer = require('nodemailer');
+const config     = require('../index');
 const k          = require('../keys.json');
 
 const smtpConfig = {
-    host: nconf.get(k.SMTP.Host),
-    port: nconf.get(k.SMTP.Port),
+    host: config.get(k.SMTP.Host),
+    port: config.get(k.SMTP.Port),
     secure: false,
     tls: {
         rejectUnauthorized: false
-    }
+    },
+//     dkim: { TODO
+//         domainName: 'example.com',
+//         keySelector: '2017',
+//         privateKey: '-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBg...'
+//     }
 };
 
 const transporter = nodemailer.createTransport(smtpConfig);
