@@ -39,13 +39,11 @@ export class CategoryListComponent implements OnInit, OnChanges {
     }
 
     onCategoriesChange(categories: Categories): void {
-        const rowSize  = 3;
-        const unfilled =  rowSize - (categories.count % rowSize);
-        const rows     = _.chunk(categories.records, rowSize);
+        const rowSize    = 3;
+        const unfilled   =  rowSize - (categories.count % rowSize);
+        const filledRows = _.concat(categories.records, _.times(unfilled, _.constant({})));
 
-        for (let i = 0; i < unfilled; i++) _.last(rows).push({});
-
-        this.rows = rows;
+        this.rows = _.chunk(filledRows, rowSize);
         this.logger.debug(this, 'onCategoriesChange()', this.rows);
     }
 
