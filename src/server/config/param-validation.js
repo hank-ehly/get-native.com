@@ -36,7 +36,8 @@ module.exports = {
                 authorization: Joi.string().required()
             },
             body: {
-                password: Joi.string().required()
+                current_password: Joi.string().required(),
+                new_password: Joi.string().required().min(8)
             }
         },
         updateEmail: {

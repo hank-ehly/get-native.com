@@ -8,8 +8,9 @@
 const Utility    = require('../helpers').Utility;
 const Account    = require('../models').Account;
 const AuthHelper = require('../helpers').Auth;
+const k          = require('../../config/keys.json');
 const _          = require('lodash');
-const k = require('../../config/keys.json');
+const GetNativeError = require('../helpers').GetNativeError;
 
 module.exports.index = (req, res) => {
     let accountId = AuthHelper.extractAccountIdFromRequest(req);
@@ -46,8 +47,22 @@ module.exports.update = (req, res, next) => {
     }).catch(next);
 };
 
-module.exports.updatePassword = (req, res) => {
-    res.sendStatus(204);
+module.exports.updatePassword = (req, res, next) => {
+    let accountId = AuthHelper.extractAccountIdFromRequest(req);
+
+    Account.findById(accountId).then(account => {
+        if (!AuthHelper.verifyPassword(account.password, req.body[k.Attr.CurrentPassword])) {
+            throw new GetNativeError(k.Error.PasswordIncorrect);
+        }
+
+        const hashPassword = AuthHelper.hashPassword(req.body[k.Attr.NewPassword]);
+        return Account.update({password: hashPassword}, {where: {id: accountId}});
+    }).then(() => {
+        res.sendStatus(204);
+    }).catch(GetNativeError, e => next({
+        body: e,
+        status: 404
+    })).catch(next);
 };
 
 module.exports.updateEmail = (req, res) => {
