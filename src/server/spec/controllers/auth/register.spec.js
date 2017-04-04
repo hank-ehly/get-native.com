@@ -77,7 +77,7 @@ describe('POST /register', function() {
 
         it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
             return request(server).post('/register').send(newAccountCredentials).then(function(response) {
-                assert(SpecUtil.isParsableDateValue(+response.header['x-gn-auth-expire']));
+                assert(SpecUtil.isParsableTimestamp(+response.header['x-gn-auth-expire']));
             });
         });
     });
