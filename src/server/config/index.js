@@ -5,43 +5,44 @@
  * Created by henryehly on 2017/04/04.
  */
 
-const nconf = require('nconf');
-const fs    = require('fs');
-const k     = require('./keys.json');
-const _     = require('lodash');
+const Promise = require('bluebird');
+const logger  = require('./logger');
+const nconf   = require('nconf');
+const fs      = Promise.promisifyAll(require('fs'));
+const k       = require('./keys.json');
+const _       = require('lodash');
 
 function Config() {
     nconf.env([k.API.Port, k.Debug, k.NODE_ENV]).use('memory');
 
-    const publicKey = fs.readFile(__dirname + '/secrets/id_rsa.pem', (err, data) => {
-        if (err) {
-            throw new Error(err);
-        }
-        nconf.set(k.PublicKey, data.toString());
-    });
-
-    const privateKey = fs.readFile(__dirname + '/secrets/id_rsa', (err, data) => {
-        if (err) {
-            throw new Error(err);
-        }
-        nconf.set(k.PrivateKey, data.toString());
+    Promise.all([
+        fs.readFileAsync(__dirname + '/secrets/id_rsa.pem'),
+        fs.readFileAsync(__dirname + '/secrets/id_rsa')
+    ]).spread((publicKey, privateKey) => {
+        nconf.set(k.PublicKey, publicKey.toString());
+        nconf.set(k.PrivateKey, privateKey.toString());
+    }).catch(e => {
+        throw e;
     });
 
     let config = {};
-    const envConf  = __dirname + '/environments/' + (nconf.get(k.NODE_ENV) || k.Env.Development).toLowerCase();
 
-    if (fs.existsSync(envConf)) {
-        config = envConf;
+    const env = (nconf.get(k.NODE_ENV) || k.Env.Development).toLowerCase();
+
+    try {
+        config = require(`${__dirname}/environments/${env}`);
+    } catch (e) {
+        if (_.isError(e) && e.code === 'MODULE_NOT_FOUND') {
+            logger.info(`${_.capitalize(env)} environment configuration file is not present. Ignoring.`);
+        } else {
+            throw e;
+        }
     }
 
-    const defaults = require(__dirname + '/environments/default');
-
-    config = _.defaults(config, defaults);
+    config = _.defaults(config, require(`${__dirname}/environments/default`));
 
     for (let key in config) {
-        if (config.hasOwnProperty(key)) {
-            nconf.set(key, config[key]);
-        }
+        nconf.set(key, config[key]);
     }
 }
 
