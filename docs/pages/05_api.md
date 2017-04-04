@@ -136,7 +136,6 @@ Status: 204 No Content
 |  ------ | ------ | ------ | ------ |
 |  email_notifications_enabled | A boolean value describing whether the user wishes to receive notifications by email |  |  |
 |  browser_notifications_enabled | A boolean value describing whether the user wishes to allow browser notifications |  |  |
-|  site_language | A BCP 47 code denoting the user's preferred language for the website |  |  |
 |  default_study_language_code | A BCP 47 code describing the language in which videos will appear on user login |  |  |
 
 **Response**
