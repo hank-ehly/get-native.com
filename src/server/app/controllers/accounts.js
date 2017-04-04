@@ -9,12 +9,13 @@ const Utility    = require('../helpers').Utility;
 const Account    = require('../models').Account;
 const AuthHelper = require('../helpers').Auth;
 const _          = require('lodash');
+const k = require('../../config/keys.json');
 
 module.exports.index = (req, res) => {
     let accountId = AuthHelper.extractAccountIdFromRequest(req);
 
     Account.findById(accountId, {
-        attributes: {exclude: ['password', 'created_at', 'updated_at']}
+        attributes: {exclude: [k.Attr.Password, k.Attr.CreatedAt, k.Attr.UpdatedAt]}
     }).then(account => {
         const accountAsJSON = account.get({plain: true});
         res.send(accountAsJSON);
@@ -30,8 +31,7 @@ module.exports.update = (req, res, next) => {
     let accountId = AuthHelper.extractAccountIdFromRequest(req);
 
     const attr = _.transform(req.body, function(result, value, key) {
-        const allowedAttr = ['email_notifications_enabled', 'browser_notifications_enabled', 'default_study_language_code'];
-        if (allowedAttr.includes(key)) {
+        if ([k.Attr.EmailNotificationsEnabled, k.Attr.BrowserNotificationsEnabled, k.Attr.DefaultStudyLanguageCode].includes(key)) {
             result[key] = value;
         }
     }, {});
