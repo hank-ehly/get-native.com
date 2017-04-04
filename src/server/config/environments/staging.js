@@ -5,10 +5,12 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const nconf = require('nconf');
-const k     = require('../keys.json');
+const k = require('../keys.json');
 
-nconf.set(k.Header.AllowOrigin, 'https://stg.get-native.com');
-nconf.set(k.API.Hostname, 'stg.api.get-native.com');
-nconf.set(k.NoReply, 'noreply@stg.get-native.com');
-nconf.set(k.SMTP.Port, 587);
+const config = {};
+
+config[k.Header.AccessControlAllowOrigin] = 'https://stg.get-native.com';
+config[k.API.Hostname] = 'stg.api.get-native.com';
+config[k.SMTP.Port] = 587;
+
+module.exports = config;

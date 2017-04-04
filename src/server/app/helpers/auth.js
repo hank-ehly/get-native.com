@@ -6,7 +6,7 @@
  */
 
 const jwt     = require('jsonwebtoken');
-const nconf   = require('nconf');
+const config  = require('../../config');
 const Utility = require('./utility');
 const Promise = require('bluebird');
 const k       = require('../../config/keys.json');
@@ -17,12 +17,12 @@ module.exports.validateRequest = function(req, callback) {
 
     // todo: audience?
     const args = {
-        issuer: nconf.get(k.API.Hostname),
+        issuer: config.get(k.API.Hostname),
         audience: '',
         algorithms: ['RS256']
     };
 
-    jwt.verify(token, nconf.get(k.PublicKey), args, callback);
+    jwt.verify(token, config.get(k.PublicKey), args, callback);
 };
 
 module.exports.refreshToken = function(token, callback) {
@@ -35,12 +35,12 @@ module.exports.refreshToken = function(token, callback) {
         expiresIn: '1h'
     };
 
-    jwt.sign(newToken, nconf.get(k.PrivateKey), args, callback);
+    jwt.sign(newToken, config.get(k.PrivateKey), args, callback);
 };
 
 module.exports.generateTokenForAccountId = function(accountId) {
     let token = {
-        iss: nconf.get('hostname'),
+        iss: config.get(k.API.Hostname),
         sub: accountId,
         aud: ''
     };
@@ -50,7 +50,7 @@ module.exports.generateTokenForAccountId = function(accountId) {
         expiresIn: '1h'
     };
 
-    return Promise.promisify(jwt.sign)(token, nconf.get(k.PrivateKey), args);
+    return Promise.promisify(jwt.sign)(token, config.get(k.PrivateKey), args);
 };
 
 module.exports.setAuthHeadersOnResponseWithToken = function(res, token) {

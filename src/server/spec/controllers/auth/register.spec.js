@@ -10,7 +10,7 @@ const Utility  = require('../../../app/helpers').Utility;
 const request  = require('supertest');
 const assert   = require('assert');
 const Promise  = require('bluebird');
-const nconf    = require('nconf');
+const config   = require('../../../config');
 const k        = require('../../../config/keys.json');
 
 // todo: You don't want to allow someone to make 10,000 accounts via the commandline (check user agent?)
@@ -186,7 +186,7 @@ describe('POST /register', function() {
             return request(server).post('/register').send(newAccountCredentials).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
                     const senderEmailAddress = emails[0].envelope.from.address;
-                    const noreplyEmailAddress = nconf.get(k.NoReply);
+                    const noreplyEmailAddress = config.get(k.NoReply);
                     assert.equal(senderEmailAddress, noreplyEmailAddress);
                 });
             });

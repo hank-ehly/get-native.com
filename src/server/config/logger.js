@@ -6,7 +6,7 @@
  */
 
 const winston = require('winston');
-const nconf   = require('nconf');
+const config  = require('./index');
 const k       = require('./keys.json');
 
 const logger = new (winston.Logger)({
@@ -21,11 +21,11 @@ const logger = new (winston.Logger)({
 });
 
 function _getConsoleLevel() {
-    if (nconf.get(k.Debug)) {
+    if (config.get(k.Debug)) {
         return 'debug';
     }
 
-    return ([k.Env.Test, k.Env.CircleCI].includes(nconf.get(k.API.ENV)) ? 'error' : 'debug');
+    return ([k.Env.Test, k.Env.CircleCI].includes(config.get(k.NODE_ENV)) ? 'error' : 'debug');
 }
 
 logger.transports.console.level = _getConsoleLevel();

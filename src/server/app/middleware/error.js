@@ -6,7 +6,7 @@
  */
 
 const logger = require('../../config/logger');
-const nconf = require('nconf');
+const config = require('../../config');
 const k  = require('../../config/keys.json');
 
 module.exports.logErrors = function(error, req, res, next) {
@@ -25,7 +25,7 @@ module.exports.clientErrorHandler = function(error, req, res, next) {
 };
 
 module.exports.fallbackErrorHandler = function(error, req, res) {
-    if (nconf.get(k.API.ENV) !== k.Env.Production) {
+    if (config.get(k.API.ENV) !== k.Env.Production) {
         return res.status(500).send(error.stack);
     }
 

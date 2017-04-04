@@ -8,7 +8,7 @@
 const express    = require('express');
 const bodyParser = require('body-parser');
 const morgan     = require('morgan');
-const nconf      = require('nconf');
+const config      = require('../index');
 const routes     = require('../routes');
 const logger     = require('../logger');
 const middleware = require('../../app/middleware');
@@ -18,7 +18,7 @@ const k          = require('../keys.json');
 module.exports = () => {
     const app = express();
 
-    if (nconf.get(k.API.ENV) === k.Env.Development) {
+    if (config.get(k.NODE_ENV) === k.Env.Development) {
         app.use(morgan('dev'));
     }
 
@@ -35,7 +35,7 @@ module.exports = () => {
     app.use(middleware.Error.fallbackErrorHandler);
 
     return new Promise(resolve => {
-        const port = nconf.get(k.API.Port);
+        const port = config.get(k.API.Port);
         resolve(app.listen(port, () => logger.info(`Listening on port ${port}`)));
     });
 };
