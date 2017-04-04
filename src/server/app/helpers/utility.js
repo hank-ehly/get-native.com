@@ -5,6 +5,8 @@
  * Created by henryehly on 2017/03/14.
  */
 
+const _ = require('lodash');
+
 module.exports.typeof = function(x) {
     return Object.prototype.toString.call(x).replace(/[\[\]]/g, '').split(' ')[1].toLowerCase();
 };
@@ -45,16 +47,8 @@ module.exports.browserTimezoneOffsetToSQLFormat = function(offsetInMinutes) {
     const absoluteMinutes = Math.abs(wholeMinutes);
 
     const symbol        = hours >= 0 ? '+' : '-';
-    const paddedHours   = _pad(absoluteHours, 2);
-    const paddedMinutes = _pad(absoluteMinutes, 2);
+    const paddedHours   = _.padStart(absoluteHours, 2, '0');
+    const paddedMinutes = _.padStart(absoluteMinutes, 2, '0');
 
     return [symbol, paddedHours, ':', paddedMinutes].join('');
 };
-
-function _pad(num, size) {
-    let s = num + '';
-    while (s.length < size) {
-        s = '0' + s;
-    }
-    return s;
-}
