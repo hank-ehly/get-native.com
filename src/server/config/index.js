@@ -13,16 +13,14 @@ const _     = require('lodash');
 function Config() {
     nconf.env([k.API.Port, k.Debug, k.NODE_ENV]).use('memory');
 
-    const secretsDir = __dirname + '/secrets';
-
-    const publicKey = fs.readFile(secretsDir + '/id_rsa.pem', (err, data) => {
+    const publicKey = fs.readFile(__dirname + '/secrets/id_rsa.pem', (err, data) => {
         if (err) {
             throw new Error(err);
         }
         nconf.set(k.PublicKey, data.toString());
     });
 
-    const privateKey = fs.readFile(secretsDir + '/id_rsa', (err, data) => {
+    const privateKey = fs.readFile(__dirname + '/secrets/id_rsa', (err, data) => {
         if (err) {
             throw new Error(err);
         }
@@ -30,15 +28,13 @@ function Config() {
     });
 
     let config = {};
-
-    const confPath = __dirname + '/environments';
-    const envConf  = confPath + '/' + (nconf.get(k.NODE_ENV) || k.Env.Development).toLowerCase();
+    const envConf  = __dirname + '/environments/' + (nconf.get(k.NODE_ENV) || k.Env.Development).toLowerCase();
 
     if (fs.existsSync(envConf)) {
         config = envConf;
     }
 
-    const defaults = require(confPath + '/default');
+    const defaults = require(__dirname + '/environments/default');
 
     config = _.defaults(config, defaults);
 
