@@ -11,6 +11,6 @@ const config = {};
 
 config[k.Header.AccessControlAllowOrigin] = 'https://stg.get-native.com';
 config[k.API.Hostname] = 'stg.api.get-native.com';
-config[k.SMTP.Port] = 587;
+config[k.SMTP.Port] = 25;
 
 module.exports = config;
