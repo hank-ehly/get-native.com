@@ -21,6 +21,7 @@
         "Password": "password",
         "PictureUrl": "picture_url",
         "StudySessionId": "study_session_id",
+        "UpdatedAt": "updated_at",
         "VideoUrl": "video_url"
     },
     "Debug": "DEBUG",
