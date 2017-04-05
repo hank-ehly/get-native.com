@@ -19,25 +19,25 @@ const Promise         = require('bluebird');
 module.exports.stats = (req, res, next) => {
     const accountId = AuthHelper.extractAccountIdFromRequest(req);
 
-    Account.findById(accountId).then(account => {
-        Promise.all([
-            account.totalTimeStudied(),
-            account.consecutiveStudyDays(),
-            account.totalStudySessions(),
-            account.longestConsecutiveStudyDays(),
-            account.maximumWords(),
-            account.maximumWPM()
-        ]).spread((tts, cd, tss, lcd, mw, mwpm) => {
-            res.status(200).send({
-                lang: req.params.lang,
-                total_time_studied: tts,
-                consecutive_days: cd,
-                total_study_sessions: tss,
-                longest_consecutive_days: lcd,
-                maximum_words: mw,
-                maximum_wpm: mwpm
-            });
-        }).catch(next);
+    Account.findById(accountId).then(a => {
+        return Promise.all([
+            a.totalTimeStudied(),
+            a.consecutiveStudyDays(),
+            a.totalStudySessions(),
+            a.longestConsecutiveStudyDays(),
+            a.maximumWords(),
+            a.maximumWPM()
+        ]);
+    }).spread((tts, cd, tss, lcd, mw, mwpm) => {
+        res.status(200).send({
+            lang: req.params.lang,
+            total_time_studied: tts,
+            consecutive_days: cd,
+            total_study_sessions: tss,
+            longest_consecutive_days: lcd,
+            maximum_words: mw,
+            maximum_wpm: mwpm
+        });
     }).catch(next);
 };
 
