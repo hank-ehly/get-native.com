@@ -11,7 +11,7 @@ module.exports = {
             exec_mode: 'cluster',
             merge_logs: true,
             watch: ['./src/server', './ecosystem.config.js'],
-            interpreter: '/Users/henryehly/.nvm/versions/node/v6.10.1/bin/node',
+            interpreter: '/Users/henryehly/.nvm/versions/node/v6.10.2/bin/node',
             env: {
                 NODE_ENV: 'development'
             }
