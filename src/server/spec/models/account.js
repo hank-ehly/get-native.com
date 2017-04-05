@@ -29,19 +29,50 @@ describe('Account', function() {
         return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
     });
 
-    it(`should return true if a user exists for a given email address`, function() {
-        return Account.existsForEmail(existingAccountEmail).then(exists => {
-            assert(exists);
+    describe('existsForEmail', function() {
+        it(`should return true if a user exists for a given email address`, function() {
+            return Account.existsForEmail(existingAccountEmail).then(exists => {
+                assert(exists);
+            });
+        });
+
+        it(`should return false if a user does not exist for a given email address`, function() {
+            return Account.existsForEmail(nonExistentAccountEmail).then(exists => {
+                assert(!exists);
+            });
+        });
+
+        it(`should throw a TypeError if the first argument is not an email address`, function() {
+            assert.throws(() => Account.existsForEmail(123), TypeError);
         });
     });
 
-    it(`should return false if a user does not exist for a given email address`, function() {
-        return Account.existsForEmail(nonExistentAccountEmail).then(exists => {
-            assert(!exists);
-        });
+    describe('totalTimeStudied', function() {
+        it(`should return the total study time for this user`);
+        it(`should return 0 if the user has not studied before`);
     });
 
-    it(`should throw a TypeError if the first argument is not an email address`, function() {
-        assert.throws(() => Account.existsForEmail(123), TypeError);
+    describe('consecutiveStudyDays', function() {
+        it(`should return the number of days the user has consecutively studied`);
+        it(`should return 0 if the user has not studied before`);
+        it(`should be less than or equal to the result of longestConsecutiveStudyDays`);
+    });
+
+    describe('totalStudySessions', function() {
+        it(`should return the total number of study sessions linked to the user`);
+        it(`should return 0 if the user has not studied before`);
+    });
+
+    describe('longestConsecutiveStudyDays', function() {
+        it(`should return the longest number of consecutive days the user has studied`);
+        it(`should be equal to or greater than the result of consecutiveStudyDays`);
+    });
+
+    describe('maximumWords', function() {
+        it(`should return the maximum number of words the user has written in a single study session`);
+    });
+
+    describe('maximumWPM', function() {
+        it(`should return the WPM of the writing answer with the most words for the user`);
     });
 });

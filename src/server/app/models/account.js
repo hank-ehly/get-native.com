@@ -70,32 +70,28 @@ module.exports = function(sequelize, DataTypes) {
     };
 
     Account.prototype.totalTimeStudied = function() {
-        console.log(this);
-        return 0;
+        const query = `SELECT SUM(study_time) AS total_time_studied FROM study_sessions WHERE account_id = ${this.id}`;
+        return this.sequelize.query(query, {plain: true}).then(result => parseInt(result.total_time_studied));
     };
 
     Account.prototype.consecutiveStudyDays = function() {
-        console.log(this);
         return 0;
     };
 
     Account.prototype.totalStudySessions = function() {
-        console.log(this);
-        return 0;
+        return this.sequelize.models.StudySession.count({where: {account_id: this.id}});
     };
 
     Account.prototype.longestConsecutiveStudyDays = function() {
-        console.log(this);
         return 0;
     };
 
     Account.prototype.maximumWords = function() {
-        console.log(this);
+        // return this.sequelize.models.WritingAnswer;
         return 0;
     };
 
     Account.prototype.maximumWPM = function() {
-        console.log(this);
         return 0;
     };
 
