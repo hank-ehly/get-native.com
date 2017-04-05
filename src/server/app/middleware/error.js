@@ -29,5 +29,7 @@ module.exports.fallbackErrorHandler = function(error, req, res) {
         return res.status(500).send(error.stack);
     }
 
+    // todo: if error is result of non-existent request path, send 404
+
     return res.status(500);
 };

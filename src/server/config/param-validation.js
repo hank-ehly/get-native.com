@@ -84,6 +84,9 @@ module.exports = {
         stats: {
             headers: {
                 authorization: Joi.string().required()
+            },
+            params: {
+                lang: Joi.string().lowercase().valid(validLangCodes).required()
             }
         },
         writing_answers: {
