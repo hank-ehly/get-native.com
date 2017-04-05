@@ -5,18 +5,25 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const db              = require('../models');
-const ModelHelper     = require('../helpers').Model(db);
-const WritingAnswer   = db.WritingAnswer;
-const WritingQuestion = db.WritingQuestion;
 const ResponseWrapper = require('../helpers').ResponseWrapper;
 const AuthHelper      = require('../helpers').Auth;
 const k               = require('../../config/keys.json');
 const logger          = require('../../config/logger');
+const db              = require('../models');
+const ModelHelper     = require('../helpers').Model(db);
+const WritingAnswer   = db.WritingAnswer;
+const WritingQuestion = db.WritingQuestion;
 
 module.exports.stats = (req, res) => {
-    let mock = require('../../mock/study_stats.json');
-    res.send(mock);
+    res.status(200).send({
+        lang: 'en',
+        total_time_studied: 0,
+        consecutive_days: 0,
+        total_study_sessions: 0,
+        longest_consecutive_days: 0,
+        maximum_words: 0,
+        maximum_wpm: 0
+    });
 };
 
 module.exports.writing_answers = (req, res, next) => {
@@ -30,12 +37,5 @@ module.exports.writing_answers = (req, res, next) => {
     }).then(answers => {
         const answersAsJson = ResponseWrapper.wrap(answers.map(a => a.get({plain: true})));
         res.send(answersAsJson);
-    }).catch(e => {
-        logger.info(e, {json: true});
-
-        next({
-            message: 'Error',
-            errors: [{message: e}]
-        });
-    });
+    }).catch(next);
 };
