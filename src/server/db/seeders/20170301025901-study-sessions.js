@@ -17,6 +17,14 @@ module.exports = {
 
         return Promise.all(promises).spread((minAccountId, maxAccountId, minVideoId, maxVideoId) => {
             const studySessions = [];
+            const possibleStudyTimes = [];
+
+            for (let i = 300; i <= 1200; i += 60) {
+                possibleStudyTimes.push(i);
+            }
+
+            const minDate = new Date(2016, 0, 0).valueOf();
+            const maxDate = new Date().valueOf();
 
             for (let i = minAccountId; i <= maxAccountId; i++) {
                 let numStudySessions = chance.integer({
@@ -25,16 +33,17 @@ module.exports = {
                 });
 
                 for (let j = 0; j < numStudySessions; j++) {
+                    let date = new Date(chance.integer({min: minDate, max: maxDate}));
+
                     studySessions.push({
                         video_id: chance.integer({
                             min: minVideoId,
                             max: maxVideoId
                         }),
                         account_id: i,
-                        study_time: chance.integer({
-                            min: 300,
-                            max: 1200
-                        })
+                        study_time: chance.pickone(possibleStudyTimes),
+                        created_at: date,
+                        updated_at: date
                     });
                 }
             }
