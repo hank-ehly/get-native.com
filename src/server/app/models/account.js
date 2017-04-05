@@ -69,5 +69,35 @@ module.exports = function(sequelize, DataTypes) {
         return Account.count({where: {email: email}}).then(numExistingAccounts => numExistingAccounts !== 0);
     };
 
+    Account.prototype.totalTimeStudied = function() {
+        console.log(this);
+        return 0;
+    };
+
+    Account.prototype.consecutiveStudyDays = function() {
+        console.log(this);
+        return 0;
+    };
+
+    Account.prototype.totalStudySessions = function() {
+        console.log(this);
+        return 0;
+    };
+
+    Account.prototype.longestConsecutiveStudyDays = function() {
+        console.log(this);
+        return 0;
+    };
+
+    Account.prototype.maximumWords = function() {
+        console.log(this);
+        return 0;
+    };
+
+    Account.prototype.maximumWPM = function() {
+        console.log(this);
+        return 0;
+    };
+
     return Account;
 };

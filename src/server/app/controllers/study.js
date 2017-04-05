@@ -13,17 +13,32 @@ const db              = require('../models');
 const ModelHelper     = require('../helpers').Model(db);
 const WritingAnswer   = db.WritingAnswer;
 const WritingQuestion = db.WritingQuestion;
+const Account         = db.Account;
+const Promise         = require('bluebird');
 
-module.exports.stats = (req, res) => {
-    res.status(200).send({
-        lang: 'en',
-        total_time_studied: 0,
-        consecutive_days: 0,
-        total_study_sessions: 0,
-        longest_consecutive_days: 0,
-        maximum_words: 0,
-        maximum_wpm: 0
-    });
+module.exports.stats = (req, res, next) => {
+    const accountId = AuthHelper.extractAccountIdFromRequest(req);
+
+    Account.findById(accountId).then(account => {
+        Promise.all([
+            account.totalTimeStudied(),
+            account.consecutiveStudyDays(),
+            account.totalStudySessions(),
+            account.longestConsecutiveStudyDays(),
+            account.maximumWords(),
+            account.maximumWPM()
+        ]).spread((tts, cd, tss, lcd, mw, mwpm) => {
+            res.status(200).send({
+                lang: req.params.lang,
+                total_time_studied: tts,
+                consecutive_days: cd,
+                total_study_sessions: tss,
+                longest_consecutive_days: lcd,
+                maximum_words: mw,
+                maximum_wpm: mwpm
+            });
+        }).catch(next);
+    }).catch(next);
 };
 
 module.exports.writing_answers = (req, res, next) => {
