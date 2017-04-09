@@ -67,8 +67,8 @@ module.exports = function(sequelize, DataTypes) {
             throw new TypeError(`Argument 'email' must be a string`);
         }
 
-        // todo: use EXISTS
-        return Account.count({where: {email: email}}).then(numExistingAccounts => numExistingAccounts !== 0);
+        return this.sequelize.query(`SELECT EXISTS(SELECT * FROM accounts WHERE email = ?) AS does_exist`, {replacements: [email]})
+            .spread(r => _.first(r).does_exist);
     };
 
     Account.prototype.calculateStudySessionStats = function() {
