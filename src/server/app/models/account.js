@@ -130,7 +130,6 @@ module.exports = function(sequelize, DataTypes) {
             res.longest_consecutive_days = longestStreakRow.Streak;
 
             let latestEndStreakRow = _.max(r, o => o.EndStreak);
-            // if the max date is today, get the streak from that row
             let dateString = latestEndStreakRow.EndStreak;
             let date = new Date(dateString);
 
