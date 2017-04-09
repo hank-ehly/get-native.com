@@ -6,6 +6,7 @@
  */
 
 const Utility = require('../helpers').Utility;
+const _       = require('lodash');
 
 module.exports = function(sequelize, DataTypes) {
     const Account = sequelize.define('Account', {
@@ -66,33 +67,80 @@ module.exports = function(sequelize, DataTypes) {
             throw new TypeError(`Argument 'email' must be a string`);
         }
 
+        // todo: use EXISTS
         return Account.count({where: {email: email}}).then(numExistingAccounts => numExistingAccounts !== 0);
     };
 
-    Account.prototype.totalTimeStudied = function() {
-        const query = `SELECT SUM(study_time) AS total_time_studied FROM study_sessions WHERE account_id = ${this.id}`;
-        return this.sequelize.query(query, {plain: true}).then(result => parseInt(result.total_time_studied));
+    Account.prototype.calculateStudySessionStats = function() {
+        return this.sequelize.query(`
+            SELECT
+                COALESCE(SUM(study_time), 0) AS total_time_studied,
+                COUNT(id)                    AS total_study_sessions
+            FROM study_sessions
+            WHERE account_id = ?;
+        `, {replacements: [this.id]}).spread(_.first);
     };
 
-    Account.prototype.consecutiveStudyDays = function() {
-        return 0;
+    Account.prototype.calculateWritingStats = function() {
+        return this.sequelize.query(`
+            SELECT
+                COALESCE(MAX(word_count), 0)       AS maximum_words,
+                COALESCE(MAX(words_per_minute), 0) AS maximum_wpm
+            FROM writing_answers
+            WHERE study_session_id IN (
+                SELECT id
+                FROM study_sessions
+                WHERE account_id = ?
+            );
+        `, {replacements: [this.id]}).spread(_.first);
     };
 
-    Account.prototype.totalStudySessions = function() {
-        return this.sequelize.models.StudySession.count({where: {account_id: this.id}});
-    };
+    Account.prototype.calculateStudyStreaks = function() {
+        return this.sequelize.query(`
+            SELECT
+                MAX(DateCol) AS EndStreak,
+                COUNT(*)     AS Streak
+            FROM (
+                SELECT
+                    DateCol,
+                    (@n1 := @n1 + 1) RowNumber
+                FROM (
+                    SELECT DISTINCT DATE(created_at) AS DateCol
+                    FROM study_sessions
+                    WHERE account_id = ?
+                    ORDER BY DateCol DESC
+                ) t, (
+                    SELECT @n1 := 0
+                ) var
+            ) t
+            GROUP BY DATE_ADD(DateCol, INTERVAL RowNumber DAY)
+            ORDER BY EndStreak DESC;
+        `, {replacements: [this.id]}).spread(r => {
+            let res = {consecutive_days: 0, longest_consecutive_days: 0};
 
-    Account.prototype.longestConsecutiveStudyDays = function() {
-        return 0;
-    };
+            if (r.length === 0) {
+                return res;
+            }
 
-    Account.prototype.maximumWords = function() {
-        // return this.sequelize.models.WritingAnswer;
-        return 0;
-    };
+            let longestStreakRow = _.maxBy(r, o => o.Streak);
+            res.longest_consecutive_days = longestStreakRow.Streak;
 
-    Account.prototype.maximumWPM = function() {
-        return 0;
+            let latestEndStreakRow = _.max(r, o => o.EndStreak);
+            // if the max date is today, get the streak from that row
+            let dateString = latestEndStreakRow.EndStreak;
+            let date = new Date(dateString);
+
+            let now = new Date();
+            let thisYear = now.getFullYear();
+            let thisMonth = now.getMonth();
+            let today = now.getDate();
+
+            if (date.getFullYear() === thisYear && date.getMonth() === thisMonth && date.getDate() === today) {
+                res.consecutive_days = latestEndStreakRow.Streak;
+            }
+
+            return res;
+        });
     };
 
     return Account;
