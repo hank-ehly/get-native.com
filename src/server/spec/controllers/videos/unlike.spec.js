@@ -25,11 +25,11 @@ describe('POST /videos/:id/unlike', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(__) {
-            authorization = __.authorization;
-            server        = __.server;
-            user          = __.response.body;
-            db            = __.db;
+        return SpecUtil.login().then(function(initObjects) {
+            authorization = initObjects.authorization;
+            server        = initObjects.server;
+            user          = initObjects.response.body;
+            db            = initObjects.db;
 
             const query = `
                 SELECT video_id 
