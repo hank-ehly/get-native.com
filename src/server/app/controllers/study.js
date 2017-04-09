@@ -21,22 +21,19 @@ module.exports.stats = (req, res, next) => {
 
     Account.findById(accountId).then(a => {
         return Promise.all([
-            a.totalTimeStudied(),
-            a.consecutiveStudyDays(),
-            a.totalStudySessions(),
-            a.longestConsecutiveStudyDays(),
-            a.maximumWords(),
-            a.maximumWPM()
+            a.calculateStudySessionStats(),
+            a.calculateWritingStats(),
+            a.calculateStudyStreaks()
         ]);
-    }).spread((tts, cd, tss, lcd, mw, mwpm) => {
+    }).spread((studySessionStats, writingStats, studyStreaks) => {
         res.status(200).send({
             lang: req.params.lang,
-            total_time_studied: tts,
-            consecutive_days: cd,
-            total_study_sessions: tss,
-            longest_consecutive_days: lcd,
-            maximum_words: mw,
-            maximum_wpm: mwpm
+            total_time_studied: studySessionStats.total_time_studied,
+            consecutive_days: studyStreaks.consecutive_days,
+            total_study_sessions: studySessionStats.total_study_sessions,
+            longest_consecutive_days: studyStreaks.longest_consecutive_days,
+            maximum_words: writingStats.maximum_words,
+            maximum_wpm: writingStats.maximum_wpm
         });
     }).catch(next);
 };
