@@ -22,7 +22,7 @@ export const APIConfig = new Map<APIHandle, any>([
     }],
     [APIHandle.STUDY_STATS, {
         method: RequestMethod.Get,
-        url: '/study/stats',
+        url: '/study/stats/:lang',
         isProtected: true
     }],
     [APIHandle.WRITING_ANSWERS, {
