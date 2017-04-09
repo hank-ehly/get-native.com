@@ -20,12 +20,7 @@ module.exports.index = (req, res) => {
     }).then(account => {
         const accountAsJSON = account.get({plain: true});
         res.send(accountAsJSON);
-    }).catch(() => {
-        next({
-            message: 'Error',
-            errors: [{message: 'Failed to fetch account'}]
-        })
-    });
+    }).catch(next);
 };
 
 module.exports.update = (req, res, next) => {

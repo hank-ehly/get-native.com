@@ -20,7 +20,7 @@ module.exports = {
 
             for (let i = minAccountId; i <= maxAccountId; i++) {
                 let numVideoIds = chance.integer({
-                    min: 1,
+                    min: 5,
                     max: 20
                 });
 

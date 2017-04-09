@@ -9,6 +9,7 @@ const request  = require('supertest');
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const Promise  = require('bluebird');
+const _        = require('lodash');
 
 describe('POST /videos/:id/unlike', function() {
     let server         = null;
@@ -24,22 +25,24 @@ describe('POST /videos/:id/unlike', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(_) {
-            server = _.server;
-            db = _.db;
-            authorization = _.authorization;
-            user = _.response.body;
+        return SpecUtil.login().then(function(__) {
+            authorization = __.authorization;
+            server        = __.server;
+            user          = __.response.body;
+            db            = __.db;
 
-            return db.sequelize.query(`
+            const query = `
                 SELECT video_id 
                 FROM likes 
                 WHERE account_id = (
                     SELECT id 
                     FROM accounts 
-                    WHERE email = 'test@email.com'
+                    WHERE email = ?
                 ) LIMIT 1;
-            `).then(function(r) {
-                requestVideoId = r[0][0].video_id;
+            `;
+
+            return db.sequelize.query(query, {replacements: [SpecUtil.credentials.email]}).spread(function(rows) {
+                requestVideoId = _.first(rows).video_id;
             });
         });
     });
