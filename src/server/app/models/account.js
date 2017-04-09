@@ -6,6 +6,7 @@
  */
 
 const Utility = require('../helpers').Utility;
+const moment  = require('moment');
 const _       = require('lodash');
 
 module.exports = function(sequelize, DataTypes) {
@@ -67,26 +68,35 @@ module.exports = function(sequelize, DataTypes) {
             throw new TypeError(`Argument 'email' must be a string`);
         }
 
-        return this.sequelize.query(`SELECT EXISTS(SELECT * FROM accounts WHERE email = ?) AS does_exist`, {replacements: [email]})
-            .spread(r => _.first(r).does_exist);
+        const query = `
+            SELECT EXISTS(
+                SELECT id
+                FROM accounts 
+                WHERE email = ?
+            ) AS does_exist
+        `;
+
+        return this.sequelize.query(query, {replacements: [email]}).spread(rows => _.first(rows).does_exist);
     };
 
     Account.prototype.calculateStudySessionStats = function() {
-        return this.sequelize.query(`
+        const query = `
             SELECT
                 COALESCE(SUM(study_time), 0) AS total_time_studied,
                 COUNT(id)                    AS total_study_sessions
             FROM study_sessions
             WHERE account_id = ?;
-        `, {replacements: [this.id]}).spread(result => {
-            result = _.first(result);
+        `;
+
+        return this.sequelize.query(query, {replacements: [this.id]}).spread(rows => {
+            const result = _.first(rows);
             result.total_time_studied = _.toNumber(result.total_time_studied);
             return result;
         });
     };
 
     Account.prototype.calculateWritingStats = function() {
-        return this.sequelize.query(`
+        const query = `
             SELECT
                 COALESCE(MAX(word_count), 0)       AS maximum_words,
                 COALESCE(MAX(words_per_minute), 0) AS maximum_wpm
@@ -96,13 +106,15 @@ module.exports = function(sequelize, DataTypes) {
                 FROM study_sessions
                 WHERE account_id = ?
             );
-        `, {replacements: [this.id]}).spread(_.first);
+        `;
+
+        return this.sequelize.query(query, {replacements: [this.id]}).spread(_.first);
     };
 
     Account.prototype.calculateStudyStreaks = function() {
-        return this.sequelize.query(`
+        const query = `
             SELECT
-                MAX(DateCol) AS EndStreak,
+                MAX(DateCol) AS StreakEndDate,
                 COUNT(*)     AS Streak
             FROM (
                 SELECT
@@ -118,31 +130,33 @@ module.exports = function(sequelize, DataTypes) {
                 ) var
             ) t
             GROUP BY DATE_ADD(DateCol, INTERVAL RowNumber DAY)
-            ORDER BY EndStreak DESC;
-        `, {replacements: [this.id]}).spread(r => {
-            let res = {consecutive_days: 0, longest_consecutive_days: 0};
+            ORDER BY StreakEndDate DESC;
+        `;
 
-            if (r.length === 0) {
-                return res;
+        return this.sequelize.query(query, {replacements: [this.id]}).spread(rows => {
+            const result = {
+                consecutive_days: 0,
+                longest_consecutive_days: 0
+            };
+
+            if (!rows.length) {
+                return result;
             }
 
-            let longestStreakRow = _.maxBy(r, o => o.Streak);
-            res.longest_consecutive_days = longestStreakRow.Streak;
+            result.longest_consecutive_days = _.maxBy(rows, o => o.Streak).Streak;
 
-            let latestEndStreakRow = _.max(r, o => o.EndStreak);
-            let dateString = latestEndStreakRow.EndStreak;
-            let date = new Date(dateString);
+            const rowOfLastStreakEndDate = _.max(rows, o => o.StreakEndDate);
+            const lastStreakEndMoment = moment(rowOfLastStreakEndDate.StreakEndDate);
 
-            let now = new Date();
-            let thisYear = now.getFullYear();
-            let thisMonth = now.getMonth();
-            let today = now.getDate();
-
-            if (date.getFullYear() === thisYear && date.getMonth() === thisMonth && date.getDate() === today) {
-                res.consecutive_days = latestEndStreakRow.Streak;
+            if (!lastStreakEndMoment) {
+                throw new Error('Invalid date format');
             }
 
-            return res;
+            if (lastStreakEndMoment.isSame(moment(), 'day')) {
+                result.consecutive_days = rowOfLastStreakEndDate.Streak;
+            }
+
+            return result;
         });
     };
 
