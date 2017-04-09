@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 const OLD_P_NAME = 0;
 const NEW_P_NAME = 1;
 
+// todo: replace with lodash
 @Injectable()
 export class ObjectService {
 

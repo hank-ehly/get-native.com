@@ -10,7 +10,7 @@ import { trigger, style, transition, animate } from '@angular/animations';
 import { URLSearchParams } from '@angular/http';
 
 import { VideoSearchComponent } from '../shared/video-search/video-search.component';
-import { WritingSessions } from '../core/entities/writing-sessions';
+import { WritingAnswers } from '../core/entities/writing-answers';
 import { Logger } from '../core/logger/logger';
 import { HttpService } from '../core/http/http.service';
 import { NavbarService } from '../core/navbar/navbar.service';
@@ -43,7 +43,7 @@ import '../operators';
 })
 export class DashboardComponent extends VideoSearchComponent implements OnInit {
     stats: any;
-    answers: WritingSessions;
+    answers: WritingAnswers;
     answerSearchParams: URLSearchParams = new URLSearchParams();
 
     answersMaxId$ = new Subject<string>();
@@ -56,30 +56,27 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     ];
     activeAnswerMenuItem: any = this.answerMenuItems[0];
 
-    constructor(protected logger: Logger,
-                protected http: HttpService,
-                protected navbar: NavbarService,
-                protected toolbar: ToolbarService,
-                protected categoryList: CategoryListService,
-                private dateService: UTCDateService) {
+    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
+                protected categoryList: CategoryListService, private dateService: UTCDateService) {
         super(logger, http, navbar, toolbar, categoryList);
     }
 
     ngOnInit() {
         super.ngOnInit();
-
         this.logger.debug(this, 'ngOnInit()');
 
-        this.subscriptions.push(
-            this.http.request(APIHandle.STUDY_STATS, {params: {lang: 'en'}}) // todo: lang
-                .subscribe((stats: any) => this.stats = stats),
+        const statsRequestOptions = {params: {lang: 'en'}};
+        const statsObservable = this.http.request(APIHandle.STUDY_STATS, statsRequestOptions);
+        const statsSubscription = statsObservable.subscribe(this.onPushStudyStats.bind(this)); // todo: lang
+        this.subscriptions.push(statsSubscription);
 
-            this.answersMenu$.distinctUntilChanged().switchMap(this.updateAnswersFilter.bind(this))
-                .subscribe((a: WritingSessions) => this.answers = a),
+        const answersMenuObservable = this.answersMenu$.distinctUntilChanged().switchMap(this.updateAnswersFilter.bind(this));
+        const answersMenuSubscription = answersMenuObservable.subscribe(this.onPushWritingAnswers.bind(this));
+        this.subscriptions.push(answersMenuSubscription);
 
-            this.answersMaxId$.distinctUntilChanged().switchMap(this.updateAnswersFilter.bind(this))
-                .subscribe((a: WritingSessions) => this.answers = a)
-        );
+        const loadMoreAnswersObservable = this.answersMaxId$.distinctUntilChanged().switchMap(this.updateAnswersFilter.bind(this));
+        const loadMoreAnswersSubscription = answersMenuObservable.subscribe(this.onPushWritingAnswers.bind(this));
+        this.subscriptions.push(loadMoreAnswersSubscription);
 
         this.videoSearchParams.set('cued_only', true.toString());
 
@@ -93,12 +90,8 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
         this.answersMenu$.next(30);
     }
 
-    onBegin(): void {
-        this.logger.debug(this, 'onBegin()');
-    }
-
     onClickLoadMoreAnswers(): void {
-        let maxId = this.answers.records[this.answers.count - 1].id.toString();
+        const maxId = this.answers.records[this.answers.count - 1].id.toString();
         this.answerSearchParams.set('max_id', maxId);
         this.answersMaxId$.next(maxId);
     }
@@ -110,7 +103,15 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
         this.answersMenu$.next(answer.value);
     }
 
-    private updateAnswersFilter(): Observable<WritingSessions> {
+    private onPushStudyStats(stats: any): void {
+        this.stats = stats;
+    }
+
+    private onPushWritingAnswers(answers: WritingAnswers): void {
+        this.answers = answers;
+    }
+
+    private updateAnswersFilter(): Observable<WritingAnswers> {
         // set the new key, value HERE instead of first setting it above then calling 'next'
         return this.http.request(APIHandle.WRITING_ANSWERS, {search: this.answerSearchParams});
     }
