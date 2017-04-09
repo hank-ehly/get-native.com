@@ -5,12 +5,12 @@
  * Created by henryehly on 2017/02/03.
  */
 
-const Utility    = require('../helpers').Utility;
-const Account    = require('../models').Account;
-const AuthHelper = require('../helpers').Auth;
-const k          = require('../../config/keys.json');
-const _          = require('lodash');
 const GetNativeError = require('../helpers').GetNativeError;
+const Utility        = require('../helpers').Utility;
+const Account        = require('../models').Account;
+const AuthHelper     = require('../helpers').Auth;
+const k              = require('../../config/keys.json');
+const _              = require('lodash');
 
 module.exports.index = (req, res, next) => {
     let accountId = AuthHelper.extractAccountIdFromRequest(req);
