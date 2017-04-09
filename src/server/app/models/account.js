@@ -78,7 +78,11 @@ module.exports = function(sequelize, DataTypes) {
                 COUNT(id)                    AS total_study_sessions
             FROM study_sessions
             WHERE account_id = ?;
-        `, {replacements: [this.id]}).spread(_.first);
+        `, {replacements: [this.id]}).spread(result => {
+            result = _.first(result);
+            result.total_time_studied = _.toNumber(result.total_time_studied);
+            return result;
+        });
     };
 
     Account.prototype.calculateWritingStats = function() {
