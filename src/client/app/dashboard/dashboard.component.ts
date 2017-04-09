@@ -71,7 +71,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
         this.logger.debug(this, 'ngOnInit()');
 
         this.subscriptions.push(
-            this.http.request(APIHandle.STUDY_STATS)
+            this.http.request(APIHandle.STUDY_STATS, {params: {lang: 'en'}}) // todo: lang
                 .subscribe((stats: any) => this.stats = stats),
 
             this.answersMenu$.distinctUntilChanged().switchMap(this.updateAnswersFilter.bind(this))

@@ -135,6 +135,11 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.maxId$.next(oldestVideo.id.toString());
     }
 
+    protected onSelectLanguage(lang: Language): void {
+        this.updateSearchParams('lang', lang.code);
+        this.lang$.next(lang.code);
+    }
+
     private onToggleSearchBar(hidden: boolean): void {
         if (hidden) {
             this.onUpdateSearchQuery('');
@@ -144,11 +149,6 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     private onUpdateSearchQuery(query: string): void {
         this.updateSearchParams('q', query);
         this.query$.next(query);
-    }
-
-    private onSelectLanguage(lang: Language): void {
-        this.updateSearchParams('lang', lang.code);
-        this.lang$.next(lang.code);
     }
 
     private onSelectCategory(category: Category): void {
