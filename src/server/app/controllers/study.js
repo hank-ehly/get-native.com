@@ -25,13 +25,13 @@ module.exports.stats = (req, res, next) => {
             a.calculateWritingStats(),
             a.calculateStudyStreaks()
         ]);
-    }).spread((studySessionStats, writingStats, studyStreaks) => {
+    }).spread((studySessionStats, writingStats, studyStreakStats) => {
         res.status(200).send({
             lang: req.params.lang,
             total_time_studied: studySessionStats.total_time_studied,
-            consecutive_days: studyStreaks.consecutive_days,
+            consecutive_days: studyStreakStats.consecutive_days,
             total_study_sessions: studySessionStats.total_study_sessions,
-            longest_consecutive_days: studyStreaks.longest_consecutive_days,
+            longest_consecutive_days: studyStreakStats.longest_consecutive_days,
             maximum_words: writingStats.maximum_words,
             maximum_wpm: writingStats.maximum_wpm
         });
