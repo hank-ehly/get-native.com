@@ -12,7 +12,7 @@ const k          = require('../../config/keys.json');
 const _          = require('lodash');
 const GetNativeError = require('../helpers').GetNativeError;
 
-module.exports.index = (req, res) => {
+module.exports.index = (req, res, next) => {
     let accountId = AuthHelper.extractAccountIdFromRequest(req);
 
     Account.findById(accountId, {
