@@ -60,8 +60,8 @@
         <ul class="answers">
             <li *ngFor="let answer of answers?.records; let even = even" [ngClass]='{"answers__answer_striped": even}' class="answers__answer">
                 <div class="answers__answer-body">
-                    <h6 class="answers__answer-title">{{ answer?.question?.text }}</h6>
-                    <p>{{ answer?.text }}</p>
+                    <h6 class="answers__answer-title">{{ answer?.writing_question?.text }}</h6>
+                    <p>{{ answer?.answer }}</p>
                 </div>
 
                 <span class="answers__answer-date">{{ answer?.created_at | gnDate }}</span>

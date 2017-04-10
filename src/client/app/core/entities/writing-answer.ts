@@ -6,9 +6,9 @@
  */
 
 import { Entity } from './entity';
-import { Question } from './question';
+import { WritingQuestion } from './writing-question';
 
 export interface WritingAnswer extends Entity {
-    text: string;
-    question: Question;
+    answer: string;
+    writing_question: WritingQuestion;
 }
