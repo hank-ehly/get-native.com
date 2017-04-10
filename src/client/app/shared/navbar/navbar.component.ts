@@ -100,6 +100,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.logger.debug(this, `Search bar hidden set to '${this.searchBarHidden}'`);
 
         /* this.searchBar is not immediately available after becoming 'visible' */
+        // todo: perform with observable nextTick or something
         setTimeout(() => {
             if (!this.searchBarHidden) this.searchBar.focus();
         }, 1);
