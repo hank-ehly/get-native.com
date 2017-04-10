@@ -33,7 +33,7 @@ module.exports = {
         for (let i = 0; i < numAccounts; i++) {
             accounts.push({
                 email: chance.email(),
-                password: AuthHelper.hashPassword(chance.string({length: 20})),
+                password: AuthHelper.hashPassword('password'),
                 browser_notifications_enabled: chance.bool(),
                 email_notifications_enabled: chance.bool(),
                 email_verified: chance.bool({likelihood: 80}),
