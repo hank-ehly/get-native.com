@@ -21,6 +21,7 @@ import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-key
 
 import { Observable } from 'rxjs/Observable';
 import '../../operators';
+import * as _ from 'lodash';
 
 @Injectable()
 export class HttpService {
@@ -32,9 +33,13 @@ export class HttpService {
             throw new Error(`Endpoint '${handle}' not found in APIConfig.`);
         }
 
-        let endpoint = APIConfig.get(handle);
+        const endpoint = APIConfig.get(handle);
 
-        let args: RequestArgs = {url: Config.API + endpoint.url, method: endpoint.method, responseType: ResponseContentType.Json};
+        const args: RequestArgs = {
+            url: Config.API + endpoint.url,
+            method: endpoint.method,
+            responseType: ResponseContentType.Json
+        };
 
         if (endpoint.isProtected) {
             args.headers = new Headers({'Authorization': `Bearer ${this.localStorage.getItem(kAuthToken)}`});
@@ -60,17 +65,14 @@ export class HttpService {
             args.params = options.search;
         }
 
-        let request = new Request(args);
-
+        const request = new Request(args);
         this.logger.debug(this, request);
 
-        return this.http.request(request)
-            .map(this.handleResponse.bind(this))
-            .catch(<any>this.handleError.bind(this));
+        return this.http.request(request).map(this.handleResponse.bind(this)).catch(<any>this.handleError.bind(this));
     }
 
     private handleResponse(response: Response): Entity {
-        if (!this.between(response.status, 200, 399)) {
+        if (!_.inRange(response.status, 200, 400)) {
             this.handleError(response);
         }
 
@@ -84,7 +86,7 @@ export class HttpService {
             this.localStorage.setItem(kAuthTokenExpire, response.headers.get('x-gn-auth-expire'));
         }
 
-        if ((this.between(response.status, 100, 199)) || response.status === 204 || this.between(response.status, 300, 399)) {
+        if (_.inRange(response.status, 100, 200) || response.status === 204 || _.inRange(response.status, 300, 400)) {
             return null;
         }
 
@@ -93,10 +95,5 @@ export class HttpService {
 
     private handleError(error: any) {
         throw new Error(error);
-    }
-
-    // Todo: Move to service
-    private between(num: number, lowerLimit: number, upperLimit: number) {
-        return num >= lowerLimit && num <= upperLimit;
     }
 }
