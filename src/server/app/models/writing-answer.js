@@ -28,10 +28,27 @@ module.exports = function(sequelize, DataTypes) {
                 return {
                     where: {
                         study_session_id: {
-                            $in: sequelize.literal(`(SELECT \`id\` FROM   \`study_sessions\` WHERE  \`account_id\` = ${accountId})`)
+                            $in: sequelize.literal(`(SELECT \`id\` FROM \`study_sessions\` WHERE \`account_id\` = ${accountId})`)
                         }
                     }
                 };
+            },
+            forAccountWithLang: function(accountId, lang) {
+                return {
+                    where: {
+                        study_session_id: {
+                            $in: sequelize.literal(`(
+                                SELECT \`id\`
+                                FROM \`study_sessions\`
+                                WHERE \`video_id\` IN (
+                                    SELECT \`id\`
+                                    FROM \`videos\`
+                                    WHERE \`language_code\` = '${lang}'
+                                ) AND \`account_id\` = '${accountId}'
+                            )`)
+                        }
+                    }
+                }
             },
             since: function(since) {
                 if (!since) {

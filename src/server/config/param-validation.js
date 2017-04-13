@@ -93,6 +93,9 @@ module.exports = {
             headers: {
                 authorization: Joi.string().required()
             },
+            params: {
+                lang: Joi.string().lowercase().valid(validLangCodes).required()
+            },
             query: {
                 since: Joi.date().max('now').timestamp('javascript'),
                 max_id: Joi.number().integer().min(1),

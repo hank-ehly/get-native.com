@@ -27,7 +27,7 @@ export const APIConfig = new Map<APIHandle, any>([
     }],
     [APIHandle.WRITING_ANSWERS, {
         method: RequestMethod.Get,
-        url: '/study/writing_answers',
+        url: '/study/writing_answers/:lang',
         isProtected: true,
         permitURLSearchParams: ['since', 'max_id', 'time_zone_offset']
     }],

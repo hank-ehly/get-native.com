@@ -28,7 +28,7 @@ module.exports = {
 
             for (let i = minAccountId; i <= maxAccountId; i++) {
                 let numStudySessions = chance.integer({
-                    min: 1,
+                    min: 5,
                     max: 365
                 });
 
