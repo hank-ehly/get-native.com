@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/28.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { URLSearchParams } from '@angular/http';
 
@@ -49,7 +49,7 @@ import 'rxjs/add/operator/do';
         ])
     ]
 })
-export class DashboardComponent extends VideoSearchComponent implements OnInit {
+export class DashboardComponent extends VideoSearchComponent implements OnInit, OnDestroy {
     stats: any;
 
     maxAnswerId: number = null;
@@ -90,7 +90,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
         super(logger, http, navbar, toolbar, categoryList);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         super.ngOnInit();
         this.logger.debug(this, 'ngOnInit()');
 
@@ -103,6 +103,10 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
 
         // todo: redundant. make something like a 'trigger request' function or something..
         this.lang$.next('en');
+    }
+
+    ngOnDestroy(): void {
+        _.forEach(this.subscriptions, s => s.unsubscribe());
     }
 
     // todo: get current lang
