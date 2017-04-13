@@ -3,13 +3,13 @@
         <img class="navbar__logo" src="/assets/icons/logo.svg" alt="logo" [routerLink]="'/'">
     </div>
 
-    <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && !searchBarHidden" [@slideInLeftOutRight]>
+    <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && searchBarVisible" [@slideInLeftOutRight]>
         <label for="search-bar" class="sr-only">Search</label>
         <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." gnFocus maxlength="50" (input)="onInputSearchQuery($event)">
     </div>
 
     <!-- Todo: Prevent animation from happening on title -->
-    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && searchBarHidden" [@slideInRightOutLeft]>
+    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && !searchBarVisible" [@slideInRightOutLeft]>
         <div class="back-button-frame" *ngIf="backButtonTitle">
             <img class="navbar__menu-icon navbar__menu-icon_back" src="/assets/icons/arrow-back.svg" alt="back" (click)="onClickBack()">
             <span class="back-button-label">{{ backButtonTitle }}</span>
@@ -34,8 +34,8 @@
 
     <ul class="navbar__menu navbar__menu_right" *ngIf="authenticated">
         <li>
-            <img class="navbar__menu-icon navbar__menu-icon--search" src="/assets/icons/search.svg" alt="search" *ngIf="searchBarHidden" (click)="onToggleSearch()">
-            <img class="navbar__menu-icon navbar__menu-icon--close" src="/assets/icons/close-dark.svg" alt="close" *ngIf="!searchBarHidden" (click)="onToggleSearch()">
+            <img class="navbar__menu-icon navbar__menu-icon--search" src="/assets/icons/search.svg" alt="search" *ngIf="!searchBarVisible" (click)="onToggleSearch()">
+            <img class="navbar__menu-icon navbar__menu-icon--close" src="/assets/icons/close-dark.svg" alt="close" *ngIf="searchBarVisible" (click)="onToggleSearch()">
         </li>
         <li>
             <span class="navbar__menu-icon-frame">

@@ -91,7 +91,7 @@ export class AppComponent implements OnInit, LocalStorageProtocol, OnDestroy {
         this.logger.debug(this, 'NavigationEnd', e);
 
         if (e && e['title']) {
-            if (this.authenticated) this.navbar.setTitle(e['title']);
+            if (this.authenticated) this.navbar.title$.next(e['title']);
             this.titleService.setTitle(`Get Native | ${e['title']}`);
         }
     }

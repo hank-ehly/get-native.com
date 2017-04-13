@@ -15,6 +15,7 @@ import { Logger } from '../../core/logger/logger';
 import { FocusDirective } from '../focus/focus.directive';
 
 import { Subscription } from 'rxjs/Subscription';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -47,47 +48,41 @@ import { Subscription } from 'rxjs/Subscription';
 export class NavbarComponent implements OnInit, OnDestroy {
     @Input() authenticated: boolean;
     @ViewChild(FocusDirective) searchBar: FocusDirective;
-    title: string;
-    searchBarHidden: boolean;
-    studyOptionsHidden: boolean;
-    progressBarHidden: boolean;
-    backButtonTitle: string;
-    hasUnreadNotifications: boolean;
+
+    title: string = '';
+    searchBarVisible: boolean = false;
+    studyOptionsHidden: boolean = true;
+    progressBarHidden: boolean = true;
+    backButtonTitle: string = '';
+    hasUnreadNotifications: boolean = false;
 
     private subscriptions: Subscription[] = [];
 
     constructor(private loginModal: LoginModalService, private logger: Logger, private navbar: NavbarService, private location: Location) {
-        this.searchBarHidden = true;
-        this.studyOptionsHidden = true;
-        this.progressBarHidden = true;
     }
 
     ngOnInit(): void {
         this.subscriptions.push(
-            this.navbar.setTitle$.subscribe((t) => this.title = t),
-            this.navbar.setBackButton$.subscribe(t => this.backButtonTitle = t)
+            this.navbar.title$.subscribe((t) => this.title = t),
+            this.navbar.backButtonTitle$.subscribe(t => this.backButtonTitle = t)
         );
-
-        this.logger.debug(this, `this.authenticated = ${this.authenticated}`);
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
+        this.logger.debug(this, 'ngOnDestroy()', this.subscriptions);
+        _.each(this.subscriptions, s => s.unsubscribe());
     }
 
-    onShowLoginModal(event: any): void {
+    onShowLoginModal(e: any): void {
+        e.preventDefault();
         this.logger.debug(this, 'requestShowLoginModal()');
-        event.preventDefault();
         this.loginModal.showModal();
     }
 
     onInputSearchQuery(e: Event): void {
-        let query = (<HTMLInputElement>e.target).value;
+        const query = (<HTMLInputElement>e.target).value;
         this.logger.info(this, `Updating search query to '${query}'`);
-        this.navbar.updateSearchQuery(query);
+        this.navbar.search.query(query);
     }
 
     onClickBack(): void {
@@ -96,16 +91,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     onToggleSearch(): void {
-        this.searchBarHidden = !this.searchBarHidden;
-        this.logger.debug(this, `Search bar hidden set to '${this.searchBarHidden}'`);
+        this.searchBarVisible = !this.searchBarVisible;
+        this.logger.debug(this, `Search bar visible set to '${this.searchBarVisible}'`);
 
         /* this.searchBar is not immediately available after becoming 'visible' */
         // todo: perform with observable nextTick or something
         setTimeout(() => {
-            if (!this.searchBarHidden) this.searchBar.focus();
-        }, 1);
+            if (this.searchBarVisible) {
+                this.searchBar.focus();
+            }
+        }, 0);
 
-        this.navbar.didToggleSearchBar(this.searchBarHidden);
+        this.navbar.search.visibility(this.searchBarVisible);
     }
 
     /* MOCK */

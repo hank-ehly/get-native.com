@@ -5,43 +5,29 @@
  * Created by henryehly on 2016/12/04.
  */
 
-import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
+import * as _ from 'lodash';
+
 export class NavbarService {
-    setTitle$: Observable<string>;
-    setBackButton$: Observable<string>;
-    updateSearchQuery$: Observable<string>;
-    toggleSearchBar$: Observable<boolean>;
+    title$               = new Subject<string>();
+    query$               = new Subject<string>();
 
-    private setTitleSource: Subject<string>;
-    private setBackButtonSource: Subject<string>;
-    private updateSearchQuerySource: Subject<string>;
-    private toggleSearchBarSource: Subject<boolean>;
+    backButtonTitle$     = new Subject<any>();
 
-    constructor() {
-        this.setTitleSource = new Subject<string>();
-        this.setTitle$ = this.setTitleSource.asObservable();
+    searchBarVisibility$ = new Subject<boolean>();
 
-        this.setBackButtonSource = new Subject<any>();
-        this.setBackButton$ = this.setBackButtonSource.asObservable();
+    search: any = {
+        query: (value: string) => {
+            value = _.trim(value);
 
-        this.updateSearchQuerySource = new Subject<string>();
-        this.updateSearchQuery$ = this.updateSearchQuerySource.asObservable();
+            if (value.length) {
+                this.query$.next(value);
+            }
+        },
 
-        this.toggleSearchBarSource = new Subject<boolean>();
-        this.toggleSearchBar$ = this.toggleSearchBarSource.asObservable();
-    }
+        visibility: (value: boolean) => {
 
-    setTitle(title: string): void {
-        this.setTitleSource.next(title);
-    }
-
-    updateSearchQuery(query: string): void {
-        this.updateSearchQuerySource.next(query.trim());
-    }
-
-    didToggleSearchBar(hidden: boolean) {
-        this.toggleSearchBarSource.next(hidden);
-    }
+        }
+    };
 }
