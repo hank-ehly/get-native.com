@@ -22,13 +22,14 @@ import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-key
 import { Observable } from 'rxjs/Observable';
 import '../../operators';
 import * as _ from 'lodash';
+import { Entities } from '../entities/entities';
 
 @Injectable()
 export class HttpService {
     constructor(private http: Http, private logger: Logger, private localStorage: LocalStorageService, private uriService: URIService) {
     }
 
-    request(handle: APIHandle, options?: GNRequestOptions): Observable<Entity> {
+    request(handle: APIHandle, options?: GNRequestOptions): Observable<Entities<Entity>|Entity> {
         if (!APIConfig.has(handle)) {
             throw new Error(`Endpoint '${handle}' not found in APIConfig.`);
         }
