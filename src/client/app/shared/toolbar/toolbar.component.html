@@ -1,13 +1,15 @@
-<div class="toolbar" (mouseleave)="visibility$.next(false)">
+<div class="toolbar" (mouseleave)="isVisibleStream$.next(false)">
 
-    <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="visibility$ | async">
-        <li class="toolbar__language-label" *ngFor="let language of languages" (click)="setSelectedLanguage(language)">
+    <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="isVisibleStream$ | async">
+        <li class="toolbar__language-label" *ngFor="let language of languageStream$ | async"
+            (click)="selectedLanguageStream$.next(language)">
             {{ language.name }}
         </li>
     </ul>
 
-    <span class="toolbar__language-label toolbar__language-label_selected" (click)="visibility$.next(!visibility$.getValue())" (mouseenter)="visibility$.next(true)">
-        {{ selectedLanguage.name }}
+    <span class="toolbar__language-label toolbar__language-label_selected" (click)="isVisibleStream$.next(!isVisibleStream$.getValue())"
+          (mouseenter)="isVisibleStream$.next(true)">
+        {{ (selectedLanguageStream$ | async).name }}
     </span>
 
     <nav class="toolbar__links">

@@ -16,6 +16,7 @@ import { Logger } from '../../core/logger/logger';
 
 import * as _ from 'lodash';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     moduleId: module.id,
@@ -41,27 +42,20 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
     ]
 })
 export class ToolbarComponent implements OnInit {
-    visibility$ = new BehaviorSubject<boolean>(false);
+    languageStream$         = Observable.of<Language[]>(Languages);
 
-    languages: Language[];
-    selectedLanguage: Language;
+    isVisibleStream$        = new BehaviorSubject<boolean>(false);
+    selectedLanguageStream$ = new BehaviorSubject<Language>(_.first(Languages));
 
     constructor(private toolbarService: ToolbarService, private user: UserService, private logger: Logger) {
-        this.languages = Languages;
-        this.selectedLanguage = _.first(this.languages);
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.user.defaultStudyLanguage.then(l => this.selectedLanguage = l);
+        // this.user.defaultStudyLanguage.then(l => this.selectedLanguage = l);
     }
 
     setSelectedLanguage(language: Language): void {
-        if (this.selectedLanguage === language) {
-            return;
-        }
-
-        this.selectedLanguage = language;
         this.toolbarService.didSelectLanguage(language);
     }
 
