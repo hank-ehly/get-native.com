@@ -15,6 +15,7 @@ const WritingAnswer   = db.WritingAnswer;
 const WritingQuestion = db.WritingQuestion;
 const Account         = db.Account;
 const Promise         = require('bluebird');
+const _               = require('lodash');
 
 module.exports.stats = (req, res, next) => {
     const accountId = AuthHelper.extractAccountIdFromRequest(req);
@@ -42,12 +43,27 @@ module.exports.writing_answers = (req, res, next) => {
     const accountId = AuthHelper.extractAccountIdFromRequest(req);
     const createdAt = ModelHelper.getFormattedSequelizeDateAttributeForTableColumnTimezoneOffset(k.Model.WritingAnswer, k.Attr.CreatedAt, req.query.time_zone_offset);
 
-    WritingAnswer.scope('newestFirst', {method: ['forAccount', accountId]}, {method: ['since', req.query.since]}, {method: ['maxId', req.query.max_id]}).findAll({
+    WritingAnswer.scope([
+        'newestFirst', {method: ['forAccountWithLang', accountId, req.params.lang]}, {method: ['since', req.query.since]}, {method: ['maxId', req.query.max_id]}
+    ]).findAll({
         attributes: [k.Attr.Id, k.Attr.Answer, createdAt, k.Attr.StudySessionId],
-        include: [{model: WritingQuestion, as: 'writing_question', attributes: ['text']}],
+        include: [
+            {
+                model: WritingQuestion,
+                as: 'writing_question',
+                attributes: ['text']
+            }
+        ],
         limit: 10
     }).then(answers => {
-        const answersAsJson = ResponseWrapper.wrap(answers.map(a => a.get({plain: true})));
+        const answersAsJson = ResponseWrapper.wrap(answers.map(a => {
+            let json = a.get({plain: true});
+            json.lang = req.params.lang;
+            return json;
+        }));
+
+        console.log(_.first(answersAsJson.records));
+
         res.send(answersAsJson);
     }).catch(next);
 };

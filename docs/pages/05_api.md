@@ -608,13 +608,13 @@ POST https://api.get-native.com/study
 }
 ```
 
-# GET /study/stats/:language_code
+# GET /study/stats/:lang
 
 Returns the authenticating users' aggregated study statistics.
 
 | Parameter         	| Description                                                    	| Required 	| Default 	|
 |-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
-| language_code      	| The language for which the study stats are presented           	|     √    	|         	|
+| lang               	| The language for which the study stats are presented           	|     √    	|         	|
 
 ```
 GET https://api.get-native.com/study/stats/en
@@ -665,7 +665,7 @@ POST https://api.get-native.com/study/writing_answers
 ```json
 {
 	"study_session_id": 123,
-	"writing_question_id": 456,
+	"writing_question_id": 57,
 	"answer": "I really like.."
 }
 ```
@@ -681,10 +681,10 @@ before sending the request, calculations are performed server side for maximum e
 Status: 204 No Content
 ```
 
-# GET /study/writing_answers
+# GET /study/writing_answers/:lang
 
 ```
-GET https://api.get-native.com/study/writing_answers?since=1483658645131
+GET https://api.get-native.com/study/writing_answers/ja?since=1483658645131
 ```
 
 **Parameters**
@@ -692,6 +692,8 @@ GET https://api.get-native.com/study/writing_answers?since=1483658645131
 | Parameter         	| Description                                                    	| Required 	| Default 	|
 |-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
 | since  	            | UTC datetime specifying the oldest possible search result      	|          	|         	|
+| max_id  	          | UTC datetime specifying the oldest possible search result      	|          	|         	|
+| lang     	          | The language for which the writing answers are presented       	|     √    	|         	|
 
 **Response**
 ```
@@ -703,9 +705,11 @@ Status: 200 OK
 	"records": [
 		{
 			"id": 1,
-			"text": "This is a test answer",
+			"answer": "This is a test answer",
 			"created_at": "Wed Jan 11 04:35:55 +0000 2017",
-			"question": {
+			"study_session_id": 58,
+			"lang": "ja",
+			"writing_question": {
 				"text": "How do you ...?"
 			}
 		}	
