@@ -1,12 +1,12 @@
-<div class="toolbar" (mouseleave)="onHideTooltip()">
+<div class="toolbar" (mouseleave)="visibility$.next(false)">
 
-    <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="isTooltipVisible">
+    <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="visibility$ | async">
         <li class="toolbar__language-label" *ngFor="let language of languages" (click)="setSelectedLanguage(language)">
             {{ language.name }}
         </li>
     </ul>
 
-    <span class="toolbar__language-label toolbar__language-label_selected" (click)="onToggleTooltip()" (mouseenter)="onShowTooltip()">
+    <span class="toolbar__language-label toolbar__language-label_selected" (click)="visibility$.next(!visibility$.getValue())" (mouseenter)="visibility$.next(true)">
         {{ selectedLanguage.name }}
     </span>
 
