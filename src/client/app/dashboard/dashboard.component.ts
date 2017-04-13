@@ -18,10 +18,18 @@ import { ToolbarService } from '../core/toolbar/toolbar.service';
 import { CategoryListService } from '../core/category-list/category-list.service';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
 import { APIHandle } from '../core/http/api-handle';
+import { WritingAnswer } from '../core/entities/writing-answer';
 
+import * as _ from 'lodash';
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
-import '../operators';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/scan';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/concatMap';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/do';
 
 @Component({
     moduleId: module.id,
@@ -43,18 +51,39 @@ import '../operators';
 })
 export class DashboardComponent extends VideoSearchComponent implements OnInit {
     stats: any;
-    answers: WritingAnswers;
-    answerSearchParams: URLSearchParams = new URLSearchParams();
 
-    answersMaxId$ = new Subject<string>();
-    answersMenu$ = new Subject<number>();
-    answerMenuItems = [
+    maxAnswerId: number = null;
+
+    filterAnswers       = new Subject<number>();
+    loadMoreAnswers     = new Subject<number>();
+    answerFilterStream$ = this.filterAnswers.startWith(30).distinctUntilChanged();
+
+    answerStream$ = this.answerFilterStream$.switchMap((since?: number) => {
+        return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
+            let search = new URLSearchParams();
+
+            if (since) {
+                search.set('since', this.dateService.getDaysAgoFromDate(since).toString());
+            }
+
+            if (maxId) {
+                search.set('max_id', maxId.toString());
+            }
+
+            const options = {
+                search: search
+            };
+
+            return this.http.request(APIHandle.WRITING_ANSWERS, options);
+        }, (_, answers: WritingAnswers) => answers.records).do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);
+    });
+
+    answerFilters = [
         {text: 'LAST 30 DAYS', value: 30},
         {text: 'LAST 60 DAYS', value: 60},
-        {text: 'LAST YEAR', value: 365},
-        {text: 'ALL TIME', value: null}
+        {text: 'LAST YEAR',    value: 365},
+        {text: 'ALL TIME',     value: null}
     ];
-    activeAnswerMenuItem: any = this.answerMenuItems[0];
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
                 protected categoryList: CategoryListService, private dateService: UTCDateService) {
@@ -65,54 +94,37 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
         super.ngOnInit();
         this.logger.debug(this, 'ngOnInit()');
 
-        const statsRequestOptions = {params: {lang: 'en'}};
-        const statsObservable = this.http.request(APIHandle.STUDY_STATS, statsRequestOptions);
-        const statsSubscription = statsObservable.subscribe(this.onPushStudyStats.bind(this)); // todo: lang
-        this.subscriptions.push(statsSubscription);
+        this.subscriptions.push(this.subscribeToStudyStats());
 
-        const answersMenuObservable = this.answersMenu$.distinctUntilChanged().switchMap(this.updateAnswersFilter.bind(this));
-        const answersMenuSubscription = answersMenuObservable.subscribe(this.onPushWritingAnswers.bind(this));
-        this.subscriptions.push(answersMenuSubscription);
-
-        const loadMoreAnswersObservable = this.answersMaxId$.distinctUntilChanged().switchMap(this.updateAnswersFilter.bind(this));
-        const loadMoreAnswersSubscription = answersMenuObservable.subscribe(this.onPushWritingAnswers.bind(this));
-        this.subscriptions.push(loadMoreAnswersSubscription);
-
-        this.videoSearchParams.set('cued_only', true.toString());
+        this.videoSearchParams.set('cued_only', 'true');
 
         // todo: get current language dynamically
         this.videoSearchParams.set('lang', 'en');
+
         // todo: redundant. make something like a 'trigger request' function or something..
         this.lang$.next('en');
-
-        this.answerSearchParams.set('since', this.dateService.getDaysAgoFromDate(30).toString());
-        this.answerSearchParams.set('time_zone_offset', new Date().getTimezoneOffset().toString());
-        this.answersMenu$.next(30);
     }
 
-    onClickLoadMoreAnswers(): void {
-        const maxId = this.answers.records[this.answers.count - 1].id.toString();
-        this.answerSearchParams.set('max_id', maxId);
-        this.answersMaxId$.next(maxId);
+    // todo: get current lang
+    private subscribeToStudyStats(): Subscription {
+        const options = {
+            params: {
+                lang: 'en'
+            }
+        };
+
+        return this.http.request(APIHandle.STUDY_STATS, options).subscribe((s: any) => {
+            this.stats = s;
+        });
     }
 
-    setActiveAnswerMenuItem(answer: any): void {
-        this.activeAnswerMenuItem = answer;
-        this.answerSearchParams.set('since', this.dateService.getDaysAgoFromDate(answer.value).toString());
-        this.answerSearchParams.delete('max_id');
-        this.answersMenu$.next(answer.value);
+    private updateMaxAnswerId(records?: WritingAnswer[]): void {
+        if (!_.isEmpty(records)) {
+            this.maxAnswerId = _.last(records).id;
+        }
     }
 
-    private onPushStudyStats(stats: any): void {
-        this.stats = stats;
-    }
-
-    private onPushWritingAnswers(answers: WritingAnswers): void {
-        this.answers = answers;
-    }
-
-    private updateAnswersFilter(): Observable<WritingAnswers> {
-        // set the new key, value HERE instead of first setting it above then calling 'next'
-        return this.http.request(APIHandle.WRITING_ANSWERS, {search: this.answerSearchParams});
+    private concatWritingAnswers(acc: WritingAnswer[], records: WritingAnswer[]) {
+        return records ? _.concat(acc, records) : [];
     }
 }
