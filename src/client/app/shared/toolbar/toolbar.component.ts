@@ -12,6 +12,10 @@ import { Language } from '../../core/typings/language';
 import { ToolbarService } from '../../core/toolbar/toolbar.service';
 import { UserService } from '../../core/user/user.service';
 import { Languages } from '../../core/lang/languages';
+import { Logger } from '../../core/logger/logger';
+
+import * as _ from 'lodash';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
     moduleId: module.id,
@@ -37,16 +41,18 @@ import { Languages } from '../../core/lang/languages';
     ]
 })
 export class ToolbarComponent implements OnInit {
-    isTooltipVisible: boolean;
+    visibility$ = new BehaviorSubject<boolean>(false);
+
     languages: Language[];
     selectedLanguage: Language;
 
-    constructor(private toolbarService: ToolbarService, private user: UserService) {
+    constructor(private toolbarService: ToolbarService, private user: UserService, private logger: Logger) {
         this.languages = Languages;
-        this.selectedLanguage = this.languages[0];
+        this.selectedLanguage = _.first(this.languages);
     }
 
     ngOnInit(): void {
+        this.logger.debug(this, 'OnInit');
         this.user.defaultStudyLanguage.then(l => this.selectedLanguage = l);
     }
 
@@ -61,17 +67,5 @@ export class ToolbarComponent implements OnInit {
 
     onLogout(): void {
         this.toolbarService.logout();
-    }
-
-    onShowTooltip(): void {
-        this.isTooltipVisible = true;
-    }
-
-    onHideTooltip(): void {
-        this.isTooltipVisible = false;
-    }
-
-    onToggleTooltip(): void {
-        this.isTooltipVisible = !this.isTooltipVisible;
     }
 }
