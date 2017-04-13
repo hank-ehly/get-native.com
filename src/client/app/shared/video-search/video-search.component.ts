@@ -90,8 +90,8 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
             this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories),
 
-            this.navbar.toggleSearchBar$.subscribe(this.onToggleSearchBar.bind(this)),
-            this.navbar.updateSearchQuery$.subscribe(this.onUpdateSearchQuery.bind(this)),
+            this.navbar.searchBarVisibility$.subscribe(this.onToggleSearchBar.bind(this)),
+            this.navbar.query$.subscribe(this.onUpdateSearchQuery.bind(this)),
             this.toolbar.selectLanguage$.subscribe(this.onSelectLanguage.bind(this)),
             this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this)),
             this.categoryList.selectSubcategory$.subscribe(this.onSelectSubcategory.bind(this)),
