@@ -16,6 +16,7 @@ import { CategoryListService } from '../core/category-list/category-list.service
 import { APIHandle } from '../core/http/api-handle';
 
 import '../operators';
+import { UserService } from '../core/user/user.service';
 
 @Component({
     moduleId: module.id,
@@ -37,8 +38,8 @@ import '../operators';
 })
 export class LibraryComponent extends VideoSearchComponent implements OnInit {
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService,
-                protected categoryList: CategoryListService) {
-        super(logger, http, navbar, categoryList);
+                protected categoryList: CategoryListService, protected user: UserService) {
+        super(logger, http, navbar, categoryList, user);
 
         this.apiHandle = APIHandle.VIDEOS;
     }
