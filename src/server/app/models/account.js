@@ -79,16 +79,26 @@ module.exports = function(sequelize, DataTypes) {
         return this.sequelize.query(query, {replacements: [email]}).spread(rows => _.first(rows).does_exist);
     };
 
-    Account.prototype.calculateStudySessionStats = function() {
+    Account.prototype.calculateStudySessionStatsForLanguage = function(lang) {
+        if (!lang) {
+            throw new ReferenceError(`No 'lang' provided`);
+        }
+
+        // todo: make globally available list of valid lang codes
+        if (!_.includes(['en', 'ja'], lang)) {
+            throw new TypeError(`Invalid lang '${lang}'`);
+        }
+
         const query = `
             SELECT
                 COALESCE(SUM(study_time), 0) AS total_time_studied,
-                COUNT(id)                    AS total_study_sessions
+                COUNT(study_sessions.id)     AS total_study_sessions
             FROM study_sessions
-            WHERE account_id = ?;
+                LEFT JOIN videos ON study_sessions.video_id = videos.id
+            WHERE account_id = ? AND videos.language_code = ?;
         `;
 
-        return this.sequelize.query(query, {replacements: [this.id]}).spread(rows => {
+        return this.sequelize.query(query, {replacements: [this.id, lang]}).spread(rows => {
             const result = _.first(rows);
             result.total_time_studied = _.toNumber(result.total_time_studied);
             return result;
@@ -119,14 +129,14 @@ module.exports = function(sequelize, DataTypes) {
             FROM (
                 SELECT
                     DateCol,
-                    (@n1 := @n1 + 1) RowNumber
+                    (@rn := @rn + 1) RowNumber
                 FROM (
                     SELECT DISTINCT DATE(created_at) AS DateCol
                     FROM study_sessions
                     WHERE account_id = ?
                     ORDER BY DateCol DESC
                 ) t, (
-                    SELECT @n1 := 0
+                    SELECT @rn := 0
                 ) var
             ) t
             GROUP BY DATE_ADD(DateCol, INTERVAL RowNumber DAY)
