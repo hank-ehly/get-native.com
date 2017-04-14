@@ -7,15 +7,10 @@
 
 import { Injectable } from '@angular/core';
 
-import { Logger } from '../logger/logger';
-
 import * as _ from 'lodash';
 
 @Injectable()
 export class URIService {
-    constructor(private logger: Logger) {
-    }
-
     generateURIForEndpointWithParams(params: any, endpoint: any): string {
         let matches = endpoint.url.match(/:[a-z]+/g);
 
