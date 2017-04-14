@@ -57,11 +57,21 @@ describe('Account', function() {
     });
 
     describe('calculateStudySessionStats', function() {
+        it(`should throw a ReferenceError if no 'lang' is provided`, function() {
+            assert.throws(() => account.calculateStudySessionStatsForLanguage(), ReferenceError);
+        });
+
+        it(`should throw a TypeError if the 'lang' argument is not a valid lang code`, function() {
+            assert.throws(() => account.calculateStudySessionStatsForLanguage('invalid'), TypeError);
+        });
+
         it(`should return the total study time for this user`, function() {
             const studyTime             = 300;
             const numberOfStudySessions = 5;
 
-            return Video.findOne({attributes: ['id']}).then(function(video) {
+            const languageCode          = 'en';
+
+            return Video.findOne({attributes: ['id'], where: {language_code: languageCode}}).then(function(video) {
                 const studySessionObject = _.constant({
                     video_id: video.id,
                     account_id: account.id,
@@ -70,22 +80,62 @@ describe('Account', function() {
 
                 return StudySession.bulkCreate(_.times(numberOfStudySessions, studySessionObject))
             }).then(function() {
-                return account.calculateStudySessionStats();
+                return account.calculateStudySessionStatsForLanguage(languageCode);
             }).then(function(stats) {
                 assert.equal(stats.total_time_studied, studyTime * numberOfStudySessions);
             });
         });
 
+        it(`should return the total study time for the specified language only`, function() {
+            const englishStudyTime      = 300;
+            const japaneseStudyTime     = 420;
+            const numberOfStudySessions = 5;
+
+            const englishVideoPromise = Video.findOne({
+                attributes: ['id'],
+                where: {language_code: 'en'}
+            });
+
+            const japaneseVideoPromise = Video.findOne({
+                attributes: ['id'],
+                where: {language_code: 'ja'}
+            });
+
+            return Promise.all([englishVideoPromise, japaneseVideoPromise]).spread(function(englishVideo, japaneseVideo) {
+                const englishStudySessionObject = _.constant({
+                    video_id: englishVideo.id,
+                    account_id: account.id,
+                    study_time: englishStudyTime
+                });
+
+                const japaneseStudySessionObject = _.constant({
+                    video_id: japaneseVideo.id,
+                    account_id: account.id,
+                    study_time: japaneseStudyTime
+                });
+
+                const createEnglishStudySessions  = StudySession.bulkCreate(_.times(numberOfStudySessions, englishStudySessionObject));
+                const createJapaneseStudySessions = StudySession.bulkCreate(_.times(numberOfStudySessions, japaneseStudySessionObject));
+
+                return Promise.all([createEnglishStudySessions, createJapaneseStudySessions]);
+            }).then(function() {
+                return account.calculateStudySessionStatsForLanguage('en');
+            }).then(function(stats) {
+                assert.equal(stats.total_time_studied, englishStudyTime * numberOfStudySessions);
+            });
+        });
+
         it(`should return 0 if the user has not studied before`, function() {
-            account.calculateStudySessionStats().then(function(stats) {
+            return account.calculateStudySessionStatsForLanguage('en').then(function(stats) {
                 assert.equal(stats.total_time_studied, 0);
             });
         });
 
         it(`should return the total number of study sessions linked to the user`, function() {
             const numberOfStudySessions = 40;
+            const languageCode          = 'ja';
 
-            return Video.findOne({attributes: ['id']}).then(function(video) {
+            return Video.findOne({attributes: ['id'], where: {language_code: languageCode}}).then(function(video) {
                 const studySessionObject = _.constant({
                     video_id: video.id,
                     account_id: account.id,
@@ -94,14 +144,54 @@ describe('Account', function() {
 
                 return StudySession.bulkCreate(_.times(numberOfStudySessions, studySessionObject))
             }).then(function() {
-                return account.calculateStudySessionStats();
+                return account.calculateStudySessionStatsForLanguage(languageCode);
             }).then(function(stats) {
                 assert.equal(stats.total_study_sessions, numberOfStudySessions);
             });
         });
 
+        it(`should return the total number of study sessions for the specified language only`, function() {
+            const englishStudyTime              = 300;
+            const japaneseStudyTime             = 420;
+            const numberOfEnglishStudySessions  = 5;
+            const numberOfJapaneseStudySessions = 7;
+
+            const englishVideoPromise = Video.findOne({
+                attributes: ['id'],
+                where: {language_code: 'en'}
+            });
+
+            const japaneseVideoPromise = Video.findOne({
+                attributes: ['id'],
+                where: {language_code: 'ja'}
+            });
+
+            return Promise.all([englishVideoPromise, japaneseVideoPromise]).spread(function(englishVideo, japaneseVideo) {
+                const englishStudySessionObject = _.constant({
+                    video_id: englishVideo.id,
+                    account_id: account.id,
+                    study_time: englishStudyTime
+                });
+
+                const japaneseStudySessionObject = _.constant({
+                    video_id: japaneseVideo.id,
+                    account_id: account.id,
+                    study_time: japaneseStudyTime
+                });
+
+                const createEnglishStudySessions  = StudySession.bulkCreate(_.times(numberOfEnglishStudySessions, englishStudySessionObject));
+                const createJapaneseStudySessions = StudySession.bulkCreate(_.times(numberOfJapaneseStudySessions, japaneseStudySessionObject));
+
+                return Promise.all([createEnglishStudySessions, createJapaneseStudySessions]);
+            }).then(function() {
+                return account.calculateStudySessionStatsForLanguage('ja');
+            }).then(function(stats) {
+                assert.equal(stats.total_study_sessions, numberOfJapaneseStudySessions);
+            });
+        });
+
         it(`should return 0 if the user has not studied before`, function() {
-            return account.calculateStudySessionStats().then(function(stats) {
+            return account.calculateStudySessionStatsForLanguage('ja').then(function(stats) {
                 assert.equal(stats.total_study_sessions, 0);
             });
         });
@@ -144,6 +234,8 @@ describe('Account', function() {
             });
         });
 
+        it(`should return the maximum number of words the user has written in a single study session for the specified language`);
+
         it(`should return the WPM of the writing answer with the most words for the user`, function() {
             return Video.findOne({attributes: ['id']}).then(function(video) {
                 const studySessionObject = {
@@ -179,6 +271,8 @@ describe('Account', function() {
                 assert.equal(stats.maximum_wpm, 40);
             });
         });
+
+        it(`should return the WPM of the writing answer in the specified language with the most words for the user`);
 
         it(`should return 0 WPM if the user has not studied before`, function() {
             return account.calculateWritingStats().then(function(stats) {
@@ -225,6 +319,8 @@ describe('Account', function() {
             });
         });
 
+        it(`should return the longest number of consecutive days (4 days) the user has studied for the specified language`);
+
         it(`should return the number of days (3) the user has consecutively studied`, function() {
             return Video.findOne({attributes: ['id']}).then(function(video) {
                 const oneDay             = 1000 * 60 * 60 * 24;
@@ -252,6 +348,8 @@ describe('Account', function() {
                 assert.equal(stats.consecutive_days, 3);
             });
         });
+
+        it(`should return the number of days (3) the user has consecutively studied for the specified language`);
 
         it(`should return 0 as the current streak if the user has not studied before`, function() {
             return account.calculateStudyStreaks().then(function(stats) {
