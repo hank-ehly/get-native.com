@@ -6,12 +6,11 @@
  */
 
 import { URIService } from './uri.service';
-import { STUBLogger } from '../logger/logger.stub';
 import { APIConfig } from './api-config';
 import { APIHandle } from './api-handle';
 
 export function main() {
-    let service = new URIService(STUBLogger);
+    let service = new URIService();
 
     describe('URIService', () => {
         it('should replace the \':id\' in \'/videos/:id\' with the integer \'2\'', () => {
