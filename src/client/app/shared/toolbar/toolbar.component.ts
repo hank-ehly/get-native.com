@@ -57,19 +57,18 @@ export class ToolbarComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
 
-        this.subscriptions.push(this.user.current.map(u => this.lang.languageForCode(u.default_study_language_code)).subscribe(l => {
-            this.logger.debug(this, 'default study language', l);
-            this.selectedLanguageStream$.next(l);
-        }));
+        this.subscriptions.push(
+            this.user.current.map(u => this.lang.languageForCode(u.default_study_language_code)).subscribe(l => {
+                this.logger.debug(this, 'default study language', l);
+                this.selectedLanguageStream$.next(l);
+            }),
+            this.selectedLanguageStream$.subscribe(l => this.user.currentStudyLanguage$.next(l))
+        );
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
         _.forEach(this.subscriptions, s => s.unsubscribe());
-    }
-
-    setSelectedLanguage(language: Language): void {
-        this.user.currentStudyLanguage$.next(language);
     }
 
     onLogout(): void {

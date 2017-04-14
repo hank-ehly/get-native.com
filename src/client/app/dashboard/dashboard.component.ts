@@ -29,7 +29,10 @@ import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/pluck';
 import { UserService } from '../core/user/user.service';
+import { Language } from '../core/typings/language';
+import { LanguageCode } from '../core/typings/language-code';
 
 @Component({
     moduleId: module.id,
@@ -58,8 +61,12 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
     loadMoreAnswers     = new Subject<number>();
     answerFilterStream$ = this.filterAnswers.startWith(30).distinctUntilChanged();
 
-    answerStream$ = this.answerFilterStream$.switchMap((since?: number) => {
+    studyLanguage$ = this.user.currentStudyLanguage$.distinctUntilChanged().pluck('code');
+
+    answerStream$ = this.answerFilterStream$.combineLatest(this.studyLanguage$).switchMap(([since, lang]: [number, LanguageCode]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
+            this.logger.warn(this, since, lang);
+
             let search = new URLSearchParams();
 
             if (since) {
@@ -70,12 +77,14 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
                 search.set('max_id', maxId.toString());
             }
 
-            const options = {
+            let options = {
                 search: search,
                 params: {
-                    lang: 'en'
+                    lang: lang
                 }
             };
+
+            this.logger.warn(this, options);
 
             return this.http.request(APIHandle.WRITING_ANSWERS, options);
         }, (_, answers: WritingAnswers) => answers.records).do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);

@@ -18,11 +18,11 @@ import { Language } from '../typings/language';
 
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subject } from 'rxjs/Subject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class UserService {
-    currentStudyLanguage$ = new Subject<Language>();
+    currentStudyLanguage$ = new ReplaySubject<Language>(1);
 
     private current$ = new BehaviorSubject<User>(
         this.localStorage.getItem(kCurrentUser) || null
