@@ -20,7 +20,6 @@ import { HttpService } from '../core/http/http.service';
 import { STUBHttpService } from '../core/http/http.service.stub';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
-import { ToolbarService } from '../core/toolbar/toolbar.service';
 import { CategoryListService } from '../core/category-list/category-list.service';
 
 export function main() {
@@ -42,7 +41,6 @@ export function main() {
                     NavbarService,
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     UTCDateService,
-                    ToolbarService,
                     CategoryListService
                 ]
             }).compileComponents().then(() => {

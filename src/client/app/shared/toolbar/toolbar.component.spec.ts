@@ -17,7 +17,6 @@ import { LocalStorageService } from '../../core/local-storage/local-storage.serv
 import { STUBLocalStorageService } from '../../core/local-storage/local-storage.service.stub';
 import { STUBUserService } from '../../core/user/user.service.stub';
 import { STUBHttpService } from '../../core/http/http.service.stub';
-import { ToolbarService } from '../../core/toolbar/toolbar.service';
 import { LangService } from '../../core/lang/lang.service';
 import { HttpService } from '../../core/http/http.service';
 import { SpecUtil } from '../../core/spec/spec-util';
@@ -41,8 +40,7 @@ export function main() {
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     {provide: UserService, useClass: STUBUserService},
                     {provide: HttpService, useValue: STUBHttpService},
-                    LangService,
-                    ToolbarService
+                    LangService
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(ToolbarComponent);
@@ -58,7 +56,6 @@ export function main() {
         });
 
         it('should initialize the toolbar after the visibility property becomes \'true\'', () => {
-            comp.isTooltipVisible = true;
             fixture.detectChanges();
 
             de = util.getDebugEl('.toolbar__tooltip-languages');

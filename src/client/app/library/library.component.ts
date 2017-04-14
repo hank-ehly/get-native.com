@@ -12,7 +12,6 @@ import { VideoSearchComponent } from '../shared/video-search/video-search.compon
 import { Logger } from '../core/logger/logger';
 import { HttpService } from '../core/http/http.service';
 import { NavbarService } from '../core/navbar/navbar.service';
-import { ToolbarService } from '../core/toolbar/toolbar.service';
 import { CategoryListService } from '../core/category-list/category-list.service';
 import { APIHandle } from '../core/http/api-handle';
 
@@ -37,9 +36,9 @@ import '../operators';
     ]
 })
 export class LibraryComponent extends VideoSearchComponent implements OnInit {
-    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
+    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService,
                 protected categoryList: CategoryListService) {
-        super(logger, http, navbar, toolbar, categoryList);
+        super(logger, http, navbar, categoryList);
 
         this.apiHandle = APIHandle.VIDEOS;
     }

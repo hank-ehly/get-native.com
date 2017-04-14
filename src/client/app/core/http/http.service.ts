@@ -67,7 +67,8 @@ export class HttpService {
         }
 
         const request = new Request(args);
-        this.logger.debug(this, request);
+
+        this.logger.debug(this, '[REQ]', request.url, request.getBody());
 
         return this.http.request(request).map(this.handleResponse.bind(this)).catch(<any>this.handleError.bind(this));
     }
@@ -77,7 +78,7 @@ export class HttpService {
             this.handleError(response);
         }
 
-        this.logger.debug(this, 'Response', response);
+        this.logger.debug(this, `[RES:${response.status}]`, response.url, response.json());
 
         if (response.headers.has('x-gn-auth-token')) {
             this.localStorage.setItem(kAuthToken, response.headers.get('x-gn-auth-token'));
@@ -95,6 +96,10 @@ export class HttpService {
     }
 
     private handleError(error: any) {
-        throw new Error(error);
+        if (Config.ENV === 'PROD') {
+            this.logger.error(error);
+        } else {
+            throw new Error(error);
+        }
     }
 }

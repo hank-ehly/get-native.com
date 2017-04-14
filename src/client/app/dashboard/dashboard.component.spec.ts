@@ -19,7 +19,6 @@ import { Logger } from '../core/logger/logger';
 import { STUBLogger } from '../core/logger/logger.stub';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
 import { CategoryListService } from '../core/category-list/category-list.service';
-import { ToolbarService } from '../core/toolbar/toolbar.service';
 import { NavbarService } from '../core/navbar/navbar.service';
 
 export function main() {
@@ -40,7 +39,6 @@ export function main() {
                     {provide: HttpService, useValue: STUBHttpService},
                     UTCDateService,
                     CategoryListService,
-                    ToolbarService,
                     NavbarService
                 ]
             }).compileComponents().then(() => {

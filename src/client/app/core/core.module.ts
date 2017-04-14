@@ -19,7 +19,6 @@ import { NavbarService } from './navbar/navbar.service';
 import { ObjectService } from './object/object.service';
 import { PasswordService } from './password/password.service';
 import { StringService } from './string/string.service';
-import { ToolbarService } from './toolbar/toolbar.service';
 import { Logger } from './logger/logger';
 import { LangService } from './lang/lang.service';
 import { UTCDateService } from './utc-date/utc-date.service';
@@ -41,7 +40,6 @@ import { UserService } from './user/user.service';
         ObjectService,
         PasswordService,
         StringService,
-        ToolbarService,
         Logger,
         LangService,
         UTCDateService,

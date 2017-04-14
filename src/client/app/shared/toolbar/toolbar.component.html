@@ -9,7 +9,7 @@
 
     <span class="toolbar__language-label toolbar__language-label_selected" (click)="isVisibleStream$.next(!isVisibleStream$.getValue())"
           (mouseenter)="isVisibleStream$.next(true)">
-        {{ (selectedLanguageStream$ | async).name }}
+        {{ (selectedLanguageStream$ | async)?.name }}
     </span>
 
     <nav class="toolbar__links">

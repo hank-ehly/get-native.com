@@ -14,7 +14,6 @@ import { WritingAnswers } from '../core/entities/writing-answers';
 import { Logger } from '../core/logger/logger';
 import { HttpService } from '../core/http/http.service';
 import { NavbarService } from '../core/navbar/navbar.service';
-import { ToolbarService } from '../core/toolbar/toolbar.service';
 import { CategoryListService } from '../core/category-list/category-list.service';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
 import { APIHandle } from '../core/http/api-handle';
@@ -30,6 +29,7 @@ import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/do';
+import { UserService } from '../core/user/user.service';
 
 @Component({
     moduleId: module.id,
@@ -71,7 +71,10 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
             }
 
             const options = {
-                search: search
+                search: search,
+                params: {
+                    lang: 'en'
+                }
             };
 
             return this.http.request(APIHandle.WRITING_ANSWERS, options);
@@ -85,9 +88,9 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
         {text: 'ALL TIME',     value: null}
     ];
 
-    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
-                protected categoryList: CategoryListService, private dateService: UTCDateService) {
-        super(logger, http, navbar, toolbar, categoryList);
+    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService,
+                protected categoryList: CategoryListService, protected user: UserService, private dateService: UTCDateService) {
+        super(logger, http, navbar, categoryList, user);
     }
 
     ngOnInit(): void {
