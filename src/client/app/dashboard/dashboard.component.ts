@@ -65,8 +65,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     answerStream$ = this.answerFilterStream$.combineLatest(this.studyLanguage$).switchMap(([since, lang]: [number, LanguageCode]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
-            this.logger.warn(this, since, lang);
-
             let search = new URLSearchParams();
 
             if (since) {
@@ -83,8 +81,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
                     lang: lang
                 }
             };
-
-            this.logger.warn(this, options);
 
             return this.http.request(APIHandle.WRITING_ANSWERS, options);
         }, (_, answers: WritingAnswers) => answers.records).do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);
