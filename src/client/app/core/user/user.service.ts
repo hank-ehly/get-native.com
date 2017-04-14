@@ -7,33 +7,42 @@
 
 import { Injectable } from '@angular/core';
 
-import { Language } from '../typings/language';
 import { User } from '../entities/user';
 import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
 import { LangService } from '../lang/lang.service';
+import { LocalStorageService } from '../local-storage/local-storage.service';
+import { Logger } from '../logger/logger';
+import { kCurrentUser } from '../local-storage/local-storage-keys';
+import { Language } from '../typings/language';
+
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class UserService {
-    private _current: User;
+    currentStudyLanguage$ = new Subject<Language>();
 
-    get current(): Promise<User> {
-        return new Promise((resolve, reject) => {
-            if (!this._current) {
-                this.http.request(APIHandle.ACCOUNT).subscribe((user: User) => {
-                    this._current = user;
-                    resolve(user);
-                });
-            } else {
-                resolve(this._current);
-            }
+    private current$ = new BehaviorSubject<User>(
+        this.localStorage.getItem(kCurrentUser) || null
+    );
+
+    get current(): Observable<User> {
+        let currentValue = this.current$.getValue();
+
+        if (currentValue) {
+            return Observable.of(currentValue);
+        }
+
+        return this.http.request(APIHandle.ACCOUNT).do(user => {
+            this.localStorage.setItem(kCurrentUser, user);
+            this.current$.next(user);
         });
     }
 
-    get defaultStudyLanguage(): Promise<Language> {
-        return this.current.then((u) => this.langService.languageForCode(u.default_study_language_code));
-    }
-
-    constructor(private http: HttpService, private langService: LangService) {
+    constructor(private http: HttpService, private langService: LangService, private localStorage: LocalStorageService,
+                private logger: Logger) {
+        this.logger.debug(this, 'constructor');
     }
 }

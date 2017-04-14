@@ -16,7 +16,6 @@ import { Logger } from '../../core/logger/logger';
 import { CategoryListService } from '../../core/category-list/category-list.service';
 import { HttpService } from '../../core/http/http.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
-import { ToolbarService } from '../../core/toolbar/toolbar.service';
 import { Entity } from '../../core/entities/entity';
 import { Subcategory } from '../../core/entities/subcategory';
 import { Category } from '../../core/entities/category';
@@ -27,6 +26,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import '../../operators';
 import * as _ from 'lodash';
+import { UserService } from '../../core/user/user.service';
 
 @Component({
     template: ''
@@ -65,8 +65,8 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.isDropdownVisible = found;
     }
 
-    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected toolbar: ToolbarService,
-                protected categoryList: CategoryListService) {
+    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService,
+                protected categoryList: CategoryListService, protected user: UserService) {
         this.videos = {records: [], count: 0};
     }
 
@@ -90,9 +90,9 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
             this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories),
 
+            this.user.currentStudyLanguage$.subscribe(this.onSelectLanguage.bind(this)),
             this.navbar.searchBarVisibility$.subscribe(this.onToggleSearchBar.bind(this)),
             this.navbar.query$.subscribe(this.onUpdateSearchQuery.bind(this)),
-            this.toolbar.selectLanguage$.subscribe(this.onSelectLanguage.bind(this)),
             this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this)),
             this.categoryList.selectSubcategory$.subscribe(this.onSelectSubcategory.bind(this)),
 

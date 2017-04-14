@@ -58,8 +58,6 @@ export class LocalStorageService {
 
     /* Todo: Encrypt all stored data */
     setItem(key: string, data: any): void {
-        this.logger.debug(this, `setItem '${key}'`);
-
         if (data === null || data === undefined) {
             /* Todo: ErrorService */
             throw new Error('Cannot store a null or undefined value.');
@@ -82,9 +80,7 @@ export class LocalStorageService {
     }
 
     hasItem(key: string): boolean {
-        let retVal = this.getItem(key) !== null;
-        this.logger.debug(this, `hasItem '${key}' ? ${retVal}`);
-        return retVal;
+        return this.getItem(key) !== null;
     }
 
     removeItem(key: string): void {

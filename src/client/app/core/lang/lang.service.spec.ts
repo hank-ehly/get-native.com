@@ -8,6 +8,8 @@
 import { LangService } from './lang.service';
 import { Languages } from './languages';
 
+import * as _ from 'lodash';
+
 export function main() {
     let service: LangService;
 
@@ -29,9 +31,9 @@ export function main() {
         });
 
         it('should return the appropriate Language given a language code', () => {
-            let expected = Languages[0];
+            let expected = _.first(Languages);
 
-            let langCode = Languages[0].code;
+            let langCode = _.first(Languages).code;
             let actual = service.languageForCode(langCode);
 
             expect(actual).toEqual(expected);

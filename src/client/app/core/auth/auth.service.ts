@@ -7,15 +7,18 @@
 
 import { Injectable } from '@angular/core';
 
-import { Logger } from '../logger/logger';
 import { LocalStorageService } from '../local-storage/local-storage.service';
-import { ToolbarService } from '../toolbar/toolbar.service';
 import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-keys';
+import { Logger } from '../logger/logger';
+
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AuthService {
-    constructor(private logger: Logger, private localStorage: LocalStorageService, private toolbar: ToolbarService) {
-        this.toolbar.logout$.subscribe(this.onToolbarLogout.bind(this));
+    logout$ = new Subject<any>();
+
+    constructor(private localStorage: LocalStorageService, private logger: Logger) {
+        this.logout$.subscribe(this.onLogout.bind(this));
     }
 
     isLoggedIn(): boolean {
@@ -31,9 +34,9 @@ export class AuthService {
         return false;
     }
 
-    onToolbarLogout(): void {
-        this.logger.debug(this, 'onToolbarLogout()');
-        this.localStorage.removeItem(kAuthTokenExpire);
+    private onLogout(): void {
+        this.logger.debug(this, 'onLogout');
         this.localStorage.removeItem(kAuthToken);
+        this.localStorage.removeItem(kAuthTokenExpire);
     }
 }
