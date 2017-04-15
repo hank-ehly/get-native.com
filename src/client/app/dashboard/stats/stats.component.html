@@ -1,0 +1,17 @@
+<!-- Todo: Handle pluralization via a pipe or something -->
+<ul class="stats">
+    <li class="stat">
+        <h3 class="stat-value stat-value--consecutive-days">{{ stats?.consecutive_days }} {{ stats?.consecutive_days === 1 ? 'day' : 'days' }}</h3>
+        <span class="stat-key">CURRENT STREAK</span>
+    </li>
+
+    <li class="stat">
+        <h3 class="stat-value stat-value--total-study-sessions">{{ stats?.total_study_sessions }}</h3>
+        <span class="stat-key">TOTAL COMPLETIONS</span>
+    </li>
+
+    <li class="stat">
+        <h3 class="stat-value stat-value--longest-consecutive-days">{{ stats?.longest_consecutive_days }} {{ stats?.longest_consecutive_days === 1 ? 'day' : 'days' }}</h3>
+        <span class="stat-key">LONGEST STREAK</span>
+    </li>
+</ul>

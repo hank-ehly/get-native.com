@@ -55,17 +55,17 @@ export function main() {
         });
 
         it('should display the user\'s current streak', () => {
-            el = util.getNativeEl('.goal-value--consecutive-days');
+            el = util.getNativeEl('.stat-value--consecutive-days');
             expect(el.textContent.length).toBeGreaterThan(0);
         });
 
         it('should display the user\'s total completions', () => {
-            el = util.getNativeEl('.goal-value--total-study-sessions');
+            el = util.getNativeEl('.stat-value--total-study-sessions');
             expect(el.textContent.length).toBeGreaterThan(0);
         });
 
         it('should display the user\'s longest streak', () => {
-            el = util.getNativeEl('.goal-value--longest-consecutive-days');
+            el = util.getNativeEl('.stat-value--longest-consecutive-days');
             expect(el.textContent.length).toBeGreaterThan(0);
         });
     });

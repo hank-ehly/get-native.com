@@ -18,6 +18,8 @@ import { CategoryListService } from '../core/category-list/category-list.service
 import { UTCDateService } from '../core/utc-date/utc-date.service';
 import { APIHandle } from '../core/http/api-handle';
 import { WritingAnswer } from '../core/entities/writing-answer';
+import { UserService } from '../core/user/user.service';
+import { LanguageCode } from '../core/typings/language-code';
 
 import * as _ from 'lodash';
 import { Subject } from 'rxjs/Subject';
@@ -30,9 +32,6 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/pluck';
-import { UserService } from '../core/user/user.service';
-import { Language } from '../core/typings/language';
-import { LanguageCode } from '../core/typings/language-code';
 
 @Component({
     moduleId: module.id,
@@ -53,8 +52,6 @@ import { LanguageCode } from '../core/typings/language-code';
     ]
 })
 export class DashboardComponent extends VideoSearchComponent implements OnInit, OnDestroy {
-    stats: any;
-
     maxAnswerId: number = null;
 
     filterAnswers       = new Subject<number>();
@@ -63,7 +60,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     studyLanguage$ = this.user.currentStudyLanguage$.distinctUntilChanged().pluck('code');
 
-    answerStream$ = this.answerFilterStream$.combineLatest(this.studyLanguage$).switchMap(([since, lang]: [number, LanguageCode]) => {
+    answers$ = this.studyLanguage$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
             let search = new URLSearchParams();
 
@@ -86,6 +83,14 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
         }, (_, answers: WritingAnswers) => answers.records).do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);
     });
 
+    stats$ = this.studyLanguage$.concatMap((lang: LanguageCode) => {
+        return this.http.request(APIHandle.STUDY_STATS, {
+            params: {
+                lang: lang
+            }
+        });
+    });
+
     answerFilters = [
         {text: 'LAST 30 DAYS', value: 30},
         {text: 'LAST 60 DAYS', value: 60},
@@ -102,8 +107,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
         super.ngOnInit();
         this.logger.debug(this, 'ngOnInit()');
 
-        this.subscriptions.push(this.subscribeToStudyStats());
-
         this.videoSearchParams.set('cued_only', 'true');
 
         // todo: get current language dynamically
@@ -115,19 +118,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     ngOnDestroy(): void {
         _.forEach(this.subscriptions, s => s.unsubscribe());
-    }
-
-    // todo: get current lang
-    private subscribeToStudyStats(): Subscription {
-        const options = {
-            params: {
-                lang: 'en'
-            }
-        };
-
-        return this.http.request(APIHandle.STUDY_STATS, options).subscribe((s: any) => {
-            this.stats = s;
-        });
     }
 
     private updateMaxAnswerId(records?: WritingAnswer[]): void {
