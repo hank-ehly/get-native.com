@@ -23,7 +23,7 @@ module.exports.stats = (req, res, next) => {
     Account.findById(accountId).then(a => {
         return Promise.all([
             a.calculateStudySessionStatsForLanguage(req.params.lang),
-            a.calculateWritingStats(),
+            a.calculateWritingStatsForLanguage(req.params.lang),
             a.calculateStudyStreaks()
         ]);
     }).spread((studySessionStats, writingStats, studyStreakStats) => {

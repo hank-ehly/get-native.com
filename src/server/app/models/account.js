@@ -81,7 +81,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Account.prototype.calculateStudySessionStatsForLanguage = function(lang) {
         if (!lang) {
-            throw new ReferenceError(`No 'lang' provided`);
+            throw new ReferenceError(`Required 'lang' argument is missing`);
         }
 
         // todo: make globally available list of valid lang codes
@@ -105,20 +105,30 @@ module.exports = function(sequelize, DataTypes) {
         });
     };
 
-    Account.prototype.calculateWritingStats = function() {
+    Account.prototype.calculateWritingStatsForLanguage = function(lang) {
+        if (!lang) {
+            throw new ReferenceError(`Required 'lang' argument is missing`);
+        }
+
+        // todo: make globally available list of valid lang codes
+        if (!_.includes(['en', 'ja'], lang)) {
+            throw new TypeError(`Invalid lang '${lang}'`);
+        }
+
         const query = `
             SELECT
                 COALESCE(MAX(word_count), 0)       AS maximum_words,
                 COALESCE(MAX(words_per_minute), 0) AS maximum_wpm
             FROM writing_answers
             WHERE study_session_id IN (
-                SELECT id
+                SELECT study_sessions.id
                 FROM study_sessions
-                WHERE account_id = ?
+                    LEFT JOIN videos ON study_sessions.video_id = videos.id
+                WHERE account_id = ? AND videos.language_code = ?
             );
         `;
 
-        return this.sequelize.query(query, {replacements: [this.id]}).spread(_.first);
+        return this.sequelize.query(query, {replacements: [this.id, lang]}).spread(_.first);
     };
 
     Account.prototype.calculateStudyStreaks = function() {
