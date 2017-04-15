@@ -131,7 +131,16 @@ module.exports = function(sequelize, DataTypes) {
         return this.sequelize.query(query, {replacements: [this.id, lang]}).spread(_.first);
     };
 
-    Account.prototype.calculateStudyStreaks = function() {
+    Account.prototype.calculateStudyStreaksForLanguage = function(lang) {
+        if (!lang) {
+            throw new ReferenceError(`Required 'lang' argument is missing`);
+        }
+
+        // todo: make globally available list of valid lang codes
+        if (!_.includes(['en', 'ja'], lang)) {
+            throw new TypeError(`Invalid lang '${lang}'`);
+        }
+
         const query = `
             SELECT
                 MAX(DateCol) AS StreakEndDate,
@@ -141,9 +150,10 @@ module.exports = function(sequelize, DataTypes) {
                     DateCol,
                     (@rn := @rn + 1) RowNumber
                 FROM (
-                    SELECT DISTINCT DATE(created_at) AS DateCol
+                    SELECT DISTINCT DATE(study_sessions.created_at) AS DateCol
                     FROM study_sessions
-                    WHERE account_id = ?
+                        LEFT JOIN videos ON study_sessions.video_id = videos.id
+                    WHERE account_id = ? AND videos.language_code = ?
                     ORDER BY DateCol DESC
                 ) t, (
                     SELECT @rn := 0
@@ -153,7 +163,7 @@ module.exports = function(sequelize, DataTypes) {
             ORDER BY StreakEndDate DESC;
         `;
 
-        return this.sequelize.query(query, {replacements: [this.id]}).spread(rows => {
+        return this.sequelize.query(query, {replacements: [this.id, lang]}).spread(rows => {
             const result = {
                 consecutive_days: 0,
                 longest_consecutive_days: 0
