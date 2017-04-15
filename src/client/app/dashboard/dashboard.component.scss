@@ -66,26 +66,6 @@ hr {
   justify-content: center;
 }
 
-.goals {
-  display: flex;
-  margin-top: 40px;
-}
-
-.goal {
-  flex-grow: 1;
-}
-
-.goal-value {
-  color: $shamrock;
-  font-size: 30px;
-}
-
-.goal-key {
-  @include font-weight-bold;
-  font-size: $font-size-x-small;
-  letter-spacing: $uppercase-label-letter-spacing;
-}
-
 .answers {
   margin-top: 40px;
   width: 100%;

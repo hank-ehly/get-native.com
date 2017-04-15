@@ -25,24 +25,7 @@
             <h1 class="section-header__title">Goals</h1>
         </header>
 
-        <ul class="goals">
-            <li class="goal">
-                <!-- Todo: Handle pluralization via a pipe or something -->
-                <h3 class="goal-value goal-value--consecutive-days">{{ stats?.consecutive_days }} {{ stats?.consecutive_days === 1 ? 'day' : 'days' }}</h3>
-                <span class="goal-key">CURRENT STREAK</span>
-            </li>
-
-            <li class="goal">
-                <h3 class="goal-value goal-value--total-study-sessions">{{ stats?.total_study_sessions }}</h3>
-                <span class="goal-key">TOTAL COMPLETIONS</span>
-            </li>
-
-            <li class="goal">
-                <!-- Todo: Handle pluralization via a pipe or something -->
-                <h3 class="goal-value goal-value--longest-consecutive-days">{{ stats?.longest_consecutive_days }} {{ stats?.longest_consecutive_days === 1 ? 'day' : 'days' }}</h3>
-                <span class="goal-key">LONGEST STREAK</span>
-            </li>
-        </ul>
+        <gn-stats [stats]="stats$ | async"></gn-stats>
     </section>
 
     <hr>
@@ -59,7 +42,7 @@
         </header>
 
         <ul class="answers">
-            <li *ngFor="let record of answerStream$ | async; let even = even" [ngClass]='{"answers__answer_striped": even}'
+            <li *ngFor="let record of answers$ | async; let even = even" [ngClass]='{"answers__answer_striped": even}'
                 class="answers__answer">
                 <div class="answers__answer-body">
                     <h6 class="answers__answer-title">{{ record?.writing_question?.text }}</h6>

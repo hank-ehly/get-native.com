@@ -1,0 +1,22 @@
+@import '../../../scss/core';
+@import './stats.component.debug';
+
+.stats {
+  display: flex;
+  margin-top: 40px;
+}
+
+.stat {
+  flex-grow: 1;
+}
+
+.stat-value {
+  color: $shamrock;
+  font-size: 30px;
+}
+
+.stat-key {
+  @include font-weight-bold;
+  font-size: $font-size-x-small;
+  letter-spacing: $uppercase-label-letter-spacing;
+}
