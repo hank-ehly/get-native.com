@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/28.
  */
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { URLSearchParams } from '@angular/http';
 
@@ -51,7 +51,7 @@ import 'rxjs/add/operator/pluck';
         ])
     ]
 })
-export class DashboardComponent extends VideoSearchComponent implements OnInit, OnDestroy {
+export class DashboardComponent extends VideoSearchComponent implements OnInit {
     maxAnswerId: number = null;
 
     filterAnswers       = new Subject<number>();
@@ -114,10 +114,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
         // todo: redundant. make something like a 'trigger request' function or something..
         this.lang$.next('en');
-    }
-
-    ngOnDestroy(): void {
-        _.forEach(this.subscriptions, s => s.unsubscribe());
     }
 
     private updateMaxAnswerId(records?: WritingAnswer[]): void {
