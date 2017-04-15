@@ -65,28 +65,7 @@ describe('Account', function() {
             assert.throws(() => account.calculateStudySessionStatsForLanguage('invalid'), TypeError);
         });
 
-        it(`should return the total study time for this user`, function() {
-            const studyTime             = 300;
-            const numberOfStudySessions = 5;
-
-            const languageCode          = 'en';
-
-            return Video.findOne({attributes: ['id'], where: {language_code: languageCode}}).then(function(video) {
-                const studySessionObject = _.constant({
-                    video_id: video.id,
-                    account_id: account.id,
-                    study_time: studyTime
-                });
-
-                return StudySession.bulkCreate(_.times(numberOfStudySessions, studySessionObject))
-            }).then(function() {
-                return account.calculateStudySessionStatsForLanguage(languageCode);
-            }).then(function(stats) {
-                assert.equal(stats.total_time_studied, studyTime * numberOfStudySessions);
-            });
-        });
-
-        it(`should return the total study time for the specified language only`, function() {
+        it(`should return the total study time for the specified language`, function() {
             const englishStudyTime      = 300;
             const japaneseStudyTime     = 420;
             const numberOfStudySessions = 5;
@@ -128,25 +107,6 @@ describe('Account', function() {
         it(`should return 0 if the user has not studied before`, function() {
             return account.calculateStudySessionStatsForLanguage('en').then(function(stats) {
                 assert.equal(stats.total_time_studied, 0);
-            });
-        });
-
-        it(`should return the total number of study sessions linked to the user`, function() {
-            const numberOfStudySessions = 40;
-            const languageCode          = 'ja';
-
-            return Video.findOne({attributes: ['id'], where: {language_code: languageCode}}).then(function(video) {
-                const studySessionObject = _.constant({
-                    video_id: video.id,
-                    account_id: account.id,
-                    study_time: 300
-                });
-
-                return StudySession.bulkCreate(_.times(numberOfStudySessions, studySessionObject))
-            }).then(function() {
-                return account.calculateStudySessionStatsForLanguage(languageCode);
-            }).then(function(stats) {
-                assert.equal(stats.total_study_sessions, numberOfStudySessions);
             });
         });
 
@@ -206,43 +166,6 @@ describe('Account', function() {
             assert.throws(() => account.calculateWritingStatsForLanguage('invalid'), TypeError);
         });
 
-        it(`should return the maximum number of words the user has written in a single study session`, function() {
-            return Video.findOne({attributes: ['id']}).then(function(video) {
-                const studySessionObject = {
-                    video_id: video.id,
-                    account_id: account.id,
-                    study_time: 300
-                };
-
-                return Promise.all([StudySession.create(studySessionObject), WritingQuestion.findOne()]);
-            }).spread(function(studySession, writingQuestion) {
-                const one_hundred_words = _.times(100, _.constant('word ')).join('');
-                const two_hundred_words = _.times(200, _.constant('word ')).join('');
-
-                // todo: you can't have 2 writing answers pointing to the same study session!
-                return WritingAnswer.bulkCreate([
-                    {
-                        answer: one_hundred_words,
-                        words_per_minute: 20,
-                        word_count: 100,
-                        study_session_id: studySession.get('id'),
-                        writing_question_id: writingQuestion.get('id')
-                    },
-                    {
-                        answer: two_hundred_words,
-                        words_per_minute: 40,
-                        word_count: 200,
-                        study_session_id: studySession.get('id'),
-                        writing_question_id: writingQuestion.get('id')
-                    }
-                ]);
-            }).then(function() {
-                return account.calculateWritingStatsForLanguage('en');
-            }).then(function(stats) {
-                assert.equal(stats.maximum_words, 200);
-            });
-        });
-
         it(`should return the maximum number of words the user has written in a single study session for the specified language`, function() {
             const studyTime             = 300;
             const numberOfStudySessions = 2;
@@ -264,38 +187,41 @@ describe('Account', function() {
 
                 return Promise.all([createEnglishStudySessions, createJapaneseStudySessions, WritingQuestion.findOne()]);
             }).spread(function(englishStudySessions, japaneseStudySessions, writingQuestion) {
-                const englishWritingAnswerObject_1 = {
-                    answer: _.times(100, _.constant('word ')).join(''),
+                const writingQuestionId = writingQuestion.get('id');
+                const word = _.constant('word ');
+
+                const englishAnswer_1 = {
+                    answer: _.times(100, word).join(''),
                     study_session_id: _.first(englishStudySessions).get('id'),
                     words_per_minute: 20,
                     word_count: 100,
-                    writing_question_id: writingQuestion.get('id')
+                    writing_question_id: writingQuestionId
                 };
 
-                const englishWritingAnswerObject_2 = _.assign(_.clone(englishWritingAnswerObject_1), {
-                    answer: _.times(200, _.constant('word ')).join(''),
+                const englishAnswer_2 = _.assign(_.clone(englishAnswer_1), {
+                    answer: _.times(200, word).join(''),
                     study_session_id: _.nth(englishStudySessions, 1).get('id'),
                     words_per_minute: 40,
                     word_count: 200
                 });
 
-                const japaneseWritingAnswerObject_1 = {
-                    answer: _.times(300, _.constant('word ')).join(''),
+                const japaneseAnswer_1 = {
+                    answer: _.times(300, word).join(''),
                     study_session_id: _.first(japaneseStudySessions).get('id'),
                     words_per_minute: 60,
                     word_count: 300,
-                    writing_question_id: writingQuestion.get('id')
+                    writing_question_id: writingQuestionId
                 };
 
-                const japaneseWritingAnswerObject_2 = _.assign(_.clone(japaneseWritingAnswerObject_1), {
-                    answer: _.times(400, _.constant('word ')).join(''),
+                const japaneseAnswer_2 = _.assign(_.clone(japaneseAnswer_1), {
+                    answer: _.times(400, word).join(''),
                     study_session_id: _.nth(japaneseStudySessions, 1).get('id'),
                     words_per_minute: 80,
                     word_count: 400
                 });
 
                 return WritingAnswer.bulkCreate([
-                    englishWritingAnswerObject_1, englishWritingAnswerObject_2, japaneseWritingAnswerObject_1, japaneseWritingAnswerObject_2
+                    englishAnswer_1, englishAnswer_2, japaneseAnswer_1, japaneseAnswer_2
                 ]);
             }).then(function() {
                 return account.calculateWritingStatsForLanguage('en');
@@ -304,96 +230,65 @@ describe('Account', function() {
             });
         });
 
-        it(`should return the WPM of the writing answer with the most words for the user`, function() {
-            return Video.findOne({attributes: ['id']}).then(function(video) {
-                const studySessionObject = {
-                    video_id: video.id,
-                    account_id: account.id,
-                    study_time: 300
-                };
-
-                return Promise.all([StudySession.create(studySessionObject), WritingQuestion.findOne()]);
-            }).spread(function(studySession, writingQuestion) {
-                const one_hundred_words = _.times(100, _.constant('word ')).join('');
-                const two_hundred_words = _.times(200, _.constant('word ')).join('');
-
-                return db.WritingAnswer.bulkCreate([
-                    {
-                        answer: one_hundred_words,
-                        words_per_minute: 20,
-                        word_count: 100,
-                        study_session_id: studySession.get('id'),
-                        writing_question_id: writingQuestion.get('id')
-                    },
-                    {
-                        answer: two_hundred_words,
-                        words_per_minute: 40,
-                        word_count: 200,
-                        study_session_id: studySession.get('id'),
-                        writing_question_id: writingQuestion.get('id')
-                    }
-                ]);
-            }).then(function() {
-                return account.calculateWritingStatsForLanguage('en');
-            }).then(function(stats) {
-                assert.equal(stats.maximum_wpm, 40);
-            });
-        });
-
         it(`should return the WPM of the writing answer in the specified language with the most words for the user`, function() {
-            const studyTime             = 300;
-            const numberOfStudySessions = 2;
+            const englishVideoPromise = Video.findOne({
+                attributes: ['id'],
+                where: {language_code: 'en'}
+            });
 
-            const englishVideoPromise  = Video.findOne({attributes: ['id'], where: {language_code: 'en'}});
-            const japaneseVideoPromise = Video.findOne({attributes: ['id'], where: {language_code: 'ja'}});
+            const japaneseVideoPromise = Video.findOne({
+                attributes: ['id'],
+                where: {language_code: 'ja'}
+            });
 
             return Promise.all([englishVideoPromise, japaneseVideoPromise]).spread(function(englishVideo, japaneseVideo) {
                 const studySessionObject = {
                     account_id: account.id,
-                    study_time: studyTime
+                    study_time: 300
                 };
 
                 const englishStudySessionObject  = _.constant(_.assign(_.clone(studySessionObject), {video_id: englishVideo.id}));
                 const japaneseStudySessionObject = _.constant(_.assign(_.clone(studySessionObject), {video_id: japaneseVideo.id}));
 
-                const createEnglishStudySessions  = StudySession.bulkCreate(_.times(numberOfStudySessions, englishStudySessionObject));
-                const createJapaneseStudySessions = StudySession.bulkCreate(_.times(numberOfStudySessions, japaneseStudySessionObject));
+                const createEnglishStudySessions  = StudySession.bulkCreate(_.times(2, englishStudySessionObject));
+                const createJapaneseStudySessions = StudySession.bulkCreate(_.times(2, japaneseStudySessionObject));
 
                 return Promise.all([createEnglishStudySessions, createJapaneseStudySessions, WritingQuestion.findOne()]);
             }).spread(function(englishStudySessions, japaneseStudySessions, writingQuestion) {
-                const englishWritingAnswerObject_1 = {
-                    answer: _.times(100, _.constant('word ')).join(''),
+                const writingQuestionId = writingQuestion.get('id');
+                const word = _.constant('word ');
+
+                const englishAnswer_1 = {
+                    answer: _.times(100, word).join(''),
                     study_session_id: _.first(englishStudySessions).get('id'),
                     words_per_minute: 20,
                     word_count: 100,
-                    writing_question_id: writingQuestion.get('id')
+                    writing_question_id: writingQuestionId
                 };
 
-                const englishWritingAnswerObject_2 = _.assign(_.clone(englishWritingAnswerObject_1), {
-                    answer: _.times(200, _.constant('word ')).join(''),
+                const englishAnswer_2 = _.assign(_.clone(englishAnswer_1), {
+                    answer: _.times(200, word).join(''),
                     study_session_id: _.nth(englishStudySessions, 1).get('id'),
                     words_per_minute: 40,
                     word_count: 200
                 });
 
-                const japaneseWritingAnswerObject_1 = {
-                    answer: _.times(300, _.constant('word ')).join(''),
+                const japaneseAnswer_1 = {
+                    answer: _.times(300, word).join(''),
                     study_session_id: _.first(japaneseStudySessions).get('id'),
                     words_per_minute: 60,
                     word_count: 300,
-                    writing_question_id: writingQuestion.get('id')
+                    writing_question_id: writingQuestionId
                 };
 
-                const japaneseWritingAnswerObject_2 = _.assign(_.clone(japaneseWritingAnswerObject_1), {
-                    answer: _.times(400, _.constant('word ')).join(''),
+                const japaneseAnswer_2 = _.assign(_.clone(japaneseAnswer_1), {
+                    answer: _.times(400, word).join(''),
                     study_session_id: _.nth(japaneseStudySessions, 1).get('id'),
                     words_per_minute: 80,
                     word_count: 400
                 });
 
-                return WritingAnswer.bulkCreate([
-                    englishWritingAnswerObject_1, englishWritingAnswerObject_2, japaneseWritingAnswerObject_1, japaneseWritingAnswerObject_2
-                ]);
+                return WritingAnswer.bulkCreate([englishAnswer_1, englishAnswer_2, japaneseAnswer_1, japaneseAnswer_2]);
             }).then(function() {
                 return account.calculateWritingStatsForLanguage('en');
             }).then(function(stats) {
