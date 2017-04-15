@@ -1,5 +1,9 @@
 @import '../../../scss/core';
 
+:host {
+  width: 100%;
+}
+
 .video-panels {
   display: flex;
   flex-wrap: wrap;
