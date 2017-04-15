@@ -24,7 +24,7 @@ module.exports.stats = (req, res, next) => {
         return Promise.all([
             a.calculateStudySessionStatsForLanguage(req.params.lang),
             a.calculateWritingStatsForLanguage(req.params.lang),
-            a.calculateStudyStreaks()
+            a.calculateStudyStreaksForLanguage(req.params.lang)
         ]);
     }).spread((studySessionStats, writingStats, studyStreakStats) => {
         res.status(200).send({

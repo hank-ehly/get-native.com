@@ -310,9 +310,20 @@ describe('Account', function() {
     });
 
     describe('calculateStudyStreaks', function() {
-        it(`should return the longest number of consecutive days (4 days) the user has studied`, function() {
-            return Video.findOne({attributes: ['id']}).then(function(video) {
-                const studyDates = [
+        it(`should throw a ReferenceError if no 'lang' is provided`, function() {
+            assert.throws(() => account.calculateStudyStreaksForLanguage(), ReferenceError);
+        });
+
+        it(`should throw a TypeError if the 'lang' argument is not a valid lang code`, function() {
+            assert.throws(() => account.calculateStudyStreaksForLanguage('invalid'), TypeError);
+        });
+
+        it(`should return the longest number of consecutive days the user has studied for the specified language`, function() {
+            const japaneseVideoPromise = Video.findOne({attributes: ['id'], where: {language_code: 'ja'}});
+            const englishVideoPromise  = Video.findOne({attributes: ['id'], where: {language_code: 'en'}});
+
+            return Promise.all([japaneseVideoPromise, englishVideoPromise]).spread(function(japaneseVideo, englishVideo) {
+                const englishStudyDates = [
                     '2017-03-13 00:00:00',
                     '2017-03-10 00:00:00',
                     '2017-03-09 00:00:00',
@@ -323,64 +334,101 @@ describe('Account', function() {
                     '2017-03-01 00:00:00'
                 ];
 
-                const studySessionObjects = _.times(studyDates.length, function(i) {
+                const japaneseStudyDates = [
+                    '2017-03-08 00:00:00',
+                    '2017-03-07 00:00:00',
+                    '2017-03-06 00:00:00',
+                    '2017-03-05 00:00:00',
+                    '2017-03-04 00:00:00',
+                    '2017-03-03 00:00:00',
+                    '2017-03-02 00:00:00',
+                    '2017-03-01 00:00:00'
+                ];
+
+                const englishStudySessions = _.times(englishStudyDates.length, function(i) {
                     return {
-                        video_id: video.id,
+                        video_id: englishVideo.id,
                         account_id: account.id,
                         study_time: 300,
-                        created_at: studyDates[i],
-                        updated_at: studyDates[i]
+                        created_at: englishStudyDates[i],
+                        updated_at: englishStudyDates[i]
                     }
                 });
 
-                return StudySession.bulkCreate(studySessionObjects);
+                const japaneseStudySessions = _.times(japaneseStudyDates.length, function(i) {
+                    return {
+                        video_id: japaneseVideo.id,
+                        account_id: account.id,
+                        study_time: 300,
+                        created_at: japaneseStudyDates[i],
+                        updated_at: japaneseStudyDates[i]
+                    }
+                });
+
+                return StudySession.bulkCreate(_.concat(englishStudySessions, japaneseStudySessions));
             }).then(function() {
-                return account.calculateStudyStreaks();
-            }).then(function(stats) {
-                assert.equal(stats.longest_consecutive_days, 4);
+                return Promise.all([account.calculateStudyStreaksForLanguage('en'), account.calculateStudyStreaksForLanguage('ja')]);
+            }).spread(function(englishStats, japaneseStats) {
+                assert.equal(englishStats.longest_consecutive_days, 4, '(English)');
+                assert.equal(japaneseStats.longest_consecutive_days, 8, '(Japanese)');
             });
         });
 
-        it(`should return the longest number of consecutive days (4 days) the user has studied for the specified language`);
+        it(`should return the number of days the user has consecutively studied for the specified language`, function() {
+            const japaneseVideoPromise = Video.findOne({attributes: ['id'], where: {language_code: 'ja'}});
+            const englishVideoPromise  = Video.findOne({attributes: ['id'], where: {language_code: 'en'}});
 
-        it(`should return the number of days (3) the user has consecutively studied`, function() {
-            return Video.findOne({attributes: ['id']}).then(function(video) {
+            return Promise.all([japaneseVideoPromise, englishVideoPromise]).spread(function(japaneseVideo, englishVideo) {
                 const oneDay             = 1000 * 60 * 60 * 24;
                 const now                = new Date();
                 const yesterday          = new Date(now - oneDay);
                 const dayBeforeYesterday = new Date(now - (oneDay * 2));
-                const studyDates         = [
+
+                const englishStudyDates = [
                     now, yesterday, dayBeforeYesterday, '2017-03-05 00:00:00', '2017-03-02 00:00:00', '2017-03-01 00:00:00'
                 ];
 
-                const studySessionObjects = _.times(studyDates.length, function(i) {
+                const japaneseStudyDates = [
+                    now, '2017-03-05 00:00:00', '2017-03-02 00:00:00', '2017-03-01 00:00:00'
+                ];
+
+                const englishStudySessions = _.times(englishStudyDates.length, function(i) {
                     return {
-                        video_id: video.id,
+                        video_id: englishVideo.id,
                         account_id: account.id,
                         study_time: 300,
-                        created_at: studyDates[i],
-                        updated_at: studyDates[i]
+                        created_at: englishStudyDates[i],
+                        updated_at: englishStudyDates[i]
                     }
                 });
 
-                return StudySession.bulkCreate(studySessionObjects);
+                const japaneseStudySessions = _.times(japaneseStudyDates.length, function(i) {
+                    return {
+                        video_id: japaneseVideo.id,
+                        account_id: account.id,
+                        study_time: 300,
+                        created_at: japaneseStudyDates[i],
+                        updated_at: japaneseStudyDates[i]
+                    }
+                });
+
+                return StudySession.bulkCreate(_.concat(englishStudySessions, japaneseStudySessions));
             }).then(function() {
-                return account.calculateStudyStreaks();
-            }).then(function(stats) {
-                assert.equal(stats.consecutive_days, 3);
+                return Promise.all([account.calculateStudyStreaksForLanguage('en'), account.calculateStudyStreaksForLanguage('ja')]);
+            }).spread(function(englishStats, japaneseStats) {
+                assert.equal(englishStats.consecutive_days, 3, '(English)');
+                assert.equal(japaneseStats.consecutive_days, 1, '(Japanese)');
             });
         });
 
-        it(`should return the number of days (3) the user has consecutively studied for the specified language`);
-
         it(`should return 0 as the current streak if the user has not studied before`, function() {
-            return account.calculateStudyStreaks().then(function(stats) {
+            return account.calculateStudyStreaksForLanguage('en').then(function(stats) {
                 assert.equal(stats.consecutive_days, 0);
             });
         });
 
         it(`should return 0 as the longest streak if the user has not studied before`, function() {
-            return account.calculateStudyStreaks().then(function(stats) {
+            return account.calculateStudyStreaksForLanguage('en').then(function(stats) {
                 assert.equal(stats.longest_consecutive_days, 0);
             });
         });
