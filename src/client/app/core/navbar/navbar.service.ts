@@ -19,15 +19,7 @@ export class NavbarService {
 
     search: any = {
         query: (value: string) => {
-            value = _.trim(value);
-
-            if (value.length) {
-                this.query$.next(value);
-            }
-        },
-
-        visibility: (value: boolean) => {
-
+            this.query$.next(_.trim(value));
         }
     };
 }
