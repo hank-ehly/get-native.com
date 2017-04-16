@@ -18,11 +18,9 @@ export class NavbarService {
 
     searchBarVisibility$ = new Subject<boolean>();
 
-    search: any = {
-        query: (value: string) => {
-            this.query$.next(_.trim(value));
-        }
-    };
+    updateQuery(value: string): void {
+        this.query$.next(_.trim(value));
+    }
 
     constructor() {
         this.searchBarVisibility$.mapTo('').subscribe(this.query$);
