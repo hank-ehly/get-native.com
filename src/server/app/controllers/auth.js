@@ -5,15 +5,16 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const GetNativeError = require('../helpers').GetNativeError;
+const helpers        = require('../helpers');
+const GetNativeError = helpers.GetNativeError;
+const AuthHelper     = helpers.Auth;
+const Email          = helpers.Email;
 const config         = require('../../config');
 const jwt            = require('jsonwebtoken');
 const logger         = require('../../config/logger');
 const Account        = require('../models').Account;
-const AuthHelper     = require('../helpers').Auth;
 const nodemailer     = require('nodemailer');
 const Promise        = require('bluebird');
-const mailer         = require('../../config/initializers/mailer');
 const fs             = Promise.promisifyAll(require('fs'));
 const k              = require('../../config/keys.json');
 const _              = require('lodash');
@@ -51,37 +52,6 @@ module.exports.login = (req, res, next) => {
     })).catch(e => next(e));
 };
 
-function generateWelcomeEmailForRequest(req, callback) {
-    const locale           = 'en'; // req.headers['accept-language']
-    const localeModule     = require(__dirname + '/../../config/locales/' + locale + '.json');
-    const templatesDir     = __dirname + '/../templates/';
-    const textTemplatePath = templatesDir + 'welcome.txt';
-    const htmlTemplatePath = templatesDir + 'welcome.html';
-
-    return Promise.all([fs.readFileAsync(textTemplatePath), fs.readFileAsync(htmlTemplatePath)]).spread((textTemplate, htmlTemplate) => {
-        const templates = _.mapValues({textTemplate: textTemplate, htmlTemplate: htmlTemplate}, (value) => {
-            return _.template(value.toString())({
-                lang: locale,
-                title: localeModule.templates.welcome.title,
-                instructions: localeModule.templates.welcome.instructions,
-                confirmationLinkLabel: localeModule.templates.welcome.confirmationLinkLabel,
-                confirmationLinkUrl: 'https://hankehly.com', // todo: timed expiry link? resend link?
-                footer: localeModule.templates.welcome.footer
-            });
-        });
-
-        callback({
-            from: config.get(k.NoReply),
-            to: req.body[k.Attr.Email],
-            subject: localeModule.templates.welcome.title,
-            text: templates.textTemplate,
-            html: templates.htmlTemplate
-        });
-    }).catch((e) => {
-        throw e; // todo
-    });
-}
-
 module.exports.register = (req, res, next) => {
     let account = null;
 
@@ -91,12 +61,7 @@ module.exports.register = (req, res, next) => {
             throw new GetNativeError(k.Error.AccountAlreadyExists);
         }
 
-        const hashedPassword = AuthHelper.hashPassword(req.body[k.Attr.Password]);
-
-        return Account.create({
-            email: req.body[k.Attr.Email],
-            password: hashedPassword
-        });
+        return Account.create({email: req.body[k.Attr.Email], password: AuthHelper.hashPassword(req.body[k.Attr.Password])});
     }).then(_account => {
         account = _account;
 
@@ -104,7 +69,10 @@ module.exports.register = (req, res, next) => {
             throw new Error('Failed to create new account');
         }
 
-        generateWelcomeEmailForRequest(req, mail => mailer.sendMail(mail));
+        return Email.send(k.Email.Welcome, {
+            from:    config.get(k.NoReply),
+            to:      req.body[k.Attr.Email]
+        })
     }).then(() => {
         return AuthHelper.generateTokenForAccountId(account.id);
     }).then(token => {

@@ -27,6 +27,10 @@
         "VideoUrl": "video_url"
     },
     "Debug": "DEBUG",
+    "Email": {
+        "Welcome": "Welcome",
+        "ResetPassword": "ResetPassword"
+    },
     "Error": {
         "JWT": {
             "Verify": 100,
