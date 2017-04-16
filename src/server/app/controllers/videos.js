@@ -36,14 +36,15 @@ module.exports.index = (req, res, next) => {
         const cued       = Video.getCuedAttributeForAccountId(accountId);
         const attributes = [createdAt, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length, cued];
 
-        return Video.scope([
+        const scopes = [
             'newestFirst',
-            {method: ['cued', req.query.cued_only, accountId]},
+            {method: ['cuedAndMaxId', req.query.cued_only, accountId, req.query.max_id]},
             {method: ['count', req.query.count]},
-            {method: ['maxId', req.query.max_id]},
             {method: ['includeSubcategoryNameAndId', Subcategory]},
             {method: ['includeSpeakerName', Speaker]}
-        ]).findAll({
+        ];
+
+        return Video.scope(scopes).findAll({
             attributes: attributes,
             where: conditions
         });
