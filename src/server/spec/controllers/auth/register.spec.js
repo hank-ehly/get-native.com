@@ -5,6 +5,7 @@
  * Created by henryehly on 2017/03/24.
  */
 
+const _        = require('lodash');
 const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/helpers').Utility;
 const request  = require('supertest');
@@ -13,7 +14,7 @@ const Promise  = require('bluebird');
 const config   = require('../../../config');
 const k        = require('../../../config/keys.json');
 
-// todo: You don't want to allow someone to make 10,000 accounts via the commandline (check user agent?)
+// todo: You don't want to allow someone to make 10,000 accounts via the commandline <- Use rate-limiting
 // todo: Should User-Agents like 'curl' be allowed to use the API at all?
 describe('POST /register', function() {
     let server  = null;
@@ -113,7 +114,7 @@ describe('POST /register', function() {
 
         it(`should respond with an object containing the user's ID`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function(response) {
-                assert(SpecUtil.isNumber(response.body.id));
+                assert(_.isNumber(response.body.id));
             });
         });
 
@@ -137,19 +138,19 @@ describe('POST /register', function() {
 
         it(`should respond with an object containing the user's preference for receiving browser notifications`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function(response) {
-                assert.equal(Utility.typeof(response.body.browser_notifications_enabled), 'boolean');
+                assert(_.isBoolean(response.body.browser_notifications_enabled));
             });
         });
 
         it(`should respond with an object containing the user's preference for receiving email notifications`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function(response) {
-                assert.equal(Utility.typeof(response.body.email_notifications_enabled), 'boolean');
+                assert(_.isBoolean(response.body.email_notifications_enabled));
             });
         });
 
         it(`should respond with an object containing the user's email validity status`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function(response) {
-                assert.equal(Utility.typeof(response.body.email_notifications_enabled), 'boolean');
+                assert(_.isBoolean(response.body.email_verified));
             });
         });
 
@@ -176,7 +177,7 @@ describe('POST /register', function() {
         it(`should send a confirmation email to the newly registered user after successful registration`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
-                    const recipientEmailAddress = emails[0].envelope.to[0].address;
+                    const recipientEmailAddress = _.first(_.first(email).envelope.to).address;
                     assert.equal(recipientEmailAddress, newAccountCredentials.email);
                 });
             });
@@ -185,7 +186,7 @@ describe('POST /register', function() {
         it(`should send a confirmation email from the get-native noreply account after successful registration`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
-                    const senderEmailAddress = emails[0].envelope.from.address;
+                    const senderEmailAddress = _.first(email).envelope.from.address;
                     const noreplyEmailAddress = config.get(k.NoReply);
                     assert.equal(senderEmailAddress, noreplyEmailAddress);
                 });
@@ -200,4 +201,16 @@ describe('POST /register', function() {
             });
         });
     });
+
+    /*
+    * - A new AccountActivation record should be created
+    * - The new AccountActivation record should have a non-null string code
+    * - The new AccountActivation record should have a non-null account number
+    * - The new AccountActivation record should have a non-null expiration_date date equal to 24 hours from now
+    * - The new account's 'email verified' should be set to 'false' by default
+    * */
+
+    /*
+    * -
+    * */
 });

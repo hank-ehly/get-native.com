@@ -8,7 +8,7 @@
 const _ = require('lodash');
 
 module.exports.typeof = function(x) {
-    return Object.prototype.toString.call(x).replace(/[\[\]]/g, '').split(' ')[1].toLowerCase();
+    return _.nth(Object.prototype.toString.call(x).replace(/[\[\]]/g, '').split(' '), 1).toLowerCase();
 };
 
 module.exports.extractAuthTokenFromRequest = function(req) {
@@ -20,17 +20,17 @@ module.exports.extractAuthTokenFromRequest = function(req) {
         throw new TypeError(`req.headers is either missing or has an invalid type`);
     }
 
-    if (!req.headers.hasOwnProperty('authorization') || module.exports.typeof(req.headers.authorization) !== 'string') {
+    if (!req.headers.hasOwnProperty('authorization') || !_.isString(req.headers.authorization)) {
         throw new ReferenceError(`req.headers.authorization does not exist or has an invalid type`);
     }
 
-    let splitAuthHeader = req.headers.authorization.split(' ');
+    let authHeaderComponents = req.headers.authorization.split(' ');
 
-    if (splitAuthHeader.length !== 2) {
+    if (authHeaderComponents.length !== 2) {
         throw new SyntaxError(`Authorization header is formatted incorrectly: ${req.headers.authorization}`);
     }
 
-    return splitAuthHeader[1];
+    return _.nth(authHeaderComponents, 1);
 };
 
 module.exports.browserTimezoneOffsetToSQLFormat = function(offsetInMinutes) {

@@ -8,16 +8,17 @@
 const assert = require('assert');
 const GetNativeError = require('../../app/helpers').GetNativeError;
 const Utility = require('../../app/helpers').Utility;
+const _ = require('lodash');
 
 describe('GetNativeError', function() {
     it(`should return an object with a 'message' string property`, function() {
         const error = new GetNativeError(100);
-        assert.equal(Utility.typeof(error.message), 'string');
+        assert(_.isString(error.message));
     });
 
     it(`should return an object with a 'code' number property`, function() {
         const error = new GetNativeError(100);
-        assert.equal(Utility.typeof(error.code), 'number');
+        assert(_.isNumber(error.code));
     });
 
     it(`should not have an empty message`, function() {
