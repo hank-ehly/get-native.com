@@ -8,7 +8,6 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
-import { Categories } from '../../core/entities/categories';
 import { APIHandle } from '../../core/http/api-handle';
 import { Videos } from '../../core/entities/videos';
 import { LanguageCode } from '../../core/typings/language-code';
@@ -20,21 +19,33 @@ import { Entity } from '../../core/entities/entity';
 import { Subcategory } from '../../core/entities/subcategory';
 import { Category } from '../../core/entities/category';
 import { Language } from '../../core/typings/language';
+import { UserService } from '../../core/user/user.service';
+import { CategoryFilter } from './category-filter';
 
+import * as _ from 'lodash';
+import '../../operators';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import '../../operators';
-import * as _ from 'lodash';
-import { UserService } from '../../core/user/user.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
     template: ''
 })
 export class VideoSearchComponent implements OnInit, OnDestroy {
-    categories: Categories;
-    dropdownSelection: string;
-    isDropdownVisible: boolean = false;
+    categories$ = this.http.request(APIHandle.CATEGORIES);
+
+    filterByCategory$ = new BehaviorSubject<CategoryFilter>({
+        text: 'All videos',
+        value: null,
+        type: null
+    });
+
+    categoryFilter$ = this.filterByCategory$.distinctUntilChanged();
+
+    showDropdown$ = new BehaviorSubject<boolean>(false);
+    isDropdownVisible$ = this.showDropdown$.distinctUntilChanged();
+
     apiHandle: APIHandle = APIHandle.VIDEOS;
 
     videos: Videos;
@@ -48,7 +59,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     protected subscriptions: Subscription[] = [];
 
     @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
-        if (!this.isDropdownVisible) {
+        if (!this.showDropdown$.getValue()) {
             return;
         }
 
@@ -62,7 +73,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
             }
         }
 
-        this.isDropdownVisible = found;
+        this.showDropdown$.next(found);
     }
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService,
@@ -71,7 +82,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.logger.debug(this, 'ngOnInit()');
+        this.logger.debug(this, 'OnInit');
 
         this.videoSearchParams.set('count', `${9}`);
         this.videoSearchParams.set('time_zone_offset', new Date().getTimezoneOffset().toString());
@@ -88,8 +99,6 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     setupSubscriptions(): void {
         this.subscriptions.push(
-            this.http.request(APIHandle.CATEGORIES).subscribe((categories: Categories) => this.categories = categories),
-
             this.user.currentStudyLanguage$.subscribe(this.onSelectLanguage.bind(this)),
             this.navbar.searchBarVisibility$.subscribe(this.onToggleSearchBar.bind(this)),
             this.navbar.query$.subscribe(this.onUpdateSearchQuery.bind(this)),
@@ -110,28 +119,19 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         );
     }
 
-    onClickShowDropdown(): void {
-        this.logger.debug(this, 'onClickShowDropdown()');
-        this.isDropdownVisible = !this.isDropdownVisible;
-    }
-
-    onClickHideDropdown(): void {
-        this.logger.debug(this, 'onClickHideDropdown()');
-        this.isDropdownVisible = false;
-    }
-
     onClickResetDropdownSelection(): void {
         this.logger.debug(this, 'onClickResetDropdownSelection()');
-        this.dropdownSelection = null;
+        this.filterByCategory$.next({text: 'All videos', value: null, type: null});
         this.videoSearchParams.delete('subcategory_id');
         this.videoSearchParams.delete('category_id');
-        this.isDropdownVisible = false;
+        this.showDropdown$.next(false);
         this.categorySubcategoryFilter$.next('');
     }
 
     onClickLoadMoreVideos(): void {
         let oldestVideo = this.videos.records[this.videos.count - 1];
-        this.videoSearchParams.set('max_id', oldestVideo.id.toString()); // todo: Cannot read property 'toString' of undefined
+        // todo: Cannot read property 'toString' of undefined
+        this.videoSearchParams.set('max_id', oldestVideo.id.toString());
         this.maxId$.next(oldestVideo.id.toString());
     }
 
@@ -152,7 +152,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     }
 
     private onSelectCategory(category: Category): void {
-        this.dropdownSelection = category.name;
+        this.filterByCategory$.next({text: category.name, value: category.id, type: 'Category'});
         this.videoSearchParams.delete('subcategory_id');
         this.updateSearchParams('category_id', category.id.toString());
         this.categorySubcategoryFilter$.next(category.id.toString());
@@ -160,14 +160,14 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     private onSelectSubcategory(subcategory: Subcategory): void {
         this.logger.debug(this, subcategory);
-        this.dropdownSelection = subcategory.name;
+        this.filterByCategory$.next({text: subcategory.name, value: subcategory.id, type: 'Subcategory'});
         this.videoSearchParams.delete('category_id');
         this.updateSearchParams('subcategory_id', subcategory.id.toString());
         this.categorySubcategoryFilter$.next(subcategory.id.toString());
     }
 
     private updateSearchParams(key: string, value: string): void {
-        this.isDropdownVisible = false;
+        this.showDropdown$.next(false);
 
         if (!value) {
             this.videoSearchParams.delete(key);
