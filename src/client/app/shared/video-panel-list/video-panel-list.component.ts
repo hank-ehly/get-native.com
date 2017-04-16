@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { Logger } from '../../core/logger/logger';
 import { Video } from '../../core/entities/video';
 
+import * as _ from 'lodash';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-video-panel-list',
@@ -23,26 +25,20 @@ export class VideoPanelListComponent {
     }
 
     @Input() set videos(videos: Video[]) {
-        if (!videos) {
+        if (_.isEmpty(videos)) {
             this._videos = [];
             return;
         }
 
-        // todo: use lodash
-        if (videos.length % 3 !== 0) {
-            let records: Video[] = videos;
-            let diff = 3 - (videos.length % 3);
-            let i = 0;
+        const numberOfVideos = videos.length;
 
-            while (i < diff) {
-                records.push({});
-                i++;
-            }
-
-            this._videos = records;
-        } else {
+        if (numberOfVideos % 3 === 0) {
             this._videos = videos;
+            return;
         }
+
+        const unfilled = 3 - (numberOfVideos % 3);
+        this._videos = _.concat(videos, _.times(unfilled, _.constant({})));
     }
 
     @Input() navigates: boolean = false;
