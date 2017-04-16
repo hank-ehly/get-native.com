@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/01/12.
  */
 
-import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, Output } from '@angular/core';
 
 import { Category } from '../../core/entities/category';
 import { Logger } from '../../core/logger/logger';
@@ -14,6 +14,7 @@ import { CategoryListService } from '../../core/category-list/category-list.serv
 import { Subcategory } from '../../core/entities/subcategory';
 
 import * as _ from 'lodash';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
     moduleId: module.id,
@@ -23,6 +24,10 @@ import * as _ from 'lodash';
 })
 export class CategoryListComponent implements OnInit, OnChanges {
     @Input() categories: Categories;
+
+    @Output() category$    = new Subject<Category>();
+    @Output() subcategory$ = new Subject<Subcategory>();
+
     rows: Category[][];
 
     constructor(private logger: Logger, private service: CategoryListService) {
@@ -45,15 +50,5 @@ export class CategoryListComponent implements OnInit, OnChanges {
 
         this.rows = _.chunk(filledRows, rowSize);
         this.logger.debug(this, 'onCategoriesChange()', this.rows);
-    }
-
-    onClickCategory(category: Category): void {
-        this.logger.debug(this, 'onClickCategory()', category);
-        this.service.selectCategory(category);
-    }
-
-    onClickSubcategory(subcategory: Subcategory): void {
-        this.logger.debug(this, 'onClickSubcategory()', subcategory);
-        this.service.selectSubcategory(subcategory);
     }
 }

@@ -10,12 +10,12 @@
                 <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="/assets/icons/close-green.svg" alt="close" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
             </div>
 
-            <gn-category-list *ngIf="isDropdownVisible$ | async" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
+            <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
         </header>
 
-        <gn-video-panel-list [videos]="videos" [controls]="true"></gn-video-panel-list>
+        <gn-video-panel-list [videos]="videos$ | async" [controls]="true"></gn-video-panel-list>
 
-        <button class="button section__button" (click)="onClickLoadMoreVideos()">LOAD MORE</button>
+        <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)">LOAD MORE</button>
     </section>
 
     <hr>

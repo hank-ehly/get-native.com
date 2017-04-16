@@ -5,11 +5,10 @@
  * Created by henryehly on 2017/01/12.
  */
 
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Logger } from '../../core/logger/logger';
-import { Videos } from '../../core/entities/videos';
 import { Video } from '../../core/entities/video';
 
 @Component({
@@ -18,24 +17,21 @@ import { Video } from '../../core/entities/video';
     templateUrl: 'video-panel-list.component.html',
     styleUrls: ['video-panel-list.component.css']
 })
-export class VideoPanelListComponent implements OnChanges {
-    @Input() videos: Videos;
-    @Input() navigates: boolean = false;
-    @Input() controls: boolean = false;
-
-    constructor(private logger: Logger, private router: Router) {
+export class VideoPanelListComponent {
+    get videos(): Video[] {
+        return this._videos;
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['videos'] && changes['videos'].currentValue) {
-            this.onVideosChange(<Videos>changes['videos'].currentValue);
+    @Input() set videos(videos: Video[]) {
+        if (!videos) {
+            this._videos = [];
+            return;
         }
-    }
 
-    onVideosChange(videos: Videos): void {
-        if (videos.count % 3 !== 0) {
-            let records: Video[] = videos.records;
-            let diff = 3 - (videos.count % 3);
+        // todo: use lodash
+        if (videos.length % 3 !== 0) {
+            let records: Video[] = videos;
+            let diff = 3 - (videos.length % 3);
             let i = 0;
 
             while (i < diff) {
@@ -43,11 +39,18 @@ export class VideoPanelListComponent implements OnChanges {
                 i++;
             }
 
-            let count = records.length;
-            this.videos = {records: records, count: count};
+            this._videos = records;
         } else {
-            this.videos = videos;
+            this._videos = videos;
         }
+    }
+
+    @Input() navigates: boolean = false;
+    @Input() controls: boolean = false;
+
+    private _videos: Video[];
+
+    constructor(private logger: Logger, private router: Router) {
     }
 
     onClickOverlay(video: Video): void {

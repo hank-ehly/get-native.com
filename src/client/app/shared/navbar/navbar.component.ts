@@ -102,7 +102,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
             }
         }, 0);
 
-        this.navbar.search.visibility(this.searchBarVisible);
+        this.navbar.searchBarVisibility$.next(this.searchBarVisible);
     }
 
     /* MOCK */
