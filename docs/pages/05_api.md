@@ -766,7 +766,8 @@ Status: 200 OK
 					"name": "Harold Ford"
 			},
 			"subcategory": {
-					"name": "Talking to customers"
+					"name": "Talking to customers",
+					"id": 123
 			},
 			"loop_count": 7156,
 			"loop_velocity": 2.4960000000000004,
@@ -782,7 +783,8 @@ Status: 200 OK
 					"name": "Benjamin Franklin"
 			},
 			"subcategory": {
-					"name": "How to change a light-bulb"
+					"name": "How to change a light-bulb",
+					"id": 456
 			},
 			"loop_count": 1011,
 			"loop_velocity": 2.4960000000000004,
@@ -813,17 +815,17 @@ GET https://api.get-native.com/videos/123456
 
 | Data Field          | Type         | Description                                                                                        |
 |---------------------|--------------|----------------------------------------------------------------------------------------------------|
-| cued           | Boolean      | _Nullable._ Whether the video has been cued by the user                                       |
+| cued                | Boolean      | _Nullable._ Whether the video has been cued by the user                                            |
 | description         | String       | A string description of the video.                                                                 |
 | id                  | Int64        | Integer representation of unique video ID                                                          |
 | speaker             | Speaker      | The speaker of the video                                                                           |
-| subcategory               | subcategory        | The subcategory to which the video belongs                                                               |
+| subcategory         | subcategory  | The subcategory to which the video belongs                                                         |
 | loop_count          | Int          | The number of times a video has reached the end of its length                                      |
 | loop_velocity       | Float        | _Nullable._ The velocity at which the loop count should automatically increase                     |
 | thumbnail_image_url | String       | The HTTPS URL for the video thumbnail image                                                        |
 | video_url           | String       | The HTTPS URL for the actual video data                                                            |
 | related_videos      | [Video]      | An entity list containing Video objects deemed as 'related' to the current video                   |
-| like_count         | Int64        | Integer representation of number of times video has been 'liked'                                   |
+| like_count          | Int64        | Integer representation of number of times video has been 'liked'                                   |
 | liked               | Boolean      | Whether the video has been liked by the user                                                       |
 | length              | Int          | The length of the video in seconds                                                                 |
 | transcripts         | [Transcript] | An array of transcript objects corresponding to the video.                                         |

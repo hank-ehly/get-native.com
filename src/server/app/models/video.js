@@ -65,8 +65,8 @@ module.exports = function(sequelize, DataTypes) {
             includeSpeakerName: function(Speaker) {
                 return {include: [{model: Speaker, attributes: ['name'], as: 'speaker'}]}
             },
-            includeSubcategoryName: function(Subcategory) {
-                return {include: [{model: Subcategory, attributes: ['name'], as: 'subcategory'}]}
+            includeSubcategoryNameAndId: function(Subcategory) {
+                return {include: [{model: Subcategory, attributes: ['id', 'name'], as: 'subcategory'}]}
             },
             orderMostViewed: {
                 order: [['loop_count', 'DESC']]
