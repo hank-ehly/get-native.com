@@ -10,6 +10,7 @@ const Email = require('../../app/helpers').Email;
 const k = require('../../config/keys.json');
 const SpecUtil = require('../spec-util');
 const _ = require('lodash');
+const Promise = require('bluebird');
 
 describe('Email', function() {
     let server  = null;
