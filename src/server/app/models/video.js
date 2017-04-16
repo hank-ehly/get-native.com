@@ -43,21 +43,30 @@ module.exports = function(sequelize, DataTypes) {
             count: function(count) {
                 return {limit: count ? +count : 9};
             },
-            cued: function(cuedOnly, accountId) {
-                if (!cuedOnly) {
-                    return {};
-                }
+            cuedAndMaxId: function(cuedOnly, accountId, maxId) {
+                const conditions = {};
 
-                return {
-                    where: {
+                if (cuedOnly && accountId) {
+                    conditions.where = {
                         id: {
                             $in: [sequelize.literal('SELECT `video_id` FROM `cued_videos` WHERE `account_id` = ' + accountId)]
                         }
+                    };
+                }
+
+                if (maxId) {
+                    if (conditions.where && conditions.where.id) {
+                        conditions.where.id.$gte = +maxId;
+                    } else {
+                        conditions.where = {
+                            id: {
+                                $gte: +maxId
+                            }
+                        }
                     }
-                };
-            },
-            maxId: function(maxId) {
-                return maxId ? {where: {id: {$gte: +maxId}}} : {};
+                }
+
+                return conditions;
             },
             newestFirst: {
                 order: [['created_at', 'DESC']]
