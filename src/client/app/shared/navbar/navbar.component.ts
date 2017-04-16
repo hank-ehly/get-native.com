@@ -8,6 +8,7 @@
 import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
 import { Location } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { LoginModalService } from '../../core/login-modal/login-modal.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
@@ -49,22 +50,27 @@ export class NavbarComponent implements OnInit, OnDestroy {
     @Input() authenticated: boolean;
     @ViewChild(FocusDirective) searchBar: FocusDirective;
 
-    title: string = '';
-    searchBarVisible: boolean = false;
-    studyOptionsHidden: boolean = true;
-    progressBarHidden: boolean = true;
-    backButtonTitle: string = '';
+    title: string                   = '';
+    backButtonTitle: string         = '';
+    progressBarHidden: boolean      = true;
+    studyOptionsHidden: boolean     = true;
+    searchBarVisible: boolean       = false;
     hasUnreadNotifications: boolean = false;
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private loginModal: LoginModalService, private logger: Logger, private navbar: NavbarService, private location: Location) {
+    constructor(private loginModal: LoginModalService, private logger: Logger, private navbar: NavbarService, private location: Location,
+                private router: Router) {
     }
 
     ngOnInit(): void {
         this.subscriptions.push(
             this.navbar.title$.subscribe((t) => this.title = t),
-            this.navbar.backButtonTitle$.subscribe(t => this.backButtonTitle = t)
+            this.navbar.backButtonTitle$.subscribe(t => this.backButtonTitle = t),
+
+            this.router.events.filter(e => e instanceof NavigationEnd).do(() => {
+                this.searchBarVisible = false;
+            }).mapTo('').subscribe(this.navbar.query$)
         );
     }
 
@@ -79,12 +85,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.loginModal.showModal();
     }
 
-    onInputSearchQuery(e: Event): void {
-        const query = (<HTMLInputElement>e.target).value;
-        this.logger.info(this, `Updating search query to '${query}'`);
-        this.navbar.search.query(query);
-    }
-
     onClickBack(): void {
         this.logger.debug(this, 'onClickBack()');
         this.location.back();
@@ -96,11 +96,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
         /* this.searchBar is not immediately available after becoming 'visible' */
         // todo: perform with observable nextTick or something
-        setTimeout(() => {
-            if (this.searchBarVisible) {
+        if (this.searchBarVisible) {
+            setTimeout(() => {
                 this.searchBar.focus();
-            }
-        }, 0);
+            }, 0);
+        }
 
         this.navbar.searchBarVisibility$.next(this.searchBarVisible);
     }
