@@ -35,8 +35,6 @@ export class EmailLoginComponent implements OnDestroy {
         password: ''
     };
 
-    loginRequest$ = this.http.request(APIHandle.LOGIN, {body: this.credentials});
-
     private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private router: Router, private loginModal: LoginModalService, private http: HttpService,
@@ -54,7 +52,7 @@ export class EmailLoginComponent implements OnDestroy {
 
     onSubmit(): void {
         this.subscriptions.push(
-            this.loginRequest$.subscribe(this.onLoginResponse.bind(this))
+            this.http.request(APIHandle.LOGIN, {body: this.credentials}).subscribe(this.onLoginResponse.bind(this))
         );
     }
 
