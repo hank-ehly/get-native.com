@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/28.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { URLSearchParams } from '@angular/http';
 
@@ -50,14 +50,12 @@ import 'rxjs/add/operator/pluck';
         ])
     ]
 })
-export class DashboardComponent extends VideoSearchComponent implements OnInit {
+export class DashboardComponent extends VideoSearchComponent {
     maxAnswerId: number = null;
 
     filterAnswers       = new Subject<number>();
     loadMoreAnswers     = new Subject<number>();
     answerFilterStream$ = this.filterAnswers.startWith(30).distinctUntilChanged();
-
-    studyLanguage$ = this.user.currentStudyLanguage$.distinctUntilChanged().pluck('code');
 
     answers$ = this.studyLanguage$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
@@ -97,22 +95,10 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
         {text: 'ALL TIME',     value: null}
     ];
 
-    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService,
-                protected categoryList: CategoryListService, protected user: UserService, private dateService: UTCDateService) {
-        super(logger, http, navbar, categoryList, user);
-    }
-
-    ngOnInit(): void {
-        super.ngOnInit();
-        this.logger.debug(this, 'ngOnInit()');
-
-        this.videoSearchParams.set('cued_only', 'true');
-
-        // todo: get current language dynamically
-        this.videoSearchParams.set('lang', 'en');
-
-        // todo: redundant. make something like a 'trigger request' function or something..
-        this.lang$.next('en');
+    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
+                private dateService: UTCDateService) {
+        super(logger, http, navbar, user);
+        this.cuedOnly = true;
     }
 
     private updateMaxAnswerId(records?: WritingAnswer[]): void {
@@ -122,6 +108,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     }
 
     private concatWritingAnswers(acc: WritingAnswer[], records: WritingAnswer[]) {
-        return records ? _.concat(acc, records) : [];
+        return records ? _.uniqWith(_.concat(acc, records), _.isEqual) : [];
     }
 }

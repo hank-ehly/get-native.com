@@ -5,34 +5,34 @@
  * Created by henryehly on 2017/02/11.
  */
 
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
 import { APIHandle } from '../../core/http/api-handle';
 import { Videos } from '../../core/entities/videos';
 import { LanguageCode } from '../../core/typings/language-code';
 import { Logger } from '../../core/logger/logger';
-import { CategoryListService } from '../../core/category-list/category-list.service';
 import { HttpService } from '../../core/http/http.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
-import { Entity } from '../../core/entities/entity';
 import { Subcategory } from '../../core/entities/subcategory';
 import { Category } from '../../core/entities/category';
-import { Language } from '../../core/typings/language';
 import { UserService } from '../../core/user/user.service';
 import { CategoryFilter } from './category-filter';
+import { Video } from '../../core/entities/video';
 
 import * as _ from 'lodash';
 import '../../operators';
+import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/startWith';
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
     template: ''
 })
-export class VideoSearchComponent implements OnInit, OnDestroy {
+export class VideoSearchComponent {
     categories$ = this.http.request(APIHandle.CATEGORIES);
 
     filterByCategory$ = new BehaviorSubject<CategoryFilter>({
@@ -46,15 +46,53 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     showDropdown$ = new BehaviorSubject<boolean>(false);
     isDropdownVisible$ = this.showDropdown$.distinctUntilChanged();
 
-    apiHandle: APIHandle = APIHandle.VIDEOS;
+    studyLanguage$ = this.user.currentStudyLanguage$.distinctUntilChanged().pluck('code');
+
+    maxVideoId: number;
+    cuedOnly: boolean = false;
+
+    protected loadMoreVideos$ = new Subject<number>();
+    protected query$ = this.navbar.query$.startWith(null).debounceTime(300).distinctUntilChanged();
+
+    videos$ = this.studyLanguage$.combineLatest(this.categoryFilter$, this.query$)
+        .switchMap(([lang, filter, query]: [LanguageCode, CategoryFilter, string]) => {
+            return this.loadMoreVideos$.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
+                let search = new URLSearchParams();
+
+                if (filter.value && filter.type === 'Subcategory') {
+                    search.set('subcategory_id', filter.value.toString());
+                }
+
+                else if (filter.value && filter.type === 'Category') {
+                    search.set('category_id', filter.value.toString());
+                }
+
+                if (maxId) {
+                    search.set('max_id', maxId.toString());
+                }
+
+                if (lang) {
+                    search.set('lang', lang);
+                }
+
+                if (query) {
+                    search.set('q', query);
+                }
+
+                // todo: get rid of global context
+                if (this.cuedOnly) {
+                    search.set('cued_only', 'true');
+                }
+
+                search.set('time_zone_offset', new Date().getTimezoneOffset().toString());
+                search.set('count', `${9}`);
+
+                return this.http.request(APIHandle.VIDEOS, {search: search});
+            }, (_, videos: Videos) => videos.records).do(this.updateMaxVideoId.bind(this)).scan(this.concatVideos, []);
+        });
 
     videos: Videos;
     videoSearchParams: URLSearchParams = new URLSearchParams();
-
-    protected query$ = new Subject<string>();
-    protected lang$ = new Subject<LanguageCode>();
-    protected categorySubcategoryFilter$ = new Subject<string>();
-    protected maxId$ = new Subject<string>();
 
     protected subscriptions: Subscription[] = [];
 
@@ -76,113 +114,40 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         this.showDropdown$.next(found);
     }
 
-    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService,
-                protected categoryList: CategoryListService, protected user: UserService) {
-        this.videos = {records: [], count: 0};
-    }
-
-    ngOnInit() {
-        this.logger.debug(this, 'OnInit');
-
-        this.videoSearchParams.set('count', `${9}`);
-        this.videoSearchParams.set('time_zone_offset', new Date().getTimezoneOffset().toString());
-
-        this.setupSubscriptions();
-    }
-
-    ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
-    }
-
-    setupSubscriptions(): void {
-        this.subscriptions.push(
-            this.user.currentStudyLanguage$.subscribe(this.onSelectLanguage.bind(this)),
-            this.navbar.searchBarVisibility$.subscribe(this.onToggleSearchBar.bind(this)),
-            this.navbar.query$.subscribe(this.onUpdateSearchQuery.bind(this)),
-            this.categoryList.selectCategory$.subscribe(this.onSelectCategory.bind(this)),
-            this.categoryList.selectSubcategory$.subscribe(this.onSelectSubcategory.bind(this)),
-
-            this.maxId$
-                .distinctUntilChanged()
-                .switchMap(this.updateVideoSearchResults.bind(this))
-                .subscribe(this.addNewVideosToVideoList.bind(this)),
-
-            this.query$.debounceTime(300)
-                .merge(this.lang$)
-                .merge(this.categorySubcategoryFilter$)
-                .distinctUntilChanged()
-                .switchMap(this.updateVideoSearchResults.bind(this))
-                .subscribe((videos: Videos) => this.videos = videos)
-        );
+    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService) {
     }
 
     onClickResetDropdownSelection(): void {
         this.logger.debug(this, 'onClickResetDropdownSelection()');
         this.filterByCategory$.next({text: 'All videos', value: null, type: null});
-        this.videoSearchParams.delete('subcategory_id');
-        this.videoSearchParams.delete('category_id');
         this.showDropdown$.next(false);
-        this.categorySubcategoryFilter$.next('');
     }
 
-    onClickLoadMoreVideos(): void {
-        let oldestVideo = this.videos.records[this.videos.count - 1];
-        // todo: Cannot read property 'toString' of undefined
-        this.videoSearchParams.set('max_id', oldestVideo.id.toString());
-        this.maxId$.next(oldestVideo.id.toString());
-    }
-
-    protected onSelectLanguage(lang: Language): void {
-        this.updateSearchParams('lang', lang.code);
-        this.lang$.next(lang.code);
-    }
-
-    private onToggleSearchBar(hidden: boolean): void {
-        if (hidden) {
-            this.onUpdateSearchQuery('');
-        }
-    }
-
-    private onUpdateSearchQuery(query: string): void {
-        this.updateSearchParams('q', query);
-        this.query$.next(query);
-    }
+    // private onToggleSearchBar(hidden: boolean): void {
+    //     if (hidden) {
+    //         this.onUpdateSearchQuery('');
+    //     }
+    // }
 
     private onSelectCategory(category: Category): void {
+        this.logger.debug(this, 'category', category);
         this.filterByCategory$.next({text: category.name, value: category.id, type: 'Category'});
-        this.videoSearchParams.delete('subcategory_id');
-        this.updateSearchParams('category_id', category.id.toString());
-        this.categorySubcategoryFilter$.next(category.id.toString());
+        this.showDropdown$.next(false);
     }
 
     private onSelectSubcategory(subcategory: Subcategory): void {
-        this.logger.debug(this, subcategory);
+        this.logger.debug(this, 'subcategory', subcategory);
         this.filterByCategory$.next({text: subcategory.name, value: subcategory.id, type: 'Subcategory'});
-        this.videoSearchParams.delete('category_id');
-        this.updateSearchParams('subcategory_id', subcategory.id.toString());
-        this.categorySubcategoryFilter$.next(subcategory.id.toString());
+        this.showDropdown$.next(false);
     }
 
-    private updateSearchParams(key: string, value: string): void {
-        this.showDropdown$.next(false);
-
-        if (!value) {
-            this.videoSearchParams.delete(key);
-        } else {
-            this.videoSearchParams.set(key, value);
+    private updateMaxVideoId(records?: Video[]): void {
+        if (!_.isEmpty(records)) {
+            this.maxVideoId = _.last(records).id;
         }
     }
 
-    private updateVideoSearchResults(): Observable<Entity> {
-        return this.http.request(this.apiHandle, {search: this.videoSearchParams});
-    }
-
-    private addNewVideosToVideoList(videos: Videos): void {
-        this.videos.records = _.union(this.videos.records, videos.records);
-        this.videos.count = this.videos.count + videos.count;
-        this.logger.debug(this, `this.videos.count = ${this.videos.count}`);
+    private concatVideos(acc: Video[], records: Video[]) {
+        return records ? _.uniqWith(_.concat(acc, records), _.isEqual) : [];
     }
 }
