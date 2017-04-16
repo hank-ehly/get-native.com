@@ -13,7 +13,7 @@
             <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
         </header>
 
-        <gn-video-panel-list [videos]="videos$ | async" [controls]="true"></gn-video-panel-list>
+        <gn-video-panel-list [videos]="videos$ | async" [navigates]="true"></gn-video-panel-list>
 
         <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)">LOAD MORE</button>
     </section>
