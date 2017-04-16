@@ -8,23 +8,23 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-import { AuthService } from './auth.service';
+import { UserService } from '../user/user.service';
 import { Logger } from '../logger/logger';
 
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
-    constructor(private router: Router, private auth: AuthService, private logger: Logger) {
+    constructor(private router: Router, private user: UserService, private logger: Logger) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
         this.logger.info(this, route, state);
 
-        const isLoggedIn = this.auth.isLoggedIn();
+        const isLoggedIn = this.user.isLoggedIn();
 
         if (isLoggedIn && state.url === '/') {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['dashboard']).then(() => this.logger.debug(this, 'Navigated to dashboard'));
             return false;
         }
 
@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
             return true;
         }
 
-        this.router.navigate(['']).then(() => this.logger.debug(this, 'Forcing redirect to homepage.'));
+        this.router.navigate(['']).then(() => this.logger.debug(this, 'Redirected to homepage.'));
         return false;
     }
 

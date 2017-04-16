@@ -13,9 +13,9 @@ import { LocalStorageProtocol } from './core/local-storage/local-storage-protoco
 import { Logger } from './core/logger/logger';
 import { LocalStorageService } from './core/local-storage/local-storage.service';
 import { NavbarService } from './core/navbar/navbar.service';
-import { AuthService } from './core/auth/auth.service';
 import { kAcceptLocalStorage, kAuthToken } from './core/local-storage/local-storage-keys';
 import { LocalStorageItem } from './core/local-storage/local-storage-item';
+import { UserService } from './core/user/user.service';
 
 import './operators';
 import { Subscription } from 'rxjs/Subscription';
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, LocalStorageProtocol, OnDestroy {
 
     constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router,
                 private activatedRoute: ActivatedRoute, private navbar: NavbarService, private titleService: Title,
-                private auth: AuthService) {
+                private user: UserService) {
     }
 
     @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
@@ -97,7 +97,7 @@ export class AppComponent implements OnInit, LocalStorageProtocol, OnDestroy {
     }
 
     private updateLoginStatus(): void {
-        this.authenticated = this.auth.isLoggedIn();
+        this.authenticated = this.user.isLoggedIn();
 
         if (this.authenticated) {
             return;

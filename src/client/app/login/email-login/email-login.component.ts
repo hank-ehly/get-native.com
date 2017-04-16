@@ -13,11 +13,13 @@ import { LoginModalService } from '../../core/login-modal/login-modal.service';
 import { HttpService } from '../../core/http/http.service';
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
 import { APIHandle } from '../../core/http/api-handle';
+import { UserService } from '../../core/user/user.service';
+import { User } from '../../core/entities/user';
+import { LocalStorageService } from '../../core/local-storage/local-storage.service';
 
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
-import { UserService } from '../../core/user/user.service';
-import { User } from '../../core/entities/user';
+import { kAcceptLocalStorage } from '../../core/local-storage/local-storage-keys';
 
 @Component({
     moduleId: module.id,
@@ -38,7 +40,7 @@ export class EmailLoginComponent implements OnDestroy {
     private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private router: Router, private loginModal: LoginModalService, private http: HttpService,
-                private user: UserService) {
+                private user: UserService, private localStorage: LocalStorageService) {
     }
 
     ngOnDestroy(): void {
@@ -60,6 +62,7 @@ export class EmailLoginComponent implements OnDestroy {
         this.router.navigate(['dashboard']).then(() => {
             this.loginModal.hideModal();
             this.user.current$.next(user);
+            this.localStorage.setItem(kAcceptLocalStorage, true);
         }).catch(error => {
             this.logger.warn(this, error);
         });
