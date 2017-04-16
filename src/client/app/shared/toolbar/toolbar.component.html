@@ -2,14 +2,14 @@
 
     <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="isVisibleStream$ | async">
         <li class="toolbar__language-label" *ngFor="let language of languageStream$ | async"
-            (click)="selectedLanguageStream$.next(language)">
+            (click)="user.currentStudyLanguage$.next(language)">
             {{ language.name }}
         </li>
     </ul>
 
     <span class="toolbar__language-label toolbar__language-label_selected" (click)="isVisibleStream$.next(!isVisibleStream$.getValue())"
           (mouseenter)="isVisibleStream$.next(true)">
-        {{ (selectedLanguageStream$ | async)?.name }}
+        {{ (user.currentStudyLanguage$ | async)?.name }}
     </span>
 
     <nav class="toolbar__links">
@@ -21,7 +21,7 @@
             <img class="toolbar_link-icon" src="/assets/icons/help.svg" alt="help">
         </a>
 
-        <a class="toolbar__link" (click)="onLogout()">
+        <a class="toolbar__link" (click)="auth.logout$.next()">
             <img class="toolbar_link-icon" src="/assets/icons/sign-out.svg" alt="sign-out">
         </a>
     </nav>

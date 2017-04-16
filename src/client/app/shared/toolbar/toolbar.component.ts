@@ -5,20 +5,16 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 
 import { Language } from '../../core/typings/language';
 import { UserService } from '../../core/user/user.service';
 import { Languages } from '../../core/lang/languages';
-import { LangService } from '../../core/lang/lang.service';
-import { Logger } from '../../core/logger/logger';
 import { AuthService } from '../../core/auth/auth.service';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
-import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -43,35 +39,10 @@ import * as _ from 'lodash';
         ])
     ]
 })
-export class ToolbarComponent implements OnInit, OnDestroy {
-    languageStream$         = Observable.of<Language[]>(Languages);
+export class ToolbarComponent {
+    languageStream$  = Observable.of<Language[]>(Languages);
+    isVisibleStream$ = new BehaviorSubject<boolean>(false);
 
-    isVisibleStream$        = new BehaviorSubject<boolean>(false);
-    selectedLanguageStream$ = new BehaviorSubject<Language>(_.first(Languages));
-
-    private subscriptions: Subscription[] = [];
-
-    constructor(private user: UserService, private logger: Logger, private lang: LangService, private auth: AuthService) {
-    }
-
-    ngOnInit(): void {
-        this.logger.debug(this, 'OnInit');
-
-        this.subscriptions.push(
-            this.user.current.map(u => this.lang.languageForCode(u.default_study_language_code)).subscribe(l => {
-                this.logger.debug(this, 'default study language', l);
-                this.selectedLanguageStream$.next(l);
-            }),
-            this.selectedLanguageStream$.subscribe(l => this.user.currentStudyLanguage$.next(l))
-        );
-    }
-
-    ngOnDestroy(): void {
-        this.logger.debug(this, 'OnDestroy');
-        _.forEach(this.subscriptions, s => s.unsubscribe());
-    }
-
-    onLogout(): void {
-        this.auth.logout$.next();
+    constructor(public user: UserService, public auth: AuthService) {
     }
 }

@@ -15,6 +15,9 @@ import { EMAIL_REGEX } from '../../core/typings/email-regex';
 import { APIHandle } from '../../core/http/api-handle';
 
 import { Subscription } from 'rxjs/Subscription';
+import * as _ from 'lodash';
+import { UserService } from '../../core/user/user.service';
+import { User } from '../../core/entities/user';
 
 @Component({
     moduleId: module.id,
@@ -30,16 +33,17 @@ export class EmailLoginComponent implements OnDestroy {
         password: ''
     };
 
+    loginRequest$ = this.http.request(APIHandle.LOGIN, {body: this.credentials});
+
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private router: Router, private loginModal: LoginModalService, private http: HttpService) {
+    constructor(private logger: Logger, private router: Router, private loginModal: LoginModalService, private http: HttpService,
+                private user: UserService) {
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
+        this.logger.debug(this, 'OnDestroy');
+        _.forEach(this.subscriptions, s => s.unsubscribe());
     }
 
     onSetModalView(view: string): void {
@@ -48,20 +52,16 @@ export class EmailLoginComponent implements OnDestroy {
 
     onSubmit(): void {
         this.subscriptions.push(
-            this.http.request(APIHandle.LOGIN, {body: this.credentials}).subscribe(this.onLoginSuccess.bind(this))
+            this.loginRequest$.subscribe(this.onLoginResponse.bind(this))
         );
     }
 
-    onLoginSuccess(): void {
-        this.router.navigate(['dashboard']).then((success) => {
-            if (success) {
-                this.logger.debug(this, 'Navigation success');
-                this.loginModal.hideModal();
-            } else {
-                this.logger.debug(this, 'Navigation failed');
-            }
-        }).catch((reason) => {
-            this.logger.debug(this, reason);
+    onLoginResponse(user: User): void {
+        this.router.navigate(['dashboard']).then(() => {
+            this.loginModal.hideModal();
+            this.user.current$.next(user);
+        }).catch(error => {
+            this.logger.warn(this, error);
         });
     }
 }
