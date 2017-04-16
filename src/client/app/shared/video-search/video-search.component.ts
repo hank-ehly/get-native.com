@@ -25,9 +25,14 @@ import '../../operators';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/debounce';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { TimerObservable } from 'rxjs/observable/TimerObservable';
+
+import 'rxjs/observable/timer';
 
 @Component({
     template: ''
@@ -50,13 +55,19 @@ export class VideoSearchComponent {
 
     maxVideoId: number;
     cuedOnly: boolean = false;
+    hasCompletedInitialLoad: boolean = false;
 
     protected loadMoreVideos$ = new Subject<number>();
-    protected query$ = this.navbar.query$.startWith(null).debounceTime(300).distinctUntilChanged();
+
+    protected query$ = this.navbar.query$.startWith('').debounce(() => {
+        return this.hasCompletedInitialLoad ? this.debounceTimer : this.noDebounceTimer;
+    }).distinctUntilChanged();
 
     videos$ = this.studyLanguage$.combineLatest(this.categoryFilter$, this.query$)
         .switchMap(([lang, filter, query]: [LanguageCode, CategoryFilter, string]) => {
             return this.loadMoreVideos$.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
+                this.hasCompletedInitialLoad = true;
+
                 let search = new URLSearchParams();
 
                 if (filter.value && filter.type === 'Subcategory') {
@@ -96,6 +107,9 @@ export class VideoSearchComponent {
 
     protected subscriptions: Subscription[] = [];
 
+    private debounceTimer   = new TimerObservable(300);
+    private noDebounceTimer = new TimerObservable(0);
+
     @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
         if (!this.showDropdown$.getValue()) {
             return;
@@ -123,19 +137,13 @@ export class VideoSearchComponent {
         this.showDropdown$.next(false);
     }
 
-    // private onToggleSearchBar(hidden: boolean): void {
-    //     if (hidden) {
-    //         this.onUpdateSearchQuery('');
-    //     }
-    // }
-
-    private onSelectCategory(category: Category): void {
+    onSelectCategory(category: Category): void {
         this.logger.debug(this, 'category', category);
         this.filterByCategory$.next({text: category.name, value: category.id, type: 'Category'});
         this.showDropdown$.next(false);
     }
 
-    private onSelectSubcategory(subcategory: Subcategory): void {
+    onSelectSubcategory(subcategory: Subcategory): void {
         this.logger.debug(this, 'subcategory', subcategory);
         this.filterByCategory$.next({text: subcategory.name, value: subcategory.id, type: 'Subcategory'});
         this.showDropdown$.next(false);
