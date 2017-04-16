@@ -6,6 +6,7 @@
  */
 
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/mapTo';
 
 import * as _ from 'lodash';
 
@@ -22,4 +23,8 @@ export class NavbarService {
             this.query$.next(_.trim(value));
         }
     };
+
+    constructor() {
+        this.searchBarVisibility$.mapTo('').subscribe(this.query$);
+    }
 }
