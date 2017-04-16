@@ -12,7 +12,6 @@ import { VideoSearchComponent } from '../shared/video-search/video-search.compon
 import { Logger } from '../core/logger/logger';
 import { HttpService } from '../core/http/http.service';
 import { NavbarService } from '../core/navbar/navbar.service';
-import { CategoryListService } from '../core/category-list/category-list.service';
 
 import '../operators';
 import { UserService } from '../core/user/user.service';
