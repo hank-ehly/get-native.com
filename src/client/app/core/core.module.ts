@@ -9,7 +9,6 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AuthGuard } from './auth/auth-guard.service';
-import { AuthService } from './auth/auth.service';
 import { CategoryListService } from './category-list/category-list.service';
 import { LocalStorageService } from './local-storage/local-storage.service';
 import { LoginModalService } from './login-modal/login-modal.service';
@@ -30,7 +29,6 @@ import { UserService } from './user/user.service';
     ],
     providers: [
         AuthGuard,
-        AuthService,
         CategoryListService,
         LocalStorageService,
         LoginModalService,

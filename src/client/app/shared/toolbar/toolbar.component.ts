@@ -11,7 +11,6 @@ import { trigger, transition, style, animate, keyframes } from '@angular/animati
 import { Language } from '../../core/typings/language';
 import { UserService } from '../../core/user/user.service';
 import { Languages } from '../../core/lang/languages';
-import { AuthService } from '../../core/auth/auth.service';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
@@ -43,6 +42,6 @@ export class ToolbarComponent {
     languageStream$  = Observable.of<Language[]>(Languages);
     isVisibleStream$ = new BehaviorSubject<boolean>(false);
 
-    constructor(public user: UserService, public auth: AuthService) {
+    constructor(public user: UserService) {
     }
 }
