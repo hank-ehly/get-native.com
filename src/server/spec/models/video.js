@@ -40,27 +40,27 @@ describe('video', function() {
     });
 
     describe('cuedAndMaxId', function() {
-        it(`should only return cued videos whose ids are equal to or greater than the max id`, function() {
-            const cued = Video.getCuedAttributeForAccountId(account.id);
+        it(`should only return cued videos whose ids are less than the max id`, function() {
             return Video.findAll({attributes: ['id']}).then(function(videos) {
                 const midVideoId = videos[Math.floor(videos.length / 2)].id;
+                const cued = Video.getCuedAttributeForAccountId(account.id);
                 return Video.scope({method: ['cuedAndMaxId', true, account.id, midVideoId]}).findAll({attributes: {include: [cued]}})
                     .then(function(videos) {
-                        assert(_.gte(_.last(videos).id, midVideoId));
                         _.forEach(videos, function(video) {
+                            assert(_.lt(video.get('id'), midVideoId));
                             assert.equal(video.get('cued'), true);
                         });
                     });
             });
         });
 
-        it(`should return videos whose ids are equal to or greater than the max id`, function() {
-            const cued = Video.getCuedAttributeForAccountId(account.id);
+        it(`should return videos whose ids are less than the max id`, function() {
             return Video.findAll({attributes: ['id']}).then(function(videos) {
                 const midVideoId = videos[Math.floor(videos.length / 2)].id;
+                const cued = Video.getCuedAttributeForAccountId(account.id);
                 return Video.scope({method: ['cuedAndMaxId', false, account.id, midVideoId]}).findAll({attributes: {include: [cued]}})
                     .then(function(videos) {
-                        assert(_.gte(_.last(videos).id, midVideoId));
+                        assert(_.lt(_.first(videos).id, midVideoId));
                     });
             });
         });
