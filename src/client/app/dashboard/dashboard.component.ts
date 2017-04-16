@@ -23,7 +23,6 @@ import { LanguageCode } from '../core/typings/language-code';
 
 import * as _ from 'lodash';
 import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
