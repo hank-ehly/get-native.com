@@ -10,12 +10,12 @@ import { Injectable } from '@angular/core';
 import { User } from '../entities/user';
 import { Language } from '../typings/language';
 import { LangService } from '../lang/lang.service';
+import { LocalStorageService } from '../local-storage/local-storage.service';
+import { kCurrentUser } from '../local-storage/local-storage-keys';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import * as _ from 'lodash';
-import { LocalStorageService } from '../local-storage/local-storage.service';
-import { kCurrentUser } from '../local-storage/local-storage-keys';
 
 @Injectable()
 export class UserService {
