@@ -34,14 +34,14 @@ import * as _ from 'lodash';
                 animate('400ms ease', style({opacity: 0, transform: 'translateX(300px)'}))
             ])
         ]),
-        trigger('slideInRightOutLeft', [
+        trigger('fadeInOut', [
             transition(':enter', [
-                style({opacity: 0, transform: 'translateX(-300px)'}),
-                animate('500ms ease', style({opacity: 1, transform: 'translateX(0)'}))
+                style({opacity: 0}),
+                animate('500ms ease', style({opacity: 1}))
             ]),
             transition(':leave', [
-                style({opacity: 1, transform: 'translateX(0)'}),
-                animate('400ms ease', style({opacity: 0, transform: 'translateX(-300px)'}))
+                style({opacity: 1}),
+                animate('400ms ease', style({opacity: 0}))
             ])
         ])
     ]
