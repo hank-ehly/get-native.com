@@ -249,26 +249,24 @@ describe('GET /videos', function() {
         });
 
         it('should respond with an empty records array if no matching records are found', function() {
-            let extremeValue = '99999999';
-            let requestURLString = `/videos?max_id=${extremeValue}&category_id=${extremeValue}&lang=ja&q=${extremeValue}`;
+            let requestURLString = `/videos?max_id=1`;
             return request(server).get(requestURLString).set('authorization', authorization).then(function(response) {
                 assert.equal(response.body.records.length, 0);
             });
         });
 
         it('should respond with a 0 count if no matching records are found', function() {
-            let extremeValue = '99999999';
-            let requestURLString = `/videos?max_id=${extremeValue}&category_id=${extremeValue}&lang=ja&q=${extremeValue}`;
+            let requestURLString = `/videos?max_id=1`;
             return request(server).get(requestURLString).set('authorization', authorization).then(function(response) {
                 assert.equal(response.body.count, 0);
             });
         });
 
-        it(`should return only records whose IDs are less than or equal to the 'max_id' query parameter`, function() {
-            return db.sequelize.query('SELECT * FROM videos').then(function(videos) {
-                let midVideoId = _.first(videos)[Math.floor(_.first(videos).length / 2)].id;
+        it(`should return only records whose IDs are less than the 'max_id' query parameter`, function() {
+            return db.Video.findAll().then(function(videos) {
+                let midVideoId = videos[Math.floor(videos.length / 2)].get('id');
                 return request(server).get(`/videos?max_id=${midVideoId}`).set('authorization', authorization).then(function(response) {
-                    assert(_.gte(_.last(response.body.records).id, midVideoId));
+                    assert(_.lt(_.first(response.body.records).id, midVideoId));
                 });
             });
         });
