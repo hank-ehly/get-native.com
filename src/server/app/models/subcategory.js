@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
             if (subcategoryId) {
                 resolve([subcategoryId]);
             } else if (categoryId) {
-                resolve(_findIdsForCategoryId(categoryId));
+                _findIdsForCategoryId(categoryId).then(resolve).catch(reject);
             } else {
                 resolve([]);
             }
@@ -41,7 +41,9 @@ module.exports = function(sequelize, DataTypes) {
         return Subcategory.findAll({
             where: {category_id: categoryId},
             attributes: ['id']
-        }).then(subcategory_ids => subcategory_ids);
+        }).then(subcategories => {
+            return subcategories.map(s => s.id);
+        });
     }
 
     return Subcategory;

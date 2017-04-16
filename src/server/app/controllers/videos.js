@@ -36,27 +36,25 @@ module.exports.index = (req, res, next) => {
         const cued       = Video.getCuedAttributeForAccountId(accountId);
         const attributes = [createdAt, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length, cued];
 
-        const scopes = [
+        return Video.scope([
             'newestFirst',
             {method: ['cued', req.query.cued_only, accountId]},
             {method: ['count', req.query.count]},
             {method: ['maxId', req.query.max_id]},
-            {method: ['includeSubcategoryName', Subcategory]},
+            {method: ['includeSubcategoryNameAndId', Subcategory]},
             {method: ['includeSpeakerName', Speaker]}
-        ];
-
-        return Video.scope(scopes).findAll({
+        ]).findAll({
             attributes: attributes,
             where: conditions
-        }).then(videos => {
-            const videosAsJson = ResponseWrapper.wrap(videos.map(v => {
-                v = v.get({plain: true});
-                v.cued = v.cued === 1;
-                return v;
-            }));
+        });
+    }).then(videos => {
+        const videosAsJson = ResponseWrapper.wrap(videos.map(v => {
+            v = v.get({plain: true});
+            v.cued = v.cued === 1;
+            return v;
+        }));
 
-            res.send(videosAsJson);
-        }).catch(next);
+        res.send(videosAsJson)
     }).catch(next);
 };
 

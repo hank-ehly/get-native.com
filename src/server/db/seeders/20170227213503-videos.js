@@ -17,7 +17,7 @@ module.exports = {
 
         return Promise.all(promises).spread((minSpeakerId, maxSpeakerId, minSubcategoryId, maxSubcategoryId) => {
             const videos          = [];
-            const numVideos       = ['test', 'circle_ci'].includes(process.env.NODE_ENV) ? 50 : 500;
+            const numVideos       = 500;
             const youtubeVideoIds = ['SqyDRXVd5Jo', 'clpOP8f3Jc8', 'q9k_QgYA-bo', 'rF-MsURy9q8', 'W2G68H3xRyE'];
 
             for (let i = 0; i < numVideos; i++) {

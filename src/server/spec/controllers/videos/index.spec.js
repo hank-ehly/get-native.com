@@ -9,6 +9,7 @@ const request  = require('supertest');
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/helpers').Utility;
+const _        = require('lodash');
 
 describe('GET /videos', function() {
     let server = null;
@@ -23,10 +24,10 @@ describe('GET /videos', function() {
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
         return SpecUtil.login().then(function(_) {
-            server = _.server;
-            db = _.db;
+            server        = _.server;
+            db            = _.db;
             authorization = _.authorization;
-            user = _.response.body;
+            user          = _.response.body;
         });
     });
 
@@ -97,19 +98,19 @@ describe('GET /videos', function() {
 
         it(`should return an error object with a top-level 'errors' array`, function() {
             request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.errors), 'array');
+                assert(_.isArray(Utility.typeof(response.errors)));
             });
         });
 
         it(`should return a 'message' string inside the error object`, function() {
             request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.errors[0].message), 'string');
+                assert(_.isString(_.first(response.errors).message));
             });
         });
 
         it(`should return a 'code' number inside the error object`, function() {
             request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.errors[0].code), 'number');
+                assert(_.isNumber(_.first(response.errors).code));
             });
         });
 
@@ -127,13 +128,13 @@ describe('GET /videos', function() {
 
         it(`should respond with an object containing a top-level 'records' array value`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isNumber(response.body.records.length));
+                assert(_.isArray(response.body.records));
             });
         });
 
         it(`should respond with an object containing a top-level 'count' integer value`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isNumber(response.body.count));
+                assert(_.isNumber(response.body.count));
             });
         });
 
@@ -145,91 +146,105 @@ describe('GET /videos', function() {
 
         it(`should have an non-null 'id' number for each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isNumber(response.body.records[0].id));
+                assert(_.isNumber(_.first(response.body.records).id));
             });
         });
 
         it(`should contain a non-null 'cued' boolean`, function() {
             return request(server).get(`/videos`).set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].cued), 'boolean');
-                assert(![null, undefined].includes(response.body.records[0].cued));
+                assert(_.isBoolean(_.first(response.body.records).cued));
             });
         });
 
         it(`should only return cued videos if the 'cued_only' parameter is set to 'true'`, function() {
             return request(server).get(`/videos?cued_only=true`).set('authorization', authorization).then(function(response) {
-                assert.equal(response.body.records[0].cued, true);
+                _.forEach(response.body.records, function(record) {
+                    assert.equal(record.cued, true);
+                });
             });
         });
 
         it(`should contain a non-null date string for 'created_at' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isParsableTimestamp(response.body.records[0].created_at));
+                assert(SpecUtil.isParsableTimestamp(_.first(response.body.records).created_at));
             });
         });
 
         it(`should return the 'created_at' date in the format 'Thu Dec 14 04:35:55 +0000 2017'`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isClientFriendlyDateString(response.body.records[0].created_at));
+                assert(SpecUtil.isClientFriendlyDateString(_.first(response.body.records).created_at));
             });
         });
 
         it(`should apply the timezone offset in the request to 'created_at'`, function() {
             return request(server).get('/videos?time_zone_offset=-540').set('authorization', authorization).then(function(response) {
-                const timeZoneOffset = response.body.records[0].created_at.split(' ')[4];
+                const timeZoneOffset = _.first(response.body.records).created_at.split(' ')[4];
                 assert.equal('+0900', timeZoneOffset);
             });
         });
 
         it(`should contain a non-null object for 'speaker' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].speaker), 'object');
+                assert(_.isPlainObject(_.first(response.body.records).speaker));
             });
         });
 
         it(`should contain a non-null string for 'speaker.name' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].speaker.name), 'string');
-                assert.notEqual(response.body.records[0].speaker.name.length, 0);
+                assert(_.isString(_.first(response.body.records).speaker.name));
+                assert.notEqual(_.first(response.body.records).speaker.name, '');
             });
         });
 
         it(`should contain a non-null object for 'subcategory' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].subcategory), 'object');
+                assert(_.isPlainObject(_.first(response.body.records).subcategory));
             });
         });
 
         it(`should contain a non-null string for 'subcategory.name' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].subcategory.name), 'string');
-                assert.notEqual(response.body.records[0].speaker.name.length, 0);
+                assert(_.isString(_.first(response.body.records).subcategory.name));
+                assert.notEqual(_.first(response.body.records).subcategory.name, '');
+            });
+        });
+
+        // subcategory.id is not needed for display; rather for data validation
+        it(`should contain a non-null number for 'subcategory.id' on each record`, function() {
+            return request(server).get('/videos').set('authorization', authorization).then(function(response) {
+                _.forEach(response.body.records, function(record) {
+                    assert(_.isNumber(record.subcategory.id));
+                });
             });
         });
 
         it(`should contain a positive number for 'loop_count' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].loop_count), 'number');
-                assert(response.body.records[0].loop_count > 0);
+                _.forEach(response.body.records, function(record) {
+                    assert(_.isNumber(record.loop_count), 'loop_count is not a number');
+                    // assert(_.gt(record.loop_count), 0, 'loop_count is not greater than or equal to 0');
+                });
             });
         });
 
         it(`should contain a valid URI string for 'picture_url' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isValidURL(response.body.records[0].picture_url));
+                assert(SpecUtil.isValidURL(_.first(response.body.records).picture_url));
             });
         });
 
         it(`should contain a valid URI string for 'video_url' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isValidURL(response.body.records[0].video_url));
+                assert(SpecUtil.isValidURL(_.first(response.body.records).video_url));
             });
         });
 
         it(`should contain a positive number for 'length' on each record`, function() {
             return request(server).get('/videos').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0]['length']), 'number');
-                assert.notEqual(response.body.records[0]['length'], 0);
+                _.forEach(response.body.records, function(record) {
+                    assert(_.isNumber(record.length));
+                    assert(_.gt(record.length, 0));
+                });
             });
         });
 
@@ -251,17 +266,16 @@ describe('GET /videos', function() {
 
         it(`should return only records whose IDs are less than or equal to the 'max_id' query parameter`, function() {
             return db.sequelize.query('SELECT * FROM videos').then(function(videos) {
-                let midVideoId = videos[0][Math.floor(videos[0].length / 2)].id;
+                let midVideoId = _.first(videos)[Math.floor(_.first(videos).length / 2)].id;
                 return request(server).get(`/videos?max_id=${midVideoId}`).set('authorization', authorization).then(function(response) {
-                    let lastId = response.body.records[response.body.count - 1].id;
-                    assert(lastId >= midVideoId);
+                    assert(_.gte(_.last(response.body.records).id, midVideoId));
                 });
             });
         });
 
         it(`should return no more than 9 video records`, function() {
             return request(server).get(`/videos`).set('authorization', authorization).then(function(response) {
-                assert(response.body.count <= 9);
+                assert(_.lte(response.body.count, 9));
             });
         });
 
@@ -271,12 +285,53 @@ describe('GET /videos', function() {
             });
         });
 
+        it(`should return videos if a category_id is specified`, function() {
+            return db.Category.findOne({attributes: ['id']}).then(function(category) {
+                return request(server).get(`/videos?category_id=${category.get('id')}`).set('authorization', authorization).then(function(response) {
+                    assert(_.isNumber(response.body.count));
+                    assert(_.isArray(response.body.records));
+                });
+            });
+        });
+
         it(`should return only English videos if the request contains no 'lang' parameter`, function() {
             return request(server).get(`/videos`).set('authorization', authorization).then(function(response) {
-                let firstVideoId = response.body.records[0].id;
-                return db.sequelize.query(`SELECT language_code FROM videos WHERE videos.id = ${firstVideoId} LIMIT 1`).then(function(result) {
-                    let videoLanguageCode = result[0][0].language_code;
-                    assert.equal(videoLanguageCode, 'en');
+                let firstVideoId = _.first(response.body.records).id;
+                return db.sequelize.query(`SELECT language_code FROM videos WHERE videos.id = ${firstVideoId} LIMIT 1`).spread(function(result) {
+                    assert.equal(_.first(result).language_code, 'en');
+                });
+            });
+        });
+
+        it(`should return videos of a specific subcategory`, function() {
+            return db.Subcategory.findOne({attributes: ['id']}).then(function(subcategory) {
+                const id = subcategory.get('id');
+                return request(server).get(`/videos?subcategory_id=${id}`).set('authorization', authorization).then(function(response) {
+                    _.forEach(response.body.records, function(record) {
+                        assert.equal(record.subcategory.id, id);
+                    });
+                });
+            });
+        });
+
+        it(`should return videos of a specific category`, function() {
+            let categoryId = null;
+
+            db.Category.findOne({attributes: ['id']}).then(function(category) {
+                categoryId = category.get('id');
+                return db.Subcategory.findAll({
+                    attributes: ['id'],
+                    where: {category_id: categoryId}
+                });
+            }).then(function(subcategories) {
+                const ids = _.transform(subcategories, function(result, n) {
+                    result.push(n.get('id'));
+                }, []);
+
+                return request(server).get(`/videos?category_id=${categoryId}`).set('authorization', authorization).then(function(response) {
+                    _.forEach(response.body.records, function(record) {
+                        assert(_.includes(ids, record.subcategory.id));
+                    });
                 });
             });
         });
