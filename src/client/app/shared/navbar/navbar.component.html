@@ -8,8 +8,7 @@
         <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." gnFocus maxlength="50" (input)="navbar.search.query($event)">
     </div>
 
-    <!-- Todo: Prevent animation from happening on title -->
-    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && !searchBarVisible" [@slideInRightOutLeft]>
+    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && !searchBarVisible" [@fadeInOut]>
         <div class="back-button-frame" *ngIf="backButtonTitle">
             <img class="navbar__menu-icon navbar__menu-icon_back" src="/assets/icons/arrow-back.svg" alt="back" (click)="onClickBack()">
             <span class="back-button-label">{{ backButtonTitle }}</span>
