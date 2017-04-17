@@ -71,7 +71,10 @@ module.exports.register = (req, res, next) => {
 
         return Email.send('welcome', {
             from:    config.get(k.NoReply),
-            to:      req.body[k.Attr.Email]
+            to:      req.body[k.Attr.Email],
+            variables: {
+                confirmationURL: 'https://hankehly.com'
+            }
         })
     }).then(() => {
         return AuthHelper.generateTokenForAccountId(account.id);
