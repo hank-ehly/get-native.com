@@ -10,6 +10,7 @@ const AuthHelper = helpers.Auth;
 const Utility    = helpers.Utility;
 
 const assert     = require('assert');
+const _          = require('lodash');
 
 describe('Auth', function() {
     describe('hashPassword', function() {
@@ -29,7 +30,7 @@ describe('Auth', function() {
         });
 
         it(`should return a string`, function() {
-            assert.equal(Utility.typeof(AuthHelper.hashPassword('password')), 'string');
+            assert(_.isString(AuthHelper.hashPassword('password')));
         });
     });
 
@@ -46,7 +47,7 @@ describe('Auth', function() {
         });
 
         it(`should return false if a library-specify error occurs`, function() {
-            assert.equal(Utility.typeof(AuthHelper.verifyPassword('password', 'password')), 'boolean');
+            assert(_.isBoolean(AuthHelper.verifyPassword('password', 'password')));
         });
 
         it(`should return true if the password is a match`, function() {
@@ -57,6 +58,20 @@ describe('Auth', function() {
         it(`should return false if the password is not a match`, function() {
             let hash = AuthHelper.hashPassword('password');
             assert(!AuthHelper.verifyPassword(hash, '_password'));
+        });
+    });
+
+    describe('generateVerificationToken', function() {
+        it(`should return a string`, function() {
+            assert(_.isString(AuthHelper.generateVerificationToken()));
+        });
+
+        it(`should return a string that is 32 characters in length`, function() {
+            assert.equal(AuthHelper.generateVerificationToken().length, 32);
+        });
+
+        it(`should generate unique tokens`, function() {
+            assert.notEqual(AuthHelper.generateVerificationToken(), AuthHelper.generateVerificationToken());
         });
     });
 });
