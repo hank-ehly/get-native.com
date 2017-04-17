@@ -62,8 +62,6 @@ module.exports.writing_answers = (req, res, next) => {
             return json;
         }));
 
-        console.log(_.first(answersAsJson.records));
-
         res.send(answersAsJson);
     }).catch(next);
 };
