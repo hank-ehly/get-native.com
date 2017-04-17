@@ -11,10 +11,11 @@ const k       = require('../../config/keys.json');
 
 const Promise = require('bluebird');
 const sodium  = require('sodium').api;
+const crypto  = require('crypto');
 const jwt     = require('jsonwebtoken');
 const _       = require('lodash');
 
-module.exports.validateRequest = function(req, callback) {
+module.exports.validateRequest = (req, callback) => {
     const token = Utility.extractAuthTokenFromRequest(req);
 
     // todo: audience?
@@ -27,7 +28,7 @@ module.exports.validateRequest = function(req, callback) {
     jwt.verify(token, config.get(k.PublicKey), args, callback);
 };
 
-module.exports.refreshToken = function(token, callback) {
+module.exports.refreshToken = (token, callback) => {
     const cloneToken = _.cloneWith(token, function(value, key) {
         if (key !== 'exp') {
             return value;
@@ -42,7 +43,7 @@ module.exports.refreshToken = function(token, callback) {
     jwt.sign(cloneToken, config.get(k.PrivateKey), args, callback);
 };
 
-module.exports.generateTokenForAccountId = function(accountId) {
+module.exports.generateTokenForAccountId = accountId => {
     const token = {
         iss: config.get(k.API.Hostname),
         sub: accountId,
@@ -57,7 +58,7 @@ module.exports.generateTokenForAccountId = function(accountId) {
     return Promise.promisify(jwt.sign)(token, config.get(k.PrivateKey), args);
 };
 
-module.exports.setAuthHeadersOnResponseWithToken = function(res, token) {
+module.exports.setAuthHeadersOnResponseWithToken = (res, token) => {
     res.set('X-GN-Auth-Token', token);
 
     // todo: move to Utility & add test
@@ -66,11 +67,11 @@ module.exports.setAuthHeadersOnResponseWithToken = function(res, token) {
     res.set('X-GN-Auth-Expire', oneHourFromNow.toString());
 };
 
-module.exports.extractAccountIdFromRequest = function(req) {
+module.exports.extractAccountIdFromRequest = req => {
     return jwt.decode(Utility.extractAuthTokenFromRequest(req)).sub;
 };
 
-module.exports.hashPassword = function(password) {
+module.exports.hashPassword = password => {
     if (!password) {
         throw new ReferenceError('No password provided');
     }
@@ -89,7 +90,7 @@ module.exports.hashPassword = function(password) {
     return pwhash.toString();
 };
 
-module.exports.verifyPassword = function(pwhash, password) {
+module.exports.verifyPassword = (pwhash, password) => {
     if (!pwhash || !password) {
         throw new ReferenceError('Hash and password are required');
     }
@@ -106,4 +107,8 @@ module.exports.verifyPassword = function(pwhash, password) {
     } catch (e) {
         return false;
     }
+};
+
+module.exports.generateVerificationToken = () => {
+    return crypto.randomBytes(16).toString('hex');
 };
