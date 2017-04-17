@@ -1,5 +1,5 @@
 /**
- * 20170417114949-create-account-activations
+ * 20170417114949-create-verification-tokens
  * get-native.com
  *
  * Created by henryehly on 2017/04/17.
@@ -7,14 +7,14 @@
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
-        return queryInterface.createTable('account_activations', {
+        return queryInterface.createTable('verification_tokens', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            code: {
+            token: {
                 type: Sequelize.STRING,
                 allowNull: false,
                 defaultValue: ''
@@ -39,6 +39,6 @@ module.exports = {
         });
     },
     down: function(queryInterface, Sequelize) {
-        return queryInterface.dropTable('writing_questions');
+        return queryInterface.dropTable('verification_tokens');
     }
 };
