@@ -15,28 +15,28 @@ const fs      = Promise.promisifyAll(require('fs'));
 const _       = require('lodash');
 
 module.exports.send = (templatePath, options) => {
-    if (!templatePath || !options) {
-        throw new ReferenceError(`Template path or Mailer options missing`);
+    if (!templatePath || !_.isString(templatePath)) {
+        throw new Error(`Missing or invalid template path`);
     }
 
-    //noinspection JSUnresolvedFunction
-    if (!_.isString(templatePath) || !_.isPlainObject(options)) {
-        throw new TypeError(`Template path or Mailer options is incorrect type`);
+    if (!options || !_.isPlainObject(options)) {
+        throw new Error(`Missing or invalid mailer options`);
     }
 
-    const locale        = require(__dirname + '/../../config/locales/' + 'en' + '.json');
-    const templatesPath = __dirname + '/../templates/' + templatePath + '.html';
+    if (!options.to || !_.isString(options.to)) {
+        throw new Error(`Missing or invalid receiver email address`);
+    }
+
+    const locale = require(__dirname + '/../../config/locales/' + 'en' + '.json');
 
     //noinspection JSUnresolvedFunction
-    return fs.readFileAsync(templatesPath).then(html => {
+    return fs.readFileAsync(__dirname + '/../templates/' + templatePath + '.html').then(html => {
         //noinspection JSUnresolvedFunction,JSUnresolvedVariable
         const template = _.template(html.toString())({
             lang: locale,
             title: locale.templates.welcome.title,
             instructions: locale.templates.welcome.instructions,
             confirmationLinkLabel: locale.templates.welcome.confirmationLinkLabel,
-
-            // todo: timed expiry link? resend link?
             confirmationLinkUrl: 'https://hankehly.com',
             footer: locale.templates.welcome.footer
         });
