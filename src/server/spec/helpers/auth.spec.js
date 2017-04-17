@@ -5,9 +5,11 @@
  * Created by henryehly on 2017/03/27.
  */
 
+const helpers    = require('../../app/helpers');
+const AuthHelper = helpers.Auth;
+const Utility    = helpers.Utility;
+
 const assert     = require('assert');
-const AuthHelper = require('../../app/helpers').Auth;
-const Utility    = require('../../app/helpers').Utility;
 
 describe('Auth', function() {
     describe('hashPassword', function() {
