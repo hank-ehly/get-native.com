@@ -39,7 +39,7 @@ describe('Email', function() {
     });
 
     describe('send', function() {
-        it(`should throw a ReferenceError if no template key is provided`, function() {
+        it(`should throw a ReferenceError if no template path is provided`, function() {
             assert.throws(function() {
                 Email.send()
             }, ReferenceError);
@@ -51,7 +51,7 @@ describe('Email', function() {
             }, ReferenceError);
         });
 
-        it(`should throw a TypeError if the template key is not a string`, function() {
+        it(`should throw a TypeError if the template path is not a string`, function() {
             assert.throws(function() {
                 Email.send(10, {foo: 'bar'})
             }, TypeError);
@@ -64,7 +64,7 @@ describe('Email', function() {
         });
 
         it(`should send an email`, function() {
-            return Email.send(k.Email.Welcome, {
+            return Email.send('welcome', {
                 from:    'sender@email.com',
                 to:      'receiver@email.com',
                 subject: 'subject'
@@ -77,7 +77,7 @@ describe('Email', function() {
 
         it(`should send an email from the specified sender`, function() {
             let sender = 'sender@email.com';
-            return Email.send(k.Email.Welcome, {
+            return Email.send('welcome', {
                 from:    sender,
                 to:      'receiver@email.com',
                 subject: 'subject'
@@ -90,7 +90,7 @@ describe('Email', function() {
 
         it(`should send an email to the specified receiver`, function() {
             let receiver = 'receiver@email.com';
-            return Email.send(k.Email.Welcome, {
+            return Email.send('welcome', {
                 from:    'sender@email.com',
                 to:      receiver,
                 subject: 'subject'
@@ -103,7 +103,7 @@ describe('Email', function() {
 
         it(`should send an email with the specified subject`, function() {
             let subject = 'Hello World!';
-            return Email.send(k.Email.Welcome, {
+            return Email.send('welcome', {
                 from:    'sender@email.com',
                 to:      'receiver@email.com',
                 subject: subject
@@ -115,7 +115,7 @@ describe('Email', function() {
         });
 
         it(`should send an email with the specified template`, function() {
-            return Email.send(k.Email.Welcome, {
+            return Email.send('welcome', {
                 from:    'sender@email.com',
                 to:      'receiver@email.com',
                 subject: 'subject'
@@ -128,7 +128,7 @@ describe('Email', function() {
 
         it(`should send different emails when different template keys are provided`, function() {
             const options = {to: 'receiver@email.com'};
-            return Promise.all([Email.send(k.Email.Welcome, options), Email.send(k.Email.ResetPassword, options)]).then(function() {
+            return Promise.all([Email.send('welcome', options), Email.send('email-verified', options)]).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
                     assert.notEqual(_.nth(emails, -1).html, _.nth(emails, -2).html);
                 });
