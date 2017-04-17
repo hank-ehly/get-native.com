@@ -69,7 +69,7 @@ module.exports.show = (req, res, next) => {
     const relatedCued      = Video.getCuedAttributeForAccountId(accountId);
 
     const relatedVideos = Video.scope([
-        'orderMostViewed', {method: ['includeSubcategoryName', Subcategory]}, {method: ['includeSpeakerName', Speaker]}
+        'orderMostViewed', {method: ['includeSubcategoryNameAndId', Subcategory]}, {method: ['includeSpeakerName', Speaker]}
     ]).findAll({
         attributes: [k.Attr.Id, relatedCreatedAt, k.Attr.Length, k.Attr.LoopCount, relatedCued],
         limit: 3
