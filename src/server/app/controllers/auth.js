@@ -69,7 +69,7 @@ module.exports.register = (req, res, next) => {
             throw new Error('Failed to create new account');
         }
 
-        return Email.send(k.Email.Welcome, {
+        return Email.send('welcome', {
             from:    config.get(k.NoReply),
             to:      req.body[k.Attr.Email]
         })
