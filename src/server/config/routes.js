@@ -15,6 +15,7 @@ router.patch('/account',                     validate(pv.accounts.update),      
 router.post( '/account/password',            validate(pv.accounts.updatePassword), ctrl.auth.authenticate, ctrl.accounts.updatePassword);
 router.post( '/account/email',               validate(pv.accounts.updateEmail),    ctrl.auth.authenticate, ctrl.accounts.updateEmail);
 router.get(  '/categories',                  validate(pv.categories.index),        ctrl.auth.authenticate, ctrl.categories.index);
+router.post( '/confirm_email',               validate(pv.auth.confirmEmail),                               ctrl.auth.confirmEmail);
 router.post( '/login',                       validate(pv.auth.login),                                      ctrl.auth.login);
 router.post( '/register',                    validate(pv.auth.register),                                   ctrl.auth.register);
 router.get(  '/study/stats/:lang',           validate(pv.study.stats),             ctrl.auth.authenticate, ctrl.study.stats);

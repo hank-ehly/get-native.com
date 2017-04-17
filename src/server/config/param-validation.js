@@ -61,6 +61,9 @@ module.exports = {
                 email: Joi.string().regex(regex.email).required(),
                 password: Joi.string().required().min(8)
             }
+        },
+        confirmEmail: {
+
         }
     },
     categories: {
