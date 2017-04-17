@@ -47,7 +47,7 @@ describe('Auth', function() {
         });
 
         it(`should return false if a library-specify error occurs`, function() {
-            assert(_.isBoolean(AuthHelper.verifyPassword('password', 'password')));
+            assert.equal(AuthHelper.verifyPassword('password', 'password'), false);
         });
 
         it(`should return true if the password is a match`, function() {
