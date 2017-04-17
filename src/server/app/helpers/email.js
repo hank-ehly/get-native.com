@@ -5,51 +5,51 @@
  * Created by henryehly on 2017/04/17.
  */
 
-const config  = require('../../config');
-const k       = require('../../config/keys.json');
+const Template = require('./template');
+const config   = require('../../config');
+const k        = require('../../config/keys.json');
 
-const Promise = require('bluebird');
-const mailer  = require('../../config/initializers/mailer');
-//noinspection JSUnresolvedFunction
-const fs      = Promise.promisifyAll(require('fs'));
-const _       = require('lodash');
+const mailer   = require('../../config/initializers/mailer');
+const _        = require('lodash');
 
-module.exports.send = (templatePath, options) => {
-    if (!templatePath || !_.isString(templatePath)) {
+module.exports.send = (path, options) => {
+    if (!path || !_.isString(path)) {
         throw new Error(`Missing or invalid template path`);
     }
 
-    if (!options || !_.isPlainObject(options)) {
+    else if (!options || !_.isPlainObject(options)) {
         throw new Error(`Missing or invalid mailer options`);
     }
 
-    if (!options.to || !_.isString(options.to)) {
+    else if (!options.to || !_.isString(options.to)) {
         throw new Error(`Missing or invalid receiver email address`);
     }
 
-    const locale = require(__dirname + '/../../config/locales/' + 'en' + '.json');
+    else if (options && options.variables && !_.isPlainObject(options.variables)) {
+        throw new Error(`Invalid value for options.variables: ${options.variables}`);
+    }
 
-    //noinspection JSUnresolvedFunction
-    return fs.readFileAsync(__dirname + '/../templates/' + templatePath + '.html').then(html => {
-        //noinspection JSUnresolvedFunction,JSUnresolvedVariable
-        const template = _.template(html.toString())({
-            lang: locale,
-            title: locale.templates.welcome.title,
-            instructions: locale.templates.welcome.instructions,
-            confirmationLinkLabel: locale.templates.welcome.confirmationLinkLabel,
-            confirmationLinkUrl: 'https://hankehly.com',
-            footer: locale.templates.welcome.footer
-        });
+    const locale    = _.defaultTo(options.locale, config.get(k.DefaultLocale));
 
+    const variables = require(__dirname + '/../../config/locales/' + locale + '.json');
 
+    const templateOptions = {locale: locale};
+
+    if (options && options.variables) {
+        templateOptions.variables = options.variables;
+    }
+
+    return Template.create(path, templateOptions).then(template => {
         //noinspection JSUnresolvedFunction,JSUnresolvedVariable
         return mailer.sendMail({
+            // todo: localized subject
+            subject: _.defaultTo(options.subject, variables.title),
             from:    _.defaultTo(options.from, config.get(k.NoReply)),
             to:      options.to,
-            subject: _.defaultTo(options.subject, locale.templates.welcome.title),
             html:    template
         });
     }).catch(e => {
-        throw e; // todo
+        // todo
+        throw e;
     });
 };

@@ -40,10 +40,12 @@ module.exports.create = (templateRelPath, options) => {
         let variables = null;
 
         try {
-            variables = _.clone(require(path.resolve(templateLocaleDir, locale + '.json')));
+            variables = require(path.resolve(templateLocaleDir, locale + '.json'));
         } catch (e) {
-            variables = _.clone(require(path.resolve(templateLocaleDir, config.get(k.DefaultLocale) + '.json')));
+            variables = require(path.resolve(templateLocaleDir, config.get(k.DefaultLocale) + '.json'));
         }
+
+        variables = _.clone(variables);
 
         variables.locale = locale;
 

@@ -5,12 +5,13 @@
  * Created by henryehly on 2017/04/17.
  */
 
-const assert = require('assert');
-const Email = require('../../app/helpers').Email;
-const k = require('../../config/keys.json');
 const SpecUtil = require('../spec-util');
-const _ = require('lodash');
-const Promise = require('bluebird');
+const assert   = require('assert');
+const Email    = require('../../app/helpers').Email;
+const k        = require('../../config/keys.json');
+
+const _        = require('lodash');
+const Promise  = require('bluebird');
 
 describe('Email', function() {
     let server  = null;
@@ -75,11 +76,23 @@ describe('Email', function() {
             }, Error);
         });
 
+        it(`should throw an Error if options.variable exists and is not a plain object`, function() {
+            assert.throws(function() {
+                Email.send('welcome', {
+                    to: {email: 'foo@bar.com'},
+                    variables: ['not', 'a', 'plain', 'object']
+                });
+            }, Error);
+        });
+
         it(`should send an email`, function() {
             return Email.send('welcome', {
                 from:    'sender@email.com',
                 to:      'receiver@email.com',
-                subject: 'subject'
+                subject: 'subject',
+                variables: {
+                    confirmationURL: 'https://hankehly.com'
+                }
             }).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
                     assert(_.gt(emails.length, 0));
@@ -92,7 +105,10 @@ describe('Email', function() {
             return Email.send('welcome', {
                 from:    sender,
                 to:      'receiver@email.com',
-                subject: 'subject'
+                subject: 'subject',
+                variables: {
+                    confirmationURL: 'https://hankehly.com'
+                }
             }).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
                     assert.equal(_.last(emails).envelope.from.address, sender);
@@ -105,7 +121,10 @@ describe('Email', function() {
             return Email.send('welcome', {
                 from:    'sender@email.com',
                 to:      receiver,
-                subject: 'subject'
+                subject: 'subject',
+                variables: {
+                    confirmationURL: 'https://hankehly.com'
+                }
             }).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
                     assert.equal(_.first(_.last(emails).envelope.to).address, receiver);
@@ -118,7 +137,10 @@ describe('Email', function() {
             return Email.send('welcome', {
                 from:    'sender@email.com',
                 to:      'receiver@email.com',
-                subject: subject
+                subject: subject,
+                variables: {
+                    confirmationURL: 'https://hankehly.com'
+                }
             }).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
                     assert.equal(_.last(emails).subject, subject);
@@ -130,7 +152,10 @@ describe('Email', function() {
             return Email.send('welcome', {
                 from:    'sender@email.com',
                 to:      'receiver@email.com',
-                subject: 'subject'
+                subject: 'subject',
+                variables: {
+                    confirmationURL: 'https://hankehly.com'
+                }
             }).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
                     assert(_.includes(_.last(emails).html, 'Welcome to Get Native!'));
@@ -139,7 +164,11 @@ describe('Email', function() {
         });
 
         it(`should send different emails when different template keys are provided`, function() {
-            const options = {to: 'receiver@email.com'};
+            const options = {
+                to: 'receiver@email.com',
+                variables: {confirmationURL: 'https://hankehly.com'}
+            };
+
             return Promise.all([Email.send('welcome', options), Email.send('email-verified', options)]).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
                     assert.notEqual(_.nth(emails, -1).html, _.nth(emails, -2).html);
