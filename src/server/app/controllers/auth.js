@@ -90,6 +90,10 @@ module.exports.register = (req, res, next) => {
     }).catch(next);
 };
 
+module.exports.confirmEmail = (req, res, next) => {
+    res.send(200);
+};
+
 module.exports.authenticate = (req, res, next) => {
     AuthHelper.validateRequest(req, (error, token) => {
         if (error) {

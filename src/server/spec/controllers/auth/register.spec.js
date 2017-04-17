@@ -201,25 +201,4 @@ describe('POST /register', function() {
             });
         });
     });
-
-    /*
-    * - A new AccountActivation record should be created
-    * - The new AccountActivation record should have a non-null string code
-    * - The new AccountActivation record should have a non-null account number
-    * - The new AccountActivation record should have a non-null expiration_date date equal to 24 hours from now
-    * - The new account's 'email verified' should be set to 'false' by default
-    * */
-
-    /*
-    * When you register, your account gets created automatically.
-    * An account activation record is created and is linked to the user.
-    * A confirmation url is generated and it has the account activation code.
-    * A confirmation email is sent to you with the confirmation link.
-    *
-    * When the user clicks the link, it opens the new route 'confirm email'
-    * Finds the account activation record
-    * Checks the expiry date
-    * Changes the user email verified to true
-    * Redirects user to /dashboard
-    * */
 });
