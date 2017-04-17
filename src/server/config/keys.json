@@ -27,6 +27,7 @@
         "VideoUrl": "video_url"
     },
     "Debug": "DEBUG",
+    "DefaultLocale": "DefaultLocale",
     "Email": {
         "Welcome": "Welcome",
         "ResetPassword": "ResetPassword"

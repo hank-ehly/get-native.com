@@ -15,5 +15,6 @@ defaults[k.SMTP.Port] = 1025;
 defaults[k.SMTP.Host] = 'localhost';
 defaults[k.API.Hostname] = 'localhost';
 defaults[k.NoReply] = 'noreply@' + defaults[k.API.Hostname];
+defaults[k.DefaultLocale] = 'en';
 
 module.exports = defaults;

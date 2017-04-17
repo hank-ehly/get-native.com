@@ -1,12 +1,4 @@
 {
-    "templates": {
-        "welcome": {
-            "title": "Welcome to Get Native!",
-            "instructions": "",
-            "confirmationLinkLabel": "Confirm Email Address",
-            "footer": "Footer.."
-        }
-    },
     "errors": {
         "100": "An error occurred while processing JWT",
         "101": "An error occurred while processing JWT",
