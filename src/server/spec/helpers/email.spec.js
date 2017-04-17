@@ -39,28 +39,40 @@ describe('Email', function() {
     });
 
     describe('send', function() {
-        it(`should throw a ReferenceError if no template path is provided`, function() {
+        it(`should throw an Error if no template path is provided`, function() {
             assert.throws(function() {
-                Email.send()
-            }, ReferenceError);
+                Email.send();
+            }, Error);
         });
 
-        it(`should throw a ReferenceError if no mailer options are provided`, function() {
+        it(`should throw an Error if no mailer options are provided`, function() {
             assert.throws(function() {
-                Email.send('key')
-            }, ReferenceError);
+                Email.send('welcome');
+            }, Error);
         });
 
-        it(`should throw a TypeError if the template path is not a string`, function() {
+        it(`should throw an Error if the template path is not a string`, function() {
             assert.throws(function() {
-                Email.send(10, {foo: 'bar'})
-            }, TypeError);
+                Email.send(10, {to: 'foo@bar.com'});
+            }, Error);
         });
 
-        it(`should throw a TypeError if the mailer options is not a plain object`, function() {
+        it(`should throw an Error if the mailer options is not a plain object`, function() {
             assert.throws(function() {
-                Email.send('key', 'not a plain object')
-            }, TypeError);
+                Email.send('welcome', 'not a plain object');
+            }, Error);
+        });
+
+        it(`should throw an Error if options.to is not present`, function() {
+            assert.throws(function() {
+                Email.send('welcome', {from: 'foo@bar.com'});
+            }, Error);
+        });
+
+        it(`should throw an Error if options.to is not a string`, function() {
+            assert.throws(function() {
+                Email.send('welcome', {to: {email: 'foo@bar.com'}});
+            }, Error);
         });
 
         it(`should send an email`, function() {
