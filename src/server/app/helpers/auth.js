@@ -5,15 +5,17 @@
  * Created by henryehly on 2017/03/20.
  */
 
-const jwt     = require('jsonwebtoken');
-const config  = require('../../config');
 const Utility = require('./utility');
-const Promise = require('bluebird');
+const config  = require('../../config');
 const k       = require('../../config/keys.json');
+
+const Promise = require('bluebird');
 const sodium  = require('sodium').api;
+const jwt     = require('jsonwebtoken');
+const _       = require('lodash');
 
 module.exports.validateRequest = function(req, callback) {
-    let token = Utility.extractAuthTokenFromRequest(req);
+    const token = Utility.extractAuthTokenFromRequest(req);
 
     // todo: audience?
     const args = {
@@ -26,20 +28,22 @@ module.exports.validateRequest = function(req, callback) {
 };
 
 module.exports.refreshToken = function(token, callback) {
-    const newToken = Object.assign({}, token);
-
-    delete newToken.exp;
+    const cloneToken = _.cloneWith(token, function(value, key) {
+        if (key !== 'exp') {
+            return value;
+        }
+    });
 
     const args = {
         algorithm: 'RS256',
         expiresIn: '1h'
     };
 
-    jwt.sign(newToken, config.get(k.PrivateKey), args, callback);
+    jwt.sign(cloneToken, config.get(k.PrivateKey), args, callback);
 };
 
 module.exports.generateTokenForAccountId = function(accountId) {
-    let token = {
+    const token = {
         iss: config.get(k.API.Hostname),
         sub: accountId,
         aud: ''
@@ -63,8 +67,7 @@ module.exports.setAuthHeadersOnResponseWithToken = function(res, token) {
 };
 
 module.exports.extractAccountIdFromRequest = function(req) {
-    let authToken = Utility.extractAuthTokenFromRequest(req);
-    return jwt.decode(authToken).sub;
+    return jwt.decode(Utility.extractAuthTokenFromRequest(req)).sub;
 };
 
 module.exports.hashPassword = function(password) {
@@ -72,7 +75,7 @@ module.exports.hashPassword = function(password) {
         throw new ReferenceError('No password provided');
     }
 
-    if (Utility.typeof(password) !== 'string') {
+    if (!_.isString(password)) {
         throw new TypeError('Password must be a string');
     }
 
@@ -91,7 +94,7 @@ module.exports.verifyPassword = function(pwhash, password) {
         throw new ReferenceError('Hash and password are required');
     }
 
-    if (Utility.typeof(pwhash) !== 'string' || Utility.typeof(password) !== 'string') {
+    if (!_.isString(pwhash) || !_.isString(password)) {
         throw new TypeError('Hash and password must both be strings');
     }
 
