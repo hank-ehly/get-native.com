@@ -177,7 +177,7 @@ describe('POST /register', function() {
         it(`should send a confirmation email to the newly registered user after successful registration`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
-                    const recipientEmailAddress = _.first(_.first(email).envelope.to).address;
+                    const recipientEmailAddress = _.first(_.first(emails).envelope.to).address;
                     assert.equal(recipientEmailAddress, newAccountCredentials.email);
                 });
             });
@@ -186,7 +186,7 @@ describe('POST /register', function() {
         it(`should send a confirmation email from the get-native noreply account after successful registration`, function() {
             return request(server).post('/register').send(newAccountCredentials).then(function() {
                 return SpecUtil.getAllEmail().then(function(emails) {
-                    const senderEmailAddress = _.first(email).envelope.from.address;
+                    const senderEmailAddress = _.first(emails).envelope.from.address;
                     const noreplyEmailAddress = config.get(k.NoReply);
                     assert.equal(senderEmailAddress, noreplyEmailAddress);
                 });
@@ -211,6 +211,15 @@ describe('POST /register', function() {
     * */
 
     /*
-    * -
+    * When you register, your account gets created automatically.
+    * An account activation record is created and is linked to the user.
+    * A confirmation url is generated and it has the account activation code.
+    * A confirmation email is sent to you with the confirmation link.
+    *
+    * When the user clicks the link, it opens the new route 'confirm email'
+    * Finds the account activation record
+    * Checks the expiry date
+    * Changes the user email verified to true
+    * Redirects user to /dashboard
     * */
 });
