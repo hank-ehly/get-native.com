@@ -24,9 +24,9 @@ describe('video', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(_) {
-            server = _.server;
-            account = _.response.body;
+        return SpecUtil.login().then(function(initGroup) {
+            server  = initGroup.server;
+            account = initGroup.response.body;
         });
     });
 
