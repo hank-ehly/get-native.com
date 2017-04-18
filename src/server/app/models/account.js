@@ -24,17 +24,17 @@ module.exports = function(sequelize, DataTypes) {
         browser_notifications_enabled: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: 0
+            defaultValue: false
         },
         email_notifications_enabled: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: 1
+            defaultValue: true
         },
         email_verified: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: 0
+            defaultValue: false
         },
         default_study_language_code: {
             type: DataTypes.STRING,
@@ -49,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
         is_silhouette_picture: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: 1
+            defaultValue: true
         }
     }, {
         tableName: 'accounts',
