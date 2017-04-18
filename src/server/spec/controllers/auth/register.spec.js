@@ -224,7 +224,8 @@ describe('POST /register', function() {
                     }
                 }).then(function(token) {
                     return SpecUtil.getAllEmail().then(function(emails) {
-                        assert(_.includes(_.last(emails).html, token.token));
+                        const expectedURL = `https://${config.get(k.API.Hostname)}/confirm_email?token=${token.token}`;
+                        assert(_.includes(_.last(emails).html, expectedURL));
                     });
                 });
             });

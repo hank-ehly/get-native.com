@@ -103,17 +103,13 @@ describe('Auth', function() {
             assert(_.includes(url, token));
         });
 
-        it(`should return a url whose hostname is that of the current environment`, function() {
-            const hostname = config.get(k.API.Hostname);
-            const token = AuthHelper.generateVerificationToken();
-            const url = AuthHelper.generateConfirmationURLForToken(token);
-            assert(_.includes(url, hostname));
-        });
+        it(`should return a url with the correct scheme, hostname, pathname and query`, function() {
+            const token  = AuthHelper.generateVerificationToken();
+            const actual = AuthHelper.generateConfirmationURLForToken(token);
 
-        it(`should return a url whose scheme is https`, function() {
-            const token = AuthHelper.generateVerificationToken();
-            const url = AuthHelper.generateConfirmationURLForToken(token);
-            assert(_.startsWith(url, 'https://'));
+            const expected = `https://${config.get(k.API.Hostname)}/confirm_email?token=${token}`;
+
+            assert.equal(actual, expected);
         });
     });
 });
