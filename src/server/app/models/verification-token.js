@@ -8,7 +8,6 @@
 const Utility = require('../helpers').Utility;
 const _       = require('lodash');
 
-// todo: Unique index on account_id
 module.exports = function(sequelize, DataTypes) {
     return sequelize.define('VerificationToken', {
         id: {
