@@ -12,8 +12,11 @@ const Promise  = require('bluebird');
 const request  = require('supertest');
 const assert   = require('assert');
 const moment   = require('moment');
+const crypto   = require('crypto');
+const _        = require('lodash');
 
 describe('POST /confirm_email', function() {
+    let account = null;
     let server  = null;
     let db      = null;
 
@@ -27,6 +30,13 @@ describe('POST /confirm_email', function() {
         return SpecUtil.startServer().then(function(initGroup) {
             server = initGroup.server;
             db     = initGroup.db;
+
+            return db.Account.create({
+                email: 'test-' + crypto.randomBytes(8).toString('hex') + '@email.com',
+                password: Auth.hashPassword('12345678')
+            }).then(function(_) {
+                account = _;
+            });
         });
     });
 
@@ -37,6 +47,32 @@ describe('POST /confirm_email', function() {
     after(function() {
         this.timeout(SpecUtil.defaultTimeout);
         return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
+    });
+
+    describe('response.headers', function() {
+        it('should respond with an X-GN-Auth-Token header', function() {
+            return db.VerificationToken.create({
+                account_id: account.id,
+                token: Auth.generateVerificationToken(),
+                expiration_date: moment().add(1, 'days').toDate()
+            }).then(function(token) {
+                return request(server).post(`/confirm_email?token=${token.get('token')}`).then(function(response) {
+                    assert(_.gt(response.headers['x-gn-auth-token'].length, 0));
+                });
+            });
+        });
+
+        it('should respond with an X-GN-Auth-Expire header containing a valid timestamp value', function() {
+            return db.VerificationToken.create({
+                account_id: account.id,
+                token: Auth.generateVerificationToken(),
+                expiration_date: moment().add(1, 'days').toDate()
+            }).then(function(token) {
+                return request(server).post(`/confirm_email?token=${token.get('token')}`).then(function(response) {
+                    assert(SpecUtil.isParsableTimestamp(+response.headers['x-gn-auth-expire']));
+                });
+            });
+        });
     });
 
     describe('response.failure', function() {
@@ -57,12 +93,10 @@ describe('POST /confirm_email', function() {
         });
 
         it(`should respond with 404 Not Found if the verification token is expired`, function(done) {
-            db.Account.findOne().then(function(account) {
-                return db.VerificationToken.create({
-                    account_id: account.id,
-                    token: Auth.generateVerificationToken(),
-                    expiration_date: moment().subtract(1, 'days').toDate()
-                });
+            db.VerificationToken.create({
+                account_id: account.id,
+                token: Auth.generateVerificationToken(),
+                expiration_date: moment().subtract(1, 'days').toDate()
             }).then(function(token) {
                 request(server).post(`/confirm_email?token=${token.get('token')}`).expect(404, done);
             });
@@ -71,15 +105,10 @@ describe('POST /confirm_email', function() {
 
     describe('response.success', function() {
         it(`should respond with 204 No Content if the verification succeeds`, function(done) {
-            db.Account.create({
-                email: 'foo@bar.com',
-                password: Auth.hashPassword('12345678')
-            }).then(function(account) {
-                return db.VerificationToken.create({
-                    account_id: account.id,
-                    token: Auth.generateVerificationToken(),
-                    expiration_date: moment().add(1, 'days').toDate()
-                });
+            db.VerificationToken.create({
+                account_id: account.id,
+                token: Auth.generateVerificationToken(),
+                expiration_date: moment().add(1, 'days').toDate()
             }).then(function(token) {
                 request(server).post(`/confirm_email?token=${token.get('token')}`).expect(204, done);
             });
@@ -88,35 +117,20 @@ describe('POST /confirm_email', function() {
 
     describe('other', function() {
         it(`should change the account email_verified value to true if verification succeeds`, function() {
-            let accountId = null;
-            return db.Account.create({
-                email: 'bar@foo.com',
-                password: Auth.hashPassword('12345678')
-            }).then(function(account) {
-                accountId = account.id;
-                return db.VerificationToken.create({
-                    account_id: account.id,
-                    token: Auth.generateVerificationToken(),
-                    expiration_date: moment().add(1, 'days').toDate()
-                });
+            return db.VerificationToken.create({
+                account_id: account.id,
+                token: Auth.generateVerificationToken(),
+                expiration_date: moment().add(1, 'days').toDate()
             }).then(function(token) {
                 return request(server).post(`/confirm_email?token=${token.get('token')}`);
             }).then(function() {
-                return db.Account.findById(accountId);
-            }).then(function(account) {
-                assert.equal(account.get('email_verified'), true);
+                return db.Account.findById(account.id);
+            }).then(function(a) {
+                assert.equal(a.get('email_verified'), true);
             });
         });
     });
 });
-
-/*
- * When the user clicks the link, it opens the new route 'confirm email'
- * Finds the account activation record
- * Checks the expiry date
- * Changes the user email verified to true
- * Redirects user to /dashboard
- * */
 
 /*
  * Create an account - auth controller
