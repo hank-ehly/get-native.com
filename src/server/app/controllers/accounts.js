@@ -33,7 +33,7 @@ module.exports.update = (req, res, next) => {
     }, {});
 
     if (_.size(attr) === 0) {
-        // todo: what status code should you return?
+        // todo: should you return a 304?
         return res.sendStatus(204);
     }
 
