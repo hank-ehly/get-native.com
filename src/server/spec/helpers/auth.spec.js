@@ -8,6 +8,9 @@
 const helpers    = require('../../app/helpers');
 const AuthHelper = helpers.Auth;
 const Utility    = helpers.Utility;
+const SpecUtil   = require('../spec-util');
+const config     = require('../../config');
+const k          = require('../../config/keys.json');
 
 const assert     = require('assert');
 const _          = require('lodash');
@@ -72,6 +75,45 @@ describe('Auth', function() {
 
         it(`should generate unique tokens`, function() {
             assert.notEqual(AuthHelper.generateVerificationToken(), AuthHelper.generateVerificationToken());
+        });
+    });
+
+    describe('generateConfirmationURLForToken', function() {
+        it(`should throw a ReferenceError if no verification token is provided`, function() {
+            assert.throws(function() {
+                AuthHelper.generateConfirmationURLForToken();
+            }, ReferenceError);
+        });
+
+        it(`should throw a TypeError if the provided verification token is not a string`, function() {
+            assert.throws(function() {
+                AuthHelper.generateConfirmationURLForToken({not: ['a', 'string']});
+            }, TypeError);
+        });
+
+        it(`should return a valid URL string`, function() {
+            const token = AuthHelper.generateVerificationToken();
+            const url = AuthHelper.generateConfirmationURLForToken(token);
+            assert(SpecUtil.isValidURL(url));
+        });
+
+        it(`should return a string containing the verification token`, function() {
+            const token = AuthHelper.generateVerificationToken();
+            const url = AuthHelper.generateConfirmationURLForToken(token);
+            assert(_.includes(url, token));
+        });
+
+        it(`should return a url whose hostname is that of the current environment`, function() {
+            const hostname = config.get(k.API.Hostname);
+            const token = AuthHelper.generateVerificationToken();
+            const url = AuthHelper.generateConfirmationURLForToken(token);
+            assert(_.includes(url, hostname));
+        });
+
+        it(`should return a url whose scheme is https`, function() {
+            const token = AuthHelper.generateVerificationToken();
+            const url = AuthHelper.generateConfirmationURLForToken(token);
+            assert(_.startsWith(url, 'https://'));
         });
     });
 });
