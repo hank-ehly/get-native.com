@@ -114,7 +114,10 @@ module.exports.confirmEmail = (req, res, next) => {
         changes[k.Attr.EmailVerified] = true;
 
         return Account.update(changes, {where: {id: token.account_id}});
-    }).then(() => {
+    }).then(account => {
+        return Auth.generateTokenForAccountId(account.id);
+    }).then(function(token) {
+        Auth.setAuthHeadersOnResponseWithToken(res, token);
         res.sendStatus(204);
     }).catch(GetNativeError, e => {
         if (e.code === k.Error.TokenExpired) {
