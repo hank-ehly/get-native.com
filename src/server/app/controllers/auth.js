@@ -5,19 +5,22 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const helpers        = require('../helpers');
-const GetNativeError = helpers.GetNativeError;
-const AuthHelper     = helpers.Auth;
-const Email          = helpers.Email;
-const config         = require('../../config');
-const jwt            = require('jsonwebtoken');
-const logger         = require('../../config/logger');
-const Account        = require('../models').Account;
-const nodemailer     = require('nodemailer');
-const Promise        = require('bluebird');
-const fs             = Promise.promisifyAll(require('fs'));
-const k              = require('../../config/keys.json');
-const _              = require('lodash');
+const helpers           = require('../helpers');
+const GetNativeError    = helpers.GetNativeError;
+const Auth              = helpers.Auth;
+const Email             = helpers.Email;
+const config            = require('../../config');
+const jwt               = require('jsonwebtoken');
+const logger            = require('../../config/logger');
+const db                = require('../models');
+const Account           = db.Account;
+const VerificationToken = db.VerificationToken;
+const nodemailer        = require('nodemailer');
+const Promise           = require('bluebird');
+const moment            = require('moment');
+const fs                = Promise.promisifyAll(require('fs'));
+const k                 = require('../../config/keys.json');
+const _                 = require('lodash');
 
 module.exports.login = (req, res, next) => {
     const attributes = [
@@ -36,13 +39,13 @@ module.exports.login = (req, res, next) => {
     Account.find({where: {email: req.body[k.Attr.Email]}, attributes: attributes}).then(_account => {
         account = _account;
 
-        if (!account || !AuthHelper.verifyPassword(account.password, req.body[k.Attr.Password])) {
+        if (!account || !Auth.verifyPassword(account.password, req.body[k.Attr.Password])) {
             throw new GetNativeError(k.Error.UserNamePasswordIncorrect);
         }
 
-        return AuthHelper.generateTokenForAccountId(account.id);
+        return Auth.generateTokenForAccountId(account.id);
     }).then(token => {
-        AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
+        Auth.setAuthHeadersOnResponseWithToken(res, token);
         const accountAsJson = account.get({plain: true});
         delete accountAsJson.password;
         res.send(accountAsJson);
@@ -54,6 +57,7 @@ module.exports.login = (req, res, next) => {
 
 module.exports.register = (req, res, next) => {
     let account = null;
+    let token   = null;
 
     // todo: shouldn't this be done by db validations?
     Account.existsForEmail(req.body[k.Attr.Email]).then(exists => {
@@ -61,7 +65,7 @@ module.exports.register = (req, res, next) => {
             throw new GetNativeError(k.Error.AccountAlreadyExists);
         }
 
-        return Account.create({email: req.body[k.Attr.Email], password: AuthHelper.hashPassword(req.body[k.Attr.Password])});
+        return Account.create({email: req.body[k.Attr.Email], password: Auth.hashPassword(req.body[k.Attr.Password])});
     }).then(_account => {
         account = _account;
 
@@ -69,17 +73,22 @@ module.exports.register = (req, res, next) => {
             throw new Error('Failed to create new account');
         }
 
+        token = Auth.generateVerificationToken();
+        const expirationDate = moment().add(1, 'days').toDate();
+
+        return VerificationToken.create({account_id: account.id, token: token, expiration_date: expirationDate})
+    }).then(_account => {
         return Email.send('welcome', {
             from:    config.get(k.NoReply),
             to:      req.body[k.Attr.Email],
             variables: {
-                confirmationURL: 'https://hankehly.com'
+                confirmationURL: Auth.generateConfirmationURLForToken(token)
             }
         })
     }).then(() => {
-        return AuthHelper.generateTokenForAccountId(account.id);
+        return Auth.generateTokenForAccountId(account.id);
     }).then(token => {
-        AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
+        Auth.setAuthHeadersOnResponseWithToken(res, token);
         const accountAsJson = account.get({plain: true});
         delete accountAsJson.password;
         res.send(accountAsJson);
@@ -95,17 +104,17 @@ module.exports.confirmEmail = (req, res, next) => {
 };
 
 module.exports.authenticate = (req, res, next) => {
-    AuthHelper.validateRequest(req, (error, token) => {
+    Auth.validateRequest(req, (error, token) => {
         if (error) {
             return next({raw: error, status: 401, body: new GetNativeError(k.Error.JWT.Verify)});
         }
 
-        AuthHelper.refreshToken(token, (err, token) => {
+        Auth.refreshToken(token, (err, token) => {
             if (error) {
                 return next({raw: error, status: 401, body: new GetNativeError(k.Error.JWT.Sign)});
             }
 
-            AuthHelper.setAuthHeadersOnResponseWithToken(res, token);
+            Auth.setAuthHeadersOnResponseWithToken(res, token);
             next();
         })
     });
