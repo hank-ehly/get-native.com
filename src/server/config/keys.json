@@ -23,6 +23,7 @@
         "Password": "password",
         "PictureUrl": "picture_url",
         "StudySessionId": "study_session_id",
+        "Token": "token",
         "UpdatedAt": "updated_at",
         "VideoUrl": "video_url"
     },
@@ -41,7 +42,8 @@
         "Auth": 103,
         "UserNamePasswordIncorrect": 104,
         "AccountAlreadyExists": 105,
-        "PasswordIncorrect": 106
+        "PasswordIncorrect": 106,
+        "TokenExpired": 107
     },
     "Env": {
         "Development": "development",
