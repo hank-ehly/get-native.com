@@ -5,11 +5,10 @@
  * Created by henryehly on 2017/02/24.
  */
 
-const Utility = require('../helpers').Utility;
-const _       = require('lodash');
+const moment = require('moment');
 
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('VerificationToken', {
+    const VerificationToken = sequelize.define('VerificationToken', {
         id: {
             allowNull: false,
             autoIncrement: true,
@@ -33,4 +32,10 @@ module.exports = function(sequelize, DataTypes) {
             models.VerificationToken.belongsTo(models.Account);
         }
     });
+
+    VerificationToken.prototype.isExpired = function() {
+        return moment(this.expiration_date).isSameOrBefore(moment());
+    };
+
+    return VerificationToken;
 };
