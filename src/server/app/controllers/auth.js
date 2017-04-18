@@ -103,7 +103,26 @@ module.exports.register = (req, res, next) => {
 };
 
 module.exports.confirmEmail = (req, res, next) => {
-    res.send(200);
+    const token = req.query.token;
+
+    return VerificationToken.findOne({where: {token: token}}).then(token => {
+        if (token.isExpired()) {
+            throw new GetNativeError(k.Error.TokenExpired);
+        }
+
+        const changes = {};
+        changes[k.Attr.EmailVerified] = true;
+
+        return Account.update(changes, {where: {id: token.account_id}});
+    }).then(() => {
+        res.sendStatus(204);
+    }).catch(GetNativeError, e => {
+        if (e.code === k.Error.TokenExpired) {
+            next({body: e, status: 404});
+        }
+    }).catch(e => {
+        res.sendStatus(404);
+    });
 };
 
 module.exports.authenticate = (req, res, next) => {

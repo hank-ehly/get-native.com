@@ -63,7 +63,9 @@ module.exports = {
             }
         },
         confirmEmail: {
-
+            query: {
+                token: Joi.string().length(32).required()
+            }
         }
     },
     categories: {
