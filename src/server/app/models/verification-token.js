@@ -27,6 +27,7 @@ module.exports = function(sequelize, DataTypes) {
         }
     }, {
         tableName: 'verification_tokens',
+        timestamps: false,
         underscored: true,
         associations: function(models) {
             models.VerificationToken.belongsTo(models.Account);
