@@ -57,7 +57,6 @@ module.exports.login = (req, res, next) => {
 
 module.exports.register = (req, res, next) => {
     let account = null;
-    let token   = null;
 
     // todo: shouldn't this be done by db validations?
     Account.existsForEmail(req.body[k.Attr.Email]).then(exists => {
@@ -73,16 +72,20 @@ module.exports.register = (req, res, next) => {
             throw new Error('Failed to create new account');
         }
 
-        token = Auth.generateVerificationToken();
+        const token = Auth.generateVerificationToken();
         const expirationDate = moment().add(1, 'days').toDate();
 
-        return VerificationToken.create({account_id: account.id, token: token, expiration_date: expirationDate})
-    }).then(_account => {
+        return VerificationToken.create({
+            account_id: account.id,
+            token: token,
+            expiration_date: expirationDate
+        });
+    }).then(verificationToken => {
         return Email.send('welcome', {
             from:    config.get(k.NoReply),
             to:      req.body[k.Attr.Email],
             variables: {
-                confirmationURL: Auth.generateConfirmationURLForToken(token)
+                confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get('token'))
             }
         })
     }).then(() => {
