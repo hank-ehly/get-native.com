@@ -30,11 +30,9 @@ module.exports.send = (path, options) => {
     }
 
     const locale    = _.defaultTo(options.locale, config.get(k.DefaultLocale));
-
     const variables = require(__dirname + '/../../config/locales/' + locale + '.json');
 
     const templateOptions = {locale: locale};
-
     if (options && options.variables) {
         templateOptions.variables = options.variables;
     }
@@ -42,7 +40,6 @@ module.exports.send = (path, options) => {
     return Template.create(path, templateOptions).then(template => {
         //noinspection JSUnresolvedFunction,JSUnresolvedVariable
         return mailer.sendMail({
-            // todo: localized subject
             subject: _.defaultTo(options.subject, variables.title),
             from:    _.defaultTo(options.from, config.get(k.NoReply)),
             to:      options.to,

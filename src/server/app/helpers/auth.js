@@ -13,6 +13,7 @@ const Promise = require('bluebird');
 const sodium  = require('sodium').api;
 const crypto  = require('crypto');
 const jwt     = require('jsonwebtoken');
+const url     = require('url');
 const _       = require('lodash');
 
 module.exports.validateRequest = (req, callback) => {
@@ -111,4 +112,20 @@ module.exports.verifyPassword = (pwhash, password) => {
 
 module.exports.generateVerificationToken = () => {
     return crypto.randomBytes(16).toString('hex');
+};
+
+module.exports.generateConfirmationURLForToken = token => {
+    if (!token) {
+        throw new ReferenceError(`Missing required token`);
+    }
+
+    if (!_.isString(token)) {
+        throw new TypeError(`Invalid token`)
+    }
+
+    return url.format({
+        protocol: 'https:',
+        host: config.get(k.API.Hostname),
+        query: {token: token}
+    });
 };
