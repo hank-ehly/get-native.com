@@ -33,8 +33,7 @@ module.exports.update = (req, res, next) => {
     }, {});
 
     if (_.size(attr) === 0) {
-        // todo: should you return a 304?
-        return res.sendStatus(204);
+        return res.sendStatus(304);
     }
 
     return Account.update(attr, {where: {id: accountId}}).then(() => {
