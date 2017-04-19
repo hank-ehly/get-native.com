@@ -15,6 +15,7 @@ const moment   = require('moment');
 const crypto   = require('crypto');
 const _        = require('lodash');
 
+// todo: Change to use json request body -- the query parameter thing is only for the client
 describe('POST /confirm_email', function() {
     let account = null;
     let server  = null;
@@ -133,21 +134,8 @@ describe('POST /confirm_email', function() {
 });
 
 /*
- * Create an account - auth controller
- * Create the code for the activation record - auth helper
- * Create an account activation record - auth controller
- * Generate a confirmation URL - auth helper
- * Send email - auth controller
- *
- * click activation code - new route controller
- * verify account activation code - new route controller
- * log the user in - new route controller
- * */
-
-/*
 * todo: give the user the opportunity to get a new token once it has expired
 * - have the user enter their email address and IF they have an unverified account, a new confirmation email will be sent
-* todo: cron job to delete expired verification tokens
-* the error page should contain a 'resend confirmation link' option
+* todo: (client) the error page should contain a 'resend confirmation link' option
 * todo: (client) have a resend confirmation link in the settings page (need a resend_confirmation_link endpoint)
 * */
