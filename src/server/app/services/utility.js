@@ -5,7 +5,8 @@
  * Created by henryehly on 2017/03/14.
  */
 
-const _ = require('lodash');
+const moment = require('moment');
+const _      = require('lodash');
 
 module.exports.typeof = function(x) {
     return _.nth(Object.prototype.toString.call(x).replace(/[\[\]]/g, '').split(' '), 1).toLowerCase();
@@ -53,4 +54,8 @@ module.exports.browserTimezoneOffsetToSQLFormat = function(offsetInMinutes) {
     const paddedMinutes = _.padStart(absoluteMinutes, 2, '0');
 
     return [symbol, paddedHours, ':', paddedMinutes].join('');
+};
+
+module.exports.tomorrow = () => {
+    return moment().add(1, 'days').toDate();
 };

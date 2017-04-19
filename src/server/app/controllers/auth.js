@@ -5,8 +5,9 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const services           = require('../services');
+const services          = require('../services');
 const GetNativeError    = services.GetNativeError;
+const Utility           = services.Utility;
 const Auth              = services.Auth;
 const Email             = services.Email;
 const config            = require('../../config');
@@ -58,29 +59,29 @@ module.exports.login = (req, res, next) => {
 module.exports.register = (req, res, next) => {
     let account = null;
 
-    // todo: shouldn't this be done by db validations?
-    Account.existsForEmail(req.body[k.Attr.Email]).then(exists => {
+    // todo: Use DB unique key constraint to throw error
+    return Account.existsForEmail(req.body[k.Attr.Email]).then(exists => {
         if (exists) {
             throw new GetNativeError(k.Error.AccountAlreadyExists);
         }
-
-        return Account.create({email: req.body[k.Attr.Email], password: Auth.hashPassword(req.body[k.Attr.Password])});
+        return Account.create({
+            email: req.body[k.Attr.Email],
+            password: Auth.hashPassword(req.body[k.Attr.Password])
+        });
     }).then(_account => {
         account = _account;
-
         if (!account) {
             throw new Error('Failed to create new account');
         }
-
         return VerificationToken.create({
             account_id: account.id,
             token: Auth.generateVerificationToken(),
-            expiration_date: moment().add(1, 'days').toDate()
+            expiration_date: Utility.tomorrow()
         });
     }).then(verificationToken => {
         return Email.send('welcome', {
-            from:    config.get(k.NoReply),
-            to:      req.body[k.Attr.Email],
+            from: config.get(k.NoReply),
+            to: req.body[k.Attr.Email],
             variables: {
                 confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get('token'))
             }
@@ -138,7 +139,7 @@ module.exports.resendConfirmationEmail = (req, res, next) => {
         }
 
         const token = Auth.generateVerificationToken();
-        const expirationDate = moment().add(1, 'days').toDate();
+        const expirationDate = Utility.tomorrow();
 
         return VerificationToken.create({
             account_id: account.get('id'),
