@@ -68,6 +68,10 @@ describe('PATCH /account', function() {
             request(server).patch('/account').set('authorization', authorization).send(validBody).expect(204, done);
         });
 
+        it(`should respond with 304 Not Modified if the request can authenticate but contains no body`, function(done) {
+            request(server).patch('/account').set('authorization', authorization).expect(304, done);
+        });
+
         it(`should not contain a response body`, function() {
             return request(server).patch('/account').set('authorization', authorization).send(validBody).then(function(response) {
                 // superagent returns {} if the body is undefined, so we must check for that
