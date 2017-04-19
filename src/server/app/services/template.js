@@ -36,9 +36,7 @@ module.exports.create = (templateRelPath, options) => {
     // todo: Support txt for crappy clients
     return fs.readFileAsync(templateAbsPath, 'UTF8').then(html => {
         const catalog = _.clone(i18n.getCatalog(i18n.getLocale()));
-        _.assign(catalog, options.variables);
-        
-        return _.template(html)(catalog);
+        return _.template(html)(_.assign(catalog, options.variables));
     }).catch(e => {
         // todo: type of error
         throw new ReferenceError(e);
