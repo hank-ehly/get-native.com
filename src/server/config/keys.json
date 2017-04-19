@@ -27,6 +27,10 @@
         "UpdatedAt": "updated_at",
         "VideoUrl": "video_url"
     },
+    "Client": {
+        "Host": "CLIENT_HOSTNAME",
+        "Protocol": "CLIENT_PROTOCOL"
+    },
     "Debug": "DEBUG",
     "DefaultLocale": "DefaultLocale",
     "Email": {
