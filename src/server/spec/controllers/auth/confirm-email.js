@@ -131,11 +131,6 @@ describe('POST /confirm_email', function() {
             });
         });
     });
-});
 
-/*
-* todo: give the user the opportunity to get a new token once it has expired
-* - have the user enter their email address and IF they have an unverified account, a new confirmation email will be sent
-* todo: (client) the error page should contain a 'resend confirmation link' option
-* todo: (client) have a resend confirmation link in the settings page (need a resend_confirmation_link endpoint)
-* */
+    it(`should use the VerificationToken with the most recent expiration_date if multiple tokens exist`);
+});
