@@ -5,14 +5,14 @@
  * Created by henryehly on 2017/04/17.
  */
 
-const config = require('../../config');
-const k = require('../../config/keys.json');
-const _ = require('lodash');
+const config  = require('../../config');
+const k       = require('../../config/keys.json');
+const _       = require('lodash');
 
 const Promise = require('bluebird');
-//noinspection JSUnresolvedFunction
-const fs = Promise.promisifyAll(require('fs'));
-const path = require('path');
+const fs      = Promise.promisifyAll(require('fs'));
+const path    = require('path');
+const i18n    = require('i18n');
 
 module.exports.create = (templateRelPath, options) => {
     if (!templateRelPath) {
@@ -33,27 +33,12 @@ module.exports.create = (templateRelPath, options) => {
 
     const templateAbsPath = path.resolve(__dirname, '..', 'templates', templateRelPath + '.html');
 
-    return fs.readFileAsync(templateAbsPath, 'utf8').then(html => {
-        const locale            = _.defaultTo(options.locale, config.get(k.DefaultLocale));
-        const templateLocaleDir = path.resolve(__dirname, '../../config/locales/templates/', templateRelPath);
-
-        let variables = null;
-
-        try {
-            variables = require(path.resolve(templateLocaleDir, locale + '.json'));
-        } catch (e) {
-            variables = require(path.resolve(templateLocaleDir, config.get(k.DefaultLocale) + '.json'));
-        }
-
-        variables = _.clone(variables);
-
-        variables.locale = locale;
-
-        if (options.variables) {
-            _.assign(variables, options.variables);
-        }
-
-        return _.template(html)(variables);
+    // todo: Support txt for crappy clients
+    return fs.readFileAsync(templateAbsPath, 'UTF8').then(html => {
+        const catalog = _.clone(i18n.getCatalog(i18n.getLocale()));
+        _.assign(catalog, options.variables);
+        
+        return _.template(html)(catalog);
     }).catch(e => {
         // todo: type of error
         throw new ReferenceError(e);
