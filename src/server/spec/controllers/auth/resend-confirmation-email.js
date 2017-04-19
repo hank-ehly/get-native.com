@@ -70,7 +70,7 @@ describe('POST /resend_confirmation_email', function() {
 
         it(`should contains the appropriate error response object if the account does not exist`, function() {
             return request(server).post('/resend_confirmation_email').send({email: 'unknown@email.com'}).then(function(response) {
-                const error = _.first(response.errors);
+                const error = response.body;
                 assert.equal(error.message, errorMessages[error.code]);
             });
         });
@@ -93,7 +93,10 @@ describe('POST /resend_confirmation_email', function() {
             }).then(function(account) {
                 return request(server).post('/resend_confirmation_email').send({email: account.email});
             }).then(function(response) {
-                const error = _.first(response.errors);
+                const error = response.body;
+
+                console.log(error.message, errorMessages[error.code], response.body);
+
                 assert.equal(error.message, errorMessages[error.code]);
             });
         });
@@ -101,7 +104,7 @@ describe('POST /resend_confirmation_email', function() {
 
     describe('response.success', function() {
         it(`should respond with 204 No Content if the request succeeds`, function(done) {
-            return request(server).post('/resend_confirmation_email').send({email: account.email}).expect(204, done);
+            request(server).post('/resend_confirmation_email').send({email: account.email}).expect(204, done);
         });
 
         it(`should create a new VerificationToken linked to the account`, function() {
