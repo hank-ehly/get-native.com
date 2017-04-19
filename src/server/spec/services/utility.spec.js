@@ -91,4 +91,15 @@ describe('Utility', function() {
             assert.equal(Utility.browserTimezoneOffsetToSQLFormat(null), '+00:00');
         });
     });
+
+    describe('tomorrow', function() {
+        it(`should return a javascript Date object`, function() {
+            assert(Utility.tomorrow() instanceof Date);
+        });
+
+        it(`should return a Date object equal to 24 hours later than the current time`, function() {
+            let tomorrow = new Date(new Date().getTime() + (1000 * 60 * 60 * 24));
+            assert.equal(Utility.tomorrow().getTime(), tomorrow.getTime());
+        });
+    });
 });
