@@ -72,13 +72,10 @@ module.exports.register = (req, res, next) => {
             throw new Error('Failed to create new account');
         }
 
-        const token = Auth.generateVerificationToken();
-        const expirationDate = moment().add(1, 'days').toDate();
-
         return VerificationToken.create({
             account_id: account.id,
-            token: token,
-            expiration_date: expirationDate
+            token: Auth.generateVerificationToken(),
+            expiration_date: moment().add(1, 'days').toDate()
         });
     }).then(verificationToken => {
         return Email.send('welcome', {
