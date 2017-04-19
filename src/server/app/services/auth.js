@@ -127,8 +127,8 @@ module.exports.generateConfirmationURLForToken = token => {
     }
 
     return url.format({
-        protocol: 'https:',
-        hostname: config.get(k.API.Hostname),
+        protocol: config.get(k.Client.Protocol),
+        host: config.get(k.Client.Host),
         pathname: 'confirm_email',
         query: {token: token}
     });

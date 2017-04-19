@@ -11,5 +11,7 @@ const config = {};
 
 config[k.Header.AccessControlAllowOrigin] = 'https://get-native.com';
 config[k.API.Hostname] = 'api.get-native.com';
+config[k.Client.Host] = 'get-native.com';
+config[k.Client.Protocol] = 'https';
 
 module.exports = config;
