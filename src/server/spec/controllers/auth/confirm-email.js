@@ -57,7 +57,7 @@ describe('POST /confirm_email', function() {
                 token: Auth.generateVerificationToken(),
                 expiration_date: moment().add(1, 'days').toDate()
             }).then(function(token) {
-                return request(server).post(`/confirm_email?token=${token.get('token')}`).then(function(response) {
+                return request(server).post(`/confirm_email`).send({token: token.get('token')}).then(function(response) {
                     assert(_.gt(response.headers['x-gn-auth-token'].length, 0));
                 });
             });
@@ -69,7 +69,7 @@ describe('POST /confirm_email', function() {
                 token: Auth.generateVerificationToken(),
                 expiration_date: moment().add(1, 'days').toDate()
             }).then(function(token) {
-                return request(server).post(`/confirm_email?token=${token.get('token')}`).then(function(response) {
+                return request(server).post(`/confirm_email`).send({token: token.get('token')}).then(function(response) {
                     assert(SpecUtil.isParsableTimestamp(+response.headers['x-gn-auth-expire']));
                 });
             });
@@ -77,20 +77,20 @@ describe('POST /confirm_email', function() {
     });
 
     describe('response.failure', function() {
-        it(`should respond with 400 Bad Request if the 'token' query parameter is missing`, function(done) {
+        it(`should respond with 400 Bad Request if the 'token' body parameter is missing`, function(done) {
             request(server).post('/confirm_email').expect(400, done);
         });
 
         it(`should respond with 400 Bad Request if the 'token' query parameter is less than 32 characters in length`, function(done) {
-            request(server).post('/confirm_email?token=less_than_32_characters').expect(400, done);
+            request(server).post('/confirm_email').send({token: 'less_than_32_characters'}).expect(400, done);
         });
 
         it(`should respond with 400 Bad Request if the 'token' query parameter is more than 32 characters in length`, function(done) {
-            request(server).post('/confirm_email?token=more_than_32_characters_more_than_32_characters').expect(400, done);
+            request(server).post('/confirm_email').send('more_than_32_characters_more_than_32_characters').expect(400, done);
         });
 
         it(`should respond with 404 Not Found if the verification token does not exist`, function(done) {
-            request(server).post('/confirm_email?token=bf294bed1332e34f9faf00413d0e61ab').expect(404, done);
+            request(server).post('/confirm_email').send({token: 'bf294bed1332e34f9faf00413d0e61ab'}).expect(404, done);
         });
 
         it(`should respond with 404 Not Found if the verification token is expired`, function(done) {
@@ -99,7 +99,7 @@ describe('POST /confirm_email', function() {
                 token: Auth.generateVerificationToken(),
                 expiration_date: moment().subtract(1, 'days').toDate()
             }).then(function(token) {
-                request(server).post(`/confirm_email?token=${token.get('token')}`).expect(404, done);
+                request(server).post(`/confirm_email`).send({token: token.get('token')}).expect(404, done);
             });
         });
     });
@@ -111,7 +111,7 @@ describe('POST /confirm_email', function() {
                 token: Auth.generateVerificationToken(),
                 expiration_date: moment().add(1, 'days').toDate()
             }).then(function(token) {
-                request(server).post(`/confirm_email?token=${token.get('token')}`).expect(204, done);
+                request(server).post(`/confirm_email`).send({token: token.get('token')}).expect(204, done);
             });
         });
     });
@@ -123,7 +123,7 @@ describe('POST /confirm_email', function() {
                 token: Auth.generateVerificationToken(),
                 expiration_date: moment().add(1, 'days').toDate()
             }).then(function(token) {
-                return request(server).post(`/confirm_email?token=${token.get('token')}`);
+                return request(server).post(`/confirm_email`).send({token: token.get('token')});
             }).then(function() {
                 return db.Account.findById(account.id);
             }).then(function(a) {
