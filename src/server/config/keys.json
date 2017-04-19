@@ -34,16 +34,15 @@
         "ResetPassword": "ResetPassword"
     },
     "Error": {
-        "JWT": {
-            "Verify": 100,
-            "Sign": 101
-        },
+        "JWT": 100,
         "RequestParam": 102,
         "Auth": 103,
         "UserNamePasswordIncorrect": 104,
         "AccountAlreadyExists": 105,
         "PasswordIncorrect": 106,
-        "TokenExpired": 107
+        "TokenExpired": 107,
+        "AccountMissing": 108,
+        "AccountAlreadyVerified": 109
     },
     "Env": {
         "Development": "development",
