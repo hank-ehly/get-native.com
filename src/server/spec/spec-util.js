@@ -46,7 +46,7 @@ module.exports.stopMailServer = function() {
 module.exports.getAllEmail = function() {
     return new Promise(function(resolve, reject) {
         setTimeout(function() {
-            maildev.getAllEmail((errors, store) => {
+            maildev.getAllEmail(function(errors, store) {
                 return errors ? reject(errors) : resolve(store);
             });
         }, 1);
