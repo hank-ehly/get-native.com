@@ -10,6 +10,7 @@ const config   = require('../../config');
 const k        = require('../../config/keys.json');
 
 const mailer   = require('../../config/initializers/mailer');
+const i18n     = require('i18n');
 const _        = require('lodash');
 
 module.exports.send = (path, options) => {
@@ -29,18 +30,10 @@ module.exports.send = (path, options) => {
         throw new Error(`Invalid value for options.variables: ${options.variables}`);
     }
 
-    const locale    = _.defaultTo(options.locale, config.get(k.DefaultLocale));
-    const variables = require(__dirname + '/../../config/locales/' + locale + '.json');
-
-    const templateOptions = {locale: locale};
-    if (options && options.variables) {
-        templateOptions.variables = options.variables;
-    }
-
-    return Template.create(path, templateOptions).then(template => {
+    return Template.create(path, options).then(template => {
         //noinspection JSUnresolvedFunction,JSUnresolvedVariable
         return mailer.sendMail({
-            subject: _.defaultTo(options.subject, variables.title),
+            subject: _.defaultTo(options.subject, i18n.__(`${path}.title`)),
             from:    _.defaultTo(options.from, config.get(k.NoReply)),
             to:      options.to,
             html:    template

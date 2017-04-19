@@ -4,16 +4,16 @@ You may be used to using pure CSS layouts for your web pages,
 but that approach just won’t hold up in an email environment.
 -->
 <!DOCTYPE html>
-<html lang="<%= locale %>">
+<html lang="<%= lang %>">
 <head>
     <meta charset="UTF-8">
-    <title><%= title %></title>
+    <title><%= welcome.title %></title>
 </head>
 <body>
-<h1><%= title %></h1>
-<p><%= instructions %></p>
-<a href="<%= confirmationURL %>"><%= confirmationLinkLabel %></a>
-<footer><%= footer %></footer>
+<h1><%= welcome.title %></h1>
+<p><%= welcome.instructions %></p>
+<a href="<%= confirmationURL %>"><%= welcome.confirmationLinkLabel %></a>
+<footer><%= welcome.footer %></footer>
 <!-- Unsubscribe -->
 <!-- Notice: If you reply to this we won't see it -->
 <!-- If you have questions, contact xxx@email.com -->

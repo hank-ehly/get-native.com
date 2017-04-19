@@ -94,9 +94,9 @@ describe('Email', function() {
                     confirmationURL: 'https://hankehly.com'
                 }
             }).then(function() {
-                return SpecUtil.getAllEmail().then(function(emails) {
-                    assert(_.gt(emails.length, 0));
-                });
+                return SpecUtil.getAllEmail();
+            }).then(function(emails) {
+                assert(_.gt(emails.length, 0));
             });
         });
 

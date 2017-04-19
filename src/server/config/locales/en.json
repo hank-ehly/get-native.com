@@ -1,14 +1,27 @@
 {
-    "errors": {
-        "100": "An error occurred while processing JWT",
-        "101": "An error occurred while processing JWT",
-        "102": "-",
-        "103": "Authorization error",
-        "104": "Username or password is incorrect",
-        "105": "Account already exists",
-        "106": "That password is incorrect",
-        "107": "_",
-        "108": "No account with this email exists",
-        "109": "This account is already verified"
-    }
+	"emailVerified": {
+		"title": "Email Verified"
+	},
+	"errors": {
+		"100": "An error occurred while processing JWT",
+		"101": "An error occurred while processing JWT",
+		"102": "-",
+		"103": "Authorization error",
+		"104": "Username or password is incorrect",
+		"105": "Account already exists",
+		"106": "That password is incorrect",
+		"107": "_",
+		"108": "No account with this email exists",
+		"109": "This account is already verified"
+	},
+	"lang": "en",
+	"welcome": {
+		"title": "Welcome to Get Native!",
+		"instructions": "",
+		"confirmationLinkLabel": "Confirm Email Address",
+		"footer": "Footer.."
+	},
+	"email-verified": {
+		"title": "email-verified.title"
+	}
 }
