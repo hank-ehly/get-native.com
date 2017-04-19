@@ -8,6 +8,8 @@
 const Utility = require('./utility');
 const Locale  = require('../../config/locales/en.json'); // todo
 
+const _       = require('lodash');
+
 function GetNativeError(code, message) {
     Error.captureStackTrace(this, GetNativeError);
 
@@ -15,13 +17,15 @@ function GetNativeError(code, message) {
         throw new ReferenceError('No code provided');
     }
 
-    if (Utility.typeof(code) !== 'number') {
+    if (!_.isNumber(code)) {
         throw new TypeError(`Code must be a number -- received ${Utility.typeof(code)}`);
     }
 
-    if (message && Utility.typeof(message) !== 'string') {
+    if (message && !_.isString(message)) {
         throw new TypeError(`Message must be a string -- received ${Utility.typeof(code)}`);
-    } else if (!message && !Locale.errors[code]) {
+    }
+
+    else if (!message && !Locale.errors[code]) {
         throw new ReferenceError(`No message provided for error code ${code}`);
     }
 
