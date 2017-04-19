@@ -8,7 +8,7 @@
 const request  = require('supertest');
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
-const Utility  = require('../../../app/helpers').Utility;
+const Utility  = require('../../../app/services').Utility;
 const _        = require('lodash');
 
 describe('GET /videos', function() {

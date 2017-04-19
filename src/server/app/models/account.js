@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/02/24.
  */
 
-const Utility = require('../helpers').Utility;
+const Utility = require('../services').Utility;
 const moment  = require('moment');
 const _       = require('lodash');
 

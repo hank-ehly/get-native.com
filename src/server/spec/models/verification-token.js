@@ -8,7 +8,7 @@
 const db                = require('../../app/models');
 const Account           = db.Account;
 const VerificationToken = db.VerificationToken;
-const Auth              = require('../../app/helpers').Auth;
+const Auth              = require('../../app/services').Auth;
 const SpecUtil          = require('../spec-util');
 
 const Promise = require('bluebird');

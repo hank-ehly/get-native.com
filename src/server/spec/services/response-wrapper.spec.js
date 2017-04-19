@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/03/14.
  */
 
-const ResponseWrapper = require('../../app/helpers').ResponseWrapper;
+const ResponseWrapper = require('../../app/services').ResponseWrapper;
 const assert = require('assert');
 
 describe('response-wrapper', function() {

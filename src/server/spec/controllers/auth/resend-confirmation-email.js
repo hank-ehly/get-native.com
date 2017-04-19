@@ -8,7 +8,7 @@
 const errorMessages = require('../../../config/locales/en.json').errors;
 const config        = require('../../../config');
 const SpecUtil      = require('../../spec-util');
-const Auth          = require('../../../app/helpers').Auth;
+const Auth          = require('../../../app/services').Auth;
 const k             = require('../../../config/keys.json');
 
 const request       = require('supertest');

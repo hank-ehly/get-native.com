@@ -7,7 +7,7 @@
 
 const SpecUtil = require('../spec-util');
 const assert   = require('assert');
-const Email    = require('../../app/helpers').Email;
+const Email    = require('../../app/services').Email;
 const k        = require('../../config/keys.json');
 
 const _        = require('lodash');

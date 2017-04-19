@@ -10,7 +10,7 @@ const url      = require('url');
 const SpecUtil = require('../../spec-util');
 const assert   = require('assert');
 const Speaker  = require('../../../app/models').Speaker;
-const Utility  = require('../../../app/helpers').Utility;
+const Utility  = require('../../../app/services').Utility;
 const Promise  = require('bluebird');
 
 describe('GET /speakers/:id', function() {

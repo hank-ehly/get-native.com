@@ -9,7 +9,7 @@ const request  = require('supertest');
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const Promise  = require('bluebird');
-const Utility  = require('../../../app/helpers').Utility;
+const Utility  = require('../../../app/services').Utility;
 
 describe('GET /study/stats', function() {
     let authorization = null;

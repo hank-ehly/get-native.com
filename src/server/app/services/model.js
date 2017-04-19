@@ -6,7 +6,7 @@
  */
 
 module.exports = (db) => {
-    const Utility = require('../helpers').Utility;
+    const Utility = require('../services').Utility;
     const module  = {};
 
     module.getFormattedSequelizeDateAttributeForTableColumnTimezoneOffset = function(table, column, timeZoneOffset) {
