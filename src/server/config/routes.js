@@ -18,7 +18,7 @@ router.get(  '/categories',                  validate(pv.categories.index),     
 router.post( '/confirm_email',               validate(pv.auth.confirmEmail),                               ctrl.auth.confirmEmail);
 router.post( '/login',                       validate(pv.auth.login),                                      ctrl.auth.login);
 router.post( '/register',                    validate(pv.auth.register),                                   ctrl.auth.register);
-router.post( '/resend_confirmation_email',   validate(pv.auth.resendConfirmationEmail),                    ctrl.auth.resentConfirmationEmail);
+router.post( '/resend_confirmation_email',   validate(pv.auth.resendConfirmationEmail),                    ctrl.auth.resendConfirmationEmail);
 router.get(  '/study/stats/:lang',           validate(pv.study.stats),             ctrl.auth.authenticate, ctrl.study.stats);
 router.get(  '/study/writing_answers/:lang', validate(pv.study.writing_answers),   ctrl.auth.authenticate, ctrl.study.writing_answers);
 router.get(  '/speakers/:id',                validate(pv.speakers.show),           ctrl.auth.authenticate, ctrl.speakers.show);
