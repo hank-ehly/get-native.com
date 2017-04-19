@@ -121,7 +121,7 @@ describe('Auth', function() {
             const token  = Auth.generateVerificationToken();
             const actual = Auth.generateConfirmationURLForToken(token);
 
-            const expected = `https://${config.get(k.API.Hostname)}/confirm_email?token=${token}`;
+            const expected = `${config.get(k.Client.Protocol)}://${config.get(k.Client.Host)}/confirm_email?token=${token}`;
 
             assert.equal(actual, expected);
         });
