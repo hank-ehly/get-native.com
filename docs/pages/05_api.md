@@ -358,6 +358,32 @@ Status: 200 OK
 }
 ```
 
+# POST /confirm_email
+
+Confirm the account email address
+
+```
+POST https://api.get-native.com/confirm_email
+```
+
+**Parameters**
+
+| Parameter   	| Description                                                     	| Required 	| Default 	|
+|-------------	|-----------------------------------------------------------------	|:--------:	|---------	|
+| token        	| The verification token used to confirm the account email address	|     √    	|         	|
+
+```json
+{
+	"token": "bf294bed1332e34f9faf00413d0e61ab"
+}
+```
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
 # POST /login
 
 Verify user credentials and create new login session.
@@ -494,6 +520,33 @@ Status: 200 OK
 		"count": 10
 	}
 }
+```
+
+# POST /resend_confirmation_email
+
+Resend the registration confirmation email to the specified email address.
+No further action will be taken if the email is either not registered or has already been confirmed.
+
+```
+POST https://api.get-native.com/resend_confirmation_email
+```
+
+**Parameters**
+
+| Parameter   	| Description                                         	| Required 	| Default 	|
+|-------------	|-----------------------------------------------------	|:--------:	|---------	|
+| email        	| The email linked to the authenticating users' account	|     √    	|         	|
+
+```json
+{
+	"email": "foo@bar.com"
+}
+```
+
+**Response**
+
+```
+Status: 204 No Content
 ```
 
 # GET /speakers/:id
