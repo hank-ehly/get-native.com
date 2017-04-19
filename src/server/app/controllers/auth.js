@@ -103,7 +103,7 @@ module.exports.register = (req, res, next) => {
 };
 
 module.exports.confirmEmail = (req, res, next) => {
-    const token = req.query.token;
+    const token = req.body.token;
 
     return VerificationToken.findOne({where: {token: token}}).then(token => {
         if (token.isExpired()) {

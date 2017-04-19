@@ -63,7 +63,7 @@ module.exports = {
             }
         },
         confirmEmail: {
-            query: {
+            body: {
                 token: Joi.string().length(32).required()
             }
         }
