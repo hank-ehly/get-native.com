@@ -7,7 +7,7 @@
 
 const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
-const Utility  = require('../../../app/helpers').Utility;
+const Utility  = require('../../../app/services').Utility;
 const request  = require('supertest');
 const Promise  = require('bluebird');
 const _        = require('lodash');

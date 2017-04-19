@@ -5,9 +5,9 @@
  * Created by henryehly on 2017/03/27.
  */
 
-const helpers    = require('../../app/helpers');
-const Auth = helpers.Auth;
-const Utility    = helpers.Utility;
+const services    = require('../../app/services');
+const Auth = services.Auth;
+const Utility    = services.Utility;
 const SpecUtil   = require('../spec-util');
 const config     = require('../../config');
 const k          = require('../../config/keys.json');

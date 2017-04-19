@@ -5,10 +5,10 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const helpers           = require('../helpers');
-const GetNativeError    = helpers.GetNativeError;
-const Auth              = helpers.Auth;
-const Email             = helpers.Email;
+const services           = require('../services');
+const GetNativeError    = services.GetNativeError;
+const Auth              = services.Auth;
+const Email             = services.Email;
 const config            = require('../../config');
 const jwt               = require('jsonwebtoken');
 const logger            = require('../../config/logger');
@@ -128,23 +128,54 @@ module.exports.confirmEmail = (req, res, next) => {
     });
 };
 
-module.exports.resentConfirmationEmail = (req, res, next) => {
-    res.sendStatus(204);
+module.exports.resendConfirmationEmail = (req, res, next) => {
+    Account.existsForEmail(req.body[k.Attr.Email]).then(exists => {
+        if (!exists) {
+            throw new GetNativeError(k.Error.AccountMissing);
+        }
+
+        return Account.findOne({where: {email: req.body[k.Attr.Email]}});
+    }).then(function(account) {
+        if (account.get('email_verified')) {
+            throw new GetNativeError(k.Error.AccountAlreadyVerified);
+        }
+
+        const token = Auth.generateVerificationToken();
+        const expirationDate = moment().add(1, 'days').toDate();
+
+        return VerificationToken.create({
+            account_id: account.get('id'),
+            token: token,
+            expiration_date: expirationDate
+        });
+    }).then(verificationToken => {
+        return Email.send('welcome', {
+            from:    config.get(k.NoReply),
+            to:      req.body[k.Attr.Email],
+            variables: {
+                confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get('token'))
+            }
+        });
+    }).then(() => {
+        res.sendStatus(204);
+    }).catch(GetNativeError, e => {
+        if (e.code === k.Error.AccountMissing) {
+            next({status: 404, body: e});
+        } else if (e.code === k.Error.AccountAlreadyExists) {
+            next({status: 422, body: e});
+        } else {
+            next(e);
+        }
+    }).catch(next);
 };
 
 module.exports.authenticate = (req, res, next) => {
-    Auth.validateRequest(req, (error, token) => {
-        if (error) {
-            return next({raw: error, status: 401, body: new GetNativeError(k.Error.JWT.Verify)});
-        }
-
-        Auth.refreshToken(token, (err, token) => {
-            if (error) {
-                return next({raw: error, status: 401, body: new GetNativeError(k.Error.JWT.Sign)});
-            }
-
-            Auth.setAuthHeadersOnResponseWithToken(res, token);
-            next();
-        })
+    return Auth.validateRequest(req).then(token => {
+        return Auth.refreshToken(token);
+    }).then(token => {
+        Auth.setAuthHeadersOnResponseWithToken(res, token);
+        next();
+    }).catch(e => {
+        next({raw: e, status: 401, body: new GetNativeError(k.Error.JWT)});
     });
 };

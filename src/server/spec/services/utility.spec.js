@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/03/14.
  */
 
-const Utility = require('../../app/helpers').Utility;
+const Utility = require('../../app/services').Utility;
 const assert = require('assert');
 
 describe('Utility', function() {

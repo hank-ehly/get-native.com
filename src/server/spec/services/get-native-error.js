@@ -6,8 +6,8 @@
  */
 
 const assert = require('assert');
-const GetNativeError = require('../../app/helpers').GetNativeError;
-const Utility = require('../../app/helpers').Utility;
+const GetNativeError = require('../../app/services').GetNativeError;
+const Utility = require('../../app/services').Utility;
 const _ = require('lodash');
 
 describe('GetNativeError', function() {

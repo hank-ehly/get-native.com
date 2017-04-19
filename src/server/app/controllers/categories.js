@@ -6,7 +6,7 @@
  */
 
 const models = require('../models');
-const ResponseWrapper = require('../helpers').ResponseWrapper;
+const ResponseWrapper = require('../services').ResponseWrapper;
 
 module.exports.index = (req, res) => {
     models.Category.findAll({

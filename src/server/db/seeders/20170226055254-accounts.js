@@ -6,7 +6,7 @@
  */
 
 const chance     = require('chance').Chance();
-const AuthHelper = require('../../app/helpers').Auth;
+const AuthHelper = require('../../app/services').Auth;
 const k          = require('../../config/keys.json');
 
 module.exports = {

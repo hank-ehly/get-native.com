@@ -6,7 +6,7 @@
  */
 
 const assert = require('assert');
-const Template = require('../../app/helpers').Template;
+const Template = require('../../app/services').Template;
 const _ = require('lodash');
 
 describe('Template', function() {

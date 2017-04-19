@@ -16,12 +16,12 @@ const Transcript      = db.Transcript;
 const Collocation     = db.Collocation;
 const UsageExample    = db.UsageExample;
 const CuedVideo       = db.CuedVideo;
-const ResponseWrapper = require('../helpers').ResponseWrapper;
-const AuthHelper      = require('../helpers').Auth;
+const ResponseWrapper = require('../services').ResponseWrapper;
+const AuthHelper      = require('../services').Auth;
 const Promise         = require('bluebird');
-const ModelHelper     = require('../helpers').Model(db);
+const ModelHelper     = require('../services').Model(db);
 const k               = require('../../config/keys.json');
-const GetNativeError  = require('../helpers').GetNativeError;
+const GetNativeError  = require('../services').GetNativeError;
 
 module.exports.index = (req, res, next) => {
     const conditions = {language_code: req.query.lang || 'en'};

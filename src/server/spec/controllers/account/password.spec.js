@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/04/05.
  */
 
-const AuthHelper = require('../../../app/helpers').Auth;
+const AuthHelper = require('../../../app/services').Auth;
 const assert     = require('assert');
 const request    = require('supertest');
 const SpecUtil   = require('../../spec-util');

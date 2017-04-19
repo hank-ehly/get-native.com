@@ -5,12 +5,12 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const ResponseWrapper = require('../helpers').ResponseWrapper;
-const AuthHelper      = require('../helpers').Auth;
+const ResponseWrapper = require('../services').ResponseWrapper;
+const AuthHelper      = require('../services').Auth;
 const k               = require('../../config/keys.json');
 const logger          = require('../../config/logger');
 const db              = require('../models');
-const ModelHelper     = require('../helpers').Model(db);
+const ModelHelper     = require('../services').Model(db);
 const WritingAnswer   = db.WritingAnswer;
 const WritingQuestion = db.WritingQuestion;
 const Account         = db.Account;

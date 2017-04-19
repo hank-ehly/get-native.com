@@ -7,7 +7,7 @@
 
 const k              = require('../../config/keys.json');
 const Joi            = require('joi');
-const GetNativeError = require('../helpers').GetNativeError;
+const GetNativeError = require('../services').GetNativeError;
 
 const options        = {
     "abortEarly": false,

@@ -6,7 +6,7 @@
  */
 
 const SpecUtil = require('../../spec-util');
-const Auth     = require('../../../app/helpers').Auth;
+const Auth     = require('../../../app/services').Auth;
 
 const Promise  = require('bluebird');
 const request  = require('supertest');

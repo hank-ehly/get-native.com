@@ -8,7 +8,7 @@
 const SpecUtil = require('../../spec-util');
 const request  = require('supertest');
 const assert   = require('assert');
-const Utility  = require('../../../app/helpers').Utility;
+const Utility  = require('../../../app/services').Utility;
 const Promise  = require('bluebird');
 
 describe('GET /account', function() {

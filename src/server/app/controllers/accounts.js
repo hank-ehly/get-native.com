@@ -5,10 +5,10 @@
  * Created by henryehly on 2017/02/03.
  */
 
-const GetNativeError = require('../helpers').GetNativeError;
-const Utility        = require('../helpers').Utility;
+const GetNativeError = require('../services').GetNativeError;
+const Utility        = require('../services').Utility;
 const Account        = require('../models').Account;
-const AuthHelper     = require('../helpers').Auth;
+const AuthHelper     = require('../services').Auth;
 const k              = require('../../config/keys.json');
 const _              = require('lodash');
 
