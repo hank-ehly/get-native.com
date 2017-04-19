@@ -66,6 +66,11 @@ module.exports = {
             body: {
                 token: Joi.string().length(32).required()
             }
+        },
+        resendConfirmationEmail: {
+            body: {
+                email: Joi.string().regex(regex.email).required()
+            }
         }
     },
     categories: {
