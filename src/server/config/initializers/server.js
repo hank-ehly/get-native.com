@@ -5,15 +5,18 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const express    = require('express');
-const bodyParser = require('body-parser');
-const morgan     = require('morgan');
-const config      = require('../index');
+const middleware = require('../../app/middleware');
+const config     = require('../index');
 const routes     = require('../routes');
 const logger     = require('../logger');
-const middleware = require('../../app/middleware');
-const Promise    = require('bluebird');
+const i18n       = require('../i18n');
 const k          = require('../keys.json');
+
+const express    = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const morgan     = require('morgan');
+const Promise    = require('bluebird');
 
 module.exports = () => {
     const app = express();
@@ -27,7 +30,9 @@ module.exports = () => {
     }
 
     app.use(bodyParser.json());
+    app.use(cookieParser());
     app.use(middleware.Cors);
+    app.use(i18n.init);
     app.use(routes);
 
     app.use(middleware.Error.logErrors);
