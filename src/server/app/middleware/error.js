@@ -5,9 +5,9 @@
  * Created by henryehly on 2017/03/13.
  */
 
-const logger = require('../../config/logger');
 const config = require('../../config');
-const k  = require('../../config/keys.json');
+const logger = require('../../config/logger');
+const k      = require('../../config/keys.json');
 
 module.exports.logErrors = function(error, req, res, next) {
     logger.info(error, {json: true});
