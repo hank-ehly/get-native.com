@@ -7,8 +7,17 @@
 
 const k              = require('../../config/keys.json');
 const Joi            = require('joi');
-const options        = require('../../config/joi.json');
 const GetNativeError = require('../helpers').GetNativeError;
+
+const options        = {
+    "abortEarly": false,
+    "convert": true,
+    "allowUnknown": true,
+    "skipFunctions": false,
+    "stripUnknown": false,
+    "presence": "optional",
+    "noDefaults": false
+};
 
 module.exports = function(schema) {
     if (!schema) {
