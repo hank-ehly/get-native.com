@@ -12,13 +12,12 @@ const k       = require('../../config/keys.json');
 const Promise = require('bluebird');
 const sodium  = require('sodium').api;
 const crypto  = require('crypto');
+const moment  = require('moment');
 const jwt     = require('jsonwebtoken');
 const url     = require('url');
 const _       = require('lodash');
 
-module.exports.validateRequest = (req, callback) => {
-    const token = Utility.extractAuthTokenFromRequest(req);
-
+module.exports.validateRequest = req => {
     // todo: audience?
     const args = {
         issuer: config.get(k.API.Hostname),
@@ -26,22 +25,30 @@ module.exports.validateRequest = (req, callback) => {
         algorithms: ['RS256']
     };
 
-    jwt.verify(token, config.get(k.PublicKey), args, callback);
+    const token = Utility.extractAuthTokenFromRequest(req);
+
+    return Promise.promisify(jwt.verify)(token, config.get(k.PublicKey), args);
 };
 
-module.exports.refreshToken = (token, callback) => {
-    const cloneToken = _.cloneWith(token, function(value, key) {
-        if (key !== 'exp') {
-            return value;
-        }
-    });
+module.exports.refreshToken = token => {
+    if (!token) {
+        throw new ReferenceError(`Missing required 'token'`);
+    }
+
+    else if (!_.isPlainObject(token)) {
+        throw new TypeError(`'token' must be a plain object`);
+    }
+
+    const cloneToken = Object.assign({}, token);
+
+    delete cloneToken.exp;
 
     const args = {
         algorithm: 'RS256',
         expiresIn: '1h'
     };
 
-    jwt.sign(cloneToken, config.get(k.PrivateKey), args, callback);
+    return Promise.promisify(jwt.sign)(cloneToken, config.get(k.PrivateKey), args);
 };
 
 module.exports.generateTokenForAccountId = accountId => {
@@ -60,12 +67,8 @@ module.exports.generateTokenForAccountId = accountId => {
 };
 
 module.exports.setAuthHeadersOnResponseWithToken = (res, token) => {
+    res.set('X-GN-Auth-Expire', moment().add(1, 'hours').valueOf().toString());
     res.set('X-GN-Auth-Token', token);
-
-    // todo: move to Utility & add test
-    const oneHour = (1000 * 60 * 60);
-    const oneHourFromNow = Date.now() + oneHour;
-    res.set('X-GN-Auth-Expire', oneHourFromNow.toString());
 };
 
 module.exports.extractAccountIdFromRequest = req => {
