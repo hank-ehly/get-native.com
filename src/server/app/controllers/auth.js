@@ -128,6 +128,10 @@ module.exports.confirmEmail = (req, res, next) => {
     });
 };
 
+module.exports.resentConfirmationEmail = (req, res, next) => {
+    res.sendStatus(204);
+};
+
 module.exports.authenticate = (req, res, next) => {
     Auth.validateRequest(req, (error, token) => {
         if (error) {
