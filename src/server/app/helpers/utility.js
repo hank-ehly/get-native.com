@@ -24,7 +24,7 @@ module.exports.extractAuthTokenFromRequest = function(req) {
         throw new ReferenceError(`req.headers.authorization does not exist or has an invalid type`);
     }
 
-    let authHeaderComponents = req.headers.authorization.split(' ');
+    const authHeaderComponents = req.headers.authorization.split(' ');
 
     if (authHeaderComponents.length !== 2) {
         throw new SyntaxError(`Authorization header is formatted incorrectly: ${req.headers.authorization}`);
@@ -34,7 +34,9 @@ module.exports.extractAuthTokenFromRequest = function(req) {
 };
 
 module.exports.browserTimezoneOffsetToSQLFormat = function(offsetInMinutes) {
-    if (!offsetInMinutes) return '+00:00';
+    if (!offsetInMinutes) {
+        return '+00:00';
+    }
 
     // The offset is positive if the local timezone is behind UTC and negative if it is ahead
     const minutes = -parseInt(offsetInMinutes);
