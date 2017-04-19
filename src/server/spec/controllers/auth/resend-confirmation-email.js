@@ -76,13 +76,13 @@ describe('POST /resend_confirmation_email', function() {
         });
 
         it(`should respond with 422 Unprocessable Entity if the account linked to the specified email address is already confirmed`, function(done) {
-            db.Account.update({
+            db.Account.create({
                 email_verified: true,
                 email: chance.email(),
                 password: Auth.hashPassword('12345678')
             }).then(function(account) {
-                return request(server).post('/resend_confirmation_email').send({email: account.email});
-            }).expect(422, done);
+                request(server).post('/resend_confirmation_email').send({email: account.email}).expect(422, done);
+            });
         });
 
         it(`should contains the appropriate error response object if the account is already confirmed`, function() {
