@@ -112,6 +112,10 @@ module.exports.confirmEmail = (req, res, next) => {
     const token = req.body.token;
 
     return VerificationToken.findOne({where: {token: token}}).then(token => {
+        if (!token) {
+            throw new GetNativeError(k.Error.TokenExpired);
+        }
+
         if (token.isExpired()) {
             throw new GetNativeError(k.Error.TokenExpired);
         }
