@@ -156,6 +156,6 @@ export class VideoSearchComponent {
     }
 
     private concatVideos(acc: Video[], records: Video[]) {
-        return records ? _.uniqWith(_.concat(acc, records), _.isEqual) : [];
+        return records ? _.unionWith(acc, records, _.isEqual) : [];
     }
 }
