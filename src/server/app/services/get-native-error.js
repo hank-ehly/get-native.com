@@ -6,8 +6,8 @@
  */
 
 const Utility = require('./utility');
-const Locale  = require('../../config/locales/en.json'); // todo
 
+const i18n    = require('i18n');
 const _       = require('lodash');
 
 function GetNativeError(code, message) {
@@ -25,11 +25,11 @@ function GetNativeError(code, message) {
         throw new TypeError(`Message must be a string -- received ${Utility.typeof(code)}`);
     }
 
-    else if (!message && !Locale.errors[code]) {
+    else if (!message && !i18n.__(`errors.${code}`)) {
         throw new ReferenceError(`No message provided for error code ${code}`);
     }
 
-    this.message = message || Locale.errors[code];
+    this.message = message || i18n.__(`errors.${code}`);
     this.code    = code;
 }
 
