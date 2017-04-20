@@ -1,6 +1,0 @@
-@import "../../scss/core";
-
-.list      { @include debug-background-color($dc01); }
-.header    { @include debug-background-color($dc02); }
-.paragraph { @include debug-background-color($dc03); }
-.address   { @include debug-background-color($dc04); }

@@ -17,8 +17,10 @@ import { kAcceptLocalStorage, kAuthToken } from './core/local-storage/local-stor
 import { LocalStorageItem } from './core/local-storage/local-storage-item';
 import { UserService } from './core/user/user.service';
 
-import './operators';
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
     moduleId: module.id,
@@ -42,8 +44,7 @@ export class AppComponent implements OnInit, LocalStorageProtocol, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.logger.info(this, 'ngOnInit()');
-
+        this.logger.info(this, 'OnInit');
         this.updateLoginStatus();
 
         this.showComplianceDialog = !this.localStorage.getItem(kAcceptLocalStorage);
@@ -71,16 +72,19 @@ export class AppComponent implements OnInit, LocalStorageProtocol, OnDestroy {
         }
     }
 
+    // todo: Use Observable
     didSetLocalStorageItem(item: LocalStorageItem): void {
         if (item.key === kAuthToken) {
             this.updateLoginStatus();
         }
     }
 
+    // todo: Use Observable
     didClearStorage(): void {
         this.updateLoginStatus();
     }
 
+    // todo: Use Observable
     didReceiveStorageEvent(event: StorageEvent): void {
         if (event.key === kAuthToken) {
             this.updateLoginStatus();
@@ -96,15 +100,21 @@ export class AppComponent implements OnInit, LocalStorageProtocol, OnDestroy {
         }
     }
 
+    // todo: Use Observable
     private updateLoginStatus(): void {
         this.authenticated = this.user.isLoggedIn();
+
+        this.logger.debug(this, `Login status - ${this.authenticated}`);
 
         if (this.authenticated) {
             return;
         }
 
-        this.router.navigate(['']).then(() => {
-            this.logger.info(this, 'Forced navigation to homepage.');
-        });
+        // todo: This doesn't allow you to specify the address in the browser if you aren't logged in
+        // Don't navigation to '' if it's an unprotected route
+        // Now, when you 'logout' nothing happens. Make sure to go back to the home page after you logout
+        // this.router.navigate(['']).then(() => {
+        //     this.logger.info(this, 'Forced navigation to homepage.');
+        // });
     }
 }

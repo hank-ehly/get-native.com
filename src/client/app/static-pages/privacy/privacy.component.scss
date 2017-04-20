@@ -1,0 +1,10 @@
+@import "../../../scss/core";
+@import "./privacy.component.debug";
+
+.list_top, .paragraph, .header, .address {
+  margin-top: 30px;
+}
+
+.list {
+  padding-left: 15px;
+}

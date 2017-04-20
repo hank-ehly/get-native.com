@@ -20,7 +20,8 @@ import { URIService } from './uri.service';
 import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-keys';
 
 import { Observable } from 'rxjs/Observable';
-import '../../operators';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import * as _ from 'lodash';
 import { Entities } from '../entities/entities';
 
