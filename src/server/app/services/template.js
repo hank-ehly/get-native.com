@@ -23,10 +23,6 @@ module.exports.create = (templateRelPath, options) => {
         throw new TypeError('Template path must be a string');
     }
 
-    else if (options && options.locale && !_.isString(options.locale)) {
-        throw new TypeError('Locale must be a string');
-    }
-
     else if (options && options.variables && !_.isPlainObject(options.variables)) {
         throw new TypeError('Variables must be a plain object');
     }
