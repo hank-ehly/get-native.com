@@ -15,6 +15,7 @@ const Account           = db.Account;
 const VerificationToken = db.VerificationToken;
 const mailer            = require('../../config/initializers/mailer');
 const i18n              = require('i18n');
+const Promise           = require('bluebird');
 const k                 = require('../../config/keys.json');
 
 module.exports.login = (req, res, next) => {
@@ -73,15 +74,24 @@ module.exports.register = (req, res, next) => {
             expiration_date: Utility.tomorrow()
         });
     }).then(verificationToken => {
-        req.app.render('welcome', {
-            confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get('token'))
-        }, (err, html) => {
-            return mailer.sendMail({
-                subject: i18n.__('welcome.title'),
-                from:    config.get(k.NoReply),
-                to:      req.body[k.Attr.Email],
-                html:    html
+        return new Promise((resolve, reject) => {
+            res.app.render('welcome', {
+                confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get('token')),
+                __: i18n.__
+            }, (err, html) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(html);
+                }
             });
+        });
+    }).then(html => {
+        return mailer.sendMail({
+            subject: i18n.__('welcome.title'),
+            from:    config.get(k.NoReply),
+            to:      req.body[k.Attr.Email],
+            html:    html
         });
     }).then(() => {
         return Auth.generateTokenForAccountId(account.id);
@@ -144,15 +154,24 @@ module.exports.resendConfirmationEmail = (req, res, next) => {
             expiration_date: expirationDate
         });
     }).then(verificationToken => {
-        req.app.render('welcome', {
-            confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get('token'))
-        }, (err, html) => {
-            return mailer.sendMail({
-                subject: i18n.__('welcome.title'),
-                from:    config.get(k.NoReply),
-                to:      req.body[k.Attr.Email],
-                html:    html
+        return new Promise((resolve, reject) => {
+            res.app.render('welcome', {
+                confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get('token')),
+                __: i18n.__
+            }, (err, html) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(html);
+                }
             });
+        });
+    }).then(html => {
+        return mailer.sendMail({
+            subject: i18n.__('welcome.title'),
+            from:    config.get(k.NoReply),
+            to:      req.body[k.Attr.Email],
+            html:    html
         });
     }).then(() => {
         res.sendStatus(204);

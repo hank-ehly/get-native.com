@@ -71,7 +71,7 @@ describe('POST /resend_confirmation_email', function() {
         it(`should contains the appropriate error response object if the account does not exist`, function() {
             return request(server).post('/resend_confirmation_email').send({email: 'unknown@email.com'}).then(function(response) {
                 const error = response.body;
-                assert.equal(error.message, i18n.__(error.code));
+                assert.equal(error.message, i18n.__(`errors.${error.code}`));
             });
         });
 
@@ -94,10 +94,7 @@ describe('POST /resend_confirmation_email', function() {
                 return request(server).post('/resend_confirmation_email').send({email: account.email});
             }).then(function(response) {
                 const error = response.body;
-
-                console.log(error.message, i18n.__(error.code), response.body);
-
-                assert.equal(error.message, i18n.__(error.code));
+                assert.equal(error.message, i18n.__(`errors.${error.code}`));
             });
         });
     });
