@@ -5,9 +5,11 @@
  * Created by henryehly on 2017/03/20.
  */
 
-const k              = require('../../config/keys.json');
-const Joi            = require('joi');
 const GetNativeError = require('../services').GetNativeError;
+const k              = require('../../config/keys.json');
+
+const Joi            = require('joi');
+const _              = require('lodash');
 
 const options        = {
     "abortEarly": false,
@@ -29,7 +31,7 @@ module.exports = function(schema) {
 
         if (schema.headers && schema.headers.authorization) {
             Joi.validate(req.headers, schema.headers, options, error => {
-                if (error === null) {
+                if (!error) {
                     return;
                 }
 
@@ -50,7 +52,7 @@ module.exports = function(schema) {
             }
 
             Joi.validate(req[key], schema[key], options, error => {
-                if (error === null) {
+                if (!error) {
                     return;
                 }
 
@@ -58,11 +60,11 @@ module.exports = function(schema) {
                     return new GetNativeError(k.Error.RequestParam, obj.message);
                 });
 
-                errors = errors.concat(details);
+                errors = _.concat(errors, details);
             });
         });
 
-        if (errors.length > 0) {
+        if (_.gt(errors.length, 0)) {
             return next({
                 status: 400,
                 errors: errors
