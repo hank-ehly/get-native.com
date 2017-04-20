@@ -26,13 +26,13 @@ import { SettingsModule } from './settings/settings.module';
 import { StudyModule } from './study/study.module';
 import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
 import { Logger } from './core/logger/logger';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         CoreModule,
-        AppRoutingModule,
         SharedModule,
         HomeModule,
         PrivacyModule,
@@ -43,9 +43,10 @@ import { Logger } from './core/logger/logger';
         LibraryModule,
         LibraryDetailModule,
         SettingsModule,
-        StudyModule
+        StudyModule,
+        AppRoutingModule
     ],
-    declarations: [AppComponent],
+    declarations: [AppComponent, PageNotFoundComponent],
     providers: [
         {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
         {provide: LogLevelToken, useValue: LogLevelValue.DEBUG},
