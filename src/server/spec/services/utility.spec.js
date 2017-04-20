@@ -6,43 +6,54 @@
  */
 
 const Utility = require('../../app/services').Utility;
-const assert = require('assert');
+
+const assert  = require('assert');
+const _       = require('lodash');
 
 describe('Utility', function() {
-    describe('extractAuthTokenFromRequest', () => {
-        it('should throw a RangeError if the number of arguments is less than 1', () => {
-            assert.throws(() => Utility.extractAuthTokenFromRequest(), RangeError);
+    describe('extractAuthTokenFromRequest', function() {
+        it('should throw a RangeError if the number of arguments is less than 1', function() {
+            assert.throws(function() {
+                Utility.extractAuthTokenFromRequest()
+            }, RangeError);
         });
 
-        it('should throw a RangeError if the number of arguments is greater than 1', () => {
-            assert.throws(() => Utility.extractAuthTokenFromRequest({}, {}), RangeError);
+        it('should throw a RangeError if the number of arguments is greater than 1', function() {
+            assert.throws(function() {
+                Utility.extractAuthTokenFromRequest({}, {})
+            }, RangeError);
         });
 
-        it(`should throw a TypeError if the first argument does not have a 'headers' property of object type`, () => {
-            assert.throws(() => Utility.extractAuthTokenFromRequest({foo: 'bar'}), TypeError);
+        it(`should throw a TypeError if the first argument does not have a 'headers' property of object type`, function() {
+            assert.throws(function() {
+                Utility.extractAuthTokenFromRequest({foo: 'bar'})
+            }, TypeError);
         });
 
-        it(`should throw a ReferenceError if the request object does not have an 'authorization' property of string type`, () => {
-            assert.throws(() => Utility.extractAuthTokenFromRequest({headers: {foo: 'bar'}}), ReferenceError);
+        it(`should throw a ReferenceError if the request object does not have an 'authorization' property of string type`, function() {
+            assert.throws(function() {
+                Utility.extractAuthTokenFromRequest({headers: {foo: 'bar'}})
+            }, ReferenceError);
         });
 
-        it(`should throw a SyntaxError if the requests' 'authorization' header field value is not correctly formatted`, () => {
-            assert.throws(() => Utility.extractAuthTokenFromRequest({headers: {authorization: ''}}), SyntaxError);
+        it(`should throw a SyntaxError if the requests' 'authorization' header field value is not correctly formatted`, function() {
+            assert.throws(function() {
+                Utility.extractAuthTokenFromRequest({headers: {authorization: ''}})
+            }, SyntaxError);
         });
 
-        it('should return a string', () => {
+        it('should return a string', function() {
             let retVal = Utility.extractAuthTokenFromRequest({headers: {authorization: 'Bearer XXX.XXX.XXX'}});
-            let typeOfRetVal = Utility.typeof(retVal);
-            assert.equal('string', typeOfRetVal);
+            assert(_.isString(retVal));
         });
 
-        it('should return a string whose length is greater than 0', () => {
+        it('should return a string whose length is greater than 0', function() {
             let retVal = Utility.extractAuthTokenFromRequest({headers: {authorization: 'Bearer XXX.XXX.XXX'}});
             assert(retVal.length > 0);
         });
     });
 
-    describe('browserTimezoneOffsetToSQLFormat', () => {
+    describe('browserTimezoneOffsetToSQLFormat', function() {
         it(`should return the timezone offset as '+09:00' provided a value in minutes as '-540'`, function() {
             assert.equal(Utility.browserTimezoneOffsetToSQLFormat('-540'), '+09:00');
         });
