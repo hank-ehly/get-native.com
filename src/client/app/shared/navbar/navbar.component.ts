@@ -59,7 +59,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private loginModal: LoginModalService, private logger: Logger, private navbar: NavbarService, private location: Location,
+    constructor(private loginModal: LoginModalService, private logger: Logger, public navbar: NavbarService, private location: Location,
                 private router: Router) {
     }
 

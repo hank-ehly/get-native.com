@@ -5,11 +5,10 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnDestroy } from '@angular/core';
 
 import { FocusDirective } from '../../shared/focus/focus.directive';
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
-import { User } from '../../core/entities/user';
 import { Logger } from '../../core/logger/logger';
 import { HttpService } from '../../core/http/http.service';
 import { ObjectService } from '../../core/object/object.service';
@@ -26,12 +25,11 @@ import { Subscription } from 'rxjs/Subscription';
     templateUrl: 'general.component.html',
     styleUrls: ['general.component.css']
 })
-export class GeneralComponent implements OnInit, OnDestroy {
+export class GeneralComponent implements OnDestroy {
     @ViewChild(FocusDirective) emailInput: FocusDirective;
     emailRegex = EMAIL_REGEX;
     isEditing: boolean = false;
     studyLanguageOptions: any;
-    user: User;
 
     credentials: any = {
         email: '',
@@ -40,12 +38,8 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService, private userService: UserService) {
+    constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService, public user: UserService) {
         this.studyLanguageOptions = objectService.renameProperty(Languages, [['code', 'value'], ['name', 'title']]);
-    }
-
-    ngOnInit(): void {
-        this.userService.current.then(u => this.user = u);
     }
 
     ngOnDestroy(): void {

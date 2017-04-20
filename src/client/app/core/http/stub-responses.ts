@@ -9,6 +9,7 @@ import { APIHandle } from './api-handle';
 import { Video } from '../entities/video';
 import { Videos } from '../entities/videos';
 import { Categories } from '../entities/categories';
+import { User } from '../entities/user';
 
 export const STUBResponses = new Map<APIHandle, any>([
     [APIHandle.LOGIN, {}],
@@ -352,5 +353,15 @@ export const STUBResponses = new Map<APIHandle, any>([
         'longest_consecutive_days': 15,
         'maximum_words': 502,
         'maximum_wpm': 52
+    }],
+    [APIHandle.ACCOUNT, <User>{
+        'id': 2244994983,
+        'email': 'test@email.com',
+        'browser_notifications_enabled': false,
+        'email_notifications_enabled': false,
+        'email_verified': false,
+        'default_study_language_code': 'en',
+        'picture_url': 'https://dummyimage.com/100x100.png/5fa2dd/ffffff',
+        'is_silhouette_picture': false
     }]
 ]);
