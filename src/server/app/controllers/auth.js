@@ -178,7 +178,7 @@ module.exports.resendConfirmationEmail = (req, res, next) => {
     }).catch(GetNativeError, e => {
         if (e.code === k.Error.AccountMissing) {
             next({status: 404, body: e});
-        } else if (e.code === k.Error.AccountAlreadyExists) {
+        } else if (e.code === k.Error.AccountAlreadyVerified) {
             next({status: 422, body: e});
         } else {
             next(e);
