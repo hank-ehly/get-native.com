@@ -18,5 +18,6 @@ export enum APIHandle {
     EDIT_PASSWORD,
     EDIT_EMAIL,
     ACCOUNT,
-    REGISTER
+    REGISTER,
+    CONFIRM_EMAIL
 }

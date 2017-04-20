@@ -77,5 +77,11 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Get,
         url: '/account',
         isProtected: true
+    }],
+    [APIHandle.CONFIRM_EMAIL, {
+        method: RequestMethod.Post,
+        url: '/confirm_email',
+        isProtected: false,
+        permitURLSearchParams: ['token']
     }]
 ]);
