@@ -41,7 +41,7 @@ module.exports.stats = (req, res, next) => {
 
 module.exports.writing_answers = (req, res, next) => {
     const accountId = AuthHelper.extractAccountIdFromRequest(req);
-    const createdAt = ModelHelper.getFormattedSequelizeDateAttributeForTableColumnTimezoneOffset(k.Model.WritingAnswer, k.Attr.CreatedAt, req.query.time_zone_offset);
+    const createdAt = ModelHelper.getDateAttrForTableColumnTZOffset(k.Model.WritingAnswer, k.Attr.CreatedAt, req.query.time_zone_offset);
 
     WritingAnswer.scope([
         'newestFirst', {method: ['forAccountWithLang', accountId, req.params.lang]}, {method: ['since', req.query.since]}, {method: ['maxId', req.query.max_id]}
