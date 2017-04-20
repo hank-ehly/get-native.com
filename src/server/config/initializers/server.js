@@ -17,6 +17,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan     = require('morgan');
 const Promise    = require('bluebird');
+const path       = require('path');
 
 module.exports = () => {
     const app = express();
@@ -25,14 +26,20 @@ module.exports = () => {
         app.use(morgan('dev'));
     }
 
-    for (let key of ['x-powered-by', 'etag', 'views', 'view cache']) {
+    for (let key of ['x-powered-by', 'etag']) {
         app.disable(key);
     }
 
+    app.set('view engine', 'ejs');
+    app.set('views', path.resolve(__dirname, '..', '..', 'app', 'templates'));
+
     app.use(bodyParser.json());
     app.use(cookieParser());
-    app.use(middleware.Cors);
+
     app.use(i18n.init);
+
+    app.use(middleware.Cors);
+
     app.use(routes);
 
     app.use(middleware.Error.logErrors);
