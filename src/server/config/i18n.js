@@ -18,7 +18,8 @@ i18n.configure({
     objectNotation: true,
     logDebugFn: logger.info,
     logWarnFn: logger.warn,
-    logErrorFn: logger.error
+    logErrorFn: logger.error,
+    updateFiles: false
 });
 
 module.exports = i18n;
