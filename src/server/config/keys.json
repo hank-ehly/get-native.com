@@ -62,7 +62,7 @@
         "Video": "Video"
     },
     "NODE_ENV": "NODE_ENV",
-    "NoReply": "no_reply",
+    "NoReply": "",
     "PrivateKey": "private_key",
     "PublicKey": "public_key",
     "SMTP": {
