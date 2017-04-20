@@ -18,6 +18,5 @@ const tosRoutes: Routes = [
     imports: [RouterModule.forChild(tosRoutes)],
     exports: [RouterModule]
 })
-
 export class TOSRoutingModule {
 }
