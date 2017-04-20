@@ -56,7 +56,7 @@ describe('response-wrapper', function() {
 
         it('should return an object with \'records\' top-level array property', function() {
             let result = ResponseWrapper.wrap([{a: 'b'}, {c: 'd'}]);
-            assert(_.isPlainObject(result.records));
+            assert(_.isArray(result.records));
         });
 
         it('should return an object with \'count\' top-level integer property', function() {

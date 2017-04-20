@@ -16,18 +16,14 @@ function GetNativeError(code, message) {
     }
 
     if (!_.isNumber(code)) {
-        throw new TypeError(`Code must be a number`);
+        throw new TypeError('Code must be a number');
     }
 
     if (message && !_.isString(message)) {
-        throw new TypeError(`Message must be a string`);
+        throw new TypeError('Message must be a string');
     }
 
-    else if (!message && !i18n.__(`errors.${code}`)) {
-        throw new ReferenceError(`No message provided for error code ${code}`);
-    }
-
-    this.message = message || i18n.__(`errors.${code}`);
+    this.message = _.defaultTo(message, i18n.__(`errors.${code}`));
     this.code    = code;
 }
 
