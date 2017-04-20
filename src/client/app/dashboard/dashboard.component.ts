@@ -108,6 +108,6 @@ export class DashboardComponent extends VideoSearchComponent {
     }
 
     private concatWritingAnswers(acc: WritingAnswer[], records: WritingAnswer[]) {
-        return records ? _.uniqWith(_.concat(acc, records), _.isEqual) : [];
+        return records ? _.unionWith(acc, records, _.isEqual) : [];
     }
 }
