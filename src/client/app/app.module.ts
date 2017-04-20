@@ -27,15 +27,15 @@ import { StaticPagesModule } from './static-pages/static-pages.module';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        AppRoutingModule,
         CoreModule,
         SharedModule,
         DashboardModule,
         LoginModule,
-        StaticPagesModule,
         LibraryModule,
         SettingsModule,
         StudyModule,
-        AppRoutingModule
+        StaticPagesModule,
     ],
     declarations: [AppComponent],
     providers: [
