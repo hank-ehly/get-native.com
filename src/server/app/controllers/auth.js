@@ -11,17 +11,10 @@ const Utility           = services.Utility;
 const Auth              = services.Auth;
 const Email             = services.Email;
 const config            = require('../../config');
-const jwt               = require('jsonwebtoken');
-const logger            = require('../../config/logger');
 const db                = require('../models');
 const Account           = db.Account;
 const VerificationToken = db.VerificationToken;
-const nodemailer        = require('nodemailer');
-const Promise           = require('bluebird');
-const moment            = require('moment');
-const fs                = Promise.promisifyAll(require('fs'));
 const k                 = require('../../config/keys.json');
-const _                 = require('lodash');
 
 module.exports.login = (req, res, next) => {
     const attributes = [
