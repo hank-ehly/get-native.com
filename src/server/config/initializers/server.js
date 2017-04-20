@@ -30,14 +30,12 @@ module.exports = () => {
         app.disable(key);
     }
 
-    app.set('view engine', 'ejs');
     app.set('views', path.resolve(__dirname, '..', '..', 'app', 'templates'));
+    app.set('view engine', 'ejs');
 
     app.use(bodyParser.json());
     app.use(cookieParser());
-
     app.use(i18n.init);
-
     app.use(middleware.Cors);
 
     app.use(routes);
