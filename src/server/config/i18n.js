@@ -11,9 +11,10 @@ const i18n   = require('i18n');
 const path   = require('path');
 
 i18n.configure({
-    locales: ['en'],
+    locales: ['en', 'ja'],
+    fallbacks: {'ja': 'en'},
     directory: path.resolve(__dirname, 'locales'),
-    cookie: 'XX-locale-test',
+    cookie: 'XX-locale-test', // todo
     objectNotation: true,
     logDebugFn: logger.info,
     logWarnFn: logger.warn,
