@@ -17,7 +17,7 @@ module.exports.extractAuthTokenFromRequest = function(req) {
         throw new RangeError(`Invalid number of arguments: ${arguments.length}`);
     }
 
-    if (!req.hasOwnProperty('headers') || module.exports.typeof(req.headers) !== 'object') {
+    if (!req.hasOwnProperty('headers') || !_.isPlainObject(req.headers)) {
         throw new TypeError(`req.headers is either missing or has an invalid type`);
     }
 
