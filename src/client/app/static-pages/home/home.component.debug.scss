@@ -1,0 +1,14 @@
+@import "../../../scss/core";
+
+.main                              { @include debug-background-color($dc01); }
+.banner                            { @include debug-background-color($dc02); }
+.headline                          { @include debug-background-color($dc03); }
+.headline__title                   { @include debug-background-color($dc04); }
+.headline__paragraph               { @include debug-background-color($dc05); }
+.feature__image-column             { @include debug-background-color($dc06); }
+.feature_large .feature__paragraph { @include debug-background-color($dc07); }
+.feature_large .feature__title     { @include debug-background-color($dc08); }
+.section_small-features            { @include debug-background-color($dc09); }
+.feature_small .feature__image     { @include debug-background-color($dc10); }
+.feature_small .feature__title     { @include debug-background-color($dc11); }
+.feature_small .feature__paragraph { @include debug-background-color($dc12); }

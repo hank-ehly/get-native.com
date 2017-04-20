@@ -10,6 +10,7 @@ import { NgModule } from '@angular/core';
 
 import { LibraryComponent } from './library.component';
 import { AuthGuard } from '../core/auth/auth-guard.service';
+import { LibraryDetailComponent } from './library-detail/library-detail.component';
 
 const libraryRoutes: Routes = [
     {
@@ -18,7 +19,13 @@ const libraryRoutes: Routes = [
         canActivate: [AuthGuard],
         data: {
             title: 'Library'
-        }
+        },
+        children: [
+            {
+                path: ':id',
+                component: LibraryDetailComponent
+            }
+        ]
     }
 ];
 
@@ -26,6 +33,5 @@ const libraryRoutes: Routes = [
     imports: [RouterModule.forChild(libraryRoutes)],
     exports: [RouterModule]
 })
-
 export class LibraryRoutingModule {
 }

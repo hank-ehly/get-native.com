@@ -10,11 +10,12 @@ import { NgModule } from '@angular/core';
 import { LibraryComponent } from './library.component';
 import { SharedModule } from '../shared/shared.module';
 import { LibraryRoutingModule } from './library-routing.module';
+import { LibraryDetailComponent } from './library-detail/library-detail.component';
 
 @NgModule({
     imports: [SharedModule, LibraryRoutingModule],
-    declarations: [LibraryComponent],
-    exports: [LibraryComponent]
+    declarations: [LibraryComponent, LibraryDetailComponent],
+    exports: [LibraryComponent, LibraryDetailComponent]
 })
 export class LibraryModule {
 }

@@ -14,19 +14,14 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
-import { HomeModule } from './home/home.module';
-import { PrivacyModule } from './privacy/privacy.module';
-import { HelpModule } from './help/help.module';
-import { TOSModule } from './tos/tos.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LibraryModule } from './library/library.module';
-import { LibraryDetailModule } from './library-detail/library-detail.module';
 import { AppRoutingModule } from './app-routing.module';
 import { SettingsModule } from './settings/settings.module';
 import { StudyModule } from './study/study.module';
 import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
 import { Logger } from './core/logger/logger';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { StaticPagesModule } from './static-pages/static-pages.module';
 
 @NgModule({
     imports: [
@@ -34,19 +29,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         BrowserAnimationsModule,
         CoreModule,
         SharedModule,
-        HomeModule,
-        PrivacyModule,
-        HelpModule,
-        TOSModule,
         DashboardModule,
         LoginModule,
+        StaticPagesModule,
         LibraryModule,
-        LibraryDetailModule,
         SettingsModule,
         StudyModule,
         AppRoutingModule
     ],
-    declarations: [AppComponent, PageNotFoundComponent],
+    declarations: [AppComponent],
     providers: [
         {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
         {provide: LogLevelToken, useValue: LogLevelValue.DEBUG},

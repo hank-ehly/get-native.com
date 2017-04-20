@@ -22,6 +22,7 @@ import { Logger } from './logger/logger';
 import { LangService } from './lang/lang.service';
 import { UTCDateService } from './utc-date/utc-date.service';
 import { UserService } from './user/user.service';
+import { ConfirmEmailResolver } from './auth/confirm-email-resolver.service';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { UserService } from './user/user.service';
         Logger,
         LangService,
         UTCDateService,
-        UserService
+        UserService,
+        ConfirmEmailResolver
     ]
 })
 export class CoreModule {
