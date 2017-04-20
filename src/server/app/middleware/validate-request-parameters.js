@@ -30,18 +30,26 @@ module.exports = function(schema) {
         let errors = [];
 
         if (schema.headers && schema.headers.authorization) {
+            let x = false;
+            let m = '';
             Joi.validate(req.headers, schema.headers, options, error => {
                 if (!error) {
                     return;
                 }
 
-                error.details.forEach(d => {
+                for (let i = 0; i < error.details.length; i++) {
+                    let d = error.details[i];
                     if (d.path === 'authorization') {
-                        res.status(401);
-                        return next(new GetNativeError(k.Error.Auth, d.message));
+                        x = true;
+                        m = d.message;
                     }
-                });
+                }
             });
+
+            if (x) {
+                res.status(401);
+                return next(new GetNativeError(k.Error.Auth, m));
+            }
         }
 
         ['headers', 'body', 'query', 'params'].forEach(key => {
