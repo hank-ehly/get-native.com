@@ -45,10 +45,10 @@ module.exports.login = (req, res, next) => {
         const accountAsJson = account.get({plain: true});
         delete accountAsJson.password;
         res.send(accountAsJson);
-    }).catch(GetNativeError, e => next({
-        body: e,
-        status: 404
-    })).catch(e => next(e));
+    }).catch(GetNativeError, e => {
+        res.status(404);
+        next(e);
+    }).catch(next);
 };
 
 module.exports.register = (req, res, next) => {
@@ -102,8 +102,9 @@ module.exports.register = (req, res, next) => {
         res.send(accountAsJson);
     }).catch(GetNativeError, e => {
         if (e.code === k.Error.AccountAlreadyExists) {
-            next({body: e, status: 422});
+            res.status(422);
         }
+        next(e);
     }).catch(next);
 };
 
@@ -126,11 +127,10 @@ module.exports.confirmEmail = (req, res, next) => {
         res.sendStatus(204);
     }).catch(GetNativeError, e => {
         if (e.code === k.Error.TokenExpired) {
-            next({body: e, status: 404});
+            res.status(404);
         }
-    }).catch(e => {
-        res.sendStatus(404);
-    });
+        next(e);
+    }).catch(next);
 };
 
 module.exports.resendConfirmationEmail = (req, res, next) => {
@@ -177,12 +177,11 @@ module.exports.resendConfirmationEmail = (req, res, next) => {
         res.sendStatus(204);
     }).catch(GetNativeError, e => {
         if (e.code === k.Error.AccountMissing) {
-            next({status: 404, body: e});
+            res.status(404);
         } else if (e.code === k.Error.AccountAlreadyVerified) {
-            next({status: 422, body: e});
-        } else {
-            next(e);
+            res.status(422);
         }
+        next(e);
     }).catch(next);
 };
 
@@ -193,6 +192,7 @@ module.exports.authenticate = (req, res, next) => {
         Auth.setAuthHeadersOnResponseWithToken(res, token);
         next();
     }).catch(e => {
-        next({raw: e, status: 401, body: new GetNativeError(k.Error.JWT)});
+        res.status(401);
+        next(new GetNativeError(k.Error.JWT));
     });
 };

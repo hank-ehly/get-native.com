@@ -5,23 +5,33 @@
  * Created by henryehly on 2017/03/13.
  */
 
-const config = require('../../config');
-const logger = require('../../config/logger');
-const k      = require('../../config/keys.json');
+const GetNativeError = require('../services').GetNativeError;
+const config         = require('../../config');
+const logger         = require('../../config/logger');
+const k              = require('../../config/keys.json');
 
-module.exports.logErrors = function(error, req, res, next) {
-    logger.info(error, {json: true});
-    next(error);
+const _              = require('lodash');
+
+module.exports.logErrors = function(e, req, res, next) {
+    logger.info(e, {json: true});
+    next(e);
 };
 
-module.exports.clientErrorHandler = function(error, req, res, next) {
-    if (error.status && error.errors) {
-        return res.status(error.status).json(error.errors);
-    } else if (error.status && error.body) {
-        return res.status(error.status).json({message: error.body.message, code: error.body.code});
+/*
+* All client error responses have the following format:
+*
+*     [ ErrorObject, ErrorObject, ... ]
+*
+* An ErrorObject is the following format:
+*
+*     { message: <String> }
+* */
+module.exports.clientErrorHandler = function(e, req, res, next) {
+    if (e instanceof GetNativeError || (_.isArray(e) && _.first(e) instanceof GetNativeError)) {
+        res.json(_.castArray(e));
+    } else {
+        next(e);
     }
-
-    next(error);
 };
 
 module.exports.fallbackErrorHandler = function(error, req, res) {
