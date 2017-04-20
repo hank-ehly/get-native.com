@@ -57,7 +57,7 @@ export class VideoSearchComponent {
     cuedOnly: boolean = false;
     hasCompletedInitialLoad: boolean = false;
 
-    protected loadMoreVideos$ = new Subject<number>();
+    public loadMoreVideos$ = new Subject<number>();
 
     protected query$ = this.navbar.query$.startWith('').debounce(() => {
         return this.hasCompletedInitialLoad ? this.debounceTimer : this.noDebounceTimer;
