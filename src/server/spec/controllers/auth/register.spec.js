@@ -13,6 +13,7 @@ const k        = require('../../../config/keys.json');
 const request  = require('supertest');
 const Promise  = require('bluebird');
 const assert   = require('assert');
+const i18n     = require('i18n');
 const _        = require('lodash');
 
 // todo: You don't want to allow someone to make 10,000 accounts via the commandline <- Use rate-limiting
@@ -34,7 +35,7 @@ describe('POST /register', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.startServer().then(initGroup => {
+        return SpecUtil.startServer().then(function(initGroup) {
             maildev = initGroup.maildev;
             server  = initGroup.server;
             db      = initGroup.db;
@@ -226,6 +227,48 @@ describe('POST /register', function() {
                     return SpecUtil.getAllEmail().then(function(emails) {
                         const expectedURL = `${config.get(k.Client.Protocol)}://${config.get(k.Client.Host)}/confirm_email?token=${token.token}`;
                         assert(_.includes(_.last(emails).html, expectedURL));
+                    });
+                });
+            });
+        });
+
+        it(`should send an email from the noreply user`, function() {
+            return request(server).post('/register').send(account).then(function(response) {
+                return db.VerificationToken.findOne({
+                    where: {
+                        account_id: response.body.id
+                    }
+                }).then(function(token) {
+                    return SpecUtil.getAllEmail().then(function(emails) {
+                        assert.equal(_.last(emails).envelope.from.address, config.get(k.NoReply));
+                    });
+                });
+            });
+        });
+
+        it(`should send an email to the newly registered user`, function() {
+            return request(server).post('/register').send(account).then(function(response) {
+                return db.VerificationToken.findOne({
+                    where: {
+                        account_id: response.body.id
+                    }
+                }).then(function(token) {
+                    return SpecUtil.getAllEmail().then(function(emails) {
+                        assert.equal(_.first(_.last(emails).envelope.to).address, account.email);
+                    });
+                });
+            });
+        });
+
+        it(`should send an email with the appropriate subject`, function() {
+            return request(server).post('/register').send(account).then(function(response) {
+                return db.VerificationToken.findOne({
+                    where: {
+                        account_id: response.body.id
+                    }
+                }).then(function(token) {
+                    return SpecUtil.getAllEmail().then(function(emails) {
+                        assert.equal(_.last(emails).subject, i18n.__('welcome.title'));
                     });
                 });
             });
