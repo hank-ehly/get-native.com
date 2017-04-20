@@ -6,19 +6,18 @@
  */
 
 const ResponseWrapper = require('../services').ResponseWrapper;
-const AuthHelper      = require('../services').Auth;
-const k               = require('../../config/keys.json');
-const logger          = require('../../config/logger');
+const Auth            = require('../services').Auth;
 const db              = require('../models');
-const ModelHelper     = require('../services').Model(db);
+const ModelService    = require('../services').Model(db);
 const WritingAnswer   = db.WritingAnswer;
 const WritingQuestion = db.WritingQuestion;
 const Account         = db.Account;
+const k               = require('../../config/keys.json');
+
 const Promise         = require('bluebird');
-const _               = require('lodash');
 
 module.exports.stats = (req, res, next) => {
-    const accountId = AuthHelper.extractAccountIdFromRequest(req);
+    const accountId = Auth.extractAccountIdFromRequest(req);
 
     Account.findById(accountId).then(a => {
         return Promise.all([
@@ -40,8 +39,8 @@ module.exports.stats = (req, res, next) => {
 };
 
 module.exports.writing_answers = (req, res, next) => {
-    const accountId = AuthHelper.extractAccountIdFromRequest(req);
-    const createdAt = ModelHelper.getDateAttrForTableColumnTZOffset(k.Model.WritingAnswer, k.Attr.CreatedAt, req.query.time_zone_offset);
+    const accountId = Auth.extractAccountIdFromRequest(req);
+    const createdAt = ModelService.getDateAttrForTableColumnTZOffset(k.Model.WritingAnswer, k.Attr.CreatedAt, req.query.time_zone_offset);
 
     WritingAnswer.scope([
         'newestFirst', {method: ['forAccountWithLang', accountId, req.params.lang]}, {method: ['since', req.query.since]}, {method: ['maxId', req.query.max_id]}
