@@ -114,9 +114,7 @@ describe('POST /confirm_email', function() {
                 request(server).post(`/confirm_email`).send({token: token.get('token')}).expect(204, done);
             });
         });
-    });
 
-    describe('other', function() {
         it(`should change the account email_verified value to true if verification succeeds`, function() {
             return db.VerificationToken.create({
                 account_id: account.id,
