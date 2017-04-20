@@ -32,7 +32,7 @@ module.exports.index = (req, res, next) => {
         }
 
         const accountId  = AuthHelper.extractAccountIdFromRequest(req);
-        const createdAt  = ModelHelper.getFormattedSequelizeDateAttributeForTableColumnTimezoneOffset(k.Model.Video, k.Attr.CreatedAt, req.query.time_zone_offset);
+        const createdAt  = ModelHelper.getDateAttrForTableColumnTZOffset(k.Model.Video, k.Attr.CreatedAt, req.query.time_zone_offset);
         const cued       = Video.getCuedAttributeForAccountId(accountId);
         const attributes = [createdAt, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length, cued];
 
@@ -65,7 +65,7 @@ module.exports.show = (req, res, next) => {
     const liked     = Video.isLikedByAccount(db, req.params.id, accountId);
     const cued      = Video.isCuedByAccount(db, req.params.id, accountId);
 
-    const relatedCreatedAt = ModelHelper.getFormattedSequelizeDateAttributeForTableColumnTimezoneOffset(k.Model.Video, k.Attr.CreatedAt, req.query.time_zone_offset);
+    const relatedCreatedAt = ModelHelper.getDateAttrForTableColumnTZOffset(k.Model.Video, k.Attr.CreatedAt, req.query.time_zone_offset);
     const relatedCued      = Video.getCuedAttributeForAccountId(accountId);
 
     const relatedVideos = Video.scope([
