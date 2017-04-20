@@ -6,14 +6,15 @@
  */
 
 const SpecUtil = require('../../spec-util');
+
+const Promise  = require('bluebird');
 const request  = require('supertest');
 const assert   = require('assert');
-const Utility  = require('../../../app/services').Utility;
-const Promise  = require('bluebird');
+const _        = require('lodash');
 
 describe('GET /account', function() {
-    let server        = null;
     let authorization = null;
+    let server        = null;
 
     before(function() {
         this.timeout(SpecUtil.defaultTimeout);
@@ -23,8 +24,8 @@ describe('GET /account', function() {
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
         return SpecUtil.login().then(function(_) {
-            server = _.server;
             authorization = _.authorization;
+            server        = _.server;
         });
     });
 
@@ -64,7 +65,7 @@ describe('GET /account', function() {
 
         it('should respond with an object containing the user\'s ID', function() {
             return request(server).get('/account').set('authorization', authorization).then(function(res) {
-                assert(SpecUtil.isNumber(res.body.id));
+                assert(_.isNumber(res.body.id));
             });
         });
 
@@ -76,19 +77,19 @@ describe('GET /account', function() {
 
         it('should respond with an object containing the user\'s preference for receiving browser notifications', function() {
             return request(server).get('/account').set('authorization', authorization).then(function(res) {
-                assert.equal(Utility.typeof(res.body.browser_notifications_enabled), 'boolean');
+                assert(_.isBoolean(res.body.browser_notifications_enabled));
             });
         });
 
         it('should respond with an object containing the user\'s preference for receiving email notifications', function() {
             return request(server).get('/account').set('authorization', authorization).then(function(res) {
-                assert.equal(Utility.typeof(res.body.email_notifications_enabled), 'boolean');
+                assert(_.isBoolean(res.body.email_notifications_enabled));
             });
         });
 
         it('should respond with an object containing the user\'s email validity status', function() {
             return request(server).get('/account').set('authorization', authorization).then(function(res) {
-                assert.equal(Utility.typeof(res.body.email_verified), 'boolean');
+                assert(_.isBoolean(res.body.email_verified));
             });
         });
 
@@ -106,7 +107,7 @@ describe('GET /account', function() {
 
         it('should respond with an object containing the user\'s preference for using the profile picture or silhouette image', function() {
             return request(server).get('/account').set('authorization', authorization).then(function(res) {
-                assert.equal(Utility.typeof(res.body.is_silhouette_picture), 'boolean');
+                assert(_.isBoolean(res.body.is_silhouette_picture));
             });
         });
     });

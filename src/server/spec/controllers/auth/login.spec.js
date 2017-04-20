@@ -5,11 +5,13 @@
  * Created by henryehly on 2017/03/08.
  */
 
-const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/services').Utility;
-const request  = require('supertest');
-const assert   = require('assert');
+const SpecUtil = require('../../spec-util');
+
 const Promise  = require('bluebird');
+const assert   = require('assert');
+const request  = require('supertest');
+const _        = require('lodash');
 
 describe('POST /login', function() {
     let server   = null;
@@ -21,7 +23,7 @@ describe('POST /login', function() {
     });
 
     beforeEach(function() {
-        return SpecUtil.login().then(_ => {
+        return SpecUtil.login().then(function(_) {
             server   = _.server;
             response = _.response;
         });
@@ -68,7 +70,7 @@ describe('POST /login', function() {
         });
 
         it('should respond with an object containing the user\'s ID', function() {
-            assert(SpecUtil.isNumber(response.body.id));
+            assert(_.isNumber(response.body.id));
         });
 
         it('should respond with an object containing the user\'s email address', function() {
@@ -76,7 +78,7 @@ describe('POST /login', function() {
         });
 
         it('should respond with an object containing the user\'s preference for receiving browser notifications', function() {
-            assert.equal(Utility.typeof(response.body.browser_notifications_enabled), 'boolean');
+            assert(_.isBoolean(response.body.browser_notifications_enabled));
         });
 
         it(`should not include the account password in the response`, function() {
@@ -84,11 +86,11 @@ describe('POST /login', function() {
         });
 
         it('should respond with an object containing the user\'s preference for receiving email notifications', function() {
-            assert.equal(Utility.typeof(response.body.email_notifications_enabled), 'boolean');
+            assert(_.isBoolean(response.body.email_notifications_enabled));
         });
 
         it('should respond with an object containing the user\'s email validity status', function() {
-            assert.equal(Utility.typeof(response.body.email_verified), 'boolean');
+            assert(_.isBoolean(response.body.email_verified));
         });
 
         it('should respond with an object containing the user\'s default study language code', function() {
@@ -100,7 +102,7 @@ describe('POST /login', function() {
         });
 
         it('should respond with an object containing the user\'s preference for using the profile picture or silhouette image', function() {
-            assert.equal(Utility.typeof(response.body.is_silhouette_picture), 'boolean');
+            assert(_.isBoolean(response.body.is_silhouette_picture));
         });
     });
 });

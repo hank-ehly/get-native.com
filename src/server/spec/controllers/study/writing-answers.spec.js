@@ -5,10 +5,11 @@
  * Created by henryehly on 2017/03/06.
  */
 
+const SpecUtil = require('../../spec-util');
+
+const Promise  = require('bluebird');
 const request  = require('supertest');
 const assert   = require('assert');
-const SpecUtil = require('../../spec-util');
-const Promise  = require('bluebird');
 const _        = require('lodash');
 
 describe('GET /study/writing_answers', function() {
@@ -85,13 +86,13 @@ describe('GET /study/writing_answers', function() {
 
         it(`should respond with an object containing a top-level 'records' array value`, function() {
             return request(server).get('/study/writing_answers/en').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isNumber(response.body.records.length));
+                assert(_.isNumber(response.body.records.length));
             });
         });
 
         it(`should respond with an object containing a top-level 'count' integer value`, function() {
             return request(server).get('/study/writing_answers/en').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isNumber(response.body.count));
+                assert(_.isNumber(response.body.count));
             });
         });
 
@@ -103,7 +104,7 @@ describe('GET /study/writing_answers', function() {
 
         it(`should have an non-null 'id' number for each record`, function() {
             return request(server).get('/study/writing_answers/en').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isNumber(_.first(response.body.records).id));
+                assert(_.isNumber(_.first(response.body.records).id));
             });
         });
 
@@ -111,7 +112,7 @@ describe('GET /study/writing_answers', function() {
         // but is necessary to confirm the relationship between Account and WritingAnswer.
         it(`should have an non-null 'study_session_id' number for each record`, function() {
             return request(server).get('/study/writing_answers/en').set('authorization', authorization).then(function(response) {
-                assert(SpecUtil.isNumber(_.first(response.body.records).study_session_id));
+                assert(_.isNumber(_.first(response.body.records).study_session_id));
             });
         });
 

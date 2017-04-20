@@ -5,11 +5,12 @@
  * Created by henryehly on 2017/03/02.
  */
 
+const SpecUtil = require('../../spec-util');
+
+const Promise  = require('bluebird');
 const request  = require('supertest');
 const assert   = require('assert');
-const SpecUtil = require('../../spec-util');
-const Utility  = require('../../../app/services').Utility;
-const Promise  = require('bluebird');
+const _        = require('lodash');
 
 describe('GET /categories', function() {
     let server        = null;
@@ -64,76 +65,76 @@ describe('GET /categories', function() {
 
         it(`should include the category 'id'`, function() {
             return request(server).get('/categories').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].id), 'number')
+                assert(_.isNumber(_.first(response.body.records).id));
             });
         });
 
         it(`should include the category 'name' string`, function() {
             return request(server).get('/categories').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].name), 'string')
+                assert(_.isString(_.first(response.body.records).name));
             });
         });
 
         it(`should include the subcategory 'id'`, function() {
             return request(server).get('/categories').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].subcategories.records[0].id), 'number')
+                assert(_.isNumber(_.first(_.first(response.body.records).subcategories.records).id))
             });
         });
 
         it(`should include the subcategory 'name' string`, function() {
             return request(server).get('/categories').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.records[0].subcategories.records[0].name), 'string')
+                assert(_.isString(_.first(_.first(response.body.records).subcategories.records).name));
             });
         });
 
         it('should respond with an object containing a top-level \'count\' property of integer type', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                assert(SpecUtil.isNumber(res.body.count));
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                assert(_.isNumber(response.body.count));
             });
         });
 
         it('should respond with an object containing a top-level \'records\' property of array type', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                assert(SpecUtil.isNumber(res.body.records.length));
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                assert(_.isNumber(response.body.records.length));
             });
         });
 
         it('should respond with an object containing a sub-level \'subcategories\' property for the first object in the top-level \'records\' array', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                assert.equal(Utility.typeof(res.body.records[0].subcategories), 'object');
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                assert(_.isPlainObject(_.first(response.body.records).subcategories));
             });
         });
 
         it('should respond with an object containing a sub-level \'count\' property of integer type for the first object in the top-level \'records\' array', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                assert(SpecUtil.isNumber(res.body.records[0].subcategories['count']));
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                assert(_.isNumber(_.first(response.body.records).subcategories.count));
             });
         });
 
         it('should respond with an object containing a sub-level \'records\' property of array type for the first object in the top-level \'records\' array', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                assert(SpecUtil.isNumber(res.body.records[0].subcategories.records['length']));
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                assert(_.isNumber(_.first(response.body.records).subcategories.records.length));
             });
         });
 
         it('should return more than 0 subcategories', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                assert(res.body.records[0].subcategories.records.length > 0);
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                assert(_.gt(_.first(response.body.records).subcategories.records.length, 0));
             });
         });
 
         it('should set the count integer value to the number of top-level records', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                let count = res.body.count;
-                let recordsLength = res.body.records.length;
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                let count = response.body.count;
+                let recordsLength = response.body.records.length;
                 assert(count === recordsLength);
             });
         });
 
         it('should set the count integer value for a topic to the number of subcategories included in the category', function() {
-            return request(server).get('/categories').set('authorization', authorization).then(function(res) {
-                let count = res.body.records[0].subcategories.count;
-                let recordsLength = res.body.records[0].subcategories.records.length;
+            return request(server).get('/categories').set('authorization', authorization).then(function(response) {
+                let count = _.first(response.body.records).subcategories.count;
+                let recordsLength = _.first(response.body.records).subcategories.records.length;
                 assert(count === recordsLength);
             });
         });

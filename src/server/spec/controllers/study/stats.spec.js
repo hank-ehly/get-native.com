@@ -5,11 +5,12 @@
  * Created by henryehly on 2017/04/05.
  */
 
+const SpecUtil = require('../../spec-util');
+
+const Promise  = require('bluebird');
 const request  = require('supertest');
 const assert   = require('assert');
-const SpecUtil = require('../../spec-util');
-const Promise  = require('bluebird');
-const Utility  = require('../../../app/services').Utility;
+const _        = require('lodash');
 
 describe('GET /study/stats', function() {
     let authorization = null;
@@ -78,42 +79,38 @@ describe('GET /study/stats', function() {
 
         it(`should contain a non-null 'total_time_studied' number`, function() {
             return request(server).get('/study/stats/en').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.total_time_studied), 'number');
+                assert(_.isNumber(response.body.total_time_studied));
             });
         });
 
         it(`should contain a non-null 'consecutive_days' number`, function() {
             return request(server).get('/study/stats/en').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.consecutive_days), 'number');
+                assert(_.isNumber(response.body.consecutive_days));
             });
         });
 
         it(`should contain a non-null 'total_study_sessions' number`, function() {
             return request(server).get('/study/stats/en').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.total_study_sessions), 'number');
+                assert(_.isNumber(response.body.total_study_sessions));
             });
         });
 
         it(`should contain a non-null 'longest_consecutive_days' number`, function() {
             return request(server).get('/study/stats/en').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.longest_consecutive_days), 'number');
+                assert(_.isNumber(response.body.longest_consecutive_days));
             });
         });
 
         it(`should contain a non-null 'maximum_words' number`, function() {
             return request(server).get('/study/stats/en').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.maximum_words), 'number');
+                assert(_.isNumber(response.body.maximum_words));
             });
         });
 
         it(`should contain a non-null 'maximum_wpm' number`, function() {
             return request(server).get('/study/stats/en').set('authorization', authorization).then(function(response) {
-                assert.equal(Utility.typeof(response.body.maximum_wpm), 'number');
+                assert(_.isNumber(response.body.maximum_wpm));
             });
         });
-    });
-
-    describe('other', function() {
-        // todo: make sure the DATA itself is correct
     });
 });
