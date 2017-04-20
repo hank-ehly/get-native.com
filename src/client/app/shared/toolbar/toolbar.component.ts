@@ -14,6 +14,7 @@ import { Languages } from '../../core/lang/languages';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 @Component({
     moduleId: module.id,
