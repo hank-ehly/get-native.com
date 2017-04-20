@@ -6,6 +6,7 @@
  */
 
 const GetNativeError = require('../../app/services').GetNativeError;
+const k              = require('../../config/keys.json');
 
 const assert         = require('assert');
 const _              = require('lodash');
@@ -16,15 +17,11 @@ describe('GetNativeError', function() {
     });
 
     it(`should return an object with a 'message' string property`, function() {
-        assert(_.isString(new GetNativeError(100).message));
-    });
-
-    it(`should return an object with a 'code' number property`, function() {
-        assert(_.isNumber(new GetNativeError(100).code));
+        assert(_.isString(new GetNativeError(k.Error.TokenExpired).message));
     });
 
     it(`should not have an empty message`, function() {
-        assert.notEqual(new GetNativeError(100).message, '');
+        assert.notEqual(new GetNativeError(k.Error.TokenExpired).message, '');
     });
 
     it(`should throw a ReferenceError if no code is provided`, function() {
@@ -33,27 +30,27 @@ describe('GetNativeError', function() {
         }, ReferenceError);
     });
 
-    it(`should throw a TypeError if the code is not a number`, function() {
+    it(`should throw a TypeError if the code is not a string`, function() {
         assert.throws(function() {
-            new GetNativeError('notANumber')
+            new GetNativeError(100)
         }, TypeError);
     });
 
     it(`should not throw a ReferenceError if the code is unknown`, function() {
         assert.doesNotThrow(function() {
-            new GetNativeError(99999)
+            new GetNativeError('unknown code')
         }, ReferenceError);
     });
 
     it(`should override the default message if a second optional message argument is provided`, function() {
         const overrideMessage = 'override';
-        const error = new GetNativeError(100, overrideMessage);
+        const error = new GetNativeError(k.Error.TokenExpired, overrideMessage);
         assert.equal(error.message, overrideMessage);
     });
 
     it(`should throw a TypeError of the default message is not a string`, function() {
         assert.throws(function() {
-            new GetNativeError(100, {})
+            new GetNativeError(k.Error.TokenExpired, {})
         }, TypeError);
     });
 });

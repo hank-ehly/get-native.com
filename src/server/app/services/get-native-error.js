@@ -8,22 +8,22 @@
 const i18n    = require('i18n');
 const _       = require('lodash');
 
-function GetNativeError(code, message) {
+function GetNativeError(code, overrideMessage) {
     Error.captureStackTrace(this, GetNativeError);
 
     if (!code) {
         throw new ReferenceError('No code provided');
     }
 
-    if (!_.isNumber(code)) {
-        throw new TypeError('Code must be a number');
+    if (!_.isString(code)) {
+        throw new TypeError('Code must be a string');
     }
 
-    if (message && !_.isString(message)) {
+    if (overrideMessage && !_.isString(overrideMessage)) {
         throw new TypeError('Message must be a string');
     }
 
-    this.message = _.defaultTo(message, i18n.__(`errors.${code}`));
+    this.message = _.defaultTo(overrideMessage, i18n.__(`errors.${code}`));
     this.code    = code;
 }
 

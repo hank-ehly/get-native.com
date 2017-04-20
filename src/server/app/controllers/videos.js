@@ -21,7 +21,6 @@ const AuthHelper      = require('../services').Auth;
 const Promise         = require('bluebird');
 const ModelHelper     = require('../services').Model(db);
 const k               = require('../../config/keys.json');
-const GetNativeError  = require('../services').GetNativeError;
 
 module.exports.index = (req, res, next) => {
     const conditions = {language_code: req.query.lang || 'en'};

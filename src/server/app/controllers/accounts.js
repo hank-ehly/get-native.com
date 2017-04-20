@@ -53,10 +53,10 @@ module.exports.updatePassword = (req, res, next) => {
         return Account.update({password: hashPassword}, {where: {id: accountId}});
     }).then(() => {
         res.sendStatus(204);
-    }).catch(GetNativeError, e => next({
-        body: e,
-        status: 404
-    })).catch(next);
+    }).catch(GetNativeError, e => {
+        res.status(404);
+        next(e);
+    }).catch(next);
 };
 
 module.exports.updateEmail = (req, res) => {

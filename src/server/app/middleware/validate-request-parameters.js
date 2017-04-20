@@ -37,10 +37,8 @@ module.exports = function(schema) {
 
                 error.details.forEach(d => {
                     if (d.path === 'authorization') {
-                        return next({
-                            status: 401,
-                            body: new GetNativeError(k.Error.Auth, d.message)
-                        });
+                        res.status(401);
+                        return next(new GetNativeError(k.Error.Auth, d.message));
                     }
                 });
             });
@@ -65,10 +63,8 @@ module.exports = function(schema) {
         });
 
         if (_.gt(errors.length, 0)) {
-            return next({
-                status: 400,
-                errors: errors
-            });
+            res.status(400);
+            return next(errors);
         }
 
         return next();
