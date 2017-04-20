@@ -13,7 +13,7 @@ const Video    = db.Video;
 const Account  = db.Account;
 const _        = require('lodash');
 
-describe('video', function() {
+describe('Video', function() {
     let account = null;
     let server = null;
 
