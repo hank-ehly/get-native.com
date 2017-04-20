@@ -74,10 +74,6 @@ module.exports.login = function() {
     });
 };
 
-module.exports.isNumber = function(value) {
-    return new RegExp(/^[0-9]+$/).test(value);
-};
-
 module.exports.isParsableTimestamp = function(value) {
     return new Date(value).toDateString() !== 'Invalid Date';
 };

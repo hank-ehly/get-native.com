@@ -5,8 +5,6 @@
  * Created by henryehly on 2017/04/02.
  */
 
-const Utility = require('./utility');
-
 const i18n    = require('i18n');
 const _       = require('lodash');
 
@@ -18,11 +16,11 @@ function GetNativeError(code, message) {
     }
 
     if (!_.isNumber(code)) {
-        throw new TypeError(`Code must be a number -- received ${Utility.typeof(code)}`);
+        throw new TypeError(`Code must be a number`);
     }
 
     if (message && !_.isString(message)) {
-        throw new TypeError(`Message must be a string -- received ${Utility.typeof(code)}`);
+        throw new TypeError(`Message must be a string`);
     }
 
     else if (!message && !i18n.__(`errors.${code}`)) {

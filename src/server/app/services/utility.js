@@ -8,10 +8,6 @@
 const moment = require('moment');
 const _      = require('lodash');
 
-module.exports.typeof = function(x) {
-    return _.nth(Object.prototype.toString.call(x).replace(/[\[\]]/g, '').split(' '), 1).toLowerCase();
-};
-
 module.exports.extractAuthTokenFromRequest = function(req) {
     if (arguments.length !== 1) {
         throw new RangeError(`Invalid number of arguments: ${arguments.length}`);

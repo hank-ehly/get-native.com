@@ -5,13 +5,14 @@
  * Created by henryehly on 2017/03/16.
  */
 
-const request  = require('supertest');
-const url      = require('url');
-const SpecUtil = require('../../spec-util');
-const assert   = require('assert');
 const Speaker  = require('../../../app/models').Speaker;
-const Utility  = require('../../../app/services').Utility;
+const SpecUtil = require('../../spec-util');
+
+const request  = require('supertest');
 const Promise  = require('bluebird');
+const assert   = require('assert');
+const url      = require('url');
+const _        = require('lodash');
 
 describe('GET /speakers/:id', function() {
     let server        = null;
@@ -68,7 +69,7 @@ describe('GET /speakers/:id', function() {
     describe('response.success', function() {
         it('should return a single object', () => {
             return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                assert.equal(Utility.typeof(speaker.body), 'object');
+                assert(_.isPlainObject(speaker.body));
             });
         });
 
@@ -80,37 +81,37 @@ describe('GET /speakers/:id', function() {
 
         it('should return an object containing a string description about the speaker', () => {
             return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                assert.equal(Utility.typeof(speaker.body.description), 'string');
+                assert(_.isString(speaker.body.description));
             });
         });
 
         it(`should not return a blank 'description'`, () => {
             return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                assert(speaker.body.description.length > 0);
+                assert(_.gt(speaker.body.description.length, 0))
             });
         });
 
         it(`should return an object containing the speaker's string 'name' property`, () => {
             return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                assert.equal(Utility.typeof(speaker.body.name), 'string');
+                assert(_.isString(speaker.body.name));
             });
         });
 
         it(`should not return a blank 'name'`, () => {
             return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                assert(speaker.body.name.length > 0);
+                assert(_.gt(speaker.body.name.length, 0));
             });
         });
 
         it(`should return an object containing the speaker's string location`, () => {
             return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                assert.equal(Utility.typeof(speaker.body.location), 'string');
+                assert(_.isString(speaker.body.location));
             });
         });
 
         it(`should not return a blank 'location'`, () => {
             return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                assert(speaker.body.location.length > 0);
+                assert(_.gt(speaker.body.location.length, 0));
             });
         });
 
@@ -124,7 +125,7 @@ describe('GET /speakers/:id', function() {
 
         it(`should return an object containing a boolean value denoting whether or not the speaker has chosen to use a custom picture`, () => {
             return request(server).get(`/speakers/${testSpeaker.id}`).set('authorization', authorization).then(function(speaker) {
-                assert.equal(Utility.typeof(speaker.body.is_silhouette_picture), 'boolean');
+                assert(_.isBoolean(speaker.body.is_silhouette_picture));
             });
         });
     });

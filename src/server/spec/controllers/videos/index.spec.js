@@ -98,7 +98,7 @@ describe('GET /videos', function() {
 
         it(`should return an error object with a top-level 'errors' array`, function() {
             request(server).get('/videos?subcategory_id=notANumber').set('authorization', authorization).then(function(response) {
-                assert(_.isArray(Utility.typeof(response.errors)));
+                assert(_.isArray(response.errors));
             });
         });
 

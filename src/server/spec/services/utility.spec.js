@@ -9,34 +9,6 @@ const Utility = require('../../app/services').Utility;
 const assert = require('assert');
 
 describe('Utility', function() {
-
-    describe('typeof', () => {
-        it(`should return 'string' if passed a string`, () => {
-            assert.equal(Utility.typeof('hello world'), 'string');
-        });
-
-        it(`should return 'boolean' if passed a boolean`, () => {
-            assert.equal(Utility.typeof(false), 'boolean');
-        });
-
-        it(`should return 'array' if passed a array`, () => {
-            assert.equal(Utility.typeof([1, 2, 3]), 'array');
-        });
-
-        it(`should return 'object' if passed a object`, () => {
-            assert.equal(Utility.typeof({foo: 'bar'}), 'object');
-        });
-
-        it(`should return 'number' if passed a number`, () => {
-            assert.equal(Utility.typeof(90), 'number');
-        });
-
-        it(`should return 'function' if passed a function`, () => {
-            assert.equal(Utility.typeof(function() {
-            }), 'function');
-        });
-    });
-
     describe('extractAuthTokenFromRequest', () => {
         it('should throw a RangeError if the number of arguments is less than 1', () => {
             assert.throws(() => Utility.extractAuthTokenFromRequest(), RangeError);

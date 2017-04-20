@@ -64,7 +64,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Account.existsForEmail = function(email) {
-        if (Utility.typeof(email) !== 'string') {
+        if (!_.isString(email)) {
             throw new TypeError(`Argument 'email' must be a string`);
         }
 
