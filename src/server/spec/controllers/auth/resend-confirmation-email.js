@@ -5,15 +5,15 @@
  * Created by henryehly on 2017/04/19.
  */
 
-const errorMessages = require('../../../config/locales/en.json').errors;
-const config        = require('../../../config');
 const SpecUtil      = require('../../spec-util');
+const config        = require('../../../config');
 const Auth          = require('../../../app/services').Auth;
 const k             = require('../../../config/keys.json');
 
 const request       = require('supertest');
 const assert        = require('assert');
 const chance        = require('chance').Chance();
+const i18n          = require('i18n');
 const _             = require('lodash');
 
 describe('POST /resend_confirmation_email', function() {
@@ -71,7 +71,7 @@ describe('POST /resend_confirmation_email', function() {
         it(`should contains the appropriate error response object if the account does not exist`, function() {
             return request(server).post('/resend_confirmation_email').send({email: 'unknown@email.com'}).then(function(response) {
                 const error = response.body;
-                assert.equal(error.message, errorMessages[error.code]);
+                assert.equal(error.message, i18n.__(error.code));
             });
         });
 
@@ -95,9 +95,9 @@ describe('POST /resend_confirmation_email', function() {
             }).then(function(response) {
                 const error = response.body;
 
-                console.log(error.message, errorMessages[error.code], response.body);
+                console.log(error.message, i18n.__(error.code), response.body);
 
-                assert.equal(error.message, errorMessages[error.code]);
+                assert.equal(error.message, i18n.__(error.code));
             });
         });
     });
