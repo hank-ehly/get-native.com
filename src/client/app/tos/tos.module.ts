@@ -15,6 +15,5 @@ import { TOSRoutingModule } from './tos-routing.module';
     declarations: [TOSComponent],
     exports: [TOSComponent]
 })
-
 export class TOSModule {
 }
