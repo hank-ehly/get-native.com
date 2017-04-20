@@ -8,7 +8,6 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule }       from '../shared/shared.module';
-import { StudyRoutingModule } from './study-routing.module';
 import { StudyComponent }     from './study.component';
 import { ListeningComponent } from './listening/listening.component';
 import { ShadowingComponent } from './shadowing/shadowing.component';
@@ -18,10 +17,7 @@ import { ResultsComponent }   from './results/results.component';
 import { TransitionComponent } from './transition/transition.component';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        StudyRoutingModule
-    ],
+    imports: [SharedModule],
     declarations: [
         StudyComponent,
         ListeningComponent,

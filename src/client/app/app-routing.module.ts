@@ -10,17 +10,97 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ConfirmEmailResolver } from './core/auth/confirm-email-resolver.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './core/auth/auth-guard.service';
+import { PageNotFoundComponent } from './static-pages/page-not-found/page-not-found.component';
+import { TOSComponent } from './static-pages/tos/tos.component';
+import { PrivacyComponent } from './static-pages/privacy/privacy.component';
+import { HelpComponent } from './static-pages/help/help.component';
+import { HomeComponent } from './static-pages/home/home.component';
+import { LibraryDetailComponent } from './library/library-detail/library-detail.component';
+import { LibraryComponent } from './library/library.component';
+import { SecurityComponent } from './settings/security/security.component';
+import { NotificationsComponent } from './settings/notifications/notifications.component';
+import { GeneralComponent } from './settings/general/general.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ResultsComponent } from './study/results/results.component';
+import { WritingComponent } from './study/writing/writing.component';
+import { SpeakingComponent } from './study/speaking/speaking.component';
+import { ShadowingComponent } from './study/shadowing/shadowing.component';
+import { ListeningComponent } from './study/listening/listening.component';
+import { TransitionComponent } from './study/transition/transition.component';
+import { StudyComponent } from './study/study.component';
 
-const appRoutes: Routes = [
+const routes: Routes = [
     {
-        path: 'confirm_email',
-        resolve: ConfirmEmailResolver,
-        component: DashboardComponent
+        path: '', canActivate: [AuthGuard], component: HomeComponent, data: {title: 'Home'}
+    },
+    {
+        path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {title: 'Dashboard'}
+    },
+    {
+        path: 'settings', component: SettingsComponent, canActivateChild: [AuthGuard],
+        children: [
+            {
+                path: '', component: GeneralComponent, data: {title: 'Settings'}
+            },
+            {
+                path: 'notifications', component: NotificationsComponent, data: {title: 'Settings'}
+            },
+            {
+                path: 'security', component: SecurityComponent, data: {title: 'Settings'}
+            }
+        ]
+    },
+    {
+        path: 'library', component: LibraryComponent, canActivate: [AuthGuard], data: {title: 'Library'},
+        children: [
+        {
+            path: ':id', component: LibraryDetailComponent
+        }
+    ]
+    },
+    {
+        path: 'study', component: StudyComponent, canActivateChild: [AuthGuard],
+        children: [
+            {
+                path: '', component: TransitionComponent
+            },
+            {
+                path: 'listening', component: ListeningComponent, data: {title: 'Listening'}
+            },
+            {
+                path: 'shadowing', component: ShadowingComponent, data: {title: 'Shadowing'}
+            },
+            {
+                path: 'speaking', component: SpeakingComponent, data: {title: 'Speaking'}
+            },
+            {
+                path: 'writing', component: WritingComponent, data: {title: 'Writing'}
+            },
+            {
+                path: 'results', component: ResultsComponent, data: {title: 'Results'}
+            }
+        ]
+    },
+    {
+        path: 'help', component: HelpComponent, data: {title: 'Help'}
+    },
+    {
+        path: 'privacy', component: PrivacyComponent, data: {title: 'Privacy Policy'}
+    },
+    {
+        path: 'tos', component: TOSComponent, data: {title: 'Terms of Service'}
+    },
+    {
+        path: 'confirm_email', resolve: {_: ConfirmEmailResolver}, component: DashboardComponent
+    },
+    {
+        path: '**', component: PageNotFoundComponent
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [RouterModule.forRoot([]), RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
 export class AppRoutingModule {
