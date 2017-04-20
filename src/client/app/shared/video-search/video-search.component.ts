@@ -20,19 +20,19 @@ import { UserService } from '../../core/user/user.service';
 import { CategoryFilter } from './category-filter';
 import { Video } from '../../core/entities/video';
 
-import * as _ from 'lodash';
-import '../../operators';
-import 'rxjs/add/operator/combineLatest';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/debounce';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
-
+import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/concatMap';
+import 'rxjs/add/operator/debounce';
+import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/scan';
 import 'rxjs/observable/timer';
+import * as _ from 'lodash';
 
 @Component({
     template: ''
