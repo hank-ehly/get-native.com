@@ -68,9 +68,9 @@ describe('POST /resend_confirmation_email', function() {
             request(server).post('/resend_confirmation_email').send({email: 'unknown@email.com'}).expect(404, done);
         });
 
-        it(`should contains the appropriate error response object if the account does not exist`, function() {
+        it(`should contain the appropriate error response object if the account does not exist`, function() {
             return request(server).post('/resend_confirmation_email').send({email: 'unknown@email.com'}).then(function(response) {
-                const error = response.body;
+                const error = _.first(response.body);
                 assert.equal(error.message, i18n.__(`errors.${error.code}`));
             });
         });
@@ -93,7 +93,7 @@ describe('POST /resend_confirmation_email', function() {
             }).then(function(account) {
                 return request(server).post('/resend_confirmation_email').send({email: account.email});
             }).then(function(response) {
-                const error = response.body;
+                const error = _.first(response.body);
                 assert.equal(error.message, i18n.__(`errors.${error.code}`));
             });
         });
