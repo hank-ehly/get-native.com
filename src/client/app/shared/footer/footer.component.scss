@@ -15,6 +15,11 @@
 
 .footer__row_app-links {
   @include font-weight-bold;
+  justify-content: center;
+}
+
+.footer__row_app-links .link {
+  padding: 0 5px;
 }
 
 .footer__row_copyright {
