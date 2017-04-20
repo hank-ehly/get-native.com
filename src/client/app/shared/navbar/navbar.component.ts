@@ -16,6 +16,7 @@ import { Logger } from '../../core/logger/logger';
 import { FocusDirective } from '../focus/focus.directive';
 
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 
 @Component({

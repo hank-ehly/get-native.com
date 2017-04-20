@@ -17,6 +17,8 @@ import { Logger } from '../logger/logger';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 import * as _ from 'lodash';
 
 @Injectable()
@@ -26,7 +28,7 @@ export class UserService {
 
     logout$               = new Subject<any>();
 
-    private onUpdate$ = this.current$.filter(u => !_.isEmpty(u));
+    private onUpdate$ = this.current$.filter((u: User) => !_.isEmpty(u));
 
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger) {
         this.onUpdate$
