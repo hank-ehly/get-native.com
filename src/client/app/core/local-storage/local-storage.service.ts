@@ -12,29 +12,23 @@ import { Logger } from '../logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 
-// Todo: Use 'Map' type so that you can use the 'has' logic
-
 @Injectable()
 export class LocalStorageService {
-    setItemSource = new Subject<LocalStorageItem>();
-    setItem$ = this.setItemSource.asObservable();
-
-    storageEventSource = new Subject<StorageEvent>();
-    storageEvent$ = this.storageEventSource.asObservable();
-
-    clearSource = new Subject();
-    clearSource$ = this.clearSource.asObservable();
+    storageEvent$ = new Subject<StorageEvent>();
+    clear$        = new Subject();
+    setItem$      = new Subject<LocalStorageItem>();
 
     constructor(private logger: Logger) {
+        this.clear$.subscribe(() => localStorage.clear());
     }
 
     broadcastStorageEvent(ev: StorageEvent): void {
         if (ev.key === null && ev.newValue === null && ev.oldValue === null) {
             this.logger.debug(this, 'Storage Event clear()');
-            this.clearSource.next();
+            this.clear$.next();
         } else {
             this.logger.debug(this, `Storage Event ${ev.key}`);
-            this.storageEventSource.next(ev);
+            this.storageEvent$.next(ev);
         }
     }
 
@@ -42,18 +36,6 @@ export class LocalStorageService {
         let retVal = localStorage.length;
         this.logger.debug(this, `get length() - ${retVal}`);
         return retVal;
-    }
-
-    key(index: number): string {
-        let retVal = localStorage.key(index);
-        this.logger.debug(this, `key('${index}) - ${retVal}'`);
-        return retVal;
-    }
-
-    clear(): void {
-        this.logger.debug(this, `clear()`);
-        localStorage.clear();
-        this.clearSource.next();
     }
 
     /* Todo: Encrypt all stored data */
@@ -66,7 +48,7 @@ export class LocalStorageService {
         }
 
         localStorage.setItem(key, data);
-        this.setItemSource.next({key: key, data: data});
+        this.setItem$.next({key: key, data: data});
     }
 
     getItem(key: string): any {
@@ -86,6 +68,6 @@ export class LocalStorageService {
     removeItem(key: string): void {
         this.logger.debug(this, `removeItem('${key}')`);
         localStorage.removeItem(key);
-        this.setItemSource.next({key: key, data: null});
+        this.setItem$.next({key: key, data: null});
     }
 }
