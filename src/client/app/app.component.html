@@ -1,7 +1,7 @@
-<gn-navbar [authenticated]="authenticated"></gn-navbar>
+<gn-navbar [authenticated]="user.authenticated$ | async"></gn-navbar>
 
-<gn-side-menu *ngIf="authenticated"></gn-side-menu>
-<gn-toolbar *ngIf="authenticated"></gn-toolbar>
+<gn-side-menu *ngIf="user.authenticated$ | async"></gn-side-menu>
+<gn-toolbar *ngIf="user.authenticated$ | async"></gn-toolbar>
 
 <router-outlet></router-outlet>
 

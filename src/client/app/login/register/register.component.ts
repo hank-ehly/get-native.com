@@ -13,6 +13,8 @@ import { Logger } from '../../core/logger/logger';
 import { LoginModalService } from '../../core/login-modal/login-modal.service';
 import { HttpService } from '../../core/http/http.service';
 import { APIHandle } from '../../core/http/api-handle';
+import { UserService } from '../../core/user/user.service';
+import { User } from '../../core/entities/user';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -33,7 +35,8 @@ export class RegisterComponent implements OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private loginModal: LoginModalService, private http: HttpService, private router: Router) {
+    constructor(private logger: Logger, private loginModal: LoginModalService, private http: HttpService, private router: Router,
+                private user: UserService) {
     }
 
     ngOnDestroy(): void {
@@ -48,18 +51,15 @@ export class RegisterComponent implements OnDestroy {
     }
 
     onSubmit(): void {
-        this.logger.debug(this, 'onSubmit()');
-        const responseHandler = this.onRegistrationResponse.bind(this);
-        const request = this.http.request(APIHandle.REGISTER, {body: this.credentials}).subscribe(responseHandler);
-        this.subscriptions.push(request);
+        this.logger.debug(this, 'onSubmit');
+        this.subscriptions.push(this.http.request(APIHandle.REGISTER, {body: this.credentials})
+            .subscribe(this.onRegistrationResponse.bind(this)));
     }
 
-    private onRegistrationResponse(e: any): void {
-        this.logger.debug(this, e);
+    private onRegistrationResponse(user: User): void {
+        this.user.current$.next(user);
         this.loginModal.hideModal();
-        this.router.navigate(['dashboard']).then(() => {
-            this.logger.debug(this, 'Navigated to dashboard');
-        }).catch(e => {
+        this.router.navigate(['dashboard']).catch(e => {
             this.logger.info(this, 'Failed to navigate to dashboard: ', e);
         });
     }
