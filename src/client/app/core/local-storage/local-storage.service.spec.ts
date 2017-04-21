@@ -60,7 +60,7 @@ export function main() {
 
             expect(localStorageService.length).toEqual(2);
 
-            localStorageService.clear();
+            localStorageService.clear$.next();
             expect(localStorageService.length).toEqual(0);
         });
 

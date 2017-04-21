@@ -52,7 +52,7 @@ export class ComplianceComponent implements OnInit, LocalStorageProtocol, OnDest
         this.subscriptions.push(
             this.localStorageService.setItem$.subscribe(this.didSetLocalStorageItem.bind(this)),
             this.localStorageService.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this)),
-            this.localStorageService.clearSource$.subscribe(this.didClearStorage.bind(this))
+            this.localStorageService.clear$.subscribe(this.didClearStorage.bind(this))
         );
     }
 
