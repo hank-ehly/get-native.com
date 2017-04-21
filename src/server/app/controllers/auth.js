@@ -133,12 +133,10 @@ module.exports.confirmEmail = (req, res, next) => {
 
         return Account.findOne({attributes: attributes, where: {id: token.account_id}});
     }).then(account => {
-        console.log('********');
-        console.log(account);
         return [account, Auth.generateTokenForAccountId(account.id)];
     }).spread((account, token) => {
         Auth.setAuthHeadersOnResponseWithToken(res, token);
-        res.status(200).send(account);
+        res.status(200).send(account.get({plain: true}));
     }).catch(GetNativeError, e => {
         if (e.code === k.Error.TokenExpired) {
             res.status(404);
