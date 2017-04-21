@@ -30,8 +30,6 @@ import { VideoDirective } from './video/video.directive';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoPanelComponent } from './video-panel/video-panel.component';
 import { VideoPanelListComponent } from './video-panel-list/video-panel-list.component';
-import { DebugComponent } from './debug/debug.component';
-import { DraggableDirective } from './debug/draggable.directive';
 import { VideoSearchComponent } from './video-search/video-search.component';
 
 @NgModule({
@@ -61,8 +59,6 @@ import { VideoSearchComponent } from './video-search/video-search.component';
         VideoPlayerComponent,
         VideoPanelComponent,
         VideoPanelListComponent,
-        DebugComponent,
-        DraggableDirective,
         VideoSearchComponent
 
     ],
@@ -89,7 +85,6 @@ import { VideoSearchComponent } from './video-search/video-search.component';
         VideoPlayerComponent,
         VideoPanelComponent,
         VideoPanelListComponent,
-        DebugComponent,
         VideoSearchComponent
     ]
 })
