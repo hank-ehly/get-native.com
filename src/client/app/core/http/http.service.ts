@@ -74,7 +74,7 @@ export class HttpService {
         return this.http.request(request).map(this.handleResponse.bind(this)).catch(<any>this.handleError.bind(this));
     }
 
-    private handleResponse(response: Response): Entity {
+    private handleResponse(response: Response): Entities<Entity>|Entity {
         if (!_.inRange(response.status, 200, 400)) {
             this.handleError(response);
         }
@@ -93,9 +93,10 @@ export class HttpService {
             return null;
         }
 
-        return <Entity>response.json();
+        return response.json();
     }
 
+    // todo: think harder
     private handleError(error: any) {
         if (Config.ENV === 'PROD') {
             this.logger.error(error);
