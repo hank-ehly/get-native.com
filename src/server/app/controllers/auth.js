@@ -31,16 +31,13 @@ module.exports.login = (req, res, next) => {
         k.Attr.Password
     ];
 
-    let account = null;
-    Account.find({where: {email: req.body[k.Attr.Email]}, attributes: attributes}).then(_account => {
-        account = _account;
-
+    Account.find({where: {email: req.body[k.Attr.Email]}, attributes: attributes}).then(account => {
         if (!account || !Auth.verifyPassword(account.password, req.body[k.Attr.Password])) {
             throw new GetNativeError(k.Error.UserNamePasswordIncorrect);
         }
 
-        return Auth.generateTokenForAccountId(account.id);
-    }).then(token => {
+        return [account, Auth.generateTokenForAccountId(account.id)];
+    }).spread((account, token) => {
         Auth.setAuthHeadersOnResponseWithToken(res, token);
         const accountAsJson = account.get({plain: true});
         delete accountAsJson.password;
@@ -109,9 +106,7 @@ module.exports.register = (req, res, next) => {
 };
 
 module.exports.confirmEmail = (req, res, next) => {
-    const token = req.body.token;
-
-    return VerificationToken.findOne({where: {token: token}}).then(token => {
+    return VerificationToken.findOne({where: {token: req.body.token}}).then(token => {
         if (!token) {
             throw new GetNativeError(k.Error.TokenExpired);
         }
@@ -123,12 +118,27 @@ module.exports.confirmEmail = (req, res, next) => {
         const changes = {};
         changes[k.Attr.EmailVerified] = true;
 
-        return Account.update(changes, {where: {id: token.account_id}});
+        return [token, Account.update(changes, {where: {id: token.account_id}})];
+    }).spread(token => {
+        const attributes = [
+            k.Attr.Id,
+            k.Attr.Email,
+            k.Attr.BrowserNotificationsEnabled,
+            k.Attr.EmailNotificationsEnabled,
+            k.Attr.EmailVerified,
+            k.Attr.DefaultStudyLanguageCode,
+            k.Attr.PictureUrl,
+            k.Attr.IsSilhouettePicture
+        ];
+
+        return Account.findOne({attributes: attributes, where: {id: token.account_id}});
     }).then(account => {
-        return Auth.generateTokenForAccountId(account.id);
-    }).then(function(token) {
+        console.log('********');
+        console.log(account);
+        return [account, Auth.generateTokenForAccountId(account.id)];
+    }).spread((account, token) => {
         Auth.setAuthHeadersOnResponseWithToken(res, token);
-        res.sendStatus(204);
+        res.status(200).send(account);
     }).catch(GetNativeError, e => {
         if (e.code === k.Error.TokenExpired) {
             res.status(404);

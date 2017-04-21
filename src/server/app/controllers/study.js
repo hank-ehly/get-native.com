@@ -5,19 +5,25 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const ResponseWrapper = require('../services').ResponseWrapper;
-const Auth            = require('../services').Auth;
+const services        = require('../services');
+const ResponseWrapper = services.ResponseWrapper;
+const Auth            = services.Auth;
 const db              = require('../models');
-const ModelService    = require('../services').Model(db);
+const ModelService    = services.Model(db);
 const WritingAnswer   = db.WritingAnswer;
 const WritingQuestion = db.WritingQuestion;
 const Account         = db.Account;
+const GetNativeError  = services.GetNativeError;
 const k               = require('../../config/keys.json');
 
 const Promise         = require('bluebird');
 
 module.exports.stats = (req, res, next) => {
     Account.findById(req.accountId).then(account => {
+        if (!account) {
+            throw new GetNativeError(k.Error.AccountMissing);
+        }
+
         const sessionStats = account.calculateStudySessionStatsForLanguage(req.params.lang);
         const writingStats = account.calculateWritingStatsForLanguage(req.params.lang);
         const studyStreaks = account.calculateStudyStreaksForLanguage(req.params.lang);
