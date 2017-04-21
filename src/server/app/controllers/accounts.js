@@ -13,19 +13,14 @@ const k              = require('../../config/keys.json');
 const _              = require('lodash');
 
 module.exports.index = (req, res, next) => {
-    let accountId = AuthHelper.extractAccountIdFromRequest(req);
-
-    Account.findById(accountId, {
+    Account.findById(req.accountId, {
         attributes: {exclude: [k.Attr.Password, k.Attr.CreatedAt, k.Attr.UpdatedAt]}
     }).then(account => {
-        const accountAsJSON = account.get({plain: true});
-        res.send(accountAsJSON);
+        res.send(account.get({plain: true}));
     }).catch(next);
 };
 
 module.exports.update = (req, res, next) => {
-    let accountId = AuthHelper.extractAccountIdFromRequest(req);
-
     const attr = _.transform(req.body, function(result, value, key) {
         if ([k.Attr.EmailNotificationsEnabled, k.Attr.BrowserNotificationsEnabled, k.Attr.DefaultStudyLanguageCode].includes(key)) {
             result[key] = value;
@@ -36,21 +31,19 @@ module.exports.update = (req, res, next) => {
         return res.sendStatus(304);
     }
 
-    return Account.update(attr, {where: {id: accountId}}).then(() => {
+    return Account.update(attr, {where: {id: req.accountId}}).then(() => {
         res.sendStatus(204);
     }).catch(next);
 };
 
 module.exports.updatePassword = (req, res, next) => {
-    let accountId = AuthHelper.extractAccountIdFromRequest(req);
-
-    Account.findById(accountId).then(account => {
+    Account.findById(req.accountId).then(account => {
         if (!AuthHelper.verifyPassword(account.password, req.body[k.Attr.CurrentPassword])) {
             throw new GetNativeError(k.Error.PasswordIncorrect);
         }
 
         const hashPassword = AuthHelper.hashPassword(req.body[k.Attr.NewPassword]);
-        return Account.update({password: hashPassword}, {where: {id: accountId}});
+        return Account.update({password: hashPassword}, {where: {id: req.accountId}});
     }).then(() => {
         res.sendStatus(204);
     }).catch(GetNativeError, e => {

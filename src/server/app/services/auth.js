@@ -17,11 +17,10 @@ const jwt     = require('jsonwebtoken');
 const url     = require('url');
 const _       = require('lodash');
 
-module.exports.validateRequest = req => {
-    // todo: audience?
+module.exports.validateRequest = function(req) {
     const args = {
         issuer: config.get(k.API.Hostname),
-        audience: '',
+        audience: '', // todo
         algorithms: ['RS256']
     };
 
