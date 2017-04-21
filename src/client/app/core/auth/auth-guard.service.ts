@@ -11,14 +11,12 @@ import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnaps
 import { UserService } from '../user/user.service';
 import { Logger } from '../logger/logger';
 
-import { Observable } from 'rxjs/Observable';
-
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
     constructor(private router: Router, private user: UserService, private logger: Logger) {
     }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         this.logger.info(this, 'canActivate', state.url, route);
 
         const isLoggedIn = this.user.isLoggedIn();
@@ -41,7 +39,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         return false;
     }
 
-    canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|Promise<boolean>|boolean {
+    canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         return this.canActivate(childRoute, state);
     }
 }
