@@ -10,6 +10,7 @@ const request = require('supertest');
 const Promise = require('bluebird');
 const exec    = require('child_process').exec;
 const MailDev = require('maildev');
+const jwt     = require('jsonwebtoken');
 
 let maildev = null;
 
@@ -92,4 +93,14 @@ module.exports.isValidEmail = function(value) {
 module.exports.isClientFriendlyDateString = function(value) {
     let regex = /[A-Z][a-z][a-z]\s[A-Z][a-z][a-z]\s[0-3][0-9]\s[0-2][0-9]:[0-5][0-9]:[0-5][0-9]\s\+[0-9][0-9][0-9][0-9]\s[0-9][0-9][0-9][0-9]/g
     return regex.test(value);
+};
+
+module.exports.createJWTWithSubject = function(sub) {
+    return Promise.promisify(jwt.sign)({
+        iss: '_',
+        sub: sub,
+        aud: ''
+    }, 'secret', {
+        expiresIn: '1h'
+    });
 };

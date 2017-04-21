@@ -8,7 +8,7 @@
 const models = require('../models');
 const ResponseWrapper = require('../services').ResponseWrapper;
 
-module.exports.index = (req, res) => {
+module.exports.index = (req, res, next) => {
     models.Category.findAll({
         attributes: ['id', 'name'],
         include: [{model: models.Subcategory, as: 'subcategories', attributes: ['id', 'name']}]

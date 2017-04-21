@@ -52,6 +52,6 @@ module.exports.browserTimezoneOffsetToSQLFormat = function(offsetInMinutes) {
     return [symbol, paddedHours, ':', paddedMinutes].join('');
 };
 
-module.exports.tomorrow = () => {
+module.exports.tomorrow = function() {
     return moment().add(1, 'days').toDate();
 };

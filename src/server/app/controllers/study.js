@@ -17,9 +17,7 @@ const k               = require('../../config/keys.json');
 const Promise         = require('bluebird');
 
 module.exports.stats = (req, res, next) => {
-    const accountId = Auth.extractAccountIdFromRequest(req);
-
-    Account.findById(accountId).then(account => {
+    Account.findById(req.accountId).then(account => {
         const sessionStats = account.calculateStudySessionStatsForLanguage(req.params.lang);
         const writingStats = account.calculateWritingStatsForLanguage(req.params.lang);
         const studyStreaks = account.calculateStudyStreaksForLanguage(req.params.lang);
@@ -34,17 +32,16 @@ module.exports.stats = (req, res, next) => {
                 maximum_words: writing.maximum_words,
                 maximum_wpm: writing.maximum_wpm
             });
-        }).catch(next);
+        }).catch(Promise.reject);
     }).catch(next);
 };
 
 module.exports.writing_answers = (req, res, next) => {
-    const accountId = Auth.extractAccountIdFromRequest(req);
     const createdAt = ModelService.getDateAttrForTableColumnTZOffset(k.Model.WritingAnswer, k.Attr.CreatedAt, req.query.time_zone_offset);
 
     WritingAnswer.scope([
         'newestFirst',
-        {method: ['forAccountWithLang', accountId, req.params.lang]},
+        {method: ['forAccountWithLang', req.accountId, req.params.lang]},
         {method: ['since', req.query.since]},
         {method: ['maxId', req.query.max_id]}
     ]).findAll({
