@@ -51,5 +51,6 @@ export class UserService {
         this.logger.debug(this, 'onLogout');
         this.localStorage.removeItem(kAuthToken);
         this.localStorage.removeItem(kAuthTokenExpire);
+        this.localStorage.removeItem(kCurrentUser);
     }
 }
