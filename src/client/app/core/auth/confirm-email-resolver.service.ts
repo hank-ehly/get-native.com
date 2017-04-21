@@ -7,7 +7,6 @@
 
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { URLSearchParams } from '@angular/http';
 
 import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
@@ -15,21 +14,19 @@ import { APIHandle } from '../http/api-handle';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { UserService } from '../user/user.service';
+import { User } from '../entities/user';
 
 @Injectable()
 export class ConfirmEmailResolver implements Resolve<void> {
-    constructor(private http: HttpService, private router: Router) {
+    constructor(private http: HttpService, private router: Router, private user: UserService) {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<void> {
-        let search = new URLSearchParams();
-        search.set('token', route.queryParams['token']);
-
-        return this.http.request(APIHandle.CONFIRM_EMAIL, {search: search}).map(() => {
-            console.log('********');
+        return this.http.request(APIHandle.CONFIRM_EMAIL, {body: {token: route.queryParams['token']}}).map((user: User) => {
+            this.user.current$.next(user);
             this.router.navigate(['/dashboard']);
         }).toPromise().catch(() => {
-            console.log('++++++++');
             this.router.navigate(['']);
             return null;
         });
