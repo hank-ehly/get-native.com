@@ -5,7 +5,7 @@
 
     <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && navbar.searchBarVisible$.getValue()" [@slideInLeftOutRight]>
         <label for="search-bar" class="sr-only">Search</label>
-        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." gnFocus [focus]="navbar.searchBarVisible$ | async" maxlength="100"
+        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." [gnFocus]="navbar.searchBarVisible$ | async" maxlength="100"
                (input)="navbar.updateQuery($event.target.value)">
     </div>
 
