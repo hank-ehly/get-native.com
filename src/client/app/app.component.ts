@@ -12,14 +12,13 @@ import { Title } from '@angular/platform-browser';
 import { Logger } from './core/logger/logger';
 import { LocalStorageService } from './core/local-storage/local-storage.service';
 import { NavbarService } from './core/navbar/navbar.service';
-import { kAcceptLocalStorage, kAuthToken, kCurrentUser, kAuthTokenExpire } from './core/local-storage/local-storage-keys';
-import { LocalStorageItem } from './core/local-storage/local-storage-item';
+import { kAcceptLocalStorage } from './core/local-storage/local-storage-keys';
 import { UserService } from './core/user/user.service';
 
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
 import * as _ from 'lodash';
 
 @Component({
@@ -30,7 +29,6 @@ import * as _ from 'lodash';
 export class AppComponent implements OnInit, OnDestroy {
     showComplianceDialog: boolean;
     showLoginModal: boolean = false;
-    authenticated: boolean = false;
 
     private subscriptions: Subscription[] = [];
 
@@ -48,22 +46,21 @@ export class AppComponent implements OnInit, OnDestroy {
 
         this.showComplianceDialog = !this.localStorage.getItem(kAcceptLocalStorage);
 
-        let routeDataObservable = this.router.events
-            .filter(e => e instanceof NavigationEnd)
-            .map(() => this.activatedRoute).map(route => {
-                while (route.firstChild) route = route.firstChild;
-                return route;
-            }).filter(route => route.outlet === 'primary')
-            .mergeMap(route => route.data);
-
         this.subscriptions.push(
-            routeDataObservable.subscribe(this.onNavigationEnd.bind(this)),
+            this.router.events
+                .filter(e => e instanceof NavigationEnd)
+                .map(() => this.activatedRoute)
+                .map(route => {
+                    while (route.firstChild) {
+                        route = route.firstChild;
+                    }
+                    return route;
+                })
+                .filter(route => route.outlet === 'primary')
+                .mergeMap(route => route.data)
+                .subscribe(this.onNavigationEnd.bind(this)),
 
-            this.user.logout$.subscribe(() => {
-                this.router.navigate(['']).then(() => {
-                    this.logger.info(this, `Navigated to ''`);
-                });
-            })
+            this.user.logout$.subscribe(this.onLogout.bind(this))
         );
     }
 
@@ -79,5 +76,11 @@ export class AppComponent implements OnInit, OnDestroy {
             if (this.user.authenticated$.getValue()) this.navbar.title$.next(e['title']);
             this.titleService.setTitle(`Get Native | ${e['title']}`);
         }
+    }
+
+    private onLogout(): void {
+        this.router.navigate(['']).then(() => {
+            this.logger.info(this, `Navigated to ''`);
+        });
     }
 }

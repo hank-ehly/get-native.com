@@ -24,25 +24,17 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class UserService {
-    currentStudyLanguage$ = new ReplaySubject<Language>(1);
     authenticated$        = new BehaviorSubject<boolean>(false);
-
-    logout$               = new Subject<any>();
-
     current$              = new BehaviorSubject<User>(this.localStorage.getItem(kCurrentUser));
+    currentStudyLanguage$ = new ReplaySubject<Language>(1);
+    logout$               = new Subject<void>();
 
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger) {
-        this.current$
-            .map((u: User) => this.lang.languageForCode(u.default_study_language_code))
+        this.current$.filter(_.isObject).map((u: User) => this.lang.languageForCode(u.default_study_language_code))
             .subscribe(this.currentStudyLanguage$);
 
-        this.current$.mapTo(true).subscribe(this.authenticated$);
-
-        this.logout$
-            .do((user: User) => this.logger.debug(this, 'logout'))
-            .do(this.onLogout.bind(this))
-            .mapTo(false)
-            .subscribe(this.authenticated$);
+        this.current$.filter(_.isObject).mapTo(true).subscribe(this.authenticated$);
+        this.logout$.mapTo(false).subscribe(this.authenticated$);
     }
 
     update(user: User): void {
@@ -60,9 +52,13 @@ export class UserService {
         this.current$.next(user);
     }
 
-    private onLogout(): void {
+    logout(): void {
+        this.logger.debug(this, 'logout');
+
         this.localStorage.removeItem(kAuthToken);
         this.localStorage.removeItem(kAuthTokenExpire);
         this.localStorage.removeItem(kCurrentUser);
+
+        this.logout$.next();
     }
 }
