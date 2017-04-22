@@ -27,7 +27,6 @@ import * as _ from 'lodash';
     templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
-    showComplianceDialog: boolean;
     showLoginModal: boolean = false;
 
     private subscriptions: Subscription[] = [];
@@ -43,8 +42,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.logger.info(this, 'OnInit');
-
-        this.showComplianceDialog = !this.localStorage.getItem(kAcceptLocalStorage);
 
         this.subscriptions.push(
             this.router.events

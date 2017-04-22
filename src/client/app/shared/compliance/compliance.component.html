@@ -1,9 +1,9 @@
-<div class="dialog" [@enterUpLeaveDown] *ngIf="isVisible">
+<div class="dialog" [@enterUpLeaveDown] *ngIf="!(user.compliant$ | async)">
     <p class="dialog__paragraph">This site uses <a href="https://www.techopedia.com/definition/27674/html5-local-storage" class="link" target="_blank">local storage</a>. By continuing to browse this site you are agreeing to our terms of service.</p>
 
     <!-- TODO: Doesn't scroll to 'cookies' -->
     <!-- https://github.com/angular/angular/issues/6595 -->
     <a class="link dialog__link dialog__link_tos" [routerLink]="['tos']" [fragment]="'cookies'">Find out more here.</a>
 
-    <span class="link dialog__link dialog__link_close" (click)="onClose()">Close</span>
+    <span class="link dialog__link dialog__link_close" (click)="user.comply()">Close</span>
 </div>

@@ -5,16 +5,10 @@
  * Created by henryehly on 2016/11/11.
  */
 
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { trigger, keyframes, style, animate, transition } from '@angular/animations';
 
-import { Logger } from '../../core/logger/logger';
-import { LocalStorageService } from '../../core/local-storage/local-storage.service';
-import { LocalStorageProtocol } from '../../core/local-storage/local-storage-protocol';
-import { LocalStorageItem } from '../../core/local-storage/local-storage-item';
-import { kAcceptLocalStorage } from '../../core/local-storage/local-storage-keys';
-
-import { Subscription } from 'rxjs/Subscription';
+import { UserService } from '../../core/user/user.service';
 
 @Component({
     moduleId: module.id,
@@ -40,51 +34,7 @@ import { Subscription } from 'rxjs/Subscription';
         ])
     ]
 })
-export class ComplianceComponent implements OnInit, LocalStorageProtocol, OnDestroy {
-    @Input() isVisible: boolean;
-
-    private subscriptions: Subscription[] = [];
-
-    constructor(private logger: Logger, private localStorageService: LocalStorageService) {
-    }
-
-    ngOnInit(): void {
-        this.subscriptions.push(
-            this.localStorageService.setItem$.subscribe(this.didSetLocalStorageItem.bind(this)),
-            this.localStorageService.storageEvent$.subscribe(this.didReceiveStorageEvent.bind(this)),
-            this.localStorageService.clear$.subscribe(this.didClearStorage.bind(this))
-        );
-    }
-
-    ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
-    }
-
-    didSetLocalStorageItem(item: LocalStorageItem): void {
-        if (item['key'] !== kAcceptLocalStorage) return;
-
-        let isCompliant = item['data'];
-        this.logger.debug(this, `localStorageValueChanged(${isCompliant})`);
-        this.isVisible = !isCompliant;
-    }
-
-    didReceiveStorageEvent(e: StorageEvent): void {
-        if (e.key !== kAcceptLocalStorage) return;
-
-        let isCompliant = e.newValue === 'true';
-        this.logger.debug(this, 'didReceiveStorageEvent()', e);
-        this.isVisible = !isCompliant;
-    }
-
-    didClearStorage(): void {
-        this.isVisible = true;
-    }
-
-    onClose(): void {
-        this.logger.debug(this, 'onClose()');
-        this.localStorageService.setItem(kAcceptLocalStorage, true);
+export class ComplianceComponent {
+    constructor(public user: UserService) {
     }
 }
