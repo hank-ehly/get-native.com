@@ -15,9 +15,11 @@ import { ObjectService } from '../../core/object/object.service';
 import { UserService } from '../../core/user/user.service';
 import { Languages } from '../../core/lang/languages';
 import { APIHandle } from '../../core/http/api-handle';
-import { LanguageCode } from '../../core/typings/language-code';
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/pluck';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -28,7 +30,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class GeneralComponent implements OnDestroy {
     @ViewChild(FocusDirective) emailInput: FocusDirective;
     emailRegex = EMAIL_REGEX;
-    isEditing: boolean = false;
+    isEditing$ = new BehaviorSubject<boolean>(false);
     studyLanguageOptions: any;
 
     credentials: any = {
@@ -40,43 +42,19 @@ export class GeneralComponent implements OnDestroy {
 
     constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService, public user: UserService) {
         this.studyLanguageOptions = objectService.renameProperty(Languages, [['code', 'value'], ['name', 'title']]);
+
+        this.isEditing$.filter(b => !b).subscribe(() => this.credentials.email = '');
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
-    }
-
-    onClickEdit(): void {
-        this.isEditing = true;
-        this.emailInput.focus();
-    }
-
-    onClickCancel(): void {
-        this.isEditing = false;
-        this.credentials.email = '';
+        this.logger.debug(this, 'OnDestroy');
+        _.each(this.subscriptions, s => s.unsubscribe());
     }
 
     onSubmitEmail(): void {
         this.logger.debug(this, 'onSubmitEmail()');
         this.subscriptions.push(
             this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.credentials.email}}).subscribe()
-        );
-    }
-
-    onSelectDefaultStudyLanguage(code: LanguageCode): void {
-        this.logger.debug(this, `Selected new default study language: ${code}`);
-        this.subscriptions.push(
-            this.http.request(APIHandle.EDIT_ACCOUNT, {body: {default_study_language_code: code}}).subscribe()
-        );
-    }
-
-    onSubmitPassword(): void {
-        this.logger.debug(this, 'onSubmitPassword()');
-        this.subscriptions.push(
-            this.http.request(APIHandle.EDIT_PASSWORD, {body: {password: this.credentials.password.replace}}).subscribe()
         );
     }
 }

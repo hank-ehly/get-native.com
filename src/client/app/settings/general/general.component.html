@@ -1,28 +1,29 @@
 <form class="form email-form" #emailForm="ngForm" (submit)="onSubmitEmail()">
     <div class="form__group">
         <label for="email" class="label">Email</label>
-        <input id="email" type="email" name="email" class="input" [readonly]="!isEditing" [placeholder]="user.current$.getValue()?.email"
-               [(ngModel)]="credentials.email" required [pattern]="emailRegex" gnFocus>
+        <input id="email" type="email" name="email" class="input" [readonly]="!isEditing$.getValue()" [placeholder]="user.current$.getValue()?.email"
+               [(ngModel)]="credentials.email" required [pattern]="emailRegex" [gnFocus]="isEditing$ | async">
 
         <div class="form__button-group">
-            <button class="button button--opaque" *ngIf="!isEditing" (click)="onClickEdit()">EDIT</button>
+            <button class="button button--opaque" *ngIf="!isEditing$.getValue()" (click)="isEditing$.next(true)">EDIT</button>
         </div>
 
-        <div class="form__button-group" *ngIf="isEditing">
+        <div class="form__button-group" *ngIf="isEditing$ | async">
             <button class="button button--opaque" type="submit" [disabled]="!emailForm.valid">SAVE</button>
-            <button class="button button_hollow form__cancel-button" (click)="onClickCancel()">CANCEL</button>
+            <button class="button button_hollow form__cancel-button" (click)="isEditing$.next(false)">CANCEL</button>
         </div>
     </div>
 </form>
 
 <div class="default-study-language">
     <label class="label default-study-language__label">Default Study Language</label>
-    <gn-select (select)="onSelectDefaultStudyLanguage($event)" [options]="studyLanguageOptions" [selected]="user.current$.getValue()?.default_study_language_code"></gn-select>
+    <gn-select (select)="user.update({default_study_language_code: $event})" [options]="studyLanguageOptions" [selected]="user.current$.pluck('default_study_language_code') | async"></gn-select>
 </div>
 
 <hr>
 
-<form class="form password-form" #passwordForm="ngForm" (submit)="onSubmitPassword()">
+<!-- Todo: Does new === confirm -->
+<form class="form password-form" #passwordForm="ngForm" (submit)="user.updatePassword(credentials.password.current, credentials.password.replace)">
     <div class="form__group">
         <label for="current-password" class="label">Current Password</label>
         <input id="current-password" class="input" type="password" name="current-password" minlength="8"  maxlength="50" required [(ngModel)]="credentials.password.current">
