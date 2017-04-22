@@ -5,6 +5,7 @@
  * Created by henryehly on 2016/12/04.
  */
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/mapTo';
 
@@ -16,13 +17,13 @@ export class NavbarService {
 
     backButtonTitle$     = new Subject<any>();
 
-    searchBarVisibility$ = new Subject<boolean>();
+    searchBarVisible$ = new BehaviorSubject<boolean>(false);
 
     updateQuery(value: string): void {
         this.query$.next(_.trim(value));
     }
 
     constructor() {
-        this.searchBarVisibility$.mapTo('').subscribe(this.query$);
+        this.searchBarVisible$.mapTo('').subscribe(this.query$);
     }
 }

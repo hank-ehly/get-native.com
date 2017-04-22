@@ -16,8 +16,8 @@ import { Logger } from '../../core/logger/logger';
 import { FocusDirective } from '../focus/focus.directive';
 
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 
 @Component({
@@ -56,7 +56,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     backButtonTitle: string         = '';
     progressBarHidden: boolean      = true;
     studyOptionsHidden: boolean     = true;
-    searchBarVisible: boolean       = false;
+
     hasUnreadNotifications: boolean = false;
 
     private subscriptions: Subscription[] = [];
@@ -71,40 +71,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.navbar.backButtonTitle$.subscribe(t => this.backButtonTitle = t),
 
             this.router.events.filter((e: any) => e instanceof NavigationEnd).do(() => {
-                this.searchBarVisible = false;
+                this.navbar.searchBarVisible$.next(false);
             }).mapTo('').subscribe(this.navbar.query$)
         );
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy()', this.subscriptions);
+        this.logger.debug(this, 'OnDestroy', this.subscriptions);
         _.each(this.subscriptions, s => s.unsubscribe());
     }
 
     onShowLoginModal(e: any): void {
         e.preventDefault();
-        this.logger.debug(this, 'requestShowLoginModal()');
+        this.logger.debug(this, 'requestShowLoginModal');
         this.loginModal.showModal();
     }
 
     onClickBack(): void {
         this.logger.debug(this, 'onClickBack()');
         this.location.back();
-    }
-
-    onToggleSearch(): void {
-        this.searchBarVisible = !this.searchBarVisible;
-        this.logger.debug(this, `Search bar visible set to '${this.searchBarVisible}'`);
-
-        /* this.searchBar is not immediately available after becoming 'visible' */
-        // todo: perform with observable nextTick or something
-        if (this.searchBarVisible) {
-            setTimeout(() => {
-                this.searchBar.focus();
-            }, 0);
-        }
-
-        this.navbar.searchBarVisibility$.next(this.searchBarVisible);
     }
 
     /* MOCK */

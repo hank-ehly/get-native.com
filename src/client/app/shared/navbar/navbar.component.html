@@ -3,13 +3,13 @@
         <img class="navbar__logo" src="/assets/icons/logo.svg" alt="logo" [routerLink]="'/'">
     </div>
 
-    <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && searchBarVisible" [@slideInLeftOutRight]>
+    <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && navbar.searchBarVisible$.getValue()" [@slideInLeftOutRight]>
         <label for="search-bar" class="sr-only">Search</label>
-        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." gnFocus maxlength="100"
+        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." gnFocus [focus]="navbar.searchBarVisible$ | async" maxlength="100"
                (input)="navbar.updateQuery($event.target.value)">
     </div>
 
-    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && !searchBarVisible" [@fadeInOut]>
+    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && !navbar.searchBarVisible$.getValue()" [@fadeInOut]>
         <div class="back-button-frame" *ngIf="backButtonTitle">
             <img class="navbar__menu-icon navbar__menu-icon_back" src="/assets/icons/arrow-back.svg" alt="back" (click)="onClickBack()">
             <span class="back-button-label">{{ backButtonTitle }}</span>
@@ -34,8 +34,8 @@
 
     <ul class="navbar__menu navbar__menu_right" *ngIf="authenticated">
         <li>
-            <img class="navbar__menu-icon navbar__menu-icon--search" src="/assets/icons/search.svg" alt="search" *ngIf="!searchBarVisible" (click)="onToggleSearch()">
-            <img class="navbar__menu-icon navbar__menu-icon--close" src="/assets/icons/close-dark.svg" alt="close" *ngIf="searchBarVisible" (click)="onToggleSearch()">
+            <img class="navbar__menu-icon navbar__menu-icon--search" src="/assets/icons/search.svg" alt="search" *ngIf="!navbar.searchBarVisible$.getValue()" (click)="navbar.searchBarVisible$.next(true)">
+            <img class="navbar__menu-icon navbar__menu-icon--close" src="/assets/icons/close-dark.svg" alt="close" *ngIf="navbar.searchBarVisible$.getValue()" (click)="navbar.searchBarVisible$.next(false)">
         </li>
         <li>
             <span class="navbar__menu-icon-frame">
