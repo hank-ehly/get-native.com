@@ -24,6 +24,7 @@ import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
+import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/startWith';
@@ -99,7 +100,7 @@ export class VideoSearchComponent {
                 search.set('count', `${9}`);
 
                 return this.http.request(APIHandle.VIDEOS, {search: search});
-            }, (_, videos: Videos) => videos.records).do(this.updateMaxVideoId.bind(this)).scan(this.concatVideos, []);
+            }, (_: any, videos: Videos) => videos.records).do(this.updateMaxVideoId.bind(this)).scan(this.concatVideos, []);
         });
 
     videos: Videos;
