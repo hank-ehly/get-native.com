@@ -12,7 +12,6 @@ import { Title } from '@angular/platform-browser';
 import { Logger } from './core/logger/logger';
 import { LocalStorageService } from './core/local-storage/local-storage.service';
 import { NavbarService } from './core/navbar/navbar.service';
-import { kAcceptLocalStorage } from './core/local-storage/local-storage-keys';
 import { UserService } from './core/user/user.service';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -41,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.logger.info(this, 'OnInit');
+        this.logger.debug(this, 'OnInit');
 
         this.subscriptions.push(
             this.router.events
