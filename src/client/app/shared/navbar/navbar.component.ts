@@ -17,6 +17,7 @@ import { FocusDirective } from '../focus/focus.directive';
 
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
 import * as _ from 'lodash';
 
 @Component({
@@ -69,7 +70,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.navbar.title$.subscribe((t) => this.title = t),
             this.navbar.backButtonTitle$.subscribe(t => this.backButtonTitle = t),
 
-            this.router.events.filter(e => e instanceof NavigationEnd).do(() => {
+            this.router.events.filter((e: any) => e instanceof NavigationEnd).do(() => {
                 this.searchBarVisible = false;
             }).mapTo('').subscribe(this.navbar.query$)
         );

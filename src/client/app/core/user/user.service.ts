@@ -26,22 +26,17 @@ import * as _ from 'lodash';
 export class UserService {
     currentStudyLanguage$ = new ReplaySubject<Language>(1);
     authenticated$        = new BehaviorSubject<boolean>(false);
+
     logout$               = new Subject<any>();
 
-    current$ = new BehaviorSubject<User>(this.localStorage.getItem(kCurrentUser));
+    current$              = new BehaviorSubject<User>(this.localStorage.getItem(kCurrentUser));
 
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger) {
         this.current$
-            .filter(_.isObject)
-            .do((u: User) => this.logger.debug(this, u))
-            .do(this.onUpdateUser.bind(this))
             .map((u: User) => this.lang.languageForCode(u.default_study_language_code))
             .subscribe(this.currentStudyLanguage$);
 
-        this.current$
-            .filter(_.isObject)
-            .mapTo(true)
-            .subscribe(this.authenticated$);
+        this.current$.mapTo(true).subscribe(this.authenticated$);
 
         this.logout$
             .do((user: User) => this.logger.debug(this, 'logout'))
@@ -50,11 +45,19 @@ export class UserService {
             .subscribe(this.authenticated$);
     }
 
-    private onUpdateUser(user: User): void {
+    update(user: User): void {
+        if (!_.isObject(user)) {
+            return;
+        }
+
+        this.logger.debug(this, 'Update current user info', user);
+
         this.localStorage.setItem(kCurrentUser, user);
 
         // this only needs to be done once
         this.localStorage.setItem(kAcceptLocalStorage, true);
+
+        this.current$.next(user);
     }
 
     private onLogout(): void {
