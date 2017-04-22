@@ -38,7 +38,7 @@ export class UserService {
     logout$               = new Subject<void>();
 
     defaultStudyLanguage$ = new Subject<LanguageCode>();
-    password$ = new Subject<string>();
+    password$ = new Subject<{current: string, replacement: string}>();
 
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
         this.current$.filter(_.isObject).map((u: User) => this.lang.languageForCode(u.default_study_language_code))
@@ -55,8 +55,14 @@ export class UserService {
             this.updateCache({default_study_language_code: code});
         }).subscribe();
 
-        this.password$.mergeMap((password: string) => {
-            return this.http.request(APIHandle.EDIT_PASSWORD, {body: {password: password}});
+        this.password$.mergeMap((passwords) => {
+            this.logger.debug(this, passwords);
+            return this.http.request(APIHandle.EDIT_PASSWORD, {
+                body: {
+                    current_password: passwords.current,
+                    new_password: passwords.replacement
+                }
+            });
         }).subscribe();
     }
 
@@ -97,9 +103,9 @@ export class UserService {
         if (user.default_study_language_code) {
             this.defaultStudyLanguage$.next(user.default_study_language_code);
         }
+    }
 
-        if (user.password) {
-            this.password$.next(user.password);
-        }
+    updatePassword(current: string, replacement: string) {
+        this.password$.next({current: current, replacement: replacement});
     }
 }
