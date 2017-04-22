@@ -17,6 +17,7 @@ import { Logger } from '../logger/logger';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -27,6 +28,7 @@ export class UserService {
     authenticated$        = new BehaviorSubject<boolean>(false);
     current$              = new BehaviorSubject<User>(this.localStorage.getItem(kCurrentUser));
     currentStudyLanguage$ = new ReplaySubject<Language>(1);
+    compliant$            = new BehaviorSubject<boolean>(this.localStorage.getItem(kAcceptLocalStorage) || false);
     logout$               = new Subject<void>();
 
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger) {
@@ -35,6 +37,8 @@ export class UserService {
 
         this.current$.filter(_.isObject).mapTo(true).subscribe(this.authenticated$);
         this.logout$.mapTo(false).subscribe(this.authenticated$);
+
+        this.current$.filter(_.isObject).mapTo(true).subscribe(this.compliant$);
     }
 
     update(user: User): void {
@@ -60,5 +64,9 @@ export class UserService {
         this.localStorage.removeItem(kCurrentUser);
 
         this.logout$.next();
+    }
+
+    comply(): void {
+        this.localStorage.setItem(kAcceptLocalStorage, true);
     }
 }
