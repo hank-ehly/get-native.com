@@ -68,5 +68,6 @@ export class UserService {
 
     comply(): void {
         this.localStorage.setItem(kAcceptLocalStorage, true);
+        this.compliant$.next(true);
     }
 }
