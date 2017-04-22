@@ -105,13 +105,13 @@ describe('POST /confirm_email', function() {
     });
 
     describe('response.success', function() {
-        it(`should respond with 204 No Content if the verification succeeds`, function(done) {
+        it(`should respond with 200 OK if the verification succeeds`, function(done) {
             db.VerificationToken.create({
                 account_id: account.id,
                 token: Auth.generateVerificationToken(),
                 expiration_date: moment().add(1, 'days').toDate()
             }).then(function(token) {
-                request(server).post(`/confirm_email`).send({token: token.get('token')}).expect(204, done);
+                request(server).post(`/confirm_email`).send({token: token.get('token')}).expect(200, done);
             });
         });
 
