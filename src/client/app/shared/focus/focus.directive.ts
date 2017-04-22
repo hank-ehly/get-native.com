@@ -11,7 +11,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
     selector: '[gnFocus]'
 })
 export class FocusDirective {
-    @Input() set focus(focus: boolean) {
+    @Input('gnFocus') set focused(focus: boolean) {
         if (focus) {
             this.el.nativeElement.focus();
         }
