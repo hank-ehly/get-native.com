@@ -58,6 +58,8 @@ export class VideoSearchComponent {
     cuedOnly: boolean = false;
     hasCompletedInitialLoad: boolean = false;
 
+    loading$ = new BehaviorSubject<boolean>(false);
+
     public loadMoreVideos$ = new Subject<number>();
 
     protected query$ = this.navbar.query$.startWith('').debounce(() => {
@@ -66,7 +68,9 @@ export class VideoSearchComponent {
 
     videos$ = this.studyLanguage$.combineLatest(this.categoryFilter$, this.query$)
         .switchMap(([lang, filter, query]: [LanguageCode, CategoryFilter, string]) => {
-            return this.loadMoreVideos$.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
+            return this.loadMoreVideos$.startWith(null).distinctUntilChanged().do(() => {
+                this.loading$.next(true);
+            }).concatMap((maxId?: number) => {
                 this.hasCompletedInitialLoad = true;
 
                 let search = new URLSearchParams();
@@ -100,7 +104,9 @@ export class VideoSearchComponent {
                 search.set('count', `${9}`);
 
                 return this.http.request(APIHandle.VIDEOS, {search: search});
-            }, (_: any, videos: Videos) => videos.records).do(this.updateMaxVideoId.bind(this)).scan(this.concatVideos, []);
+            }, (_: any, videos: Videos) => videos.records).do(this.updateMaxVideoId.bind(this)).scan(this.concatVideos, []).do(() => {
+                this.loading$.next(false);
+            });
         });
 
     protected subscriptions: Subscription[] = [];

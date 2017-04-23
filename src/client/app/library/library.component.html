@@ -15,6 +15,10 @@
 
         <gn-video-panel-list [videos]="videos$ | async" [navigates]="true"></gn-video-panel-list>
 
-        <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)">LOAD MORE</button>
+        <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)" [ngClass]="{'button--loading': loading$ | async}"
+                *ngIf="!(loading$|async)">LOAD MORE
+        </button>
+
+        <img src="../../assets/icons/spinner.gif" alt="loading" class="button__activity-indicator" *ngIf="loading$ | async">
     </section>
 </main>
