@@ -2,7 +2,7 @@
     <div class="form__group">
         <label for="email" class="label">Email</label>
         <input id="email" type="email" name="email" class="input" [readonly]="!isEditing$.getValue()" [placeholder]="user.current$.getValue()?.email"
-               [(ngModel)]="credentials.email" required [pattern]="emailRegex" [gnFocus]="isEditing$ | async">
+               [(ngModel)]="email" required [pattern]="emailRegex" [gnFocus]="isEditing$ | async">
 
         <div class="form__button-group">
             <button class="button button--opaque" *ngIf="!isEditing$.getValue()" (click)="isEditing$.next(true)">EDIT</button>
@@ -23,21 +23,21 @@
 <hr>
 
 <!-- Todo: Does new === confirm -->
-<form class="form password-form" #passwordForm="ngForm" (submit)="user.updatePassword(credentials.password.current, credentials.password.replace)">
+<form class="form password-form" #passwordForm="ngForm" (submit)="user.updatePassword(password.current, password.replace)">
     <div class="form__group">
         <label for="current-password" class="label">Current Password</label>
-        <input id="current-password" class="input" type="password" name="current-password" minlength="8"  maxlength="50" required [(ngModel)]="credentials.password.current">
+        <input id="current-password" class="input" type="password" name="current-password" minlength="8"  maxlength="50" required [(ngModel)]="password.current">
     </div>
 
     <div class="form__group">
         <label for="new-password" class="label">New Password</label>
-        <input id="new-password" class="input" type="password" name="new-password" minlength="8"  maxlength="50" required [(ngModel)]="credentials.password.replace">
-        <gn-password-strength [password]="credentials.password.replace"></gn-password-strength>
+        <input id="new-password" class="input" type="password" name="new-password" minlength="8"  maxlength="50" required [(ngModel)]="password.replace">
+        <gn-password-strength [password]="password.replace"></gn-password-strength>
     </div>
 
     <div class="form__group">
         <label for="confirm-password" class="label">Confirm New Password</label>
-        <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8"  maxlength="50" required [(ngModel)]="credentials.password.confirm">
+        <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8"  maxlength="50" required [(ngModel)]="password.confirm">
     </div>
 
     <button class="button button--opaque form__button" type="submit" [disabled]="!passwordForm.valid">UPDATE</button>
