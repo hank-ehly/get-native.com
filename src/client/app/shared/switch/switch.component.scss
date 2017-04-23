@@ -3,10 +3,16 @@
 .switch {
   @include border-radius(30px);
   background: $aqua-haze;
+  cursor: pointer;
   display: inline-block;
   height: 30px;
   position: relative;
   width: 70px;
+}
+
+.switch.switch--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .switch__input {
@@ -15,7 +21,6 @@
 
 .switch__slider {
   @include border-radius(30px);
-  cursor: pointer;
   bottom: 0;
   left: 0;
   position: absolute;
