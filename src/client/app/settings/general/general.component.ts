@@ -19,7 +19,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/pluck';
 import * as _ from 'lodash';
-import { LanguageCode } from '../../core/typings/language-code';
 
 @Component({
     moduleId: module.id,
