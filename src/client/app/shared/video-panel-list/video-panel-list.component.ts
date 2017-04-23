@@ -6,6 +6,7 @@
  */
 
 import { Component, Input } from '@angular/core';
+import { trigger, transition, animate, style } from '@angular/animations';
 import { Router } from '@angular/router';
 
 import { Logger } from '../../core/logger/logger';
@@ -17,7 +18,15 @@ import * as _ from 'lodash';
     moduleId: module.id,
     selector: 'gn-video-panel-list',
     templateUrl: 'video-panel-list.component.html',
-    styleUrls: ['video-panel-list.component.css']
+    styleUrls: ['video-panel-list.component.css'],
+    animations: [
+        trigger('fadeIn', [
+            transition(':enter', [
+                style({opacity: 0}),
+                animate('200ms ease-in-out', style({opacity: 1}))
+            ])
+        ])
+    ]
 })
 export class VideoPanelListComponent {
     get videos(): Video[] {
