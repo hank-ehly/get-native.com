@@ -26,12 +26,12 @@
 
 <div class="default-study-language">
     <label class="label default-study-language__label">Default Study Language</label>
-    <gn-select (selection$)="user.update({default_study_language_code: $event})" [options]="studyLanguageOptions" [selected]="user.default_study_language_code"></gn-select>
+    <gn-select (selection$)="updateDefaultStudyLanguage($event)" [options]="studyLanguageOptions" [selected]="user.default_study_language_code"></gn-select>
 </div>
 
 <hr>
 
-<form class="form password-form" #passwordForm="ngForm" (submit)="user.updatePassword(passwordModel.current, passwordModel.replace)" [gnMatch]="['new-password', 'confirm-password']">
+<form class="form password-form" #passwordForm="ngForm" (submit)="onSubmitPassword()" [gnMatch]="['new-password', 'confirm-password']">
     <div class="form__group">
         <label for="current-password" class="label">Current Password</label>
         <input id="current-password" class="input" type="password" name="current-password" minlength="8"  maxlength="50" required [(ngModel)]="passwordModel.current">
