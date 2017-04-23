@@ -102,4 +102,13 @@
       width: 100%;
     }
   }
+
+  .error-messages {
+    padding-left: 30px;
+    color: red;
+    font-weight: bolder;
+    font-size: 14px;
+    padding-right: 30px;
+    padding-top: 20px;
+  }
 }
