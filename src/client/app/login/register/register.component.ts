@@ -56,7 +56,7 @@ export class RegisterComponent implements OnDestroy {
     }
 
     private onRegistrationResponse(user: User): void {
-        this.user.current$.next(user);
+        this.user.updateCache(user);
         this.loginModal.hideModal();
         this.router.navigate(['dashboard']).catch(e => {
             this.logger.info(this, 'Navigation to Dashboard failed', e);
