@@ -17,13 +17,20 @@
     </div>
 </form>
 
+<!--<div>
+    <p>A confirmation email has been sent to xxx@email. Please click the enclosed confirmation link to complete the email update process.
+       Your current email settings will be remain unchanged until email verification is complete.</p>
+</div>-->
+
+<!-- todo: You can click this as many times as you want -->
 <div *ngIf="!user.email_verified">
     <button (click)="onClickResend()">Resend Confirmation Email</button>
 </div>
 
 <div class="default-study-language">
     <label class="label default-study-language__label">Default Study Language</label>
-    <gn-select (selection$)="updateDefaultStudyLanguage($event)" [options]="studyLanguageOptions" [selected]="user.default_study_language_code"></gn-select>
+    <gn-select (selection$)="updateDefaultStudyLanguage($event)" [options]="studyLanguageOptions"
+               [selected]="user.default_study_language_code"></gn-select>
 </div>
 
 <hr>
@@ -31,18 +38,21 @@
 <form class="form password-form" #passwordForm="ngForm" (submit)="onSubmitPassword()" [gnMatch]="['new-password', 'confirm-password']">
     <div class="form__group">
         <label for="current-password" class="label">Current Password</label>
-        <input id="current-password" class="input" type="password" name="current-password" minlength="8"  maxlength="50" required [(ngModel)]="passwordModel.current">
+        <input id="current-password" class="input" type="password" name="current-password" minlength="8" maxlength="50" required
+               [(ngModel)]="passwordModel.current">
     </div>
 
     <div class="form__group">
         <label for="new-password" class="label">New Password</label>
-        <input id="new-password" class="input" type="password" name="new-password" minlength="8"  maxlength="50" required [(ngModel)]="passwordModel.replace">
+        <input id="new-password" class="input" type="password" name="new-password" minlength="8" maxlength="50" required
+               [(ngModel)]="passwordModel.replace">
         <gn-password-strength [password]="passwordModel.replace"></gn-password-strength>
     </div>
 
     <div class="form__group">
         <label for="confirm-password" class="label">Confirm New Password</label>
-        <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8"  maxlength="50" required [(ngModel)]="passwordModel.confirm">
+        <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8" maxlength="50" required
+               [(ngModel)]="passwordModel.confirm">
     </div>
 
     <button class="button button--opaque form__button" type="submit" [disabled]="!passwordForm.valid">UPDATE</button>

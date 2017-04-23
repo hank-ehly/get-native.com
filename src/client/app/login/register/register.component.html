@@ -4,9 +4,9 @@
         <p class="paragraph">Register via email by filling out the following information.</p>
     </header>
 
-    <!--<ul class="modal__form-errors" *ngIf="formErrors">-->
-        <!--<li *ngFor="let err of formErrors">{{ err | uppercase }}</li>-->
-    <!--</ul>-->
+    <ul class="error-messages" *ngIf="errors">
+        <li *ngFor="let error of errors">{{ error }}</li>
+    </ul>
 
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="form" [gnMatch]="['password', 'password-confirm']">
         <div class="form__group">
@@ -30,7 +30,6 @@
         </div>
 
         <button type="submit" tabindex="4" class="button button--opaque form__button tabbable" [disabled]="!form.valid">SIGN UP</button>
-
     </form>
 
     <footer class="footer">
@@ -39,5 +38,4 @@
         <p class="paragraph">By signing up, you are agreeing to the <a class="link footer__link footer__link_privacy tabbable" tabindex="7">privacy policy</a> and
             <a class="link footer__link footer__link_tos tabbable" tabindex="8">terms of service</a></p>
     </footer>
-
 </div>
