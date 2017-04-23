@@ -117,6 +117,7 @@ module.exports.confirmEmail = (req, res, next) => {
 
         const changes = {};
         changes[k.Attr.EmailVerified] = true;
+        changes[k.Attr.EmailNotificationsEnabled] = true;
 
         return [token, Account.update(changes, {where: {id: token.account_id}})];
     }).spread(token => {
