@@ -103,9 +103,6 @@ export class VideoSearchComponent {
             }, (_: any, videos: Videos) => videos.records).do(this.updateMaxVideoId.bind(this)).scan(this.concatVideos, []);
         });
 
-    videos: Videos;
-    videoSearchParams: URLSearchParams = new URLSearchParams();
-
     protected subscriptions: Subscription[] = [];
 
     private debounceTimer   = new TimerObservable(300);
