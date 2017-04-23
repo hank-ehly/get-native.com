@@ -31,7 +31,7 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class UserService {
-    authenticated$        = new BehaviorSubject<boolean>(false);
+    authenticated$        = new BehaviorSubject<boolean>(this.isAuthenticated());
     current$              = new BehaviorSubject<User>(this.localStorage.getItem(kCurrentUser));
     currentStudyLanguage$ = new ReplaySubject<Language>(1);
     compliant$            = new BehaviorSubject<boolean>(this.localStorage.getItem(kAcceptLocalStorage) || false);
@@ -41,6 +41,8 @@ export class UserService {
     password$ = new Subject<{current: string, replacement: string}>();
 
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
+        this.logger.debug(this, 'Init');
+
         this.current$.filter(_.isObject).map((u: User) => this.lang.languageForCode(u.default_study_language_code))
             .subscribe(this.currentStudyLanguage$);
 
@@ -95,17 +97,32 @@ export class UserService {
     }
 
     comply(): void {
+        this.logger.debug(this, 'comply');
         this.localStorage.setItem(kAcceptLocalStorage, true);
         this.compliant$.next(true);
     }
 
     update(user: User): void {
+        this.logger.debug(this, 'update', user);
         if (user.default_study_language_code) {
             this.defaultStudyLanguage$.next(user.default_study_language_code);
         }
     }
 
     updatePassword(current: string, replacement: string) {
+        this.logger.debug(this, 'updatePassword');
         this.password$.next({current: current, replacement: replacement});
+    }
+
+    isAuthenticated(): boolean {
+        let authenticated = false;
+
+        if (this.localStorage.hasItem(kAuthToken) && this.localStorage.hasItem(kAuthTokenExpire)) {
+            authenticated = +this.localStorage.getItem(kAuthTokenExpire) > Date.now();
+        }
+
+        this.logger.debug(this, 'isAuthenticated', authenticated);
+
+        return authenticated;
     }
 }

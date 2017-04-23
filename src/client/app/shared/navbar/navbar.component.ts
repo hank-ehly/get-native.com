@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
 import { Location } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
@@ -13,7 +13,6 @@ import { Router, NavigationEnd } from '@angular/router';
 import { LoginModalService } from '../../core/login-modal/login-modal.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
 import { Logger } from '../../core/logger/logger';
-import { FocusDirective } from '../focus/focus.directive';
 
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
@@ -50,7 +49,6 @@ import * as _ from 'lodash';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
     @Input() authenticated: boolean;
-    @ViewChild(FocusDirective) searchBar: FocusDirective;
 
     title: string                   = '';
     backButtonTitle: string         = '';
@@ -88,7 +86,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     onClickBack(): void {
-        this.logger.debug(this, 'onClickBack()');
+        this.logger.debug(this, 'onClickBack');
         this.location.back();
     }
 
