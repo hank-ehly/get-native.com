@@ -100,12 +100,6 @@ export class HttpService {
 
     // todo: think harder
     private handleError(response: Response) {
-        let json = response.json();
-
-        if (Config.ENV !== 'PROD') {
-            this.logger.debug(this, 'handleError', json);
-        }
-
-        throw json;
+        throw response.json();
     }
 }
