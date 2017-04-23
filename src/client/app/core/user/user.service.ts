@@ -48,6 +48,7 @@ export class UserService {
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
         this.logger.debug(this, 'Init');
 
+        // todo: whenever you change the default_study_language_code you change the currentStudyLanguage as well..
         this.current$.filter(_.isObject).map((u: User) => this.lang.languageForCode(u.default_study_language_code))
             .subscribe(this.currentStudyLanguage$);
 
@@ -99,8 +100,6 @@ export class UserService {
 
         // this only needs to be done once
         this.localStorage.setItem(kAcceptLocalStorage, true);
-
-        this.logger.debug(this, 'New cached user', cache);
 
         this.current$.next(cache);
     }
