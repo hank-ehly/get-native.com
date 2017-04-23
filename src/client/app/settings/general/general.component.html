@@ -1,11 +1,13 @@
 <form class="form email-form" #emailForm="ngForm" (submit)="onSubmitEmail()">
     <div class="form__group">
-        <label for="email" class="label">Email</label>
+        <label for="email" class="label">Email <span *ngIf="!user.email_verified">(Please Confirm)</span></label>
         <input id="email" type="email" name="email" class="input" [readonly]="!(isEditing$|async)" [placeholder]="user?.email"
                [(ngModel)]="emailModel" required [pattern]="emailRegex" [gnFocus]="isEditing$ | async">
 
         <div class="form__button-group">
-            <button class="button button--opaque" *ngIf="!(isEditing$|async)" (click)="isEditing$.next(true)">EDIT</button>
+            <button class="button button--opaque" *ngIf="!(isEditing$|async)" (click)="isEditing$.next(true)"
+                    [disabled]="!user.email_verified" title="Confirm current email address before updating.">EDIT
+            </button>
         </div>
 
         <div class="form__button-group" *ngIf="isEditing$ | async">
@@ -14,11 +16,6 @@
         </div>
     </div>
 </form>
-
-<div>
-    <label for="email-verified">Email Verified</label>
-    <input id="email-verified" type="checkbox" [checked]="user.email_verified" disabled>
-</div>
 
 <div *ngIf="!user.email_verified">
     <button (click)="onClickResend()">Resend Confirmation Email</button>
