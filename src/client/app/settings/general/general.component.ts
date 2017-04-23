@@ -20,6 +20,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/pluck';
 import * as _ from 'lodash';
 import { User } from '../../core/entities/user';
+import { LanguageCode } from '../../core/typings/language-code';
 
 @Component({
     moduleId: module.id,
@@ -41,7 +42,7 @@ export class GeneralComponent implements OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private http: HttpService, public userService: UserService) {
+    constructor(private logger: Logger, private http: HttpService, private userService: UserService) {
         this.studyLanguageOptions = _.map(Languages, l => {
             return _.mapKeys(l, (v, k) => k === 'code' ? 'value' : 'title');
         });
@@ -66,5 +67,13 @@ export class GeneralComponent implements OnDestroy {
     onClickResend(): void {
         this.logger.debug(this, 'Resend Confirmation Email');
         this.subscriptions.push(this.http.request(APIHandle.RESEND_CONFIRMATION_EMAIL, {body: {email: this.user.email}}).subscribe());
+    }
+
+    updateDefaultStudyLanguage(code: LanguageCode) {
+        this.userService.update({default_study_language_code: code});
+    }
+
+    onSubmitPassword(): void {
+        this.userService.updatePassword(this.passwordModel.current, this.passwordModel.replace);
     }
 }
