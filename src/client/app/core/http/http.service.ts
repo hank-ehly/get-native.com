@@ -72,7 +72,7 @@ export class HttpService {
 
         this.logger.debug(this, '[REQ]', request.url, request.getBody());
 
-        let delay = Config.ENV === 'DEV' ? _.random(5, 9) * 100 : 0;
+        let delay = Config.ENV === 'DEV' ? _.random(3, 12) * 100 : 0;
         return this.http.request(request).delay(delay).map(this.handleResponse.bind(this)).catch(<any>this.handleError.bind(this));
     }
 
