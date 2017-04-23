@@ -18,6 +18,7 @@ import { User } from '../../core/entities/user';
 
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
+import { APIErrors, APIError } from '../../core/http/api-error';
 
 @Component({
     moduleId: module.id,
@@ -34,7 +35,7 @@ export class RegisterComponent implements OnDestroy {
         passwordConfirm: ''
     };
 
-    errors: string[] = [];
+    errors: APIErrors = [];
 
     private subscriptions: Subscription[] = [];
 
@@ -56,7 +57,7 @@ export class RegisterComponent implements OnDestroy {
         this.subscriptions.push(
             this.http.request(APIHandle.REGISTER, {body: this.credentials}).subscribe(
                 this.onRegistrationResponse.bind(this),
-                this.handleRegistrationError.bind(this)
+                this.onRegistrationError.bind(this)
             )
         );
     }
@@ -69,7 +70,7 @@ export class RegisterComponent implements OnDestroy {
         });
     }
 
-    private handleRegistrationError(errors: any): void {
-        this.errors = _.map(errors, (e: any) => e.message);
+    private onRegistrationError(errors: APIErrors): void {
+        this.errors = errors;
     }
 }

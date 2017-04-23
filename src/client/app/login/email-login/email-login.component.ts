@@ -18,6 +18,7 @@ import { User } from '../../core/entities/user';
 
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
+import { APIErrors } from '../../core/http/api-error';
 
 @Component({
     moduleId: module.id,
@@ -32,6 +33,8 @@ export class EmailLoginComponent implements OnDestroy {
         email: '',
         password: ''
     };
+
+    errors: APIErrors = [];
 
     private subscriptions: Subscription[] = [];
 
@@ -50,15 +53,23 @@ export class EmailLoginComponent implements OnDestroy {
 
     onSubmit(): void {
         this.subscriptions.push(
-            this.http.request(APIHandle.LOGIN, {body: this.credentials}).subscribe(this.onLoginResponse.bind(this))
+            this.http.request(APIHandle.LOGIN, {body: this.credentials}).subscribe(
+                this.onLoginResponse.bind(this),
+                this.onLoginError.bind(this)
+            )
         );
     }
 
-    onLoginResponse(user: User): void {
+    private onLoginResponse(user: User): void {
         this.user.updateCache(user);
         this.loginModal.hideModal();
         this.router.navigate(['dashboard']).catch(e => {
             this.logger.warn(this, e);
         });
+    }
+
+    private onLoginError(errors: APIErrors): void {
+        this.logger.debug(this, errors);
+        this.errors = errors;
     }
 }

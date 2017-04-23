@@ -1,8 +1,11 @@
 <div class="modal modal_email-login">
-
     <header>
         <p class="paragraph modal_email-login__paragraph">Enter your email address and password to sign in.</p>
     </header>
+
+    <ul class="error-messages" *ngIf="errors">
+        <li *ngFor="let error of errors">{{ error.message }}</li>
+    </ul>
 
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="form">
 
@@ -25,5 +28,4 @@
         <span (click)="onSetModalView(null)" class="link footer__link footer__link_social-login tabbable" tabindex="4">Sign in via Facebook, Twitter or Google</span>
         <span (click)="onSetModalView('register')" class="link footer__link footer__link_register tabbable" tabindex="5">Create a new account</span>
     </footer>
-
 </div>
