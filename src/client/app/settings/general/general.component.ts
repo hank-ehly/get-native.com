@@ -11,7 +11,6 @@ import { NgForm } from '@angular/forms';
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
 import { Logger } from '../../core/logger/logger';
 import { HttpService } from '../../core/http/http.service';
-import { ObjectService } from '../../core/object/object.service';
 import { UserService } from '../../core/user/user.service';
 import { Languages } from '../../core/lang/languages';
 import { APIHandle } from '../../core/http/api-handle';
@@ -20,6 +19,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/pluck';
 import * as _ from 'lodash';
+import { LanguageCode } from '../../core/typings/language-code';
 
 @Component({
     moduleId: module.id,
@@ -39,8 +39,10 @@ export class GeneralComponent implements OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService, public user: UserService) {
-        this.studyLanguageOptions = objectService.renameProperty(Languages, [['code', 'value'], ['name', 'title']]);
+    constructor(private logger: Logger, private http: HttpService, public user: UserService) {
+        this.studyLanguageOptions = _.map(Languages, l => {
+            return _.mapKeys(l, (v, k) => k === 'code' ? 'value' : 'title');
+        });
 
         this.subscriptions.push(this.isEditing$.filter(b => !b).subscribe(() => this.emailModel = ''));
 

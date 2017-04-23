@@ -15,7 +15,6 @@ import { LoginModalService } from './login-modal/login-modal.service';
 import { URIService } from './http/uri.service';
 import { HttpService } from './http/http.service';
 import { NavbarService } from './navbar/navbar.service';
-import { ObjectService } from './object/object.service';
 import { PasswordService } from './password/password.service';
 import { StringService } from './string/string.service';
 import { Logger } from './logger/logger';
@@ -36,7 +35,6 @@ import { ConfirmEmailResolver } from './auth/confirm-email-resolver.service';
         URIService,
         HttpService,
         NavbarService,
-        ObjectService,
         PasswordService,
         StringService,
         Logger,
