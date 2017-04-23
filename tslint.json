@@ -9,6 +9,7 @@
             "check-whitespace"
         ],
         "no-trailing-whitespace": false,
+        "no-input-rename": false,
 
         // Enable after fix: https://github.com/mgechev/codelyzer/issues/191
         "no-access-missing-member": false
