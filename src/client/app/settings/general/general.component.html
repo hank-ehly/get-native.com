@@ -1,7 +1,7 @@
 <form class="form email-form" #emailForm="ngForm" (submit)="onSubmitEmail()">
     <div class="form__group">
         <label for="email" class="label">Email</label>
-        <input id="email" type="email" name="email" class="input" [readonly]="!(isEditing$|async)" [placeholder]="user.current$.getValue()?.email"
+        <input id="email" type="email" name="email" class="input" [readonly]="!(isEditing$|async)" [placeholder]="user?.email"
                [(ngModel)]="emailModel" required [pattern]="emailRegex" [gnFocus]="isEditing$ | async">
 
         <div class="form__button-group">
@@ -17,12 +17,16 @@
 
 <div>
     <label for="email-verified">Email Verified</label>
-    <input id="email-verified" type="checkbox" [checked]="user.current$.getValue().email_verified" disabled>
+    <input id="email-verified" type="checkbox" [checked]="user.email_verified" disabled>
+</div>
+
+<div *ngIf="!user.email_verified">
+    <button (click)="onClickResend()">Resend Confirmation Email</button>
 </div>
 
 <div class="default-study-language">
     <label class="label default-study-language__label">Default Study Language</label>
-    <gn-select (selection$)="user.update({default_study_language_code: $event})" [options]="studyLanguageOptions" [selected]="user.current$.getValue().default_study_language_code"></gn-select>
+    <gn-select (selection$)="user.update({default_study_language_code: $event})" [options]="studyLanguageOptions" [selected]="user.default_study_language_code"></gn-select>
 </div>
 
 <hr>

@@ -19,6 +19,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/pluck';
 import * as _ from 'lodash';
+import { User } from '../../core/entities/user';
 
 @Component({
     moduleId: module.id,
@@ -36,16 +37,18 @@ export class GeneralComponent implements OnDestroy {
     emailModel: string = '';
     passwordModel: any = {current: '', replace: '', confirm: ''};
 
+    user: User = this.userService.current$.getValue();
+
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private http: HttpService, public user: UserService) {
+    constructor(private logger: Logger, private http: HttpService, public userService: UserService) {
         this.studyLanguageOptions = _.map(Languages, l => {
             return _.mapKeys(l, (v, k) => k === 'code' ? 'value' : 'title');
         });
 
         this.subscriptions.push(this.isEditing$.filter(b => !b).subscribe(() => this.emailModel = ''));
 
-        this.subscriptions.push(this.user.passwordChange$.subscribe(() => {
+        this.subscriptions.push(this.userService.passwordChange$.subscribe(() => {
             this.passwordForm.reset();
         }));
     }
@@ -58,5 +61,10 @@ export class GeneralComponent implements OnDestroy {
     onSubmitEmail(): void {
         this.logger.debug(this, 'onSubmitEmail');
         this.subscriptions.push(this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.emailModel}}).subscribe());
+    }
+
+    onClickResend(): void {
+        this.logger.debug(this, 'Resend Confirmation Email');
+        this.subscriptions.push(this.http.request(APIHandle.RESEND_CONFIRMATION_EMAIL, {body: {email: this.user.email}}).subscribe());
     }
 }
