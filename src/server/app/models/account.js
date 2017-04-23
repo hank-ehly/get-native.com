@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         email_notifications_enabled: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            defaultValue: true
+            defaultValue: false
         },
         email_verified: {
             type: DataTypes.BOOLEAN,

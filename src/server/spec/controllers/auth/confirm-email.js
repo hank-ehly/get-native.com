@@ -128,6 +128,20 @@ describe('POST /confirm_email', function() {
                 assert.equal(a.get('email_verified'), true);
             });
         });
+
+        it(`should change the account email_notifications_enabled value to true if verification succeeds`, function() {
+            return db.VerificationToken.create({
+                account_id: account.id,
+                token: Auth.generateVerificationToken(),
+                expiration_date: moment().add(1, 'days').toDate()
+            }).then(function(token) {
+                return request(server).post(`/confirm_email`).send({token: token.get('token')});
+            }).then(function() {
+                return db.Account.findById(account.id);
+            }).then(function(a) {
+                assert.equal(a.get('email_notifications_enabled'), true);
+            });
+        });
     });
 
     it(`should use the VerificationToken with the most recent expiration_date if multiple tokens exist`);
