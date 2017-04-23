@@ -17,6 +17,7 @@ import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/entities/user';
 
 import { Subscription } from 'rxjs/Subscription';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -40,10 +41,8 @@ export class RegisterComponent implements OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
+        this.logger.debug(this, 'OnDestroy');
+        _.each(this.subscriptions, s => s.unsubscribe());
     }
 
     onSetModalView(view: string) {
@@ -60,7 +59,7 @@ export class RegisterComponent implements OnDestroy {
         this.user.current$.next(user);
         this.loginModal.hideModal();
         this.router.navigate(['dashboard']).catch(e => {
-            this.logger.info(this, 'Failed to navigate to dashboard: ', e);
+            this.logger.info(this, 'Navigation to Dashboard failed', e);
         });
     }
 }

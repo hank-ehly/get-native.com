@@ -15,6 +15,7 @@ import { ComplianceComponent } from './compliance/compliance.component';
 import { DatePipe } from './date/date.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { FuzzyNumberPipe } from './fuzzy-number/fuzzy-number.pipe';
+import { MatchDirective } from './match/match.directive';
 import { DigitalTimePipe } from './digital-time/digital-time.pipe';
 import { FocusDirective } from './focus/focus.directive';
 import { ModalComponent } from './modal/modal.component';
@@ -44,6 +45,7 @@ import { VideoSearchComponent } from './video-search/video-search.component';
         DatePipe,
         FooterComponent,
         FuzzyNumberPipe,
+        MatchDirective,
         DigitalTimePipe,
         FocusDirective,
         ModalComponent,
@@ -71,6 +73,7 @@ import { VideoSearchComponent } from './video-search/video-search.component';
         DatePipe,
         FooterComponent,
         FuzzyNumberPipe,
+        MatchDirective,
         DigitalTimePipe,
         FocusDirective,
         ModalComponent,
