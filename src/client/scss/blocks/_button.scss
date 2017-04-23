@@ -59,3 +59,15 @@
     background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
   }
 }
+
+// todo: accomplish with angular animations
+.button--loading {
+  opacity: 0;
+}
+
+// todo: get activity indicator from michele
+.button__activity-indicator {
+  display: block;
+  margin-top: 30px;
+  height: 24px;
+}
