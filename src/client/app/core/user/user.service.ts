@@ -40,6 +40,8 @@ export class UserService {
     defaultStudyLanguage$ = new Subject<LanguageCode>();
     password$ = new Subject<{current: string, replacement: string}>();
 
+    passwordChange$ = new Subject();
+
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
         this.logger.debug(this, 'Init');
 
@@ -65,7 +67,7 @@ export class UserService {
                     new_password: passwords.replacement
                 }
             });
-        }).subscribe();
+        }).subscribe(this.passwordChange$);
     }
 
     updateCache(user: User): void {

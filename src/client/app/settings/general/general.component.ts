@@ -33,17 +33,21 @@ export class GeneralComponent implements OnDestroy {
     isEditing$ = new BehaviorSubject<boolean>(false);
     studyLanguageOptions: any;
 
-    credentials: any = {
-        email: '',
-        password: {current: '', replace: '', confirm: ''}
-    };
+    email: string = '';
+    password: any = {current: '', replace: '', confirm: ''};
 
     private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService, public user: UserService) {
         this.studyLanguageOptions = objectService.renameProperty(Languages, [['code', 'value'], ['name', 'title']]);
 
-        this.isEditing$.filter(b => !b).subscribe(() => this.credentials.email = '');
+        this.isEditing$.filter(b => !b).subscribe(() => this.email = '');
+
+        this.user.passwordChange$.subscribe(() => {
+            this.password.current = '';
+            this.password.replace = '';
+            this.password.confirm = '';
+        });
     }
 
     ngOnDestroy(): void {
@@ -54,7 +58,7 @@ export class GeneralComponent implements OnDestroy {
     onSubmitEmail(): void {
         this.logger.debug(this, 'onSubmitEmail()');
         this.subscriptions.push(
-            this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.credentials.email}}).subscribe()
+            this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.email}}).subscribe()
         );
     }
 }
