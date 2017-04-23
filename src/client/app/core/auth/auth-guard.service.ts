@@ -10,46 +10,29 @@ import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnaps
 
 import { UserService } from '../user/user.service';
 import { Logger } from '../logger/logger';
-import { LocalStorageService } from '../local-storage/local-storage.service';
-import { kAuthTokenExpire, kAuthToken } from '../local-storage/local-storage-keys';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
-    constructor(private router: Router, private user: UserService, private logger: Logger, private localStorage: LocalStorageService) {
+    constructor(private router: Router, private user: UserService, private logger: Logger) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        this.logger.info(this, 'canActivate', state.url, route);
+        this.logger.debug(this, 'canActivate', state.url, route);
 
-        const isLoggedIn = this.isLoggedIn();
+        const isLoggedIn = this.user.isAuthenticated();
 
         if (isLoggedIn && state.url === '/') {
-            this.router.navigate(['dashboard']).then(() => this.logger.debug(this, 'Navigated to dashboard'));
+            this.router.navigate(['dashboard']).then(() => this.logger.debug(this, 'Redirect to dashboard'));
+            return false;
+        } else if (isLoggedIn || (!isLoggedIn && state.url === '/')) {
+            return true;
+        } else {
+            this.router.navigate(['']).then(() => this.logger.debug(this, 'Redirect to home'));
             return false;
         }
-
-        if (isLoggedIn) {
-            return true;
-        }
-
-        if (!isLoggedIn && state.url === '/') {
-            this.logger.debug(this, 'Allowing redirection to homepage because user is not logged in.');
-            return true;
-        }
-
-        this.router.navigate(['']).then(() => this.logger.debug(this, 'Redirected to homepage.'));
-        return false;
     }
 
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         return this.canActivate(childRoute, state);
-    }
-
-    isLoggedIn(): boolean {
-        if (!this.localStorage.hasItem(kAuthToken)) {
-            return false;
-        }
-
-        return this.localStorage.hasItem(kAuthTokenExpire) && +this.localStorage.getItem(kAuthTokenExpire) > Date.now();
     }
 }
