@@ -21,8 +21,9 @@ import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-key
 import { Entities } from '../entities/entities';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 import * as _ from 'lodash';
 
 @Injectable()
@@ -71,7 +72,8 @@ export class HttpService {
 
         this.logger.debug(this, '[REQ]', request.url, request.getBody());
 
-        return this.http.request(request).map(this.handleResponse.bind(this)).catch(<any>this.handleError.bind(this));
+        let delay = Config.ENV === 'DEV' ? _.random(5, 9) * 100 : 0;
+        return this.http.request(request).delay(delay).map(this.handleResponse.bind(this)).catch(<any>this.handleError.bind(this));
     }
 
     private handleResponse(response: Response): Entities<Entity>|Entity {
