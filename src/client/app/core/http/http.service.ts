@@ -18,12 +18,12 @@ import { APIHandle } from './api-handle';
 import { APIConfig } from './api-config';
 import { URIService } from './uri.service';
 import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-keys';
+import { Entities } from '../entities/entities';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import * as _ from 'lodash';
-import { Entities } from '../entities/entities';
 
 @Injectable()
 export class HttpService {
@@ -97,11 +97,13 @@ export class HttpService {
     }
 
     // todo: think harder
-    private handleError(error: any) {
-        if (Config.ENV === 'PROD') {
-            this.logger.error(error);
-        } else {
-            throw new Error(error);
+    private handleError(response: Response) {
+        let json = response.json();
+
+        if (Config.ENV !== 'PROD') {
+            this.logger.debug(this, 'handleError', json);
         }
+
+        throw json;
     }
 }
