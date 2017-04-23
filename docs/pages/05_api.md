@@ -37,6 +37,7 @@ The following headers are included in API responses that require authentication.
 | 400  | Bad Request           | The request failed because it was invalid. The specific reason is included in the response. |
 | 401  | Unauthorized          | The request authentication credentials were missing or invalid.                             |
 | 404  | Not Found             | The requested resource for the given request method does not exist.                         |
+| 422  | Unprocessable Entity  | The request was understood, but a semantic error occurred.                                  |
 | 500  | Internal Server Error | The request failed because something has gone wrong on the server side.                     |
 
 **Error Messages**
@@ -44,14 +45,12 @@ The following headers are included in API responses that require authentication.
 Error messages may accompany responses to failed requests. If the response contains an error message, it will be in the following JSON format:
 
 ```json
-{
-    "errors": [
-        {
-            "message": "This email address is already in use.",
-            "code": 121
-        }
-    ]
-}
+[
+    {
+        "message": "This email address is already in use.",
+        "code": "EmailToken"
+    }
+]
 ```
 
 **Handling of the `DNT` Request Header**
@@ -69,10 +68,10 @@ indicating the number of records included in the array.
 
 ```json
 {
-	"videos": {
-		"count": 2,
-		"records": [ /* Object, Object */ ]
-	}
+    "videos": {
+        "count": 2,
+        "records": [ /* Object, Object */ ]
+    }
 }
 ```
 
@@ -146,10 +145,9 @@ Status 204 No Content
 
 # POST /account/email
 
-Todo: Email verification API
-Todo: Email 'not verified yet' message in UI
-
-Update the authenticating user's email address.
+Update the authenticating user's email address. A successful request marks the new account email address as 'requested' and sends an email 
+to the new address for ownership verification. Only after ownership verification is complete will the account be linked with the new email 
+address.
 
 ```
 POST https://api.get-native.com/account/email
@@ -159,7 +157,7 @@ POST https://api.get-native.com/account/email
 
 | Parameter   	| Description                                                      	| Required 	| Default 	|
 |-------------	|------------------------------------------------------------------	|:--------:	|---------	|
-| email        	| The users' new email address.                                   	|     √    	|         	|
+| email        	| The new email address.                                           	|     √    	|         	|
 
 ```json
 {
