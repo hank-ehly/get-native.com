@@ -39,6 +39,8 @@ export class UserService {
 
     // setters
     defaultStudyLanguage$ = new Subject<LanguageCode>();
+    $setEmailNotificationsEnabled = new Subject<boolean>();
+    $setBrowserNotificationsEnabled = new Subject<boolean>();
     password$ = new Subject<{current: string, replacement: string}>();
 
     passwordChange$ = new Subject();
@@ -54,10 +56,22 @@ export class UserService {
 
         this.current$.filter(_.isObject).mapTo(true).subscribe(this.compliant$);
 
-        this.defaultStudyLanguage$.distinctUntilChanged().concatMap((code: string) => {
+        this.defaultStudyLanguage$.distinctUntilChanged().concatMap((code: LanguageCode) => {
             return this.http.request(APIHandle.EDIT_ACCOUNT, {body: {default_study_language_code: code}});
         }, (code: LanguageCode) => {
             this.updateCache({default_study_language_code: code});
+        }).subscribe();
+
+        this.$setEmailNotificationsEnabled.distinctUntilChanged().concatMap((value: boolean) => {
+            return this.http.request(APIHandle.EDIT_ACCOUNT, {body: {email_notifications_enabled: value}});
+        }, (value: boolean) => {
+            this.updateCache({email_notifications_enabled: value});
+        }).subscribe();
+
+        this.$setBrowserNotificationsEnabled.distinctUntilChanged().concatMap((value: boolean) => {
+            return this.http.request(APIHandle.EDIT_ACCOUNT, {body: {browser_notifications_enabled: value}});
+        }, (value: boolean) => {
+            this.updateCache({browser_notifications_enabled: value});
         }).subscribe();
 
         this.password$.mergeMap((passwords) => {
@@ -86,7 +100,9 @@ export class UserService {
         // this only needs to be done once
         this.localStorage.setItem(kAcceptLocalStorage, true);
 
-        this.current$.next(user);
+        this.logger.debug(this, 'New cached user', cache);
+
+        this.current$.next(cache);
     }
 
     logout(): void {
@@ -107,8 +123,17 @@ export class UserService {
 
     update(user: User): void {
         this.logger.debug(this, 'update', user);
-        if (user.default_study_language_code) {
+
+        if (_.has(user, 'default_study_language_code')) {
             this.defaultStudyLanguage$.next(user.default_study_language_code);
+        }
+
+        if (_.has(user, 'email_notifications_enabled')) {
+            this.$setEmailNotificationsEnabled.next(user.email_notifications_enabled);
+        }
+
+        if (_.has(user, 'browser_notifications_enabled')) {
+            this.$setBrowserNotificationsEnabled.next(user.browser_notifications_enabled);
         }
     }
 

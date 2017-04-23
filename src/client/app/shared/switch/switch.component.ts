@@ -15,6 +15,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SwitchComponent {
     @Input() on: boolean = false;
+    @Input() disabled: boolean = false;
     @Output() toggle = new EventEmitter<boolean>();
 
     onToggle(): void {
