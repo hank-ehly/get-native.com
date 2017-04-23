@@ -15,6 +15,11 @@
     </div>
 </form>
 
+<div>
+    <label for="email-verified">Email Verified</label>
+    <input id="email-verified" type="checkbox" [checked]="user.current$.getValue().email_verified" disabled>
+</div>
+
 <div class="default-study-language">
     <label class="label default-study-language__label">Default Study Language</label>
     <gn-select (select)="user.update({default_study_language_code: $event})" [options]="studyLanguageOptions" [selected]="user.current$.pluck('default_study_language_code') | async"></gn-select>
