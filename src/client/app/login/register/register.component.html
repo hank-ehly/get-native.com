@@ -8,8 +8,7 @@
         <!--<li *ngFor="let err of formErrors">{{ err | uppercase }}</li>-->
     <!--</ul>-->
 
-    <form (ngSubmit)="onSubmit()" #form="ngForm" class="form">
-
+    <form (ngSubmit)="onSubmit()" #form="ngForm" class="form" [gnMatch]="['password', 'password-confirm']">
         <div class="form__group">
             <label class="label" for="email"><span class="form__required-indicator">*</span> Email</label>
 
@@ -26,7 +25,7 @@
 
         <div class="form__group form__group_confirm-password">
             <label class="label" for="password-confirm"><span class="form__required-indicator">*</span> Password (Confirm)</label>
-            <input id="password-confirm" [pattern]="credentials.password" type="password" name="password-confirm"
+            <input id="password-confirm" type="password" name="password-confirm"
                    tabindex="3" class="input tabbable" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
         </div>
 

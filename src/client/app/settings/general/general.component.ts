@@ -6,8 +6,8 @@
  */
 
 import { Component, ViewChild, OnDestroy } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import { FocusDirective } from '../../shared/focus/focus.directive';
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
 import { Logger } from '../../core/logger/logger';
 import { HttpService } from '../../core/http/http.service';
@@ -28,26 +28,25 @@ import * as _ from 'lodash';
     styleUrls: ['general.component.css']
 })
 export class GeneralComponent implements OnDestroy {
-    @ViewChild(FocusDirective) emailInput: FocusDirective;
+    @ViewChild('passwordForm') passwordForm: NgForm;
+
     emailRegex = EMAIL_REGEX;
     isEditing$ = new BehaviorSubject<boolean>(false);
     studyLanguageOptions: any;
 
-    email: string = '';
-    password: any = {current: '', replace: '', confirm: ''};
+    emailModel: string = '';
+    passwordModel: any = {current: '', replace: '', confirm: ''};
 
     private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private http: HttpService, private objectService: ObjectService, public user: UserService) {
         this.studyLanguageOptions = objectService.renameProperty(Languages, [['code', 'value'], ['name', 'title']]);
 
-        this.isEditing$.filter(b => !b).subscribe(() => this.email = '');
+        this.subscriptions.push(this.isEditing$.filter(b => !b).subscribe(() => this.emailModel = ''));
 
-        this.user.passwordChange$.subscribe(() => {
-            this.password.current = '';
-            this.password.replace = '';
-            this.password.confirm = '';
-        });
+        this.subscriptions.push(this.user.passwordChange$.subscribe(() => {
+            this.passwordForm.reset();
+        }));
     }
 
     ngOnDestroy(): void {
@@ -56,9 +55,7 @@ export class GeneralComponent implements OnDestroy {
     }
 
     onSubmitEmail(): void {
-        this.logger.debug(this, 'onSubmitEmail()');
-        this.subscriptions.push(
-            this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.email}}).subscribe()
-        );
+        this.logger.debug(this, 'onSubmitEmail');
+        this.subscriptions.push(this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.emailModel}}).subscribe());
     }
 }
