@@ -82,5 +82,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/confirm_email',
         isProtected: false
+    }],
+    [APIHandle.RESEND_CONFIRMATION_EMAIL, {
+        method: RequestMethod.Post,
+        url: '/resend_confirmation_email',
+        isProtected: false
     }]
 ]);
