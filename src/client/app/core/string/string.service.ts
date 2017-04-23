@@ -24,12 +24,4 @@ export class StringService {
     containsAlphaUC(char: string): boolean {
         return /[A-Z]/g.test(char);
     }
-
-    reverse(str: string): string {
-        let reversed: string = '';
-        for (let i = 0; i < str.length; i++) {
-            reversed = str.charAt(i) + reversed;
-        }
-        return reversed;
-    };
 }

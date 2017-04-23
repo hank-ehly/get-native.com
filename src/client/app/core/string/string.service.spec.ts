@@ -58,10 +58,5 @@ export function main() {
             let result = stringService.containsAlphaLC(str);
             expect(result).toEqual(false);
         });
-
-        it('should reverse a string', () => {
-            let result = stringService.reverse('hello');
-            expect(result).toEqual('olleh');
-        });
     });
 }
