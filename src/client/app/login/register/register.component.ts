@@ -34,6 +34,8 @@ export class RegisterComponent implements OnDestroy {
         passwordConfirm: ''
     };
 
+    errors: string[] = [];
+
     private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private loginModal: LoginModalService, private http: HttpService, private router: Router,
@@ -51,8 +53,12 @@ export class RegisterComponent implements OnDestroy {
 
     onSubmit(): void {
         this.logger.debug(this, 'onSubmit');
-        this.subscriptions.push(this.http.request(APIHandle.REGISTER, {body: this.credentials})
-            .subscribe(this.onRegistrationResponse.bind(this)));
+        this.subscriptions.push(
+            this.http.request(APIHandle.REGISTER, {body: this.credentials}).subscribe(
+                this.onRegistrationResponse.bind(this),
+                this.handleRegistrationError.bind(this)
+            )
+        );
     }
 
     private onRegistrationResponse(user: User): void {
@@ -61,5 +67,9 @@ export class RegisterComponent implements OnDestroy {
         this.router.navigate(['dashboard']).catch(e => {
             this.logger.info(this, 'Navigation to Dashboard failed', e);
         });
+    }
+
+    private handleRegistrationError(errors: any): void {
+        this.errors = _.map(errors, (e: any) => e.message);
     }
 }
