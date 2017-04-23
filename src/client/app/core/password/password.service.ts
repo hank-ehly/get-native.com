@@ -11,6 +11,8 @@ import { Logger } from '../logger/logger';
 import { StringService } from '../string/string.service';
 import { PasswordBlacklist as Blacklist } from './password-blacklist';
 
+import * as _ from 'lodash';
+
 @Injectable()
 export class PasswordService {
     constructor(private logger: Logger, private stringService: StringService) {
@@ -18,7 +20,7 @@ export class PasswordService {
 
     /* Algorithm taken from http://www.passwordmeter.com */
     calculateStrength(password: string): number {
-        if (!password || Blacklist.indexOf(password) !== -1) {
+        if (!password || _.includes(Blacklist, password)) {
             return 0;
         }
 
@@ -54,10 +56,11 @@ export class PasswordService {
         let nMultSymbol       : number = 6;
 
         let score: number = password.length * nMultLength;
-        let passwordChars: string[] = password.replace(/\s+/g, '').split(/\s*/);
+        let passwordChars: string[] = _.split(_.replace(password, /\s+/g, ''), /\s*/);
+        let passwordCharsLength = passwordChars.length;
 
-        for (let i: number = 0; i < passwordChars.length; i++) {
-            const char = passwordChars[i];
+        for (let i: number = 0; i < passwordCharsLength; i++) {
+            const char = _.nth(passwordChars, i);
 
             if (this.stringService.containsAlphaUC(char)) {
                 if ((nTmpAlphaUC + 1) === i) nConsecAlphaUC++;
@@ -68,50 +71,50 @@ export class PasswordService {
                 nTmpAlphaLC = i;
                 nAlphaLC++;
             } else if (this.stringService.containsNumeric(char)) {
-                if (i > 0 && i < (passwordChars.length - 1)) nMidChar++;
+                if (i > 0 && i < (passwordCharsLength - 1)) nMidChar++;
                 if ((nTmpNumber + 1) === i) nConsecNumber++;
                 nTmpNumber = i;
                 nNumber++;
             } else if (this.stringService.containsSymbol(char)) {
-                if (i > 0 && i < (passwordChars.length - 1)) nMidChar++;
+                if (i > 0 && i < (passwordCharsLength - 1)) nMidChar++;
                 nSymbol++;
             }
 
             let bCharExists: boolean = false;
-            for (let j: number = 0; j < passwordChars.length; j++) {
+            for (let j: number = 0; j < passwordCharsLength; j++) {
                 if (char === passwordChars[j] && i !== j) { /* repeat character exists */
                     bCharExists = true;
-                    nRepInc += Math.abs(passwordChars.length / (j - i));
+                    nRepInc += Math.abs(passwordCharsLength / (j - i));
                 }
             }
 
             if (bCharExists) {
                 nRepChar++;
-                nUnqChar = passwordChars.length - nRepChar;
-                nRepInc = (nUnqChar) ? Math.ceil(nRepInc / nUnqChar) : Math.ceil(nRepInc);
+                nUnqChar = passwordCharsLength - nRepChar;
+                nRepInc = (nUnqChar) ? _.ceil(nRepInc / nUnqChar) : _.ceil(nRepInc);
             }
         }
 
         for (let i = 0; i < 23; i++) {
             let sFwd = 'abcdefghijklmnopqrstuvwxyz'.substring(i, i + 3);
-            let sRev = this.stringService.reverse(sFwd);
-            if (password.toLowerCase().indexOf(sFwd) !== -1 || password.toLowerCase().indexOf(sRev) !== -1) {
+            let sRev = _.join(_.reverse(_.split(sFwd, '')));
+            if (_.includes(_.toLower(password), sFwd) || _.includes(_.toLower(password), sRev)) {
                 nSeqAlpha++;
             }
         }
 
         for (let i = 0; i < 8; i++) {
             let sFwd = '01234567890'.substring(i, i + 3);
-            let sRev = this.stringService.reverse(sFwd);
-            if (password.toLowerCase().indexOf(sFwd) !== -1 || password.toLowerCase().indexOf(sRev) !== -1) {
+            let sRev = _.join(_.reverse(_.split(sFwd, '')));
+            if (_.includes(_.toLower(password), sFwd) || _.includes(_.toLower(password), sRev)) {
                 nSeqNumber++;
             }
         }
 
         for (let i = 0; i < 8; i++) {
             let sFwd = ')!@#$%^&*()'.substring(i, i + 3);
-            let sRev = this.stringService.reverse(sFwd);
-            if (password.toLowerCase().indexOf(sFwd) !== -1 || password.toLowerCase().indexOf(sRev) !== -1) {
+            let sRev = _.join(_.reverse(_.split(sFwd, '')));
+            if (_.includes(_.toLower(password), sFwd) || _.includes(_.toLower(password), sRev)) {
                 nSeqSymbol++;
             }
         }
