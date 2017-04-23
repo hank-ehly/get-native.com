@@ -37,6 +37,7 @@ export class UserService {
     compliant$            = new BehaviorSubject<boolean>(this.localStorage.getItem(kAcceptLocalStorage) || false);
     logout$               = new Subject<void>();
 
+    // setters
     defaultStudyLanguage$ = new Subject<LanguageCode>();
     password$ = new Subject<{current: string, replacement: string}>();
 

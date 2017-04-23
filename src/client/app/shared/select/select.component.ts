@@ -7,6 +7,8 @@
 
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 
+import { Subject } from 'rxjs/Subject';
+
 @Component({
     moduleId: module.id,
     selector: 'gn-select',
@@ -16,13 +18,11 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 export class SelectComponent {
     @Input() options: {value: string, title: string}[];
     @Input() selected: string;
-    @Output() select: EventEmitter<string> = new EventEmitter<string>();
+    @Output() selection$ = new Subject<string>();
 
-    selectModel: any;
-
-    onSelect(option: string) {
-        if (option.length) {
-            this.select.emit(option);
-        }
+    onInput(e: Event): void {
+        const target         = <HTMLSelectElement>e.target;
+        const selectedOption = <HTMLOptionElement>target.options[target.selectedIndex];
+        this.selection$.next(selectedOption.value);
     }
 }
