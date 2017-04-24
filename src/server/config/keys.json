@@ -68,5 +68,10 @@
     "SMTP": {
         "Port": "smtp:port",
         "Host": "smtp:host"
+    },
+    "Templates": {
+        "EmailVerified": "email-verified",
+        "PasswordUpdated": "password-updated",
+        "Welcome": "welcome"
     }
 }
