@@ -5,29 +5,20 @@
  * Created by henryehly on 2017/04/04.
  */
 
-const Promise = require('bluebird');
 const logger  = require('./logger');
+const k       = require('./keys.json');
+
+const Promise = require('bluebird');
 const nconf   = require('nconf');
 const fs      = Promise.promisifyAll(require('fs'));
-const k       = require('./keys.json');
 const _       = require('lodash');
 
 function Config() {
     nconf.env([k.API.Port, k.Debug, k.NODE_ENV]).use('memory');
 
-    Promise.all([
-        fs.readFileAsync(__dirname + '/secrets/id_rsa.pem'),
-        fs.readFileAsync(__dirname + '/secrets/id_rsa')
-    ]).spread((publicKey, privateKey) => {
-        nconf.set(k.PublicKey, publicKey.toString());
-        nconf.set(k.PrivateKey, privateKey.toString());
-    }).catch(e => {
-        throw e;
-    });
-
     let config = {};
 
-    const env = (nconf.get(k.NODE_ENV) || k.Env.Development).toLowerCase();
+    const env = _.toLower(nconf.get(k.NODE_ENV) || k.Env.Development);
 
     try {
         config = require(`${__dirname}/environments/${env}`);
@@ -44,6 +35,25 @@ function Config() {
     for (let key in config) {
         nconf.set(key, config[key]);
     }
+
+    const promises = [
+        fs.readFileAsync(__dirname + '/secrets/id_rsa.pem', 'utf8'),
+        fs.readFileAsync(__dirname + '/secrets/id_rsa', 'utf8')
+    ];
+
+    if (!_.includes([k.Env.Development, k.Env.Test, k.Env.CircleCI], nconf.get(k.NODE_ENV))) {
+        promises.push(fs.readFileAsync('/etc/dkimkeys/' + config.get(k.Client.Host) + '/mail.private', 'utf8'));
+    }
+
+    Promise.all(promises).then(results => {
+        nconf.set(k.PublicKey, _.first(results));
+        nconf.set(k.PrivateKey, _.nth(results, 1));
+        if (results.length === 3) {
+            nconf.set(k.DKIMPrivateKey, _.nth(results, 2));
+        }
+    }).catch(e => {
+        throw e; // todo: a non-existent DKIM key might throw an error
+    });
 }
 
 Config.prototype.get = function(key) {
