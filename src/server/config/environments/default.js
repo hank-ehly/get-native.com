@@ -15,7 +15,7 @@ defaults[k.SMTP.Port] = 1025;
 defaults[k.SMTP.Host] = 'localhost';
 defaults[k.API.Hostname] = 'localhost';
 defaults[k.Client.Host] = 'localhost:5555';
-defaults[k.NoReply] = 'noreply@' + defaults[k.API.Hostname];
+defaults[k.NoReply] = 'noreply@localhost';
 defaults[k.DefaultLocale] = 'en';
 defaults[k.Client.Protocol] = 'http';
 
