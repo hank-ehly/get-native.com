@@ -65,6 +65,7 @@
     "NoReply": "",
     "PrivateKey": "private_key",
     "PublicKey": "public_key",
+    "DKIMPrivateKey": "DKIM_PRIVATE_KEY",
     "SMTP": {
         "Port": "smtp:port",
         "Host": "smtp:host"
