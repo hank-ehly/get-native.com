@@ -13,10 +13,11 @@ const config            = require('../../config');
 const db                = require('../models');
 const Account           = db.Account;
 const VerificationToken = db.VerificationToken;
+const k                 = require('../../config/keys.json');
+
+const Promise           = require('bluebird');
 const mailer            = require('../../config/initializers/mailer');
 const i18n              = require('i18n');
-const Promise           = require('bluebird');
-const k                 = require('../../config/keys.json');
 
 module.exports.login = (req, res, next) => {
     const attributes = [
@@ -73,7 +74,7 @@ module.exports.register = (req, res, next) => {
     }).then(verificationToken => {
         return new Promise((resolve, reject) => {
             res.app.render('welcome', {
-                confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get('token')),
+                confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get(k.Attr.Token)),
                 __: i18n.__
             }, (err, html) => {
                 if (err) {
@@ -154,7 +155,7 @@ module.exports.resendConfirmationEmail = (req, res, next) => {
 
         return Account.findOne({where: {email: req.body[k.Attr.Email]}});
     }).then(function(account) {
-        if (account.get('email_verified')) {
+        if (account.get(k.Attr.EmailVerified)) {
             throw new GetNativeError(k.Error.AccountAlreadyVerified);
         }
 
@@ -162,14 +163,14 @@ module.exports.resendConfirmationEmail = (req, res, next) => {
         const expirationDate = Utility.tomorrow();
 
         return VerificationToken.create({
-            account_id: account.get('id'),
+            account_id: account.get(k.Attr.Id),
             token: token,
             expiration_date: expirationDate
         });
     }).then(verificationToken => {
         return new Promise((resolve, reject) => {
             res.app.render('welcome', {
-                confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get('token')),
+                confirmationURL: Auth.generateConfirmationURLForToken(verificationToken.get(k.Attr.Token)),
                 __: i18n.__
             }, (err, html) => {
                 if (err) {
