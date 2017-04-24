@@ -14,6 +14,9 @@
         "AccountAlreadyVerified": "This account is already verified"
     },
     "lang": "en",
+    "password-updated": {
+        "title": "Password Updated"
+    },
     "welcome": {
         "title": "Welcome to Get Native!",
         "instructions": "",

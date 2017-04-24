@@ -6,9 +6,14 @@
  */
 
 const AuthHelper = require('../../../app/services').Auth;
-const assert     = require('assert');
-const request    = require('supertest');
 const SpecUtil   = require('../../spec-util');
+const Promise    = require('bluebird');
+const config     = require('../../../config');
+const k          = require('../../../config/keys.json');
+
+const request    = require('supertest');
+const assert     = require('assert');
+const i18n       = require('i18n');
 const _          = require('lodash');
 
 describe('POST /account/password', function() {
@@ -24,7 +29,7 @@ describe('POST /account/password', function() {
 
     before(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
+        return Promise.join(SpecUtil.seedAll(), SpecUtil.startMailServer());
     });
 
     beforeEach(function() {
@@ -46,7 +51,7 @@ describe('POST /account/password', function() {
 
     after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
+        return Promise.join(SpecUtil.seedAllUndo(), SpecUtil.stopMailServer());
     });
 
     describe('response.headers', function() {
@@ -119,6 +124,30 @@ describe('POST /account/password', function() {
             return request(server).post('/account/password').set('authorization', authorization).send(validBody).then(function() {
                 return db.Account.findById(account.id).then(function(_account) {
                     assert(AuthHelper.verifyPassword(_account.password, validBody.new_password));
+                });
+            });
+        });
+
+        it(`sends an email to the user who changed their password`, function() {
+            return request(server).post('/account/password').set('authorization', authorization).send(validBody).then(function(response) {
+                return SpecUtil.getAllEmail().then(function(emails) {
+                    assert.equal(_.first(_.last(emails).envelope.to).address, account.email);
+                });
+            });
+        });
+
+        it(`sends an email from the noreply address`, function() {
+            return request(server).post('/account/password').set('authorization', authorization).send(validBody).then(function(response) {
+                return SpecUtil.getAllEmail().then(function(emails) {
+                    assert.equal(_.last(emails).envelope.from.address, config.get(k.NoReply));
+                });
+            });
+        });
+
+        it(`sends a changed password confirmation email`, function() {
+            return request(server).post('/account/password').set('authorization', authorization).send(validBody).then(function(response) {
+                return SpecUtil.getAllEmail().then(function(emails) {
+                    assert.equal(_.last(emails).subject, i18n.__('password-updated.title'));
                 });
             });
         });

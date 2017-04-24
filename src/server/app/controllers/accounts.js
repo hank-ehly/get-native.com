@@ -8,8 +8,13 @@
 const GetNativeError = require('../services').GetNativeError;
 const Utility        = require('../services').Utility;
 const Account        = require('../models').Account;
-const AuthHelper     = require('../services').Auth;
+const config         = require('../../config');
+const Auth           = require('../services').Auth;
 const k              = require('../../config/keys.json');
+
+const Promise        = require('bluebird');
+const mailer         = require('../../config/initializers/mailer');
+const i18n           = require('i18n');
 const _              = require('lodash');
 
 module.exports.index = (req, res, next) => {
@@ -38,12 +43,29 @@ module.exports.update = (req, res, next) => {
 
 module.exports.updatePassword = (req, res, next) => {
     Account.findById(req.accountId).then(account => {
-        if (!AuthHelper.verifyPassword(account.password, req.body[k.Attr.CurrentPassword])) {
+        if (!Auth.verifyPassword(account.password, req.body[k.Attr.CurrentPassword])) {
             throw new GetNativeError(k.Error.PasswordIncorrect);
         }
 
-        const hashPassword = AuthHelper.hashPassword(req.body[k.Attr.NewPassword]);
-        return Account.update({password: hashPassword}, {where: {id: req.accountId}});
+        const hashPassword = Auth.hashPassword(req.body[k.Attr.NewPassword]);
+        return [account, Account.update({password: hashPassword}, {where: {id: req.accountId}})];
+    }).spread((account) => {
+        return [account, new Promise((resolve, reject) => {
+            res.app.render(k.Templates.PasswordUpdated, {__: i18n.__}, (err, html) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(html);
+                }
+            });
+        })];
+    }).spread((account, html) => {
+        return mailer.sendMail({
+            subject: i18n.__('password-updated.title'),
+            from:    config.get(k.NoReply),
+            to:      account.get(k.Attr.Email),
+            html:    html
+        });
     }).then(() => {
         res.sendStatus(204);
     }).catch(GetNativeError, e => {
