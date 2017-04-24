@@ -25,6 +25,7 @@ import { PasswordService } from '../core/password/password.service';
 import { STUBPasswordService } from '../core/password/password.service.stub';
 import { STUBRouter } from '../core/spec/stubs';
 import { NavbarService } from '../core/navbar/navbar.service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 export function main() {
@@ -42,7 +43,8 @@ export function main() {
                     LoginComponent,
                     SocialLoginComponent,
                     EmailLoginComponent,
-                    RegisterComponent
+                    RegisterComponent,
+                    ForgotPasswordComponent
                 ],
                 providers: [
                     {provide: Logger, useValue: STUBLogger},

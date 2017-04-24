@@ -14,7 +14,8 @@ import { LoginModalService } from '../../core/login-modal/login-modal.service';
 @Component({
     moduleId: module.id,
     selector: 'gn-forgot-password',
-    templateUrl: 'forgot-password.component.html'
+    templateUrl: 'forgot-password.component.html',
+    styleUrls: ['forgot-password.component.css']
 })
 export class ForgotPasswordComponent {
     email: string = '';
