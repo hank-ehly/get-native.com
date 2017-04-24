@@ -42,7 +42,7 @@ function Config() {
     ];
 
     if (!_.includes([k.Env.Development, k.Env.Test, k.Env.CircleCI], nconf.get(k.NODE_ENV))) {
-        promises.push(fs.readFileAsync('/etc/dkimkeys/' + config.get(k.Client.Host) + '/mail.private', 'utf8'));
+        promises.push(fs.readFileAsync('/etc/dkimkeys/' + nconf.get(k.Client.Host) + '/mail.private', 'utf8'));
     }
 
     Promise.all(promises).then(results => {
