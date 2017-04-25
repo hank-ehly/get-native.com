@@ -36,23 +36,14 @@ function Config() {
         nconf.set(key, config[key]);
     }
 
-    const promises = [
-        fs.readFileAsync(__dirname + '/secrets/id_rsa.pem', 'utf8'),
-        fs.readFileAsync(__dirname + '/secrets/id_rsa', 'utf8')
-    ];
+    const readPrivateKey  = fs.readFileAsync(__dirname + '/secrets/id_rsa', 'utf8');
+    const readPublicKey = fs.readFileAsync(__dirname + '/secrets/id_rsa.pem', 'utf8');
 
-    if (!_.includes([k.Env.Development, k.Env.Test, k.Env.CircleCI], nconf.get(k.NODE_ENV))) {
-        promises.push(fs.readFileAsync(__dirname + '/secrets/mail.private', 'utf8'));
-    }
-
-    Promise.all(promises).then(results => {
-        nconf.set(k.PublicKey, _.first(results));
-        nconf.set(k.PrivateKey, _.nth(results, 1));
-        if (results.length === 3) {
-            nconf.set(k.DKIMPrivateKey, _.nth(results, 2));
-        }
+    Promise.join(readPrivateKey, readPublicKey, (privateKey, publicKey) => {
+        nconf.set(k.PrivateKey, privateKey);
+        nconf.set(k.PublicKey, publicKey);
     }).catch(e => {
-        throw e; // todo: a non-existent DKIM key might throw an error
+        throw e;
     });
 }
 
