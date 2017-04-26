@@ -5,11 +5,12 @@
  * Created by henryehly on 2017/03/20.
  */
 
-const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/services').Utility;
-const request  = require('supertest');
+
 const Promise  = require('bluebird');
+const request  = require('supertest');
+const assert   = require('assert');
 const _        = require('lodash');
 
 describe('GET /videos/:id', function() {
@@ -21,7 +22,7 @@ describe('GET /videos/:id', function() {
 
     before(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
+        return Promise.join(SpecUtil.seedAll(), SpecUtil.startMailServer());
     });
 
     beforeEach(function() {
@@ -44,7 +45,7 @@ describe('GET /videos/:id', function() {
 
     after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
+        return Promise.join(SpecUtil.seedAllUndo(), SpecUtil.stopMailServer());
     });
 
     describe('response.headers', function() {
@@ -211,6 +212,12 @@ describe('GET /videos/:id', function() {
         it(`should contains a non-null 'related_videos.records[N].cued boolean`, function() {
             return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
                 assert(_.isBoolean(_.first(response.body.related_videos.records).cued));
+            });
+        });
+
+        it(`should contains a non-null 'related_videos.records[N].picture_url url string`, function() {
+            return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
+                assert(SpecUtil.isValidURL(_.first(response.body.related_videos.records).picture_url));
             });
         });
 
