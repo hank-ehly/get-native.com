@@ -13,6 +13,7 @@ import { UnitInterval } from '../../core/typings/unit-interval';
 import { Logger } from '../../core/logger/logger';
 
 import { Subscription } from 'rxjs/Subscription';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -57,14 +58,12 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.logger.info(this, 'ngOnInit()');
+        this.logger.info(this, 'OnInit');
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
+        this.logger.debug(this, 'OnDestroy');
+        _.each(this.subscriptions, s => s.unsubscribe());
     }
 
     ngAfterViewInit(): void {
@@ -130,7 +129,9 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     private hideTooltip(delay?: number): void {
-        this.tooltipTimeout = setTimeout(() => this.tooltipHidden = true, delay || 0);
+        this.tooltipTimeout = setTimeout(function () {
+            this.tooltipHidden = true;
+        }, delay || 0);
     }
 
     private onCurrentTime(timeInSeconds: number): void {

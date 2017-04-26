@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/01/12.
  */
 
-import { Component, OnInit, OnChanges, SimpleChanges, Input, Output } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, OnDestroy } from '@angular/core';
 
 import { Category } from '../../core/entities/category';
 import { Logger } from '../../core/logger/logger';
@@ -22,7 +22,7 @@ import { Subject } from 'rxjs/Subject';
     templateUrl: 'category-list.component.html',
     styleUrls: ['category-list.component.css']
 })
-export class CategoryListComponent implements OnInit, OnChanges {
+export class CategoryListComponent implements OnInit, OnChanges, OnDestroy {
     @Input() categories: Categories;
 
     @Output() category$    = new Subject<Category>();
@@ -35,6 +35,10 @@ export class CategoryListComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit()');
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy()');
     }
 
     ngOnChanges(changes: SimpleChanges): void {

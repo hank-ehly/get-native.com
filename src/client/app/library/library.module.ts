@@ -9,7 +9,7 @@ import { NgModule } from '@angular/core';
 
 import { LibraryComponent } from './library.component';
 import { SharedModule } from '../shared/shared.module';
-import { LibraryDetailComponent } from './library-detail/library-detail.component';
+import { LibraryDetailComponent } from './library-detail.component';
 
 @NgModule({
     imports: [SharedModule],

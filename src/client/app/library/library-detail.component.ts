@@ -8,13 +8,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Video } from '../../core/entities/video';
-import { Logger } from '../../core/logger/logger';
-import { NavbarService } from '../../core/navbar/navbar.service';
-import { HttpService } from '../../core/http/http.service';
-import { APIHandle } from '../../core/http/api-handle';
+import { Video } from '../core/entities/video';
+import { Logger } from '../core/logger/logger';
+import { NavbarService } from '../core/navbar/navbar.service';
+import { HttpService } from '../core/http/http.service';
+import { APIHandle } from '../core/http/api-handle';
 
 import { Subscription } from 'rxjs/Subscription';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -31,7 +32,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.logger.debug(this, 'ngOnInit()');
+        this.logger.debug(this, 'OnInit');
 
         let id = +this.route.snapshot.params['id'];
 
@@ -42,10 +43,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
+        this.logger.debug(this, 'OnDestroy');
+        _.each(this.subscriptions, s => s.unsubscribe());
     }
 
     onVideoResponse(video: Video): void {
@@ -54,7 +53,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     }
 
     onToggleLike() {
-        this.logger.debug(this, 'onToggleLike()');
+        this.logger.debug(this, 'onToggleLike');
 
         let subscription: Subscription = null;
 
