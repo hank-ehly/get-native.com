@@ -16,7 +16,7 @@ import { TOSComponent } from './static-pages/tos/tos.component';
 import { PrivacyComponent } from './static-pages/privacy/privacy.component';
 import { HelpComponent } from './static-pages/help/help.component';
 import { HomeComponent } from './static-pages/home/home.component';
-import { LibraryDetailComponent } from './library/library-detail/library-detail.component';
+import { LibraryDetailComponent } from './library/library-detail.component';
 import { LibraryComponent } from './library/library.component';
 import { SecurityComponent } from './settings/security/security.component';
 import { NotificationsComponent } from './settings/notifications/notifications.component';
@@ -52,12 +52,10 @@ const routes: Routes = [
         ]
     },
     {
-        path: 'library', component: LibraryComponent, canActivate: [AuthGuard], data: {title: 'Library'},
-        children: [
-        {
-            path: ':id', component: LibraryDetailComponent
-        }
-    ]
+        path: 'library', component: LibraryComponent, canActivate: [AuthGuard], data: {title: 'Library'}
+    },
+    {
+        path: 'library/:id', component: LibraryDetailComponent, canActivate: [AuthGuard]
     },
     {
         path: 'study', component: StudyComponent, canActivateChild: [AuthGuard],
