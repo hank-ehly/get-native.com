@@ -5,10 +5,12 @@
  * Created by henryehly on 2017/03/17.
  */
 
-const request  = require('supertest');
-const assert   = require('assert');
 const SpecUtil = require('../../spec-util');
 const Utility  = require('../../../app/services').Utility;
+
+const Promise  = require('bluebird');
+const request  = require('supertest');
+const assert   = require('assert');
 const _        = require('lodash');
 
 describe('GET /videos', function() {
@@ -18,7 +20,7 @@ describe('GET /videos', function() {
 
     before(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
+        return Promise.join(SpecUtil.seedAll(), SpecUtil.startMailServer());
     });
 
     beforeEach(function() {
@@ -37,7 +39,7 @@ describe('GET /videos', function() {
 
     after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
+        return Promise.join(SpecUtil.seedAllUndo(), SpecUtil.stopMailServer());
     });
 
     describe('response.headers', function() {
