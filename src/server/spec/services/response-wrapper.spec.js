@@ -61,7 +61,7 @@ describe('response-wrapper', function() {
 
         it('should return an object with \'count\' top-level integer property', function() {
             let result = ResponseWrapper.wrap([{a: 'b'}, {c: 'd'}]);
-            assert(new RegExp(/^[0-9]+$/).test(result['count']));
+            assert(new RegExp(/^[0-9]+$/).test(result.count));
         });
 
         it('should return an object whose \'records\' property value contains the same value as the argument.', function() {
