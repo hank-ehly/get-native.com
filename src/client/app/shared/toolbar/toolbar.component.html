@@ -1,15 +1,14 @@
-<div class="toolbar" (mouseleave)="isVisibleStream$.next(false)">
+<div class="toolbar" (mouseleave)="isTooltipVisible$.next(false)">
 
-    <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="isVisibleStream$ | async">
-        <li class="toolbar__language-label" *ngFor="let language of languageStream$ | async"
-            (click)="user.currentStudyLanguage$.next(language)">
+    <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="isTooltipVisible$ | async">
+        <li class="toolbar__language-label" *ngFor="let language of language$ | async" (click)="setCurrentStudyLanguage(language)">
             {{ language.name }}
         </li>
     </ul>
 
-    <span class="toolbar__language-label toolbar__language-label_selected" (click)="isVisibleStream$.next(!isVisibleStream$.getValue())"
-          (mouseenter)="isVisibleStream$.next(true)">
-        {{ (user.currentStudyLanguage$ | async)?.name }}
+    <span class="toolbar__language-label toolbar__language-label_selected" (click)="isTooltipVisible$.next(!isTooltipVisible$.getValue())"
+          (mouseenter)="isTooltipVisible$.next(true)">
+        {{ currentStudyLanguageName$ | async }}
     </span>
 
     <nav class="toolbar__links">
@@ -21,7 +20,7 @@
             <img class="toolbar_link-icon" src="/assets/icons/help.svg" alt="help">
         </a>
 
-        <a class="toolbar__link" (click)="user.logout()">
+        <a class="toolbar__link" (click)="logout()">
             <img class="toolbar_link-icon" src="/assets/icons/sign-out.svg" alt="sign-out">
         </a>
     </nav>

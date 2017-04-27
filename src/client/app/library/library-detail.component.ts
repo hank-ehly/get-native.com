@@ -55,7 +55,9 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             this.likeCount = v.like_count;
         });
 
-        this.video$.pluck('subcategory', 'name').subscribe(this.navbar.title$);
+        this.video$.pluck('subcategory', 'name').subscribe((t: string) => {
+            this.navbar.title$.next(t);
+        });
 
         this.liked$.filter(_.isBoolean).do(this.updateLikeCount.bind(this)).debounceTime(300).distinctUntilChanged().subscribe(
             <NextObserver<boolean>>this.onLikedChange.bind(this)

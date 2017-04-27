@@ -31,7 +31,7 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class UserService {
-    authenticated$        = new BehaviorSubject<boolean>(this.isAuthenticated());
+    authenticated$        = new BehaviorSubject<boolean>(false);
     current$              = new BehaviorSubject<User>(this.localStorage.getItem(kCurrentUser));
     currentStudyLanguage$ = new ReplaySubject<Language>(1);
     compliant$            = new BehaviorSubject<boolean>(this.localStorage.getItem(kAcceptLocalStorage) || false);

@@ -5,10 +5,10 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
-import { Location } from '@angular/common';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { LoginModalService } from '../../core/login-modal/login-modal.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
@@ -16,8 +16,10 @@ import { Logger } from '../../core/logger/logger';
 
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
     moduleId: module.id,
@@ -50,24 +52,24 @@ import * as _ from 'lodash';
 export class NavbarComponent implements OnInit, OnDestroy {
     @Input() authenticated: boolean;
 
-    title: string                   = '';
-    backButtonTitle: string         = '';
-    progressBarHidden: boolean      = true;
-    studyOptionsHidden: boolean     = true;
+    progressBarHidden: boolean  = true;
+    studyOptionsHidden: boolean = true;
 
     hasUnreadNotifications: boolean = false;
+    title$ = this.navbar.title$;
+
+    searchBarVisible$ = this.navbar.searchBarVisible$.share();
+
+    backButtonTitle$ = this.navbar.backButtonTitle$;
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private loginModal: LoginModalService, private logger: Logger, public navbar: NavbarService, private location: Location,
+    constructor(private loginModal: LoginModalService, private logger: Logger, private navbar: NavbarService, private location: Location,
                 private router: Router) {
     }
 
     ngOnInit(): void {
         this.subscriptions.push(
-            this.navbar.title$.subscribe((t) => this.title = t),
-            this.navbar.backButtonTitle$.subscribe(t => this.backButtonTitle = t),
-
             this.router.events.filter((e: any) => e instanceof NavigationEnd).do(() => {
                 this.navbar.searchBarVisible$.next(false);
             }).mapTo('').subscribe(this.navbar.query$)
@@ -79,6 +81,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
         _.each(this.subscriptions, s => s.unsubscribe());
     }
 
+    updateQuery(e: Event): void {
+        let target = <HTMLInputElement>e.target;
+        this.navbar.updateQuery(target.value);
+    }
+
     onShowLoginModal(e: any): void {
         e.preventDefault();
         this.logger.debug(this, 'requestShowLoginModal');
@@ -88,6 +95,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     onClickBack(): void {
         this.logger.debug(this, 'onClickBack');
         this.location.back();
+    }
+
+    onClickSearch(): void {
+        this.navbar.searchBarVisible$.next(true);
+    }
+
+    onClickCloseSearch(): void {
+        this.navbar.searchBarVisible$.next(false);
     }
 
     /* MOCK */
