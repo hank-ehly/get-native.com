@@ -14,7 +14,16 @@ import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
 import { APIHandle } from '../core/http/api-handle';
 
-import { Subscription } from 'rxjs/Subscription';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { NextObserver } from 'rxjs/Observer';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/concatMap';
+import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/pluck';
+
 import * as _ from 'lodash';
 
 @Component({
@@ -24,9 +33,17 @@ import * as _ from 'lodash';
     styleUrls: ['library-detail.component.css']
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {
-    video: Video;
+    video$: Observable<Video>;
 
-    private subscriptions: Subscription[] = [];
+    liked$ = new BehaviorSubject<boolean>(null);
+
+    likeCount: number;
+
+    reqOptions = {
+        params: {
+            id: +this.route.snapshot.params['id']
+        }
+    };
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute) {
     }
@@ -34,39 +51,27 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
 
-        let id = +this.route.snapshot.params['id'];
+        this.video$ = this.http.request(APIHandle.VIDEO, this.reqOptions).share().do((v: Video) => {
+            this.likeCount = v.like_count;
+        });
 
-        this.subscriptions.push(
-            this.http.request(APIHandle.VIDEO, {params: {id: id}})
-                .subscribe(this.onVideoResponse.bind(this))
+        this.video$.pluck('subcategory', 'name').subscribe(this.navbar.title$);
+
+        this.liked$.filter(_.isBoolean).do(this.updateLikeCount.bind(this)).debounceTime(300).distinctUntilChanged().subscribe(
+            <NextObserver<boolean>>this.onLikedChange.bind(this)
         );
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.each(this.subscriptions, s => s.unsubscribe());
     }
 
-    onVideoResponse(video: Video): void {
-        this.navbar.title$.next(video.subcategory.name);
-        this.video = video;
+    private onLikedChange(liked: boolean) {
+        this.logger.debug(this, 'liked change', liked);
+        this.http.request(liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO, this.reqOptions);
     }
 
-    onToggleLike() {
-        this.logger.debug(this, 'onToggleLike');
-
-        let subscription: Subscription = null;
-
-        /* Todo: This will make many subscriptions if you press repeatedly */
-        if (this.video.liked) {
-            this.video.like_count -= 1;
-            subscription = this.http.request(APIHandle.UNLIKE_VIDEO, {params: {id: this.video.id}}).subscribe();
-        } else {
-            this.video.like_count += 1;
-            subscription = this.http.request(APIHandle.LIKE_VIDEO, {params: {id: this.video.id}}).subscribe();
-        }
-
-        this.video.liked = !this.video.liked;
-        this.subscriptions.push(subscription);
+    private updateLikeCount(liked: boolean) {
+        this.likeCount = liked ? this.likeCount + 1 : this.likeCount - 1;
     }
 }

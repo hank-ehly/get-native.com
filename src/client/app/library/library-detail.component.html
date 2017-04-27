@@ -1,24 +1,25 @@
 <main class="main">
     <section class="section section--video-detail">
         <div class="column column_video">
-            <gn-video-player [src]="video?.video_url"></gn-video-player>
+            <gn-video-player [src]="(video$ | async)?.video_url"></gn-video-player>
 
             <section class="column__row">
                 <h6>About this video:</h6>
-                <p class="paragraph">{{ video?.description }}</p>
+                <p class="paragraph">{{ (video$ | async)?.description }}</p>
             </section>
 
             <div class="column__row video-stats">
                 <div class="video-stats__group video-stats__group_views">
                     <img class="video-stats__icon" src="/assets/icons/view-circle.svg" alt="views">
-                    <span class="video-stats__label">{{ video?.loop_count | fuzzy }} Views</span>
+                    <span class="video-stats__label">{{ (video$ | async)?.loop_count | fuzzy }} Views</span>
                 </div>
                 <div class="video-stats__group video-stats__group_likes">
-                    <button class="video-stats__button" (click)="onToggleLike()" [disabled]="!video">
-                        <img src="/assets/icons/liked.svg" alt="liked" *ngIf="video?.liked">
-                        <img src="/assets/icons/like.svg" alt="like" *ngIf="!video?.liked">
+                    <button class="video-stats__button" (click)="liked$.next(!liked$.getValue())" [disabled]="!(video$ | async)">
+                        <img src="../../assets/icons/like.svg" alt="like" *ngIf="!(liked$ | async)">
+                        <img src="../../assets/icons/liked.svg" alt="unlike" *ngIf="liked$ | async">
                     </button>
-                    <span class="video-stats__label">{{ video?.like_count | fuzzy }}</span>
+
+                    <span class="video-stats__label">{{ likeCount | fuzzy }}</span>
                 </div>
             </div>
 
@@ -31,18 +32,18 @@
             <hr>
 
             <div class="column__row speaker__row">
-                <img class="speaker-thumbnail" [src]="video?.speaker?.picture_url" [alt]="video?.speaker?.name">
+                <img class="speaker-thumbnail" [src]="((video$ | async)?.speaker)?.picture_url" [alt]="((video$ | async)?.speaker)?.name">
                 <div class="speaker__info">
-                    <h6 class="speaker__name-header">{{ video?.speaker?.name }}</h6>
-                    <div class="speaker__description-text">{{ video?.speaker?.description }}</div>
+                    <h6 class="speaker__name-header">{{ ((video$ | async)?.speaker)?.name }}</h6>
+                    <div class="speaker__description-text">{{ ((video$ | async)?.speaker)?.description }}</div>
                     <button class="button speaker__follow-button">FOLLOW</button>
                 </div>
             </div>
         </div>
 
-        <div class="column column_transcript">
-            <gn-transcript [transcripts]="video?.transcripts"></gn-transcript>
-        </div>
+        <!--<div class="column column_transcript">
+            <gn-transcript [transcripts]="video$.pluck('transcripts')"></gn-transcript>
+        </div>-->
     </section>
 
     <hr>
@@ -54,6 +55,6 @@
         </header>
 
         <!-- By default, the router re-uses a component instance when it re-navigates to the same component type without visiting a different component first. -->
-        <gn-video-panel-list [videos]="video?.related_videos" [navigates]="true"></gn-video-panel-list>
+        <gn-video-panel-list [videos]="(video$ | async)?.related_videos?.records" [navigates]="true"></gn-video-panel-list>
     </section>
 </main>
