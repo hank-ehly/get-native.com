@@ -7,33 +7,27 @@
 
 import { Pipe, PipeTransform } from '@angular/core';
 
+import * as _ from 'lodash';
+
 @Pipe({
     name: 'fuzzy'
 })
 export class FuzzyNumberPipe implements PipeTransform {
     transform(value: any, ...args: any[]): any {
-        if (!value) {
-            return '';
-        } else if (typeof value !== 'number') {
-            throw new TypeError(`[${this.constructor.name}] Value must be a number. Received '${value}' of type '${typeof value}'`);
-        }
+        let result = '';
 
-        let retVal: string = '';
-
-        if (value <= 0) {
-            retVal = '0';
-        }
-
-        else if (value > 0 && value < 1000) {
-            retVal = value.toString();
-        }
-
-        else {
+        if (!_.isNumber(value)) {
+            return result;
+        } else if (_.lte(value, 0)) {
+            result = '0';
+        } else if (_.inRange(value, 1000)) {
+            result = value.toString();
+        } else {
             let float = <number>value / 1000;
-            let places = value >= 1000 && value < 10000 ? 1 : 0;
-            retVal = float.toFixed(places) + 'k';
+            let places = _.inRange(value, 1000, 10000) ? 1 : 0;
+            result = float.toFixed(places) + 'k';
         }
 
-        return retVal;
+        return result;
     }
 }
