@@ -19,7 +19,7 @@ module.exports = {
         return Promise.all(promises).spread((minSpeakerId, maxSpeakerId, minSubcategoryId, maxSubcategoryId) => {
             const videos          = [];
             const numVideos       = 500;
-            const youtubeVideoIds = ['SqyDRXVd5Jo', 'clpOP8f3Jc8', 'q9k_QgYA-bo', 'rF-MsURy9q8', 'W2G68H3xRyE'];
+            const youtubeVideoIds = ['9Ayf8Iny9Eg', 'GXsZMQshNzg', 'yCe0DtGq8Pc', '7TQfjmEpYig', 'C9BYTZkde4w'];
 
             const minDate         = moment().subtract(numVideos + 10, 'days');
 
