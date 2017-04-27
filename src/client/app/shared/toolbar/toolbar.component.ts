@@ -14,6 +14,7 @@ import { Languages } from '../../core/lang/languages';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/pluck';
 import 'rxjs/add/observable/of';
 
 @Component({
@@ -40,9 +41,19 @@ import 'rxjs/add/observable/of';
     ]
 })
 export class ToolbarComponent {
-    languageStream$  = Observable.of<Language[]>(Languages);
-    isVisibleStream$ = new BehaviorSubject<boolean>(false);
+    language$  = Observable.of<Language[]>(Languages);
+    isTooltipVisible$ = new BehaviorSubject<boolean>(false);
+
+    currentStudyLanguageName$ = this.user.currentStudyLanguage$.pluck('name');
 
     constructor(public user: UserService) {
+    }
+
+    logout(): void {
+        this.user.logout();
+    }
+
+    setCurrentStudyLanguage(language: Language): void {
+        this.user.currentStudyLanguage$.next(language);
     }
 }

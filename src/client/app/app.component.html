@@ -1,11 +1,11 @@
-<gn-navbar [authenticated]="user.authenticated$ | async"></gn-navbar>
+<gn-navbar [authenticated]="authenticated$ | async"></gn-navbar>
 
-<gn-side-menu *ngIf="user.authenticated$ | async"></gn-side-menu>
-<gn-toolbar *ngIf="user.authenticated$ | async"></gn-toolbar>
+<gn-side-menu *ngIf="authenticated$ | async"></gn-side-menu>
+<gn-toolbar *ngIf="authenticated$ | async"></gn-toolbar>
 
 <router-outlet></router-outlet>
 
 <gn-footer></gn-footer>
 
 <gn-compliance></gn-compliance>
-<gn-login [isVisible]="showLoginModal"></gn-login>
+<gn-login [isVisible]="false"></gn-login>
