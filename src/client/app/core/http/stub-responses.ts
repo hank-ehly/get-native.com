@@ -76,7 +76,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                              temporibus voluptatum. Aliquam expedita fuga impedit ipsanatus.Lorem ipsum dolor sit amet, consectetur
                              adipisicing elit. Corporis distinctio enim error facere fugit harum,ipsum, iure laudan tium, omnis rerum
                              tempore ullam ut. Iste iure!`,
-                    'lang': 'en',
+                    'language_code': 'en',
                     'collocations': {
                         'count': 1,
                         'records': [

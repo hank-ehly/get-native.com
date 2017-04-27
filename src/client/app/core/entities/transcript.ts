@@ -11,8 +11,6 @@ import { LanguageCode } from '../typings/language-code';
 
 export interface Transcript extends Entity {
     text: string;
-
-    /* Todo: Change name to 'code' or 'lang_code' to avoid confusion */
-    lang: LanguageCode;
+    language_code: LanguageCode;
     collocations: Collocations;
 }
