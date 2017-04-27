@@ -14,9 +14,9 @@
                     <span class="video-stats__label">{{ (video$ | async)?.loop_count | fuzzy }} Views</span>
                 </div>
                 <div class="video-stats__group video-stats__group_likes">
-                    <button class="video-stats__button" (click)="liked$.next(!liked$.getValue())" [disabled]="!(video$ | async)">
-                        <img src="../../assets/icons/like.svg" alt="like" *ngIf="!(liked$ | async)">
-                        <img src="../../assets/icons/liked.svg" alt="unlike" *ngIf="liked$ | async">
+                    <button class="video-stats__button" (click)="setLiked$.next(!liked)" [disabled]="!(video$ | async)">
+                        <img src="../../assets/icons/like.svg" alt="like" *ngIf="!liked">
+                        <img src="../../assets/icons/liked.svg" alt="unlike" *ngIf="liked">
                     </button>
 
                     <span class="video-stats__label">{{ likeCount | fuzzy }}</span>
@@ -41,9 +41,9 @@
             </div>
         </div>
 
-        <!--<div class="column column_transcript">
-            <gn-transcript [transcripts]="video$.pluck('transcripts')"></gn-transcript>
-        </div>-->
+        <div class="column column_transcript">
+            <gn-transcript [transcripts]="(video$ | async)?.transcripts"></gn-transcript>
+        </div>
     </section>
 
     <hr>

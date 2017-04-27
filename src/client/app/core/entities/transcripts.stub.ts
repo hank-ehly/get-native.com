@@ -17,7 +17,7 @@ export const STUBTranscripts: Transcripts = {
                    soluta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dicta distinctiotemporibus voluptatum. Aliquam 
                    expedita fuga impedit ipsanatus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis distinctio enim error 
                    facere fugit harum,ipsum, iure laudan tium, omnis rerum tempore ullam ut. Iste iure!`,
-            lang: 'en',
+            language_code: 'en',
             collocations: {
                 count: 3,
                 records: [
@@ -49,7 +49,7 @@ export const STUBTranscripts: Transcripts = {
                    いぽのしゅーりんがんしゅーりんがんのぐーりんだいぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ。じゅげむじゅげむごこうのすりきれかい
                    じゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこうじぱいぽぱいぽぱいぽのしゅーりんがんしゅーりんがんの
                    ぐーりんだいぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ。`,
-            lang: 'ja',
+            language_code: 'ja',
             collocations: {
                 count: 3,
                 records: [

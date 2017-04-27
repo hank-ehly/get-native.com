@@ -5,13 +5,15 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 import { Transcripts } from '../../core/entities/transcripts';
 import { Transcript } from '../../core/entities/transcript';
 import { Collocation } from '../../core/entities/collocation';
-import { Logger } from '../../core/logger/logger';
 import { LangService } from '../../core/lang/lang.service';
+import { Logger } from '../../core/logger/logger';
+
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -19,61 +21,69 @@ import { LangService } from '../../core/lang/lang.service';
     templateUrl: 'transcript.component.html',
     styleUrls: ['transcript.component.css']
 })
-export class TranscriptComponent implements OnInit, OnChanges {
-    @Input() transcripts: Transcripts;
+export class TranscriptComponent implements OnInit, OnDestroy {
+    get transcripts(): Transcripts {
+        return this._transcripts;
+    }
+
+    @Input() set transcripts(transcripts: Transcripts) {
+        if (!transcripts || !transcripts.count) {
+            return;
+        }
+
+        this._transcripts = transcripts;
+
+        this.tabs = _.transform(this.transcripts.records, (result, transcript) => {
+            result.push({
+                title: this.langService.codeToName(transcript.language_code),
+                transcript: transcript
+            });
+        });
+
+        this.logger.debug(this, 'set transcripts', transcripts);
+
+        /* Todo: How can you set the activeTab here? */
+
+        this.selectedTranscript = _.first(transcripts.records);
+
+        /* Todo: Set active collocation */
+        this.selectedCollocation = _.first(this.selectedTranscript.collocations.records);
+    };
+
+    tabs: any[] = [];
+
     selectedTab: HTMLLIElement;
     selectedTranscript: Transcript;
     selectedCollocation: Collocation;
 
+    private _transcripts: Transcripts;
+
     constructor(private logger: Logger, private langService: LangService) {
     }
 
-    ngOnInit() {
-        this.logger.info(this, 'ngOnInit()');
+    ngOnInit(): void {
+        this.logger.debug(this, 'OnInit');
     }
 
-    ngOnChanges(changes: SimpleChanges) {
-        if (!changes['transcripts'] || !changes['transcripts'].currentValue) {
-            return;
-        }
-
-        let transcripts = <Transcripts>changes['transcripts'].currentValue;
-
-        if (transcripts.count === 0) {
-            return;
-        }
-
-        this.logger.debug(this, changes);
-
-        /* Todo: How can you set the activeTab here? */
-
-        this.selectedTranscript = transcripts.records[0];
-
-        /* Todo: Set active collocation */
-        this.selectedCollocation = transcripts.records[0].collocations.records[0];
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
     }
 
-    onClickTab(transcript: Transcript, e: MouseEvent): void {
-        this.logger.debug(this, `onClickTabTitle => title: ${this.titleForTranscript(transcript)}, event:`, e);
-        this.selectedTab = <HTMLLIElement>e.target;
-        this.selectedTranscript = transcript;
-
-        /* Todo: If previous selection exists, use that */
-        this.selectedCollocation = transcript.collocations.records[0];
-    }
-
-    get sliderPosition() {
-        if (!this.selectedTab) {
-            return null;
-        }
+    getSliderPosition() {
+        if (!this.selectedTab) return null;
 
         return {
-            left: `${this.selectedTab.offsetLeft}px`,
-            width: `${this.selectedTab.offsetWidth}px`
+            left: `${this.selectedTab.offsetLeft }px`, width: `${this.selectedTab.offsetWidth}px`
         };
     }
 
-    titleForTranscript(transcript: Transcript): string {
-        return this.langService.codeToName(transcript.lang);
+    onClickTab(tab: any, e: MouseEvent): void {
+        this.logger.debug(this, 'onClickTab', tab.transcript);
+
+        this.selectedTab = <HTMLLIElement>e.target;
+        this.selectedTranscript = tab.transcript;
+
+        /* Todo: If previous selection exists, use that */
+        this.selectedCollocation = _.first(this.selectedTranscript.collocations.records);
     }
 }
