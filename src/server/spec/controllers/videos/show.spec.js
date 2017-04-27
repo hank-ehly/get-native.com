@@ -27,14 +27,14 @@ describe('GET /videos/:id', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(_) {
-            server = _.server;
-            db = _.db;
-            authorization = _.authorization;
-            user = _.response.body;
+        return SpecUtil.login().then(function(initGroup) {
+            server = initGroup.server;
+            db = initGroup.db;
+            authorization = initGroup.authorization;
+            user = initGroup.response.body;
 
-            return db.sequelize.query('SELECT id FROM videos LIMIT 1').then(r => {
-                requestVideoId = r[0][0].id;
+            return db.sequelize.query('SELECT id FROM videos LIMIT 1').spread(r => {
+                requestVideoId = _.first(r).id;
             });
         });
     });
@@ -218,6 +218,33 @@ describe('GET /videos/:id', function() {
         it(`should contains a non-null 'related_videos.records[N].picture_url url string`, function() {
             return request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
                 assert(SpecUtil.isValidURL(_.first(response.body.related_videos.records).picture_url));
+            });
+        });
+
+        it(`should return related videos whose category is the same as the video being shown`, function() {
+            const expectedSubcategoryIds = db.sequelize.query(`
+                SELECT id FROM subcategories WHERE category_id IN (
+                    SELECT category_id FROM subcategories WHERE id = (
+                        SELECT subcategory_id FROM videos WHERE id = ?
+                    )
+                )
+            `, {replacements: [requestVideoId]}).spread(function(results) {
+                return _.map(results, 'id');
+            });
+
+            const actualSubcategoryIds = request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization).then(function(response) {
+                return _.map(response.body.related_videos.records, 'subcategory.id');
+            });
+
+            return Promise.join(expectedSubcategoryIds, actualSubcategoryIds, function(expected, actual) {
+                assert.equal(_.difference(actual, expected).length, 0);
+            });
+        });
+
+        it(`should return different related videos if the same video is requested twice`, function() {
+            const request = request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization);
+            return Promise.join(request, request, function(first, second) {
+                assert(!_.isEqual(first.body.related_videos, second.body.related_videos));
             });
         });
 
