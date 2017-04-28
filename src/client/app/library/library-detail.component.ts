@@ -87,7 +87,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
                 .mergeMap(handle => this.http.request(handle, params))
                 .do(() => this.navbar.studyOptionsEnabled$.next(true))
-                .map(() => this.queued ? 'DEQUEUE' : 'ADD TO QUEUE')
+                .map(() => this.queued ? 'DEQUEUE' : 'QUEUE')
                 .subscribe(this.navbar.queueButtonTitle$),
 
             this.video$
@@ -97,7 +97,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             this.video$
                 .pluck('cued')
                 .do((cued: boolean) => this.queued = cued)
-                .map((cued: boolean) => cued ? 'DEQUEUE' : 'ADD TO QUEUE')
+                .map((cued: boolean) => cued ? 'DEQUEUE' : 'QUEUE')
                 .subscribe(this.navbar.queueButtonTitle$)
         );
     }
