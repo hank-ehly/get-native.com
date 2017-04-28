@@ -66,7 +66,9 @@ module.exports.show = (req, res, next) => {
     const relatedCued      = Video.getCuedAttributeForAccountId(req.accountId);
 
     const relatedVideos = Video.scope([
-        'orderMostViewed', {method: ['includeSubcategoryNameAndId', Subcategory]}, {method: ['includeSpeakerName', Speaker]}
+        {method: ['includeSubcategoryNameAndId', Subcategory]},
+        {method: ['includeSpeakerName', Speaker]},
+        {method: ['relatedToVideo', req.params.id]}
     ]).findAll({
         attributes: [k.Attr.Id, relatedCreatedAt, k.Attr.Length, k.Attr.PictureUrl, k.Attr.LoopCount, relatedCued],
         limit: 3
@@ -80,7 +82,7 @@ module.exports.show = (req, res, next) => {
         attributes: [k.Attr.Description, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length]
     }).catch(next);
 
-    return Promise.all([likeCount, liked, cued, relatedVideos, video]).spread((likeCount, liked, cued, relatedVideos, video) => {
+    return Promise.join(likeCount, liked, cued, relatedVideos, video, (likeCount, liked, cued, relatedVideos, video) => {
         video = video.get({plain: true});
 
         video.like_count = likeCount;

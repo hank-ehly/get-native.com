@@ -100,13 +100,35 @@ module.exports = function(sequelize, DataTypes) {
                         }
                     ]
                 }
+            },
+            relatedToVideo: function(videoId) {
+                // todo: could this be more clean and/or efficient?
+                return {
+                    where: {
+                        subcategory_id: {
+                            $in: [sequelize.literal(`
+                                SELECT id
+                                FROM subcategories
+                                WHERE category_id = (
+                                    SELECT category_id
+                                    FROM subcategories
+                                    WHERE id = (
+                                        SELECT subcategory_id
+                                        FROM videos
+                                        WHERE id = ${videoId}
+                                    )
+                                )
+                            `)]
+                        }
+                    }
+                };
             }
         }
     });
 
     Video.getCuedAttributeForAccountId = function(accountId) {
-        const queryString = 'EXISTS(SELECT `video_id` FROM `cued_videos` WHERE `video_id` = `Video`.`id` AND `account_id` = ' + accountId + ')';
-        return [sequelize.literal(queryString), 'cued'];
+        const query = 'EXISTS(SELECT `video_id` FROM `cued_videos` WHERE `video_id` = `Video`.`id` AND `account_id` = ' + accountId + ')';
+        return [sequelize.literal(query), 'cued'];
     };
 
     Video.isLikedByAccount = function(db, videoId, accountId) {
