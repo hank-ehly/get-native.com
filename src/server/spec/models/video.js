@@ -5,12 +5,14 @@
  * Created by henryehly on 2017/04/16.
  */
 
-const assert   = require('assert');
 const SpecUtil = require('../spec-util');
-const Promise  = require('bluebird');
 const db       = require('../../app/models');
-const Video    = db.Video;
 const Account  = db.Account;
+const Video    = db.Video;
+const k        = require('../../config/keys.json');
+
+const Promise  = require('bluebird');
+const assert   = require('assert');
 const _        = require('lodash');
 
 describe('Video', function() {
@@ -19,7 +21,7 @@ describe('Video', function() {
 
     before(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return Promise.all([SpecUtil.seedAll(), SpecUtil.startMailServer()]);
+        return Promise.join(SpecUtil.seedAll(), SpecUtil.startMailServer());
     });
 
     beforeEach(function() {
@@ -36,7 +38,7 @@ describe('Video', function() {
 
     after(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return Promise.all([SpecUtil.seedAllUndo(), SpecUtil.stopMailServer()]);
+        return Promise.join(SpecUtil.seedAllUndo(), SpecUtil.stopMailServer());
     });
 
     describe('cuedAndMaxId', function() {
@@ -46,7 +48,7 @@ describe('Video', function() {
                 const cued = Video.getCuedAttributeForAccountId(account.id);
                 return Video.scope({method: ['cuedAndMaxId', true, account.id, midVideoId]}).findAll({attributes: {include: [cued]}})
                     .then(function(videos) {
-                        _.forEach(videos, function(video) {
+                        _.each(videos, function(video) {
                             assert(_.lt(video.get('id'), midVideoId));
                             assert.equal(video.get('cued'), true);
                         });
@@ -77,10 +79,34 @@ describe('Video', function() {
             const cued = Video.getCuedAttributeForAccountId(account.id);
             return Video.scope({method: ['cuedAndMaxId', true, account.id]}).findAll({attributes: {include: [cued]}})
                 .then(function(videos) {
-                    _.forEach(videos, function(video) {
+                    _.each(videos, function(video) {
                         assert.equal(video.get('cued'), true);
                     });
                 });
+        });
+    });
+
+    describe('relatedToVideo', function() {
+        it(`should return videos who belong to the same category as the specified video`, function() {
+            return Video.findOne().then(function(video) {
+                const expectedSubcategoryIds = db.sequelize.query(`
+                    SELECT id FROM subcategories WHERE category_id IN (
+                        SELECT category_id FROM subcategories WHERE id = (
+                            SELECT subcategory_id FROM videos WHERE id = ?
+                        )
+                    )
+                `, {replacements: [video.get(k.Attr.Id)]}).spread(function(results) {
+                    return _.map(results, k.Attr.Id);
+                });
+
+                const actualSubcategoryIds = Video.scope({method: ['relatedToVideo', video.get(k.Attr.Id)]}).findAll().then(function(videos) {
+                    return _.map(videos, 'subcategory_id');
+                });
+
+                return Promise.join(expectedSubcategoryIds, actualSubcategoryIds, function(expected, actual) {
+                    assert.equal(_.difference(actual, expected).length, 0);
+                });
+            });
         });
     });
 });
