@@ -122,6 +122,9 @@ module.exports = function(sequelize, DataTypes) {
                         }
                     }
                 };
+            },
+            orderByRandom: {
+                order: [sequelize.fn('RAND')]
             }
         }
     });

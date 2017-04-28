@@ -109,4 +109,14 @@ describe('Video', function() {
             });
         });
     });
+
+    describe('orderByRandom', function() {
+        it(`should return different results for the same query`, function() {
+            const q1 = Video.scope('orderByRandom').findAll({limit: 5});
+            const q2 = Video.scope('orderByRandom').findAll({limit: 5});
+            return Promise.join(q1, q2, function(first, second) {
+                assert(!_.isEqual(first, second));
+            });
+        });
+    });
 });

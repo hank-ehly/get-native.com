@@ -68,7 +68,8 @@ module.exports.show = (req, res, next) => {
     const relatedVideos = Video.scope([
         {method: ['includeSubcategoryNameAndId', Subcategory]},
         {method: ['includeSpeakerName', Speaker]},
-        {method: ['relatedToVideo', req.params.id]}
+        {method: ['relatedToVideo', req.params.id]},
+        'orderByRandom'
     ]).findAll({
         attributes: [k.Attr.Id, relatedCreatedAt, k.Attr.Length, k.Attr.PictureUrl, k.Attr.LoopCount, relatedCued],
         limit: 3
