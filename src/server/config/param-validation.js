@@ -140,6 +140,14 @@ module.exports = {
                 time_zone_offset: Joi.string().regex(regex.timeZoneOffset)
             }
         },
+        dequeue: {
+            headers: {
+                authorization: Joi.string().required()
+            },
+            params: {
+                id: Joi.number().integer().min(1).required()
+            }
+        },
         like: {
             headers: {
                 authorization: Joi.string().required()
