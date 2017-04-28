@@ -6,10 +6,12 @@
  */
 
 const models  = require('../../app/models');
-const Video   = models.Video;
 const Account = models.Account;
-const chance  = require('chance').Chance();
+const Video   = models.Video;
+
 const Promise = require('bluebird');
+const chance  = require('chance').Chance();
+const _       = require('lodash');
 
 module.exports = {
     up: function(queryInterface, Sequelize) {
@@ -35,7 +37,9 @@ module.exports = {
                 }
             }
 
-            return queryInterface.bulkInsert('cued_videos', cuedVideos);
+            const uniqueCuedVideos = _.uniqWith(cuedVideos, _.isEqual);
+
+            return queryInterface.bulkInsert('cued_videos', uniqueCuedVideos);
         });
     },
 
