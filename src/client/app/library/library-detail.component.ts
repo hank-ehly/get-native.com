@@ -57,6 +57,12 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
 
+        const params = {
+            params: {
+                id: _.toNumber(this.route.snapshot.params['id'])
+            }
+        };
+
         this.navbar.backButtonTitle$.next('Back');
         this.navbar.studyOptionsVisible$.next(true);
 
@@ -67,12 +73,10 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 .do(this.updateLikeCount.bind(this))
                 .do(this.updateLiked.bind(this))
                 .debounceTime(300).distinctUntilChanged().mergeMap(liked => {
-                return this.http.request(liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO, {
-                    params: {
-                        id: _.toNumber(this.route.snapshot.params['id'])
-                    }
-                });
-            }).subscribe()
+                return this.http.request(liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO, params);
+            }).subscribe(),
+
+            this.navbar.queue$.mergeMap(() => this.http.request(APIHandle.QUEUE_VIDEO, params)).subscribe()
         );
     }
 

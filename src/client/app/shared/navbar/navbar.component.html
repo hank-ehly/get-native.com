@@ -24,7 +24,7 @@
 
         <div class="study-options" *ngIf="studyOptionsVisible$ | async">
             <button class="button button--opaque study-option study-option_start">START</button>
-            <button class="button study-option study-option_save">SAVE</button>
+            <button class="button study-option study-option_save" (click)="onClickQueue()">SAVE</button>
         </div>
     </div>
 

@@ -19,6 +19,8 @@ export class NavbarService {
     studyOptionsVisible$ = new Subject<boolean>();
     searchBarVisible$    = new Subject<boolean>();
 
+    queue$               = new Subject<void>();
+
     updateQuery(value: string): void {
         this.query$.next(_.trim(value));
     }

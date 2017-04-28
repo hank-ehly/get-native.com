@@ -87,7 +87,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     onShowLoginModal(e: any): void {
         e.preventDefault();
-        this.logger.debug(this, 'requestShowLoginModal');
+        this.logger.debug(this, 'onShowLoginModal');
         this.loginModal.showModal();
     }
 
@@ -102,6 +102,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     onClickCloseSearch(): void {
         this.navbar.searchBarVisible$.next(false);
+    }
+
+    onClickQueue(): void {
+        this.logger.debug(this, 'onClickQueue');
+        this.navbar.queue$.next();
     }
 
     /* MOCK */
