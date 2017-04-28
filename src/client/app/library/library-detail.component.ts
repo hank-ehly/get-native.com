@@ -57,7 +57,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
 
-        this.navbar.backButtonTitle$.next('Back to Library');
+        this.navbar.backButtonTitle$.next('Back');
         this.navbar.studyOptionsVisible$.next(true);
 
         this.subscriptions.push(
