@@ -5,6 +5,8 @@
  * Created by henryehly on 2017/02/24.
  */
 
+const _ = require('lodash');
+
 module.exports = function(sequelize, DataTypes) {
     const Subcategory = sequelize.define('Subcategory', {
         name: {
@@ -42,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
             where: {category_id: categoryId},
             attributes: ['id']
         }).then(subcategories => {
-            return subcategories.map(s => s.id);
+            return _.map(subcategories, 'id');
         });
     }
 
