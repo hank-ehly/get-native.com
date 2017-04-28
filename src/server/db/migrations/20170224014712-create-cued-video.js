@@ -16,7 +16,8 @@ module.exports = {
                     key: 'id'
                 },
                 onUpdate: 'restrict',
-                onDelete: 'restrict'
+                onDelete: 'restrict',
+                primaryKey: true
             },
             account_id: {
                 type: Sequelize.INTEGER,
@@ -26,7 +27,8 @@ module.exports = {
                     key: 'id'
                 },
                 onUpdate: 'restrict',
-                onDelete: 'restrict'
+                onDelete: 'restrict',
+                primaryKey: true
             },
             created_at: {
                 allowNull: false,
