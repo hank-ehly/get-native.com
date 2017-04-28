@@ -988,6 +988,26 @@ Status: 200 OK
 }
 ```
 
+# POST /videos/:id/dequeue
+
+Remove a video with an id of `:id` from the authenticating account study queue.
+
+```
+POST https://api.get-native.com/videos/12345/dequeue
+```
+
+**Parameters**
+
+| Parameter 	| Description                                                     	| Required 	| Default 	|
+|-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
+| id         	| The unique ID of the video to remove from the queue               |     √    	|         	|
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
 # POST /videos/:id/like
 
 Like a video.
@@ -1002,6 +1022,26 @@ POST https://api.get-native.com/videos/12345/like
 |-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
 | id         	| The unique ID of the video to like                	              |     √    	|         	|
 
+
+**Response**
+
+```
+Status: 204 No Content
+```
+
+# POST /videos/:id/queue
+
+Add a video with an id of `:id` to the authenticating account study queue.
+
+```
+POST https://api.get-native.com/videos/12345/queue
+```
+
+**Parameters**
+
+| Parameter 	| Description                                                     	| Required 	| Default 	|
+|-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
+| id         	| The unique ID of the video to add to the queue                    |     √    	|         	|
 
 **Response**
 
