@@ -15,11 +15,13 @@ export class NavbarService {
 
     title$               = new Subject<string>();
     backButtonTitle$     = new BehaviorSubject<string>(null);
+    queueButtonTitle$    = new BehaviorSubject<string>('JUST A SEC..');
 
     studyOptionsVisible$ = new Subject<boolean>();
     searchBarVisible$    = new Subject<boolean>();
+    studyOptionsEnabled$ = new Subject<boolean>();
 
-    queue$               = new Subject<void>();
+    onClickQueue$        = new Subject<void>();
 
     updateQuery(value: string): void {
         this.query$.next(_.trim(value));
