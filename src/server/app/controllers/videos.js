@@ -140,3 +140,15 @@ module.exports.queue = (req, res, next) => {
         res.sendStatus(204);
     }).catch(next);
 };
+
+module.exports.dequeue = (req, res, next) => {
+    return CuedVideo.destroy({
+        where: {
+            video_id: req.params.id,
+            account_id: req.accountId
+        },
+        limit: 1
+    }).then(() => {
+        res.sendStatus(204);
+    }).catch(next);
+};
