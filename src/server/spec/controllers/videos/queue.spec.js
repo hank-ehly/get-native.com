@@ -72,8 +72,6 @@ describe('POST /videos/:id/queue', function() {
 
         it(`should not contain a response body`, function() {
             return request(server).post(`/videos/${sampleVideo.id}/queue`).set('authorization', authorization).then(function(response) {
-                // superagent returns {} if the body is undefined, so we must check for that
-                // behind the scenes: this.body = res.body !== undefined ? res.body : {};
                 assert.equal(_.size(response.body), 0);
             });
         });
