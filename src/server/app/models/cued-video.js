@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     const CuedVideo = sequelize.define('CuedVideo', {}, {
         tableName: 'cued_videos',
         underscored: true,
+        updatedAt: false,
         associations: function(models) {
             models.CuedVideo.belongsTo(models.Account);
             models.CuedVideo.belongsTo(models.Video);
