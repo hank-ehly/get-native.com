@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
 import { Transcripts } from '../../core/entities/transcripts';
 import { Transcript } from '../../core/entities/transcript';
@@ -13,6 +13,7 @@ import { Collocation } from '../../core/entities/collocation';
 import { LangService } from '../../core/lang/lang.service';
 import { Logger } from '../../core/logger/logger';
 
+import { Subject } from 'rxjs/Subject';
 import * as _ from 'lodash';
 
 @Component({
@@ -22,6 +23,8 @@ import * as _ from 'lodash';
     styleUrls: ['transcript.component.css']
 })
 export class TranscriptComponent implements OnInit, OnDestroy {
+    @ViewChild('tabEls') tabEls: ElementRef;
+
     get transcripts(): Transcripts {
         return this._transcripts;
     }
@@ -42,17 +45,23 @@ export class TranscriptComponent implements OnInit, OnDestroy {
 
         this.logger.debug(this, 'set transcripts', transcripts);
 
-        /* Todo: How can you set the activeTab here? */
-
-        this.selectedTranscript = _.first(transcripts.records);
-
-        /* Todo: Set active collocation */
+        this.selectedTranscript  = _.first(transcripts.records);
         this.selectedCollocation = _.first(this.selectedTranscript.collocations.records);
+
+        /* Hack to access first LI element after setting transcripts */
+        setTimeout(() => this.selectedTab$.next(<HTMLLIElement>_.first(this.tabEls.nativeElement.children)), 0);
     };
 
     tabs: any[] = [];
 
-    selectedTab: HTMLLIElement;
+    selectedTab$ = new Subject<HTMLLIElement>();
+
+    sliderPosition$ = this.selectedTab$.map(t => {
+        return {
+            left: `${t.offsetLeft}px`, width: `${t.offsetWidth}px`
+        };
+    });
+
     selectedTranscript: Transcript;
     selectedCollocation: Collocation;
 
@@ -69,18 +78,10 @@ export class TranscriptComponent implements OnInit, OnDestroy {
         this.logger.debug(this, 'OnDestroy');
     }
 
-    getSliderPosition() {
-        if (!this.selectedTab) return null;
-
-        return {
-            left: `${this.selectedTab.offsetLeft }px`, width: `${this.selectedTab.offsetWidth}px`
-        };
-    }
-
     onClickTab(tab: any, e: MouseEvent): void {
         this.logger.debug(this, 'onClickTab', tab.transcript);
 
-        this.selectedTab = <HTMLLIElement>e.target;
+        this.selectedTab$.next(<HTMLLIElement>e.target);
         this.selectedTranscript = tab.transcript;
 
         /* Todo: If previous selection exists, use that */
