@@ -29,6 +29,7 @@ router.get(  '/speakers/:id',                ValidateParams(pv.speakers.show),  
 router.get(  '/videos',                      ValidateParams(pv.videos.index),                 SetAccountId, Authenticate, ctrl.videos.index);
 router.get(  '/videos/:id',                  ValidateParams(pv.videos.show),                  SetAccountId, Authenticate, ctrl.videos.show);
 router.post( '/videos/:id/like',             ValidateParams(pv.videos.like),                  SetAccountId, Authenticate, ctrl.videos.like);
+router.post( '/videos/:id/queue',            ValidateParams(pv.videos.queue),                 SetAccountId, Authenticate, ctrl.videos.queue);
 router.post( '/videos/:id/unlike',           ValidateParams(pv.videos.unlike),                SetAccountId, Authenticate, ctrl.videos.unlike);
 
 module.exports = router;

@@ -148,6 +148,14 @@ module.exports = {
                 id: Joi.number().integer().min(1).required()
             }
         },
+        queue: {
+            headers: {
+                authorization: Joi.string().required()
+            },
+            params: {
+                id: Joi.number().integer().min(1).required()
+            }
+        },
         unlike: {
             headers: {
                 authorization: Joi.string().required()
