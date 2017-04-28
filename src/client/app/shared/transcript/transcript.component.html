@@ -1,14 +1,14 @@
 <div class="component-frame">
 
     <div class="tabs-frame">
-        <ul class="tabs">
+        <ul class="tabs" #tabEls>
             <li class="tabs__tab" *ngFor="let tab of tabs" (click)="onClickTab(tab, $event)"
                 [ngClass]="{tabs__tab_active: tab.transcript === selectedTranscript}">
                 {{ tab.title }}
             </li>
         </ul>
 
-        <div class="tab-slider" [ngStyle]="getSliderPosition()"></div>
+        <div class="tab-slider" [ngStyle]="sliderPosition$ | async"></div>
     </div>
 
     <ul class="tab-content">
