@@ -242,8 +242,9 @@ describe('GET /videos/:id', function() {
         });
 
         it(`should return different related videos if the same video is requested twice`, function() {
-            const request = request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization);
-            return Promise.join(request, request, function(first, second) {
+            const r1 = request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization);
+            const r2 = request(server).get(`/videos/${requestVideoId}`).set('authorization', authorization);
+            return Promise.join(r1, r2, function(first, second) {
                 assert(!_.isEqual(first.body.related_videos, second.body.related_videos));
             });
         });
