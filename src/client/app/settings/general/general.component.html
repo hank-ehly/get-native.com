@@ -12,7 +12,7 @@
 
         <div class="form__button-group" *ngIf="isEditing$ | async">
             <button class="button button--opaque" type="submit" [disabled]="!emailForm.valid">SAVE</button>
-            <button class="button button_hollow form__cancel-button" (click)="isEditing$.next(false)">CANCEL</button>
+            <button class="button button--hollow form__cancel-button" (click)="isEditing$.next(false)">CANCEL</button>
         </div>
     </div>
 </form>

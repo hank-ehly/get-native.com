@@ -56,8 +56,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     backButtonTitle$ = this.navbar.backButtonTitle$;
 
     progressBarHidden: boolean  = true;
+
     studyOptionsVisible$ = this.navbar.studyOptionsVisible$;
+    studyOptionsEnabled$ = this.navbar.studyOptionsEnabled$;
+
     searchBarVisible$ = this.navbar.searchBarVisible$.share();
+
+    queueButtonTitle$ = this.navbar.queueButtonTitle$;
 
     hasUnreadNotifications: boolean = false;
 
@@ -106,7 +111,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     onClickQueue(): void {
         this.logger.debug(this, 'onClickQueue');
-        this.navbar.queue$.next();
+        this.navbar.onClickQueue$.next();
     }
 
     /* MOCK */

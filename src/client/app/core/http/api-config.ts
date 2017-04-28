@@ -92,5 +92,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/videos/:id/queue',
         isProtected: true
+    }],
+    [APIHandle.DEQUEUE_VIDEO, {
+        method: RequestMethod.Post,
+        url: '/videos/:id/dequeue',
+        isProtected: true
     }]
 ]);

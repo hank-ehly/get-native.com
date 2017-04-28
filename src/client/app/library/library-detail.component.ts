@@ -8,14 +8,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Video } from '../core/entities/video';
-import { Logger } from '../core/logger/logger';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
 import { APIHandle } from '../core/http/api-handle';
+import { Logger } from '../core/logger/logger';
+import { Video } from '../core/entities/video';
 
 import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/debounceTime';
@@ -23,7 +22,6 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/pluck';
-
 import * as _ from 'lodash';
 
 @Component({
@@ -36,6 +34,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     likedChange$ = new Subject<boolean>();
     liked: boolean;
 
+    queued: boolean;
+
     likeCount: number;
 
     subscriptions: Subscription[] = [];
@@ -47,8 +47,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             }
         });
     }).share().do((v: Video) => {
+        this.liked     = v.liked;
         this.likeCount = v.like_count;
-        this.liked = v.liked;
     });
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute) {
@@ -67,16 +67,38 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.navbar.studyOptionsVisible$.next(true);
 
         this.subscriptions.push(
-            this.video$.pluck('subcategory', 'name').subscribe((t: string) => this.navbar.title$.next(t)),
+            this.video$
+                .pluck('subcategory', 'name')
+                .subscribe((t: string) => this.navbar.title$.next(t)),
 
-            this.likedChange$.filter(_.isBoolean)
+            this.likedChange$
+                .filter(_.isBoolean)
                 .do(this.updateLikeCount.bind(this))
                 .do(this.updateLiked.bind(this))
-                .debounceTime(300).distinctUntilChanged().mergeMap(liked => {
-                return this.http.request(liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO, params);
-            }).subscribe(),
+                .debounceTime(300)
+                .distinctUntilChanged()
+                .map(liked => liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO)
+                .mergeMap(handle => this.http.request(handle, params))
+                .subscribe(),
 
-            this.navbar.queue$.mergeMap(() => this.http.request(APIHandle.QUEUE_VIDEO, params)).subscribe()
+            this.navbar.onClickQueue$
+                .do(() => this.queued = !this.queued)
+                .do(() => this.navbar.studyOptionsEnabled$.next(false))
+                .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
+                .mergeMap(handle => this.http.request(handle, params))
+                .do(() => this.navbar.studyOptionsEnabled$.next(true))
+                .map(() => this.queued ? 'DEQUEUE' : 'ADD TO QUEUE')
+                .subscribe(this.navbar.queueButtonTitle$),
+
+            this.video$
+                .map(_.isPlainObject)
+                .subscribe(this.navbar.studyOptionsEnabled$),
+
+            this.video$
+                .pluck('cued')
+                .do((cued: boolean) => this.queued = cued)
+                .map((cued: boolean) => cued ? 'DEQUEUE' : 'ADD TO QUEUE')
+                .subscribe(this.navbar.queueButtonTitle$)
         );
     }
 
@@ -85,6 +107,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
         this.navbar.studyOptionsVisible$.next(false);
         this.navbar.backButtonTitle$.next(null);
+        this.navbar.queueButtonTitle$.next('JUST A SEC..');
 
         _.each(this.subscriptions, s => s.unsubscribe());
     }
