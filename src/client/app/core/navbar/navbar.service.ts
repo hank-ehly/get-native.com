@@ -8,16 +8,16 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/mapTo';
-
 import * as _ from 'lodash';
 
 export class NavbarService {
-    title$               = new Subject<string>();
     query$               = new Subject<string>();
 
-    backButtonTitle$     = new Subject<any>();
+    title$               = new Subject<string>();
+    backButtonTitle$     = new BehaviorSubject<string>(null);
 
-    searchBarVisible$ = new BehaviorSubject<boolean>(false);
+    studyOptionsVisible$ = new Subject<boolean>();
+    searchBarVisible$    = new Subject<boolean>();
 
     updateQuery(value: string): void {
         this.query$.next(_.trim(value));

@@ -52,15 +52,14 @@ import { Subject } from 'rxjs/Subject';
 export class NavbarComponent implements OnInit, OnDestroy {
     @Input() authenticated: boolean;
 
-    progressBarHidden: boolean  = true;
-    studyOptionsHidden: boolean = true;
-
-    hasUnreadNotifications: boolean = false;
     title$ = this.navbar.title$;
+    backButtonTitle$ = this.navbar.backButtonTitle$;
 
+    progressBarHidden: boolean  = true;
+    studyOptionsVisible$ = this.navbar.studyOptionsVisible$;
     searchBarVisible$ = this.navbar.searchBarVisible$.share();
 
-    backButtonTitle$ = this.navbar.backButtonTitle$;
+    hasUnreadNotifications: boolean = false;
 
     private subscriptions: Subscription[] = [];
 
