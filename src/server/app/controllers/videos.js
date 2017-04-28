@@ -5,22 +5,18 @@
  * Created by henryehly on 2017/01/18.
  */
 
+const services        = require('../services');
+const ResponseWrapper = services.ResponseWrapper;
 const db              = require('../models');
-const Video           = db.Video;
-const Speaker         = db.Speaker;
-const Category        = db.Category;
+const ModelHelper     = services.Model(db);
 const Subcategory     = db.Subcategory;
-const Language        = db.Language;
-const Like            = db.Like;
-const Transcript      = db.Transcript;
-const Collocation     = db.Collocation;
-const UsageExample    = db.UsageExample;
 const CuedVideo       = db.CuedVideo;
-const ResponseWrapper = require('../services').ResponseWrapper;
-const AuthHelper      = require('../services').Auth;
-const Promise         = require('bluebird');
-const ModelHelper     = require('../services').Model(db);
+const Speaker         = db.Speaker;
+const Video           = db.Video;
+const Like            = db.Like;
 const k               = require('../../config/keys.json');
+
+const Promise         = require('bluebird');
 
 module.exports.index = (req, res, next) => {
     const conditions = {language_code: req.query.lang || 'en'};
@@ -134,4 +130,13 @@ module.exports.unlike = (req, res, next) => {
         res.status(404);
         next(e);
     });
+};
+
+module.exports.queue = (req, res, next) => {
+    return CuedVideo.create({
+        video_id: req.params.id,
+        account_id: req.accountId
+    }).then(() => {
+        res.sendStatus(204);
+    }).catch(next);
 };
