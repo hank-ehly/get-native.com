@@ -87,5 +87,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/resend_confirmation_email',
         isProtected: false
+    }],
+    [APIHandle.QUEUE_VIDEO, {
+        method: RequestMethod.Post,
+        url: '/videos/:id/queue',
+        isProtected: true
     }]
 ]);
