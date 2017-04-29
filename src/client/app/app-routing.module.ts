@@ -32,7 +32,7 @@ import { StudyComponent } from './study/study.component';
 
 const routes: Routes = [
     {
-        path: '', canActivate: [AuthGuard], component: HomeComponent, data: {title: 'Home'}
+        path: '', canActivate: [AuthGuard], component: HomeComponent
     },
     {
         path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {title: 'Dashboard'}

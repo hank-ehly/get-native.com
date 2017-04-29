@@ -22,12 +22,12 @@ export const APIConfig = new Map<APIHandle, any>([
     }],
     [APIHandle.STUDY_STATS, {
         method: RequestMethod.Get,
-        url: '/study/stats/:lang',
+        url: '/study/:lang/stats',
         isProtected: true
     }],
     [APIHandle.WRITING_ANSWERS, {
         method: RequestMethod.Get,
-        url: '/study/writing_answers/:lang',
+        url: '/study/:lang/writing_answers',
         isProtected: true,
         permitURLSearchParams: ['since', 'max_id', 'time_zone_offset']
     }],
