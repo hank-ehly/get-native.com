@@ -91,6 +91,15 @@ module.exports = {
         }
     },
     study: {
+        createStudySession: {
+            headers: {
+                authorization: Joi.string().required()
+            },
+            body: {
+                video_id: Joi.number().integer().min(1).required(),
+                time: Joi.number().integer().min(0).required()
+            }
+        },
         stats: {
             headers: {
                 authorization: Joi.string().required()

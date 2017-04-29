@@ -45,7 +45,7 @@ describe('GET /study/stats', function() {
     describe('response.headers', function() {
         it('should respond with an X-GN-Auth-Token header', function() {
             return request(server).get('/study/en/stats').set('authorization', authorization).then(function(response) {
-                assert(response.header['x-gn-auth-token'].length > 0);
+                assert(_.gt(response.header['x-gn-auth-token'].length, 0));
             });
         });
 

@@ -16,6 +16,7 @@
         "EmailVerified": "email_verified",
         "Id": "id",
         "IsSilhouettePicture": "is_silhouette_picture",
+        "LanguageCode": "language_code",
         "Length": "length",
         "LoopCount": "loop_count",
         "Name": "name",
@@ -23,8 +24,10 @@
         "Password": "password",
         "PictureUrl": "picture_url",
         "StudySessionId": "study_session_id",
+        "Time": "time",
         "Token": "token",
         "UpdatedAt": "updated_at",
+        "VideoId": "video_id",
         "VideoUrl": "video_url"
     },
     "Client": {
@@ -55,11 +58,20 @@
         "Production": "production"
     },
     "Header": {
-        "AccessControlAllowOrigin": "allow-origin"
+        "AccessControlAllowOrigin": "allow-origin",
+        "AuthExpire": "x-gn-auth-expire",
+        "AuthToken": "x-gn-auth-token"
     },
     "Model": {
         "WritingAnswer": "WritingAnswer",
-        "Video": "Video"
+        "WritingQuestion": "WritingQuestion",
+        "CuedVideo": "CuedVideo",
+        "StudySession": "StudySession",
+        "Account": "Account",
+        "Video": "Video",
+        "Transcript": "Transcript",
+        "Collocation": "Collocation",
+        "UsageExample": "UsageExample"
     },
     "NODE_ENV": "NODE_ENV",
     "NoReply": "",

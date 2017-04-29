@@ -5,6 +5,8 @@
  * Created by henryehly on 2017/02/24.
  */
 
+const k = require('../../config/keys.json');
+
 module.exports = function(sequelize, DataTypes) {
     const Video = sequelize.define('Video', {
         length: DataTypes.INTEGER,
@@ -80,19 +82,19 @@ module.exports = function(sequelize, DataTypes) {
             orderMostViewed: {
                 order: [['loop_count', 'DESC']]
             },
-            includeTranscripts: function(db) {
+            includeTranscripts: function() {
                 return {
                     include: [
                         {
-                            model: db.Transcript,
+                            model: sequelize.model(k.Model.Transcript),
                             attributes: ['id', 'text', 'language_code'],
                             as: 'transcripts',
                             include: {
-                                model: db.Collocation,
+                                model: sequelize.model(k.Model.Collocation),
                                 attributes: ['text', 'description', 'ipa_spelling'],
                                 as: 'collocations',
                                 include: {
-                                    model: db.UsageExample,
+                                    model: sequelize.model(k.Model.UsageExample),
                                     attributes: ['text'],
                                     as: 'usage_examples'
                                 }

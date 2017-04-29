@@ -5,18 +5,22 @@
  * Created by henryehly on 2017/01/18.
  */
 
-const services        = require('../services');
-const ResponseWrapper = services.ResponseWrapper;
-const Auth            = services.Auth;
-const db              = require('../models');
-const ModelService    = services.Model(db);
-const WritingAnswer   = db.WritingAnswer;
-const WritingQuestion = db.WritingQuestion;
-const Account         = db.Account;
-const GetNativeError  = services.GetNativeError;
 const k               = require('../../config/keys.json');
+const services        = require('../services');
+const ResponseWrapper = services['ResponseWrapper'];
+const GetNativeError  = services['GetNativeError'];
+const Auth            = services['Auth'];
+const db              = require('../models');
+const ModelService    = services['Model'](db);
+const WritingAnswer   = db[k.Model.WritingAnswer];
+const WritingQuestion = db[k.Model.WritingQuestion];
+const QueuedVideo     = db[k.Model.CuedVideo];
+const StudySession    = db[k.Model.StudySession];
+const Account         = db[k.Model.Account];
+const Video           = db[k.Model.Video];
 
 const Promise         = require('bluebird');
+const _               = require('lodash');
 
 module.exports.stats = (req, res, next) => {
     Account.findById(req.accountId).then(account => {
@@ -68,5 +72,38 @@ module.exports.writing_answers = (req, res, next) => {
         }));
 
         res.send(answersAsJson);
+    }).catch(next);
+};
+
+module.exports.createStudySession = (req, res, next) => {
+    const videoId = req.body[k.Attr.VideoId];
+    const time    = req.body[k.Attr.Time];
+
+    const video = Video.scope('includeTranscripts').findById(videoId, {
+        attributes: [
+            k.Attr.Id, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length
+        ]
+    });
+
+    const queuedVideo = QueuedVideo.create({
+        account_id: req.accountId,
+        video_id: videoId
+    });
+
+    const studySession = StudySession.create({
+        account_id: req.accountId,
+        video_id: videoId,
+        time: time
+    });
+
+    return Promise.join(video, queuedVideo, studySession, function(v) {
+        v = v.get({plain: true});
+
+        v.transcripts = ResponseWrapper.wrap(_.map(v.transcripts, t => {
+            t.collocations = ResponseWrapper.deepWrap(t.collocations, ['usage_examples']);
+            return t;
+        }));
+
+        res.status(200).send(v);
     }).catch(next);
 };
