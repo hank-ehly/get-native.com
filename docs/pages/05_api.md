@@ -681,7 +681,7 @@ POST https://api.get-native.com/study
 }
 ```
 
-# GET /study/stats/:lang
+# GET /study/:lang/stats
 
 Returns the authenticating users' aggregated study statistics.
 
@@ -754,7 +754,7 @@ before sending the request, calculations are performed server side for maximum e
 Status: 204 No Content
 ```
 
-# GET /study/writing_answers/:lang
+# GET /study/:lang/writing_answers
 
 ```
 GET https://api.get-native.com/study/writing_answers/ja?since=1483658645131
@@ -765,7 +765,7 @@ GET https://api.get-native.com/study/writing_answers/ja?since=1483658645131
 | Parameter         	| Description                                                    	| Required 	| Default 	|
 |-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
 | since  	            | UTC datetime specifying the oldest possible search result      	|          	|         	|
-| max_id  	          | UTC datetime specifying the oldest possible search result      	|          	|         	|
+| max_id  	          | The unique ID of the most recently displayed writing answer    	|          	|         	|
 | lang     	          | The language for which the writing answers are presented       	|     √    	|         	|
 
 **Response**
