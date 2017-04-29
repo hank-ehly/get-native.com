@@ -640,43 +640,42 @@ POST https://api.get-native.com/study
 | id         	| Int64  	| The unique ID of the newly created study session                  	|
 | video      	| Video  	| The video object corresponding to the newly created study session 	|
 
+```
+Status: 200 OK
+```
 ```json
 {
-	"id": 123456,
-	"video": {
-		"cued": true,
-			"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-			"id": 2244994983,
-			"speaker": {
-				"id": 123456,
-				"description": "Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.",
-				"name": "Harold Ford",
-				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
+	"id": 2244994983,
+	"picture_url": "XXX",
+	"video_url": "XXX",
+	"length": 68,
+	"transcripts": {
+		"count": 2,
+		"records": [
+			{
+				"id": 123,
+				"text": "This is the English transcript. This is the text that will be displayed on the video detail page.",
 				"lang": "en",
-				"gender": "male",
-				"location": "Kansas City, MO"
-			},
-			"lang": "en",
-			"subcategory": {
-				"id": 123456,
-				"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-				"name": "Talking to customers"
-			},
-			"loop_count": 7156,
-			"loop_velocity": 2.4960000000000004,
-			"thumbnail_image_url": "TODO",
-			"video_url": "TODO",
-			"has_related_videos": true,
-			"likes": {
-				"records": [
-					{
-						"created_at": "Sat Dec 14 04:35:55 +0000 2015",
-						"id": 456
-					}
-				],
-				"count": 10
-			},
-			"length": 68
+				"collocations": {
+					"count": 3,
+					"records": [
+						{
+							"text": "This is the text",
+							"description": "This is the description",
+							"ipa_spelling": "ˈðɪs ˈɪz ðə ˈtɛkst",
+							"usage_examples": {
+								"count": 3,
+								"records": [
+									{"text": "This is the text in which will appear.."},
+									{"text": "I will tell you that this is the text."},
+									{"text": "I don't really know if this is the text."}
+								]
+							}
+						}
+					]
+				}
+			}
+		]
 	}
 }
 ```
@@ -970,7 +969,7 @@ Status: 200 OK
 						{
 							"text": "This is the text",
 							"description": "This is the description",
-							"pronunciation": "ˈðɪs ˈɪz ðə ˈtɛkst",
+							"ipa_spelling": "ˈðɪs ˈɪz ðə ˈtɛkst",
 							"usage_examples": {
 								"count": 3,
 								"records": [

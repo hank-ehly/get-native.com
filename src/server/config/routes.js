@@ -23,6 +23,7 @@ router.post( '/confirm_email',               ValidateParams(pv.auth.confirmEmail
 router.post( '/login',                       ValidateParams(pv.auth.login),                                               ctrl.auth.login);
 router.post( '/register',                    ValidateParams(pv.auth.register),                                            ctrl.auth.register);
 router.post( '/resend_confirmation_email',   ValidateParams(pv.auth.resendConfirmationEmail),                             ctrl.auth.resendConfirmationEmail);
+router.post( '/study',                       ValidateParams(pv.study.createStudySession),     SetAccountId, Authenticate, ctrl.study.createStudySession);
 router.get(  '/study/:lang/stats',           ValidateParams(pv.study.stats),                  SetAccountId, Authenticate, ctrl.study.stats);
 router.get(  '/study/:lang/writing_answers', ValidateParams(pv.study.writing_answers),        SetAccountId, Authenticate, ctrl.study.writing_answers);
 router.get(  '/speakers/:id',                ValidateParams(pv.speakers.show),                SetAccountId, Authenticate, ctrl.speakers.show);

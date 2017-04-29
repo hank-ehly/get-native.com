@@ -71,7 +71,7 @@ module.exports.show = (req, res, next) => {
         limit: 3
     }).catch(next);
 
-    const video = Video.scope({method: ['includeTranscripts', db]}).findById(+req.params.id, {
+    const video = Video.scope('includeTranscripts').findById(+req.params.id, {
         include: [
             {model: Speaker, attributes: [k.Attr.Id, k.Attr.Description, k.Attr.Name, k.Attr.PictureUrl], as: 'speaker'},
             {model: Subcategory, attributes: [k.Attr.Id, k.Attr.Name], as: 'subcategory'}
