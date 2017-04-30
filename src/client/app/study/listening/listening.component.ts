@@ -12,7 +12,6 @@ import { StudySessionService } from '../../core/study-session/study-session.serv
 import { Transcripts } from '../../core/entities/transcripts';
 import { Logger } from '../../core/logger/logger';
 
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/take';
 
@@ -22,12 +21,10 @@ import 'rxjs/add/operator/take';
     styleUrls: ['listening.component.css']
 })
 export class ListeningComponent implements OnInit, OnDestroy {
-    transcripts$: Observable<Transcripts>;
-    videoUrl$: Observable<string>;
+    transcripts: Transcripts = this.studySession.current.video.transcripts;
+    src: string = this.studySession.current.video.video_url;
 
-    constructor(private logger: Logger, private route: ActivatedRoute, private studySession: StudySessionService, private router: Router) {
-        this.videoUrl$    = this.route.data.pluck('video', 'url');
-        this.transcripts$ = this.route.data.pluck('video', 'transcripts');
+    constructor(private logger: Logger, private studySession: StudySessionService, private router: Router) {
     }
 
     ngOnInit(): void {

@@ -22,16 +22,15 @@ export class ListeningResolver implements Resolve<Video> {
     constructor(private http: HttpService, private studySession: StudySessionService) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Video> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<void> {
+        // todo: if you refresh, you still send another request for the video. Couldn't you instead use the cache?
+        // consider: you may have previously saved data?
         return this.http.request(APIHandle.VIDEO, {
             params: {
                 id: this.studySession.current.session.video_id
             }
         }).map((video: Video) => {
             this.studySession.updateCurrent({video: video});
-            return video;
-        }).toPromise().catch(() => {
-            return null;
-        });
+        }).toPromise();
     }
 }
