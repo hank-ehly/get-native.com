@@ -19,7 +19,7 @@ export class NavbarService {
 
     studyOptionsVisible$ = new Subject<boolean>();
     searchBarVisible$    = new Subject<boolean>();
-    progressBarVisible$  = new BehaviorSubject<boolean>(false);
+    progressBarVisible$  = new Subject<boolean>();
     studyOptionsEnabled$ = new Subject<boolean>();
 
     onClickQueue$        = new Subject<void>();
