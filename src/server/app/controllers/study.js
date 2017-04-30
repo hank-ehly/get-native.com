@@ -85,9 +85,11 @@ module.exports.createStudySession = (req, res, next) => {
         ]
     });
 
-    const queuedVideo = QueuedVideo.create({
-        account_id: req.accountId,
-        video_id: videoId
+    const queuedVideo = QueuedVideo.findOrCreate({
+        where: {
+            account_id: req.accountId,
+            video_id: videoId
+        }
     });
 
     const studySession = StudySession.create({
