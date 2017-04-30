@@ -25,8 +25,8 @@ export class SpeakingComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
-        this.studySession.sectionTimer.subscribe(this.studySession.progress.speaking$);
-        this.studySession.sectionTimer.subscribe(null, null, this.onComplete.bind(this));
+        this.studySession.timer.subscribe(this.studySession.progress.speaking$);
+        this.studySession.timer.subscribe(null, null, this.onComplete.bind(this));
     }
 
     ngOnDestroy(): void {

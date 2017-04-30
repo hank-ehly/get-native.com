@@ -131,8 +131,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     private onClickStart(): void {
         this.studySession.start({
-            videoId: this.videoId,
-            studyTime: 50
+            video_id: this.videoId,
+            study_time: 50
         }).toPromise().then(() => {
             return this.router.navigate(['/study']);
         }).then(() => {
