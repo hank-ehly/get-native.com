@@ -1,4 +1,4 @@
 <main class="main">
-    <gn-video-player></gn-video-player>
-    <gn-transcript></gn-transcript>
+    <gn-video-player [src]="videoUrl$ | async"></gn-video-player>
+    <gn-transcript [transcripts]="transcripts$ | async"></gn-transcript>
 </main>
