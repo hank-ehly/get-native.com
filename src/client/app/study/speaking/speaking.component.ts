@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
@@ -17,7 +17,7 @@ import { Transcripts } from '../../core/entities/transcripts';
     templateUrl: 'speaking.component.html',
     styleUrls: ['speaking.component.css']
 })
-export class SpeakingComponent implements OnInit {
+export class SpeakingComponent implements OnInit, OnDestroy {
     transcripts: Transcripts = this.studySession.current.video.transcripts;
 
     constructor(private logger: Logger, private router: Router, private studySession: StudySessionService) {
@@ -27,6 +27,10 @@ export class SpeakingComponent implements OnInit {
         this.logger.debug(this, 'OnInit');
         this.studySession.sectionTimer.subscribe(this.studySession.progress.speaking$);
         this.studySession.sectionTimer.subscribe(null, null, this.onComplete.bind(this));
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
     }
 
     onComplete(): void {
