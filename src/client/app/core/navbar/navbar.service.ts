@@ -22,6 +22,7 @@ export class NavbarService {
     studyOptionsEnabled$ = new Subject<boolean>();
 
     onClickQueue$        = new Subject<void>();
+    onClickStart$        = new Subject<void>();
 
     updateQuery(value: string): void {
         this.query$.next(_.trim(value));

@@ -97,5 +97,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/videos/:id/dequeue',
         isProtected: true
+    }],
+    [APIHandle.START_STUDY_SESSION, {
+        method: RequestMethod.Post,
+        url: '/study',
+        isProtected: true
     }]
 ]);

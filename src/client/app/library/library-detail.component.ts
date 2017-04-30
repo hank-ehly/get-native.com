@@ -6,7 +6,7 @@
  */
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
@@ -36,6 +36,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     queued: boolean;
 
+    videoId: number = _.toNumber(this.route.snapshot.params['id']);
+
     likeCount: number;
 
     subscriptions: Subscription[] = [];
@@ -51,7 +53,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.likeCount = v.like_count;
     });
 
-    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute) {
+    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -59,7 +62,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
         const params = {
             params: {
-                id: _.toNumber(this.route.snapshot.params['id'])
+                id: this.videoId
             }
         };
 
@@ -84,11 +87,15 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             this.navbar.onClickQueue$
                 .do(() => this.queued = !this.queued)
                 .do(() => this.navbar.studyOptionsEnabled$.next(false))
+                .do(() => this.navbar.queueButtonTitle$.next('JUST A SEC..'))
                 .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
                 .mergeMap(handle => this.http.request(handle, params))
                 .do(() => this.navbar.studyOptionsEnabled$.next(true))
                 .map(() => this.queued ? 'DEQUEUE' : 'ADD TO QUEUE')
                 .subscribe(this.navbar.queueButtonTitle$),
+
+            this.navbar.onClickStart$
+                .subscribe(this.onClickStart.bind(this)),
 
             this.video$
                 .map(_.isPlainObject)
@@ -118,5 +125,18 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     private updateLiked(liked: boolean) {
         this.liked = liked;
+    }
+
+    private onClickStart(): void {
+        const extras = {
+            queryParams: {
+                n: 'l',
+                v: this.videoId
+            }
+        };
+
+        this.router.navigate(['/study'], extras).then(() => {
+            this.logger.debug(this, 'onClickStart navigated successfully');
+        });
     }
 }
