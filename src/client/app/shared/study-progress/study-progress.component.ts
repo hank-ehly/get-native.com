@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/13.
  */
 
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
 
@@ -17,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
     templateUrl: 'study-progress.component.html',
     styleUrls: ['study-progress.component.css']
 })
-export class StudyProgressComponent implements OnInit {
+export class StudyProgressComponent implements OnInit, OnDestroy {
     @Input() progress: {
         listening$: Observable<number>,
         shadowing$: Observable<number>,
@@ -28,7 +28,11 @@ export class StudyProgressComponent implements OnInit {
     constructor(private logger: Logger) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
     }
 }
