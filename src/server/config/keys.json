@@ -24,7 +24,7 @@
         "Password": "password",
         "PictureUrl": "picture_url",
         "StudySessionId": "study_session_id",
-        "Time": "time",
+        "StudyTime": "study_time",
         "Token": "token",
         "UpdatedAt": "updated_at",
         "VideoId": "video_id",

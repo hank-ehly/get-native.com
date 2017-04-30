@@ -97,7 +97,7 @@ module.exports = {
             },
             body: {
                 video_id: Joi.number().integer().min(1).required(),
-                time: Joi.number().integer().min(0).required()
+                study_time: Joi.number().integer().min(1).required()
             }
         },
         stats: {

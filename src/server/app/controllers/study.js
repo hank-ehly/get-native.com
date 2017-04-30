@@ -77,13 +77,7 @@ module.exports.writing_answers = (req, res, next) => {
 
 module.exports.createStudySession = (req, res, next) => {
     const videoId = req.body[k.Attr.VideoId];
-    const time    = req.body[k.Attr.Time];
-
-    const video = Video.scope('includeTranscripts').findById(videoId, {
-        attributes: [
-            k.Attr.Id, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length
-        ]
-    });
+    const studyTime    = req.body[k.Attr.StudyTime];
 
     const queuedVideo = QueuedVideo.findOrCreate({
         where: {
@@ -95,17 +89,11 @@ module.exports.createStudySession = (req, res, next) => {
     const studySession = StudySession.create({
         account_id: req.accountId,
         video_id: videoId,
-        time: time
+        study_time: studyTime
     });
 
-    return Promise.join(video, queuedVideo, studySession, function(v) {
-        v = v.get({plain: true});
-
-        v.transcripts = ResponseWrapper.wrap(_.map(v.transcripts, t => {
-            t.collocations = ResponseWrapper.deepWrap(t.collocations, ['usage_examples']);
-            return t;
-        }));
-
-        res.status(200).send(v);
+    return Promise.join(studySession, queuedVideo, function(session) {
+        const ret = _.pick(session.get({plain: true}), [k.Attr.Id, k.Attr.VideoId, k.Attr.StudyTime]);
+        res.status(201).send(ret);
     }).catch(next);
 };
