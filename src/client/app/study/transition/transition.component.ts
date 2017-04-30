@@ -8,13 +8,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { NavbarService } from '../../core/navbar/navbar.service';
 import { Logger } from '../../core/logger/logger';
 
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/take';
 import * as _ from 'lodash';
-import { NavbarService } from '../../core/navbar/navbar.service';
 
 @Component({
     moduleId: module.id,
@@ -69,12 +69,12 @@ export class TransitionComponent implements OnInit, OnDestroy {
 
     onComplete(): void {
         this.logger.debug(this, 'onComplete');
-        // this.router.navigate([this.nextRoute], {
-        //     queryParams: {
-        //         v: this.route.snapshot.queryParams['v']
-        //     }
-        // }).then(() => {
-        //     this.logger.debug(this, 'navigate complete');
-        // });
+        this.router.navigate([this.nextRoute], {
+            queryParams: {
+                v: this.route.snapshot.queryParams['v']
+            }
+        }).then(() => {
+            this.logger.debug(this, 'navigate complete');
+        });
     }
 }
