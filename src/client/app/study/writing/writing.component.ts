@@ -22,8 +22,8 @@ export class WritingComponent implements OnInit {
 
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
-        this.studySession.sectionTimer.subscribe(this.studySession.progress.writing$);
-        this.studySession.sectionTimer.subscribe(null, null, this.onComplete.bind(this));
+        this.studySession.timer.subscribe(this.studySession.progress.writing$);
+        this.studySession.timer.subscribe(null, null, this.onComplete.bind(this));
     }
 
     onComplete(): void {

@@ -14,9 +14,9 @@ import { NavbarService } from '../navbar/navbar.service';
 import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
 import { Video } from '../entities/video';
-import { Logger } from '../logger/logger';
 
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import { SectionTimer } from './section-timer';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
@@ -29,52 +29,39 @@ export class StudySessionService {
         writing$:   this.navbar.studyProgress.writing$
     };
 
-    _sectionTimer: any;
-
-    get sectionTimer(): IntervalObservable {
-        this.logger.debug(this, 'trying to get section timer');
-        if (this._sectionTimer) {
-            this.logger.debug(this, 'returning current section timer');
-            return this._sectionTimer;
-        } else if (this.current && this.current.session && this.current.session.study_time) {
-            this.logger.debug(this, 'initializing and returning section timer');
-            this.initSectionTimer(this.current.session.study_time);
-            return this._sectionTimer;
+    get timer(): IntervalObservable {
+        if (!this._timer && _.has(this.current, 'session.study_time')) {
+            this._timer = new SectionTimer(this.current.session.study_time);
         }
 
-        this.logger.debug(this, 'no section timer found');
-        return null;
+        return this._timer;
     }
 
     set current(value: any) {
-        if (_.isPlainObject(value)) {
-            this._current = value;
-            this.localStorage.setItem(kCurrentStudySession, value);
+        if (!_.isPlainObject(value)) {
+            return;
         }
+
+        this._current = value;
+        this.localStorage.setItem(kCurrentStudySession, value);
     }
 
     get current() {
-        if (this._current) {
-            return this._current;
-        } else if (this.localStorage.hasItem(kCurrentStudySession)) {
+        if (!this._current && this.localStorage.hasItem(kCurrentStudySession)) {
             return this.localStorage.getItem(kCurrentStudySession);
         }
 
-        return null;
+        return this._current;
     }
 
-    private _current: { session?: StudySession, video?: Video };
+    private _timer: any = null;
+    private _current: { session?: StudySession, video?: Video } = null;
 
-    constructor(private http: HttpService, private localStorage: LocalStorageService, private navbar: NavbarService,
-                private logger: Logger) {
+    constructor(private http: HttpService, private localStorage: LocalStorageService, private navbar: NavbarService) {
     }
 
-    start(options: { videoId: number, studyTime: number }): Observable<any> {
-        return this.http.request(APIHandle.START_STUDY_SESSION, {
-            body: _.mapKeys(options, function (value, key) {
-                return _.snakeCase(key);
-            })
-        }).do(this.onStartStudySessionNext.bind(this));
+    start(options: StudySession): Observable<any> {
+        return this.http.request(APIHandle.START_STUDY_SESSION, {body: options}).do(this.onStartStudySession.bind(this));
     }
 
     updateCurrent(value: any): void {
@@ -87,27 +74,13 @@ export class StudySessionService {
         this.current = current;
     }
 
-    private onStartStudySessionNext(studySession: StudySession) {
+    private onStartStudySession(studySession: StudySession) {
         const session: any = {};
 
         session['session'] = studySession;
         session['section'] = 'listening';
-
-        this.initSectionTimer(session.session.study_time);
-
         this.current = session;
-    }
 
-    private initSectionTimer(x: number) {
-        this.logger.debug(this, 'initSectionTimer', x);
-        const numSections = 4;
-        const secondsPerSection = _.floor(x / numSections);
-        this.logger.debug(this, 'seconds per section', secondsPerSection);
-        this._sectionTimer = IntervalObservable.create(1000).take(secondsPerSection).map(t => {
-            let secondsPassed = t + 1;
-            let percentComplete = _.round((secondsPassed / secondsPerSection) * 100);
-            this.logger.debug(this, `percentComplete ${percentComplete}%`);
-            return percentComplete;
-        });
+        this._timer = new SectionTimer(session.session.study_time);
     }
 }

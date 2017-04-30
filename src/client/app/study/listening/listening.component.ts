@@ -29,8 +29,8 @@ export class ListeningComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.studySession.sectionTimer.subscribe(this.studySession.progress.listening$);
-        this.studySession.sectionTimer.subscribe(null, null, this.onComplete.bind(this));
+        this.studySession.timer.subscribe(this.studySession.progress.listening$);
+        this.studySession.timer.subscribe(null, null, this.onComplete.bind(this));
     }
 
     ngOnDestroy(): void {
