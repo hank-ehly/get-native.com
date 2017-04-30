@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Logger } from '../core/logger/logger';
 
@@ -14,11 +14,15 @@ import { Logger } from '../core/logger/logger';
     templateUrl: 'study.component.html',
     styleUrls: ['study.component.css']
 })
-export class StudyComponent implements OnInit {
+export class StudyComponent implements OnInit, OnDestroy {
     constructor(private logger: Logger) {
     }
 
-    ngOnInit() {
-        this.logger.info(this, 'OnInit');
+    ngOnInit(): void {
+        this.logger.debug(this, 'OnInit');
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
     }
 }

@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
     templateUrl: 'shadowing.component.html',
     styleUrls: ['shadowing.component.css']
 })
-export class ShadowingComponent implements OnInit {
+export class ShadowingComponent implements OnInit, OnDestroy {
     modalVisibility$ = new BehaviorSubject<boolean>(false);
 
     src: string;
@@ -30,6 +30,10 @@ export class ShadowingComponent implements OnInit {
         this.logger.debug(this, 'OnInit');
         this.studySession.sectionTimer.subscribe(this.studySession.progress.shadowing$);
         this.studySession.sectionTimer.subscribe(null, null, this.onComplete.bind(this));
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
     }
 
     onComplete(): void {
