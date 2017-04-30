@@ -1,9 +1,9 @@
 <main class="main">
     <div class="outer-circle">
         <div class="inner-circle"></div>
-        <span class="number-label">3</span>
+        <span class="number-label">{{ count$ | async }}</span>
     </div>
 
     <span class="next-exercise-label">NEXT EXERCISE:</span>
-    <span class="next-exercise">SHADOWING</span>
+    <span class="next-exercise">{{ nextExercise }}</span>
 </main>
