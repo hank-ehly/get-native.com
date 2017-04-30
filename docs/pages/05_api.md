@@ -624,12 +624,12 @@ POST https://api.get-native.com/study
 | Parameter 	| Description                                                     	| Required 	| Default 	|
 |-----------	|-----------------------------------------------------------------	|:--------:	|---------	|
 | video_id   	| The unique ID of the video for the study session                	|     √    	|         	|
-| time        | The user-specified amount of time in seconds of the study session	|     √    	|         	|
+| study_time  | The user-specified amount of time in seconds of the study session	|     √    	|         	|
 
 ```json
 {
 	"video_id": 456,
-	"time": 900
+	"study_time": 900
 }
 ```
 
@@ -638,45 +638,17 @@ POST https://api.get-native.com/study
 | Data Field 	| Type   	| Description                                                       	|
 |------------	|--------	|-------------------------------------------------------------------	|
 | id         	| Int64  	| The unique ID of the newly created study session                  	|
-| video      	| Video  	| The video object corresponding to the newly created study session 	|
+| video_id   	| Int64  	| The unique ID of the video being studied                           	|
+| study_time 	| Int64  	| The user-specified length (in seconds) for the study session      	|
 
 ```
 Status: 200 OK
 ```
 ```json
 {
-	"id": 2244994983,
-	"picture_url": "XXX",
-	"video_url": "XXX",
-	"length": 68,
-	"transcripts": {
-		"count": 2,
-		"records": [
-			{
-				"id": 123,
-				"text": "This is the English transcript. This is the text that will be displayed on the video detail page.",
-				"lang": "en",
-				"collocations": {
-					"count": 3,
-					"records": [
-						{
-							"text": "This is the text",
-							"description": "This is the description",
-							"ipa_spelling": "ˈðɪs ˈɪz ðə ˈtɛkst",
-							"usage_examples": {
-								"count": 3,
-								"records": [
-									{"text": "This is the text in which will appear.."},
-									{"text": "I will tell you that this is the text."},
-									{"text": "I don't really know if this is the text."}
-								]
-							}
-						}
-					]
-				}
-			}
-		]
-	}
+    "id": 123456,
+    "video_id": 123456,
+    "study_time": 600
 }
 ```
 
