@@ -14,6 +14,7 @@ import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/take';
 import * as _ from 'lodash';
+import { NavbarService } from '../../core/navbar/navbar.service';
 
 @Component({
     moduleId: module.id,
@@ -36,7 +37,7 @@ export class TransitionComponent implements OnInit, OnDestroy {
 
     timer = IntervalObservable.create(1000).take(4);
 
-    constructor(private logger: Logger, private route: ActivatedRoute, private router: Router) {
+    constructor(private logger: Logger, private route: ActivatedRoute, private router: Router, private navbar: NavbarService) {
         const routeCode = this.route.snapshot.queryParams['n'];
         this.nextRoute = '/study/' + this.routeMap[routeCode];
 
@@ -46,6 +47,7 @@ export class TransitionComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
         this.timer.subscribe(this.onNext.bind(this), this.onError.bind(this), this.onComplete.bind(this));
+        this.navbar.progressBarVisible$.next(true);
     }
 
     ngOnDestroy(): void {
@@ -67,12 +69,12 @@ export class TransitionComponent implements OnInit, OnDestroy {
 
     onComplete(): void {
         this.logger.debug(this, 'onComplete');
-        this.router.navigate([this.nextRoute], {
-            queryParams: {
-                v: this.route.snapshot.queryParams['v']
-            }
-        }).then(() => {
-            this.logger.debug(this, 'navigate complete');
-        });
+        // this.router.navigate([this.nextRoute], {
+        //     queryParams: {
+        //         v: this.route.snapshot.queryParams['v']
+        //     }
+        // }).then(() => {
+        //     this.logger.debug(this, 'navigate complete');
+        // });
     }
 }

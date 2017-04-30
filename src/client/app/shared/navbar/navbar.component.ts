@@ -20,6 +20,7 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
     moduleId: module.id,
@@ -52,17 +53,13 @@ import { Subject } from 'rxjs/Subject';
 export class NavbarComponent implements OnInit, OnDestroy {
     @Input() authenticated: boolean;
 
-    title$ = this.navbar.title$;
-    backButtonTitle$ = this.navbar.backButtonTitle$;
-
-    progressBarHidden: boolean  = true;
-
+    title$               = this.navbar.title$;
+    backButtonTitle$     = this.navbar.backButtonTitle$;
+    queueButtonTitle$    = this.navbar.queueButtonTitle$;
     studyOptionsVisible$ = this.navbar.studyOptionsVisible$;
     studyOptionsEnabled$ = this.navbar.studyOptionsEnabled$;
-
-    searchBarVisible$ = this.navbar.searchBarVisible$.share();
-
-    queueButtonTitle$ = this.navbar.queueButtonTitle$;
+    progressBarVisible$  = this.navbar.progressBarVisible$;
+    searchBarVisible$    = this.navbar.searchBarVisible$.share();
 
     hasUnreadNotifications: boolean = false;
 
