@@ -29,6 +29,7 @@ import { ShadowingComponent } from './study/shadowing/shadowing.component';
 import { ListeningComponent } from './study/listening/listening.component';
 import { TransitionComponent } from './study/transition/transition.component';
 import { StudyComponent } from './study/study.component';
+import { ListeningResolver } from './core/auth/listening-resolver.service';
 
 const routes: Routes = [
     {
@@ -64,7 +65,7 @@ const routes: Routes = [
                 path: '', component: TransitionComponent
             },
             {
-                path: 'listening', component: ListeningComponent, data: {title: 'Listening'}
+                path: 'listening', resolve: {video: ListeningResolver}, component: ListeningComponent, data: {title: 'Listening'}
             },
             {
                 path: 'shadowing', component: ShadowingComponent, data: {title: 'Shadowing'}

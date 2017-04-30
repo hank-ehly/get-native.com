@@ -22,6 +22,7 @@ import { LangService } from './lang/lang.service';
 import { UTCDateService } from './utc-date/utc-date.service';
 import { UserService } from './user/user.service';
 import { ConfirmEmailResolver } from './auth/confirm-email-resolver.service';
+import { ListeningResolver } from './auth/listening-resolver.service';
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { ConfirmEmailResolver } from './auth/confirm-email-resolver.service';
         LangService,
         UTCDateService,
         UserService,
-        ConfirmEmailResolver
+        ConfirmEmailResolver,
+        ListeningResolver
     ]
 })
 export class CoreModule {
