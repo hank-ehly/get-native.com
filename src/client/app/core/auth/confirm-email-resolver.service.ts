@@ -25,6 +25,7 @@ export class ConfirmEmailResolver implements Resolve<void> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<void> {
         return this.http.request(APIHandle.CONFIRM_EMAIL, {body: {token: route.queryParams['token']}}).map((user: User) => {
             this.user.updateCache(user);
+            // todo: try just returning, you might not need to be doing this redirection
             this.router.navigate(['/dashboard']);
         }).toPromise().catch(() => {
             this.router.navigate(['']);
