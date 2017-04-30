@@ -19,6 +19,6 @@ export class StudyComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.logger.info(this, 'ngOnInit()');
+        this.logger.info(this, 'OnInit');
     }
 }
