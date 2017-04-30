@@ -109,6 +109,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.navbar.searchBarVisible$.next(false);
     }
 
+    onClickStart(): void {
+        this.logger.debug(this, 'onClickStart');
+        this.navbar.onClickStart$.next();
+    }
+
     onClickQueue(): void {
         this.logger.debug(this, 'onClickQueue');
         this.navbar.onClickQueue$.next();

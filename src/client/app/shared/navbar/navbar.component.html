@@ -23,7 +23,8 @@
         </div>
 
         <div class="study-options" *ngIf="studyOptionsVisible$ | async">
-            <button class="button button--opaque study-option study-option_start" [disabled]="!(studyOptionsEnabled$ | async)">
+            <button class="button button--opaque study-option study-option_start" (click)="onClickStart()"
+                    [disabled]="!(studyOptionsEnabled$ | async)">
                 START
             </button>
 
