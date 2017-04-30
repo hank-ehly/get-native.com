@@ -11,7 +11,7 @@ import { User } from '../entities/user';
 import { Language } from '../typings/language';
 import { LangService } from '../lang/lang.service';
 import { LocalStorageService } from '../local-storage/local-storage.service';
-import { kCurrentUser, kAuthToken, kAuthTokenExpire, kAcceptLocalStorage } from '../local-storage/local-storage-keys';
+import { kCurrentUser, kAuthToken, kAuthTokenExpire, kAcceptLocalStorage, kCurrentStudySession } from '../local-storage/local-storage-keys';
 import { LanguageCode } from '../typings/language-code';
 import { Logger } from '../logger/logger';
 import { HttpService } from '../http/http.service';
@@ -110,6 +110,7 @@ export class UserService {
         this.localStorage.removeItem(kAuthToken);
         this.localStorage.removeItem(kAuthTokenExpire);
         this.localStorage.removeItem(kCurrentUser);
+        this.localStorage.removeItem(kCurrentStudySession);
 
         this.logout$.next();
     }

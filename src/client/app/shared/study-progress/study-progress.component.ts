@@ -5,11 +5,11 @@
  * Created by henryehly on 2016/12/13.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { StudyProgressService } from '../../core/study-progress/study-progress.service';
+
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     moduleId: module.id,
@@ -18,12 +18,14 @@ import { StudyProgressService } from '../../core/study-progress/study-progress.s
     styleUrls: ['study-progress.component.css']
 })
 export class StudyProgressComponent implements OnInit {
-    listening$ = this.progress.listening$;
-    shadowing$ = this.progress.shadowing$;
-    speaking$  = this.progress.speaking$;
-    writing$   = this.progress.writing$;
+    @Input() progress: {
+        listening$: Observable<number>,
+        shadowing$: Observable<number>,
+        speaking$: Observable<number>,
+        writing$: Observable<number>
+    };
 
-    constructor(private logger: Logger, private progress: StudyProgressService) {
+    constructor(private logger: Logger) {
     }
 
     ngOnInit() {
