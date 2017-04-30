@@ -29,7 +29,7 @@ import { ShadowingComponent } from './study/shadowing/shadowing.component';
 import { ListeningComponent } from './study/listening/listening.component';
 import { TransitionComponent } from './study/transition/transition.component';
 import { StudyComponent } from './study/study.component';
-import { ListeningResolver } from './core/auth/listening-resolver.service';
+import { ListeningResolver } from './study/listening/listening-resolver.service';
 
 const routes: Routes = [
     {

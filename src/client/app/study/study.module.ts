@@ -15,9 +15,12 @@ import { SpeakingComponent }  from './speaking/speaking.component';
 import { WritingComponent }   from './writing/writing.component';
 import { ResultsComponent }   from './results/results.component';
 import { TransitionComponent } from './transition/transition.component';
+import { ListeningResolver } from './listening/listening-resolver.service';
 
 @NgModule({
-    imports: [SharedModule],
+    imports: [
+        SharedModule
+    ],
     declarations: [
         StudyComponent,
         ListeningComponent,
@@ -26,6 +29,9 @@ import { TransitionComponent } from './transition/transition.component';
         WritingComponent,
         ResultsComponent,
         TransitionComponent
+    ],
+    providers: [
+        ListeningResolver
     ]
 })
 export class StudyModule {

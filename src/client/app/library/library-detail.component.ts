@@ -19,9 +19,10 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
 
 @Component({
@@ -128,14 +129,19 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     }
 
     private onClickStart(): void {
-        const extras = {
-            queryParams: {
-                n: 'l',
-                v: this.videoId
+        this.http.request(APIHandle.START_STUDY_SESSION, {
+            body: {
+                video_id: this.videoId,
+                study_time: 600
             }
-        };
-
-        this.router.navigate(['/study'], extras).then(() => {
+        }).toPromise().then(() => {
+            return this.router.navigate(['/study'], {
+                queryParams: {
+                    n: 'l',
+                    v: this.videoId
+                }
+            });
+        }).then(() => {
             this.logger.debug(this, 'onClickStart navigated successfully');
         });
     }

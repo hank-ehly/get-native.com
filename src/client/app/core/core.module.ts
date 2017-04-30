@@ -22,7 +22,7 @@ import { LangService } from './lang/lang.service';
 import { UTCDateService } from './utc-date/utc-date.service';
 import { UserService } from './user/user.service';
 import { ConfirmEmailResolver } from './auth/confirm-email-resolver.service';
-import { ListeningResolver } from './auth/listening-resolver.service';
+import { StudyProgressService } from './study-progress/study-progress.service';
 
 @NgModule({
     imports: [
@@ -43,7 +43,7 @@ import { ListeningResolver } from './auth/listening-resolver.service';
         UTCDateService,
         UserService,
         ConfirmEmailResolver,
-        ListeningResolver
+        StudyProgressService
     ]
 })
 export class CoreModule {

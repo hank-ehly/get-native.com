@@ -4,16 +4,16 @@
     <div class="progress-frame">
         <div class="circle circle--large"><span class="check-mark">&#x2713;</span></div>
 
-        <progress max="100" value="100" class="progress progress--listening"></progress>
+        <progress max="100" value="{{ listening$ | async }}" class="progress progress--listening"></progress>
         <div class="circle circle--listening circle--complete"></div>
 
-        <progress max="100" value="100" class="progress progress--shadowing"></progress>
+        <progress max="100" value="{{ shadowing$ | async }}" class="progress progress--shadowing"></progress>
         <div class="circle circle--shadowing circle--complete"></div>
 
-        <progress max="100" value="50" class="progress progress--speaking"></progress>
+        <progress max="100" value="{{ speaking$ | async }}" class="progress progress--speaking"></progress>
         <div class="circle circle--speaking"></div>
 
-        <progress max="100" value="0" class="progress progress--writing"></progress>
+        <progress max="100" value="{{ writing$ | async }}" class="progress progress--writing"></progress>
         <div class="circle circle--writing"></div>
     </div>
 </main>
