@@ -43,6 +43,15 @@ export class UserService {
     $setBrowserNotificationsEnabled = new Subject<boolean>();
     password$ = new Subject<{current: string, replacement: string}>();
 
+    // todo: Follow this convention of setters/getters
+    // private emitChangeSource = new Subject<any>();
+    // // Observable string streams
+    // changeEmitted$ = this.emitChangeSource.asObservable();
+    // // Service message commands
+    // emitChange(change: any) {
+    //     this.emitChangeSource.next(change);
+    // }
+
     passwordChange$ = new Subject();
 
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
