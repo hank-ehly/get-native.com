@@ -8,6 +8,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { StudySessionService } from '../core/study-session/study-session.service';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
 import { APIHandle } from '../core/http/api-handle';
@@ -55,7 +56,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     });
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
-                private router: Router) {
+                private router: Router, private studySession: StudySessionService) {
     }
 
     ngOnInit() {
@@ -129,18 +130,11 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     }
 
     private onClickStart(): void {
-        this.http.request(APIHandle.START_STUDY_SESSION, {
-            body: {
-                video_id: this.videoId,
-                study_time: 600
-            }
+        this.studySession.start({
+            videoId: this.videoId,
+            studyTime: 50
         }).toPromise().then(() => {
-            return this.router.navigate(['/study'], {
-                queryParams: {
-                    n: 'l',
-                    v: this.videoId
-                }
-            });
+            return this.router.navigate(['/study']);
         }).then(() => {
             this.logger.debug(this, 'onClickStart navigated successfully');
         });

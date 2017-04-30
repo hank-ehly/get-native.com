@@ -25,6 +25,13 @@ export class NavbarService {
     onClickQueue$        = new Subject<void>();
     onClickStart$        = new Subject<void>();
 
+    studyProgress: any = {
+        listening$: new BehaviorSubject<number>(0),
+        shadowing$: new BehaviorSubject<number>(0),
+        speaking$:  new BehaviorSubject<number>(0),
+        writing$:   new BehaviorSubject<number>(0)
+    };
+
     updateQuery(value: string): void {
         this.query$.next(_.trim(value));
     }

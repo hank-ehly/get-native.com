@@ -8,6 +8,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { StudySessionService } from '../../core/study-session/study-session.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
 import { Logger } from '../../core/logger/logger';
 
@@ -23,25 +24,12 @@ import * as _ from 'lodash';
     styleUrls: ['transition.component.css']
 })
 export class TransitionComponent implements OnInit, OnDestroy {
-    routeMap: any = {
-        l:  'listening',
-        s:  'speaking',
-        sh: 'shadowing',
-        w:  'writing'
-    };
-
     count$ = new BehaviorSubject<number>(3);
-    nextExercise: string;
+    timer  = IntervalObservable.create(1000).take(4);
+    nextExercise = _.toUpper(this.studySession.current.section);
 
-    nextRoute: string;
-
-    timer = IntervalObservable.create(1000).take(4);
-
-    constructor(private logger: Logger, private route: ActivatedRoute, private router: Router, private navbar: NavbarService) {
-        const routeCode = this.route.snapshot.queryParams['n'];
-        this.nextRoute = '/study/' + this.routeMap[routeCode];
-
-        this.nextExercise = _.toUpper(this.routeMap[routeCode]);
+    constructor(private logger: Logger, private route: ActivatedRoute, private router: Router, private navbar: NavbarService,
+                private studySession: StudySessionService) {
     }
 
     ngOnInit(): void {
@@ -69,11 +57,7 @@ export class TransitionComponent implements OnInit, OnDestroy {
 
     onComplete(): void {
         this.logger.debug(this, 'onComplete');
-        this.router.navigate([this.nextRoute], {
-            queryParams: {
-                v: this.route.snapshot.queryParams['v']
-            }
-        }).then(() => {
+        this.router.navigate(['/study/' + this.studySession.current.section]).then(() => {
             this.logger.debug(this, 'navigate complete');
         });
     }

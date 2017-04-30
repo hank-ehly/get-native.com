@@ -1,8 +1,8 @@
 <main class="main">
-    <gn-video-player [loop]="true"></gn-video-player>
-    <span class="link instructions-link" (click)="showModal()">Instructions</span>
+    <gn-video-player [loop]="true" [src]="src"></gn-video-player>
+    <span class="link instructions-link" (click)="modalVisibility$.next(true)">Instructions</span>
 
-    <gn-modal [isVisible]="isModalVisible" (close)="onClose()">
+    <gn-modal [isVisible]="modalVisibility$ | async" (close)="modalVisibility$.next(false)">
         <p class="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur,
                              culpa cum cumque delectus dicta earum eligendi <span class="link">eum illum</span>
                              inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.</p>
