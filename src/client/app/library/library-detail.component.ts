@@ -6,9 +6,10 @@
  */
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { StudySessionService } from '../core/study-session/study-session.service';
+import { kListening } from '../core/study-session/section-keys';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
 import { APIHandle } from '../core/http/api-handle';
@@ -54,10 +55,6 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.liked     = v.liked;
         this.likeCount = v.like_count;
     });
-
-    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
-                private router: Router, private studySession: StudySessionService) {
-    }
 
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
@@ -111,6 +108,10 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         );
     }
 
+    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
+                private studySession: StudySessionService) {
+    }
+
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
 
@@ -130,13 +131,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     }
 
     private onClickStart(): void {
-        this.studySession.start({
-            video_id: this.videoId,
-            study_time: 50
-        }).toPromise().then(() => {
-            return this.router.navigate(['/study']);
-        }).then(() => {
-            this.logger.debug(this, 'onClickStart navigated successfully');
+        this.studySession.create({video_id: this.videoId, study_time: 50}).toPromise().then(() => {
+            this.studySession.transition(kListening);
         });
     }
 }

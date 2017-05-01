@@ -6,32 +6,29 @@
  */
 
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { kListening, kShadowing, kSpeaking, kWriting } from './section-keys';
 import { kCurrentStudySession } from '../local-storage/local-storage-keys';
-import { StudySession } from '../entities/study-session';
 import { NavbarService } from '../navbar/navbar.service';
+import { StudySession } from '../entities/study-session';
+import { SessionTimer } from './session-timer';
 import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
+import { Logger } from '../logger/logger';
 import { Video } from '../entities/video';
 
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
-import { SectionTimer } from './section-timer';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
+type StudySessionSection = 'listening' | 'shadowing' | 'speaking' | 'writing';
+
 @Injectable()
 export class StudySessionService {
-    progress: any = {
-        listening$: this.navbar.studyProgress.listening$,
-        shadowing$: this.navbar.studyProgress.shadowing$,
-        speaking$:  this.navbar.studyProgress.speaking$,
-        writing$:   this.navbar.studyProgress.writing$
-    };
-
-    get timer(): IntervalObservable {
+    get timer(): Observable<number> {
         if (!this._timer && _.has(this.current, 'session.study_time')) {
-            this._timer = new SectionTimer(this.current.session.study_time);
+            this._timer = new SessionTimer(this.current.session.study_time);
         }
 
         return this._timer;
@@ -54,14 +51,33 @@ export class StudySessionService {
         return this._current;
     }
 
-    private _timer: any = null;
+    progress: any = {
+        countdown$: this.navbar.studyProgress.countdown$,
+        listening$: this.navbar.studyProgress.listening$,
+        shadowing$: this.navbar.studyProgress.shadowing$,
+         speaking$: this.navbar.studyProgress.speaking$,
+          writing$: this.navbar.studyProgress.writing$
+    };
+
+    private _timer: Observable<number> = null;
     private _current: { session?: StudySession, video?: Video } = null;
 
-    constructor(private http: HttpService, private localStorage: LocalStorageService, private navbar: NavbarService) {
+    constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router,
+                private navbar: NavbarService) {
     }
 
-    start(options: StudySession): Observable<any> {
+    create(options: StudySession): Observable<any> {
         return this.http.request(APIHandle.START_STUDY_SESSION, {body: options}).do(this.onStartStudySession.bind(this));
+    }
+
+    transition(section: StudySessionSection) {
+        this.updateCurrent({
+            section: section
+        });
+
+        this.router.navigate(['/study']).then(() => {
+            this.logger.debug(this, 'navigated to /study');
+        });
     }
 
     updateCurrent(value: any): void {
@@ -77,10 +93,9 @@ export class StudySessionService {
     private onStartStudySession(studySession: StudySession) {
         const session: any = {};
 
-        session['session'] = studySession;
-        session['section'] = 'listening';
+        session.session = studySession;
         this.current = session;
 
-        this._timer = new SectionTimer(session.session.study_time);
+        this._timer = new SessionTimer(session.session.study_time);
     }
 }

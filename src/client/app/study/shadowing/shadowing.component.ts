@@ -7,10 +7,10 @@
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Logger } from '../../core/logger/logger';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { StudySessionService } from '../../core/study-session/study-session.service';
-import { Router } from '@angular/router';
+import { Logger } from '../../core/logger/logger';
+
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
     moduleId: module.id,
@@ -19,27 +19,16 @@ import { Router } from '@angular/router';
 })
 export class ShadowingComponent implements OnInit, OnDestroy {
     modalVisibility$ = new BehaviorSubject<boolean>(false);
+    src = this.studySession.current.video.video_url;
 
-    src: string;
-
-    constructor(private logger: Logger, private studySession: StudySessionService, private router: Router) {
-        this.src = this.studySession.current.video.video_url;
+    constructor(private logger: Logger, private studySession: StudySessionService) {
     }
 
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
-        this.studySession.timer.subscribe(this.studySession.progress.shadowing$);
-        this.studySession.timer.subscribe(null, null, this.onComplete.bind(this));
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-    }
-
-    onComplete(): void {
-        this.studySession.updateCurrent({section: 'speaking'});
-        this.router.navigate(['/study']).then(() => {
-            this.logger.debug(this, 'navigated to /study');
-        });
     }
 }

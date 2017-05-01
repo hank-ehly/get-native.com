@@ -6,7 +6,7 @@
  */
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
@@ -16,6 +16,7 @@ import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/take';
 import * as _ from 'lodash';
+import { kListening, kShadowing, kSpeaking, kWriting } from '../../core/study-session/section-keys';
 
 @Component({
     moduleId: module.id,
@@ -28,8 +29,7 @@ export class TransitionComponent implements OnInit, OnDestroy {
     timer  = IntervalObservable.create(1000).take(4);
     nextExercise = _.toUpper(this.studySession.current.section);
 
-    constructor(private logger: Logger, private route: ActivatedRoute, private router: Router, private navbar: NavbarService,
-                private studySession: StudySessionService) {
+    constructor(private logger: Logger, private router: Router, private navbar: NavbarService, private studySession: StudySessionService) {
     }
 
     ngOnInit(): void {
@@ -58,6 +58,28 @@ export class TransitionComponent implements OnInit, OnDestroy {
     onComplete(): void {
         this.logger.debug(this, 'onComplete');
         this.router.navigate(['/study/' + this.studySession.current.section]).then(() => {
+            switch (this.studySession.current.section) {
+                case kListening:
+                    this.studySession.timer.subscribe(this.studySession.progress.listening$);
+                    this.studySession.timer.subscribe(null, null, () => this.studySession.transition(kShadowing));
+                    break;
+                case kShadowing:
+                    this.studySession.timer.subscribe(this.studySession.progress.shadowing$);
+                    this.studySession.timer.subscribe(null, null, () => this.studySession.transition(kSpeaking));
+                    break;
+                case kSpeaking:
+                    this.studySession.timer.subscribe(this.studySession.progress.speaking$);
+                    this.studySession.timer.subscribe(null, null, () => this.studySession.transition(kWriting));
+                    break;
+                case kWriting:
+                    this.studySession.timer.subscribe(this.studySession.progress.writing$);
+                    this.studySession.timer.subscribe(null, null, () => this.router.navigate(['/study/results']));
+                    break;
+                default:
+                    break;
+            }
+
+            this.studySession.timer.subscribe(this.studySession.progress.countdown$);
             this.logger.debug(this, 'navigate complete');
         });
     }
