@@ -1,5 +1,5 @@
 /**
- * study.spec
+ * create-study-session.spec
  * get-native.com
  *
  * Created by henryehly on 2017/04/29.
@@ -19,7 +19,6 @@ describe('POST /study', function() {
     let reqBody       = null;
     let server        = null;
     let db            = null;
-
 
     before(function() {
         this.timeout(SpecUtil.defaultTimeout);

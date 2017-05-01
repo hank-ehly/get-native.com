@@ -97,3 +97,9 @@ module.exports.createStudySession = (req, res, next) => {
         res.status(201).send(ret);
     }).catch(next);
 };
+
+module.exports.complete = (req, res, next) => {
+    StudySession.update({is_completed: true}, {where: {id: req.body.id}}).then(function() {
+        res.sendStatus(204);
+    }).catch(next);
+};
