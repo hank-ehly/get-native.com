@@ -9,6 +9,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 import { UTCDateService } from '../../core/utc-date/utc-date.service';
 
+import * as _ from 'lodash';
+
 @Pipe({
     name: 'digitalTime'
 })
@@ -17,7 +19,7 @@ export class DigitalTimePipe implements PipeTransform {
     }
 
     transform(value: any, ...args: any[]): any {
-        if (value >= 600) {
+        if (_.gte(value, 600)) {
             throw new RangeError(`${this.constructor.name}.fromSeconds cannot handle values over 600. Value was ${value}`);
         }
 
