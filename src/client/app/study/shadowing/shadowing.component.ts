@@ -8,9 +8,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
+import { kSpeaking } from '../../core/study-session/section-keys';
 import { Logger } from '../../core/logger/logger';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subscription } from 'rxjs/Subscription';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -19,16 +22,24 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 export class ShadowingComponent implements OnInit, OnDestroy {
     modalVisibility$ = new BehaviorSubject<boolean>(false);
-    src = this.studySession.current.video.video_url;
+    src = this.session.current.video.video_url;
 
-    constructor(private logger: Logger, private studySession: StudySessionService) {
+    subscriptions: Subscription[] = [];
+
+    constructor(private logger: Logger, private session: StudySessionService) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
+
+        this.subscriptions.push(
+            this.session.progressEmitted$.subscribe(this.session.progress.shadowingEmitted$), // todo: this needs to be reset
+            this.session.progressEmitted$.subscribe(null, null, () => this.session.transition(kSpeaking))
+        );
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
+        _.each(this.subscriptions, s => s.unsubscribe());
     }
 }

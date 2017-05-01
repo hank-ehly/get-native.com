@@ -16,6 +16,7 @@ import { WritingComponent }   from './writing/writing.component';
 import { ResultsComponent }   from './results/results.component';
 import { TransitionComponent } from './transition/transition.component';
 import { ListeningResolver } from './listening/listening-resolver.service';
+import { StudySessionGuard } from './study-session-guard.service';
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { ListeningResolver } from './listening/listening-resolver.service';
         TransitionComponent
     ],
     providers: [
-        ListeningResolver
+        ListeningResolver,
+        StudySessionGuard
     ]
 })
 export class StudyModule {

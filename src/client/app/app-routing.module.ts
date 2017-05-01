@@ -30,6 +30,7 @@ import { ListeningComponent } from './study/listening/listening.component';
 import { TransitionComponent } from './study/transition/transition.component';
 import { StudyComponent } from './study/study.component';
 import { ListeningResolver } from './study/listening/listening-resolver.service';
+import { StudySessionGuard } from './study/study-session-guard.service';
 
 const routes: Routes = [
     {
@@ -59,7 +60,7 @@ const routes: Routes = [
         path: 'library/:id', component: LibraryDetailComponent, canActivate: [AuthGuard]
     },
     {
-        path: 'study', component: StudyComponent, canActivateChild: [AuthGuard],
+        path: 'study', component: StudyComponent, canActivateChild: [AuthGuard], canDeactivate: [StudySessionGuard],
         children: [
             {
                 path: '', component: TransitionComponent
