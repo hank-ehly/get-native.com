@@ -15,6 +15,7 @@ import { Logger } from '../../core/logger/logger';
 
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/switch';
 import 'rxjs/add/operator/take';
 import * as _ from 'lodash';
 
@@ -34,8 +35,8 @@ export class TransitionComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.transitionTimer.subscribe(this.onNext.bind(this), this.onError.bind(this), this.onComplete.bind(this));
-        this.navbar.progressBarVisible$.next(true);
+        this.transitionTimer.subscribe(this.onNext.bind(this), null, this.onComplete.bind(this));
+        this.session.resetCountdown();
     }
 
     ngOnDestroy(): void {
@@ -49,10 +50,6 @@ export class TransitionComponent implements OnInit, OnDestroy {
         if (_.gte(nextCount, 0)) {
             this.count$.next(nextCount);
         }
-    }
-
-    onError(): void {
-        this.logger.debug(this, 'onError');
     }
 
     onComplete(): void {
@@ -80,7 +77,7 @@ export class TransitionComponent implements OnInit, OnDestroy {
                 default:
                     break;
             }
-            this.session.sectionCountdownEmitted$.subscribe(this.session.progress.countdownEmitted$);
+            this.session.startCountdown();
         });
     }
 }

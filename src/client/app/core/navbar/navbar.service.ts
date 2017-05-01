@@ -6,6 +6,7 @@
  */
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/mapTo';
 import * as _ from 'lodash';
@@ -19,11 +20,16 @@ export class NavbarService {
 
     studyOptionsVisible$ = new Subject<boolean>();
     searchBarVisible$    = new Subject<boolean>();
-    progressBarVisible$  = new Subject<boolean>();
     studyOptionsEnabled$ = new Subject<boolean>();
 
     onClickQueue$        = new Subject<void>();
     onClickStart$        = new Subject<void>();
+
+    // sources
+    progressBarVisibleSource: Subject<boolean> = new Subject<boolean>();
+
+    // emitters
+    progressBarVisibleEmitted$: Observable<boolean> = this.progressBarVisibleSource.asObservable();
 
     progress: any = {
         countdownEmitted$: new BehaviorSubject<number>(0),
@@ -35,6 +41,14 @@ export class NavbarService {
 
     updateQuery(value: string): void {
         this.query$.next(_.trim(value));
+    }
+
+    showProgressBar(): void {
+        this.progressBarVisibleSource.next(true);
+    }
+
+    hideProgressBar(): void {
+        this.progressBarVisibleSource.next(false);
     }
 
     constructor() {
