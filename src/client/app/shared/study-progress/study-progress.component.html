@@ -1,19 +1,19 @@
 <main class="main">
-    <span class="time-label">0:45 LEFT</span>
+    <span class="time-label">{{ countdown$ | async }} LEFT</span>
 
     <div class="progress-frame">
         <div class="circle circle--large"><span class="check-mark">&#x2713;</span></div>
 
         <progress max="100" value="{{ progress.listening$ | async }}" class="progress progress--listening"></progress>
-        <div class="circle circle--listening circle--complete"></div>
+        <div class="circle circle--listening" [ngClass]="{'circle--complete': progress.listening$.getValue() === 100}"></div>
 
         <progress max="100" value="{{ progress.shadowing$ | async }}" class="progress progress--shadowing"></progress>
-        <div class="circle circle--shadowing circle--complete"></div>
+        <div class="circle circle--shadowing" [ngClass]="{'circle--complete': progress.shadowing$.getValue() === 100}"></div>
 
         <progress max="100" value="{{ progress.speaking$ | async }}" class="progress progress--speaking"></progress>
-        <div class="circle circle--speaking"></div>
+        <div class="circle circle--speaking" [ngClass]="{'circle--complete': progress.speaking$.getValue() === 100}"></div>
 
         <progress max="100" value="{{ progress.writing$ | async }}" class="progress progress--writing"></progress>
-        <div class="circle circle--writing"></div>
+        <div class="circle circle--writing" [ngClass]="{'circle--complete': progress.writing$.getValue() === 100}"></div>
     </div>
 </main>

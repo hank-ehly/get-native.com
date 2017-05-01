@@ -5,10 +5,8 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { StudySessionService } from '../../core/study-session/study-session.service';
 import { Logger } from '../../core/logger/logger';
 
 @Component({
@@ -16,19 +14,15 @@ import { Logger } from '../../core/logger/logger';
     templateUrl: 'writing.component.html',
     styleUrls: ['writing.component.css']
 })
-export class WritingComponent implements OnInit {
-    constructor(private logger: Logger, private router: Router, private studySession: StudySessionService) {
+export class WritingComponent implements OnInit, OnDestroy {
+    constructor(private logger: Logger) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.studySession.timer.subscribe(this.studySession.progress.writing$);
-        this.studySession.timer.subscribe(null, null, this.onComplete.bind(this));
     }
 
-    onComplete(): void {
-        this.router.navigate(['/study/results']).then(() => {
-            this.logger.debug(this, 'navigated to /study/results');
-        });
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
     }
 }

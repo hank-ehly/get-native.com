@@ -9,7 +9,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
 
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
     moduleId: module.id,
@@ -19,10 +19,11 @@ import { Observable } from 'rxjs/Observable';
 })
 export class StudyProgressComponent implements OnInit, OnDestroy {
     @Input() progress: {
-        listening$: Observable<number>,
-        shadowing$: Observable<number>,
-        speaking$: Observable<number>,
-        writing$: Observable<number>
+        countdown$: BehaviorSubject<number>,
+        listening$: BehaviorSubject<number>,
+        shadowing$: BehaviorSubject<number>,
+         speaking$: BehaviorSubject<number>,
+          writing$: BehaviorSubject<number>
     };
 
     constructor(private logger: Logger) {

@@ -6,11 +6,10 @@
  */
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
-import { Logger } from '../../core/logger/logger';
 import { Transcripts } from '../../core/entities/transcripts';
+import { Logger } from '../../core/logger/logger';
 
 @Component({
     moduleId: module.id,
@@ -20,23 +19,14 @@ import { Transcripts } from '../../core/entities/transcripts';
 export class SpeakingComponent implements OnInit, OnDestroy {
     transcripts: Transcripts = this.studySession.current.video.transcripts;
 
-    constructor(private logger: Logger, private router: Router, private studySession: StudySessionService) {
+    constructor(private logger: Logger, private studySession: StudySessionService) {
     }
 
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
-        this.studySession.timer.subscribe(this.studySession.progress.speaking$);
-        this.studySession.timer.subscribe(null, null, this.onComplete.bind(this));
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-    }
-
-    onComplete(): void {
-        this.studySession.updateCurrent({section: 'writing'});
-        this.router.navigate(['/study']).then(() => {
-            this.logger.debug(this, 'navigated to /study');
-        });
     }
 }

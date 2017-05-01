@@ -1,15 +1,15 @@
 /**
- * section-timer
+ * session-timer
  * get-native.com
  *
  * Created by henryehly on 2017/04/30.
  */
 
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
-import * as _ from 'lodash';
 import { Observable } from 'rxjs/Observable';
+import * as _ from 'lodash';
 
-export class SectionTimer extends Observable<number> {
+export class SessionTimer extends Observable<number> {
     constructor(studyTime: number) {
         super();
 
