@@ -91,6 +91,14 @@ module.exports = {
         }
     },
     study: {
+        complete: {
+            headers: {
+                authorization: Joi.string().required()
+            },
+            body: {
+                id: Joi.number().integer().min(1).required()
+            }
+        },
         createStudySession: {
             headers: {
                 authorization: Joi.string().required()
