@@ -19,11 +19,15 @@ import { APIHandle } from '../http/api-handle';
 import { Logger } from '../logger/logger';
 import { Video } from '../entities/video';
 
-import { Observable } from 'rxjs/Observable';
-import * as _ from 'lodash';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
+import * as _ from 'lodash';
 
-
+interface StudySessionLocalStorageObject {
+    session?: StudySession;
+    video?: Video;
+}
 
 @Injectable()
 export class StudySessionService {
@@ -32,17 +36,7 @@ export class StudySessionService {
             this._progressEmitted$ = new StudySessionSectionTimer(this.current.session.study_time);
         }
 
-        return this._progressEmitted$;
-    }
-
-    get sectionCountdownEmitted$(): Observable<string> {
-        const seconds = _.floor(this.current.session.study_time / 4);
-
-        let count = seconds;
-        return IntervalObservable.create(1000).take(seconds).map((t: number) => {
-            count--;
-            return count.toString();
-        });
+        return this._progressEmitted$.share();
     }
 
     set current(value: any) {
@@ -64,8 +58,9 @@ export class StudySessionService {
 
     progress = this.navbar.progress;
 
-    private _progressEmitted$: Observable<number> = null;
-    private _current: { session?: StudySession, video?: Video } = null;
+    private _progressEmitted$: Observable<number>    = null;
+    private _sectionCountdownEmitted$: Observable<number>    = null;
+    private _current: StudySessionLocalStorageObject = null;
 
     constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router,
                 private navbar: NavbarService) {
@@ -93,6 +88,31 @@ export class StudySessionService {
         let current = this.current;
         _.assign(current, value);
         this.current = current;
+    }
+
+    startCountdown(): void {
+        this.logger.debug(this, 'startCountdown');
+        let currentInterval = _.floor(this.current.session.study_time / 4);
+
+        currentInterval--;
+        this.progress.countdownEmitted$.next(currentInterval);
+
+        let interval = setInterval(() => {
+            currentInterval--;
+
+            if (currentInterval === 0) {
+                clearInterval(interval);
+                return;
+            }
+
+            this.progress.countdownEmitted$.next(currentInterval);
+        }, 1000);
+    }
+
+    resetCountdown(): void {
+        const sectionTime = _.floor(this.current.session.study_time / 4);
+        this.logger.debug(this, 'resetCountdown', sectionTime);
+        this.progress.countdownEmitted$.next(sectionTime);
     }
 
     private onStartStudySession(studySession: StudySession) {

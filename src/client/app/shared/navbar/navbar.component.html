@@ -18,7 +18,7 @@
 
         <span class="page-title">{{ title$ | async }}</span>
 
-        <div class="study-progress-frame" *ngIf="progressBarVisible$ | async">
+        <div class="study-progress-frame" *ngIf="progressBarVisibleEmitted$ | async">
             <gn-study-progress [progress]="progress"></gn-study-progress>
         </div>
 

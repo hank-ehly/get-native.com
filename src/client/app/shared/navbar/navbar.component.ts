@@ -56,7 +56,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     queueButtonTitle$    = this.navbar.queueButtonTitle$;
     studyOptionsVisible$ = this.navbar.studyOptionsVisible$;
     studyOptionsEnabled$ = this.navbar.studyOptionsEnabled$;
-    progressBarVisible$  = this.navbar.progressBarVisible$;
+    progressBarVisibleEmitted$  = this.navbar.progressBarVisibleEmitted$;
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
     progress             = this.navbar.progress;
 
