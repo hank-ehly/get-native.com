@@ -80,33 +80,36 @@ describe('Account', function() {
                 where: {language_code: 'ja'}
             });
 
-            return Promise.all([englishVideoPromise, japaneseVideoPromise]).spread(function(englishVideo, japaneseVideo) {
-                const englishStudySessionObject = _.constant({
-                    video_id: englishVideo.id,
-                    account_id: account.id,
-                    study_time: englishStudyTime
+            return Promise.join(englishVideoPromise, japaneseVideoPromise, function(englishVideo, japaneseVideo) {
+                const englishRecords = _.times(numberOfStudySessions, function(i) {
+                    return {
+                        video_id: englishVideo.id,
+                        account_id: account.id,
+                        study_time: englishStudyTime,
+                        is_completed: true
+                    }
                 });
 
-                const japaneseStudySessionObject = _.constant({
-                    video_id: japaneseVideo.id,
-                    account_id: account.id,
-                    study_time: japaneseStudyTime
+                const japaneseRecords = _.times(numberOfStudySessions, function(i) {
+                    return {
+                        video_id: japaneseVideo.id,
+                        account_id: account.id,
+                        study_time: japaneseStudyTime,
+                        is_completed: true
+                    }
                 });
 
-                const createEnglishStudySessions  = StudySession.bulkCreate(_.times(numberOfStudySessions, englishStudySessionObject));
-                const createJapaneseStudySessions = StudySession.bulkCreate(_.times(numberOfStudySessions, japaneseStudySessionObject));
+                _.set(_.first(japaneseRecords), 'is_completed', false);
+
+                const createEnglishStudySessions  = StudySession.bulkCreate(englishRecords);
+                const createJapaneseStudySessions = StudySession.bulkCreate(japaneseRecords);
 
                 return Promise.all([createEnglishStudySessions, createJapaneseStudySessions]);
             }).then(function() {
-                return account.calculateStudySessionStatsForLanguage('en');
-            }).then(function(stats) {
-                assert.equal(stats.total_time_studied, englishStudyTime * numberOfStudySessions);
-            });
-        });
-
-        it(`should return 0 if the user has not studied before`, function() {
-            return account.calculateStudySessionStatsForLanguage('en').then(function(stats) {
-                assert.equal(stats.total_time_studied, 0);
+                return Promise.all([account.calculateStudySessionStatsForLanguage('en'), account.calculateStudySessionStatsForLanguage('ja')]);
+            }).spread(function(e, j) {
+                assert.equal(e.total_time_studied, englishStudyTime * numberOfStudySessions);
+                assert.equal(j.total_time_studied, (japaneseStudyTime * numberOfStudySessions) - japaneseStudyTime);
             });
         });
 
@@ -127,26 +130,41 @@ describe('Account', function() {
             });
 
             return Promise.all([englishVideoPromise, japaneseVideoPromise]).spread(function(englishVideo, japaneseVideo) {
-                const englishStudySessionObject = _.constant({
-                    video_id: englishVideo.id,
-                    account_id: account.id,
-                    study_time: englishStudyTime
+                const englishRecords = _.times(numberOfEnglishStudySessions, function(i) {
+                    return {
+                        video_id: englishVideo.id,
+                        account_id: account.id,
+                        study_time: englishStudyTime,
+                        is_completed: true
+                    }
                 });
 
-                const japaneseStudySessionObject = _.constant({
-                    video_id: japaneseVideo.id,
-                    account_id: account.id,
-                    study_time: japaneseStudyTime
+                const japaneseRecords = _.times(numberOfJapaneseStudySessions, function(i) {
+                    return {
+                        video_id: japaneseVideo.id,
+                        account_id: account.id,
+                        study_time: japaneseStudyTime,
+                        is_completed: true
+                    }
                 });
 
-                const createEnglishStudySessions  = StudySession.bulkCreate(_.times(numberOfEnglishStudySessions, englishStudySessionObject));
-                const createJapaneseStudySessions = StudySession.bulkCreate(_.times(numberOfJapaneseStudySessions, japaneseStudySessionObject));
+                _.set(_.first(englishRecords), 'is_completed', false);
+
+                const createEnglishStudySessions  = StudySession.bulkCreate(englishRecords);
+                const createJapaneseStudySessions = StudySession.bulkCreate(japaneseRecords);
 
                 return Promise.all([createEnglishStudySessions, createJapaneseStudySessions]);
             }).then(function() {
-                return account.calculateStudySessionStatsForLanguage('ja');
-            }).then(function(stats) {
-                assert.equal(stats.total_study_sessions, numberOfJapaneseStudySessions);
+                return Promise.all([account.calculateStudySessionStatsForLanguage('en'), account.calculateStudySessionStatsForLanguage('ja')]);
+            }).spread(function(e, j) {
+                assert.equal(e.total_study_sessions, numberOfEnglishStudySessions - 1);
+                assert.equal(j.total_study_sessions, numberOfJapaneseStudySessions);
+            });
+        });
+
+        it(`should return 0 if the user has not studied before`, function() {
+            return account.calculateStudySessionStatsForLanguage('en').then(function(stats) {
+                assert.equal(stats.total_time_studied, 0);
             });
         });
 
@@ -173,17 +191,29 @@ describe('Account', function() {
             const englishVideoPromise  = Video.findOne({attributes: ['id'], where: {language_code: 'en'}});
             const japaneseVideoPromise = Video.findOne({attributes: ['id'], where: {language_code: 'ja'}});
 
-            return Promise.all([englishVideoPromise, japaneseVideoPromise]).spread(function(englishVideo, japaneseVideo) {
-                const studySessionObject = {
-                    account_id: account.id,
-                    study_time: studyTime
-                };
+            return Promise.join(englishVideoPromise, japaneseVideoPromise, function(englishVideo, japaneseVideo) {
+                const englishRecords = _.times(numberOfStudySessions, function(i) {
+                    return {
+                        video_id: englishVideo.id,
+                        account_id: account.id,
+                        study_time: 300,
+                        is_completed: true
+                    }
+                });
 
-                const englishStudySessionObject  = _.constant(_.assign(_.clone(studySessionObject), {video_id: englishVideo.id}));
-                const japaneseStudySessionObject = _.constant(_.assign(_.clone(studySessionObject), {video_id: japaneseVideo.id}));
+                const japaneseRecords = _.times(numberOfStudySessions, function(i) {
+                    return {
+                        video_id: japaneseVideo.id,
+                        account_id: account.id,
+                        study_time: 300,
+                        is_completed: true
+                    }
+                });
 
-                const createEnglishStudySessions  = StudySession.bulkCreate(_.times(numberOfStudySessions, englishStudySessionObject));
-                const createJapaneseStudySessions = StudySession.bulkCreate(_.times(numberOfStudySessions, japaneseStudySessionObject));
+                _.set(_.last(japaneseRecords), 'is_completed', false);
+
+                const createEnglishStudySessions  = StudySession.bulkCreate(englishRecords);
+                const createJapaneseStudySessions = StudySession.bulkCreate(japaneseRecords);
 
                 return Promise.all([createEnglishStudySessions, createJapaneseStudySessions, WritingQuestion.findOne()]);
             }).spread(function(englishStudySessions, japaneseStudySessions, writingQuestion) {
@@ -224,9 +254,10 @@ describe('Account', function() {
                     englishAnswer_1, englishAnswer_2, japaneseAnswer_1, japaneseAnswer_2
                 ]);
             }).then(function() {
-                return account.calculateWritingStatsForLanguage('en');
-            }).then(function(stats) {
-                assert.equal(stats.maximum_words, 200);
+                return Promise.all([account.calculateWritingStatsForLanguage('en'), account.calculateWritingStatsForLanguage('ja')]);
+            }).spread(function(e, j) {
+                assert.equal(e.maximum_words, 200, 'English');
+                assert.equal(j.maximum_words, 300, 'Japanese');
             });
         });
 
@@ -241,17 +272,29 @@ describe('Account', function() {
                 where: {language_code: 'ja'}
             });
 
-            return Promise.all([englishVideoPromise, japaneseVideoPromise]).spread(function(englishVideo, japaneseVideo) {
-                const studySessionObject = {
-                    account_id: account.id,
-                    study_time: 300
-                };
+            return Promise.join(englishVideoPromise, japaneseVideoPromise, function(englishVideo, japaneseVideo) {
+                const englishRecords = _.times(2, function(i) {
+                    return {
+                        video_id: englishVideo.id,
+                        account_id: account.id,
+                        study_time: 300,
+                        is_completed: true
+                    }
+                });
 
-                const englishStudySessionObject  = _.constant(_.assign(_.clone(studySessionObject), {video_id: englishVideo.id}));
-                const japaneseStudySessionObject = _.constant(_.assign(_.clone(studySessionObject), {video_id: japaneseVideo.id}));
+                const japaneseRecords = _.times(2, function(i) {
+                    return {
+                        video_id: japaneseVideo.id,
+                        account_id: account.id,
+                        study_time: 300,
+                        is_completed: true
+                    }
+                });
 
-                const createEnglishStudySessions  = StudySession.bulkCreate(_.times(2, englishStudySessionObject));
-                const createJapaneseStudySessions = StudySession.bulkCreate(_.times(2, japaneseStudySessionObject));
+                _.set(_.nth(englishRecords, 1), 'is_completed', false);
+
+                const createEnglishStudySessions  = StudySession.bulkCreate(englishRecords);
+                const createJapaneseStudySessions = StudySession.bulkCreate(japaneseRecords);
 
                 return Promise.all([createEnglishStudySessions, createJapaneseStudySessions, WritingQuestion.findOne()]);
             }).spread(function(englishStudySessions, japaneseStudySessions, writingQuestion) {
@@ -290,9 +333,10 @@ describe('Account', function() {
 
                 return WritingAnswer.bulkCreate([englishAnswer_1, englishAnswer_2, japaneseAnswer_1, japaneseAnswer_2]);
             }).then(function() {
-                return account.calculateWritingStatsForLanguage('en');
-            }).then(function(stats) {
-                assert.equal(stats.maximum_wpm, 40);
+                return Promise.all([account.calculateWritingStatsForLanguage('en'), account.calculateWritingStatsForLanguage('ja')]);
+            }).spread(function(e, j) {
+                assert.equal(e.maximum_wpm, 20, 'English');
+                assert.equal(j.maximum_wpm, 80, 'Japanese');
             });
         });
 
@@ -351,7 +395,7 @@ describe('Account', function() {
                         account_id: account.id,
                         study_time: 300,
                         created_at: englishStudyDates[i],
-                        updated_at: englishStudyDates[i]
+                        is_completed: true
                     }
                 });
 
@@ -361,16 +405,18 @@ describe('Account', function() {
                         account_id: account.id,
                         study_time: 300,
                         created_at: japaneseStudyDates[i],
-                        updated_at: japaneseStudyDates[i]
+                        is_completed: true
                     }
                 });
+
+                _.nth(japaneseStudySessions, 6).is_completed = false;
 
                 return StudySession.bulkCreate(_.concat(englishStudySessions, japaneseStudySessions));
             }).then(function() {
                 return Promise.all([account.calculateStudyStreaksForLanguage('en'), account.calculateStudyStreaksForLanguage('ja')]);
             }).spread(function(englishStats, japaneseStats) {
                 assert.equal(englishStats.longest_consecutive_days, 4, '(English)');
-                assert.equal(japaneseStats.longest_consecutive_days, 8, '(Japanese)');
+                assert.equal(japaneseStats.longest_consecutive_days, 6, '(Japanese)');
             });
         });
 
@@ -378,7 +424,7 @@ describe('Account', function() {
             const japaneseVideoPromise = Video.findOne({attributes: ['id'], where: {language_code: 'ja'}});
             const englishVideoPromise  = Video.findOne({attributes: ['id'], where: {language_code: 'en'}});
 
-            return Promise.all([japaneseVideoPromise, englishVideoPromise]).spread(function(japaneseVideo, englishVideo) {
+            return Promise.join(japaneseVideoPromise, englishVideoPromise, function(japaneseVideo, englishVideo) {
                 const oneDay             = 1000 * 60 * 60 * 24;
                 const now                = new Date();
                 const yesterday          = new Date(now - oneDay);
@@ -398,9 +444,11 @@ describe('Account', function() {
                         account_id: account.id,
                         study_time: 300,
                         created_at: englishStudyDates[i],
-                        updated_at: englishStudyDates[i]
+                        is_completed: true
                     }
                 });
+
+                _.nth(englishStudySessions, 2).is_completed = false;
 
                 const japaneseStudySessions = _.times(japaneseStudyDates.length, function(i) {
                     return {
@@ -408,7 +456,7 @@ describe('Account', function() {
                         account_id: account.id,
                         study_time: 300,
                         created_at: japaneseStudyDates[i],
-                        updated_at: japaneseStudyDates[i]
+                        is_completed: true
                     }
                 });
 
@@ -416,7 +464,7 @@ describe('Account', function() {
             }).then(function() {
                 return Promise.all([account.calculateStudyStreaksForLanguage('en'), account.calculateStudyStreaksForLanguage('ja')]);
             }).spread(function(englishStats, japaneseStats) {
-                assert.equal(englishStats.consecutive_days, 3, '(English)');
+                assert.equal(englishStats.consecutive_days, 2, '(English)');
                 assert.equal(japaneseStats.consecutive_days, 1, '(Japanese)');
             });
         });
