@@ -9,8 +9,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LocalStorageService } from '../local-storage/local-storage.service';
-import { kListening, kShadowing, kSpeaking, kWriting } from './section-keys';
 import { kCurrentStudySession } from '../local-storage/local-storage-keys';
+import { StudySessionSection } from '../typings/study-session-section';
 import { NavbarService } from '../navbar/navbar.service';
 import { StudySession } from '../entities/study-session';
 import { SessionTimer } from './session-timer';
@@ -22,7 +22,7 @@ import { Video } from '../entities/video';
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
-type StudySessionSection = 'listening' | 'shadowing' | 'speaking' | 'writing';
+
 
 @Injectable()
 export class StudySessionService {
