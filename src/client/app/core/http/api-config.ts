@@ -102,5 +102,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/study',
         isProtected: true
+    }],
+    [APIHandle.COMPLETE_STUDY_SESSION, {
+        method: RequestMethod.Post,
+        url: '/study/complete',
+        isProtected: true
     }]
 ]);
