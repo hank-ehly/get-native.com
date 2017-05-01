@@ -19,8 +19,6 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { Subject } from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
     moduleId: module.id,
@@ -60,7 +58,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     studyOptionsEnabled$ = this.navbar.studyOptionsEnabled$;
     progressBarVisible$  = this.navbar.progressBarVisible$;
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
-    progress             = this.navbar.studyProgress;
+    progress             = this.navbar.progress;
 
     hasUnreadNotifications: boolean = false;
 
@@ -74,7 +72,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
             this.router.events.filter((e: any) => e instanceof NavigationEnd).do(() => {
                 this.navbar.searchBarVisible$.next(false);
-            }).mapTo('').subscribe(this.navbar.query$)
+            }).map(_.stubString).subscribe(this.navbar.query$)
         );
     }
 

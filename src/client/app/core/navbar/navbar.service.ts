@@ -25,11 +25,12 @@ export class NavbarService {
     onClickQueue$        = new Subject<void>();
     onClickStart$        = new Subject<void>();
 
-    studyProgress: any = {
-        listening$: new BehaviorSubject<number>(0),
-        shadowing$: new BehaviorSubject<number>(0),
-        speaking$:  new BehaviorSubject<number>(0),
-        writing$:   new BehaviorSubject<number>(0)
+    progress: any = {
+        countdownEmitted$: new BehaviorSubject<number>(0),
+        listeningEmitted$: new BehaviorSubject<number>(0),
+        shadowingEmitted$: new BehaviorSubject<number>(0),
+         speakingEmitted$: new BehaviorSubject<number>(0),
+          writingEmitted$: new BehaviorSubject<number>(0)
     };
 
     updateQuery(value: string): void {

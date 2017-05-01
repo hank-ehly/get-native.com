@@ -9,8 +9,6 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
 @Component({
     moduleId: module.id,
     selector: 'gn-study-progress',
@@ -18,13 +16,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
     styleUrls: ['study-progress.component.css']
 })
 export class StudyProgressComponent implements OnInit, OnDestroy {
-    @Input() progress: {
-        countdown$: BehaviorSubject<number>,
-        listening$: BehaviorSubject<number>,
-        shadowing$: BehaviorSubject<number>,
-         speaking$: BehaviorSubject<number>,
-          writing$: BehaviorSubject<number>
-    };
+    @Input() progress: any;
 
     constructor(private logger: Logger) {
     }

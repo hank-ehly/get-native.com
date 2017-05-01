@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { kCurrentStudySession } from '../local-storage/local-storage-keys';
+import { StudySessionSectionTimer } from './study-session-section-timer';
 import { StudySessionSection } from '../typings/study-session-section';
 import { NavbarService } from '../navbar/navbar.service';
 import { StudySession } from '../entities/study-session';
-import { SessionTimer } from './session-timer';
 import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
 import { Logger } from '../logger/logger';
@@ -21,17 +21,28 @@ import { Video } from '../entities/video';
 
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 
 
 
 @Injectable()
 export class StudySessionService {
-    get timer(): Observable<number> {
-        if (!this._timer && _.has(this.current, 'session.study_time')) {
-            this._timer = new SessionTimer(this.current.session.study_time);
+    get progressEmitted$(): Observable<number> {
+        if (!this._progressEmitted$ && _.has(this.current, 'session.study_time')) {
+            this._progressEmitted$ = new StudySessionSectionTimer(this.current.session.study_time);
         }
 
-        return this._timer;
+        return this._progressEmitted$;
+    }
+
+    get sectionCountdownEmitted$(): Observable<string> {
+        const seconds = _.floor(this.current.session.study_time / 4);
+
+        let count = seconds;
+        return IntervalObservable.create(1000).take(seconds).map((t: number) => {
+            count--;
+            return count.toString();
+        });
     }
 
     set current(value: any) {
@@ -51,15 +62,9 @@ export class StudySessionService {
         return this._current;
     }
 
-    progress: any = {
-        countdown$: this.navbar.studyProgress.countdown$,
-        listening$: this.navbar.studyProgress.listening$,
-        shadowing$: this.navbar.studyProgress.shadowing$,
-         speaking$: this.navbar.studyProgress.speaking$,
-          writing$: this.navbar.studyProgress.writing$
-    };
+    progress = this.navbar.progress;
 
-    private _timer: Observable<number> = null;
+    private _progressEmitted$: Observable<number> = null;
     private _current: { session?: StudySession, video?: Video } = null;
 
     constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router,
@@ -96,6 +101,6 @@ export class StudySessionService {
         session.session = studySession;
         this.current = session;
 
-        this._timer = new SessionTimer(session.session.study_time);
+        this._progressEmitted$ = new StudySessionSectionTimer(session.session.study_time);
     }
 }
