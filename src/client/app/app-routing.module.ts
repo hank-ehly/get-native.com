@@ -31,6 +31,7 @@ import { TransitionComponent } from './study/transition/transition.component';
 import { StudyComponent } from './study/study.component';
 import { ListeningResolver } from './study/listening/listening-resolver.service';
 import { StudySessionGuard } from './study/study-session-guard.service';
+import { ResultsResolver } from './study/results/results-resolver.service';
 
 const routes: Routes = [
     {
@@ -78,7 +79,7 @@ const routes: Routes = [
                 path: 'writing', component: WritingComponent, data: {title: 'Writing'}
             },
             {
-                path: 'results', component: ResultsComponent, data: {title: 'Results'}
+                path: 'results', component: ResultsComponent, data: {title: 'Results'}, resolve: {_: ResultsResolver}
             }
         ]
     },
