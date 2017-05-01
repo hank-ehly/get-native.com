@@ -15,6 +15,7 @@
         "EmailNotificationsEnabled": "email_notifications_enabled",
         "EmailVerified": "email_verified",
         "Id": "id",
+        "IsCompleted": "is_completed",
         "IsSilhouettePicture": "is_silhouette_picture",
         "LanguageCode": "language_code",
         "Length": "length",

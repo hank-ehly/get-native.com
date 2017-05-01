@@ -6,18 +6,18 @@
  */
 
 const k               = require('../../config/keys.json');
-const services        = require('../services');
-const ResponseWrapper = services['ResponseWrapper'];
-const GetNativeError  = services['GetNativeError'];
-const Auth            = services['Auth'];
 const db              = require('../models');
-const ModelService    = services['Model'](db);
 const WritingAnswer   = db[k.Model.WritingAnswer];
 const WritingQuestion = db[k.Model.WritingQuestion];
 const QueuedVideo     = db[k.Model.CuedVideo];
 const StudySession    = db[k.Model.StudySession];
 const Account         = db[k.Model.Account];
 const Video           = db[k.Model.Video];
+const services        = require('../services');
+const ModelService    = services['Model'](db);
+const ResponseWrapper = services['ResponseWrapper'];
+const GetNativeError  = services['GetNativeError'];
+const Auth            = services['Auth'];
 
 const Promise         = require('bluebird');
 const _               = require('lodash');
@@ -93,7 +93,7 @@ module.exports.createStudySession = (req, res, next) => {
     });
 
     return Promise.join(studySession, queuedVideo, function(session) {
-        const ret = _.pick(session.get({plain: true}), [k.Attr.Id, k.Attr.VideoId, k.Attr.StudyTime]);
+        const ret = _.pick(session.get({plain: true}), [k.Attr.Id, k.Attr.VideoId, k.Attr.StudyTime, k.Attr.IsCompleted]);
         res.status(201).send(ret);
     }).catch(next);
 };

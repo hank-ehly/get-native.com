@@ -33,8 +33,6 @@ module.exports = {
                 });
 
                 for (let j = 0; j < numStudySessions; j++) {
-                    let date = new Date(chance.integer({min: minDate, max: maxDate}));
-
                     studySessions.push({
                         video_id: chance.integer({
                             min: minVideoId,
@@ -42,8 +40,8 @@ module.exports = {
                         }),
                         account_id: i,
                         study_time: chance.pickone(possibleStudyTimes),
-                        created_at: date,
-                        updated_at: date
+                        created_at: new Date(chance.integer({min: minDate, max: maxDate})),
+                        is_completed: chance.bool()
                     });
                 }
             }
