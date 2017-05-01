@@ -24,10 +24,10 @@ module.exports = {
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.fn('NOW')
             },
-            updated_at: {
+            is_completed: {
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
-                type: Sequelize.DATE,
-                defaultValue: Sequelize.fn('NOW')
+                defaultValue: 0
             }
         }, {
             engine: 'InnoDB',

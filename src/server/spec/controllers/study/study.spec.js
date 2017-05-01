@@ -154,6 +154,12 @@ describe('POST /study', function() {
             });
         });
 
+        it(`should contain an 'is_completed' boolean whose value is false`, function() {
+            return request(server).post('/study').set('authorization', authorization).send(reqBody).then(function(response) {
+                assert.equal(response.body.is_completed, false);
+            });
+        });
+
         it(`should instantiate a new study_sessions record`, function() {
             return request(server).post('/study').set('authorization', authorization).send(reqBody).then(function(response) {
                 db.StudySession.findOne({
