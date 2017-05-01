@@ -24,10 +24,7 @@ export class StudySessionGuard implements CanDeactivate<StudyComponent> {
                   currentState: RouterStateSnapshot,
                   nextState?: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
         this.logger.debug(this, 'canDeactivate');
-
-        this.session.resetCountdown();
-
-
+        this.session.end();
         return true;
     }
 }

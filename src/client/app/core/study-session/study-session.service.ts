@@ -19,7 +19,7 @@ import { APIHandle } from '../http/api-handle';
 import { Logger } from '../logger/logger';
 import { Video } from '../entities/video';
 
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
@@ -31,14 +31,6 @@ interface StudySessionLocalStorageObject {
 
 @Injectable()
 export class StudySessionService {
-    get progressEmitted$(): Observable<number> {
-        if (!this._progressEmitted$ && _.has(this.current, 'session.study_time')) {
-            this._progressEmitted$ = new StudySessionSectionTimer(this.current.session.study_time);
-        }
-
-        return this._progressEmitted$.share();
-    }
-
     set current(value: any) {
         if (!_.isPlainObject(value)) {
             return;
@@ -56,10 +48,17 @@ export class StudySessionService {
         return this._current;
     }
 
+    get progressEmitted$(): Observable<number> {
+        if (!this._progressEmitted$ && _.has(this.current, 'session.study_time')) {
+            this._progressEmitted$ = new StudySessionSectionTimer(this.current.session.study_time);
+        }
+
+        return this._progressEmitted$.share();
+    }
+
     progress = this.navbar.progress;
 
     private _progressEmitted$: Observable<number>    = null;
-    private _sectionCountdownEmitted$: Observable<number>    = null;
     private _current: StudySessionLocalStorageObject = null;
 
     constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router,
@@ -113,6 +112,12 @@ export class StudySessionService {
         const sectionTime = _.floor(this.current.session.study_time / 4);
         this.logger.debug(this, 'resetCountdown', sectionTime);
         this.progress.countdownEmitted$.next(sectionTime);
+    }
+
+    end(): void {
+        this.resetCountdown();
+        _.each(this.progress, (o: BehaviorSubject<number>) => o.next(0));
+        this.localStorage.removeItem(kCurrentStudySession);
     }
 
     private onStartStudySession(studySession: StudySession) {
