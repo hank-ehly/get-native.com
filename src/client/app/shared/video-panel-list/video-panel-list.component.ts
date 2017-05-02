@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/01/12.
  */
 
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
 import { Router } from '@angular/router';
 
@@ -53,6 +53,9 @@ export class VideoPanelListComponent {
     @Input() navigates: boolean = false;
     @Input() controls: boolean = false;
 
+    // Todo: you are here
+    @Output() begin = new EventEmitter<{ videoId: number, studyTime: number }>();
+
     private _videos: Video[];
 
     constructor(private logger: Logger, private router: Router) {
@@ -67,5 +70,9 @@ export class VideoPanelListComponent {
         this.router.navigate(['library', video.id]).then(isFulfilled => {
             this.logger.debug(this, `navigation fulfilled = ${isFulfilled}`);
         });
+    }
+
+    onBegin(o: { videoId: number, studyTime: number }) {
+        this.begin.emit(o);
     }
 }

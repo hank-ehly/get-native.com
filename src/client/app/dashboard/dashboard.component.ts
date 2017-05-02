@@ -10,27 +10,28 @@ import { trigger, style, transition, animate } from '@angular/animations';
 import { URLSearchParams } from '@angular/http';
 
 import { VideoSearchComponent } from '../shared/video-search/video-search.component';
-import { WritingAnswers } from '../core/entities/writing-answers';
-import { Logger } from '../core/logger/logger';
-import { HttpService } from '../core/http/http.service';
-import { NavbarService } from '../core/navbar/navbar.service';
-import { CategoryListService } from '../core/category-list/category-list.service';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
-import { APIHandle } from '../core/http/api-handle';
+import { WritingAnswers } from '../core/entities/writing-answers';
 import { WritingAnswer } from '../core/entities/writing-answer';
-import { UserService } from '../core/user/user.service';
+import { NavbarService } from '../core/navbar/navbar.service';
 import { LanguageCode } from '../core/typings/language-code';
+import { HttpService } from '../core/http/http.service';
+import { UserService } from '../core/user/user.service';
+import { APIHandle } from '../core/http/api-handle';
+import { Logger } from '../core/logger/logger';
 
-import * as _ from 'lodash';
 import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/combineLatest';
-import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/scan';
+import 'rxjs/add/operator/do';
+import * as _ from 'lodash';
+import { kListening } from '../core/study-session/section-keys';
+import { StudySessionService } from '../core/study-session/study-session.service';
 
 @Component({
     moduleId: module.id,
@@ -96,9 +97,15 @@ export class DashboardComponent extends VideoSearchComponent {
     ];
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
-                private dateService: UTCDateService) {
+                private dateService: UTCDateService, private session: StudySessionService) {
         super(logger, http, navbar, user);
         this.cuedOnly = true;
+    }
+
+    onBegin(o: { videoId: number, studyTime: number }): void {
+        this.session.create({video_id: o.videoId, study_time: o.studyTime}).toPromise().then(() => {
+            this.session.transition(kListening);
+        });
     }
 
     private updateMaxAnswerId(records?: WritingAnswer[]): void {
