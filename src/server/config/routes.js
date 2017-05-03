@@ -28,6 +28,7 @@ router.post( '/study/complete',              ValidateParams(pv.study.complete), 
 router.get(  '/study/:lang/stats',           ValidateParams(pv.study.stats),                  SetAccountId, Authenticate, ctrl.study.stats);
 router.get(  '/study/:lang/writing_answers', ValidateParams(pv.study.writing_answers),        SetAccountId, Authenticate, ctrl.study.writing_answers);
 router.get(  '/speakers/:id',                ValidateParams(pv.speakers.show),                SetAccountId, Authenticate, ctrl.speakers.show);
+router.get(  '/subcategories/:id/writing_questions', ValidateParams(pv.subcategories.writing_questions),    Authenticate, ctrl.subcategories.writingQuestions);
 router.get(  '/videos',                      ValidateParams(pv.videos.index),                 SetAccountId, Authenticate, ctrl.videos.index);
 router.get(  '/videos/:id',                  ValidateParams(pv.videos.show),                  SetAccountId, Authenticate, ctrl.videos.show);
 router.post( '/videos/:id/dequeue',          ValidateParams(pv.videos.dequeue),               SetAccountId, Authenticate, ctrl.videos.dequeue);
