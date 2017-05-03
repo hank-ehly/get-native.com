@@ -7,36 +7,36 @@
 
 import { Injectable } from '@angular/core';
 
-import { Category } from '../entities/category';
-import { Subcategory } from '../entities/subcategory';
+import { HttpService } from '../http/http.service';
+import { APIHandle } from '../http/api-handle';
+import { Categories } from '../entities/categories';
+
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { Observable } from 'rxjs/Observable';
 import { Logger } from '../logger/logger';
 
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-
+// Todo: This is causing us to get logged out on page transition
 @Injectable()
 export class CategoryListService {
-    selectCategory$: Observable<Category>;
-    selectSubcategory$: Observable<Subcategory>;
+    private data$ = new ReplaySubject<Categories>(1);
 
-    private selectCategorySource: Subject<Category>;
-    private selectSubcategorySource: Subject<Subcategory>;
-
-    constructor(private logger: Logger) {
-        this.selectCategorySource = new Subject<Category>();
-        this.selectSubcategorySource = new Subject<Subcategory>();
-
-        this.selectCategory$ = this.selectCategorySource.asObservable();
-        this.selectSubcategory$ = this.selectSubcategorySource.asObservable();
+    constructor(private http: HttpService, private logger: Logger) {
+        this.logger.debug(this, 'Init');
     }
 
-    selectCategory(category: Category): void {
-        this.logger.debug(this, `Selected '${category.name}' category.`);
-        this.selectCategorySource.next(category);
-    }
+    fetch(): Observable<Categories> {
+        if (!this.data$.observers.length) {
+            this.http.request(APIHandle.CATEGORIES).subscribe((d: Categories) => {
+                    this.logger.debug(this, 'next', d);
+                    this.data$.next(d);
+                }, (e: any) => {
+                    this.logger.debug(this, 'error', e);
+                    this.data$.next(e);
+                    this.data$ = new ReplaySubject<Categories>(1);
+                }
+            );
+        }
 
-    selectSubcategory(subcategory: Subcategory): void {
-        this.logger.debug(this, `Selected '${subcategory.name}' subcategory.`);
-        this.selectSubcategorySource.next(subcategory);
+        return this.data$;
     }
 }

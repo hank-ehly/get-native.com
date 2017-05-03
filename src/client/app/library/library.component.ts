@@ -14,6 +14,7 @@ import { HttpService } from '../core/http/http.service';
 import { NavbarService } from '../core/navbar/navbar.service';
 
 import { UserService } from '../core/user/user.service';
+import { CategoryListService } from '../core/category-list/category-list.service';
 
 @Component({
     moduleId: module.id,
@@ -34,7 +35,8 @@ import { UserService } from '../core/user/user.service';
     ]
 })
 export class LibraryComponent extends VideoSearchComponent {
-    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService) {
-        super(logger, http, navbar, user);
+    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
+                protected categoryList: CategoryListService) {
+        super(logger, http, navbar, user, categoryList);
     }
 }
