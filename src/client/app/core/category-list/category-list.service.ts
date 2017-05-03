@@ -13,30 +13,28 @@ import { Categories } from '../entities/categories';
 
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
-import { Logger } from '../logger/logger';
 
-// Todo: This is causing us to get logged out on page transition
 @Injectable()
 export class CategoryListService {
     private data$ = new ReplaySubject<Categories>(1);
 
-    constructor(private http: HttpService, private logger: Logger) {
-        this.logger.debug(this, 'Init');
+    constructor(private http: HttpService) {
     }
 
     fetch(): Observable<Categories> {
         if (!this.data$.observers.length) {
-            this.http.request(APIHandle.CATEGORIES).subscribe((d: Categories) => {
-                    this.logger.debug(this, 'next', d);
-                    this.data$.next(d);
-                }, (e: any) => {
-                    this.logger.debug(this, 'error', e);
-                    this.data$.next(e);
-                    this.data$ = new ReplaySubject<Categories>(1);
-                }
-            );
+            this.http.request(APIHandle.CATEGORIES).subscribe(this.onFetchSuccess.bind(this), this.onFetchError.bind(this));
         }
 
         return this.data$;
+    }
+
+    private onFetchSuccess(d: Categories) {
+        this.data$.next(d);
+    }
+
+    private onFetchError(e: any) {
+        this.data$.next(e);
+        this.data$ = new ReplaySubject<Categories>(1);
     }
 }
