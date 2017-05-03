@@ -21,6 +21,9 @@ import { STUBLogger } from '../core/logger/logger.stub';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { LangService } from '../core/lang/lang.service';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
+import { StudySessionService } from '../core/study-session/study-session.service';
+import { LocalStorageService } from '../core/local-storage/local-storage.service';
+import { STUBLocalStorageService } from '../core/local-storage/local-storage.service.stub';
 
 export function main() {
     let comp: LibraryDetailComponent;
@@ -40,7 +43,9 @@ export function main() {
                     {provide: HttpService, useValue: STUBHttpService},
                     {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
                     LangService,
-                    UTCDateService
+                    UTCDateService,
+                    StudySessionService,
+                    {provide: LocalStorageService, useValue: STUBLocalStorageService}
                 ]
             }).compileComponents().then(() => {
                 fixture = TestBed.createComponent(LibraryDetailComponent);
@@ -53,16 +58,6 @@ export function main() {
         it('should display a video player', () => {
             let player = util.getNativeEl('video');
             expect(player).toBeTruthy();
-        });
-
-        it('should display a video description', () => {
-            let description = util.getNativeEl('.section--video-detail .column__row .paragraph');
-            expect(description.textContent.length).toBeGreaterThan(0);
-        });
-
-        it('should display related videos', () => {
-            let related_videos = util.getNativeEl('.section_related-videos .video-panels');
-            expect(related_videos.children.length).toBeGreaterThan(0);
         });
     });
 }
