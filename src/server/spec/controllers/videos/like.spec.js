@@ -5,15 +5,16 @@
  * Created by henryehly on 2017/03/24.
  */
 
+const SpecUtil = require('../../spec-util');
+
+const Promise  = require('bluebird');
 const request  = require('supertest');
 const assert   = require('assert');
-const SpecUtil = require('../../spec-util');
-const Promise  = require('bluebird');
+const _        = require('lodash');
 
 describe('POST /videos/:id/like', function() {
     let server         = null;
     let authorization  = null;
-    let user           = null;
     let requestVideoId = null;
     let db             = null;
 
@@ -24,21 +25,20 @@ describe('POST /videos/:id/like', function() {
 
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
-        return SpecUtil.login().then(function(_) {
-            server = _.server;
-            db = _.db;
-            authorization = _.authorization;
-            user = _.response.body;
+        return SpecUtil.login().then(function(initGroup) {
+            authorization = initGroup.authorization;
+            server = initGroup.server;
+            db = initGroup.db;
 
             return db.sequelize.query(`
-                SELECT video_id
-                FROM likes
-                WHERE account_id != (
-                    SELECT id
-                    FROM accounts
-                    WHERE email = 'test@email.com'
+                SELECT id
+                FROM videos
+                WHERE id NOT IN (
+                    SELECT video_id
+                    FROM likes
+                    WHERE account_id = ?
                 ) LIMIT 1
-            `).then(r => requestVideoId = r[0][0].video_id);
+            `, {replacements: [initGroup.response.body.id]}).spread(r => requestVideoId = _.first(r).id);
         });
     });
 

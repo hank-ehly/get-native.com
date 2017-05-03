@@ -94,7 +94,6 @@ describe('POST /videos/:id/dequeue', function() {
                     }
                 });
             }).then(function(dequeuedVideo) {
-                console.log(dequeuedVideo);
                 assert(!dequeuedVideo);
             });
         });
