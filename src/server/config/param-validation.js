@@ -130,6 +130,19 @@ module.exports = {
             }
         }
     },
+    subcategories: {
+        writing_questions: {
+            headers: {
+                authorization: Joi.string().required()
+            },
+            params: {
+                id: Joi.number().integer().min(1).required()
+            },
+            query: {
+                count: Joi.number().integer().min(1)
+            }
+        }
+    },
     videos: {
         index: {
             headers: {
