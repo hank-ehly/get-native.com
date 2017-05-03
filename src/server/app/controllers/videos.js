@@ -102,30 +102,30 @@ module.exports.show = (req, res, next) => {
 };
 
 module.exports.like = (req, res, next) => {
-    Video.findById(+req.params.id).then(video => {
-        Like.create({
+    return Video.findById(+req.params.id).then(video => {
+        return Like.create({
             video_id: video.id,
             account_id: req.accountId
-        }).then(() => {
-            res.sendStatus(204);
-        }).catch(next);
-    }).catch(() => {
+        });
+    }).then(() => {
+        res.sendStatus(204);
+    }).catch(e => {
         res.status(404);
-        next();
+        next(e);
     });
 };
 
 module.exports.unlike = (req, res, next) => {
-    Video.findById(+req.params.id).then(video => {
-        Like.destroy({
+    return Video.findById(+req.params.id).then(video => {
+        return Like.destroy({
             where: {
                 video_id: video.id,
                 account_id: req.accountId
             },
             limit: 1
-        }).then(() => {
-            res.sendStatus(204);
-        }).catch(next);
+        });
+    }).then(() => {
+        res.sendStatus(204);
     }).catch(e => {
         res.status(404);
         next(e);
