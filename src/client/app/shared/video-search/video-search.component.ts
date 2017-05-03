@@ -5,25 +5,26 @@
  * Created by henryehly on 2017/02/11.
  */
 
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
+import { CategoryListService } from '../../core/category-list/category-list.service';
+import { NavbarService } from '../../core/navbar/navbar.service';
+import { LanguageCode } from '../../core/typings/language-code';
+import { Subcategory } from '../../core/entities/subcategory';
+import { HttpService } from '../../core/http/http.service';
+import { UserService } from '../../core/user/user.service';
+import { Category } from '../../core/entities/category';
 import { APIHandle } from '../../core/http/api-handle';
 import { Videos } from '../../core/entities/videos';
-import { LanguageCode } from '../../core/typings/language-code';
-import { Logger } from '../../core/logger/logger';
-import { HttpService } from '../../core/http/http.service';
-import { NavbarService } from '../../core/navbar/navbar.service';
-import { Subcategory } from '../../core/entities/subcategory';
-import { Category } from '../../core/entities/category';
-import { UserService } from '../../core/user/user.service';
 import { CategoryFilter } from './category-filter';
 import { Video } from '../../core/entities/video';
+import { Logger } from '../../core/logger/logger';
 
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/switchMap';
@@ -34,12 +35,13 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/scan';
 import 'rxjs/observable/timer';
 import * as _ from 'lodash';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     template: ''
 })
-export class VideoSearchComponent {
-    categories$ = this.http.request(APIHandle.CATEGORIES);
+export class VideoSearchComponent implements OnInit, OnDestroy {
+    categories$ = this.categoryList.fetch();
 
     filterByCategory$ = new BehaviorSubject<CategoryFilter>({
         text: 'All videos',
@@ -132,11 +134,20 @@ export class VideoSearchComponent {
         this.showDropdown$.next(found);
     }
 
-    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService) {
+    constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
+                protected categoryList: CategoryListService) {
+    }
+
+    ngOnInit(): void {
+        this.logger.debug(this, 'OnInit');
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
     }
 
     onClickResetDropdownSelection(): void {
-        this.logger.debug(this, 'onClickResetDropdownSelection()');
+        this.logger.debug(this, 'onClickResetDropdownSelection');
         this.filterByCategory$.next({text: 'All videos', value: null, type: null});
         this.showDropdown$.next(false);
     }

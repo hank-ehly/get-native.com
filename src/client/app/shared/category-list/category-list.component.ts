@@ -7,14 +7,14 @@
 
 import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, OnDestroy } from '@angular/core';
 
-import { Category } from '../../core/entities/category';
-import { Logger } from '../../core/logger/logger';
-import { Categories } from '../../core/entities/categories';
 import { CategoryListService } from '../../core/category-list/category-list.service';
 import { Subcategory } from '../../core/entities/subcategory';
+import { Categories } from '../../core/entities/categories';
+import { Category } from '../../core/entities/category';
+import { Logger } from '../../core/logger/logger';
 
-import * as _ from 'lodash';
 import { Subject } from 'rxjs/Subject';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,

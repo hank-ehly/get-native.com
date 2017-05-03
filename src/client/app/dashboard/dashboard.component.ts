@@ -33,6 +33,7 @@ import * as _ from 'lodash';
 import { kListening } from '../core/study-session/section-keys';
 import { StudySessionService } from '../core/study-session/study-session.service';
 import { StudySession } from '../core/entities/study-session';
+import { CategoryListService } from '../core/category-list/category-list.service';
 
 @Component({
     moduleId: module.id,
@@ -98,8 +99,8 @@ export class DashboardComponent extends VideoSearchComponent {
     ];
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
-                private dateService: UTCDateService, private session: StudySessionService) {
-        super(logger, http, navbar, user);
+                private dateService: UTCDateService, private session: StudySessionService, protected categoryList: CategoryListService) {
+        super(logger, http, navbar, user, categoryList);
         this.cuedOnly = true;
     }
 
