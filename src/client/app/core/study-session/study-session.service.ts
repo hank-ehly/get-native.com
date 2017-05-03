@@ -91,20 +91,20 @@ export class StudySessionService {
 
     startCountdown(): void {
         this.logger.debug(this, 'startCountdown');
-        let currentInterval = _.floor(this.current.session.study_time / 4);
+        let seconds = _.floor(this.current.session.study_time / 4);
 
-        currentInterval--;
-        this.progress.countdownEmitted$.next(currentInterval);
+        seconds--;
+        this.progress.countdownEmitted$.next(seconds);
 
         let interval = setInterval(() => {
-            currentInterval--;
+            seconds--;
 
-            if (currentInterval === 0) {
+            if (seconds === 0) {
                 clearInterval(interval);
                 return;
             }
 
-            this.progress.countdownEmitted$.next(currentInterval);
+            this.progress.countdownEmitted$.next(seconds);
         }, 1000);
     }
 
