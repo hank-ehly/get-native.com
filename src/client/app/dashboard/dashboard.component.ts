@@ -32,6 +32,7 @@ import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 import { kListening } from '../core/study-session/section-keys';
 import { StudySessionService } from '../core/study-session/study-session.service';
+import { StudySession } from '../core/entities/study-session';
 
 @Component({
     moduleId: module.id,
@@ -102,8 +103,8 @@ export class DashboardComponent extends VideoSearchComponent {
         this.cuedOnly = true;
     }
 
-    onBegin(o: { videoId: number, studyTime: number }): void {
-        this.session.create({video_id: o.videoId, study_time: o.studyTime}).toPromise().then(() => {
+    onBegin(studySession: StudySession): void {
+        this.session.create(studySession).toPromise().then(() => {
             this.session.transition(kListening);
         });
     }

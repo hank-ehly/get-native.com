@@ -8,6 +8,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Video } from '../../core/entities/video';
+import { StudySession } from '../../core/entities/study-session';
 
 @Component({
     moduleId: module.id,
@@ -18,7 +19,7 @@ import { Video } from '../../core/entities/video';
 export class VideoPanelComponent {
     @Input() controls: boolean;
     @Input() video: Video;
-    @Output() begin = new EventEmitter<{ videoId: number, studyTime: number }>();
+    @Output() begin = new EventEmitter<StudySession>();
     @Output() clickOverlay = new EventEmitter();
 
     time: number = 15;
@@ -30,7 +31,7 @@ export class VideoPanelComponent {
     }
 
     onBegin(): void {
-        this.begin.emit({videoId: this.video.id, studyTime: this.time * 60});
+        this.begin.emit({video_id: this.video.id, study_time: this.time * 60});
     }
 
     onClickMinuteButtonIncrement(): void {

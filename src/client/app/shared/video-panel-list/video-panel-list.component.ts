@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
 import { Router } from '@angular/router';
 
+import { StudySession } from '../../core/entities/study-session';
 import { Logger } from '../../core/logger/logger';
 import { Video } from '../../core/entities/video';
 
@@ -54,7 +55,7 @@ export class VideoPanelListComponent {
     @Input() controls: boolean = false;
 
     // Todo: you are here
-    @Output() begin = new EventEmitter<{ videoId: number, studyTime: number }>();
+    @Output() begin = new EventEmitter<StudySession>();
 
     private _videos: Video[];
 
@@ -72,7 +73,7 @@ export class VideoPanelListComponent {
         });
     }
 
-    onBegin(o: { videoId: number, studyTime: number }) {
-        this.begin.emit(o);
+    onBegin(studySession: StudySession) {
+        this.begin.emit(studySession);
     }
 }
