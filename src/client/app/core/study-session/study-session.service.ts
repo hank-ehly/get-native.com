@@ -23,6 +23,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
+import Timer = NodeJS.Timer;
 
 interface StudySessionLocalStorageObject {
     session?: StudySession;
@@ -60,6 +61,7 @@ export class StudySessionService {
 
     private _progressEmitted$: Observable<number>    = null;
     private _current: StudySessionLocalStorageObject = null;
+    private _countdown: Timer;
 
     constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router,
                 private navbar: NavbarService) {
@@ -96,11 +98,11 @@ export class StudySessionService {
         seconds--;
         this.progress.countdownEmitted$.next(seconds);
 
-        let interval = setInterval(() => {
+        this._countdown = setInterval(() => {
             seconds--;
 
             if (seconds === 0) {
-                clearInterval(interval);
+                clearInterval(this._countdown);
                 return;
             }
 
@@ -109,6 +111,7 @@ export class StudySessionService {
     }
 
     resetCountdown(): void {
+        clearInterval(this._countdown);
         const sectionTime = _.floor(this.current.session.study_time / 4);
         this.logger.debug(this, 'resetCountdown', sectionTime);
         this.progress.countdownEmitted$.next(sectionTime);
