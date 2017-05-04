@@ -76,7 +76,7 @@ module.exports.show = (req, res, next) => {
             {model: Speaker, attributes: [k.Attr.Id, k.Attr.Description, k.Attr.Name, k.Attr.PictureUrl], as: 'speaker'},
             {model: Subcategory, attributes: [k.Attr.Id, k.Attr.Name], as: 'subcategory'}
         ],
-        attributes: [k.Attr.Description, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length]
+        attributes: [k.Attr.Description, k.Attr.Id, k.Attr.LoopCount, k.Attr.PictureUrl, k.Attr.VideoUrl, k.Attr.Length, k.Attr.LanguageCode]
     }).catch(next);
 
     return Promise.join(likeCount, liked, cued, relatedVideos, video, (likeCount, liked, cued, relatedVideos, video) => {
