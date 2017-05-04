@@ -7,8 +7,10 @@
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { StudySessionService } from '../core/study-session/study-session.service';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { Logger } from '../core/logger/logger';
+import { Config } from '../shared/config/env.config';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +18,9 @@ import { Logger } from '../core/logger/logger';
     styleUrls: ['study.component.css']
 })
 export class StudyComponent implements OnInit, OnDestroy {
-    constructor(private logger: Logger, private navbar: NavbarService) {
+    debug: boolean = Config.ENV === 'DEV';
+
+    constructor(private logger: Logger, private navbar: NavbarService, private session: StudySessionService) {
     }
 
     ngOnInit(): void {
@@ -27,5 +31,9 @@ export class StudyComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
         this.navbar.hideProgressBar();
+    }
+
+    onClickSkip(): void {
+        this.session.transition(this.session.nextSection);
     }
 }
