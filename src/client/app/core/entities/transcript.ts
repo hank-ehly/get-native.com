@@ -10,7 +10,7 @@ import { Collocations } from './collocations';
 import { LanguageCode } from '../typings/language-code';
 
 export interface Transcript extends Entity {
-    text: string;
-    language_code: LanguageCode;
-    collocations: Collocations;
+    text?: string;
+    language_code?: LanguageCode;
+    collocations?: Collocations;
 }

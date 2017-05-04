@@ -8,5 +8,5 @@
 import { Entities } from './entities';
 import { WritingQuestion } from './writing-question';
 
-export interface Questions extends Entities<WritingQuestion> {
+export interface WritingQuestions extends Entities<WritingQuestion> {
 }

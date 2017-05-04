@@ -8,7 +8,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { kListening, kShadowing, kSpeaking, kWriting } from '../../core/study-session/section-keys';
 import { StudySessionService } from '../../core/study-session/study-session.service';
 import { Logger } from '../../core/logger/logger';
 

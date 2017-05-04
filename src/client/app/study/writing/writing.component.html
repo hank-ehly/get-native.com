@@ -3,7 +3,7 @@
     <section class="section section_answer">
         <form class="answer-form">
             <div class="answer-form__group">
-                <label for="answer" class="label">In your opinion, is America a monolingual society?</label>
+                <label for="answer" class="label">{{ questionText$ | async }}</label>
                 <textarea name="answer" id="answer" class="textarea section_answer__textarea"></textarea>
             </div>
 
@@ -16,20 +16,14 @@
 
         <div class="example-answer">
             <label for="example-answer" class="label">Example Answer:</label>
-            <textarea id="example-answer" class="textarea example-answer__textarea" readonly></textarea>
+            <textarea id="example-answer" class="textarea example-answer__textarea" readonly gnAutosizeTextarea>{{ exampleAnswer$ | async }}</textarea>
         </div>
     </section>
 
     <section class="section section_collocations">
         <h6>Collocations</h6>
         <ul class="collocations">
-            <li class="collocation">In my opinion</li>
-            <li class="collocation">and so it's just like</li>
-            <li class="collocation">but then like</li>
-            <li class="collocation">it's not as if</li>
-            <li class="collocation">can only speak one language</li>
-            <li class="collocation">across the border</li>
-            <li class="collocation">up until recently</li>
+            <li class="collocation" *ngFor="let collocation of collocations?.records">{{ collocation.text }}</li>
         </ul>
     </section>
 </main>

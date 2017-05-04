@@ -18,14 +18,16 @@ import 'rxjs/add/operator/mapTo';
 
 @Injectable()
 export class ResultsResolver implements Resolve<void> { // todo: you'll need to resolve with stats
-    constructor(private http: HttpService, private studySession: StudySessionService) {
+    constructor(private http: HttpService, private session: StudySessionService) {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<void> {
         return this.http.request(APIHandle.COMPLETE_STUDY_SESSION, {
             body: {
-                id: this.studySession.current.session.id
+                id: this.session.current.session.id
             }
-        }).mapTo(null).toPromise();
+        }).mapTo(null).toPromise().then(() => {
+            this.session.end();
+        });
     }
 }
