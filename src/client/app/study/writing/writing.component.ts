@@ -17,6 +17,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/startWith';
 import * as _ from 'lodash';
+import { WordCountService } from '../../core/word-count/word-count.service';
 
 @Component({
     moduleId: module.id,
@@ -34,7 +35,8 @@ export class WritingComponent implements OnInit, OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private session: StudySessionService, private router: Router, private route: ActivatedRoute) {
+    constructor(private logger: Logger, private session: StudySessionService, private router: Router, private route: ActivatedRoute,
+                private wc: WordCountService) {
         this.transcript = _.find(this.session.current.video.transcripts.records, {
             language_code: this.session.current.video.language_code
         });
@@ -57,21 +59,9 @@ export class WritingComponent implements OnInit, OnDestroy {
         _.each(this.subscriptions, s => s.unsubscribe());
     }
 
-    // todo: what to exclude for different languages
-    // todo: characters like じゃ should be 1 word
     onInput(e: Event): void {
-        const s = (<HTMLTextAreaElement>e.target).value;
-        let value: string = _.replace(s, /[.,\/#!$%\^&\*;:{}=\-_`~()、。「」『』！＠＃＄％＾＆＊（）：”’？＞＜＋＿｜]/g, '');
-
-        let wordRegex = /[\S]+/g;
-
-        if (this.transcript.language_code === 'ja') {
-            wordRegex = /[\S]/g;
-            value = _.replace(s, /[.,\/#!$%\^&\*;:{}=\-_`~()、。「」『』！＠＃＄％＾＆＊（）：”’？＞＜＋＿｜A-Za-z]/g, '');
-        }
-
-        const wordCount = _.words(value, wordRegex).length;
-        this.logger.debug(this, 'wordCount', wordCount);
-        this.emitWordCount.next(wordCount);
+        const count = this.wc.count((<HTMLTextAreaElement>e.target).value, this.transcript.language_code);
+        this.logger.debug(this, 'count', count);
+        this.emitWordCount.next(count);
     }
 }

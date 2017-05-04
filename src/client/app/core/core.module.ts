@@ -23,6 +23,7 @@ import { UTCDateService } from './utc-date/utc-date.service';
 import { UserService } from './user/user.service';
 import { ConfirmEmailResolver } from './auth/confirm-email-resolver.service';
 import { StudySessionService } from './study-session/study-session.service';
+import { WordCountService } from './word-count/word-count.service';
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import { StudySessionService } from './study-session/study-session.service';
         UTCDateService,
         UserService,
         ConfirmEmailResolver,
-        StudySessionService
+        StudySessionService,
+        WordCountService
     ]
 })
 export class CoreModule {
