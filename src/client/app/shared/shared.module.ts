@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { AutosizeTextareaDirective } from './autosize-textarea/autosize-textarea.directive';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { ComplianceComponent } from './compliance/compliance.component';
 import { DatePipe } from './date/date.pipe';
@@ -40,6 +41,7 @@ import { VideoSearchComponent } from './video-search/video-search.component';
         FormsModule
     ],
     declarations: [
+        AutosizeTextareaDirective,
         CategoryListComponent,
         ComplianceComponent,
         DatePipe,
@@ -65,6 +67,7 @@ import { VideoSearchComponent } from './video-search/video-search.component';
 
     ],
     exports: [
+        AutosizeTextareaDirective,
         CommonModule,
         RouterModule,
         FormsModule,

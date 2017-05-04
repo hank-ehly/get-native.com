@@ -32,6 +32,7 @@ import { StudyComponent } from './study/study.component';
 import { ListeningResolver } from './study/listening/listening-resolver.service';
 import { StudySessionGuard } from './study/study-session-guard.service';
 import { ResultsResolver } from './study/results/results-resolver.service';
+import { WritingResolver } from './study/writing/writing-resolver.service';
 
 const routes: Routes = [
     {
@@ -76,7 +77,7 @@ const routes: Routes = [
                 path: 'speaking', component: SpeakingComponent, data: {title: 'Speaking'}
             },
             {
-                path: 'writing', component: WritingComponent, data: {title: 'Writing'}
+                path: 'writing', component: WritingComponent, data: {title: 'Writing'}, resolve: {question: WritingResolver}
             },
             {
                 path: 'results', component: ResultsComponent, data: {title: 'Results'}, resolve: {_: ResultsResolver}

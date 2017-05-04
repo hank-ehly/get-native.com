@@ -5,13 +5,17 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Logger } from '../../core/logger/logger';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
+import { Collocations } from '../../core/entities/collocations';
+import { Transcript } from '../../core/entities/transcript';
+import { Logger } from '../../core/logger/logger';
+
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
+import { Transcripts } from '../../core/entities/transcripts';
 
 @Component({
     moduleId: module.id,
@@ -19,9 +23,22 @@ import * as _ from 'lodash';
     styleUrls: ['writing.component.css']
 })
 export class WritingComponent implements OnInit, OnDestroy {
-    subscriptions: Subscription[] = [];
+    // todo: Make sure you're getting the right language
+    collocations: Collocations;
 
-    constructor(private logger: Logger, private session: StudySessionService, private router: Router) {
+    questionText$  = this.route.data.pluck('question', 'text');
+    exampleAnswer$ = this.route.data.pluck('question', 'example_answer');
+
+    private subscriptions: Subscription[] = [];
+
+    constructor(private logger: Logger, private session: StudySessionService, private router: Router, private route: ActivatedRoute) {
+        const transcript: Transcript = _.find(this.session.current.video.transcripts.records, {
+            language_code: this.session.current.video.language_code
+        });
+
+        this.logger.debug(this, 'transcript', transcript);
+
+        this.collocations = transcript.collocations;
     }
 
     ngOnInit(): void {
