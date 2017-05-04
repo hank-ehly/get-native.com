@@ -4,10 +4,10 @@
         <form class="answer-form">
             <div class="answer-form__group">
                 <label for="answer" class="label">{{ questionText$ | async }}</label>
-                <textarea name="answer" id="answer" class="textarea section_answer__textarea"></textarea>
+                <textarea name="answer" id="answer" class="textarea section_answer__textarea" (input)="onInput($event)"></textarea>
             </div>
 
-            <span class="section_answer__word-count">120</span>
+            <span class="section_answer__word-count">{{ wordCount$ | async }}</span>
 
             <button class="button button--opaque section_answer__button">FINISH</button>
         </form>
@@ -23,7 +23,7 @@
     <section class="section section_collocations">
         <h6>Collocations</h6>
         <ul class="collocations">
-            <li class="collocation" *ngFor="let collocation of collocations?.records">{{ collocation.text }}</li>
+            <li class="collocation" *ngFor="let collocation of transcript?.collocations?.records">{{ collocation.text }}</li>
         </ul>
     </section>
 </main>
