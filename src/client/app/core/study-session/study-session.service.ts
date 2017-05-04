@@ -24,6 +24,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
 import Timer = NodeJS.Timer;
+import { kListening, kShadowing, kSpeaking, kWriting } from './section-keys';
 
 interface StudySessionLocalStorageObject {
     session?: StudySession;
@@ -55,6 +56,20 @@ export class StudySessionService {
         }
 
         return this._progressEmitted$.share();
+    }
+
+    get nextSection(): StudySessionSection {
+        let nextSection: StudySessionSection;
+
+        if (this.current.section === kListening) {
+            nextSection = kShadowing;
+        } else if (this.current.section === kShadowing) {
+            nextSection = kSpeaking;
+        } else {
+            nextSection = kWriting;
+        }
+
+        return nextSection;
     }
 
     progress = this.navbar.progress;
