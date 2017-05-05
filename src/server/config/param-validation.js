@@ -108,6 +108,17 @@ module.exports = {
                 study_time: Joi.number().integer().min(1).required()
             }
         },
+        createWritingAnswer: {
+            headers: {
+                authorization: Joi.string().required()
+            },
+            body: {
+                study_session_id: Joi.number().integer().min(1).required(),
+                writing_question_id: Joi.number().integer().min(1).required(),
+                answer: Joi.string().required(),
+                word_count: Joi.number().min(0).required()
+            }
+        },
         stats: {
             headers: {
                 authorization: Joi.string().required()
