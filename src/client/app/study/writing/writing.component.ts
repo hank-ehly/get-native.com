@@ -9,6 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
+import { WordCountService } from '../../core/word-count/word-count.service';
+import { WritingQuestion } from '../../core/entities/writing-question';
 import { Transcript } from '../../core/entities/transcript';
 import { Logger } from '../../core/logger/logger';
 
@@ -17,7 +19,6 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/startWith';
 import * as _ from 'lodash';
-import { WordCountService } from '../../core/word-count/word-count.service';
 
 @Component({
     moduleId: module.id,
@@ -27,11 +28,9 @@ import { WordCountService } from '../../core/word-count/word-count.service';
 export class WritingComponent implements OnInit, OnDestroy {
     transcript: Transcript;
 
-    questionText$  = this.route.data.pluck('question', 'text');
-    exampleAnswer$ = this.route.data.pluck('question', 'example_answer');
-
-    wordCount$: Observable<number>;
-    private emitWordCount = new Subject<number>();
+    question: WritingQuestion;
+    answer: string = '';
+    wordCount: number = 0;
 
     private subscriptions: Subscription[] = [];
 
@@ -40,8 +39,6 @@ export class WritingComponent implements OnInit, OnDestroy {
         this.transcript = _.find(this.session.current.video.transcripts.records, {
             language_code: this.session.current.video.language_code
         });
-
-        this.wordCount$ = this.emitWordCount.startWith(0);
     }
 
     ngOnInit(): void {
@@ -49,7 +46,11 @@ export class WritingComponent implements OnInit, OnDestroy {
 
         this.subscriptions.push(
             this.session.progressEmitted$.subscribe(this.session.progress.writingEmitted$),
-            this.session.progressEmitted$.subscribe(null, null, () => this.router.navigate(['/study/results']))
+            this.session.progressEmitted$.subscribe(null, null, () => this.router.navigate(['/study/results'])),
+            this.route.data.pluck('question').subscribe((q: WritingQuestion) => {
+                this.logger.debug(this, q);
+                this.question = q;
+            })
         );
     }
 
@@ -60,8 +61,10 @@ export class WritingComponent implements OnInit, OnDestroy {
     }
 
     onInput(e: Event): void {
-        const count = this.wc.count((<HTMLTextAreaElement>e.target).value, this.transcript.language_code);
+        const input = (<HTMLTextAreaElement>e.target).value;
+        this.answer = input;
+        const count = this.wc.count(input, this.transcript.language_code);
         this.logger.debug(this, 'count', count);
-        this.emitWordCount.next(count);
+        this.wordCount = count;
     }
 }
