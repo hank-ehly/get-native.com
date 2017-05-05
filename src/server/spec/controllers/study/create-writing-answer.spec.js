@@ -165,7 +165,7 @@ describe('POST /study/writing_answers', function() {
             return request(server).post('/study/writing_answers').set('authorization', authorization).send(req).then(function() {
                 return db.sequelize.query('SELECT * FROM writing_answers WHERE answer = ?', {replacements: [req.answer]});
             }).then(function(answer) {
-                let expected = _.round(req.word_count / 300);
+                let expected = _.round(req.word_count / 1.25);
                 let actual = _.first(_.flattenDeep(answer))[k.Attr.WordsPerMinute];
                 assert.equal(actual, expected);
             });
