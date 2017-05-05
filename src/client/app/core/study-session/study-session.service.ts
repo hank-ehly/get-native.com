@@ -9,9 +9,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { kListening, kShadowing, kSpeaking, kWriting } from './section-keys';
 import { kCurrentStudySession } from '../local-storage/local-storage-keys';
 import { StudySessionSectionTimer } from './study-session-section-timer';
 import { StudySessionSection } from '../typings/study-session-section';
+import { WritingAnswer } from '../entities/writing-answer';
 import { NavbarService } from '../navbar/navbar.service';
 import { StudySession } from '../entities/study-session';
 import { HttpService } from '../http/http.service';
@@ -23,12 +25,11 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
-import Timer = NodeJS.Timer;
-import { kListening, kShadowing, kSpeaking, kWriting } from './section-keys';
 
 interface StudySessionLocalStorageObject {
     session?: StudySession;
     video?: Video;
+    writingAnswer?: WritingAnswer;
 }
 
 @Injectable()
@@ -76,7 +77,7 @@ export class StudySessionService {
 
     private _progressEmitted$: Observable<number>    = null;
     private _current: StudySessionLocalStorageObject = null;
-    private _countdown: Timer;
+    private _countdown: NodeJS.Timer;
 
     constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router,
                 private navbar: NavbarService) {
@@ -135,7 +136,6 @@ export class StudySessionService {
     end(): void {
         this.resetCountdown();
         _.each(this.progress, (o: BehaviorSubject<number>) => o.next(0));
-        this.localStorage.removeItem(kCurrentStudySession);
     }
 
     private onStartStudySession(studySession: StudySession) {

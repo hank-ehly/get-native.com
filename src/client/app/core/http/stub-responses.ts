@@ -347,12 +347,13 @@ export const STUBResponses = new Map<APIHandle, any>([
         'count': 5
     }],
     [APIHandle.STUDY_STATS, <any>{
-        'lang': 'en',
-        'consecutive_days': 12,
-        'total_study_sessions': 45,
-        'longest_consecutive_days': 15,
-        'maximum_words': 502,
-        'maximum_wpm': 52
+        lang: 'en',
+        total_time_studied: 500,
+        consecutive_days: 12,
+        total_study_sessions: 45,
+        longest_consecutive_days: 15,
+        maximum_words: 502,
+        maximum_wpm: 52
     }],
     [APIHandle.ACCOUNT, <User>{
         'id': 2244994983,

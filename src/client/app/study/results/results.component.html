@@ -1,48 +1,41 @@
 <main class="main">
-    <!-- Todo: Display data using something like *ngFor -->
     <table class="table">
         <tbody>
         <tr class="table__row">
             <td class="table__data table__data_key">LANGUAGE</td>
-            <td class="table__data table__data_value">Japanese</td>
+            <td class="table__data table__data_value">{{ language }}</td>
         </tr>
         <tr class="table__row">
             <td class="table__data table__data_key">TIME STUDIED</td>
-            <td class="table__data table__data_value">15 minutes</td>
-        </tr>
-        <tr class="table__row">
-            <td class="table__data table__data_key">TIME STUDIED PREVIOUSLY</td>
-            <td class="table__data table__data_value">20 minutes</td>
+            <td class="table__data table__data_value">{{ timeStudied }} minutes</td>
         </tr>
         <tr class="table__row">
             <td class="table__data table__data_key">TOTAL TIME STUDIED</td>
-            <td class="table__data table__data_value">3.1 hours</td>
+            <td class="table__data table__data_value">{{ totalTimeStudied$ | async }} minutes</td>
         </tr>
         <tr class="table__row">
             <td class="table__data table__data_key">WRITING PROMPT</td>
-            <td class="table__data table__data_value">In your opinion, is America a monolingual society?</td>
+            <td class="table__data table__data_value">{{ currentSession?.writingAnswer?.writing_question?.text }}</td>
         </tr>
         <tr class="table__row">
             <td class="table__data table__data_key">YOUR ANSWER</td>
-            <td class="table__data table__data_value">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi corporis debitis
-                                                      dignissimos ducimus earum est, eveniet excepturi ipsa magnam nostrum nulla obcaecati
-                                                      pariatur ratione recusandae tempore ut veritatis vero voluptatibus.</td>
+            <td class="table__data table__data_value">{{ currentSession?.writingAnswer?.answer }}</td>
         </tr>
         <tr class="table__row">
             <td class="table__data table__data_key">WORDS TYPED</td>
-            <td class="table__data table__data_value">256 words</td>
+            <td class="table__data table__data_value">{{ currentSession?.writingAnswer?.word_count }}</td>
         </tr>
         <tr class="table__row">
             <td class="table__data table__data_key">WORDS PER MINUTE</td>
-            <td class="table__data table__data_value">32</td>
+            <td class="table__data table__data_value">{{ currentSession?.writingAnswer?.words_per_minute }}</td>
         </tr>
         <tr class="table__row">
             <td class="table__data table__data_key">MAXIMUM WORDS TYPED</td>
-            <td class="table__data table__data_value">501 words</td>
+            <td class="table__data table__data_value">{{ (stats$ | async)?.maximum_words }} words</td>
         </tr>
         <tr class="table__row">
             <td class="table__data table__data_key">MAXIMUM WORDS PER MINUTE</td>
-            <td class="table__data table__data_value">51</td>
+            <td class="table__data table__data_value">{{ (stats$ | async)?.maximum_wpm }}</td>
         </tr>
         </tbody>
     </table>

@@ -85,7 +85,7 @@ const routes: Routes = [
                 canDeactivate: [WritingGuard]
             },
             {
-                path: 'results', component: ResultsComponent, data: {title: 'Results'}, resolve: {_: ResultsResolver}
+                path: 'results', component: ResultsComponent, data: {title: 'Results'}, resolve: {stats: ResultsResolver}
             }
         ]
     },

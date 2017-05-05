@@ -6,8 +6,16 @@
  */
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
+import { StudySessionService } from '../../core/study-session/study-session.service';
+import { LangService } from '../../core/lang/lang.service';
 import { Logger } from '../../core/logger/logger';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/share';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -15,7 +23,18 @@ import { Logger } from '../../core/logger/logger';
     styleUrls: ['results.component.css']
 })
 export class ResultsComponent implements OnInit, OnDestroy {
-    constructor(private logger: Logger) {
+    stats$         = this.route.data.pluck('stats');
+
+    currentSession = this.session.current;
+    timeStudied    = _.round(this.currentSession.session.study_time / 60, 1);
+    language       = this.lang.codeToName(this.currentSession.video.language_code);
+
+    totalTimeStudied$: Observable<number> = this.stats$
+        .pluck('total_time_studied')
+        .map((seconds: number) => seconds / 60)
+        .map(_.round);
+
+    constructor(private logger: Logger, private route: ActivatedRoute, private session: StudySessionService, private lang: LangService) {
     }
 
     ngOnInit(): void {
@@ -25,4 +44,5 @@ export class ResultsComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
     }
+
 }

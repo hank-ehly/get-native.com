@@ -12,22 +12,26 @@ import { StudySessionService } from '../../core/study-session/study-session.serv
 import { HttpService } from '../../core/http/http.service';
 import { APIHandle } from '../../core/http/api-handle';
 
+import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/mapTo';
 
 @Injectable()
-export class ResultsResolver implements Resolve<void> { // todo: you'll need to resolve with stats
+export class ResultsResolver implements Resolve<any> {
     constructor(private http: HttpService, private session: StudySessionService) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<void> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
+        this.session.end();
         return this.http.request(APIHandle.COMPLETE_STUDY_SESSION, {
             body: {
                 id: this.session.current.session.id
             }
-        }).mapTo(null).toPromise().then(() => {
-            this.session.end();
-        });
+        }).concatMap(() => {
+            return this.http.request(APIHandle.STUDY_STATS, {
+                params: {
+                    lang: this.session.current.video.language_code
+                }
+            });
+        }).toPromise();
     }
 }
