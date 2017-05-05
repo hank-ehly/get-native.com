@@ -9,7 +9,7 @@
 
             <span class="section_answer__word-count">{{ wordCount }}</span>
 
-            <button class="button button--opaque section_answer__button">FINISH</button>
+            <!--<button class="button button&#45;&#45;opaque section_answer__button">FINISH</button>-->
         </form>
 
         <hr>
@@ -23,7 +23,7 @@
     <section class="section section_collocations">
         <h6>Collocations</h6>
         <ul class="collocations">
-            <li class="collocation" *ngFor="let collocation of transcript?.collocations?.records">{{ collocation.text }}</li>
+            <li class="collocation" *ngFor="let collocation of transcript?.collocations?.records">{{ collocation?.text }}</li>
         </ul>
     </section>
 </main>
