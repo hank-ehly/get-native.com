@@ -113,5 +113,10 @@ export const APIConfig = new Map<APIHandle, any>([
         url: '/subcategories/:id/writing_questions',
         isProtected: true,
         permitURLSearchParams: ['count']
+    }],
+    [APIHandle.CREATE_WRITING_ANSWER, {
+        method: RequestMethod.Post,
+        url: '/study/writing_answers',
+        isProtected: true
     }]
 ]);

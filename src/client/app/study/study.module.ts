@@ -19,6 +19,7 @@ import { ListeningResolver } from './listening/listening-resolver.service';
 import { StudySessionGuard } from './study-session-guard.service';
 import { ResultsResolver } from './results/results-resolver.service';
 import { WritingResolver } from './writing/writing-resolver.service';
+import { WritingGuard } from './writing/writing-guard.service';
 
 @NgModule({
     imports: [
@@ -37,7 +38,8 @@ import { WritingResolver } from './writing/writing-resolver.service';
         ListeningResolver,
         StudySessionGuard,
         ResultsResolver,
-        WritingResolver
+        WritingResolver,
+        WritingGuard
     ]
 })
 export class StudyModule {
