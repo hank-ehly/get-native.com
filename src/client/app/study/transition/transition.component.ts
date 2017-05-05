@@ -27,7 +27,7 @@ import * as _ from 'lodash';
     styleUrls: ['transition.component.css']
 })
 export class TransitionComponent implements OnInit, OnDestroy {
-    transitionTimer  = TimerObservable.create(0, 1000).take(4);
+    transitionTimer  = TimerObservable.create(1000, 1000).take(4);
     exercise         = _.toUpper(this.session.current.section);
     count$           = new BehaviorSubject<number>(3);
 
@@ -49,9 +49,8 @@ export class TransitionComponent implements OnInit, OnDestroy {
 
     onNext(x: number): void {
         this.logger.debug(this, 'onNext', x);
-        const nextCount = this.count$.getValue() - 1;
-        if (_.gte(nextCount, 0)) {
-            this.count$.next(nextCount);
+        if (_.gt(this.count$.getValue(), 0)) {
+            this.count$.next(this.count$.getValue() - 1);
         }
     }
 
