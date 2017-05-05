@@ -90,7 +90,7 @@ describe('GET /subcategories/:id/writing_questions', function() {
             });
         });
 
-        it(`should an object with a top-level 'count' integer`, function() {
+        it(`should return an object with a top-level 'count' integer`, function() {
             return request(server).get(`/subcategories/${id}/writing_questions`).set('authorization', authorization).then(function(response) {
                 assert(_.isNumber(response.body.count));
             });
@@ -99,6 +99,24 @@ describe('GET /subcategories/:id/writing_questions', function() {
         it(`should have an equal number of records as described in 'count'`, function() {
             return request(server).get(`/subcategories/${id}/writing_questions`).set('authorization', authorization).then(function(response) {
                 assert.equal(response.body.count, response.body.records.length);
+            });
+        });
+
+        it(`should return an object with a records[N].id integer`, function() {
+            return request(server).get(`/subcategories/${id}/writing_questions`).set('authorization', authorization).then(function(response) {
+                assert(_.isNumber(_.first(response.body.records).id));
+            });
+        });
+
+        it(`should return an object with a records[N].example_answer string`, function() {
+            return request(server).get(`/subcategories/${id}/writing_questions`).set('authorization', authorization).then(function(response) {
+                assert(_.isString(_.first(response.body.records).example_answer));
+            });
+        });
+
+        it(`should return an object with a records[N].text string`, function() {
+            return request(server).get(`/subcategories/${id}/writing_questions`).set('authorization', authorization).then(function(response) {
+                assert(_.isString(_.first(response.body.records).text));
             });
         });
 

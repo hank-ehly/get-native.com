@@ -5,8 +5,10 @@
  * Created by henryehly on 2017/02/24.
  */
 
+const k = require('../../config/keys.json');
+
 module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('WritingAnswer', {
+    return sequelize.define(k.Model.WritingAnswer, {
         answer: {
             type: DataTypes.TEXT,
             allowNull: false
@@ -17,12 +19,12 @@ module.exports = function(sequelize, DataTypes) {
         tableName: 'writing_answers',
         underscored: true,
         associations: function(models) {
-            models.WritingAnswer.belongsTo(models.StudySession, {as: 'study_session'});
-            models.WritingAnswer.belongsTo(models.WritingQuestion, {as: 'writing_question'});
+            models[k.Model.WritingAnswer].belongsTo(models[k.Model.StudySession], {as: 'study_session'});
+            models[k.Model.WritingAnswer].belongsTo(models[k.Model.WritingQuestion], {as: 'writing_question'});
         },
         scopes: {
             newestFirst: {
-                order: [['created_at', 'DESC']]
+                order: [[k.Attr.CreatedAt, 'DESC']]
             },
             forAccount: function(accountId) {
                 return {

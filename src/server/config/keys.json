@@ -14,6 +14,7 @@
         "Email": "email",
         "EmailNotificationsEnabled": "email_notifications_enabled",
         "EmailVerified": "email_verified",
+        "ExampleAnswer": "example_answer",
         "Id": "id",
         "IsCompleted": "is_completed",
         "IsSilhouettePicture": "is_silhouette_picture",
@@ -26,10 +27,14 @@
         "PictureUrl": "picture_url",
         "StudySessionId": "study_session_id",
         "StudyTime": "study_time",
+        "Text": "text",
         "Token": "token",
         "UpdatedAt": "updated_at",
         "VideoId": "video_id",
-        "VideoUrl": "video_url"
+        "VideoUrl": "video_url",
+        "WordCount": "word_count",
+        "WordsPerMinute": "words_per_minute",
+        "WritingQuestionId": "writing_question_id"
     },
     "Client": {
         "Host": "CLIENT_HOSTNAME",

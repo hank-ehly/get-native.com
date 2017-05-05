@@ -103,3 +103,18 @@ module.exports.complete = (req, res, next) => {
         res.sendStatus(204);
     }).catch(next);
 };
+
+module.exports.createWritingAnswer = (req, res, next) => {
+    return StudySession.findById(req.body[k.Attr.StudySessionId], {attributes: [k.Attr.StudyTime]}).then(studySession => {
+        const wordsPerMinute = _.round(req.body[k.Attr.WordCount] / studySession.get(k.Attr.StudyTime));
+        return WritingAnswer.create({
+            study_session_id: req.body[k.Attr.StudySessionId],
+            writing_question_id: req.body[k.Attr.WritingQuestionId],
+            word_count: req.body[k.Attr.WordCount],
+            words_per_minute: wordsPerMinute,
+            answer: req.body[k.Attr.Answer]
+        });
+    }).then(() => {
+        res.sendStatus(204);
+    }).catch(next);
+};

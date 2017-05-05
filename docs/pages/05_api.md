@@ -700,24 +700,23 @@ POST https://api.get-native.com/study/writing_answers
 
 **Parameters**
 
-| Parameter         	| Description                                                    	| Required 	| Default 	|
-|-------------------	|---------------------------------------------------------------	|:--------:	|---------	|
-| study_session_id  	| The unique ID of the current study session                     	|     √    	|         	|
-| writing_question_id | The unique ID of the question to which the user wrote an answer	|     √    	|         	|
-| answer             	| The user written text answer to the writing question           	|     √    	|         	|
+| Parameter         	| Description                                                            	| Required 	| Default 	|
+|-------------------	|----------------------------------------------------------------------- 	|:--------:	|---------	|
+| study_session_id  	| The unique ID of the current study session                             	|     √    	|         	|
+| writing_question_id | The unique ID of the question to which the user wrote an answer        	|     √    	|         	|
+| answer             	| The user written text answer to the writing question                   	|     √    	|         	|
+| word_count         	| The number of words or characters (depending on language) of the answer	|     √    	|         	|
 
 ```json
 {
 	"study_session_id": 123,
 	"writing_question_id": 57,
-	"answer": "I really like.."
+	"answer": "I think that ...",
+	"word_count": 120
 }
 ```
 
-**Calculation of _words per minute_ and _word count_**
-
-As opposed to calculating the words per minute and word count of the user provided answer for the current study session
-before sending the request, calculations are performed server side for maximum efficiency.
+* Words-per-minute (WPM) is calculated server-side.
 
 **Response**
 
@@ -758,6 +757,41 @@ Status: 200 OK
 			}
 		}	
 	]
+}
+```
+
+# GET /subcategories/:id/writing_questions
+
+Returns the writing questions for a certain subcategory.
+
+**Response**
+
+| Data Field                | Type              | Description                                              |
+|---------------------------|-------------------|----------------------------------------------------------|
+| count                     | Int               | The number of writing questions included in the response |
+| records                   | [WritingQuestion] | An array of writing question objects                     |
+| records[N].id             | Int               | The unique identifier of the WritingQuestion record      |
+| records[N].text           | String            | The question text itself                                 |
+| records[N].example_answer | String            | An example answer to the question                        |
+
+```
+Status 200 OK
+```
+```json
+{
+    "count": 2,
+    "records": [
+        {
+            "id": 123,
+            "text": "What is ...",
+            "example_answer": "I think that ..."
+        },
+        {
+            "id": 456,
+            "text": "What is ...",
+            "example_answer": "I think that ..."
+        }
+    ]
 }
 ```
 
