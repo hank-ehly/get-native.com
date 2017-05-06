@@ -86,11 +86,11 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             this.navbar.onClickQueue$
                 .do(() => this.queued = !this.queued)
                 .do(() => this.navbar.studyOptionsEnabled$.next(false))
-                .do(() => this.navbar.queueButtonTitle$.next('JUST A SEC..'))
+                .do(() => this.navbar.queueButtonTitle$.next('WAIT..'))
                 .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
                 .mergeMap(handle => this.http.request(handle, params))
                 .do(() => this.navbar.studyOptionsEnabled$.next(true))
-                .map(() => this.queued ? 'DEQUEUE' : 'ADD TO QUEUE')
+                .map(() => this.queued ? 'REMOVE' : 'SAVE')
                 .subscribe(this.navbar.queueButtonTitle$),
 
             this.navbar.onClickStart$
@@ -103,7 +103,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             this.video$
                 .pluck('cued')
                 .do((cued: boolean) => this.queued = cued)
-                .map((cued: boolean) => cued ? 'DEQUEUE' : 'ADD TO QUEUE')
+                .map((cued: boolean) => cued ? 'REMOVE' : 'SAVE')
                 .subscribe(this.navbar.queueButtonTitle$)
         );
     }
@@ -117,7 +117,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
         this.navbar.studyOptionsVisible$.next(false);
         this.navbar.backButtonTitle$.next(null);
-        this.navbar.queueButtonTitle$.next('JUST A SEC..');
+        this.navbar.queueButtonTitle$.next('WAIT..');
 
         _.each(this.subscriptions, s => s.unsubscribe());
     }
