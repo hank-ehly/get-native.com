@@ -173,16 +173,21 @@ module.exports = function(sequelize, DataTypes) {
                 return result;
             }
 
-            result.longest_consecutive_days = _.maxBy(rows, o => o.Streak).Streak;
+            result.longest_consecutive_days = _.maxBy(rows, 'Streak').Streak;
 
-            const rowOfLastStreakEndDate = _.max(rows, o => o.StreakEndDate);
+            const rowOfLastStreakEndDate = _.maxBy(rows, 'StreakEndDate');
             const lastStreakEndMoment = moment(rowOfLastStreakEndDate.StreakEndDate);
 
             if (!lastStreakEndMoment) {
                 throw new Error('Invalid date format');
             }
 
-            if (lastStreakEndMoment.isSame(moment(), 'day')) {
+            const timeSinceLastSession = moment.duration({
+                from: lastStreakEndMoment,
+                to: moment().utc()
+            });
+
+            if (timeSinceLastSession.hours() < 24) {
                 result.consecutive_days = rowOfLastStreakEndDate.Streak;
             }
 

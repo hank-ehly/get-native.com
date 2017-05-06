@@ -366,7 +366,7 @@ describe('Account', function() {
             const japaneseVideoPromise = Video.findOne({attributes: ['id'], where: {language_code: 'ja'}});
             const englishVideoPromise  = Video.findOne({attributes: ['id'], where: {language_code: 'en'}});
 
-            return Promise.all([japaneseVideoPromise, englishVideoPromise]).spread(function(japaneseVideo, englishVideo) {
+            return Promise.join(japaneseVideoPromise, englishVideoPromise, function(japaneseVideo, englishVideo) {
                 const englishStudyDates = [
                     '2017-03-13 00:00:00',
                     '2017-03-10 00:00:00',
