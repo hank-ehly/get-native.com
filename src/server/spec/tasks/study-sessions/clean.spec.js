@@ -5,19 +5,19 @@
  * Created by henryehly on 2017/05/06.
  */
 
-const SpecUtil = require('../../spec-util');
-const db       = require('../../../app/models');
+const SpecUtil     = require('../../spec-util');
+const db           = require('../../../app/models');
 
-const assert   = require('assert');
-const moment   = require('moment');
-const path     = require('path');
-const exec     = require('child_process').exec;
-const _        = require('lodash');
+const execFileSync = require('child_process').execFileSync;
+const assert       = require('assert');
+const moment       = require('moment');
+const path         = require('path');
+const _            = require('lodash');
 
-const yesterday = moment().subtract(1, 'days').format("YYYY-MM-DD HH:mm:ss");
-const taskPath  = path.resolve(__dirname, '..', '..', '..', 'app', 'tasks', 'study-sessions', 'clean.js');
+const yesterday    = moment().subtract(1, 'days').format("YYYY-MM-DD HH:mm:ss");
+const taskPath     = path.resolve(__dirname, '..', '..', '..', 'app', 'tasks', 'study-sessions', 'clean.js');
 
-describe('clean-study-session', function() {
+describe('clean (StudySession)', function() {
     beforeEach(function() {
         this.timeout(SpecUtil.defaultTimeout);
         return SpecUtil.seedAll();
@@ -37,12 +37,12 @@ describe('clean-study-session', function() {
             WHERE is_completed = false AND created_at < ?;
         `;
 
-        exec(taskPath, function() {
-            db.sequelize.query(q, {replacements: [yesterday]}).then(function(result) {
-                const count = _.first(_.flatten(result)).count;
-                assert.equal(count, 0);
-                done();
-            });
+        execFileSync(taskPath);
+
+        db.sequelize.query(q, {replacements: [yesterday]}).then(function(result) {
+            const count = _.first(_.flatten(result))['count'];
+            assert.equal(count, 0);
+            done();
         });
     });
 
@@ -57,12 +57,12 @@ describe('clean-study-session', function() {
 
         db.sequelize.query(q, {replacements: [yesterday]}).then(function(r1) {
             let c1 = _.first(_.flatten(r1)).count;
-            exec(taskPath, function() {
-                db.sequelize.query(q, {replacements: [yesterday]}).then(function(r2) {
-                    let c2 = _.first(_.flatten(r2)).count;
-                    assert.equal(c1, c2);
-                    done();
-                });
+            execFileSync(taskPath);
+
+            db.sequelize.query(q, {replacements: [yesterday]}).then(function(r2) {
+                let c2 = _.first(_.flatten(r2))['count'];
+                assert.equal(c1, c2);
+                done();
             });
         });
     });

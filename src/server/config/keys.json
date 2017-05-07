@@ -78,7 +78,8 @@
         "Video": "Video",
         "Transcript": "Transcript",
         "Collocation": "Collocation",
-        "UsageExample": "UsageExample"
+        "UsageExample": "UsageExample",
+        "VerificationToken": "VerificationToken"
     },
     "NODE_ENV": "NODE_ENV",
     "NoReply": "",
