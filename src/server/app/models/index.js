@@ -8,13 +8,14 @@
 const fs        = require('fs');
 const path      = require('path');
 const Sequelize = require('sequelize');
-const env       = process.env.NODE_ENV || 'development';
-const config    = require(__dirname + '/../../config/database.json')[env];
+const config    = require('../../config');
+const k         = require('../../config/keys.json');
+const dbconf    = require(__dirname + '/../../config/database.json')[config.get(k.ENVIRONMENT)];
 const _         = require('lodash');
 
 const db = {};
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize(dbconf.database, dbconf.username, dbconf.password, dbconf);
 
 fs.readdirSync(__dirname).filter(file => {
     return !_.startsWith(file, '.') && _.endsWith(file, '.js') && file !== path.basename(module.filename);

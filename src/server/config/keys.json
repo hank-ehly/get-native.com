@@ -57,6 +57,7 @@
         "AccountMissing": "AccountMissing",
         "AccountAlreadyVerified": "AccountAlreadyVerified"
     },
+    "ENVIRONMENT": "ENVIRONMENT",
     "Env": {
         "Development": "development",
         "Test": "test",

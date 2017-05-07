@@ -16,15 +16,16 @@ const _       = require('lodash');
 function Config() {
     nconf.env([k.API.Port, k.Debug, k.NODE_ENV]).use('memory');
 
+    /* Main app environment */
+    nconf.set(k.ENVIRONMENT, _.toLower(nconf.get(k.NODE_ENV) || k.Env.Development));
+
     let config = {};
 
-    const env = _.toLower(nconf.get(k.NODE_ENV) || k.Env.Development);
-
     try {
-        config = require(`${__dirname}/environments/${env}`);
+        config = require(`${__dirname}/environments/${nconf.get(k.ENVIRONMENT)}`);
     } catch (e) {
         if (_.isError(e) && e.code === 'MODULE_NOT_FOUND') {
-            logger.info(`${_.capitalize(env)} environment configuration file is not present. Ignoring.`);
+            logger.info(`${_.capitalize(nconf.get(k.ENVIRONMENT))} environment configuration file is not present. Ignoring.`);
         } else {
             throw e;
         }
@@ -36,8 +37,8 @@ function Config() {
         nconf.set(key, config[key]);
     }
 
-    const readPrivateKey  = fs.readFileAsync(__dirname + '/secrets/id_rsa', 'utf8');
-    const readPublicKey = fs.readFileAsync(__dirname + '/secrets/id_rsa.pem', 'utf8');
+    const readPrivateKey = fs.readFileAsync(__dirname + '/secrets/id_rsa', 'utf8');
+    const readPublicKey  = fs.readFileAsync(__dirname + '/secrets/id_rsa.pem', 'utf8');
 
     Promise.join(readPrivateKey, readPublicKey, (privateKey, publicKey) => {
         nconf.set(k.PrivateKey, privateKey);

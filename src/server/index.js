@@ -13,8 +13,9 @@ const logger  = require('./config/logger');
 const server  = require('./config/initializers/server');
 const mailer  = require('./config/initializers/mailer');
 const Promise = require('bluebird');
+const _       = require('lodash');
 
-logger.info(`Initializing ${config.get(k.NODE_ENV).toUpperCase()} environment`);
+logger.info(`Initializing ${_.toUpper(config.get(k.ENVIRONMENT))} environment`);
 
 const initializationPromises = [
     server(),
@@ -22,7 +23,7 @@ const initializationPromises = [
     Promise.promisify(mailer.verify)()
 ];
 
-if (config.get(k.NODE_ENV) === k.Env.Development) {
+if (config.get(k.ENVIRONMENT) === k.Env.Development) {
     const MailDev = require('maildev');
     const mailServer = new MailDev();
     initializationPromises.push(Promise.promisify(mailServer.listen)());
