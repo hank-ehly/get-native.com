@@ -39,6 +39,11 @@ export function main() {
                 let actual = service.count('Hello   World\n');
                 expect(actual).toEqual(2);
             });
+
+            it(`should count 'I am Bob' as 3 words`, () => {
+                let actual = service.count('I am Bob');
+                expect(actual).toEqual(3);
+            });
         });
 
         describe('Japanese', () => {
