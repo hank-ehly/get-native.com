@@ -22,16 +22,6 @@ dependencies:
   cache_directories:
     - "node_modules"
 
-database:
-  override:
-    - cp src/server/config/database.json.template src/server/config/database.json
-    - npm run sequelize db:migrate
-
 test:
-  pre:
-    - ssh-keygen -t rsa -N "" -f src/server/config/secrets/id_rsa -q
-    - ssh-keygen -f src/server/config/secrets/id_rsa.pub -e -m pem > src/server/config/secrets/id_rsa.pem
   override:
     - npm run tests.all
-  post:
-    - if [[ -s npm-debug.log ]]; then cat npm-debug.log; fi
