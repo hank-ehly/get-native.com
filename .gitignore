@@ -62,10 +62,5 @@ site/
 # app-specific typings
 !src/client/app/core/typings
 
-# mock SSH keys
-src/server/config/secrets/*
 !**/.gitkeep
-
 npm-debug.log*
-
-src/server/config/database.json
