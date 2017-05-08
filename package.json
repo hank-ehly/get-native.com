@@ -41,8 +41,7 @@
     "webdriver-start": "webdriver-manager start",
     "webdriver-update": "node_modules/protractor/bin/webdriver-manager update",
     "compodoc": "node_modules/.bin/compodoc -p src/client/tsconfig.json",
-    "serve.compodoc": "node_modules/.bin/compodoc -s",
-    "serve.docs": "test `which mkdocs` && mkdocs serve"
+    "serve.compodoc": "node_modules/.bin/compodoc -s"
   },
   "author": "Hank Ehly <henry.ehly@gmail.com>",
   "license": "UNLICENSED",
@@ -110,7 +109,6 @@
     "karma-jasmine": "~1.1.0",
     "karma-mocha-reporter": "^2.2.0",
     "karma-remap-istanbul": "^0.2.1",
-    "maildev": "^0.14.0",
     "merge-stream": "^1.0.0",
     "minimatch": "^3.0.3",
     "open": "0.0.5",

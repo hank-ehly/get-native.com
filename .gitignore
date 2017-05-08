@@ -56,9 +56,6 @@ gulpfile.js.map
 src/client/app/shared/config/env.config.js
 src/client/app/shared/config/env.config.js.map
 
-# mkdocs generated files
-site/
-
 # app-specific typings
 !src/client/app/core/typings
 
