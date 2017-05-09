@@ -2,7 +2,7 @@ machine:
   environment:
     NODE_ENV: circle_ci
   node:
-    version: 6.10.2
+    version: 6.10.3
 
 general:
   branches:
@@ -14,7 +14,8 @@ deployment:
   staging:
     branch: develop
     commands:
-      - cd deploy && bundle install --path vendor/bundle && bundle exec cap staging deploy
+      - git clone git@github.com:hank-ehly/get-native.com-devops.git
+      - cd get-native.com-devops/deploy && bundle install -j4 --path vendor/bundle && bundle exec cap client:staging deploy
 
 dependencies:
   pre:

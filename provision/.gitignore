@@ -1,7 +1,0 @@
-/cookbooks/
-vendor/
-.bundle/
-.vagrant/
-data_bags/**/*.json
-nodes/*.json
-Berksfile.lock
