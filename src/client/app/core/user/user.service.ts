@@ -67,19 +67,19 @@ export class UserService {
         this.current$.filter(_.isObject).mapTo(true).subscribe(this.compliant$);
 
         this.defaultStudyLanguage$.distinctUntilChanged().concatMap((code: LanguageCode) => {
-            return this.http.request(APIHandle.EDIT_USER, {body: {default_study_language_code: code}});
+            return this.http.request(APIHandle.UPDATE_USER, {body: {default_study_language_code: code}});
         }, (code: LanguageCode) => {
             this.updateCache({default_study_language_code: code});
         }).subscribe();
 
         this.$setEmailNotificationsEnabled.distinctUntilChanged().concatMap((value: boolean) => {
-            return this.http.request(APIHandle.EDIT_USER, {body: {email_notifications_enabled: value}});
+            return this.http.request(APIHandle.UPDATE_USER, {body: {email_notifications_enabled: value}});
         }, (value: boolean) => {
             this.updateCache({email_notifications_enabled: value});
         }).subscribe();
 
         this.$setBrowserNotificationsEnabled.distinctUntilChanged().concatMap((value: boolean) => {
-            return this.http.request(APIHandle.EDIT_USER, {body: {browser_notifications_enabled: value}});
+            return this.http.request(APIHandle.UPDATE_USER, {body: {browser_notifications_enabled: value}});
         }, (value: boolean) => {
             this.updateCache({browser_notifications_enabled: value});
         }).subscribe();

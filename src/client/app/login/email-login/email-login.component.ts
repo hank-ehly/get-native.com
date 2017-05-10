@@ -53,7 +53,7 @@ export class EmailLoginComponent implements OnDestroy {
 
     onSubmit(): void {
         this.subscriptions.push(
-            this.http.request(APIHandle.LOGIN, {body: this.credentials}).subscribe(
+            this.http.request(APIHandle.CREATE_SESSION, {body: this.credentials}).subscribe(
                 this.onLoginResponse.bind(this),
                 this.onLoginError.bind(this)
             )

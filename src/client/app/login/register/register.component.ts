@@ -55,7 +55,7 @@ export class RegisterComponent implements OnDestroy {
     onSubmit(): void {
         this.logger.debug(this, 'onSubmit');
         this.subscriptions.push(
-            this.http.request(APIHandle.REGISTER, {body: this.credentials}).subscribe(
+            this.http.request(APIHandle.CREATE_USER, {body: this.credentials}).subscribe(
                 this.onRegistrationResponse.bind(this),
                 this.onRegistrationError.bind(this)
             )

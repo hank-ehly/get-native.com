@@ -10,14 +10,14 @@ import { RequestMethod } from '@angular/http';
 import { APIHandle } from './api-handle';
 
 export const APIConfig = new Map<APIHandle, any>([
-    [APIHandle.LOGIN, {
+    [APIHandle.CREATE_SESSION, {
         method: RequestMethod.Post,
-        url: '/login',
+        url: '/sessions',
         isProtected: false
     }],
-    [APIHandle.REGISTER, {
+    [APIHandle.CREATE_USER, {
         method: RequestMethod.Post,
-        url: '/register',
+        url: '/users',
         isProtected: false
     }],
     [APIHandle.STUDY_STATS, {
@@ -58,9 +58,9 @@ export const APIConfig = new Map<APIHandle, any>([
         url: '/videos/:id/unlike',
         isProtected: true
     }],
-    [APIHandle.EDIT_USER, {
+    [APIHandle.UPDATE_USER, {
         method: RequestMethod.Patch,
-        url: '/user',
+        url: '/users',
         isProtected: true
     }],
     [APIHandle.EDIT_PASSWORD, {
@@ -71,11 +71,6 @@ export const APIConfig = new Map<APIHandle, any>([
     [APIHandle.EDIT_EMAIL, {
         method: RequestMethod.Post,
         url: '/user/email',
-        isProtected: true
-    }],
-    [APIHandle.USER, {
-        method: RequestMethod.Get,
-        url: '/user',
         isProtected: true
     }],
     [APIHandle.CONFIRM_EMAIL, {
