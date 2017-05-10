@@ -355,7 +355,7 @@ export const STUBResponses = new Map<APIHandle, any>([
         maximum_words: 502,
         maximum_wpm: 52
     }],
-    [APIHandle.ACCOUNT, <User>{
+    [APIHandle.USER, <User>{
         'id': 2244994983,
         'email': 'test@email.com',
         'browser_notifications_enabled': false,
