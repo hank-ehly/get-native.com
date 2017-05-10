@@ -6,7 +6,7 @@
  */
 
 export enum APIHandle {
-    LOGIN,
+    CREATE_SESSION,
     VIDEO,
     VIDEOS,
     LIKE_VIDEO,
@@ -14,11 +14,10 @@ export enum APIHandle {
     STUDY_STATS,
     WRITING_ANSWERS,
     CATEGORIES,
-    EDIT_USER,
+    UPDATE_USER,
     EDIT_PASSWORD,
     EDIT_EMAIL,
-    USER,
-    REGISTER,
+    CREATE_USER,
     CONFIRM_EMAIL,
     RESEND_CONFIRMATION_EMAIL,
     QUEUE_VIDEO,
