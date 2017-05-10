@@ -58,24 +58,24 @@ export const APIConfig = new Map<APIHandle, any>([
         url: '/videos/:id/unlike',
         isProtected: true
     }],
-    [APIHandle.EDIT_ACCOUNT, {
+    [APIHandle.EDIT_USER, {
         method: RequestMethod.Patch,
-        url: '/account',
+        url: '/user',
         isProtected: true
     }],
     [APIHandle.EDIT_PASSWORD, {
         method: RequestMethod.Post,
-        url: '/account/password',
+        url: '/user/password',
         isProtected: true
     }],
     [APIHandle.EDIT_EMAIL, {
         method: RequestMethod.Post,
-        url: '/account/email',
+        url: '/user/email',
         isProtected: true
     }],
-    [APIHandle.ACCOUNT, {
+    [APIHandle.USER, {
         method: RequestMethod.Get,
-        url: '/account',
+        url: '/user',
         isProtected: true
     }],
     [APIHandle.CONFIRM_EMAIL, {
