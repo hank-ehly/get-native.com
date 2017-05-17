@@ -9,125 +9,97 @@ import { APIHandle } from './api-handle';
 import { Video } from '../entities/video';
 import { Videos } from '../entities/videos';
 import { Categories } from '../entities/categories';
-import { User } from '../entities/user';
 
 export const STUBResponses = new Map<APIHandle, any>([
     [APIHandle.CREATE_SESSION, {}],
     [APIHandle.VIDEO, <Video>{
-        'id': 2244994983,
-        'cued': true,
-        'description': `This is a description about the video. This video is a video and I want to tell you that it is a video as well.
-                        If you happen to like videos that this might be a video that you like because you like videos. Of course, if you
-                        don\'t like videos then you probably shouldn\'t watch this video.`,
-        'speaker': {
-            'id': 123456,
-            'description': 'Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.',
-            'name': 'Harold Ford',
-            'picture_url': '/assets/mock/man-smiling.jpg'
+        cued: true,
+        description: 'In "talking to customers," Harold Ford describes the daily interactions between businessmen and clients.',
+        id: 2244994983,
+        speaker: {
+            id: 123456,
+            description: 'Harold Ford is a man from Kansas City, MO. He loves the Chiefs and listens to samba.',
+            name: 'Harold Ford',
+            picture_url: 'https://example.com'
         },
-        'subcategory': {
-            'id': 123456,
-            'name': 'Talking to customers'
+        subcategory: {
+            id: 123456,
+            name: 'Talking to customers'
         },
-        'loop_count': 7156,
-        'loop_velocity': 2.4960000000000004,
-        'picture_url': '',
-        'video_url': '/assets/mock/video.mov',
-        'related_videos': {
-            'records': [
+        loop_count: 7156,
+        picture_url: 'https://example.com',
+        video_url: 'https://example.com',
+        language: {
+            name: 'English',
+            code: 'en'
+        },
+        related_videos: {
+            records: [
                 {
-                    'id': 2,
-                    'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
-                    'length': 68,
-                    'loop_count': 25,
-                    'subcategory': {
-                        'name': 'How to fly a kite'
+                    id: 2,
+                    length: 68,
+                    loop_count: 25,
+                    subcategory: {
+                        name: 'How to fly a kite'
                     },
-                    'speaker': {
-                        'name': 'Benjamin Franklin'
+                    speaker: {
+                        name: 'Benjamin Franklin'
+                    },
+                    created_at: 'Sat Dec 14 04:35:55 +0000 2015',
+                    cued: false,
+                    picture_url: 'https://example.com',
+                    language: {
+                        name: 'English',
+                        code: 'en'
                     }
                 },
                 {
-                    'id': 3,
-                    'created_at': 'Tue Jun 9 12:00:00 +0000 2015',
-                    'length': 80,
-                    'loop_count': 1602,
-                    'subcategory': {
-                        'name': 'Writing a memoir'
+                    id: 3,
+                    length: 80,
+                    loop_count: 102,
+                    subcategory: {
+                        name: 'Writing a memoir'
                     },
-                    'speaker': {
-                        'name': 'Thomas Jefferson'
+                    speaker: {
+                        name: 'Thomas Jefferson'
+                    },
+                    created_at: 'Tue Jun 9 12:00:00 +0000 2015',
+                    cued: true,
+                    picture_url: 'https://example.com',
+                    language: {
+                        name: 'English',
+                        code: 'en'
                     }
                 }
             ],
-            'count': 2
+            count: 2
         },
-        'liked': false,
-        'like_count': 10,
-        'length': 68,
-        'transcripts': {
-            'count': 2,
-            'records': [
+        like_count: 10,
+        liked: true,
+        length: 68,
+        transcripts: {
+            count: 1,
+            records: [
                 {
-                    'id': 123,
-                    'text': `This is the English transcript. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi
-                             atque blanditiis, commodi culpa distinctio ducimus fugit iste mollitia nam neque odit qui quibusdam soluta!
-                             Dolor ea placeat soluta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dicta distinctio
-                             temporibus voluptatum. Aliquam expedita fuga impedit ipsanatus.Lorem ipsum dolor sit amet, consectetur
-                             adipisicing elit. Corporis distinctio enim error facere fugit harum,ipsum, iure laudan tium, omnis rerum
-                             tempore ullam ut. Iste iure!`,
-                    'language_code': 'en',
-                    'collocations': {
-                        'count': 1,
-                        'records': [
+                    id: 123,
+                    text: 'This is the English transcript. This is the text that will be displayed on the video detail page.',
+                    language: {
+                        code: 'en',
+                        name: 'English'
+                    },
+                    collocations: {
+                        count: 3,
+                        records: [
                             {
-                                'text': 'This is the text',
-                                'description': 'This is the description',
-                                'ipa_spelling': 'ˈðɪs ˈɪz ðə ˈtɛkst',
-                                'usage_examples': {
-                                    'count': 3,
-                                    'records': [
-                                        {
-                                            'text': 'This is the text in which will appear..'
-                                        },
-                                        {
-                                            'text': 'I will tell you that this is the text.'
-                                        },
-                                        {
-                                            'text': 'I don\'t really know if this is the text.'
-                                        }
-                                    ]
-                                }
-                            }
-                        ]
-                    }
-                },
-                {
-                    'id': 124,
-                    'text': `じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこ
-                             うじぱいぽぱいぽぱいぽのしゅーりんがんしゅーりんがんのぐーりんだいぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ。
-                             じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこ
-                             うじぱいぽぱいぽぱいぽのしゅーりんがんしゅーりんがんのぐーりんだいぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいの。`,
-                    'lang': 'ja',
-                    'collocations': {
-                        'count': 1,
-                        'records': [
-                            {
-                                'text': 'This is the text',
-                                'description': 'This is the description',
-                                'ipa_spelling': 'ˈtɛkst ˈtɛkst',
-                                'usage_examples': {
-                                    'count': 3,
-                                    'records': [
-                                        {
-                                            'text': 'じゅげむじゅげむごこうのすりきれ..'
-                                        },
-                                        {
-                                            'text': 'ぱいぽぱいぽぱいぽ'
-                                        },
-                                        {
-                                            'text': 'しゅーりんがんしゅーりんがんのぐーりんだいぐーりんだい'
-                                        }
+                                text: 'This is the text',
+                                description: 'This is the description',
+                                ipa_spelling: 'ˈðɪs ˈɪz ðə ˈtɛkst',
+                                usage_examples: {
+                                    count: 3,
+                                    records: [
+                                        {text: 'This is the text in which will appear..'},
+                                        {text: 'I will tell you that this is the text.'},
+                                        {text: 'I don\'t really know if this is the text.'}
                                     ]
                                 }
                             }
@@ -138,213 +110,155 @@ export const STUBResponses = new Map<APIHandle, any>([
         }
     }],
     [APIHandle.VIDEOS, <Videos>{
-        'count': 5,
-        'records': [
+        count: 2,
+        records: [
             {
-                'created_at': 'Sat Dec 14 04:35:55 +0000 2015',
-                'id': 55,
-                'speaker': {
-                    'name': 'Harold Ford'
+                id: 1,
+                cued: true,
+                created_at: 'Sat Dec 14 04:35:55 +0000 2015',
+                speaker: {
+                    name: 'Harold Ford'
                 },
-                'subcategory': {
-                    'name': 'Talking to customers'
+                subcategory: {
+                    name: 'Talking to customers',
+                    id: 123
                 },
-                'loop_count': 7156,
-                'loop_velocity': 2.4960000000000004,
-                'picture_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 68
+                loop_count: 7156,
+                picture_url: 'https://example.com',
+                video_url: '../../../assets/mock/video.mov',
+                length: 68
             },
             {
-                'created_at': 'Wed Jan 11 04:35:55 +0000 2017',
-                'id': 56,
-                'speaker': {
-                    'name': 'Benjamin Franklin'
+                id: 2,
+                cued: false,
+                created_at: 'Wed Jan 11 04:35:55 +0000 2017',
+                speaker: {
+                    name: 'Benjamin Franklin'
                 },
-                'subcategory': {
-                    'name': 'How to change a light-bulb'
+                subcategory: {
+                    name: 'How to change a light-bulb',
+                    id: 456
                 },
-                'loop_count': 1011,
-                'loop_velocity': 2.4960000000000004,
-                'picture_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 73
-            },
-            {
-                'created_at': 'Tue Aug 9 04:35:55 +0000 2016',
-                'id': 63,
-                'speaker': {
-                    'name': 'Jesse James'
-                },
-                'subcategory': {
-                    'name': 'Robbing a bank'
-                },
-                'loop_count': 9941,
-                'loop_velocity': 2.4960000000000004,
-                'picture_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 45
-            },
-            {
-                'created_at': 'Tue Mar 14 04:35:55 +0000 2017',
-                'id': 84,
-                'speaker': {
-                    'name': 'Aretha Franklin'
-                },
-                'subcategory': {
-                    'name': 'American Singers'
-                },
-                'loop_count': 10503,
-                'loop_velocity': 2.4960000000000004,
-                'picture_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 122
-            },
-            {
-                'created_at': 'Thu Jan 12 04:35:55 +0000 2017',
-                'id': 109,
-                'speaker': {
-                    'name': 'Britney Spears'
-                },
-                'subcategory': {
-                    'name': 'High-School Troubles'
-                },
-                'loop_count': 3,
-                'loop_velocity': 2.4960000000000004,
-                'picture_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 89
-            },
-            {
-                'created_at': 'Thu Jan 12 04:35:55 +0000 2017',
-                'id': 110,
-                'speaker': {
-                    'name': 'Santa Claus'
-                },
-                'subcategory': {
-                    'name': 'Efficient Elves'
-                },
-                'loop_count': 900,
-                'loop_velocity': 5.4960000000000004,
-                'picture_url': '/assets/mock/man-smiling.jpg',
-                'video_url': '/assets/mock/video.mov',
-                'length': 89
+                loop_count: 1011,
+                picture_url: 'https://example.com',
+                video_url: '../../../assets/mock/video.mov',
+                length: 73
             }
         ]
     }],
     [APIHandle.CATEGORIES, <Categories>{
-        'records': [
+        records: [
             {
-                'id': 1,
-                'name': 'Business',
-                'subcategories': {
-                    'records': [
+                id: 1,
+                name: 'Business',
+                subcategories: {
+                    records: [
                         {
-                            'id': 1,
-                            'name': 'Meeting Preparation'
+                            id: 1,
+                            name: 'Meeting Preparation'
                         },
                         {
-                            'id': 2,
-                            'name': 'Business Cards'
+                            id: 2,
+                            name: 'Business Cards'
                         },
                         {
-                            'id': 3,
-                            'name': 'Greeting Co-Workers'
+                            id: 3,
+                            name: 'Greeting Co-Workers'
                         }
                     ],
-                    'count': 3
+                    count: 3
                 }
             },
             {
-                'id': 2,
-                'name': 'Holidays',
-                'subcategories': {
-                    'records': [
+                id: 2,
+                name: 'Holidays',
+                subcategories: {
+                    records: [
                         {
-                            'id': 4,
-                            'name': 'Holding Hands'
+                            id: 4,
+                            name: 'Holding Hands'
                         },
                         {
-                            'id': 5,
-                            'name': 'Meeting the Parents'
+                            id: 5,
+                            name: 'Meeting the Parents'
                         }
                     ],
-                    'count': 2
+                    count: 2
                 }
             },
             {
-                'id': 3,
-                'name': 'Travel',
-                'subcategories': {
-                    'records': [
+                id: 3,
+                name: 'Travel',
+                subcategories: {
+                    records: [
                         {
-                            'id': 6,
-                            'name': 'Subcategory 1'
+                            id: 6,
+                            name: 'Subcategory 1'
                         },
                         {
-                            'id': 7,
-                            'name': 'Subcategory 2'
+                            id: 7,
+                            name: 'Subcategory 2'
                         },
                         {
-                            'id': 8,
-                            'name': 'Subcategory 3'
+                            id: 8,
+                            name: 'Subcategory 3'
                         },
                         {
-                            'id': 9,
-                            'name': 'Subcategory 4'
+                            id: 9,
+                            name: 'Subcategory 4'
                         },
                         {
-                            'id': 10,
-                            'name': 'Subcategory 5'
+                            id: 10,
+                            name: 'Subcategory 5'
                         }
                     ],
-                    'count': 5
+                    count: 5
                 }
             },
             {
-                'id': 4,
-                'name': 'School',
-                'subcategories': {
-                    'records': [
+                id: 4,
+                name: 'School',
+                subcategories: {
+                    records: [
                         {
-                            'id': 11,
-                            'name': 'First Day'
+                            id: 11,
+                            name: 'First Day'
                         },
                         {
-                            'id': 12,
-                            'name': 'Making Friends'
+                            id: 12,
+                            name: 'Making Friends'
                         }
                     ],
-                    'count': 2
+                    count: 2
                 }
             },
             {
-                'id': 5,
-                'name': 'Transportation',
-                'subcategories': {
-                    'records': [
+                id: 5,
+                name: 'Transportation',
+                subcategories: {
+                    records: [
                         {
-                            'id': 13,
-                            'name': 'Taking the Train'
+                            id: 13,
+                            name: 'Taking the Train'
                         },
                         {
-                            'id': 14,
-                            'name': 'Riding Horses'
+                            id: 14,
+                            name: 'Riding Horses'
                         },
                         {
-                            'id': 15,
-                            'name': 'Bus Passes'
+                            id: 15,
+                            name: 'Bus Passes'
                         },
                         {
-                            'id': 16,
-                            'name': 'Taking Long Road Trips'
+                            id: 16,
+                            name: 'Taking Long Road Trips'
                         }
                     ],
-                    'count': 4
+                    count: 4
                 }
             }
         ],
-        'count': 5
+        count: 5
     }],
     [APIHandle.STUDY_STATS, <any>{
         lang: 'en',
@@ -354,5 +268,75 @@ export const STUBResponses = new Map<APIHandle, any>([
         longest_consecutive_days: 15,
         maximum_words: 502,
         maximum_wpm: 52
+    }],
+    [APIHandle.CREATE_USER, <any>{
+        id: 2244994983,
+        email: 'john_doe@example.com',
+        browser_notifications_enabled: false,
+        email_notifications_enabled: false,
+        email_verified: false,
+        default_study_language: {
+            code: 'en',
+            name: 'English'
+        },
+        picture_url: '',
+        is_silhouette_picture: true
+    }],
+    [APIHandle.WRITING_ANSWERS, <any>{
+        count: 1,
+        records: [{
+            id: 1,
+            answer: 'This is a test answer',
+            created_at: 'Wed Jan 11 04:35:55 +0000 2017',
+            study_session_id: 58,
+            lang: 'ja',
+            writing_question: {
+                text: 'How do you ...?'
+            }
+        }]
+    }],
+    [APIHandle.LIKE_VIDEO, {}],
+    [APIHandle.UNLIKE_VIDEO, {}],
+    [APIHandle.UPDATE_USER, {}],
+    [APIHandle.EDIT_PASSWORD, {}],
+    [APIHandle.EDIT_EMAIL, {}],
+    [APIHandle.RESEND_CONFIRMATION_EMAIL, {}],
+    [APIHandle.QUEUE_VIDEO, {}],
+    [APIHandle.DEQUEUE_VIDEO, {}],
+    [APIHandle.CONFIRM_EMAIL, <any>{
+        id: 2244994983,
+        email: 'test@email.com',
+        browser_notifications_enabled: false,
+        email_notifications_enabled: true,
+        email_verified: true,
+        default_study_language: {
+            name: 'English',
+            code: 'en'
+        },
+        picture_url: 'https://dummyimage.com/100x100.png/5fa2dd/ffffff',
+        is_silhouette_picture: false
+    }],
+    [APIHandle.START_STUDY_SESSION, <any>{
+        id: 123456,
+        study_time: 600,
+        is_completed: false,
+        video_id: 123456
+    }],
+    [APIHandle.COMPLETE_STUDY_SESSION, {}],
+    [APIHandle.CREATE_WRITING_ANSWER, {}],
+    [APIHandle.WRITING_QUESTIONS, <any>{
+        count: 2,
+        records: [
+            {
+                id: 123,
+                text: 'What is ...',
+                example_answer: 'I think that ...'
+            },
+            {
+                id: 456,
+                text: 'What is ...',
+                example_answer: 'I think that ...'
+            }
+        ]
     }]
 ]);
