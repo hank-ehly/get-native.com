@@ -10,7 +10,6 @@ import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@ang
 import { Transcripts } from '../../core/entities/transcripts';
 import { Transcript } from '../../core/entities/transcript';
 import { Collocation } from '../../core/entities/collocation';
-import { LangService } from '../../core/lang/lang.service';
 import { Logger } from '../../core/logger/logger';
 
 import { Subject } from 'rxjs/Subject';
@@ -38,7 +37,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
 
         this.tabs = _.transform(this.transcripts.records, (result, transcript) => {
             result.push({
-                title: this.langService.codeToName(transcript.language_code),
+                title: transcript.language.name,
                 transcript: transcript
             });
         });
@@ -67,7 +66,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
 
     private _transcripts: Transcripts;
 
-    constructor(private logger: Logger, private langService: LangService) {
+    constructor(private logger: Logger) {
     }
 
     ngOnInit(): void {

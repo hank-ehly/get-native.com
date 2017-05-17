@@ -6,6 +6,7 @@
  */
 
 import { Entity } from './entity';
+import { Language } from '../typings/language';
 
 export interface User extends Entity {
     profile_image_url?: string;
@@ -14,5 +15,5 @@ export interface User extends Entity {
     email_verified?: boolean;
     email_notifications_enabled?: boolean;
     browser_notifications_enabled?: boolean;
-    default_study_language_code?: string;
+    default_study_language?: Language;
 }

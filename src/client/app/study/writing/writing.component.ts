@@ -35,7 +35,7 @@ export class WritingComponent implements OnInit, OnDestroy {
     constructor(private logger: Logger, private session: StudySessionService, private router: Router, private route: ActivatedRoute,
                 private wc: WordCountService) {
         this.transcript = _.find(this.session.current.video.transcripts.records, {
-            language_code: this.session.current.video.language_code
+            language: this.session.current.video.language
         });
     }
 
@@ -61,7 +61,7 @@ export class WritingComponent implements OnInit, OnDestroy {
     onInput(e: Event): void {
         const input = (<HTMLTextAreaElement>e.target).value;
         this.answer = input;
-        const count = this.wc.count(input, this.transcript.language_code);
+        const count = this.wc.count(input, this.transcript.language.code);
         this.logger.debug(this, 'count', count);
         this.wordCount = count;
     }

@@ -8,14 +8,14 @@
 import { Entity } from './entity';
 import { Videos } from './videos';
 import { Speaker } from './speaker';
+import { Language } from '../typings/language';
 import { Subcategory } from './subcategory';
 import { Transcripts } from './transcripts';
-import { LanguageCode } from '../typings/language-code';
 
 export interface Video extends Entity {
     description?: string;
     cued?: boolean;
-    language_code?: LanguageCode;
+    language?: Language;
     length?: number;
     liked?: boolean;
     like_count?: number;

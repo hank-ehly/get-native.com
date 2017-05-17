@@ -35,7 +35,6 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/scan';
 import 'rxjs/observable/timer';
 import * as _ from 'lodash';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
     template: ''
@@ -54,7 +53,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     showDropdown$ = new BehaviorSubject<boolean>(false);
     isDropdownVisible$ = this.showDropdown$.distinctUntilChanged();
 
-    studyLanguage$ = this.user.currentStudyLanguage$.distinctUntilChanged().pluck('code');
+    studyLanguageCode$ = this.user.currentStudyLanguage$.pluck('code').distinctUntilChanged();
 
     maxVideoId: number;
     cuedOnly: boolean = false;
@@ -68,7 +67,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         return this.hasCompletedInitialLoad ? this.debounceTimer : this.noDebounceTimer;
     }).distinctUntilChanged();
 
-    videos$ = this.studyLanguage$.combineLatest(this.categoryFilter$, this.query$)
+    videos$ = this.studyLanguageCode$.combineLatest(this.categoryFilter$, this.query$)
         .switchMap(([lang, filter, query]: [LanguageCode, CategoryFilter, string]) => {
             return this.loadMoreVideos$.startWith(null).distinctUntilChanged().do(() => {
                 this.loading$.next(true);

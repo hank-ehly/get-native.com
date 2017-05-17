@@ -6,11 +6,11 @@
  */
 
 import { Entity } from './entity';
+import { Language } from '../typings/language';
 import { Collocations } from './collocations';
-import { LanguageCode } from '../typings/language-code';
 
 export interface Transcript extends Entity {
     text?: string;
-    language_code?: LanguageCode;
+    language?: Language;
     collocations?: Collocations;
 }
