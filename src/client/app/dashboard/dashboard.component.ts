@@ -10,13 +10,17 @@ import { trigger, style, transition, animate } from '@angular/animations';
 import { URLSearchParams } from '@angular/http';
 
 import { VideoSearchComponent } from '../shared/video-search/video-search.component';
+import { CategoryListService } from '../core/category-list/category-list.service';
+import { StudySessionService } from '../core/study-session/study-session.service';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
 import { WritingAnswers } from '../core/entities/writing-answers';
 import { WritingAnswer } from '../core/entities/writing-answer';
 import { NavbarService } from '../core/navbar/navbar.service';
+import { StudySession } from '../core/entities/study-session';
 import { LanguageCode } from '../core/typings/language-code';
 import { HttpService } from '../core/http/http.service';
 import { UserService } from '../core/user/user.service';
+import { kListening } from '../core/study-session/section-keys';
 import { APIHandle } from '../core/http/api-handle';
 import { Logger } from '../core/logger/logger';
 
@@ -30,10 +34,6 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { kListening } from '../core/study-session/section-keys';
-import { StudySessionService } from '../core/study-session/study-session.service';
-import { StudySession } from '../core/entities/study-session';
-import { CategoryListService } from '../core/category-list/category-list.service';
 
 @Component({
     moduleId: module.id,
@@ -60,7 +60,7 @@ export class DashboardComponent extends VideoSearchComponent {
     loadMoreAnswers     = new Subject<number>();
     answerFilterStream$ = this.filterAnswers.startWith(30).distinctUntilChanged();
 
-    answers$ = this.studyLanguage$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
+    answers$ = this.studyLanguageCode$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
             let search = new URLSearchParams();
 
@@ -83,7 +83,7 @@ export class DashboardComponent extends VideoSearchComponent {
         }, (_, answers: WritingAnswers) => answers.records).do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);
     });
 
-    stats$ = this.studyLanguage$.concatMap((lang: LanguageCode) => {
+    stats$ = this.studyLanguageCode$.concatMap((lang: LanguageCode) => {
         return this.http.request(APIHandle.STUDY_STATS, {
             params: {
                 lang: lang

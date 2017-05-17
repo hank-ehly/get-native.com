@@ -14,13 +14,15 @@ import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
 import { Languages } from '../../core/lang/languages';
 import { APIHandle } from '../../core/http/api-handle';
+import { User } from '../../core/entities/user';
+import { LanguageCode } from '../../core/typings/language-code';
+import { LangService } from '../../core/lang/lang.service';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/pluck';
 import * as _ from 'lodash';
-import { User } from '../../core/entities/user';
-import { LanguageCode } from '../../core/typings/language-code';
 
 @Component({
     moduleId: module.id,
@@ -42,7 +44,7 @@ export class GeneralComponent implements OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private http: HttpService, private userService: UserService) {
+    constructor(private logger: Logger, private http: HttpService, private userService: UserService, private lang: LangService) {
         this.studyLanguageOptions = _.map(Languages, l => {
             return _.mapKeys(l, (v, k) => k === 'code' ? 'value' : 'title');
         });
@@ -70,7 +72,7 @@ export class GeneralComponent implements OnDestroy {
     }
 
     updateDefaultStudyLanguage(code: LanguageCode) {
-        this.userService.update({default_study_language_code: code});
+        this.userService.update({default_study_language: this.lang.languageForCode(code)});
     }
 
     onSubmitPassword(): void {

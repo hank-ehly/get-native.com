@@ -38,7 +38,7 @@ export class UserService {
     logout$               = new Subject<void>();
 
     // setters
-    defaultStudyLanguage$ = new Subject<LanguageCode>();
+    defaultStudyLanguage$ = new Subject<Language>();
     $setEmailNotificationsEnabled = new Subject<boolean>();
     $setBrowserNotificationsEnabled = new Subject<boolean>();
     password$ = new Subject<{current: string, replacement: string}>();
@@ -57,19 +57,18 @@ export class UserService {
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
         this.logger.debug(this, 'Init');
 
-        // todo: whenever you change the default_study_language_code you change the currentStudyLanguage as well..
-        this.current$.filter(_.isObject).map((u: User) => this.lang.languageForCode(u.default_study_language_code))
-            .subscribe(this.currentStudyLanguage$);
+        // todo: whenever you change the default_study_language you change the currentStudyLanguage as well..
+        this.current$.filter(_.isObject).map((u: User) => u.default_study_language).subscribe(this.currentStudyLanguage$);
 
         this.current$.filter(_.isObject).mapTo(true).subscribe(this.authenticated$);
         this.logout$.mapTo(false).subscribe(this.authenticated$);
 
         this.current$.filter(_.isObject).mapTo(true).subscribe(this.compliant$);
 
-        this.defaultStudyLanguage$.distinctUntilChanged().concatMap((code: LanguageCode) => {
+        this.defaultStudyLanguage$.pluck('code').distinctUntilChanged().concatMap((code: LanguageCode) => {
             return this.http.request(APIHandle.UPDATE_USER, {body: {default_study_language_code: code}});
         }, (code: LanguageCode) => {
-            this.updateCache({default_study_language_code: code});
+            this.updateCache({default_study_language: this.lang.languageForCode(code)});
         }).subscribe();
 
         this.$setEmailNotificationsEnabled.distinctUntilChanged().concatMap((value: boolean) => {
@@ -133,8 +132,8 @@ export class UserService {
     update(user: User): void {
         this.logger.debug(this, 'update', user);
 
-        if (_.has(user, 'default_study_language_code')) {
-            this.defaultStudyLanguage$.next(user.default_study_language_code);
+        if (_.has(user, 'default_study_language')) {
+            this.defaultStudyLanguage$.next(user.default_study_language);
         }
 
         if (_.has(user, 'email_notifications_enabled')) {

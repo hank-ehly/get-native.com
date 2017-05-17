@@ -30,7 +30,7 @@
 <div class="default-study-language">
     <label class="label default-study-language__label">Default Study Language</label>
     <gn-select (selection$)="updateDefaultStudyLanguage($event)" [options]="studyLanguageOptions"
-               [selected]="user.default_study_language_code"></gn-select>
+               [selected]="user.default_study_language.code"></gn-select>
 </div>
 
 <hr>
