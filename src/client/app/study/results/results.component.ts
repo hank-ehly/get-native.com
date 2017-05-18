@@ -27,7 +27,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
     currentSession = this.session.current;
     timeStudied    = _.round(this.currentSession.session.study_time / 60, 1);
-    language       = this.lang.codeToName(this.currentSession.video.language_code);
+    language       = this.lang.codeToName(this.currentSession.video.language.code);
 
     totalTimeStudied$: Observable<number> = this.stats$
         .pluck('total_time_studied')

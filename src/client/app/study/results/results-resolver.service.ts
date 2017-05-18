@@ -29,7 +29,7 @@ export class ResultsResolver implements Resolve<any> {
         }).concatMap(() => {
             return this.http.request(APIHandle.STUDY_STATS, {
                 params: {
-                    lang: this.session.current.video.language_code
+                    lang: this.session.current.video.language.code
                 }
             });
         }).toPromise();

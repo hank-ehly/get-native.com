@@ -7,15 +7,15 @@
 
 import { Injectable } from '@angular/core';
 
-import { User } from '../entities/user';
-import { Language } from '../typings/language';
-import { LangService } from '../lang/lang.service';
-import { LocalStorageService } from '../local-storage/local-storage.service';
 import { kCurrentUser, kAuthToken, kAuthTokenExpire, kAcceptLocalStorage, kCurrentStudySession } from '../local-storage/local-storage-keys';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 import { LanguageCode } from '../typings/language-code';
-import { Logger } from '../logger/logger';
+import { LangService } from '../lang/lang.service';
 import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
+import { Language } from '../typings/language';
+import { Logger } from '../logger/logger';
+import { User } from '../entities/user';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
