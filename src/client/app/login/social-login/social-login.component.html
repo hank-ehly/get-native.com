@@ -7,15 +7,15 @@
 
     <section class="modal__body">
 
-        <button class="modal__button modal__button_facebook tabbable" tabindex="1" (click)="onClickFacebook()">
+        <a class="modal__button modal__button_facebook tabbable" tabindex="1" [href]="facebookLoginURL">
             <img class="modal__button-icon" src="../../../assets/icons/social-facebook.svg" alt="facebook">
             <span class="modal__button-text">Continue with Facebook</span>
-        </button>
+        </a>
 
-        <button class="modal__button modal__button_twitter tabbable" tabindex="2">
+        <a class="modal__button modal__button_twitter tabbable" tabindex="2" [href]="twitterLoginURL">
             <img class="modal__button-icon" src="../../../assets/icons/social-twitter.svg" alt="twitter">
             <span class="modal__button-text">Continue with Twitter</span>
-        </button>
+        </a>
 
         <button class="modal__button modal__button_google tabbable" tabindex="3">
             <img class="modal__button-icon" src="../../../assets/icons/social-google.svg" alt="gmail">

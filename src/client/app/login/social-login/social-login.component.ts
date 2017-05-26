@@ -8,7 +8,6 @@
 import { Component } from '@angular/core';
 
 import { LoginModalService } from '../../core/login-modal/login-modal.service';
-import { Logger } from '../../core/logger/logger';
 
 @Component({
     moduleId: module.id,
@@ -17,14 +16,13 @@ import { Logger } from '../../core/logger/logger';
     styleUrls: ['social-login.component.css']
 })
 export class SocialLoginComponent {
-    constructor(private loginModal: LoginModalService, private logger: Logger) {
+    facebookLoginURL = 'http://localhost:3000/oauth/facebook';
+    twitterLoginURL = 'http://localhost:3000/oauth/twitter';
+
+    constructor(private loginModal: LoginModalService) {
     }
 
     onSetModalView(view: string): void {
         this.loginModal.setActiveView(view);
-    }
-
-    onClickFacebook(): void {
-        this.logger.debug(this, 'Clicked Facebook');
     }
 }

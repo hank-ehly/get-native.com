@@ -5,7 +5,9 @@
  * Created by henryehly on 2017/05/01.
  */
 
-export const kListening = 'listening';
-export const kShadowing = 'shadowing';
-export const kSpeaking  = 'speaking';
-export const kWriting   = 'writing';
+import { StudySessionSection } from '../typings/study-session-section';
+
+export const kListening: StudySessionSection = 'listening';
+export const kShadowing: StudySessionSection = 'shadowing';
+export const kSpeaking: StudySessionSection  = 'speaking';
+export const kWriting: StudySessionSection   = 'writing';
