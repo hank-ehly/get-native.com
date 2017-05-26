@@ -113,5 +113,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/study/writing_answers',
         isProtected: true
+    }],
+    [APIHandle.ME, {
+        method: RequestMethod.Get,
+        url: '/users/me',
+        isProtected: true
     }]
 ]);

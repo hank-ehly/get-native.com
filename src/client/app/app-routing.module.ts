@@ -34,6 +34,7 @@ import { StudySessionGuard } from './study/study-session-guard.service';
 import { ResultsResolver } from './study/results/results-resolver.service';
 import { WritingResolver } from './study/writing/writing-resolver.service';
 import { WritingGuard } from './study/writing/writing-guard.service';
+import { OAuthComponent } from './oauth.component';
 
 const routes: Routes = [
     {
@@ -100,6 +101,9 @@ const routes: Routes = [
     },
     {
         path: 'confirm_email', resolve: {_: ConfirmEmailResolver}, component: DashboardComponent
+    },
+    {
+        path: 'oauth/callback', component: OAuthComponent // dashboard resolver better suited
     },
     {
         path: '**', component: PageNotFoundComponent
