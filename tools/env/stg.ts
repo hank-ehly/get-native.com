@@ -10,7 +10,9 @@ import { EnvConfig } from './env-config.interface';
 const StgConfig: EnvConfig = {
     API: 'https://api.stg.get-native.com',
     ENV: 'STAGING',
-    facebookAppId: '215585938915345'
+    FacebookLoginUrl: 'https://api.stg.get-native.com/oauth/facebook',
+    TwitterLoginUrl: 'https://api.stg.get-native.com/oauth/twitter',
+    GoogleLoginUrl: 'https://api.stg.get-native.com/oauth/google'
 };
 
 export = StgConfig;
