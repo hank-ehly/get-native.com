@@ -86,8 +86,8 @@ export class VideoDirective {
             return;
         }
 
-        let endTime = this.videoEl.buffered.end(0);
-        let loaded = +(endTime / this.duration).toFixed(2);
+        const endTime = this.videoEl.buffered.end(0);
+        const loaded = +(endTime / this.duration).toFixed(2);
 
         this.progressSource.next(loaded);
 
@@ -116,8 +116,8 @@ export class VideoDirective {
             this.previousStepTime = time;
         }
 
-        let progress = time - this.previousStepTime;
-        let minStepProgress = 50;
+        const progress = time - this.previousStepTime;
+        const minStepProgress = 50;
 
         return progress >= minStepProgress;
     }

@@ -1,6 +1,6 @@
 <header class="navbar">
     <div class="navbar__logo-frame">
-        <img class="navbar__logo" src="/assets/icons/logo.svg" alt="logo" [routerLink]="'/'">
+        <img class="navbar__logo" src="../../../assets/icons/logo.svg" alt="logo" [routerLink]="'/'">
     </div>
 
     <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && (searchBarVisible$ | async)"
@@ -12,7 +12,7 @@
 
     <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && !(searchBarVisible$ | async)" [@fadeInOut]>
         <div class="back-button-frame" *ngIf="backButtonTitle$ | async">
-            <img class="navbar__menu-icon navbar__menu-icon_back" src="/assets/icons/arrow-back.svg" alt="back" (click)="onClickBack()">
+            <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back" (click)="onClickBack()">
             <span class="back-button-label">{{ backButtonTitle$ | async }}</span>
         </div>
 
@@ -41,23 +41,23 @@
 
     <ul class="navbar__menu navbar__menu_right" *ngIf="authenticated">
         <li>
-            <img class="navbar__menu-icon navbar__menu-icon--search" src="/assets/icons/search.svg" alt="search"
+            <img class="navbar__menu-icon navbar__menu-icon--search" src="../../../assets/icons/search.svg" alt="search"
                  *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
 
-            <img class="navbar__menu-icon navbar__menu-icon--close" src="/assets/icons/close-dark.svg" alt="close"
+            <img class="navbar__menu-icon navbar__menu-icon--close" src="../../../assets/icons/close-dark.svg" alt="close"
                  *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()">
         </li>
         <li>
             <span class="navbar__menu-icon-frame">
                 <!-- TODO: Remove mock (click) -->
                 <img (click)="toggleNotificationIndicator()" class="navbar__menu-icon navbar__menu-icon_notification"
-                     src="/assets/icons/notification.svg" alt="notification">
+                     src="../../../assets/icons/notification.svg" alt="notification">
                 <span class="notification-indicator" [ngClass]="{'notification-indicator--unread': hasUnreadNotifications}"></span>
             </span>
         </li>
         <li>
             <img [routerLink]="'settings'" class="navbar__menu-icon navbar__menu-icon_account"
-                 src="/assets/mock/man-smiling.jpg" alt="account">
+                 src="../../../assets/mock/man-smiling.jpg" alt="account">
         </li>
     </ul>
 </header>

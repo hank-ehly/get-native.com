@@ -1,4 +1,4 @@
-@import '../../../scss/core';
+@import '../../../styles/core';
 
 .player-frame                             { @include debug-background-color($dc01); };
 .player-controls                          { @include debug-background-color($dc02); };

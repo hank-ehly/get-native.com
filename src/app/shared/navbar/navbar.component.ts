@@ -21,10 +21,9 @@ import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 
 @Component({
-
     selector: 'gn-navbar',
     templateUrl: 'navbar.component.html',
-    styleUrls: ['navbar.component.css'],
+    styleUrls: ['navbar.component.scss'],
     animations: [
         trigger('slideInLeftOutRight', [
             transition(':enter', [
@@ -56,11 +55,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     queueButtonTitle$    = this.navbar.queueButtonTitle$;
     studyOptionsVisible$ = this.navbar.studyOptionsVisible$;
     studyOptionsEnabled$ = this.navbar.studyOptionsEnabled$;
-    progressBarVisibleEmitted$  = this.navbar.progressBarVisibleEmitted$;
+    progressBarVisibleEmitted$ = this.navbar.progressBarVisibleEmitted$;
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
     progress             = this.navbar.progress;
 
-    hasUnreadNotifications: boolean = false;
+    hasUnreadNotifications = false;
 
     private subscriptions: Subscription[] = [];
 
@@ -82,7 +81,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     updateQuery(e: Event): void {
-        let target = <HTMLInputElement>e.target;
+        const target = <HTMLInputElement>e.target;
         this.navbar.updateQuery(target.value);
     }
 

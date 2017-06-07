@@ -18,10 +18,9 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/observable/of';
 
 @Component({
-
     selector: 'gn-toolbar',
     templateUrl: 'toolbar.component.html',
-    styleUrls: ['toolbar.component.css'],
+    styleUrls: ['toolbar.component.scss'],
     animations: [
         trigger('enterUpLeaveDown', [
             transition(':enter', [

@@ -10,10 +10,9 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Logger } from '../../core/logger/logger';
 
 @Component({
-
     selector: 'gn-modal',
     templateUrl: 'modal.component.html',
-    styleUrls: ['modal.component.css']
+    styleUrls: ['modal.component.scss']
 })
 export class ModalComponent {
     @Input() isVisible: boolean;
@@ -23,7 +22,7 @@ export class ModalComponent {
     }
 
     onClickClose(e: MouseEvent): void {
-        let t = <HTMLElement>e.target;
+        const t = <HTMLElement>e.target;
         if (['overlay', 'modal-frame__close-button'].indexOf(t.className) !== -1) {
             this.logger.debug(this, 'onClickClose()');
             this.isVisible = false;

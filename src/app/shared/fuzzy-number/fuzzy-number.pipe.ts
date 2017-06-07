@@ -23,8 +23,8 @@ export class FuzzyNumberPipe implements PipeTransform {
         } else if (_.inRange(value, 1000)) {
             result = value.toString();
         } else {
-            let float = <number>value / 1000;
-            let places = _.inRange(value, 1000, 10000) ? 1 : 0;
+            const float = <number>value / 1000;
+            const places = _.inRange(value, 1000, 10000) ? 1 : 0;
             result = float.toFixed(places) + 'k';
         }
 

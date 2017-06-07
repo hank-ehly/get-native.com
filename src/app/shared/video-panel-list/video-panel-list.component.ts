@@ -19,7 +19,7 @@ import * as _ from 'lodash';
 
     selector: 'gn-video-panel-list',
     templateUrl: 'video-panel-list.component.html',
-    styleUrls: ['video-panel-list.component.css'],
+    styleUrls: ['video-panel-list.component.scss'],
     animations: [
         trigger('fadeIn', [
             transition(':enter', [
@@ -51,8 +51,8 @@ export class VideoPanelListComponent {
         this._videos = _.concat(videos, _.times(unfilled, _.constant({})));
     }
 
-    @Input() navigates: boolean = false;
-    @Input() controls: boolean = false;
+    @Input() navigates = false;
+    @Input() controls = false;
 
     // Todo: you are here
     @Output() begin = new EventEmitter<StudySession>();

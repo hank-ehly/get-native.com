@@ -10,14 +10,13 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PasswordService } from '../../core/password/password.service';
 
 @Component({
-
     selector: 'gn-password-strength',
     templateUrl: 'password-strength.component.html',
-    styleUrls: ['password-strength.component.css']
+    styleUrls: ['password-strength.component.scss']
 })
 export class PasswordStrengthComponent implements OnChanges {
     @Input() password: string;
-    score: number = 0;
+    score = 0;
 
     matrix: [number, string][] = [
         [0, 'VERY WEAK'],
@@ -33,7 +32,9 @@ export class PasswordStrengthComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (!changes['password']) return;
+        if (!changes['password']) {
+            return;
+        }
 
         this.score = this.passwordService.calculateStrength(changes['password'].currentValue);
     }
@@ -42,9 +43,13 @@ export class PasswordStrengthComponent implements OnChanges {
         this._strengthLabel = this.matrix[0][1];
 
         for (const row in this.matrix) {
-            let min = this.matrix[row][0];
-            let txt = this.matrix[row][1];
-            if (this.score >= min) this._strengthLabel = txt;
+            if (this.matrix.hasOwnProperty(row)) {
+                const min = this.matrix[row][0];
+                const txt = this.matrix[row][1];
+                if (this.score >= min) {
+                    this._strengthLabel = txt;
+                }
+            }
         }
 
         return this._strengthLabel;

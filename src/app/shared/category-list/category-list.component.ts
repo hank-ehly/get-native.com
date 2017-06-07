@@ -7,30 +7,28 @@
 
 import { Component, OnInit, OnChanges, SimpleChanges, Input, Output, OnDestroy } from '@angular/core';
 
-import { CategoryListService } from '../../core/category-list/category-list.service';
 import { Subcategory } from '../../core/entities/subcategory';
-import { Categories } from '../../core/entities/categories';
 import { Category } from '../../core/entities/category';
+import { Entities } from '../../core/entities/entities';
 import { Logger } from '../../core/logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 import * as _ from 'lodash';
 
 @Component({
-
     selector: 'gn-category-list',
     templateUrl: 'category-list.component.html',
-    styleUrls: ['category-list.component.css']
+    styleUrls: ['category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit, OnChanges, OnDestroy {
-    @Input() categories: Categories;
+    @Input() categories: Entities<Category>;
 
     @Output() category$    = new Subject<Category>();
     @Output() subcategory$ = new Subject<Subcategory>();
 
     rows: Category[][];
 
-    constructor(private logger: Logger, private service: CategoryListService) {
+    constructor(private logger: Logger) {
     }
 
     ngOnInit(): void {
@@ -43,11 +41,11 @@ export class CategoryListComponent implements OnInit, OnChanges, OnDestroy {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['categories'] && changes['categories'].currentValue) {
-            this.onCategoriesChange(<Categories>changes['categories'].currentValue);
+            this.onCategoriesChange(<Entities<Category>>changes['categories'].currentValue);
         }
     }
 
-    onCategoriesChange(categories: Categories): void {
+    onCategoriesChange(categories: Entities<Category>): void {
         const rowSize    = 3;
         const unfilled   =  rowSize - (categories.count % rowSize);
         const filledRows = _.concat(categories.records, _.times(unfilled, _.constant({})));

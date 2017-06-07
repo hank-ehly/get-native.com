@@ -16,7 +16,6 @@ import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
 import { Category } from '../../core/entities/category';
 import { APIHandle } from '../../core/http/api-handle';
-import { Videos } from '../../core/entities/videos';
 import { CategoryFilter } from './category-filter';
 import { Video } from '../../core/entities/video';
 import { Logger } from '../../core/logger/logger';
@@ -35,9 +34,10 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/scan';
 import 'rxjs/observable/timer';
 import * as _ from 'lodash';
+import { Entities } from '../../core/entities/entities';
 
 @Component({
-    template: ''
+    template: '<!-- overridden -->'
 })
 export class VideoSearchComponent implements OnInit, OnDestroy {
     categories$ = this.categoryList.fetch();
@@ -56,8 +56,8 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     studyLanguageCode$ = this.user.currentStudyLanguage$.pluck('code').distinctUntilChanged();
 
     maxVideoId: number;
-    cuedOnly: boolean = false;
-    hasCompletedInitialLoad: boolean = false;
+    cuedOnly = false;
+    hasCompletedInitialLoad = false;
 
     loading$ = new BehaviorSubject<boolean>(false);
 
@@ -74,13 +74,11 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
             }).concatMap((maxId?: number) => {
                 this.hasCompletedInitialLoad = true;
 
-                let search = new URLSearchParams();
+                const search = new URLSearchParams();
 
                 if (filter.value && filter.type === 'Subcategory') {
                     search.set('subcategory_id', filter.value.toString());
-                }
-
-                else if (filter.value && filter.type === 'Category') {
+                } else if (filter.value && filter.type === 'Category') {
                     search.set('category_id', filter.value.toString());
                 }
 
@@ -105,9 +103,12 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                 search.set('count', `${9}`);
 
                 return this.http.request(APIHandle.VIDEOS, {search: search});
-            }, (_: any, videos: Videos) => videos.records).do(this.updateMaxVideoId.bind(this)).scan(this.concatVideos, []).do(() => {
-                this.loading$.next(false);
-            });
+            }, (_: any, videos: Entities<Video>) => videos.records)
+                .do(this.updateMaxVideoId.bind(this))
+                .scan(this.concatVideos, [])
+                .do(() => {
+                    this.loading$.next(false);
+                });
         });
 
     protected subscriptions: Subscription[] = [];
@@ -121,7 +122,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         }
 
         let found = false;
-        let path: any[] = (<any>e).path;
+        const path: any[] = (<any>e).path;
 
         for (let i = 0; i < path.length; i++) {
             if (path[i].tagName && path[i].tagName.toLowerCase() === 'gn-category-list') {
