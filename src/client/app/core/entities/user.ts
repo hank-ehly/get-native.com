@@ -16,4 +16,5 @@ export interface User extends Entity {
     email_notifications_enabled?: boolean;
     browser_notifications_enabled?: boolean;
     default_study_language?: Language;
+    interface_language?: Language;
 }

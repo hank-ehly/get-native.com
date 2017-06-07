@@ -33,6 +33,12 @@
                [selected]="user.default_study_language.code"></gn-select>
 </div>
 
+<div class="interface-language">
+    <label class="label interface-language__label">Interface Language</label>
+    <gn-select (selection$)="updateInterfaceLanguage($event)" [options]="interfaceLanguageOptions"
+               [selected]="user.interface_language.code"></gn-select>
+</div>
+
 <hr>
 
 <form class="form password-form" #passwordForm="ngForm" (submit)="onSubmitPassword()" [gnMatch]="['new-password', 'confirm-password']">

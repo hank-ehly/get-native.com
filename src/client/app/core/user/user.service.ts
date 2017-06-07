@@ -39,6 +39,7 @@ export class UserService {
 
     // setters
     defaultStudyLanguage$ = new Subject<Language>();
+    interfaceLanguage$ = new Subject<Language>();
     $setEmailNotificationsEnabled = new Subject<boolean>();
     $setBrowserNotificationsEnabled = new Subject<boolean>();
     password$ = new Subject<{current: string, replacement: string}>();
@@ -69,6 +70,12 @@ export class UserService {
             return this.http.request(APIHandle.UPDATE_USER, {body: {default_study_language_code: code}});
         }, (code: LanguageCode) => {
             this.updateCache({default_study_language: this.lang.languageForCode(code)});
+        }).subscribe();
+
+        this.interfaceLanguage$.pluck('code').distinctUntilChanged().concatMap((code: LanguageCode) => {
+            return this.http.request(APIHandle.UPDATE_USER, {body: {interface_language_code: code}});
+        }, (code: LanguageCode) => {
+            this.updateCache({interface_language: this.lang.languageForCode(code)});
         }).subscribe();
 
         this.$setEmailNotificationsEnabled.distinctUntilChanged().concatMap((value: boolean) => {
@@ -134,6 +141,10 @@ export class UserService {
 
         if (_.has(user, 'default_study_language')) {
             this.defaultStudyLanguage$.next(user.default_study_language);
+        }
+
+        if (_.has(user, 'interface_language')) {
+            this.interfaceLanguage$.next(user.interface_language);
         }
 
         if (_.has(user, 'email_notifications_enabled')) {

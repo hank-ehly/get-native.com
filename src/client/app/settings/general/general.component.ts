@@ -36,6 +36,7 @@ export class GeneralComponent implements OnDestroy {
     emailRegex = EMAIL_REGEX;
     isEditing$ = new BehaviorSubject<boolean>(false);
     studyLanguageOptions: any;
+    interfaceLanguageOptions: any;
 
     emailModel: string = '';
     passwordModel: any = {current: '', replace: '', confirm: ''};
@@ -45,7 +46,7 @@ export class GeneralComponent implements OnDestroy {
     private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private http: HttpService, private userService: UserService, private lang: LangService) {
-        this.studyLanguageOptions = _.map(Languages, l => {
+        this.studyLanguageOptions = this.interfaceLanguageOptions = _.map(Languages, l => {
             return _.mapKeys(l, (v, k) => k === 'code' ? 'value' : 'title');
         });
 
@@ -73,6 +74,10 @@ export class GeneralComponent implements OnDestroy {
 
     updateDefaultStudyLanguage(code: LanguageCode) {
         this.userService.update({default_study_language: this.lang.languageForCode(code)});
+    }
+
+    updateInterfaceLanguage(code: LanguageCode) {
+        this.userService.update({interface_language: this.lang.languageForCode(code)});
     }
 
     onSubmitPassword(): void {
