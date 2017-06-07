@@ -18,11 +18,10 @@ deployment:
       - cd get-native.com-devops/deploy && bundle install -j4 --path vendor/bundle && bundle exec cap client:staging deploy
 
 dependencies:
-  pre:
-    - npm rebuild node-sass
   cache_directories:
     - "node_modules"
 
 test:
   override:
-    - npm run tests.all
+    - npm run lint
+    - npm test -- --single-run
