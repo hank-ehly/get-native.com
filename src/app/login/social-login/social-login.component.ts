@@ -11,13 +11,11 @@ import { LoginModalService } from '../../core/login-modal/login-modal.service';
 import { Config } from '../../shared/config/env.config';
 
 @Component({
-
     selector: 'gn-social-login',
     templateUrl: 'social-login.component.html',
-    styleUrls: ['social-login.component.css']
+    styleUrls: ['social-login.component.scss']
 })
 export class SocialLoginComponent {
-    // todo: By environment
     facebookLoginURL = Config.FacebookLoginUrl;
     twitterLoginURL = Config.TwitterLoginUrl;
     googleLoginURL = Config.GoogleLoginUrl;

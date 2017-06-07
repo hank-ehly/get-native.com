@@ -16,9 +16,8 @@ import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
 
 @Component({
-
     templateUrl: 'speaking.component.html',
-    styleUrls: ['speaking.component.css']
+    styleUrls: ['speaking.component.scss']
 })
 export class SpeakingComponent implements OnInit, OnDestroy {
     transcripts: Transcripts = this.session.current.video.transcripts;

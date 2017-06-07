@@ -18,9 +18,8 @@ import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
 
 @Component({
-
     templateUrl: 'results.component.html',
-    styleUrls: ['results.component.css']
+    styleUrls: ['results.component.scss']
 })
 export class ResultsComponent implements OnInit, OnDestroy {
     stats$         = this.route.data.pluck('stats');

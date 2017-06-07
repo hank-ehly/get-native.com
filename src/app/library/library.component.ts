@@ -19,7 +19,7 @@ import { CategoryListService } from '../core/category-list/category-list.service
 @Component({
     selector: 'gn-library',
     templateUrl: 'library.component.html',
-    styleUrls: ['library.component.css'],
+    styleUrls: ['library.component.scss'],
     animations: [
         trigger('dropdown', [
             transition(':enter', [

@@ -10,10 +10,9 @@ import { Component, OnInit } from '@angular/core';
 import { Logger } from '../core/logger/logger';
 
 @Component({
-
     selector: 'gn-settings',
     templateUrl: 'settings.component.html',
-    styleUrls: ['settings.component.css']
+    styleUrls: ['settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
     tabs: any[];
@@ -28,7 +27,7 @@ export class SettingsComponent implements OnInit {
     }
 
     get selectedTabDescription(): string {
-        let titles: any = {
+        const titles: any = {
             general:       'View and update your login credentials.',
             security:      'Manage your account privacy settings.',
             notifications: 'Specify how Get Native should be able to notify you.'

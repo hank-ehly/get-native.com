@@ -19,7 +19,7 @@ import { UserService } from './core/user/user.service';
 
 // This should be a resolver
 @Component({
-    template: ''
+    template: '<!-- unused -->'
 })
 export class OAuthComponent implements OnInit, OnDestroy {
     subscriptions: Subscription[] = [];

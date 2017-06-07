@@ -28,10 +28,9 @@ import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
 
 @Component({
-
     selector: 'gn-library-detail',
     templateUrl: 'library-detail.component.html',
-    styleUrls: ['library-detail.component.css']
+    styleUrls: ['library-detail.component.scss']
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {
     likedChange$ = new Subject<boolean>();

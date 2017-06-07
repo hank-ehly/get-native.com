@@ -21,10 +21,9 @@ import 'rxjs/observable/never';
 import * as _ from 'lodash';
 
 @Component({
-
     selector: 'gn-transition',
     templateUrl: 'transition.component.html',
-    styleUrls: ['transition.component.css']
+    styleUrls: ['transition.component.scss']
 })
 export class TransitionComponent implements OnInit, OnDestroy {
     transitionTimer  = TimerObservable.create(1000, 1000).take(4);

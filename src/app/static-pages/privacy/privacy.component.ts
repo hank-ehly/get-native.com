@@ -10,12 +10,11 @@ import { Component } from '@angular/core';
 import { Config } from '../../shared/config/env.config';
 
 @Component({
-
     selector: 'gn-privacy',
     templateUrl: 'privacy.component.html',
-    styleUrls: ['privacy.component.css']
+    styleUrls: ['privacy.component.scss']
 })
 export class PrivacyComponent {
     moderator: string = Config.moderator;
-    lastEdited: string = '2016-11-07';
+    lastEdited = '2016-11-07';
 }

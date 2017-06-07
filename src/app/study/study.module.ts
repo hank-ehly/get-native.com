@@ -7,13 +7,13 @@
 
 import { NgModule } from '@angular/core';
 
-import { SharedModule }       from '../shared/shared.module';
-import { StudyComponent }     from './study.component';
+import { SharedModule } from '../shared/shared.module';
+import { StudyComponent } from './study.component';
 import { ListeningComponent } from './listening/listening.component';
 import { ShadowingComponent } from './shadowing/shadowing.component';
-import { SpeakingComponent }  from './speaking/speaking.component';
-import { WritingComponent }   from './writing/writing.component';
-import { ResultsComponent }   from './results/results.component';
+import { SpeakingComponent } from './speaking/speaking.component';
+import { WritingComponent } from './writing/writing.component';
+import { ResultsComponent } from './results/results.component';
 import { TransitionComponent } from './transition/transition.component';
 import { ListeningResolver } from './listening/listening-resolver.service';
 import { StudySessionGuard } from './study-session-guard.service';

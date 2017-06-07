@@ -5,9 +5,9 @@
 
             <div class="dropdown-toggle">
                 <span class="dropdown-toggle__text">{{ categoryFilter$.pluck('text') | async }}</span>
-                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-down.svg" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
-                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-up.svg" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
-                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="/assets/icons/close-green.svg" alt="close" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-down.svg" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
+                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="../../assets/icons/close-green.svg" alt="close" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
             </div>
 
             <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
@@ -16,7 +16,7 @@
         <gn-video-panel-list [videos]="videos$ | async" [navigates]="true"></gn-video-panel-list>
 
         <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)" [ngClass]="{'button--loading': loading$ | async}"
-                *ngIf="!(loading$|async)">LOAD MORE
+                *ngIf="!(loading$ | async)">LOAD MORE
         </button>
 
         <img src="../../assets/icons/spinner.gif" alt="loading" class="button__activity-indicator" *ngIf="loading$ | async">

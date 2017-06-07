@@ -12,13 +12,12 @@ import { EMAIL_REGEX } from '../../core/typings/email-regex';
 import { LoginModalService } from '../../core/login-modal/login-modal.service';
 
 @Component({
-
     selector: 'gn-forgot-password',
     templateUrl: 'forgot-password.component.html',
-    styleUrls: ['forgot-password.component.css']
+    styleUrls: ['forgot-password.component.scss']
 })
 export class ForgotPasswordComponent {
-    email: string = '';
+    email = '';
     emailRe: string = EMAIL_REGEX;
 
     constructor(private logger: Logger, private modal: LoginModalService) {
