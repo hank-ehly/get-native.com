@@ -25,7 +25,7 @@ export class WritingResolver implements Resolve<WritingQuestion> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<WritingQuestion> {
         return this.http.request(APIHandle.WRITING_QUESTIONS, {
             params: {
-                id: this.session.current.video.subcategory.id
+                id: this.session.current.video.id
             }
         }).toPromise().then((questions: WritingQuestions) => {
             return _.sample(questions.records);

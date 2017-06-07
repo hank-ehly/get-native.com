@@ -105,7 +105,7 @@ export const APIConfig = new Map<APIHandle, any>([
     }],
     [APIHandle.WRITING_QUESTIONS, {
         method: RequestMethod.Get,
-        url: '/subcategories/:id/writing_questions',
+        url: '/videos/:id/writing_questions',
         isProtected: true,
         permitURLSearchParams: ['count']
     }],
