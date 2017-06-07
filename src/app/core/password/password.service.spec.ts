@@ -20,42 +20,36 @@ export function main() {
         });
 
         it('should recognize a VERY WEAK password', () => {
-            let password = STUBPasswords.veryWeak;
-            let score = passwordStrengthService.calculateStrength(password);
+            const score = passwordStrengthService.calculateStrength(STUBPasswords.veryWeak);
             expect(score).toBeLessThan(20);
         });
 
         it('should recognize a WEAK password', () => {
-            let password = STUBPasswords.weak;
-            let score = passwordStrengthService.calculateStrength(password);
+            const score = passwordStrengthService.calculateStrength(STUBPasswords.weak);
             expect(score).toBeGreaterThanOrEqual(20);
             expect(score).toBeLessThan(40);
         });
 
         it('should recognize a GOOD password', () => {
-            let password = STUBPasswords.good;
-            let score = passwordStrengthService.calculateStrength(password);
+            const score = passwordStrengthService.calculateStrength(STUBPasswords.good);
             expect(score).toBeGreaterThanOrEqual(40);
             expect(score).toBeLessThan(60);
         });
 
         it('should recognize a STRONG password', () => {
-            let password = STUBPasswords.strong;
-            let score = passwordStrengthService.calculateStrength(password);
+            const score = passwordStrengthService.calculateStrength(STUBPasswords.strong);
             expect(score).toBeGreaterThanOrEqual(60);
             expect(score).toBeLessThan(80);
         });
 
         it('should recognize a VERY STRONG password', () => {
-            let password = STUBPasswords.veryStrong;
-            let score = passwordStrengthService.calculateStrength(password);
+            const score = passwordStrengthService.calculateStrength(STUBPasswords.veryStrong);
             expect(score).toBeGreaterThanOrEqual(80);
             expect(score).toBeLessThan(100);
         });
 
         it('should recognize passwords in the blacklist as VERY WEAK', () => {
-            let password = Blacklist[0];
-            let score = passwordStrengthService.calculateStrength(password);
+            const score = passwordStrengthService.calculateStrength(Blacklist[0]);
             expect(score).toEqual(0);
         });
     });

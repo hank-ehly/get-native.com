@@ -8,29 +8,22 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { StudySessionLocalStorageObject } from './study-session-local-storage-object';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { kListening, kShadowing, kSpeaking, kWriting } from './section-keys';
 import { kCurrentStudySession } from '../local-storage/local-storage-keys';
 import { StudySessionSectionTimer } from './study-session-section-timer';
 import { StudySessionSection } from '../typings/study-session-section';
-import { WritingAnswer } from '../entities/writing-answer';
 import { NavbarService } from '../navbar/navbar.service';
 import { StudySession } from '../entities/study-session';
 import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
 import { Logger } from '../logger/logger';
-import { Video } from '../entities/video';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
-
-interface StudySessionLocalStorageObject {
-    session?: StudySession;
-    video?: Video;
-    writingAnswer?: WritingAnswer;
-}
 
 @Injectable()
 export class StudySessionService {
@@ -102,7 +95,7 @@ export class StudySessionService {
             return;
         }
 
-        let current = this.current;
+        const current = this.current;
         _.assign(current, value);
         this.current = current;
     }

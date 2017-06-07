@@ -15,7 +15,7 @@ import { Languages } from './languages';
 export class LangService {
 
     codeToName(code: LanguageCode): string {
-        for (let lang of Languages) {
+        for (const lang of Languages) {
             if (lang.code === code) {
                 return lang.name;
             }
@@ -28,7 +28,7 @@ export class LangService {
         let retLang: Language = null;
 
         for (let i = 0; i < Languages.length; i++) {
-            let language = Languages[i];
+            const language = Languages[i];
             if (language.code === code) {
                 retLang = language;
                 break;

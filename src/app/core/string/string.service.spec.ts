@@ -16,46 +16,42 @@ export function main() {
         });
 
         it('should recognize that a string contains a symbol', () => {
-            let str = '(Parentheses)';
-            let result = stringService.containsSymbol(str);
+            const result = stringService.containsSymbol('(Parentheses)');
             expect(result).toEqual(true);
         });
+
         it('should recognize that a string doesn\'t contain a symbol', () => {
-            let str = 'No_symbol';
-            let result = stringService.containsSymbol(str);
+            const result = stringService.containsSymbol('No_symbol');
             expect(result).toEqual(false);
         });
 
         it('should recognize that a string contains a number', () => {
-            let str = 'Hell0';
-            let result = stringService.containsNumeric(str);
+            const result = stringService.containsNumeric('Hell0');
             expect(result).toEqual(true);
         });
+
         it('should recognize that a string doesn\'t contain a number', () => {
-            let str = 'No number';
-            let result = stringService.containsNumeric(str);
+            const result = stringService.containsNumeric('No number');
             expect(result).toEqual(false);
         });
 
         it('should recognize that a string contains at least one uppercase alphabet character', () => {
-            let str = 'One uppercase';
-            let result = stringService.containsAlphaUC(str);
+            const result = stringService.containsAlphaUC('One uppercase');
             expect(result).toEqual(true);
         });
+
         it('should recognize that a string doesn\'t contain any uppercase alphabet characters', () => {
-            let str = 'all lowercase';
-            let result = stringService.containsAlphaUC(str);
+            const result = stringService.containsAlphaUC('all lowercase');
             expect(result).toEqual(false);
         });
 
         it('should recognize that a string contains at least one lowercase alphabet character', () => {
-            let str = 'HELLO world';
-            let result = stringService.containsAlphaLC(str);
+            const result = stringService.containsAlphaLC('HELLO world');
             expect(result).toEqual(true);
         });
+
         it('should recognize that a string doesn\'t contain any lowercase alphabet characters', () => {
-            let str = 'NO LOWERCASE';
-            let result = stringService.containsAlphaLC(str);
+            const result = stringService.containsAlphaLC('NO LOWERCASE');
             expect(result).toEqual(false);
         });
     });

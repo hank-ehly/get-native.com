@@ -14,16 +14,16 @@ import { MONTHS } from './months';
 @Injectable()
 export class UTCDateService {
     parse(datetime: DateTime): Date {
-        let units: string[] = datetime.split(' ');
+        const units: string[] = datetime.split(' ');
 
-        let year = +units[units.length - 1];
-        let month = MONTHS.indexOf(units[1]);
-        let date = +units[2];
+        const year = +units[units.length - 1];
+        const month = MONTHS.indexOf(units[1]);
+        const date = +units[2];
 
-        let time = units[3].split(':');
-        let hours = +time[0];
-        let minutes = +time[1];
-        let seconds = +time[2];
+        const time = units[3].split(':');
+        const hours = +time[0];
+        const minutes = +time[1];
+        const seconds = +time[2];
 
         return new Date(Date.UTC(year, month, date, hours, minutes, seconds));
     }
@@ -37,18 +37,18 @@ export class UTCDateService {
     }
 
     dateFromSeconds(seconds: number): Date {
-        let milliseconds = 1000 * seconds;
+        const milliseconds = 1000 * seconds;
         return new Date(milliseconds);
     }
 
     getUTCPaddedSeconds(date: Date): string {
-        let seconds: string = date.getUTCSeconds().toString();
+        const seconds: string = date.getUTCSeconds().toString();
         return `0${seconds}`.slice(-2);
     }
 
     getDaysAgoFromDate(days: number, since?: Date): number {
-        let daysAgo = 1000 * 60 * 60 * 24 * days;
-        let sinceDate = since ? since : new Date();
+        const daysAgo = 1000 * 60 * 60 * 24 * days;
+        const sinceDate = since ? since : new Date();
         return sinceDate.getTime() - daysAgo;
     }
 }
