@@ -11,10 +11,9 @@ import { trigger, keyframes, style, animate, transition } from '@angular/animati
 import { UserService } from '../../core/user/user.service';
 
 @Component({
-
     selector: 'gn-compliance',
     templateUrl: 'compliance.component.html',
-    styleUrls: ['compliance.component.css'],
+    styleUrls: ['compliance.component.scss'],
     animations: [
         trigger('enterUpLeaveDown', [
             transition(':enter', [

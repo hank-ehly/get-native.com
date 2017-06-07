@@ -10,10 +10,9 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Logger } from '../../core/logger/logger';
 
 @Component({
-
     selector: 'gn-study-progress',
     templateUrl: 'study-progress.component.html',
-    styleUrls: ['study-progress.component.css']
+    styleUrls: ['study-progress.component.scss']
 })
 export class StudyProgressComponent implements OnInit, OnDestroy {
     @Input() progress: any;

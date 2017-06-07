@@ -10,10 +10,9 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 @Component({
-
     selector: 'gn-select',
     templateUrl: 'select.component.html',
-    styleUrls: ['select.component.css']
+    styleUrls: ['select.component.scss']
 })
 export class SelectComponent {
     @Input() options: {value: string, title: string}[];

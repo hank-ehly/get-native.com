@@ -1,4 +1,4 @@
-@import '../../../scss/core';
+@import '../../../styles/core';
 
 .component-frame                            { @include debug-background-color($dc01); };
 .tabs                                       { @include debug-background-color($dc02); };

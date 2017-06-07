@@ -5,7 +5,6 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
 import { TranscriptComponent } from './transcript.component';
@@ -18,8 +17,6 @@ import { STUBTranscripts } from '../../core/entities/transcripts.stub';
 export function main() {
     let comp: TranscriptComponent;
     let fixture: ComponentFixture<TranscriptComponent>;
-    let de: DebugElement;
-    let el: HTMLElement;
     let util: SpecUtil;
 
     describe('TranscriptComponent', () => {
@@ -38,22 +35,22 @@ export function main() {
         }));
 
         it('should display 2 or more tabs', () => {
-            let tabs = util.getNativeEl('.tabs-frame .tabs');
+            const tabs = util.getNativeEl('.tabs-frame .tabs');
             expect(tabs.children.length).toBeGreaterThanOrEqual(2);
         });
 
         it('should display transcript content', () => {
-            let content = util.getNativeEl('.tab-content .content');
+            const content = util.getNativeEl('.tab-content .content');
             expect(content.textContent.length).toBeGreaterThan(0);
         });
 
         it('should display the selected collocation', () => {
-            let collocation = util.getNativeEl('.usage-examples-section__header-collocation');
+            const collocation = util.getNativeEl('.usage-examples-section__header-collocation');
             expect(collocation.textContent.length).toBeGreaterThan(0);
         });
 
         it('should display 1+ usage examples', () => {
-            let examples = util.getNativeEl('.usage-examples');
+            const examples = util.getNativeEl('.usage-examples');
             expect(examples.children.length).toBeGreaterThanOrEqual(1);
         });
     });

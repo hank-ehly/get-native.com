@@ -1,4 +1,4 @@
-@import "../../../scss/core";
+@import "../../../styles/core";
 
 .dialog             { @include debug-background-color($dc01); }
 .dialog__paragraph  { @include debug-background-color($dc02); }

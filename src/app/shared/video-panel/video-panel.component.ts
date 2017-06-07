@@ -11,10 +11,9 @@ import { Video } from '../../core/entities/video';
 import { StudySession } from '../../core/entities/study-session';
 
 @Component({
-
     selector: 'gn-video-panel',
     templateUrl: 'video-panel.component.html',
-    styleUrls: ['video-panel.component.css']
+    styleUrls: ['video-panel.component.scss']
 })
 export class VideoPanelComponent {
     @Input() controls: boolean;
@@ -22,9 +21,9 @@ export class VideoPanelComponent {
     @Output() begin = new EventEmitter<StudySession>();
     @Output() clickOverlay = new EventEmitter();
 
-    time: number = 15;
-    min: number  = 4;
-    max: number  = 60;
+    time = 15;
+    min = 4;
+    max = 60;
 
     constructor() {
         this.controls = false;

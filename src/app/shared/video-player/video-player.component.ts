@@ -16,10 +16,9 @@ import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
 
 @Component({
-
     selector: 'gn-video-player',
     templateUrl: 'video-player.component.html',
-    styleUrls: ['video-player.component.css'],
+    styleUrls: ['video-player.component.scss'],
     animations: [
         trigger('fadeInOut', [
             transition(':enter', [
@@ -53,7 +52,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     get volumeControlFillStyle(): {width: string} {
-        let volumePercentString = (this.player.volume * 100) + '%';
+        const volumePercentString = (this.player.volume * 100) + '%';
         return {width: volumePercentString};
     }
 

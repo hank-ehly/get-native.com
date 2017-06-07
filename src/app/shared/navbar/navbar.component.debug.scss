@@ -1,4 +1,4 @@
-@import '../../../scss/core';
+@import '../../../styles/core';
 
 .navbar                 { @include debug-background-color($dc01); };
 .navbar__logo           { @include debug-background-color($dc02); };

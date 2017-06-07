@@ -8,14 +8,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-
     selector: 'gn-switch',
     templateUrl: 'switch.component.html',
-    styleUrls: ['switch.component.css']
+    styleUrls: ['switch.component.scss']
 })
 export class SwitchComponent {
-    @Input() on: boolean = false;
-    @Input() disabled: boolean = false;
+    @Input() on = false;
+    @Input() disabled = false;
     @Output() toggle = new EventEmitter<boolean>();
 
     onToggle(): void {

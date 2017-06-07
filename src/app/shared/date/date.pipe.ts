@@ -17,7 +17,7 @@ export class DatePipe implements PipeTransform {
     }
 
     transform(value: any, ...args: any[]): any {
-        let date = this.dateService.parse(value);
+        const date = this.dateService.parse(value);
         return `${date.getUTCDate()} ${this.dateService.getTextMonth(date)} ${date.getUTCFullYear()}`;
     }
 }
