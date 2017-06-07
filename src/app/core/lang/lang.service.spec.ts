@@ -19,22 +19,22 @@ export function main() {
         });
 
         it('should convert \'en\' to \'English\'', () => {
-            let expected = 'English';
-            let actual = service.codeToName('en');
+            const expected = 'English';
+            const actual = service.codeToName('en');
             expect(actual).toEqual(expected);
         });
 
         it('should convert \'ja\' to \'日本語\'', () => {
-            let expected = '日本語';
-            let actual = service.codeToName('ja');
+            const expected = '日本語';
+            const actual = service.codeToName('ja');
             expect(actual).toEqual(expected);
         });
 
         it('should return the appropriate Language given a language code', () => {
-            let expected = _.first(Languages);
+            const expected = _.first(Languages);
 
-            let langCode = _.first(Languages).code;
-            let actual = service.languageForCode(langCode);
+            const langCode = _.first(Languages).code;
+            const actual = service.languageForCode(langCode);
 
             expect(actual).toEqual(expected);
         });

@@ -33,7 +33,7 @@ export class LocalStorageService {
     }
 
     get length(): number {
-        let retVal = localStorage.length;
+        const retVal = localStorage.length;
         this.logger.debug(this, `get length() - ${retVal}`);
         return retVal;
     }
@@ -52,7 +52,7 @@ export class LocalStorageService {
     }
 
     getItem(key: string): any {
-        let retVal = localStorage.getItem(key);
+        const retVal = localStorage.getItem(key);
 
         try {
             return JSON.parse(retVal);

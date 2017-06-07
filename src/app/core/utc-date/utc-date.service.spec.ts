@@ -56,24 +56,24 @@ export function main() {
         });
 
         it('should create a Date object from seconds', () => {
-            let date = service.dateFromSeconds(68);
+            date = service.dateFromSeconds(68);
             expect(date.getSeconds()).toEqual(8);
             expect(date.getMinutes()).toEqual(1);
         });
 
         it('should add a leading zero to seconds', () => {
-            let d9 = service.dateFromSeconds(9);
-            let d10 = service.dateFromSeconds(10);
-            let nine = service.getUTCPaddedSeconds(d9);
-            let ten = service.getUTCPaddedSeconds(d10);
+            const d9 = service.dateFromSeconds(9);
+            const d10 = service.dateFromSeconds(10);
+            const nine = service.getUTCPaddedSeconds(d9);
+            const ten = service.getUTCPaddedSeconds(d10);
             expect(nine).toEqual('09');
             expect(ten).toEqual('10');
         });
 
         it('should return an integer value in milliseconds of X days since Y', () => {
-            let date = new Date(1486901331613);
-            let actual = service.getDaysAgoFromDate(30, date);
-            let expected = 1484309331613;
+            date = new Date(1486901331613);
+            const actual = service.getDaysAgoFromDate(30, date);
+            const expected = 1484309331613;
 
             expect(actual).toEqual(expected);
         });

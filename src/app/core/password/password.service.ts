@@ -24,64 +24,74 @@ export class PasswordService {
             return 0;
         }
 
-        let nAlphaUC          : number = 0;
-        let nAlphaLC          : number = 0;
-        let nNumber           : number = 0;
-        let nSymbol           : number = 0;
-        let nMidChar          : number = 0;
-        let nUnqChar          : number = 0;
-        let nRepChar          : number = 0;
-        let nRepInc           : number = 0;
-        let nConsecAlphaUC    : number = 0;
-        let nConsecAlphaLC    : number = 0;
-        let nConsecNumber     : number = 0;
-        let nSeqAlpha         : number = 0;
-        let nSeqNumber        : number = 0;
-        let nSeqSymbol        : number = 0;
-        let nTmpAlphaUC       : number = 0;
-        let nTmpAlphaLC       : number = 0;
-        let nTmpNumber        : number = 0;
+        let nAlphaUC       = 0;
+        let nAlphaLC       = 0;
+        let nNumber        = 0;
+        let nSymbol        = 0;
+        let nMidChar       = 0;
+        let nUnqChar       = 0;
+        let nRepChar       = 0;
+        let nRepInc        = 0;
+        let nConsecAlphaUC = 0;
+        let nConsecAlphaLC = 0;
+        let nConsecNumber  = 0;
+        let nSeqAlpha      = 0;
+        let nSeqNumber     = 0;
+        let nSeqSymbol     = 0;
+        let nTmpAlphaUC    = 0;
+        let nTmpAlphaLC    = 0;
+        let nTmpNumber     = 0;
 
-        let nMultMidChar      : number = 2;
-        let nMultConsecAlphaUC: number = 2;
-        let nMultConsecAlphaLC: number = 2;
-        let nMultConsecNumber : number = 2;
+        const nMultMidChar       = 2;
+        const nMultConsecAlphaUC = 2;
+        const nMultConsecAlphaLC = 2;
+        const nMultConsecNumber  = 2;
 
-        let nMultSeqAlpha     : number = 3;
-        let nMultSeqNumber    : number = 3;
-        let nMultSeqSymbol    : number = 3;
+        const nMultSeqAlpha      = 3;
+        const nMultSeqNumber     = 3;
+        const nMultSeqSymbol     = 3;
 
-        let nMultLength       : number = 4;
-        let nMultNumber       : number = 4;
-        let nMultSymbol       : number = 6;
+        const nMultLength        = 4;
+        const nMultNumber        = 4;
+        const nMultSymbol        = 6;
 
         let score: number = password.length * nMultLength;
-        let passwordChars: string[] = _.split(_.replace(password, /\s+/g, ''), /\s*/);
-        let passwordCharsLength = passwordChars.length;
+        const passwordChars: string[] = _.split(_.replace(password, /\s+/g, ''), /\s*/);
+        const passwordCharsLength = passwordChars.length;
 
-        for (let i: number = 0; i < passwordCharsLength; i++) {
+        for (let i = 0; i < passwordCharsLength; i++) {
             const char = _.nth(passwordChars, i);
 
             if (this.stringService.containsAlphaUC(char)) {
-                if ((nTmpAlphaUC + 1) === i) nConsecAlphaUC++;
+                if ((nTmpAlphaUC + 1) === i) {
+                    nConsecAlphaUC++;
+                }
                 nTmpAlphaUC = i;
                 nAlphaUC++;
             } else if (this.stringService.containsAlphaLC(char)) {
-                if ((nTmpAlphaLC + 1) === i) nConsecAlphaLC++;
+                if ((nTmpAlphaLC + 1) === i) {
+                    nConsecAlphaLC++;
+                }
                 nTmpAlphaLC = i;
                 nAlphaLC++;
             } else if (this.stringService.containsNumeric(char)) {
-                if (i > 0 && i < (passwordCharsLength - 1)) nMidChar++;
-                if ((nTmpNumber + 1) === i) nConsecNumber++;
+                if (i > 0 && i < (passwordCharsLength - 1)) {
+                    nMidChar++;
+                }
+                if ((nTmpNumber + 1) === i) {
+                    nConsecNumber++;
+                }
                 nTmpNumber = i;
                 nNumber++;
             } else if (this.stringService.containsSymbol(char)) {
-                if (i > 0 && i < (passwordCharsLength - 1)) nMidChar++;
+                if (i > 0 && i < (passwordCharsLength - 1)) {
+                    nMidChar++;
+                }
                 nSymbol++;
             }
 
-            let bCharExists: boolean = false;
-            for (let j: number = 0; j < passwordCharsLength; j++) {
+            let bCharExists = false;
+            for (let j = 0; j < passwordCharsLength; j++) {
                 if (char === passwordChars[j] && i !== j) { /* repeat character exists */
                     bCharExists = true;
                     nRepInc += Math.abs(passwordCharsLength / (j - i));
@@ -96,47 +106,90 @@ export class PasswordService {
         }
 
         for (let i = 0; i < 23; i++) {
-            let sFwd = 'abcdefghijklmnopqrstuvwxyz'.substring(i, i + 3);
-            let sRev = _.join(_.reverse(_.split(sFwd, '')));
+            const sFwd = 'abcdefghijklmnopqrstuvwxyz'.substring(i, i + 3);
+            const sRev = _.join(_.reverse(_.split(sFwd, '')));
             if (_.includes(_.toLower(password), sFwd) || _.includes(_.toLower(password), sRev)) {
                 nSeqAlpha++;
             }
         }
 
         for (let i = 0; i < 8; i++) {
-            let sFwd = '01234567890'.substring(i, i + 3);
-            let sRev = _.join(_.reverse(_.split(sFwd, '')));
+            const sFwd = '01234567890'.substring(i, i + 3);
+            const sRev = _.join(_.reverse(_.split(sFwd, '')));
             if (_.includes(_.toLower(password), sFwd) || _.includes(_.toLower(password), sRev)) {
                 nSeqNumber++;
             }
         }
 
         for (let i = 0; i < 8; i++) {
-            let sFwd = ')!@#$%^&*()'.substring(i, i + 3);
-            let sRev = _.join(_.reverse(_.split(sFwd, '')));
+            const sFwd = ')!@#$%^&*()'.substring(i, i + 3);
+            const sRev = _.join(_.reverse(_.split(sFwd, '')));
             if (_.includes(_.toLower(password), sFwd) || _.includes(_.toLower(password), sRev)) {
                 nSeqSymbol++;
             }
         }
 
-        if (nAlphaUC > 0 && nAlphaUC < password.length) score = score + ((password.length - nAlphaUC) * 2);
-        if (nAlphaLC > 0 && nAlphaLC < password.length) score = score + ((password.length - nAlphaLC) * 2);
-        if (nNumber  > 0 && nNumber  < password.length) score = score + (nNumber * nMultNumber);
+        if (nAlphaUC > 0 && nAlphaUC < password.length) {
+            score = score + ((password.length - nAlphaUC) * 2);
+        }
 
-        if ((nAlphaLC > 0 || nAlphaUC > 0) && nSymbol === 0 && nNumber === 0) score = score - password.length;
-        if (nAlphaLC === 0 && nAlphaUC === 0 && nSymbol === 0 && nNumber > 0) score = score - password.length;
+        if (nAlphaLC > 0 && nAlphaLC < password.length) {
+            score = score + ((password.length - nAlphaLC) * 2);
+        }
 
-        if (nRepChar       > 0) score = score - nRepInc;
-        if (nSymbol        > 0) score = score + (nSymbol        * nMultSymbol);
-        if (nMidChar       > 0) score = score + (nMidChar       * nMultMidChar);
-        if (nConsecAlphaUC > 0) score = score - (nConsecAlphaUC * nMultConsecAlphaUC);
-        if (nConsecAlphaLC > 0) score = score - (nConsecAlphaLC * nMultConsecAlphaLC);
-        if (nConsecNumber  > 0) score = score - (nConsecNumber  * nMultConsecNumber);
-        if (nSeqAlpha      > 0) score = score - (nSeqAlpha      * nMultSeqAlpha);
-        if (nSeqNumber     > 0) score = score - (nSeqNumber     * nMultSeqNumber);
-        if (nSeqSymbol     > 0) score = score - (nSeqSymbol     * nMultSeqSymbol);
+        if (nNumber > 0 && nNumber < password.length) {
+            score = score + (nNumber * nMultNumber);
+        }
 
-        if (score > 100) score = 100; else if (score < 0) score = 0;
+        if ((nAlphaLC > 0 || nAlphaUC > 0) && nSymbol === 0 && nNumber === 0) {
+            score = score - password.length;
+        }
+
+        if (nAlphaLC === 0 && nAlphaUC === 0 && nSymbol === 0 && nNumber > 0) {
+            score = score - password.length;
+        }
+
+        if (nRepChar > 0) {
+            score = score - nRepInc;
+        }
+
+        if (nSymbol > 0) {
+            score = score + (nSymbol * nMultSymbol);
+        }
+
+        if (nMidChar > 0) {
+            score = score + (nMidChar * nMultMidChar);
+        }
+
+        if (nConsecAlphaUC > 0) {
+            score = score - (nConsecAlphaUC * nMultConsecAlphaUC);
+        }
+
+        if (nConsecAlphaLC > 0) {
+            score = score - (nConsecAlphaLC * nMultConsecAlphaLC);
+        }
+
+        if (nConsecNumber > 0) {
+            score = score - (nConsecNumber * nMultConsecNumber);
+        }
+
+        if (nSeqAlpha > 0) {
+            score = score - (nSeqAlpha * nMultSeqAlpha);
+        }
+
+        if (nSeqNumber > 0) {
+            score = score - (nSeqNumber * nMultSeqNumber);
+        }
+
+        if (nSeqSymbol > 0) {
+            score = score - (nSeqSymbol * nMultSeqSymbol);
+        }
+
+        if (score > 100) {
+            score = 100;
+        } else if (score < 0) {
+            score = 0;
+        }
 
         this.logger.debug(this, `Password Strength: ${score}`);
         return score;

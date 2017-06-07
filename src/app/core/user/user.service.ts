@@ -106,7 +106,7 @@ export class UserService {
             return;
         }
 
-        let cache = _.defaultTo(this.localStorage.getItem(kCurrentUser), {});
+        const cache = _.defaultTo(this.localStorage.getItem(kCurrentUser), {});
 
         this.logger.debug(this, 'Updating cached user', user);
 

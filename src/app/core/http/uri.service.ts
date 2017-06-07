@@ -12,7 +12,7 @@ import * as _ from 'lodash';
 @Injectable()
 export class URIService {
     generateURIForEndpointWithParams(params: any, endpoint: any): string {
-        let matches = endpoint.url.match(/:[a-z]+/g);
+        const matches = endpoint.url.match(/:[a-z]+/g);
 
         if (!matches) {
             return endpoint.url;
@@ -21,7 +21,7 @@ export class URIService {
         let url = endpoint.url;
 
         _.forIn(matches, match => {
-            let key = match.substr(1);
+            const key = match.substr(1);
 
             if (params[key]) {
                 url = _.replace(endpoint.url, match, params[key]);
