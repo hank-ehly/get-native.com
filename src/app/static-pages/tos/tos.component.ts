@@ -17,5 +17,5 @@ import { Config } from '../../shared/config/env.config';
 })
 export class TOSComponent {
     moderator: string = Config.moderator;
-    lastEdited: string = '2016-11-11';
+    lastEdited = '2016-11-11';
 }

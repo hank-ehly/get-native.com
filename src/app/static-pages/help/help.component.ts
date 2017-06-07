@@ -16,10 +16,9 @@ interface Faq {
 }
 
 @Component({
-
     selector: 'gn-help',
     templateUrl: 'help.component.html',
-    styleUrls: ['help.component.css'],
+    styleUrls: ['help.component.scss'],
     animations: [
         trigger('visible', [
             transition(':enter', [
@@ -53,26 +52,26 @@ export class HelpComponent {
     faqs: Faq[] = [
         {
             title: 'First FAQ',
-            body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate, 
-                dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates 
-                voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias 
-                consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident 
+            body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate,
+                dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates
+                voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias
+                consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident
                 quod tenetur voluptates voluptatibus? Cupiditate, est?`
         },
         {
             title: 'Second FAQ',
-            body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate, 
-                dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates 
-                voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias 
-                consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident 
+            body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate,
+                dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates
+                voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias
+                consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident
                 quod tenetur voluptates voluptatibus? Cupiditate, est?`
         },
         {
             title: 'Third FAQ',
-            body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate, 
-                dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates 
-                voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias 
-                consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident 
+            body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate,
+                dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates
+                voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias
+                consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident
                 quod tenetur voluptates voluptatibus? Cupiditate, est?`
         }
     ];

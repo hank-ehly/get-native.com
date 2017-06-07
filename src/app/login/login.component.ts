@@ -7,16 +7,16 @@
 
 import { Component, Input, OnInit, HostListener, OnDestroy } from '@angular/core';
 
-import { Logger } from '../core/logger/logger';
 import { LoginModalService } from '../core/login-modal/login-modal.service';
+import { Logger } from '../core/logger/logger';
 
 import { Subscription } from 'rxjs/Subscription';
+import * as _ from 'lodash';
 
 @Component({
-
     selector: 'gn-login',
     templateUrl: 'login.component.html',
-    styleUrls: ['login.component.css']
+    styleUrls: ['login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
     @Input() isVisible: boolean;
@@ -37,20 +37,20 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        for (let subscription of this.subscriptions) {
-            subscription.unsubscribe();
-        }
+        _.each(this.subscriptions, s => s.unsubscribe());
     }
 
     onClickClose(e: MouseEvent): void {
-        let t = <HTMLElement>e.target;
+        const t = <HTMLElement>e.target;
         if (['overlay', 'modal-frame__close-button'].indexOf(t.className) !== -1) {
             this.isVisible = false;
         }
     }
 
     @HostListener('document:keydown', ['$event']) onKeyDown(e: KeyboardEvent): void {
-        if (!this.isVisible) return;
+        if (!this.isVisible) {
+            return;
+        }
 
         this.logger.debug(this, `KeyboardEvent: ${e.key}`);
 
@@ -70,8 +70,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     onKeydownEnter(e?: KeyboardEvent): void {
-        let target: HTMLElement = <HTMLElement>e.target;
-        if (target.className.indexOf('tabbable') === -1) return;
+        const target: HTMLElement = <HTMLElement>e.target;
+        if (target.className.indexOf('tabbable') === -1) {
+            return;
+        }
 
         this.logger.warn(this, `TODO: Perform action for ${target.tagName.toLowerCase()}.${target.className.replace(' ', '.')}`);
     }
@@ -85,11 +87,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     selectNextTabbable(e?: KeyboardEvent) {
-        let tabbables = document.querySelectorAll('.tabbable');
-        let first: HTMLElement = <HTMLElement>tabbables[0];
-        let last: HTMLElement = <HTMLElement>tabbables[tabbables.length - 1];
+        const tabbables = document.querySelectorAll('.tabbable');
+        const first: HTMLElement = <HTMLElement>tabbables[0];
+        const last: HTMLElement = <HTMLElement>tabbables[tabbables.length - 1];
 
-        let isFirstSelection: boolean = true;
+        let isFirstSelection = true;
         for (let i = 0; i < tabbables.length; i++) {
             if (document.activeElement === tabbables[i]) {
                 isFirstSelection = false;
@@ -98,10 +100,14 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
 
         if (!e.shiftKey && (isFirstSelection || e.target === last)) {
-            if (e) e.preventDefault();
+            if (e) {
+                e.preventDefault();
+            }
             first.focus();
         } else if (e.shiftKey && (isFirstSelection || e.target === first)) {
-            if (e) e.preventDefault();
+            if (e) {
+                e.preventDefault();
+            }
             last.focus();
         }
     }

@@ -5,9 +5,9 @@
 
             <div class="dropdown-toggle">
                 <span class="dropdown-toggle__text">{{ categoryFilter$.pluck('text') | async }}</span>
-                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-down.svg" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
-                <img class="dropdown-toggle__icon" src="/assets/icons/arrow-up.svg" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
-                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="/assets/icons/close-green.svg" alt="close" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-down.svg" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
+                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="../../assets/icons/close-green.svg" alt="close" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
             </div>
 
             <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>

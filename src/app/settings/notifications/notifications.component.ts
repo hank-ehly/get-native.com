@@ -11,10 +11,9 @@ import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/entities/user';
 
 @Component({
-
     selector: 'gn-notifications',
     templateUrl: 'notifications.component.html',
-    styleUrls: ['notifications.component.css']
+    styleUrls: ['notifications.component.scss']
 })
 export class NotificationsComponent {
     user: User = this.userService.current$.getValue();

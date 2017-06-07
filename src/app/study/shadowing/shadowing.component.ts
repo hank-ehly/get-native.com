@@ -16,9 +16,8 @@ import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
 
 @Component({
-
     templateUrl: 'shadowing.component.html',
-    styleUrls: ['shadowing.component.css']
+    styleUrls: ['shadowing.component.scss']
 })
 export class ShadowingComponent implements OnInit, OnDestroy {
     modalVisibility$ = new BehaviorSubject<boolean>(false);

@@ -5,7 +5,6 @@
  * Created by henryehly on 2016/12/24.
  */
 
-import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
@@ -28,8 +27,6 @@ import { STUBLocalStorageService } from '../core/local-storage/local-storage.ser
 export function main() {
     let comp: LibraryDetailComponent;
     let fixture: ComponentFixture<LibraryDetailComponent>;
-    let de: DebugElement;
-    let el: HTMLElement;
     let util: SpecUtil;
 
     describe('LibraryDetailComponent', () => {
@@ -56,7 +53,7 @@ export function main() {
         }));
 
         it('should display a video player', () => {
-            let player = util.getNativeEl('video');
+            const player = util.getNativeEl('video');
             expect(player).toBeTruthy();
         });
     });

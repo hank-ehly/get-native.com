@@ -18,9 +18,8 @@ import 'rxjs/add/operator/take';
 import * as _ from 'lodash';
 
 @Component({
-
     templateUrl: 'listening.component.html',
-    styleUrls: ['listening.component.css']
+    styleUrls: ['listening.component.scss']
 })
 export class ListeningComponent implements OnInit, OnDestroy {
     transcripts: Transcripts = this.session.current.video.transcripts;

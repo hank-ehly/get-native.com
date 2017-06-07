@@ -27,7 +27,6 @@ import { STUBRouter } from '../core/spec/stubs';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
-
 export function main() {
     let comp: LoginComponent;
     let fixture: ComponentFixture<LoginComponent>;

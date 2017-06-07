@@ -13,7 +13,6 @@ import { VideoSearchComponent } from '../shared/video-search/video-search.compon
 import { CategoryListService } from '../core/category-list/category-list.service';
 import { StudySessionService } from '../core/study-session/study-session.service';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
-import { WritingAnswers } from '../core/entities/writing-answers';
 import { WritingAnswer } from '../core/entities/writing-answer';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { StudySession } from '../core/entities/study-session';
@@ -34,12 +33,12 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
+import { Entities } from '../core/entities/entities';
 
 @Component({
-
     selector: 'gn-dashboard',
     templateUrl: 'dashboard.component.html',
-    styleUrls: ['dashboard.component.css'],
+    styleUrls: ['dashboard.component.scss'],
     animations: [
         trigger('dropdown', [
             transition(':enter', [
@@ -62,7 +61,7 @@ export class DashboardComponent extends VideoSearchComponent {
 
     answers$ = this.studyLanguageCode$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
-            let search = new URLSearchParams();
+            const search = new URLSearchParams();
 
             if (since) {
                 search.set('since', this.dateService.getDaysAgoFromDate(since).toString());
@@ -72,7 +71,7 @@ export class DashboardComponent extends VideoSearchComponent {
                 search.set('max_id', maxId.toString());
             }
 
-            let options = {
+            const options = {
                 search: search,
                 params: {
                     lang: lang
@@ -80,7 +79,8 @@ export class DashboardComponent extends VideoSearchComponent {
             };
 
             return this.http.request(APIHandle.WRITING_ANSWERS, options);
-        }, (_, answers: WritingAnswers) => answers.records).do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);
+        }, (_, answers: Entities<WritingAnswer>) => answers.records)
+            .do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);
     });
 
     stats$ = this.studyLanguageCode$.concatMap((lang: LanguageCode) => {

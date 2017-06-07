@@ -13,10 +13,7 @@
     </header>
 
     <ul class="tabs">
-        <li class="tab" *ngFor="let tab of tabs" [routerLink]="[tab.path]" routerLinkActive="tab_active"
-            [routerLinkActiveOptions]="{exact: true}">
-            {{ tab.name | uppercase }}
-        </li>
+        <li class="tab" *ngFor="let tab of tabs" [routerLink]="[tab.path]" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}">{{ tab.name | uppercase }}</li>
     </ul>
 
     <section>

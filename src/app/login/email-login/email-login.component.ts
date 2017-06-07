@@ -8,23 +8,22 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Logger } from '../../core/logger/logger';
 import { LoginModalService } from '../../core/login-modal/login-modal.service';
-import { HttpService } from '../../core/http/http.service';
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
-import { APIHandle } from '../../core/http/api-handle';
+import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
+import { APIHandle } from '../../core/http/api-handle';
+import { APIErrors } from '../../core/http/api-error';
+import { Logger } from '../../core/logger/logger';
 import { User } from '../../core/entities/user';
 
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
-import { APIErrors } from '../../core/http/api-error';
 
 @Component({
-
     selector: 'gn-email-login',
     templateUrl: 'email-login.component.html',
-    styleUrls: ['email-login.component.css']
+    styleUrls: ['email-login.component.scss']
 })
 export class EmailLoginComponent implements OnDestroy {
     emailRegex = EMAIL_REGEX;

@@ -2,7 +2,7 @@
     <section class="section section_about">
         <header class="section-header">
             <div class="section-header__icon-frame">
-                <img class="section-header__icon" src="../../assets/icons/help-about.svg" alt="about">
+                <img class="section-header__icon" src="../../../assets/icons/help-about.svg" alt="about">
             </div>
             <h3 class="section-header__title">About Get Native</h3>
         </header>
@@ -10,7 +10,7 @@
         <ul class="faqs">
             <li class="faqs__faq" *ngFor="let faq of faqs; let i = index">
                 <div class="faqs__faq-header">
-                    <img src="../../assets/icons/chevron.svg" alt="chevron" class="faqs__chevron-icon" (click)="setSelectedFaq(faq)" [@rotation]="chevronRotationForFaq(faq)">
+                    <img src="../../../assets/icons/chevron.svg" alt="chevron" class="faqs__chevron-icon" (click)="setSelectedFaq(faq)" [@rotation]="chevronRotationForFaq(faq)">
                     <span class="faqs__faq-number" (click)="setSelectedFaq(faq)">{{ i | number:'2.0-0' }}</span>
                     <span class="link faqs__faq-title" (click)="setSelectedFaq(faq)">{{ faq.title }}</span>
                 </div>
@@ -22,7 +22,7 @@
     <section class="section section_contact">
         <header class="section-header">
             <div class="section-header__icon-frame">
-                <img class="section-header__icon" src="../../assets/icons/help-mail.svg" alt="mail">
+                <img class="section-header__icon" src="../../../assets/icons/help-mail.svg" alt="mail">
             </div>
             <h3 class="section-header__title">Contact</h3>
         </header>

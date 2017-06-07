@@ -19,16 +19,15 @@ import 'rxjs/add/operator/startWith';
 import * as _ from 'lodash';
 
 @Component({
-
     templateUrl: 'writing.component.html',
-    styleUrls: ['writing.component.css']
+    styleUrls: ['writing.component.scss']
 })
 export class WritingComponent implements OnInit, OnDestroy {
     transcript: Transcript;
 
     question: WritingQuestion;
-    answer: string = '';
-    wordCount: number = 0;
+    answer = '';
+    wordCount = 0;
 
     private subscriptions: Subscription[] = [];
 
@@ -51,7 +50,6 @@ export class WritingComponent implements OnInit, OnDestroy {
             })
         );
     }
-
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');

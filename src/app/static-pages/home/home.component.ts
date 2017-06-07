@@ -10,10 +10,9 @@ import { Component } from '@angular/core';
 import { LoginModalService } from '../../core/login-modal/login-modal.service';
 
 @Component({
-
     selector: 'gn-home',
     templateUrl: 'home.component.html',
-    styleUrls: ['home.component.css']
+    styleUrls: ['home.component.scss']
 })
 export class HomeComponent {
     constructor(public loginModal: LoginModalService) {

@@ -1,4 +1,4 @@
-@import '../../../scss/core';
+@import '../../../styles/core';
 
 .table             { @include debug-background-color($dc01); };
 .table__data_key   { @include debug-background-color($dc02); };

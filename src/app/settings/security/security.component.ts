@@ -8,10 +8,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-
     selector: 'gn-security',
     templateUrl: 'security.component.html',
-    styleUrls: ['security.component.css']
+    styleUrls: ['security.component.scss']
 })
 export class SecurityComponent {
 }

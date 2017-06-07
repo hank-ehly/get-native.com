@@ -16,6 +16,5 @@ import { StatsComponent } from './stats/stats.component';
     declarations: [DashboardComponent, StatsComponent],
     exports: [DashboardComponent]
 })
-
 export class DashboardModule {
 }

@@ -25,10 +25,9 @@ import 'rxjs/add/operator/pluck';
 import * as _ from 'lodash';
 
 @Component({
-
     selector: 'gn-general',
     templateUrl: 'general.component.html',
-    styleUrls: ['general.component.css']
+    styleUrls: ['general.component.scss']
 })
 export class GeneralComponent implements OnDestroy {
     @ViewChild('passwordForm') passwordForm: NgForm;
