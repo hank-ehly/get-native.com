@@ -23,5 +23,5 @@ dependencies:
 
 test:
   override:
-    - npm run lint
+    - npm run lint -- --type-check
     - npm test -- --single-run

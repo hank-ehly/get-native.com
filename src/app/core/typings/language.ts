@@ -7,4 +7,7 @@
 
 import { LanguageCode } from './language-code';
 
-export type Language = {code: LanguageCode, name: string};
+export interface Language {
+    code: LanguageCode;
+    name: string;
+}
