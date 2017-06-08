@@ -8,7 +8,7 @@
 import { Component } from '@angular/core';
 
 import { LoginModalService } from '../../core/login-modal/login-modal.service';
-import { Config } from '../../shared/config/env.config';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'gn-social-login',
@@ -16,9 +16,9 @@ import { Config } from '../../shared/config/env.config';
     styleUrls: ['social-login.component.scss']
 })
 export class SocialLoginComponent {
-    facebookLoginURL = Config.FacebookLoginUrl;
-    twitterLoginURL = Config.TwitterLoginUrl;
-    googleLoginURL = Config.GoogleLoginUrl;
+    facebookLoginURL = environment.facebookLoginUrl;
+    twitterLoginURL = environment.twitterLoginUrl;
+    googleLoginURL = environment.googleLoginUrl;
 
     constructor(private loginModal: LoginModalService) {
     }

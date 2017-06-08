@@ -7,7 +7,7 @@
 
 import { Component } from '@angular/core';
 
-import { Config } from '../../shared/config/env.config';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'gn-privacy',
@@ -15,6 +15,6 @@ import { Config } from '../../shared/config/env.config';
     styleUrls: ['privacy.component.scss']
 })
 export class PrivacyComponent {
-    moderator: string = Config.moderator;
+    moderator: string = environment.moderator;
     lastEdited = '2016-11-07';
 }

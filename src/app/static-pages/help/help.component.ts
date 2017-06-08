@@ -8,7 +8,7 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
-import { Config } from '../../shared/config/env.config';
+import { environment } from '../../../environments/environment';
 
 interface Faq {
     title: string;
@@ -46,7 +46,7 @@ interface Faq {
     ]
 })
 export class HelpComponent {
-    moderator: string = Config.moderator;
+    moderator: string = environment.moderator;
     selectedFaq: Faq = null;
 
     faqs: Faq[] = [
