@@ -24,37 +24,35 @@ import { StudySessionService } from '../core/study-session/study-session.service
 import { LocalStorageService } from '../core/local-storage/local-storage.service';
 import { STUBLocalStorageService } from '../core/local-storage/local-storage.service.stub';
 
-export function main() {
+describe('LibraryDetailComponent', () => {
     let comp: LibraryDetailComponent;
     let fixture: ComponentFixture<LibraryDetailComponent>;
     let util: SpecUtil;
 
-    describe('LibraryDetailComponent', () => {
-        beforeEach(async(() => {
-            TestBed.configureTestingModule({
-                imports: [SharedModule, RouterModule.forRoot([]), BrowserAnimationsModule],
-                declarations: [LibraryDetailComponent],
-                providers: [
-                    {provide: Logger, useValue: STUBLogger},
-                    NavbarService,
-                    {provide: HttpService, useValue: STUBHttpService},
-                    {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
-                    LangService,
-                    UTCDateService,
-                    StudySessionService,
-                    {provide: LocalStorageService, useValue: STUBLocalStorageService}
-                ]
-            }).compileComponents().then(() => {
-                fixture = TestBed.createComponent(LibraryDetailComponent);
-                util = new SpecUtil(fixture);
-                comp = fixture.componentInstance;
-                fixture.detectChanges();
-            });
-        }));
-
-        it('should display a video player', () => {
-            const player = util.getNativeEl('video');
-            expect(player).toBeTruthy();
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [SharedModule, RouterModule.forRoot([]), BrowserAnimationsModule],
+            declarations: [LibraryDetailComponent],
+            providers: [
+                {provide: Logger, useValue: STUBLogger},
+                NavbarService,
+                {provide: HttpService, useValue: STUBHttpService},
+                {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
+                LangService,
+                UTCDateService,
+                StudySessionService,
+                {provide: LocalStorageService, useValue: STUBLocalStorageService}
+            ]
+        }).compileComponents().then(() => {
+            fixture = TestBed.createComponent(LibraryDetailComponent);
+            util = new SpecUtil(fixture);
+            comp = fixture.componentInstance;
+            fixture.detectChanges();
         });
+    }));
+
+    it('should display a video player', () => {
+        const player = util.getNativeEl('video');
+        expect(player).toBeTruthy();
     });
-}
+});

@@ -27,70 +27,68 @@ import { STUBRouter } from '../core/spec/stubs';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
-export function main() {
+describe('LoginComponent', () => {
     let comp: LoginComponent;
     let fixture: ComponentFixture<LoginComponent>;
     let de: DebugElement;
     let el: HTMLElement;
     let util: SpecUtil;
 
-    describe('LoginComponent', () => {
-        beforeEach(async(() => {
-            TestBed.configureTestingModule({
-                imports: [SharedModule, FormsModule, BrowserAnimationsModule],
-                declarations: [
-                    LoginComponent,
-                    SocialLoginComponent,
-                    EmailLoginComponent,
-                    RegisterComponent,
-                    ForgotPasswordComponent
-                ],
-                providers: [
-                    {provide: Logger, useValue: STUBLogger},
-                    {provide: LoginModalService, useValue: STUBLoginModalService},
-                    {provide: PasswordService, useValue: STUBPasswordService},
-                    {provide: Router, useValue: STUBRouter},
-                    NavbarService
-                ]
-            }).compileComponents().then(() => {
-                fixture = TestBed.createComponent(LoginComponent);
-                util = new SpecUtil(fixture);
-                comp = fixture.componentInstance;
-                comp.isVisible = true;
-                fixture.detectChanges();
-            });
-        }));
-
-        it('should display an overlay when visible', () => {
-            el = util.getNativeEl('.overlay');
-            expect(el).toBeTruthy();
-            expect(comp.isVisible).toEqual(true);
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [SharedModule, FormsModule, BrowserAnimationsModule],
+            declarations: [
+                LoginComponent,
+                SocialLoginComponent,
+                EmailLoginComponent,
+                RegisterComponent,
+                ForgotPasswordComponent
+            ],
+            providers: [
+                {provide: Logger, useValue: STUBLogger},
+                {provide: LoginModalService, useValue: STUBLoginModalService},
+                {provide: PasswordService, useValue: STUBPasswordService},
+                {provide: Router, useValue: STUBRouter},
+                NavbarService
+            ]
+        }).compileComponents().then(() => {
+            fixture = TestBed.createComponent(LoginComponent);
+            util = new SpecUtil(fixture);
+            comp = fixture.componentInstance;
+            comp.isVisible = true;
+            fixture.detectChanges();
         });
+    }));
 
-        it('should become hidden after clicking the overlay', () => {
-            el = util.getNativeEl('.overlay');
-            de = util.getDebugEl('.overlay');
-            de.triggerEventHandler('click', {target: {className: el.className}});
-            expect(comp.isVisible).toEqual(false);
-        });
-
-        it('should become hidden after clicking the close button', () => {
-            el = util.getNativeEl('.modal-frame__close-button');
-            de = util.getDebugEl('.modal-frame__close-button');
-            de.triggerEventHandler('click', {target: {className: el.className}});
-            expect(comp.isVisible).toEqual(false);
-        });
-
-        it('should have 3 social-login buttons', () => {
-            el = util.getNativeEl('.modal__body');
-            expect(el.childElementCount).toEqual(3);
-        });
-
-        it('should have a footer with 2 links', () => {
-            el = util.getNativeEl('.footer');
-            expect(el.childElementCount).toEqual(2);
-            expect(el.children[0].className).toContain('footer__link');
-            expect(el.children[1].className).toContain('footer__link');
-        });
+    it('should display an overlay when visible', () => {
+        el = util.getNativeEl('.overlay');
+        expect(el).toBeTruthy();
+        expect(comp.isVisible).toEqual(true);
     });
-}
+
+    it('should become hidden after clicking the overlay', () => {
+        el = util.getNativeEl('.overlay');
+        de = util.getDebugEl('.overlay');
+        de.triggerEventHandler('click', {target: {className: el.className}});
+        expect(comp.isVisible).toEqual(false);
+    });
+
+    it('should become hidden after clicking the close button', () => {
+        el = util.getNativeEl('.modal-frame__close-button');
+        de = util.getDebugEl('.modal-frame__close-button');
+        de.triggerEventHandler('click', {target: {className: el.className}});
+        expect(comp.isVisible).toEqual(false);
+    });
+
+    it('should have 3 social-login buttons', () => {
+        el = util.getNativeEl('.modal__body');
+        expect(el.childElementCount).toEqual(3);
+    });
+
+    it('should have a footer with 2 links', () => {
+        el = util.getNativeEl('.footer');
+        expect(el.childElementCount).toEqual(2);
+        expect(el.children[0].className).toContain('footer__link');
+        expect(el.children[1].className).toContain('footer__link');
+    });
+});
