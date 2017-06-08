@@ -5,11 +5,11 @@
  * Created by henryehly on 2016/11/20.
  */
 
-import { Config } from '../../shared/config/env.config';
+import { environment } from '../../../environments/environment';
 
-export const kAcceptLocalStorage  = Config.ENV === 'DEV' ? 'accept-local-storage'  : 'FCjKY3';
-export const kDebugModalPosition  = Config.ENV === 'DEV' ? 'debug-modal-position'  : 'x2UeqU';
-export const kAuthToken           = Config.ENV === 'DEV' ? 'auth-token'            : '2C9q5J';
-export const kAuthTokenExpire     = Config.ENV === 'DEV' ? 'auth-token-expire'     : 'Jj35Bv';
-export const kCurrentUser         = Config.ENV === 'DEV' ? 'current-user'          : 'QLSxY4';
-export const kCurrentStudySession = Config.ENV === 'DEV' ? 'current-study-session' : '6Hj0pQ';
+export const kAcceptLocalStorage  = environment.production ? 'FCjKY3' : 'accept-local-storage' ;
+export const kDebugModalPosition  = environment.production ? 'x2UeqU' : 'debug-modal-position' ;
+export const kAuthToken           = environment.production ? '2C9q5J' : 'auth-token'           ;
+export const kAuthTokenExpire     = environment.production ? 'Jj35Bv' : 'auth-token-expire'    ;
+export const kCurrentUser         = environment.production ? 'QLSxY4' : 'current-user'         ;
+export const kCurrentStudySession = environment.production ? '6Hj0pQ' : 'current-study-session';

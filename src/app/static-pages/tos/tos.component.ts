@@ -7,15 +7,14 @@
 
 import { Component } from '@angular/core';
 
-import { Config } from '../../shared/config/env.config';
+import { environment } from '../../../environments/environment';
 
 @Component({
-
     selector: 'gn-tos',
     templateUrl: 'tos.component.html',
-    styleUrls: ['tos.component.css']
+    styleUrls: ['tos.component.scss']
 })
 export class TOSComponent {
-    moderator: string = Config.moderator;
+    moderator: string = environment.moderator;
     lastEdited = '2016-11-11';
 }

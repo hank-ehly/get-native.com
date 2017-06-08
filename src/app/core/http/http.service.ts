@@ -9,7 +9,6 @@ import { Injectable } from '@angular/core';
 import { Http, Request, Response, ResponseContentType, Headers } from '@angular/http';
 import { RequestArgs } from '@angular/http/src/interfaces';
 
-import { Config } from '../../shared/config/env.config';
 import { Logger } from '../logger/logger';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { Entity } from '../entities/entity';
@@ -19,6 +18,7 @@ import { APIConfig } from './api-config';
 import { URIService } from './uri.service';
 import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-keys';
 import { Entities } from '../entities/entities';
+import { environment } from '../../../environments/environment';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/delay';
@@ -39,7 +39,7 @@ export class HttpService {
         const endpoint = APIConfig.get(handle);
 
         const args: RequestArgs = {
-            url: Config.API + endpoint.url,
+            url: environment.apiBaseUrl + endpoint.url,
             method: endpoint.method,
             responseType: ResponseContentType.Json
         };
@@ -49,7 +49,7 @@ export class HttpService {
         }
 
         if (options && options.params) {
-            args.url = Config.API + this.uriService.generateURIForEndpointWithParams(options.params, endpoint);
+            args.url = environment.apiBaseUrl + this.uriService.generateURIForEndpointWithParams(options.params, endpoint);
         }
 
         if (options && options.body) {
@@ -72,7 +72,7 @@ export class HttpService {
 
         this.logger.debug(this, '[REQ]', request.url, request.getBody());
 
-        const delay = Config.ENV === 'DEV' ? _.random(3, 12) * 100 : 0;
+        const delay = environment.production ? 0 : _.random(3, 12) * 100;
         return this.http.request(request).delay(delay).map(this.handleResponse.bind(this)).catch(<any>this.handleError.bind(this));
     }
 
