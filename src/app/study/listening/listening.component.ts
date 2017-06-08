@@ -9,7 +9,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
 import { kShadowing } from '../../core/study-session/section-keys';
-import { Transcripts } from '../../core/entities/transcripts';
+import { Transcript } from '../../core/entities/transcript';
+import { Entities } from '../../core/entities/entities';
 import { Logger } from '../../core/logger/logger';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -22,7 +23,7 @@ import * as _ from 'lodash';
     styleUrls: ['listening.component.scss']
 })
 export class ListeningComponent implements OnInit, OnDestroy {
-    transcripts: Transcripts = this.session.current.video.transcripts;
+    transcripts: Entities<Transcript> = this.session.current.video.transcripts;
     src: string = this.session.current.video.video_url;
 
     subscriptions: Subscription[] = [];

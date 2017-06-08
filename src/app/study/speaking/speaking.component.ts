@@ -9,7 +9,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
 import { kWriting } from '../../core/study-session/section-keys';
-import { Transcripts } from '../../core/entities/transcripts';
+import { Transcript } from '../../core/entities/transcript';
+import { Entities } from '../../core/entities/entities';
 import { Logger } from '../../core/logger/logger';
 
 import { Subscription } from 'rxjs/Subscription';
@@ -20,7 +21,7 @@ import * as _ from 'lodash';
     styleUrls: ['speaking.component.scss']
 })
 export class SpeakingComponent implements OnInit, OnDestroy {
-    transcripts: Transcripts = this.session.current.video.transcripts;
+    transcripts: Entities<Transcript> = this.session.current.video.transcripts;
 
     subscriptions: Subscription[] = [];
 
