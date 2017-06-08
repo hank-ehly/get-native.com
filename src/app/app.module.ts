@@ -5,10 +5,9 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { APP_BASE_HREF } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -38,9 +37,11 @@ import { OAuthComponent } from './oauth.component';
         StudyModule,
         StaticPagesModule,
     ],
-    declarations: [AppComponent, OAuthComponent],
+    declarations: [
+        AppComponent,
+        OAuthComponent
+    ],
     providers: [
-        {provide: APP_BASE_HREF, useValue: '<%= APP_BASE %>'},
         {provide: LogLevelToken, useValue: LogLevelValue.DEBUG},
         Logger
     ],
