@@ -7,10 +7,11 @@
 
 import { Entity } from './entity';
 import { Language } from '../typings/language';
-import { Collocations } from './collocations';
+import { Entities } from './entities';
+import { Collocation } from './collocation';
 
 export interface Transcript extends Entity {
     text?: string;
     language?: Language;
-    collocations?: Collocations;
+    collocations?: Entities<Collocation>;
 }

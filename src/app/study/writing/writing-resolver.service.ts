@@ -9,9 +9,9 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Injectable } from '@angular/core';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
-import { WritingQuestions } from '../../core/entities/writing-questions';
 import { WritingQuestion } from '../../core/entities/writing-question';
 import { HttpService } from '../../core/http/http.service';
+import { Entities } from '../../core/entities/entities';
 import { APIHandle } from '../../core/http/api-handle';
 
 import 'rxjs/add/operator/toPromise';
@@ -27,7 +27,7 @@ export class WritingResolver implements Resolve<WritingQuestion> {
             params: {
                 id: this.session.current.video.id
             }
-        }).toPromise().then((questions: WritingQuestions) => {
+        }).toPromise().then((questions: Entities<WritingQuestion>) => {
             return _.sample(questions.records);
         });
     }

@@ -6,11 +6,12 @@
  */
 
 import { Entity } from './entity';
-import { UsageExamples } from './usage-examples';
+import { Entities } from './entities';
+import { UsageExample } from './usage-example';
 
 export interface Collocation extends Entity {
     text: string;
     description: string;
     ipa_spelling: string;
-    usage_examples: UsageExamples;
+    usage_examples: Entities<UsageExample>;
 }

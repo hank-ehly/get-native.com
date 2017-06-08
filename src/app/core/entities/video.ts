@@ -6,11 +6,11 @@
  */
 
 import { Entity } from './entity';
-import { Videos } from './videos';
 import { Speaker } from './speaker';
 import { Language } from '../typings/language';
 import { Subcategory } from './subcategory';
-import { Transcripts } from './transcripts';
+import { Entities } from './entities';
+import { Transcript } from './transcript';
 
 export interface Video extends Entity {
     description?: string;
@@ -21,10 +21,10 @@ export interface Video extends Entity {
     like_count?: number;
     loop_count?: number;
     loop_velocity?: number;
-    related_videos?: Videos;
+    related_videos?: Entities<Video>;
     speaker?: Speaker;
     picture_url?: string;
     subcategory?: Subcategory;
-    transcripts?: Transcripts;
+    transcripts?: Entities<Transcript>;
     video_url?: string;
 }

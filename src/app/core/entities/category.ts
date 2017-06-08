@@ -6,9 +6,10 @@
  */
 
 import { Entity } from './entity';
-import { Subcategories } from './subcategories';
+import { Entities } from './entities';
+import { Subcategory } from './subcategory';
 
 export interface Category extends Entity {
     name?: string;
-    subcategories?: Subcategories;
+    subcategories?: Entities<Subcategory>;
 }

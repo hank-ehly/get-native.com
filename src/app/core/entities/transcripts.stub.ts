@@ -5,17 +5,18 @@
  * Created by henryehly on 2016/12/29.
  */
 
-import { Transcripts } from './transcripts';
+import { Transcript } from './transcript';
+import { Entities } from './entities';
 
-export const STUBTranscripts: Transcripts = {
+export const STUBTranscripts: Entities<Transcript> = {
     count: 2,
     records: [
         {
             id: 123,
-            text: `This is the English transcript. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi atque 
-                   blanditiis, commodi culpa distinctio ducimus fugit iste mollitia nam neque odit qui quibusdam soluta! Dolor ea placeat 
-                   soluta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dicta distinctiotemporibus voluptatum. Aliquam 
-                   expedita fuga impedit ipsanatus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis distinctio enim error 
+            text: `This is the English transcript. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci animi atque
+                   blanditiis, commodi culpa distinctio ducimus fugit iste mollitia nam neque odit qui quibusdam soluta! Dolor ea placeat
+                   soluta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, dicta distinctiotemporibus voluptatum. Aliquam
+                   expedita fuga impedit ipsanatus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis distinctio enim error
                    facere fugit harum,ipsum, iure laudan tium, omnis rerum tempore ullam ut. Iste iure!`,
             language: {
                 code: 'en',

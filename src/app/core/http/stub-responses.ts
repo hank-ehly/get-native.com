@@ -6,9 +6,9 @@
  */
 
 import { APIHandle } from './api-handle';
+import { Category } from '../entities/category';
+import { Entities } from '../entities/entities';
 import { Video } from '../entities/video';
-import { Videos } from '../entities/videos';
-import { Categories } from '../entities/categories';
 
 export const STUBResponses = new Map<APIHandle, any>([
     [APIHandle.CREATE_SESSION, {}],
@@ -109,7 +109,7 @@ export const STUBResponses = new Map<APIHandle, any>([
             ]
         }
     }],
-    [APIHandle.VIDEOS, <Videos>{
+    [APIHandle.VIDEOS, <Entities<Video>>{
         count: 2,
         records: [
             {
@@ -146,7 +146,7 @@ export const STUBResponses = new Map<APIHandle, any>([
             }
         ]
     }],
-    [APIHandle.CATEGORIES, <Categories>{
+    [APIHandle.CATEGORIES, <Entities<Category>>{
         records: [
             {
                 id: 1,
