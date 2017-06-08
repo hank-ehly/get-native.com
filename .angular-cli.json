@@ -20,7 +20,7 @@
             "prefix": "gn",
             "styles": [
                 "../node_modules/reset-css/reset.css",
-                "styles.css"
+                "styles.scss"
             ],
             "scripts": [
                 "../node_modules/web-animations-js/web-animations.min.js",
