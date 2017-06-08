@@ -7,7 +7,7 @@
 
 import { InjectionToken } from '@angular/core';
 
-export let LogLevelToken = new InjectionToken('log-level');
+export const LogLevelToken = new InjectionToken<LogLevelValue>('log-level');
 
 export enum LogLevelValue {
     OFF,
