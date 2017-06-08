@@ -37,7 +37,7 @@ export class GeneralComponent implements OnDestroy {
     studyLanguageOptions: any;
     interfaceLanguageOptions: any;
 
-    emailModel: string = '';
+    emailModel = '';
     passwordModel: any = {current: '', replace: '', confirm: ''};
 
     user: User = this.userService.current$.getValue();
@@ -46,7 +46,7 @@ export class GeneralComponent implements OnDestroy {
 
     constructor(private logger: Logger, private http: HttpService, private userService: UserService, private lang: LangService) {
         this.studyLanguageOptions = this.interfaceLanguageOptions = _.map(Languages, l => {
-            return _.mapKeys(l, (v, k) => k === 'code' ? 'value' : 'title');
+            return _.mapKeys(<any>l, (v, k) => k.toString() === 'code' ? 'value' : 'title');
         });
 
         this.subscriptions.push(this.isEditing$.filter(b => !b).subscribe(() => this.emailModel = ''));

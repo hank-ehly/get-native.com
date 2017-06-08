@@ -49,8 +49,8 @@ describe('LocalStorageService', () => {
     });
 
     it('should be able to clear the local cache completely', () => {
-        let key_1 = 'aKey_1';
-        let val_1 = 'aVal_1';
+        const key_1 = 'aKey_1';
+        const val_1 = 'aVal_1';
         localStorageService.setItem(key_1, val_1);
 
         const key_2 = 'aKey_2';
