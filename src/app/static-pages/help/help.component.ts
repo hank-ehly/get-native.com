@@ -10,6 +10,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 
 import { environment } from '../../../environments/environment';
 
+import * as _ from 'lodash';
+
 interface Faq {
     title: string;
     body: string;
@@ -22,32 +24,24 @@ interface Faq {
     animations: [
         trigger('visible', [
             transition(':enter', [
-                style({
-                    opacity: 0
-                }),
-                animate(300, style({
-                    opacity: 1
-                }))]),
+                style({opacity: 0}),
+                animate(300, style({opacity: 1}))
+            ]),
             transition(':leave', [
-                animate(0, style({
-                    opacity: 0
-                }))])
+                animate(200, style({opacity: 0}))
+            ])
         ]),
         trigger('rotation', [
-            state('collapsed', style({
-                transform: 'rotate(0)'
-            })),
-            state('expanded', style({
-                transform: 'rotate(90deg)'
-            })),
-            transition('collapsed => expanded', animate(100)),
-            transition('expanded => collapsed', animate(0))
+            state('collapsed', style({transform: 'rotate(0)'})),
+            state('expanded', style({transform: 'rotate(90deg)'})),
+            transition('collapsed => expanded', animate(50)),
+            transition('expanded => collapsed', animate(50))
         ])
     ]
 })
 export class HelpComponent {
     moderator: string = environment.moderator;
-    selectedFaq: Faq = null;
+    expandedFaqIndices: number[] = [];
 
     faqs: Faq[] = [
         {
@@ -76,11 +70,21 @@ export class HelpComponent {
         }
     ];
 
-    setSelectedFaq(faq: Faq): void {
-        this.selectedFaq = this.selectedFaq === faq ? null : faq;
+    toggleFaqAtIndex(i: number): void {
+        if (this.isFaqExpandedAtIndex(i)) {
+            console.log('splice', i);
+            this.expandedFaqIndices.splice(this.expandedFaqIndices.indexOf(i), 1);
+        } else {
+            console.log('push', i);
+            this.expandedFaqIndices.push(i);
+        }
     }
 
-    chevronRotationForFaq(faq: Faq): string {
-        return this.selectedFaq === faq ? 'expanded' : 'collapsed';
+    chevronRotationForFaqAtIndex(i: number): string {
+        return this.isFaqExpandedAtIndex(i) ? 'expanded' : 'collapsed';
+    }
+
+    isFaqExpandedAtIndex(i: number): boolean {
+        return _.includes(this.expandedFaqIndices, i);
     }
 }
