@@ -15,6 +15,7 @@ import { Subcategory } from '../../core/entities/subcategory';
 import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
 import { Category } from '../../core/entities/category';
+import { Entities } from '../../core/entities/entities';
 import { APIHandle } from '../../core/http/api-handle';
 import { CategoryFilter } from './category-filter';
 import { Video } from '../../core/entities/video';
@@ -34,7 +35,6 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/scan';
 import 'rxjs/observable/timer';
 import * as _ from 'lodash';
-import { Entities } from '../../core/entities/entities';
 
 @Component({
     template: '<!-- overridden -->'
@@ -124,10 +124,12 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         let found = false;
         const path: any[] = (<any>e).path;
 
-        for (let i = 0; i < path.length; i++) {
-            if (path[i].tagName && path[i].tagName.toLowerCase() === 'gn-category-list') {
-                found = true;
-                break;
+        if (path) {
+            for (let i = 0; i < path.length; i++) {
+                if (path[i].tagName && path[i].tagName.toLowerCase() === 'gn-category-list') {
+                    found = true;
+                    break;
+                }
             }
         }
 
