@@ -72,10 +72,8 @@ export class HelpComponent {
 
     toggleFaqAtIndex(i: number): void {
         if (this.isFaqExpandedAtIndex(i)) {
-            console.log('splice', i);
             this.expandedFaqIndices.splice(this.expandedFaqIndices.indexOf(i), 1);
         } else {
-            console.log('push', i);
             this.expandedFaqIndices.push(i);
         }
     }
