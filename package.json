@@ -13,7 +13,9 @@
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "i18n": "ng xi18n",
+        "random-hash": "node bin/random-hash.js"
     },
     "private": true,
     "dependencies": {

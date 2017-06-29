@@ -1,7 +1,7 @@
 <div class="row">
     <h6>Email Notifications</h6>
     <div class="label-button-row">
-        <p class="paragraph">Receive emails from time to time about Get Native updates and changes. To enable or disable this feature, you must first verify your email address.</p>
+        <p class="paragraph">Receive emails from time to time about getnative updates and changes. To enable or disable this feature, you must first verify your email address.</p>
         <gn-switch (toggle)="updateEmailPreference($event)" [on]="isEmailVerificationsOn()" [disabled]="!user.email_verified"></gn-switch>
     </div>
 </div>
@@ -9,7 +9,7 @@
 <div class="row">
     <h6>Browser Notifications</h6>
     <div class="label-button-row">
-        <p class="paragraph">Allow Get Native to display browser notifications.</p>
+        <p class="paragraph">Allow getnative to display browser notifications.</p>
         <gn-switch (toggle)="updateBrowserPreference($event)" [on]="user?.browser_notifications_enabled"></gn-switch>
     </div>
 </div>
