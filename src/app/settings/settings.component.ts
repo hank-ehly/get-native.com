@@ -30,7 +30,7 @@ export class SettingsComponent implements OnInit {
         const titles: any = {
             general:       'View and update your login credentials.',
             security:      'Manage your account privacy settings.',
-            notifications: 'Specify how Get Native should be able to notify you.'
+            notifications: 'Specify how getnative should be able to notify you.'
         };
 
         return !this.selectedTab ? titles.general : titles[this.selectedTab];

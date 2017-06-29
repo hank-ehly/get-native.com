@@ -58,7 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
         this.subscriptions.push(
             this.navbarTitle$.subscribe(this.navbar.title$),
-            this.navbar.title$.filter(_.isString).map(t => `Get Native | ${t}`).subscribe(this.titleService.setTitle),
+            this.navbar.title$.filter(_.isString).map(t => `getnative | ${t}`).subscribe(this.titleService.setTitle),
             this.user.logout$.subscribe(this.onLogout.bind(this))
         );
     }
