@@ -28,7 +28,7 @@ describe('TranscriptComponent', () => {
             util = new SpecUtil(fixture);
             comp = fixture.componentInstance;
             comp.transcripts = STUBTranscripts;
-            comp.selectedCollocation = STUBTranscripts.records[0].collocations.records[0];
+            comp.selectedCollocationOccurrence = STUBTranscripts.records[0].collocation_occurrences.records[0];
             fixture.detectChanges();
         });
     }));
@@ -43,9 +43,9 @@ describe('TranscriptComponent', () => {
         expect(content.textContent.length).toBeGreaterThan(0);
     });
 
-    it('should display the selected collocation', () => {
-        const collocation = util.getNativeEl('.usage-examples-section__header-collocation');
-        expect(collocation.textContent.length).toBeGreaterThan(0);
+    it('should display the selected collocation occurrence', () => {
+        const collocationOccurrence = util.getNativeEl('.usage-examples-section__header-collocation-occurrence');
+        expect(collocationOccurrence.textContent.length).toBeGreaterThan(0);
     });
 
     it('should display 1+ usage examples', () => {

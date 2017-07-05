@@ -8,10 +8,10 @@
 import { Entity } from './entity';
 import { Language } from '../typings/language';
 import { Entities } from './entities';
-import { Collocation } from './collocation';
+import { CollocationOccurrence } from './collocation-occurrence';
 
 export interface Transcript extends Entity {
     text?: string;
     language?: Language;
-    collocations?: Entities<Collocation>;
+    collocation_occurrences?: Entities<CollocationOccurrence>;
 }

@@ -49,11 +49,11 @@
   display: block;
 }
 
-.collocation {
+.collocation-occurrence {
   color: $orange-peel;
 }
 
-.tab-content .collocation {
+.tab-content .collocation-occurrence {
   border-bottom: 2px solid $orange-peel;
   color: $default-color;
   cursor: pointer;
@@ -76,7 +76,7 @@ hr {
   font-size: $font-size-x-small;
 }
 
-.usage-examples-section__header-collocation {
+.usage-examples-section__header-collocation-occurrence {
   @include font-weight-regular;
 }
 

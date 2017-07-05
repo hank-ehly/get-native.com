@@ -22,7 +22,7 @@ export const STUBTranscripts: Entities<Transcript> = {
                 code: 'en',
                 name: 'English'
             },
-            collocations: {
+            collocation_occurrences: {
                 count: 3,
                 records: [
                     {
@@ -57,7 +57,7 @@ export const STUBTranscripts: Entities<Transcript> = {
                 code: 'ja',
                 name: '日本語'
             },
-            collocations: {
+            collocation_occurrences: {
                 count: 3,
                 records: [
                     {

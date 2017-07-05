@@ -38,17 +38,17 @@
   margin: 30px 0;
 }
 
-.section_collocations {
+.section_collocation-occurrences {
   width: 280px;
 }
 
-.collocations {
+.collocation-occurrences {
   line-height: 34px;
   padding-top: 6px;
   list-style: none;
 }
 
-.collocation:before {
+.collocation-occurrence:before {
   content: '•';
   color: $shamrock;
   padding-right: 16px;
