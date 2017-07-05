@@ -87,7 +87,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                         code: 'en',
                         name: 'English'
                     },
-                    collocations: {
+                    collocation_occurrences: {
                         count: 3,
                         records: [
                             {

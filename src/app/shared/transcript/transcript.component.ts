@@ -7,7 +7,7 @@
 
 import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
-import { Collocation } from '../../core/entities/collocation';
+import { CollocationOccurrence } from '../../core/entities/collocation-occurrence';
 import { Transcript } from '../../core/entities/transcript';
 import { Entities } from '../../core/entities/entities';
 import { Logger } from '../../core/logger/logger';
@@ -44,7 +44,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
         this.logger.debug(this, 'set transcripts', transcripts);
 
         this.selectedTranscript  = _.first(transcripts.records);
-        this.selectedCollocation = <Collocation>_.first(this.selectedTranscript.collocations.records);
+        this.selectedCollocationOccurrence = <CollocationOccurrence>_.first(this.selectedTranscript.collocation_occurrences.records);
 
         /* Hack to access first LI element after setting transcripts */
         setTimeout(() => this.selectedTab$.next(<HTMLLIElement>_.first(this.tabEls.nativeElement.children)), 0);
@@ -61,7 +61,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
     });
 
     selectedTranscript: Transcript;
-    selectedCollocation: Collocation;
+    selectedCollocationOccurrence: CollocationOccurrence;
 
     private _transcripts: Entities<Transcript>;
 
@@ -83,6 +83,6 @@ export class TranscriptComponent implements OnInit, OnDestroy {
         this.selectedTranscript = tab.transcript;
 
         /* Todo: If previous selection exists, use that */
-        this.selectedCollocation = <Collocation>_.first(this.selectedTranscript.collocations.records);
+        this.selectedCollocationOccurrence = <CollocationOccurrence>_.first(this.selectedTranscript.collocation_occurrences.records);
     }
 }
