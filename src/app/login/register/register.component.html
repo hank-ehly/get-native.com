@@ -1,7 +1,7 @@
 <div class="modal modal_register">
 
     <header>
-        <p class="paragraph">Register via email by filling out the following information.</p>
+        <p class="paragraph" i18n="register form instructions|The instructions for filling out the registration form@@c14750e82b80f8b3e0cfdee86c8c42c3">Register via email by filling out the following information.</p>
     </header>
 
     <ul class="error-messages" *ngIf="errors">
@@ -11,31 +11,26 @@
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="form" [gnMatch]="['password', 'password-confirm']">
         <div class="form__group">
             <label class="label" for="email"><span class="form__required-indicator">*</span> Email</label>
-
-            <input id="email" type="email" name="email" [(ngModel)]="credentials.email" [pattern]="emailRegex"
-                   maxlength="254" tabindex="1" class="input tabbable" required>
+            <input id="email" type="email" name="email" [(ngModel)]="credentials.email" [pattern]="emailRegex" maxlength="254" tabindex="1" class="input tabbable" required>
         </div>
 
         <div class="form__group">
             <label class="label" for="password"><span class="form__required-indicator">*</span> Password (minimum 8 characters)</label>
-            <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="credentials.password"
-                   minlength="8" class="input tabbable" required>
+            <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="credentials.password" minlength="8" class="input tabbable" required>
             <gn-password-strength [password]="credentials.password"></gn-password-strength>
         </div>
 
         <div class="form__group form__group_confirm-password">
             <label class="label" for="password-confirm"><span class="form__required-indicator">*</span> Password (Confirm)</label>
-            <input id="password-confirm" type="password" name="password-confirm"
-                   tabindex="3" class="input tabbable" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
+            <input id="password-confirm" type="password" name="password-confirm" tabindex="3" class="input tabbable" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
         </div>
 
-        <button type="submit" tabindex="4" class="button button--opaque form__button tabbable" [disabled]="!form.valid">SIGN UP</button>
+        <button type="submit" tabindex="4" class="button button--opaque form__button tabbable" [disabled]="!form.valid" i18n="register form submit button|The text for the submit button of the user registration form@@76547a2df32997f1cb7ee0dc185a421c">SIGN UP</button>
     </form>
 
     <footer class="footer">
-        <span (click)="onSetModalView(null)" class="link footer__link footer__link_social-login tabbable" tabindex="5">Sign in via Facebook, Twitter or Google</span>
-        <span (click)="onSetModalView('email')" class="link footer__link footer__link_email-login tabbable" tabindex="6">Sign in with email</span>
-        <p class="paragraph">By signing up, you are agreeing to the <a class="link footer__link footer__link_privacy tabbable" tabindex="7">privacy policy</a> and
-            <a class="link footer__link footer__link_tos tabbable" tabindex="8">terms of service</a></p>
+        <span (click)="onSetModalView(null)" class="link footer__link footer__link_social-login tabbable" tabindex="5" i18n="register form social login link|The text for the link redirecting users to the social login form@@87ffa0148fec4d400a934104cecd5d78">Sign in via Facebook, Twitter or Google</span>
+        <span (click)="onSetModalView('email')" class="link footer__link footer__link_email-login tabbable" tabindex="6" i18n="register form email login link|The text for the link redirecting users to the email login form@@2f09ed6116fbaf418467e020824d31ac">Sign in with email</span>
+        <p class="paragraph">By signing up, you are agreeing to the <a class="link footer__link footer__link_privacy tabbable" tabindex="7">privacy policy</a> and <a class="link footer__link footer__link_tos tabbable" tabindex="8">terms of service</a></p>
     </footer>
 </div>

@@ -3,14 +3,12 @@
     <video gnVideo class="video" [src]="src" [loop]="loop"></video>
 
     <div class="player-controls" *ngIf="!controlsHidden" [@fadeInOut]>
-        <button class="player-controls__toggle-button" (click)="onClickToggleButton()"
-                [ngClass]="{'player-controls__toggle-button_paused': player.paused}"></button>
+        <button class="player-controls__toggle-button" (click)="onClickToggleButton()" [ngClass]="{'player-controls__toggle-button_paused': player.paused}"></button>
 
         <div class="play-bar">
             <progress class="play-bar__progress" [value]="progress"></progress>
             <label for="play-bar__input" class="sr-only">Seek</label>
-            <input type="range" class="play-bar__input" id="play-bar__input" max="1" step="0.01" #input [value]="currentTime"
-                   (input)="onInputCurrentTime(input.value)">
+            <input type="range" class="play-bar__input" id="play-bar__input" max="1" step="0.01" #input [value]="currentTime" (input)="onInputCurrentTime(input.value)">
         </div>
 
         <div class="player-controls__time">
@@ -18,9 +16,7 @@
             <span class="player-controls__time-total">{{ player.duration | digitalTime }}</span>
         </div>
 
-        <div class="volume-control" (click)="onClickVolumeControl($event)"
-             (mouseenter)="onMouseEnterVolumeControl()" (mouseleave)="onMouseLeaveVolumeControl()">
-
+        <div class="volume-control" (click)="onClickVolumeControl($event)" (mouseenter)="onMouseEnterVolumeControl()" (mouseleave)="onMouseLeaveVolumeControl()">
             <img class="volume-control__icon" src="../../../assets/icons/volume.svg" alt="volume" *ngIf="player.volume">
             <img class="volume-control__icon" src="../../../assets/icons/mute.svg" alt="mute" *ngIf="!player.volume">
 

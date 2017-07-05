@@ -1,7 +1,7 @@
 <main>
     <section class="section">
         <header class="section-header">
-            <h1 class="section-header__title">Videos</h1>
+            <h1 class="section-header__title" i18n="library videos section title|The title for the videos section of the Library page@@ff43f4457e32be874087e47b5fa57de9">Videos</h1>
 
             <div class="dropdown-toggle">
                 <span class="dropdown-toggle__text">{{ categoryFilter$.pluck('text') | async }}</span>
@@ -15,10 +15,7 @@
 
         <gn-video-panel-list [videos]="videos$ | async" [navigates]="true"></gn-video-panel-list>
 
-        <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)" [ngClass]="{'button--loading': loading$ | async}"
-                *ngIf="!(loading$ | async)">LOAD MORE
-        </button>
-
+        <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)" [ngClass]="{'button--loading': loading$ | async}" *ngIf="!(loading$ | async)" i18n="load more library videos button|The text for the load more button of the Library page videos section@@dc5e40c592f0ce0f2b4cb80d13ea4e88">LOAD MORE</button>
         <img src="../../assets/icons/spinner.gif" alt="loading" class="button__activity-indicator" *ngIf="loading$ | async">
     </section>
 </main>
