@@ -1,5 +1,4 @@
 <main class="main">
-
     <section class="section section_answer">
         <form class="answer-form">
             <div class="answer-form__group">
@@ -8,20 +7,19 @@
             </div>
 
             <span class="section_answer__word-count">{{ wordCount }}</span>
-
             <!--<button class="button button&#45;&#45;opaque section_answer__button">FINISH</button>-->
         </form>
 
         <hr>
 
         <div class="example-answer">
-            <label for="example-answer" class="label">Example Answer:</label>
+            <label for="example-answer" class="label" i18n="example writing answer title@@73909473aa35b23b4b87df8910e31fa4">Example Answer:</label>
             <textarea id="example-answer" class="textarea example-answer__textarea" readonly gnAutosizeTextarea>{{ question?.example_answer }}</textarea>
         </div>
     </section>
 
     <section class="section section_collocations">
-        <h6>Collocations</h6>
+        <h6 i18n="collocations list title@@6b5b9bbe603b68a2ccbe9ab7a5e00442">Collocations</h6>
         <ul class="collocations">
             <li class="collocation" *ngFor="let collocation of transcript?.collocations?.records">{{ collocation?.text }}</li>
         </ul>

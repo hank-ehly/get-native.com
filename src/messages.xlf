@@ -504,6 +504,1042 @@
                 <note priority="1" from="description">The title for the related videos section</note>
                 <note priority="1" from="meaning">related videos section title</note>
             </trans-unit>
+            <trans-unit id="9948f086c086f0ef30a7171e749bb9c0" datatype="html">
+                <source>Quick Links</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">2</context>
+                </context-group>
+                <note priority="1" from="description">The text for the quick links section of the privacy policy page</note>
+                <note priority="1" from="meaning">privacy quick links title</note>
+            </trans-unit>
+            <trans-unit id="1c3f8c410c7f55dc98344d96875a7ae3" datatype="html">
+                <source>Information Collection</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Information Collection section</note>
+                <note priority="1" from="meaning">information collection link</note>
+            </trans-unit>
+            <trans-unit id="118111d06e5268cf5a6bca3bfc177fae" datatype="html">
+                <source>Information Usage</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">5</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Information Usage section</note>
+                <note priority="1" from="meaning">information usage link</note>
+            </trans-unit>
+            <trans-unit id="b114ffe4b1907ad261014fdd1f3fc484" datatype="html">
+                <source>Information Protection</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">6</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Information Protection section</note>
+                <note priority="1" from="meaning">information protection link</note>
+            </trans-unit>
+            <trans-unit id="16bcd1462c20347ea1940d75fd965919" datatype="html">
+                <source>Cookie Usage</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Cookie Usage section</note>
+                <note priority="1" from="meaning">cookie usage link</note>
+            </trans-unit>
+            <trans-unit id="62a47b9c79945ae50e79b72e58c4ab08" datatype="html">
+                <source>3rd Party Disclosure</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">8</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for 3rd Party Disclosure section</note>
+                <note priority="1" from="meaning">third party disclosure link</note>
+            </trans-unit>
+            <trans-unit id="ca25d43e9fbb44dd08877c45fd3a1338" datatype="html">
+                <source>3rd Party Links</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">9</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for 3rd Party Links section</note>
+                <note priority="1" from="meaning">third party links link</note>
+            </trans-unit>
+            <trans-unit id="1080a58369fc6b6192933f9de6e8cd07" datatype="html">
+                <source>Google AdSense</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">10</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Google AdSense section</note>
+                <note priority="1" from="meaning">google adsense link</note>
+            </trans-unit>
+            <trans-unit id="37791691c20bdc9d42172d61666dabdd" datatype="html">
+                <source>Fair Information Practices</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">11</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Fair Information Practices section</note>
+                <note priority="1" from="meaning">fair information practices link</note>
+            </trans-unit>
+            <trans-unit id="1fe9871e08b33788fee2d0f6210683a9" datatype="html">
+                <source>COPPA</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">12</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for COPPA section</note>
+                <note priority="1" from="meaning">COPPA link</note>
+            </trans-unit>
+            <trans-unit id="b3e83fd8cda76382522313f7cbf3cd06" datatype="html">
+                <source>CalOPPA</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">13</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for CalOPPA section</note>
+                <note priority="1" from="meaning">caloppa link</note>
+            </trans-unit>
+            <trans-unit id="13781ea09ebb04e3117a40e695df2df3" datatype="html">
+                <source>Privacy Policy changes</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">14</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Privacy Policy changes section</note>
+                <note priority="1" from="meaning">privacy policy changes link</note>
+            </trans-unit>
+            <trans-unit id="d2db8e84e6d023a34bb26bf087c4e885" datatype="html">
+                <source>CAN SPAM Act</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">15</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for CAN SPAM Act section</note>
+                <note priority="1" from="meaning">canspam link</note>
+            </trans-unit>
+            <trans-unit id="abd2b2e74327f98b300c145273e0594a" datatype="html">
+                <source>Handling of Do-Not-Track signals</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">16</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Handling of Do-Not-Track signals section</note>
+                <note priority="1" from="meaning">do not track signals link</note>
+            </trans-unit>
+            <trans-unit id="ec79c9e926c900c2f6c18a48678dd05f" datatype="html">
+                <source>Third-party behavioral tracking</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">17</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Third-party behavioral tracking section</note>
+                <note priority="1" from="meaning">third party behavioral tracking link</note>
+            </trans-unit>
+            <trans-unit id="c8b9b8be3b4957f61f93e97dfd2d8056" datatype="html">
+                <source>Our Contact Information</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">18</context>
+                </context-group>
+                <note priority="1" from="description">Privacy policy quick link for Our Contact Information section</note>
+                <note priority="1" from="meaning">contact information link</note>
+            </trans-unit>
+            <trans-unit id="1f42111bf745bf1e345726f02bf6e985" datatype="html">
+                <source>getnative Privacy Policy</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">21</context>
+                </context-group>
+                <note priority="1" from="description">intro section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="0869a8c4757bce375682d9af93523864" datatype="html">
+                <source>This privacy policy has been compiled to better serve those who are concerned with how their &apos;Personally
+                    Identifiable Information&apos; (PII) is being used online. PII, as described in US privacy law and information security,
+                    is information that can be used on its own or with other information to identify, contact, or locate a single person, or
+                    to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we
+                    collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">22</context>
+                </context-group>
+                <note priority="1" from="description">intro section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="44dd709bf6759420fa70d082f18a443b" datatype="html">
+                <source>What personal information do we collect from the people that visit our blog, website or app?</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">25</context>
+                </context-group>
+                <note priority="1" from="description">information collection section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="c9d0bb3b9bd33f8c340c67cd423eed89" datatype="html">
+                <source>When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address or
+                    other details to help you with your experience.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">26</context>
+                </context-group>
+                <note priority="1" from="description">information collection section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="852b8bc7c1aee4ef80f1bafdae233737" datatype="html">
+                <source>We collect information from you when you register on our site, Open a Support Ticket or enter information on our
+                    site.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">29</context>
+                </context-group>
+                <note priority="1" from="description">information collection section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="c0931eb556d5231148a7f9538123a386" datatype="html">
+                <source>Provide us with feedback on our products or services</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">30</context>
+                </context-group>
+                <note priority="1" from="description">information collection section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="b77e30f34a052b6138e47f8f52f98bc5" datatype="html">
+                <source>How do we use your information?</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">34</context>
+                </context-group>
+                <note priority="1" from="description">information usage section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="9f9b1f1fd7ff1b70573d44b637382eb3" datatype="html">
+                <source>We may use the information we collect from you when you register, make a purchase, sign up for our newsletter,
+                    respond to a survey or marketing communication, surf the website or use certain other site features in the following
+                    ways:
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">35</context>
+                </context-group>
+                <note priority="1" from="description">information usage section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="fd5f5a6b5b9319463722c20275cd44bf" datatype="html">
+                <source>To personalize your experience and to allow us to deliver the type of content and product offerings in which you are
+                    most interested.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">37</context>
+                </context-group>
+                <note priority="1" from="description">information usage section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="dcbdc5cc4f20e2057983c6b4c7e149cf" datatype="html">
+                <source>To improve our website in order to better serve you.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">38</context>
+                </context-group>
+                <note priority="1" from="description">information usage section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="3bc36f8debc8c600ed5b12b01a9e4e5d" datatype="html">
+                <source>To allow us to better service you in responding to your customer service requests.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">39</context>
+                </context-group>
+                <note priority="1" from="description">information usage section 4</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="d284f92a06dd7991de89da0b01454cc7" datatype="html">
+                <source>To send periodic emails regarding your order or other products and services.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">40</context>
+                </context-group>
+                <note priority="1" from="description">information usage section 5</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="7f4e92eb4b410bad3e038415c2ae8390" datatype="html">
+                <source>How do we protect your information?</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">45</context>
+                </context-group>
+                <note priority="1" from="description">information protection section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="a273c6e204a19efd8f1e920f7fa1c494" datatype="html">
+                <source>We do not use vulnerability scanning and/or scanning to PCI standards.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">46</context>
+                </context-group>
+                <note priority="1" from="description">information protection section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="c3b54409ff7f60c99ea8bda9c6e44ba0" datatype="html">
+                <source>We only provide sections and information. We never ask for credit card numbers.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">47</context>
+                </context-group>
+                <note priority="1" from="description">information protection section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="a9687ddc5827639f4fb71794ee64d636" datatype="html">
+                <source>We do not use Malware Scanning.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">48</context>
+                </context-group>
+                <note priority="1" from="description">information protection section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="50b35066a1f77b87c545db49dbc34989" datatype="html">
+                <source>Your personal information is contained behind secured networks and is only accessible by a limited number of persons
+                    who have special access rights to such systems, and are required to keep the information confidential. In addition, all
+                    sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">49</context>
+                </context-group>
+                <note priority="1" from="description">information protection section 4</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="89311f67e4ef75e42efe35061641726f" datatype="html">
+                <source>We implement a variety of security measures when a user enters, submits, or accesses their information to maintain
+                    the safety of your personal information.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">50</context>
+                </context-group>
+                <note priority="1" from="description">information protection section 5</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="af7bd1512d72a19c649699fa90683b7b" datatype="html">
+                <source>All transactions are processed through a gateway provider and are not stored or processed on our servers.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">51</context>
+                </context-group>
+                <note priority="1" from="description">information protection section 6</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="5db3975da2f88368522fda0698384ceb" datatype="html">
+                <source>Do we use &apos;cookies&apos;?</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">55</context>
+                </context-group>
+                <note priority="1" from="description">cookie usage section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="bcb561956267b3f8d7c810dd73605fee" datatype="html">
+                <source>Yes. Cookies are small files that a site or its service provider transfers to your computer&apos;s hard drive
+                    through your Web browser (if you allow) that enables the site&apos;s or service provider&apos;s systems to recognize
+                    your browser and capture and remember certain information. For instance, we use cookies to help us remember and process
+                    the items in your shopping cart. They are also used to help us understand your preferences based on previous or current
+                    site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate
+                    data about site traffic and site interaction so that we can offer better site experiences and tools in the future.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">56</context>
+                </context-group>
+                <note priority="1" from="description">cookie usage section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="3c760bc39537f52aee371403b4df0ba0" datatype="html">
+                <source>We use cookies to:</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">58</context>
+                </context-group>
+                <note priority="1" from="description">cookie usage section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="833392391f3988caf95d083da109e8a0" datatype="html">
+                <source>Understand and save user&apos;s preferences for future visits.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">60</context>
+                </context-group>
+                <note priority="1" from="description">cookie usage section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="232a6e01c27e4f6514ec138a404187c8" datatype="html">
+                <source>Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools
+                    in the future. We may also use trusted third-party services that track this information on our behalf.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">61</context>
+                </context-group>
+                <note priority="1" from="description">cookie usage section 4</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="db2d1cbbd6bc29a76e28b62b4b12dbec" datatype="html">
+                <source>You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all
+                    cookies. You do this through your browser settings. Since browser is a little different, look at your browser&apos;s
+                    Help Menu to learn the correct way to modify your cookies.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">63</context>
+                </context-group>
+                <note priority="1" from="description">cookie usage section 5</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="eb4fcc8434b9de2ad7dde6d387087bda" datatype="html">
+                <source>If you turn cookies off, some features will be disabled. It won&apos;t affect the user&apos;s experience that make
+                    your site experience more efficient and may not function properly.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">64</context>
+                </context-group>
+                <note priority="1" from="description">cookie usage section 6</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="8c700c32bf314bd9851c3e3b6ac592a4" datatype="html">
+                <source>However, you will still be able to place orders.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">65</context>
+                </context-group>
+                <note priority="1" from="description">cookie usage section 7</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="d81a0d03a5ca62ab002ab69b50323af8" datatype="html">
+                <source>Third-party disclosure</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">69</context>
+                </context-group>
+                <note priority="1" from="description">third-party-disclosure section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="5c7e83e98ecf87459a72f348a0c75858" datatype="html">
+                <source>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we
+                    provide users with advance notice. This does not include website hosting partners and other parties who assist us in
+                    operating our website, conducting our business, or serving our users, so long as those parties agree to keep this
+                    information confidential. We may also release information when it&apos;s release is appropriate to comply with the law,
+                    enforce our site policies, or protect ours or others&apos; rights, property or safety.
+                    <x id="LINE_BREAK" ctype="lb"/>
+                    <x id="LINE_BREAK" ctype="lb"/>
+                    However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or
+                    other uses.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">70</context>
+                </context-group>
+                <note priority="1" from="description">third-party-disclosure section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="0af04f5f30d12de68a95631092425870" datatype="html">
+                <source>Third-party links</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">74</context>
+                </context-group>
+                <note priority="1" from="description">Third-party links section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="5a1e865c4021b598c5915a5fcf60af48" datatype="html">
+                <source>We do not include or offer third-party products or services on our website.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">75</context>
+                </context-group>
+                <note priority="1" from="description">Third-party links section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="3c77489aa18c3cb752d837d7a4612887" datatype="html">
+                <source>Google</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">79</context>
+                </context-group>
+                <note priority="1" from="description">Google Adsense section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="42cc88c64751aeba86cdbdf8a6b45819" datatype="html">
+                <source>We use Google AdSense Advertising on our website.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">82</context>
+                </context-group>
+                <note priority="1" from="description">Google Adsense section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="b3f261d72dccdcf5692cf43b74bd6c91" datatype="html">
+                <source>Google, as a third-party vendor, uses cookies to serve ads on our site. Google&apos;s use of the DART cookie enables
+                    it to serve ads to our users based on previous visits to our site and other sites on the Internet. Users may opt-out of
+                    the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">83</context>
+                </context-group>
+                <note priority="1" from="description">Google Adsense section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="1d01276a5f8b8daaf1996d556de4c6b8" datatype="html">
+                <source>We have implemented the following:</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">84</context>
+                </context-group>
+                <note priority="1" from="description">Google Adsense section 4</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="3a15772089d23e47a7c5aab6925600eb" datatype="html">
+                <source>Demographics and InterestsReporting</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">86</context>
+                </context-group>
+                <note priority="1" from="description">Google Adsense section 5</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="03af3b8c9a57d84f5ae94f2ac8eab2c1" datatype="html">
+                <source>We, along with third-party vendors such as Google use first-party cookies (such as the Google Analytics cookies) and
+                    third-party cookies (such as the DoubleClick cookie) or other third-party identifiers together to compile data regarding
+                    user interactions with ad impressions and other ad service functions as they relate to our website.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">89</context>
+                </context-group>
+                <note priority="1" from="description">Google Adsense section 6</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="c65dd25f78d6c6e8e54fc63f4daa378d" datatype="html">
+                <source>Opting out: Users can set preferences for how Google advertises to you using the Google Ad Settings page.
+                    Alternatively, you can opt out by visiting the Network Advertising Initiative Opt Out page or by using the Google
+                    Analytics Opt Out Browser add on.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">90</context>
+                </context-group>
+                <note priority="1" from="description">Google Adsense section 7</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="f65f0a7aa678d8b7ec5e92f4ac865d91" datatype="html">
+                <source>Fair Information Practices</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">94</context>
+                </context-group>
+                <note priority="1" from="description">Fair Information Practices section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="a6f7a5974f983e72867c45924d3a2d25" datatype="html">
+                <source>The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts
+                    they include have played a significant role in the development of data protection laws around the globe. Understanding
+                    the Fair Information Practice Principles and how they should be implemented is critical to comply with the various
+                    privacy laws that protect personal information.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">96</context>
+                </context-group>
+                <note priority="1" from="description">Fair Information Practices section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="6ed1852515651af3797114ff21480a94" datatype="html">
+                <source>In order to be in line with Fair Information Practices we will take the following responsive action, should a data
+                    breach occur:
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">97</context>
+                </context-group>
+                <note priority="1" from="description">Fair Information Practices section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="782fa11db42fceacf9eba44c0d695a60" datatype="html">
+                <source>We will notify you via email within 7 business days</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">99</context>
+                </context-group>
+                <note priority="1" from="description">Fair Information Practices section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="4d0b6c7a4c6324f2d6b128002a51763c" datatype="html">
+                <source>We will notify the users via in-site notification within 7 business days</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">100</context>
+                </context-group>
+                <note priority="1" from="description">Fair Information Practices section 4</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="dc633c737d7803b0333b9e6f0a075d18" datatype="html">
+                <source>We also agree to the Individual Redress Principle which requires that individuals have the right to legally pursue
+                    enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not
+                    only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or
+                    government agencies to investigate and/or prosecute non-compliance by data processors.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">103</context>
+                </context-group>
+                <note priority="1" from="description">Fair Information Practices section 5</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="e5d6e74548722139ad01e19548019ad9" datatype="html">
+                <source>COPPA (Children Online Privacy Protection Act)</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">107</context>
+                </context-group>
+                <note priority="1" from="description">COPPA section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="64ed563f3c28dea97418d4324c366f75" datatype="html">
+                <source>When it comes to the collection of personal information from children under the age of 13 years old, the Children&apos;s
+                    Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, United States&apos;
+                    consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services
+                    must do to protect children&apos;s privacy and safety online.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">108</context>
+                </context-group>
+                <note priority="1" from="description">COPPA section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="8ca49d35276f6986fc25cdac1cd026ec" datatype="html">
+                <source>We do not specifically market to children under the age of 13 years old.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">109</context>
+                </context-group>
+                <note priority="1" from="description">COPPA section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="ff3d31096e1f008846560e5b5ab990b8" datatype="html">
+                <source>California Online Privacy Protection Act</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">113</context>
+                </context-group>
+                <note priority="1" from="description">caloppa section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="f2d1bbf72ac50679badbb2bd7609e730" datatype="html">
+                <source>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy
+                    policy. The law&apos;s reach stretches well beyond California to require any person or company in the United States (and
+                    conceivably the world) that operates websites collecting Personally Identifiable Information from California consumers
+                    to post a conspicuous privacy policy on its website stating exactly the information being collected and those
+                    individuals or companies with whom it is being shared. - See more at:
+                    http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">114</context>
+                </context-group>
+                <note priority="1" from="description">caloppa section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="839ab2f01405955e7be4f9ff3bdfc800" datatype="html">
+                <source>According to CalOPPA, we agree to the following:</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">115</context>
+                </context-group>
+                <note priority="1" from="description">caloppa section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="c4e75056845f24799a6223d754809867" datatype="html">
+                <source>Users can visit our site anonymously.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">117</context>
+                </context-group>
+                <note priority="1" from="description">caloppa section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="f63062573fadfee196fb02f06e874706" datatype="html">
+                <source>Once this privacy policy is created, we will add a link to it on our home page or as a minimum, on the first
+                    significant page after entering our website.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">118</context>
+                </context-group>
+                <note priority="1" from="description">caloppa section 4</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="40046c4dd44f1d7b8d565636ea2ae1d6" datatype="html">
+                <source>Our Privacy Policy link includes the word &apos;Privacy&apos; and can easily be found on the page specified above.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">119</context>
+                </context-group>
+                <note priority="1" from="description">caloppa section 5</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="c79f6c00e4bb07dedb9310911df3ea66" datatype="html">
+                <source>Will I be notified of any Privacy Policy changes?</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">124</context>
+                </context-group>
+                <note priority="1" from="description">privacy-policy-changes section 1</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="5b1e4cd7aab0857f374c76842cc578bc" datatype="html">
+                <source>You will be notified of any Privacy Policy changes on our Privacy Policy Page.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">125</context>
+                </context-group>
+                <note priority="1" from="description">privacy-policy-changes section 1 - 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="44daa742d9683def64ddbfd2040a48a5" datatype="html">
+                <source>How can I change my personal information?</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">129</context>
+                </context-group>
+                <note priority="1" from="description">privacy-policy-changes section 2</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="469620760b1e057a78d9cc6ad08e1e47" datatype="html">
+                <source>You can change your personal information by logging in to your account.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">130</context>
+                </context-group>
+                <note priority="1" from="description">privacy-policy-changes section 2 - 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="7cdd952be205bb123f93217db44056ee" datatype="html">
+                <source>How does our site handle Do Not Track signals?</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">134</context>
+                </context-group>
+                <note priority="1" from="description">do-not-track-signals section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="9f40970463ca2c17543a82d44cde1df7" datatype="html">
+                <source>We honor Do Not Track signals and Do Not Track, plant cookies, or use advertising when a Do Not Track (DNT) browser
+                    mechanism is in place.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">135</context>
+                </context-group>
+                <note priority="1" from="description">do-not-track-signals section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="bdbc16f5f5f3bc17ac4f58f165f3cf3b" datatype="html">
+                <source>Does our site allow third-party behavioral tracking?</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">139</context>
+                </context-group>
+                <note priority="1" from="description">third-party-behavioral-tracking section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="dad59996a4444d000563ab4e386c768e" datatype="html">
+                <source>It&apos;s also important to note that we do not allow third-party behavioral tracking</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">140</context>
+                </context-group>
+                <note priority="1" from="description">third-party-behavioral-tracking section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="dbb0f071c07c6ec72dfa74779da44a9a" datatype="html">
+                <source>CAN SPAM Act</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">144</context>
+                </context-group>
+                <note priority="1" from="description">canspam section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="ce60bacb91d673b4ae9bfee78ebb8194" datatype="html">
+                <source>The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial
+                    messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for
+                    violations.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">145</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="34b478c21d221a65bd6a9cae953a86e0" datatype="html">
+                <source>We collect your email address in order to:</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">146</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="b90c9480b5d3f6b76f3cd8e116cb6dc2" datatype="html">
+                <source>Market to our mailing list or continue to send emails to our clients after the original transaction has occurred.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">148</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="8e5aa6ed3af78732784e33e563a361e7" datatype="html">
+                <source>To be in accordance with CANSPAM, we agree to the following:</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">151</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="1eed40b6254b5bc23a8c377cf3b7368b" datatype="html">
+                <source>Not use false or misleading subjects or email addresses.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">153</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 4</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="2d51d88f0db63f240fbd9e2b6aaf6825" datatype="html">
+                <source>Identify the message as an advertisement in some reasonable way.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">154</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 5</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="989ba5c46929c17c6a799962ff50f1b8" datatype="html">
+                <source>Include the physical address of our business or site headquarters.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">155</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 6</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="73d1319009e0c3b135b7cb4d5278ec42" datatype="html">
+                <source>Monitor third-party email marketing services for compliance, if one is used.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">156</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 7</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="ef48d249628819cafbb7ea1b063fb9f4" datatype="html">
+                <source>Honor opt-out/unsubscribe requests quickly.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">157</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 8</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="77d56765f22dda62fafdbeffa16d9d99" datatype="html">
+                <source>Allow users to unsubscribe by using the link at the bottom of each email.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">158</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 9</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="ae4e0d0dee6f2a8932691635507dce9e" datatype="html">
+                <source>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">164</context>
+                </context-group>
+                <note priority="1" from="description">canspam section 10</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="9fb5e3a288df48f896b02422e4163fda" datatype="html">
+                <source>Contacting Us</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">168</context>
+                </context-group>
+                <note priority="1" from="description">contact-information section</note>
+                <note priority="1" from="meaning">privacy policy section header</note>
+            </trans-unit>
+            <trans-unit id="9420af2220703e2e416051024f0938ee" datatype="html">
+                <source>If there are any questions regarding this privacy policy, you may contact us using the information below.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">169</context>
+                </context-group>
+                <note priority="1" from="description">contact-information section 1</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="9b3c772655ccd06f35b7728b7f02510f" datatype="html">
+                <source>
+                    get-native.com
+                    Kuresunto 403 Asakusa 2-34-4
+                    Taito Ward, Tokyo
+                    111-0032
+                    Japan
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">170</context>
+                </context-group>
+                <note priority="1" from="description">contact-information section 2</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="7f2e1804d74e71aba90de224984a40df" datatype="html">
+                <source>Last Edited on 2016-11-07</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">180</context>
+                </context-group>
+                <note priority="1" from="description">contact-information section 3</note>
+                <note priority="1" from="meaning">privacy policy text</note>
+            </trans-unit>
+            <trans-unit id="b6f21c54a7d0d1f946a944795be5c914" datatype="html">
+                <source>About getnative</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">The header title for the help page about section</note>
+                <note priority="1" from="meaning">about section title</note>
+            </trans-unit>
+            <trans-unit id="84a90cc1f49cf547398d42148f47b1dd" datatype="html">
+                <source>Contact</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="linenumber">27</context>
+                </context-group>
+                <note priority="1" from="description">The header title for the help page contact-us section</note>
+                <note priority="1" from="meaning">contact section title</note>
+            </trans-unit>
             <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
                 <source>getnative is a language learning resource for advanced speakers</source>
                 <target/>
