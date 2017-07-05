@@ -1,4 +1,17 @@
-<?xml version="1.0"?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2"><file source-language="en" target-language="ja" datatype="plaintext" original="ng2.template"><body><trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html"><source>getnative is a language learning resource for advanced speakers</source><target>getnativeは上級者向けの言語学習リソースです</target><context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">2</context>
-        </context-group><note priority="1" from="description">A one sentence description of the purpose of the website</note><note priority="1" from="meaning">banner description</note></trans-unit></body></file></xliff>
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="ja" datatype="plaintext" original="ng2.template">
+        <body>
+            <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
+                <source>getnative is a language learning resource for advanced speakers</source>
+                <target>getnativeは上級者向けの言語学習リソースです</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">2</context>
+                </context-group>
+                <note priority="1" from="description">A one sentence description of the purpose of the website</note>
+                <note priority="1" from="meaning">banner description</note>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

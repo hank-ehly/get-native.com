@@ -4,7 +4,7 @@
             <gn-video-player [src]="(video$ | async)?.video_url"></gn-video-player>
 
             <section class="column__row">
-                <h6>About this video:</h6>
+                <h6 i18n="video description title|The title for the video description section@@b1196fd06b5f3630fdc21acb30697b8d">About this video:</h6>
                 <p class="paragraph">{{ (video$ | async)?.description }}</p>
             </section>
 
@@ -36,7 +36,7 @@
                 <div class="speaker__info">
                     <h6 class="speaker__name-header">{{ ((video$ | async)?.speaker)?.name }}</h6>
                     <div class="speaker__description-text">{{ ((video$ | async)?.speaker)?.description }}</div>
-                    <button class="button speaker__follow-button">FOLLOW</button>
+                    <button class="button speaker__follow-button" i18n="follow button|The text of the button that allows users to follow speakers@@fbebe975e795984a60905b8317d103b5">FOLLOW</button>
                 </div>
             </div>
         </div>
@@ -51,10 +51,9 @@
     <section class="section section_related-videos">
 
         <header class="section-header">
-            <h1 class="section-header__title">Related Videos</h1>
+            <h1 class="section-header__title" i18n="related videos section title|The title for the related videos section@@4a9ef0462e8ed4901c46790d5a2e55df">Related Videos</h1>
         </header>
 
-        <!-- By default, the router re-uses a component instance when it re-navigates to the same component type without visiting a different component first. -->
         <gn-video-panel-list [videos]="(video$ | async)?.related_videos?.records" [navigates]="true"></gn-video-panel-list>
     </section>
 </main>

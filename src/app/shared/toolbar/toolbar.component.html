@@ -1,15 +1,10 @@
 <div class="toolbar" (mouseleave)="isTooltipVisible$.next(false)">
 
     <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="isTooltipVisible$ | async">
-        <li class="toolbar__language-label" *ngFor="let language of language$ | async" (click)="setCurrentStudyLanguage(language)">
-            {{ language.name }}
-        </li>
+        <li class="toolbar__language-label" *ngFor="let language of language$ | async" (click)="setCurrentStudyLanguage(language)">{{ language.name }}</li>
     </ul>
 
-    <span class="toolbar__language-label toolbar__language-label_selected" (click)="isTooltipVisible$.next(!isTooltipVisible$.getValue())"
-          (mouseenter)="isTooltipVisible$.next(true)">
-        {{ currentStudyLanguageName$ | async }}
-    </span>
+    <span class="toolbar__language-label toolbar__language-label_selected" (click)="isTooltipVisible$.next(!isTooltipVisible$.getValue())" (mouseenter)="isTooltipVisible$.next(true)">{{ currentStudyLanguageName$ | async }}</span>
 
     <nav class="toolbar__links">
         <a class="toolbar__link toolbar__link--settings" [routerLink]="'settings'">

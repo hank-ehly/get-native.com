@@ -1,165 +1,845 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template">
-    <body>
-      <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
-        <source>getnative is a language learning resource for advanced speakers</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-        <note priority="1" from="description">A one sentence description of the purpose of the website</note>
-        <note priority="1" from="meaning">banner description</note>
-      </trans-unit>
-      <trans-unit id="63ab48fc4aa50ea5685abb76ddc54794" datatype="html">
-        <source>A language learning resource for advanced speakers</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <note priority="1" from="description">A short description of the purpose of the website</note>
-        <note priority="1" from="meaning">headline</note>
-      </trans-unit>
-      <trans-unit id="1e18db402c99d2bf94ad552a5f0228f6" datatype="html">
-        <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure nobis repellendus. Accusamus consectetur dicta?</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-        <note priority="1" from="description">A brief description of the purpose of the website</note>
-        <note priority="1" from="meaning">headline paragraph</note>
-      </trans-unit>
-      <trans-unit id="fb641dc07645e335fa9e727646d03c9b" datatype="html">
-        <source>Video database</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-        <note priority="1" from="description">The title of the video database feature description</note>
-        <note priority="1" from="meaning">video db feature title</note>
-      </trans-unit>
-      <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
-        <source>
+    <file source-language="en" datatype="plaintext" original="ng2.template">
+        <body>
+            <trans-unit id="8283c85b25db300546af69c4eff43072" datatype="html">
+                <source>Find out more here.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/compliance/compliance.component.ts</context>
+                    <context context-type="linenumber">6</context>
+                </context-group>
+                <note priority="1" from="description">The text for the web-storage compliance popup link redirecting users to the terms of
+                    service page
+                </note>
+                <note priority="1" from="meaning">compliance find out more link</note>
+            </trans-unit>
+            <trans-unit id="976e12662bafbf74be24350f8b89c705" datatype="html">
+                <source>Close</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/compliance/compliance.component.ts</context>
+                    <context context-type="linenumber">8</context>
+                </context-group>
+                <note priority="1" from="description">The text for the button that closes the web-storage compliance popup</note>
+                <note priority="1" from="meaning">compliance popup close button</note>
+            </trans-unit>
+            <trans-unit id="306bb300824ac2610485aeb98792db49" datatype="html">
+                <source>Home</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
+                    <context context-type="linenumber">3</context>
+                </context-group>
+                <note priority="1" from="description">The text of the link to the home page</note>
+                <note priority="1" from="meaning">footer home link</note>
+            </trans-unit>
+            <trans-unit id="ff90d3c15ff7ee8f4c66e31493c71ace" datatype="html">
+                <source>Contact</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">The text of link to the contact-us page</note>
+                <note priority="1" from="meaning">footer contact link</note>
+            </trans-unit>
+            <trans-unit id="6335345ee212a722ca9838616830a7f6" datatype="html">
+                <source>© 2016 getnative Inc.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
+                    <context context-type="linenumber">6</context>
+                </context-group>
+                <note priority="1" from="description">The footer copyright text</note>
+                <note priority="1" from="meaning">footer copyright</note>
+            </trans-unit>
+            <trans-unit id="0efb113302c2a6dec65aac8751dcde55" datatype="html">
+                <source>Terms of Service</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
+                    <context context-type="linenumber">8</context>
+                </context-group>
+                <note priority="1" from="description">The text of the footer link to the terms of service page</note>
+                <note priority="1" from="meaning">tos link</note>
+            </trans-unit>
+            <trans-unit id="f98f365a0f204f89f9044c8c006dc5f8" datatype="html">
+                <source>Privacy Policy</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
+                    <context context-type="linenumber">10</context>
+                </context-group>
+                <note priority="1" from="description">The text of the footer link to the privacy policy page</note>
+                <note priority="1" from="meaning">privacy policy link</note>
+            </trans-unit>
+            <trans-unit id="4b5f38ab4ccac45e6309dd0d8a4f7844" datatype="html">
+                <source>Search</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">8</context>
+                </context-group>
+                <note priority="1" from="description">The label text for the navbar search field</note>
+                <note priority="1" from="meaning">navbar search label</note>
+            </trans-unit>
+            <trans-unit id="2134cc75d316e3aea408a40b6853656e" datatype="html">
+                <source>Help</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">37</context>
+                </context-group>
+                <note priority="1" from="description">The text for the navbar link to the help/contact-us page</note>
+                <note priority="1" from="meaning">help link</note>
+            </trans-unit>
+            <trans-unit id="f34c98dc76d5353786f6c2983b39deeb" datatype="html">
+                <source>Sign in / Sign up</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">38</context>
+                </context-group>
+                <note priority="1" from="description">The navbar sign in/up button text</note>
+                <note priority="1" from="meaning">sign in/up button</note>
+            </trans-unit>
+            <trans-unit id="ddea1765b81c3a8af6b81757be83b25c" datatype="html">
+                <source>Dashboard</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/side-menu/side-menu.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">The text to the dashboard link in the vertical side-menu</note>
+                <note priority="1" from="meaning">side-menu dashboard link</note>
+            </trans-unit>
+            <trans-unit id="4b0aceda5a1149f59d5382e866bcfe55" datatype="html">
+                <source>Library</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/side-menu/side-menu.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">The text to the library link in the vertical side-menu</note>
+                <note priority="1" from="meaning">side-menu library link</note>
+            </trans-unit>
+            <trans-unit id="e38dd392d27f3101e4ac25a47c6242e6" datatype="html">
+                <source>USAGE EXAMPLES</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/transcript/transcript.component.ts</context>
+                    <context context-type="linenumber">19</context>
+                </context-group>
+                <note priority="1" from="description">The text for the transcript collocation usage example section</note>
+                <note priority="1" from="meaning">usage example section title</note>
+            </trans-unit>
+            <trans-unit id="d6f6f018e3af2b307e2e4577b59c42cc" datatype="html">
+                <source>Begin</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/video-panel/video-panel.component.ts</context>
+                    <context context-type="linenumber">17</context>
+                </context-group>
+                <note priority="1" from="description">The text for the begin study session button</note>
+                <note priority="1" from="meaning">begin study session button</note>
+            </trans-unit>
+            <trans-unit id="3beaa5b9ffee8628958a37a39f3e1fff" datatype="html">
+                <source>Sign in to getnative with any of the following providers.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
+                    <context context-type="linenumber">6</context>
+                </context-group>
+                <note priority="1" from="description">Instructions for logging in with a social auth provider</note>
+                <note priority="1" from="meaning">social login instructions</note>
+            </trans-unit>
+            <trans-unit id="d044128bbff3292ecaf2f8cf912c1087" datatype="html">
+                <source>Continue with Facebook</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
+                    <context context-type="linenumber">12</context>
+                </context-group>
+                <note priority="1" from="description">The text for the facebook login button</note>
+                <note priority="1" from="meaning">facebook login button</note>
+            </trans-unit>
+            <trans-unit id="275b57166664b52ab2893e535a768bad" datatype="html">
+                <source>Continue with Twitter</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
+                    <context context-type="linenumber">17</context>
+                </context-group>
+                <note priority="1" from="description">The text for the twitter login button</note>
+                <note priority="1" from="meaning">twitter login button</note>
+            </trans-unit>
+            <trans-unit id="2f4d49eb0db1ce638fe4ef8209cb9b77" datatype="html">
+                <source>Continue with Gmail</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
+                    <context context-type="linenumber">22</context>
+                </context-group>
+                <note priority="1" from="description">The text for the gmail login button</note>
+                <note priority="1" from="meaning">gmail login button</note>
+            </trans-unit>
+            <trans-unit id="150a5352d88ca1a7a86bd5eb012547ae" datatype="html">
+                <source>Sign in with email</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
+                    <context context-type="linenumber">28</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the email login form</note>
+                <note priority="1" from="meaning">email login form link</note>
+            </trans-unit>
+            <trans-unit id="f8228162c5a89998e5be34e06a0fd72e" datatype="html">
+                <source>Create a new account</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
+                    <context context-type="linenumber">29</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the registration form</note>
+                <note priority="1" from="meaning">registration form link</note>
+            </trans-unit>
+            <trans-unit id="1c5b78eace07597d143a9649259a0f84" datatype="html">
+                <source>Enter your email address and password to sign in.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/email-login/email-login.component.ts</context>
+                    <context context-type="linenumber">3</context>
+                </context-group>
+                <note priority="1" from="description">The user instruction for logging in via email</note>
+                <note priority="1" from="meaning">email login instructions</note>
+            </trans-unit>
+            <trans-unit id="6c28d7b02be2de47ba84156c78c84335" datatype="html">
+                <source>Email</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/email-login/email-login.component.ts</context>
+                    <context context-type="linenumber">13</context>
+                </context-group>
+                <note priority="1" from="description">The label for the email login form email input</note>
+                <note priority="1" from="meaning">email login form email label</note>
+            </trans-unit>
+            <trans-unit id="123e43428e3b778ab1a8b8bfc36f07cc" datatype="html">
+                <source>Password</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/email-login/email-login.component.ts</context>
+                    <context context-type="linenumber">18</context>
+                </context-group>
+                <note priority="1" from="description">The label for the email login form password input</note>
+                <note priority="1" from="meaning">email login form password label</note>
+            </trans-unit>
+            <trans-unit id="2efa36dd7f07f7e0beb2afd97e4a8693" datatype="html">
+                <source>SIGN IN</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/email-login/email-login.component.ts</context>
+                    <context context-type="linenumber">22</context>
+                </context-group>
+                <note priority="1" from="description">The text for the email login form submit button</note>
+                <note priority="1" from="meaning">email login form submit button</note>
+            </trans-unit>
+            <trans-unit id="d7c5260d8478fff765cad48dbfdca008" datatype="html">
+                <source>Sign in via Facebook, Twitter or Google</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/email-login/email-login.component.ts</context>
+                    <context context-type="linenumber">26</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the social login form</note>
+                <note priority="1" from="meaning">email login form social login link</note>
+            </trans-unit>
+            <trans-unit id="7b29a555bdb0b8fddb983d21a61493c7" datatype="html">
+                <source>Create a new account</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/email-login/email-login.component.ts</context>
+                    <context context-type="linenumber">27</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the registration form</note>
+                <note priority="1" from="meaning">email login form registration link</note>
+            </trans-unit>
+            <trans-unit id="404f3885fbe4dbb4bc32527fbd7b3aeb" datatype="html">
+                <source>Forgot Password</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/email-login/email-login.component.ts</context>
+                    <context context-type="linenumber">28</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the forgot password form</note>
+                <note priority="1" from="meaning">email login form forgot password link</note>
+            </trans-unit>
+            <trans-unit id="c14750e82b80f8b3e0cfdee86c8c42c3" datatype="html">
+                <source>Register via email by filling out the following information.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/register/register.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">The instructions for filling out the registration form</note>
+                <note priority="1" from="meaning">register form instructions</note>
+            </trans-unit>
+            <trans-unit id="76547a2df32997f1cb7ee0dc185a421c" datatype="html">
+                <source>SIGN UP</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/register/register.component.ts</context>
+                    <context context-type="linenumber">28</context>
+                </context-group>
+                <note priority="1" from="description">The text for the submit button of the user registration form</note>
+                <note priority="1" from="meaning">register form submit button</note>
+            </trans-unit>
+            <trans-unit id="87ffa0148fec4d400a934104cecd5d78" datatype="html">
+                <source>Sign in via Facebook, Twitter or Google</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/register/register.component.ts</context>
+                    <context context-type="linenumber">32</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the social login form</note>
+                <note priority="1" from="meaning">register form social login link</note>
+            </trans-unit>
+            <trans-unit id="2f09ed6116fbaf418467e020824d31ac" datatype="html">
+                <source>Sign in with email</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/register/register.component.ts</context>
+                    <context context-type="linenumber">33</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the email login form</note>
+                <note priority="1" from="meaning">register form email login link</note>
+            </trans-unit>
+            <trans-unit id="f0019b9ad149833dd0b1ed52522ff8b4" datatype="html">
+                <source>Enter your email address to receive a password reset link.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+                    <context context-type="linenumber">3</context>
+                </context-group>
+                <note priority="1" from="description">User instructions for filling out the forgot password form</note>
+                <note priority="1" from="meaning">forgot password form instructions</note>
+            </trans-unit>
+            <trans-unit id="a588bd2792ff35b327dddad10e716c31" datatype="html">
+                <source>Email</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+                    <context context-type="linenumber">8</context>
+                </context-group>
+                <note priority="1" from="description">The text for the forgot password form email input label</note>
+                <note priority="1" from="meaning">forgot password form email label</note>
+            </trans-unit>
+            <trans-unit id="9af4da73d0297be3c5be24f13771fdae" datatype="html">
+                <source>SEND</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+                    <context context-type="linenumber">12</context>
+                </context-group>
+                <note priority="1" from="description">The text for the submit button of the forgot password form</note>
+                <note priority="1" from="meaning">forgot password form submit button</note>
+            </trans-unit>
+            <trans-unit id="f66dd47b29a3e3be06bd281114ffc05d" datatype="html">
+                <source>Sign in with email</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+                    <context context-type="linenumber">16</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the email login form</note>
+                <note priority="1" from="meaning">forgot password form email login link</note>
+            </trans-unit>
+            <trans-unit id="97907df69ea22d2128b6cd3561f6cd69" datatype="html">
+                <source>Sign in via Facebook, Twitter or Google</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+                    <context context-type="linenumber">17</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the social login form</note>
+                <note priority="1" from="meaning">forgot password form social login link</note>
+            </trans-unit>
+            <trans-unit id="27048a45156a3bbfcd3d0786419bea9b" datatype="html">
+                <source>Create a new account</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+                    <context context-type="linenumber">18</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link redirecting users to the registration form</note>
+                <note priority="1" from="meaning">forgot password form registration link</note>
+            </trans-unit>
+            <trans-unit id="fc02fa317c34e59f8d4661c007200756" datatype="html">
+                <source>Videos</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">The title for the dashboard videos section</note>
+                <note priority="1" from="meaning">dashboard video section title</note>
+            </trans-unit>
+            <trans-unit id="da62c06d98499331f85421b712823185" datatype="html">
+                <source>LOAD MORE</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">18</context>
+                </context-group>
+                <note priority="1" from="description">The text for the dashboard load more videos button</note>
+                <note priority="1" from="meaning">load more videos button</note>
+            </trans-unit>
+            <trans-unit id="3e06f80500768c1b0dcb8b51e59bea2d" datatype="html">
+                <source>Stats</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">25</context>
+                </context-group>
+                <note priority="1" from="description">The title for the dashboard stats section</note>
+                <note priority="1" from="meaning">dashboard stats section title</note>
+            </trans-unit>
+            <trans-unit id="bd47e707a777e51ac0f4981e513adf06" datatype="html">
+                <source>Answers</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">35</context>
+                </context-group>
+                <note priority="1" from="description">The title for the dashboard answers section</note>
+                <note priority="1" from="meaning">dashboard answers section title</note>
+            </trans-unit>
+            <trans-unit id="d4d96c1a160bc58db2b6142d2806507e" datatype="html">
+                <source>LOAD MORE</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">52</context>
+                </context-group>
+                <note priority="1" from="description">The text for the dashboard answers section load more button</note>
+                <note priority="1" from="meaning">load more answers button</note>
+            </trans-unit>
+            <trans-unit id="31d328eceb53232935a2224d0741291a" datatype="html">
+                <source>CURRENT STREAK</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/stats/stats.component.ts</context>
+                    <context context-type="linenumber">5</context>
+                </context-group>
+                <note priority="1" from="description">The title for the user current streak stat</note>
+                <note priority="1" from="meaning">current streak stat</note>
+            </trans-unit>
+            <trans-unit id="016d26fea383d7d530fbb706775f304b" datatype="html">
+                <source>TOTAL COMPLETIONS</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/stats/stats.component.ts</context>
+                    <context context-type="linenumber">10</context>
+                </context-group>
+                <note priority="1" from="description">The title for the user total study sessions stat</note>
+                <note priority="1" from="meaning">total sessions stat</note>
+            </trans-unit>
+            <trans-unit id="83216013757444e06ec23357f6a4b774" datatype="html">
+                <source>LONGEST STREAK</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/stats/stats.component.ts</context>
+                    <context context-type="linenumber">15</context>
+                </context-group>
+                <note priority="1" from="description">The title for the user longest study streak stat</note>
+                <note priority="1" from="meaning">longest streak stat</note>
+            </trans-unit>
+            <trans-unit id="ff43f4457e32be874087e47b5fa57de9" datatype="html">
+                <source>Videos</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/library/library.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">The title for the videos section of the Library page</note>
+                <note priority="1" from="meaning">library videos section title</note>
+            </trans-unit>
+            <trans-unit id="dc5e40c592f0ce0f2b4cb80d13ea4e88" datatype="html">
+                <source>LOAD MORE</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/library/library.component.ts</context>
+                    <context context-type="linenumber">18</context>
+                </context-group>
+                <note priority="1" from="description">The text for the load more button of the Library page videos section</note>
+                <note priority="1" from="meaning">load more library videos button</note>
+            </trans-unit>
+            <trans-unit id="b1196fd06b5f3630fdc21acb30697b8d" datatype="html">
+                <source>About this video:</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/library/library-detail.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">The title for the video description section</note>
+                <note priority="1" from="meaning">video description title</note>
+            </trans-unit>
+            <trans-unit id="fbebe975e795984a60905b8317d103b5" datatype="html">
+                <source>FOLLOW</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/library/library-detail.component.ts</context>
+                    <context context-type="linenumber">39</context>
+                </context-group>
+                <note priority="1" from="description">The text of the button that allows users to follow speakers</note>
+                <note priority="1" from="meaning">follow button</note>
+            </trans-unit>
+            <trans-unit id="4a9ef0462e8ed4901c46790d5a2e55df" datatype="html">
+                <source>Related Videos</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/library/library-detail.component.ts</context>
+                    <context context-type="linenumber">54</context>
+                </context-group>
+                <note priority="1" from="description">The title for the related videos section</note>
+                <note priority="1" from="meaning">related videos section title</note>
+            </trans-unit>
+            <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
+                <source>getnative is a language learning resource for advanced speakers</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">2</context>
+                </context-group>
+                <note priority="1" from="description">A one sentence description of the purpose of the website</note>
+                <note priority="1" from="meaning">banner description</note>
+            </trans-unit>
+            <trans-unit id="63ab48fc4aa50ea5685abb76ddc54794" datatype="html">
+                <source>A language learning resource for advanced speakers</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">A short description of the purpose of the website</note>
+                <note priority="1" from="meaning">headline</note>
+            </trans-unit>
+            <trans-unit id="1e18db402c99d2bf94ad552a5f0228f6" datatype="html">
+                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure
+                    nobis repellendus. Accusamus consectetur dicta?
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">9</context>
+                </context-group>
+                <note priority="1" from="description">A brief description of the purpose of the website</note>
+                <note priority="1" from="meaning">headline paragraph</note>
+            </trans-unit>
+            <trans-unit id="fb641dc07645e335fa9e727646d03c9b" datatype="html">
+                <source>Video database</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">18</context>
+                </context-group>
+                <note priority="1" from="description">The title of the video database feature description</note>
+                <note priority="1" from="meaning">video db feature title</note>
+            </trans-unit>
+            <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
+                <source>
                     Get native is all about breaking the barrier between fluid speech and native like speech. Our way
                     of breaking the barrier is through intensive observation, pronunciation practice and active learning
                     using video interviews of native speakers. Needless to say in order for this to work we need a lot
                     of interview videos!
                 </source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-        <note priority="1" from="description">The description of the video database feature</note>
-        <note priority="1" from="meaning">video db feature description</note>
-      </trans-unit>
-      <trans-unit id="f25fc28ef1ce003a1d2e2b74c4edf503" datatype="html">
-        <source>Study like the pros</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
-        <note priority="1" from="description">The title of the study session feature description</note>
-        <note priority="1" from="meaning">study session feature title</note>
-      </trans-unit>
-      <trans-unit id="a77cb5d4f5ba2526709496556d8aa4be" datatype="html">
-        <source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">19</context>
+                </context-group>
+                <note priority="1" from="description">The description of the video database feature</note>
+                <note priority="1" from="meaning">video db feature description</note>
+            </trans-unit>
+            <trans-unit id="f25fc28ef1ce003a1d2e2b74c4edf503" datatype="html">
+                <source>Study like the pros</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">33</context>
+                </context-group>
+                <note priority="1" from="description">The title of the study session feature description</note>
+                <note priority="1" from="meaning">study session feature title</note>
+            </trans-unit>
+            <trans-unit id="a77cb5d4f5ba2526709496556d8aa4be" datatype="html">
+                <source>
                     Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If
                     you&apos;re an Advanced learner of the language you may already have your own study routine. But that
                     study routine might include getting out books, scrolling through web pages -- it could take up to 10
                     minutes just to get all the materials ready!
                 </source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-        <note priority="1" from="description">The description of the study session feature</note>
-        <note priority="1" from="meaning">study session feature description</note>
-      </trans-unit>
-      <trans-unit id="e32fb4bb878da11006facfc293ae5955" datatype="html">
-        <source>A tool for advanced language learners</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">48</context>
-        </context-group>
-        <note priority="1" from="description">The title for the advanced material feature description</note>
-        <note priority="1" from="meaning">advanced material feature title</note>
-      </trans-unit>
-      <trans-unit id="929c28ca424552020939e6af075621ff" datatype="html">
-        <source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">34</context>
+                </context-group>
+                <note priority="1" from="description">The description of the study session feature</note>
+                <note priority="1" from="meaning">study session feature description</note>
+            </trans-unit>
+            <trans-unit id="e32fb4bb878da11006facfc293ae5955" datatype="html">
+                <source>A tool for advanced language learners</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">48</context>
+                </context-group>
+                <note priority="1" from="description">The title for the advanced material feature description</note>
+                <note priority="1" from="meaning">advanced material feature title</note>
+            </trans-unit>
+            <trans-unit id="929c28ca424552020939e6af075621ff" datatype="html">
+                <source>
                     getnative is most useful to language learners who already have a good command of the target
                     language, yet want to make the speech sound more like that of a native speaker. Finding good study
                     material is easy when you&apos;ve just set out learning the target language. But as you advance, every
                     day material like newspapers, journal articles, TV, podcasts and conversations with other speakers
                     might become the core of your study routine.
                 </source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-        <note priority="1" from="description">The description for the advanced material feature</note>
-        <note priority="1" from="meaning">advanced material feature description</note>
-      </trans-unit>
-      <trans-unit id="2cd5d943017487b4035bb1951f66f72a" datatype="html">
-        <source>That&apos;s not all..</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">61</context>
-        </context-group>
-        <note priority="1" from="description">The title eluding to additional feature descriptions</note>
-        <note priority="1" from="meaning">other features section title</note>
-      </trans-unit>
-      <trans-unit id="a07f3eac43e64f67a76e47ebc17a42b6" datatype="html">
-        <source>Perfect for polyglots</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">68</context>
-        </context-group>
-        <note priority="1" from="description">The title for the polyglots feature description</note>
-        <note priority="1" from="meaning">polyglots feature description title</note>
-      </trans-unit>
-      <trans-unit id="beb769a747c4efb1ba5ffa1c564dd23c" datatype="html">
-        <source>Sign up for free</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">111</context>
-        </context-group>
-        <note priority="1" from="description">The title leading users to sign up</note>
-        <note priority="1" from="meaning">sign up title</note>
-      </trans-unit>
-      <trans-unit id="9c6d5f890ec8e6bd73277ac9ab8686d0" datatype="html">
-        <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad
-                                       architecto asperiores aut, consectetur dicta doloremque eius error facilis hic
-                                       modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">112</context>
-        </context-group>
-        <note priority="1" from="description">A short description about signing up</note>
-        <note priority="1" from="meaning">sign up description</note>
-      </trans-unit>
-      <trans-unit id="e5b7634ee07ba35dbd442c8a53fbeb1a" datatype="html">
-        <source>Sign in / Sign up</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">116</context>
-        </context-group>
-        <note priority="1" from="description">The title for the sign up button</note>
-        <note priority="1" from="meaning">sign up button</note>
-      </trans-unit>
-    </body>
-  </file>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">49</context>
+                </context-group>
+                <note priority="1" from="description">The description for the advanced material feature</note>
+                <note priority="1" from="meaning">advanced material feature description</note>
+            </trans-unit>
+            <trans-unit id="2cd5d943017487b4035bb1951f66f72a" datatype="html">
+                <source>That&apos;s not all..</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">61</context>
+                </context-group>
+                <note priority="1" from="description">The title eluding to additional feature descriptions</note>
+                <note priority="1" from="meaning">other features section title</note>
+            </trans-unit>
+            <trans-unit id="a07f3eac43e64f67a76e47ebc17a42b6" datatype="html">
+                <source>Perfect for polyglots</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">68</context>
+                </context-group>
+                <note priority="1" from="description">The title for the polyglots feature description</note>
+                <note priority="1" from="meaning">polyglots feature description title</note>
+            </trans-unit>
+            <trans-unit id="beb769a747c4efb1ba5ffa1c564dd23c" datatype="html">
+                <source>Sign up for free</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">107</context>
+                </context-group>
+                <note priority="1" from="description">The title leading users to sign up</note>
+                <note priority="1" from="meaning">sign up title</note>
+            </trans-unit>
+            <trans-unit id="9c6d5f890ec8e6bd73277ac9ab8686d0" datatype="html">
+                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur
+                    dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">108</context>
+                </context-group>
+                <note priority="1" from="description">A short description about signing up</note>
+                <note priority="1" from="meaning">sign up description</note>
+            </trans-unit>
+            <trans-unit id="e5b7634ee07ba35dbd442c8a53fbeb1a" datatype="html">
+                <source>Sign in / Sign up</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="linenumber">109</context>
+                </context-group>
+                <note priority="1" from="description">The title for the sign up button</note>
+                <note priority="1" from="meaning">sign up button</note>
+            </trans-unit>
+            <trans-unit id="0357a5943ddb5239fad8867b230ba805" datatype="html">
+                <source>Deactivate Your Account</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/security/security.component.ts</context>
+                    <context context-type="linenumber">1</context>
+                </context-group>
+                <note priority="1" from="description">The title of the account deactivation setting</note>
+                <note priority="1" from="meaning">deactivate account setting title</note>
+            </trans-unit>
+            <trans-unit id="b3d8b8a036eb66525c6e88c13794c2ec" datatype="html">
+                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam cupiditate deleniti, essefacere fuga hicillo,
+                    modi nulla perspiciatis quasi quia ratione recusandae saepe similique tempore, veniam. Illo, velit?
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/security/security.component.ts</context>
+                    <context context-type="linenumber">2</context>
+                </context-group>
+                <note priority="1" from="description">A description about deactivating ones account</note>
+                <note priority="1" from="meaning">deactivate account setting description</note>
+            </trans-unit>
+            <trans-unit id="57f59bb77e60f69f788c5c152f6a3ad7" datatype="html">
+                <source>Deactivate</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/security/security.component.ts</context>
+                    <context context-type="linenumber">3</context>
+                </context-group>
+                <note priority="1" from="description">The text for the link allowing users to deactivate their account</note>
+                <note priority="1" from="meaning">deactivate account link text</note>
+            </trans-unit>
+            <trans-unit id="749d1f0ba6eb4d27fa9f3e8b07afe64d" datatype="html">
+                <source>Email Notifications</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/notifications/notifications.component.ts</context>
+                    <context context-type="linenumber">2</context>
+                </context-group>
+                <note priority="1" from="description">The title for the user email notification preference setting</note>
+                <note priority="1" from="meaning">email notifications preference</note>
+            </trans-unit>
+            <trans-unit id="5d243f345cb9deefd35d0c3420bc4304" datatype="html">
+                <source>Receive emails from time to time about getnative updates and changes. To enable or disable this feature, you must
+                    first verify your email address.
+                </source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/notifications/notifications.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">A description about the email notification preference setting</note>
+                <note priority="1" from="meaning">email notifications description</note>
+            </trans-unit>
+            <trans-unit id="3f270018de7eeace6516b3904d5bc788" datatype="html">
+                <source>Browser Notifications</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/notifications/notifications.component.ts</context>
+                    <context context-type="linenumber">10</context>
+                </context-group>
+                <note priority="1" from="description">The title for the browser notifications preference setting</note>
+                <note priority="1" from="meaning">browser notifications preference</note>
+            </trans-unit>
+            <trans-unit id="5279a07d9de4abf0573155e349b9f169" datatype="html">
+                <source>Allow getnative to display browser notifications.</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/notifications/notifications.component.ts</context>
+                    <context context-type="linenumber">12</context>
+                </context-group>
+                <note priority="1" from="description">A description about the browser notifications preference setting</note>
+                <note priority="1" from="meaning">browser notifications description</note>
+            </trans-unit>
+            <trans-unit id="e19141a6936b94673dedaf85e0ebdd98" datatype="html">
+                <source>EDIT</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">The title text of general settings button for enabling email editing</note>
+                <note priority="1" from="meaning">general settings edit email button</note>
+            </trans-unit>
+            <trans-unit id="3ab339c5820f8680c1f7740e43a15337" datatype="html">
+                <source>SAVE</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">11</context>
+                </context-group>
+                <note priority="1" from="description">The text for the general settings save email button</note>
+                <note priority="1" from="meaning">save email button text</note>
+            </trans-unit>
+            <trans-unit id="be053fa70b16fd97c1fa6c44f705d9eb" datatype="html">
+                <source>CANCEL</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">12</context>
+                </context-group>
+                <note priority="1" from="description">The title for the general settings cancel email modifications button</note>
+                <note priority="1" from="meaning">cancel email edit button</note>
+            </trans-unit>
+            <trans-unit id="d10991fa81cf964182d36b780db8aab3" datatype="html">
+                <source>Resend Confirmation Email</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">24</context>
+                </context-group>
+                <note priority="1" from="description">The text for the button allowing users to resend their account confirmation email
+                </note>
+                <note priority="1" from="meaning">resend confirmation email button</note>
+            </trans-unit>
+            <trans-unit id="a3da8af7fc23ec0108242a67658095e0" datatype="html">
+                <source>Default Study Language</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">28</context>
+                </context-group>
+                <note priority="1" from="description">The text for the label denoting the user default study language select box</note>
+                <note priority="1" from="meaning">default study language label</note>
+            </trans-unit>
+            <trans-unit id="3fd49dede7fd589daa904a81db2541f1" datatype="html">
+                <source>Interface Language</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">33</context>
+                </context-group>
+                <note priority="1" from="description">The text for the label denoting the user interface language preference select box
+                </note>
+                <note priority="1" from="meaning">interface language label</note>
+            </trans-unit>
+            <trans-unit id="a0b0162ac3b793da796b69e9a980a78f" datatype="html">
+                <source>Current Password</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">41</context>
+                </context-group>
+                <note priority="1" from="description">The label text for the current password input field</note>
+                <note priority="1" from="meaning">current password label</note>
+            </trans-unit>
+            <trans-unit id="424d76341775773f988203365281b42c" datatype="html">
+                <source>New Password</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">46</context>
+                </context-group>
+                <note priority="1" from="description">The label text for the new password input field</note>
+                <note priority="1" from="meaning">new password label</note>
+            </trans-unit>
+            <trans-unit id="4733a1332d97eac914f73c262c6201a3" datatype="html">
+                <source>Confirm New Password</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">52</context>
+                </context-group>
+                <note priority="1" from="description">The label text for the confirm new password input field</note>
+                <note priority="1" from="meaning">confirm new password label</note>
+            </trans-unit>
+            <trans-unit id="14674c0f8817bb7e37470b6bc7ff73b6" datatype="html">
+                <source>UPDATE</source>
+                <target/>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">56</context>
+                </context-group>
+                <note priority="1" from="description">The submit button text for the general settings update password form</note>
+                <note priority="1" from="meaning">update password form submit button</note>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

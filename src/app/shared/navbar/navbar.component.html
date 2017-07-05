@@ -5,9 +5,8 @@
 
     <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && (searchBarVisible$ | async)"
          [@slideInLeftOutRight]>
-        <label for="search-bar" class="sr-only">Search</label>
-        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..."
-               [gnFocus]="searchBarVisible$ | async" maxlength="100" (input)="updateQuery($event)">
+        <label for="search-bar" class="sr-only" i18n="navbar search label|The label text for the navbar search field@@4b5f38ab4ccac45e6309dd0d8a4f7844">Search</label>
+        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." [gnFocus]="searchBarVisible$ | async" maxlength="100" (input)="updateQuery($event)">
     </div>
 
     <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && !(searchBarVisible$ | async)" [@fadeInOut]>
@@ -35,29 +34,24 @@
     </div>
 
     <nav class="navbar__nav" *ngIf="!authenticated">
-        <a class="link navbar__link navbar__link_help" [routerLink]="'help'">Help</a>
-        <a class="link navbar__link navbar__link_login" href="" (click)="onShowLoginModal($event)">Sign in / Sign up</a>
+        <a class="link navbar__link navbar__link_help" [routerLink]="'help'" i18n="help link|The text for the navbar link to the help/contact-us page@@2134cc75d316e3aea408a40b6853656e">Help</a>
+        <a class="link navbar__link navbar__link_login" href="" (click)="onShowLoginModal($event)" i18n="sign in/up button|The navbar sign in/up button text@@f34c98dc76d5353786f6c2983b39deeb">Sign in / Sign up</a>
     </nav>
 
     <ul class="navbar__menu navbar__menu_right" *ngIf="authenticated">
         <li>
-            <img class="navbar__menu-icon navbar__menu-icon--search" src="../../../assets/icons/search.svg" alt="search"
-                 *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
-
-            <img class="navbar__menu-icon navbar__menu-icon--close" src="../../../assets/icons/close-dark.svg" alt="close"
-                 *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()">
+            <img class="navbar__menu-icon navbar__menu-icon--search" src="../../../assets/icons/search.svg" alt="search" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
+            <img class="navbar__menu-icon navbar__menu-icon--close" src="../../../assets/icons/close-dark.svg" alt="close" *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()">
         </li>
         <li>
             <span class="navbar__menu-icon-frame">
                 <!-- TODO: Remove mock (click) -->
-                <img (click)="toggleNotificationIndicator()" class="navbar__menu-icon navbar__menu-icon_notification"
-                     src="../../../assets/icons/notification.svg" alt="notification">
+                <img (click)="toggleNotificationIndicator()" class="navbar__menu-icon navbar__menu-icon_notification" src="../../../assets/icons/notification.svg" alt="notification">
                 <span class="notification-indicator" [ngClass]="{'notification-indicator--unread': hasUnreadNotifications}"></span>
             </span>
         </li>
         <li>
-            <img [routerLink]="'settings'" class="navbar__menu-icon navbar__menu-icon_account"
-                 src="../../../assets/mock/man-smiling.jpg" alt="account">
+            <img [routerLink]="'settings'" class="navbar__menu-icon navbar__menu-icon_account" src="../../../assets/mock/man-smiling.jpg" alt="account">
         </li>
     </ul>
 </header>

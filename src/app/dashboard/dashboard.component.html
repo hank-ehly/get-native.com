@@ -1,7 +1,7 @@
 <main>
     <section class="section section_video-panels">
         <header class="section-header">
-            <h1 class="section-header__title">Videos</h1>
+            <h1 class="section-header__title" i18n="dashboard video section title|The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Videos</h1>
 
             <div class="dropdown-toggle">
                 <span class="dropdown-toggle__text">{{ categoryFilter$.pluck('text') | async }}</span>
@@ -15,14 +15,14 @@
 
         <gn-video-panel-list [videos]="videos$ | async" [controls]="true" (begin)="onBegin($event)"></gn-video-panel-list>
 
-        <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)">LOAD MORE</button>
+        <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)" i18n="load more videos button|The text for the dashboard load more videos button@@da62c06d98499331f85421b712823185">LOAD MORE</button>
     </section>
 
     <hr>
 
     <section class="section section_goals">
         <header class="section-header">
-            <h1 class="section-header__title">Stats</h1>
+            <h1 class="section-header__title" i18n="dashboard stats section title|The title for the dashboard stats section@@3e06f80500768c1b0dcb8b51e59bea2d">Stats</h1>
         </header>
 
         <gn-stats [stats]="stats$ | async"></gn-stats>
@@ -32,18 +32,14 @@
 
     <section class="section section_answers">
         <header class="section-header">
-            <h1 class="section-header__title">Answers</h1>
+            <h1 class="section-header__title" i18n="dashboard answers section title|The title for the dashboard answers section@@bd47e707a777e51ac0f4981e513adf06">Answers</h1>
             <ul class="section-header__toggle-button-frame">
-                <li *ngFor="let filter of answerFilters" class="section-header__menu-item"
-                    [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === filter.value}"
-                    (click)="filterAnswers.next(filter.value)">{{ filter.text }}
-                </li>
+                <li *ngFor="let filter of answerFilters" class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === filter.value}" (click)="filterAnswers.next(filter.value)">{{ filter.text }}</li>
             </ul>
         </header>
 
         <ul class="answers">
-            <li *ngFor="let record of answers$ | async; let even = even" [ngClass]='{"answers__answer_striped": even}'
-                class="answers__answer">
+            <li *ngFor="let record of answers$ | async; let even = even" [ngClass]='{"answers__answer_striped": even}' class="answers__answer">
                 <div class="answers__answer-body">
                     <h6 class="answers__answer-title">{{ record?.writing_question?.text }}</h6>
                     <p>{{ record?.answer }}</p>
@@ -53,6 +49,6 @@
             </li>
         </ul>
 
-        <button class="button section__button" (click)="loadMoreAnswers.next(maxAnswerId)">LOAD MORE</button>
+        <button class="button section__button" (click)="loadMoreAnswers.next(maxAnswerId)" i18n="load more answers button|The text for the dashboard answers section load more button@@d4d96c1a160bc58db2b6142d2806507e">LOAD MORE</button>
     </section>
 </main>
