@@ -1,14 +1,15 @@
 <main class="main">
     <div class="collocation-frame">
-        <label for="collocation">Speak out loud</label>
+        <label for="collocation" i18n="speaking instructions label@@b88d3d34dc61c76ff8d4dd6db116bcd0">Speak out loud</label>
         <input type="text" id="collocation" class="input" value="adipicing elit" readonly>
     </div>
 
+    <!-- todo: i18n -->
     <span class="completed">Completed (5/20)</span>
 
     <div class="button-group">
-        <button class="button button--opaque">NEXT</button>
-        <button class="button button--hollow">SKIP</button>
+        <button class="button button--opaque" i18n="next collocation occurrence button@@cdf9f2e0677923528ae74349ff39caa6">NEXT</button>
+        <button class="button button--hollow" i18n="skip collocation occurrence button@@e9e94a8a56ba7bd9a1d1ca6c046ae6a5">SKIP</button>
     </div>
 
     <gn-transcript [transcripts]="transcripts"></gn-transcript>

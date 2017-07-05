@@ -16,5 +16,4 @@ import { environment } from '../../../environments/environment';
 })
 export class TOSComponent {
     moderator: string = environment.moderator;
-    lastEdited = '2016-11-11';
 }
