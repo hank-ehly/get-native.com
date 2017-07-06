@@ -5,7 +5,7 @@
 
     <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && (searchBarVisible$ | async)"
          [@slideInLeftOutRight]>
-        <label for="search-bar" class="sr-only" i18n="navbar search label|The label text for the navbar search field@@4b5f38ab4ccac45e6309dd0d8a4f7844">Search</label>
+        <label for="search-bar" class="sr-only" i18n="The label text for the navbar search field@@4b5f38ab4ccac45e6309dd0d8a4f7844">Search</label>
         <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." [gnFocus]="searchBarVisible$ | async" maxlength="100" (input)="updateQuery($event)">
     </div>
 
@@ -34,7 +34,7 @@
     </div>
 
     <nav class="navbar__nav" *ngIf="!authenticated">
-        <a class="link navbar__link navbar__link_help" [routerLink]="'help'" i18n="help link|The text for the navbar link to the help/contact-us page@@2134cc75d316e3aea408a40b6853656e">Help</a>
+        <a class="link navbar__link navbar__link_help" [routerLink]="'help'" i18n="The text for the navbar link to the help/contact-us page@@2134cc75d316e3aea408a40b6853656e">Help</a>
         <a class="link navbar__link navbar__link_login" href="" (click)="onShowLoginModal($event)" i18n="sign in/up button|The navbar sign in/up button text@@f34c98dc76d5353786f6c2983b39deeb">Sign in / Sign up</a>
     </nav>
 

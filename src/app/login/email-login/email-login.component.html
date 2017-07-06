@@ -1,6 +1,6 @@
 <div class="modal modal_email-login">
     <header>
-        <p class="paragraph modal_email-login__paragraph" i18n="email login instructions|The user instruction for logging in via email@@1c5b78eace07597d143a9649259a0f84">Enter your email address and password to sign in.</p>
+        <p class="paragraph modal_email-login__paragraph" i18n="The user instruction for logging in via email@@1c5b78eace07597d143a9649259a0f84">Enter your email address and password to sign in.</p>
     </header>
 
     <ul class="error-messages" *ngIf="errors">
@@ -10,21 +10,21 @@
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="form">
 
         <div class="form__group">
-            <label class="label" for="email" i18n="email login form email label|The label for the email login form email input@@6c28d7b02be2de47ba84156c78c84335">Email</label>
+            <label class="label" for="email" i18n="The label for the email login form email input@@6c28d7b02be2de47ba84156c78c84335">Email</label>
             <input id="email" [pattern]="emailRegex" class="input tabbable" type="email" name="email" tabindex="1" [(ngModel)]="credentials.email" required>
         </div>
 
         <div class="form__group">
-            <label class="label" for="password" i18n="email login form password label|The label for the email login form password input@@123e43428e3b778ab1a8b8bfc36f07cc">Password</label>
+            <label class="label" for="password" i18n="The label for the email login form password input@@123e43428e3b778ab1a8b8bfc36f07cc">Password</label>
             <input id="password" type="password" class="input tabbable" name="password" [(ngModel)]="credentials.password" tabindex="2" minlength="8" required>
         </div>
 
-        <button type="submit" tabindex="3" class="button button--opaque form__button tabbable" [disabled]="!form.valid" i18n="email login form submit button|The text for the email login form submit button@@2efa36dd7f07f7e0beb2afd97e4a8693">SIGN IN</button>
+        <button type="submit" tabindex="3" class="button button--opaque form__button tabbable" [disabled]="!form.valid" i18n="The text for the email login form submit button@@2efa36dd7f07f7e0beb2afd97e4a8693">SIGN IN</button>
     </form>
 
     <footer class="footer">
-        <span (click)="onSetModalView(null)" class="link footer__link footer__link_social-login tabbable" tabindex="4" i18n="email login form social login link|The text for the link redirecting users to the social login form@@d7c5260d8478fff765cad48dbfdca008">Sign in via Facebook, Twitter or Google</span>
-        <span (click)="onSetModalView('register')" class="link footer__link footer__link_register tabbable" tabindex="5" i18n="email login form registration link|The text for the link redirecting users to the registration form@@7b29a555bdb0b8fddb983d21a61493c7">Create a new account</span>
-        <span (click)="onSetModalView('forgot-password')" class="link footer__link footer__link_email-login tabbable" tabindex="6" i18n="email login form forgot password link|The text for the link redirecting users to the forgot password form@@404f3885fbe4dbb4bc32527fbd7b3aeb">Forgot Password</span>
+        <span (click)="onSetModalView(null)" class="link footer__link footer__link_social-login tabbable" tabindex="4" i18n="The text for the link redirecting users to the social login form@@d7c5260d8478fff765cad48dbfdca008">Sign in via Facebook, Twitter or Google</span>
+        <span (click)="onSetModalView('register')" class="link footer__link footer__link_register tabbable" tabindex="5" i18n="The text for the link redirecting users to the registration form@@7b29a555bdb0b8fddb983d21a61493c7">Create a new account</span>
+        <span (click)="onSetModalView('forgot-password')" class="link footer__link footer__link_email-login tabbable" tabindex="6" i18n="The text for the link redirecting users to the forgot password form@@404f3885fbe4dbb4bc32527fbd7b3aeb">Forgot Password</span>
     </footer>
 </div>
