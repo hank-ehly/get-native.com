@@ -5,9 +5,9 @@
 
             <div class="dropdown-toggle">
                 <span class="dropdown-toggle__text">{{ categoryFilter$.pluck('text') | async }}</span>
-                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-down.svg" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
-                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
-                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="../../assets/icons/close-green.svg" alt="close" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-down.svg" i18n-alt="expand category dropdown@@9fc1e4b44da73e049a77018162a5fd12" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" i18n-alt="collapse category dropdown@@0ce9f3e4a465a29ca15eb50a01f21508" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
+                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="../../assets/icons/close-green.svg" i18n-alt="reset category selection@@1eeed920b5a45b3678de786bf2e0748a" alt="reset" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
             </div>
 
             <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
@@ -16,6 +16,6 @@
         <gn-video-panel-list [videos]="videos$ | async" [navigates]="true"></gn-video-panel-list>
 
         <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)" [ngClass]="{'button--loading': loading$ | async}" *ngIf="!(loading$ | async)" i18n="The text for the load more button of the Library page videos section@@dc5e40c592f0ce0f2b4cb80d13ea4e88">LOAD MORE</button>
-        <img src="../../assets/icons/spinner.gif" alt="loading" class="button__activity-indicator" *ngIf="loading$ | async">
+        <img src="../../assets/icons/spinner.gif" i18n-alt="loading icon@@a91e51cea70873729bbf8c93e9acde65" alt="loading" class="button__activity-indicator" *ngIf="loading$ | async">
     </section>
 </main>

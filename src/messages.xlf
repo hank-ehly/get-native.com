@@ -347,6 +347,15 @@
         </context-group>
         <note priority="1" from="description">The title for the dashboard videos section</note>
       </trans-unit>
+      <trans-unit id="14bd1e219636451e28b4f0d20069ea1b" datatype="html">
+        <source>expand</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">expand image</note>
+      </trans-unit>
       <trans-unit id="da62c06d98499331f85421b712823185" datatype="html">
         <source>LOAD MORE</source>
         <target/>
@@ -374,14 +383,59 @@
         </context-group>
         <note priority="1" from="description">The title for the dashboard answers section</note>
       </trans-unit>
+      <trans-unit id="ae49e7a78da9ed248fba4f55ba70c101" datatype="html">
+        <source>LAST 30 DAYS</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Answers from last 30 days</note>
+      </trans-unit>
+      <trans-unit id="f6bc286cddc198146488c8f3cbcfd98b" datatype="html">
+        <source>LAST 60 DAYS</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <note priority="1" from="description">Answers from last 60 days</note>
+      </trans-unit>
+      <trans-unit id="a2359e2fb9cb31060fcb81f1bffcbd8f" datatype="html">
+        <source>LAST YEAR</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">Answers from last year</note>
+      </trans-unit>
+      <trans-unit id="464c8e7821834261937da3fc871b622f" datatype="html">
+        <source>ALL TIME</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <note priority="1" from="description">All from any time</note>
+      </trans-unit>
       <trans-unit id="d4d96c1a160bc58db2b6142d2806507e" datatype="html">
         <source>LOAD MORE</source>
         <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">The text for the dashboard answers section load more button</note>
+      </trans-unit>
+      <trans-unit id="227bdf07ff892ecd94e958f804bd5b07" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 day} other {<x id="INTERPOLATION"/> days} }</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/stats/stats.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">number of consecutive days studied</note>
       </trans-unit>
       <trans-unit id="31d328eceb53232935a2224d0741291a" datatype="html">
         <source>CURRENT STREAK</source>
@@ -400,6 +454,15 @@
           <context context-type="linenumber">10</context>
         </context-group>
         <note priority="1" from="description">The title for the user total study sessions stat</note>
+      </trans-unit>
+      <trans-unit id="cac8d7cae367c8d2658f121a0690756e" datatype="html">
+        <source>{VAR_PLURAL, plural, =1 {1 day} other {<x id="INTERPOLATION"/> days} }</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/stats/stats.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">longest number of consecutive days studied</note>
       </trans-unit>
       <trans-unit id="83216013757444e06ec23357f6a4b774" datatype="html">
         <source>LONGEST STREAK</source>
