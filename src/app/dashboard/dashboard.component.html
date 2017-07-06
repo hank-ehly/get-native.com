@@ -5,9 +5,9 @@
 
             <div class="dropdown-toggle">
                 <span class="dropdown-toggle__text">{{ categoryFilter$.pluck('text') | async }}</span>
-                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-down.svg" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
-                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
-                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="../../assets/icons/close-green.svg" alt="close" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-down.svg" i18n-alt="expand dropdown@@14bd1e219636451e28b4f0d20069ea1b" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
+                <img class="dropdown-toggle__icon" src="../../assets/icons/arrow-up.svg" i18n-alt="collapse dropdown@@f74c79343cda783697a2db9d5d5cfab5" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
+                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="../../assets/icons/close-green.svg" i18n-alt="reset dropdown selection@@b5e764ff26da3bba591d4aecb626c02b" alt="reset" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
             </div>
 
             <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
@@ -34,7 +34,10 @@
         <header class="section-header">
             <h1 class="section-header__title" i18n="The title for the dashboard answers section@@bd47e707a777e51ac0f4981e513adf06">Answers</h1>
             <ul class="section-header__toggle-button-frame">
-                <li *ngFor="let filter of answerFilters" class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === filter.value}" (click)="filterAnswers.next(filter.value)">{{ filter.text }}</li>
+                <li  class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 30}" (click)="filterAnswers.next(30)" i18n="Answers from last 30 days@@ae49e7a78da9ed248fba4f55ba70c101">LAST 30 DAYS</li>
+                <li  class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 60}" (click)="filterAnswers.next(60)" i18n="Answers from last 60 days@@f6bc286cddc198146488c8f3cbcfd98b">LAST 60 DAYS</li>
+                <li  class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 365}" (click)="filterAnswers.next(365)" i18n="Answers from last year@@a2359e2fb9cb31060fcb81f1bffcbd8f">LAST YEAR</li>
+                <li  class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === null}" (click)="filterAnswers.next(null)" i18n="All from any time@@464c8e7821834261937da3fc871b622f">ALL TIME</li>
             </ul>
         </header>
 

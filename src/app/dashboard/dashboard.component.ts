@@ -91,13 +91,6 @@ export class DashboardComponent extends VideoSearchComponent {
         });
     });
 
-    answerFilters = [
-        {text: 'LAST 30 DAYS', value: 30},
-        {text: 'LAST 60 DAYS', value: 60},
-        {text: 'LAST YEAR',    value: 365},
-        {text: 'ALL TIME',     value: null}
-    ];
-
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
                 private dateService: UTCDateService, private session: StudySessionService, protected categoryList: CategoryListService) {
         super(logger, http, navbar, user, categoryList);
