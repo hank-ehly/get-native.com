@@ -4,12 +4,12 @@
         <input id="email" type="email" name="email" class="input" [readonly]="!(isEditing$|async)" [placeholder]="user?.email" [(ngModel)]="emailModel" required [pattern]="emailRegex" [gnFocus]="isEditing$ | async">
 
         <div class="form__button-group">
-            <button class="button button--opaque" *ngIf="!(isEditing$|async)" (click)="isEditing$.next(true)" [disabled]="!user.email_verified" title="Confirm current email address before updating." i18n="general settings edit email button|The title text of general settings button for enabling email editing@@e19141a6936b94673dedaf85e0ebdd98">EDIT</button>
+            <button class="button button--opaque" *ngIf="!(isEditing$|async)" (click)="isEditing$.next(true)" [disabled]="!user.email_verified" title="Confirm current email address before updating." i18n="The title text of general settings button for enabling email editing@@e19141a6936b94673dedaf85e0ebdd98">EDIT</button>
         </div>
 
         <div class="form__button-group" *ngIf="isEditing$ | async">
-            <button class="button button--opaque" type="submit" [disabled]="!emailForm.valid" i18n="save email button text|The text for the general settings save email button@@3ab339c5820f8680c1f7740e43a15337">SAVE</button>
-            <button class="button button--hollow form__cancel-button" (click)="isEditing$.next(false)" i18n="cancel email edit button|The title for the general settings cancel email modifications button@@be053fa70b16fd97c1fa6c44f705d9eb">CANCEL</button>
+            <button class="button button--opaque" type="submit" [disabled]="!emailForm.valid" i18n="The text for the general settings save email button@@3ab339c5820f8680c1f7740e43a15337">SAVE</button>
+            <button class="button button--hollow form__cancel-button" (click)="isEditing$.next(false)" i18n="The title for the general settings cancel email modifications button@@be053fa70b16fd97c1fa6c44f705d9eb">CANCEL</button>
         </div>
     </div>
 </form>
@@ -21,16 +21,16 @@
 
 <!-- todo: You can click this as many times as you want -->
 <div *ngIf="!user.email_verified">
-    <button (click)="onClickResend()" i18n="resend confirmation email button|The text for the button allowing users to resend their account confirmation email@@d10991fa81cf964182d36b780db8aab3">Resend Confirmation Email</button>
+    <button (click)="onClickResend()" i18n="The text for the button allowing users to resend their account confirmation email@@d10991fa81cf964182d36b780db8aab3">Resend Confirmation Email</button>
 </div>
 
 <div class="default-study-language">
-    <label class="label default-study-language__label" i18n="default study language label|The text for the label denoting the user default study language select box@@a3da8af7fc23ec0108242a67658095e0">Default Study Language</label>
+    <label class="label default-study-language__label" i18n="The text for the label denoting the user default study language select box@@a3da8af7fc23ec0108242a67658095e0">Default Study Language</label>
     <gn-select (selection$)="updateDefaultStudyLanguage($event)" [options]="studyLanguageOptions" [selected]="user.default_study_language.code"></gn-select>
 </div>
 
 <div class="interface-language">
-    <label class="label interface-language__label" i18n="interface language label|The text for the label denoting the user interface language preference select box@@3fd49dede7fd589daa904a81db2541f1">Interface Language</label>
+    <label class="label interface-language__label" i18n="The text for the label denoting the user interface language preference select box@@3fd49dede7fd589daa904a81db2541f1">Interface Language</label>
     <gn-select (selection$)="updateInterfaceLanguage($event)" [options]="interfaceLanguageOptions" [selected]="user.interface_language.code"></gn-select>
 </div>
 
@@ -38,20 +38,20 @@
 
 <form class="form password-form" #passwordForm="ngForm" (submit)="onSubmitPassword()" [gnMatch]="['new-password', 'confirm-password']">
     <div class="form__group">
-        <label for="current-password" class="label" i18n="current password label|The label text for the current password input field@@a0b0162ac3b793da796b69e9a980a78f">Current Password</label>
+        <label for="current-password" class="label" i18n="The label text for the current password input field@@a0b0162ac3b793da796b69e9a980a78f">Current Password</label>
         <input id="current-password" class="input" type="password" name="current-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.current">
     </div>
 
     <div class="form__group">
-        <label for="new-password" class="label" i18n="new password label|The label text for the new password input field@@424d76341775773f988203365281b42c">New Password</label>
+        <label for="new-password" class="label" i18n="The label text for the new password input field@@424d76341775773f988203365281b42c">New Password</label>
         <input id="new-password" class="input" type="password" name="new-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.replace">
         <gn-password-strength [password]="passwordModel.replace"></gn-password-strength>
     </div>
 
     <div class="form__group">
-        <label for="confirm-password" class="label" i18n="confirm new password label|The label text for the confirm new password input field@@4733a1332d97eac914f73c262c6201a3">Confirm New Password</label>
+        <label for="confirm-password" class="label" i18n="The label text for the confirm new password input field@@4733a1332d97eac914f73c262c6201a3">Confirm New Password</label>
         <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.confirm">
     </div>
 
-    <button class="button button--opaque form__button" type="submit" [disabled]="!passwordForm.valid" i18n="update password form submit button|The submit button text for the general settings update password form@@14674c0f8817bb7e37470b6bc7ff73b6">UPDATE</button>
+    <button class="button button--opaque form__button" type="submit" [disabled]="!passwordForm.valid" i18n="The submit button text for the general settings update password form@@14674c0f8817bb7e37470b6bc7ff73b6">UPDATE</button>
 </form>
