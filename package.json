@@ -15,7 +15,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "i18n": "ng xi18n",
-        "random-hash": "node bin/random-hash.js"
+        "random-hash": "/usr/bin/env node bin/random-hash.js"
     },
     "private": true,
     "dependencies": {
@@ -37,11 +37,12 @@
         "zone.js": "^0.8.4"
     },
     "devDependencies": {
-        "@angular/cli": "^1.2.0",
+        "@angular/cli": "1.2.0",
         "@angular/compiler-cli": "^4.0.0",
         "@angular/language-service": "^4.0.0",
-        "@types/jasmine": "2.5.45",
-        "@types/node": "^6.0.78",
+        "@types/jasmine": "~2.5.53",
+        "@types/jasminewd2": "~2.0.2",
+        "@types/node": "~6.0.60",
         "codelyzer": "~3.0.1",
         "jasmine-core": "~2.6.2",
         "jasmine-spec-reporter": "~4.1.0",
