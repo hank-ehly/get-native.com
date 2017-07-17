@@ -121,6 +121,8 @@ $column-width: ($main-width - 30px) / 2;
   height: 72px;
   object-fit: cover;
   width: 72px;
+  /* This prevents the <img> from collapsing */
+  min-width: 72px;
 }
 
 .speaker__info {
