@@ -26,6 +26,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'gn-library-detail',
@@ -44,7 +45,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     subscriptions: Subscription[] = [];
 
-    video$ = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
+    video$: Observable<Video> = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
         return this.http.request(APIHandle.VIDEO, {
             params: {
                 id: id
