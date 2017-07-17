@@ -8,16 +8,11 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
-import { environment } from '../../../environments/environment';
-
-import * as _ from 'lodash';
 import { NavbarService } from '../../core/navbar/navbar.service';
+import { environment } from '../../../environments/environment';
 import { Logger } from '../../core/logger/logger';
 
-interface Faq {
-    title: string;
-    body: string;
-}
+import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-help',
@@ -44,33 +39,6 @@ interface Faq {
 export class HelpComponent implements OnInit {
     moderator: string = environment.moderator;
     expandedFaqIndices: number[] = [];
-
-    faqs: Faq[] = [
-        {
-            title: 'First FAQ',
-            body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate,
-                dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates
-                voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias
-                consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident
-                quod tenetur voluptates voluptatibus? Cupiditate, est?`
-        },
-        {
-            title: 'Second FAQ',
-            body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate,
-                dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates
-                voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias
-                consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident
-                quod tenetur voluptates voluptatibus? Cupiditate, est?`
-        },
-        {
-            title: 'Third FAQ',
-            body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias consequatur cupiditate,
-                dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident quod tenetur voluptates
-                voluptatibus? Cupiditate, est? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias
-                consequatur cupiditate, dolores eos esse ex in inventore ipsam laudantium odio odit possimus provident
-                quod tenetur voluptates voluptatibus? Cupiditate, est?`
-        }
-    ];
 
     constructor(private logger: Logger, private navbar: NavbarService) {
     }

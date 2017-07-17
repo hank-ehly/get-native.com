@@ -8,13 +8,13 @@
         </header>
 
         <ul class="faqs">
-            <li class="faqs__faq" *ngFor="let faq of faqs; let i = index">
+            <li class="faqs__faq">
                 <div class="faqs__faq-header">
-                    <img src="../../../assets/icons/chevron.svg" alt="chevron" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(i)" [@rotation]="chevronRotationForFaqAtIndex(i)">
-                    <span class="faqs__faq-number" (click)="toggleFaqAtIndex(i)">{{ i + 1 | number:'2.0-0' }}</span>
-                    <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(i)">{{ faq.title }}</span>
+                    <img src="../../../assets/icons/chevron.svg" alt="chevron" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(0)" [@rotation]="chevronRotationForFaqAtIndex(0)">
+                    <span class="faqs__faq-number" (click)="toggleFaqAtIndex(0)">01</span>
+                    <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(0)">Is getnative free?</span>
                 </div>
-                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(i)" [@visible]="isFaqExpandedAtIndex(i)">{{ faq.body }}</p>
+                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(0)" [@visible]="isFaqExpandedAtIndex(0)">getnative is currently a free service; however, this may change in the future. If such a change were ever to occur, we would notify you well in advance.</p>
             </li>
         </ul>
     </section>
