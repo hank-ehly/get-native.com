@@ -10,6 +10,11 @@
   width: (($main-width - 60px) / 3);
 }
 
+.video-panel__img {
+  width: 102%;
+  transform: translateX(-1%);
+}
+
 .video-panel__overlay {
   @include border-right-radius(10px);
   // prevents Safari flickering during hover

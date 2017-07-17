@@ -1,5 +1,5 @@
 <div class="video-panel">
-    <img [src]="video?.picture_url" alt="video-thumbnail">
+    <img [src]="video?.picture_url" alt="video-thumbnail" class="video-panel__img">
 
     <div class="video-panel__overlay" [ngClass]="{'video-panel__overlay_link': !controls}" (click)="onClickOverlay()">
         <div class="controls" *ngIf="controls">
