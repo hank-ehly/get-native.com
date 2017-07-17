@@ -29,12 +29,12 @@
         </div>
     </ng-container>
 
-    <nav class="navbar__nav" *ngIf="!authenticated">
+    <nav class="navbar__nav navbar__menu--right" *ngIf="!authenticated">
         <a class="link navbar__link navbar__link_help" [routerLink]="'help'" i18n="The text for the navbar link to the help/contact-us page@@2134cc75d316e3aea408a40b6853656e">Help</a>
         <a class="link navbar__link navbar__link_login" href="" (click)="onShowLoginModal($event)" i18n="sign in/up button|The navbar sign in/up button text@@f34c98dc76d5353786f6c2983b39deeb">Sign in / Sign up</a>
     </nav>
 
-    <ul class="navbar__menu navbar__menu_right" *ngIf="authenticated">
+    <ul class="navbar__menu navbar__menu--right navbar__menu--authenticated" *ngIf="authenticated">
         <li>
             <ng-container *ngIf="displayMagnifyingGlassEmitted$ | async">
                 <img class="navbar__menu-icon navbar__menu-icon--search" src="../../../assets/icons/search.svg" alt="search" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
