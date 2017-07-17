@@ -3,8 +3,7 @@
         <img class="navbar__logo" src="../../../assets/icons/logo.svg" alt="logo" [routerLink]="'/'">
     </div>
 
-    <div class="navbar__menu navbar__menu_center navbar__menu_center-search" *ngIf="authenticated && (searchBarVisible$ | async)"
-         [@slideInLeftOutRight]>
+    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && (searchBarVisible$ | async)" [@slideInLeftOutRight]>
         <label for="search-bar" class="sr-only" i18n="The label text for the navbar search field@@4b5f38ab4ccac45e6309dd0d8a4f7844">Search</label>
         <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." [gnFocus]="searchBarVisible$ | async" maxlength="100" (input)="updateQuery($event)">
     </div>

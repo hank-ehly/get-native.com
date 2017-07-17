@@ -1,5 +1,9 @@
 @import '../../../styles/core';
 
+:host {
+  height: 30px;
+}
+
 .switch {
   @include border-radius(30px);
   background: $aqua-haze;

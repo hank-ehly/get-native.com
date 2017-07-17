@@ -13,6 +13,9 @@
   right: 0;
   width: 120px;
   z-index: 1;
+  @media screen and (max-width: $breakpoint-md) {
+    left: $breakpoint-md - 150px
+  }
 }
 
 .toolbar__tooltip-languages {

@@ -28,10 +28,10 @@ import * as _ from 'lodash';
         trigger('slideInLeftOutRight', [
             transition(':enter', [
                 style({opacity: 0, transform: 'translateX(300px)'}),
-                animate('500ms ease', style({opacity: 1, transform: 'translateX(0)'}))
+                animate('500ms ease', style({opacity: 1, transform: 'none'}))
             ]),
             transition(':leave', [
-                style({opacity: 1, transform: 'translateX(0)'}),
+                style({opacity: 1, transform: 'none'}),
                 animate('400ms ease', style({opacity: 0, transform: 'translateX(300px)'}))
             ])
         ]),
