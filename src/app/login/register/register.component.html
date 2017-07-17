@@ -25,7 +25,7 @@
             <input id="password-confirm" type="password" name="password-confirm" tabindex="3" class="input tabbable" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
         </div>
 
-        <button type="submit" tabindex="4" class="button button--opaque form__button tabbable" [disabled]="!form.valid" i18n="The text for the submit button of the user registration form@@76547a2df32997f1cb7ee0dc185a421c">SIGN UP</button>
+        <button type="submit" tabindex="4" class="button button--opaque form__button tabbable" [disabled]="form.invalid" i18n="The text for the submit button of the user registration form@@76547a2df32997f1cb7ee0dc185a421c">SIGN UP</button>
     </form>
 
     <footer class="footer">

@@ -22,11 +22,11 @@ import * as _ from 'lodash';
     styleUrls: ['results.component.scss']
 })
 export class ResultsComponent implements OnInit, OnDestroy {
-    stats$         = this.route.data.pluck('stats');
+    stats$: Observable<{ maximum_words: number, maximum_wpm: number, total_time_studied: number }> = this.route.data.pluck('stats');
 
     currentSession = this.session.current;
-    timeStudied    = _.round(this.currentSession.session.study_time / 60, 1);
-    language       = this.lang.codeToName(this.currentSession.video.language.code);
+    timeStudied = _.round(this.currentSession.session.study_time / 60, 1);
+    language = this.lang.codeToName(this.currentSession.video.language.code);
 
     totalTimeStudied$: Observable<number> = this.stats$
         .pluck('total_time_studied')

@@ -1,6 +1,6 @@
 <header class="navbar">
     <div class="navbar__logo-frame">
-        <img class="navbar__logo" src="../../../assets/icons/logo.svg" alt="logo" [routerLink]="'/'">
+        <img class="navbar__logo" src="../../../assets/icons/logo.svg" i18n-alt="Alt text for navbar logo image@@4c05ee27cb4a24edd0471b4e81bf6782" alt="logo" [routerLink]="'/'">
     </div>
 
     <ng-container *ngIf="authenticated">
@@ -11,7 +11,7 @@
 
         <div class="navbar__menu navbar__menu_center" *ngIf="!(searchBarVisible$ | async)" [@fadeInOut]>
             <div class="back-button-frame" *ngIf="backButtonTitle$ | async">
-                <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back" (click)="onClickBack()">
+                <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" i18n-alt="Alt text for navbar back button image@@ea3712afdf8cac823ca20f19e995c610" alt="back" (click)="onClickBack()">
                 <span class="back-button-label">{{ backButtonTitle$ | async }}</span>
             </div>
 
@@ -22,9 +22,7 @@
             </div>
 
             <div class="study-options" *ngIf="studyOptionsVisible$ | async">
-                <button class="button study-option study-option_save" (click)="onClickQueue()" [disabled]="!(studyOptionsEnabled$ | async)">
-                    {{ queueButtonTitle$ | async }}
-                </button>
+                <button class="button study-option study-option_save" (click)="onClickQueue()" [disabled]="!(studyOptionsEnabled$ | async)">{{ queueButtonTitle$ | async }}</button>
             </div>
         </div>
     </ng-container>
@@ -37,20 +35,20 @@
     <ul class="navbar__menu navbar__menu--right navbar__menu--authenticated" *ngIf="authenticated">
         <li>
             <ng-container *ngIf="displayMagnifyingGlassEmitted$ | async">
-                <img class="navbar__menu-icon navbar__menu-icon--search" src="../../../assets/icons/search.svg" alt="search" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
-                <img class="navbar__menu-icon navbar__menu-icon--close" src="../../../assets/icons/close-dark.svg" alt="close" *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()">
+                <img class="navbar__menu-icon navbar__menu-icon--search" src="../../../assets/icons/search.svg" i18n-alt="Alt text for navbar magnifying glass search icon@@ee5d8dd7d8cc15235c182818e9fa4e45" alt="search" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
+                <img class="navbar__menu-icon navbar__menu-icon--close" src="../../../assets/icons/close-dark.svg" i18n-alt="Alt text for navbar close-search button icon@@05a9999694c0f7a90e7f166c2e9daae4" alt="close" *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()">
             </ng-container>
             <div class="navbar__menu-icon" *ngIf="!(displayMagnifyingGlassEmitted$ | async)"></div>
         </li>
         <li>
             <span class="navbar__menu-icon-frame">
                 <!-- TODO: Remove mock (click) -->
-                <img (click)="toggleNotificationIndicator()" class="navbar__menu-icon navbar__menu-icon_notification" src="../../../assets/icons/notification.svg" alt="notification">
+                <img (click)="toggleNotificationIndicator()" class="navbar__menu-icon navbar__menu-icon_notification" src="../../../assets/icons/notification.svg" i18n-alt="Alt text for navbar notifications icon@@e5775cfb82679bd0ef3932053516430c" alt="notifications">
                 <span class="notification-indicator" [ngClass]="{'notification-indicator--unread': hasUnreadNotifications}"></span>
             </span>
         </li>
         <li>
-            <img [routerLink]="'settings'" class="navbar__menu-icon navbar__menu-icon_account" src="../../../assets/mock/man-smiling.jpg" alt="account">
+            <img [routerLink]="'settings'" class="navbar__menu-icon navbar__menu-icon_account" src="../../../assets/mock/man-smiling.jpg" i18n-alt="Alt text for navbar settings icon@@8d72b0824ba2c5b0aa9fdfdd481c39b7" alt="settings">
         </li>
     </ul>
 </header>

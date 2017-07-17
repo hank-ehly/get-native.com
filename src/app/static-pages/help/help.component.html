@@ -1,20 +1,20 @@
 <main class="main">
-    <section class="section section_about">
+    <section class="section section--faqs">
         <header class="section-header">
             <div class="section-header__icon-frame">
-                <img class="section-header__icon" src="../../../assets/icons/help-about.svg" alt="about">
+                <img class="section-header__icon" src="../../../assets/icons/help-faqs.svg" i18n-alt="faq section icon alternative text@@327ad2dded8e635e33cbe52854e7d9a7" alt="faqs">
             </div>
-            <h3 class="section-header__title" i18n="The header title for the help page about section@@b6f21c54a7d0d1f946a944795be5c914">About getnative</h3>
+            <h3 class="section-header__title" i18n="The header title for the help page FAQ section@@b6f21c54a7d0d1f946a944795be5c914">Frequently Asked Questions</h3>
         </header>
 
         <ul class="faqs">
             <li class="faqs__faq">
                 <div class="faqs__faq-header">
-                    <img src="../../../assets/icons/chevron.svg" alt="chevron" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(0)" [@rotation]="chevronRotationForFaqAtIndex(0)">
+                    <img src="../../../assets/icons/chevron.svg" i18n-alt="toggle faq visibility icon alternative text@@b91de74cb8d0742dba9c80ca10276d02" alt="toggle" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(0)" [@rotation]="chevronRotationForFaqAtIndex(0)">
                     <span class="faqs__faq-number" (click)="toggleFaqAtIndex(0)">01</span>
-                    <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(0)">Is getnative free?</span>
+                    <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(0)" i18n="FAQ (1) Question@@821bdafc53e0c1ea132ad4e91542cae2">Is getnative free?</span>
                 </div>
-                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(0)" [@visible]="isFaqExpandedAtIndex(0)">getnative is currently a free service; however, this may change in the future. If such a change were ever to occur, we would notify you well in advance.</p>
+                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(0)" [@visible]="isFaqExpandedAtIndex(0)" i18n="FAQ (1) Answer@@c11c85dfe124e49b2c76f8a0701c6de5">getnative is currently a free service; however, this may change in the future. If such a change were ever to occur, we would notify you well in advance.</p>
             </li>
         </ul>
     </section>
@@ -22,11 +22,10 @@
     <section class="section section_contact">
         <header class="section-header">
             <div class="section-header__icon-frame">
-                <img class="section-header__icon" src="../../../assets/icons/help-mail.svg" alt="mail">
+                <img class="section-header__icon" src="../../../assets/icons/help-mail.svg" i18n-alt="contact-us icon alternative text@@f1b1ac46406bc8d0449168435069b724" alt="contact">
             </div>
             <h3 class="section-header__title" i18n="The header title for the help page contact-us section@@84a90cc1f49cf547398d42148f47b1dd">Contact</h3>
         </header>
-
-        <p class="section__paragraph">For all inquiries, please contact us at <a class="link" href="mailto:{{ moderator }}">{{ moderator }}</a>.</p>
+        <p class="section__paragraph" i18n="Help page contact-us section instructions@@c05d50ea8308c63cbac4b93cf2e14b4e">For all inquiries, please contact us at <a class="link" href="mailto:admin@get-native.com">admin@get-native.com</a>.</p>
     </section>
 </main>

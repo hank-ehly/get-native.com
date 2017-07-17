@@ -1,7 +1,7 @@
 @import "../../../styles/core";
 
 .main                   { @include debug-background-color($dc01); }
-.section_about          { @include debug-background-color($dc02); }
+.section--faqs          { @include debug-background-color($dc02); }
 .section_contact        { @include debug-background-color($dc03); }
 .section-header__icon   { @include debug-background-color($dc04); }
 .faqs__chevron-icon     { @include debug-background-color($dc05); }

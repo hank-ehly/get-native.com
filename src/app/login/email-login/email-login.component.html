@@ -8,7 +8,6 @@
     </ul>
 
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="form">
-
         <div class="form__group">
             <label class="label" for="email" i18n="The label for the email login form email input@@6c28d7b02be2de47ba84156c78c84335">Email</label>
             <input id="email" [pattern]="emailRegex" class="input tabbable" type="email" name="email" tabindex="1" [(ngModel)]="credentials.email" required>
