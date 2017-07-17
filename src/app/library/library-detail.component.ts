@@ -60,7 +60,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.logger.debug(this, 'OnInit');
         this.navbar.hideMagnifyingGlass();
 
-        const params = {
+        const params: { params: { id: number } } = {
             params: {
                 id: this.videoId
             }

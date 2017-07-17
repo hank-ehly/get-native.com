@@ -32,7 +32,7 @@
             <hr>
 
             <div class="column__row speaker__row">
-                <img class="speaker-thumbnail" [src]="((video$ | async)?.speaker)?.picture_url" [alt]="((video$ | async)?.speaker)?.name">
+                <img class="speaker-thumbnail" [src]="((video$ | async)?.speaker).picture_url || ''" [alt]="((video$ | async)?.speaker)?.name">
                 <div class="speaker__info">
                     <h6 class="speaker__name-header">{{ ((video$ | async)?.speaker)?.name }}</h6>
                     <div class="speaker__description-text">{{ ((video$ | async)?.speaker)?.description }}</div>
