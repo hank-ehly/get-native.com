@@ -2,16 +2,18 @@
     <header class="header">
         <div class="header__thumbnail-picker">
             <label for="file" class="header__file-input-label">
-                <img class="header__thumbnail" src="../../assets/mock/man-smiling.jpg" alt="user-thumbnail">
+                <img class="header__thumbnail" src="../../assets/mock/man-smiling.jpg" i18n-alt="Alt text for settings page user thumbnail image@@9f55b08839a180df1d65398a9079d37e" alt="user picture">
             </label>
 
             <input id="file" type="file" name="file" class="header__file-input">
         </div>
 
+        <!-- todo: i18n -->
         <h6 class="header__title">{{ selectedTabDescription }}</h6>
     </header>
 
     <ul class="tabs">
+        <!-- todo: i18n -->
         <li class="tab" *ngFor="let tab of tabs" [routerLink]="[tab.path]" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}">{{ tab.name | uppercase }}</li>
     </ul>
 

@@ -34,10 +34,10 @@
         <header class="section-header">
             <h1 class="section-header__title" i18n="The title for the dashboard answers section@@bd47e707a777e51ac0f4981e513adf06">Answers</h1>
             <ul class="section-header__toggle-button-frame">
-                <li  class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 30}" (click)="filterAnswers.next(30)" i18n="Answers from last 30 days@@ae49e7a78da9ed248fba4f55ba70c101">LAST 30 DAYS</li>
-                <li  class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 60}" (click)="filterAnswers.next(60)" i18n="Answers from last 60 days@@f6bc286cddc198146488c8f3cbcfd98b">LAST 60 DAYS</li>
-                <li  class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 365}" (click)="filterAnswers.next(365)" i18n="Answers from last year@@a2359e2fb9cb31060fcb81f1bffcbd8f">LAST YEAR</li>
-                <li  class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === null}" (click)="filterAnswers.next(null)" i18n="All from any time@@464c8e7821834261937da3fc871b622f">ALL TIME</li>
+                <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 30}" (click)="filterAnswers.next(30)" i18n="Answers from last 30 days@@ae49e7a78da9ed248fba4f55ba70c101">LAST 30 DAYS</li>
+                <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 60}" (click)="filterAnswers.next(60)" i18n="Answers from last 60 days@@f6bc286cddc198146488c8f3cbcfd98b">LAST 60 DAYS</li>
+                <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 365}" (click)="filterAnswers.next(365)" i18n="Answers from last year@@a2359e2fb9cb31060fcb81f1bffcbd8f">LAST YEAR</li>
+                <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === null}" (click)="filterAnswers.next(null)" i18n="All from any time@@464c8e7821834261937da3fc871b622f">ALL TIME</li>
             </ul>
         </header>
 
