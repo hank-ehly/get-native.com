@@ -20,8 +20,8 @@
 </div>-->
 
 <!-- todo: You can click this as many times as you want -->
-<div *ngIf="!user.email_verified">
-    <button (click)="onClickResend()" i18n="The text for the button allowing users to resend their account confirmation email@@d10991fa81cf964182d36b780db8aab3">Resend Confirmation Email</button>
+<div class="resend-confirmation-email" *ngIf="!user.email_verified">
+    <button (click)="onClickResend()" class="button button--opaque" i18n="The text for the button allowing users to resend their account confirmation email@@d10991fa81cf964182d36b780db8aab3">Resend Confirmation Email</button>
 </div>
 
 <div class="default-study-language">

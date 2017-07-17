@@ -35,11 +35,6 @@
 .toolbar__language-label {
   cursor: pointer;
   align-self: flex-end;
-  transition: font-size 0.2s;
-}
-
-.toolbar__tooltip-languages .toolbar__language-label:hover {
-  font-size: 13px;
 }
 
 .toolbar__language-label_selected {
