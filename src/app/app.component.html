@@ -5,7 +5,7 @@
 
 <router-outlet></router-outlet>
 
-<gn-footer></gn-footer>
+<gn-footer *ngIf="!(authenticated$ | async)"></gn-footer>
 
 <gn-compliance></gn-compliance>
 <gn-login [isVisible]="false"></gn-login>
