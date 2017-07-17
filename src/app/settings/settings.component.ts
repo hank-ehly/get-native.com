@@ -7,6 +7,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
+import { NavbarService } from '../core/navbar/navbar.service';
 import { Logger } from '../core/logger/logger';
 
 @Component({
@@ -18,7 +19,7 @@ export class SettingsComponent implements OnInit {
     tabs: any[];
     selectedTab: any;
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private navbar: NavbarService) {
         this.tabs = [
             {name: 'general', path: './'},
             {name: 'security', path: 'security'},
@@ -38,5 +39,6 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit() {
         this.logger.debug(this, 'ngOnInit()');
+        this.navbar.hideMagnifyingGlass();
     }
 }

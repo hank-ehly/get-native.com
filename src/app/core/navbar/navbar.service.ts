@@ -27,9 +27,11 @@ export class NavbarService {
 
     // sources
     progressBarVisibleSource: Subject<boolean> = new Subject<boolean>();
+    private emitDisplayMagnifyingGlass$: Subject<boolean>;
 
     // emitters
     progressBarVisibleEmitted$: Observable<boolean> = this.progressBarVisibleSource.asObservable();
+    displayMagnifyingGlassEmitted$: Observable<boolean>;
 
     progress: any = {
         countdownEmitted$: new BehaviorSubject<number>(0),
@@ -51,7 +53,18 @@ export class NavbarService {
         this.progressBarVisibleSource.next(false);
     }
 
+    showMagnifyingGlass(): void {
+        this.emitDisplayMagnifyingGlass$.next(true);
+    }
+
+    hideMagnifyingGlass(): void {
+        this.emitDisplayMagnifyingGlass$.next(false);
+    }
+
     constructor() {
         this.searchBarVisible$.mapTo('').subscribe(this.query$);
+
+        this.emitDisplayMagnifyingGlass$ = new Subject();
+        this.displayMagnifyingGlassEmitted$ = this.emitDisplayMagnifyingGlass$.asObservable();
     }
 }

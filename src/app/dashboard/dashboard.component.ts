@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/28.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { URLSearchParams } from '@angular/http';
 
@@ -52,11 +52,11 @@ import { Entities } from '../core/entities/entities';
         ])
     ]
 })
-export class DashboardComponent extends VideoSearchComponent {
+export class DashboardComponent extends VideoSearchComponent implements OnInit {
     maxAnswerId: number = null;
 
-    filterAnswers       = new Subject<number>();
-    loadMoreAnswers     = new Subject<number>();
+    filterAnswers = new Subject<number>();
+    loadMoreAnswers = new Subject<number>();
     answerFilterStream$ = this.filterAnswers.startWith(30).distinctUntilChanged();
 
     answers$ = this.studyLanguageCode$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
@@ -95,6 +95,11 @@ export class DashboardComponent extends VideoSearchComponent {
                 private dateService: UTCDateService, private session: StudySessionService, protected categoryList: CategoryListService) {
         super(logger, http, navbar, user, categoryList);
         this.cuedOnly = true;
+    }
+
+    ngOnInit(): void {
+        this.logger.debug(this, 'OnInit');
+        this.navbar.showMagnifyingGlass();
     }
 
     onBegin(studySession: StudySession): void {

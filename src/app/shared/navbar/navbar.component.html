@@ -3,34 +3,31 @@
         <img class="navbar__logo" src="../../../assets/icons/logo.svg" alt="logo" [routerLink]="'/'">
     </div>
 
-    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && (searchBarVisible$ | async)" [@slideInLeftOutRight]>
-        <label for="search-bar" class="sr-only" i18n="The label text for the navbar search field@@4b5f38ab4ccac45e6309dd0d8a4f7844">Search</label>
-        <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." [gnFocus]="searchBarVisible$ | async" maxlength="100" (input)="updateQuery($event)">
-    </div>
-
-    <div class="navbar__menu navbar__menu_center" *ngIf="authenticated && !(searchBarVisible$ | async)" [@fadeInOut]>
-        <div class="back-button-frame" *ngIf="backButtonTitle$ | async">
-            <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back" (click)="onClickBack()">
-            <span class="back-button-label">{{ backButtonTitle$ | async }}</span>
+    <ng-container *ngIf="authenticated">
+        <div class="navbar__menu navbar__menu_center navbar__menu-center--search" *ngIf="searchBarVisible$ | async" [@slideInLeftOutRight]>
+            <label for="search-bar" class="sr-only" i18n="The label text for the navbar search field@@4b5f38ab4ccac45e6309dd0d8a4f7844">Search</label>
+            <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." [gnFocus]="searchBarVisible$ | async" maxlength="100" (input)="updateQuery($event)">
         </div>
 
-        <span class="page-title">{{ title$ | async }}</span>
+        <div class="navbar__menu navbar__menu_center" *ngIf="!(searchBarVisible$ | async)" [@fadeInOut]>
+            <div class="back-button-frame" *ngIf="backButtonTitle$ | async">
+                <img class="navbar__menu-icon navbar__menu-icon_back" src="../../../assets/icons/arrow-back.svg" alt="back" (click)="onClickBack()">
+                <span class="back-button-label">{{ backButtonTitle$ | async }}</span>
+            </div>
 
-        <div class="study-progress-frame" *ngIf="progressBarVisibleEmitted$ | async">
-            <gn-study-progress [progress]="progress"></gn-study-progress>
+            <span class="page-title">{{ title$ | async }}</span>
+
+            <div class="study-progress-frame" *ngIf="progressBarVisibleEmitted$ | async">
+                <gn-study-progress [progress]="progress"></gn-study-progress>
+            </div>
+
+            <div class="study-options" *ngIf="studyOptionsVisible$ | async">
+                <button class="button study-option study-option_save" (click)="onClickQueue()" [disabled]="!(studyOptionsEnabled$ | async)">
+                    {{ queueButtonTitle$ | async }}
+                </button>
+            </div>
         </div>
-
-        <div class="study-options" *ngIf="studyOptionsVisible$ | async">
-            <!--<button class="button button&#45;&#45;opaque study-option study-option_start" (click)="onClickStart()"
-                    [disabled]="!(studyOptionsEnabled$ | async)">
-                START
-            </button>-->
-
-            <button class="button study-option study-option_save" (click)="onClickQueue()" [disabled]="!(studyOptionsEnabled$ | async)">
-                {{ queueButtonTitle$ | async }}
-            </button>
-        </div>
-    </div>
+    </ng-container>
 
     <nav class="navbar__nav" *ngIf="!authenticated">
         <a class="link navbar__link navbar__link_help" [routerLink]="'help'" i18n="The text for the navbar link to the help/contact-us page@@2134cc75d316e3aea408a40b6853656e">Help</a>
@@ -39,8 +36,11 @@
 
     <ul class="navbar__menu navbar__menu_right" *ngIf="authenticated">
         <li>
-            <img class="navbar__menu-icon navbar__menu-icon--search" src="../../../assets/icons/search.svg" alt="search" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
-            <img class="navbar__menu-icon navbar__menu-icon--close" src="../../../assets/icons/close-dark.svg" alt="close" *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()">
+            <ng-container *ngIf="displayMagnifyingGlassEmitted$ | async">
+                <img class="navbar__menu-icon navbar__menu-icon--search" src="../../../assets/icons/search.svg" alt="search" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
+                <img class="navbar__menu-icon navbar__menu-icon--close" src="../../../assets/icons/close-dark.svg" alt="close" *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()">
+            </ng-container>
+            <div class="navbar__menu-icon" *ngIf="!(displayMagnifyingGlassEmitted$ | async)"></div>
         </li>
         <li>
             <span class="navbar__menu-icon-frame">

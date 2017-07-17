@@ -57,6 +57,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
+        this.navbar.hideMagnifyingGlass();
 
         const params = {
             params: {
