@@ -11,7 +11,7 @@
             <div class="column__row video-stats">
                 <div class="video-stats__group video-stats__group_views">
                     <img class="video-stats__icon" src="../../assets/icons/view-circle.svg" i18n-alt="number of views@@45189b700729bdfdb4201330d27efd52" alt="views">
-                    <span class="video-stats__label" i18n="view count label@@f93e0c2af148ade90f69131ac7d8181e">{(video$ | async)?.loop_count, plural, =1 {1 view} other {{{ (video$ | async)?.loop_count | fuzzy }} views}}</span>
+                    <span class="video-stats__label" i18n="view count label@@f93e0c2af148ade90f69131ac7d8181e">{{ (video$ | async)?.loop_count | fuzzy }} views</span>
                 </div>
                 <div class="video-stats__group video-stats__group_likes">
                     <button class="video-stats__button" (click)="likedChange$.next(!liked)" [disabled]="!(video$ | async)">
