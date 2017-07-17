@@ -8,22 +8,23 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/mapTo';
 import * as _ from 'lodash';
 
 export class NavbarService {
-    query$               = new Subject<string>();
+    query$ = new Subject<string>();
 
-    title$               = new Subject<string>();
-    backButtonTitle$     = new BehaviorSubject<string>(null);
-    queueButtonTitle$    = new BehaviorSubject<string>('WAIT..');
+    title$ = new Subject<string>();
+    backButtonTitle$ = new BehaviorSubject<string>(null);
+    queueButtonTitle$ = new BehaviorSubject<string>('WAIT..');
 
     studyOptionsVisible$ = new Subject<boolean>();
-    searchBarVisible$    = new Subject<boolean>();
+    searchBarVisible$ = new Subject<boolean>();
     studyOptionsEnabled$ = new Subject<boolean>();
 
-    onClickQueue$        = new Subject<void>();
-    onClickStart$        = new Subject<void>();
+    onClickQueue$ = new Subject<void>();
+    onClickStart$ = new Subject<void>();
 
     // sources
     progressBarVisibleSource: Subject<boolean> = new Subject<boolean>();
@@ -37,8 +38,8 @@ export class NavbarService {
         countdownEmitted$: new BehaviorSubject<number>(0),
         listeningEmitted$: new BehaviorSubject<number>(0),
         shadowingEmitted$: new BehaviorSubject<number>(0),
-         speakingEmitted$: new BehaviorSubject<number>(0),
-          writingEmitted$: new BehaviorSubject<number>(0)
+        speakingEmitted$: new BehaviorSubject<number>(0),
+        writingEmitted$: new BehaviorSubject<number>(0)
     };
 
     updateQuery(value: string): void {
@@ -65,6 +66,6 @@ export class NavbarService {
         this.searchBarVisible$.mapTo('').subscribe(this.query$);
 
         this.emitDisplayMagnifyingGlass$ = new Subject();
-        this.displayMagnifyingGlassEmitted$ = this.emitDisplayMagnifyingGlass$.asObservable();
+        this.displayMagnifyingGlassEmitted$ = this.emitDisplayMagnifyingGlass$.asObservable().startWith(true);
     }
 }
