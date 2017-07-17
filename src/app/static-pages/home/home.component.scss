@@ -38,6 +38,10 @@
   padding-top: 9px;
   padding-bottom: 7px;
   margin-top: 40px;
+  &:hover {
+    background: $shamrock;
+    color: $white;
+  }
 }
 
 .headline_large-features {
