@@ -80,6 +80,14 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
         this.controlsHidden = false;
     }
 
+    onContextMenu(): boolean {
+        return false;
+    }
+
+    onDoubleClickVideoFrame(): void {
+        this.togglePlayback();
+    }
+
     onMouseLeavePlayerFrame(): void {
         this.hideTooltip();
 
