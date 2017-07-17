@@ -29,6 +29,7 @@
   height: 90px;
   right: 0;
   padding: 0 30px;
+  white-space: nowrap;
 }
 
 .navbar__link {
@@ -110,7 +111,13 @@
   transform: translateX(-20px);
 }
 
-.navbar__menu_right {
+.navbar__menu--right {
+  @media screen and (max-width: $breakpoint-md) {
+    left: $breakpoint-md - 160px
+  }
+}
+
+.navbar__menu--authenticated {
   box-sizing: border-box;
   justify-content: space-between;
   padding: 0 30px 0 20px;
@@ -119,18 +126,15 @@
   top: 0;
   width: 160px;
   z-index: 2;
-  @media screen and (max-width: $breakpoint-md) {
-    left: $breakpoint-md - 160px
-  }
 }
 
-.navbar__menu_right .navbar__menu-icon {
+.navbar__menu--authenticated .navbar__menu-icon {
   cursor: pointer;
   vertical-align: middle;
   width: 18px;
 }
 
-.navbar__menu_right .navbar__menu-icon.navbar__menu-icon_account {
+.navbar__menu--authenticated .navbar__menu-icon.navbar__menu-icon_account {
   @include border-radius(50%);
   height: 30px;
   object-fit: cover;
