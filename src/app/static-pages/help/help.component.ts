@@ -5,12 +5,14 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 import { environment } from '../../../environments/environment';
 
 import * as _ from 'lodash';
+import { NavbarService } from '../../core/navbar/navbar.service';
+import { Logger } from '../../core/logger/logger';
 
 interface Faq {
     title: string;
@@ -39,7 +41,7 @@ interface Faq {
         ])
     ]
 })
-export class HelpComponent {
+export class HelpComponent implements OnInit {
     moderator: string = environment.moderator;
     expandedFaqIndices: number[] = [];
 
@@ -69,6 +71,14 @@ export class HelpComponent {
                 quod tenetur voluptates voluptatibus? Cupiditate, est?`
         }
     ];
+
+    constructor(private logger: Logger, private navbar: NavbarService) {
+    }
+
+    ngOnInit(): void {
+        this.logger.debug(this, 'OnInit');
+        this.navbar.hideMagnifyingGlass();
+    }
 
     toggleFaqAtIndex(i: number): void {
         if (this.isFaqExpandedAtIndex(i)) {

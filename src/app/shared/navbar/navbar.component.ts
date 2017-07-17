@@ -57,6 +57,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     studyOptionsEnabled$ = this.navbar.studyOptionsEnabled$;
     progressBarVisibleEmitted$ = this.navbar.progressBarVisibleEmitted$;
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
+    displayMagnifyingGlassEmitted$ = this.navbar.displayMagnifyingGlassEmitted$.share();
     progress             = this.navbar.progress;
 
     hasUnreadNotifications = false;
