@@ -89,7 +89,17 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onClickVolumeControl(e: MouseEvent): void {
-        if (!['volume-control', 'volume-control__icon'].includes((<HTMLElement>e.target).className)) {
+        const classNameArr: string[] = (<HTMLElement>e.target).className.split(' ');
+        const validTargets = ['volume-control', 'volume-control__icon'];
+
+        let found = false;
+        for (const className of classNameArr) {
+            if (validTargets.includes(className)) {
+                found = true;
+            }
+        }
+
+        if (!found) {
             return;
         }
 
@@ -104,10 +114,12 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onMouseEnterVolumeControl(): void {
+        this.logger.debug(this, 'Mouse entered volume control');
         this.showTooltip();
     }
 
     onMouseLeaveVolumeControl(): void {
+        this.logger.debug(this, 'Mouse left volume control');
         this.hideTooltip(400);
     }
 
@@ -121,16 +133,13 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private showTooltip(): void {
         this.tooltipHidden = false;
-
         if (this.tooltipTimeout) {
             clearTimeout(this.tooltipTimeout);
         }
     }
 
     private hideTooltip(delay?: number): void {
-        this.tooltipTimeout = setTimeout(function () {
-            this.tooltipHidden = true;
-        }, delay || 0);
+        this.tooltipTimeout = setTimeout(() => this.tooltipHidden = true, delay || 0);
     }
 
     private onCurrentTime(timeInSeconds: number): void {
