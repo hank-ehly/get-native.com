@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy, HostBinding } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -22,7 +22,12 @@ import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-app',
-    templateUrl: 'app.component.html'
+    templateUrl: 'app.component.html',
+    styles: [`
+        :host {
+            display: block
+        }
+    `]
 })
 export class AppComponent implements OnInit, OnDestroy {
     authenticated$ = this.user.authenticated$;
@@ -39,6 +44,11 @@ export class AppComponent implements OnInit, OnDestroy {
         .filter(route => route.outlet === 'primary')
         .mergeMap(route => route.data)
         .map(data => data.title);
+
+    /* For footer display */
+    @HostBinding('style.margin-bottom') get x() {
+        return this.user.isAuthenticated() ? '50px' : '240px';
+    }
 
     private subscriptions: Subscription[] = [];
 
