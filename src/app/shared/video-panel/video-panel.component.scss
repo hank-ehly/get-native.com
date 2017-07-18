@@ -144,6 +144,12 @@
   width: 100%;
 }
 
+.footer .footer__video-title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .footer .video-stats {
   display: flex;
   font-size: $font-size-x-small;
