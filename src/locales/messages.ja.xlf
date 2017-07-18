@@ -55,7 +55,7 @@
             </trans-unit>
             <trans-unit id="6335345ee212a722ca9838616830a7f6" datatype="html">
                 <source>© 2016 getnative Inc.</source>
-                <target></target>
+                <target>© 2016 getnative Inc.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
                     <context context-type="linenumber">6</context>
@@ -109,7 +109,7 @@
             </trans-unit>
             <trans-unit id="2134cc75d316e3aea408a40b6853656e" datatype="html">
                 <source>Help</source>
-                <target></target>
+                <target>お問い合わせ</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
                     <context context-type="linenumber">31</context>
@@ -118,7 +118,7 @@
             </trans-unit>
             <trans-unit id="f34c98dc76d5353786f6c2983b39deeb" datatype="html">
                 <source>Sign in / Sign up</source>
-                <target></target>
+                <target>サインイン/サインアップ</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
                     <context context-type="linenumber">32</context>
@@ -193,7 +193,7 @@
             </trans-unit>
             <trans-unit id="978a550dcbfd0e4871241562b01ccd7e" datatype="html">
                 <source>help</source>
-                <target></target>
+                <target>お問い合わせ</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/toolbar/toolbar.component.ts</context>
                     <context context-type="linenumber">15</context>
@@ -987,7 +987,8 @@
                     on getnative All intellectual property rights are reserved. You may view and/or print pages from https://get-native.com
                     for your own personal use subject to restrictions set in these terms and conditions.
                 </source>
-                <target>                    特に明記されていない限り、getnativeおよび/またはそのライセンサは、getnativeに関するすべての資料の知的財産権を所有しています。すべての知的財産権は留保されています。お客様は、これらの利用規約に定められた制限に従って、個人的な使用のためにhttps://get-native.comのページを表示および/または印刷することができます。
+                <target>
+                    特に明記されていない限り、getnativeおよび/またはそのライセンサは、getnativeに関するすべての資料の知的財産権を所有しています。すべての知的財産権は留保されています。お客様は、これらの利用規約に定められた制限に従って、個人的な使用のためにhttps://get-native.comのページを表示および/または印刷することができます。
                 </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1051,21 +1052,21 @@
             </trans-unit>
             <trans-unit id="898cfdbcda7e6b7cd4554a34866b8861" datatype="html">
                 <source>This Agreement shall begin on the date hereof. Certain parts of this website offer the opportunity for users to post
-                     and exchange opinions, information, material and data ('Comments') in areas of the website. getnative does not
-                     screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views
-                     or opinions of getnative, its agents or affiliates. Comments reflect the view and opinion of the person who posts such
-                     view or opinion. To the extent permitted by applicable laws getnative shall not be responsible or liable for the
-                     Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or
-                     posting of and/or appearance of the Comments on this website. getnative reserves the right to monitor all Comments and
-                     to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in
-                     breach of these Terms and Conditions. You warrant and represent that: You are entitled to post the Comments on our
-                     website and have all necessary licenses and consents to do so; The Comments do not infringe any intellectual property
-                     right, including without limitation copyright, patent or trademark, or other proprietary right of any third party; The
-                     Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which
-                     is an invasion of privacy The Comments will not be used to solicit or promote business or custom or present commercial
-                     activities or unlawful activity. You hereby grant to getnative a non-exclusive royalty-free license to use, reproduce,
-                     edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.
-                 </source>
+                    and exchange opinions, information, material and data ('Comments') in areas of the website. getnative does not
+                    screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views
+                    or opinions of getnative, its agents or affiliates. Comments reflect the view and opinion of the person who posts such
+                    view or opinion. To the extent permitted by applicable laws getnative shall not be responsible or liable for the
+                    Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or
+                    posting of and/or appearance of the Comments on this website. getnative reserves the right to monitor all Comments and
+                    to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in
+                    breach of these Terms and Conditions. You warrant and represent that: You are entitled to post the Comments on our
+                    website and have all necessary licenses and consents to do so; The Comments do not infringe any intellectual property
+                    right, including without limitation copyright, patent or trademark, or other proprietary right of any third party; The
+                    Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which
+                    is an invasion of privacy The Comments will not be used to solicit or promote business or custom or present commercial
+                    activities or unlawful activity. You hereby grant to getnative a non-exclusive royalty-free license to use, reproduce,
+                    edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.
+                </source>
                 <target>本契約は本契約書の日付から始まるものとします。このウェブサイトの特定の部分は、ユーザーがウェブサイトの領域に意見、情報、資料およびデータ（「コメント」）を投稿し交換する機会を提供します。
                     getnativeは、ウェブサイトに掲載される前にコメントをスクリーン、編集、公開、レビューすることはありません。コメントはgetnative、その代理店または関連会社の意見や意見を反映しません。コメントは、その意見や意見を投稿する人の意見と意見を反映しています。該当する法律によって許可されている範囲において、getnativeは、コメントやその使用および/または投稿の結果として発生した、または生じた損失コスト、責任、損害または費用について、責任を負いません。このウェブサイトへのコメント。
                     getnativeは、すべてのコメントを監視し、その絶対的な裁量において、本契約条件に違反して不適切または不快であるとみなすコメントを削除する権利を留保します。お客様は、以下のことを保証し、表明するものとします。お客様は、当社のウェブサイトにコメントを掲載し、必要なライセンスと同意を得る権利があります。コメントは、著作権、特許または商標、または第三者のその他の所有権を含むがこれに限定されない、いかなる知的財産権も侵害するものではない。コメントには、名誉毀損的、名誉毀損的、侮辱的、卑劣な、またはその他の違法な資料やプライバシーが侵害されているものは含まれません。コメントは、ビジネスまたは習慣を勧誘または促進したり、商業活動または不法行為を提示するために使用されません。あなたは、getnativeに、他のすべての書式、形式、またはメディアであなたのコメントを使用、複製、編集するために他人を使用、複製、編集、および許可する非独占的ロイヤリティフリーライセンスを付与します。
@@ -1185,7 +1186,7 @@
             <trans-unit id="b8fd2a93bb49d97e96f68722d5b9d9c4" datatype="html">
                 <source>We may consider and approve in our sole discretion other link requests from the following types of organizations:
                 </source>
-                <target></target>
+                <target>当社は、以下の種類の組織からの唯一の裁量により、その他のリンク要求を検討し承認することがあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">71</context>
@@ -1421,7 +1422,9 @@
                     site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or
                     which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.
                 </source>
-                <target>当社は、お客様のWebサイトに掲載されているコンテンツについて、一切の責任を負わないものとします。お客様は、お客様のウェブサイト上またはウェブサイト上で発生したすべての申し立てに対して、当社を補償し防衛することに同意するものとします。あなたのウェブサイト上のページや、名誉毀損、猥褻もしくは犯罪と解釈されるコンテンツやマテリアルを含むあらゆる文脈の中にリンクが存在することはありません。また、侵害やその他の違反を侵害したり、侵害したり、当事者の権利。</target>
+                <target>
+                    当社は、お客様のWebサイトに掲載されているコンテンツについて、一切の責任を負わないものとします。お客様は、お客様のウェブサイト上またはウェブサイト上で発生したすべての申し立てに対して、当社を補償し防衛することに同意するものとします。あなたのウェブサイト上のページや、名誉毀損、猥褻もしくは犯罪と解釈されるコンテンツやマテリアルを含むあらゆる文脈の中にリンクが存在することはありません。また、侵害やその他の違反を侵害したり、侵害したり、当事者の権利。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">116</context>
@@ -1443,7 +1446,9 @@
                     right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you
                     agree to be bound to and abide by these linking terms and conditions.
                 </source>
-                <target>当社は、弊社独自の裁量により、弊社のWebサイトへのすべてのリンクまたは特定のリンクを削除するよう権利を留保します。あなたは、そのような要求に応じて当社のWebサイトへのすべてのリンクを直ちに削除することに同意します。当社はまた、これらの利用規約およびそのリンクポリシーをいつでも修正する権利を留保します。当社のWebサイトへのリンクを継続することにより、お客様はこれらのリンク条件に拘束され、それらを遵守することに同意するものとします。</target>
+                <target>
+                    当社は、弊社独自の裁量により、弊社のWebサイトへのすべてのリンクまたは特定のリンクを削除するよう権利を留保します。あなたは、そのような要求に応じて当社のWebサイトへのすべてのリンクを直ちに削除することに同意します。当社はまた、これらの利用規約およびそのリンクポリシーをいつでも修正する権利を留保します。当社のWebサイトへのリンクを継続することにより、お客様はこれらのリンク条件に拘束され、それらを遵守することに同意するものとします。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">121</context>
@@ -1475,7 +1480,9 @@
                     accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up
                     to date.
                 </source>
-                <target>このウェブサイトの情報が正しいことを保証するよう努めていますが、その完全性または正確性について保証するものではありません。ウェブサイトが利用可能であること、またはウェブサイト上の資料が最新の状態に保たれることを保証することを約束するものでもありません。</target>
+                <target>
+                    このウェブサイトの情報が正しいことを保証するよう努めていますが、その完全性または正確性について保証するものではありません。ウェブサイトが利用可能であること、またはウェブサイト上の資料が最新の状態に保たれることを保証することを約束するものでもありません。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">127</context>
@@ -1757,7 +1764,9 @@
                     to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we
                     collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.
                 </source>
-                <target></target>
+                <target>このプライバシーポリシーは、「個人識別情報」（PII）がオンラインでどのように使用されているかに関心のある方に役立つようにまとめられています。
+                    PIIは、米国のプライバシー法および情報セキュリティーに記載されているように、単独で使用したり、個人を特定、連絡、または特定するための情報、または個人を特定するための情報です。当社の個人情報保護方針をよくお読みになり、弊社のウェブサイトに従って個人情報の収集、使用、保護その他の取り扱い方法を明確に理解してください。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">22</context>
@@ -1766,7 +1775,7 @@
             </trans-unit>
             <trans-unit id="44dd709bf6759420fa70d082f18a443b" datatype="html">
                 <source>What personal information do we collect from the people that visit our blog, website or app?</source>
-                <target></target>
+                <target>ブログ、ウェブサイト、またはアプリを訪れる人々から収集する個人情報は何ですか？</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">25</context>
@@ -1777,7 +1786,7 @@
                 <source>When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address or
                     other details to help you with your experience.
                 </source>
-                <target></target>
+                <target>弊社のサイトで注文または登録する際には、必要に応じて、あなたの名前、電子メールアドレス、またはあなたの経験に役立つその他の詳細を入力するよう求められることがあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">26</context>
@@ -1788,7 +1797,7 @@
                 <source>We collect information from you when you register on our site, Open a Support Ticket or enter information on our
                     site.
                 </source>
-                <target></target>
+                <target>サイトに登録する、サポートチケットを開く、または当社のサイトに情報を入力する際に​​、お客様から情報を収集します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">29</context>
@@ -1797,7 +1806,7 @@
             </trans-unit>
             <trans-unit id="c0931eb556d5231148a7f9538123a386" datatype="html">
                 <source>Provide us with feedback on our products or services</source>
-                <target></target>
+                <target>製品やサービスに関するフィードバックを提供する</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">30</context>
@@ -1806,7 +1815,7 @@
             </trans-unit>
             <trans-unit id="b77e30f34a052b6138e47f8f52f98bc5" datatype="html">
                 <source>How do we use your information?</source>
-                <target></target>
+                <target>あなたの情報はどのように使用するか</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">34</context>
@@ -1818,7 +1827,7 @@
                     respond to a survey or marketing communication, surf the website or use certain other site features in the following
                     ways:
                 </source>
-                <target></target>
+                <target>登録、購入、ニュースレターへの登録、アンケートやマーケティングコミュニケーションへの応対、ウェブサイトのサーフィン、または他のサイト機能の使用は、次の方法でお客様から収集した情報を使用することがあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">35</context>
@@ -1829,7 +1838,7 @@
                 <source>To personalize your experience and to allow us to deliver the type of content and product offerings in which you are
                     most interested.
                 </source>
-                <target></target>
+                <target>あなたの経験をパーソナライズし、最も関心のあるコンテンツや製品の提供を可能にする。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">37</context>
@@ -1838,7 +1847,7 @@
             </trans-unit>
             <trans-unit id="dcbdc5cc4f20e2057983c6b4c7e149cf" datatype="html">
                 <source>To improve our website in order to better serve you.</source>
-                <target></target>
+                <target>より良いサービスを提供するために当社のウェブサイトを改善すること。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">38</context>
@@ -1847,7 +1856,7 @@
             </trans-unit>
             <trans-unit id="3bc36f8debc8c600ed5b12b01a9e4e5d" datatype="html">
                 <source>To allow us to better service you in responding to your customer service requests.</source>
-                <target></target>
+                <target>お客様の顧客サービス要求に迅速に対応できるようにする。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">39</context>
@@ -1856,7 +1865,7 @@
             </trans-unit>
             <trans-unit id="d284f92a06dd7991de89da0b01454cc7" datatype="html">
                 <source>To send periodic emails regarding your order or other products and services.</source>
-                <target></target>
+                <target>注文やその他の製品やサービスに関する定期的な電子メールを送信する。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">40</context>
@@ -1865,7 +1874,7 @@
             </trans-unit>
             <trans-unit id="7f4e92eb4b410bad3e038415c2ae8390" datatype="html">
                 <source>How do we protect your information?</source>
-                <target></target>
+                <target>あなたの情報をどのように保護するか</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">45</context>
@@ -1874,7 +1883,7 @@
             </trans-unit>
             <trans-unit id="a273c6e204a19efd8f1e920f7fa1c494" datatype="html">
                 <source>We do not use vulnerability scanning and/or scanning to PCI standards.</source>
-                <target></target>
+                <target>脆弱性のスキャンやPCI規格へのスキャンは使用しません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">46</context>
@@ -1883,7 +1892,7 @@
             </trans-unit>
             <trans-unit id="c3b54409ff7f60c99ea8bda9c6e44ba0" datatype="html">
                 <source>We only provide sections and information. We never ask for credit card numbers.</source>
-                <target></target>
+                <target>セクションと情報のみを提供します。クレジットカード番号は決して尋ねません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">47</context>
@@ -1892,7 +1901,7 @@
             </trans-unit>
             <trans-unit id="a9687ddc5827639f4fb71794ee64d636" datatype="html">
                 <source>We do not use Malware Scanning.</source>
-                <target></target>
+                <target>マルウェアスキャンは使用しません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">48</context>
@@ -1904,7 +1913,10 @@
                     who have special access rights to such systems, and are required to keep the information confidential. In addition, all
                     sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology.
                 </source>
-                <target></target>
+                <target>
+                    お客様の個人情報は、保護されたネットワークの背後に含まれており、そのようなシステムへの特別なアクセス権を持つ限られた数の人によってのみアクセス可能であり、情報の秘密を保持する必要があります。さらに、お客様が提供するすべての機密情報は、Secure
+                    Socket Layer（SSL）技術を使用して暗号化されています。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">49</context>
@@ -1915,7 +1927,7 @@
                 <source>We implement a variety of security measures when a user enters, submits, or accesses their information to maintain
                     the safety of your personal information.
                 </source>
-                <target></target>
+                <target>お客様の個人情報の安全性を維持するために、ユーザーが情報を入力、提出、またはアクセスする際には、さまざまなセキュリティ対策を実施しています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">50</context>
@@ -1924,7 +1936,7 @@
             </trans-unit>
             <trans-unit id="af7bd1512d72a19c649699fa90683b7b" datatype="html">
                 <source>All transactions are processed through a gateway provider and are not stored or processed on our servers.</source>
-                <target></target>
+                <target>すべてのトランザクションはゲートウェイ・プロバイダを介して処理され、当社のサーバーに保存または処理されません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">51</context>
@@ -1933,7 +1945,7 @@
             </trans-unit>
             <trans-unit id="5db3975da2f88368522fda0698384ceb" datatype="html">
                 <source>Do we use 'cookies'?</source>
-                <target></target>
+                <target>「クッキー」を使用するか</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">55</context>
@@ -1948,7 +1960,9 @@
                     site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate
                     data about site traffic and site interaction so that we can offer better site experiences and tools in the future.
                 </source>
-                <target></target>
+                <target>
+                    はい。クッキーは、サイトまたはサービスプロバイダがWebブラウザ（許可した場合）を介してコンピュータのハードドライブに転送する小さなファイルで、サイトまたはサービスプロバイダのシステムがブラウザを認識して特定の情報を取得して記憶することを可能にします。たとえば、ショッピングカート内の商品を覚えて処理するためにクッキーを使用します。また、以前のサイト活動や現在のサイト活動に基づいてユーザーの好みを理解するのに役立ちます。これにより、改善されたサービスを提供することができます。また、クッキーを使用して、サイトのトラフィックやサイトの相互作用に関する集計データを作成し、今後より良いサイト体験やツールを提供できるよう支援しています。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">56</context>
@@ -1957,7 +1971,7 @@
             </trans-unit>
             <trans-unit id="3c760bc39537f52aee371403b4df0ba0" datatype="html">
                 <source>We use cookies to:</source>
-                <target></target>
+                <target>私たちはクッキーを使って：</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">58</context>
@@ -1966,7 +1980,7 @@
             </trans-unit>
             <trans-unit id="833392391f3988caf95d083da109e8a0" datatype="html">
                 <source>Understand and save user's preferences for future visits.</source>
-                <target></target>
+                <target>将来の訪問のためにユーザの嗜好を理解し、保存する。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">60</context>
@@ -1977,7 +1991,7 @@
                 <source>Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools
                     in the future. We may also use trusted third-party services that track this information on our behalf.
                 </source>
-                <target></target>
+                <target>サイトのトラフィックやサイトの相互作用に関する集約データを作成して、今後より良いサイト体験とツールを提供します。また、当社を代理してこの情報を追跡する信頼できる第三者サービスを使用する場合があります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">61</context>
@@ -1989,7 +2003,9 @@
                     cookies. You do this through your browser settings. Since browser is a little different, look at your browser's
                     Help Menu to learn the correct way to modify your cookies.
                 </source>
-                <target></target>
+                <target>
+                    クッキーが送信されるたびにコンピュータに警告するか、すべてのクッキーをオフにするかを選択できます。これはブラウザの設定で行います。ブラウザは少し異なりますので、ブラウザのヘルプメニューを参照して、Cookieを変更する正しい方法を確認してください。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">63</context>
@@ -2000,7 +2016,7 @@
                 <source>If you turn cookies off, some features will be disabled. It won't affect the user's experience that make
                     your site experience more efficient and may not function properly.
                 </source>
-                <target></target>
+                <target>クッキーをオフにすると、一部の機能が無効になります。サイトの経験をより効率的にし、正しく機能しない可能性のあるユーザーのエクスペリエンスには影響しません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">64</context>
@@ -2009,7 +2025,7 @@
             </trans-unit>
             <trans-unit id="8c700c32bf314bd9851c3e3b6ac592a4" datatype="html">
                 <source>However, you will still be able to place orders.</source>
-                <target></target>
+                <target>ただし、引き続き注文を行うことができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">65</context>
@@ -2018,7 +2034,7 @@
             </trans-unit>
             <trans-unit id="d81a0d03a5ca62ab002ab69b50323af8" datatype="html">
                 <source>Third-party disclosure</source>
-                <target></target>
+                <target>サードパーティの開示</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">69</context>
@@ -2036,7 +2052,9 @@
                     However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or
                     other uses.
                 </source>
-                <target></target>
+                <target>
+                    当社は、ユーザーに事前通知を行わない限り、個人情報を外部に販売、譲渡、または転送することはありません。これには、ウェブサイトのホスティングパートナーや、ウェブサイトの運営、業務の遂行、またはユーザーの奉仕を支援する他の当事者は含まれません。また、法律の遵守、サイトポリシーの執行、当社または他人の権利、財産または安全の保護に適切な情報が公開されている場合もあります。ただし、マーケティング、広告、その他の目的で、個人を特定できない訪問者情報を他の当事者に提供することができます。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">70</context>
@@ -2045,7 +2063,7 @@
             </trans-unit>
             <trans-unit id="0af04f5f30d12de68a95631092425870" datatype="html">
                 <source>Third-party links</source>
-                <target></target>
+                <target>サードパーティのリンク</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">74</context>
@@ -2054,7 +2072,7 @@
             </trans-unit>
             <trans-unit id="5a1e865c4021b598c5915a5fcf60af48" datatype="html">
                 <source>We do not include or offer third-party products or services on our website.</source>
-                <target></target>
+                <target>当社は、当社のウェブサイトに第三者の製品またはサービスを含めたり提供したりしていない。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">75</context>
@@ -2063,7 +2081,7 @@
             </trans-unit>
             <trans-unit id="3c77489aa18c3cb752d837d7a4612887" datatype="html">
                 <source>Google</source>
-                <target></target>
+                <target>Google</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">79</context>
@@ -2072,7 +2090,7 @@
             </trans-unit>
             <trans-unit id="42cc88c64751aeba86cdbdf8a6b45819" datatype="html">
                 <source>We use Google AdSense Advertising on our website.</source>
-                <target></target>
+                <target>Google AdSense Advertisingを使用しています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">82</context>
@@ -2084,7 +2102,10 @@
                     it to serve ads to our users based on previous visits to our site and other sites on the Internet. Users may opt-out of
                     the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.
                 </source>
-                <target></target>
+                <target>Googleはサードパーティベンダーとして、Cookieを使用してGoogleのサイトに広告を配信しています。 Googleでは、DART
+                    Cookieを使用することで、以前のサイト訪問やインターネット上の他のサイトに基づいてユーザーに広告を配信することができます。ユーザーは、Google広告およびコンテンツネットワークのプライバシーポリシーにアクセスして、DART
+                    Cookieの使用をオプトアウトすることができます。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">83</context>
@@ -2093,7 +2114,7 @@
             </trans-unit>
             <trans-unit id="1d01276a5f8b8daaf1996d556de4c6b8" datatype="html">
                 <source>We have implemented the following:</source>
-                <target></target>
+                <target>私たちは以下を実装しました：</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">84</context>
@@ -2102,7 +2123,7 @@
             </trans-unit>
             <trans-unit id="3a15772089d23e47a7c5aab6925600eb" datatype="html">
                 <source>Demographics and InterestsReporting</source>
-                <target></target>
+                <target>人口統計とインタレスト</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">86</context>
@@ -2114,7 +2135,9 @@
                     third-party cookies (such as the DoubleClick cookie) or other third-party identifiers together to compile data regarding
                     user interactions with ad impressions and other ad service functions as they relate to our website.
                 </source>
-                <target></target>
+                <target>Googleは、GoogleアナリティクスのCookieなどのファーストパーティのCookieやDoubleClick
+                    CookieなどのサードパーティのCookieや他のサードパーティのIDを使用して、ユーザーとのやりとりに関するデータをコンパイルします広告のインプレッションおよびその他の広告サービス機能をウェブサイトに関連付けるものです。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">89</context>
@@ -2126,7 +2149,9 @@
                     Alternatively, you can opt out by visiting the Network Advertising Initiative Opt Out page or by using the Google
                     Analytics Opt Out Browser add on.
                 </source>
-                <target></target>
+                <target>オプトアウト：ユーザーは、Google広告設定ページを使用してGoogleに広告する方法の設定を行うことができます。また、Network Advertising
+                    Initiativeのオプトアウトページにアクセスするか、Googleアナリティクスオプトアウトブラウザアドオンを使用してオプトアウトすることもできます。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">90</context>
@@ -2135,7 +2160,7 @@
             </trans-unit>
             <trans-unit id="f65f0a7aa678d8b7ec5e92f4ac865d91" datatype="html">
                 <source>Fair Information Practices</source>
-                <target></target>
+                <target>公平な情報の習慣</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">94</context>
@@ -2148,7 +2173,9 @@
                     the Fair Information Practice Principles and how they should be implemented is critical to comply with the various
                     privacy laws that protect personal information.
                 </source>
-                <target></target>
+                <target>
+                    フェアインフォメーションプラクティスの原則は、米国におけるプライバシー法のバックボーンを形成し、それに含まれる概念は世界中のデータ保護法の開発において重要な役割を果たしてきました。公正情報慣習原則とその実施方法を理解することは、個人情報を保護するさまざまなプライバシー法を遵守する上で非常に重要です。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">96</context>
@@ -2159,7 +2186,7 @@
                 <source>In order to be in line with Fair Information Practices we will take the following responsive action, should a data
                     breach occur:
                 </source>
-                <target></target>
+                <target>公正情報慣行に沿って進むために、データ違反が発生した場合には、以下の対応措置を講じます：</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">97</context>
@@ -2168,7 +2195,7 @@
             </trans-unit>
             <trans-unit id="782fa11db42fceacf9eba44c0d695a60" datatype="html">
                 <source>We will notify you via email within 7 business days</source>
-                <target></target>
+                <target>7営業日以内にメールでお知らせします</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">99</context>
@@ -2177,7 +2204,7 @@
             </trans-unit>
             <trans-unit id="4d0b6c7a4c6324f2d6b128002a51763c" datatype="html">
                 <source>We will notify the users via in-site notification within 7 business days</source>
-                <target></target>
+                <target>7営業日以内に現場の通知を介してユーザーに通知します</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">100</context>
@@ -2190,7 +2217,9 @@
                     only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or
                     government agencies to investigate and/or prosecute non-compliance by data processors.
                 </source>
-                <target></target>
+                <target>
+                    私たちはまた、個人が法を遵守しないデータコレクターやプロセッサーに対して強制的に権利を行使することを要求する個人救済原則に同意します。この原則は、個人がデータ利用者に対して執行可能な権利を有するだけでなく、個人が裁判所や政府機関にデータ・プロセッサによる遵守の捜査および/または起訴を依頼することを要求する。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">103</context>
@@ -2199,7 +2228,7 @@
             </trans-unit>
             <trans-unit id="e5d6e74548722139ad01e19548019ad9" datatype="html">
                 <source>COPPA (Children Online Privacy Protection Act)</source>
-                <target></target>
+                <target>COPPA（児童オンラインプライバシー保護法）</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">107</context>
@@ -2212,7 +2241,9 @@
                     consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services
                     must do to protect children's privacy and safety online.
                 </source>
-                <target></target>
+                <target>13歳未満の子供からの個人情報の収集に関しては、児童オンラインプライバシー保護法（COPPA）は保護者を管理します。米国の消費者保護機関である連邦取引委員会（Federal Trade
+                    Commission）はCOPPAルールを施行しており、ウェブサイトやオンラインサービスの運営者は子供のプライバシーと安全をオンラインで保護するために何をしなければならないかを覚えている。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">108</context>
@@ -2221,7 +2252,7 @@
             </trans-unit>
             <trans-unit id="8ca49d35276f6986fc25cdac1cd026ec" datatype="html">
                 <source>We do not specifically market to children under the age of 13 years old.</source>
-                <target></target>
+                <target>私たちは、13歳未満の子供たちには特に販売していません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">109</context>
@@ -2230,7 +2261,7 @@
             </trans-unit>
             <trans-unit id="ff3d31096e1f008846560e5b5ab990b8" datatype="html">
                 <source>California Online Privacy Protection Act</source>
-                <target></target>
+                <target>カリフォルニアオンラインプライバシー保護法</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">113</context>
@@ -2245,7 +2276,10 @@
                     individuals or companies with whom it is being shared. - See more at:
                     http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf
                 </source>
-                <target></target>
+                <target>
+                    CalOPPAは、プライバシーポリシーを掲載するために商業用ウェブサイトとオンラインサービスを要求する、全米初の州法です。カリフォルニア州の消費者からの個人識別情報を収集するウェブサイトを運営する米国内の人物や企業（または世界）は、収集された情報とウェブサイト上に明白なプライバシーポリシーを掲載する必要があります。それが共有されている個人または企業。
+                    - 詳細：http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">114</context>
@@ -2254,7 +2288,7 @@
             </trans-unit>
             <trans-unit id="839ab2f01405955e7be4f9ff3bdfc800" datatype="html">
                 <source>According to CalOPPA, we agree to the following:</source>
-                <target></target>
+                <target>CalOPPAによると、私たちは以下に同意します：</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">115</context>
@@ -2263,7 +2297,7 @@
             </trans-unit>
             <trans-unit id="c4e75056845f24799a6223d754809867" datatype="html">
                 <source>Users can visit our site anonymously.</source>
-                <target></target>
+                <target>ユーザーは弊社のサイトを匿名で訪問することができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">117</context>
@@ -2274,7 +2308,7 @@
                 <source>Once this privacy policy is created, we will add a link to it on our home page or as a minimum, on the first
                     significant page after entering our website.
                 </source>
-                <target></target>
+                <target>このプライバシーポリシーが作成されると、当社のホームページにリンクが追加されます。または、最低でも、当ウェブサイトに入った後の最初の重要なページにリンクが追加されます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">118</context>
@@ -2284,7 +2318,7 @@
             <trans-unit id="40046c4dd44f1d7b8d565636ea2ae1d6" datatype="html">
                 <source>Our Privacy Policy link includes the word 'Privacy' and can easily be found on the page specified above.
                 </source>
-                <target></target>
+                <target>私たちのプライバシーポリシーリンクには「プライバシー」という言葉が含まれており、上記のページで簡単に見つけることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">119</context>
@@ -2293,7 +2327,7 @@
             </trans-unit>
             <trans-unit id="c79f6c00e4bb07dedb9310911df3ea66" datatype="html">
                 <source>Will I be notified of any Privacy Policy changes?</source>
-                <target></target>
+                <target>プライバシーポリシーの変更について通知されますか？</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">124</context>
@@ -2302,7 +2336,7 @@
             </trans-unit>
             <trans-unit id="5b1e4cd7aab0857f374c76842cc578bc" datatype="html">
                 <source>You will be notified of any Privacy Policy changes on our Privacy Policy Page.</source>
-                <target></target>
+                <target>当社のプライバシーポリシーページのプライバシーポリシーの変更について通知されます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">125</context>
@@ -2311,7 +2345,7 @@
             </trans-unit>
             <trans-unit id="44daa742d9683def64ddbfd2040a48a5" datatype="html">
                 <source>How can I change my personal information?</source>
-                <target></target>
+                <target>個人情報を変更するにはどうしたらいいですか？</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">129</context>
@@ -2320,7 +2354,7 @@
             </trans-unit>
             <trans-unit id="469620760b1e057a78d9cc6ad08e1e47" datatype="html">
                 <source>You can change your personal information by logging in to your account.</source>
-                <target></target>
+                <target>アカウントにログインして個人情報を変更することができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">130</context>
@@ -2329,7 +2363,7 @@
             </trans-unit>
             <trans-unit id="7cdd952be205bb123f93217db44056ee" datatype="html">
                 <source>How does our site handle Do Not Track signals?</source>
-                <target></target>
+                <target>私たちのサイトはDo Not Trackシグナルをどのように扱いますか？</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">134</context>
@@ -2340,7 +2374,7 @@
                 <source>We honor Do Not Track signals and Do Not Track, plant cookies, or use advertising when a Do Not Track (DNT) browser
                     mechanism is in place.
                 </source>
-                <target></target>
+                <target>Do Not Track（DNT）ブラウザの仕組みが整備されている場合、私たちはDo Not Track信号を受け取り、Do Not Track、Cookieを植える、または広告を使用します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">135</context>
@@ -2349,7 +2383,7 @@
             </trans-unit>
             <trans-unit id="bdbc16f5f5f3bc17ac4f58f165f3cf3b" datatype="html">
                 <source>Does our site allow third-party behavioral tracking?</source>
-                <target></target>
+                <target>私たちのサイトはサードパーティの行動追跡を許可していますか？</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">139</context>
@@ -2358,7 +2392,7 @@
             </trans-unit>
             <trans-unit id="dad59996a4444d000563ab4e386c768e" datatype="html">
                 <source>It's also important to note that we do not allow third-party behavioral tracking</source>
-                <target></target>
+                <target>サードパーティの行動追跡を許可していないことに注意することも重要です</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">140</context>
@@ -2367,7 +2401,7 @@
             </trans-unit>
             <trans-unit id="dbb0f071c07c6ec72dfa74779da44a9a" datatype="html">
                 <source>CAN SPAM Act</source>
-                <target></target>
+                <target>CANスパム法</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">144</context>
@@ -2379,7 +2413,7 @@
                     messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for
                     violations.
                 </source>
-                <target></target>
+                <target>CAN-SPAM法は、商用電子メールのルールを設定し、商用メッセージの要件を設定し、受信者に電子メールの送信を停止させる権利を与え、違反に対する厳しい罰則を発する法律です。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">145</context>
@@ -2388,7 +2422,7 @@
             </trans-unit>
             <trans-unit id="34b478c21d221a65bd6a9cae953a86e0" datatype="html">
                 <source>We collect your email address in order to:</source>
-                <target></target>
+                <target>私たちはあなたのメールアドレスを収集し、</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">146</context>
@@ -2398,7 +2432,7 @@
             <trans-unit id="b90c9480b5d3f6b76f3cd8e116cb6dc2" datatype="html">
                 <source>Market to our mailing list or continue to send emails to our clients after the original transaction has occurred.
                 </source>
-                <target></target>
+                <target>元の取引が発生した後、当社のメーリングリストにマーケットを開設したり、お客様にメールを送信したりすることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">148</context>
@@ -2407,7 +2441,7 @@
             </trans-unit>
             <trans-unit id="8e5aa6ed3af78732784e33e563a361e7" datatype="html">
                 <source>To be in accordance with CANSPAM, we agree to the following:</source>
-                <target></target>
+                <target>CANSPAMに準拠するために、私たちは以下に同意します：</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">151</context>
@@ -2416,7 +2450,7 @@
             </trans-unit>
             <trans-unit id="1eed40b6254b5bc23a8c377cf3b7368b" datatype="html">
                 <source>Not use false or misleading subjects or email addresses.</source>
-                <target></target>
+                <target>虚偽または誤解を招くような主題や電子メールアドレスを使用しません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">153</context>
@@ -2425,7 +2459,7 @@
             </trans-unit>
             <trans-unit id="2d51d88f0db63f240fbd9e2b6aaf6825" datatype="html">
                 <source>Identify the message as an advertisement in some reasonable way.</source>
-                <target></target>
+                <target>合理的な方法でメッセージを広告として識別します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">154</context>
@@ -2434,7 +2468,7 @@
             </trans-unit>
             <trans-unit id="989ba5c46929c17c6a799962ff50f1b8" datatype="html">
                 <source>Include the physical address of our business or site headquarters.</source>
-                <target></target>
+                <target>弊社の事業所またはサイトの本部の住所を記載します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">155</context>
@@ -2443,7 +2477,7 @@
             </trans-unit>
             <trans-unit id="73d1319009e0c3b135b7cb4d5278ec42" datatype="html">
                 <source>Monitor third-party email marketing services for compliance, if one is used.</source>
-                <target></target>
+                <target>サードパーティの電子メールマーケティングサービスが使用されている場合は、それを監視します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">156</context>
@@ -2452,7 +2486,7 @@
             </trans-unit>
             <trans-unit id="ef48d249628819cafbb7ea1b063fb9f4" datatype="html">
                 <source>Honor opt-out/unsubscribe requests quickly.</source>
-                <target></target>
+                <target>オプトアウト/退会リクエストをすばやく受け取ることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">157</context>
@@ -2461,7 +2495,7 @@
             </trans-unit>
             <trans-unit id="77d56765f22dda62fafdbeffa16d9d99" datatype="html">
                 <source>Allow users to unsubscribe by using the link at the bottom of each email.</source>
-                <target></target>
+                <target>各メールの下部にあるリンクを使用して、ユーザーの退会を許可します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">158</context>
@@ -2473,7 +2507,7 @@
                     <x id="START_LINK" ctype="x-a"/>
                     admin@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.
                 </source>
-                <target></target>
+                <target>将来のメールの受信を拒否したい場合は、admin@get-native.comまでメールでご連絡ください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">161</context>
@@ -2483,7 +2517,7 @@
             <trans-unit id="ae4e0d0dee6f2a8932691635507dce9e" datatype="html">
                 <source>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.
                 </source>
-                <target></target>
+                <target>各メールの下部にある指示に従うと、すぐにすべての連絡先からあなたを削除します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">162</context>
@@ -2492,7 +2526,7 @@
             </trans-unit>
             <trans-unit id="9fb5e3a288df48f896b02422e4163fda" datatype="html">
                 <source>Contacting Us</source>
-                <target></target>
+                <target>お問い合わせ</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">166</context>
@@ -2501,7 +2535,7 @@
             </trans-unit>
             <trans-unit id="9420af2220703e2e416051024f0938ee" datatype="html">
                 <source>If there are any questions regarding this privacy policy, you may contact us using the information below.</source>
-                <target></target>
+                <target>このプライバシーポリシーに関してご不明な点がございましたら、下記の情報をご連絡ください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">167</context>
@@ -2520,7 +2554,7 @@
                     <x id="LINE_BREAK" ctype="lb"/>
                     Japan
                 </source>
-                <target></target>
+                <target>日本111-0032東京都台東区クレスント403浅草2-34-4 get-native.com</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">168</context>
@@ -2529,7 +2563,7 @@
             </trans-unit>
             <trans-unit id="7f2e1804d74e71aba90de224984a40df" datatype="html">
                 <source>Last Edited on 2016-11-07</source>
-                <target></target>
+                <target>最終編集日：2016-11-07</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">178</context>
@@ -2565,7 +2599,7 @@
             </trans-unit>
             <trans-unit id="821bdafc53e0c1ea132ad4e91542cae2" datatype="html">
                 <source>Is getnative free?</source>
-                <target></target>
+                <target>getnativeは無料ですか？</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
                     <context context-type="linenumber">15</context>
@@ -2576,7 +2610,7 @@
                 <source>getnative is currently a free service; however, this may change in the future. If such a change were ever to occur,
                     we would notify you well in advance.
                 </source>
-                <target></target>
+                <target>getnativeは現在無料サービスです。ただし、これは将来変更される可能性があります。このような変更が発生した場合は、事前に通知させていただきます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
                     <context context-type="linenumber">17</context>
@@ -2602,7 +2636,8 @@
                 <note priority="1" from="description">The header title for the help page contact-us section</note>
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>admin@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.
+                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>admin@get-native.com<x id="CLOSE_LINK"
+                                                                                                                      ctype="x-a"/>.
                 </source>
                 <target>すべてのお問い合わせについては、atadmin @ get-native.comまでご連絡ください。</target>
                 <context-group purpose="location">
@@ -2633,7 +2668,9 @@
                 <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure
                     nobis repellendus. Accusamus consectetur dicta?
                 </source>
-                <target></target>
+                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure
+                    nobis repellendus. Accusamus consectetur dicta?
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">8</context>
@@ -2665,7 +2702,9 @@
                     using video interviews of native speakers. Needless to say in order for this to work we need a lot
                     of interview videos!
                 </source>
-                <target></target>
+                <target>
+                    ネイティブを得ることは、流体のスピーチとネイティブスピーチとの間の障壁を壊すことです。障壁を解く私たちの方法は、ネイティブスピーカーのビデオインタビューを使用して、集中的な観察、発音練習、能動的な学習を通してです。言うまでもなく、これがうまくいくためには、たくさんのインタビュービデオが必要です！
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">18</context>
@@ -2674,7 +2713,7 @@
             </trans-unit>
             <trans-unit id="da9431dac46430ad694352ca7bb4d6e7" datatype="html">
                 <source>Study like the pros</source>
-                <target></target>
+                <target>プロのように勉強しましょう</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">29</context>
@@ -2683,7 +2722,7 @@
             </trans-unit>
             <trans-unit id="f25fc28ef1ce003a1d2e2b74c4edf503" datatype="html">
                 <source>Study like the pros</source>
-                <target></target>
+                <target>プロのように勉強しましょう</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">32</context>
@@ -2697,7 +2736,9 @@
                     study routine might include getting out books, scrolling through web pages -- it could take up to 10
                     minutes just to get all the materials ready!
                 </source>
-                <target></target>
+                <target>
+                    15分、あるいは10時間で激しい語学学習セッションを開くのはすばらしいことではないでしょうか？あなたがその言語の上級者であれば、あなた自身の学習ルーチンをすでに持っているかもしれません。しかし、その研究ルーチンには、書籍を手に入れたり、ウェブページをスクロールさせることが含まれているかもしれません。すべての資料を準備するのに10分かかることがあります。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">33</context>
@@ -2706,7 +2747,7 @@
             </trans-unit>
             <trans-unit id="426ade5d0c2b2797a217d0ad3746b217" datatype="html">
                 <source>A tool for advanced language learners</source>
-                <target></target>
+                <target>上級者向けのツール</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">44</context>
@@ -2715,7 +2756,7 @@
             </trans-unit>
             <trans-unit id="e32fb4bb878da11006facfc293ae5955" datatype="html">
                 <source>A tool for advanced language learners</source>
-                <target></target>
+                <target>A tool for advanced language learners</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">47</context>
@@ -2730,7 +2771,9 @@
                     day material like newspapers, journal articles, TV, podcasts and conversations with other speakers
                     might become the core of your study routine.
                 </source>
-                <target></target>
+                <target>
+                    getnativeは、すでにターゲット言語の優れたコマンドを持っているが、ネイティブスピーカーのスピーチサウンドに近づけたいという言語学習者にとって最も有用です。目的の言語の学習を開始したばかりの学習教材を見つけることは簡単です。しかし、あなたが進歩するにつれて、新聞、雑誌記事、テレビ、ポッドキャスト、他のスピーカーとの会話など、毎日の素材が学習ルーチンの中核になるかもしれません。
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">48</context>
@@ -2822,7 +2865,9 @@
                 <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur
                     dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!
                 </source>
-                <target></target>
+                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur
+                    dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">107</context>
@@ -2851,7 +2896,9 @@
                 <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam cupiditate deleniti, essefacere fuga hicillo,
                     modi nulla perspiciatis quasi quia ratione recusandae saepe similique tempore, veniam. Illo, velit?
                 </source>
-                <target></target>
+                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam cupiditate deleniti, essefacere fuga hicillo,
+                    modi nulla perspiciatis quasi quia ratione recusandae saepe similique tempore, veniam. Illo, velit?
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">2</context>
@@ -3156,7 +3203,9 @@
                     <x id="CLOSE_TAG_SPAN" ctype="x-span"/>
                     inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.
                 </source>
-                <target></target>
+                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque
+                    delectus dicta earum eligendieum illum inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/shadowing/shadowing.component.ts</context>
                     <context context-type="linenumber">6</context>
