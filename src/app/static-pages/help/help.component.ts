@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 import { NavbarService } from '../../core/navbar/navbar.service';
-import { environment } from '../../../environments/environment';
 import { Logger } from '../../core/logger/logger';
 
 import * as _ from 'lodash';
@@ -37,7 +36,6 @@ import * as _ from 'lodash';
     ]
 })
 export class HelpComponent implements OnInit {
-    moderator: string = environment.moderator;
     expandedFaqIndices: number[] = [];
 
     constructor(private logger: Logger, private navbar: NavbarService) {
