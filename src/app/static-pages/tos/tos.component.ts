@@ -7,7 +7,6 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { environment } from '../../../environments/environment';
 import { NavbarService } from '../../core/navbar/navbar.service';
 import { Logger } from '../../core/logger/logger';
 
@@ -17,8 +16,6 @@ import { Logger } from '../../core/logger/logger';
     styleUrls: ['tos.component.scss']
 })
 export class TOSComponent implements OnInit {
-    moderator: string = environment.moderator;
-
     constructor(private navbar: NavbarService, private logger: Logger) {
     }
 

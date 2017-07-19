@@ -2460,7 +2460,7 @@
             <trans-unit id="ad63846c24f80d759bdf9b5e9cd141ae" datatype="html">
                 <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at<x id="START_LINK"
                                                                                                                          ctype="x-a"/>
-                    admin@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.
+                    contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.
                 </source>
                 <target/>
                 <context-group purpose="location">
@@ -2591,7 +2591,7 @@
                 <note priority="1" from="description">The header title for the help page contact-us section</note>
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>admin@get-native.com<x id="CLOSE_LINK"
+                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK"
                                                                                                                       ctype="x-a"/>.
                 </source>
                 <target/>

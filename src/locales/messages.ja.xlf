@@ -2505,9 +2505,9 @@
             <trans-unit id="ad63846c24f80d759bdf9b5e9cd141ae" datatype="html">
                 <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at
                     <x id="START_LINK" ctype="x-a"/>
-                    admin@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.
+                    contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.
                 </source>
-                <target>将来のメールの受信を拒否したい場合は、admin@get-native.comまでメールでご連絡ください。</target>
+                <target>将来のメールの受信を拒否したい場合は、contact@get-native.comまでメールでご連絡ください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">161</context>
@@ -2636,7 +2636,7 @@
                 <note priority="1" from="description">The header title for the help page contact-us section</note>
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>admin@get-native.com<x id="CLOSE_LINK"
+                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK"
                                                                                                                       ctype="x-a"/>.
                 </source>
                 <target>すべてのお問い合わせについては、atadmin @ get-native.comまでご連絡ください。</target>

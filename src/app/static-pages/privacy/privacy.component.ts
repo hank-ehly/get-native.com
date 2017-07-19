@@ -8,7 +8,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NavbarService } from '../../core/navbar/navbar.service';
-import { environment } from '../../../environments/environment';
 import { Logger } from '../../core/logger/logger';
 
 @Component({
@@ -17,8 +16,6 @@ import { Logger } from '../../core/logger/logger';
     styleUrls: ['privacy.component.scss']
 })
 export class PrivacyComponent implements OnInit {
-    moderator: string = environment.moderator;
-
     constructor(private navbar: NavbarService, private logger: Logger) {
     }
 

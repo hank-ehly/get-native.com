@@ -6,7 +6,6 @@
 export const environment = {
     production: false,
     apiBaseUrl: 'http://localhost:3000',
-    moderator: 'admin@get-native.com',
     facebookLoginUrl: 'http://localhost:3000/oauth/facebook',
     twitterLoginUrl: 'http://localhost:3000/oauth/twitter',
     googleLoginUrl: 'http://localhost:3000/oauth/google'

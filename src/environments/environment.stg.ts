@@ -6,7 +6,6 @@
 export const environment = {
     production: false,
     apiBaseUrl: 'https://api.stg.get-native.com',
-    moderator: 'admin@get-native.com',
     facebookLoginUrl: 'https://api.stg.get-native.com/oauth/facebook',
     twitterLoginUrl: 'https://api.stg.get-native.com/oauth/twitter',
     googleLoginUrl: 'https://api.stg.get-native.com/oauth/google'
