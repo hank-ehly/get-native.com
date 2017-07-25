@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { UserService } from '../core/user/user.service';
@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class DashboardGuard implements CanActivate {
-    constructor(private logger: Logger, private router: Router, private user: UserService) {
+    constructor(private logger: Logger, private user: UserService) {
         this.logger.debug(this, 'constructor');
     }
 
