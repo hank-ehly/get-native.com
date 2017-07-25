@@ -39,6 +39,6 @@ export class ShadowingComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.each(this.subscriptions, s => s.unsubscribe());
+        _.invokeMap(this.subscriptions, 'unsubscribe');
     }
 }

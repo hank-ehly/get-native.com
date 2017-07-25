@@ -32,6 +32,7 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/debounce';
 import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/scan';
 import 'rxjs/observable/timer';
 import * as _ from 'lodash';
@@ -109,7 +110,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                 .do(() => {
                     this.loading$.next(false);
                 });
-        });
+        }).share();
 
     protected subscriptions: Subscription[] = [];
 

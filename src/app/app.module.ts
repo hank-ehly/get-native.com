@@ -21,7 +21,6 @@ import { StudyModule } from './study/study.module';
 import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
 import { Logger } from './core/logger/logger';
 import { StaticPagesModule } from './static-pages/static-pages.module';
-import { OAuthComponent } from './oauth.component';
 
 @NgModule({
     imports: [
@@ -38,15 +37,15 @@ import { OAuthComponent } from './oauth.component';
         StaticPagesModule,
     ],
     declarations: [
-        AppComponent,
-        OAuthComponent
+        AppComponent
     ],
     providers: [
         {provide: LogLevelToken, useValue: LogLevelValue.DEBUG},
         Logger
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
-
 export class AppModule {
 }

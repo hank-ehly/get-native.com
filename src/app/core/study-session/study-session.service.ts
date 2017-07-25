@@ -128,7 +128,7 @@ export class StudySessionService {
 
     end(): void {
         this.resetCountdown();
-        _.each(this.progress, (o: BehaviorSubject<number>) => o.next(0));
+        _.invokeMap(this.progress, 'next', 0);
     }
 
     private onStartStudySession(studySession: StudySession) {

@@ -1,6 +1,6 @@
 <form class="form email-form" #emailForm="ngForm" (submit)="onSubmitEmail()">
     <div class="form__group">
-        <label for="email" class="label">Email <span *ngIf="!user.email_verified">(Please Confirm)</span></label>
+        <label for="email" class="label"><ng-container i18n="User email label text@@6ba4ecb46a685bbc07ce71dbd5580a48">Email</ng-container> <span *ngIf="!user.email_verified" i18n="Small label notifying user they must confirm their email@@f175102528cedc2c8882357e32c1b595">(Please confirm)</span></label>
         <input id="email" type="email" name="email" class="input" [readonly]="!(isEditing$|async)" [placeholder]="user?.email" [(ngModel)]="emailModel" required [pattern]="emailRegex" [gnFocus]="isEditing$ | async">
 
         <div class="form__button-group">
@@ -14,10 +14,10 @@
     </div>
 </form>
 
-<!--<div>
-    <p>A confirmation email has been sent to xxx@email. Please click the enclosed confirmation link to complete the email update process.
-       Your current email settings will be remain unchanged until email verification is complete.</p>
-</div>-->
+<div *ngIf="submitEmailEmitted$ | async">
+    <p>A confirmation email has been sent to {{ emailModel }}. Please click the enclosed confirmation link to complete the email update
+       process. Your current email settings will be remain unchanged until email verification is complete.</p>
+</div>
 
 <!-- todo: You can click this as many times as you want -->
 <div class="resend-confirmation-email" *ngIf="!user.email_verified">

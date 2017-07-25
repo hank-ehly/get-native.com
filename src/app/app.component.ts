@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component, OnInit, HostListener, OnDestroy, HostBinding } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy, HostBinding, Inject, LOCALE_ID } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -46,15 +46,15 @@ export class AppComponent implements OnInit, OnDestroy {
         .map(data => data.title);
 
     /* For footer display */
-    @HostBinding('style.margin-bottom') get x() {
-        return this.user.isAuthenticated() ? '50px' : '240px';
+    @HostBinding('style.margin-bottom') get styleMarginBottom(): string {
+        return (this.user.isAuthenticated() ? 50 : 240) + 'px';
     }
 
     private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router,
                 private activatedRoute: ActivatedRoute, private titleService: Title, private user: UserService,
-                private navbar: NavbarService) {
+                private navbar: NavbarService, @Inject(LOCALE_ID) private localeId: string) {
     }
 
     @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
@@ -63,6 +63,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
+        this.logger.debug(this, 'LOCALE_ID', this.localeId);
 
         this.user.authenticated$.next(this.user.isAuthenticated());
 
@@ -75,12 +76,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.each(this.subscriptions, s => s.unsubscribe());
+        _.invokeMap(this.subscriptions, 'unsubscribe');
     }
 
-    private onLogout(): void {
-        this.router.navigate(['']).then(() => {
-            this.logger.debug(this, `Navigated to ''`);
-        });
+    private async onLogout() {
+        await this.router.navigate(['']);
     }
 }

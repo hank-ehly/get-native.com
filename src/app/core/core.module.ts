@@ -24,6 +24,7 @@ import { UserService } from './user/user.service';
 import { ConfirmEmailResolver } from './auth/confirm-email-resolver.service';
 import { StudySessionService } from './study-session/study-session.service';
 import { WordCountService } from './word-count/word-count.service';
+import { ConfirmEmailUpdateResolver } from './auth/confirm-email-update-resolver.service';
 
 @NgModule({
     imports: [
@@ -44,6 +45,7 @@ import { WordCountService } from './word-count/word-count.service';
         UTCDateService,
         UserService,
         ConfirmEmailResolver,
+        ConfirmEmailUpdateResolver,
         StudySessionService,
         WordCountService
     ]
