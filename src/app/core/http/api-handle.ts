@@ -7,6 +7,7 @@
 
 export enum APIHandle {
     CREATE_SESSION,
+    DELETE_USER,
     VIDEO,
     VIDEOS,
     LIKE_VIDEO,
@@ -19,6 +20,7 @@ export enum APIHandle {
     EDIT_EMAIL,
     CREATE_USER,
     CONFIRM_EMAIL,
+    CONFIRM_EMAIL_UPDATE,
     RESEND_CONFIRMATION_EMAIL,
     QUEUE_VIDEO,
     DEQUEUE_VIDEO,

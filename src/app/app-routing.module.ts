@@ -34,14 +34,20 @@ import { StudySessionGuard } from './study/study-session-guard.service';
 import { ResultsResolver } from './study/results/results-resolver.service';
 import { WritingResolver } from './study/writing/writing-resolver.service';
 import { WritingGuard } from './study/writing/writing-guard.service';
-import { OAuthComponent } from './oauth.component';
+import { DashboardGuard } from './dashboard/dashboard-guard.service';
+import { DashboardResolveService } from './dashboard/dashboard-resolve.service';
+import { ConfirmEmailUpdateResolver } from './core/auth/confirm-email-update-resolver.service';
 
 const routes: Routes = [
     {
         path: '', canActivate: [AuthGuard], component: HomeComponent
     },
     {
-        path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], data: {title: 'Dashboard'}
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [DashboardGuard],
+        data: {title: 'Dashboard'},
+        resolve: {user: DashboardResolveService}
     },
     {
         path: 'settings', component: SettingsComponent, canActivateChild: [AuthGuard],
@@ -103,7 +109,7 @@ const routes: Routes = [
         path: 'confirm_email', resolve: {_: ConfirmEmailResolver}, component: DashboardComponent
     },
     {
-        path: 'oauth/callback', component: OAuthComponent // dashboard resolver better suited
+        path: 'confirm_email_update', resolve: {_: ConfirmEmailUpdateResolver}, component: SettingsComponent
     },
     {
         path: '**', component: PageNotFoundComponent

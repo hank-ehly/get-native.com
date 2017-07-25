@@ -13,13 +13,14 @@ import { VideoSearchComponent } from '../shared/video-search/video-search.compon
 import { CategoryListService } from '../core/category-list/category-list.service';
 import { StudySessionService } from '../core/study-session/study-session.service';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
+import { kListening } from '../core/study-session/section-keys';
 import { WritingAnswer } from '../core/entities/writing-answer';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { StudySession } from '../core/entities/study-session';
 import { LanguageCode } from '../core/typings/language-code';
 import { HttpService } from '../core/http/http.service';
 import { UserService } from '../core/user/user.service';
-import { kListening } from '../core/study-session/section-keys';
+import { Entities } from '../core/entities/entities';
 import { APIHandle } from '../core/http/api-handle';
 import { Logger } from '../core/logger/logger';
 
@@ -33,7 +34,6 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { Entities } from '../core/entities/entities';
 
 @Component({
     selector: 'gn-dashboard',
@@ -81,7 +81,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
             return this.http.request(APIHandle.WRITING_ANSWERS, options);
         }, (_, answers: Entities<WritingAnswer>) => answers.records)
             .do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);
-    });
+    }).share();
 
     stats$ = this.studyLanguageCode$.concatMap((lang: LanguageCode) => {
         return this.http.request(APIHandle.STUDY_STATS, {

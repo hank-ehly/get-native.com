@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, ViewChild, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
@@ -20,6 +20,8 @@ import { LangService } from '../../core/lang/lang.service';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/pluck';
 import * as _ from 'lodash';
@@ -29,7 +31,7 @@ import * as _ from 'lodash';
     templateUrl: 'general.component.html',
     styleUrls: ['general.component.scss']
 })
-export class GeneralComponent implements OnDestroy {
+export class GeneralComponent implements OnInit, OnDestroy {
     @ViewChild('passwordForm') passwordForm: NgForm;
 
     emailRegex = EMAIL_REGEX;
@@ -40,11 +42,19 @@ export class GeneralComponent implements OnDestroy {
     emailModel = '';
     passwordModel: any = {current: '', replace: '', confirm: ''};
 
+    submitEmailEmitted$: Observable<any>;
+    private emitSubmitEmail$: Subject<any>;
+
     user: User = this.userService.current$.getValue();
 
     private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private http: HttpService, private userService: UserService, private lang: LangService) {
+        this.emitSubmitEmail$ = new Subject();
+        this.submitEmailEmitted$ = this.emitSubmitEmail$.asObservable().do(() => {
+            this.isEditing$.next(false);
+        });
+
         this.studyLanguageOptions = this.interfaceLanguageOptions = _.map(Languages, l => {
             return _.mapKeys(<any>l, (v, k) => k.toString() === 'code' ? 'value' : 'title');
         });
@@ -56,6 +66,10 @@ export class GeneralComponent implements OnDestroy {
         }));
     }
 
+    ngOnInit(): void {
+        this.logger.debug(this, 'OnInit');
+    }
+
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
         _.each(this.subscriptions, s => s.unsubscribe());
@@ -63,7 +77,12 @@ export class GeneralComponent implements OnDestroy {
 
     onSubmitEmail(): void {
         this.logger.debug(this, 'onSubmitEmail');
-        this.subscriptions.push(this.http.request(APIHandle.EDIT_EMAIL, {body: {email: this.emailModel}}).subscribe());
+        const currentUserId = this.userService.current$.getValue().id;
+        this.subscriptions.push(
+            this.http.request(APIHandle.EDIT_EMAIL, {params: {id: currentUserId}, body: {email: this.emailModel}}).subscribe(() => {
+                this.emitSubmitEmail$.next(true);
+            })
+        );
     }
 
     onClickResend(): void {

@@ -20,6 +20,11 @@ export const APIConfig = new Map<APIHandle, any>([
         url: '/users',
         isProtected: false
     }],
+    [APIHandle.DELETE_USER, {
+        method: RequestMethod.Delete,
+        url: '/users',
+        isProtected: true
+    }],
     [APIHandle.STUDY_STATS, {
         method: RequestMethod.Get,
         url: '/study/:lang/stats',
@@ -70,7 +75,7 @@ export const APIConfig = new Map<APIHandle, any>([
     }],
     [APIHandle.EDIT_EMAIL, {
         method: RequestMethod.Post,
-        url: '/users/email',
+        url: '/users/:id/email',
         isProtected: true
     }],
     [APIHandle.CONFIRM_EMAIL, {
