@@ -1,3 +1,13 @@
 <h6 class="title" i18n="The title of the account deactivation setting@@0357a5943ddb5239fad8867b230ba805">Deactivate Your Account</h6>
-<p class="paragraph" i18n="A description about deactivating ones account@@b3d8b8a036eb66525c6e88c13794c2ec">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam cupiditate deleniti, essefacere fuga hicillo, modi nulla perspiciatis quasi quia ratione recusandae saepe similique tempore, veniam. Illo, velit?</p>
-<a class="link" i18n="The text for the link allowing users to deactivate their account@@57f59bb77e60f69f788c5c152f6a3ad7">Deactivate</a>
+<p class="paragraph" i18n="A description about deactivating ones account@@b3d8b8a036eb66525c6e88c13794c2ec">You can deactivate your account by clicking the link below. If you're confused or have questions about how the website works, try taking a look at the <a [routerLink]="['/help']" class="link">frequently asked questions</a> before deciding once and for all to deactivate your account. All statistics and data will be lost. This action can be performed once and cannot be undone.</p>
+<a class="link" (click)="modalVisibility$.next(true)" i18n="The text for the link allowing users to deactivate their account@@57f59bb77e60f69f788c5c152f6a3ad7">Deactivate</a>
+<gn-modal [isVisible]="modalVisibility$ | async" (close)="modalVisibility$.next(false)">
+    <p class="paragraph paragraph--modal" i18n="Confirmation message for users about to delete their account@@b64a08650d7341412cb703f052fc5c46">Could you give us a brief description about why you're leaving? We read and consider every reason seriously.</p>
+    <div class="textarea--container">
+        <label for="delete-reason" i18n="Label for reason-for-leaving textarea@@6b90ecc041671425a6fbccd91614005c">Reason for leaving:</label>
+        <textarea class="textarea" rows="7" id="delete-reason" i18n-placeholder="Placeholder text for reason-for-leaving textarea@@002c02bc6429cd28b56cda11eec2ab28" placeholder="I don't understand how to.." [(ngModel)]="reason"></textarea>
+    </div>
+    <button class="button button--hollow button--delete" (click)="onClickDelete()" i18n="Delete account button text@@6ef919952bfa48eba0fc4fb34efa9867">DELETE MY ACCOUNT</button>
+    <button class="button button--opaque" (click)="modalVisibility$.next(false)" i18n="Cancel button text@@ac411b26cbc9a35516ee41baf1aa7d47">CANCEL</button>
+    <span class="spacer"></span>
+</gn-modal>
