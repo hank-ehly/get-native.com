@@ -8,3 +8,28 @@
 .paragraph {
   color: $regent-gray;
 }
+
+.paragraph--modal {
+  color: $pale-sky;
+  padding: 40px;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+}
+
+.button--delete {
+  margin-bottom: 30px;
+}
+
+.spacer {
+  height: 30px;
+  display: block;
+}
+
+.textarea--container {
+  display: block;
+  margin: 0 auto 30px;
+  padding: 0 40px;
+}
