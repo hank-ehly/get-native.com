@@ -45,7 +45,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     subscriptions: Subscription[] = [];
 
-    video$: Observable<Video> = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
+    video$ = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
         return this.http.request(APIHandle.VIDEO, {
             params: {
                 id: id

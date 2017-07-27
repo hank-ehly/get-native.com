@@ -15,6 +15,6 @@ export class STUBUserService extends UserService {
     }
 
     get defaultStudyLanguage(): Promise<Language> {
-        return new Promise((resolve) => resolve('en'));
+        return new Promise((resolve) => resolve({code: 'en', name: 'English'}));
     }
 }
