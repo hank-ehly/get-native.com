@@ -105,6 +105,6 @@
     <div class="headline">
         <h1 class="headline__title" i18n="The title leading users to sign up@@beb769a747c4efb1ba5ffa1c564dd23c">Sign up for free</h1>
         <p class="headline__paragraph" i18n="A short description about signing up@@9c6d5f890ec8e6bd73277ac9ab8686d0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!</p>
-        <button class="button headline__button" (click)="loginModal.showModal()" i18n="The title for the sign up button@@e5b7634ee07ba35dbd442c8a53fbeb1a">Sign in / Sign up</button>
+        <button class="button headline__button" [routerLink]="[{outlets: {modal: 'login'}}]" i18n="The title for the sign up button@@e5b7634ee07ba35dbd442c8a53fbeb1a">Sign in / Sign up</button>
     </div>
 </main>

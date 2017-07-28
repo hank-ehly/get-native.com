@@ -17,24 +17,41 @@ import { Logger } from './core/logger/logger';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
+import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'gn-app',
     templateUrl: 'app.component.html',
-    styles: [`
-        :host {
-            display: block
-        }
-    `]
+    animations: [
+        trigger('enterUpLeaveDown', [
+            transition(':enter', [
+                animate(300, keyframes([
+                    style({opacity: 0, transform: 'translateY(100%)', offset: 0}),
+                    style({opacity: 1, transform: 'translateY(-10px)', offset: 0.7}),
+                    style({opacity: 1, transform: 'translateY(0)', offset: 1.0})
+                ]))
+            ]),
+            transition(':leave', [
+                animate(200, keyframes([
+                    style({opacity: 1, transform: 'translateY(0)', offset: 0}),
+                    style({opacity: 1, transform: 'translateY(-10px)', offset: 0.7}),
+                    style({opacity: 0, transform: 'translateY(100%)', offset: 1.0})
+                ]))
+            ])
+        ])
+    ]
 })
 export class AppComponent implements OnInit, OnDestroy {
     authenticated$ = this.user.authenticated$;
+    compliant$ = this.user.compliant$;
 
     navbarTitle$ = this.router.events
         .filter(e => e instanceof NavigationEnd)
-        .map(() => this.activatedRoute)
+        .mapTo(this.activatedRoute)
         .map(route => {
             while (route.firstChild) {
                 route = route.firstChild;
@@ -49,6 +66,8 @@ export class AppComponent implements OnInit, OnDestroy {
     @HostBinding('style.margin-bottom') get styleMarginBottom(): string {
         return (this.user.isAuthenticated() ? 50 : 240) + 'px';
     }
+
+    @HostBinding('style.display') display = 'block';
 
     private subscriptions: Subscription[] = [];
 

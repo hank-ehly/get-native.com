@@ -61,7 +61,6 @@ export class EmailLoginComponent implements OnDestroy {
 
     private onLoginResponse(user: User): void {
         this.user.updateCache(user);
-        this.loginModal.hideModal();
         this.router.navigate(['dashboard']).catch(e => {
             this.logger.warn(this, e);
         });

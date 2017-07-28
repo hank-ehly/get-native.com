@@ -1,6 +1,5 @@
-<div class="dialog" [@enterUpLeaveDown] *ngIf="!(user.compliant$ | async)">
+<div class="dialog">
     <p class="dialog__paragraph" i18n="Popup message asking user to comply with the getnative policy on storing data locally@@06afdb0c3f027180c8ed811ed00ecc28">This site uses <a href="https://www.techopedia.com/definition/27674/html5-local-storage" class="link" target="_blank">local storage</a>. By continuing to browse this site you are agreeing to our terms of service.</p>
-    <!-- todo: Scroll to section on cookies – https://github.com/angular/angular/issues/6595 -->
-    <a class="link dialog__link dialog__link_tos" [routerLink]="['tos']" [fragment]="'cookies'" i18n="The text for the web-storage compliance popup link redirecting users to the terms of service page@@8283c85b25db300546af69c4eff43072">Find out more here.</a>
-    <span class="link dialog__link dialog__link_close" (click)="user.comply()" i18n="The text for the button that closes the web-storage compliance popup@@976e12662bafbf74be24350f8b89c705">Close</span>
+    <a class="link dialog__link dialog__link_tos" [routerLink]="['/tos']" fragment="cookies" i18n="The text for the web-storage compliance popup link redirecting users to the terms of service page@@8283c85b25db300546af69c4eff43072">Find out more here.</a>
+    <span class="link dialog__link dialog__link_close" (click)="onClickClose()" i18n="The text for the button that closes the web-storage compliance popup@@976e12662bafbf74be24350f8b89c705">Close</span>
 </div>

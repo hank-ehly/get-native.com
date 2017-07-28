@@ -14,11 +14,10 @@ export class DashboardGuard implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        this.logger.debug(this, 'canActivate', state.url, route);
         const expectedKeys = ['token', 'expires'];
         const queryParams = <any>_.pick(route.queryParams, expectedKeys);
         const canActivate = this.user.isAuthenticated() || _.size(queryParams) === expectedKeys.length && _.every(queryParams, _.isString);
-        this.logger.debug(this, 'canActivate?', canActivate);
+        this.logger.debug(this, 'canActivate', canActivate);
         return canActivate;
     }
 }
