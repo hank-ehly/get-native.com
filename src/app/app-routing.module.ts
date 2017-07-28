@@ -37,6 +37,7 @@ import { WritingGuard } from './study/writing/writing-guard.service';
 import { DashboardGuard } from './dashboard/dashboard-guard.service';
 import { DashboardResolveService } from './dashboard/dashboard-resolve.service';
 import { ConfirmEmailUpdateResolver } from './core/auth/confirm-email-update-resolver.service';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
     {
@@ -50,8 +51,10 @@ const routes: Routes = [
         resolve: {user: DashboardResolveService}
     },
     {
-        path: 'settings', component: SettingsComponent, canActivateChild: [AuthGuard],
-        children: [
+        path: 'login', component: LoginComponent, outlet: 'modal'
+    },
+    {
+        path: 'settings', component: SettingsComponent, canActivateChild: [AuthGuard], children: [
             {
                 path: '', component: GeneralComponent, data: {title: 'Settings'}
             },
@@ -70,8 +73,7 @@ const routes: Routes = [
         path: 'library/:id', component: LibraryDetailComponent, canActivate: [AuthGuard]
     },
     {
-        path: 'study', component: StudyComponent, canActivateChild: [AuthGuard], canDeactivate: [StudySessionGuard],
-        children: [
+        path: 'study', component: StudyComponent, canActivateChild: [AuthGuard], canDeactivate: [StudySessionGuard], children: [
             {
                 path: '', component: TransitionComponent
             },
@@ -117,7 +119,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot([]), RouterModule.forChild(routes)],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

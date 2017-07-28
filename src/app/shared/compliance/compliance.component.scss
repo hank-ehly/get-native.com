@@ -1,6 +1,17 @@
 @import "../../../styles/core";
 @import "./compliance.component.debug";
 
+:host {
+  display: block;
+  height: 25px;
+  left: 30px;
+  position: fixed;
+  min-width: $main-width;
+  bottom: 30px;
+  padding: 15px;
+  right: 30px;
+}
+
 .dialog {
   @include border-radius();
   background: $wild-sand;

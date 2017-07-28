@@ -86,12 +86,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.navbar.updateQuery(target.value);
     }
 
-    onShowLoginModal(e: any): void {
-        e.preventDefault();
-        this.logger.debug(this, 'onShowLoginModal');
-        this.loginModal.showModal();
-    }
-
     onClickBack(): void {
         this.logger.debug(this, 'onClickBack');
         this.location.back();

@@ -4,8 +4,7 @@
 <gn-toolbar *ngIf="authenticated$ | async"></gn-toolbar>
 
 <router-outlet></router-outlet>
+<router-outlet name="modal"></router-outlet>
 
-<gn-footer *ngIf="!(authenticated$ | async)"></gn-footer>
-
-<gn-compliance></gn-compliance>
-<gn-login [isVisible]="false"></gn-login>
+<gn-footer *ngIf="!authenticated$.getValue()"></gn-footer>
+<gn-compliance *ngIf="!compliant$.getValue()" [@enterUpLeaveDown]></gn-compliance>

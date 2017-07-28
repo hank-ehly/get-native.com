@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/11/13.
  */
 
-import { Component, Input, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LoginModalService } from '../core/login-modal/login-modal.service';
 import { Logger } from '../core/logger/logger';
@@ -19,39 +20,32 @@ import * as _ from 'lodash';
     styleUrls: ['login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-    @Input() isVisible: boolean;
     activeView: string;
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private loginModal: LoginModalService) {
+    constructor(private logger: Logger, private loginModal: LoginModalService, private router: Router) {
     }
 
     ngOnInit(): void {
         this.subscriptions.push(
-            this.loginModal.showModal$.subscribe(() => this.isVisible = true),
-            this.loginModal.hideModal$.subscribe(() => this.isVisible = false),
             this.loginModal.setActiveView$.subscribe((view: any) => this.activeView = view)
         );
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'ngOnDestroy - Unsubscribe all', this.subscriptions);
-        _.each(this.subscriptions, s => s.unsubscribe());
+        this.logger.debug(this, 'OnDestroy');
+        _.invokeMap(this.subscriptions, 'unsubscribe');
     }
 
     onClickClose(e: MouseEvent): void {
         const t = <HTMLElement>e.target;
         if (['overlay', 'modal-frame__close-button'].indexOf(t.className) !== -1) {
-            this.isVisible = false;
+            this.router.navigate([{outlets: {modal: null}}]);
         }
     }
 
     @HostListener('document:keydown', ['$event']) onKeyDown(e: KeyboardEvent): void {
-        if (!this.isVisible) {
-            return;
-        }
-
         this.logger.debug(this, `KeyboardEvent: ${e.key}`);
 
         switch (e.key) {
@@ -79,7 +73,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     onKeydownEscape(e?: KeyboardEvent): void {
-        this.isVisible = false;
+        this.logger.debug(this, 'onKeydownEscape');
+        this.router.navigate([{outlets: {modal: null}}]);
     }
 
     onKeydownTab(e?: KeyboardEvent): void {
