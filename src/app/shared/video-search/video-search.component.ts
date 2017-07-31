@@ -104,7 +104,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                 search.set('count', `${9}`);
 
                 return this.http.request(APIHandle.VIDEOS, {search: search});
-            }, (_: any, videos: Entities<Video>) => videos.records)
+            }, (unused: any, videos: Entities<Video>) => videos.records)
                 .do(this.updateMaxVideoId.bind(this))
                 .scan(this.concatVideos, [])
                 .do(() => {

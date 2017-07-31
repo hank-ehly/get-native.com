@@ -79,7 +79,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
             };
 
             return this.http.request(APIHandle.WRITING_ANSWERS, options);
-        }, (_, answers: Entities<WritingAnswer>) => answers.records)
+        }, (unused: any, answers: Entities<WritingAnswer>) => answers.records)
             .do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);
     }).share();
 
