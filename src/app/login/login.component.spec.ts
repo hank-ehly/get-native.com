@@ -30,7 +30,6 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 describe('LoginComponent', () => {
     let comp: LoginComponent;
     let fixture: ComponentFixture<LoginComponent>;
-    let de: DebugElement;
     let el: HTMLElement;
     let util: SpecUtil;
 
