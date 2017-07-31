@@ -83,6 +83,11 @@ export const APIConfig = new Map<APIHandle, any>([
         url: '/confirm_email',
         isProtected: false
     }],
+    [APIHandle.CONFIRM_EMAIL_UPDATE, {
+        method: RequestMethod.Post,
+        url: '/confirm_email_update',
+        isProtected: false
+    }],
     [APIHandle.RESEND_CONFIRMATION_EMAIL, {
         method: RequestMethod.Post,
         url: '/resend_confirmation_email',
