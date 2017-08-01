@@ -33,6 +33,7 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoPanelComponent } from './video-panel/video-panel.component';
 import { VideoPanelListComponent } from './video-panel-list/video-panel-list.component';
 import { VideoSearchComponent } from './video-search/video-search.component';
+import { SafeHtmlPipe } from './safe-html/safe-html.pipe';
 
 @NgModule({
     imports: [
@@ -63,7 +64,8 @@ import { VideoSearchComponent } from './video-search/video-search.component';
         VideoPlayerComponent,
         VideoPanelComponent,
         VideoPanelListComponent,
-        VideoSearchComponent
+        VideoSearchComponent,
+        SafeHtmlPipe
 
     ],
     exports: [
@@ -91,7 +93,8 @@ import { VideoSearchComponent } from './video-search/video-search.component';
         VideoPlayerComponent,
         VideoPanelComponent,
         VideoPanelListComponent,
-        VideoSearchComponent
+        VideoSearchComponent,
+        SafeHtmlPipe
     ]
 })
 
