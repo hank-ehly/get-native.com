@@ -1,9 +1,10 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/get-native.com
     docker:
       - image: circleci/node:8-browsers
-      - image: circleci/ruby:2.3
+      - image: circleci/ruby:2.3-node
     steps:
       - checkout
 
