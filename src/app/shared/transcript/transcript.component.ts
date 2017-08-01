@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef, HostListener } from '@angular/core';
 
 import { CollocationOccurrence } from '../../core/entities/collocation-occurrence';
 import { Transcript } from '../../core/entities/transcript';
@@ -41,9 +41,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
             });
         });
 
-        this.logger.debug(this, 'set transcripts', transcripts);
-
-        this.selectedTranscript  = _.first(transcripts.records);
+        this.selectedTranscript = _.first(transcripts.records);
         this.selectedCollocationOccurrence = <CollocationOccurrence>_.first(this.selectedTranscript.collocation_occurrences.records);
 
         /* Hack to access first LI element after setting transcripts */
@@ -76,6 +74,15 @@ export class TranscriptComponent implements OnInit, OnDestroy {
         this.logger.debug(this, 'OnDestroy');
     }
 
+    onClickTranscriptText(e: Event) {
+        const className = (<HTMLElement>e.target).className;
+        const id = _.toNumber((<HTMLElement>e.target).id);
+        if (className.indexOf('collocation-occurrence') !== -1 && id) {
+            this.selectedCollocationOccurrence = _.find(this.selectedTranscript.collocation_occurrences.records, {id: id});
+            this.logger.debug(this, this.selectedCollocationOccurrence);
+        }
+    }
+
     onClickTab(tab: any, e: MouseEvent): void {
         this.logger.debug(this, 'onClickTab', tab.transcript);
 
@@ -83,6 +90,44 @@ export class TranscriptComponent implements OnInit, OnDestroy {
         this.selectedTranscript = tab.transcript;
 
         /* Todo: If previous selection exists, use that */
-        this.selectedCollocationOccurrence = <CollocationOccurrence>_.first(this.selectedTranscript.collocation_occurrences.records);
+        this.selectedCollocationOccurrence = _.first(this.selectedTranscript.collocation_occurrences.records);
+    }
+
+    addMarkupToTranscriptText(text?: string): string {
+        const collocationOccurrenceMatches = text.match(/{(.*?)}/g);
+
+        if (!collocationOccurrenceMatches) {
+            return;
+        }
+
+        for (const match of collocationOccurrenceMatches) {
+            const unwrappedText = _.replace(match, /[{}]/g, '');
+            const occurrence = _.find(this.selectedTranscript.collocation_occurrences.records, {text: unwrappedText});
+            if (occurrence && occurrence.id) {
+                const className = ['collocation-occurrence'];
+                if (occurrence.id === this.selectedCollocationOccurrence.id) {
+                    className.push('collocation-occurrence--selected');
+                }
+                text = _.replace(text, match, `<span id="${occurrence.id}" class="${className.join(' ')}">${unwrappedText}</span>`);
+            }
+        }
+
+        return text;
+    }
+
+    addMarkupToUsageExampleText(text?: string): string {
+        if (!text) {
+            return;
+        }
+
+        const regExp = new RegExp(this.selectedCollocationOccurrence.text, 'gi');
+
+        const lowercaseExample = _.lowerCase(text);
+        const lowercaseCollocation = _.lowerCase(this.selectedCollocationOccurrence.text);
+        const occurrence = lowercaseExample.indexOf(lowercaseCollocation) === 0 ? _.upperFirst(lowercaseCollocation) : lowercaseCollocation;
+        const replacementOccurrence = `<span class="collocation-occurrence">${occurrence}</span>`;
+        const replacement = _.replace(text, regExp, replacementOccurrence);
+
+        return _.pad(replacement, replacement.length + 2, '"');
     }
 }
