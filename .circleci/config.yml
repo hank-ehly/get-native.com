@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8-browsers
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt-get update -y
+            sudo apt-get install -y build-essential
+
+      - restore_cache:
+          key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+
+      - run:
+          name: Install node modules
+          command: npm install
+
+      - save_cache:
+          key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+
+      - run:
+          name: Test
+          command: |
+            npm run lint -- --type-check
+            npm test -- --single-run
+
+      - deploy:
+          name: Deploy
+          command: |
+            git clone git@github.com:hank-ehly/get-native.com-devops.git
+            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              cd get-native.com-devops/deploy && bundle install --jobs 4 --path vendor/bundle && bundle exec cap client:staging deploy
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+              cd get-native.com-devops/deploy && bundle install --jobs 4 --path vendor/bundle && bundle exec cap client:production deploy
+            fi
