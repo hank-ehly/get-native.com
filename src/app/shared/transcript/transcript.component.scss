@@ -49,16 +49,17 @@
   display: block;
 }
 
-.collocation-occurrence {
+:host /deep/ .collocation-occurrence {
   color: $orange-peel;
 }
 
-.tab-content .collocation-occurrence {
+/* To apply style to innerHtml contents */
+:host /deep/ .tab-content .content .collocation-occurrence {
   border-bottom: 2px solid $orange-peel;
   color: $default-color;
   cursor: pointer;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &.collocation-occurrence--selected {
     color: $orange-peel;
   }
 }
