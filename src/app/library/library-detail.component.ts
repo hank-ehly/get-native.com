@@ -45,14 +45,14 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     subscriptions: Subscription[] = [];
 
-    video$ = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
+    video$: Observable<any> = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
         return this.http.request(APIHandle.VIDEO, {
             params: {
                 id: id
             }
         });
     }).share().do((v: Video) => {
-        this.liked     = v.liked;
+        this.liked = v.liked;
         this.likeCount = v.like_count;
     });
 
