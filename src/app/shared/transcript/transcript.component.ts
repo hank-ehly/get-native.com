@@ -89,15 +89,17 @@ export class TranscriptComponent implements OnInit, OnDestroy {
         this.selectedTab$.next(<HTMLLIElement>e.target);
         this.selectedTranscript = tab.transcript;
 
-        /* Todo: If previous selection exists, use that */
-        this.selectedCollocationOccurrence = _.first(this.selectedTranscript.collocation_occurrences.records);
+        if (this.selectedTranscript.collocation_occurrences.records.length) {
+            /* todo: if previous selection exists, use that */
+            this.selectedCollocationOccurrence = _.first(this.selectedTranscript.collocation_occurrences.records);
+        }
     }
 
     addMarkupToTranscriptText(text?: string): string {
         const collocationOccurrenceMatches = text.match(/{(.*?)}/g);
 
         if (!collocationOccurrenceMatches) {
-            return;
+            return text;
         }
 
         for (const match of collocationOccurrenceMatches) {
