@@ -83,6 +83,10 @@ $column-width: ($main-width - 30px) / 2;
   padding: 0;
   outline: none;
   width: ($column-width / 3) - 15px;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .share-button_facebook {
@@ -103,7 +107,7 @@ $column-width: ($main-width - 30px) / 2;
   }
 }
 
-.share-button_google {
+.share-button_email {
   background: $periwinkle-gray url('../../assets/icons/mail.svg') no-repeat center;
   background-size: 20%;
 
