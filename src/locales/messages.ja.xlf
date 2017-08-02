@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="ja" datatype="plaintext" original="ng2.template">
         <body>
             <trans-unit id="06afdb0c3f027180c8ed811ed00ecc28" datatype="html">
@@ -2637,7 +2637,7 @@
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
                 <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK"
-                                                                                                                      ctype="x-a"/>.
+                                                                                                                        ctype="x-a"/>.
                 </source>
                 <target>すべてのお問い合わせについては、atadmin @ get-native.comまでご連絡ください。</target>
                 <context-group purpose="location">
