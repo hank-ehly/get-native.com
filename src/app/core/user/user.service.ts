@@ -168,7 +168,7 @@ export class UserService {
             authenticated = +this.localStorage.getItem(kAuthTokenExpire) > Date.now();
         }
 
-        this.logger.debug(this, 'isAuthenticated', authenticated);
+        // this.logger.debug(this, 'isAuthenticated', authenticated);
 
         return authenticated;
     }

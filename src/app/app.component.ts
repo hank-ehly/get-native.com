@@ -7,8 +7,7 @@
 
 import { Component, OnInit, HostListener, OnDestroy, HostBinding, Inject, LOCALE_ID } from '@angular/core';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 import { LocalStorageService } from './core/local-storage/local-storage.service';
 import { FacebookService } from './core/facebook/facebook.service';
@@ -51,9 +50,9 @@ export class AppComponent implements OnInit, OnDestroy {
     authenticated$ = this.user.authenticated$;
     compliant$ = this.user.compliant$;
 
-    navbarTitle$ = this.router.events
+    metaTitleEmitted$ = this.router.events
         .filter(e => e instanceof NavigationEnd)
-        .mapTo(this.activatedRoute)
+        .mapTo(this.route)
         .map(route => {
             while (route.firstChild) {
                 route = route.firstChild;
@@ -62,7 +61,7 @@ export class AppComponent implements OnInit, OnDestroy {
         })
         .filter(route => route.outlet === 'primary')
         .mergeMap(route => route.data)
-        .map(data => data.title);
+        .map(data => data.meta.title);
 
     /* For footer display */
     @HostBinding('style.margin-bottom') get styleMarginBottom(): string {
@@ -73,9 +72,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router,
-                private activatedRoute: ActivatedRoute, private titleService: Title, private user: UserService,
-                private navbar: NavbarService, @Inject(LOCALE_ID) private localeId: string, private facebook: FacebookService) {
+    constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router, private user: UserService,
+                private navbar: NavbarService, @Inject(LOCALE_ID) private localeId: string, private facebook: FacebookService,
+                private route: ActivatedRoute) {
         // localeId is 'en' or 'ja'
     }
 
@@ -90,8 +89,11 @@ export class AppComponent implements OnInit, OnDestroy {
         this.user.authenticated$.next(this.user.isAuthenticated());
 
         this.subscriptions.push(
-            this.navbarTitle$.subscribe(this.navbar.title$),
-            this.navbar.title$.filter(_.isString).map(t => `getnative | ${t}`).subscribe(this.titleService.setTitle),
+            this.metaTitleEmitted$.subscribe(t => {
+                if (t && t.length) {
+                    this.navbar.title$.next(t);
+                }
+            }),
             this.user.logout$.subscribe(this.onLogout.bind(this))
         );
 

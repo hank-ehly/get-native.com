@@ -17,7 +17,7 @@ export class NavbarService {
 
     title$ = new Subject<string>();
     backButtonTitle$ = new BehaviorSubject<string>(null);
-    queueButtonTitle$ = new BehaviorSubject<string>('WAIT..');
+    queueButtonTitle$ = new BehaviorSubject<string>('...');
 
     studyOptionsVisible$ = new Subject<boolean>();
     searchBarVisible$ = new Subject<boolean>();

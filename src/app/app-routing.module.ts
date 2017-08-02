@@ -39,73 +39,132 @@ import { DashboardResolveService } from './dashboard/dashboard-resolve.service';
 import { ConfirmEmailUpdateResolver } from './core/auth/confirm-email-update-resolver.service';
 import { LoginComponent } from './login/login.component';
 
+import { MetaGuard } from '@ngx-meta/core';
+
 const routes: Routes = [
     {
-        path: '', canActivate: [AuthGuard], component: HomeComponent
+        path: '', canActivate: [AuthGuard, MetaGuard], component: HomeComponent, data: {
+            meta: {
+                title: 'getnative. Break the barrier between fluid and native-like.',
+                override: true
+            }
+        }
     },
     {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [DashboardGuard],
-        data: {title: 'Dashboard'},
-        resolve: {user: DashboardResolveService}
+        canActivate: [DashboardGuard, MetaGuard],
+        resolve: {user: DashboardResolveService},
+        data: {
+            meta: {
+                title: 'Dashboard'
+            }
+        }
     },
     {
         path: 'login', component: LoginComponent, outlet: 'modal'
     },
     {
-        path: 'settings', component: SettingsComponent, canActivateChild: [AuthGuard], children: [
+        path: 'settings', component: SettingsComponent, canActivateChild: [AuthGuard, MetaGuard], children: [
             {
-                path: '', component: GeneralComponent, data: {title: 'Settings'}
+                path: '', component: GeneralComponent, data: {
+                    meta: {
+                        title: 'General Settings'
+                    }
+                }
             },
             {
-                path: 'notifications', component: NotificationsComponent, data: {title: 'Settings'}
+                path: 'notifications', component: NotificationsComponent, data: {
+                    meta: {
+                        title: 'Notification Settings'
+                    }
+                }
             },
             {
-                path: 'security', component: SecurityComponent, data: {title: 'Settings'}
+                path: 'security', component: SecurityComponent, data: {
+                    meta: {
+                        title: 'Security Settings'
+                    }
+                }
             }
         ]
     },
     {
-        path: 'library', component: LibraryComponent, canActivate: [AuthGuard], data: {title: 'Library'}
+        path: 'library', component: LibraryComponent, canActivate: [AuthGuard, MetaGuard], data: {
+            meta: {
+                title: 'Library'
+            }
+        }
     },
     {
-        path: 'library/:id', component: LibraryDetailComponent, canActivate: [AuthGuard]
+        path: 'library/:id', component: LibraryDetailComponent, canActivate: [AuthGuard, MetaGuard]
     },
     {
-        path: 'study', component: StudyComponent, canActivateChild: [AuthGuard], canDeactivate: [StudySessionGuard], children: [
+        path: 'study', component: StudyComponent, canActivateChild: [AuthGuard, MetaGuard], canDeactivate: [StudySessionGuard], children: [
             {
                 path: '', component: TransitionComponent
             },
             {
-                path: 'listening', resolve: {video: ListeningResolver}, component: ListeningComponent, data: {title: 'Listening'}
+                path: 'listening', resolve: {video: ListeningResolver}, component: ListeningComponent, data: {
+                    meta: {
+                        title: 'Listening'
+                    }
+                }
             },
             {
-                path: 'shadowing', component: ShadowingComponent, data: {title: 'Shadowing'}
+                path: 'shadowing', component: ShadowingComponent, data: {
+                    meta: {
+                        title: 'Shadowing'
+                    }
+                }
             },
             {
-                path: 'speaking', component: SpeakingComponent, data: {title: 'Speaking'}
+                path: 'speaking', component: SpeakingComponent, data: {
+                    meta: {
+                        title: 'Speaking'
+                    }
+                }
             },
             {
                 path: 'writing',
                 component: WritingComponent,
-                data: {title: 'Writing'},
                 resolve: {question: WritingResolver},
-                canDeactivate: [WritingGuard]
+                canDeactivate: [WritingGuard],
+                data: {
+                    meta: {
+                        title: 'Writing'
+                    }
+                }
             },
             {
-                path: 'results', component: ResultsComponent, data: {title: 'Results'}, resolve: {stats: ResultsResolver}
+                path: 'results', component: ResultsComponent, resolve: {stats: ResultsResolver}, data: {
+                    meta: {
+                        title: 'Results'
+                    }
+                }
             }
         ]
     },
     {
-        path: 'help', component: HelpComponent, data: {title: 'Help'}
+        path: 'help', component: HelpComponent, canActivate: [MetaGuard], data: {
+            meta: {
+                title: 'Frequently Asked Questions & Contact'
+            }
+        }
     },
     {
-        path: 'privacy', component: PrivacyComponent, data: {title: 'Privacy Policy'}
+        path: 'privacy', component: PrivacyComponent, canActivate: [MetaGuard], data: {
+            meta: {
+                title: 'Privacy Policy'
+            }
+        }
     },
     {
-        path: 'tos', component: TOSComponent, data: {title: 'Terms of Service'}
+        path: 'tos', component: TOSComponent, canActivate: [MetaGuard], data: {
+            meta: {
+                title: 'Terms of Service'
+            }
+        }
     },
     {
         path: 'confirm_email', resolve: {_: ConfirmEmailResolver}, component: DashboardComponent
@@ -114,7 +173,11 @@ const routes: Routes = [
         path: 'confirm_email_update', resolve: {_: ConfirmEmailUpdateResolver}, component: SettingsComponent
     },
     {
-        path: '**', component: PageNotFoundComponent
+        path: '**', component: PageNotFoundComponent, data: {
+            meta: {
+                title: 'Page Not Found'
+            }
+        }
     }
 ];
 
