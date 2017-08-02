@@ -9,6 +9,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { StudySessionService } from '../core/study-session/study-session.service';
+import { FacebookService } from '../core/facebook/facebook.service';
 import { kListening } from '../core/study-session/section-keys';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
@@ -17,6 +18,7 @@ import { Logger } from '../core/logger/logger';
 import { Video } from '../core/entities/video';
 
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/debounceTime';
@@ -26,8 +28,6 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
-import { Observable } from 'rxjs/Observable';
-import { FacebookService } from '../core/facebook/facebook.service';
 
 @Component({
     selector: 'gn-library-detail',
@@ -41,6 +41,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     videoId: number = _.toNumber(this.route.snapshot.params['id']);
     likeCount: number;
     emailShareHref: string;
+    twitterShareHref: string;
 
     video$: Observable<any> = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
         return this.http.request(APIHandle.VIDEO, {
@@ -73,6 +74,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 .pluck('subcategory', 'name')
                 .subscribe((t: string) => {
                     this.emailShareHref = `mailto:?subject=getnative - ${t}&body=${window.location.href}`;
+                    this.twitterShareHref = `https://twitter.com/intent/tweet?text=getnative - ${t}&url=${window.location.href}`;
                     this.navbar.title$.next(t);
                 }),
 
@@ -129,8 +131,16 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.facebook.share();
     }
 
+    onClickShareTwitter(): void {
+        if (this.twitterShareHref) {
+            window.open(this.twitterShareHref);
+        }
+    }
+
     onClickShareEmail(): void {
-        window.location.href = this.emailShareHref;
+        if (this.emailShareHref) {
+            window.location.href = this.emailShareHref;
+        }
     }
 
     private updateLikeCount(liked: boolean) {

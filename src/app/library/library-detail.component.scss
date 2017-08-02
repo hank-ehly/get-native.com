@@ -83,7 +83,6 @@ $column-width: ($main-width - 30px) / 2;
   padding: 0;
   outline: none;
   width: ($column-width / 3) - 15px;
-
   &:disabled {
     cursor: not-allowed;
   }
