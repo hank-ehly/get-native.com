@@ -27,6 +27,7 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs/Observable';
+import { FacebookService } from '../core/facebook/facebook.service';
 
 @Component({
     selector: 'gn-library-detail',
@@ -36,14 +37,10 @@ import { Observable } from 'rxjs/Observable';
 export class LibraryDetailComponent implements OnInit, OnDestroy {
     likedChange$ = new Subject<boolean>();
     liked: boolean;
-
     queued: boolean;
-
     videoId: number = _.toNumber(this.route.snapshot.params['id']);
-
     likeCount: number;
-
-    subscriptions: Subscription[] = [];
+    emailShareHref: string;
 
     video$: Observable<any> = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
         return this.http.request(APIHandle.VIDEO, {
@@ -55,6 +52,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.liked = v.liked;
         this.likeCount = v.like_count;
     });
+
+    private subscriptions: Subscription[] = [];
 
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
@@ -72,7 +71,10 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.subscriptions.push(
             this.video$
                 .pluck('subcategory', 'name')
-                .subscribe((t: string) => this.navbar.title$.next(t)),
+                .subscribe((t: string) => {
+                    this.emailShareHref = `mailto:?subject=getnative - ${t}&body=${window.location.href}`;
+                    this.navbar.title$.next(t);
+                }),
 
             this.likedChange$
                 .filter(_.isBoolean)
@@ -110,7 +112,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     }
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
-                private studySession: StudySessionService) {
+                private studySession: StudySessionService, private facebook: FacebookService) {
     }
 
     ngOnDestroy(): void {
@@ -121,6 +123,14 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.navbar.queueButtonTitle$.next('WAIT..');
 
         _.each(this.subscriptions, s => s.unsubscribe());
+    }
+
+    onClickShareFacebook(): void {
+        this.facebook.share();
+    }
+
+    onClickShareEmail(): void {
+        window.location.href = this.emailShareHref;
     }
 
     private updateLikeCount(liked: boolean) {
