@@ -21,12 +21,19 @@ import { StudyModule } from './study/study.module';
 import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
 import { Logger } from './core/logger/logger';
 import { StaticPagesModule } from './static-pages/static-pages.module';
+import { metaFactory } from './meta-factory';
+
+import { MetaModule, MetaLoader } from '@ngx-meta/core';
 
 @NgModule({
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
+        MetaModule.forRoot({
+            provide: MetaLoader,
+            useFactory: (metaFactory)
+        }),
         CoreModule,
         SharedModule,
         DashboardModule,

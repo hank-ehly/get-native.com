@@ -17,6 +17,7 @@ import { APIHandle } from '../core/http/api-handle';
 import { Logger } from '../core/logger/logger';
 import { Video } from '../core/entities/video';
 
+import { MetaService } from '@ngx-meta/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -56,6 +57,10 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
+    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
+                private studySession: StudySessionService, private facebook: FacebookService, private meta: MetaService) {
+    }
+
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
         this.navbar.hideMagnifyingGlass();
@@ -76,6 +81,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                     this.emailShareHref = `mailto:?subject=getnative - ${t}&body=${window.location.href}`;
                     this.twitterShareHref = `https://twitter.com/intent/tweet?text=getnative - ${t}&url=${window.location.href}`;
                     this.navbar.title$.next(t);
+                    this.meta.setTitle(t);
                 }),
 
             this.likedChange$
@@ -91,7 +97,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             this.navbar.onClickQueue$
                 .do(() => this.queued = !this.queued)
                 .do(() => this.navbar.studyOptionsEnabled$.next(false))
-                .do(() => this.navbar.queueButtonTitle$.next('WAIT..'))
+                .do(() => this.navbar.queueButtonTitle$.next('...'))
                 .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
                 .mergeMap(handle => this.http.request(handle, params))
                 .do(() => this.navbar.studyOptionsEnabled$.next(true))
@@ -113,18 +119,12 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         );
     }
 
-    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
-                private studySession: StudySessionService, private facebook: FacebookService) {
-    }
-
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-
         this.navbar.studyOptionsVisible$.next(false);
         this.navbar.backButtonTitle$.next(null);
-        this.navbar.queueButtonTitle$.next('WAIT..');
-
-        _.each(this.subscriptions, s => s.unsubscribe());
+        this.navbar.queueButtonTitle$.next('...');
+        _.invokeMap(this.subscriptions, 'unsubscribe');
     }
 
     onClickShareFacebook(): void {
