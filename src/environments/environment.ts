@@ -8,5 +8,6 @@ export const environment = {
     apiBaseUrl: 'http://localhost:3000',
     facebookLoginUrl: 'http://localhost:3000/oauth/facebook',
     twitterLoginUrl: 'http://localhost:3000/oauth/twitter',
-    googleLoginUrl: 'http://localhost:3000/oauth/google'
+    googleLoginUrl: 'http://localhost:3000/oauth/google',
+    facebookAppId: '215586025582003'
 };

@@ -25,6 +25,7 @@ import { ConfirmEmailResolver } from './auth/confirm-email-resolver.service';
 import { StudySessionService } from './study-session/study-session.service';
 import { WordCountService } from './word-count/word-count.service';
 import { ConfirmEmailUpdateResolver } from './auth/confirm-email-update-resolver.service';
+import { FacebookService } from './facebook/facebook.service';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { ConfirmEmailUpdateResolver } from './auth/confirm-email-update-resolver
         ConfirmEmailResolver,
         ConfirmEmailUpdateResolver,
         StudySessionService,
-        WordCountService
+        WordCountService,
+        FacebookService
     ]
 })
 export class CoreModule {

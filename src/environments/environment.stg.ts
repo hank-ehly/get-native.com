@@ -8,5 +8,6 @@ export const environment = {
     apiBaseUrl: 'https://api.stg.get-native.com',
     facebookLoginUrl: 'https://api.stg.get-native.com/oauth/facebook',
     twitterLoginUrl: 'https://api.stg.get-native.com/oauth/twitter',
-    googleLoginUrl: 'https://api.stg.get-native.com/oauth/google'
+    googleLoginUrl: 'https://api.stg.get-native.com/oauth/google',
+    facebookAppId: '215585938915345'
 };

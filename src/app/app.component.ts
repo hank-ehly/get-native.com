@@ -6,11 +6,14 @@
  */
 
 import { Component, OnInit, HostListener, OnDestroy, HostBinding, Inject, LOCALE_ID } from '@angular/core';
+import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 import { LocalStorageService } from './core/local-storage/local-storage.service';
+import { FacebookService } from './core/facebook/facebook.service';
 import { NavbarService } from './core/navbar/navbar.service';
+import { environment } from '../environments/environment';
 import { UserService } from './core/user/user.service';
 import { Logger } from './core/logger/logger';
 
@@ -21,7 +24,6 @@ import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'gn-app',
@@ -73,7 +75,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
     constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router,
                 private activatedRoute: ActivatedRoute, private titleService: Title, private user: UserService,
-                private navbar: NavbarService, @Inject(LOCALE_ID) private localeId: string) {
+                private navbar: NavbarService, @Inject(LOCALE_ID) private localeId: string, private facebook: FacebookService) {
+        // localeId is 'en' or 'ja'
     }
 
     @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
@@ -91,6 +94,14 @@ export class AppComponent implements OnInit, OnDestroy {
             this.navbar.title$.filter(_.isString).map(t => `getnative | ${t}`).subscribe(this.titleService.setTitle),
             this.user.logout$.subscribe(this.onLogout.bind(this))
         );
+
+        this.facebook.init({
+            appId: environment.facebookAppId,
+            autoLogAppEvents: true,
+            xfbml: false,
+            cookie: false,
+            version: 'v2.10'
+        });
     }
 
     ngOnDestroy(): void {
