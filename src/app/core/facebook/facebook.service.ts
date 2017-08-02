@@ -18,7 +18,7 @@ export class FacebookService {
         }
     }
 
-    share(href?: string) {
+    share(href?: string): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             try {
                 FB.ui({

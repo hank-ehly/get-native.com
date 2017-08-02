@@ -13,6 +13,7 @@ import { Logger } from '../../core/logger/logger';
 import { STUBLogger } from '../../core/logger/logger.stub';
 import { LangService } from '../../core/lang/lang.service';
 import { STUBTranscripts } from '../../core/entities/transcripts.stub';
+import { SafeHtmlPipe } from '../safe-html/safe-html.pipe';
 
 describe('TranscriptComponent', () => {
     let comp: TranscriptComponent;
@@ -21,7 +22,7 @@ describe('TranscriptComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TranscriptComponent],
+            declarations: [TranscriptComponent, SafeHtmlPipe],
             providers: [{provide: Logger, useValue: STUBLogger}, LangService]
         }).compileComponents().then(() => {
             fixture = TestBed.createComponent(TranscriptComponent);

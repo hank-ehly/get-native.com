@@ -23,11 +23,20 @@ import { UTCDateService } from '../core/utc-date/utc-date.service';
 import { StudySessionService } from '../core/study-session/study-session.service';
 import { LocalStorageService } from '../core/local-storage/local-storage.service';
 import { STUBLocalStorageService } from '../core/local-storage/local-storage.service.stub';
+import { FacebookService } from '../core/facebook/facebook.service';
+import { STUBFacebookService } from '../core/facebook/facebook.service.stub';
+import { MetaService } from '@ngx-meta/core';
 
 describe('LibraryDetailComponent', () => {
     let comp: LibraryDetailComponent;
     let fixture: ComponentFixture<LibraryDetailComponent>;
     let util: SpecUtil;
+
+    const stubMetaService = {
+        setTitle(title: string, override?: boolean): void {
+            return;
+        }
+    };
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -41,7 +50,9 @@ describe('LibraryDetailComponent', () => {
                 LangService,
                 UTCDateService,
                 StudySessionService,
-                {provide: LocalStorageService, useValue: STUBLocalStorageService}
+                {provide: LocalStorageService, useValue: STUBLocalStorageService},
+                {provide: FacebookService, useClass: STUBFacebookService},
+                {provide: MetaService, useValue: stubMetaService}
             ]
         }).compileComponents().then(() => {
             fixture = TestBed.createComponent(LibraryDetailComponent);
