@@ -7,24 +7,28 @@ const _ = require('lodash');
 const path = require('path');
 
 const hashRegExp = /[0-9A-Za-z]{32,}/g;
-const localesDir = path.resolve(__dirname, '..', 'src', 'locales');
+const srcDir = path.resolve(__dirname, '..', 'src');
 
-async function diff(a, b) {
+async function diff(locale) {
     try {
-        const aText = await readFile(path.resolve(localesDir, `messages.${a}.xlf`), 'utf8');
-        const bText = await readFile(path.resolve(localesDir, `messages.${b}.xlf`), 'utf8');
+        const baseText = await readFile(path.resolve(srcDir, 'messages.xlf'), 'utf8');
+        const localeText = await readFile(path.resolve(srcDir, 'locales', `messages.${locale}.xlf`), 'utf8');
 
-        const difference = _.difference(aText.match(hashRegExp), bText.match(hashRegExp));
+        const difference = _.difference(baseText.match(hashRegExp), localeText.match(hashRegExp));
 
-        console.log(`Diff ${a}:${b}`);
-        console.log(util.inspect(difference, null));
+        if (difference.length) {
+            console.log(`Missing from ${locale}:`);
+            console.log(util.inspect(difference, null));
+        } else {
+            console.log(`${locale} is up to date!`);
+        }
     } catch (e) {
         console.log(e);
     }
 }
 
-if (process.argv.length < 4) {
-    return console.log('Example: i18n-diff.js en ja');
+if (process.argv.length < 3) {
+    return console.log('Example: i18n-diff.js en');
 }
 
-return diff(process.argv[2], process.argv[3]);
+return diff(process.argv[2]);
