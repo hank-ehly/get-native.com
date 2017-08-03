@@ -1765,6 +1765,15 @@
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Google AdSense section</note>
             </trans-unit>
+            <trans-unit id="6180b0b4361ae1d08e4b9af3bfff6bad" datatype="html">
+                <source>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a"/>. They are put in place to provide a positive experience for users.</source>
+                <target>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a"/>. They are put in place to provide a positive experience for users.</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">81</context>
+                </context-group>
+                <note priority="1" from="description">Google Adsense section 1</note>
+            </trans-unit>
             <trans-unit id="37791691c20bdc9d42172d61666dabdd" datatype="html">
                 <source>Fair Information Practices</source>
                 <target>Fair Information Practices</target>
@@ -2644,16 +2653,8 @@
                 <note priority="1" from="description">canspam section 9</note>
             </trans-unit>
             <trans-unit id="ad63846c24f80d759bdf9b5e9cd141ae" datatype="html">
-                <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at
-                    <x id="START_LINK"
-                       ctype="x-a"/>
-                    contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.
-                </source>
-                <target>If at any time you would like to unsubscribe from receiving future emails, you can email us at
-                    <x id="START_LINK"
-                       ctype="x-a"/>
-                    contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.
-                </target>
+                <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK"  ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+                <target>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK"  ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">161</context>
@@ -2661,10 +2662,8 @@
                 <note priority="1" from="description">Instructions for how to unsubscribe from getnative emails</note>
             </trans-unit>
             <trans-unit id="ae4e0d0dee6f2a8932691635507dce9e" datatype="html">
-                <source>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.
-                </source>
-                <target>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.
-                </target>
+                <source>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.</source>
+                <target>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">162</context>
@@ -2764,12 +2763,8 @@
                 <note priority="1" from="description">FAQ (1) Question</note>
             </trans-unit>
             <trans-unit id="c11c85dfe124e49b2c76f8a0701c6de5" datatype="html">
-                <source>getnative is currently a free service; however, this may change in the future. If such a change were ever to occur,
-                    we would notify you well in advance.
-                </source>
-                <target>getnative is currently a free service; however, this may change in the future. If such a change were ever to occur,
-                    we would notify you well in advance.
-                </target>
+                <source>getnative is currently a free service; however, this may change in the future. If such a change were ever to occur, we would notify you well in advance.</source>
+                <target>getnative is currently a free service; however, this may change in the future. If such a change were ever to occur, we would notify you well in advance.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
                     <context context-type="linenumber">17</context>
@@ -2795,12 +2790,8 @@
                 <note priority="1" from="description">The header title for the help page contact-us section</note>
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK"
-                                                                                                                        ctype="x-a"/>.
-                </source>
-                <target>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK"
-                                                                                                                        ctype="x-a"/>.
-                </target>
+                <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+                <target>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
                     <context context-type="linenumber">29</context>
@@ -2826,12 +2817,8 @@
                 <note priority="1" from="description">A short description of the purpose of the website</note>
             </trans-unit>
             <trans-unit id="1e18db402c99d2bf94ad552a5f0228f6" datatype="html">
-                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure
-                    nobis repellendus. Accusamus consectetur dicta?
-                </source>
-                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure
-                    nobis repellendus. Accusamus consectetur dicta?
-                </target>
+                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure nobis repellendus. Accusamus consectetur dicta?</source>
+                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure nobis repellendus. Accusamus consectetur dicta?</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">8</context>
@@ -2857,18 +2844,8 @@
                 <note priority="1" from="description">The title of the video database feature description</note>
             </trans-unit>
             <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
-                <source>
-                    Get native is all about breaking the barrier between fluid speech and native like speech. Our way
-                    of breaking the barrier is through intensive observation, pronunciation practice and active learning
-                    using video interviews of native speakers. Needless to say in order for this to work we need a lot
-                    of interview videos!
-                </source>
-                <target>
-                    Get native is all about breaking the barrier between fluid speech and native like speech. Our way
-                    of breaking the barrier is through intensive observation, pronunciation practice and active learning
-                    using video interviews of native speakers. Needless to say in order for this to work we need a lot
-                    of interview videos!
-                </target>
+                <source>getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</source>
+                <target>getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">18</context>
@@ -2894,18 +2871,8 @@
                 <note priority="1" from="description">The title of the study session feature description</note>
             </trans-unit>
             <trans-unit id="a77cb5d4f5ba2526709496556d8aa4be" datatype="html">
-                <source>
-                    Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If
-                    you&apos;re an Advanced learner of the language you may already have your own study routine. But that
-                    study routine might include getting out books, scrolling through web pages -- it could take up to 10
-                    minutes just to get all the materials ready!
-                </source>
-                <target>
-                    Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If
-                    you&apos;re an Advanced learner of the language you may already have your own study routine. But that
-                    study routine might include getting out books, scrolling through web pages -- it could take up to 10
-                    minutes just to get all the materials ready!
-                </target>
+                <source>Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If you&apos;re an Advanced learner of the language you may already have your own study routine. But that study routine might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to get all the materials ready!</source>
+                <target>Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If you&apos;re an Advanced learner of the language you may already have your own study routine. But that study routine might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to get all the materials ready!</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">33</context>
@@ -2931,20 +2898,8 @@
                 <note priority="1" from="description">The title for the advanced material feature description</note>
             </trans-unit>
             <trans-unit id="929c28ca424552020939e6af075621ff" datatype="html">
-                <source>
-                    getnative is most useful to language learners who already have a good command of the target
-                    language, yet want to make the speech sound more like that of a native speaker. Finding good study
-                    material is easy when you&apos;ve just set out learning the target language. But as you advance, every
-                    day material like newspapers, journal articles, TV, podcasts and conversations with other speakers
-                    might become the core of your study routine.
-                </source>
-                <target>
-                    getnative is most useful to language learners who already have a good command of the target
-                    language, yet want to make the speech sound more like that of a native speaker. Finding good study
-                    material is easy when you&apos;ve just set out learning the target language. But as you advance, every
-                    day material like newspapers, journal articles, TV, podcasts and conversations with other speakers
-                    might become the core of your study routine.
-                </target>
+                <source>getnative is most useful to language learners who already have a good command of the target language, yet want to make the speech sound more like that of a native speaker. Finding good study material is easy when you&apos;ve just set out learning the target language. But as you advance, every day material like newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of your study routine.</source>
+                <target>getnative is most useful to language learners who already have a good command of the target language, yet want to make the speech sound more like that of a native speaker. Finding good study material is easy when you&apos;ve just set out learning the target language. But as you advance, every day material like newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of your study routine.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">48</context>
@@ -2979,12 +2934,8 @@
                 <note priority="1" from="description">The title for the polyglots feature description</note>
             </trans-unit>
             <trans-unit id="50ba40aa73787d637c8548536fdc80a5" datatype="html">
-                <source>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in multiple
-                    languages.
-                </source>
-                <target>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in multiple
-                    languages.
-                </target>
+                <source>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in multiple languages.</source>
+                <target>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in multiple languages.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">68</context>
