@@ -2501,9 +2501,7 @@
                 <note priority="1" from="description">The title for the polyglots feature description</note>
             </trans-unit>
             <trans-unit id="50ba40aa73787d637c8548536fdc80a5" datatype="html">
-                <source>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in multiple
-                    languages.
-                </source>
+                <source>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in multiple languages.</source>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">68</context>
