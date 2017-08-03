@@ -2917,7 +2917,7 @@
             </trans-unit>
             <trans-unit id="d999dc80d833746fe5275ef7f87607b1" datatype="html">
                 <source>Our designers work hard to design simple and intuitive user interfaces.</source>
-                <source>getnativeのデザイナーは、シンプルで直感的なユーザーインターフェイスを設計するために努力しています。</source>
+                <target>getnativeのデザイナーは、シンプルで直感的なユーザーインターフェイスを設計するために努力しています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">86</context>
@@ -2971,7 +2971,7 @@
             </trans-unit>
             <trans-unit id="7f31334d10f103ad7bf166bd7eaf2135" datatype="html">
                 <source>Don&apos;t want to keep track of another password? Create an account in seconds with Facebook, Twitter or Gmail.</source>
-                <source>別のパスワードを丸暗記する必要はありません！ Facebook、Twitter、またはGmailで数秒でアカウントが作成できます。</source>
+                <target>別のパスワードを丸暗記する必要はありません！ Facebook、Twitter、またはGmailで数秒でアカウントが作成できます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">98</context>
@@ -3047,7 +3047,7 @@
             </trans-unit>
             <trans-unit id="6b90ecc041671425a6fbccd91614005c" datatype="html">
                 <source>Reason for leaving:</source>
-                <source>退会する理由：</source>
+                <target>退会する理由：</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">7</context>
