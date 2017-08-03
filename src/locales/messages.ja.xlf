@@ -2263,14 +2263,8 @@
                 <note priority="1" from="description">COPPA section</note>
             </trans-unit>
             <trans-unit id="64ed563f3c28dea97418d4324c366f75" datatype="html">
-                <source>When it comes to the collection of personal information from children under the age of 13 years old, the Children's
-                    Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, United States'
-                    consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services
-                    must do to protect children's privacy and safety online.
-                </source>
-                <target>13歳未満の子供からの個人情報の収集に関しては、児童オンラインプライバシー保護法（COPPA）は保護者を管理します。米国の消費者保護機関である連邦取引委員会（Federal Trade
-                    Commission）はCOPPAルールを施行しており、ウェブサイトやオンラインサービスの運営者は子供のプライバシーと安全をオンラインで保護するために何をしなければならないかを覚えている。
-                </target>
+                <source>When it comes to the collection of personal information from children under the age of 13 years old, the Children's Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, United States' consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children's privacy and safety online.</source>
+                <target>13歳未満の子供からの個人情報の収集に関しては、児童オンラインプライバシー保護法（COPPA）は保護者を管理します。米国の消費者保護機関である連邦取引委員会（Federal Trade Commission）はCOPPAルールを施行しており、ウェブサイトやオンラインサービスの運営者は子供のプライバシーと安全をオンラインで保護するために何をしなければならないかを覚えている。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">108</context>
@@ -2296,17 +2290,8 @@
                 <note priority="1" from="description">caloppa section</note>
             </trans-unit>
             <trans-unit id="f2d1bbf72ac50679badbb2bd7609e730" datatype="html">
-                <source>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy
-                    policy. The law's reach stretches well beyond California to require any person or company in the United States (and
-                    conceivably the world) that operates websites collecting Personally Identifiable Information from California consumers
-                    to post a conspicuous privacy policy on its website stating exactly the information being collected and those
-                    individuals or companies with whom it is being shared. - See more at:
-                    http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf
-                </source>
-                <target>
-                    CalOPPAは、プライバシーポリシーを掲載するために商業用ウェブサイトとオンラインサービスを要求する、全米初の州法です。カリフォルニア州の消費者からの個人識別情報を収集するウェブサイトを運営する米国内の人物や企業（または世界）は、収集された情報とウェブサイト上に明白なプライバシーポリシーを掲載する必要があります。それが共有されている個人または企業。
-                    - 詳細：http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf
-                </target>
+                <source>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law's reach stretches well beyond California to require any person or company in the United States (and conceivably the world) that operates websites collecting Personally Identifiable Information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals or companies with whom it is being shared. - See more at: http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf</source>
+                <target>CalOPPAは、プライバシーポリシーを掲載するために商業用ウェブサイトとオンラインサービスを要求する、全米初の州法です。カリフォルニア州の消費者からの個人識別情報を収集するウェブサイトを運営する米国内の人物や企業（または世界）は、収集された情報とウェブサイト上に明白なプライバシーポリシーを掲載する必要があります。それが共有されている個人または企業。- 詳細：http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">114</context>
@@ -2332,9 +2317,7 @@
                 <note priority="1" from="description">caloppa section 3</note>
             </trans-unit>
             <trans-unit id="f63062573fadfee196fb02f06e874706" datatype="html">
-                <source>Once this privacy policy is created, we will add a link to it on our home page or as a minimum, on the first
-                    significant page after entering our website.
-                </source>
+                <source>Once this privacy policy is created, we will add a link to it on our home page or as a minimum, on the first significant page after entering our website.</source>
                 <target>このプライバシーポリシーが作成されると、当社のホームページにリンクが追加されます。または、最低でも、当ウェブサイトに入った後の最初の重要なページにリンクが追加されます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2343,8 +2326,7 @@
                 <note priority="1" from="description">caloppa section 4</note>
             </trans-unit>
             <trans-unit id="40046c4dd44f1d7b8d565636ea2ae1d6" datatype="html">
-                <source>Our Privacy Policy link includes the word 'Privacy' and can easily be found on the page specified above.
-                </source>
+                <source>Our Privacy Policy link includes the word 'Privacy' and can easily be found on the page specified above.</source>
                 <target>私たちのプライバシーポリシーリンクには「プライバシー」という言葉が含まれており、上記のページで簡単に見つけることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2398,9 +2380,7 @@
                 <note priority="1" from="description">do-not-track-signals section</note>
             </trans-unit>
             <trans-unit id="9f40970463ca2c17543a82d44cde1df7" datatype="html">
-                <source>We honor Do Not Track signals and Do Not Track, plant cookies, or use advertising when a Do Not Track (DNT) browser
-                    mechanism is in place.
-                </source>
+                <source>We honor Do Not Track signals and Do Not Track, plant cookies, or use advertising when a Do Not Track (DNT) browser mechanism is in place.</source>
                 <target>Do Not Track（DNT）ブラウザの仕組みが整備されている場合、私たちはDo Not Track信号を受け取り、Do Not Track、Cookieを植える、または広告を使用します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2436,10 +2416,7 @@
                 <note priority="1" from="description">canspam section</note>
             </trans-unit>
             <trans-unit id="ce60bacb91d673b4ae9bfee78ebb8194" datatype="html">
-                <source>The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial
-                    messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for
-                    violations.
-                </source>
+                <source>The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for violations.</source>
                 <target>CAN-SPAM法は、商用電子メールのルールを設定し、商用メッセージの要件を設定し、受信者に電子メールの送信を停止させる権利を与え、違反に対する厳しい罰則を発する法律です。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2457,8 +2434,7 @@
                 <note priority="1" from="description">canspam section 2</note>
             </trans-unit>
             <trans-unit id="b90c9480b5d3f6b76f3cd8e116cb6dc2" datatype="html">
-                <source>Market to our mailing list or continue to send emails to our clients after the original transaction has occurred.
-                </source>
+                <source>Market to our mailing list or continue to send emails to our clients after the original transaction has occurred.</source>
                 <target>元の取引が発生した後、当社のメーリングリストにマーケットを開設したり、お客様にメールを送信したりすることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2530,11 +2506,8 @@
                 <note priority="1" from="description">canspam section 9</note>
             </trans-unit>
             <trans-unit id="ad63846c24f80d759bdf9b5e9cd141ae" datatype="html">
-                <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at
-                    <x id="START_LINK" ctype="x-a"/>
-                    contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.
-                </source>
-                <target>将来のメールの受信を拒否したい場合は、contact@get-native.comまでメールでご連絡ください。</target>
+                <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+                <target>将来のメールの受信を拒否したい場合は、<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>までメールでご連絡ください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">161</context>
@@ -2542,8 +2515,7 @@
                 <note priority="1" from="description">Instructions for how to unsubscribe from getnative emails</note>
             </trans-unit>
             <trans-unit id="ae4e0d0dee6f2a8932691635507dce9e" datatype="html">
-                <source>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.
-                </source>
+                <source>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.</source>
                 <target>各メールの下部にある指示に従うと、すぐにすべての連絡先からあなたを削除します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2634,9 +2606,7 @@
                 <note priority="1" from="description">FAQ (1) Question</note>
             </trans-unit>
             <trans-unit id="c11c85dfe124e49b2c76f8a0701c6de5" datatype="html">
-                <source>getnative is currently a free service; however, this may change in the future. If such a change were ever to occur,
-                    we would notify you well in advance.
-                </source>
+                <source>getnative is currently a free service; however, this may change in the future. If such a change were ever to occur, we would notify you well in advance.</source>
                 <target>getnativeは現在無料サービスです。ただし、これは将来変更される可能性があります。このような変更が発生した場合は、事前に通知させていただきます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
@@ -2663,10 +2633,8 @@
                 <note priority="1" from="description">The header title for the help page contact-us section</note>
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK"
-                                                                                                                        ctype="x-a"/>.
-                </source>
-                <target>すべてのお問い合わせについては、atadmin @ get-native.comまでご連絡ください。</target>
+                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+                <target>すべてのお問い合わせについては、<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>までご連絡ください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
                     <context context-type="linenumber">29</context>
@@ -2692,12 +2660,8 @@
                 <note priority="1" from="description">A short description of the purpose of the website</note>
             </trans-unit>
             <trans-unit id="1e18db402c99d2bf94ad552a5f0228f6" datatype="html">
-                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure
-                    nobis repellendus. Accusamus consectetur dicta?
-                </source>
-                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure
-                    nobis repellendus. Accusamus consectetur dicta?
-                </target>
+                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure nobis repellendus. Accusamus consectetur dicta?</source>
+                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure nobis repellendus. Accusamus consectetur dicta?</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">8</context>
@@ -2723,15 +2687,8 @@
                 <note priority="1" from="description">The title of the video database feature description</note>
             </trans-unit>
             <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
-                <source>
-                    Get native is all about breaking the barrier between fluid speech and native like speech. Our way
-                    of breaking the barrier is through intensive observation, pronunciation practice and active learning
-                    using video interviews of native speakers. Needless to say in order for this to work we need a lot
-                    of interview videos!
-                </source>
-                <target>
-                    ネイティブを得ることは、流体のスピーチとネイティブスピーチとの間の障壁を壊すことです。障壁を解く私たちの方法は、ネイティブスピーカーのビデオインタビューを使用して、集中的な観察、発音練習、能動的な学習を通してです。言うまでもなく、これがうまくいくためには、たくさんのインタビュービデオが必要です！
-                </target>
+                <source>Get native is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</source>
+                <target>ネイティブを得ることは、流体のスピーチとネイティブスピーチとの間の障壁を壊すことです。障壁を解く私たちの方法は、ネイティブスピーカーのビデオインタビューを使用して、集中的な観察、発音練習、能動的な学習を通してです。言うまでもなく、これがうまくいくためには、たくさんのインタビュービデオが必要です！</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">18</context>
@@ -2757,15 +2714,8 @@
                 <note priority="1" from="description">The title of the study session feature description</note>
             </trans-unit>
             <trans-unit id="a77cb5d4f5ba2526709496556d8aa4be" datatype="html">
-                <source>
-                    Wouldn't it be awesome to have an intense language study session in 15 minutes, or even 10? If
-                    you're an Advanced learner of the language you may already have your own study routine. But that
-                    study routine might include getting out books, scrolling through web pages -- it could take up to 10
-                    minutes just to get all the materials ready!
-                </source>
-                <target>
-                    15分、あるいは10時間で激しい語学学習セッションを開くのはすばらしいことではないでしょうか？あなたがその言語の上級者であれば、あなた自身の学習ルーチンをすでに持っているかもしれません。しかし、その研究ルーチンには、書籍を手に入れたり、ウェブページをスクロールさせることが含まれているかもしれません。すべての資料を準備するのに10分かかることがあります。
-                </target>
+                <source>Wouldn't it be awesome to have an intense language study session in 15 minutes, or even 10? If you're an Advanced learner of the language you may already have your own study routine. But that study routine might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to get all the materials ready!</source>
+                <target>15分、あるいは10時間で激しい語学学習セッションを開くのはすばらしいことではないでしょうか？あなたがその言語の上級者であれば、あなた自身の学習ルーチンをすでに持っているかもしれません。しかし、その研究ルーチンには、書籍を手に入れたり、ウェブページをスクロールさせることが含まれているかもしれません。すべての資料を準備するのに10分かかることがあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">33</context>
@@ -2774,7 +2724,7 @@
             </trans-unit>
             <trans-unit id="426ade5d0c2b2797a217d0ad3746b217" datatype="html">
                 <source>A tool for advanced language learners</source>
-                <target>上級者向けのツール</target>
+                <target>上級者向けの言語学習ツール</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">44</context>
@@ -2783,7 +2733,7 @@
             </trans-unit>
             <trans-unit id="e32fb4bb878da11006facfc293ae5955" datatype="html">
                 <source>A tool for advanced language learners</source>
-                <target>A tool for advanced language learners</target>
+                <target>上級者向けの言語学習ツール</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">47</context>
@@ -2791,16 +2741,8 @@
                 <note priority="1" from="description">The title for the advanced material feature description</note>
             </trans-unit>
             <trans-unit id="929c28ca424552020939e6af075621ff" datatype="html">
-                <source>
-                    getnative is most useful to language learners who already have a good command of the target
-                    language, yet want to make the speech sound more like that of a native speaker. Finding good study
-                    material is easy when you've just set out learning the target language. But as you advance, every
-                    day material like newspapers, journal articles, TV, podcasts and conversations with other speakers
-                    might become the core of your study routine.
-                </source>
-                <target>
-                    getnativeは、すでにターゲット言語の優れたコマンドを持っているが、ネイティブスピーカーのスピーチサウンドに近づけたいという言語学習者にとって最も有用です。目的の言語の学習を開始したばかりの学習教材を見つけることは簡単です。しかし、あなたが進歩するにつれて、新聞、雑誌記事、テレビ、ポッドキャスト、他のスピーカーとの会話など、毎日の素材が学習ルーチンの中核になるかもしれません。
-                </target>
+                <source>getnative is most useful to language learners who already have a good command of the target language, yet want to make the speech sound more like that of a native speaker. Finding good study material is easy when you've just set out learning the target language. But as you advance, every day material like newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of your study routine.</source>
+                <target>getnativeは、すでにターゲット言語の優れたコマンドを持っているが、ネイティブスピーカーのスピーチサウンドに近づけたいという言語学習者にとって最も有用です。目的の言語の学習を開始したばかりの学習教材を見つけることは簡単です。しかし、あなたが進歩するにつれて、新聞、雑誌記事、テレビ、ポッドキャスト、他のスピーカーとの会話など、毎日の素材が学習ルーチンの中核になるかもしれません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">48</context>
@@ -2863,7 +2805,7 @@
             </trans-unit>
             <trans-unit id="89609c2553a04bf2845e79d4ef4c6bcd" datatype="html">
                 <source>See the magic happening under the hood on our GitHub page. Pull requests and contributions welcome!</source>
-                <target>See the magic happening under the hood on our GitHub page. Pull requests and contributions welcome!</target>
+                <target>GitHubページのフードの下で起こっている魔法を見てください。プルリクエストと寄付を歓迎します！</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">74</context>
@@ -2890,7 +2832,7 @@
             </trans-unit>
             <trans-unit id="c18bbb62e2d47da151dbc5794a2d730a" datatype="html">
                 <source>We take your private information seriously. getnative uses encryption to protect your data.</source>
-                <target>We take your private information seriously. getnative uses encryption to protect your data.</target>
+                <target>私たちはあなたの個人情報を真剣に受け止めます。 getnativeは、データを保護するために暗号化を使用します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">80</context>
