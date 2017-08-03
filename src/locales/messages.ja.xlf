@@ -1366,6 +1366,15 @@
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (26)</note>
             </trans-unit>
+            <trans-unit id="4ccbcabf2c522b6fe612b915c23b2611" datatype="html">
+                <source>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</source>
+                <target>上記の第2項に記載された団体の中にあり、当社のウェブサイトへのリンクに興味がある場合は、<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>に電子メールでご連絡ください。あなたの名前、組織名、連絡先情報（電話番号や電子メールアドレスなど）、サイトのURL、弊社のWebサイトにリンクするURLのリスト、あなたがリンクしたいと思う私達のサイトのURLのリスト。応答に2〜3週間かかります。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="linenumber">97</context>
+                </context-group>
+                <note priority="1" from="description">tos hyperlinking section text (27)</note>
+            </trans-unit>
             <trans-unit id="1782d35a3a6b889369b272c0666f4c91" datatype="html">
                 <source>Approved organizations may hyperlink to our Web site as follows:</source>
                 <target>承認された組織は、以下のように当社ウェブサイトにハイパーリンクすることができます。</target>
