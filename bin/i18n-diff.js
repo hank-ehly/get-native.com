@@ -17,7 +17,7 @@ async function diff(locale) {
         const difference = _.difference(baseText.match(hashRegExp), localeText.match(hashRegExp));
 
         if (difference.length) {
-            console.log(`Missing from ${locale}:`);
+            console.log(`keys missing from ${locale}:`);
             console.log(util.inspect(difference, null));
         } else {
             console.log(`${locale} is up to date!`);
@@ -32,3 +32,5 @@ if (process.argv.length < 3) {
 }
 
 return diff(process.argv[2]);
+
+// todo: check contents of <source> to make sure they are the same as the base xlf file
