@@ -2863,6 +2863,7 @@
             </trans-unit>
             <trans-unit id="89609c2553a04bf2845e79d4ef4c6bcd" datatype="html">
                 <source>See the magic happening under the hood on our GitHub page. Pull requests and contributions welcome!</source>
+                <target>See the magic happening under the hood on our GitHub page. Pull requests and contributions welcome!</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">74</context>
@@ -2889,6 +2890,7 @@
             </trans-unit>
             <trans-unit id="c18bbb62e2d47da151dbc5794a2d730a" datatype="html">
                 <source>We take your private information seriously. getnative uses encryption to protect your data.</source>
+                <target>We take your private information seriously. getnative uses encryption to protect your data.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">80</context>
@@ -2906,6 +2908,7 @@
             </trans-unit>
             <trans-unit id="39d0472c40a4afd2c94909429c53a8ac" datatype="html">
                 <source>Easy-to-use interface</source>
+                <target>使いやすいインターフェース</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">85</context>
@@ -2914,6 +2917,7 @@
             </trans-unit>
             <trans-unit id="d999dc80d833746fe5275ef7f87607b1" datatype="html">
                 <source>Our designers work hard to design simple and intuitive user interfaces.</source>
+                <source>getnativeのデザイナーは、シンプルで直感的なユーザーインターフェイスを設計するために努力しています。</source>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">86</context>
@@ -2940,6 +2944,7 @@
             </trans-unit>
             <trans-unit id="bee91d91bacd446731eae12b466d5733" datatype="html">
                 <source>Questions or feedback? Drop us an email. We’d love to help out in anyway we can.</source>
+                <target>ご質問やフィードバックを随時Eメールで受付しています。いつでもご気軽に声をかけてください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">92</context>
@@ -2965,7 +2970,8 @@
                 <note priority="1" from="description">Simple registration small feature title</note>
             </trans-unit>
             <trans-unit id="7f31334d10f103ad7bf166bd7eaf2135" datatype="html">
-                <source>Don&apos;t want to keep track of another password? Create an account in seconds with Facebook or Gmail.</source>
+                <source>Don&apos;t want to keep track of another password? Create an account in seconds with Facebook, Twitter or Gmail.</source>
+                <source>別のパスワードを丸暗記する必要はありません！ Facebook、Twitter、またはGmailで数秒でアカウントが作成できます。</source>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">98</context>
@@ -2982,12 +2988,8 @@
                 <note priority="1" from="description">The title leading users to sign up</note>
             </trans-unit>
             <trans-unit id="9c6d5f890ec8e6bd73277ac9ab8686d0" datatype="html">
-                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur
-                    dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!
-                </source>
-                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur
-                    dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!
-                </target>
+                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!</source>
+                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">107</context>
@@ -3035,8 +3037,8 @@
                 <note priority="1" from="description">The text for the link allowing users to deactivate their account</note>
             </trans-unit>
             <trans-unit id="b64a08650d7341412cb703f052fc5c46" datatype="html">
-                <source>Could you give us a brief description about why you&apos;re leaving? We read and consider every reason seriously.
-                </source>
+                <source>Could you give us a brief description about why you&apos;re leaving? We read and consider every reason seriously.</source>
+                <target>getnativeを退会する理由について一言頂けませんか？ユーザーから頂いた意見をすべて丁寧に読み、真剣に検討します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">5</context>
@@ -3045,6 +3047,7 @@
             </trans-unit>
             <trans-unit id="6b90ecc041671425a6fbccd91614005c" datatype="html">
                 <source>Reason for leaving:</source>
+                <source>退会する理由：</source>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">7</context>
@@ -3053,6 +3056,7 @@
             </trans-unit>
             <trans-unit id="002c02bc6429cd28b56cda11eec2ab28" datatype="html">
                 <source>I don&apos;t understand how to..</source>
+                <target>〇〇のやり方が分からなくて、</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">8</context>
@@ -3061,6 +3065,7 @@
             </trans-unit>
             <trans-unit id="6ef919952bfa48eba0fc4fb34efa9867" datatype="html">
                 <source>DELETE MY ACCOUNT</source>
+                <target>退会する</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">10</context>
@@ -3069,6 +3074,7 @@
             </trans-unit>
             <trans-unit id="ac411b26cbc9a35516ee41baf1aa7d47" datatype="html">
                 <source>CANCEL</source>
+                <target>キャンセル</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">11</context>
@@ -3085,9 +3091,7 @@
                 <note priority="1" from="description">The title for the user email notification preference setting</note>
             </trans-unit>
             <trans-unit id="5d243f345cb9deefd35d0c3420bc4304" datatype="html">
-                <source>Receive emails from time to time about getnative updates and changes. To enable or disable this feature, you must
-                    first verify your email address.
-                </source>
+                <source>Receive emails from time to time about getnative updates and changes. To enable or disable this feature, you must first verify your email address.</source>
                 <target>getnativeの更新や変更については、随時メールを受け取ります。この機能を有効または無効にするには、まず電子メールアドレスを確認する必要があります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/notifications/notifications.component.ts</context>
@@ -3115,6 +3119,7 @@
             </trans-unit>
             <trans-unit id="6ba4ecb46a685bbc07ce71dbd5580a48" datatype="html">
                 <source>Email</source>
+                <target>Eメール</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">3</context>
@@ -3123,6 +3128,7 @@
             </trans-unit>
             <trans-unit id="f175102528cedc2c8882357e32c1b595" datatype="html">
                 <source>(Please confirm)</source>
+                <target>（ご確認ください）</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">3</context>
