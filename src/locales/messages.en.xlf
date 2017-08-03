@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" datatype="plaintext" original="ng2.template">
+    <file source-language="en" target-language="en" datatype="plaintext" original="ng2.template">
         <body>
             <trans-unit id="06afdb0c3f027180c8ed811ed00ecc28" datatype="html">
                 <source>This site uses<x id="START_LINK" ctype="x-a"/>local storage<x id="CLOSE_LINK" ctype="x-a"/>. By continuing to browse
