@@ -862,7 +862,7 @@
         <note priority="1" from="description">tos introduction section header</note>
       </trans-unit>
       <trans-unit id="6f212e0ab04a5b1bf38d3a30208e6be1" datatype="html">
-        <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative All intellectual property rights are reserved. You may view and/or print pages from https://get-native.com for your own personal use subject to restrictions set in these terms and conditions.</source>
+        <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative All intellectual property rights are reserved. You may view and/or print pages from get-native.com for your own personal use subject to restrictions set in these terms and conditions.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">37</context>
@@ -878,7 +878,7 @@
         <note priority="1" from="description">tos license section text (2)</note>
       </trans-unit>
       <trans-unit id="f813a8293dd4bb806af988aa90fd5927" datatype="html">
-        <source>Republish material from https://get-native.com</source>
+        <source>Republish material from get-native.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">40</context>
@@ -886,7 +886,7 @@
         <note priority="1" from="description">tos license section text (3)</note>
       </trans-unit>
       <trans-unit id="c154ea0af51566537ce538ccb9752545" datatype="html">
-        <source>Sell, rent or sub-license material from https://get-native.com</source>
+        <source>Sell, rent or sub-license material from get-native.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">41</context>
@@ -894,7 +894,7 @@
         <note priority="1" from="description">tos license section text (4)</note>
       </trans-unit>
       <trans-unit id="c0e4c9676a8242279d2a784128801550" datatype="html">
-        <source>Reproduce, duplicate or copy material from https://get-native.com</source>
+        <source>Reproduce, duplicate or copy material from get-native.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">42</context>
@@ -1741,6 +1741,14 @@
         </context-group>
         <note priority="1" from="description">Google Adsense section</note>
       </trans-unit>
+      <trans-unit id="6180b0b4361ae1d08e4b9af3bfff6bad" datatype="html">
+        <source>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a"/>. They are put in place to provide a positive experience for users.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <note priority="1" from="description">Google Adsense section 1</note>
+      </trans-unit>
       <trans-unit id="42cc88c64751aeba86cdbdf8a6b45819" datatype="html">
         <source>We use Google AdSense Advertising on our website.</source>
         <context-group purpose="location">
@@ -2220,12 +2228,7 @@
         <note priority="1" from="description">The title of the video database feature description</note>
       </trans-unit>
       <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
-        <source>
-                    Get native is all about breaking the barrier between fluid speech and native like speech. Our way
-                    of breaking the barrier is through intensive observation, pronunciation practice and active learning
-                    using video interviews of native speakers. Needless to say in order for this to work we need a lot
-                    of interview videos!
-                </source>
+        <source>getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">18</context>

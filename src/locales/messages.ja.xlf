@@ -1712,6 +1712,15 @@
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Google AdSense section</note>
             </trans-unit>
+            <trans-unit id="6180b0b4361ae1d08e4b9af3bfff6bad" datatype="html">
+                <source>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a"/>. They are put in place to provide a positive experience for users.</source>
+                <target>Googleの広告要件は、<x id="START_LINK" ctype="x-a"/>Googleの広告原則<x id="CLOSE_LINK" ctype="x-a"/>によって要約することができます。ユーザーに肯定的な体験を提供するために配置されています。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">81</context>
+                </context-group>
+                <note priority="1" from="description">Google Adsense section 1</note>
+            </trans-unit>
             <trans-unit id="37791691c20bdc9d42172d61666dabdd" datatype="html">
                 <source>Fair Information Practices</source>
                 <target>公平な情報の習慣</target>
