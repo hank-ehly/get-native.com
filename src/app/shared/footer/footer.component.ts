@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
 
@@ -17,7 +17,12 @@ import { Logger } from '../../core/logger/logger';
 export class FooterComponent implements OnInit, OnDestroy {
     year = new Date().getFullYear();
 
-    constructor(private logger: Logger) {
+    languages = [
+        {code: 'en', label: 'English'},
+        {code: 'ja', label: '日本語'}
+    ];
+
+    constructor(private logger: Logger, @Inject(LOCALE_ID) protected localeId: string) {
     }
 
     ngOnInit(): void {
