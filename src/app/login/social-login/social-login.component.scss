@@ -32,6 +32,7 @@
   justify-content: flex-start;
   font-size: $font-size-regular;
   text-decoration: none;
+  transition: 100ms;
 }
 
 .modal__button-icon, .modal__button-icon-frame {
