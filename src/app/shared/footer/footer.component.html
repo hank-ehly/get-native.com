@@ -9,4 +9,11 @@
         <span class="footer__legal-link-separator">&</span>
         <a class="footer__legal-link" [routerLink]="['privacy']" i18n="The text of the footer link to the privacy policy page@@f98f365a0f204f89f9044c8c006dc5f8">Privacy Policy</a>
     </div>
+    <div class="footer__row">
+        <ul class="footer__row__language-links">
+            <li *ngFor="let language of languages">
+                <a href="/{{ language.code }}/" class="link">{{ language.label }}</a>
+            </li>
+        </ul>
+    </div>
 </footer>

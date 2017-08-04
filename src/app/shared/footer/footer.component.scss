@@ -46,3 +46,11 @@
 .footer__legal-link-separator {
   padding: 0 5px;
 }
+
+.footer__row__language-links li {
+  display: inline-block;
+  padding-left: 10px;
+  &:first-child {
+    padding-left: 0;
+  }
+}

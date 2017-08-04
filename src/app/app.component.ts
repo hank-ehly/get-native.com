@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component, OnInit, HostListener, OnDestroy, HostBinding, Inject, LOCALE_ID } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy, HostBinding } from '@angular/core';
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
@@ -73,9 +73,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router, private user: UserService,
-                private navbar: NavbarService, @Inject(LOCALE_ID) private localeId: string, private facebook: FacebookService,
-                private route: ActivatedRoute) {
-        // localeId is 'en' or 'ja'
+                private navbar: NavbarService, private facebook: FacebookService, private route: ActivatedRoute) {
     }
 
     @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
@@ -84,7 +82,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.logger.debug(this, 'LOCALE_ID', this.localeId);
 
         this.user.authenticated$.next(this.user.isAuthenticated());
 
