@@ -669,6 +669,15 @@
                 </context-group>
                 <note priority="1" from="description">The title for the videos section of the Library page</note>
             </trans-unit>
+            <trans-unit id="39ae7f4a334778f4c7f2b2003d4f7202" datatype="html">
+                <source>All videos</source>
+                <target>すべてのビデオ</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/library/library.component.ts</context>
+                    <context context-type="linenumber">8</context>
+                </context-group>
+                <note priority="1" from="description">The label for the default search category of all videos</note>
+            </trans-unit>
             <trans-unit id="9fc1e4b44da73e049a77018162a5fd12" datatype="html">
                 <source>expand</source>
                 <target>広げる</target>
@@ -3195,6 +3204,60 @@
                     <context context-type="linenumber">5</context>
                 </context-group>
                 <note priority="1" from="description">Alt text for settings page user thumbnail image</note>
+            </trans-unit>
+            <trans-unit id="b95a9f64b954582c56cb0033abf73084" datatype="html">
+                <source>View and update your login credentials.</source>
+                <target>Eメールやパスワードなどを確認、または変更する。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">12</context>
+                </context-group>
+                <note priority="1" from="description">General settings page description</note>
+            </trans-unit>
+            <trans-unit id="0f10119abc4c5cba9c48416f43cb3c9c" datatype="html">
+                <source>Manage your account privacy settings.</source>
+                <target>プライバシーに関連する設定を変更する。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">13</context>
+                </context-group>
+                <note priority="1" from="description">Security settings page description</note>
+            </trans-unit>
+            <trans-unit id="76f4626e88c7b90a7027b3c2bb87e96b" datatype="html">
+                <source>Specify how getnative should be able to notify you.</source>
+                <target>getnativeから送られる通知の許可設定を変更する。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">14</context>
+                </context-group>
+                <note priority="1" from="description">Notification settings page description</note>
+            </trans-unit>
+            <trans-unit id="d68d03febd04b44e73cacd22418e0b52" datatype="html">
+                <source>GENERAL</source>
+                <target>一般</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">19</context>
+                </context-group>
+                <note priority="1" from="description">The general settings page tab label</note>
+            </trans-unit>
+            <trans-unit id="bd5ba99c6cd0d5033177ce7073b8ce70" datatype="html">
+                <source>SECURITY</source>
+                <target>セキュリティ</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">20</context>
+                </context-group>
+                <note priority="1" from="description">The security settings page tab label</note>
+            </trans-unit>
+            <trans-unit id="ecc74de91783b4d3af04e190cfea171c" datatype="html">
+                <source>NOTIFICATIONS</source>
+                <target>通知</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">21</context>
+                </context-group>
+                <note priority="1" from="description">The notifications settings page tab label</note>
             </trans-unit>
             <trans-unit id="3a9315497767db8f497599d712b6723b" datatype="html">
                 <source>LANGUAGE</source>

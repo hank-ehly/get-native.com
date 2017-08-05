@@ -44,7 +44,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     categories$ = this.categoryList.fetch();
 
     filterByCategory$ = new BehaviorSubject<CategoryFilter>({
-        text: 'All videos',
+        text: null,
         value: null,
         type: null
     });
@@ -151,7 +151,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     onClickResetDropdownSelection(): void {
         this.logger.debug(this, 'onClickResetDropdownSelection');
-        this.filterByCategory$.next({text: 'All videos', value: null, type: null});
+        this.filterByCategory$.next({text: null, value: null, type: null});
         this.showDropdown$.next(false);
     }
 

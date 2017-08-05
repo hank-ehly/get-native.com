@@ -8,13 +8,17 @@
             <input id="file" type="file" name="file" class="header__file-input">
         </div>
 
-        <!-- todo: i18n -->
-        <h6 class="header__title">{{ selectedTabDescription }}</h6>
+        <ng-container [ngSwitch]="selectedTab">
+            <h6 class="header__title" *ngSwitchDefault i18n="General settings page description@@b95a9f64b954582c56cb0033abf73084">View and update your login credentials.</h6>
+            <h6 class="header__title" *ngSwitchCase="'security'" i18n="Security settings page description@@0f10119abc4c5cba9c48416f43cb3c9c">Manage your account privacy settings.</h6>
+            <h6 class="header__title" *ngSwitchCase="'notifications'" i18n="Notification settings page description@@76f4626e88c7b90a7027b3c2bb87e96b">Specify how getnative should be able to notify you.</h6>
+        </ng-container>
     </header>
 
     <ul class="tabs">
-        <!-- todo: i18n -->
-        <li class="tab" *ngFor="let tab of tabs" [routerLink]="[tab.path]" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}">{{ tab.name | uppercase }}</li>
+        <li class="tab" [routerLink]="['/settings']" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}" (click)="setSelectedTab('general')" i18n="The general settings page tab label@@d68d03febd04b44e73cacd22418e0b52">GENERAL</li>
+        <li class="tab" [routerLink]="['/settings/security']" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}" (click)="setSelectedTab('security')" i18n="The security settings page tab label@@bd5ba99c6cd0d5033177ce7073b8ce70">SECURITY</li>
+        <li class="tab" [routerLink]="['/settings/notifications']" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}" (click)="setSelectedTab('notifications')" i18n="The notifications settings page tab label@@ecc74de91783b4d3af04e190cfea171c">NOTIFICATIONS</li>
     </ul>
 
     <section>

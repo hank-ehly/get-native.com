@@ -6,9 +6,12 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { NavbarService } from '../core/navbar/navbar.service';
 import { Logger } from '../core/logger/logger';
+
+import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-settings',
@@ -16,29 +19,29 @@ import { Logger } from '../core/logger/logger';
     styleUrls: ['settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-    tabs: any[];
-    selectedTab: any;
+    selectedTab: string;
 
-    constructor(private logger: Logger, private navbar: NavbarService) {
-        this.tabs = [
-            {name: 'general', path: './'},
-            {name: 'security', path: 'security'},
-            {name: 'notifications', path: 'notifications'}
-        ];
-    }
-
-    get selectedTabDescription(): string {
-        const titles: any = {
-            general:       'View and update your login credentials.',
-            security:      'Manage your account privacy settings.',
-            notifications: 'Specify how getnative should be able to notify you.'
-        };
-
-        return !this.selectedTab ? titles.general : titles[this.selectedTab];
+    constructor(private logger: Logger, private navbar: NavbarService, private router: Router) {
     }
 
     ngOnInit() {
-        this.logger.debug(this, 'ngOnInit()');
+        this.logger.debug(this, 'ngOnInit');
         this.navbar.hideMagnifyingGlass();
+        this.initSelectedTab();
+    }
+
+    setSelectedTab(tab: any) {
+        this.selectedTab = tab;
+    }
+
+    // todo: refactor
+    private initSelectedTab() {
+        if (_.includes(this.router.url, 'security')) {
+            this.selectedTab = 'security';
+        } else if (_.includes(this.router.url, 'notifications')) {
+            this.selectedTab = 'notifications';
+        } else {
+            this.selectedTab = 'general';
+        }
     }
 }
