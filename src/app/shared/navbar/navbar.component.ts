@@ -10,13 +10,13 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { LoginModalService } from '../../core/login-modal/login-modal.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
 import { Logger } from '../../core/logger/logger';
 
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 
@@ -64,21 +64,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private loginModal: LoginModalService, private logger: Logger, private navbar: NavbarService, private location: Location,
-                private router: Router) {
+    constructor(private logger: Logger, private navbar: NavbarService, private location: Location, private router: Router) {
     }
 
     ngOnInit(): void {
         this.subscriptions.push(
-            this.router.events.filter((e: any) => e instanceof NavigationEnd).do(() => {
-                this.navbar.searchBarVisible$.next(false);
-            }).map(_.stubString).subscribe(this.navbar.query$)
+            this.router.events.filter((e: any) => e instanceof NavigationEnd).mapTo(false).subscribe(this.navbar.searchBarVisible$),
+            this.router.events.filter((e: any) => e instanceof NavigationEnd).mapTo('').subscribe(this.navbar.query$)
         );
     }
 
     ngOnDestroy(): void {
-        this.logger.debug(this, 'OnDestroy', this.subscriptions);
-        _.each(this.subscriptions, s => s.unsubscribe());
+        this.logger.debug(this, 'OnDestroy');
+        _.invokeMap(this.subscriptions, 'unsubscribe');
     }
 
     updateQuery(e: Event): void {
