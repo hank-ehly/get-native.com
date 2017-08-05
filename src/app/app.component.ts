@@ -86,11 +86,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.user.authenticated$.next(this.user.isAuthenticated());
 
         this.subscriptions.push(
-            this.metaTitleEmitted$.subscribe(t => {
-                if (t && t.length) {
-                    this.navbar.title$.next(t);
-                }
-            }),
+            this.metaTitleEmitted$.filter(t => t && t.length).subscribe(this.navbar.title$),
             this.user.logout$.subscribe(this.onLogout.bind(this))
         );
 
