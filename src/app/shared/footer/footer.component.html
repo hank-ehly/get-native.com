@@ -11,8 +11,8 @@
     </div>
     <div class="footer__row">
         <ul class="footer__row__language-links">
-            <li *ngFor="let language of languages">
-                <a href="/{{ language.code }}/" class="link">{{ language.label }}</a>
+            <li *ngFor="let link of langLinks$ | async">
+                <a [href]="link.url" class="link">{{ link.label }}</a>
             </li>
         </ul>
     </div>
