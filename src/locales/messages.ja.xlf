@@ -3180,7 +3180,7 @@
             </trans-unit>
             <trans-unit id="4733a1332d97eac914f73c262c6201a3" datatype="html">
                 <source>Confirm New Password</source>
-                <target>新しいパスワードを確認</target>
+                <target>新しいパスワードを再入力</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">52</context>
