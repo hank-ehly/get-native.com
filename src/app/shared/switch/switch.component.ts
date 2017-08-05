@@ -5,7 +5,10 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
     selector: 'gn-switch',
@@ -15,9 +18,16 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class SwitchComponent {
     @Input() on = false;
     @Input() disabled = false;
-    @Output() toggle = new EventEmitter<boolean>();
 
-    onToggle(): void {
-        this.toggle.emit(this.on);
+    @Output() toggleEmitted$: Observable<boolean>;
+    private toggle$: Subject<boolean>;
+
+    constructor() {
+        this.toggle$ = new Subject<boolean>();
+        this.toggleEmitted$ = this.toggle$.asObservable().debounceTime(500).distinctUntilChanged();
+    }
+
+    toggle(): void {
+        this.toggle$.next(this.on);
     }
 }
