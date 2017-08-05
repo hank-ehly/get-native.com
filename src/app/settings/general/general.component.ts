@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, ViewChild, OnDestroy, OnInit } from '@angular/core';
+import { Component, ViewChild, OnDestroy, OnInit, Inject, LOCALE_ID } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
@@ -25,6 +26,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/pluck';
 import * as _ from 'lodash';
+import { Language } from '../../core/typings/language';
 
 @Component({
     selector: 'gn-general',
@@ -49,7 +51,8 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     private subscriptions: Subscription[] = [];
 
-    constructor(private logger: Logger, private http: HttpService, private userService: UserService, private lang: LangService) {
+    constructor(private logger: Logger, private http: HttpService, private userService: UserService, private lang: LangService,
+                private route: ActivatedRoute, @Inject(LOCALE_ID) private localeId: string) {
         this.emitSubmitEmail$ = new Subject();
         this.submitEmailEmitted$ = this.emitSubmitEmail$.asObservable().do(() => {
             this.isEditing$.next(false);
@@ -59,11 +62,11 @@ export class GeneralComponent implements OnInit, OnDestroy {
             return _.mapKeys(<any>l, (v, k) => k.toString() === 'code' ? 'value' : 'title');
         });
 
-        this.subscriptions.push(this.isEditing$.filter(b => !b).subscribe(() => this.emailModel = ''));
-
-        this.subscriptions.push(this.userService.passwordChange$.subscribe(() => {
-            this.passwordForm.reset();
-        }));
+        this.subscriptions.push(
+            this.isEditing$.filter(b => !b).subscribe(() => this.emailModel = ''),
+            this.userService.passwordChange$.subscribe(() => this.passwordForm.reset()),
+            this.userService.interfaceLanguageEmitted$.subscribe(this.onInterfaceLanguageUpdated.bind(this))
+        );
     }
 
     ngOnInit(): void {
@@ -72,7 +75,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.each(this.subscriptions, s => s.unsubscribe());
+        _.invokeMap(this.subscriptions, 'unsubscribe');
     }
 
     onSubmitEmail(): void {
@@ -87,7 +90,14 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     onClickResend(): void {
         this.logger.debug(this, 'Resend Confirmation Email');
-        this.subscriptions.push(this.http.request(APIHandle.RESEND_CONFIRMATION_EMAIL, {body: {email: this.user.email}}).subscribe());
+        const options = {
+            body: {
+                email: this.user.email
+            }
+        };
+        this.subscriptions.push(
+            this.http.request(APIHandle.RESEND_CONFIRMATION_EMAIL, options).subscribe()
+        );
     }
 
     updateDefaultStudyLanguage(code: LanguageCode) {
@@ -96,6 +106,10 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     updateInterfaceLanguage(code: LanguageCode) {
         this.userService.update({interface_language: this.lang.languageForCode(code)});
+    }
+
+    onInterfaceLanguageUpdated(code: LanguageCode) {
+        window.location.href = [code, 'settings'].join('/');
     }
 
     onSubmitPassword(): void {
