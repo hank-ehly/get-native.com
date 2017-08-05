@@ -1,16 +1,16 @@
 <ul class="stats">
     <li class="stat">
-        <h3 class="stat-value stat-value--consecutive-days" i18n="number of consecutive days studied@@227bdf07ff892ecd94e958f804bd5b07">{{stats?.consecutive_days}} days</h3>
+        <h3 class="stat-value stat-value--consecutive-days" i18n="number of consecutive days studied@@227bdf07ff892ecd94e958f804bd5b07">{{ stats?.consecutive_days || 0 }} days</h3>
         <span class="stat-key" i18n="The title for the user current streak stat@@31d328eceb53232935a2224d0741291a">CURRENT STREAK</span>
     </li>
 
     <li class="stat">
-        <h3 class="stat-value stat-value--total-study-sessions">{{ stats?.total_study_sessions }}</h3>
+        <h3 class="stat-value stat-value--total-study-sessions">{{ stats?.total_study_sessions || 0 }}</h3>
         <span class="stat-key" i18n="The title for the user total study sessions stat@@016d26fea383d7d530fbb706775f304b">TOTAL COMPLETIONS</span>
     </li>
 
     <li class="stat">
-        <h3 class="stat-value stat-value--longest-consecutive-days" i18n="longest number of consecutive days studied@@cac8d7cae367c8d2658f121a0690756e">{{ stats?.longest_consecutive_days }} days</h3>
+        <h3 class="stat-value stat-value--longest-consecutive-days" i18n="longest number of consecutive days studied@@cac8d7cae367c8d2658f121a0690756e">{{ stats?.longest_consecutive_days || 0 }} days</h3>
         <span class="stat-key" i18n="The title for the user longest study streak stat@@83216013757444e06ec23357f6a4b774">LONGEST STREAK</span>
     </li>
 </ul>
