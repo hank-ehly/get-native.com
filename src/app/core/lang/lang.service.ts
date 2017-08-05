@@ -11,6 +11,8 @@ import { LanguageCode } from '../typings/language-code';
 import { Language } from '../typings/language';
 import { Languages } from './languages';
 
+import * as _ from 'lodash';
+
 @Injectable()
 export class LangService {
 
@@ -40,5 +42,10 @@ export class LangService {
         }
 
         return retLang;
+    }
+
+    languageForLocaleId(localeId: string): Language {
+        const match = _.find(Languages, {code: localeId});
+        return !match ? _.find(Languages, {code: 'en'}) : match;
     }
 }

@@ -44,6 +44,8 @@ export class UserService {
     $setBrowserNotificationsEnabled = new Subject<boolean>();
     password$ = new Subject<{current: string, replacement: string}>();
 
+    interfaceLanguageEmitted$ = new Subject();
+
     // todo: Follow this convention of setters/getters
     // private emitChangeSource = new Subject<any>();
     // // Observable string streams
@@ -56,8 +58,6 @@ export class UserService {
     passwordChange$ = new Subject();
 
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
-        this.logger.debug(this, 'Init');
-
         // todo: whenever you change the default_study_language you change the currentStudyLanguage as well..
         this.current$.filter(_.isObject).map((u: User) => u.default_study_language).subscribe(this.currentStudyLanguage$);
 
@@ -76,6 +76,7 @@ export class UserService {
             return this.http.request(APIHandle.UPDATE_USER, {body: {interface_language_code: code}});
         }, (code: LanguageCode) => {
             this.updateCache({interface_language: this.lang.languageForCode(code)});
+            this.interfaceLanguageEmitted$.next(code);
         }).subscribe();
 
         this.$setEmailNotificationsEnabled.distinctUntilChanged().concatMap((value: boolean) => {

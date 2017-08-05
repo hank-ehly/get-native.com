@@ -37,4 +37,14 @@ describe('LangService', () => {
 
         expect(actual).toEqual(expected);
     });
+
+    it('should return the correct for the given locale', () => {
+        const localeId = 'ja';
+        expect(service.languageForLocaleId(localeId)).toEqual(_.find(Languages, {code: localeId}));
+    });
+
+    it('should return the default language if the localeId does not conform', () => {
+        const localeId = 'en-US';
+        expect(service.languageForLocaleId(localeId)).toEqual(_.find(Languages, {code: 'en'}));
+    });
 });
