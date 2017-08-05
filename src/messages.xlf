@@ -452,7 +452,7 @@
         <source>expand</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">10</context>
         </context-group>
         <note priority="1" from="description">expand dropdown</note>
       </trans-unit>
@@ -460,7 +460,7 @@
         <source>collapse</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <note priority="1" from="description">collapse dropdown</note>
       </trans-unit>
@@ -468,7 +468,7 @@
         <source>reset</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <note priority="1" from="description">reset dropdown selection</note>
       </trans-unit>
@@ -476,7 +476,7 @@
         <source>LOAD MORE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <note priority="1" from="description">The text for the dashboard load more videos button</note>
       </trans-unit>
@@ -484,7 +484,7 @@
         <source>Stats</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">29</context>
         </context-group>
         <note priority="1" from="description">The title for the dashboard stats section</note>
       </trans-unit>
@@ -492,7 +492,7 @@
         <source>Answers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">39</context>
         </context-group>
         <note priority="1" from="description">The title for the dashboard answers section</note>
       </trans-unit>
@@ -500,7 +500,7 @@
         <source>LAST 30 DAYS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">41</context>
         </context-group>
         <note priority="1" from="description">Answers from last 30 days</note>
       </trans-unit>
@@ -508,7 +508,7 @@
         <source>LAST 60 DAYS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <note priority="1" from="description">Answers from last 60 days</note>
       </trans-unit>
@@ -516,7 +516,7 @@
         <source>LAST YEAR</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">43</context>
         </context-group>
         <note priority="1" from="description">Answers from last year</note>
       </trans-unit>
@@ -524,7 +524,7 @@
         <source>ALL TIME</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <note priority="1" from="description">All from any time</note>
       </trans-unit>
@@ -532,7 +532,7 @@
         <source>LOAD MORE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">59</context>
         </context-group>
         <note priority="1" from="description">The text for the dashboard answers section load more button</note>
       </trans-unit>
@@ -584,11 +584,19 @@
         </context-group>
         <note priority="1" from="description">The title for the videos section of the Library page</note>
       </trans-unit>
+      <trans-unit id="39ae7f4a334778f4c7f2b2003d4f7202" datatype="html">
+        <source>All videos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/library/library.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">The label for the default search category of all videos</note>
+      </trans-unit>
       <trans-unit id="9fc1e4b44da73e049a77018162a5fd12" datatype="html">
         <source>expand</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/library/library.component.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <note priority="1" from="description">expand category dropdown</note>
       </trans-unit>
@@ -596,7 +604,7 @@
         <source>collapse</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/library/library.component.ts</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">10</context>
         </context-group>
         <note priority="1" from="description">collapse category dropdown</note>
       </trans-unit>
@@ -604,7 +612,7 @@
         <source>reset</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/library/library.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <note priority="1" from="description">reset category selection</note>
       </trans-unit>
@@ -612,7 +620,7 @@
         <source>LOAD MORE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/library/library.component.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">19</context>
         </context-group>
         <note priority="1" from="description">The text for the load more button of the Library page videos section</note>
       </trans-unit>
@@ -620,7 +628,7 @@
         <source>loading</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/library/library.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <note priority="1" from="description">loading icon</note>
       </trans-unit>
@@ -2228,7 +2236,12 @@
         <note priority="1" from="description">The title of the video database feature description</note>
       </trans-unit>
       <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
-        <source>getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</source>
+        <source>
+                    Get native is all about breaking the barrier between fluid speech and native like speech. Our way
+                    of breaking the barrier is through intensive observation, pronunciation practice and active learning
+                    using video interviews of native speakers. Needless to say in order for this to work we need a lot
+                    of interview videos!
+                </source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">18</context>
@@ -2669,6 +2682,54 @@
           <context context-type="linenumber">5</context>
         </context-group>
         <note priority="1" from="description">Alt text for settings page user thumbnail image</note>
+      </trans-unit>
+      <trans-unit id="b95a9f64b954582c56cb0033abf73084" datatype="html">
+        <source>View and update your login credentials.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description">General settings page description</note>
+      </trans-unit>
+      <trans-unit id="0f10119abc4c5cba9c48416f43cb3c9c" datatype="html">
+        <source>Manage your account privacy settings.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Security settings page description</note>
+      </trans-unit>
+      <trans-unit id="76f4626e88c7b90a7027b3c2bb87e96b" datatype="html">
+        <source>Specify how getnative should be able to notify you.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Notification settings page description</note>
+      </trans-unit>
+      <trans-unit id="d68d03febd04b44e73cacd22418e0b52" datatype="html">
+        <source>GENERAL</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">The general settings page tab label</note>
+      </trans-unit>
+      <trans-unit id="bd5ba99c6cd0d5033177ce7073b8ce70" datatype="html">
+        <source>SECURITY</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">The security settings page tab label</note>
+      </trans-unit>
+      <trans-unit id="ecc74de91783b4d3af04e190cfea171c" datatype="html">
+        <source>NOTIFICATIONS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description">The notifications settings page tab label</note>
       </trans-unit>
       <trans-unit id="3a9315497767db8f497599d712b6723b" datatype="html">
         <source>LANGUAGE</source>

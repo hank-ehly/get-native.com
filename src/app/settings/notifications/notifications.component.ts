@@ -9,7 +9,6 @@ import { Component } from '@angular/core';
 
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/entities/user';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'gn-notifications',

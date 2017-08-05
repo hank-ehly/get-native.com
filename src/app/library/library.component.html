@@ -4,7 +4,8 @@
             <h1 class="section-header__title" i18n="The title for the videos section of the Library page@@ff43f4457e32be874087e47b5fa57de9">Videos</h1>
 
             <div class="dropdown-toggle">
-                <span class="dropdown-toggle__text">{{ categoryFilter$.pluck('text') | async }}</span>
+                <span class="dropdown-toggle__text" *ngIf="(categoryFilter$ | async)?.value">{{ categoryFilter$.pluck('text') | async }}</span>
+                <span class="dropdown-toggle__text" *ngIf="!(categoryFilter$ | async)?.value" i18n="The label for the default search category of all videos@@39ae7f4a334778f4c7f2b2003d4f7202">All videos</span>
                 <img class="dropdown-toggle__icon" src="assets/icons/arrow-down.svg" i18n-alt="expand category dropdown@@9fc1e4b44da73e049a77018162a5fd12" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
                 <img class="dropdown-toggle__icon" src="assets/icons/arrow-up.svg" i18n-alt="collapse category dropdown@@0ce9f3e4a465a29ca15eb50a01f21508" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
                 <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="assets/icons/close-green.svg" i18n-alt="reset category selection@@1eeed920b5a45b3678de786bf2e0748a" alt="reset" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
