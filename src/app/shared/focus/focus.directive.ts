@@ -12,9 +12,10 @@ import { Directive, ElementRef, Input } from '@angular/core';
 })
 export class FocusDirective {
     @Input('gnFocus') set focused(focus: boolean) {
-        if (focus) {
+        // console.log(focus); // focus is null. why?
+        // if (focus) {
             this.el.nativeElement.focus();
-        }
+        // }
     }
 
     constructor(private el: ElementRef) {
