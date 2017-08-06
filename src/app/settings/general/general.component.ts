@@ -109,7 +109,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
     }
 
     onInterfaceLanguageUpdated(code: LanguageCode) {
-        window.location.href = [code, 'settings'].join('/');
+        window.location.replace([code, 'settings'].join('/'));
     }
 
     onSubmitPassword(): void {
