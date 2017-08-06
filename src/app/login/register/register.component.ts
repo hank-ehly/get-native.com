@@ -44,7 +44,7 @@ export class RegisterComponent implements OnDestroy {
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.each(this.subscriptions, s => s.unsubscribe());
+        _.invokeMap(this.subscriptions, 'unsubscribe');
     }
 
     onSetModalView(view: string) {
@@ -59,6 +59,18 @@ export class RegisterComponent implements OnDestroy {
                 this.onRegistrationError.bind(this)
             )
         );
+    }
+
+    goToPrivacy(): void {
+        this.router.navigate([{outlets: {modal: null}}]).then(() => {
+            this.router.navigate(['/privacy']);
+        });
+    }
+
+    goToTOS(): void {
+        this.router.navigate([{outlets: {modal: null}}]).then(() => {
+            this.router.navigate(['/tos']);
+        });
     }
 
     private onRegistrationResponse(user: User): void {
