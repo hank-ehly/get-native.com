@@ -31,6 +31,6 @@
     <footer class="footer">
         <span (click)="onSetModalView(null)" class="link footer__link footer__link_social-login tabbable" tabindex="5" i18n="The text for the link redirecting users to the social login form@@87ffa0148fec4d400a934104cecd5d78">Sign in via Facebook, Twitter or Google</span>
         <span (click)="onSetModalView('email')" class="link footer__link footer__link_email-login tabbable" tabindex="6" i18n="The text for the link redirecting users to the email login form@@2f09ed6116fbaf418467e020824d31ac">Sign in with email</span>
-        <p class="paragraph" i18n="Registration user agreement message@@a03f3ed9078abe28dbc5aaa91d39a82f">By signing up, you are agreeing to the <a class="link footer__link footer__link_privacy tabbable" tabindex="7">privacy policy</a> and <a class="link footer__link footer__link_tos tabbable" tabindex="8">terms of service</a></p>
+        <p class="paragraph" i18n="Registration user agreement message@@a03f3ed9078abe28dbc5aaa91d39a82f">By signing up, you are agreeing to the <a class="link footer__link footer__link_privacy tabbable" tabindex="7" (click)="goToPrivacy()">privacy policy</a> and <a class="link footer__link footer__link_tos tabbable" tabindex="8" (click)="goToTOS()">terms of service</a></p>
     </footer>
 </div>
