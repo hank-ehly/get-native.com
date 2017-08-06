@@ -54,8 +54,8 @@
                 <note priority="1" from="description">The text of link to the contact-us page</note>
             </trans-unit>
             <trans-unit id="6335345ee212a722ca9838616830a7f6" datatype="html">
-                <source>© 2016 getnative Inc.</source>
-                <target>© 2016 getnative Inc.</target>
+                <source>© <x id="INTERPOLATION"/> getnative</source>
+                <target>© <x id="INTERPOLATION"/> getnative</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
                     <context context-type="linenumber">6</context>
