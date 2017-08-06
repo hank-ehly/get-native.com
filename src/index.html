@@ -16,6 +16,25 @@
 </head>
 <body>
 <script src="https://connect.facebook.net/en_US/sdk.js"></script>
-<gn-app>Loading...</gn-app>
+<gn-app>
+    <style type="text/css">
+        .pre-loading {
+            display: block;
+            left: 50%;
+            top: 50%;
+            position: absolute;
+            text-align: center;
+            transform: translate(-50%, -50%);
+        }
+        .pre-loading .spinner {
+            margin-top: 20px;
+            width: 20px;
+        }
+    </style>
+    <div class="pre-loading">
+        <h1>Loading...</h1>
+        <img src="assets/icons/spinner.gif" alt="loading" class="spinner">
+    </div>
+</gn-app>
 </body>
 </html>
