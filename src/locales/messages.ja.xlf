@@ -691,11 +691,8 @@
                 <note priority="1" from="description">The text for the dashboard answers section load more button</note>
             </trans-unit>
             <trans-unit id="227bdf07ff892ecd94e958f804bd5b07" datatype="html">
-                <source>
-                    <x id="INTERPOLATION"/>
-                    days
-                </source>
-                <target>日間</target>
+                <source><x id="INTERPOLATION"/> days</source>
+                <target><x id="INTERPOLATION"/> 日間</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/stats/stats.component.ts</context>
                     <context context-type="linenumber">3</context>
@@ -721,11 +718,8 @@
                 <note priority="1" from="description">The title for the user total study sessions stat</note>
             </trans-unit>
             <trans-unit id="cac8d7cae367c8d2658f121a0690756e" datatype="html">
-                <source>
-                    <x id="INTERPOLATION"/>
-                    days
-                </source>
-                <target>日間</target>
+                <source><x id="INTERPOLATION"/> days</source>
+                <target><x id="INTERPOLATION"/> 日間</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/stats/stats.component.ts</context>
                     <context context-type="linenumber">13</context>
