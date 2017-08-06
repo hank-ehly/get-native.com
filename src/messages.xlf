@@ -139,6 +139,46 @@
         </context-group>
         <note priority="1" from="description">Alt text for navbar settings icon</note>
       </trans-unit>
+      <trans-unit id="07a6171e3f63bdda059d13296924d816" datatype="html">
+        <source>VERY WEAK</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/password-strength/password-strength.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Password strength meter label for very weak password</note>
+      </trans-unit>
+      <trans-unit id="d429c3182455cfcf0699edc04f3c9b81" datatype="html">
+        <source>WEAK</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/password-strength/password-strength.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Password strength meter label for weak password</note>
+      </trans-unit>
+      <trans-unit id="67379fe94d8d46b7ea810c1e0bb55277" datatype="html">
+        <source>GOOD</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/password-strength/password-strength.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Password strength meter label for good password</note>
+      </trans-unit>
+      <trans-unit id="19b13e6b956a5e0c9f1edc059fbea6b4" datatype="html">
+        <source>STRONG</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/password-strength/password-strength.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">Password strength meter label for strong password</note>
+      </trans-unit>
+      <trans-unit id="232c4dda282698e176adcf6bcad496f2" datatype="html">
+        <source>VERY STRONG</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/password-strength/password-strength.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">Password strength meter label for very strong password</note>
+      </trans-unit>
       <trans-unit id="ddea1765b81c3a8af6b81757be83b25c" datatype="html">
         <source>Dashboard</source>
         <context-group purpose="location">
@@ -368,6 +408,30 @@
         </context-group>
         <note priority="1" from="description">The instructions for filling out the registration form</note>
       </trans-unit>
+      <trans-unit id="c0fe73f5d82c1a6ee2581bd65cc2aff4" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/register/register.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Registration page email text input label</note>
+      </trans-unit>
+      <trans-unit id="41f4da5d70f2a71ffa85429f5bfd4fc6" datatype="html">
+        <source>Password (minimum 8 characters)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/register/register.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">Registration page password input label</note>
+      </trans-unit>
+      <trans-unit id="3bd854fc75318f75b3582c1d1361e72e" datatype="html">
+        <source>Password (Confirm)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/register/register.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description">Registration page password confirmation input label</note>
+      </trans-unit>
       <trans-unit id="76547a2df32997f1cb7ee0dc185a421c" datatype="html">
         <source>SIGN UP</source>
         <context-group purpose="location">
@@ -391,6 +455,14 @@
           <context context-type="linenumber">33</context>
         </context-group>
         <note priority="1" from="description">The text for the link redirecting users to the email login form</note>
+      </trans-unit>
+      <trans-unit id="a03f3ed9078abe28dbc5aaa91d39a82f" datatype="html">
+        <source>By signing up, you are agreeing to the <x id="START_LINK" ctype="x-a"/>privacy policy<x id="CLOSE_LINK" ctype="x-a"/> and <x id="START_LINK_1" ctype="x-a"/>terms of service<x id="CLOSE_LINK" ctype="x-a"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/register/register.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <note priority="1" from="description">Registration user agreement message</note>
       </trans-unit>
       <trans-unit id="f0019b9ad149833dd0b1ed52522ff8b4" datatype="html">
         <source>Enter your email address to receive a password reset link.</source>

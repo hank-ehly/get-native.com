@@ -10,18 +10,18 @@
 
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="form" [gnMatch]="['password', 'password-confirm']">
         <div class="form__group">
-            <label class="label" for="email"><span class="form__required-indicator">*</span> Email</label>
+            <label class="label" for="email"><span class="form__required-indicator">*</span> <ng-container i18n="Registration page email text input label@@c0fe73f5d82c1a6ee2581bd65cc2aff4">Email</ng-container></label>
             <input id="email" type="email" name="email" [(ngModel)]="credentials.email" [pattern]="emailRegex" maxlength="254" tabindex="1" class="input tabbable" required>
         </div>
 
         <div class="form__group">
-            <label class="label" for="password"><span class="form__required-indicator">*</span> Password (minimum 8 characters)</label>
+            <label class="label" for="password"><span class="form__required-indicator">*</span> <ng-container i18n="Registration page password input label@@41f4da5d70f2a71ffa85429f5bfd4fc6">Password (minimum 8 characters)</ng-container></label>
             <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="credentials.password" minlength="8" class="input tabbable" required>
             <gn-password-strength [password]="credentials.password"></gn-password-strength>
         </div>
 
         <div class="form__group form__group_confirm-password">
-            <label class="label" for="password-confirm"><span class="form__required-indicator">*</span> Password (Confirm)</label>
+            <label class="label" for="password-confirm"><span class="form__required-indicator">*</span> <ng-container i18n="Registration page password confirmation input label@@3bd854fc75318f75b3582c1d1361e72e">Password (Confirm)</ng-container></label>
             <input id="password-confirm" type="password" name="password-confirm" tabindex="3" class="input tabbable" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
         </div>
 
@@ -31,6 +31,6 @@
     <footer class="footer">
         <span (click)="onSetModalView(null)" class="link footer__link footer__link_social-login tabbable" tabindex="5" i18n="The text for the link redirecting users to the social login form@@87ffa0148fec4d400a934104cecd5d78">Sign in via Facebook, Twitter or Google</span>
         <span (click)="onSetModalView('email')" class="link footer__link footer__link_email-login tabbable" tabindex="6" i18n="The text for the link redirecting users to the email login form@@2f09ed6116fbaf418467e020824d31ac">Sign in with email</span>
-        <p class="paragraph">By signing up, you are agreeing to the <a class="link footer__link footer__link_privacy tabbable" tabindex="7">privacy policy</a> and <a class="link footer__link footer__link_tos tabbable" tabindex="8">terms of service</a></p>
+        <p class="paragraph" i18n="Registration user agreement message@@a03f3ed9078abe28dbc5aaa91d39a82f">By signing up, you are agreeing to the <a class="link footer__link footer__link_privacy tabbable" tabindex="7">privacy policy</a> and <a class="link footer__link footer__link_tos tabbable" tabindex="8">terms of service</a></p>
     </footer>
 </div>
