@@ -13,11 +13,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PrivacyComponent } from './privacy/privacy.component';
 import { TOSComponent } from './tos/tos.component';
 import { SharedModule } from '../shared/shared.module';
+import { MobileOverlayComponent } from './mobile-overlay/mobile-overlay.component';
 
 @NgModule({
     imports: [SharedModule],
-    exports: [HelpComponent, HomeComponent, PageNotFoundComponent, PrivacyComponent, TOSComponent],
-    declarations: [HelpComponent, HomeComponent, PageNotFoundComponent, PrivacyComponent, TOSComponent],
+    exports: [HelpComponent, HomeComponent, PageNotFoundComponent, PrivacyComponent, TOSComponent, MobileOverlayComponent],
+    declarations: [HelpComponent, HomeComponent, PageNotFoundComponent, PrivacyComponent, TOSComponent, MobileOverlayComponent],
 })
 export class StaticPagesModule {
 }

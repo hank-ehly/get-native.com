@@ -34,11 +34,19 @@
         </context-group>
         <note priority="1" from="description">The text of the link to the home page</note>
       </trans-unit>
+      <trans-unit id="c03bb9862ecc4f156867371af921a4c4" datatype="html">
+        <source>Library</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The text of the link to the library page</note>
+      </trans-unit>
       <trans-unit id="ff90d3c15ff7ee8f4c66e31493c71ace" datatype="html">
         <source>Contact</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">5</context>
         </context-group>
         <note priority="1" from="description">The text of link to the contact-us page</note>
       </trans-unit>
@@ -46,7 +54,7 @@
         <source>© <x id="INTERPOLATION"/> getnative</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7</context>
         </context-group>
         <note priority="1" from="description">The footer copyright text</note>
       </trans-unit>
@@ -54,7 +62,7 @@
         <source>Terms of Service</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <note priority="1" from="description">The text of the footer link to the terms of service page</note>
       </trans-unit>
@@ -62,7 +70,7 @@
         <source>Privacy Policy</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <note priority="1" from="description">The text of the footer link to the privacy policy page</note>
       </trans-unit>
@@ -74,43 +82,11 @@
         </context-group>
         <note priority="1" from="description">Alt text for navbar logo image</note>
       </trans-unit>
-      <trans-unit id="4b5f38ab4ccac45e6309dd0d8a4f7844" datatype="html">
-        <source>Search</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <note priority="1" from="description">The label text for the navbar search field</note>
-      </trans-unit>
-      <trans-unit id="ea3712afdf8cac823ca20f19e995c610" datatype="html">
-        <source>back</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-        <note priority="1" from="description">Alt text for navbar back button image</note>
-      </trans-unit>
-      <trans-unit id="38a221a305676dc90cd98ce5db0eb04e" datatype="html">
-        <source>SAVE</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-        <note priority="1" from="description">Video detail page SAVE button title</note>
-      </trans-unit>
-      <trans-unit id="b41db422db43acef3114a978c939d702" datatype="html">
-        <source>REMOVE</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-        <note priority="1" from="description">Video detail page REMOVE button title</note>
-      </trans-unit>
       <trans-unit id="2134cc75d316e3aea408a40b6853656e" datatype="html">
         <source>Help</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <note priority="1" from="description">The text for the navbar link to the help/contact-us page</note>
       </trans-unit>
@@ -118,16 +94,48 @@
         <source>Sign in / Sign up</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">13</context>
         </context-group>
         <note priority="1" from="description">The navbar sign in/up button text</note>
         <note priority="1" from="meaning">sign in/up button</note>
+      </trans-unit>
+      <trans-unit id="4b5f38ab4ccac45e6309dd0d8a4f7844" datatype="html">
+        <source>Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">The label text for the navbar search field</note>
+      </trans-unit>
+      <trans-unit id="ea3712afdf8cac823ca20f19e995c610" datatype="html">
+        <source>back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">Alt text for navbar back button image</note>
+      </trans-unit>
+      <trans-unit id="38a221a305676dc90cd98ce5db0eb04e" datatype="html">
+        <source>SAVE</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Video detail page SAVE button title</note>
+      </trans-unit>
+      <trans-unit id="b41db422db43acef3114a978c939d702" datatype="html">
+        <source>REMOVE</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <note priority="1" from="description">Video detail page REMOVE button title</note>
       </trans-unit>
       <trans-unit id="ee5d8dd7d8cc15235c182818e9fa4e45" datatype="html">
         <source>search</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">47</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar magnifying glass search icon</note>
       </trans-unit>
@@ -135,7 +143,7 @@
         <source>close</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar close-search button icon</note>
       </trans-unit>
@@ -143,7 +151,7 @@
         <source>notifications</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar notifications icon</note>
       </trans-unit>
@@ -151,7 +159,7 @@
         <source>settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar settings icon</note>
       </trans-unit>
@@ -217,7 +225,7 @@
         <source>settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/toolbar/toolbar.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">10</context>
         </context-group>
         <note priority="1" from="description">Alt text for toolbar settings icon</note>
       </trans-unit>
@@ -225,7 +233,7 @@
         <source>help</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/toolbar/toolbar.component.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <note priority="1" from="description">Alt text for toolbar help icon</note>
       </trans-unit>
@@ -233,7 +241,7 @@
         <source>logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/toolbar/toolbar.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">18</context>
         </context-group>
         <note priority="1" from="description">Alt text for toolbar logout icon</note>
       </trans-unit>
@@ -2935,6 +2943,14 @@
           <context context-type="linenumber">7</context>
         </context-group>
         <note priority="1" from="description">next exercise label</note>
+      </trans-unit>
+      <trans-unit id="fd0413b1d745255d24d578e73b82149d" datatype="html">
+        <source>Please try viewing getnative from a larger browser window</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/mobile-overlay/mobile-overlay.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Message asking user to view website in larger browser window</note>
       </trans-unit>
     </body>
   </file>
