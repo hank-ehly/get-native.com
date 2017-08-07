@@ -10,16 +10,17 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { QueueButtonState } from '../../core/navbar/queue-button-state';
 import { NavbarService } from '../../core/navbar/navbar.service';
 import { Logger } from '../../core/logger/logger';
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { QueueButtonState } from '../../core/navbar/queue-button-state';
 
 @Component({
     selector: 'gn-navbar',
@@ -58,6 +59,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     studyOptionsVisible$ = this.navbar.studyOptionsVisible$;
     progressBarVisibleEmitted$ = this.navbar.progressBarVisibleEmitted$;
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
+    displayNotificationDropdown$ = new BehaviorSubject<boolean>(false);
     progress             = this.navbar.progress;
 
     queueButtonSaveState = QueueButtonState.SAVE;
@@ -114,8 +116,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.navbar.onClickQueue$.next();
     }
 
-    /* MOCK */
-    toggleNotificationIndicator(): void {
-        this.hasUnreadNotifications = !this.hasUnreadNotifications;
+    toggleNotificationDropdown(): void {
+        this.displayNotificationDropdown$.next(!this.displayNotificationDropdown$.getValue());
     }
 }

@@ -34,6 +34,7 @@ import { VideoPanelComponent } from './video-panel/video-panel.component';
 import { VideoPanelListComponent } from './video-panel-list/video-panel-list.component';
 import { VideoSearchComponent } from './video-search/video-search.component';
 import { SafeHtmlPipe } from './safe-html/safe-html.pipe';
+import { NotificationDropdownComponent } from './navbar/notification-dropdown.component';
 
 @NgModule({
     imports: [
@@ -65,7 +66,8 @@ import { SafeHtmlPipe } from './safe-html/safe-html.pipe';
         VideoPanelComponent,
         VideoPanelListComponent,
         VideoSearchComponent,
-        SafeHtmlPipe
+        SafeHtmlPipe,
+        NotificationDropdownComponent
 
     ],
     exports: [
@@ -94,7 +96,8 @@ import { SafeHtmlPipe } from './safe-html/safe-html.pipe';
         VideoPanelComponent,
         VideoPanelListComponent,
         VideoSearchComponent,
-        SafeHtmlPipe
+        SafeHtmlPipe,
+        NotificationDropdownComponent
     ]
 })
 

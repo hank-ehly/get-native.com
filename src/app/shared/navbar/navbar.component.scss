@@ -172,3 +172,13 @@
   margin: 0;
   padding: 0;
 }
+
+gn-notification-dropdown {
+  position: fixed;
+  right: 60px;
+  top: 68px;
+  z-index: 1;
+  @media screen and (max-width: $breakpoint-md) {
+    left: $breakpoint-md - 290px
+  }
+}
