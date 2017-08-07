@@ -40,6 +40,7 @@ import { ConfirmEmailUpdateResolver } from './core/auth/confirm-email-update-res
 import { LoginComponent } from './login/login.component';
 
 import { MetaGuard } from '@ngx-meta/core';
+import { ActivityComponent } from './settings/activity/activity.component';
 
 const routes: Routes = [
     {
@@ -89,6 +90,14 @@ const routes: Routes = [
                 path: 'security', component: SecurityComponent, data: {
                     meta: {
                         title: 'settings.security.title'
+                    },
+                    showToolbar: true
+                }
+            },
+            {
+                path: 'activity', component: ActivityComponent, data: {
+                    meta: {
+                        title: 'settings.activity.title'
                     },
                     showToolbar: true
                 }

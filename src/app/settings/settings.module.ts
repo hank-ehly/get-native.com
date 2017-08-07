@@ -12,10 +12,11 @@ import { SettingsComponent } from './settings.component';
 import { SecurityComponent } from './security/security.component';
 import { GeneralComponent } from './general/general.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { ActivityComponent } from './activity/activity.component';
 
 @NgModule({
     imports: [SharedModule],
-    declarations: [SettingsComponent, SecurityComponent, GeneralComponent, NotificationsComponent],
+    declarations: [SettingsComponent, SecurityComponent, GeneralComponent, NotificationsComponent, ActivityComponent],
     exports: [SettingsComponent]
 })
 
