@@ -1057,8 +1057,8 @@
                 <note priority="1" from="description">tos introduction section header</note>
             </trans-unit>
             <trans-unit id="6f212e0ab04a5b1bf38d3a30208e6be1" datatype="html">
-                <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative All intellectual property rights are reserved. You may view and/or print pages from get-native.com for your own personal use subject to restrictions set in these terms and conditions.</source>
-                <target>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative All intellectual property rights are reserved. You may view and/or print pages from get-native.com for your own personal use subject to restrictions set in these terms and conditions.</target>
+                <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative. All intellectual property rights are reserved. You may view and/or print pages from get-native.com for your own personal use subject to restrictions set in these terms and conditions.</source>
+                <target>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative. All intellectual property rights are reserved. You may view and/or print pages from get-native.com for your own personal use subject to restrictions set in these terms and conditions.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">37</context>

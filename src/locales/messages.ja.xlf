@@ -3,17 +3,13 @@
     <file source-language="en" target-language="ja" datatype="plaintext" original="ng2.template">
         <body>
             <trans-unit id="06afdb0c3f027180c8ed811ed00ecc28" datatype="html">
-                <source>This site uses<x id="START_LINK" ctype="x-a"/>local storage<x id="CLOSE_LINK" ctype="x-a"/>. By continuing to browse
-                    this site you are agreeing to our terms of service.
-                </source>
-                <target>このサイトはローカルストレージを使用します。閲覧し続けることで、利用規約に同意したことになります。</target>
+                <source>This site uses <x id="START_LINK" ctype="x-a"/>local storage<x id="CLOSE_LINK" ctype="x-a"/>. By continuing to browse this site you are agreeing to our terms of service.</source>
+                <target>このサイトは<x id="START_LINK" ctype="x-a"/>ローカルストレージ<x id="CLOSE_LINK" ctype="x-a"/>を使用します。閲覧し続けることで、利用規約に同意したことになります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/compliance/compliance.component.ts</context>
                     <context context-type="linenumber">2</context>
                 </context-group>
-                <note priority="1" from="description">Popup message asking user to comply with the getnative policy on storing data
-                    locally
-                </note>
+                <note priority="1" from="description">Popup message asking user to comply with the getnative policy on storing data locally</note>
             </trans-unit>
             <trans-unit id="8283c85b25db300546af69c4eff43072" datatype="html">
                 <source>Find out more here.</source>
@@ -22,9 +18,7 @@
                     <context context-type="sourcefile">app/shared/compliance/compliance.component.ts</context>
                     <context context-type="linenumber">4</context>
                 </context-group>
-                <note priority="1" from="description">The text for the web-storage compliance popup link redirecting users to the terms of
-                    service page
-                </note>
+                <note priority="1" from="description">The text for the web-storage compliance popup link redirecting users to the terms of service page</note>
             </trans-unit>
             <trans-unit id="976e12662bafbf74be24350f8b89c705" datatype="html">
                 <source>Close</source>
@@ -293,10 +287,12 @@
             <trans-unit id="dfe84b58c71ace0e2d684bf3231b81f3" datatype="html">
                 <source>
                     <x id="TAG_INPUT" ctype="x-input"/>
-                    <x id="START_TAG_SPAN" ctype="x-span"/>minutes
-                    <x id="CLOSE_TAG_SPAN" ctype="x-span"/>
+                    <x id="START_TAG_SPAN" ctype="x-span"/>minutes<x id="CLOSE_TAG_SPAN" ctype="x-span"/>
                 </source>
-                <target>分</target>
+                <target>
+                    <x id="TAG_INPUT" ctype="x-input"/>
+                    <x id="START_TAG_SPAN" ctype="x-span"/>分<x id="CLOSE_TAG_SPAN" ctype="x-span"/>
+                </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/video-panel/video-panel.component.ts</context>
                     <context context-type="linenumber">13</context>
@@ -817,11 +813,8 @@
                 <note priority="1" from="description">number of views</note>
             </trans-unit>
             <trans-unit id="f93e0c2af148ade90f69131ac7d8181e" datatype="html">
-                <source>
-                    <x id="INTERPOLATION"/>
-                    views
-                </source>
-                <target>ビュー数</target>
+                <source><x id="INTERPOLATION"/> views</source>
+                <target>再生回数<x id="INTERPOLATION"/>回</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library-detail.component.ts</context>
                     <context context-type="linenumber">14</context>
@@ -964,8 +957,8 @@
                 <note priority="1" from="description">terms of service Reservation of Rights quick link title</note>
             </trans-unit>
             <trans-unit id="ab43c66f332168cd3c88f052adf7f7a7" datatype="html">
-                <source>Reservation of Rights</source>
-                <target>権利の予約</target>
+                <source>Removal of Links</source>
+                <target>リンクの削除</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">11</context>
@@ -991,7 +984,7 @@
                 <note priority="1" from="description">tos introduction section header</note>
             </trans-unit>
             <trans-unit id="a02f66f42ee66cc840081b234f08997c" datatype="html">
-                <source>These terms and conditions outline the rules and regulations for the use of getnative's Website.</source>
+                <source>These terms and conditions outline the rules and regulations for the use of getnative&apos;s Website.</source>
                 <target>これらの利用規約は、getnativeのウェブサイトを使用するための規則と規制を概説しています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1009,15 +1002,7 @@
                 <note priority="1" from="description">tos introduction section text (2)</note>
             </trans-unit>
             <trans-unit id="4db2ee4f54c4b567cdfbdfc05bfb31bd" datatype="html">
-                <source>
-                    Kuresunto 403 Asakusa 2-34-4
-                    <x id="LINE_BREAK" ctype="lb"/>
-                    Taito Ward, Tokyo
-                    <x id="LINE_BREAK" ctype="lb"/>
-                    111-0032
-                    <x id="LINE_BREAK" ctype="lb"/>
-                    Japan
-                </source>
+                <source>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</source>
                 <target>日本111-0032東京都台東区浅草2-34-4クレスント403</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1026,12 +1011,8 @@
                 <note priority="1" from="description">tos introduction section text (3)</note>
             </trans-unit>
             <trans-unit id="9a54839b4d857e92055103e67f3cdbe2" datatype="html">
-                <source>By accessing this website we assume you accept these terms and conditions in full. Do not continue to use
-                    getnative's
-                    website if you do not accept all of the terms and conditions stated on this page.
-                </source>
-                <target>このウェブサイトにアクセスすることにより、お客様はこれらの利用規約に完全に同意するものとみなされます。このページに記載されている利用規約のすべてに同意しない場合、getnativeのウェブサイトを引き続き使用しないでください。
-                </target>
+                <source>By accessing this website we assume you accept these terms and conditions in full. Do not continue to use getnative&apos;s website if you do not accept all of the terms and conditions stated on this page.</source>
+                <target>このウェブサイトにアクセスすることにより、お客様はこれらの利用規約に完全に同意するものとみなされます。このページに記載されている利用規約のすべてに同意しない場合、getnativeのウェブサイトを引き続き使用しないでください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">26</context>
@@ -1039,21 +1020,8 @@
                 <note priority="1" from="description">tos introduction section text (4)</note>
             </trans-unit>
             <trans-unit id="0b5bf752bc6b310e2f8d732281cb0561" datatype="html">
-                <source>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or
-                    all Agreements: "Client", "You" and "Your" refers to you, the person accessing this
-                    website and accepting the Company's terms and conditions. "The Company", "Ourselves", "We",
-                    "Our" and "Us", refers to our Company. "Party", "Parties", or "Us",
-                    refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and
-                    consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate
-                    manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the
-                    Client's needs in respect of provision of the Company's stated services/products, in accordance with and
-                    subject to, prevailing law of Japan. Any use of the above terminology or other words in the singular, plural,
-                    capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.
-                </source>
-                <target>以下の用語は、本利用規約、プライバシーに関する声明および免責条項、およびすべてまたは一部の契約に適用されます。「クライアント」、「お客様」および「お客様」とは、お客様、このWebサイトにアクセスし、
-                    「当社」、「当社」、「当社」、「当社」、および「当社」は、当社を指します。
-                    「締約国」、「締約国」、または「私たち」は、クライアントと自分自身、またはクライアントまたは自分自身のいずれかを指します。すべての条件は、一定の期間の正式な会合、またはその他の手段によるものであるかにかかわらず、最も適切な方法でクライアントへの援助のプロセスを引き受けるために必要な支払いの提供、受諾および検討を指します。日本の法律に準拠した、当社が定めたサービス/製品の提供に関する顧客のニーズ。単数、複数、大文字および/または彼/彼女またはそれらのいずれかにおける上記の用語または他の単語の使用は、交換可能とみなされ、したがって同じものを指すものとして解釈される。
-                </target>
+                <source>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: &quot;Client&quot;, &quot;You&quot; and &quot;Your&quot; refers to you, the person accessing this website and accepting the Company&apos;s terms and conditions. &quot;The Company&quot;, &quot;Ourselves&quot;, &quot;We&quot;, &quot;Our&quot; and &quot;Us&quot;, refers to our Company. &quot;Party&quot;, &quot;Parties&quot;, or &quot;Us&quot;, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client&apos;s needs in respect of provision of the Company&apos;s stated services/products, in accordance with and subject to, prevailing law of Japan. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.</source>
+                <target>以下の用語は、本利用規約、プライバシーに関する声明および免責条項、およびすべてまたは一部の契約に適用されます。「クライアント」、「お客様」および「お客様」とは、お客様、このWebサイトにアクセスし、「当社」、「当社」、「当社」、「当社」、および「当社」は、当社を指します。「締約国」、「締約国」、または「私たち」は、クライアントと自分自身、またはクライアントまたは自分自身のいずれかを指します。すべての条件は、一定の期間の正式な会合、またはその他の手段によるものであるかにかかわらず、最も適切な方法でクライアントへの援助のプロセスを引き受けるために必要な支払いの提供、受諾および検討を指します。日本の法律に準拠した、当社が定めたサービス/製品の提供に関する顧客のニーズ。単数、複数、大文字および/または彼/彼女またはそれらのいずれかにおける上記の用語または他の単語の使用は、交換可能とみなされ、したがって同じものを指すものとして解釈される。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">27</context>
@@ -1070,14 +1038,8 @@
                 <note priority="1" from="description">tos cookies section header</note>
             </trans-unit>
             <trans-unit id="77ab247731bf0ad936fbd187d3069ff7" datatype="html">
-                <source>We employ the use of cookies. By using getnative's website you consent to the use of cookies in accordance with
-                    getnative's privacy policy. Most of the modern day interactive web sites use cookies to enable us to retrieve user
-                    details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of
-                    use for those people visiting. Some of our affiliate / advertising partners may also use cookies.
-                </source>
-                <target>私たちはクッキーの使用を採用しています。
-                    getnativeのウェブサイトを使用することにより、getnativeのプライバシーポリシーに従ってクッキーの使用に同意することになります。現代のインタラクティブなウェブサイトのほとんどは、訪問ごとにユーザーの詳細を取得するためにCookieを使用しています。クッキーは当サイトの一部の領域で使用され、この領域の機能と訪問者の使いやすさを実現しています。アフィリエイト/広告パートナーの中には、Cookieを使用するものもあります。
-                </target>
+                <source>We employ the use of cookies. By using getnative&apos;s website you consent to the use of cookies in accordance with getnative&apos;s privacy policy. Most of the modern day interactive web sites use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.</source>
+                <target>私たちはクッキーの使用を採用しています。getnativeのウェブサイトを使用することにより、getnativeのプライバシーポリシーに従ってクッキーの使用に同意することになります。現代のインタラクティブなウェブサイトのほとんどは、訪問ごとにユーザーの詳細を取得するためにCookieを使用しています。クッキーは当サイトの一部の領域で使用され、この領域の機能と訪問者の使いやすさを実現しています。アフィリエイト/広告パートナーの中には、Cookieを使用するものもあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">32</context>
@@ -1094,13 +1056,8 @@
                 <note priority="1" from="description">tos introduction section header</note>
             </trans-unit>
             <trans-unit id="6f212e0ab04a5b1bf38d3a30208e6be1" datatype="html">
-                <source>Unless otherwise stated, getnative and/or it's licensors own the intellectual property rights for all material
-                    on getnative All intellectual property rights are reserved. You may view and/or print pages from https://get-native.com
-                    for your own personal use subject to restrictions set in these terms and conditions.
-                </source>
-                <target>
-                    特に明記されていない限り、getnativeおよび/またはそのライセンサは、getnativeに関するすべての資料の知的財産権を所有しています。すべての知的財産権は留保されています。お客様は、これらの利用規約に定められた制限に従って、個人的な使用のためにhttps://get-native.comのページを表示および/または印刷することができます。
-                </target>
+                <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative. All intellectual property rights are reserved. You may view and/or print pages from get-native.com for your own personal use subject to restrictions set in these terms and conditions.</source>
+                <target>特に明記されていない限り、getnativeおよび/またはそのライセンサは、getnativeに関するすべての資料の知的財産権を所有しています。すべての知的財産権は留保されています。お客様は、これらの利用規約に定められた制限に従って、個人的な使用のためにget-native.comのページを表示および/または印刷することができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">37</context>
@@ -1117,8 +1074,8 @@
                 <note priority="1" from="description">tos license section text (2)</note>
             </trans-unit>
             <trans-unit id="f813a8293dd4bb806af988aa90fd5927" datatype="html">
-                <source>Republish material from https://get-native.com</source>
-                <target>https://get-native.comから資料を再掲載する</target>
+                <source>Republish material from get-native.com</source>
+                <target>get-native.comから資料を再掲載する</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">40</context>
@@ -1126,8 +1083,8 @@
                 <note priority="1" from="description">tos license section text (3)</note>
             </trans-unit>
             <trans-unit id="c154ea0af51566537ce538ccb9752545" datatype="html">
-                <source>Sell, rent or sub-license material from https://get-native.com</source>
-                <target>https://get-native.comから素材を販売、レンタル、またはサブライセンスする</target>
+                <source>Sell, rent or sub-license material from get-native.com</source>
+                <target>get-native.comから素材を販売、レンタル、またはサブライセンスする</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">41</context>
@@ -1135,8 +1092,8 @@
                 <note priority="1" from="description">tos license section text (4)</note>
             </trans-unit>
             <trans-unit id="c0e4c9676a8242279d2a784128801550" datatype="html">
-                <source>Reproduce, duplicate or copy material from https://get-native.com</source>
-                <target>https://get-native.comから資料を複製、複製、またはコピーする</target>
+                <source>Reproduce, duplicate or copy material from get-native.com</source>
+                <target>get-native.comから資料を複製、複製、またはコピーする</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">42</context>
@@ -1162,26 +1119,8 @@
                 <note priority="1" from="description">tos user-comments section header</note>
             </trans-unit>
             <trans-unit id="898cfdbcda7e6b7cd4554a34866b8861" datatype="html">
-                <source>This Agreement shall begin on the date hereof. Certain parts of this website offer the opportunity for users to post
-                    and exchange opinions, information, material and data ('Comments') in areas of the website. getnative does not
-                    screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views
-                    or opinions of getnative, its agents or affiliates. Comments reflect the view and opinion of the person who posts such
-                    view or opinion. To the extent permitted by applicable laws getnative shall not be responsible or liable for the
-                    Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or
-                    posting of and/or appearance of the Comments on this website. getnative reserves the right to monitor all Comments and
-                    to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in
-                    breach of these Terms and Conditions. You warrant and represent that: You are entitled to post the Comments on our
-                    website and have all necessary licenses and consents to do so; The Comments do not infringe any intellectual property
-                    right, including without limitation copyright, patent or trademark, or other proprietary right of any third party; The
-                    Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which
-                    is an invasion of privacy The Comments will not be used to solicit or promote business or custom or present commercial
-                    activities or unlawful activity. You hereby grant to getnative a non-exclusive royalty-free license to use, reproduce,
-                    edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.
-                </source>
-                <target>本契約は本契約書の日付から始まるものとします。このウェブサイトの特定の部分は、ユーザーがウェブサイトの領域に意見、情報、資料およびデータ（「コメント」）を投稿し交換する機会を提供します。
-                    getnativeは、ウェブサイトに掲載される前にコメントをスクリーン、編集、公開、レビューすることはありません。コメントはgetnative、その代理店または関連会社の意見や意見を反映しません。コメントは、その意見や意見を投稿する人の意見と意見を反映しています。該当する法律によって許可されている範囲において、getnativeは、コメントやその使用および/または投稿の結果として発生した、または生じた損失コスト、責任、損害または費用について、責任を負いません。このウェブサイトへのコメント。
-                    getnativeは、すべてのコメントを監視し、その絶対的な裁量において、本契約条件に違反して不適切または不快であるとみなすコメントを削除する権利を留保します。お客様は、以下のことを保証し、表明するものとします。お客様は、当社のウェブサイトにコメントを掲載し、必要なライセンスと同意を得る権利があります。コメントは、著作権、特許または商標、または第三者のその他の所有権を含むがこれに限定されない、いかなる知的財産権も侵害するものではない。コメントには、名誉毀損的、名誉毀損的、侮辱的、卑劣な、またはその他の違法な資料やプライバシーが侵害されているものは含まれません。コメントは、ビジネスまたは習慣を勧誘または促進したり、商業活動または不法行為を提示するために使用されません。あなたは、getnativeに、他のすべての書式、形式、またはメディアであなたのコメントを使用、複製、編集するために他人を使用、複製、編集、および許可する非独占的ロイヤリティフリーライセンスを付与します。
-                </target>
+                <source>This Agreement shall begin on the date hereof. Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data (&apos;Comments&apos;) in areas of the website. getnative does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of getnative, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws getnative shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. getnative reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions. You warrant and represent that: You are entitled to post the Comments on our website and have all necessary licenses and consents to do so; The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party; The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity. You hereby grant to getnative a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</source>
+                <target>本契約は本契約書の日付から始まるものとします。このウェブサイトの特定の部分は、ユーザーがウェブサイトの領域に意見、情報、資料およびデータ（「コメント」）を投稿し交換する機会を提供します。getnativeは、ウェブサイトに掲載される前にコメントをスクリーン、編集、公開、レビューすることはありません。コメントはgetnative、その代理店または関連会社の意見や意見を反映しません。コメントは、その意見や意見を投稿する人の意見と意見を反映しています。該当する法律によって許可されている範囲において、getnativeは、コメントやその使用および/または投稿の結果として発生した、または生じた損失コスト、責任、損害または費用について、責任を負いません。このウェブサイトへのコメント。getnativeは、すべてのコメントを監視し、その絶対的な裁量において、本契約条件に違反して不適切または不快であるとみなすコメントを削除する権利を留保します。お客様は、以下のことを保証し、表明するものとします。お客様は、当社のウェブサイトにコメントを掲載し、必要なライセンスと同意を得る権利があります。コメントは、著作権、特許または商標、または第三者のその他の所有権を含むがこれに限定されない、いかなる知的財産権も侵害するものではない。コメントには、名誉毀損的、名誉毀損的、侮辱的、卑劣な、またはその他の違法な資料やプライバシーが侵害されているものは含まれません。コメントは、ビジネスまたは習慣を勧誘または促進したり、商業活動または不法行為を提示するために使用されません。あなたは、getnativeに、他のすべての書式、形式、またはメディアであなたのコメントを使用、複製、編集するために他人を使用、複製、編集、および許可する非独占的ロイヤリティフリーライセンスを付与します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">49</context>
@@ -1234,9 +1173,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (4)</note>
             </trans-unit>
             <trans-unit id="2cd45e5cf80e4098557a60c577d31869" datatype="html">
-                <source>Online directory distributors when they list us in the directory may link to our Web site in the same manner as they
-                    hyperlink to the Web sites of other listed businesses
-                </source>
+                <source>Online directory distributors when they list us in the directory may link to our Web site in the same manner as they hyperlink to the Web sites of other listed businesses</source>
                 <target>オンラインディレクトリディストリビューターは、ディレクトリに私たちを掲載するとき、他の上場企業のウェブサイトにハイパーリンクするのと同じ方法で当社のウェブサイトにリンクすることができます</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1245,9 +1182,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (5)</note>
             </trans-unit>
             <trans-unit id="85f51e78554ec330385f6fd2646c1996" datatype="html">
-                <source>Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity
-                    fundraising groups which may not hyperlink to our Web site
-                </source>
+                <source>Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site</source>
                 <target>弊社のWebサイトにハイパーリンクしていない非営利団体、慈善団体のショッピングモール、慈善団体の募金団体を募集することを除いて、システム全体で認定された企業</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1256,9 +1191,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (6)</note>
             </trans-unit>
             <trans-unit id="226fd4a446a10dadf477671a225a1c92" datatype="html">
-                <source>These organizations may link to our home page, to publications or to other Web site information so long as the
-                    link:
-                </source>
+                <source>These organizations may link to our home page, to publications or to other Web site information so long as the link:</source>
                 <target>これらの組織は、リンクがある限り、当社のホームページ、出版物または他のWebサイトの情報にリンクすることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1276,8 +1209,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (8)</note>
             </trans-unit>
             <trans-unit id="a009270d6cb5535c5ea5f2ec2e8b5366" datatype="html">
-                <source>does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services
-                </source>
+                <source>does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services</source>
                 <target>リンクしている当事者とその製品またはサービスのスポンサーシップ、裏書または承認を間違いを意味するものではありません</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1286,7 +1218,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (9)</note>
             </trans-unit>
             <trans-unit id="e4662bedda9c753a68ba6347d8745037" datatype="html">
-                <source>fits within the context of the linking party's site.</source>
+                <source>fits within the context of the linking party&apos;s site.</source>
                 <target>リンクする当事者のサイトのコンテキスト内に収まります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1295,8 +1227,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (10)</note>
             </trans-unit>
             <trans-unit id="b8fd2a93bb49d97e96f68722d5b9d9c4" datatype="html">
-                <source>We may consider and approve in our sole discretion other link requests from the following types of organizations:
-                </source>
+                <source>We may consider and approve in our sole discretion other link requests from the following types of organizations:</source>
                 <target>当社は、以下の種類の組織からの唯一の裁量により、その他のリンク要求を検討し承認することがあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1305,9 +1236,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (11)</note>
             </trans-unit>
             <trans-unit id="6fa645fbf49dfb520a2d2e73dbcf50a4" datatype="html">
-                <source>commonly-known consumer and/or business information sources such as Chambers of Commerce, American Automobile
-                    Association, AARP and Consumers Union
-                </source>
+                <source>commonly-known consumer and/or business information sources such as Chambers of Commerce, American Automobile Association, AARP and Consumers Union</source>
                 <target>当社は、以下の種類の組織からの唯一の裁量により、その他のリンク要求を検討し承認することがあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1325,8 +1254,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (13)</note>
             </trans-unit>
             <trans-unit id="74a245138116bbd42507eaa4e3faf1c0" datatype="html">
-                <source>associations or other groups representing charities, including charity giving sites, online directory distributors
-                </source>
+                <source>associations or other groups representing charities, including charity giving sites, online directory distributors</source>
                 <target>慈善団体を提供する慈善団体、オンラインディレクトリディストリビューター</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1371,10 +1299,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (18)</note>
             </trans-unit>
             <trans-unit id="4ab6357562e4780c457e7704e44bbb57" datatype="html">
-                <source>the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other
-                    organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be
-                    allowed to link)
-                </source>
+                <source>the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link)</source>
                 <target>当社または当社の認定事業に悪影響を及ぼすことはありません（例えば、職場での機会など本質的に疑わしい業種を代表する貿易協会または他の組織は、リンクすることはできません）</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1401,9 +1326,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (21)</note>
             </trans-unit>
             <trans-unit id="f41ebdacd189821b571a92fe26d22f8c" datatype="html">
-                <source>where the link is in the context of general resource information or is otherwise consistent with editorial content
-                    in a newsletter or similar product furthering the mission of the organization
-                </source>
+                <source>where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization</source>
                 <target>リンクは一般的なリソース情報の文脈の中にあるか、または組織の使命を促進するニュースレターまたは同様の製品の編集内容と一致する</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1412,9 +1335,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (22)</note>
             </trans-unit>
             <trans-unit id="72f947713bd8bce5bff294eb05844c7b" datatype="html">
-                <source>These organizations may link to our home page, to publications or to other Web site information so long as the
-                    link:
-                </source>
+                <source>These organizations may link to our home page, to publications or to other Web site information so long as the link:</source>
                 <target>これらの組織は、次のリンク先であれば、ホームページ、出版物または他のWebサイトの情報にリンクすることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1432,8 +1353,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (24)</note>
             </trans-unit>
             <trans-unit id="bed35544a3fa2cb2e44660fd98e64df9" datatype="html">
-                <source>does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services
-                </source>
+                <source>does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services</source>
                 <target>リンクしている当事者とその製品またはサービスのスポンサーシップ、裏書または承認を誤って意味するものではありません</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1442,7 +1362,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (25)</note>
             </trans-unit>
             <trans-unit id="266f090486d098e9fc6b8e8c6dcfb371" datatype="html">
-                <source>fits within the context of the linking party's site</source>
+                <source>fits within the context of the linking party&apos;s site</source>
                 <target>連結当事者のサイトの文脈内に収まる</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1487,9 +1407,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (30)</note>
             </trans-unit>
             <trans-unit id="7f1757222d1d99a2cd03fce6363bca3b" datatype="html">
-                <source>By use of any other description of our Web site or material being linked to that makes sense within the context and
-                    format of content on the linking party's site.
-                </source>
+                <source>By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party&apos;s site.</source>
                 <target>当社のウェブサイトに関する他の記述やそれにリンクされている資料を使用することにより、リンク先のサイトのコンテンツのコンテキストと形式の中で意味があります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1498,8 +1416,7 @@
                 <note priority="1" from="description">tos hyperlinking section text (31)</note>
             </trans-unit>
             <trans-unit id="8aede90d712654a3e1fceac87d7acb07" datatype="html">
-                <source>No use of getnative's logo or other artwork will be allowed for linking absent a trademark license agreement.
-                </source>
+                <source>No use of getnative&apos;s logo or other artwork will be allowed for linking absent a trademark license agreement.</source>
                 <target>存在しない場合、getnativeのロゴやその他のアートワークは使用できません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1517,9 +1434,7 @@
                 <note priority="1" from="description">tos iframes section header</note>
             </trans-unit>
             <trans-unit id="cf03e7ab6fd67ec93e8b7de93be3ba75" datatype="html">
-                <source>Without prior approval and express written permission, you may not create frames around our Web pages or use other
-                    techniques that alter in any way the visual presentation or appearance of our Web site.
-                </source>
+                <source>Without prior approval and express written permission, you may not create frames around our Web pages or use other techniques that alter in any way the visual presentation or appearance of our Web site.</source>
                 <target>事前の承認なしに書面による許可なしに、Webページのフレームを作成したり、Webサイトの外観や外観を変更するその他のテクニックを使用することはできません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1537,14 +1452,8 @@
                 <note priority="1" from="description">tos content-liability section header</note>
             </trans-unit>
             <trans-unit id="87781d2ac1073c0e30f813fe456063e2" datatype="html">
-                <source>We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify and
-                    defend us against all claims arising out of or based upon your Website. No link(s) may appear on any page on your Web
-                    site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or
-                    which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.
-                </source>
-                <target>
-                    当社は、お客様のWebサイトに掲載されているコンテンツについて、一切の責任を負わないものとします。お客様は、お客様のウェブサイト上またはウェブサイト上で発生したすべての申し立てに対して、当社を補償し防衛することに同意するものとします。あなたのウェブサイト上のページや、名誉毀損、猥褻もしくは犯罪と解釈されるコンテンツやマテリアルを含むあらゆる文脈の中にリンクが存在することはありません。また、侵害やその他の違反を侵害したり、侵害したり、当事者の権利。
-                </target>
+                <source>We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any page on your Web site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</source>
+                <target>当社は、お客様のWebサイトに掲載されているコンテンツについて、一切の責任を負わないものとします。お客様は、お客様のウェブサイト上またはウェブサイト上で発生したすべての申し立てに対して、当社を補償し防衛することに同意するものとします。あなたのウェブサイト上のページや、名誉毀損、猥褻もしくは犯罪と解釈されるコンテンツやマテリアルを含むあらゆる文脈の中にリンクが存在することはありません。また、侵害やその他の違反を侵害したり、侵害したり、当事者の権利。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">116</context>
@@ -1561,14 +1470,8 @@
                 <note priority="1" from="description">tos reservation-of-rights section header</note>
             </trans-unit>
             <trans-unit id="92545a43bc2d04673520df3b0bb27931" datatype="html">
-                <source>We reserve the right at any time and in its sole discretion to request that you remove all links or any particular
-                    link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the
-                    right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you
-                    agree to be bound to and abide by these linking terms and conditions.
-                </source>
-                <target>
-                    当社は、弊社独自の裁量により、弊社のWebサイトへのすべてのリンクまたは特定のリンクを削除するよう権利を留保します。あなたは、そのような要求に応じて当社のWebサイトへのすべてのリンクを直ちに削除することに同意します。当社はまた、これらの利用規約およびそのリンクポリシーをいつでも修正する権利を留保します。当社のWebサイトへのリンクを継続することにより、お客様はこれらのリンク条件に拘束され、それらを遵守することに同意するものとします。
-                </target>
+                <source>We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.</source>
+                <target>当社は、弊社独自の裁量により、弊社のWebサイトへのすべてのリンクまたは特定のリンクを削除するよう権利を留保します。あなたは、そのような要求に応じて当社のWebサイトへのすべてのリンクを直ちに削除することに同意します。当社はまた、これらの利用規約およびそのリンクポリシーをいつでも修正する権利を留保します。当社のWebサイトへのリンクを継続することにより、お客様はこれらのリンク条件に拘束され、それらを遵守することに同意するものとします。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">121</context>
@@ -1585,9 +1488,7 @@
                 <note priority="1" from="description">tos removal-of-links section header</note>
             </trans-unit>
             <trans-unit id="1c920c1f9b4d0a236bd1caabfc6d1bcb" datatype="html">
-                <source>If you find any link on our Web site or any linked web site objectionable for any reason, you may contact us about
-                    this. We will consider requests to remove links but will have no obligation to do so or to respond directly to you.
-                </source>
+                <source>If you find any link on our Web site or any linked web site objectionable for any reason, you may contact us about this. We will consider requests to remove links but will have no obligation to do so or to respond directly to you.</source>
                 <target>何らかの理由で弊社のWebサイトまたはリンク先のWebサイトにリンクが見つからない場合は、当社にご連絡ください。私たちはリンクの削除を検討しますが、リンクを解除する義務はありません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1596,13 +1497,8 @@
                 <note priority="1" from="description">tos removal-of-links section text (1)</note>
             </trans-unit>
             <trans-unit id="ef309c87e262ea19fd1245023cb8ca3e" datatype="html">
-                <source>Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness or
-                    accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up
-                    to date.
-                </source>
-                <target>
-                    このウェブサイトの情報が正しいことを保証するよう努めていますが、その完全性または正確性について保証するものではありません。ウェブサイトが利用可能であること、またはウェブサイト上の資料が最新の状態に保たれることを保証することを約束するものでもありません。
-                </target>
+                <source>Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.</source>
+                <target>このウェブサイトの情報が正しいことを保証するよう努めていますが、その完全性または正確性について保証するものではありません。ウェブサイトが利用可能であること、またはウェブサイト上の資料が最新の状態に保たれることを保証することを約束するものでもありません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">127</context>
@@ -1619,10 +1515,7 @@
                 <note priority="1" from="description">tos disclaimer section header</note>
             </trans-unit>
             <trans-unit id="a6dd79f95200953df51d334d5be2f7ce" datatype="html">
-                <source>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions
-                    relating to our website and the use of this website (including, without limitation, any warranties implied by law in
-                    respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill).
-                </source>
+                <source>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill).</source>
                 <target>適用される法律で許容される最大限の範囲内で、当社は、当社のウェブサイトおよび本ウェブサイトの使用に関するすべての表明、保証および条件（満足できる品質、目的への適合性、および/または合理的なケアとスキルの使用）。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1694,9 +1587,7 @@
                 <note priority="1" from="description">tos disclaimer section text (8)</note>
             </trans-unit>
             <trans-unit id="2429e95e299d726c4b4eaaca684afdfb" datatype="html">
-                <source>govern all liabilities arising under the disclaimer or in relation to the subject matter of this disclaimer,
-                    including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty.
-                </source>
+                <source>govern all liabilities arising under the disclaimer or in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty.</source>
                 <target>免責条項の下で発生するすべての債務または契約上発生した不法行為（過失を含む）および法定義務違反を含む、この免責事項の主題に関連して責任を負います。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1705,9 +1596,7 @@
                 <note priority="1" from="description">tos disclaimer section text (9)</note>
             </trans-unit>
             <trans-unit id="607e48dad764b5c997d6471766c74b68" datatype="html">
-                <source>To the extent that the website and the information and services on the website are provided free of charge, we will
-                    not be liable for any loss or damage of any nature.
-                </source>
+                <source>To the extent that the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</source>
                 <target>ウェブサイトおよびウェブサイト上の情報およびサービスが無償で提供される限り、当社はいかなる性質の喪失または損害についても責任を負いません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
@@ -1887,15 +1776,8 @@
                 <note priority="1" from="description">intro section</note>
             </trans-unit>
             <trans-unit id="0869a8c4757bce375682d9af93523864" datatype="html">
-                <source>This privacy policy has been compiled to better serve those who are concerned with how their 'Personally
-                    Identifiable Information' (PII) is being used online. PII, as described in US privacy law and information security,
-                    is information that can be used on its own or with other information to identify, contact, or locate a single person, or
-                    to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we
-                    collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.
-                </source>
-                <target>このプライバシーポリシーは、「個人識別情報」（PII）がオンラインでどのように使用されているかに関心のある方に役立つようにまとめられています。
-                    PIIは、米国のプライバシー法および情報セキュリティーに記載されているように、単独で使用したり、個人を特定、連絡、または特定するための情報、または個人を特定するための情報です。当社の個人情報保護方針をよくお読みになり、弊社のウェブサイトに従って個人情報の収集、使用、保護その他の取り扱い方法を明確に理解してください。
-                </target>
+                <source>This privacy policy has been compiled to better serve those who are concerned with how their &apos;Personally Identifiable Information&apos; (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.</source>
+                <target>このプライバシーポリシーは、「個人識別情報」（PII）がオンラインでどのように使用されているかに関心のある方に役立つようにまとめられています。PIIは、米国のプライバシー法および情報セキュリティーに記載されているように、単独で使用したり、個人を特定、連絡、または特定するための情報、または個人を特定するための情報です。当社の個人情報保護方針をよくお読みになり、弊社のウェブサイトに従って個人情報の収集、使用、保護その他の取り扱い方法を明確に理解してください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">22</context>
@@ -1912,9 +1794,7 @@
                 <note priority="1" from="description">information collection section</note>
             </trans-unit>
             <trans-unit id="c9d0bb3b9bd33f8c340c67cd423eed89" datatype="html">
-                <source>When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address or
-                    other details to help you with your experience.
-                </source>
+                <source>When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address or other details to help you with your experience.</source>
                 <target>弊社のサイトで注文または登録する際には、必要に応じて、あなたの名前、電子メールアドレス、またはあなたの経験に役立つその他の詳細を入力するよう求められることがあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -1923,9 +1803,7 @@
                 <note priority="1" from="description">information collection section 1</note>
             </trans-unit>
             <trans-unit id="852b8bc7c1aee4ef80f1bafdae233737" datatype="html">
-                <source>We collect information from you when you register on our site, Open a Support Ticket or enter information on our
-                    site.
-                </source>
+                <source>We collect information from you when you register on our site, Open a Support Ticket or enter information on our site.</source>
                 <target>サイトに登録する、サポートチケットを開く、または当社のサイトに情報を入力する際に​​、お客様から情報を収集します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -1952,10 +1830,7 @@
                 <note priority="1" from="description">information usage section</note>
             </trans-unit>
             <trans-unit id="9f9b1f1fd7ff1b70573d44b637382eb3" datatype="html">
-                <source>We may use the information we collect from you when you register, make a purchase, sign up for our newsletter,
-                    respond to a survey or marketing communication, surf the website or use certain other site features in the following
-                    ways:
-                </source>
+                <source>We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website or use certain other site features in the following ways:</source>
                 <target>登録、購入、ニュースレターへの登録、アンケートやマーケティングコミュニケーションへの応対、ウェブサイトのサーフィン、または他のサイト機能の使用は、次の方法でお客様から収集した情報を使用することがあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -1964,9 +1839,7 @@
                 <note priority="1" from="description">information usage section 1</note>
             </trans-unit>
             <trans-unit id="fd5f5a6b5b9319463722c20275cd44bf" datatype="html">
-                <source>To personalize your experience and to allow us to deliver the type of content and product offerings in which you are
-                    most interested.
-                </source>
+                <source>To personalize your experience and to allow us to deliver the type of content and product offerings in which you are most interested.</source>
                 <target>あなたの経験をパーソナライズし、最も関心のあるコンテンツや製品の提供を可能にする。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2038,14 +1911,8 @@
                 <note priority="1" from="description">information protection section 3</note>
             </trans-unit>
             <trans-unit id="50b35066a1f77b87c545db49dbc34989" datatype="html">
-                <source>Your personal information is contained behind secured networks and is only accessible by a limited number of persons
-                    who have special access rights to such systems, and are required to keep the information confidential. In addition, all
-                    sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology.
-                </source>
-                <target>
-                    お客様の個人情報は、保護されたネットワークの背後に含まれており、そのようなシステムへの特別なアクセス権を持つ限られた数の人によってのみアクセス可能であり、情報の秘密を保持する必要があります。さらに、お客様が提供するすべての機密情報は、Secure
-                    Socket Layer（SSL）技術を使用して暗号化されています。
-                </target>
+                <source>Your personal information is contained behind secured networks and is only accessible by a limited number of persons who have special access rights to such systems, and are required to keep the information confidential. In addition, all sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology.</source>
+                <target>お客様の個人情報は、保護されたネットワークの背後に含まれており、そのようなシステムへの特別なアクセス権を持つ限られた数の人によってのみアクセス可能であり、情報の秘密を保持する必要があります。さらに、お客様が提供するすべての機密情報は、Secure Socket Layer（SSL）技術を使用して暗号化されています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">49</context>
@@ -2053,9 +1920,7 @@
                 <note priority="1" from="description">information protection section 4</note>
             </trans-unit>
             <trans-unit id="89311f67e4ef75e42efe35061641726f" datatype="html">
-                <source>We implement a variety of security measures when a user enters, submits, or accesses their information to maintain
-                    the safety of your personal information.
-                </source>
+                <source>We implement a variety of security measures when a user enters, submits, or accesses their information to maintain the safety of your personal information.</source>
                 <target>お客様の個人情報の安全性を維持するために、ユーザーが情報を入力、提出、またはアクセスする際には、さまざまなセキュリティ対策を実施しています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2073,7 +1938,7 @@
                 <note priority="1" from="description">information protection section 6</note>
             </trans-unit>
             <trans-unit id="5db3975da2f88368522fda0698384ceb" datatype="html">
-                <source>Do we use 'cookies'?</source>
+                <source>Do we use &apos;cookies&apos;?</source>
                 <target>「クッキー」を使用するか</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2082,16 +1947,8 @@
                 <note priority="1" from="description">cookie usage section</note>
             </trans-unit>
             <trans-unit id="bcb561956267b3f8d7c810dd73605fee" datatype="html">
-                <source>Yes. Cookies are small files that a site or its service provider transfers to your computer's hard drive
-                    through your Web browser (if you allow) that enables the site's or service provider's systems to recognize
-                    your browser and capture and remember certain information. For instance, we use cookies to help us remember and process
-                    the items in your shopping cart. They are also used to help us understand your preferences based on previous or current
-                    site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate
-                    data about site traffic and site interaction so that we can offer better site experiences and tools in the future.
-                </source>
-                <target>
-                    はい。クッキーは、サイトまたはサービスプロバイダがWebブラウザ（許可した場合）を介してコンピュータのハードドライブに転送する小さなファイルで、サイトまたはサービスプロバイダのシステムがブラウザを認識して特定の情報を取得して記憶することを可能にします。たとえば、ショッピングカート内の商品を覚えて処理するためにクッキーを使用します。また、以前のサイト活動や現在のサイト活動に基づいてユーザーの好みを理解するのに役立ちます。これにより、改善されたサービスを提供することができます。また、クッキーを使用して、サイトのトラフィックやサイトの相互作用に関する集計データを作成し、今後より良いサイト体験やツールを提供できるよう支援しています。
-                </target>
+                <source>Yes. Cookies are small files that a site or its service provider transfers to your computer&apos;s hard drive through your Web browser (if you allow) that enables the site&apos;s or service provider&apos;s systems to recognize your browser and capture and remember certain information. For instance, we use cookies to help us remember and process the items in your shopping cart. They are also used to help us understand your preferences based on previous or current site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future.</source>
+                <target>はい。クッキーは、サイトまたはサービスプロバイダがWebブラウザ（許可した場合）を介してコンピュータのハードドライブに転送する小さなファイルで、サイトまたはサービスプロバイダのシステムがブラウザを認識して特定の情報を取得して記憶することを可能にします。たとえば、ショッピングカート内の商品を覚えて処理するためにクッキーを使用します。また、以前のサイト活動や現在のサイト活動に基づいてユーザーの好みを理解するのに役立ちます。これにより、改善されたサービスを提供することができます。また、クッキーを使用して、サイトのトラフィックやサイトの相互作用に関する集計データを作成し、今後より良いサイト体験やツールを提供できるよう支援しています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">56</context>
@@ -2108,7 +1965,7 @@
                 <note priority="1" from="description">cookie usage section 2</note>
             </trans-unit>
             <trans-unit id="833392391f3988caf95d083da109e8a0" datatype="html">
-                <source>Understand and save user's preferences for future visits.</source>
+                <source>Understand and save user&apos;s preferences for future visits.</source>
                 <target>将来の訪問のためにユーザの嗜好を理解し、保存する。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2117,9 +1974,7 @@
                 <note priority="1" from="description">cookie usage section 3</note>
             </trans-unit>
             <trans-unit id="232a6e01c27e4f6514ec138a404187c8" datatype="html">
-                <source>Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools
-                    in the future. We may also use trusted third-party services that track this information on our behalf.
-                </source>
+                <source>Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools in the future. We may also use trusted third-party services that track this information on our behalf.</source>
                 <target>サイトのトラフィックやサイトの相互作用に関する集約データを作成して、今後より良いサイト体験とツールを提供します。また、当社を代理してこの情報を追跡する信頼できる第三者サービスを使用する場合があります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2128,13 +1983,8 @@
                 <note priority="1" from="description">cookie usage section 4</note>
             </trans-unit>
             <trans-unit id="db2d1cbbd6bc29a76e28b62b4b12dbec" datatype="html">
-                <source>You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all
-                    cookies. You do this through your browser settings. Since browser is a little different, look at your browser's
-                    Help Menu to learn the correct way to modify your cookies.
-                </source>
-                <target>
-                    クッキーが送信されるたびにコンピュータに警告するか、すべてのクッキーをオフにするかを選択できます。これはブラウザの設定で行います。ブラウザは少し異なりますので、ブラウザのヘルプメニューを参照して、Cookieを変更する正しい方法を確認してください。
-                </target>
+                <source>You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser settings. Since browser is a little different, look at your browser&apos;s Help Menu to learn the correct way to modify your cookies.</source>
+                <target>クッキーが送信されるたびにコンピュータに警告するか、すべてのクッキーをオフにするかを選択できます。これはブラウザの設定で行います。ブラウザは少し異なりますので、ブラウザのヘルプメニューを参照して、Cookieを変更する正しい方法を確認してください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">63</context>
@@ -2142,9 +1992,7 @@
                 <note priority="1" from="description">cookie usage section 5</note>
             </trans-unit>
             <trans-unit id="eb4fcc8434b9de2ad7dde6d387087bda" datatype="html">
-                <source>If you turn cookies off, some features will be disabled. It won't affect the user's experience that make
-                    your site experience more efficient and may not function properly.
-                </source>
+                <source>If you turn cookies off, some features will be disabled. It won&apos;t affect the user&apos;s experience that make your site experience more efficient and may not function properly.</source>
                 <target>クッキーをオフにすると、一部の機能が無効になります。サイトの経験をより効率的にし、正しく機能しない可能性のあるユーザーのエクスペリエンスには影響しません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2171,19 +2019,8 @@
                 <note priority="1" from="description">third-party-disclosure section</note>
             </trans-unit>
             <trans-unit id="5c7e83e98ecf87459a72f348a0c75858" datatype="html">
-                <source>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we
-                    provide users with advance notice. This does not include website hosting partners and other parties who assist us in
-                    operating our website, conducting our business, or serving our users, so long as those parties agree to keep this
-                    information confidential. We may also release information when it's release is appropriate to comply with the law,
-                    enforce our site policies, or protect ours or others' rights, property or safety.
-                    <x id="LINE_BREAK" ctype="lb"/>
-                    <x id="LINE_BREAK" ctype="lb"/>
-                    However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or
-                    other uses.
-                </source>
-                <target>
-                    当社は、ユーザーに事前通知を行わない限り、個人情報を外部に販売、譲渡、または転送することはありません。これには、ウェブサイトのホスティングパートナーや、ウェブサイトの運営、業務の遂行、またはユーザーの奉仕を支援する他の当事者は含まれません。また、法律の遵守、サイトポリシーの執行、当社または他人の権利、財産または安全の保護に適切な情報が公開されている場合もあります。ただし、マーケティング、広告、その他の目的で、個人を特定できない訪問者情報を他の当事者に提供することができます。
-                </target>
+                <source>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it&apos;s release is appropriate to comply with the law, enforce our site policies, or protect ours or others&apos; rights, property or safety. <x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/> However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.</source>
+                <target>当社は、ユーザーに事前通知を行わない限り、個人情報を外部に販売、譲渡、または転送することはありません。これには、ウェブサイトのホスティングパートナーや、ウェブサイトの運営、業務の遂行、またはユーザーの奉仕を支援する他の当事者は含まれません。また、法律の遵守、サイトポリシーの執行、当社または他人の権利、財産または安全の保護に適切な情報が公開されている場合もあります。ただし、マーケティング、広告、その他の目的で、個人を特定できない訪問者情報を他の当事者に提供することができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">70</context>
@@ -2227,14 +2064,8 @@
                 <note priority="1" from="description">Google Adsense section 2</note>
             </trans-unit>
             <trans-unit id="b3f261d72dccdcf5692cf43b74bd6c91" datatype="html">
-                <source>Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of the DART cookie enables
-                    it to serve ads to our users based on previous visits to our site and other sites on the Internet. Users may opt-out of
-                    the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.
-                </source>
-                <target>Googleはサードパーティベンダーとして、Cookieを使用してGoogleのサイトに広告を配信しています。 Googleでは、DART
-                    Cookieを使用することで、以前のサイト訪問やインターネット上の他のサイトに基づいてユーザーに広告を配信することができます。ユーザーは、Google広告およびコンテンツネットワークのプライバシーポリシーにアクセスして、DART
-                    Cookieの使用をオプトアウトすることができます。
-                </target>
+                <source>Google, as a third-party vendor, uses cookies to serve ads on our site. Google&apos;s use of the DART cookie enables it to serve ads to our users based on previous visits to our site and other sites on the Internet. Users may opt-out of the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.</source>
+                <target>Googleはサードパーティベンダーとして、Cookieを使用してGoogleのサイトに広告を配信しています。 Googleでは、DART Cookieを使用することで、以前のサイト訪問やインターネット上の他のサイトに基づいてユーザーに広告を配信することができます。ユーザーは、Google広告およびコンテンツネットワークのプライバシーポリシーにアクセスして、DART Cookieの使用をオプトアウトすることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">83</context>
@@ -2260,13 +2091,8 @@
                 <note priority="1" from="description">Google Adsense section 5</note>
             </trans-unit>
             <trans-unit id="03af3b8c9a57d84f5ae94f2ac8eab2c1" datatype="html">
-                <source>We, along with third-party vendors such as Google use first-party cookies (such as the Google Analytics cookies) and
-                    third-party cookies (such as the DoubleClick cookie) or other third-party identifiers together to compile data regarding
-                    user interactions with ad impressions and other ad service functions as they relate to our website.
-                </source>
-                <target>Googleは、GoogleアナリティクスのCookieなどのファーストパーティのCookieやDoubleClick
-                    CookieなどのサードパーティのCookieや他のサードパーティのIDを使用して、ユーザーとのやりとりに関するデータをコンパイルします広告のインプレッションおよびその他の広告サービス機能をウェブサイトに関連付けるものです。
-                </target>
+                <source>We, along with third-party vendors such as Google use first-party cookies (such as the Google Analytics cookies) and third-party cookies (such as the DoubleClick cookie) or other third-party identifiers together to compile data regarding user interactions with ad impressions and other ad service functions as they relate to our website.</source>
+                <target>Googleは、GoogleアナリティクスのCookieなどのファーストパーティのCookieやDoubleClick CookieなどのサードパーティのCookieや他のサードパーティのIDを使用して、ユーザーとのやりとりに関するデータをコンパイルします広告のインプレッションおよびその他の広告サービス機能をウェブサイトに関連付けるものです。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">89</context>
@@ -2274,13 +2100,8 @@
                 <note priority="1" from="description">Google Adsense section 6</note>
             </trans-unit>
             <trans-unit id="c65dd25f78d6c6e8e54fc63f4daa378d" datatype="html">
-                <source>Opting out: Users can set preferences for how Google advertises to you using the Google Ad Settings page.
-                    Alternatively, you can opt out by visiting the Network Advertising Initiative Opt Out page or by using the Google
-                    Analytics Opt Out Browser add on.
-                </source>
-                <target>オプトアウト：ユーザーは、Google広告設定ページを使用してGoogleに広告する方法の設定を行うことができます。また、Network Advertising
-                    Initiativeのオプトアウトページにアクセスするか、Googleアナリティクスオプトアウトブラウザアドオンを使用してオプトアウトすることもできます。
-                </target>
+                <source>Opting out: Users can set preferences for how Google advertises to you using the Google Ad Settings page. Alternatively, you can opt out by visiting the Network Advertising Initiative Opt Out page or by using the Google Analytics Opt Out Browser add on.</source>
+                <target>オプトアウト：ユーザーは、Google広告設定ページを使用してGoogleに広告する方法の設定を行うことができます。また、Network Advertising Initiativeのオプトアウトページにアクセスするか、Googleアナリティクスオプトアウトブラウザアドオンを使用してオプトアウトすることもできます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">90</context>
@@ -2297,14 +2118,8 @@
                 <note priority="1" from="description">Fair Information Practices section</note>
             </trans-unit>
             <trans-unit id="a6f7a5974f983e72867c45924d3a2d25" datatype="html">
-                <source>The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts
-                    they include have played a significant role in the development of data protection laws around the globe. Understanding
-                    the Fair Information Practice Principles and how they should be implemented is critical to comply with the various
-                    privacy laws that protect personal information.
-                </source>
-                <target>
-                    フェアインフォメーションプラクティスの原則は、米国におけるプライバシー法のバックボーンを形成し、それに含まれる概念は世界中のデータ保護法の開発において重要な役割を果たしてきました。公正情報慣習原則とその実施方法を理解することは、個人情報を保護するさまざまなプライバシー法を遵守する上で非常に重要です。
-                </target>
+                <source>The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts they include have played a significant role in the development of data protection laws around the globe. Understanding the Fair Information Practice Principles and how they should be implemented is critical to comply with the various privacy laws that protect personal information.</source>
+                <target>フェアインフォメーションプラクティスの原則は、米国におけるプライバシー法のバックボーンを形成し、それに含まれる概念は世界中のデータ保護法の開発において重要な役割を果たしてきました。公正情報慣習原則とその実施方法を理解することは、個人情報を保護するさまざまなプライバシー法を遵守する上で非常に重要です。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">96</context>
@@ -2312,9 +2127,7 @@
                 <note priority="1" from="description">Fair Information Practices section 1</note>
             </trans-unit>
             <trans-unit id="6ed1852515651af3797114ff21480a94" datatype="html">
-                <source>In order to be in line with Fair Information Practices we will take the following responsive action, should a data
-                    breach occur:
-                </source>
+                <source>In order to be in line with Fair Information Practices we will take the following responsive action, should a data breach occur:</source>
                 <target>公正情報慣行に沿って進むために、データ違反が発生した場合には、以下の対応措置を講じます：</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2341,14 +2154,8 @@
                 <note priority="1" from="description">Fair Information Practices section 4</note>
             </trans-unit>
             <trans-unit id="dc633c737d7803b0333b9e6f0a075d18" datatype="html">
-                <source>We also agree to the Individual Redress Principle which requires that individuals have the right to legally pursue
-                    enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not
-                    only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or
-                    government agencies to investigate and/or prosecute non-compliance by data processors.
-                </source>
-                <target>
-                    私たちはまた、個人が法を遵守しないデータコレクターやプロセッサーに対して強制的に権利を行使することを要求する個人救済原則に同意します。この原則は、個人がデータ利用者に対して執行可能な権利を有するだけでなく、個人が裁判所や政府機関にデータ・プロセッサによる遵守の捜査および/または起訴を依頼することを要求する。
-                </target>
+                <source>We also agree to the Individual Redress Principle which requires that individuals have the right to legally pursue enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or government agencies to investigate and/or prosecute non-compliance by data processors.</source>
+                <target>私たちはまた、個人が法を遵守しないデータコレクターやプロセッサーに対して強制的に権利を行使することを要求する個人救済原則に同意します。この原則は、個人がデータ利用者に対して執行可能な権利を有するだけでなく、個人が裁判所や政府機関にデータ・プロセッサによる遵守の捜査および/または起訴を依頼することを要求する。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">103</context>
@@ -2365,7 +2172,7 @@
                 <note priority="1" from="description">COPPA section</note>
             </trans-unit>
             <trans-unit id="64ed563f3c28dea97418d4324c366f75" datatype="html">
-                <source>When it comes to the collection of personal information from children under the age of 13 years old, the Children's Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, United States' consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children's privacy and safety online.</source>
+                <source>When it comes to the collection of personal information from children under the age of 13 years old, the Children&apos;s Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, United States&apos; consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children&apos;s privacy and safety online.</source>
                 <target>13歳未満の子供からの個人情報の収集に関しては、児童オンラインプライバシー保護法（COPPA）は保護者を管理します。米国の消費者保護機関である連邦取引委員会（Federal Trade Commission）はCOPPAルールを施行しており、ウェブサイトやオンラインサービスの運営者は子供のプライバシーと安全をオンラインで保護するために何をしなければならないかを覚えている。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2392,7 +2199,7 @@
                 <note priority="1" from="description">caloppa section</note>
             </trans-unit>
             <trans-unit id="f2d1bbf72ac50679badbb2bd7609e730" datatype="html">
-                <source>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law's reach stretches well beyond California to require any person or company in the United States (and conceivably the world) that operates websites collecting Personally Identifiable Information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals or companies with whom it is being shared. - See more at: http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf</source>
+                <source>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law&apos;s reach stretches well beyond California to require any person or company in the United States (and conceivably the world) that operates websites collecting Personally Identifiable Information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals or companies with whom it is being shared. - See more at: http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf</source>
                 <target>CalOPPAは、プライバシーポリシーを掲載するために商業用ウェブサイトとオンラインサービスを要求する、全米初の州法です。カリフォルニア州の消費者からの個人識別情報を収集するウェブサイトを運営する米国内の人物や企業（または世界）は、収集された情報とウェブサイト上に明白なプライバシーポリシーを掲載する必要があります。それが共有されている個人または企業。- 詳細：http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2428,7 +2235,7 @@
                 <note priority="1" from="description">caloppa section 4</note>
             </trans-unit>
             <trans-unit id="40046c4dd44f1d7b8d565636ea2ae1d6" datatype="html">
-                <source>Our Privacy Policy link includes the word 'Privacy' and can easily be found on the page specified above.</source>
+                <source>Our Privacy Policy link includes the word &apos;Privacy&apos; and can easily be found on the page specified above.</source>
                 <target>私たちのプライバシーポリシーリンクには「プライバシー」という言葉が含まれており、上記のページで簡単に見つけることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2500,7 +2307,7 @@
                 <note priority="1" from="description">third-party-behavioral-tracking section</note>
             </trans-unit>
             <trans-unit id="dad59996a4444d000563ab4e386c768e" datatype="html">
-                <source>It's also important to note that we do not allow third-party behavioral tracking</source>
+                <source>It&apos;s also important to note that we do not allow third-party behavioral tracking</source>
                 <target>サードパーティの行動追跡を許可していないことに注意することも重要です</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
@@ -2644,18 +2451,8 @@
                 <note priority="1" from="description">contact-information section 1</note>
             </trans-unit>
             <trans-unit id="9b3c772655ccd06f35b7728b7f02510f" datatype="html">
-                <source>
-                    get-native.com
-                    <x id="LINE_BREAK" ctype="lb"/>
-                    Kuresunto 403 Asakusa 2-34-4
-                    <x id="LINE_BREAK" ctype="lb"/>
-                    Taito Ward, Tokyo
-                    <x id="LINE_BREAK" ctype="lb"/>
-                    111-0032
-                    <x id="LINE_BREAK" ctype="lb"/>
-                    Japan
-                </source>
-                <target>日本111-0032東京都台東区クレスント403浅草2-34-4 get-native.com</target>
+                <source>get-native.com<x id="LINE_BREAK" ctype="lb"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</source>
+                <target>〒111-0032<x id="LINE_BREAK" ctype="lb"/>東京都台東区<x id="LINE_BREAK" ctype="lb"/>浅草2-34-4クレスント403<x id="LINE_BREAK" ctype="lb"/>get-native.com</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">168</context>
@@ -2735,7 +2532,7 @@
                 <note priority="1" from="description">The header title for the help page contact-us section</note>
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-                <source>For all inquiries, please contact us at<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+                <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
                 <target>すべてのお問い合わせについては、<x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>までご連絡ください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
@@ -2789,8 +2586,8 @@
                 <note priority="1" from="description">The title of the video database feature description</note>
             </trans-unit>
             <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
-                <source>Get native is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</source>
-                <target>ネイティブを得ることは、流体のスピーチとネイティブスピーチとの間の障壁を壊すことです。障壁を解く私たちの方法は、ネイティブスピーカーのビデオインタビューを使用して、集中的な観察、発音練習、能動的な学習を通してです。言うまでもなく、これがうまくいくためには、たくさんのインタビュービデオが必要です！</target>
+                <source>getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</source>
+                <target>getnativeは、流体のスピーチとネイティブスピーチとの間の障壁を壊すことです。障壁を解く私たちの方法は、ネイティブスピーカーのビデオインタビューを使用して、集中的な観察、発音練習、能動的な学習を通してです。言うまでもなく、これがうまくいくためには、たくさんのインタビュービデオが必要です！</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">18</context>
@@ -2816,7 +2613,7 @@
                 <note priority="1" from="description">The title of the study session feature description</note>
             </trans-unit>
             <trans-unit id="a77cb5d4f5ba2526709496556d8aa4be" datatype="html">
-                <source>Wouldn't it be awesome to have an intense language study session in 15 minutes, or even 10? If you're an Advanced learner of the language you may already have your own study routine. But that study routine might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to get all the materials ready!</source>
+                <source>Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If you&apos;re an Advanced learner of the language you may already have your own study routine. But that study routine might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to get all the materials ready!</source>
                 <target>15分、あるいは10時間で激しい語学学習セッションを開くのはすばらしいことではないでしょうか？あなたがその言語の上級者であれば、あなた自身の学習ルーチンをすでに持っているかもしれません。しかし、その研究ルーチンには、書籍を手に入れたり、ウェブページをスクロールさせることが含まれているかもしれません。すべての資料を準備するのに10分かかることがあります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
@@ -2843,7 +2640,7 @@
                 <note priority="1" from="description">The title for the advanced material feature description</note>
             </trans-unit>
             <trans-unit id="929c28ca424552020939e6af075621ff" datatype="html">
-                <source>getnative is most useful to language learners who already have a good command of the target language, yet want to make the speech sound more like that of a native speaker. Finding good study material is easy when you've just set out learning the target language. But as you advance, every day material like newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of your study routine.</source>
+                <source>getnative is most useful to language learners who already have a good command of the target language, yet want to make the speech sound more like that of a native speaker. Finding good study material is easy when you&apos;ve just set out learning the target language. But as you advance, every day material like newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of your study routine.</source>
                 <target>getnativeは、すでにターゲット言語の優れたコマンドを持っているが、ネイティブスピーカーのスピーチサウンドに近づけたいという言語学習者にとって最も有用です。目的の言語の学習を開始したばかりの学習教材を見つけることは簡単です。しかし、あなたが進歩するにつれて、新聞、雑誌記事、テレビ、ポッドキャスト、他のスピーカーとの会話など、毎日の素材が学習ルーチンの中核になるかもしれません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
@@ -2852,7 +2649,7 @@
                 <note priority="1" from="description">The description for the advanced material feature</note>
             </trans-unit>
             <trans-unit id="2cd5d943017487b4035bb1951f66f72a" datatype="html">
-                <source>That's not all..</source>
+                <source>That&apos;s not all..</source>
                 <target>それだけじゃない..</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
@@ -3014,7 +2811,7 @@
                 <note priority="1" from="description">Simple registration small feature title</note>
             </trans-unit>
             <trans-unit id="7f31334d10f103ad7bf166bd7eaf2135" datatype="html">
-                <source>Don&apos;t want to keep track of another password? Create an account in seconds with Facebook, Twitter or Gmail.</source>
+                <source>Don&apos;t want to keep track of another password? Create an account in seconds with Facebook or Gmail.</source>
                 <target>別のパスワードを丸暗記する必要はありません！ Facebook、Twitter、またはGmailで数秒でアカウントが作成できます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
@@ -3475,14 +3272,8 @@
                 <note priority="1" from="description">shadowing instructions popup label</note>
             </trans-unit>
             <trans-unit id="bbd8d629521dfecde4c66501dd9010f8" datatype="html">
-                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque
-                    delectus dicta earum eligendi<x id="START_TAG_SPAN" ctype="x-span"/>eum illum
-                    <x id="CLOSE_TAG_SPAN" ctype="x-span"/>
-                    inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.
-                </source>
-                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque
-                    delectus dicta earum eligendieum illum inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.
-                </target>
+                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque delectus dicta earum eligendi <x id="START_TAG_SPAN" ctype="x-span"/>eum illum<x id="CLOSE_TAG_SPAN" ctype="x-span"/> inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.</source>
+                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque delectus dicta earum eligendi <x id="START_TAG_SPAN" ctype="x-span"/>eum illum<x id="CLOSE_TAG_SPAN" ctype="x-span"/> inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/shadowing/shadowing.component.ts</context>
                     <context context-type="linenumber">6</context>
