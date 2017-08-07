@@ -5,7 +5,7 @@
   position: absolute;
 }
 
-.notifications {
+.activity-items {
   width: 290px;
   background: $white;
   box-sizing: border-box;
@@ -13,14 +13,14 @@
   z-index: 1;
 }
 
-.notification, .see-more-item {
+.item, .see-more-activities {
   padding-bottom: 16px;
   margin-left: 20px;
   margin-right: 20px;
   border-bottom: 1px solid $iron;
 }
 
-.see-more-item {
+.see-more-activities {
   padding-top: 16px;
   display: flex;
   justify-content: space-between;
@@ -28,7 +28,7 @@
   border-bottom: none;
 }
 
-.notification__unread-indicator {
+.item__unread-indicator {
   @include border-radius(50%);
   position: absolute;
   background: $red-orange;
@@ -38,22 +38,22 @@
   width: 6px;
 }
 
-.notification__title {
+.item__title {
   margin-top: 16px;
   display: inline-block;
 }
 
-.notification__title small {
+.item__title small {
   @include font-weight-regular();
 }
 
-.notification__time-since-label {
+.item__time-since-label {
   color: $regent-gray;
   display: block;
   font-size: $font-size-small;
 }
 
-.see-more-item__count-label {
+.see-more-activities__count-label {
   display: inline-block;
   font-size: $font-size-x-small;
   color: $regent-gray;
