@@ -13,7 +13,7 @@ import * as _ from 'lodash';
 
 export function metaFactory(localeId: string, lang: LangService): MetaLoader {
     return new MetaStaticLoader({
-        callback: (key: string) => translateMetaTag(lang.languageForLocaleId(localeId).code, key),
+        callback: (key: string) => translateMetaKey(lang.languageForLocaleId(localeId).code, key),
         pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
         applicationName: 'getnative',
         pageTitleSeparator: ' | ',
@@ -39,7 +39,7 @@ export function metaFactory(localeId: string, lang: LangService): MetaLoader {
     });
 }
 
-const config = {
+const metaKeyValues = {
     en: {
         'default': {
             title: 'getnative. Break the barrier between fluid and native-like.',
@@ -146,6 +146,6 @@ const config = {
     }
 };
 
-function translateMetaTag(code: LanguageCode, key: string): string {
-    return _.defaultTo(_.get(config, [code, key].join('.')), key);
+export function translateMetaKey(code: LanguageCode, key: string): string {
+    return _.defaultTo(_.get(metaKeyValues, [code, key].join('.')), key);
 }

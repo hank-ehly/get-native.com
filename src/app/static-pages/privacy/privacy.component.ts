@@ -7,7 +7,6 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { NavbarService } from '../../core/navbar/navbar.service';
 import { Logger } from '../../core/logger/logger';
 
 @Component({
@@ -16,11 +15,10 @@ import { Logger } from '../../core/logger/logger';
     styleUrls: ['privacy.component.scss']
 })
 export class PrivacyComponent implements OnInit {
-    constructor(private navbar: NavbarService, private logger: Logger) {
+    constructor(private logger: Logger) {
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.navbar.hideMagnifyingGlass();
     }
 }

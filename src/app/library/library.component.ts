@@ -41,6 +41,5 @@ export class LibraryComponent extends VideoSearchComponent implements OnInit {
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.navbar.showMagnifyingGlass();
     }
 }

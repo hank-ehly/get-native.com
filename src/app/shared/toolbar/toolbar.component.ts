@@ -8,8 +8,8 @@
 import { Component } from '@angular/core';
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 
-import { Language } from '../../core/typings/language';
 import { UserService } from '../../core/user/user.service';
+import { Language } from '../../core/typings/language';
 import { Languages } from '../../core/lang/languages';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -40,19 +40,32 @@ import 'rxjs/add/observable/of';
     ]
 })
 export class ToolbarComponent {
-    language$  = Observable.of<Language[]>(Languages);
+    language$ = Observable.of<Language[]>(Languages);
     isTooltipVisible$ = new BehaviorSubject<boolean>(false);
+    authenticated$ = this.user.authenticated$;
 
     currentStudyLanguageName$ = this.user.currentStudyLanguage$.pluck('name');
 
     constructor(public user: UserService) {
     }
 
-    logout(): void {
+    onMouseLeaveToolbar(): void {
+        this.isTooltipVisible$.next(false);
+    }
+
+    onClickLogout(): void {
         this.user.logout();
     }
 
-    setCurrentStudyLanguage(language: Language): void {
+    onClickLanguage(language: Language): void {
         this.user.currentStudyLanguage$.next(language);
+    }
+
+    onClickSelectedLanguageLabel(): void {
+        this.isTooltipVisible$.next(!this.isTooltipVisible$.getValue());
+    }
+
+    onMouseEnterSelectedLanguageLabel(): void {
+        this.isTooltipVisible$.next(true);
     }
 }

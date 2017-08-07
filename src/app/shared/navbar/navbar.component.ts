@@ -50,6 +50,7 @@ import { QueueButtonState } from '../../core/navbar/queue-button-state';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
     @Input() authenticated: boolean;
+    @Input() showSearchIcon: boolean;
 
     title$               = this.navbar.title$;
     backButtonTitle$     = this.navbar.backButtonTitle$;
@@ -57,7 +58,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     studyOptionsVisible$ = this.navbar.studyOptionsVisible$;
     progressBarVisibleEmitted$ = this.navbar.progressBarVisibleEmitted$;
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
-    displayMagnifyingGlassEmitted$ = this.navbar.displayMagnifyingGlassEmitted$.share();
     progress             = this.navbar.progress;
 
     queueButtonSaveState = QueueButtonState.SAVE;

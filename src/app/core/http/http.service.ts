@@ -44,28 +44,32 @@ export class HttpService {
             responseType: ResponseContentType.Json
         };
 
-        if (endpoint.isProtected) {
+        // If the endpoint is protected, add the Authorization header.
+        // If the endpoint is unprotected but kAuthToken exists, add the Authorization header anyways.
+        if (endpoint.isProtected || this.localStorage.hasItem(kAuthToken)) {
             args.headers = new Headers({'Authorization': `Bearer ${this.localStorage.getItem(kAuthToken)}`});
         }
 
-        if (options && options.params) {
-            args.url = environment.apiBaseUrl + this.uriService.generateURIForEndpointWithParams(options.params, endpoint);
-        }
+        if (options) {
+            if (options.params) {
+                args.url = environment.apiBaseUrl + this.uriService.generateURIForEndpointWithParams(options.params, endpoint);
+            }
 
-        if (options && options.body) {
-            args.body = options.body;
-        }
+            if (options.body) {
+                args.body = options.body;
+            }
 
-        if (options && options.search && endpoint.permitURLSearchParams) {
-            options.search.paramsMap.forEach((value, key) => {
-                if (endpoint.permitURLSearchParams.indexOf(key) === -1) {
-                    this.logger.debug(this, `Query parameter '${key}' not permitted in url ${endpoint.url}.`);
-                    options.search.paramsMap.delete(key);
-                }
-            });
+            if (options.search && endpoint.permitURLSearchParams) {
+                options.search.paramsMap.forEach((value, key) => {
+                    if (endpoint.permitURLSearchParams.indexOf(key) === -1) {
+                        this.logger.debug(this, `Query parameter '${key}' not permitted in url ${endpoint.url}.`);
+                        options.search.paramsMap.delete(key);
+                    }
+                });
 
-            // todo: 'search' was deprecated. reflect naming in your own code.
-            args.params = options.search;
+                // todo: 'search' was deprecated. reflect naming in your own code.
+                args.params = options.search;
+            }
         }
 
         const request = new Request(args);

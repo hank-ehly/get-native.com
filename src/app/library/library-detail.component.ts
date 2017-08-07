@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { StudySessionService } from '../core/study-session/study-session.service';
 import { QueueButtonState } from '../core/navbar/queue-button-state';
 import { FacebookService } from '../core/facebook/facebook.service';
+import { GNRequestOptions } from '../core/http/gn-request-options';
 import { kListening } from '../core/study-session/section-keys';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
@@ -60,9 +61,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.logger.debug(this, 'OnInit');
-        this.navbar.hideMagnifyingGlass();
 
-        const params: { params: { id: number } } = {
+        const requestOptions: GNRequestOptions = {
             params: {
                 id: this.videoId
             }
@@ -88,14 +88,14 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 .debounceTime(500)
                 .distinctUntilChanged()
                 .map(liked => liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO)
-                .mergeMap(handle => this.http.request(handle, params))
+                .mergeMap(handle => this.http.request(handle, requestOptions))
                 .subscribe(),
 
             this.navbar.onClickQueue$
                 .do(() => this.queued = !this.queued)
                 .do(() => this.navbar.queueButtonState$.next(QueueButtonState.DEFAULT))
                 .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
-                .mergeMap(handle => this.http.request(handle, params))
+                .mergeMap(handle => this.http.request(handle, requestOptions))
                 .map(() => this.queued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
                 .subscribe(this.navbar.queueButtonState$),
 

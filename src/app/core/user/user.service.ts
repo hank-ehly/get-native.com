@@ -58,8 +58,10 @@ export class UserService {
     passwordChange$ = new Subject();
 
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
-        // todo: whenever you change the default_study_language you change the currentStudyLanguage as well..
-        this.current$.filter(_.isObject).map((u: User) => u.default_study_language).subscribe(this.currentStudyLanguage$);
+        // todo: Don't change the current study language every time you change the default study language
+        // this.current$.filter(_.isObject).pluck('default_study_language').subscribe();
+
+        this.currentStudyLanguage$.next(this.lang.languageForCode('en'));
 
         this.current$.filter(_.isObject).mapTo(true).subscribe(this.authenticated$);
         this.logout$.mapTo(false).subscribe(this.authenticated$);
@@ -166,10 +168,10 @@ export class UserService {
         let authenticated = false;
 
         if (this.localStorage.hasItem(kAuthToken) && this.localStorage.hasItem(kAuthTokenExpire)) {
-            authenticated = +this.localStorage.getItem(kAuthTokenExpire) > Date.now();
+            if (_.toNumber(this.localStorage.getItem(kAuthTokenExpire)) > Date.now()) {
+                authenticated = true;
+            }
         }
-
-        // this.logger.debug(this, 'isAuthenticated', authenticated);
 
         return authenticated;
     }

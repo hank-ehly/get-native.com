@@ -39,18 +39,18 @@ export const APIConfig = new Map<APIHandle, any>([
     [APIHandle.CATEGORIES, {
         method: RequestMethod.Get,
         url: '/categories',
-        isProtected: true
+        isProtected: false
     }],
     [APIHandle.VIDEOS, {
         method: RequestMethod.Get,
         url: '/videos',
-        isProtected: true,
+        isProtected: false,
         permitURLSearchParams: ['lang', 'count', 'max_id', 'subcategory_id', 'category_id', 'q', 'cued_only', 'time_zone_offset']
     }],
     [APIHandle.VIDEO, {
         method: RequestMethod.Get,
         url: '/videos/:id',
-        isProtected: true,
+        isProtected: false,
         permitURLSearchParams: ['time_zone_offset']
     }],
     [APIHandle.LIKE_VIDEO, {

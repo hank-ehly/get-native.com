@@ -99,7 +99,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.navbar.showMagnifyingGlass();
     }
 
     onBegin(studySession: StudySession): void {
