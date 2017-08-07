@@ -7,20 +7,38 @@ const _ = require('lodash');
 const path = require('path');
 
 const hashRegExp = /[0-9A-Za-z]{32,}/g;
+const sourceRegExp = new RegExp('<source>(.|\n)*?</source>', 'g');
 const srcDir = path.resolve(__dirname, '..', 'src');
 
 async function diff(locale) {
     try {
-        const baseText = await readFile(path.resolve(srcDir, 'messages.xlf'), 'utf8');
-        const localeText = await readFile(path.resolve(srcDir, 'locales', `messages.${locale}.xlf`), 'utf8');
+        const baseXlf = await readFile(path.resolve(srcDir, 'messages.xlf'), 'utf8');
+        const localeXlf = await readFile(path.resolve(srcDir, 'locales', `messages.${locale}.xlf`), 'utf8');
 
-        const difference = _.difference(baseText.match(hashRegExp), localeText.match(hashRegExp));
+        const hashDiff = _.difference(baseXlf.match(hashRegExp), localeXlf.match(hashRegExp));
+        const sourceDiff = _.difference(baseXlf.match(sourceRegExp), localeXlf.match(sourceRegExp));
 
-        if (difference.length) {
-            console.log(`keys missing from ${locale}:`);
-            console.log(util.inspect(difference, null));
-        } else {
-            console.log(`${locale} is up to date!`);
+        if (hashDiff.length) {
+            console.log('• MISSING KEYS');
+            console.log('+----------------------------------+');
+            for (const key of hashDiff) {
+                console.log(`| ${key} |`);
+            }
+            console.log('+----------------------------------+');
+        }
+
+        if (sourceDiff.length) {
+            console.log('• TEXT DIFFERENCES');
+            for (let i = 0; i < sourceDiff.length; i++) {
+                let item = sourceDiff[i];
+                console.log(`(${_.padStart(i, 2, '0')}) ${item}`);
+            }
+        }
+
+        if (!hashDiff.length && !sourceDiff.length) {
+            console.log('+-------------------+');
+            console.log(`| ${locale} is up to date! |`);
+            console.log('+-------------------+');
         }
     } catch (e) {
         console.log(e);
