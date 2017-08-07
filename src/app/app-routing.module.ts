@@ -45,7 +45,7 @@ const routes: Routes = [
     {
         path: '', canActivate: [AuthGuard, MetaGuard], component: HomeComponent, data: {
             meta: {
-                title: 'getnative. Break the barrier between fluid and native-like.',
+                title: 'default.title',
                 override: true
             }
         }
@@ -57,7 +57,7 @@ const routes: Routes = [
         resolve: {user: DashboardResolveService},
         data: {
             meta: {
-                title: 'Dashboard'
+                title: 'dashboard.title'
             }
         }
     },
@@ -69,21 +69,21 @@ const routes: Routes = [
             {
                 path: '', component: GeneralComponent, data: {
                     meta: {
-                        title: 'General Settings'
+                        title: 'settings.general.title'
                     }
                 }
             },
             {
                 path: 'notifications', component: NotificationsComponent, data: {
                     meta: {
-                        title: 'Notification Settings'
+                        title: 'settings.notification.title'
                     }
                 }
             },
             {
                 path: 'security', component: SecurityComponent, data: {
                     meta: {
-                        title: 'Security Settings'
+                        title: 'settings.security.title'
                     }
                 }
             }
@@ -92,7 +92,7 @@ const routes: Routes = [
     {
         path: 'library', component: LibraryComponent, canActivate: [AuthGuard, MetaGuard], data: {
             meta: {
-                title: 'Library'
+                title: 'library.title'
             }
         }
     },
@@ -107,21 +107,21 @@ const routes: Routes = [
             {
                 path: 'listening', resolve: {video: ListeningResolver}, component: ListeningComponent, data: {
                     meta: {
-                        title: 'Listening'
+                        title: 'study.listening.title'
                     }
                 }
             },
             {
                 path: 'shadowing', component: ShadowingComponent, data: {
                     meta: {
-                        title: 'Shadowing'
+                        title: 'study.shadowing.title'
                     }
                 }
             },
             {
                 path: 'speaking', component: SpeakingComponent, data: {
                     meta: {
-                        title: 'Speaking'
+                        title: 'study.speaking.title'
                     }
                 }
             },
@@ -132,14 +132,14 @@ const routes: Routes = [
                 canDeactivate: [WritingGuard],
                 data: {
                     meta: {
-                        title: 'Writing'
+                        title: 'study.writing.title'
                     }
                 }
             },
             {
                 path: 'results', component: ResultsComponent, resolve: {stats: ResultsResolver}, data: {
                     meta: {
-                        title: 'Results'
+                        title: 'study.results.title'
                     }
                 }
             }
@@ -148,21 +148,21 @@ const routes: Routes = [
     {
         path: 'help', component: HelpComponent, canActivate: [MetaGuard], data: {
             meta: {
-                title: 'Frequently Asked Questions & Contact'
+                title: 'help.title'
             }
         }
     },
     {
         path: 'privacy', component: PrivacyComponent, canActivate: [MetaGuard], data: {
             meta: {
-                title: 'Privacy Policy'
+                title: 'privacy.title'
             }
         }
     },
     {
         path: 'tos', component: TOSComponent, canActivate: [MetaGuard], data: {
             meta: {
-                title: 'Terms of Service'
+                title: 'tos.title'
             }
         }
     },
@@ -175,7 +175,7 @@ const routes: Routes = [
     {
         path: '**', component: PageNotFoundComponent, data: {
             meta: {
-                title: 'Page Not Found'
+                title: 'pageNotFound.title'
             }
         }
     }

@@ -7,7 +7,7 @@
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -21,6 +21,7 @@ import { StudyModule } from './study/study.module';
 import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
 import { Logger } from './core/logger/logger';
 import { StaticPagesModule } from './static-pages/static-pages.module';
+import { LangService } from './core/lang/lang.service';
 import { metaFactory } from './meta-factory';
 
 import { MetaModule, MetaLoader } from '@ngx-meta/core';
@@ -32,7 +33,8 @@ import { MetaModule, MetaLoader } from '@ngx-meta/core';
         AppRoutingModule,
         MetaModule.forRoot({
             provide: MetaLoader,
-            useFactory: (metaFactory)
+            useFactory: metaFactory,
+            deps: [LOCALE_ID, LangService]
         }),
         CoreModule,
         SharedModule,
