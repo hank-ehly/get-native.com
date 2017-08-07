@@ -47,7 +47,8 @@ const routes: Routes = [
             meta: {
                 title: 'default.title',
                 override: true
-            }
+            },
+            hideNavbarTitle: true
         }
     },
     {
@@ -58,7 +59,9 @@ const routes: Routes = [
         data: {
             meta: {
                 title: 'dashboard.title'
-            }
+            },
+            showToolbar: true,
+            showNavbarSearchIcon: true
         }
     },
     {
@@ -70,34 +73,41 @@ const routes: Routes = [
                 path: '', component: GeneralComponent, data: {
                     meta: {
                         title: 'settings.general.title'
-                    }
+                    },
+                    showToolbar: true
                 }
             },
             {
                 path: 'notifications', component: NotificationsComponent, data: {
                     meta: {
                         title: 'settings.notification.title'
-                    }
+                    },
+                    showToolbar: true
                 }
             },
             {
                 path: 'security', component: SecurityComponent, data: {
                     meta: {
                         title: 'settings.security.title'
-                    }
+                    },
+                    showToolbar: true
                 }
             }
         ]
     },
     {
-        path: 'library', component: LibraryComponent, canActivate: [AuthGuard, MetaGuard], data: {
+        path: 'library', component: LibraryComponent, canActivate: [MetaGuard], data: {
             meta: {
                 title: 'library.title'
-            }
+            },
+            showToolbar: true,
+            showNavbarSearchIcon: true
         }
     },
     {
-        path: 'library/:id', component: LibraryDetailComponent, canActivate: [AuthGuard, MetaGuard]
+        path: 'library/:id', component: LibraryDetailComponent, canActivate: [MetaGuard], data: {
+            showToolbar: true
+        }
     },
     {
         path: 'study', component: StudyComponent, canActivateChild: [AuthGuard, MetaGuard], canDeactivate: [StudySessionGuard], children: [

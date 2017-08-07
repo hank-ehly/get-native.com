@@ -8,7 +8,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { NavbarService } from '../core/navbar/navbar.service';
 import { Logger } from '../core/logger/logger';
 
 import * as _ from 'lodash';
@@ -21,12 +20,11 @@ import * as _ from 'lodash';
 export class SettingsComponent implements OnInit {
     selectedTab: string;
 
-    constructor(private logger: Logger, private navbar: NavbarService, private router: Router) {
+    constructor(private logger: Logger, private router: Router) {
     }
 
     ngOnInit() {
         this.logger.debug(this, 'ngOnInit');
-        this.navbar.hideMagnifyingGlass();
         this.initSelectedTab();
     }
 

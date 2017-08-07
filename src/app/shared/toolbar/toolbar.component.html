@@ -1,13 +1,12 @@
-<div class="toolbar" (mouseleave)="isTooltipVisible$.next(false)">
-
-    <ul class="toolbar__tooltip-languages" [@enterUpLeaveDown] *ngIf="isTooltipVisible$ | async">
-        <li class="toolbar__language-label" *ngFor="let language of language$ | async" (click)="setCurrentStudyLanguage(language)">{{ language.name }}</li>
+<div class="toolbar" (mouseleave)="onMouseLeaveToolbar()">
+    <ul class="toolbar__tooltip-languages" *ngIf="isTooltipVisible$ | async" [@enterUpLeaveDown]>
+        <li class="toolbar__language-label" *ngFor="let language of language$ | async" (click)="onClickLanguage(language)">{{ language.name }}</li>
     </ul>
 
-    <span class="toolbar__language-label toolbar__language-label_selected" (click)="isTooltipVisible$.next(!isTooltipVisible$.getValue())" (mouseenter)="isTooltipVisible$.next(true)">{{ currentStudyLanguageName$ | async }}</span>
+    <span class="toolbar__language-label toolbar__language-label_selected" (click)="onClickSelectedLanguageLabel()" (mouseenter)="onMouseEnterSelectedLanguageLabel()">{{ currentStudyLanguageName$ | async }}</span>
 
     <nav class="toolbar__links">
-        <a class="toolbar__link toolbar__link--settings" [routerLink]="'settings'">
+        <a class="toolbar__link toolbar__link--settings" [routerLink]="['/settings']" *ngIf="authenticated$ | async">
             <img class="toolbar_link-icon" src="assets/icons/settings.svg" i18n-alt="Alt text for toolbar settings icon@@2928b4e8fa3f0345bacfaabe6ca854ac" alt="settings">
         </a>
 
@@ -15,7 +14,7 @@
             <img class="toolbar_link-icon" src="assets/icons/help.svg" i18n-alt="Alt text for toolbar help icon@@978a550dcbfd0e4871241562b01ccd7e" alt="help">
         </a>
 
-        <a class="toolbar__link" (click)="logout()">
+        <a class="toolbar__link" (click)="onClickLogout()" *ngIf="authenticated$ | async">
             <img class="toolbar_link-icon" src="assets/icons/sign-out.svg" i18n-alt="Alt text for toolbar logout icon@@f2d83dcabbea985346ed20e1b21bb456" alt="logout">
         </a>
     </nav>

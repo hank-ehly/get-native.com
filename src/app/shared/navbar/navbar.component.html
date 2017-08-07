@@ -3,6 +3,17 @@
         <img class="navbar__logo" src="assets/icons/logo.svg" title="getnative" i18n-alt="Alt text for navbar logo image@@4c05ee27cb4a24edd0471b4e81bf6782" alt="logo" [routerLink]="['']">
     </div>
 
+    <ng-container *ngIf="!authenticated">
+        <div class="navbar__menu navbar__menu_center" [@fadeInOut]>
+            <span class="page-title">{{ title$ | async }}</span>
+        </div>
+
+        <nav class="navbar__nav navbar__menu--right">
+            <a class="link navbar__link navbar__link_help" [routerLink]="['help']" i18n="The text for the navbar link to the help/contact-us page@@2134cc75d316e3aea408a40b6853656e">Help</a>
+            <a class="link navbar__link navbar__link_login" href="" [routerLink]="[{outlets: {modal: ['login']}}]" i18n="sign in/up button|The navbar sign in/up button text@@f34c98dc76d5353786f6c2983b39deeb">Sign in / Sign up</a>
+        </nav>
+    </ng-container>
+
     <ng-container *ngIf="authenticated">
         <div class="navbar__menu navbar__menu_center navbar__menu-center--search" *ngIf="searchBarVisible$ | async" [@slideInLeftOutRight]>
             <label for="search-bar" class="sr-only" i18n="The label text for the navbar search field@@4b5f38ab4ccac45e6309dd0d8a4f7844">Search</label>
@@ -29,30 +40,25 @@
                 </button>
             </div>
         </div>
-    </ng-container>
 
-    <nav class="navbar__nav navbar__menu--right" *ngIf="!authenticated">
-        <a class="link navbar__link navbar__link_help" [routerLink]="['help']" i18n="The text for the navbar link to the help/contact-us page@@2134cc75d316e3aea408a40b6853656e">Help</a>
-        <a class="link navbar__link navbar__link_login" href="" [routerLink]="[{outlets: {modal: ['login']}}]" i18n="sign in/up button|The navbar sign in/up button text@@f34c98dc76d5353786f6c2983b39deeb">Sign in / Sign up</a>
-    </nav>
-
-    <ul class="navbar__menu navbar__menu--right navbar__menu--authenticated" *ngIf="authenticated">
-        <li>
-            <ng-container *ngIf="displayMagnifyingGlassEmitted$ | async">
-                <img class="navbar__menu-icon navbar__menu-icon--search" src="assets/icons/search.svg" i18n-alt="Alt text for navbar magnifying glass search icon@@ee5d8dd7d8cc15235c182818e9fa4e45" alt="search" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
-                <img class="navbar__menu-icon navbar__menu-icon--close" src="assets/icons/close-dark.svg" i18n-alt="Alt text for navbar close-search button icon@@05a9999694c0f7a90e7f166c2e9daae4" alt="close" *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()">
-            </ng-container>
-            <div class="navbar__menu-icon" *ngIf="!(displayMagnifyingGlassEmitted$ | async)"></div>
-        </li>
-        <li>
+        <ul class="navbar__menu navbar__menu--right navbar__menu--authenticated">
+            <li>
+                <ng-container *ngIf="showSearchIcon">
+                    <img class="navbar__menu-icon navbar__menu-icon--search" src="assets/icons/search.svg" i18n-alt="Alt text for navbar magnifying glass search icon@@ee5d8dd7d8cc15235c182818e9fa4e45" alt="search" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()">
+                    <img class="navbar__menu-icon navbar__menu-icon--close" src="assets/icons/close-dark.svg" i18n-alt="Alt text for navbar close-search button icon@@05a9999694c0f7a90e7f166c2e9daae4" alt="close" *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()">
+                </ng-container>
+                <div class="navbar__menu-icon" *ngIf="!showSearchIcon"></div>
+            </li>
+            <li>
             <span class="navbar__menu-icon-frame">
                 <!-- TODO: Remove mock (click) -->
                 <img (click)="toggleNotificationIndicator()" class="navbar__menu-icon navbar__menu-icon_notification" src="assets/icons/notification.svg" i18n-alt="Alt text for navbar notifications icon@@e5775cfb82679bd0ef3932053516430c" alt="notifications">
                 <span class="notification-indicator" [ngClass]="{'notification-indicator--unread': hasUnreadNotifications}"></span>
             </span>
-        </li>
-        <li>
-            <img [routerLink]="'settings'" class="navbar__menu-icon navbar__menu-icon_account" src="assets/images/silhouette-avatar.png" i18n-alt="Alt text for navbar settings icon@@8d72b0824ba2c5b0aa9fdfdd481c39b7" alt="settings">
-        </li>
-    </ul>
+            </li>
+            <li>
+                <img [routerLink]="'settings'" class="navbar__menu-icon navbar__menu-icon_account" src="assets/images/silhouette-avatar.png" i18n-alt="Alt text for navbar settings icon@@8d72b0824ba2c5b0aa9fdfdd481c39b7" alt="settings">
+            </li>
+        </ul>
+    </ng-container>
 </header>

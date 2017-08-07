@@ -1,10 +1,10 @@
-<gn-navbar [authenticated]="authenticated$ | async"></gn-navbar>
+<gn-navbar [authenticated]="authenticated$ | async" [showSearchIcon]="showNavbarSearchIconEmitted$ | async"></gn-navbar>
 
 <gn-side-menu *ngIf="authenticated$ | async"></gn-side-menu>
-<gn-toolbar *ngIf="authenticated$ | async"></gn-toolbar>
+<gn-toolbar *ngIf="showToolbar$ | async"></gn-toolbar>
 
 <router-outlet></router-outlet>
 <router-outlet name="modal"></router-outlet>
 
-<gn-footer *ngIf="!authenticated$.getValue()"></gn-footer>
-<gn-compliance *ngIf="!compliant$.getValue()" [@enterUpLeaveDown]></gn-compliance>
+<gn-footer *ngIf="!(authenticated$ | async)"></gn-footer>
+<gn-compliance *ngIf="!(compliant$ | async)" [@enterUpLeaveDown]></gn-compliance>
