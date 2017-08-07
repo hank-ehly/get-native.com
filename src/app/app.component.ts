@@ -50,6 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
     showNavbarSearchIconEmitted$: Observable<boolean>;
     compliant$ = this.user.compliant$;
     OnDestroy$ = new Subject<void>();
+    displayMobileOverlay$ = new Subject<boolean>();
 
     routeDataEmitted$ = this.router.events.filter(e => e instanceof NavigationEnd).mapTo(this.route).map(route => {
         while (route.firstChild) {
@@ -73,7 +74,15 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
-        this.localStorage.broadcastStorageEvent(e); // what to do about this
+        this.localStorage.broadcastStorageEvent(e);
+    }
+
+    @HostListener('window:load') onLoad() {
+        this.displayMobileOverlayIfNeeded();
+    }
+
+    @HostListener('window:resize') onResize() {
+        this.displayMobileOverlayIfNeeded();
     }
 
     ngOnInit(): void {
@@ -105,5 +114,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private async onLogout() {
         await this.router.navigate(['']);
+    }
+
+    private displayMobileOverlayIfNeeded() {
+        this.displayMobileOverlay$.next(window.innerWidth < 768);
     }
 }

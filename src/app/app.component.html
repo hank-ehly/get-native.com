@@ -8,3 +8,5 @@
 
 <gn-footer *ngIf="!(authenticated$ | async)"></gn-footer>
 <gn-compliance *ngIf="!(compliant$ | async)" [@enterUpLeaveDown]></gn-compliance>
+
+<gn-mobile-overlay *ngIf="displayMobileOverlay$ | async"></gn-mobile-overlay>

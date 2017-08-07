@@ -38,6 +38,15 @@
                 </context-group>
                 <note priority="1" from="description">The text of the link to the home page</note>
             </trans-unit>
+            <trans-unit id="c03bb9862ecc4f156867371af921a4c4" datatype="html">
+                <source>Library</source>
+                <target>ライブラリー</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">The text of the link to the library page</note>
+            </trans-unit>
             <trans-unit id="ff90d3c15ff7ee8f4c66e31493c71ace" datatype="html">
                 <source>Contact</source>
                 <target>お問い合わせ</target>
@@ -3306,6 +3315,15 @@
                     <context context-type="linenumber">7</context>
                 </context-group>
                 <note priority="1" from="description">next exercise label</note>
+            </trans-unit>
+            <trans-unit id="fd0413b1d745255d24d578e73b82149d" datatype="html">
+                <source>Please try viewing getnative from a larger browser window</source>
+                <target>getnativeはデスクトップ向けウェブサイトですので、より大きいウィンドウで表示してください。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/mobile-overlay/mobile-overlay.component.ts</context>
+                    <context context-type="linenumber">2</context>
+                </context-group>
+                <note priority="1" from="description">Message asking user to view website in larger browser window</note>
             </trans-unit>
         </body>
     </file>
