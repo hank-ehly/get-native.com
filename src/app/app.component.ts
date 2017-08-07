@@ -17,11 +17,6 @@ import { UserService } from './core/user/user.service';
 import { Logger } from './core/logger/logger';
 
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/mapTo';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 
 @Component({
@@ -61,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
         })
         .filter(route => route.outlet === 'primary')
         .mergeMap(route => route.data)
-        .map(data => data.meta.title);
+        .pluck('meta', 'title');
 
     /* For footer display */
     @HostBinding('style.margin-bottom') get styleMarginBottom(): string {
@@ -86,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.user.authenticated$.next(this.user.isAuthenticated());
 
         this.subscriptions.push(
-            this.metaTitleEmitted$.filter(t => t && t.length).subscribe(this.navbar.title$),
+            this.metaTitleEmitted$.subscribe(this.navbar.title$),
             this.user.logout$.subscribe(this.onLogout.bind(this))
         );
 
