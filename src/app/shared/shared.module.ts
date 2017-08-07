@@ -34,7 +34,7 @@ import { VideoPanelComponent } from './video-panel/video-panel.component';
 import { VideoPanelListComponent } from './video-panel-list/video-panel-list.component';
 import { VideoSearchComponent } from './video-search/video-search.component';
 import { SafeHtmlPipe } from './safe-html/safe-html.pipe';
-import { NotificationDropdownComponent } from './navbar/notification-dropdown.component';
+import { ActivityDropdownComponent } from './navbar/activity-dropdown.component';
 
 @NgModule({
     imports: [
@@ -67,7 +67,7 @@ import { NotificationDropdownComponent } from './navbar/notification-dropdown.co
         VideoPanelListComponent,
         VideoSearchComponent,
         SafeHtmlPipe,
-        NotificationDropdownComponent
+        ActivityDropdownComponent
 
     ],
     exports: [
@@ -97,9 +97,8 @@ import { NotificationDropdownComponent } from './navbar/notification-dropdown.co
         VideoPanelListComponent,
         VideoSearchComponent,
         SafeHtmlPipe,
-        NotificationDropdownComponent
+        ActivityDropdownComponent
     ]
 })
-
 export class SharedModule {
 }
