@@ -114,6 +114,7 @@
 }
 
 .navbar__menu--right {
+  z-index: 1;
   @media screen and (max-width: $breakpoint-md) {
     left: $breakpoint-md - 160px
   }
