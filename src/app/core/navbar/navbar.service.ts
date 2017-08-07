@@ -5,6 +5,8 @@
  * Created by henryehly on 2016/12/04.
  */
 
+import { QueueButtonState } from './queue-button-state';
+
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -17,11 +19,10 @@ export class NavbarService {
 
     title$ = new Subject<string>();
     backButtonTitle$ = new BehaviorSubject<string>(null);
-    queueButtonTitle$ = new BehaviorSubject<string>('...');
+    queueButtonState$ = new BehaviorSubject<QueueButtonState>(QueueButtonState.DEFAULT);
 
     studyOptionsVisible$ = new Subject<boolean>();
     searchBarVisible$ = new Subject<boolean>();
-    studyOptionsEnabled$ = new Subject<boolean>();
 
     onClickQueue$ = new Subject<void>();
     onClickStart$ = new Subject<void>();

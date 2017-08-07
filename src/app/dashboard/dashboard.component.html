@@ -2,7 +2,7 @@
     <ng-container>
         <section class="section section_video-panels">
             <header class="section-header">
-                <h1 class="section-header__title" i18n="The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Videos</h1>
+                <h1 class="section-header__title" i18n="The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Queue</h1>
 
                 <div class="dropdown-toggle" *ngIf="(videos$ | async)?.length">
                     <span class="dropdown-toggle__text" *ngIf="(categoryFilter$ | async)?.value">{{ categoryFilter$.pluck('text') | async }}</span>

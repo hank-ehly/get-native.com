@@ -19,6 +19,7 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
+import { QueueButtonState } from '../../core/navbar/queue-button-state';
 
 @Component({
     selector: 'gn-navbar',
@@ -52,17 +53,23 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     title$               = this.navbar.title$;
     backButtonTitle$     = this.navbar.backButtonTitle$;
-    queueButtonTitle$    = this.navbar.queueButtonTitle$;
+    queueButtonState$    = this.navbar.queueButtonState$;
     studyOptionsVisible$ = this.navbar.studyOptionsVisible$;
-    studyOptionsEnabled$ = this.navbar.studyOptionsEnabled$;
     progressBarVisibleEmitted$ = this.navbar.progressBarVisibleEmitted$;
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
     displayMagnifyingGlassEmitted$ = this.navbar.displayMagnifyingGlassEmitted$.share();
     progress             = this.navbar.progress;
 
+    queueButtonSaveState = QueueButtonState.SAVE;
+    queueButtonRemoveState = QueueButtonState.REMOVE;
+
     hasUnreadNotifications = false;
 
     private subscriptions: Subscription[] = [];
+
+    get isQueueButtonDefaultState(): boolean {
+        return this.queueButtonState$.getValue() === QueueButtonState.DEFAULT;
+    }
 
     constructor(private logger: Logger, private navbar: NavbarService, private location: Location, private router: Router) {
     }
