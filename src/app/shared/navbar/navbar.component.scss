@@ -180,6 +180,6 @@ gn-activity-dropdown {
   top: 68px;
   z-index: 1;
   @media screen and (max-width: $breakpoint-md) {
-    left: $breakpoint-md - 290px
+    left: $breakpoint-md - (290px + 60px)
   }
 }
