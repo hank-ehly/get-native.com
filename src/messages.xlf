@@ -889,12 +889,7 @@
         <note priority="1" from="description">tos introduction section text (2)</note>
       </trans-unit>
       <trans-unit id="4db2ee4f54c4b567cdfbdfc05bfb31bd" datatype="html">
-        <source>
-            Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>
-            Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>
-            111-0032<x id="LINE_BREAK" ctype="lb"/>
-            Japan
-        </source>
+        <source>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">19</context>
@@ -905,7 +900,7 @@
         <source>By accessing this website we assume you accept these terms and conditions in full. Do not continue to use getnative&apos;s website if you do not accept all of the terms and conditions stated on this page.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <note priority="1" from="description">tos introduction section text (4)</note>
       </trans-unit>
@@ -913,7 +908,7 @@
         <source>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: &quot;Client&quot;, &quot;You&quot; and &quot;Your&quot; refers to you, the person accessing this website and accepting the Company&apos;s terms and conditions. &quot;The Company&quot;, &quot;Ourselves&quot;, &quot;We&quot;, &quot;Our&quot; and &quot;Us&quot;, refers to our Company. &quot;Party&quot;, &quot;Parties&quot;, or &quot;Us&quot;, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client&apos;s needs in respect of provision of the Company&apos;s stated services/products, in accordance with and subject to, prevailing law of Japan. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <note priority="1" from="description">tos introduction section text (5)</note>
       </trans-unit>
@@ -921,7 +916,7 @@
         <source>Cookies</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <note priority="1" from="description">tos cookies section header</note>
       </trans-unit>
@@ -929,7 +924,7 @@
         <source>We employ the use of cookies. By using getnative&apos;s website you consent to the use of cookies in accordance with getnative&apos;s privacy policy. Most of the modern day interactive web sites use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <note priority="1" from="description">tos cookies section text (1)</note>
       </trans-unit>
@@ -937,7 +932,7 @@
         <source>License</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">31</context>
         </context-group>
         <note priority="1" from="description">tos introduction section header</note>
       </trans-unit>
@@ -945,7 +940,7 @@
         <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative All intellectual property rights are reserved. You may view and/or print pages from get-native.com for your own personal use subject to restrictions set in these terms and conditions.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <note priority="1" from="description">tos license section text (1)</note>
       </trans-unit>
@@ -953,7 +948,7 @@
         <source>You must not:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <note priority="1" from="description">tos license section text (2)</note>
       </trans-unit>
@@ -961,7 +956,7 @@
         <source>Republish material from get-native.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <note priority="1" from="description">tos license section text (3)</note>
       </trans-unit>
@@ -969,7 +964,7 @@
         <source>Sell, rent or sub-license material from get-native.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">36</context>
         </context-group>
         <note priority="1" from="description">tos license section text (4)</note>
       </trans-unit>
@@ -977,7 +972,7 @@
         <source>Reproduce, duplicate or copy material from get-native.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">37</context>
         </context-group>
         <note priority="1" from="description">tos license section text (5)</note>
       </trans-unit>
@@ -985,7 +980,7 @@
         <source>Redistribute content from getnative (unless content is specifically made for redistribution).</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <note priority="1" from="description">tos license section text (6)</note>
       </trans-unit>
@@ -993,7 +988,7 @@
         <source>User Comments</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">43</context>
         </context-group>
         <note priority="1" from="description">tos user-comments section header</note>
       </trans-unit>
@@ -1001,7 +996,7 @@
         <source>This Agreement shall begin on the date hereof. Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data (&apos;Comments&apos;) in areas of the website. getnative does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of getnative, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws getnative shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. getnative reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions. You warrant and represent that: You are entitled to post the Comments on our website and have all necessary licenses and consents to do so; The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party; The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity. You hereby grant to getnative a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <note priority="1" from="description">tos user-comments section text (1)</note>
       </trans-unit>
@@ -1009,7 +1004,7 @@
         <source>Hyperlinking to our Content</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section header</note>
       </trans-unit>
@@ -1017,7 +1012,7 @@
         <source>The following organizations may link to our Web site without prior written approval:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">50</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (1)</note>
       </trans-unit>
@@ -1025,7 +1020,7 @@
         <source>Government agencies</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (2)</note>
       </trans-unit>
@@ -1033,7 +1028,7 @@
         <source>Search engines</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">53</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (3)</note>
       </trans-unit>
@@ -1041,7 +1036,7 @@
         <source>News organizations</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">54</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (4)</note>
       </trans-unit>
@@ -1049,7 +1044,7 @@
         <source>Online directory distributors when they list us in the directory may link to our Web site in the same manner as they hyperlink to the Web sites of other listed businesses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (5)</note>
       </trans-unit>
@@ -1057,7 +1052,7 @@
         <source>Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (6)</note>
       </trans-unit>
@@ -1065,7 +1060,7 @@
         <source>These organizations may link to our home page, to publications or to other Web site information so long as the link:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">64</context>
+          <context context-type="linenumber">59</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (7)</note>
       </trans-unit>
@@ -1073,7 +1068,7 @@
         <source>is not in any way misleading</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">61</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (8)</note>
       </trans-unit>
@@ -1081,7 +1076,7 @@
         <source>does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">62</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (9)</note>
       </trans-unit>
@@ -1089,7 +1084,7 @@
         <source>fits within the context of the linking party&apos;s site.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">63</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (10)</note>
       </trans-unit>
@@ -1097,7 +1092,7 @@
         <source>We may consider and approve in our sole discretion other link requests from the following types of organizations:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">66</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (11)</note>
       </trans-unit>
@@ -1105,7 +1100,7 @@
         <source>commonly-known consumer and/or business information sources such as Chambers of Commerce, American Automobile Association, AARP and Consumers Union</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">68</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (12)</note>
       </trans-unit>
@@ -1113,7 +1108,7 @@
         <source>dot.com community sites</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">69</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (13)</note>
       </trans-unit>
@@ -1121,7 +1116,7 @@
         <source>associations or other groups representing charities, including charity giving sites, online directory distributors</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (14)</note>
       </trans-unit>
@@ -1129,7 +1124,7 @@
         <source>internet portals</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">71</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (15)</note>
       </trans-unit>
@@ -1137,7 +1132,7 @@
         <source>accounting, law and consulting firms whose primary clients are businesses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">72</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (16)</note>
       </trans-unit>
@@ -1145,7 +1140,7 @@
         <source>educational institutions and trade associations</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">73</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (17)</note>
       </trans-unit>
@@ -1153,7 +1148,7 @@
         <source>We will approve link requests from these organizations if we determine that</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">76</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (18)</note>
       </trans-unit>
@@ -1161,7 +1156,7 @@
         <source>the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">79</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (19)</note>
       </trans-unit>
@@ -1169,7 +1164,7 @@
         <source>the organization does not have an unsatisfactory record with us</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">80</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (20)</note>
       </trans-unit>
@@ -1177,7 +1172,7 @@
         <source>the benefit to us from the visibility associated with the hyperlink outweighs the absence of getnative</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">81</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (21)</note>
       </trans-unit>
@@ -1185,7 +1180,7 @@
         <source>where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">87</context>
+          <context context-type="linenumber">82</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (22)</note>
       </trans-unit>
@@ -1193,7 +1188,7 @@
         <source>These organizations may link to our home page, to publications or to other Web site information so long as the link:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">85</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (23)</note>
       </trans-unit>
@@ -1201,7 +1196,7 @@
         <source>is not in any way misleading</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">87</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (24)</note>
       </trans-unit>
@@ -1209,7 +1204,7 @@
         <source>does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">88</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (25)</note>
       </trans-unit>
@@ -1217,7 +1212,7 @@
         <source>fits within the context of the linking party&apos;s site</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">89</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (26)</note>
       </trans-unit>
@@ -1225,7 +1220,7 @@
         <source>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">92</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (27)</note>
       </trans-unit>
@@ -1233,7 +1228,7 @@
         <source>Approved organizations may hyperlink to our Web site as follows:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">98</context>
+          <context context-type="linenumber">93</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (28)</note>
       </trans-unit>
@@ -1241,7 +1236,7 @@
         <source>By use of our corporate name; or</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">100</context>
+          <context context-type="linenumber">95</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (29)</note>
       </trans-unit>
@@ -1249,7 +1244,7 @@
         <source>By use of the uniform resource locator (Web address) being linked to; or</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">96</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (30)</note>
       </trans-unit>
@@ -1257,7 +1252,7 @@
         <source>By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party&apos;s site.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">102</context>
+          <context context-type="linenumber">97</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (31)</note>
       </trans-unit>
@@ -1265,7 +1260,7 @@
         <source>No use of getnative&apos;s logo or other artwork will be allowed for linking absent a trademark license agreement.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">99</context>
         </context-group>
         <note priority="1" from="description">tos hyperlinking section text (32)</note>
       </trans-unit>
@@ -1273,7 +1268,7 @@
         <source>Iframes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">103</context>
         </context-group>
         <note priority="1" from="description">tos iframes section header</note>
       </trans-unit>
@@ -1281,7 +1276,7 @@
         <source>Without prior approval and express written permission, you may not create frames around our Web pages or use other techniques that alter in any way the visual presentation or appearance of our Web site.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">104</context>
         </context-group>
         <note priority="1" from="description">tos iframes section text (1)</note>
       </trans-unit>
@@ -1289,7 +1284,7 @@
         <source>Content Liability</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">108</context>
         </context-group>
         <note priority="1" from="description">tos content-liability section header</note>
       </trans-unit>
@@ -1297,7 +1292,7 @@
         <source>We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any page on your Web site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">114</context>
+          <context context-type="linenumber">109</context>
         </context-group>
         <note priority="1" from="description">tos content-liability section text (1)</note>
       </trans-unit>
@@ -1305,7 +1300,7 @@
         <source>Reservation of Rights</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="linenumber">113</context>
         </context-group>
         <note priority="1" from="description">tos reservation-of-rights section header</note>
       </trans-unit>
@@ -1313,7 +1308,7 @@
         <source>We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">114</context>
         </context-group>
         <note priority="1" from="description">tos reservation-of-rights section text (1)</note>
       </trans-unit>
@@ -1321,7 +1316,7 @@
         <source>Removal of links from our website</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">123</context>
+          <context context-type="linenumber">118</context>
         </context-group>
         <note priority="1" from="description">tos removal-of-links section header</note>
       </trans-unit>
@@ -1329,7 +1324,7 @@
         <source>If you find any link on our Web site or any linked web site objectionable for any reason, you may contact us about this. We will consider requests to remove links but will have no obligation to do so or to respond directly to you.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">124</context>
+          <context context-type="linenumber">119</context>
         </context-group>
         <note priority="1" from="description">tos removal-of-links section text (1)</note>
       </trans-unit>
@@ -1337,7 +1332,7 @@
         <source>Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">125</context>
+          <context context-type="linenumber">120</context>
         </context-group>
         <note priority="1" from="description">tos removal-of-links section text (2)</note>
       </trans-unit>
@@ -1345,7 +1340,7 @@
         <source>Disclaimer</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">129</context>
+          <context context-type="linenumber">124</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section header</note>
       </trans-unit>
@@ -1353,7 +1348,7 @@
         <source>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill).</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">130</context>
+          <context context-type="linenumber">125</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (1)</note>
       </trans-unit>
@@ -1361,7 +1356,7 @@
         <source>Nothing in this disclaimer will:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">131</context>
+          <context context-type="linenumber">126</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (2)</note>
       </trans-unit>
@@ -1369,7 +1364,7 @@
         <source>limit or exclude our or your liability for death or personal injury resulting from negligence;</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">133</context>
+          <context context-type="linenumber">128</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (3)</note>
       </trans-unit>
@@ -1377,7 +1372,7 @@
         <source>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">134</context>
+          <context context-type="linenumber">129</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (4)</note>
       </trans-unit>
@@ -1385,7 +1380,7 @@
         <source>limit any of our or your liabilities in any way that is not permitted under applicable law; or</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">135</context>
+          <context context-type="linenumber">130</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (5)</note>
       </trans-unit>
@@ -1393,7 +1388,7 @@
         <source>exclude any of our or your liabilities that may not be excluded under applicable law.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">136</context>
+          <context context-type="linenumber">131</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (6)</note>
       </trans-unit>
@@ -1401,7 +1396,7 @@
         <source>The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">134</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (7)</note>
       </trans-unit>
@@ -1409,7 +1404,7 @@
         <source>are subject to the preceding paragraph</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">142</context>
+          <context context-type="linenumber">137</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (8)</note>
       </trans-unit>
@@ -1417,7 +1412,7 @@
         <source>govern all liabilities arising under the disclaimer or in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">143</context>
+          <context context-type="linenumber">138</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (9)</note>
       </trans-unit>
@@ -1425,7 +1420,7 @@
         <source>To the extent that the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">146</context>
+          <context context-type="linenumber">141</context>
         </context-group>
         <note priority="1" from="description">tos disclaimer section text (10)</note>
       </trans-unit>
@@ -1433,7 +1428,7 @@
         <source>Last Edited on 2016-11-11</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
-          <context context-type="linenumber">149</context>
+          <context context-type="linenumber">144</context>
         </context-group>
         <note priority="1" from="description">tos last edited text</note>
       </trans-unit>
@@ -1622,7 +1617,7 @@
         <note priority="1" from="description">information usage section</note>
       </trans-unit>
       <trans-unit id="9f9b1f1fd7ff1b70573d44b637382eb3" datatype="html">
-        <source> We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website or use certain other site features in the following ways:</source>
+        <source>We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website or use certain other site features in the following ways:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
           <context context-type="linenumber">35</context>
@@ -2182,13 +2177,7 @@
         <note priority="1" from="description">contact-information section 1</note>
       </trans-unit>
       <trans-unit id="9b3c772655ccd06f35b7728b7f02510f" datatype="html">
-        <source>
-            get-native.com<x id="LINE_BREAK" ctype="lb"/>
-            Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>
-            Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>
-            111-0032<x id="LINE_BREAK" ctype="lb"/>
-            Japan
-        </source>
+        <source>get-native.com<x id="LINE_BREAK" ctype="lb"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
           <context context-type="linenumber">168</context>
@@ -2199,7 +2188,7 @@
         <source>Last Edited on 2016-11-07</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
-          <context context-type="linenumber">178</context>
+          <context context-type="linenumber">172</context>
         </context-group>
         <note priority="1" from="description">contact-information section 3</note>
       </trans-unit>
@@ -2308,12 +2297,7 @@
         <note priority="1" from="description">The title of the video database feature description</note>
       </trans-unit>
       <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
-        <source>
-                    Get native is all about breaking the barrier between fluid speech and native like speech. Our way
-                    of breaking the barrier is through intensive observation, pronunciation practice and active learning
-                    using video interviews of native speakers. Needless to say in order for this to work we need a lot
-                    of interview videos!
-                </source>
+        <source>getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">18</context>
@@ -2324,7 +2308,7 @@
         <source>Study like the pros</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <note priority="1" from="description">Alternative text for image of second large homepage feature</note>
       </trans-unit>
@@ -2332,20 +2316,15 @@
         <source>Study like the pros</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <note priority="1" from="description">The title of the study session feature description</note>
       </trans-unit>
       <trans-unit id="a77cb5d4f5ba2526709496556d8aa4be" datatype="html">
-        <source>
-                    Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If
-                    you&apos;re an Advanced learner of the language you may already have your own study routine. But that
-                    study routine might include getting out books, scrolling through web pages -- it could take up to 10
-                    minutes just to get all the materials ready!
-                </source>
+        <source>Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If you&apos;re an Advanced learner of the language you may already have your own study routine. But that study routine might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to get all the materials ready!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">28</context>
         </context-group>
         <note priority="1" from="description">The description of the study session feature</note>
       </trans-unit>
@@ -2353,7 +2332,7 @@
         <source>A tool for advanced language learners</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <note priority="1" from="description">Alternative text for image of third large homepage feature</note>
       </trans-unit>
@@ -2361,21 +2340,15 @@
         <source>A tool for advanced language learners</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">37</context>
         </context-group>
         <note priority="1" from="description">The title for the advanced material feature description</note>
       </trans-unit>
       <trans-unit id="929c28ca424552020939e6af075621ff" datatype="html">
-        <source>
-                    getnative is most useful to language learners who already have a good command of the target
-                    language, yet want to make the speech sound more like that of a native speaker. Finding good study
-                    material is easy when you&apos;ve just set out learning the target language. But as you advance, every
-                    day material like newspapers, journal articles, TV, podcasts and conversations with other speakers
-                    might become the core of your study routine.
-                </source>
+        <source>getnative is most useful to language learners who already have a good command of the target language, yet want to make the speech sound more like that of a native speaker. Finding good study material is easy when you&apos;ve just set out learning the target language. But as you advance, every day material like newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of your study routine.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <note priority="1" from="description">The description for the advanced material feature</note>
       </trans-unit>
@@ -2383,7 +2356,7 @@
         <source>That&apos;s not all..</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <note priority="1" from="description">The title eluding to additional feature descriptions</note>
       </trans-unit>
@@ -2391,7 +2364,7 @@
         <source>Perfect for polyglots</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">50</context>
         </context-group>
         <note priority="1" from="description">Alternative text for first small homepage feature</note>
       </trans-unit>
@@ -2399,7 +2372,7 @@
         <source>Perfect for polyglots</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">51</context>
         </context-group>
         <note priority="1" from="description">The title for the polyglots feature description</note>
       </trans-unit>
@@ -2407,7 +2380,7 @@
         <source>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in multiple languages.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <note priority="1" from="description">First small feature description about using getnative with multiple languages</note>
       </trans-unit>
@@ -2415,7 +2388,7 @@
         <source>Open-source</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">72</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <note priority="1" from="description">Alternative text for second small homepage feature</note>
       </trans-unit>
@@ -2423,7 +2396,7 @@
         <source>Open-source</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">57</context>
         </context-group>
         <note priority="1" from="description">Open-source small feature title</note>
       </trans-unit>
@@ -2431,7 +2404,7 @@
         <source>See the magic happening under the hood on our GitHub page. Pull requests and contributions welcome!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">58</context>
         </context-group>
         <note priority="1" from="description">Open-source small feature description</note>
       </trans-unit>
@@ -2439,7 +2412,7 @@
         <source>Better security</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">62</context>
         </context-group>
         <note priority="1" from="description">Alternative text for third small homepage feature</note>
       </trans-unit>
@@ -2447,7 +2420,7 @@
         <source>Better security</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">63</context>
         </context-group>
         <note priority="1" from="description">Security small feature title</note>
       </trans-unit>
@@ -2455,7 +2428,7 @@
         <source>We take your private information seriously. getnative uses encryption to protect your data.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <note priority="1" from="description">Security small feature description</note>
       </trans-unit>
@@ -2463,7 +2436,7 @@
         <source>Easy-to-use interface</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">68</context>
         </context-group>
         <note priority="1" from="description">Alternative text for fourth small homepage feature</note>
       </trans-unit>
@@ -2471,7 +2444,7 @@
         <source>Easy-to-use interface</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">69</context>
         </context-group>
         <note priority="1" from="description">Easy-to-use interface small feature title</note>
       </trans-unit>
@@ -2479,7 +2452,7 @@
         <source>Our designers work hard to design simple and intuitive user interfaces.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <note priority="1" from="description">Easy-to-use interface small feature description</note>
       </trans-unit>
@@ -2487,7 +2460,7 @@
         <source>Support</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">74</context>
         </context-group>
         <note priority="1" from="description">Alternative text for fifth small homepage feature</note>
       </trans-unit>
@@ -2495,7 +2468,7 @@
         <source>Support</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">75</context>
         </context-group>
         <note priority="1" from="description">Q&amp;A small feature title</note>
       </trans-unit>
@@ -2503,7 +2476,7 @@
         <source>Questions or feedback? Drop us an email. We’d love to help out in anyway we can.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">76</context>
         </context-group>
         <note priority="1" from="description">Q&amp;A small feature description</note>
       </trans-unit>
@@ -2511,7 +2484,7 @@
         <source>Simple registration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">80</context>
         </context-group>
         <note priority="1" from="description">Alternative text for sixth small homepage feature</note>
       </trans-unit>
@@ -2519,7 +2492,7 @@
         <source>Simple registration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">81</context>
         </context-group>
         <note priority="1" from="description">Simple registration small feature title</note>
       </trans-unit>
@@ -2527,7 +2500,7 @@
         <source>Don&apos;t want to keep track of another password? Create an account in seconds with Facebook or Gmail.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">98</context>
+          <context context-type="linenumber">82</context>
         </context-group>
         <note priority="1" from="description">Simple registration small feature description</note>
       </trans-unit>
@@ -2535,7 +2508,7 @@
         <source>Sign up for free</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">106</context>
+          <context context-type="linenumber">90</context>
         </context-group>
         <note priority="1" from="description">The title leading users to sign up</note>
       </trans-unit>
@@ -2543,7 +2516,7 @@
         <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">91</context>
         </context-group>
         <note priority="1" from="description">A short description about signing up</note>
       </trans-unit>
@@ -2551,7 +2524,7 @@
         <source>Sign in / Sign up</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">92</context>
         </context-group>
         <note priority="1" from="description">The title for the sign up button</note>
       </trans-unit>
