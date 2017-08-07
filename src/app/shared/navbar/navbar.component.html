@@ -51,15 +51,14 @@
             </li>
             <li>
             <span class="navbar__menu-icon-frame">
-                <img (click)="toggleNotificationDropdown()" class="navbar__menu-icon navbar__menu-icon_notification" src="assets/icons/notification.svg" i18n-alt="Alt text for navbar notifications icon@@e5775cfb82679bd0ef3932053516430c" alt="notifications" i18n-title="Title for navbar notifications icon@@0ac79a294558028893102a5188434ca7" title="Notifications">
+                <img (click)="toggleNotificationDropdown()" class="navbar__menu-icon navbar__menu-icon--activity" src="assets/icons/notification.svg" i18n-alt="Alt text for navbar notifications icon@@e5775cfb82679bd0ef3932053516430c" alt="notifications" i18n-title="Title for navbar notifications icon@@0ac79a294558028893102a5188434ca7" title="Notifications">
                 <span class="notification-indicator" [ngClass]="{'notification-indicator--unread': hasUnreadNotifications}"></span>
             </span>
             </li>
             <li>
-                <img [routerLink]="'settings'" class="navbar__menu-icon navbar__menu-icon_account" src="assets/images/silhouette-avatar.png" i18n-alt="Alt text for navbar settings icon@@8d72b0824ba2c5b0aa9fdfdd481c39b7" alt="settings" i18n-title="Title for user settings navbar icon@@79b896dc264801c51b18803a4d412af7" title="Settings">
+                <img [routerLink]="['settings']" class="navbar__menu-icon navbar__menu-icon_account" src="assets/images/silhouette-avatar.png" i18n-alt="Alt text for navbar settings icon@@8d72b0824ba2c5b0aa9fdfdd481c39b7" alt="settings" i18n-title="Title for user settings navbar icon@@79b896dc264801c51b18803a4d412af7" title="Settings">
             </li>
         </ul>
-        <!-- todo: click elsewhere to close -->
         <!-- todo: make dynamic -->
         <gn-activity-dropdown *ngIf="displayNotificationDropdown$ | async"></gn-activity-dropdown>
     </ng-container>

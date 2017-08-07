@@ -6,7 +6,7 @@
  */
 
 import { trigger, transition, animate, style } from '@angular/animations';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -15,12 +15,11 @@ import { NavbarService } from '../../core/navbar/navbar.service';
 import { Logger } from '../../core/logger/logger';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subscription } from 'rxjs/Subscription';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
-import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-navbar',
@@ -61,13 +60,30 @@ export class NavbarComponent implements OnInit, OnDestroy {
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
     displayNotificationDropdown$ = new BehaviorSubject<boolean>(false);
     progress             = this.navbar.progress;
+    OnDestroy$           = new Subject<void>();
 
     queueButtonSaveState = QueueButtonState.SAVE;
     queueButtonRemoveState = QueueButtonState.REMOVE;
 
     hasUnreadNotifications = false;
 
-    private subscriptions: Subscription[] = [];
+    @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
+        let found = false;
+        const path: any[] = (<any>e).path;
+
+        if (path) {
+            for (let i = 0; i < path.length; i++) {
+                if (path[i].className && path[i].className.indexOf('navbar__menu-icon--activity') !== -1) {
+                    return;
+                } else if (path[i].tagName && path[i].tagName.toLowerCase() === 'gn-activity-dropdown') {
+                    found = true;
+                    break;
+                }
+            }
+        }
+
+        this.displayNotificationDropdown$.next(found);
+    }
 
     get isQueueButtonDefaultState(): boolean {
         return this.queueButtonState$.getValue() === QueueButtonState.DEFAULT;
@@ -77,15 +93,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.subscriptions.push(
-            this.router.events.filter((e: any) => e instanceof NavigationEnd).mapTo(false).subscribe(this.navbar.searchBarVisible$),
-            this.router.events.filter((e: any) => e instanceof NavigationEnd).mapTo('').subscribe(this.navbar.query$)
-        );
+        const navigationEnd$ = this.router.events.takeUntil(this.OnDestroy$).filter((e: any) => e instanceof NavigationEnd);
+        navigationEnd$.mapTo(false).subscribe(this.navbar.searchBarVisible$);
+        navigationEnd$.mapTo('').subscribe(this.navbar.query$);
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.invokeMap(this.subscriptions, 'unsubscribe');
+        this.OnDestroy$.next();
     }
 
     updateQuery(e: Event): void {
