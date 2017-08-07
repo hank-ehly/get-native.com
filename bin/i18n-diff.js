@@ -51,5 +51,3 @@ if (process.argv.length < 3) {
 }
 
 return diff(process.argv[2]);
-
-// todo: check contents of <source> to make sure they are the same as the base xlf file
