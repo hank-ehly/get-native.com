@@ -62,6 +62,7 @@
   width: 20px;
   transform: rotate(0deg);
   transition: 150ms ease-in-out;
+  user-select: none;
 }
 
 .toolbar__link--settings:hover .toolbar_link-icon {
