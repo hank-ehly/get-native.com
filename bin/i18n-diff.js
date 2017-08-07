@@ -30,8 +30,9 @@ async function diff(locale) {
         if (sourceDiff.length) {
             console.log('• TEXT DIFFERENCES');
             for (let i = 0; i < sourceDiff.length; i++) {
-                let item = sourceDiff[i];
-                console.log(`(${_.padStart(i, 2, '0')}) ${item}`);
+                let item = sourceDiff[i].replace(/(<source>|<\/source>)/g, '');
+                const diffNum = _.padStart(i, 2, '0');
+                console.log(`(${diffNum}) ${item}`);
             }
         }
 
