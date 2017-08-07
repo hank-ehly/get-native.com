@@ -22,7 +22,11 @@
             </div>
 
             <div class="study-options" *ngIf="studyOptionsVisible$ | async">
-                <button class="button study-option study-option_save" (click)="onClickQueue()" [disabled]="!(studyOptionsEnabled$ | async)">{{ queueButtonTitle$ | async }}</button>
+                <button class="button study-option study-option_save" (click)="onClickQueue()" [disabled]="isQueueButtonDefaultState" [ngSwitch]="queueButtonState$ | async">
+                    <ng-container *ngSwitchCase="queueButtonSaveState" i18n="Video detail page SAVE button title@@38a221a305676dc90cd98ce5db0eb04e">SAVE</ng-container>
+                    <ng-container *ngSwitchCase="queueButtonRemoveState" i18n="Video detail page REMOVE button title@@b41db422db43acef3114a978c939d702">REMOVE</ng-container>
+                    <ng-container *ngSwitchDefault>...</ng-container>
+                </button>
             </div>
         </div>
     </ng-container>

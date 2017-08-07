@@ -101,6 +101,24 @@
                 </context-group>
                 <note priority="1" from="description">Alt text for navbar back button image</note>
             </trans-unit>
+            <trans-unit id="38a221a305676dc90cd98ce5db0eb04e" datatype="html">
+                <source>SAVE</source>
+                <target>SAVE</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">26</context>
+                </context-group>
+                <note priority="1" from="description">Video detail page SAVE button title</note>
+            </trans-unit>
+            <trans-unit id="b41db422db43acef3114a978c939d702" datatype="html">
+                <source>REMOVE</source>
+                <target>REMOVE</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">27</context>
+                </context-group>
+                <note priority="1" from="description">Video detail page REMOVE button title</note>
+            </trans-unit>
             <trans-unit id="2134cc75d316e3aea408a40b6853656e" datatype="html">
                 <source>Help</source>
                 <target>Help</target>
@@ -580,8 +598,8 @@
                 <note priority="1" from="description">The text for the link redirecting users to the registration form</note>
             </trans-unit>
             <trans-unit id="fc02fa317c34e59f8d4661c007200756" datatype="html">
-                <source>Videos</source>
-                <target>Videos</target>
+                <source>Queue</source>
+                <target>Queue</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
                     <context context-type="linenumber">5</context>

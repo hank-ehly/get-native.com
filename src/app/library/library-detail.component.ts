@@ -9,6 +9,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { StudySessionService } from '../core/study-session/study-session.service';
+import { QueueButtonState } from '../core/navbar/queue-button-state';
 import { FacebookService } from '../core/facebook/facebook.service';
 import { kListening } from '../core/study-session/section-keys';
 import { NavbarService } from '../core/navbar/navbar.service';
@@ -45,11 +46,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     twitterShareHref: string;
 
     video$: Observable<any> = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
-        return this.http.request(APIHandle.VIDEO, {
-            params: {
-                id: id
-            }
-        });
+        return this.http.request(APIHandle.VIDEO, {params: {id: id}});
     }).share().do((v: Video) => {
         this.liked = v.liked;
         this.likeCount = v.like_count;
@@ -88,7 +85,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 .filter(_.isBoolean)
                 .do(this.updateLikeCount.bind(this))
                 .do(this.updateLiked.bind(this))
-                .debounceTime(300)
+                .debounceTime(500)
                 .distinctUntilChanged()
                 .map(liked => liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO)
                 .mergeMap(handle => this.http.request(handle, params))
@@ -96,26 +93,19 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
             this.navbar.onClickQueue$
                 .do(() => this.queued = !this.queued)
-                .do(() => this.navbar.studyOptionsEnabled$.next(false))
-                .do(() => this.navbar.queueButtonTitle$.next('...'))
+                .do(() => this.navbar.queueButtonState$.next(QueueButtonState.DEFAULT))
                 .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
                 .mergeMap(handle => this.http.request(handle, params))
-                .do(() => this.navbar.studyOptionsEnabled$.next(true))
-                .map(() => this.queued ? 'REMOVE' : 'SAVE')
-                .subscribe(this.navbar.queueButtonTitle$),
+                .map(() => this.queued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
+                .subscribe(this.navbar.queueButtonState$),
 
-            this.navbar.onClickStart$
-                .subscribe(this.onClickStart.bind(this)),
-
-            this.video$
-                .map(_.isPlainObject)
-                .subscribe(this.navbar.studyOptionsEnabled$),
+            this.navbar.onClickStart$.subscribe(this.onClickStart.bind(this)),
 
             this.video$
                 .pluck('cued')
                 .do((cued: boolean) => this.queued = cued)
-                .map((cued: boolean) => cued ? 'REMOVE' : 'SAVE')
-                .subscribe(this.navbar.queueButtonTitle$)
+                .map((cued: boolean) => cued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
+                .subscribe(this.navbar.queueButtonState$)
         );
     }
 
@@ -123,7 +113,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.logger.debug(this, 'OnDestroy');
         this.navbar.studyOptionsVisible$.next(false);
         this.navbar.backButtonTitle$.next(null);
-        this.navbar.queueButtonTitle$.next('...');
+        this.navbar.queueButtonState$.next(QueueButtonState.DEFAULT);
         _.invokeMap(this.subscriptions, 'unsubscribe');
     }
 
