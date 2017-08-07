@@ -814,7 +814,7 @@
             </trans-unit>
             <trans-unit id="f93e0c2af148ade90f69131ac7d8181e" datatype="html">
                 <source><x id="INTERPOLATION"/> views</source>
-                <target>再生回数<x id="INTERPOLATION"/>回</target>
+                <target>再生回数 <x id="INTERPOLATION"/> 回</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library-detail.component.ts</context>
                     <context context-type="linenumber">14</context>
@@ -1003,7 +1003,7 @@
             </trans-unit>
             <trans-unit id="4db2ee4f54c4b567cdfbdfc05bfb31bd" datatype="html">
                 <source>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</source>
-                <target>日本111-0032東京都台東区浅草2-34-4クレスント403</target>
+                <target>〒111-0032<x id="LINE_BREAK" ctype="lb"/>東京都台東区<x id="LINE_BREAK" ctype="lb"/>浅草2-34-4クレスント403</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">19</context>
