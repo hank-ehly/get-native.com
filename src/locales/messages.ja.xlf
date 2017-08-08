@@ -400,7 +400,7 @@
             </trans-unit>
             <trans-unit id="7b6af02921d2754063a428f52b713b45" datatype="html">
                 <source><x id="INTERPOLATION"/> NEW</source>
-                <source><x id="INTERPOLATION"/> 新着</source>
+                <target><x id="INTERPOLATION"/> 新着</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/navbar/activity-dropdown.component.ts</context>
                     <context context-type="linenumber">17</context>
@@ -3183,7 +3183,7 @@
             </trans-unit>
             <trans-unit id="dc86fc47fec36acfb7124c6559cc554b" datatype="html">
                 <source>View updates and recent activity on getnative.</source>
-                <source>getnativeに関する最新情報とアップデートについて確認する。</source>
+                <target>getnativeに関する最新情報とアップデートについて確認する。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/settings.component.ts</context>
                     <context context-type="linenumber">15</context>
@@ -3219,7 +3219,7 @@
             </trans-unit>
             <trans-unit id="8de0f7071b7a00591528e97b1ce41a26" datatype="html">
                 <source>ACTIVITY</source>
-                <source>アクティビティ</source>
+                <target>アクティビティ</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/settings.component.ts</context>
                     <context context-type="linenumber">23</context>
