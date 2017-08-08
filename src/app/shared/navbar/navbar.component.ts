@@ -16,6 +16,7 @@ import { Logger } from '../../core/logger/logger';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/mapTo';
