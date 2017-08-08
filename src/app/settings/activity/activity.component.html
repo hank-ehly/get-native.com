@@ -8,7 +8,7 @@
             <li class="list-item" *ngFor="let item of activityItems">
                 <header class="list-item__header">
                     <h5 class="list-item__title">{{ item.title }}</h5>
-                    <span class="list-item__time-since">{{ item.created_at | fromNow }}</span>
+                    <span class="list-item__time-since">{{ item.created_at | gnDate | fromNow }}</span>
                 </header>
                 <section class="list-item__body" [innerHtml]="item.body | safeHtml"></section>
                 <footer class="list-item__footer" *ngIf="item.footer" [innerHtml]="item.footer | safeHtml"></footer>
