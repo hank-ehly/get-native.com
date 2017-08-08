@@ -1,6 +1,6 @@
 /**
  * study-session-section
- * get-native.com
+ * getnativelearning.com
  *
  * Created by henryehly on 2017/05/01.
  */

@@ -1,11 +1,11 @@
 {
-    "name": "get-native.com",
-    "author": "Hank Ehly <admin@get-native.com>",
-    "description": "Source code of get-native.com user website",
+    "name": "getnativelearning.com",
+    "author": "Hank Ehly <admin@getnativelearning.com>",
+    "description": "Source code of getnativelearning.com user website",
     "version": "0.0.1",
     "license": "UNLICENSED",
     "repository": {
-        "url": "https://github.com/hank-ehly/get-native.com"
+        "url": "https://github.com/hank-ehly/getnativelearning.com"
     },
     "scripts": {
         "ng": "ng",

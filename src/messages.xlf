@@ -1017,7 +1017,7 @@
         <note priority="1" from="description">tos introduction section header</note>
       </trans-unit>
       <trans-unit id="6f212e0ab04a5b1bf38d3a30208e6be1" datatype="html">
-        <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative. All intellectual property rights are reserved. You may view and/or print pages from get-native.com for your own personal use subject to restrictions set in these terms and conditions.</source>
+        <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative. All intellectual property rights are reserved. You may view and/or print pages from getnativelearning.com for your own personal use subject to restrictions set in these terms and conditions.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">32</context>
@@ -1033,7 +1033,7 @@
         <note priority="1" from="description">tos license section text (2)</note>
       </trans-unit>
       <trans-unit id="f813a8293dd4bb806af988aa90fd5927" datatype="html">
-        <source>Republish material from get-native.com</source>
+        <source>Republish material from getnativelearning.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">35</context>
@@ -1041,7 +1041,7 @@
         <note priority="1" from="description">tos license section text (3)</note>
       </trans-unit>
       <trans-unit id="c154ea0af51566537ce538ccb9752545" datatype="html">
-        <source>Sell, rent or sub-license material from get-native.com</source>
+        <source>Sell, rent or sub-license material from getnativelearning.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">36</context>
@@ -1049,7 +1049,7 @@
         <note priority="1" from="description">tos license section text (4)</note>
       </trans-unit>
       <trans-unit id="c0e4c9676a8242279d2a784128801550" datatype="html">
-        <source>Reproduce, duplicate or copy material from get-native.com</source>
+        <source>Reproduce, duplicate or copy material from getnativelearning.com</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">37</context>
@@ -1297,7 +1297,7 @@
         <note priority="1" from="description">tos hyperlinking section text (26)</note>
       </trans-unit>
       <trans-unit id="4ccbcabf2c522b6fe612b915c23b2611" datatype="html">
-        <source>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</source>
+        <source>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
           <context context-type="linenumber">92</context>
@@ -2225,7 +2225,7 @@
         <note priority="1" from="description">canspam section 9</note>
       </trans-unit>
       <trans-unit id="ad63846c24f80d759bdf9b5e9cd141ae" datatype="html">
-        <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+        <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
           <context context-type="linenumber">161</context>
@@ -2257,7 +2257,7 @@
         <note priority="1" from="description">contact-information section 1</note>
       </trans-unit>
       <trans-unit id="9b3c772655ccd06f35b7728b7f02510f" datatype="html">
-        <source>get-native.com<x id="LINE_BREAK" ctype="lb"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</source>
+        <source>getnativelearning.com<x id="LINE_BREAK" ctype="lb"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
           <context context-type="linenumber">168</context>
@@ -2329,7 +2329,7 @@
         <note priority="1" from="description">The header title for the help page contact-us section</note>
       </trans-unit>
       <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-        <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@get-native.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+        <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
           <context context-type="linenumber">29</context>

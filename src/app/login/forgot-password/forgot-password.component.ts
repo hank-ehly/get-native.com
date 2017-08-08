@@ -1,6 +1,6 @@
 /**
  * forgot-password.component
- * get-native.com
+ * getnativelearning.com
  *
  * Created by henryehly on 2017/04/24.
  */

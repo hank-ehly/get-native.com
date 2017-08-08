@@ -1,6 +1,6 @@
 import { GetNativeComPage } from './app.po';
 
-describe('get-native.com/', () => {
+describe('getnativelearning.com/', () => {
     let page: GetNativeComPage;
 
     beforeEach(() => {
