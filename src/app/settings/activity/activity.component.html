@@ -1,3 +1,19 @@
-<p>
-  activity works!
-</p>
+<div class="container">
+    <div class="no-activity-block" *ngIf="!activityItems.length">
+        <span class="emoji">🙅</span>
+        <p>No activity yet.. Check back later!</p>
+    </div>
+    <ng-container *ngIf="activityItems.length">
+        <ul class="activity-list">
+            <li class="list-item" *ngFor="let item of activityItems">
+                <header class="list-item__header">
+                    <h5 class="list-item__title">{{ item.title }}</h5>
+                    <span class="list-item__time-since">{{ item.created_at | fromNow }}</span>
+                </header>
+                <section class="list-item__body" [innerHtml]="item.body | safeHtml"></section>
+                <footer class="list-item__footer" *ngIf="item.footer" [innerHtml]="item.footer | safeHtml"></footer>
+            </li>
+        </ul>
+        <button class="button button--load-more">LOAD MORE</button>
+    </ng-container>
+</div>
