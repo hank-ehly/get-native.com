@@ -1,7 +1,7 @@
 <div class="container">
     <div class="no-activity-block" *ngIf="!activityItems.length">
         <span class="emoji">🙅</span>
-        <p>No activity yet.. Check back later!</p>
+        <p i18n="No activity message@@b22c9ff9e3bf611b3fd86fa13f57b904">No activity yet.. Check back later!</p>
     </div>
     <ng-container *ngIf="activityItems.length">
         <ul class="activity-list">
@@ -14,6 +14,6 @@
                 <footer class="list-item__footer" *ngIf="item.footer" [innerHtml]="item.footer | safeHtml"></footer>
             </li>
         </ul>
-        <button class="button button--load-more">LOAD MORE</button>
+        <button class="button button--load-more" i18n="Load more activity items button@@de0c4cf200c80f7aee9796e3b63aa518">LOAD MORE</button>
     </ng-container>
 </div>
