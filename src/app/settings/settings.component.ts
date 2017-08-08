@@ -25,21 +25,27 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit() {
         this.logger.debug(this, 'ngOnInit');
-        this.initSelectedTab();
+        this.selectedTab = this.getSelectedTab();
     }
 
-    setSelectedTab(tab: any) {
+    setSelectedTab(tab: string) {
         this.selectedTab = tab;
     }
 
-    // todo: refactor
-    private initSelectedTab() {
-        if (_.includes(this.router.url, 'security')) {
-            this.selectedTab = 'security';
-        } else if (_.includes(this.router.url, 'notifications')) {
-            this.selectedTab = 'notifications';
-        } else {
-            this.selectedTab = 'general';
+    getSelectedTab(): string {
+        if (this.selectedTab) {
+            return this.selectedTab;
         }
+
+        let tabValue = 'general';
+        if (_.includes(this.router.url, 'security')) {
+            tabValue = 'security';
+        } else if (_.includes(this.router.url, 'notifications')) {
+            tabValue = 'notifications';
+        } else if (_.includes(this.router.url, 'activity')) {
+            tabValue = 'activity';
+        }
+
+        return tabValue;
     }
 }
