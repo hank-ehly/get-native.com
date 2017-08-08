@@ -118,7 +118,7 @@ const metaKeyValues = {
             }
         },
         library: {
-            title: 'ビデオライブラリ'
+            title: 'ライブラリ'
         },
         study: {
             listening: {

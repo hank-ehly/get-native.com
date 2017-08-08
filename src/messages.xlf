@@ -348,7 +348,7 @@
         <source>See all activity</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/activity-dropdown.component.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">19</context>
         </context-group>
         <note priority="1" from="description">See all activity link title</note>
       </trans-unit>
@@ -356,7 +356,7 @@
         <source><x id="INTERPOLATION"/> NEW</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/activity-dropdown.component.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <note priority="1" from="description">Label describing number of new activity items</note>
       </trans-unit>
@@ -3009,18 +3009,26 @@
         <note priority="1" from="description">next exercise label</note>
       </trans-unit>
       <trans-unit id="b22c9ff9e3bf611b3fd86fa13f57b904" datatype="html">
-        <source>No activity yet.. Check back later!</source>
+        <source>This feature is still in development..</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
           <context context-type="linenumber">4</context>
         </context-group>
-        <note priority="1" from="description">No activity message</note>
+        <note priority="1" from="description">Message saying that activity feature is still in development</note>
+      </trans-unit>
+      <trans-unit id="37fcbb9ff4109864546ef01f59c58130" datatype="html">
+        <source>Check back later!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Message telling user to check the in-development feature again later</note>
       </trans-unit>
       <trans-unit id="de0c4cf200c80f7aee9796e3b63aa518" datatype="html">
         <source>LOAD MORE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">18</context>
         </context-group>
         <note priority="1" from="description">Load more activity items button</note>
       </trans-unit>

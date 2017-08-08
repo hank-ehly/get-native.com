@@ -3389,13 +3389,22 @@
                 <note priority="1" from="description">next exercise label</note>
             </trans-unit>
             <trans-unit id="b22c9ff9e3bf611b3fd86fa13f57b904" datatype="html">
-                <source>No activity yet.. Check back later!</source>
-                <target>まだアクティビティはありません。。後でまたチェックしてみてください！</target>
+                <source>This feature is still in development..</source>
+                <target>アクティビティ機能はまだ開発中です。。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
                     <context context-type="linenumber">4</context>
                 </context-group>
                 <note priority="1" from="description">No activity message</note>
+            </trans-unit>
+            <trans-unit id="37fcbb9ff4109864546ef01f59c58130" datatype="html">
+                <source>Check back later!</source>
+                <target>後でまたチェックしてみてください！</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
+                    <context context-type="linenumber">5</context>
+                </context-group>
+                <note priority="1" from="description">Message telling user to check the in-development feature again later</note>
             </trans-unit>
             <trans-unit id="de0c4cf200c80f7aee9796e3b63aa518" datatype="html">
                 <source>LOAD MORE</source>
