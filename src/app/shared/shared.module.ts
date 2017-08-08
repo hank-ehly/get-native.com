@@ -35,6 +35,7 @@ import { VideoPanelListComponent } from './video-panel-list/video-panel-list.com
 import { VideoSearchComponent } from './video-search/video-search.component';
 import { SafeHtmlPipe } from './safe-html/safe-html.pipe';
 import { ActivityDropdownComponent } from './navbar/activity-dropdown.component';
+import { FromNowPipe } from './from-now/from-now.pipe';
 
 @NgModule({
     imports: [
@@ -67,7 +68,8 @@ import { ActivityDropdownComponent } from './navbar/activity-dropdown.component'
         VideoPanelListComponent,
         VideoSearchComponent,
         SafeHtmlPipe,
-        ActivityDropdownComponent
+        ActivityDropdownComponent,
+        FromNowPipe
 
     ],
     exports: [
@@ -97,7 +99,8 @@ import { ActivityDropdownComponent } from './navbar/activity-dropdown.component'
         VideoPanelListComponent,
         VideoSearchComponent,
         SafeHtmlPipe,
-        ActivityDropdownComponent
+        ActivityDropdownComponent,
+        FromNowPipe
     ]
 })
 export class SharedModule {
