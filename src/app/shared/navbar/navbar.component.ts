@@ -134,4 +134,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     toggleNotificationDropdown(): void {
         this.displayNotificationDropdown$.next(!this.displayNotificationDropdown$.getValue());
     }
+
+    onClickSeeAllActivity(): void {
+        this.displayNotificationDropdown$.next(false);
+        this.router.navigate(['/settings/activity']);
+    }
 }

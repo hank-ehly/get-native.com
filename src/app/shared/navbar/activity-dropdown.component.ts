@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
+
+import { Subject } from 'rxjs/Subject';
 
 @Component({
     selector: 'gn-activity-dropdown',
@@ -6,4 +8,11 @@ import { Component } from '@angular/core';
     styleUrls: ['./activity-dropdown.component.scss']
 })
 export class ActivityDropdownComponent {
+    private clickSeeAllActivitySource = new Subject();
+    @Output() clickSeeAllActivityEmitted$ = this.clickSeeAllActivitySource.asObservable();
+    newCount = 3;
+
+    onClickSeeAllActivity(): void {
+        this.clickSeeAllActivitySource.next();
+    }
 }
