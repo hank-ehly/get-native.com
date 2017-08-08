@@ -57,6 +57,9 @@ const metaKeyValues = {
             },
             security: {
                 title: 'Security Settings'
+            },
+            activity: {
+                title: 'Activity'
             }
         },
         library: {
@@ -109,6 +112,9 @@ const metaKeyValues = {
             },
             security: {
                 title: 'セキュリティ設定'
+            },
+            activity: {
+                title: 'アクティビティ'
             }
         },
         library: {
