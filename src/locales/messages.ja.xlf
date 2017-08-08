@@ -373,7 +373,7 @@
             </trans-unit>
             <trans-unit id="d044128bbff3292ecaf2f8cf912c1087" datatype="html">
                 <source>Continue with Facebook</source>
-                <target>Facebookで続ける</target>
+                <target>Facebookでログインする</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
                     <context context-type="linenumber">11</context>
@@ -382,7 +382,7 @@
             </trans-unit>
             <trans-unit id="275b57166664b52ab2893e535a768bad" datatype="html">
                 <source>Continue with Twitter</source>
-                <target>Twitterで続ける</target>
+                <target>Twitterでログインする</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
                     <context context-type="linenumber">16</context>
@@ -391,7 +391,7 @@
             </trans-unit>
             <trans-unit id="2f4d49eb0db1ce638fe4ef8209cb9b77" datatype="html">
                 <source>Continue with Gmail</source>
-                <target>Gmailで続ける</target>
+                <target>Gmailでログインする</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
                     <context context-type="linenumber">21</context>
