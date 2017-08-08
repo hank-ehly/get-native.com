@@ -3426,7 +3426,7 @@
             </trans-unit>
             <trans-unit id="fd0413b1d745255d24d578e73b82149d" datatype="html">
                 <source>Please try viewing getnative from a larger browser window</source>
-                <target>getnativeはデスクトップ向けウェブサイトですので、より大きいウィンドウで表示してください。</target>
+                <target>getnativeはデスクトップ向けのウェブサイトです。お手数ですが、より大きいウィンドウで開いてください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/mobile-overlay/mobile-overlay.component.ts</context>
                     <context context-type="linenumber">2</context>
