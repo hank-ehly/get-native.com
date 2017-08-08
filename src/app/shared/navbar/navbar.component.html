@@ -60,6 +60,6 @@
             </li>
         </ul>
         <!-- todo: make dynamic -->
-        <gn-activity-dropdown *ngIf="displayNotificationDropdown$ | async"></gn-activity-dropdown>
+        <gn-activity-dropdown *ngIf="displayNotificationDropdown$ | async" (clickSeeAllActivityEmitted$)="onClickSeeAllActivity()"></gn-activity-dropdown>
     </ng-container>
 </header>
