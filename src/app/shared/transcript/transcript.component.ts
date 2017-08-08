@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
 import { CollocationOccurrence } from '../../core/entities/collocation-occurrence';
 import { Transcript } from '../../core/entities/transcript';
