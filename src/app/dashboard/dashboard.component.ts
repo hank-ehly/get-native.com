@@ -1,6 +1,6 @@
 /**
  * dashboard.component
- * get-native.com
+ * getnativelearning.com
  *
  * Created by henryehly on 2016/11/28.
  */

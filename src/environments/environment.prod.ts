@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiBaseUrl: 'https://api.get-native.com',
+    apiBaseUrl: 'https://api.getnativelearning.com',
     facebookAppId: '215585858915353'
 };

@@ -1,6 +1,6 @@
 /**
  * meta-factory
- * get-native.com
+ * getnativelearning.com
  *
  * Created by henryehly on 2017/08/02.
  */
@@ -17,13 +17,13 @@ export function metaFactory(localeId: string, lang: LangService): MetaLoader {
         pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
         applicationName: 'getnative',
         pageTitleSeparator: ' | ',
-        applicationUrl: 'https://get-native.com',
+        applicationUrl: 'https://getnativelearning.com',
         defaults: {
             title: 'default.title',
             description: 'default.description',
-            'og:image': 'https://get-native.com/assets/images/og.png', // todo: i18n && change per page
-            'og:image:url': 'https://get-native.com/assets/images/og.png', // todo: i18n && change per page
-            'og:image:secure_url': 'https://get-native.com/assets/images/og.png', // todo: i18n && change per page
+            'og:image': 'https://getnativelearning.com/assets/images/og.png', // todo: i18n && change per page
+            'og:image:url': 'https://getnativelearning.com/assets/images/og.png', // todo: i18n && change per page
+            'og:image:secure_url': 'https://getnativelearning.com/assets/images/og.png', // todo: i18n && change per page
             'og:image:type': 'image/png',
             'og:image:width': '1200', // todo: change per page
             'og:image:height': '630', // todo: change per page
@@ -31,10 +31,10 @@ export function metaFactory(localeId: string, lang: LangService): MetaLoader {
             'og:locale:alternate': 'en_US,ja_JP',
             'og:site_name': 'getnative',
             'og:type': 'website',
-            'og:url': 'https://get-native.com', // todo: i18n & change per page
+            'og:url': 'https://getnativelearning.com', // todo: i18n & change per page
             'twitter:title': 'getnative', // todo: change per page (library detail)
             'twitter:description': 'default.description',
-            'twitter:image:src': 'https://get-native.com/assets/images/og.png' // todo: change per page
+            'twitter:image:src': 'https://getnativelearning.com/assets/images/og.png' // todo: change per page
         }
     });
 }

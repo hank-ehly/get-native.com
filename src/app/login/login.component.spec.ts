@@ -1,6 +1,6 @@
 /**
  * login.component.spec
- * get-native.com
+ * getnativelearning.com
  *
  * Created by henryehly on 2016/11/13.
  */

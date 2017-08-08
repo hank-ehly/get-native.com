@@ -1,6 +1,6 @@
 /**
  * writing-resolver.service
- * get-native.com
+ * getnativelearning.com
  *
  * Created by henryehly on 2017/05/03.
  */
