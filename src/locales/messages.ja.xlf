@@ -156,6 +156,15 @@
                 </context-group>
                 <note priority="1" from="description">Alt text for navbar magnifying glass search icon</note>
             </trans-unit>
+            <trans-unit id="8d9f6cd5b75c5141b08882b78826a44d" datatype="html">
+                <source>Search</source>
+                <target>検索</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">47</context>
+                </context-group>
+                <note priority="1" from="description">Title for magnifying glass search icon</note>
+            </trans-unit>
             <trans-unit id="05a9999694c0f7a90e7f166c2e9daae4" datatype="html">
                 <source>close</source>
                 <target>閉じる</target>
@@ -164,6 +173,15 @@
                     <context context-type="linenumber">39</context>
                 </context-group>
                 <note priority="1" from="description">Alt text for navbar close-search button icon</note>
+            </trans-unit>
+            <trans-unit id="7af1c73fec252b75d5d05476dd961cfa" datatype="html">
+                <source>Close</source>
+                <target>閉じる</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">48</context>
+                </context-group>
+                <note priority="1" from="description">Title of X icon to close search bar</note>
             </trans-unit>
             <trans-unit id="e5775cfb82679bd0ef3932053516430c" datatype="html">
                 <source>notifications</source>
@@ -174,6 +192,15 @@
                 </context-group>
                 <note priority="1" from="description">Alt text for navbar notifications icon</note>
             </trans-unit>
+            <trans-unit id="0ac79a294558028893102a5188434ca7" datatype="html">
+                <source>Notifications</source>
+                <target>通知</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">54</context>
+                </context-group>
+                <note priority="1" from="description">Title for navbar notifications icon</note>
+            </trans-unit>
             <trans-unit id="8d72b0824ba2c5b0aa9fdfdd481c39b7" datatype="html">
                 <source>settings</source>
                 <target>設定</target>
@@ -182,6 +209,15 @@
                     <context context-type="linenumber">51</context>
                 </context-group>
                 <note priority="1" from="description">Alt text for navbar settings icon</note>
+            </trans-unit>
+            <trans-unit id="79b896dc264801c51b18803a4d412af7" datatype="html">
+                <source>Settings</source>
+                <target>設定</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">59</context>
+                </context-group>
+                <note priority="1" from="description">Title for user settings navbar icon</note>
             </trans-unit>
             <trans-unit id="07a6171e3f63bdda059d13296924d816" datatype="html">
                 <source>VERY WEAK</source>
@@ -352,6 +388,24 @@
                     <context context-type="linenumber">35</context>
                 </context-group>
                 <note priority="1" from="description">Alt text for video panel views icon</note>
+            </trans-unit>
+            <trans-unit id="b07abdff23b76ae36cea0516e9455bcb" datatype="html">
+                <source>See all activity</source>
+                <target>もっと見る</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/activity-dropdown.component.ts</context>
+                    <context context-type="linenumber">16</context>
+                </context-group>
+                <note priority="1" from="description">See all activity link title</note>
+            </trans-unit>
+            <trans-unit id="7b6af02921d2754063a428f52b713b45" datatype="html">
+                <source><x id="INTERPOLATION"/> NEW</source>
+                <source><x id="INTERPOLATION"/> 新着</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/activity-dropdown.component.ts</context>
+                    <context context-type="linenumber">17</context>
+                </context-group>
+                <note priority="1" from="description">Label describing number of new activity items</note>
             </trans-unit>
             <trans-unit id="6ab4ec4feb0f978a61871cef46235c7d" datatype="html">
                 <source>logo</source>
@@ -3127,6 +3181,15 @@
                 </context-group>
                 <note priority="1" from="description">Notification settings page description</note>
             </trans-unit>
+            <trans-unit id="dc86fc47fec36acfb7124c6559cc554b" datatype="html">
+                <source>View updates and recent activity on getnative.</source>
+                <source>getnativeに関する最新情報とアップデートについて確認する。</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">15</context>
+                </context-group>
+                <note priority="1" from="description">Activity settings page description</note>
+            </trans-unit>
             <trans-unit id="d68d03febd04b44e73cacd22418e0b52" datatype="html">
                 <source>GENERAL</source>
                 <target>一般</target>
@@ -3153,6 +3216,15 @@
                     <context context-type="linenumber">21</context>
                 </context-group>
                 <note priority="1" from="description">The notifications settings page tab label</note>
+            </trans-unit>
+            <trans-unit id="8de0f7071b7a00591528e97b1ce41a26" datatype="html">
+                <source>ACTIVITY</source>
+                <source>アクティビティ</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">23</context>
+                </context-group>
+                <note priority="1" from="description">The activity page tab label</note>
             </trans-unit>
             <trans-unit id="3a9315497767db8f497599d712b6723b" datatype="html">
                 <source>LANGUAGE</source>
@@ -3315,6 +3387,24 @@
                     <context context-type="linenumber">7</context>
                 </context-group>
                 <note priority="1" from="description">next exercise label</note>
+            </trans-unit>
+            <trans-unit id="b22c9ff9e3bf611b3fd86fa13f57b904" datatype="html">
+                <source>No activity yet.. Check back later!</source>
+                <target>まだアクティビティはありません。。後でまたチェックしてみてください！</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">No activity message</note>
+            </trans-unit>
+            <trans-unit id="de0c4cf200c80f7aee9796e3b63aa518" datatype="html">
+                <source>LOAD MORE</source>
+                <target>もっと見る</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
+                    <context context-type="linenumber">17</context>
+                </context-group>
+                <note priority="1" from="description">Load more activity items button</note>
             </trans-unit>
             <trans-unit id="fd0413b1d745255d24d578e73b82149d" datatype="html">
                 <source>Please try viewing getnative from a larger browser window</source>
