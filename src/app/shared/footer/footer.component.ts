@@ -15,8 +15,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 interface LocalizedLink {
-    label: string
-    url: string
+    label: string;
+    url: string;
 }
 
 @Component({

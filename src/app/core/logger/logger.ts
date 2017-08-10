@@ -20,23 +20,23 @@ export class Logger {
         if (window.console && this.logLevel >= LogLevelValue.WARN && !environment.production) {
             console.warn.apply(console, [`[${_.constructor.name}]`, message, ...optionalParams]);
         }
-    };
+    }
 
     error(_: Object, message?: any, ...optionalParams: any[]): void {
         if (window.console && this.logLevel >= LogLevelValue.ERROR && !environment.production) {
             console.error.apply(console, [`[${_.constructor.name}]`, message, ...optionalParams]);
         }
-    };
+    }
 
     info(_: Object, message?: any, ...optionalParams: any[]): void {
         if (window.console && this.logLevel >= LogLevelValue.INFO && !environment.production) {
             console.info.apply(console, [`[${_.constructor.name}]`, message, ...optionalParams]);
         }
-    };
+    }
 
     debug(_: Object, message?: any, ...optionalParams: any[]): void {
         if (window.console && this.logLevel >= LogLevelValue.DEBUG && !environment.production) {
             console.debug.apply(console, [`[${_.constructor.name}]`, message, ...optionalParams]);
         }
-    };
+    }
 }
