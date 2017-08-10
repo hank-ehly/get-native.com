@@ -11,7 +11,7 @@ import { By } from '@angular/platform-browser';
 
 export class SpecUtil {
     constructor(private fixture: ComponentFixture<any>) {
-    };
+    }
 
     getDebugEl(selector: string): DebugElement {
         return this.fixture.debugElement.query(By.css(selector));

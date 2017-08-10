@@ -46,7 +46,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
 
         /* Hack to access first LI element after setting transcripts */
         setTimeout(() => this.selectedTab$.next(<HTMLLIElement>_.first(this.tabEls.nativeElement.children)), 0);
-    };
+    }
 
     tabs: any[] = [];
 
