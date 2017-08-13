@@ -19,14 +19,14 @@
 
 .header__file-input-label {
   @include border-radius(50%);
-  cursor: pointer;
+/*  cursor: pointer;*/
   display: block;
   height: 110px;
   width: 110px;
   transition: all 0.5s;
 }
 
-.header__file-input-label:hover:after {
+/*.header__file-input-label:hover:after {
   @include border-radius(50%);
   background: rgba($black, 0.2) url('../../assets/icons/avatar.svg') no-repeat center;
   background-size: 30px;
@@ -36,7 +36,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-}
+}*/
 
 .header__file-input {
   width: 0.1px;
