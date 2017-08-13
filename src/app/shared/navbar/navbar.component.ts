@@ -21,6 +21,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
+import * as _ from 'lodash';
+import { DOMService } from '../../core/dom/dom.service';
 
 @Component({
     selector: 'gn-navbar',
@@ -70,7 +72,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
         let found = false;
-        const path: any[] = (<any>e).path;
+        const path = this.dom.pathForMouseEvent(e);
 
         if (path) {
             for (let i = 0; i < path.length; i++) {
@@ -90,7 +92,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         return this.queueButtonState$.getValue() === QueueButtonState.DEFAULT;
     }
 
-    constructor(private logger: Logger, private navbar: NavbarService, private location: Location, private router: Router) {
+    constructor(private logger: Logger, private navbar: NavbarService, private location: Location, private router: Router,
+                private dom: DOMService) {
     }
 
     ngOnInit(): void {

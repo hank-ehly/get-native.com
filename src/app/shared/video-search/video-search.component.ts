@@ -15,6 +15,7 @@ import { Subcategory } from '../../core/entities/subcategory';
 import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
 import { Category } from '../../core/entities/category';
+import { DOMService } from '../../core/dom/dom.service';
 import { Entities } from '../../core/entities/entities';
 import { APIHandle } from '../../core/http/api-handle';
 import { CategoryFilter } from './category-filter';
@@ -123,22 +124,17 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         }
 
         let found = false;
-        const path: any[] = (<any>e).path;
+        const path = this.dom.pathForMouseEvent(e);
 
         if (path) {
-            for (let i = 0; i < path.length; i++) {
-                if (path[i].tagName && path[i].tagName.toLowerCase() === 'gn-category-list') {
-                    found = true;
-                    break;
-                }
-            }
+            found = _.includes(_.map(path, p => _.toLower(p['tagName'])), 'gn-category-list');
         }
 
         this.showDropdown$.next(found);
     }
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
-                protected categoryList: CategoryListService) {
+                protected categoryList: CategoryListService, protected dom: DOMService) {
     }
 
     ngOnInit(): void {
