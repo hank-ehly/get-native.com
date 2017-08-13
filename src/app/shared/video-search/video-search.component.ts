@@ -42,6 +42,7 @@ import * as _ from 'lodash';
     template: '<!-- overridden -->'
 })
 export class VideoSearchComponent implements OnInit, OnDestroy {
+
     categories$ = this.categoryList.fetch();
 
     filterByCategory$ = new BehaviorSubject<CategoryFilter>({
@@ -172,4 +173,5 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     private concatVideos(acc: Video[], records: Video[]) {
         return records ? _.unionWith(acc, records, _.isEqual) : [];
     }
+
 }
