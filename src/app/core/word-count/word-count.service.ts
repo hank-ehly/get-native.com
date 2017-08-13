@@ -23,8 +23,7 @@ export class WordCountService {
 
     private countWordsInEnglish(input: string): number {
         input = _.replace(input, /[^a-z\s]/gi, '');
-        input = _.deburr(input);
-        return _.words(input, /[a-z]+/gi).length;
+        return _.words(_.deburr(input), /[a-z]+/gi).length;
     }
 
     private countWordsInJapanese(input: string): number {
