@@ -139,11 +139,8 @@
 }
 
 .navbar__menu--authenticated .navbar__menu-icon.navbar__menu-icon_account {
-  @include border-radius(50%);
-  height: 30px;
-  object-fit: cover;
   outline: none;
-  width: 30px;
+  width: 20px;
 }
 
 .navbar__menu-icon-frame {
