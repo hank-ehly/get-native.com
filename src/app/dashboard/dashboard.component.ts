@@ -20,6 +20,7 @@ import { StudySession } from '../core/entities/study-session';
 import { LanguageCode } from '../core/typings/language-code';
 import { HttpService } from '../core/http/http.service';
 import { UserService } from '../core/user/user.service';
+import { DOMService } from '../core/dom/dom.service';
 import { Entities } from '../core/entities/entities';
 import { APIHandle } from '../core/http/api-handle';
 import { Logger } from '../core/logger/logger';
@@ -92,8 +93,9 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     });
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
-                private dateService: UTCDateService, private session: StudySessionService, protected categoryList: CategoryListService) {
-        super(logger, http, navbar, user, categoryList);
+                private dateService: UTCDateService, private session: StudySessionService, protected categoryList: CategoryListService,
+                protected dom: DOMService) {
+        super(logger, http, navbar, user, categoryList, dom);
         this.cuedOnly = true;
     }
 
