@@ -5,13 +5,14 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { trigger, transition, animate, style } from '@angular/animations';
 import { Component, OnInit, Input, OnDestroy, HostListener } from '@angular/core';
+import { trigger, transition, animate, style } from '@angular/animations';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { QueueButtonState } from '../../core/navbar/queue-button-state';
 import { NavbarService } from '../../core/navbar/navbar.service';
+import { DOMService } from '../../core/dom/dom.service';
 import { Logger } from '../../core/logger/logger';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -22,7 +23,6 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { DOMService } from '../../core/dom/dom.service';
 
 @Component({
     selector: 'gn-navbar',
@@ -52,6 +52,7 @@ import { DOMService } from '../../core/dom/dom.service';
     ]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+
     @Input() authenticated: boolean;
     @Input() showSearchIcon: boolean;
 
@@ -143,4 +144,5 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.displayNotificationDropdown$.next(false);
         this.router.navigate(['/settings/activity']);
     }
+
 }
