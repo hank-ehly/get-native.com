@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import * as _ from 'lodash';
 
 @Injectable()
 export class DOMService {
-
-    constructor() {
-    }
 
     pathForMouseEvent(e: MouseEvent): any[] {
         if (_.has(e, 'path')) {
@@ -16,4 +14,5 @@ export class DOMService {
             return null;
         }
     }
+
 }
