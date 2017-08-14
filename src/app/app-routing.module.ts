@@ -62,7 +62,7 @@ const routes: Routes = [
                 title: 'dashboard.title'
             },
             showToolbar: true,
-            showNavbarSearchIcon: true
+            showNavbarSearchIcon: false
         }
     },
     {
@@ -110,7 +110,7 @@ const routes: Routes = [
                 title: 'library.title'
             },
             showToolbar: true,
-            showNavbarSearchIcon: true
+            showNavbarSearchIcon: false
         }
     },
     {
