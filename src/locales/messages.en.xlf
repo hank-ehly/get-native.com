@@ -3425,6 +3425,51 @@
                 </context-group>
                 <note priority="1" from="description">next exercise label</note>
             </trans-unit>
+            <trans-unit id="ad37dd3cdbaf36e623ae02e2354fc34c" datatype="html">
+                <source>LISTENING</source>
+                <target>LISTENING</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">Listening study section title</note>
+            </trans-unit>
+            <trans-unit id="e12fd2268e7114bbc5c4b9cbbc12b413" datatype="html">
+                <source>SHADOWING</source>
+                <target>SHADOWING</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
+                    <context context-type="linenumber">8</context>
+                </context-group>
+                <note priority="1" from="description">Shadowing study section title</note>
+            </trans-unit>
+            <trans-unit id="4f31bbabad22e0fe6a36ba9d8929f362" datatype="html">
+                <source>SPEAKING</source>
+                <target>SPEAKING</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
+                    <context context-type="linenumber">9</context>
+                </context-group>
+                <note priority="1" from="description">Speaking study section title</note>
+            </trans-unit>
+            <trans-unit id="6259097bfb4f85fe16085711bc833b39" datatype="html">
+                <source>WRITING</source>
+                <target>WRITING</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
+                    <context context-type="linenumber">10</context>
+                </context-group>
+                <note priority="1" from="description">Writing study section title</note>
+            </trans-unit>
+            <trans-unit id="2ec29e5e4a7683837552b5e2bae26242" datatype="html">
+                <source>CONTINUE</source>
+                <target>CONTINUE</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
+                    <context context-type="linenumber">13</context>
+                </context-group>
+                <note priority="1" from="description">Continue study button title</note>
+            </trans-unit>
             <trans-unit id="b22c9ff9e3bf611b3fd86fa13f57b904" datatype="html">
                 <source>This feature is still in development..</source>
                 <target>This feature is still in development..</target>
