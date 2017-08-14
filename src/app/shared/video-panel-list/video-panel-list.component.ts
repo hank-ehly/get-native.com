@@ -54,7 +54,6 @@ export class VideoPanelListComponent {
     @Input() navigates = false;
     @Input() controls = false;
 
-    // Todo: you are here
     @Output() begin = new EventEmitter<StudySession>();
 
     private _videos: Video[];
