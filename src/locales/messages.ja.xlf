@@ -677,6 +677,15 @@
                 </context-group>
                 <note priority="1" from="description">The title for the dashboard videos section</note>
             </trans-unit>
+            <trans-unit id="d2fa34a72514b69f9e2697247f4c2234" datatype="html">
+                <source>All videos</source>
+                <source>すべての動画</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">9</context>
+                </context-group>
+                <note priority="1" from="description">Dashboard category dropdown All videos label</note>
+            </trans-unit>
             <trans-unit id="14bd1e219636451e28b4f0d20069ea1b" datatype="html">
                 <source>expand</source>
                 <target>広げる</target>
@@ -823,7 +832,7 @@
             </trans-unit>
             <trans-unit id="ff43f4457e32be874087e47b5fa57de9" datatype="html">
                 <source>Videos</source>
-                <target>ビデオ</target>
+                <target>動画</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library.component.ts</context>
                     <context context-type="linenumber">4</context>
@@ -832,7 +841,7 @@
             </trans-unit>
             <trans-unit id="39ae7f4a334778f4c7f2b2003d4f7202" datatype="html">
                 <source>All videos</source>
-                <target>すべてのビデオ</target>
+                <target>すべての動画</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library.component.ts</context>
                     <context context-type="linenumber">8</context>
@@ -886,7 +895,7 @@
             </trans-unit>
             <trans-unit id="b1196fd06b5f3630fdc21acb30697b8d" datatype="html">
                 <source>About this video:</source>
-                <target>このビデオについて：</target>
+                <target>この動画について：</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library-detail.component.ts</context>
                     <context context-type="linenumber">7</context>
@@ -2659,7 +2668,7 @@
             </trans-unit>
             <trans-unit id="37b0847e5aa24a6f1b58091a13bff6c9" datatype="html">
                 <source>Video database</source>
-                <target>ビデオデータベース</target>
+                <target>動画データベース</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">14</context>
@@ -2668,7 +2677,7 @@
             </trans-unit>
             <trans-unit id="fb641dc07645e335fa9e727646d03c9b" datatype="html">
                 <source>Video database</source>
-                <target>ビデオデータベース</target>
+                <target>動画データベース</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">17</context>
@@ -2677,7 +2686,7 @@
             </trans-unit>
             <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
                 <source>getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</source>
-                <target>getnativeは、流体のスピーチとネイティブスピーチとの間の障壁を壊すことです。障壁を解く私たちの方法は、ネイティブスピーカーのビデオインタビューを使用して、集中的な観察、発音練習、能動的な学習を通してです。言うまでもなく、これがうまくいくためには、たくさんのインタビュービデオが必要です！</target>
+                <target>getnativeは、流体のスピーチとネイティブスピーチとの間の障壁を壊すことです。障壁を解く私たちの方法は、ネイティブスピーカーのビデオインタビューを使用して、集中的な観察、発音練習、能動的な学習を通してです。言うまでもなく、これがうまくいくためには、たくさんのインタビュー動画が必要です！</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">18</context>

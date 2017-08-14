@@ -183,7 +183,7 @@
         <source>settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar settings icon</note>
       </trans-unit>
@@ -191,7 +191,7 @@
         <source>Settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="description">Title for user settings navbar icon</note>
       </trans-unit>
@@ -599,6 +599,14 @@
           <context context-type="linenumber">5</context>
         </context-group>
         <note priority="1" from="description">The title for the dashboard videos section</note>
+      </trans-unit>
+      <trans-unit id="d2fa34a72514b69f9e2697247f4c2234" datatype="html">
+        <source>All videos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Dashboard category dropdown All videos label</note>
       </trans-unit>
       <trans-unit id="14bd1e219636451e28b4f0d20069ea1b" datatype="html">
         <source>expand</source>
@@ -2800,19 +2808,11 @@
         </context-group>
         <note priority="1" from="description">The submit button text for the general settings update password form</note>
       </trans-unit>
-      <trans-unit id="9f55b08839a180df1d65398a9079d37e" datatype="html">
-        <source>user picture</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-        <note priority="1" from="description">Alt text for settings page user thumbnail image</note>
-      </trans-unit>
       <trans-unit id="b95a9f64b954582c56cb0033abf73084" datatype="html">
         <source>View and update your login credentials.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">13</context>
         </context-group>
         <note priority="1" from="description">General settings page description</note>
       </trans-unit>
@@ -2820,7 +2820,7 @@
         <source>Manage your account privacy settings.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <note priority="1" from="description">Security settings page description</note>
       </trans-unit>
@@ -2828,7 +2828,7 @@
         <source>Specify how getnative should be able to notify you.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">15</context>
         </context-group>
         <note priority="1" from="description">Notification settings page description</note>
       </trans-unit>
@@ -2836,7 +2836,7 @@
         <source>View updates and recent activity on getnative.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">16</context>
         </context-group>
         <note priority="1" from="description">Activity settings page description</note>
       </trans-unit>
@@ -2844,7 +2844,7 @@
         <source>GENERAL</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <note priority="1" from="description">The general settings page tab label</note>
       </trans-unit>
@@ -2852,7 +2852,7 @@
         <source>SECURITY</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <note priority="1" from="description">The security settings page tab label</note>
       </trans-unit>
@@ -2860,7 +2860,7 @@
         <source>NOTIFICATIONS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">23</context>
         </context-group>
         <note priority="1" from="description">The notifications settings page tab label</note>
       </trans-unit>
@@ -2868,7 +2868,7 @@
         <source>ACTIVITY</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <note priority="1" from="description">The activity page tab label</note>
       </trans-unit>
