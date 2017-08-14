@@ -2,37 +2,18 @@
 @import './transition.component.debug';
 
 .main {
-  margin-top: 230px;
+  margin-top: 60px;
   text-align: center;
 }
 
-.outer-circle {
-  @include border-radius(50%);
-  background: linear-gradient(to right, $robin-egg-blue, $shamrock);
-  height: 100px;
+.adsense--medium-rectangle {
+  background: $shamrock;
+  color: $white;
+  cursor: pointer;
+  height: 250px;
   margin: 0 auto;
-  position: relative;
-  width: 100px;
-}
-
-.inner-circle {
-  @include border-radius(50%);
-  background: $white;
-  height: 96px;
-  position: absolute;
-  transform: translate(2px, 2px);
-  width: 96px;
-}
-
-.number-label {
-  background: -webkit-linear-gradient(90deg, $robin-egg-blue, $shamrock);
-  font-size: 40px;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-45%, -45%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  width: 300px;
+  line-height: 260px;
 }
 
 .next-exercise-label, .next-exercise {
@@ -48,4 +29,9 @@
 .next-exercise {
   margin-top: 6px;
   color: $shamrock;
+}
+
+.button--continue {
+  display: block;
+  margin: 40px auto 0;
 }
