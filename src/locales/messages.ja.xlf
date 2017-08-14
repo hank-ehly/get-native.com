@@ -679,7 +679,7 @@
             </trans-unit>
             <trans-unit id="d2fa34a72514b69f9e2697247f4c2234" datatype="html">
                 <source>All videos</source>
-                <source>すべての動画</source>
+                <target>すべての動画</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
                     <context context-type="linenumber">9</context>
