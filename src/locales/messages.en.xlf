@@ -678,6 +678,15 @@
                 </context-group>
                 <note priority="1" from="description">The title for the dashboard videos section</note>
             </trans-unit>
+            <trans-unit id="d2fa34a72514b69f9e2697247f4c2234" datatype="html">
+                <source>All videos</source>
+                <target>All videos</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">9</context>
+                </context-group>
+                <note priority="1" from="description">Dashboard category dropdown All videos label</note>
+            </trans-unit>
             <trans-unit id="14bd1e219636451e28b4f0d20069ea1b" datatype="html">
                 <source>expand</source>
                 <target>expand</target>
