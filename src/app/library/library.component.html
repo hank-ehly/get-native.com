@@ -16,7 +16,13 @@
 
         <gn-video-panel-list [videos]="videos$ | async" [navigates]="true"></gn-video-panel-list>
 
-        <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)" [ngClass]="{'button--loading': loading$ | async}" *ngIf="!(loading$ | async)" i18n="The text for the load more button of the Library page videos section@@dc5e40c592f0ce0f2b4cb80d13ea4e88">LOAD MORE</button>
+        <button class="button section__button" (click)="loadMoreVideos$.next(maxVideoId)" [ngClass]="{'button--loading': loading$ | async}" *ngIf="!(loading$ | async) && (videos$ | async)?.length" i18n="The text for the load more button of the Library page videos section@@dc5e40c592f0ce0f2b4cb80d13ea4e88">LOAD MORE</button>
         <img src="assets/icons/spinner.gif" i18n-alt="loading icon@@a91e51cea70873729bbf8c93e9acde65" alt="loading" class="button__activity-indicator" *ngIf="loading$ | async">
+        <ng-container *ngIf="!(loading$ | async) && !(videos$ | async)?.length">
+            <div class="section__error">
+                <p class="emoji">🤦</p>
+                <p i18n="No videos for category message@@331d558742a5c1254c378d55fb4b9e70">Whoops! No videos exist for this category yet..</p>
+            </div>
+        </ng-container>
     </section>
 </main>
