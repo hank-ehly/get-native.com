@@ -1,28 +1,27 @@
 <main>
-    <ng-container>
-        <section class="section section_video-panels">
-            <header class="section-header">
-                <h1 class="section-header__title" i18n="The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Queue</h1>
+    <section class="section section_video-panels">
+        <header class="section-header">
+            <h1 class="section-header__title" i18n="The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Queue</h1>
 
-                <div class="dropdown-toggle" *ngIf="(videos$ | async)?.length">
-                    <span class="dropdown-toggle__text" *ngIf="(categoryFilter$ | async)?.value">{{ categoryFilter$.pluck('text') | async }}</span>
-                    <span class="dropdown-toggle__text" *ngIf="!(categoryFilter$ | async)?.value" i18n="Dashboard category dropdown All videos label@@d2fa34a72514b69f9e2697247f4c2234">All videos</span>
-                    <img class="dropdown-toggle__icon" src="assets/icons/arrow-down.svg" i18n-alt="expand dropdown@@14bd1e219636451e28b4f0d20069ea1b" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
-                    <img class="dropdown-toggle__icon" src="assets/icons/arrow-up.svg" i18n-alt="collapse dropdown@@f74c79343cda783697a2db9d5d5cfab5" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
-                    <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="assets/icons/close-green.svg" i18n-alt="reset dropdown selection@@b5e764ff26da3bba591d4aecb626c02b" alt="reset" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
-                </div>
+            <div class="dropdown-toggle" *ngIf="(videos$ | async)?.length">
+                <span class="dropdown-toggle__text" *ngIf="(categoryFilter$ | async)?.value">{{ categoryFilter$.pluck('text') | async }}</span>
+                <span class="dropdown-toggle__text" *ngIf="!(categoryFilter$ | async)?.value" i18n="Dashboard category dropdown All videos label@@d2fa34a72514b69f9e2697247f4c2234">All videos</span>
+                <img class="dropdown-toggle__icon" src="assets/icons/arrow-down.svg" i18n-alt="expand dropdown@@14bd1e219636451e28b4f0d20069ea1b" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
+                <img class="dropdown-toggle__icon" src="assets/icons/arrow-up.svg" i18n-alt="collapse dropdown@@f74c79343cda783697a2db9d5d5cfab5" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
+                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="assets/icons/close-green.svg" i18n-alt="reset dropdown selection@@b5e764ff26da3bba591d4aecb626c02b" alt="reset" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
+            </div>
 
-                <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
-            </header>
+            <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
+        </header>
 
-            <gn-video-panel-list [videos]="videos$ | async" [controls]="true" (begin)="onBegin($event)"></gn-video-panel-list>
+        <gn-video-panel-list [videos]="videos$ | async" [controls]="true" (begin)="onBegin($event)"></gn-video-panel-list>
 
-            <button class="button section__button" *ngIf="(videos$ | async)?.length" (click)="loadMoreVideos$.next(maxVideoId)" i18n="The text for the dashboard load more videos button@@da62c06d98499331f85421b712823185">LOAD MORE</button>
-            <p *ngIf="!(videos$ | async)?.length">Videos saved from the <a class="link" [routerLink]="['/library']">library</a> appear here!</p>
-        </section>
+        <button class="button section__button" *ngIf="(videos$ | async)?.length" (click)="loadMoreVideos$.next(maxVideoId)" i18n="The text for the dashboard load more videos button@@da62c06d98499331f85421b712823185">LOAD MORE</button>
+        <img src="assets/icons/spinner.gif" i18n-alt="alt text for dashboard loading icon@@0640631ad34e1ca9e417997625656fd8" alt="loading" class="button__activity-indicator" *ngIf="loading$ | async">
+        <p *ngIf="!(loading$ | async) && !(videos$ | async)?.length">Videos saved from the <a class="link" [routerLink]="['/library']">library</a> appear here!</p>
+    </section>
 
-        <hr>
-    </ng-container>
+    <hr>
 
     <section class="section section_goals">
         <header class="section-header">

@@ -42,3 +42,14 @@
   top: 40px;
   z-index: 1;
 }
+
+.section__error {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.emoji {
+  text-align: center;
+  font-size: $font-size-x-large * 2;
+}
