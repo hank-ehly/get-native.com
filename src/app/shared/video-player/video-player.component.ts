@@ -33,6 +33,7 @@ import * as _ from 'lodash';
 export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input() loop: boolean;
     @Input() src: string;
+    @Input() autoplay: boolean;
     @ViewChild(VideoDirective) player: VideoDirective;
 
     tooltipHidden: boolean;
