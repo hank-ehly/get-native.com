@@ -27,6 +27,7 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class StudySessionService {
+
     set current(value: any) {
         if (!_.isPlainObject(value)) {
             return;
@@ -139,4 +140,5 @@ export class StudySessionService {
 
         this._progressEmitted$ = new StudySessionSectionTimer(session.session.study_time);
     }
+
 }
