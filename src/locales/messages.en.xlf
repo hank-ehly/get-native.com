@@ -723,6 +723,15 @@
                 </context-group>
                 <note priority="1" from="description">The text for the dashboard load more videos button</note>
             </trans-unit>
+            <trans-unit id="0640631ad34e1ca9e417997625656fd8" datatype="html">
+                <source>loading</source>
+                <target>loading</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">20</context>
+                </context-group>
+                <note priority="1" from="description">alt text for dashboard loading icon</note>
+            </trans-unit>
             <trans-unit id="3e06f80500768c1b0dcb8b51e59bea2d" datatype="html">
                 <source>Stats</source>
                 <target>Stats</target>
@@ -893,6 +902,15 @@
                     <context context-type="linenumber">19</context>
                 </context-group>
                 <note priority="1" from="description">loading icon</note>
+            </trans-unit>
+            <trans-unit id="331d558742a5c1254c378d55fb4b9e70" datatype="html">
+                <source>Whoops! No videos exist for this category yet..</source>
+                <target>Whoops! No videos exist for this category yet..</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/library/library.component.ts</context>
+                    <context context-type="linenumber">37</context>
+                </context-group>
+                <note priority="1" from="description">No videos for category message</note>
             </trans-unit>
             <trans-unit id="b1196fd06b5f3630fdc21acb30697b8d" datatype="html">
                 <source>About this video:</source>

@@ -97,7 +97,6 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                     search.set('q', query);
                 }
 
-                // todo: get rid of global context
                 if (this.cuedOnly) {
                     search.set('cued_only', 'true');
                 }
