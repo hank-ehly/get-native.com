@@ -14,11 +14,16 @@ import * as _ from 'lodash';
 @Injectable()
 export class WordCountService {
     count(input: string, languageCode: LanguageCode = 'en'): number {
-        if (languageCode === 'ja') {
-            return this.countWordsInJapanese(input);
+        let count: number;
+        switch (languageCode) {
+            case 'ja':
+                count = this.countWordsInJapanese(input);
+                break;
+            default:
+                count = this.countWordsInEnglish(input);
+                break;
         }
-
-        return this.countWordsInEnglish(input);
+        return count;
     }
 
     private countWordsInEnglish(input: string): number {
