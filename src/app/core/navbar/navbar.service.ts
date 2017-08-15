@@ -29,18 +29,9 @@ export class NavbarService {
 
     // sources
     progressBarVisibleSource: Subject<boolean> = new Subject<boolean>();
-    private emitDisplayMagnifyingGlass$: Subject<boolean>;
 
     // emitters
     progressBarVisibleEmitted$: Observable<boolean> = this.progressBarVisibleSource.asObservable();
-
-    progress: any = {
-        countdownEmitted$: new BehaviorSubject<number>(0),
-        listeningEmitted$: new BehaviorSubject<number>(0),
-        shadowingEmitted$: new BehaviorSubject<number>(0),
-        speakingEmitted$: new BehaviorSubject<number>(0),
-        writingEmitted$: new BehaviorSubject<number>(0)
-    };
 
     constructor() {
         this.searchBarVisible$.mapTo('').subscribe(this.query$);
