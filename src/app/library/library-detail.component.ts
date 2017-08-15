@@ -12,7 +12,6 @@ import { StudySessionService } from '../core/study-session/study-session.service
 import { QueueButtonState } from '../core/navbar/queue-button-state';
 import { FacebookService } from '../core/facebook/facebook.service';
 import { GNRequestOptions } from '../core/http/gn-request-options';
-import { kListening } from '../core/study-session/section-keys';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
 import { APIHandle } from '../core/http/api-handle';
@@ -99,8 +98,6 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 .map(() => this.queued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
                 .subscribe(this.navbar.queueButtonState$),
 
-            this.navbar.onClickStart$.subscribe(this.onClickStart.bind(this)),
-
             this.video$
                 .pluck('cued')
                 .do((cued: boolean) => this.queued = cued)
@@ -139,11 +136,5 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     private updateLiked(liked: boolean) {
         this.liked = liked;
-    }
-
-    private onClickStart(): void {
-        this.studySession.create({video_id: this.videoId, study_time: 50}).toPromise().then(() => {
-            this.studySession.transition(kListening);
-        });
     }
 }

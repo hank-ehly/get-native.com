@@ -22,7 +22,6 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/do';
-import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-navbar',
@@ -63,7 +62,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     progressBarVisibleEmitted$ = this.navbar.progressBarVisibleEmitted$;
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
     displayNotificationDropdown$ = new BehaviorSubject<boolean>(false);
-    progress             = this.navbar.progress;
     OnDestroy$           = new Subject<void>();
 
     queueButtonSaveState = QueueButtonState.SAVE;
