@@ -2,8 +2,11 @@
 @import './transition.component.debug';
 
 .main {
-  margin-top: 60px;
   text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .adsense--medium-rectangle {
