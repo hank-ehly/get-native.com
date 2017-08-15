@@ -284,6 +284,15 @@
                 <note priority="1" from="description">The text to the library link in the vertical side-menu</note>
                 <note priority="1" from="meaning">side-menu library link</note>
             </trans-unit>
+            <trans-unit id="041680e74045d822b14408222599a8c6" datatype="html">
+                <source><x id="INTERPOLATION"/> LEFT</source>
+                <target>残り <x id="INTERPOLATION"/></target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/study-progress/study-progress.component.ts</context>
+                    <context context-type="linenumber">2</context>
+                </context-group>
+                <note priority="1" from="description">Time-left progress bar label</note>
+            </trans-unit>
             <trans-unit id="2928b4e8fa3f0345bacfaabe6ca854ac" datatype="html">
                 <source>settings</source>
                 <target>設定</target>
