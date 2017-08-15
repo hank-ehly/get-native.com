@@ -8,37 +8,39 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
-import { kSpeaking } from '../../core/study-session/section-keys';
+import { StudySessionSection } from '../../core/typings/study-session-section';
 import { Logger } from '../../core/logger/logger';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subscription } from 'rxjs/Subscription';
-import * as _ from 'lodash';
 
 @Component({
     templateUrl: 'shadowing.component.html',
     styleUrls: ['shadowing.component.scss']
 })
 export class ShadowingComponent implements OnInit, OnDestroy {
-    modalVisibility$ = new BehaviorSubject<boolean>(false);
+    isModalPresented$ = new BehaviorSubject<boolean>(false);
     src = this.session.current.video.video_url;
-
-    subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private session: StudySessionService) {
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-
-        this.subscriptions.push(
-            this.session.progressEmitted$.subscribe(this.session.progress.shadowingEmitted$), // todo: this needs to be reset
-            this.session.progressEmitted$.subscribe(null, null, () => this.session.transition(kSpeaking))
-        );
+        this.session.startSectionTimer();
+        this.session.timeLeftEmitted$.filter(time => time === 0).subscribe(() => {
+            this.session.transition(StudySessionSection.Speaking);
+        });
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.invokeMap(this.subscriptions, 'unsubscribe');
+    }
+
+    onClickOpenModal(): void {
+        this.isModalPresented$.next(true);
+    }
+
+    onCloseModal(): void {
+        this.isModalPresented$.next(false);
     }
 }

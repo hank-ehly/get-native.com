@@ -33,6 +33,6 @@ export class StudyComponent implements OnInit, OnDestroy {
     }
 
     onClickSkip(): void {
-        this.session.transition(this.session.nextSection);
+        // this.session.transition(this.session.nextSection);
     }
 }

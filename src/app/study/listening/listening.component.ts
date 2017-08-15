@@ -8,11 +8,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
-import { kShadowing } from '../../core/study-session/section-keys';
+import { StudySessionSection } from '../../core/typings/study-session-section';
 import { Logger } from '../../core/logger/logger';
-
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/takeUntil';
 
 @Component({
     templateUrl: 'listening.component.html',
@@ -20,22 +17,22 @@ import 'rxjs/add/operator/takeUntil';
 })
 export class ListeningComponent implements OnInit, OnDestroy {
 
-    transcripts = this.session.current.video.transcripts;
     src = this.session.current.video.video_url;
-    OnDestroy$ = new Subject<void>();
+    transcripts = this.session.current.video.transcripts;
 
     constructor(private logger: Logger, private session: StudySessionService) {
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.session.progressEmitted$.takeUntil(this.OnDestroy$).subscribe(this.session.progress.listeningEmitted$);
-        this.session.progressEmitted$.takeUntil(this.OnDestroy$).subscribe(null, null, () => this.session.transition(kShadowing));
+        this.session.startSectionTimer();
+        this.session.timeLeftEmitted$.filter(time => time === 0).subscribe(() => {
+            this.session.transition(StudySessionSection.Shadowing);
+        });
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        this.OnDestroy$.next();
     }
 
 }

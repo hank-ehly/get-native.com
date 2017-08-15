@@ -8,73 +8,95 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { StudySessionLocalStorageObject } from './study-session-local-storage-object';
 import { LocalStorageService } from '../local-storage/local-storage.service';
-import { kListening, kShadowing, kSpeaking, kWriting } from './section-keys';
 import { kCurrentStudySession } from '../local-storage/local-storage-keys';
-import { StudySessionSectionTimer } from './study-session-section-timer';
 import { StudySessionSection } from '../typings/study-session-section';
-import { NavbarService } from '../navbar/navbar.service';
 import { StudySession } from '../entities/study-session';
 import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
 import { Logger } from '../logger/logger';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/share';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 import * as _ from 'lodash';
 
 @Injectable()
 export class StudySessionService {
 
     set current(value: any) {
-        if (!_.isPlainObject(value)) {
-            return;
-        }
-
-        this._current = value;
         this.localStorage.setItem(kCurrentStudySession, value);
     }
 
     get current() {
-        if (!this._current && this.localStorage.hasItem(kCurrentStudySession)) {
-            return this.localStorage.getItem(kCurrentStudySession);
-        }
-
-        return this._current;
+        return this.localStorage.getItem(kCurrentStudySession);
     }
 
-    get progressEmitted$(): Observable<number> {
-        if (!this._progressEmitted$ && _.has(this.current, 'session.study_time')) {
-            this._progressEmitted$ = new StudySessionSectionTimer(this.current.session.study_time);
+    get sectionName(): string {
+        let name: string;
+        switch (this.current.section) {
+            case StudySessionSection.Listening:
+                name = 'listening';
+                break;
+            case StudySessionSection.Shadowing:
+                name = 'shadowing';
+                break;
+            case StudySessionSection.Speaking:
+                name = 'speaking';
+                break;
+            case StudySessionSection.Writing:
+                name = 'writing';
+                break;
+            default:
+                break;
         }
-
-        return this._progressEmitted$.share();
+        return name;
     }
 
-    get nextSection(): StudySessionSection {
-        let nextSection: StudySessionSection;
+    private timeLeftSource: Subject<number>;
+    timeLeftEmitted$: Observable<number>;
 
-        if (this.current.section === kListening) {
-            nextSection = kShadowing;
-        } else if (this.current.section === kShadowing) {
-            nextSection = kSpeaking;
-        } else {
-            nextSection = kWriting;
-        }
+    private timerStoppedSource: Subject<void>;
+    timerStoppedEmitted$: Observable<void>;
 
-        return nextSection;
+    private sectionTimer: NodeJS.Timer;
+
+    constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router) {
+        this.timerStoppedSource = new Subject<void>();
+        this.timerStoppedEmitted$ = this.timerStoppedSource.asObservable();
+
+        this.timeLeftSource = new Subject<number>();
+        this.timeLeftEmitted$ = this.timeLeftSource.asObservable().takeUntil(this.timerStoppedEmitted$);
     }
 
-    progress = this.navbar.progress;
+    startSectionTimer(): void {
+        let seconds = _.floor(this.current.session.study_time / 4);
+        this.logger.debug(this, 'startSectionTimer', seconds);
 
-    private _progressEmitted$: Observable<number>    = null;
-    private _current: StudySessionLocalStorageObject = null;
-    private _countdown: NodeJS.Timer;
+        seconds--;
+        this.timeLeftSource.next(seconds);
 
-    constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router,
-                private navbar: NavbarService) {
+        this.sectionTimer = setInterval(() => {
+            seconds--;
+
+            this.timeLeftSource.next(seconds);
+
+            if (seconds === 0) {
+                clearInterval(this.sectionTimer);
+            }
+        }, 1000);
+    }
+
+    stopSectionTimer(): void {
+        this.logger.debug(this, 'stop section timer');
+        clearInterval(this.sectionTimer);
+        this.timerStoppedSource.next();
+    }
+
+    resetSectionTimer(): void {
+        this.logger.debug(this, 'resetSectionTimer');
+        const timeLeft = _.floor(this.current.session.study_time / 4);
+        this.timeLeftSource.next(timeLeft);
     }
 
     create(options: StudySession): Observable<any> {
@@ -82,63 +104,25 @@ export class StudySessionService {
     }
 
     transition(section: StudySessionSection) {
-        this.updateCurrent({
-            section: section
-        });
-
-        this.router.navigate(['/study']).then(() => {
-            this.logger.debug(this, 'navigated to /study');
-        });
+        this.updateCurrentSessionCache({section: section});
+        this.router.navigate(['/study']);
     }
 
-    updateCurrent(value: any): void {
-        if (!_.isPlainObject(value)) {
-            return;
-        }
-
+    updateCurrentSessionCache(value: any): void {
+        this.logger.debug(this, 'will update this.current with value', this.current, value);
         const current = this.current;
         _.assign(current, value);
         this.current = current;
     }
 
-    startCountdown(): void {
-        this.logger.debug(this, 'startCountdown');
-        let seconds = _.floor(this.current.session.study_time / 4);
-
-        seconds--;
-        this.progress.countdownEmitted$.next(seconds);
-
-        this._countdown = setInterval(() => {
-            seconds--;
-
-            if (seconds === 0) {
-                clearInterval(this._countdown);
-                return;
-            }
-
-            this.progress.countdownEmitted$.next(seconds);
-        }, 1000);
-    }
-
-    resetCountdown(): void {
-        clearInterval(this._countdown);
-        const sectionTime = _.floor(this.current.session.study_time / 4);
-        this.logger.debug(this, 'resetCountdown', sectionTime);
-        this.progress.countdownEmitted$.next(sectionTime);
-    }
-
     end(): void {
-        this.resetCountdown();
-        _.invokeMap(this.progress, 'next', 0);
+        this.stopSectionTimer();
+        this.localStorage.removeItem(kCurrentStudySession);
     }
 
     private onStartStudySession(studySession: StudySession) {
-        const session: any = {};
-
-        session.session = studySession;
-        this.current = session;
-
-        this._progressEmitted$ = new StudySessionSectionTimer(session.session.study_time);
+        this.current = {session: studySession};
+        this.resetSectionTimer();
     }
 
 }
