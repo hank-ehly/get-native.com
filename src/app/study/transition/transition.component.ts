@@ -23,20 +23,18 @@ import 'rxjs/observable/never';
 })
 export class TransitionComponent implements OnInit {
 
-    section = this.session.current.section;
+    sectionName = this.session.sectionName;
 
     constructor(private logger: Logger, private router: Router, private session: StudySessionService) {
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.session.resetCountdown();
+        this.session.resetSectionTimer();
     }
 
     onClickContinue(): void {
-        this.router.navigate(['/study/' + this.session.current.section]).then(() => {
-            this.session.startCountdown();
-        });
+        this.router.navigate(['/study/' + this.sectionName]);
     }
 
 }

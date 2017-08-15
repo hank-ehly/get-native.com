@@ -23,7 +23,6 @@ export class StudySessionGuard implements CanDeactivate<StudyComponent> {
                   nextState?: RouterStateSnapshot): boolean {
         this.logger.debug(this, 'canDeactivate');
         this.session.end();
-        this.localStorage.removeItem(kCurrentStudySession);
         return true;
     }
 }

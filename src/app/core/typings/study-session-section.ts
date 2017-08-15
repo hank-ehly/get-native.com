@@ -5,4 +5,9 @@
  * Created by henryehly on 2017/05/01.
  */
 
-export type StudySessionSection = 'listening' | 'shadowing' | 'speaking' | 'writing';
+export enum StudySessionSection {
+    Listening = 0,
+    Shadowing = 1,
+    Speaking = 2,
+    Writing = 3
+}

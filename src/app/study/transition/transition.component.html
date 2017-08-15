@@ -3,7 +3,7 @@
 
     <span class="next-exercise-label" i18n="next exercise label@@9b5cd26f05a734b19a7719a39a949d87">NEXT EXERCISE:</span>
 
-    <ng-container [ngSwitch]="section">
+    <ng-container [ngSwitch]="sectionName">
         <span class="next-exercise" i18n="Listening study section title@@ad37dd3cdbaf36e623ae02e2354fc34c" *ngSwitchDefault>LISTENING</span>
         <span class="next-exercise" i18n="Shadowing study section title@@e12fd2268e7114bbc5c4b9cbbc12b413" *ngSwitchCase="'shadowing'">SHADOWING</span>
         <span class="next-exercise" i18n="Speaking study section title@@4f31bbabad22e0fe6a36ba9d8929f362" *ngSwitchCase="'speaking'">SPEAKING</span>

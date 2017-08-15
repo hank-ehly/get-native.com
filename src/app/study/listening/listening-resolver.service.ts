@@ -31,7 +31,7 @@ export class ListeningResolver implements Resolve<Video> {
         this.logger.debug(this, 'no cached video present. requesting from API');
         const options = {params: {id: this.studySession.current.session.video_id}};
         return this.http.request(APIHandle.VIDEO, options).map((video: Video) => {
-            this.studySession.updateCurrent({video: video});
+            this.studySession.updateCurrentSessionCache({video: video});
             return video;
         });
     }

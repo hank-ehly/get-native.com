@@ -23,6 +23,7 @@ export class WritingGuard implements CanDeactivate<WritingComponent> {
     constructor(private logger: Logger, private http: HttpService, private session: StudySessionService) {
     }
 
+    // todo: this should not be a guard. move this to the timeLeftEmitted$ completion handler
     canDeactivate(component: WritingComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot,
                   nextState?: RouterStateSnapshot): Promise<boolean> {
         this.logger.debug(this, 'canDeactivate');
@@ -39,7 +40,7 @@ export class WritingGuard implements CanDeactivate<WritingComponent> {
             words_per_minute: wordsPerMinute
         };
 
-        this.session.updateCurrent({writingAnswer: writingAnswer});
+        this.session.updateCurrentSessionCache({writingAnswer: writingAnswer});
 
         // todo: What should happen if this request fails
         return this.http.request(APIHandle.CREATE_WRITING_ANSWER, {
