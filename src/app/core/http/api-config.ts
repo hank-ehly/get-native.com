@@ -39,7 +39,8 @@ export const APIConfig = new Map<APIHandle, any>([
     [APIHandle.CATEGORIES, {
         method: RequestMethod.Get,
         url: '/categories',
-        isProtected: false
+        isProtected: false,
+        permitURLSearchParams: ['lang']
     }],
     [APIHandle.VIDEOS, {
         method: RequestMethod.Get,
