@@ -5,15 +5,15 @@
  * Created by henryehly on 2016/11/28.
  */
 
-import { Component, OnInit } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
 import { VideoSearchComponent } from '../shared/video-search/video-search.component';
 import { CategoryListService } from '../core/category-list/category-list.service';
 import { StudySessionService } from '../core/study-session/study-session.service';
+import { StudySessionSection } from '../core/typings/study-session-section';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
-import { kListening } from '../core/study-session/section-keys';
 import { WritingAnswer } from '../core/entities/writing-answer';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { StudySession } from '../core/entities/study-session';
@@ -29,6 +29,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/pluck';
@@ -53,7 +54,9 @@ import * as _ from 'lodash';
         ])
     ]
 })
-export class DashboardComponent extends VideoSearchComponent implements OnInit {
+export class DashboardComponent extends VideoSearchComponent implements OnInit, OnDestroy {
+
+    OnDestroy$ = new Subject<void>();
     maxAnswerId: number = null;
 
     filterAnswers = new Subject<number>();
@@ -103,9 +106,14 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
         this.logger.debug(this, 'OnInit');
     }
 
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
+        this.OnDestroy$.next();
+    }
+
     onBegin(studySession: StudySession): void {
-        this.session.create(studySession).toPromise().then(() => {
-            this.session.transition(kListening);
+        this.session.create(studySession).takeUntil(this.OnDestroy$).subscribe(() => {
+            this.session.transition(StudySessionSection.Listening);
         });
     }
 
@@ -118,4 +126,5 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit {
     private concatWritingAnswers(acc: WritingAnswer[], records: WritingAnswer[]) {
         return records ? _.unionWith(acc, records, _.isEqual) : [];
     }
+
 }
