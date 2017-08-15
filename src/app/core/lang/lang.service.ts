@@ -46,6 +46,6 @@ export class LangService {
 
     languageForLocaleId(localeId: string): Language {
         const match = _.find(Languages, {code: localeId});
-        return !match ? _.find(Languages, {code: 'en'}) : match;
+        return match ? match : _.find(Languages, {code: 'en'});
     }
 }
