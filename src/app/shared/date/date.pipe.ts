@@ -18,6 +18,9 @@ export class DatePipe implements PipeTransform {
 
     transform(value: any, ...args: any[]): any {
         const date = this.dateService.parse(value);
+        // todo: use moment
+        // todo: add japanese locale to moment
+        // todo: set global moment locale to appropriate language after retrieving interface language
         return `${date.getUTCDate()} ${this.dateService.getTextMonth(date)} ${date.getUTCFullYear()}`;
     }
 }
