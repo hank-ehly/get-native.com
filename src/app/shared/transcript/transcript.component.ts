@@ -52,7 +52,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
 
     selectedTab$ = new Subject<HTMLLIElement>();
 
-    sliderPosition$ = this.selectedTab$.map(t => {
+    sliderPosition$ = this.selectedTab$.asObservable().map(t => {
         return {
             left: `${t.offsetLeft}px`, width: `${t.offsetWidth}px`
         };
@@ -92,6 +92,8 @@ export class TranscriptComponent implements OnInit, OnDestroy {
         if (this.selectedTranscript.collocation_occurrences.records.length) {
             /* todo: if previous selection exists, use that */
             this.selectedCollocationOccurrence = _.first(this.selectedTranscript.collocation_occurrences.records);
+        } else {
+            this.selectedCollocationOccurrence = null;
         }
     }
 
