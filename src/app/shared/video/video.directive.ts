@@ -5,24 +5,26 @@
  * Created by henryehly on 2016/12/16.
  */
 
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 
+import { UnitInterval } from '../../core/typings/unit-interval';
 import { Logger } from '../../core/logger/logger';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Directive({
     selector: '[gnVideo]'
 })
 export class VideoDirective {
-    currentTime$: Observable<number>;
-    loadedMetadata$: Observable<Event>;
-    progress$: Observable<number>;
 
-    private currentTimeSource: Subject<number>;
+    currentTimeEmitted$: Observable<UnitInterval>;
+    loadedMetadataEmitted$: Observable<Event>;
+
+    private currentTimeSource: Subject<UnitInterval>;
     private loadedMetadataSource: Subject<Event>;
-    private progressSource: Subject<number>;
+    private progressSource: BehaviorSubject<number>;
 
     private videoEl: HTMLVideoElement;
     private previousStepTime: number;
@@ -32,15 +34,15 @@ export class VideoDirective {
 
         this.currentTimeSource = new Subject<number>();
         this.loadedMetadataSource = new Subject<Event>();
-        this.progressSource = new Subject<number>();
+        this.progressSource = new BehaviorSubject<number>(0);
 
-        this.currentTime$ = this.currentTimeSource.asObservable();
-        this.loadedMetadata$ = this.loadedMetadataSource.asObservable();
-        this.progress$ = this.progressSource.asObservable();
+        this.currentTimeEmitted$ = this.currentTimeSource.asObservable();
+        this.loadedMetadataEmitted$ = this.loadedMetadataSource.asObservable();
 
-        this.videoEl.onloadedmetadata = this.onloadedmetadata.bind(this);
-        this.videoEl.onprogress = this.onprogress.bind(this);
-        this.videoEl.onloadeddata = this.onprogress.bind(this);
+        this.videoEl.onloadedmetadata = this.onLoadedMetadata.bind(this);
+        this.videoEl.onprogress = this.onProgress.bind(this);
+        this.videoEl.onloadeddata = this.onProgress.bind(this);
+        this.videoEl.onplay = this.onPlay.bind(this);
     }
 
     get paused(): boolean {
@@ -51,11 +53,6 @@ export class VideoDirective {
         return this.videoEl.currentTime;
     }
 
-    set currentTime(time: number) {
-        this.videoEl.currentTime = time;
-        this.currentTimeSource.next(time);
-    }
-
     get duration(): number {
         return this.videoEl.duration;
     }
@@ -64,24 +61,32 @@ export class VideoDirective {
         return this.videoEl.volume;
     }
 
+    get progress(): number {
+        return this.progressSource.getValue();
+    }
+
+    set currentTime(time: number) {
+        this.videoEl.currentTime = time;
+        this.currentTimeSource.next(time);
+    }
+
     set volume(value: number) {
         this.videoEl.volume = value;
     }
 
     play(): void {
         this.videoEl.play();
-        this.triggerAnimationLoop();
     }
 
     pause(): void {
         this.videoEl.pause();
     }
 
-    private onloadedmetadata(e: Event): void {
+    private onLoadedMetadata(e: Event): void {
         this.loadedMetadataSource.next(e);
     }
 
-    private onprogress(e: Event): void {
+    private onProgress(e: Event): void {
         if (this.videoEl.readyState < this.videoEl.HAVE_CURRENT_DATA) {
             return;
         }
@@ -92,6 +97,10 @@ export class VideoDirective {
         this.progressSource.next(loaded);
 
         this.logger.debug(this, e.type, loaded);
+    }
+
+    private onPlay(e: Event): void {
+        this.triggerAnimationLoop();
     }
 
     private triggerAnimationLoop(): void {
@@ -117,7 +126,7 @@ export class VideoDirective {
         }
 
         const progress = time - this.previousStepTime;
-        const minStepProgress = 50;
+        const minStepProgress = 30;
 
         return progress >= minStepProgress;
     }
@@ -125,4 +134,5 @@ export class VideoDirective {
     private render(): void {
         this.currentTimeSource.next(this.currentTime);
     }
+
 }
