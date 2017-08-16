@@ -8,12 +8,12 @@
 import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { trigger, animate, style, transition } from '@angular/animations';
 
-import { VideoDirective } from '../video/video.directive';
 import { UnitInterval } from '../../core/typings/unit-interval';
+import { VideoDirective } from '../video/video.directive';
 import { Logger } from '../../core/logger/logger';
 
-import { Subscription } from 'rxjs/Subscription';
-import * as _ from 'lodash';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'gn-video-player',
@@ -34,26 +34,26 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input() loop: boolean;
     @Input() src: string;
     @Input() autoplay: boolean;
+
     @ViewChild(VideoDirective) player: VideoDirective;
+
+    OnDestroy$: Subject<void>;
+    currentTimeAsPercentEmitted$: Observable<number>;
 
     tooltipHidden: boolean;
     controlsHidden: boolean;
 
-    progress: UnitInterval;
-    currentTime: UnitInterval;
-
     private tooltipTimeout: NodeJS.Timer;
     private previousVolume: UnitInterval;
-    private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger) {
-        this.progress = this.currentTime = 0;
+        this.OnDestroy$ = new Subject<void>();
         this.controlsHidden = false;
         this.tooltipHidden = true;
     }
 
-    get volumeControlFillStyle(): {width: string} {
-        const volumePercentString = (this.player.volume * 100) + '%';
+    get volumeControlFillStyle(): { width: string } {
+        const volumePercentString = [this.player.volume * 100, '%'].join('');
         return {width: volumePercentString};
     }
 
@@ -63,14 +63,13 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.each(this.subscriptions, s => s.unsubscribe());
+        this.OnDestroy$.next();
     }
 
     ngAfterViewInit(): void {
-        this.subscriptions.push(
-            this.player.currentTime$.subscribe(this.onCurrentTime.bind(this)),
-            this.player.progress$.subscribe(this.onProgress.bind(this))
-        );
+        this.logger.debug(this, 'AfterViewInit');
+        this.currentTimeAsPercentEmitted$ = this.player.currentTimeEmitted$.takeUntil(this.OnDestroy$)
+            .map(timeInSeconds => timeInSeconds / this.player.duration);
     }
 
     onClickToggleButton(): void {
@@ -149,13 +148,5 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private hideTooltip(delay?: number): void {
         this.tooltipTimeout = setTimeout(() => this.tooltipHidden = true, delay || 0);
-    }
-
-    private onCurrentTime(timeInSeconds: number): void {
-        this.currentTime = (timeInSeconds / this.player.duration);
-    }
-
-    private onProgress(progress: UnitInterval) {
-        this.progress = progress;
     }
 }

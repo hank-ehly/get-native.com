@@ -5,15 +5,15 @@
         <button class="player-controls__toggle-button" (click)="onClickToggleButton()" [ngClass]="{'player-controls__toggle-button_paused': player.paused}"></button>
 
         <div class="play-bar">
-            <progress class="play-bar__progress" [value]="progress"></progress>
+            <progress class="play-bar__progress" [value]="player.progress"></progress>
             <label for="play-bar__input" class="sr-only">Seek</label>
-            <input type="range" class="play-bar__input" id="play-bar__input" max="1" step="0.01" #input [value]="currentTime" (input)="onInputCurrentTime(input.value)">
+            <input type="range" class="play-bar__input" id="play-bar__input" max="1" step="0.01" #input [value]="(currentTimeAsPercentEmitted$ | async) || 0" (input)="onInputCurrentTime(input.value)">
         </div>
 
 
         <div class="player-controls__time">
-            <span class="player-controls__time-elapsed">{{ player.currentTime | digitalTime }}</span>
-            <span class="player-controls__time-total">{{ player.duration | digitalTime }}</span>
+            <span class="player-controls__time-elapsed">{{ player.currentTimeEmitted$ | async | digitalTime }}</span>
+            <span class="player-controls__time-total">{{ (player.duration || 0) | digitalTime }}</span>
         </div>
 
         <div class="volume-control" (click)="onClickVolumeControl($event)" (mouseenter)="onMouseEnterVolumeControl()" (mouseleave)="onMouseLeaveVolumeControl()">
@@ -30,7 +30,7 @@
     </div>
 
     <div class="tracker" *ngIf="controlsHidden" [@fadeInOut]>
-        <progress class="tracker__progress" [value]="progress"></progress>
-        <progress class="tracker__current-time" [value]="currentTime"></progress>
+        <progress class="tracker__progress" [value]="player.progress"></progress>
+        <progress class="tracker__current-time" [value]="currentTimeAsPercentEmitted$ | async"></progress>
     </div>
 </div>
