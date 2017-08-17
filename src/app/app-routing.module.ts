@@ -14,7 +14,7 @@ import { AuthGuard } from './core/auth/auth-guard.service';
 import { PageNotFoundComponent } from './static-pages/page-not-found/page-not-found.component';
 import { TOSComponent } from './static-pages/tos/tos.component';
 import { PrivacyComponent } from './static-pages/privacy/privacy.component';
-import { HelpComponent } from './static-pages/help/help.component';
+import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './static-pages/home/home.component';
 import { LibraryDetailComponent } from './library/library-detail.component';
 import { LibraryComponent } from './library/library.component';
@@ -38,9 +38,11 @@ import { DashboardGuard } from './dashboard/dashboard-guard.service';
 import { DashboardResolveService } from './dashboard/dashboard-resolve.service';
 import { ConfirmEmailUpdateResolver } from './core/auth/confirm-email-update-resolver.service';
 import { LoginComponent } from './login/login.component';
+import { ActivityComponent } from './settings/activity/activity.component';
+import { HelpMainComponent } from './help/main/main.component';
+import { HelpArticleComponent } from './help/article/article.component';
 
 import { MetaGuard } from '@ngx-meta/core';
-import { ActivityComponent } from './settings/activity/activity.component';
 
 const routes: Routes = [
     {
@@ -165,11 +167,23 @@ const routes: Routes = [
         ]
     },
     {
-        path: 'help', component: HelpComponent, canActivate: [MetaGuard], data: {
-            meta: {
-                title: 'help.title'
+        path: 'help', component: HelpComponent, children: [
+            {
+                path: '',
+                component: HelpMainComponent,
+                canActivate: [MetaGuard],
+                data: {
+                    meta: {
+                        title: 'help.title'
+                    }
+                }
+            },
+            {
+                path: ':id',
+                component: HelpArticleComponent,
+                canActivate: [MetaGuard]
             }
-        }
+        ]
     },
     {
         path: 'privacy', component: PrivacyComponent, canActivate: [MetaGuard], data: {

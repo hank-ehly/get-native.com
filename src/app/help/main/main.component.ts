@@ -1,21 +1,14 @@
-/**
- * help.component
- * getnativelearning.com
- *
- * Created by henryehly on 2016/11/08.
- */
-
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
 
 import { Logger } from '../../core/logger/logger';
 
 import * as _ from 'lodash';
 
 @Component({
-    selector: 'gn-help',
-    templateUrl: 'help.component.html',
-    styleUrls: ['help.component.scss'],
+    selector: 'gn-help-main',
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.scss'],
     animations: [
         trigger('visible', [
             transition(':enter', [
@@ -34,7 +27,8 @@ import * as _ from 'lodash';
         ])
     ]
 })
-export class HelpComponent implements OnInit {
+export class HelpMainComponent implements OnInit {
+
     expandedFaqIndices: number[] = [];
 
     constructor(private logger: Logger) {
@@ -59,4 +53,5 @@ export class HelpComponent implements OnInit {
     isFaqExpandedAtIndex(i: number): boolean {
         return _.includes(this.expandedFaqIndices, i);
     }
+
 }

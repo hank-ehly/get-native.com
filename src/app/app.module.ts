@@ -25,6 +25,7 @@ import { LangService } from './core/lang/lang.service';
 import { metaFactory } from './meta-factory';
 
 import { MetaModule, MetaLoader } from '@ngx-meta/core';
+import { HelpModule } from './help/help.module';
 
 @NgModule({
     imports: [
@@ -44,6 +45,7 @@ import { MetaModule, MetaLoader } from '@ngx-meta/core';
         SettingsModule,
         StudyModule,
         StaticPagesModule,
+        HelpModule,
     ],
     declarations: [
         AppComponent

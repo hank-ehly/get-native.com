@@ -1,5 +1,5 @@
 @import "../../../styles/core";
-@import "./help.component.debug";
+@import "./main.component.debug";
 
 .main {
   display: flex;
@@ -72,6 +72,10 @@
   font-size: $font-size-small;
   margin-top: 30px;
   padding: 24px;
+}
+
+.faqs__faq-detail .link {
+  font-size: $font-size-small;
 }
 
 .section__paragraph {

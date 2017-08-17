@@ -7,7 +7,6 @@
 
 import { NgModule } from '@angular/core';
 
-import { HelpComponent } from './help/help.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PrivacyComponent } from './privacy/privacy.component';
@@ -16,10 +15,23 @@ import { SharedModule } from '../shared/shared.module';
 import { MobileOverlayComponent } from './mobile-overlay/mobile-overlay.component';
 
 @NgModule({
-    imports: [SharedModule],
-    exports: [HelpComponent, HomeComponent, PageNotFoundComponent, PrivacyComponent, TOSComponent, MobileOverlayComponent],
-    declarations: [HelpComponent, HomeComponent, PageNotFoundComponent, PrivacyComponent, TOSComponent, MobileOverlayComponent],
+    imports: [
+        SharedModule
+    ],
+    exports: [
+        HomeComponent,
+        PageNotFoundComponent,
+        PrivacyComponent,
+        TOSComponent,
+        MobileOverlayComponent
+    ],
+    declarations: [
+        HomeComponent,
+        PageNotFoundComponent,
+        PrivacyComponent,
+        TOSComponent,
+        MobileOverlayComponent
+    ],
 })
 export class StaticPagesModule {
 }
-
