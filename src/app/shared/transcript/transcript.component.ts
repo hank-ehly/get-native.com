@@ -124,14 +124,9 @@ export class TranscriptComponent implements OnInit, OnDestroy {
             return;
         }
 
-        const regExp = new RegExp(this.selectedCollocationOccurrence.text, 'gi');
+        const startTagReplacedText = _.replace(text, '{', '<span class="collocation-occurrence">');
+        const startEndTagsReplaceText = _.replace(startTagReplacedText, '}', '</span>');
 
-        const lowercaseExample = _.lowerCase(text);
-        const lowercaseCollocation = _.lowerCase(this.selectedCollocationOccurrence.text);
-        const occurrence = lowercaseExample.indexOf(lowercaseCollocation) === 0 ? _.upperFirst(lowercaseCollocation) : lowercaseCollocation;
-        const replacementOccurrence = `<span class="collocation-occurrence">${occurrence}</span>`;
-        const replacement = _.replace(text, regExp, replacementOccurrence);
-
-        return _.pad(replacement, replacement.length + 2, '"');
+        return _.pad(startEndTagsReplaceText, startEndTagsReplaceText.length + 2, '"');
     }
 }
