@@ -6,7 +6,7 @@
  */
 
 import { trigger, style, transition, animate } from '@angular/animations';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
 import { VideoSearchComponent } from '../shared/video-search/video-search.component';
@@ -19,6 +19,7 @@ import { NavbarService } from '../core/navbar/navbar.service';
 import { StudySession } from '../core/entities/study-session';
 import { LanguageCode } from '../core/typings/language-code';
 import { HttpService } from '../core/http/http.service';
+import { LangService } from '../core/lang/lang.service';
 import { UserService } from '../core/user/user.service';
 import { DOMService } from '../core/dom/dom.service';
 import { Entities } from '../core/entities/entities';
@@ -97,8 +98,8 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
                 private dateService: UTCDateService, private session: StudySessionService, protected categoryList: CategoryListService,
-                protected dom: DOMService) {
-        super(logger, http, navbar, user, categoryList, dom);
+                protected dom: DOMService, protected lang: LangService, @Inject(LOCALE_ID) protected localeId: string) {
+        super(logger, http, navbar, user, categoryList, dom, lang, localeId);
         this.cuedOnly = true;
     }
 

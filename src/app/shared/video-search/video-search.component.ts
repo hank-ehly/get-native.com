@@ -5,7 +5,7 @@
  * Created by henryehly on 2017/02/11.
  */
 
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 
 import { CategoryListService } from '../../core/category-list/category-list.service';
@@ -13,6 +13,7 @@ import { NavbarService } from '../../core/navbar/navbar.service';
 import { LanguageCode } from '../../core/typings/language-code';
 import { Subcategory } from '../../core/entities/subcategory';
 import { HttpService } from '../../core/http/http.service';
+import { LangService } from '../../core/lang/lang.service';
 import { UserService } from '../../core/user/user.service';
 import { Category } from '../../core/entities/category';
 import { DOMService } from '../../core/dom/dom.service';
@@ -24,7 +25,6 @@ import { Logger } from '../../core/logger/logger';
 
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/combineLatest';
@@ -45,12 +45,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     categories$ = this.categoryList.fetch();
 
-    filterByCategory$ = new BehaviorSubject<CategoryFilter>({
-        text: null,
-        value: null,
-        type: null
-    });
-
+    filterByCategory$ = new BehaviorSubject<CategoryFilter>({text: null, value: null, type: null});
     categoryFilter$ = this.filterByCategory$.distinctUntilChanged();
 
     showDropdown$ = new BehaviorSubject<boolean>(false);
@@ -64,7 +59,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
 
     loading$ = new BehaviorSubject<boolean>(false);
 
-    public loadMoreVideos$ = new Subject<number>();
+    loadMoreVideos$ = new Subject<number>();
 
     protected query$ = this.navbar.query$.startWith('').debounce(() => {
         return this.hasCompletedInitialLoad ? this.debounceTimer : this.noDebounceTimer;
@@ -101,6 +96,10 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                     search.set('cued_only', 'true');
                 }
 
+                if (!this.user.isAuthenticated()) {
+                    search.set('interface_lang', this.lang.languageForLocaleId(this.localeId).code);
+                }
+
                 search.set('time_zone_offset', new Date().getTimezoneOffset().toString());
                 search.set('count', `${9}`);
 
@@ -113,9 +112,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                 });
         }).share();
 
-    protected subscriptions: Subscription[] = [];
-
-    private debounceTimer   = new TimerObservable(300);
+    private debounceTimer = new TimerObservable(300);
     private noDebounceTimer = new TimerObservable(0);
 
     @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
@@ -134,7 +131,8 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     }
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
-                protected categoryList: CategoryListService, protected dom: DOMService) {
+                protected categoryList: CategoryListService, protected dom: DOMService, protected lang: LangService,
+                @Inject(LOCALE_ID) protected localeId: string) {
     }
 
     ngOnInit(): void {

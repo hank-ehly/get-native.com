@@ -6,12 +6,13 @@
  */
 
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 
 import { VideoSearchComponent } from '../shared/video-search/video-search.component';
 import { CategoryListService } from '../core/category-list/category-list.service';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
+import { LangService } from '../core/lang/lang.service';
 import { UserService } from '../core/user/user.service';
 import { DOMService } from '../core/dom/dom.service';
 import { Logger } from '../core/logger/logger';
@@ -35,8 +36,9 @@ import { Logger } from '../core/logger/logger';
 })
 export class LibraryComponent extends VideoSearchComponent implements OnInit {
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
-                protected categoryList: CategoryListService, protected dom: DOMService) {
-        super(logger, http, navbar, user, categoryList, dom);
+                protected categoryList: CategoryListService, protected dom: DOMService, protected lang: LangService,
+                @Inject(LOCALE_ID) protected localeId: string) {
+        super(logger, http, navbar, user, categoryList, dom, lang, localeId);
     }
 
     ngOnInit(): void {
