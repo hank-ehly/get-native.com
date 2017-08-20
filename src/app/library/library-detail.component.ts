@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/05.
  */
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { StudySessionService } from '../core/study-session/study-session.service';
@@ -19,7 +19,6 @@ import { Logger } from '../core/logger/logger';
 import { Video } from '../core/entities/video';
 
 import { MetaService } from '@ngx-meta/core';
-import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -30,6 +29,9 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
+import { UserService } from '../core/user/user.service';
+import { URLSearchParams } from '@angular/http';
+import { LangService } from '../core/lang/lang.service';
 
 @Component({
     selector: 'gn-library-detail',
@@ -37,6 +39,8 @@ import * as _ from 'lodash';
     styleUrls: ['library-detail.component.scss']
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {
+
+    OnDestroy$ = new Subject<void>();
     likedChange$ = new Subject<boolean>();
     liked: boolean;
     queued: boolean;
@@ -46,16 +50,21 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     twitterShareHref: string;
 
     video$: Observable<any> = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
-        return this.http.request(APIHandle.VIDEO, {params: {id: id}});
+        const options = {params: {id: id}};
+        if (!this.user.isAuthenticated()) {
+            const search = new URLSearchParams();
+            search.set('interface_lang', this.lang.languageForLocaleId(this.localeId).code);
+            options.search = search;
+        }
+        return this.http.request(APIHandle.VIDEO, options);
     }).share().do((v: Video) => {
         this.liked = v.liked;
         this.likeCount = v.like_count;
     });
 
-    private subscriptions: Subscription[] = [];
-
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
-                private studySession: StudySessionService, private facebook: FacebookService, private meta: MetaService) {
+                private facebook: FacebookService, private meta: MetaService, private user: UserService, private lang: LangService,
+                @Inject(LOCALE_ID) private localeId: string) {
     }
 
     ngOnInit() {
@@ -70,40 +79,42 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.navbar.backButtonTitle$.next('Back');
         this.navbar.studyOptionsVisible$.next(true);
 
-        this.subscriptions.push(
-            this.video$
-                .pluck('subcategory', 'name')
-                .subscribe((t: string) => {
-                    this.emailShareHref = `mailto:?subject=getnative - ${t}&body=${window.location.href}`;
-                    this.twitterShareHref = `https://twitter.com/intent/tweet?text=getnative - ${t}&url=${window.location.href}`;
-                    this.navbar.title$.next(t);
-                    this.meta.setTitle(t);
-                }),
+        this.video$
+            .takeUntil(this.OnDestroy$)
+            .pluck('subcategory', 'name')
+            .subscribe((t: string) => {
+                this.emailShareHref = `mailto:?subject=getnative - ${t}&body=${window.location.href}`;
+                this.twitterShareHref = `https://twitter.com/intent/tweet?text=getnative - ${t}&url=${window.location.href}`;
+                this.navbar.title$.next(t);
+                this.meta.setTitle(t);
+            });
 
-            this.likedChange$
-                .filter(_.isBoolean)
-                .do(this.updateLikeCount.bind(this))
-                .do(this.updateLiked.bind(this))
-                .debounceTime(500)
-                .distinctUntilChanged()
-                .map(liked => liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO)
-                .mergeMap(handle => this.http.request(handle, requestOptions))
-                .subscribe(),
+        this.likedChange$
+            .takeUntil(this.OnDestroy$)
+            .filter(_.isBoolean)
+            .do(this.updateLikeCount.bind(this))
+            .do(this.updateLiked.bind(this))
+            .debounceTime(500)
+            .distinctUntilChanged()
+            .map(liked => liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO)
+            .mergeMap(handle => this.http.request(handle, requestOptions))
+            .subscribe();
 
-            this.navbar.onClickQueue$
-                .do(() => this.queued = !this.queued)
-                .do(() => this.navbar.queueButtonState$.next(QueueButtonState.DEFAULT))
-                .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
-                .mergeMap(handle => this.http.request(handle, requestOptions))
-                .map(() => this.queued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
-                .subscribe(this.navbar.queueButtonState$),
+        this.navbar.onClickQueue$
+            .takeUntil(this.OnDestroy$)
+            .do(() => this.queued = !this.queued)
+            .do(() => this.navbar.queueButtonState$.next(QueueButtonState.DEFAULT))
+            .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
+            .mergeMap(handle => this.http.request(handle, requestOptions))
+            .map(() => this.queued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
+            .subscribe(this.navbar.queueButtonState$);
 
-            this.video$
-                .pluck('cued')
-                .do((cued: boolean) => this.queued = cued)
-                .map((cued: boolean) => cued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
-                .subscribe(this.navbar.queueButtonState$)
-        );
+        this.video$
+            .takeUntil(this.OnDestroy$)
+            .pluck('cued')
+            .do((cued: boolean) => this.queued = cued)
+            .map((cued: boolean) => cued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
+            .subscribe(this.navbar.queueButtonState$);
     }
 
     ngOnDestroy(): void {
@@ -111,7 +122,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.navbar.studyOptionsVisible$.next(false);
         this.navbar.backButtonTitle$.next(null);
         this.navbar.queueButtonState$.next(QueueButtonState.DEFAULT);
-        _.invokeMap(this.subscriptions, 'unsubscribe');
+        this.OnDestroy$.next();
     }
 
     onClickShareFacebook(): void {
