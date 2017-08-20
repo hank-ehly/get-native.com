@@ -26,6 +26,8 @@ import { STUBLocalStorageService } from '../core/local-storage/local-storage.ser
 import { FacebookService } from '../core/facebook/facebook.service';
 import { STUBFacebookService } from '../core/facebook/facebook.service.stub';
 import { MetaService } from '@ngx-meta/core';
+import { UserService } from '../core/user/user.service';
+import { STUBUserService } from '../core/user/user.service.stub';
 
 describe('LibraryDetailComponent', () => {
     let comp: LibraryDetailComponent;
@@ -52,7 +54,8 @@ describe('LibraryDetailComponent', () => {
                 StudySessionService,
                 {provide: LocalStorageService, useValue: STUBLocalStorageService},
                 {provide: FacebookService, useClass: STUBFacebookService},
-                {provide: MetaService, useValue: stubMetaService}
+                {provide: MetaService, useValue: stubMetaService},
+                {provide: UserService, useClass: STUBUserService}
             ]
         }).compileComponents().then(() => {
             fixture = TestBed.createComponent(LibraryDetailComponent);
