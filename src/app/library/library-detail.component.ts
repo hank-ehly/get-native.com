@@ -7,13 +7,15 @@
 
 import { Component, OnInit, OnDestroy, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { URLSearchParams } from '@angular/http';
 
-import { StudySessionService } from '../core/study-session/study-session.service';
 import { QueueButtonState } from '../core/navbar/queue-button-state';
 import { FacebookService } from '../core/facebook/facebook.service';
 import { GNRequestOptions } from '../core/http/gn-request-options';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { HttpService } from '../core/http/http.service';
+import { LangService } from '../core/lang/lang.service';
+import { UserService } from '../core/user/user.service';
 import { APIHandle } from '../core/http/api-handle';
 import { Logger } from '../core/logger/logger';
 import { Video } from '../core/entities/video';
@@ -29,9 +31,6 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
-import { UserService } from '../core/user/user.service';
-import { URLSearchParams } from '@angular/http';
-import { LangService } from '../core/lang/lang.service';
 
 @Component({
     selector: 'gn-library-detail',
@@ -54,7 +53,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         if (!this.user.isAuthenticated()) {
             const search = new URLSearchParams();
             search.set('interface_lang', this.lang.languageForLocaleId(this.localeId).code);
-            options.search = search;
+            _.set(options, 'search', search);
         }
         return this.http.request(APIHandle.VIDEO, options);
     }).share().do((v: Video) => {
