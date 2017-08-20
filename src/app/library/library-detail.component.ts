@@ -52,7 +52,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         const options = {params: {id: id}};
         if (!this.user.isAuthenticated()) {
             const search = new URLSearchParams();
-            search.set('interface_lang', this.lang.languageForLocaleId(this.localeId).code);
+            search.set('lang', this.lang.languageForLocaleId(this.localeId).code);
             _.set(options, 'search', search);
         }
         return this.http.request(APIHandle.VIDEO, options);
