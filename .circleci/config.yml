@@ -17,4 +17,4 @@ jobs:
       - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
       - deploy:
           name: Deploy
-          command: ./bin/deploy.sh ${CIRCLE_BRANCH}
+          command: .circleci/deploy.sh ${CIRCLE_BRANCH}
