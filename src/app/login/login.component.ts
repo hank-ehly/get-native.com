@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 import { LoginModalService } from '../core/login-modal/login-modal.service';
 import { Logger } from '../core/logger/logger';
 
-import { Subscription } from 'rxjs/Subscription';
-import * as _ from 'lodash';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 
 @Component({
     selector: 'gn-login',
@@ -20,22 +20,20 @@ import * as _ from 'lodash';
     styleUrls: ['login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+    OnDestroy$ = new Subject<void>();
     activeView: string;
-
-    private subscriptions: Subscription[] = [];
 
     constructor(private logger: Logger, private loginModal: LoginModalService, private router: Router) {
     }
 
     ngOnInit(): void {
-        this.subscriptions.push(
-            this.loginModal.setActiveView$.subscribe((view: any) => this.activeView = view)
-        );
+        this.logger.debug(this, 'OnInit');
+        this.loginModal.setActiveView$.takeUntil(this.OnDestroy$).subscribe((view: any) => this.activeView = view);
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.invokeMap(this.subscriptions, 'unsubscribe');
+        this.OnDestroy$.next();
     }
 
     onClickClose(e: MouseEvent): void {

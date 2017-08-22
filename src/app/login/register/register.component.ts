@@ -17,8 +17,8 @@ import { APIErrors } from '../../core/http/api-error';
 import { Logger } from '../../core/logger/logger';
 import { User } from '../../core/entities/user';
 
-import { Subscription } from 'rxjs/Subscription';
-import * as _ from 'lodash';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 
 @Component({
     selector: 'gn-register',
@@ -26,6 +26,7 @@ import * as _ from 'lodash';
     styleUrls: ['register.component.scss']
 })
 export class RegisterComponent implements OnDestroy {
+    OnDestroy$ = new Subject<void>();
     emailRegex = EMAIL_REGEX;
 
     credentials: any = {
@@ -36,15 +37,13 @@ export class RegisterComponent implements OnDestroy {
 
     errors: APIErrors = [];
 
-    private subscriptions: Subscription[] = [];
-
     constructor(private logger: Logger, private loginModal: LoginModalService, private http: HttpService, private router: Router,
                 private user: UserService) {
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.invokeMap(this.subscriptions, 'unsubscribe');
+        this.OnDestroy$.next();
     }
 
     onSetModalView(view: string) {
@@ -53,11 +52,9 @@ export class RegisterComponent implements OnDestroy {
 
     onSubmit(): void {
         this.logger.debug(this, 'onSubmit');
-        this.subscriptions.push(
-            this.http.request(APIHandle.CREATE_USER, {body: this.credentials}).subscribe(
-                this.onRegistrationResponse.bind(this),
-                this.onRegistrationError.bind(this)
-            )
+        this.http.request(APIHandle.CREATE_USER, {body: this.credentials}).takeUntil(this.OnDestroy$).subscribe(
+            this.onRegistrationResponse.bind(this),
+            this.onRegistrationError.bind(this)
         );
     }
 
@@ -75,7 +72,9 @@ export class RegisterComponent implements OnDestroy {
 
     private onRegistrationResponse(user: User): void {
         this.user.updateCache(user);
-        this.router.navigate(['dashboard']).catch(e => {
+        this.router.navigate([{outlets: {modal: null}}]).then(() => {
+            return this.router.navigate(['dashboard']);
+        }).catch(e => {
             this.logger.info(this, 'Navigation to Dashboard failed', e);
         });
     }

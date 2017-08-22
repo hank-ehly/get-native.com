@@ -17,8 +17,8 @@ import { APIErrors } from '../../core/http/api-error';
 import { Logger } from '../../core/logger/logger';
 import { User } from '../../core/entities/user';
 
-import { Subscription } from 'rxjs/Subscription';
-import * as _ from 'lodash';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 
 @Component({
     selector: 'gn-email-login',
@@ -26,6 +26,7 @@ import * as _ from 'lodash';
     styleUrls: ['email-login.component.scss']
 })
 export class EmailLoginComponent implements OnDestroy {
+    OnDestroy$ = new Subject<void>();
     emailRegex = EMAIL_REGEX;
 
     credentials: any = {
@@ -35,15 +36,13 @@ export class EmailLoginComponent implements OnDestroy {
 
     errors: APIErrors = [];
 
-    private subscriptions: Subscription[] = [];
-
     constructor(private logger: Logger, private router: Router, private loginModal: LoginModalService, private http: HttpService,
                 private user: UserService) {
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.each(this.subscriptions, s => s.unsubscribe());
+        this.OnDestroy$.next();
     }
 
     onSetModalView(view: string): void {
@@ -51,17 +50,17 @@ export class EmailLoginComponent implements OnDestroy {
     }
 
     onSubmit(): void {
-        this.subscriptions.push(
-            this.http.request(APIHandle.CREATE_SESSION, {body: this.credentials}).subscribe(
-                this.onLoginResponse.bind(this),
-                this.onLoginError.bind(this)
-            )
+        this.http.request(APIHandle.CREATE_SESSION, {body: this.credentials}).takeUntil(this.OnDestroy$).subscribe(
+            this.onLoginResponse.bind(this),
+            this.onLoginError.bind(this)
         );
     }
 
     private onLoginResponse(user: User): void {
         this.user.updateCache(user);
-        this.router.navigate(['dashboard']).catch(e => {
+        this.router.navigate([{outlets: {modal: null}}]).then(() => {
+            return this.router.navigate(['dashboard']);
+        }).catch(e => {
             this.logger.warn(this, e);
         });
     }
