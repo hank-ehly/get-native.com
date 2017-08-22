@@ -57,6 +57,6 @@
 
         <button *ngIf="(answers$ | async)?.length" class="button section__button" (click)="loadMoreAnswers.next(maxAnswerId)" i18n="The text for the dashboard answers section load more button@@d4d96c1a160bc58db2b6142d2806507e">LOAD MORE</button>
 
-        <p>Answers to past timed writing exercises appear here!</p>
+        <p *ngIf="!(answers$ | async)?.length">Answers to past timed writing exercises appear here!</p>
     </section>
 </main>
