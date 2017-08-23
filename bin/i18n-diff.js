@@ -6,7 +6,7 @@ const readFile = util.promisify(fs.readFile);
 const _ = require('lodash');
 const path = require('path');
 
-const hashRegExp = /[0-9A-Za-z]{32,}/g;
+const hashRegExp = /"[0-9A-Za-z]{32}"/g;
 const sourceRegExp = new RegExp('<source>(.|\n)*?</source>', 'g');
 const srcDir = path.resolve(__dirname, '..', 'src');
 
@@ -15,7 +15,7 @@ async function diff(locale) {
         const baseXlf = await readFile(path.resolve(srcDir, 'messages.xlf'), 'utf8');
         const localeXlf = await readFile(path.resolve(srcDir, 'locales', `messages.${locale}.xlf`), 'utf8');
 
-        const hashDiff = _.difference(baseXlf.match(hashRegExp), localeXlf.match(hashRegExp));
+        const hashDiff = _.invokeMap(_.difference(baseXlf.match(hashRegExp), localeXlf.match(hashRegExp)), 'replace', /"/g, '');
         const sourceDiff = _.difference(baseXlf.match(sourceRegExp), localeXlf.match(sourceRegExp));
 
         if (hashDiff.length) {
