@@ -2304,70 +2304,6 @@
         </context-group>
         <note priority="1" from="description">contact-information section 3</note>
       </trans-unit>
-      <trans-unit id="327ad2dded8e635e33cbe52854e7d9a7" datatype="html">
-        <source>faqs</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-        <note priority="1" from="description">faq section icon alternative text</note>
-      </trans-unit>
-      <trans-unit id="b6f21c54a7d0d1f946a944795be5c914" datatype="html">
-        <source>Frequently Asked Questions</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <note priority="1" from="description">The header title for the help page FAQ section</note>
-      </trans-unit>
-      <trans-unit id="b91de74cb8d0742dba9c80ca10276d02" datatype="html">
-        <source>toggle</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-        <note priority="1" from="description">toggle faq visibility icon alternative text</note>
-      </trans-unit>
-      <trans-unit id="821bdafc53e0c1ea132ad4e91542cae2" datatype="html">
-        <source>Is getnative free?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-        <note priority="1" from="description">FAQ (1) Question</note>
-      </trans-unit>
-      <trans-unit id="c11c85dfe124e49b2c76f8a0701c6de5" datatype="html">
-        <source>getnative is currently a free service; however, this may change in the future. If such a change were ever to occur, we would notify you well in advance.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-        <note priority="1" from="description">FAQ (1) Answer</note>
-      </trans-unit>
-      <trans-unit id="f1b1ac46406bc8d0449168435069b724" datatype="html">
-        <source>contact</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-        <note priority="1" from="description">contact-us icon alternative text</note>
-      </trans-unit>
-      <trans-unit id="84a90cc1f49cf547398d42148f47b1dd" datatype="html">
-        <source>Contact</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
-          <context context-type="linenumber">27</context>
-        </context-group>
-        <note priority="1" from="description">The header title for the help page contact-us section</note>
-      </trans-unit>
-      <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-        <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-        <note priority="1" from="description">Help page contact-us section instructions</note>
-      </trans-unit>
       <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
         <source>getnative is a language learning resource for advanced speakers</source>
         <context-group purpose="location">
@@ -2776,11 +2712,19 @@
         </context-group>
         <note priority="1" from="description">The title for the general settings cancel email modifications button</note>
       </trans-unit>
+      <trans-unit id="180be2f944682713f759b6615288cbe3" datatype="html">
+        <source>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">Message displayed after submitting an updated email address</note>
+      </trans-unit>
       <trans-unit id="d10991fa81cf964182d36b780db8aab3" datatype="html">
         <source>Resend Confirmation Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <note priority="1" from="description">The text for the button allowing users to resend their account confirmation email</note>
       </trans-unit>
@@ -2788,7 +2732,7 @@
         <source>Default Study Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <note priority="1" from="description">The text for the label denoting the user default study language select box</note>
       </trans-unit>
@@ -2796,7 +2740,7 @@
         <source>Interface Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">31</context>
         </context-group>
         <note priority="1" from="description">The text for the label denoting the user interface language preference select box</note>
       </trans-unit>
@@ -2804,7 +2748,7 @@
         <source>Current Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">39</context>
         </context-group>
         <note priority="1" from="description">The label text for the current password input field</note>
       </trans-unit>
@@ -2812,7 +2756,7 @@
         <source>New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <note priority="1" from="description">The label text for the new password input field</note>
       </trans-unit>
@@ -2820,7 +2764,7 @@
         <source>Confirm New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">50</context>
         </context-group>
         <note priority="1" from="description">The label text for the confirm new password input field</note>
       </trans-unit>
@@ -2828,7 +2772,7 @@
         <source>UPDATE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">54</context>
         </context-group>
         <note priority="1" from="description">The submit button text for the general settings update password form</note>
       </trans-unit>
@@ -3103,6 +3047,110 @@
           <context context-type="linenumber">18</context>
         </context-group>
         <note priority="1" from="description">Load more activity items button</note>
+      </trans-unit>
+      <trans-unit id="327ad2dded8e635e33cbe52854e7d9a7" datatype="html">
+        <source>faqs</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">faq section icon alternative text</note>
+      </trans-unit>
+      <trans-unit id="b6f21c54a7d0d1f946a944795be5c914" datatype="html">
+        <source>Frequently Asked Questions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">The header title for the help page FAQ section</note>
+      </trans-unit>
+      <trans-unit id="b91de74cb8d0742dba9c80ca10276d02" datatype="html">
+        <source>toggle</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <note priority="1" from="description">toggle faq visibility icon alternative text</note>
+      </trans-unit>
+      <trans-unit id="821bdafc53e0c1ea132ad4e91542cae2" datatype="html">
+        <source>Is getnative free?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">FAQ (1) Question</note>
+      </trans-unit>
+      <trans-unit id="c11c85dfe124e49b2c76f8a0701c6de5" datatype="html">
+        <source>Yes! No money is required to use getnative.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">FAQ (1) Answer</note>
+      </trans-unit>
+      <trans-unit id="4e9b3d243b51f1d33a396b7f0aa4ada1" datatype="html">
+        <source>How do I use the study feature?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">FAQ (2) Question</note>
+      </trans-unit>
+      <trans-unit id="de24fb60b24f97090d63ed8c3c9517e3" datatype="html">
+        <source>Find a video you&apos;d like to study in the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/>, save it to your queue, then select begin from your dashboard to start studying.  take a look at this <x id="START_LINK_1" ctype="x-a"/>in depth tutorial<x id="CLOSE_LINK" ctype="x-a"/> on how to use the study feature.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">FAQ (2) Answer</note>
+      </trans-unit>
+      <trans-unit id="2cd1a6d5f04c97e634388ab5ce1e3329" datatype="html">
+        <source>Who created this website?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <note priority="1" from="description">FAQ (3) Question</note>
+      </trans-unit>
+      <trans-unit id="f6a6c83477afd406e5318b99212d2e8b" datatype="html">
+        <source>Idea and development by <x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/>. Design by <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">FAQ (3) Answer</note>
+      </trans-unit>
+      <trans-unit id="f1b1ac46406bc8d0449168435069b724" datatype="html">
+        <source>contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">contact-us icon alternative text</note>
+      </trans-unit>
+      <trans-unit id="84a90cc1f49cf547398d42148f47b1dd" datatype="html">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="description">The header title for the help page contact-us section</note>
+      </trans-unit>
+      <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
+        <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <note priority="1" from="description">Help page contact-us section instructions</note>
       </trans-unit>
       <trans-unit id="fd0413b1d745255d24d578e73b82149d" datatype="html">
         <source>Please try viewing getnative from a larger browser window</source>

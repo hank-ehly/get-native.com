@@ -2631,13 +2631,49 @@
                 <note priority="1" from="description">FAQ (1) Question</note>
             </trans-unit>
             <trans-unit id="c11c85dfe124e49b2c76f8a0701c6de5" datatype="html">
-                <source>getnative is currently a free service; however, this may change in the future. If such a change were ever to occur, we would notify you well in advance.</source>
-                <target>getnativeは現在無料サービスです。ただし、これは将来変更される可能性があります。このような変更が発生した場合は、事前に通知させていただきます。</target>
+                <source>Yes! No money is required to use getnative.</source>
+                <target>getnativeは無料で提供させて頂いています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
                     <context context-type="linenumber">17</context>
                 </context-group>
                 <note priority="1" from="description">FAQ (1) Answer</note>
+            </trans-unit>
+            <trans-unit id="4e9b3d243b51f1d33a396b7f0aa4ada1" datatype="html">
+                <source>How do I use the study feature?</source>
+                <target>学習機能の使い方を教えてください</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/main/main.component.ts</context>
+                    <context context-type="linenumber">23</context>
+                </context-group>
+                <note priority="1" from="description">FAQ (2) Question</note>
+            </trans-unit>
+            <trans-unit id="de24fb60b24f97090d63ed8c3c9517e3" datatype="html">
+                <source>Find a video you&apos;d like to study in the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/>, save it to your queue, then select begin from your dashboard to start studying.  take a look at this <x id="START_LINK_1" ctype="x-a"/>in depth tutorial<x id="CLOSE_LINK" ctype="x-a"/> on how to use the study feature.</source>
+                <target>Find a video you&apos;d like to study in the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/>, save it to your queue, then select begin from your dashboard to start studying.  take a look at this <x id="START_LINK_1" ctype="x-a"/>in depth tutorial<x id="CLOSE_LINK" ctype="x-a"/> on how to use the study feature.</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/main/main.component.ts</context>
+                    <context context-type="linenumber">25</context>
+                </context-group>
+                <note priority="1" from="description">FAQ (2) Answer</note>
+            </trans-unit>
+            <trans-unit id="2cd1a6d5f04c97e634388ab5ce1e3329" datatype="html">
+                <source>Who created this website?</source>
+                <target>このサイトを作ったのは誰？</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/main/main.component.ts</context>
+                    <context context-type="linenumber">31</context>
+                </context-group>
+                <note priority="1" from="description">FAQ (3) Question</note>
+            </trans-unit>
+            <trans-unit id="f6a6c83477afd406e5318b99212d2e8b" datatype="html">
+                <source>Idea and development by <x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/>. Design by <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+                <target>発想及び開発は<x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/>. デザインは<x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/>.</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/main/main.component.ts</context>
+                    <context context-type="linenumber">33</context>
+                </context-group>
+                <note priority="1" from="description">FAQ (3) Answer</note>
             </trans-unit>
             <trans-unit id="f1b1ac46406bc8d0449168435069b724" datatype="html">
                 <source>contact</source>
@@ -3124,6 +3160,15 @@
                     <context context-type="linenumber">12</context>
                 </context-group>
                 <note priority="1" from="description">The title for the general settings cancel email modifications button</note>
+            </trans-unit>
+            <trans-unit id="180be2f944682713f759b6615288cbe3" datatype="html">
+                <source>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</source>
+                <target>認証メールが<x id="INTERPOLATION"/>に送信されました。同封の確認リンクをクリックするとEメールの更新手続きが完了します。なお、メールの確認が完了するまで現在のメール設定は変更されませんのでご注意ください。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">18</context>
+                </context-group>
+                <note priority="1" from="description">Message displayed after submitting an updated email address</note>
             </trans-unit>
             <trans-unit id="d10991fa81cf964182d36b780db8aab3" datatype="html">
                 <source>Resend Confirmation Email</source>
