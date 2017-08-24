@@ -3078,6 +3078,10 @@
           <context context-type="sourcefile">app/help/main/main.component.ts</context>
           <context context-type="linenumber">29</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
         <note priority="1" from="description">toggle faq visibility icon alternative text</note>
       </trans-unit>
       <trans-unit id="821bdafc53e0c1ea132ad4e91542cae2" datatype="html">
@@ -3128,11 +3132,27 @@
         </context-group>
         <note priority="1" from="description">FAQ (3) Answer</note>
       </trans-unit>
+      <trans-unit id="6efab6159aac1ee9af28bf983eb49589" datatype="html">
+        <source>How do I set a password if I sign in via SNS?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">FAQ (4) Question</note>
+      </trans-unit>
+      <trans-unit id="f970ac9af488b2f9b4f649d2a2de80f3" datatype="html">
+        <source>If you logged in via Facebook, Twitter or Google, then you can create a password by <x id="START_LINK" ctype="x-a"/>resetting your password<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/main/main.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">FAQ (4) Answer</note>
+      </trans-unit>
       <trans-unit id="f1b1ac46406bc8d0449168435069b724" datatype="html">
         <source>contact</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/help/main/main.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <note priority="1" from="description">contact-us icon alternative text</note>
       </trans-unit>
@@ -3140,7 +3160,7 @@
         <source>Contact</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/help/main/main.component.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">51</context>
         </context-group>
         <note priority="1" from="description">The header title for the help page contact-us section</note>
       </trans-unit>
@@ -3148,7 +3168,7 @@
         <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/help/main/main.component.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">53</context>
         </context-group>
         <note priority="1" from="description">Help page contact-us section instructions</note>
       </trans-unit>
