@@ -32,6 +32,14 @@
                 </div>
                 <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(2)" [@visible]="isFaqExpandedAtIndex(2)" i18n="FAQ (3) Answer@@f6a6c83477afd406e5318b99212d2e8b">Idea and development by <a href="https://hankehly.com" target="_blank" class="link">Hank Ehly</a>. Design by <a href="https://twitter.com/micheleangeloro" target="_blank" class="link">Michele Angeloro</a>.</p>
             </li>
+            <li class="faqs__faq">
+                <div class="faqs__faq-header">
+                    <img src="assets/icons/chevron.svg" i18n-alt="toggle faq visibility icon alternative text@@b91de74cb8d0742dba9c80ca10276d02" alt="toggle" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(3)" [@rotation]="chevronRotationForFaqAtIndex(3)">
+                    <span class="faqs__faq-number" (click)="toggleFaqAtIndex(3)">04</span>
+                    <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(3)" i18n="FAQ (4) Question@@6efab6159aac1ee9af28bf983eb49589">How do I set a password if I sign in via SNS?</span>
+                </div>
+                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(3)" [@visible]="isFaqExpandedAtIndex(3)" i18n="FAQ (4) Answer@@f970ac9af488b2f9b4f649d2a2de80f3">If you logged in via Facebook, Twitter or Google, then you can create a password by <a [routerLink]="['/help', '20170825']" class="link">resetting your password</a>.</p>
+            </li>
         </ul>
     </section>
 

@@ -2675,6 +2675,24 @@
                 </context-group>
                 <note priority="1" from="description">FAQ (3) Answer</note>
             </trans-unit>
+            <trans-unit id="6efab6159aac1ee9af28bf983eb49589" datatype="html">
+                <source>How do I set a password if I sign in via SNS?</source>
+                <target>SNSでログインしたのですが、パスワードを設定するにはどうすればいいですか？</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/main/main.component.ts</context>
+                    <context context-type="linenumber">39</context>
+                </context-group>
+                <note priority="1" from="description">FAQ (4) Question</note>
+            </trans-unit>
+            <trans-unit id="f970ac9af488b2f9b4f649d2a2de80f3" datatype="html">
+                <source>If you logged in via Facebook, Twitter or Google, then you can create a password by <x id="START_LINK" ctype="x-a"/>resetting your password<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+                <target>Facebook、Twitter または Google でアカウント登録した場合はパスワードが設定されていません。<x id="START_LINK" ctype="x-a"/>パスワードをリセット<x id="CLOSE_LINK" ctype="x-a"/>すると、SNSとパスワードの両方でログインが可能になります。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/main/main.component.ts</context>
+                    <context context-type="linenumber">41</context>
+                </context-group>
+                <note priority="1" from="description">FAQ (4) Answer</note>
+            </trans-unit>
             <trans-unit id="f1b1ac46406bc8d0449168435069b724" datatype="html">
                 <source>contact</source>
                 <target>お問い合わせ</target>
