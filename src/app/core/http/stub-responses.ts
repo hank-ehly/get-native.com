@@ -125,7 +125,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 loop_count: 7156,
                 picture_url: 'https://example.com',
-                video_url: '../../../assets/mock/video.mov',
+                video_url: 'https://example.com',
                 length: 68
             },
             {
@@ -141,7 +141,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                 },
                 loop_count: 1011,
                 picture_url: 'https://example.com',
-                video_url: '../../../assets/mock/video.mov',
+                video_url: 'https://example.com',
                 length: 73
             }
         ]
