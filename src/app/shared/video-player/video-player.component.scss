@@ -30,7 +30,7 @@
 }
 
 .player-controls__toggle-button {
-  background: $black url('../../../assets/icons/pause.svg') no-repeat center;
+  background: $black url('https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/pause.svg') no-repeat center;
   background-size: 28%;
   border: none;
   cursor: pointer;
@@ -40,7 +40,7 @@
 }
 
 .player-controls__toggle-button.player-controls__toggle-button_paused {
-  background-image: url('../../../assets/icons/play.svg');
+  background-image: url('https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/play.svg');
 }
 
 .play-bar {

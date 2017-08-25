@@ -23,7 +23,7 @@ export class ConfirmEmailResolver implements Resolve<void> {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<void> {
-        return this.http.request(APIHandle.CONFIRM_EMAIL, {body: {token: route.queryParams.token}}).map((user: User) => {
+        return this.http.request(APIHandle.CONFIRM_EMAIL, {body: {token: route.queryParams['token']}}).map((user: User) => {
             this.user.updateCache(user);
             this.router.navigate(['/dashboard']);
         }).toPromise().catch(async () => {

@@ -1,6 +1,6 @@
 <header class="navbar">
     <div class="navbar__logo-frame">
-        <img class="navbar__logo" src="assets/icons/logo.svg" title="getnative" i18n-alt="Alt text for navbar logo image@@4c05ee27cb4a24edd0471b4e81bf6782" alt="logo" [routerLink]="['']">
+        <img class="navbar__logo" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/logo.svg" title="getnative" i18n-alt="Alt text for navbar logo image@@4c05ee27cb4a24edd0471b4e81bf6782" alt="logo" [routerLink]="['']">
     </div>
 
     <ng-container *ngIf="!authenticated">
@@ -22,7 +22,7 @@
 
         <div class="navbar__menu navbar__menu_center" *ngIf="!(searchBarVisible$ | async)" [@fadeInOut]>
             <div class="back-button-frame" *ngIf="backButtonTitle$ | async">
-                <img class="navbar__menu-icon navbar__menu-icon_back" src="assets/icons/arrow-back.svg" i18n-alt="Alt text for navbar back button image@@ea3712afdf8cac823ca20f19e995c610" alt="back" (click)="onClickBack()">
+                <img class="navbar__menu-icon navbar__menu-icon_back" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/arrow-back.svg" i18n-alt="Alt text for navbar back button image@@ea3712afdf8cac823ca20f19e995c610" alt="back" (click)="onClickBack()">
                 <span class="back-button-label">{{ backButtonTitle$ | async }}</span>
             </div>
 
@@ -44,19 +44,19 @@
         <ul class="navbar__menu navbar__menu--right navbar__menu--authenticated">
             <li>
                 <ng-container *ngIf="showSearchIcon">
-                    <img class="navbar__menu-icon navbar__menu-icon--search" src="assets/icons/search.svg" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()" i18n-alt="Alt text for navbar magnifying glass search icon@@ee5d8dd7d8cc15235c182818e9fa4e45" alt="search" i18n-title="Title for magnifying glass search icon@@8d9f6cd5b75c5141b08882b78826a44d" title="Search">
-                    <img class="navbar__menu-icon navbar__menu-icon--close" src="assets/icons/close-dark.svg" *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()" i18n-alt="Alt text for navbar close-search button icon@@05a9999694c0f7a90e7f166c2e9daae4" alt="close" i18n-title="Title of X icon to close search bar@@7af1c73fec252b75d5d05476dd961cfa" title="Close">
+                    <img class="navbar__menu-icon navbar__menu-icon--search" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/search.svg" *ngIf="!(searchBarVisible$ | async)" (click)="onClickSearch()" i18n-alt="Alt text for navbar magnifying glass search icon@@ee5d8dd7d8cc15235c182818e9fa4e45" alt="search" i18n-title="Title for magnifying glass search icon@@8d9f6cd5b75c5141b08882b78826a44d" title="Search">
+                    <img class="navbar__menu-icon navbar__menu-icon--close" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/close-dark.svg" *ngIf="searchBarVisible$ | async" (click)="onClickCloseSearch()" i18n-alt="Alt text for navbar close-search button icon@@05a9999694c0f7a90e7f166c2e9daae4" alt="close" i18n-title="Title of X icon to close search bar@@7af1c73fec252b75d5d05476dd961cfa" title="Close">
                 </ng-container>
                 <div class="navbar__menu-icon" *ngIf="!showSearchIcon"></div>
             </li>
             <li>
             <span class="navbar__menu-icon-frame">
-                <img (click)="toggleNotificationDropdown()" class="navbar__menu-icon navbar__menu-icon--activity" src="assets/icons/notification.svg" i18n-alt="Alt text for navbar notifications icon@@e5775cfb82679bd0ef3932053516430c" alt="notifications" i18n-title="Title for navbar notifications icon@@0ac79a294558028893102a5188434ca7" title="Notifications">
+                <img (click)="toggleNotificationDropdown()" class="navbar__menu-icon navbar__menu-icon--activity" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/notification.svg" i18n-alt="Alt text for navbar notifications icon@@e5775cfb82679bd0ef3932053516430c" alt="notifications" i18n-title="Title for navbar notifications icon@@0ac79a294558028893102a5188434ca7" title="Notifications">
                 <span class="notification-indicator" [ngClass]="{'notification-indicator--unread': hasUnreadNotifications}"></span>
             </span>
             </li>
             <li>
-                <img [routerLink]="['settings']" class="navbar__menu-icon navbar__menu-icon_account" src="assets/icons/settings.svg" i18n-alt="Alt text for navbar settings icon@@8d72b0824ba2c5b0aa9fdfdd481c39b7" alt="settings" i18n-title="Title for user settings navbar icon@@79b896dc264801c51b18803a4d412af7" title="Settings">
+                <img [routerLink]="['settings']" class="navbar__menu-icon navbar__menu-icon_account" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/settings.svg" i18n-alt="Alt text for navbar settings icon@@8d72b0824ba2c5b0aa9fdfdd481c39b7" alt="settings" i18n-title="Title for user settings navbar icon@@79b896dc264801c51b18803a4d412af7" title="Settings">
             </li>
         </ul>
 
