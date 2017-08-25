@@ -1,3 +1,4 @@
+///<reference path="../../../../node_modules/rxjs/Observable.d.ts"/>
 /**
  * http.service
  * getnativelearning.com
@@ -21,10 +22,12 @@ import { Entities } from '../entities/entities';
 import { environment } from '../../../environments/environment';
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import * as _ from 'lodash';
+import { APIErrors } from './api-error';
 
 @Injectable()
 export class HttpService {
@@ -73,11 +76,11 @@ export class HttpService {
         }
 
         const request = new Request(args);
-
         this.logger.debug(this, '[REQ]', request.url, request.getBody());
-
-        const delay = environment.production ? 0 : _.random(3, 12) * 100;
-        return this.http.request(request).delay(delay).map(this.handleResponse.bind(this)).catch(<any>this.handleError.bind(this));
+        return this.http.request(request)
+            .delay(environment.production ? 0 : _.random(3, 12) * 100)
+            .map(this.handleResponse.bind(this))
+            .catch(this.handleError.bind(this));
     }
 
     private handleResponse(response: Response): Entities<Entity>|Entity {
@@ -102,8 +105,14 @@ export class HttpService {
         return response.json();
     }
 
-    // todo: think harder
-    private handleError(response: Response) {
-        throw response.json();
+    private handleError(response: Response): Observable<APIErrors> {
+        this.logger.debug(this, `[ERROR:${response.status}]`, response.url, response.text());
+        let err;
+        try {
+            err = response.json();
+        } catch (e) {
+            err =  {code: 'unknown', message: 'Failed to parse error response.'};
+        }
+        return Observable.throw(err);
     }
 }

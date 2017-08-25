@@ -24,6 +24,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/filter';
 import * as _ from 'lodash';
+import { APIError, APIErrors } from '../../core/http/api-error';
 
 @Component({
     selector: 'gn-general',
@@ -43,6 +44,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
     emailModel = '';
     submittedEmail = '';
     passwordModel: any = {current: '', replace: '', confirm: ''};
+    passwordFormError: APIError;
 
     hasClickedResend = false;
 
@@ -64,7 +66,10 @@ export class GeneralComponent implements OnInit, OnDestroy {
         this.logger.debug(this, 'OnInit');
         this.submitEmailEmitted$.takeUntil(this.OnDestroy$).subscribe(this.onSubmitEmailSuccess.bind(this));
         this.isEditing$.takeUntil(this.OnDestroy$).filter(b => !b).subscribe(this.onStopEmailEditing.bind(this));
-        this.userService.passwordChange$.takeUntil(this.OnDestroy$).subscribe(this.onPasswordChangeSuccess.bind(this));
+        this.userService.passwordChange$.takeUntil(this.OnDestroy$).subscribe(
+            this.onPasswordChangeSuccess.bind(this),
+            this.onPasswordChangeError.bind(this)
+        );
         this.userService.interfaceLanguageEmitted$.takeUntil(this.OnDestroy$).subscribe(this.onInterfaceLanguageUpdated.bind(this));
     }
 
@@ -140,6 +145,13 @@ export class GeneralComponent implements OnInit, OnDestroy {
     private onPasswordChangeSuccess(): void {
         this.logger.debug(this, 'Password change successful');
         this.passwordForm.reset();
+    }
+
+    private onPasswordChangeError(errors: APIErrors): void {
+        this.logger.debug(this, 'Password change error');
+        if (errors.length) {
+            this.passwordFormError = _.first(errors);
+        }
     }
 
     private onSubmitEmailSuccess(): void {

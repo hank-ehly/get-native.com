@@ -40,6 +40,11 @@ hr {
   font-size: $font-size-small;
 }
 
+.paragraph--error-message {
+  @include font-weight-bold();
+  color: $red;
+}
+
 .password-form {
   display: flex;
   flex-flow: column wrap;
