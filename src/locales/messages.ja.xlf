@@ -3253,6 +3253,24 @@
                 </context-group>
                 <note priority="1" from="description">The submit button text for the general settings update password form</note>
             </trans-unit>
+            <trans-unit id="97616c403b249ae0f7ea97779c552106" datatype="html">
+                <source>Click the below button to send a password reset link to your registered email address. You can eliminate the need to remember a password by instead logging in with Facebook, Twitter or Google.</source>
+                <target>以下のボタンをクリックしますと登録済みのメールアドレスにパスワードリセットリンクが送信されます。パスワードを覚えるのが面倒でしたらFacebook、Twitter、またはGoogleでログインすることをお勧めします！</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">60</context>
+                </context-group>
+                <note priority="1" from="description">Instructions for sending password reset link</note>
+            </trans-unit>
+            <trans-unit id="f3528d2ad9986f24ebc8884fd56e759a" datatype="html">
+                <source>SEND PASSWORD RESET LINK</source>
+                <target>パスワードリセットリンクを送信する</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">61</context>
+                </context-group>
+                <note priority="1" from="description">Send password reset link button text</note>
+            </trans-unit>
             <trans-unit id="9f55b08839a180df1d65398a9079d37e" datatype="html">
                 <source>user picture</source>
                 <target>ユーザー画像</target>
