@@ -26,10 +26,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
             return false;
         } else if (isLoggedIn || (!isLoggedIn && state.url === '/')) {
             return true;
-        } else {
-            this.router.navigate(['']).then(() => this.logger.debug(this, 'Redirect to home'));
-            return false;
         }
+
+        this.router.navigate(['']).then(() => this.logger.debug(this, 'Redirect to home'));
+        return false;
     }
 
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
