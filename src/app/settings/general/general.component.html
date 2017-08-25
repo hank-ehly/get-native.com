@@ -35,6 +35,10 @@
 <hr>
 
 <form class="form password-form" #passwordForm="ngForm" (submit)="onSubmitPassword()" [gnMatch]="['new-password', 'confirm-password']">
+    <div class="form__group" *ngIf="passwordFormError">
+        <p class="paragraph paragraph--error-message">{{ passwordFormError.message }}</p>
+    </div>
+
     <div class="form__group">
         <label for="current-password" class="label" i18n="The label text for the current password input field@@a0b0162ac3b793da796b69e9a980a78f">Current Password</label>
         <input id="current-password" class="input" type="password" name="current-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.current">

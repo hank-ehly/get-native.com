@@ -104,10 +104,10 @@
   }
 
   .error-messages {
-    padding-left: 30px;
+    @include font-weight-bold();
     color: red;
-    font-weight: bolder;
     font-size: 14px;
+    padding-left: 30px;
     padding-right: 30px;
     padding-top: 20px;
   }
