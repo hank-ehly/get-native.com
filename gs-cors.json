@@ -1,9 +1,7 @@
 [
     {
         "origin": [
-            "https://getnativelearning.com",
-            "https://admin.getnativelearning.com",
-            "https://api.getnativelearning.com"
+            "*"
         ],
         "responseHeader": [
             "Content-Type"
