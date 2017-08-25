@@ -5,9 +5,13 @@
             "https://admin.getnativelearning.com",
             "https://api.getnativelearning.com"
         ],
+        "responseHeader": [
+            "Content-Type"
+        ],
         "method": [
             "GET",
             "HEAD"
-        ]
+        ],
+        "maxAgeSeconds": 3600
     }
 ]
