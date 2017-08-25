@@ -33,6 +33,7 @@ import * as _ from 'lodash';
 export class GeneralComponent implements OnInit, OnDestroy {
     @ViewChild('passwordForm') passwordForm: NgForm;
     OnDestroy$ = new Subject<void>();
+    isPresentingForgotPasswordModal$ = new BehaviorSubject<boolean>(false);
 
     emailRegex = EMAIL_REGEX;
     isEditing$ = new BehaviorSubject<boolean>(false);
@@ -117,6 +118,19 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     onClickCancelEmailEditing(): void {
         this.isEditing$.next(false);
+    }
+
+    onClickForgotPassword(): void {
+        this.logger.debug(this, 'onClickForgotPassword');
+        this.isPresentingForgotPasswordModal$.next(true);
+    }
+
+    onClickCloseForgotPasswordModal(): void {
+        this.isPresentingForgotPasswordModal$.next(false);
+    }
+
+    onClickSendPasswordResetLink(): void {
+        this.logger.debug(this, 'onClickSendPasswordResetLink');
     }
 
     private onInterfaceLanguageUpdated(code: LanguageCode) {
