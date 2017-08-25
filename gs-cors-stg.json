@@ -1,0 +1,12 @@
+[
+    {
+        "origin": [
+            "https://stg.getnativelearning.com",
+            "https://api.stg.getnativelearning.com"
+        ],
+        "method": [
+            "GET",
+            "HEAD"
+        ]
+    }
+]
