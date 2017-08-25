@@ -34,6 +34,12 @@ hr {
   margin-top: 30px;
 }
 
+.current-password__forgot-password-link {
+  display: inline-block;
+  padding-top: 10px;
+  font-size: $font-size-small;
+}
+
 .password-form {
   display: flex;
   flex-flow: column wrap;
@@ -49,5 +55,14 @@ hr {
 }
 
 .default-study-language__label, .interface-language__label {
+  display: block;
+}
+
+.modal__content {
+  padding: 30px;
+}
+
+.modal__content .button {
+  margin: 30px auto 0;
   display: block;
 }
