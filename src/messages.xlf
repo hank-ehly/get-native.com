@@ -2748,7 +2748,7 @@
         <source>Current Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">43</context>
         </context-group>
         <note priority="1" from="description">The label text for the current password input field</note>
       </trans-unit>
@@ -2756,7 +2756,7 @@
         <source>New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <note priority="1" from="description">The label text for the new password input field</note>
       </trans-unit>
@@ -2764,7 +2764,7 @@
         <source>Confirm New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">The label text for the confirm new password input field</note>
       </trans-unit>
@@ -2772,7 +2772,7 @@
         <source>UPDATE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">59</context>
         </context-group>
         <note priority="1" from="description">The submit button text for the general settings update password form</note>
       </trans-unit>
@@ -2780,7 +2780,7 @@
         <source>Click the below button to send a password reset link to your registered email address. You can eliminate the need to remember a password by instead logging in with Facebook, Twitter or Google.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <note priority="1" from="description">Instructions for sending password reset link</note>
       </trans-unit>
@@ -2788,9 +2788,17 @@
         <source>SEND PASSWORD RESET LINK</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">65</context>
         </context-group>
         <note priority="1" from="description">Send password reset link button text</note>
+      </trans-unit>
+      <trans-unit id="e831b69865d3a77d0d10f0967b0b0729" datatype="html">
+        <source>Whoops, it looks like something went wrong:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <note priority="1" from="description">User friendly message before password reset link error message</note>
       </trans-unit>
       <trans-unit id="b95a9f64b954582c56cb0033abf73084" datatype="html">
         <source>View and update your login credentials.</source>
