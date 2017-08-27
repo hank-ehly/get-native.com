@@ -17,14 +17,15 @@ import { APIHandle } from '../../core/http/api-handle';
 import { User } from '../../core/entities/user';
 import { LanguageCode } from '../../core/typings/language-code';
 import { LangService } from '../../core/lang/lang.service';
+import { APIError, APIErrors } from '../../core/http/api-error';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { APIError, APIErrors } from '../../core/http/api-error';
 
 @Component({
     selector: 'gn-general',
@@ -51,6 +52,10 @@ export class GeneralComponent implements OnInit, OnDestroy {
     passwordModel: any = {current: '', replace: '', confirm: ''};
     passwordFormError: APIError;
 
+    processing = {
+        sendPasswordResetLink: false
+    };
+
     user: User = this.userService.current$.getValue();
 
     constructor(private logger: Logger, private http: HttpService, private userService: UserService, private lang: LangService) {
@@ -64,13 +69,24 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.submitEmailEmitted$.takeUntil(this.OnDestroy$).subscribe(this.onSubmitEmailSuccess.bind(this));
-        this.isEditingEmailAddress$.takeUntil(this.OnDestroy$).filter(b => !b).subscribe(this.onStopEmailEditing.bind(this));
-        this.userService.passwordChange$.takeUntil(this.OnDestroy$).subscribe(
-            this.onPasswordChangeSuccess.bind(this),
-            this.onPasswordChangeError.bind(this)
-        );
-        this.userService.interfaceLanguageEmitted$.takeUntil(this.OnDestroy$).subscribe(this.onInterfaceLanguageUpdated.bind(this));
+
+        this.submitEmailEmitted$
+            .takeUntil(this.OnDestroy$)
+            .subscribe(this.onSubmitEmailSuccess.bind(this));
+
+        this.isEditingEmailAddress$
+            .takeUntil(this.OnDestroy$)
+            .filter(b => !b)
+            .subscribe(this.onStopEmailEditing.bind(this));
+
+        this.userService.passwordChange$
+            .takeUntil(this.OnDestroy$)
+            .subscribe(this.onPasswordChangeSuccess.bind(this), this.onPasswordChangeError.bind(this));
+
+        this.userService.interfaceLanguageEmitted$
+            .takeUntil(this.OnDestroy$)
+            .subscribe(this.onInterfaceLanguageUpdated.bind(this));
+
         this.isPresentingForgotPasswordModal$
             .takeUntil(this.OnDestroy$)
             .filter(b => !b)
@@ -94,9 +110,11 @@ export class GeneralComponent implements OnInit, OnDestroy {
             }
         };
 
-        this.http.request(APIHandle.EDIT_EMAIL, options).takeUntil(this.OnDestroy$).subscribe(() => {
-            this.submitEmailSource.next(true);
-        });
+        this.http.request(APIHandle.EDIT_EMAIL, options)
+            .takeUntil(this.OnDestroy$)
+            .subscribe(() => {
+                this.submitEmailSource.next(true);
+            });
     }
 
     onClickResend(): void {
@@ -140,10 +158,18 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     onClickSendPasswordResetLink(): void {
         this.logger.debug(this, 'onClickSendPasswordResetLink');
-        const options = {body: {email: this.user.email}};
+
+        const options = {
+            body: {
+                email: this.user.email
+            }
+        };
+
+        this.processing.sendPasswordResetLink = true;
         this.http.request(APIHandle.SEND_PASSWORD_RESET_LINK, options)
             .takeUntil(this.OnDestroy$)
-            .subscribe(this.onSendPasswordResetLinkSuccess.bind(this), this.onSendPasswordResetLinkError.bind(this));
+            .map(this.onSendPasswordResetLinkSuccess.bind(this))
+            .subscribe(null, this.onSendPasswordResetLinkError.bind(this));
     }
 
     private onInterfaceLanguageUpdated(code: LanguageCode) {
@@ -173,10 +199,12 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     private onSendPasswordResetLinkSuccess(): void {
         this.logger.debug(this, 'onSendPasswordResetLinkSuccess');
+        this.processing.sendPasswordResetLink = false;
         this.isPresentingForgotPasswordModal$.next(false);
     }
 
     private onSendPasswordResetLinkError(errors: APIErrors): void {
+        this.processing.sendPasswordResetLink = false;
         if (errors.length) {
             this.passwordResetLinkError = _.first(errors);
         }
