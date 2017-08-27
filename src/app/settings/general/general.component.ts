@@ -34,22 +34,22 @@ import { APIError, APIErrors } from '../../core/http/api-error';
 export class GeneralComponent implements OnInit, OnDestroy {
     @ViewChild('passwordForm') passwordForm: NgForm;
     OnDestroy$ = new Subject<void>();
-    isPresentingForgotPasswordModal$ = new BehaviorSubject<boolean>(false);
 
     emailRegex = EMAIL_REGEX;
-    isEditing$ = new BehaviorSubject<boolean>(false);
+    isEditingEmailAddress$ = new BehaviorSubject<boolean>(false);
+    emailModel = '';
+    submittedEmailAddress = '';
+    submitEmailEmitted$: Observable<any>;
+    private submitEmailSource: Subject<any>;
+    hasClickedResendConfirmationEmail = false;
+
     studyLanguageOptions: any;
     interfaceLanguageOptions: any;
 
-    emailModel = '';
-    submittedEmail = '';
+    isPresentingForgotPasswordModal$ = new BehaviorSubject<boolean>(false);
+    passwordResetLinkError: APIError;
     passwordModel: any = {current: '', replace: '', confirm: ''};
     passwordFormError: APIError;
-
-    hasClickedResend = false;
-
-    submitEmailEmitted$: Observable<any>;
-    private submitEmailSource: Subject<any>;
 
     user: User = this.userService.current$.getValue();
 
@@ -65,12 +65,16 @@ export class GeneralComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
         this.submitEmailEmitted$.takeUntil(this.OnDestroy$).subscribe(this.onSubmitEmailSuccess.bind(this));
-        this.isEditing$.takeUntil(this.OnDestroy$).filter(b => !b).subscribe(this.onStopEmailEditing.bind(this));
+        this.isEditingEmailAddress$.takeUntil(this.OnDestroy$).filter(b => !b).subscribe(this.onStopEmailEditing.bind(this));
         this.userService.passwordChange$.takeUntil(this.OnDestroy$).subscribe(
             this.onPasswordChangeSuccess.bind(this),
             this.onPasswordChangeError.bind(this)
         );
         this.userService.interfaceLanguageEmitted$.takeUntil(this.OnDestroy$).subscribe(this.onInterfaceLanguageUpdated.bind(this));
+        this.isPresentingForgotPasswordModal$
+            .takeUntil(this.OnDestroy$)
+            .filter(b => !b)
+            .subscribe(this.onHideForgotPasswordModal.bind(this));
     }
 
     ngOnDestroy(): void {
@@ -105,7 +109,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
         };
 
         this.http.request(APIHandle.RESEND_CONFIRMATION_EMAIL, options).takeUntil(this.OnDestroy$).subscribe(() => {
-            this.hasClickedResend = true;
+            this.hasClickedResendConfirmationEmail = true;
         });
     }
 
@@ -122,7 +126,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
     }
 
     onClickCancelEmailEditing(): void {
-        this.isEditing$.next(false);
+        this.isEditingEmailAddress$.next(false);
     }
 
     onClickForgotPassword(): void {
@@ -136,6 +140,10 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     onClickSendPasswordResetLink(): void {
         this.logger.debug(this, 'onClickSendPasswordResetLink');
+        const options = {body: {email: this.user.email}};
+        this.http.request(APIHandle.SEND_PASSWORD_RESET_LINK, options)
+            .takeUntil(this.OnDestroy$)
+            .subscribe(this.onSendPasswordResetLinkSuccess.bind(this), this.onSendPasswordResetLinkError.bind(this));
     }
 
     private onInterfaceLanguageUpdated(code: LanguageCode) {
@@ -155,11 +163,26 @@ export class GeneralComponent implements OnInit, OnDestroy {
     }
 
     private onSubmitEmailSuccess(): void {
-        this.submittedEmail = this.emailModel;
-        this.isEditing$.next(false);
+        this.submittedEmailAddress = this.emailModel;
+        this.isEditingEmailAddress$.next(false);
     }
 
     private onStopEmailEditing(): void {
         this.emailModel = '';
+    }
+
+    private onSendPasswordResetLinkSuccess(): void {
+        this.logger.debug(this, 'onSendPasswordResetLinkSuccess');
+        this.isPresentingForgotPasswordModal$.next(false);
+    }
+
+    private onSendPasswordResetLinkError(errors: APIErrors): void {
+        if (errors.length) {
+            this.passwordResetLinkError = _.first(errors);
+        }
+    }
+
+    private onHideForgotPasswordModal(): void {
+        this.passwordResetLinkError = null;
     }
 }

@@ -131,5 +131,10 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Get,
         url: '/users/me',
         isProtected: true
+    }],
+    [APIHandle.SEND_PASSWORD_RESET_LINK, {
+        method: RequestMethod.Post,
+        url: '/send_password_reset_link',
+        isProtected: false
     }]
 ]);

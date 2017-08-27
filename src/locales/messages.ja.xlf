@@ -3271,6 +3271,15 @@
                 </context-group>
                 <note priority="1" from="description">Send password reset link button text</note>
             </trans-unit>
+            <trans-unit id="e831b69865d3a77d0d10f0967b0b0729" datatype="html">
+                <source>Whoops, it looks like something went wrong:</source>
+                <target>あらら、何かエラーが起こったみたいです：</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">67</context>
+                </context-group>
+                <note priority="1" from="description">User friendly message before password reset link error message</note>
+            </trans-unit>
             <trans-unit id="9f55b08839a180df1d65398a9079d37e" datatype="html">
                 <source>user picture</source>
                 <target>ユーザー画像</target>
