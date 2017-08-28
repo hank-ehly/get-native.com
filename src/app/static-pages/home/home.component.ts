@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
 
@@ -16,13 +16,14 @@ import * as _ from 'lodash';
     templateUrl: 'home.component.html',
     styleUrls: ['home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-    bannerBackgroundPositionY = 600;
+    bannerBackgroundPositionY: number;
 
-    startY  = [0, 300, 600];
-    xOffset = [0,   0,   0];
-    opacity = [0,   0,   0];
+    startY = [100, 450, 800];
+    xOffset = [0, 0, 0];
+    opacity = [0, 0, 0];
+
 
     @HostListener('window:scroll') onScroll() {
         this.animateLargeFeatures();
@@ -30,6 +31,10 @@ export class HomeComponent {
     }
 
     constructor(private logger: Logger) {
+    }
+
+    ngOnInit(): void {
+        this.animateParallaxBanner();
     }
 
     private animateLargeFeatures(): void {
@@ -47,6 +52,7 @@ export class HomeComponent {
         const percentOfHeightScrolled = this.findPercentageOfXBetweenAAndB(<number>window.scrollY, 0, window.innerHeight);
         const n = _.floor(this.findPointOfPercentageBetweenAAndB(percentOfHeightScrolled, 0, window.innerHeight / 4));
         this.bannerBackgroundPositionY = n - (window.innerHeight / 2);
+        this.logger.debug(this, this.bannerBackgroundPositionY);
     }
 
     private findPercentageOfXBetweenAAndB(x: number, a: number, b: number): number {
