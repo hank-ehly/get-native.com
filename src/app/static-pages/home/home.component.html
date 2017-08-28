@@ -1,4 +1,4 @@
-<div class="banner">
+<div class="banner" [style.height]="bannerHeightVH + 'vh'">
     <h1 class="banner__title" i18n="A one sentence description of the purpose of the website@@431efa4827f2666c07cb2986934f7ec4">getnative is a language learning resource for advanced speakers</h1>
 </div>
 
@@ -10,30 +10,30 @@
 
     <section class="section section_large-features">
         <ul class="feature feature--large">
-            <li class="feature__image-column" [style.order]="1">
+            <li class="feature__image-column" [style.order]="1" [style.marginLeft]="xOffset[0] + 'px'" [style.opacity]="opacity[0]">
                 <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/images/feature01.jpg" i18n-alt="Alternative text for image of first large homepage feature@@37b0847e5aa24a6f1b58091a13bff6c9" alt="Video database" class="feature__image">
             </li>
-            <li class="feature__description-column" [style.order]="2">
+            <li class="feature__description-column" [style.order]="2" [style.opacity]="opacity[0]">
                 <h3 class="feature__title" i18n="The title of the video database feature description@@fb641dc07645e335fa9e727646d03c9b">Video database</h3>
                 <p class="feature__paragraph" i18n="The description of the video database feature@@fb658a869160db95975603149cb0661d">getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</p>
             </li>
         </ul>
 
         <ul class="feature feature--large">
-            <li class="feature__image-column" [style.order]="2">
+            <li class="feature__image-column" [style.order]="2" [style.marginRight]="xOffset[1] + 'px'" [style.opacity]="opacity[1]">
                 <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/images/feature02.jpg" i18n-alt="Alternative text for image of second large homepage feature@@da9431dac46430ad694352ca7bb4d6e7" alt="Study like the pros" class="feature__image">
             </li>
-            <li class="feature__description-column" [style.order]="1">
+            <li class="feature__description-column" [style.order]="1" [style.opacity]="opacity[1]">
                 <h3 class="feature__title" i18n="The title of the study session feature description@@f25fc28ef1ce003a1d2e2b74c4edf503">Study like the pros</h3>
                 <p class="feature__paragraph" i18n="The description of the study session feature@@a77cb5d4f5ba2526709496556d8aa4be">Wouldn't it be awesome to have an intense language study session in 15 minutes, or even 10? If you're an Advanced learner of the language you may already have your own study routine. But that study routine might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to get all the materials ready!</p>
             </li>
         </ul>
 
         <ul class="feature feature--large">
-            <li class="feature__image-column" [style.order]="1">
+            <li class="feature__image-column" [style.order]="1" [style.marginLeft]="xOffset[2] + 'px'" [style.opacity]="opacity[2]">
                 <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/images/feature03.jpg" i18n-alt="Alternative text for image of third large homepage feature@@426ade5d0c2b2797a217d0ad3746b217" alt="A tool for advanced language learners" class="feature__image">
             </li>
-            <li class="feature__description-column" [style.order]="2">
+            <li class="feature__description-column" [style.order]="2" [style.opacity]="opacity[2]">
                 <h3 class="feature__title" i18n="The title for the advanced material feature description@@e32fb4bb878da11006facfc293ae5955">A tool for advanced language learners</h3>
                 <p class="feature__paragraph" i18n="The description for the advanced material feature@@929c28ca424552020939e6af075621ff">getnative is most useful to language learners who already have a good command of the target language, yet want to make the speech sound more like that of a native speaker. Finding good study material is easy when you've just set out learning the target language. But as you advance, every day material like newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of your study routine.</p>
             </li>
