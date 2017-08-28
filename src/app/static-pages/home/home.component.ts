@@ -18,27 +18,35 @@ import * as _ from 'lodash';
 })
 export class HomeComponent {
 
-    bannerHeightVH = 100;
-    startY  = [100, 300, 600];
+    bannerBackgroundPositionY = 600;
+
+    startY  = [0, 300, 600];
     xOffset = [0,   0,   0];
     opacity = [0,   0,   0];
 
     @HostListener('window:scroll') onScroll() {
-        const rangeLength = 300;
-        const xMovement = 15;
+        this.animateLargeFeatures();
+        this.animateParallaxBanner();
+    }
 
+    constructor(private logger: Logger) {
+    }
+
+    private animateLargeFeatures(): void {
+        const xMovement = 25;
         for (let i = 0; i < this.startY.length; i++) {
             const startY = this.startY[i];
-            const endY = startY + rangeLength;
+            const endY = startY + 600;
             const percent = this.findPercentageOfXBetweenAAndB(<number>window.scrollY, startY, endY);
             this.xOffset[i] = this.findPointOfPercentageBetweenAAndB(percent, 0, xMovement) - xMovement;
             this.opacity[i] = percent / 100;
         }
-
-        this.bannerHeightVH = _.clamp(100 - this.findPercentageOfXBetweenAAndB(<number>window.scrollY, 0, window.innerHeight), 45, 100);
     }
 
-    constructor(private logger: Logger) {
+    private animateParallaxBanner(): void {
+        const percentOfHeightScrolled = this.findPercentageOfXBetweenAAndB(<number>window.scrollY, 0, window.innerHeight);
+        const n = _.floor(this.findPointOfPercentageBetweenAAndB(percentOfHeightScrolled, 0, window.innerHeight / 4));
+        this.bannerBackgroundPositionY = n - (window.innerHeight / 2);
     }
 
     private findPercentageOfXBetweenAAndB(x: number, a: number, b: number): number {
