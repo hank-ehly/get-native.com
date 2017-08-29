@@ -15,6 +15,7 @@ import { HttpService } from '../../core/http/http.service';
 import { APIHandle } from '../../core/http/api-handle';
 import { APIError, APIErrors } from '../../core/http/api-error';
 import * as _ from 'lodash';
+import { GNRequestOptions } from '../../core/http/gn-request-options';
 
 @Component({
     selector: 'gn-forgot-password',
@@ -42,7 +43,7 @@ export class ForgotPasswordComponent implements OnDestroy {
     onSubmit(): void {
         this.logger.debug(this, 'onSubmit');
 
-        const options = {
+        const options: GNRequestOptions = {
             body: {
                 email: this.email
             }
