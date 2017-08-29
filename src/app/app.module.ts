@@ -28,6 +28,7 @@ import { HelpModule } from './help/help.module';
 import { PasswordResetResolverService } from './password-reset/password-reset-resolver.service';
 
 import { MetaModule, MetaLoader } from '@ngx-meta/core';
+import { PasswordResetModule } from './password-reset/password-reset.module';
 
 @NgModule({
     imports: [
@@ -48,20 +49,18 @@ import { MetaModule, MetaLoader } from '@ngx-meta/core';
         StudyModule,
         StaticPagesModule,
         HelpModule,
+        PasswordResetModule
     ],
     declarations: [
-        AppComponent,
-        PasswordResetComponent
+        AppComponent
     ],
     providers: [
         {provide: LogLevelToken, useValue: LogLevelValue.DEBUG},
-        Logger,
-        PasswordResetResolverService
+        Logger
     ],
     bootstrap: [
         AppComponent
-    ],
-    exports: [PasswordResetComponent]
+    ]
 })
 export class AppModule {
 }
