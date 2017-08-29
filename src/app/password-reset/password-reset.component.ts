@@ -23,10 +23,6 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
 
     constructor(private logger: Logger, private route: ActivatedRoute, private http: HttpService) {
         this.token = this.route.snapshot.data['token'];
-        this.error = {
-            message: 'Bad value in the thingy!',
-            code: 'bad foo'
-        };
     }
 
     ngOnInit(): void {
