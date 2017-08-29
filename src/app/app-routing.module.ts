@@ -41,6 +41,8 @@ import { LoginComponent } from './login/login.component';
 import { ActivityComponent } from './settings/activity/activity.component';
 import { HelpMainComponent } from './help/main/main.component';
 import { HelpArticleComponent } from './help/article/article.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { PasswordResetResolverService } from './password-reset/password-reset-resolver.service';
 
 import { MetaGuard } from '@ngx-meta/core';
 
@@ -204,6 +206,12 @@ const routes: Routes = [
     },
     {
         path: 'confirm_email_update', resolve: {_: ConfirmEmailUpdateResolver}, component: SettingsComponent
+    },
+    {
+        path: 'reset_password', component: PasswordResetComponent, resolve: {token: PasswordResetResolverService}, data: {
+            showToolbar: false,
+            showNavbarSearchIcon: false
+        }
     },
     {
         path: '**', component: PageNotFoundComponent, data: {
