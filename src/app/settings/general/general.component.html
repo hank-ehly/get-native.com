@@ -42,7 +42,7 @@
     <div class="form__group">
         <label for="current-password" class="label" i18n="The label text for the current password input field@@a0b0162ac3b793da796b69e9a980a78f">Current Password</label>
         <input id="current-password" class="input" type="password" name="current-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.current">
-        <a class="link current-password__forgot-password-link" (click)="onClickForgotPassword()">I forgot my password.</a>
+        <a class="link current-password__forgot-password-link" (click)="onClickForgotPassword()" i18n="I forgot my password link text in general settings@@59463247ed2c4aed1b1236c13785c44c">I forgot my password.</a>
     </div>
 
     <div class="form__group">
