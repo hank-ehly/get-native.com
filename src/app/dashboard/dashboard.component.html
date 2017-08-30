@@ -3,7 +3,7 @@
         <header class="section-header">
             <h1 class="section-header__title" i18n="The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Queue</h1>
 
-            <div class="dropdown-toggle" *ngIf="(videos$ | async)?.length">
+            <div class="dropdown-toggle">
                 <span class="dropdown-toggle__text" *ngIf="(categoryFilter$ | async)?.value">{{ categoryFilter$.pluck('text') | async }}</span>
                 <span class="dropdown-toggle__text" *ngIf="!(categoryFilter$ | async)?.value" i18n="Dashboard category dropdown All videos label@@d2fa34a72514b69f9e2697247f4c2234">All videos</span>
                 <img class="dropdown-toggle__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/arrow-down.svg" i18n-alt="expand dropdown@@14bd1e219636451e28b4f0d20069ea1b" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
