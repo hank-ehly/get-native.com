@@ -38,7 +38,7 @@
 .button--hollow {
   border-color: transparent;
 
-  &:hover, &:focus {
+  &:hover, &:focus, &:disabled:hover {
     border-color: transparent;
   }
 }

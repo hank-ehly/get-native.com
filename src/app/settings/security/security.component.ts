@@ -7,16 +7,18 @@
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { APIError, APIErrors } from '../../core/http/api-error';
 import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
+import { Entities } from '../../core/entities/entities';
 import { APIHandle } from '../../core/http/api-handle';
+import { Entity } from '../../core/entities/entity';
 import { Logger } from '../../core/logger/logger';
 
-import { Entities } from '../../core/entities/entities';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Entity } from '../../core/entities/entity';
-import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 import * as _ from 'lodash';
 
 @Component({
@@ -25,11 +27,17 @@ import * as _ from 'lodash';
     styleUrls: ['security.component.scss']
 })
 export class SecurityComponent implements OnInit, OnDestroy {
-    modalVisibility$ = new BehaviorSubject<boolean>(false);
+
     reason = '';
-    private subscriptions: Subscription[] = [];
+    processing = false;
+    deleteUserError: APIError;
+    OnDestroy$ = new Subject<void>();
+    isModalVisibleEmitted$: Observable<boolean>;
+    private isModalVisibleSource: BehaviorSubject<boolean>;
 
     constructor(private logger: Logger, private http: HttpService, private user: UserService) {
+        this.isModalVisibleSource = new BehaviorSubject<boolean>(false);
+        this.isModalVisibleEmitted$ = this.isModalVisibleSource.asObservable();
     }
 
     ngOnInit(): void {
@@ -38,7 +46,7 @@ export class SecurityComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        _.invokeMap(this.subscriptions, 'unsubscribe');
+        this.OnDestroy$.next();
     }
 
     onClickDelete(): void {
@@ -46,19 +54,33 @@ export class SecurityComponent implements OnInit, OnDestroy {
 
         let request: Observable<Entities<Entity> | Entity>;
         if (this.reason.length) {
+            // todo: handling of empty reason text should be done server-side
             request = this.http.request(APIHandle.DELETE_USER, {body: {reason: this.reason}});
         } else {
             request = this.http.request(APIHandle.DELETE_USER);
         }
 
-        this.subscriptions.push(
-            request.subscribe(() => {
-                    this.logger.debug(this, 'DELETE_USER successful');
-                    this.user.logout();
-                }, (e: any) => {
-                    this.logger.debug(this, 'DELETE_USER error', e);
-                }
-            )
-        );
+        this.processing = true;
+        request.takeUntil(this.OnDestroy$).subscribe(this.onDeleteUserNext.bind(this), this.onDeleteUserError.bind(this));
+    }
+
+    onClickShowModal(): void {
+        this.isModalVisibleSource.next(true);
+    }
+
+    onClickCloseModal(): void {
+        this.isModalVisibleSource.next(false);
+    }
+
+    private onDeleteUserNext(): void {
+        this.processing = false;
+        this.user.logout();
+    }
+
+    private onDeleteUserError(errors: APIErrors): void {
+        this.processing = false;
+        if (errors.length) {
+            this.deleteUserError = _.first(errors);
+        }
     }
 }
