@@ -62,10 +62,13 @@
 <gn-modal [isVisible]="isPresentingForgotPasswordModal$ | async" (close)="onClickCloseForgotPasswordModal()">
     <div class="modal__content modal__content--password-reset-link">
         <p i18n="Instructions for sending password reset link@@97616c403b249ae0f7ea97779c552106">Click the below button to send a password reset link to your registered email address. You can eliminate the need to remember a password by instead logging in with Facebook, Twitter or Google.</p>
-        <button class="button button--opaque" (click)="onClickSendPasswordResetLink()" [disabled]="processing.sendPasswordResetLink" i18n="Send password reset link button text@@f3528d2ad9986f24ebc8884fd56e759a">SEND PASSWORD RESET LINK</button>
         <div class="modal__content--error-message-container" *ngIf="passwordResetLinkError">
             <p class="paragraph" i18n="User friendly message before password reset link error message@@e831b69865d3a77d0d10f0967b0b0729">Whoops, it looks like something went wrong:</p>
             <p class="paragraph paragraph--error-message">{{ passwordResetLinkError.message }}</p>
         </div>
+        <div class="modal__content--success-message-container" *ngIf="hasSentPasswordResetLink">
+            <p class="paragraph--success-message" i18n="Success message for pre-login password reset link form@@86bb724db5b8034ce5e98b88850c9a09">A password reset link has been sent to {{ user.email }}!</p>
+        </div>
+        <button class="button button--opaque" (click)="onClickSendPasswordResetLink()" [disabled]="processing.sendPasswordResetLink || hasSentPasswordResetLink" i18n="Send password reset link button text@@f3528d2ad9986f24ebc8884fd56e759a">SEND PASSWORD RESET LINK</button>
     </div>
 </gn-modal>
