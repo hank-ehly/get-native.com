@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Logger } from '../core/logger/logger';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { APIError, APIErrors } from '../core/http/api-error';
 import { HttpService } from '../core/http/http.service';
 import { Subject } from 'rxjs/Subject';
@@ -16,12 +16,14 @@ import * as _ from 'lodash';
 })
 export class PasswordResetComponent implements OnInit, OnDestroy {
 
-    OnDestroy$ = new Subject<void>();
-    token: string;
     model = {password: '', confirm: ''};
     error: APIError;
+    canDeactivate = false;
 
-    constructor(private logger: Logger, private route: ActivatedRoute, private http: HttpService) {
+    private token: string;
+    private OnDestroy$ = new Subject<void>();
+
+    constructor(private logger: Logger, private route: ActivatedRoute, private http: HttpService, private router: Router) {
         this.token = this.route.snapshot.data['token'];
     }
 
@@ -53,6 +55,8 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
     }
 
     private onResetPasswordNext(): void {
+        this.canDeactivate = true;
+        this.router.navigate(['/reset_password_complete']);
     }
 
     private onResetPasswordError(errors: APIErrors): void {

@@ -46,6 +46,7 @@ import { PasswordResetResolverService } from './password-reset/password-reset-re
 
 import { MetaGuard } from '@ngx-meta/core';
 import { PasswordResetGuard } from './password-reset/password-reset.guard';
+import { PasswordResetCompleteComponent } from './password-reset/password-reset-complete/password-reset-complete.component';
 
 const routes: Routes = [
     {
@@ -213,6 +214,12 @@ const routes: Routes = [
             showToolbar: false,
             showNavbarSearchIcon: false
         }, canDeactivate: [PasswordResetGuard]
+    },
+    {
+        path: 'reset_password_complete', component: PasswordResetCompleteComponent, data: {
+            showToolbar: false,
+            showNavbarSearchIcon: false
+        }
     },
     {
         path: '**', component: PageNotFoundComponent, data: {
