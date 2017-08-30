@@ -560,11 +560,19 @@
         </context-group>
         <note priority="1" from="description">User instructions for filling out the forgot password form</note>
       </trans-unit>
+      <trans-unit id="86bb724db5b8034ce5e98b88850c9a09" datatype="html">
+        <source>A password reset link has been sent to <x id="INTERPOLATION"/>!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description">Success message for pre-login password reset link form</note>
+      </trans-unit>
       <trans-unit id="a588bd2792ff35b327dddad10e716c31" datatype="html">
         <source>Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">16</context>
         </context-group>
         <note priority="1" from="description">The text for the forgot password form email input label</note>
       </trans-unit>
@@ -572,7 +580,7 @@
         <source>SEND</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <note priority="1" from="description">The text for the submit button of the forgot password form</note>
       </trans-unit>
@@ -580,7 +588,7 @@
         <source>Sign in with email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <note priority="1" from="description">The text for the link redirecting users to the email login form</note>
       </trans-unit>
@@ -588,7 +596,7 @@
         <source>Sign in via Facebook, Twitter or Google</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <note priority="1" from="description">The text for the link redirecting users to the social login form</note>
       </trans-unit>
@@ -596,7 +604,7 @@
         <source>Create a new account</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <note priority="1" from="description">The text for the link redirecting users to the registration form</note>
       </trans-unit>
@@ -2784,21 +2792,29 @@
         </context-group>
         <note priority="1" from="description">Instructions for sending password reset link</note>
       </trans-unit>
-      <trans-unit id="f3528d2ad9986f24ebc8884fd56e759a" datatype="html">
-        <source>SEND PASSWORD RESET LINK</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">65</context>
-        </context-group>
-        <note priority="1" from="description">Send password reset link button text</note>
-      </trans-unit>
       <trans-unit id="e831b69865d3a77d0d10f0967b0b0729" datatype="html">
         <source>Whoops, it looks like something went wrong:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">66</context>
         </context-group>
         <note priority="1" from="description">User friendly message before password reset link error message</note>
+      </trans-unit>
+      <trans-unit id="4630aa25a2a0bf7cabdf9ab4d5ad2f36" datatype="html">
+        <source>A password reset link has been sent to <x id="INTERPOLATION"/>!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <note priority="1" from="description">Success message for password reset link form in general settings page</note>
+      </trans-unit>
+      <trans-unit id="f3528d2ad9986f24ebc8884fd56e759a" datatype="html">
+        <source>SEND PASSWORD RESET LINK</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <note priority="1" from="description">Send password reset link button text</note>
       </trans-unit>
       <trans-unit id="b95a9f64b954582c56cb0033abf73084" datatype="html">
         <source>View and update your login credentials.</source>
@@ -3195,6 +3211,70 @@
           <context context-type="linenumber">53</context>
         </context-group>
         <note priority="1" from="description">Help page contact-us section instructions</note>
+      </trans-unit>
+      <trans-unit id="51579e033b6e0aae04c83c4d80263e9d" datatype="html">
+        <source>New Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">The label text for the password reset form new password input field</note>
+      </trans-unit>
+      <trans-unit id="e9065b2c75265db3110543b6f487f192" datatype="html">
+        <source>Confirm New Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">The label text for the password reset form confirm new password input field</note>
+      </trans-unit>
+      <trans-unit id="0628303c619a0cd22ba9ea5ce3110d42" datatype="html">
+        <source>SUBMIT</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/password-reset/password-reset.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">The submit button text for the password reset form</note>
+      </trans-unit>
+      <trans-unit id="470968075cfce4d1add9a88bac0f4aef" datatype="html">
+        <source>Password Reset Complete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Password reset complete image alt text</note>
+      </trans-unit>
+      <trans-unit id="111ff1489ca9ec6edb985c15fc620c9b" datatype="html">
+        <source>Your password has been reset.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Password reset success message on password reset complete page</note>
+      </trans-unit>
+      <trans-unit id="e747835f5bc447aafce4830c30199f20" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Home link text on password reset complete page</note>
+      </trans-unit>
+      <trans-unit id="b9c64141a976323f1962b9b7cf71b6a7" datatype="html">
+        <source>Library</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Library link text on password reset complete page</note>
+      </trans-unit>
+      <trans-unit id="d8699481e23f4c9233b5261918db32a8" datatype="html">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Contact link text on password reset complete page</note>
       </trans-unit>
       <trans-unit id="fd0413b1d745255d24d578e73b82149d" datatype="html">
         <source>Please try viewing getnative from a larger browser window</source>
