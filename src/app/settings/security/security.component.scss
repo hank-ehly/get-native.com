@@ -1,7 +1,7 @@
 @import '../../../styles/core';
 @import './security.component.debug';
 
-.title, .paragraph {
+.title, .paragraph, .textarea--container, .error-message-container {
   margin-top: 30px;
 }
 
@@ -9,28 +9,24 @@
   color: $regent-gray;
 }
 
-.paragraph--modal {
-  color: $pale-sky;
+.modal__content {
   padding: 40px;
+}
+
+.modal__content .paragraph {
   margin-top: 0;
 }
 
-.button {
-  display: block;
-  margin: 0 auto;
+.paragraph--modal {
+  color: $pale-sky;
 }
 
-.button--delete {
-  margin-bottom: 30px;
+.paragraph--error-message {
+  @include font-weight-bold();
+  color: $error-message-color;
 }
 
-.spacer {
-  height: 30px;
+.button--delete, .button--cancel {
   display: block;
-}
-
-.textarea--container {
-  display: block;
-  margin: 0 auto 30px;
-  padding: 0 40px;
+  margin: 20px auto 0;
 }
