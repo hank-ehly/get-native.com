@@ -67,7 +67,7 @@
             <p class="paragraph paragraph--error-message">{{ passwordResetLinkError.message }}</p>
         </div>
         <div class="modal__content--success-message-container" *ngIf="hasSentPasswordResetLink">
-            <p class="paragraph--success-message" i18n="Success message for pre-login password reset link form@@86bb724db5b8034ce5e98b88850c9a09">A password reset link has been sent to {{ user.email }}!</p>
+            <p class="paragraph--success-message" i18n="Success message for password reset link form in general settings page@@4630aa25a2a0bf7cabdf9ab4d5ad2f36">A password reset link has been sent to {{ user.email }}!</p>
         </div>
         <button class="button button--opaque" (click)="onClickSendPasswordResetLink()" [disabled]="processing.sendPasswordResetLink || hasSentPasswordResetLink" i18n="Send password reset link button text@@f3528d2ad9986f24ebc8884fd56e759a">SEND PASSWORD RESET LINK</button>
     </div>
