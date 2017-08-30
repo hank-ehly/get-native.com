@@ -40,11 +40,6 @@ hr {
   font-size: $font-size-small;
 }
 
-.paragraph--error-message {
-  @include font-weight-bold();
-  color: $red;
-}
-
 .password-form {
   display: flex;
   flex-flow: column wrap;
@@ -72,6 +67,15 @@ hr {
   display: block;
 }
 
-.modal__content--error-message-container {
+.modal__content--error-message-container, .modal__content--success-message-container {
   margin-top: 30px;
+}
+
+.paragraph--error-message {
+  @include font-weight-bold();
+  color: $error-message-color;
+}
+
+.paragraph--success-message {
+  color: $success-message-color;
 }

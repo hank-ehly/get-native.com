@@ -51,6 +51,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
     passwordResetLinkError: APIError;
     passwordModel: any = {current: '', replace: '', confirm: ''};
     passwordFormError: APIError;
+    hasSentPasswordResetLink = false;
 
     processing = {
         sendPasswordResetLink: false
@@ -168,7 +169,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
         this.processing.sendPasswordResetLink = true;
         this.http.request(APIHandle.SEND_PASSWORD_RESET_LINK, options)
             .takeUntil(this.OnDestroy$)
-            .map(this.onSendPasswordResetLinkSuccess.bind(this))
+            .map(this.onSendPasswordResetLinkNext.bind(this))
             .subscribe(null, this.onSendPasswordResetLinkError.bind(this));
     }
 
@@ -177,12 +178,10 @@ export class GeneralComponent implements OnInit, OnDestroy {
     }
 
     private onPasswordChangeSuccess(): void {
-        this.logger.debug(this, 'Password change successful');
         this.passwordForm.reset();
     }
 
     private onPasswordChangeError(errors: APIErrors): void {
-        this.logger.debug(this, 'Password change error');
         if (errors.length) {
             this.passwordFormError = _.first(errors);
         }
@@ -197,10 +196,9 @@ export class GeneralComponent implements OnInit, OnDestroy {
         this.emailModel = '';
     }
 
-    private onSendPasswordResetLinkSuccess(): void {
-        this.logger.debug(this, 'onSendPasswordResetLinkSuccess');
+    private onSendPasswordResetLinkNext(): void {
         this.processing.sendPasswordResetLink = false;
-        this.isPresentingForgotPasswordModal$.next(false);
+        this.hasSentPasswordResetLink = true;
     }
 
     private onSendPasswordResetLinkError(errors: APIErrors): void {
