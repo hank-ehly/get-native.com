@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     }
 
     private animateLargeFeatures(): void {
-        const xMovement = 25;
+        const xMovement = 30;
         for (let i = 0; i < this.startY.length; i++) {
             const startY = this.startY[i];
             const endY = startY + 800;
