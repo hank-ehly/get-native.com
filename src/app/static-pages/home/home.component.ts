@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
         const xMovement = 25;
         for (let i = 0; i < this.startY.length; i++) {
             const startY = this.startY[i];
-            const endY = startY + 600;
+            const endY = startY + 800;
             const percent = this.findPercentageOfXBetweenAAndB(<number>window.scrollY, startY, endY);
             this.xOffset[i] = this.findPointOfPercentageBetweenAAndB(percent, 0, xMovement) - xMovement;
             this.opacity[i] = percent / 100;
@@ -50,8 +50,8 @@ export class HomeComponent implements OnInit {
 
     private animateParallaxBanner(): void {
         const percentOfHeightScrolled = this.findPercentageOfXBetweenAAndB(<number>window.scrollY, 0, window.innerHeight);
-        const n = _.floor(this.findPointOfPercentageBetweenAAndB(percentOfHeightScrolled, 0, window.innerHeight / 4));
-        this.bannerBackgroundPositionY = n - (window.innerHeight / 2);
+        const n = _.floor(this.findPointOfPercentageBetweenAAndB(percentOfHeightScrolled, 0, window.innerHeight / 3));
+        this.bannerBackgroundPositionY = _.floor(n - (window.innerHeight / 5));
         this.logger.debug(this, this.bannerBackgroundPositionY);
     }
 
