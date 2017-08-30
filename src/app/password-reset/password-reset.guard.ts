@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, CanDeactivate } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 import { PasswordResetComponent } from './password-reset.component';
 
@@ -12,18 +12,18 @@ export class PasswordResetGuard implements CanDeactivate<PasswordResetComponent>
                   nextState?: RouterStateSnapshot): boolean {
         if (this.hasBeenConfirmed) {
             return true;
-        }
-
-        if (component.model.password || component.model.confirm) {
+        } else if (component.canDeactivate) {
+            return true;
+        } else if (component.model.password || component.model.confirm) {
             if (window.confirm('You have unsaved data on this page. Exiting will erase this data.')) {
                 this.hasBeenConfirmed = true;
                 return true;
             } else {
                 return false;
             }
+        } else {
+            return true;
         }
-
-        return true;
     }
 
 }
