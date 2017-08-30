@@ -632,6 +632,15 @@
                 </context-group>
                 <note priority="1" from="description">User instructions for filling out the forgot password form</note>
             </trans-unit>
+            <trans-unit id="86bb724db5b8034ce5e98b88850c9a09" datatype="html">
+                <source>A password reset link has been sent to <x id="INTERPOLATION"/>!</source>
+                <target>パスワードリセットのリンクが<x id="INTERPOLATION"/>に送信されました。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
+                    <context context-type="linenumber">12</context>
+                </context-group>
+                <note priority="1" from="description">Success message for pre-login password reset link form</note>
+            </trans-unit>
             <trans-unit id="a588bd2792ff35b327dddad10e716c31" datatype="html">
                 <source>Email</source>
                 <target>Eメール</target>
@@ -2720,6 +2729,78 @@
                 </context-group>
                 <note priority="1" from="description">Help page contact-us section instructions</note>
             </trans-unit>
+            <trans-unit id="51579e033b6e0aae04c83c4d80263e9d" datatype="html">
+                <source>New Password</source>
+                <target>新しいパスワード</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/password-reset/password-reset.component.ts</context>
+                    <context context-type="linenumber">10</context>
+                </context-group>
+                <note priority="1" from="description">The label text for the password reset form new password input field</note>
+            </trans-unit>
+            <trans-unit id="e9065b2c75265db3110543b6f487f192" datatype="html">
+                <source>Confirm New Password</source>
+                <target>新しいパスワードを再入力</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/password-reset/password-reset.component.ts</context>
+                    <context context-type="linenumber">16</context>
+                </context-group>
+                <note priority="1" from="description">The label text for the password reset form confirm new password input field</note>
+            </trans-unit>
+            <trans-unit id="0628303c619a0cd22ba9ea5ce3110d42" datatype="html">
+                <source>SUBMIT</source>
+                <target>送信する</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/password-reset/password-reset.component.ts</context>
+                    <context context-type="linenumber">20</context>
+                </context-group>
+                <note priority="1" from="description">The submit button text for the password reset form</note>
+            </trans-unit>
+            <trans-unit id="470968075cfce4d1add9a88bac0f4aef" datatype="html">
+                <source>Password Reset Complete</source>
+                <target>パスワードがリセットされました</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+                    <context context-type="linenumber">3</context>
+                </context-group>
+                <note priority="1" from="description">Password reset complete image alt text</note>
+            </trans-unit>
+            <trans-unit id="111ff1489ca9ec6edb985c15fc620c9b" datatype="html">
+                <source>Your password has been reset.</source>
+                <target>パスワードがリセットされました。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">Password reset success message on password reset complete page</note>
+            </trans-unit>
+            <trans-unit id="e747835f5bc447aafce4830c30199f20" datatype="html">
+                <source>Home</source>
+                <target>ホーム</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+                    <context context-type="linenumber">6</context>
+                </context-group>
+                <note priority="1" from="description">Home link text on password reset complete page</note>
+            </trans-unit>
+            <trans-unit id="b9c64141a976323f1962b9b7cf71b6a7" datatype="html">
+                <source>Library</source>
+                <target>ライブラリー</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">Library link text on password reset complete page</note>
+            </trans-unit>
+            <trans-unit id="d8699481e23f4c9233b5261918db32a8" datatype="html">
+                <source>Contact</source>
+                <target>お問い合わせ</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/password-reset/password-reset-complete/password-reset-complete.component.ts</context>
+                    <context context-type="linenumber">8</context>
+                </context-group>
+                <note priority="1" from="description">Contact link text on password reset complete page</note>
+            </trans-unit>
             <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
                 <source>getnative is a language learning resource for advanced speakers</source>
                 <target>getnativeは、上級者向けの言語学習リソースです</target>
@@ -3279,6 +3360,15 @@
                     <context context-type="linenumber">67</context>
                 </context-group>
                 <note priority="1" from="description">User friendly message before password reset link error message</note>
+            </trans-unit>
+            <trans-unit id="4630aa25a2a0bf7cabdf9ab4d5ad2f36" datatype="html">
+                <source>A password reset link has been sent to <x id="INTERPOLATION"/>!</source>
+                <target>パスワードリセットのリンクが<x id="INTERPOLATION"/>に送信されました。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">70</context>
+                </context-group>
+                <note priority="1" from="description">Success message for password reset link form in general settings page</note>
             </trans-unit>
             <trans-unit id="9f55b08839a180df1d65398a9079d37e" datatype="html">
                 <source>user picture</source>
