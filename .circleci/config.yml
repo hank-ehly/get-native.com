@@ -15,24 +15,6 @@ jobs:
             - "node_modules"
       - run: xvfb-run -a npm run lint -- --type-check
       - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
-      - run: git clone git@github.com:hank-ehly/devops.getnativelearning.com.git
-      - restore_cache:
-          key: devops.getnativelearning.com-{{ .Branch }}-{{ checksum "devops.getnativelearning.com/deploy/Gemfile" }}
-      - run:
-          name: bundle install
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "develop" -o "${CIRCLE_BRANCH}" == "master" ]; then
-                cd devops.getnativelearning.com/deploy && bundle install --jobs 4 --path vendor/bundle
-            fi
-      - save_cache:
-          key: devops.getnativelearning.com-{{ .Branch }}-{{ checksum "devops.getnativelearning.com/deploy/Gemfile" }}
-          paths:
-            - "devops.getnativelearning.com/deploy/vendor/bundle"
       - deploy:
           name: Deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
-            	cd devops.getnativelearning.com/deploy && bundle exec cap client:staging deploy
-            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
-            	cd devops.getnativelearning.com/deploy && bundle exec cap client:production deploy
-            fi
+          command: .circleci/deploy.sh ${CIRCLE_BRANCH}
