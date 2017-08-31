@@ -26,6 +26,7 @@ import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
+import { GNRequestOptions } from '../../core/http/gn-request-options';
 
 @Component({
     selector: 'gn-general',
@@ -33,35 +34,44 @@ import * as _ from 'lodash';
     styleUrls: ['general.component.scss']
 })
 export class GeneralComponent implements OnInit, OnDestroy {
+
     @ViewChild('passwordForm') passwordForm: NgForm;
-    OnDestroy$ = new Subject<void>();
 
     emailRegex = EMAIL_REGEX;
-    isEditingEmailAddress$ = new BehaviorSubject<boolean>(false);
+
     emailModel = '';
     submittedEmailAddress = '';
-    submitEmailEmitted$: Observable<any>;
-    private submitEmailSource: Subject<any>;
-    hasClickedResendConfirmationEmail = false;
+    passwordModel: any = {current: '', replace: '', confirm: ''};
+
+    sentEmailUpdateConfirmationEmailEmitted$: Observable<any>;
+    isEditingEmailAddress$ = new BehaviorSubject<boolean>(false);
+    isPresentingForgotPasswordModal$ = new BehaviorSubject<boolean>(false);
 
     studyLanguageOptions: any;
     interfaceLanguageOptions: any;
 
-    isPresentingForgotPasswordModal$ = new BehaviorSubject<boolean>(false);
+    resendConfirmationEmailError: APIError;
+    editEmailError: APIError;
     passwordResetLinkError: APIError;
-    passwordModel: any = {current: '', replace: '', confirm: ''};
     passwordFormError: APIError;
-    hasSentPasswordResetLink = false;
 
-    processing = {
-        sendPasswordResetLink: false
+    flags = {
+        hasResentConfirmationEmail: false,
+        hasSentPasswordResetLink: false,
+        processing: {
+            resendConfirmationEmail: false,
+            sendPasswordResetLink: false
+        }
     };
 
     user: User = this.userService.current$.getValue();
 
+    private sentEmailUpdateConfirmationEmailSource: Subject<any>;
+    private OnDestroy$ = new Subject<void>();
+
     constructor(private logger: Logger, private http: HttpService, private userService: UserService, private lang: LangService) {
-        this.submitEmailSource = new Subject();
-        this.submitEmailEmitted$ = this.submitEmailSource.asObservable();
+        this.sentEmailUpdateConfirmationEmailSource = new Subject();
+        this.sentEmailUpdateConfirmationEmailEmitted$ = this.sentEmailUpdateConfirmationEmailSource.asObservable();
 
         this.studyLanguageOptions = this.interfaceLanguageOptions = _.map(Languages, l => {
             return _.mapKeys(<any>l, (v, k) => k.toString() === 'code' ? 'value' : 'title');
@@ -71,7 +81,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
 
-        this.submitEmailEmitted$
+        this.sentEmailUpdateConfirmationEmailEmitted$
             .takeUntil(this.OnDestroy$)
             .subscribe(this.onSubmitEmailSuccess.bind(this));
 
@@ -102,7 +112,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
     onSubmitEmail(): void {
         this.logger.debug(this, 'onSubmitEmail');
 
-        const options = {
+        const options: GNRequestOptions = {
             params: {
                 id: this.user.id
             },
@@ -113,12 +123,13 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
         this.http.request(APIHandle.EDIT_EMAIL, options)
             .takeUntil(this.OnDestroy$)
-            .subscribe(() => {
-                this.submitEmailSource.next(true);
-            });
+            .subscribe(
+                this.onEditEmailNext.bind(this),
+                this.onEditEmailError.bind(this)
+            );
     }
 
-    onClickResend(): void {
+    onClickResendConfirmationEmail(): void {
         this.logger.debug(this, 'Resend Confirmation Email');
 
         const options = {
@@ -127,9 +138,13 @@ export class GeneralComponent implements OnInit, OnDestroy {
             }
         };
 
-        this.http.request(APIHandle.RESEND_CONFIRMATION_EMAIL, options).takeUntil(this.OnDestroy$).subscribe(() => {
-            this.hasClickedResendConfirmationEmail = true;
-        });
+        this.flags.processing.resendConfirmationEmail = true;
+        this.http.request(APIHandle.RESEND_CONFIRMATION_EMAIL, options)
+            .takeUntil(this.OnDestroy$)
+            .subscribe(
+                this.onResendConfirmationEmailNext.bind(this),
+                this.onResendConfirmationEmailError.bind(this)
+            );
     }
 
     onSelectDefaultStudyLanguage(code: LanguageCode) {
@@ -166,11 +181,15 @@ export class GeneralComponent implements OnInit, OnDestroy {
             }
         };
 
-        this.processing.sendPasswordResetLink = true;
+        this.flags.processing.sendPasswordResetLink = true;
         this.http.request(APIHandle.SEND_PASSWORD_RESET_LINK, options)
             .takeUntil(this.OnDestroy$)
             .map(this.onSendPasswordResetLinkNext.bind(this))
             .subscribe(null, this.onSendPasswordResetLinkError.bind(this));
+    }
+
+    onClickEditEmailAddress(): void {
+        this.isEditingEmailAddress$.next(true);
     }
 
     private onInterfaceLanguageUpdated(code: LanguageCode) {
@@ -196,14 +215,24 @@ export class GeneralComponent implements OnInit, OnDestroy {
         this.emailModel = '';
     }
 
-    private onSendPasswordResetLinkNext(): void {
-        this.processing.sendPasswordResetLink = false;
-        this.hasSentPasswordResetLink = true;
+    private onEditEmailNext(): void {
+        this.sentEmailUpdateConfirmationEmailSource.next(true);
     }
 
-    private onSendPasswordResetLinkError(errors: APIErrors): void {
-        this.processing.sendPasswordResetLink = false;
-        if (errors.length) {
+    private onEditEmailError(errors?: APIErrors): void {
+        if (errors && errors.length) {
+            this.editEmailError = _.first(errors);
+        }
+    }
+
+    private onSendPasswordResetLinkNext(): void {
+        this.flags.processing.sendPasswordResetLink = false;
+        this.flags.hasSentPasswordResetLink = true;
+    }
+
+    private onSendPasswordResetLinkError(errors?: APIErrors): void {
+        this.flags.processing.sendPasswordResetLink = false;
+        if (errors && errors.length) {
             this.passwordResetLinkError = _.first(errors);
         }
     }
@@ -211,4 +240,21 @@ export class GeneralComponent implements OnInit, OnDestroy {
     private onHideForgotPasswordModal(): void {
         this.passwordResetLinkError = null;
     }
+
+    private onResendConfirmationEmailNext(): void {
+        this.flags.hasResentConfirmationEmail = true;
+        this.flags.processing.resendConfirmationEmail = false;
+        this.resendConfirmationEmailError = null;
+    }
+
+    private onResendConfirmationEmailError(errors?: APIErrors): void {
+        this.flags.processing.resendConfirmationEmail = false;
+        if (errors && errors.length) {
+            this.resendConfirmationEmailError = _.first(errors);
+        } else {
+            // todo: default i18n
+            this.resendConfirmationEmailError = {code: '500', message: 'HTTP (500)'};
+        }
+    }
+
 }
