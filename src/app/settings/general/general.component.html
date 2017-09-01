@@ -2,10 +2,20 @@
     <form class="form email-form" #emailForm="ngForm" (submit)="onSubmitEmail()">
         <div class="form__group">
             <label for="email" class="label"><ng-container i18n="User email label text@@6ba4ecb46a685bbc07ce71dbd5580a48">Email</ng-container> <span *ngIf="!user.email_verified" i18n="Small label notifying user they must confirm their email@@f175102528cedc2c8882357e32c1b595">(Please confirm)</span></label>
+
+            <p class="paragraph paragraph--email-form" *ngIf="sentEmailUpdateConfirmationEmailEmitted$ | async" i18n="Message displayed after submitting an updated email address@@180be2f944682713f759b6615288cbe3">An email has been sent to {{ submittedEmailAddress }}. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</p>
+            <p class="paragraph paragraph--email-form" *ngIf="flags.hasResentConfirmationEmail" i18n="Message displayed after resending email confirmation email in general settings@@a156df53e81a3c26ab5082455077ab09">An email has been sent to {{ user?.email }}. Please click the enclosed link to complete the email confirmation process.</p>
+            <p class="paragraph paragraph--email-form paragraph--error-message" *ngIf="resendConfirmationEmailError">{{ resendConfirmationEmailError.message }}</p>
+            <p class="paragraph paragraph--email-form paragraph--error-message">A bad thing has happened and the world is about to explode.</p>
+
             <input id="email" type="email" name="email" class="input" [readonly]="!(isEditingEmailAddress$ | async)" [placeholder]="user?.email" [(ngModel)]="emailModel" required [pattern]="emailRegex" [gnFocus]="isEditingEmailAddress$ | async">
 
-            <div class="form__button-group">
-                <button class="button button--opaque" *ngIf="!(isEditingEmailAddress$ | async)" (click)="onClickEditEmailAddress()" [disabled]="!user.email_verified" title="Confirm current email address before updating." i18n="The title text of general settings button for enabling email editing@@e19141a6936b94673dedaf85e0ebdd98">EDIT</button>
+            <div class="form__button-group" *ngIf="user.email_verified && !(isEditingEmailAddress$ | async)">
+                <button class="button button--opaque" (click)="onClickEditEmailAddress()" i18n="The title text of general settings button for enabling email editing@@e19141a6936b94673dedaf85e0ebdd98">EDIT</button>
+            </div>
+
+            <div class="form__button-group" *ngIf="!user.email_verified">
+                <button (click)="onClickResendConfirmationEmail()" class="button button--opaque" [disabled]="flags.processing.resendConfirmationEmail || flags.hasResentConfirmationEmail" i18n="The text for the button allowing users to resend their account confirmation email@@d10991fa81cf964182d36b780db8aab3">Resend Confirmation Email</button>
             </div>
 
             <div class="form__button-group" *ngIf="isEditingEmailAddress$ | async">
@@ -14,40 +24,18 @@
             </div>
         </div>
     </form>
-
-    <div *ngIf="sentEmailUpdateConfirmationEmailEmitted$ | async">
-        <p i18n="Message displayed after submitting an updated email address@@180be2f944682713f759b6615288cbe3">An email has been sent to {{ submittedEmailAddress }}. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</p>
-    </div>
-
-    <div *ngIf="flags.hasResentConfirmationEmail">
-        <p i18n="Message displayed after resending email confirmation email in general settings@@a156df53e81a3c26ab5082455077ab09">An email has been sent to {{ user?.email }}. Please click the enclosed link to complete the email confirmation process.</p>
-    </div>
-
-    <div class="resend-confirmation-email--error-message-container" *ngIf="resendConfirmationEmailError">
-        <p class="resend-confirmation-email--error-message">{{ resendConfirmationEmailError.message }}</p>
-    </div>
-
-    <div class="resend-confirmation-email" *ngIf="!user.email_verified">
-        <button (click)="onClickResendConfirmationEmail()" class="button button--opaque" [disabled]="flags.processing.resendConfirmationEmail || flags.hasResentConfirmationEmail" i18n="The text for the button allowing users to resend their account confirmation email@@d10991fa81cf964182d36b780db8aab3">Resend Confirmation Email</button>
-    </div>
 </section>
 
 <section>
-    <div class="default-study-language--error-message-container">
-        <p class="paragraph--error-message">Failed to do it</p>
-    </div>
-
     <div class="default-study-language">
         <label class="label default-study-language__label" i18n="The text for the label denoting the user default study language select box@@a3da8af7fc23ec0108242a67658095e0">Default Study Language</label>
+        <p class="paragraph--error-message">An error occurred while trying to update the default study language. Please try again later.</p>
         <gn-select (selection$)="onSelectDefaultStudyLanguage($event)" [options]="studyLanguageOptions" [selected]="user.default_study_language.code"></gn-select>
-    </div>
-
-    <div class="interface-language--error-message-container">
-        <p class="paragraph--error-message">Failed to do it</p>
     </div>
 
     <div class="interface-language">
         <label class="label interface-language__label" i18n="The text for the label denoting the user interface language preference select box@@3fd49dede7fd589daa904a81db2541f1">Interface Language</label>
+        <p class="paragraph--error-message">An error occurred while trying to update the interface language. Please try again later.</p>
         <gn-select (selection$)="onSelectInterfaceLanguage($event)" [options]="interfaceLanguageOptions" [selected]="user.interface_language.code"></gn-select>
     </div>
 </section>
