@@ -24,36 +24,39 @@ export class HomeComponent implements OnInit {
     xOffset = [0, 0, 0];
     opacity = [0, 0, 0];
 
-
     @HostListener('window:scroll') onScroll() {
-        this.animateLargeFeatures();
-        this.animateParallaxBanner();
+        this.updateLargeFeatureImagePosition();
+        this.updateBannerPosition();
+    }
+
+    @HostListener('window:resize') onResize() {
+        this.updateLargeFeatureImagePosition();
+        this.updateBannerPosition();
     }
 
     constructor(private logger: Logger) {
     }
 
     ngOnInit(): void {
-        this.animateParallaxBanner();
+        this.updateBannerPosition();
     }
 
-    private animateLargeFeatures(): void {
+    private updateLargeFeatureImagePosition(): void {
         const xMovement = 30;
+        const span = 800;
         for (let i = 0; i < this.startY.length; i++) {
             const startY = this.startY[i];
-            const endY = startY + 800;
+            const endY = startY + span;
             const percent = this.findPercentageOfXBetweenAAndB(<number>window.scrollY, startY, endY);
             this.xOffset[i] = this.findPointOfPercentageBetweenAAndB(percent, 0, xMovement) - xMovement;
             this.opacity[i] = percent / 100;
         }
     }
 
-    private animateParallaxBanner(): void {
-        // const percentOfWindowHeightScrolled = this.findPercentageOfXBetweenAAndB(<number>window.scrollY, 0, window.innerHeight);
-        // this.bannerBackgroundPositionY = _.floor(
-        //     this.findPointOfPercentageBetweenAAndB(percentOfWindowHeightScrolled, 0, window.innerHeight / 2));
-        // this.bannerBackgroundPositionY -= 50;
-        // this.logger.debug(this, percentOfWindowHeightScrolled, this.bannerBackgroundPositionY);
+    private updateBannerPosition(): void {
+        // bias should increase relative to window width
+        const bias = _.floor(window.innerWidth / 7.5);
+        this.bannerBackgroundPositionY = (window.pageYOffset * 0.5) - bias;
     }
 
     private findPercentageOfXBetweenAAndB(x: number, a: number, b: number): number {
