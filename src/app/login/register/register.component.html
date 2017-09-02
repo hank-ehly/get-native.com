@@ -11,21 +11,21 @@
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="form" [gnMatch]="['password', 'password-confirm']">
         <div class="form__group">
             <label class="label" for="email"><span class="form__required-indicator">*</span> <ng-container i18n="Registration page email text input label@@c0fe73f5d82c1a6ee2581bd65cc2aff4">Email</ng-container></label>
-            <input id="email" type="email" name="email" [(ngModel)]="credentials.email" [pattern]="emailRegex" maxlength="254" tabindex="1" class="input tabbable" required>
+            <input id="email" type="email" name="email" [(ngModel)]="model.email" [pattern]="emailRegex" maxlength="254" tabindex="1" class="input tabbable" required>
         </div>
 
         <div class="form__group">
             <label class="label" for="password"><span class="form__required-indicator">*</span> <ng-container i18n="Registration page password input label@@41f4da5d70f2a71ffa85429f5bfd4fc6">Password (minimum 8 characters)</ng-container></label>
-            <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="credentials.password" minlength="8" class="input tabbable" required>
-            <gn-password-strength [password]="credentials.password"></gn-password-strength>
+            <input id="password" type="password" name="password" tabindex="2" [(ngModel)]="model.password" minlength="8" class="input tabbable" required>
+            <gn-password-strength [password]="model.password"></gn-password-strength>
         </div>
 
         <div class="form__group form__group_confirm-password">
             <label class="label" for="password-confirm"><span class="form__required-indicator">*</span> <ng-container i18n="Registration page password confirmation input label@@3bd854fc75318f75b3582c1d1361e72e">Password (Confirm)</ng-container></label>
-            <input id="password-confirm" type="password" name="password-confirm" tabindex="3" class="input tabbable" [(ngModel)]="credentials.passwordConfirm" minlength="8" required>
+            <input id="password-confirm" type="password" name="password-confirm" tabindex="3" class="input tabbable" [(ngModel)]="model.passwordConfirm" minlength="8" required>
         </div>
 
-        <button type="submit" tabindex="4" class="button button--opaque form__button tabbable" [disabled]="form.invalid" i18n="The text for the submit button of the user registration form@@76547a2df32997f1cb7ee0dc185a421c">SIGN UP</button>
+        <button tabindex="4" class="button button--opaque form__button tabbable" [disabled]="form.invalid || flags.processing.createUser" i18n="The text for the submit button of the user registration form@@76547a2df32997f1cb7ee0dc185a421c">SIGN UP</button>
     </form>
 
     <footer class="footer">

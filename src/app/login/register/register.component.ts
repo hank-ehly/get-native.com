@@ -29,10 +29,16 @@ export class RegisterComponent implements OnDestroy {
     OnDestroy$ = new Subject<void>();
     emailRegex = EMAIL_REGEX;
 
-    credentials: any = {
+    model: any = {
         email: '',
         password: '',
         passwordConfirm: ''
+    };
+
+    flags = {
+        processing: {
+            createUser: false
+        }
     };
 
     errors: APIErrors = [];
@@ -52,10 +58,14 @@ export class RegisterComponent implements OnDestroy {
 
     onSubmit(): void {
         this.logger.debug(this, 'onSubmit');
-        this.http.request(APIHandle.CREATE_USER, {body: this.credentials}).takeUntil(this.OnDestroy$).subscribe(
-            this.onRegistrationResponse.bind(this),
-            this.onRegistrationError.bind(this)
-        );
+        const options = {body: this.model};
+        this.flags.processing.createUser = true;
+        this.http.request(APIHandle.CREATE_USER, options)
+            .takeUntil(this.OnDestroy$)
+            .subscribe(
+                this.onCreateUserNext.bind(this),
+                this.onCreateUserError.bind(this)
+            );
     }
 
     goToPrivacy(): void {
@@ -70,16 +80,17 @@ export class RegisterComponent implements OnDestroy {
         });
     }
 
-    private onRegistrationResponse(user: User): void {
+    private onCreateUserNext(user: User): void {
         this.user.updateCache(user);
         this.router.navigate([{outlets: {modal: null}}]).then(() => {
-            return this.router.navigate(['dashboard']);
+            return this.router.navigate(['/dashboard']);
         }).catch(e => {
             this.logger.info(this, 'Navigation to Dashboard failed', e);
         });
     }
 
-    private onRegistrationError(errors: APIErrors): void {
+    private onCreateUserError(errors: APIErrors): void {
+        this.flags.processing.createUser = false;
         this.errors = errors;
     }
 }
