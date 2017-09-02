@@ -27,7 +27,11 @@ export class ForgotPasswordComponent implements OnDestroy {
     email = '';
     submittedEmail = '';
     emailRegex: string = EMAIL_REGEX;
-    processing = false;
+    flags = {
+        processing: {
+            sendPasswordResetLink: false
+        }
+    };
     error: APIError;
 
     private OnDestroy$ = new Subject<void>();
@@ -49,8 +53,7 @@ export class ForgotPasswordComponent implements OnDestroy {
             }
         };
 
-        this.error = null;
-        this.processing = true;
+        this.flags.processing.sendPasswordResetLink = true;
         this.http.request(APIHandle.SEND_PASSWORD_RESET_LINK, options)
             .takeUntil(this.OnDestroy$)
             .subscribe(
@@ -64,13 +67,14 @@ export class ForgotPasswordComponent implements OnDestroy {
     }
 
     private onSendPasswordResetLinkNext(): void {
-        this.processing = false;
+        this.error = null;
+        this.flags.processing.sendPasswordResetLink = false;
         this.submittedEmail = this.email;
     }
 
     private onSendPasswordResetLinkError(errors: APIErrors): void {
-        this.processing = false;
-        if (errors.length) {
+        this.flags.processing.sendPasswordResetLink = false;
+        if (errors && errors.length) {
             this.error = _.first(errors);
         }
     }
