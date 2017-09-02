@@ -22,7 +22,7 @@
 }
 
 .paragraph--email-form {
-  margin-top: 15px;
+  margin-top: 5px;
   flex: 2 100%;
 }
 
@@ -81,22 +81,16 @@ hr {
   display: block;
 }
 
-.modal__content--error-message-container,
-.modal__content--success-message-container,
-.default-study-language--error-message-container,
-.interface-language--error-message-container {
-  margin-top: 30px;
-}
-
 .paragraph--error-message {
   @include font-weight-bold();
   font-size: $font-size-small;
   color: $error-message-color;
+  margin-top: 5px;
 }
 
-.default-study-language .paragraph--error-message,
-.interface-language .paragraph--error-message {
-  margin-top: 5px;
+.modal__content--password-reset-link .paragraph--error-message,
+.modal__content--password-reset-link .paragraph--success-message{
+  margin-top: 30px;
 }
 
 .paragraph--success-message {

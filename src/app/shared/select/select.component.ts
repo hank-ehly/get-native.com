@@ -17,6 +17,8 @@ import { Subject } from 'rxjs/Subject';
 export class SelectComponent {
     @Input() options: {value: string, title: string}[];
     @Input() selected: string;
+    @Input() disabled: boolean;
+    @Input() name: string;
     @Output() selection$ = new Subject<string>();
 
     onInput(e: Event): void {

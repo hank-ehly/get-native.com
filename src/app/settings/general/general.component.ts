@@ -27,6 +27,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 import { GNRequestOptions } from '../../core/http/gn-request-options';
+import { takeUntil } from 'rxjs/operator/takeUntil';
+import { SelectComponent } from '../../shared/select/select.component';
 
 @Component({
     selector: 'gn-general',
@@ -54,13 +56,19 @@ export class GeneralComponent implements OnInit, OnDestroy {
     editEmailError: APIError;
     passwordResetLinkError: APIError;
     passwordFormError: APIError;
+    updateDefaultStudyLanguageError: APIError;
+    updateInterfaceLanguageError: APIError;
 
     flags = {
         hasResentConfirmationEmail: false,
         hasSentPasswordResetLink: false,
         processing: {
             resendConfirmationEmail: false,
-            sendPasswordResetLink: false
+            sendPasswordResetLink: false,
+            editEmail: false,
+            selectDefaultStudyLanguage: false,
+            selectInterfaceLanguage: false,
+            updatePassword: false
         }
     };
 
@@ -90,14 +98,6 @@ export class GeneralComponent implements OnInit, OnDestroy {
             .filter(b => !b)
             .subscribe(this.onStopEmailEditing.bind(this));
 
-        this.userService.passwordChange$
-            .takeUntil(this.OnDestroy$)
-            .subscribe(this.onPasswordChangeSuccess.bind(this), this.onPasswordChangeError.bind(this));
-
-        this.userService.interfaceLanguageEmitted$
-            .takeUntil(this.OnDestroy$)
-            .subscribe(this.onInterfaceLanguageUpdated.bind(this));
-
         this.isPresentingForgotPasswordModal$
             .takeUntil(this.OnDestroy$)
             .filter(b => !b)
@@ -121,12 +121,25 @@ export class GeneralComponent implements OnInit, OnDestroy {
             }
         };
 
+        this.flags.processing.editEmail = true;
         this.http.request(APIHandle.EDIT_EMAIL, options)
             .takeUntil(this.OnDestroy$)
             .subscribe(
                 this.onEditEmailNext.bind(this),
                 this.onEditEmailError.bind(this)
             );
+    }
+
+    private onEditEmailNext(): void {
+        this.flags.processing.editEmail = false;
+        this.sentEmailUpdateConfirmationEmailSource.next(true);
+    }
+
+    private onEditEmailError(errors?: APIErrors): void {
+        this.flags.processing.editEmail = false;
+        if (errors && errors.length) {
+            this.editEmailError = _.first(errors);
+        }
     }
 
     onClickResendConfirmationEmail(): void {
@@ -147,19 +160,102 @@ export class GeneralComponent implements OnInit, OnDestroy {
             );
     }
 
+    private onResendConfirmationEmailNext(): void {
+        this.flags.hasResentConfirmationEmail = true;
+        this.flags.processing.resendConfirmationEmail = false;
+        this.resendConfirmationEmailError = null;
+    }
+
+    private onResendConfirmationEmailError(errors?: APIErrors): void {
+        this.flags.processing.resendConfirmationEmail = false;
+        if (errors && errors.length) {
+            this.resendConfirmationEmailError = _.first(errors);
+        } else {
+            // todo: default i18n
+            this.resendConfirmationEmailError = {code: '500', message: 'HTTP (500)'};
+        }
+    }
+
     onSelectDefaultStudyLanguage(code: LanguageCode) {
-        this.userService.update({default_study_language: this.lang.languageForCode(code)});
+        this.flags.processing.selectDefaultStudyLanguage = true;
+        this.http.request(APIHandle.UPDATE_USER, {body: {default_study_language_code: code}})
+            .takeUntil(this.OnDestroy$)
+            .subscribe(
+                this.onSelectDefaultStudyLanguageNext.bind(this, code),
+                this.onSelectDefaultStudyLanguageError.bind(this)
+            );
+    }
+
+    private onSelectDefaultStudyLanguageNext(code: LanguageCode): void {
+        this.updateDefaultStudyLanguageError = null;
+        this.flags.processing.selectDefaultStudyLanguage = false;
+        this.userService.updateCache({
+            default_study_language: this.lang.languageForCode(code)
+        });
+    }
+
+    private onSelectDefaultStudyLanguageError(errors: APIErrors): void {
+        this.flags.processing.selectDefaultStudyLanguage = false;
+        if (errors && errors.length) {
+            this.updateDefaultStudyLanguageError = _.first(errors);
+        }
     }
 
     onSelectInterfaceLanguage(code: LanguageCode) {
-        this.userService.update({interface_language: this.lang.languageForCode(code)});
+        this.flags.processing.selectInterfaceLanguage = true;
+        this.http.request(APIHandle.UPDATE_USER, {body: {interface_language_code: code}})
+            .takeUntil(this.OnDestroy$)
+            .subscribe(
+                this.onSelectInterfaceLanguageNext.bind(this, code),
+                this.onSelectInterfaceLanguageError.bind(this)
+            );
+    }
+
+    private onSelectInterfaceLanguageNext(code: LanguageCode): void {
+        this.updateInterfaceLanguageError = null;
+        this.userService.updateCache({interface_language: this.lang.languageForCode(code)});
+        window.location.href = window.location.protocol + '//' + [window.location.host, code, 'settings'].join('/');
+    }
+
+    private onSelectInterfaceLanguageError(errors: APIErrors): void {
+        this.flags.processing.selectInterfaceLanguage = false;
+        if (errors && errors.length) {
+            this.updateInterfaceLanguageError = _.first(errors);
+        }
     }
 
     onSubmitPassword(): void {
-        this.userService.updatePassword(this.passwordModel.current, this.passwordModel.replace);
+        const options: GNRequestOptions = {
+            body: {
+                current_password: this.passwordModel.current,
+                new_password: this.passwordModel.replace
+            }
+        };
+
+        this.flags.processing.updatePassword = true;
+        this.http.request(APIHandle.EDIT_PASSWORD, options)
+            .takeUntil(this.OnDestroy$)
+            .subscribe(
+                this.onPasswordChangeSuccess.bind(this),
+                this.onPasswordChangeError.bind(this)
+            );
+    }
+
+    private onPasswordChangeSuccess(): void {
+        this.flags.processing.updatePassword = false;
+        this.passwordFormError = null;
+        this.passwordForm.reset();
+    }
+
+    private onPasswordChangeError(errors: APIErrors): void {
+        this.flags.processing.updatePassword = false;
+        if (errors && errors.length) {
+            this.passwordFormError = _.first(errors);
+        }
     }
 
     onClickCancelEmailEditing(): void {
+        this.editEmailError = null;
         this.isEditingEmailAddress$.next(false);
     }
 
@@ -184,26 +280,21 @@ export class GeneralComponent implements OnInit, OnDestroy {
         this.flags.processing.sendPasswordResetLink = true;
         this.http.request(APIHandle.SEND_PASSWORD_RESET_LINK, options)
             .takeUntil(this.OnDestroy$)
-            .map(this.onSendPasswordResetLinkNext.bind(this))
-            .subscribe(null, this.onSendPasswordResetLinkError.bind(this));
+            .subscribe(
+                this.onSendPasswordResetLinkNext.bind(this),
+                this.onSendPasswordResetLinkError.bind(this)
+            );
+    }
+
+    private onSendPasswordResetLinkError(errors?: APIErrors): void {
+        this.flags.processing.sendPasswordResetLink = false;
+        if (errors && errors.length) {
+            this.passwordResetLinkError = _.first(errors);
+        }
     }
 
     onClickEditEmailAddress(): void {
         this.isEditingEmailAddress$.next(true);
-    }
-
-    private onInterfaceLanguageUpdated(code: LanguageCode) {
-        window.location.href = window.location.protocol + '//' + [window.location.host, code, 'settings'].join('/');
-    }
-
-    private onPasswordChangeSuccess(): void {
-        this.passwordForm.reset();
-    }
-
-    private onPasswordChangeError(errors: APIErrors): void {
-        if (errors.length) {
-            this.passwordFormError = _.first(errors);
-        }
     }
 
     private onSubmitEmailSuccess(): void {
@@ -215,46 +306,13 @@ export class GeneralComponent implements OnInit, OnDestroy {
         this.emailModel = '';
     }
 
-    private onEditEmailNext(): void {
-        this.sentEmailUpdateConfirmationEmailSource.next(true);
-    }
-
-    private onEditEmailError(errors?: APIErrors): void {
-        if (errors && errors.length) {
-            this.editEmailError = _.first(errors);
-        }
-    }
-
     private onSendPasswordResetLinkNext(): void {
         this.flags.processing.sendPasswordResetLink = false;
         this.flags.hasSentPasswordResetLink = true;
     }
 
-    private onSendPasswordResetLinkError(errors?: APIErrors): void {
-        this.flags.processing.sendPasswordResetLink = false;
-        if (errors && errors.length) {
-            this.passwordResetLinkError = _.first(errors);
-        }
-    }
-
     private onHideForgotPasswordModal(): void {
         this.passwordResetLinkError = null;
-    }
-
-    private onResendConfirmationEmailNext(): void {
-        this.flags.hasResentConfirmationEmail = true;
-        this.flags.processing.resendConfirmationEmail = false;
-        this.resendConfirmationEmailError = null;
-    }
-
-    private onResendConfirmationEmailError(errors?: APIErrors): void {
-        this.flags.processing.resendConfirmationEmail = false;
-        if (errors && errors.length) {
-            this.resendConfirmationEmailError = _.first(errors);
-        } else {
-            // todo: default i18n
-            this.resendConfirmationEmailError = {code: '500', message: 'HTTP (500)'};
-        }
     }
 
 }
