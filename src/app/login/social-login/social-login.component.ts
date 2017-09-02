@@ -16,9 +16,8 @@ import { environment } from '../../../environments/environment';
     styleUrls: ['social-login.component.scss']
 })
 export class SocialLoginComponent {
-    facebookLoginURL = environment.facebookLoginUrl;
-    twitterLoginURL = environment.twitterLoginUrl;
-    googleLoginURL = environment.googleLoginUrl;
+
+    e = environment;
 
     constructor(private loginModal: LoginModalService) {
     }
