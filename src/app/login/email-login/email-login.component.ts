@@ -70,7 +70,7 @@ export class EmailLoginComponent implements OnDestroy {
     private onCreateSessionNext(user: User): void {
         this.user.updateCache(user);
         this.router.navigate([{outlets: {modal: null}}]).then(() => {
-            return this.router.navigate(['dashboard']);
+            return this.router.navigate(['/dashboard']);
         }).catch(e => {
             this.logger.warn(this, e);
         });
