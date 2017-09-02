@@ -26,12 +26,19 @@ import 'rxjs/add/operator/takeUntil';
     styleUrls: ['email-login.component.scss']
 })
 export class EmailLoginComponent implements OnDestroy {
+
     OnDestroy$ = new Subject<void>();
     emailRegex = EMAIL_REGEX;
 
-    credentials: any = {
+    model: any = {
         email: '',
         password: ''
+    };
+
+    flags = {
+        processing: {
+            login: false
+        }
     };
 
     errors: APIErrors = [];
@@ -50,13 +57,17 @@ export class EmailLoginComponent implements OnDestroy {
     }
 
     onSubmit(): void {
-        this.http.request(APIHandle.CREATE_SESSION, {body: this.credentials}).takeUntil(this.OnDestroy$).subscribe(
-            this.onLoginResponse.bind(this),
-            this.onLoginError.bind(this)
-        );
+        this.flags.processing.login = true;
+        const options = {body: this.model};
+        this.http.request(APIHandle.CREATE_SESSION, options)
+            .takeUntil(this.OnDestroy$)
+            .subscribe(
+                this.onCreateSessionNext.bind(this),
+                this.onCreateSessionError.bind(this)
+            );
     }
 
-    private onLoginResponse(user: User): void {
+    private onCreateSessionNext(user: User): void {
         this.user.updateCache(user);
         this.router.navigate([{outlets: {modal: null}}]).then(() => {
             return this.router.navigate(['dashboard']);
@@ -65,8 +76,8 @@ export class EmailLoginComponent implements OnDestroy {
         });
     }
 
-    private onLoginError(errors: APIErrors): void {
-        this.logger.debug(this, errors);
+    private onCreateSessionError(errors: APIErrors): void {
+        this.flags.processing.login = false;
         this.errors = errors;
     }
 }
