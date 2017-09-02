@@ -18,6 +18,11 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
 
     model = {password: '', confirm: ''};
     error: APIError;
+    flags = {
+        processing: {
+            resetPassword: false
+        }
+    };
     canDeactivate = false;
 
     private token: string;
@@ -46,6 +51,7 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
             }
         };
 
+        this.flags.processing.resetPassword = true;
         this.http.request(APIHandle.RESET_PASSWORD, options)
             .takeUntil(this.OnDestroy$)
             .subscribe(
@@ -60,6 +66,7 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
     }
 
     private onResetPasswordError(errors: APIErrors): void {
+        this.flags.processing.resetPassword = false;
         if (errors.length) {
             this.error = _.first(errors);
         }
