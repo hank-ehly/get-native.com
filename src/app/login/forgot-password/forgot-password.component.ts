@@ -70,6 +70,7 @@ export class ForgotPasswordComponent implements OnDestroy {
         this.error = null;
         this.flags.processing.sendPasswordResetLink = false;
         this.submittedEmail = this.email;
+        this.email = '';
     }
 
     private onSendPasswordResetLinkError(errors: APIErrors): void {
