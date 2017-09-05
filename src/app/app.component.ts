@@ -105,6 +105,8 @@ export class AppComponent implements OnInit, OnDestroy {
             cookie: false,
             version: 'v2.10'
         });
+
+        // todo: listen for local cache user update and switch locales based on interface language key if needed
     }
 
     ngOnDestroy(): void {
