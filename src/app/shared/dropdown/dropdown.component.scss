@@ -1,0 +1,54 @@
+@import '../../../styles/core';
+
+:host {
+  position: absolute;
+}
+
+.wrapper {
+  //position: absolute;
+  position: relative;
+  box-shadow: 0 1px 4px rgba($black, 0.25);
+  background: $white;
+  box-sizing: border-box;
+  background-clip: padding-box;
+}
+
+.dropdown-caret {
+  left: 50%;
+  margin-left: -9px;
+  position: absolute;
+  top: -10px;
+  width: 18px;
+  height: 10px;
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown-caret .caret-outer {
+  position: absolute;
+  display: inline-block;
+  margin-left: -1px;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgba($black, 0.1);
+  border-left: 10px solid transparent;
+  height: auto;
+  left: 0;
+  top: 0;
+  width: auto;
+}
+
+.dropdown-caret .caret-inner {
+  top: 1px;
+  left: 1px;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid $white;
+  border-left: 9px solid transparent;
+  display: inline-block;
+  margin-left: -1px;
+  position: absolute;
+}
+
+.content {
+  overflow: hidden;
+  padding: 6px 0;
+}
