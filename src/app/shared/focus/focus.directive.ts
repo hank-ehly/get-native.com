@@ -11,10 +11,12 @@ import { Directive, ElementRef, Input } from '@angular/core';
     selector: '[gnFocus]'
 })
 export class FocusDirective {
+
     @Input('gnFocus') set focus(focus: any) {
         this.el.nativeElement.focus();
     }
 
     constructor(private el: ElementRef) {
     }
+
 }
