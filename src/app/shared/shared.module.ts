@@ -36,6 +36,8 @@ import { VideoSearchComponent } from './video-search/video-search.component';
 import { SafeHtmlPipe } from './safe-html/safe-html.pipe';
 import { ActivityDropdownComponent } from './navbar/activity-dropdown.component';
 import { FromNowPipe } from './from-now/from-now.pipe';
+import { ImageCropperComponent } from 'ng2-img-cropper';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 @NgModule({
     imports: [
@@ -69,7 +71,9 @@ import { FromNowPipe } from './from-now/from-now.pipe';
         VideoSearchComponent,
         SafeHtmlPipe,
         ActivityDropdownComponent,
-        FromNowPipe
+        FromNowPipe,
+        ImageCropperComponent,
+        DropdownComponent
 
     ],
     exports: [
@@ -100,7 +104,9 @@ import { FromNowPipe } from './from-now/from-now.pipe';
         VideoSearchComponent,
         SafeHtmlPipe,
         ActivityDropdownComponent,
-        FromNowPipe
+        FromNowPipe,
+        ImageCropperComponent,
+        DropdownComponent
     ]
 })
 export class SharedModule {
