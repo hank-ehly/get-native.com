@@ -10,7 +10,7 @@ import { Language } from '../typings/language';
 
 export interface User extends Entity {
     profile_image_url?: string;
-    default_profile_image?: boolean;
+    is_silhouette_picture?: boolean;
     email?: string;
     email_verified?: boolean;
     email_notifications_enabled?: boolean;
