@@ -1,13 +1,20 @@
 <main class="main">
     <header class="header">
         <div class="header__thumbnail-picker">
-            <label for="file" class="header__file-input-label">
-                <!--<img class="header__thumbnail" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/images/silhouette-avatar.png" i18n-alt="Alt text for settings page user thumbnail image@@9f55b08839a180df1d65398a9079d37e" alt="user picture">-->
-                <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/apple-touch-icon-180x180.png" alt="" class="header__thumbnail">
-            </label>
-
-            <!--<input id="file" type="file" name="file" class="header__file-input">-->
+            <div class="header__thumbnail-container" (click)="onClickThumbnail()">
+                <img class="header__thumbnail" [src]="data.image || 'https://storage.googleapis.com/stg.getnativelearning.com/assets/images/silhouette-avatar.jpg'" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight" i18n-alt="Alt text for settings page user thumbnail image@@9f55b08839a180df1d65398a9079d37e" alt="user picture">
+            </div>
         </div>
+
+        <gn-dropdown *ngIf="isThumbnailDropdownVisible" [left]="dropdownLeft" [top]="dropdownTop">
+            <label>
+                <a class="link dropdown-link" (click)="onClickUploadPhoto()">Upload Photo</a>
+                <input id="file" type="file" name="file" class="header__file-input" (change)="onChangeThumbnail($event)">
+            </label>
+            <a class="link dropdown-link" (click)="onClickRemovePhoto()">Remove</a>
+            <span class="dropdown-divider"></span>
+            <a class="link dropdown-link dropdown-link--cancel" (click)="onClickCloseDropdown()">Cancel</a>
+        </gn-dropdown>
 
         <ng-container [ngSwitch]="selectedTab">
             <h6 class="header__title" *ngSwitchDefault i18n="General settings page description@@b95a9f64b954582c56cb0033abf73084">View and update your login credentials.</h6>
@@ -28,3 +35,16 @@
         <router-outlet></router-outlet>
     </section>
 </main>
+
+<gn-modal [isVisible]="isCropperModalVisible">
+    <div class="modal-content">
+        <header class="header">
+            <h2>Position and crop your photo</h2>
+        </header>
+        <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+        <footer class="footer">
+            <button class="button button--hollow" (click)="onCancelCrop()">Cancel</button>
+            <button class="button button--opaque" (click)="onApplyCrop()">Apply</button>
+        </footer>
+    </div>
+</gn-modal>
