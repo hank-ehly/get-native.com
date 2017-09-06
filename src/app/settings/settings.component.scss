@@ -17,16 +17,17 @@
   position: relative;
 }
 
-.header__file-input-label {
+.header__thumbnail-container {
   @include border-radius(50%);
-/*  cursor: pointer;*/
+  cursor: pointer;
   display: block;
   height: 110px;
   width: 110px;
   transition: all 0.5s;
+  user-select: none;
 }
 
-/*.header__file-input-label:hover:after {
+.header__thumbnail-container:hover:after {
   @include border-radius(50%);
   background: rgba($black, 0.2) url('https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/avatar.svg') no-repeat center;
   background-size: 30px;
@@ -36,7 +37,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-}*/
+}
 
 .header__file-input {
   width: 0.1px;
@@ -49,9 +50,7 @@
 
 .header__thumbnail {
   @include border-radius(50%);
-  height: inherit;
   object-fit: cover;
-  width: inherit;
 }
 
 .header__title {
@@ -83,4 +82,51 @@
 
 .tab_active {
   color: $default-color;
+}
+
+:host /deep/ {
+  .canvas {
+    display: block;
+    margin: 16px auto;
+  }
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-content .header h2 {
+  font-size: $font-size-medium;
+  text-align: center;
+}
+
+.modal-content .footer {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-content .footer .button {
+  margin: 0 5px;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 6px;
+  text-align: center;
+  min-width: 220px;
+  &:hover {
+    background-color: #0295f4;
+    border-bottom: 1px solid transparent;
+    color: $white;
+  }
+}
+
+.dropdown-divider {
+  display: block;
+  position: relative;
+  float: none;
+  line-height: inherit;
+  padding-top: 1px;
+  margin: 5px 1px 6px;
+  border-bottom: 1px solid $gallery;
 }
