@@ -2,7 +2,6 @@
     <form class="form email-form" #emailForm="ngForm" (submit)="onSubmitEmail()">
         <div class="form__group">
             <label for="email" class="label" i18n="User email label text@@6ba4ecb46a685bbc07ce71dbd5580a48">Email</label>
-            <!--<span *ngIf="!user.email_verified" i18n="Small label notifying user they must confirm their email@@f175102528cedc2c8882357e32c1b595">(Please confirm)</span>-->
 
             <p class="paragraph paragraph--email-form" *ngIf="sentEmailUpdateConfirmationEmailEmitted$ | async" i18n="Message displayed after submitting an updated email address@@180be2f944682713f759b6615288cbe3">An email has been sent to {{ submittedEmailAddress }}. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</p>
             <p class="paragraph paragraph--email-form" *ngIf="flags.hasResentConfirmationEmail" i18n="Message displayed after resending email confirmation email in general settings@@a156df53e81a3c26ab5082455077ab09">An email has been sent to {{ user?.email }}. Please click the enclosed link to complete the email confirmation process.</p>
