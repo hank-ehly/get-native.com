@@ -1,7 +1,7 @@
 <main class="main">
     <header class="header">
         <div class="header__thumbnail-picker">
-            <div class="header__thumbnail-container" (click)="onClickThumbnail()">
+            <div class="header__thumbnail-container" [ngClass]="{selected: isThumbnailDropdownVisible}" (click)="onClickThumbnail()">
                 <img class="header__thumbnail" [src]="data.image || 'https://storage.googleapis.com/stg.getnativelearning.com/assets/images/silhouette-avatar.jpg'" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight" i18n-alt="Alt text for settings page user thumbnail image@@9f55b08839a180df1d65398a9079d37e" alt="user picture">
             </div>
         </div>
