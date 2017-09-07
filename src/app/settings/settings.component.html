@@ -6,14 +6,19 @@
             </div>
         </div>
 
+        <div class="header__thumbnail-upload-buttons" *ngIf="data.image">
+            <button class="button" (click)="onClickCancelUpload()">CANCEL</button>
+            <button class="button button--opaque" (click)="onClickUpload()">UPLOAD</button>
+        </div>
+
         <gn-dropdown *ngIf="isThumbnailDropdownVisible" [left]="dropdownLeft" [top]="dropdownTop">
             <label>
-                <a class="link dropdown-link" (click)="onClickUploadPhoto()">Upload Photo</a>
+                <a class="link dropdown-link">Upload Photo</a>
                 <input id="file" type="file" name="file" class="header__file-input" (change)="onChangeThumbnail($event)">
             </label>
             <a class="link dropdown-link" (click)="onClickRemovePhoto()">Remove</a>
             <span class="dropdown-divider"></span>
-            <a class="link dropdown-link dropdown-link--cancel" (click)="onClickCloseDropdown()">Cancel</a>
+            <a class="link dropdown-link dropdown-link--cancel" (click)="onClickCancelDropdown()">Cancel</a>
         </gn-dropdown>
 
         <ng-container [ngSwitch]="selectedTab">
@@ -43,8 +48,8 @@
         </header>
         <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper>
         <footer class="footer">
-            <button class="button button--hollow" (click)="onCancelCrop()">Cancel</button>
-            <button class="button button--opaque" (click)="onApplyCrop()">Apply</button>
+            <button class="button button--hollow" (click)="onClickCancelCrop()">Cancel</button>
+            <button class="button button--opaque" (click)="onClickApplyCrop()">Apply</button>
         </footer>
     </div>
 </gn-modal>

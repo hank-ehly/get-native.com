@@ -8,12 +8,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { UserService } from '../core/user/user.service';
 import { Logger } from '../core/logger/logger';
+import { User } from '../core/entities/user';
 
 import { CropperSettings, ImageCropperComponent } from 'ng2-img-cropper';
 import * as _ from 'lodash';
-import { User } from '../core/entities/user';
-import { UserService } from '../core/user/user.service';
 
 @Component({
     selector: 'gn-settings',
@@ -80,18 +80,37 @@ export class SettingsComponent implements OnInit {
         reader.readAsDataURL(file);
     }
 
-    onClickUploadPhoto(): void {
-        //
-    }
-
     onClickRemovePhoto(): void {
-        if (this.user.is_silhouette_picture) {
+        if (this.image) {
+            this.cropper.reset();
             this.isThumbnailDropdownVisible = false;
+        } else if (this.user.is_silhouette_picture) {
+            this.isThumbnailDropdownVisible = false;
+        } else {
+            // API request
         }
     }
 
-    onClickCloseDropdown(): void {
+    onClickCancelUpload(): void {
+        this.cropper.reset();
+    }
+
+    onClickUpload(): void {
+        //
+    }
+
+    onClickCancelDropdown(): void {
         this.isThumbnailDropdownVisible = false;
+    }
+
+    onClickCancelCrop(): void {
+        this.cropper.reset();
+        this.isCropperModalVisible = false;
+    }
+
+    onClickApplyCrop(): void {
+        this.isCropperModalVisible = false;
+        this.image = this.image;
     }
 
     setSelectedTab(tab: string) {
@@ -113,15 +132,6 @@ export class SettingsComponent implements OnInit {
         }
 
         return tabValue;
-    }
-
-    onCancelCrop(): void {
-        this.cropper.reset();
-        this.isCropperModalVisible = false;
-    }
-
-    onApplyCrop(): void {
-        this.isCropperModalVisible = false;
     }
 
     private onLoadEnd(e: any): void {
