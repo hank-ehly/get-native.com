@@ -17,6 +17,15 @@
   position: relative;
 }
 
+.header__thumbnail-upload-buttons {
+  align-self: center;
+  margin-top: 30px;
+
+  > button:last-child {
+    margin-left: 6px;
+  }
+}
+
 .header__thumbnail-container {
   @include border-radius(50%);
   cursor: pointer;
