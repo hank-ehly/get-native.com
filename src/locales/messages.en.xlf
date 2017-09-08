@@ -400,8 +400,8 @@
                 <note priority="1" from="description">Alt text for video panel views icon</note>
             </trans-unit>
             <trans-unit id="de0da74747b01d316a0330ff38f33b89" datatype="html">
-                <source>Feature coming soon!</source>
-                <target>Feature coming soon!</target>
+                <source>No activity yet!</source>
+                <target>No activity yet!</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/navbar/activity-dropdown.component.ts</context>
                     <context context-type="linenumber">16</context>
@@ -2641,8 +2641,8 @@
                 <note priority="1" from="description">FAQ (1) Question</note>
             </trans-unit>
             <trans-unit id="c11c85dfe124e49b2c76f8a0701c6de5" datatype="html">
-                <source>Yes! No money is required to use getnative.</source>
-                <target>Yes! No money is required to use getnative.</target>
+                <source>Yes! getnative is a free online language learning resource.</source>
+                <target>Yes! getnative is a free online language learning resource.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
                     <context context-type="linenumber">17</context>
@@ -2650,8 +2650,8 @@
                 <note priority="1" from="description">FAQ (1) Answer</note>
             </trans-unit>
             <trans-unit id="4e9b3d243b51f1d33a396b7f0aa4ada1" datatype="html">
-                <source>How do I use the study feature?</source>
-                <target>How do I use the study feature?</target>
+                <source>How do I begin a study session?</source>
+                <target>How do I begin a study session?</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">23</context>
@@ -2659,8 +2659,8 @@
                 <note priority="1" from="description">FAQ (2) Question</note>
             </trans-unit>
             <trans-unit id="de24fb60b24f97090d63ed8c3c9517e3" datatype="html">
-                <source>Find a video you&apos;d like to study in the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/>, save it to your queue, then select begin from your dashboard to start studying.  take a look at this <x id="START_LINK_1" ctype="x-a"/>in depth tutorial<x id="CLOSE_LINK" ctype="x-a"/> on how to use the study feature.</source>
-                <target>Find a video you&apos;d like to study in the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/>, save it to your queue, then select begin from your dashboard to start studying.  take a look at this <x id="START_LINK_1" ctype="x-a"/>in depth tutorial<x id="CLOSE_LINK" ctype="x-a"/> on how to use the study feature.</target>
+                <source>You can start a new study session in one of 2 ways. First, you can click the &quot;start&quot; button at the top of any video page. Second, you can click the &quot;begin&quot; button from a video saved to your dashboard queue.</source>
+                <target>You can start a new study session in one of 2 ways. First, you can click the &quot;start&quot; button at the top of any video page. Second, you can click the &quot;begin&quot; button from a video saved to your dashboard queue.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">25</context>
@@ -2677,8 +2677,8 @@
                 <note priority="1" from="description">FAQ (3) Question</note>
             </trans-unit>
             <trans-unit id="f6a6c83477afd406e5318b99212d2e8b" datatype="html">
-                <source>Idea and development by <x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/>. Design by <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/>.</source>
-                <target>Idea and development by <x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/>. Design by <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/>.</target>
+                <source><x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/> had the initial idea and wrote the code. <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/> created the design.</source>
+                <target><x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/> had the initial idea and wrote the code. <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/> created the design.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">33</context>
@@ -2695,8 +2695,8 @@
                 <note priority="1" from="description">FAQ (4) Question</note>
             </trans-unit>
             <trans-unit id="f970ac9af488b2f9b4f649d2a2de80f3" datatype="html">
-                <source>If you logged in via Facebook, Twitter or Google, then you can create a password by <x id="START_LINK" ctype="x-a"/>resetting your password<x id="CLOSE_LINK" ctype="x-a"/>.</source>
-                <target>If you logged in via Facebook, Twitter or Google, then you can create a password by <x id="START_LINK" ctype="x-a"/>resetting your password<x id="CLOSE_LINK" ctype="x-a"/>.</target>
+                <source>If you logged in via Facebook, Twitter or Google, then you can create a password by going through the <x id="START_LINK" ctype="x-a"/>password reset process<x id="CLOSE_LINK" ctype="x-a"/>.</source>
+                <target>If you logged in via Facebook, Twitter or Google, then you can create a password by going through the <x id="START_LINK" ctype="x-a"/>password reset process<x id="CLOSE_LINK" ctype="x-a"/>.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">41</context>
@@ -2803,8 +2803,8 @@
                 <note priority="1" from="description">Contact link text on password reset complete page</note>
             </trans-unit>
             <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
-                <source>getnative is a language learning resource for advanced speakers</source>
-                <target>getnative is a language learning resource for advanced speakers</target>
+                <source>getnative is a free online language learning tool to help you speak more &quot;native-like&quot;</source>
+                <target>getnative is a free online language learning tool to help you speak more &quot;native-like&quot;</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">2</context>
@@ -2812,8 +2812,8 @@
                 <note priority="1" from="description">A one sentence description of the purpose of the website</note>
             </trans-unit>
             <trans-unit id="63ab48fc4aa50ea5685abb76ddc54794" datatype="html">
-                <source>A language learning resource for advanced speakers</source>
-                <target>A language learning resource for advanced speakers</target>
+                <source>Optimize your language learning</source>
+                <target>Optimize your language learning</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">7</context>
@@ -2821,8 +2821,8 @@
                 <note priority="1" from="description">A short description of the purpose of the website</note>
             </trans-unit>
             <trans-unit id="1e18db402c99d2bf94ad552a5f0228f6" datatype="html">
-                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure nobis repellendus. Accusamus consectetur dicta?</source>
-                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at culpaducimus fugiat impeditiure nobis repellendus. Accusamus consectetur dicta?</target>
+                <source>Using high quality videos of real native speakers, getnative guides you through an automated, intensive study routine. You only decide how much time to spend.</source>
+                <target>Using high quality videos of real native speakers, getnative guides you through an automated, intensive study routine. You only decide how much time to spend.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">8</context>
@@ -2839,8 +2839,8 @@
                 <note priority="1" from="description">Alternative text for image of first large homepage feature</note>
             </trans-unit>
             <trans-unit id="fb641dc07645e335fa9e727646d03c9b" datatype="html">
-                <source>Video database</source>
-                <target>Video database</target>
+                <source>Video Library</source>
+                <target>Video Library</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">17</context>
@@ -2848,8 +2848,8 @@
                 <note priority="1" from="description">The title of the video database feature description</note>
             </trans-unit>
             <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
-                <source>getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</source>
-                <target>getnative is all about breaking the barrier between fluid speech and native like speech. Our way of breaking the barrier is through intensive observation, pronunciation practice and active learning using video interviews of native speakers. Needless to say in order for this to work we need a lot of interview videos!</target>
+                <source>For your learning purposes, getnative provides a library of high quality videos of real native speakers speaking off the top of their heads. Each video comes with an accurate transcription of the original language, as well as various translations.</source>
+                <target>For your learning purposes, getnative provides a library of high quality videos of real native speakers speaking off the top of their heads. Each video comes with an accurate transcription of the original language, as well as various translations.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">18</context>
@@ -2866,8 +2866,8 @@
                 <note priority="1" from="description">Alternative text for image of second large homepage feature</note>
             </trans-unit>
             <trans-unit id="f25fc28ef1ce003a1d2e2b74c4edf503" datatype="html">
-                <source>Study like the pros</source>
-                <target>Study like the pros</target>
+                <source>Study quickly &amp; effectively</source>
+                <target>Study quickly &amp; effectively</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">32</context>
@@ -2875,8 +2875,8 @@
                 <note priority="1" from="description">The title of the study session feature description</note>
             </trans-unit>
             <trans-unit id="a77cb5d4f5ba2526709496556d8aa4be" datatype="html">
-                <source>Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If you&apos;re an Advanced learner of the language you may already have your own study routine. But that study routine might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to get all the materials ready!</source>
-                <target>Wouldn&apos;t it be awesome to have an intense language study session in 15 minutes, or even 10? If you&apos;re an Advanced learner of the language you may already have your own study routine. But that study routine might include getting out books, scrolling through web pages -- it could take up to 10 minutes just to get all the materials ready!</target>
+                <source>getnative guides you through a series of learning exercises optimized to help you learn the most in the shortest time possible. A single study session can take as little as 5 minutes to complete.</source>
+                <target>getnative guides you through a series of learning exercises optimized to help you learn the most in the shortest time possible. A single study session can take as little as 5 minutes to complete.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">33</context>
@@ -2893,8 +2893,8 @@
                 <note priority="1" from="description">Alternative text for image of third large homepage feature</note>
             </trans-unit>
             <trans-unit id="e32fb4bb878da11006facfc293ae5955" datatype="html">
-                <source>A tool for advanced language learners</source>
-                <target>A tool for advanced language learners</target>
+                <source>Active Learning</source>
+                <target>Active Learning</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">47</context>
@@ -2902,8 +2902,8 @@
                 <note priority="1" from="description">The title for the advanced material feature description</note>
             </trans-unit>
             <trans-unit id="929c28ca424552020939e6af075621ff" datatype="html">
-                <source>getnative is most useful to language learners who already have a good command of the target language, yet want to make the speech sound more like that of a native speaker. Finding good study material is easy when you&apos;ve just set out learning the target language. But as you advance, every day material like newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of your study routine.</source>
-                <target>getnative is most useful to language learners who already have a good command of the target language, yet want to make the speech sound more like that of a native speaker. Finding good study material is easy when you&apos;ve just set out learning the target language. But as you advance, every day material like newspapers, journal articles, TV, podcasts and conversations with other speakers might become the core of your study routine.</target>
+                <source>getnative focuses on actively using the language — not memorizing grammar or vocabulary — to naturally lead you toward using the language in a way similar to that of a native speaker.</source>
+                <target>getnative focuses on actively using the language — not memorizing grammar or vocabulary — to naturally lead you toward using the language in a way similar to that of a native speaker.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">48</context>
@@ -2929,8 +2929,8 @@
                 <note priority="1" from="description">Alternative text for first small homepage feature</note>
             </trans-unit>
             <trans-unit id="a07f3eac43e64f67a76e47ebc17a42b6" datatype="html">
-                <source>Perfect for polyglots</source>
-                <target>Perfect for polyglots</target>
+                <source>Perfect for Polyglots</source>
+                <target>Perfect for Polyglots</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">67</context>
@@ -2938,8 +2938,8 @@
                 <note priority="1" from="description">The title for the polyglots feature description</note>
             </trans-unit>
             <trans-unit id="50ba40aa73787d637c8548536fdc80a5" datatype="html">
-                <source>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in multiple languages.</source>
-                <target>No need to clutter your desk with study materials in multiple languages. Blaze through study sessions in multiple languages.</target>
+                <source>Easily switch between multiple target languages from the global menu.</source>
+                <target>Easily switch between multiple target languages from the global menu.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">68</context>
@@ -2956,8 +2956,8 @@
                 <note priority="1" from="description">Alternative text for second small homepage feature</note>
             </trans-unit>
             <trans-unit id="a9dbbc57ac75c6c7efe20372def211c2" datatype="html">
-                <source>Open-source</source>
-                <target>Open-source</target>
+                <source>Open Source</source>
+                <target>Open Source</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">73</context>
@@ -2965,8 +2965,8 @@
                 <note priority="1" from="description">Open-source small feature title</note>
             </trans-unit>
             <trans-unit id="89609c2553a04bf2845e79d4ef4c6bcd" datatype="html">
-                <source>See the magic happening under the hood on our GitHub page. Pull requests and contributions welcome!</source>
-                <target>See the magic happening under the hood on our GitHub page. Pull requests and contributions welcome!</target>
+                <source>xxxx xxxxxx xxxxxx xxxxx xxxx xxxxxx xxxxx xxxx xxxxxx xxxxx</source>
+                <target>xxxx xxxxxx xxxxxx xxxxx xxxx xxxxxx xxxxx xxxx xxxxxx xxxxx</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">74</context>
@@ -2983,8 +2983,8 @@
                 <note priority="1" from="description">Alternative text for third small homepage feature</note>
             </trans-unit>
             <trans-unit id="25ae55cf7088e62afff8719e11dd9c1c" datatype="html">
-                <source>Better security</source>
-                <target>Better security</target>
+                <source>Better Security</source>
+                <target>Better Security</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">79</context>
@@ -2992,8 +2992,8 @@
                 <note priority="1" from="description">Security small feature title</note>
             </trans-unit>
             <trans-unit id="c18bbb62e2d47da151dbc5794a2d730a" datatype="html">
-                <source>We take your private information seriously. getnative uses encryption to protect your data.</source>
-                <target>We take your private information seriously. getnative uses encryption to protect your data.</target>
+                <source>Your data is protected by the latest web application security standards.</source>
+                <target>Your data is protected by the latest web application security standards.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">80</context>
@@ -3010,8 +3010,8 @@
                 <note priority="1" from="description">Alternative text for fourth small homepage feature</note>
             </trans-unit>
             <trans-unit id="39d0472c40a4afd2c94909429c53a8ac" datatype="html">
-                <source>Easy-to-use interface</source>
-                <target>Easy-to-use interface</target>
+                <source>Intuitive Design</source>
+                <target>Intuitive Design</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">85</context>
@@ -3019,8 +3019,8 @@
                 <note priority="1" from="description">Easy-to-use interface small feature title</note>
             </trans-unit>
             <trans-unit id="d999dc80d833746fe5275ef7f87607b1" datatype="html">
-                <source>Our designers work hard to design simple and intuitive user interfaces.</source>
-                <target>Our designers work hard to design simple and intuitive user interfaces.</target>
+                <source>getnative has an elegant interface that is easy to use and understand.</source>
+                <target>getnative has an elegant interface that is easy to use and understand.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">86</context>
@@ -3046,8 +3046,8 @@
                 <note priority="1" from="description">Q&amp;A small feature title</note>
             </trans-unit>
             <trans-unit id="bee91d91bacd446731eae12b466d5733" datatype="html">
-                <source>Questions or feedback? Drop us an email. We’d love to help out in anyway we can.</source>
-                <target>Questions or feedback? Drop us an email. We’d love to help out in anyway we can.</target>
+                <source>We’re available directly by email for and questions or comments.</source>
+                <target>We’re available directly by email for and questions or comments.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">92</context>
@@ -3064,8 +3064,8 @@
                 <note priority="1" from="description">Alternative text for sixth small homepage feature</note>
             </trans-unit>
             <trans-unit id="1b3e0d60fb204c5a8b5e273cbc8a9034" datatype="html">
-                <source>Simple registration</source>
-                <target>Simple registration</target>
+                <source>Simple Registration</source>
+                <target>Simple Registration</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">97</context>
@@ -3073,8 +3073,8 @@
                 <note priority="1" from="description">Simple registration small feature title</note>
             </trans-unit>
             <trans-unit id="7f31334d10f103ad7bf166bd7eaf2135" datatype="html">
-                <source>Don&apos;t want to keep track of another password? Create an account in seconds with Facebook or Gmail.</source>
-                <target>Don&apos;t want to keep track of another password? Create an account in seconds with Facebook or Gmail.</target>
+                <source>Create an account in seconds using Email, Facebook, Twitter or Google.</source>
+                <target>Create an account in seconds using Email, Facebook, Twitter or Google.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">98</context>
@@ -3091,8 +3091,8 @@
                 <note priority="1" from="description">The title leading users to sign up</note>
             </trans-unit>
             <trans-unit id="9c6d5f890ec8e6bd73277ac9ab8686d0" datatype="html">
-                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!</source>
-                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad architecto asperiores aut, consectetur dicta doloremque eius error facilis hic modi nulla obcaecati odio quis, ratione recusandae repudiandae sit, ut!</target>
+                <source>Click the following button to continue to the registration screen. getnative is a free online language learning resource and does not require payment to use.</source>
+                <target>Click the following button to continue to the registration screen. getnative is a free online language learning resource and does not require payment to use.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">107</context>
@@ -3270,6 +3270,15 @@
                 </context-group>
                 <note priority="1" from="description">Message displayed after submitting an updated email address</note>
             </trans-unit>
+            <trans-unit id="a156df53e81a3c26ab5082455077ab09" datatype="html">
+                <source>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed link to complete the email confirmation process.</source>
+                <target>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed link to complete the email confirmation process.</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">Message displayed after resending email confirmation email in general settings</note>
+            </trans-unit>
             <trans-unit id="d10991fa81cf964182d36b780db8aab3" datatype="html">
                 <source>Resend Confirmation Email</source>
                 <target>Resend Confirmation Email</target>
@@ -3307,6 +3316,15 @@
                     <context context-type="linenumber">41</context>
                 </context-group>
                 <note priority="1" from="description">The label text for the current password input field</note>
+            </trans-unit>
+            <trans-unit id="59463247ed2c4aed1b1236c13785c44c" datatype="html">
+                <source>I forgot my password.</source>
+                <target>I forgot my password.</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/general/general.component.ts</context>
+                    <context context-type="linenumber">50</context>
+                </context-group>
+                <note priority="1" from="description">I forgot my password link text in general settings</note>
             </trans-unit>
             <trans-unit id="424d76341775773f988203365281b42c" datatype="html">
                 <source>New Password</source>
@@ -3380,6 +3398,51 @@
                 </context-group>
                 <note priority="1" from="description">Alt text for settings page user thumbnail image</note>
             </trans-unit>
+            <trans-unit id="a06bd93b44304b29b00b2f7538435fdc" datatype="html">
+                <source>CANCEL</source>
+                <target>CANCEL</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">10</context>
+                </context-group>
+                <note priority="1" from="description">Cancel thumbnail upload button title</note>
+            </trans-unit>
+            <trans-unit id="edd2f93006443c842ce451c9ca301f3c" datatype="html">
+                <source>UPLOAD</source>
+                <target>UPLOAD</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">11</context>
+                </context-group>
+                <note priority="1" from="description">Upload thumbnail button title</note>
+            </trans-unit>
+            <trans-unit id="fd38b3fcdcef348c9b650e268f8bfe2f" datatype="html">
+                <source>Upload Photo</source>
+                <target>Upload Photo</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">16</context>
+                </context-group>
+                <note priority="1" from="description">Upload photo dropdown link title</note>
+            </trans-unit>
+            <trans-unit id="2dc402aff425bb19122fc218a9c1ad3b" datatype="html">
+                <source>Remove</source>
+                <target>Remove</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">19</context>
+                </context-group>
+                <note priority="1" from="description">Remove current thumbnail button title</note>
+            </trans-unit>
+            <trans-unit id="18e0be2c661eaee7e8d5e06c3bedb620" datatype="html">
+                <source>Cancel</source>
+                <target>Cancel</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">21</context>
+                </context-group>
+                <note priority="1" from="description">Cancel thumbnail dropdown button title</note>
+            </trans-unit>
             <trans-unit id="b95a9f64b954582c56cb0033abf73084" datatype="html">
                 <source>View and update your login credentials.</source>
                 <target>View and update your login credentials.</target>
@@ -3451,6 +3514,33 @@
                     <context context-type="linenumber">23</context>
                 </context-group>
                 <note priority="1" from="description">The activity page tab label</note>
+            </trans-unit>
+            <trans-unit id="23bf0c14e2fc6cb762fabf9b9fdc5309" datatype="html">
+                <source>Position and crop your photo</source>
+                <target>Position and crop your photo</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">47</context>
+                </context-group>
+                <note priority="1" from="description">Thumbnail crop header message</note>
+            </trans-unit>
+            <trans-unit id="a61078592b960ef19807e60790795aec" datatype="html">
+                <source>Cancel</source>
+                <target>Cancel</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">51</context>
+                </context-group>
+                <note priority="1" from="description">Cancel thumbnail crop button title</note>
+            </trans-unit>
+            <trans-unit id="e3735089b346ea8eef209b48899bbbb0" datatype="html">
+                <source>Apply</source>
+                <target>Apply</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/settings.component.ts</context>
+                    <context context-type="linenumber">52</context>
+                </context-group>
+                <note priority="1" from="description">Apply thumbnail crop button title</note>
             </trans-unit>
             <trans-unit id="3a9315497767db8f497599d712b6723b" datatype="html">
                 <source>LANGUAGE</source>

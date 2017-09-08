@@ -2692,7 +2692,7 @@
         <source>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">6</context>
         </context-group>
         <note priority="1" from="description">Message displayed after submitting an updated email address</note>
       </trans-unit>
@@ -2700,7 +2700,7 @@
         <source>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed link to complete the email confirmation process.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">7</context>
         </context-group>
         <note priority="1" from="description">Message displayed after resending email confirmation email in general settings</note>
       </trans-unit>
@@ -2708,7 +2708,7 @@
         <source>EDIT</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <note priority="1" from="description">The title text of general settings button for enabling email editing</note>
       </trans-unit>
@@ -2716,7 +2716,7 @@
         <source>Resend Confirmation Email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">18</context>
         </context-group>
         <note priority="1" from="description">The text for the button allowing users to resend their account confirmation email</note>
       </trans-unit>
@@ -2724,7 +2724,7 @@
         <source>SAVE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <note priority="1" from="description">The text for the general settings save email button</note>
       </trans-unit>
@@ -2732,7 +2732,7 @@
         <source>CANCEL</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">23</context>
         </context-group>
         <note priority="1" from="description">The title for the general settings cancel email modifications button</note>
       </trans-unit>
@@ -2740,7 +2740,7 @@
         <source>Default Study Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">31</context>
         </context-group>
         <note priority="1" from="description">The text for the label denoting the user default study language select box</note>
       </trans-unit>
@@ -2748,7 +2748,7 @@
         <source>Interface Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">37</context>
         </context-group>
         <note priority="1" from="description">The text for the label denoting the user interface language preference select box</note>
       </trans-unit>
@@ -2756,7 +2756,7 @@
         <source>Current Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <note priority="1" from="description">The label text for the current password input field</note>
       </trans-unit>
@@ -2764,7 +2764,7 @@
         <source>I forgot my password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">50</context>
         </context-group>
         <note priority="1" from="description">I forgot my password link text in general settings</note>
       </trans-unit>
@@ -2772,7 +2772,7 @@
         <source>New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">54</context>
         </context-group>
         <note priority="1" from="description">The label text for the new password input field</note>
       </trans-unit>
@@ -2780,7 +2780,7 @@
         <source>Confirm New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="description">The label text for the confirm new password input field</note>
       </trans-unit>
@@ -2788,7 +2788,7 @@
         <source>UPDATE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">68</context>
         </context-group>
         <note priority="1" from="description">The submit button text for the general settings update password form</note>
       </trans-unit>
@@ -2796,7 +2796,7 @@
         <source>Click the below button to send a password reset link to your registered email address. You can eliminate the need to remember a password by instead logging in with Facebook, Twitter or Google.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">74</context>
         </context-group>
         <note priority="1" from="description">Instructions for sending password reset link</note>
       </trans-unit>
@@ -2804,7 +2804,7 @@
         <source>A password reset link has been sent to <x id="INTERPOLATION"/>!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">75</context>
         </context-group>
         <note priority="1" from="description">Success message for password reset link form in general settings page</note>
       </trans-unit>
@@ -2812,15 +2812,63 @@
         <source>SEND PASSWORD RESET LINK</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">77</context>
         </context-group>
         <note priority="1" from="description">Send password reset link button text</note>
+      </trans-unit>
+      <trans-unit id="9f55b08839a180df1d65398a9079d37e" datatype="html">
+        <source>user picture</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Alt text for settings page user thumbnail image</note>
+      </trans-unit>
+      <trans-unit id="a06bd93b44304b29b00b2f7538435fdc" datatype="html">
+        <source>CANCEL</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">Cancel thumbnail upload button title</note>
+      </trans-unit>
+      <trans-unit id="edd2f93006443c842ce451c9ca301f3c" datatype="html">
+        <source>UPLOAD</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">Upload thumbnail button title</note>
+      </trans-unit>
+      <trans-unit id="fd38b3fcdcef348c9b650e268f8bfe2f" datatype="html">
+        <source>Upload Photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Upload photo dropdown link title</note>
+      </trans-unit>
+      <trans-unit id="2dc402aff425bb19122fc218a9c1ad3b" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Remove current thumbnail button title</note>
+      </trans-unit>
+      <trans-unit id="18e0be2c661eaee7e8d5e06c3bedb620" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description">Cancel thumbnail dropdown button title</note>
       </trans-unit>
       <trans-unit id="b95a9f64b954582c56cb0033abf73084" datatype="html">
         <source>View and update your login credentials.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <note priority="1" from="description">General settings page description</note>
       </trans-unit>
@@ -2828,7 +2876,7 @@
         <source>Manage your account privacy settings.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <note priority="1" from="description">Security settings page description</note>
       </trans-unit>
@@ -2836,7 +2884,7 @@
         <source>Specify how getnative should be able to notify you.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <note priority="1" from="description">Notification settings page description</note>
       </trans-unit>
@@ -2844,7 +2892,7 @@
         <source>View updates and recent activity on getnative.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">28</context>
         </context-group>
         <note priority="1" from="description">Activity settings page description</note>
       </trans-unit>
@@ -2852,7 +2900,7 @@
         <source>GENERAL</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <note priority="1" from="description">The general settings page tab label</note>
       </trans-unit>
@@ -2860,7 +2908,7 @@
         <source>SECURITY</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <note priority="1" from="description">The security settings page tab label</note>
       </trans-unit>
@@ -2868,7 +2916,7 @@
         <source>NOTIFICATIONS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <note priority="1" from="description">The notifications settings page tab label</note>
       </trans-unit>
@@ -2876,9 +2924,33 @@
         <source>ACTIVITY</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">36</context>
         </context-group>
         <note priority="1" from="description">The activity page tab label</note>
+      </trans-unit>
+      <trans-unit id="23bf0c14e2fc6cb762fabf9b9fdc5309" datatype="html">
+        <source>Position and crop your photo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+        <note priority="1" from="description">Thumbnail crop header message</note>
+      </trans-unit>
+      <trans-unit id="a61078592b960ef19807e60790795aec" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <note priority="1" from="description">Cancel thumbnail crop button title</note>
+      </trans-unit>
+      <trans-unit id="e3735089b346ea8eef209b48899bbbb0" datatype="html">
+        <source>Apply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/settings/settings.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <note priority="1" from="description">Apply thumbnail crop button title</note>
       </trans-unit>
       <trans-unit id="3a9315497767db8f497599d712b6723b" datatype="html">
         <source>LANGUAGE</source>
