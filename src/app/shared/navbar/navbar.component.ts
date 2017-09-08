@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 
 import { QueueButtonState } from '../../core/navbar/queue-button-state';
 import { NavbarService } from '../../core/navbar/navbar.service';
+import { UserService } from '../../core/user/user.service';
 import { DOMService } from '../../core/dom/dom.service';
 import { Logger } from '../../core/logger/logger';
 
@@ -68,6 +69,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     queueButtonRemoveState = QueueButtonState.REMOVE;
 
     hasUnreadNotifications = false;
+    settingsLinkImgSrc = 'https://storage.googleapis.com/stg.getnativelearning.com/assets/images/silhouette-avatar.jpg';
 
     @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
         let found = false;
@@ -92,7 +94,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     constructor(private logger: Logger, private navbar: NavbarService, private location: Location, private router: Router,
-                private dom: DOMService) {
+                private dom: DOMService, private user: UserService) {
+        if (!this.user.current$.getValue().is_silhouette_picture) {
+            this.settingsLinkImgSrc = this.user.current$.getValue().profile_image_url;
+        }
     }
 
     ngOnInit(): void {
