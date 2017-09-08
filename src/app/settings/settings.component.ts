@@ -110,7 +110,6 @@ export class SettingsComponent implements OnInit {
 
     onClickApplyCrop(): void {
         this.isCropperModalVisible = false;
-        this.image = this.image;
     }
 
     setSelectedTab(tab: string) {
