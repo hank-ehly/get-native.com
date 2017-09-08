@@ -13,9 +13,10 @@ import { SecurityComponent } from './security/security.component';
 import { GeneralComponent } from './general/general.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ActivityComponent } from './activity/activity.component';
+import { ImageCropperModule } from 'ng2-img-cropper';
 
 @NgModule({
-    imports: [SharedModule],
+    imports: [SharedModule, ImageCropperModule],
     declarations: [SettingsComponent, SecurityComponent, GeneralComponent, NotificationsComponent, ActivityComponent],
     exports: [SettingsComponent]
 })
