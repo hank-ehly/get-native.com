@@ -16,19 +16,21 @@ import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 
 @Injectable()
-export class DashboardResolveService implements Resolve<Entities<Entity>|Entity> {
+export class DashboardResolveService implements Resolve<Entities<Entity> | Entity> {
     constructor(private localStorage: LocalStorageService, private logger: Logger,
                 private http: HttpService, private user: UserService) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Entities<Entity>|Entity> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Entities<Entity> | Entity> {
         this.logger.debug(this, 'resolve', route, state);
         const expectedKeys = ['token', 'expires'];
         const queryParams = <any>_.pick(route.queryParams, expectedKeys);
         if (_.size(queryParams) === expectedKeys.length && _.every(queryParams, _.isString)) {
             this.localStorage.setItem(kAuthToken, route.queryParams['token']);
             this.localStorage.setItem(kAuthTokenExpire, route.queryParams['expires']);
-            return this.http.request(APIHandle.ME).do((u: User) => this.user.updateCache(u));
+            return this.http.request(APIHandle.ME).do((user: User) => {
+                this.user.updateCache(user);
+            });
         }
         return null;
     }

@@ -9,7 +9,7 @@ import { Entity } from './entity';
 import { Language } from '../typings/language';
 
 export interface User extends Entity {
-    profile_image_url?: string;
+    picture_url?: string;
     is_silhouette_picture?: boolean;
     email?: string;
     email_verified?: boolean;
