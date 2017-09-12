@@ -18,6 +18,7 @@ import { HttpService } from '../core/http/http.service';
 import { APIHandle } from '../core/http/api-handle';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
+import { APIErrors } from '../core/http/api-error';
 
 @Component({
     selector: 'gn-settings',
@@ -63,6 +64,13 @@ export class SettingsComponent implements OnInit, OnDestroy {
         croppingClass: 'canvas--populated'
     });
 
+    flags = {
+        processing: {
+            deleteProfileImage: false,
+            uploadProfileImage: false
+        }
+    };
+
     pictureUrl$ = this.userService.current$.pluck('picture_url');
 
     constructor(private logger: Logger, private router: Router, private userService: UserService, private http: HttpService) {
@@ -93,21 +101,17 @@ export class SettingsComponent implements OnInit, OnDestroy {
     }
 
     onClickRemovePhoto(): void {
-        if (this.image) {
-            this.cropper.reset();
-            this.isThumbnailDropdownVisible = false;
-        } else if (this.userService.current$.getValue().is_silhouette_picture) {
-            this.isThumbnailDropdownVisible = false;
-        } else {
-            this.http.request(APIHandle.DELETE_PROFILE_IMAGE).takeUntil(this.OnDestroy$).subscribe(
-                (x: any) => {
-                    this.logger.debug(this, 'SUCCESS', x);
-                },
-                (e: any) => {
-                    this.logger.debug(this, 'ERROR', e);
-                }
-            );
+        if (this.flags.processing.deleteProfileImage || this.flags.processing.uploadProfileImage) {
+            return;
         }
+
+        this.flags.processing.deleteProfileImage = true;
+        this.http.request(APIHandle.DELETE_PROFILE_IMAGE)
+            .takeUntil(this.OnDestroy$)
+            .subscribe(
+                this.onDeleteProfileImageSuccess.bind(this),
+                this.onDeleteProfileImageError.bind(this)
+            );
     }
 
     onClickCancelUpload(): void {
@@ -117,13 +121,17 @@ export class SettingsComponent implements OnInit, OnDestroy {
     onClickUpload(): void {
         const formData = new FormData();
         formData.append('image', this.imageFile, this.imageFile.name);
-        this.http.request(APIHandle.UPLOAD_PROFILE_IMAGE, {body: formData}).takeUntil(this.OnDestroy$).subscribe(
-            this.onUploadProfileImageSuccess.bind(this),
-            this.onUploadProfileImageError.bind(this)
-        );
+        this.flags.processing.uploadProfileImage = true;
+        this.http.request(APIHandle.UPLOAD_PROFILE_IMAGE, {body: formData})
+            .takeUntil(this.OnDestroy$)
+            .subscribe(
+                this.onUploadProfileImageSuccess.bind(this),
+                this.onUploadProfileImageError.bind(this)
+            );
     }
 
     onClickCancelDropdown(): void {
+        this.cropper.reset();
         this.isThumbnailDropdownVisible = false;
     }
 
@@ -163,12 +171,27 @@ export class SettingsComponent implements OnInit, OnDestroy {
     }
 
     private onUploadProfileImageSuccess(user: User): void {
+        this.cropper.reset();
+        this.flags.processing.uploadProfileImage = false;
         _.assign(user, {is_silhouette_picture: false});
         this.userService.updateCache(user);
         this.cropper.reset();
     }
 
-    private onUploadProfileImageError(e: any): void {
-        this.logger.debug(this, 'ERROR', e);
+    private onUploadProfileImageError(e: APIErrors): void {
+        this.logger.debug(this, 'onUploadProfileImageError', e);
+        this.flags.processing.uploadProfileImage = false;
     }
+
+    private onDeleteProfileImageSuccess(): void {
+        this.flags.processing.deleteProfileImage = false;
+        this.isThumbnailDropdownVisible = false;
+        this.userService.updateCache({is_silhouette_picture: true});
+    }
+
+    private onDeleteProfileImageError(e: APIErrors): void {
+        this.logger.debug(this, 'onDeleteProfileImageError', e);
+        this.flags.processing.deleteProfileImage = false;
+    }
+
 }
