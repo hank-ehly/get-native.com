@@ -12,3 +12,8 @@
     border-bottom-color: $iceberg;
   }
 }
+
+.link.link--disabled {
+  color: $regent-gray;
+  cursor: not-allowed;
+}

@@ -8,16 +8,16 @@
         </div>
 
         <div class="header__thumbnail-upload-buttons" *ngIf="data.image">
-            <button class="button" (click)="onClickCancelUpload()" i18n="Cancel thumbnail upload button title@@a06bd93b44304b29b00b2f7538435fdc">CANCEL</button>
-            <button class="button button--opaque" (click)="onClickUpload()" i18n="Upload thumbnail button title@@edd2f93006443c842ce451c9ca301f3c">UPLOAD</button>
+            <button class="button" (click)="onClickCancelUpload()" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" i18n="Cancel thumbnail upload button title@@a06bd93b44304b29b00b2f7538435fdc">CANCEL</button>
+            <button class="button button--opaque" (click)="onClickUpload()" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" i18n="Upload thumbnail button title@@edd2f93006443c842ce451c9ca301f3c">UPLOAD</button>
         </div>
 
         <gn-dropdown *ngIf="isThumbnailDropdownVisible" [left]="dropdownLeft" [top]="dropdownTop">
             <label>
-                <a class="link dropdown-link" i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
-                <input id="file" type="file" name="file" class="header__file-input" (change)="onChangeThumbnail($event)">
+                <a class="link dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}"  i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
+                <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail($event)">
             </label>
-            <a class="link dropdown-link" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</a>
+            <a class="link dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</a>
             <span class="dropdown-divider"></span>
             <a class="link dropdown-link dropdown-link--cancel" (click)="onClickCancelDropdown()" i18n="Cancel thumbnail dropdown button title@@18e0be2c661eaee7e8d5e06c3bedb620">Cancel</a>
         </gn-dropdown>

@@ -122,13 +122,16 @@
 }
 
 .dropdown-link {
+  background: $white;
+  border: none;
   display: block;
+  line-height: $font-size-large;
   padding: 6px;
   text-align: center;
+  margin: auto;
   min-width: 220px;
   &:hover {
     background-color: #0295f4;
-    border-bottom: 1px solid transparent;
     color: $white;
   }
 }
