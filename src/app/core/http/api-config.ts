@@ -141,5 +141,15 @@ export const APIConfig = new Map<APIHandle, any>([
         method: RequestMethod.Post,
         url: '/reset_password',
         isProtected: false
+    }],
+    [APIHandle.DELETE_PROFILE_IMAGE, {
+        method: RequestMethod.Delete,
+        url: '/users/profile_image',
+        isProtected: true
+    }],
+    [APIHandle.UPLOAD_PROFILE_IMAGE, {
+        method: RequestMethod.Post,
+        url: '/users/profile_image',
+        isProtected: true
     }]
 ]);

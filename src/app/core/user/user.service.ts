@@ -31,6 +31,7 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class UserService {
+
     authenticated$        = new BehaviorSubject<boolean>(false);
     current$              = new BehaviorSubject<User>(this.localStorage.getItem(kCurrentUser));
     currentStudyLanguage$ = new ReplaySubject<Language>(1);
@@ -70,6 +71,10 @@ export class UserService {
     updateCache(user: User): void {
         if (!_.isObject(user)) {
             return;
+        }
+
+        if (user.is_silhouette_picture) {
+            user.picture_url = 'https://storage.googleapis.com/stg.getnativelearning.com/assets/images/silhouette-avatar.jpg';
         }
 
         const cache = _.defaultTo(this.localStorage.getItem(kCurrentUser), {});
@@ -125,4 +130,5 @@ export class UserService {
 
         return authenticated;
     }
+
 }

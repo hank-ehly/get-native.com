@@ -22,6 +22,7 @@ import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/mapTo';
+import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/do';
 
 @Component({
@@ -64,6 +65,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
     displayNotificationDropdown$ = new BehaviorSubject<boolean>(false);
     OnDestroy$           = new Subject<void>();
+    pictureUrl$          = this.user.current$.pluck('picture_url');
 
     queueButtonSaveState = QueueButtonState.SAVE;
     queueButtonRemoveState = QueueButtonState.REMOVE;
@@ -95,9 +97,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     constructor(private logger: Logger, private navbar: NavbarService, private location: Location, private router: Router,
                 private dom: DOMService, private user: UserService) {
-        if (!this.user.current$.getValue().is_silhouette_picture) {
-            this.settingsLinkImgSrc = this.user.current$.getValue().profile_image_url;
-        }
     }
 
     ngOnInit(): void {
