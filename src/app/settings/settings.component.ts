@@ -19,6 +19,7 @@ import { APIHandle } from '../core/http/api-handle';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { APIErrors } from '../core/http/api-error';
+import { ImageService } from '../core/image.service';
 
 @Component({
     selector: 'gn-settings',
@@ -73,7 +74,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     pictureUrl$ = this.userService.current$.pluck('picture_url');
 
-    constructor(private logger: Logger, private router: Router, private userService: UserService, private http: HttpService) {
+    constructor(private logger: Logger, private router: Router, private userService: UserService, private http: HttpService,
+                private imageService: ImageService) {
     }
 
     ngOnInit() {
@@ -120,7 +122,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     onClickUpload(): void {
         const formData = new FormData();
-        formData.append('image', this.imageFile, this.imageFile.name);
+        const blob = this.imageService.convertDataURIToBlob(this.data.image);
+        formData.append('image', blob);
         this.flags.processing.uploadProfileImage = true;
         this.http.request(APIHandle.UPLOAD_PROFILE_IMAGE, {body: formData})
             .takeUntil(this.OnDestroy$)

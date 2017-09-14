@@ -27,6 +27,7 @@ import { WordCountService } from './word-count/word-count.service';
 import { ConfirmEmailUpdateResolver } from './auth/confirm-email-update-resolver.service';
 import { FacebookService } from './facebook/facebook.service';
 import { DOMService } from './dom/dom.service';
+import { ImageService } from './image.service';
 
 @NgModule({
     imports: [
@@ -51,7 +52,8 @@ import { DOMService } from './dom/dom.service';
         StudySessionService,
         WordCountService,
         FacebookService,
-        DOMService
+        DOMService,
+        ImageService
     ]
 })
 export class CoreModule {
