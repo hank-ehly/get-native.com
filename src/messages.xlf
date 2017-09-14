@@ -2337,7 +2337,7 @@
         <note priority="1" from="description">A brief description of the purpose of the website</note>
       </trans-unit>
       <trans-unit id="37b0847e5aa24a6f1b58091a13bff6c9" datatype="html">
-        <source>Video database</source>
+        <source>Video Library</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">14</context>
@@ -2465,7 +2465,7 @@
         <note priority="1" from="description">Open-source small feature description</note>
       </trans-unit>
       <trans-unit id="11115428e93492fb7d468a12f92c72a4" datatype="html">
-        <source>Better security</source>
+        <source>Better Security</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">62</context>
@@ -2489,7 +2489,7 @@
         <note priority="1" from="description">Security small feature description</note>
       </trans-unit>
       <trans-unit id="d21e6ec19aadec899196fb80ea88d509" datatype="html">
-        <source>Easy-to-use interface</source>
+        <source>Intuitive Design</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">68</context>
@@ -2537,7 +2537,7 @@
         <note priority="1" from="description">Q&amp;A small feature description</note>
       </trans-unit>
       <trans-unit id="6b3305bf07712acfab42744cfa74a94f" datatype="html">
-        <source>Simple registration</source>
+        <source>Simple Registration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">80</context>
@@ -2820,7 +2820,7 @@
         <source>user picture</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">6</context>
         </context-group>
         <note priority="1" from="description">Alt text for settings page user thumbnail image</note>
       </trans-unit>
@@ -2828,7 +2828,7 @@
         <source>CANCEL</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <note priority="1" from="description">Cancel thumbnail upload button title</note>
       </trans-unit>
@@ -2836,7 +2836,7 @@
         <source>UPLOAD</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <note priority="1" from="description">Upload thumbnail button title</note>
       </trans-unit>
@@ -2844,7 +2844,7 @@
         <source>Upload Photo</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">17</context>
         </context-group>
         <note priority="1" from="description">Upload photo dropdown link title</note>
       </trans-unit>
@@ -2852,7 +2852,7 @@
         <source>Remove</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <note priority="1" from="description">Remove current thumbnail button title</note>
       </trans-unit>
@@ -2860,7 +2860,7 @@
         <source>Cancel</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <note priority="1" from="description">Cancel thumbnail dropdown button title</note>
       </trans-unit>
@@ -2868,7 +2868,7 @@
         <source>View and update your login credentials.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <note priority="1" from="description">General settings page description</note>
       </trans-unit>
@@ -2876,7 +2876,7 @@
         <source>Manage your account privacy settings.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <note priority="1" from="description">Security settings page description</note>
       </trans-unit>
@@ -2884,7 +2884,7 @@
         <source>Specify how getnative should be able to notify you.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">28</context>
         </context-group>
         <note priority="1" from="description">Notification settings page description</note>
       </trans-unit>
@@ -2892,7 +2892,7 @@
         <source>View updates and recent activity on getnative.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">29</context>
         </context-group>
         <note priority="1" from="description">Activity settings page description</note>
       </trans-unit>
@@ -2900,7 +2900,7 @@
         <source>GENERAL</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <note priority="1" from="description">The general settings page tab label</note>
       </trans-unit>
@@ -2908,7 +2908,7 @@
         <source>SECURITY</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <note priority="1" from="description">The security settings page tab label</note>
       </trans-unit>
@@ -2916,7 +2916,7 @@
         <source>NOTIFICATIONS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">36</context>
         </context-group>
         <note priority="1" from="description">The notifications settings page tab label</note>
       </trans-unit>
@@ -2924,7 +2924,7 @@
         <source>ACTIVITY</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">37</context>
         </context-group>
         <note priority="1" from="description">The activity page tab label</note>
       </trans-unit>
@@ -2932,7 +2932,7 @@
         <source>Position and crop your photo</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <note priority="1" from="description">Thumbnail crop header message</note>
       </trans-unit>
@@ -2940,7 +2940,7 @@
         <source>Cancel</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <note priority="1" from="description">Cancel thumbnail crop button title</note>
       </trans-unit>
@@ -2948,7 +2948,7 @@
         <source>Apply</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/settings.component.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">53</context>
         </context-group>
         <note priority="1" from="description">Apply thumbnail crop button title</note>
       </trans-unit>
