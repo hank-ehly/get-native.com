@@ -400,7 +400,7 @@
             </trans-unit>
             <trans-unit id="de0da74747b01d316a0330ff38f33b89" datatype="html">
                 <source>No activity yet!</source>
-                <source>まだアクティビティがありません。</source>
+                <target>まだアクティビティがありません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/navbar/activity-dropdown.component.ts</context>
                     <context context-type="linenumber">16</context>
@@ -2983,7 +2983,7 @@
             </trans-unit>
             <trans-unit id="25ae55cf7088e62afff8719e11dd9c1c" datatype="html">
                 <source>Better Security</source>
-                <source>より強いセキュリティ</source>
+                <target>より強いセキュリティ</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">63</context>
@@ -3010,7 +3010,7 @@
             </trans-unit>
             <trans-unit id="39d0472c40a4afd2c94909429c53a8ac" datatype="html">
                 <source>Intuitive Design</source>
-                <source>直感的なデザイン</source>
+                <target>直感的なデザイン</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">69</context>
@@ -3271,7 +3271,7 @@
             </trans-unit>
             <trans-unit id="a156df53e81a3c26ab5082455077ab09" datatype="html">
                 <source>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed link to complete the email confirmation process.</source>
-                <source>認証メールが<x id="INTERPOLATION"/>に送信されました。同封のリンクをクリックして、電子メール確認プロセスを完了してください。</source>
+                <target>認証メールが<x id="INTERPOLATION"/>に送信されました。同封のリンクをクリックして、電子メール確認プロセスを完了してください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">7</context>
@@ -3318,7 +3318,7 @@
             </trans-unit>
             <trans-unit id="59463247ed2c4aed1b1236c13785c44c" datatype="html">
                 <source>I forgot my password.</source>
-                <source>パスワードを忘れました。</source>
+                <target>パスワードを忘れました。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">50</context>
