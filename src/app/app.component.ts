@@ -132,7 +132,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private observeInterfaceLanguage(): void {
         this.user.current$.takeUntil(this.OnDestroy$).subscribe((u: User) => {
-            if (!u || !environment.production || u.interface_language.code === this.lang.languageForLocaleId(this.localeId).code) {
+            if (!u) {
+                return;
+            }
+
+            if (environment.development) {
+                return;
+            }
+
+            if (u.interface_language.code === this.lang.languageForLocaleId(this.localeId).code) {
                 return;
             }
 
