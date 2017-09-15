@@ -5,6 +5,8 @@
 
 export const environment = {
     production: false,
+    staging: false,
+    development: true,
     apiBaseUrl: 'http://localhost:3000',
     facebookLoginUrl: 'http://localhost:3000/oauth/facebook',
     twitterLoginUrl: 'http://localhost:3000/oauth/twitter',

@@ -5,6 +5,8 @@
 
 export const environment = {
     production: false,
+    staging: true,
+    development: false,
     apiBaseUrl: 'https://api.stg.getnativelearning.com',
     facebookLoginUrl: 'https://api.stg.getnativelearning.com/oauth/facebook',
     twitterLoginUrl: 'https://api.stg.getnativelearning.com/oauth/twitter',
