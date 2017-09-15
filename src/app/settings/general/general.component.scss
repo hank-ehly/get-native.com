@@ -88,6 +88,11 @@ hr {
   margin-top: 5px;
 }
 
+.modal__content--password-reset-link {
+  box-sizing: border-box;
+  width: 400px;
+}
+
 .modal__content--password-reset-link .paragraph--error-message,
 .modal__content--password-reset-link .paragraph--success-message{
   margin-top: 30px;

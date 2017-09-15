@@ -44,6 +44,7 @@ export class UserService {
     constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
         // todo: Don't change the current study language every time you change the default study language
         // this.current$.filter(_.isObject).pluck('default_study_language').subscribe();
+        this.authenticated$.next(this.isAuthenticated());
 
         this.currentStudyLanguage$.next(this.lang.languageForCode('en'));
 

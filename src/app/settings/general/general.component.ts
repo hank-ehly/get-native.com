@@ -214,7 +214,6 @@ export class GeneralComponent implements OnInit, OnDestroy {
     private onSelectInterfaceLanguageNext(code: LanguageCode): void {
         this.updateInterfaceLanguageError = null;
         this.userService.updateCache({interface_language: this.lang.languageForCode(code)});
-        window.location.href = window.location.protocol + '//' + [window.location.host, code, 'settings'].join('/');
     }
 
     private onSelectInterfaceLanguageError(errors: APIErrors): void {

@@ -13,14 +13,22 @@ import { LocalStorageService } from './core/local-storage/local-storage.service'
 import { FacebookService } from './core/facebook/facebook.service';
 import { NavbarService } from './core/navbar/navbar.service';
 import { environment } from '../environments/environment';
+import { HttpService } from './core/http/http.service';
 import { LangService } from './core/lang/lang.service';
 import { UserService } from './core/user/user.service';
+import { APIHandle } from './core/http/api-handle';
 import { translateMetaKey } from './meta-factory';
 import { Logger } from './core/logger/logger';
+import { User } from './core/entities/user';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/mapTo';
+import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'gn-app',
@@ -45,6 +53,7 @@ import 'rxjs/add/operator/takeUntil';
     ]
 })
 export class AppComponent implements OnInit, OnDestroy {
+
     authenticated$ = this.user.authenticated$;
     showToolbar$: Observable<boolean>;
     showNavbarSearchIconEmitted$: Observable<boolean>;
@@ -68,7 +77,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router, private user: UserService,
                 private facebook: FacebookService, private route: ActivatedRoute, private lang: LangService, private navbar: NavbarService,
-                @Inject(LOCALE_ID) private localeId: string) {
+                @Inject(LOCALE_ID) private localeId: string, private http: HttpService) {
         this.showToolbar$ = this.routeDataEmitted$.pluck('showToolbar');
         this.showNavbarSearchIconEmitted$ = this.routeDataEmitted$.pluck('showNavbarSearchIcon');
     }
@@ -88,15 +97,10 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
 
-        this.user.authenticated$.next(this.user.isAuthenticated());
-
-        this.routeDataEmitted$.takeUntil(this.OnDestroy$).map((data: any) => {
-            return data.hideNavbarTitle ? {meta: {title: ''}} : data;
-        }).pluck('meta', 'title').map((key: string) => {
-            return translateMetaKey(this.lang.languageForLocaleId(this.localeId).code, key);
-        }).subscribe(this.navbar.title$);
-
-        this.user.logout$.takeUntil(this.OnDestroy$).subscribe(this.onLogout.bind(this));
+        this.updateUserCacheIfNeeded();
+        this.observeInterfaceLanguage();
+        this.observeLogout();
+        this.initNavbarTitle();
 
         this.facebook.init({
             appId: environment.facebookAppId,
@@ -105,8 +109,6 @@ export class AppComponent implements OnInit, OnDestroy {
             cookie: false,
             version: 'v2.10'
         });
-
-        // todo: listen for local cache user update and switch locales based on interface language key if needed
     }
 
     ngOnDestroy(): void {
@@ -118,7 +120,42 @@ export class AppComponent implements OnInit, OnDestroy {
         await this.router.navigate(['']);
     }
 
-    private displayMobileOverlayIfNeeded() {
+    private displayMobileOverlayIfNeeded(): void {
         this.displayMobileOverlay$.next(window.innerWidth < 768);
     }
+
+    private updateUserCacheIfNeeded(): void {
+        if (this.user.authenticated$.getValue()) {
+            this.http.request(APIHandle.ME).do(this.user.updateCache);
+        }
+    }
+
+    private observeInterfaceLanguage(): void {
+        this.user.current$.takeUntil(this.OnDestroy$).subscribe((u: User) => {
+            if (!u || !environment.production || u.interface_language.code === this.lang.languageForLocaleId(this.localeId).code) {
+                return;
+            }
+
+            const split = window.location.pathname.split('/');
+            const pathname = split.slice(2, split.length).join('');
+
+            this.logger.debug(this, pathname);
+
+            window.location.href = window.location.protocol + '//' + [window.location.host, u.interface_language.code, pathname].join('/');
+        });
+    }
+
+    private observeLogout(): void {
+        this.user.logout$.takeUntil(this.OnDestroy$).subscribe(this.onLogout.bind(this));
+    }
+
+    private initNavbarTitle(): void {
+        this.routeDataEmitted$
+            .takeUntil(this.OnDestroy$)
+            .map((data: any) => data.hideNavbarTitle ? {meta: {title: ''}} : data)
+            .pluck('meta', 'title')
+            .map((key: string) => translateMetaKey(this.lang.languageForLocaleId(this.localeId).code, key))
+            .subscribe(this.navbar.title$);
+    }
+
 }

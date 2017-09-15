@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { kAuthToken, kAuthTokenExpire } from '../core/local-storage/local-storage-keys';
@@ -18,7 +18,7 @@ import * as _ from 'lodash';
 @Injectable()
 export class DashboardResolveService implements Resolve<Entities<Entity> | Entity> {
     constructor(private localStorage: LocalStorageService, private logger: Logger,
-                private http: HttpService, private user: UserService) {
+                private http: HttpService, private user: UserService, private router: Router) {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Entities<Entity> | Entity> {
@@ -30,8 +30,10 @@ export class DashboardResolveService implements Resolve<Entities<Entity> | Entit
             this.localStorage.setItem(kAuthTokenExpire, route.queryParams['expires']);
             return this.http.request(APIHandle.ME).do((user: User) => {
                 this.user.updateCache(user);
+                // this.router.navigate(['/dashboard']);
             });
         }
-        return null;
+        // this.router.navigate(['/dashboard']);
+        return Observable.of({});
     }
 }
