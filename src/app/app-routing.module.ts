@@ -43,10 +43,10 @@ import { HelpMainComponent } from './help/main/main.component';
 import { HelpArticleComponent } from './help/article/article.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { PasswordResetResolverService } from './password-reset/password-reset-resolver.service';
+import { PasswordResetCompleteComponent } from './password-reset/password-reset-complete/password-reset-complete.component';
+import { PasswordResetGuard } from './password-reset/password-reset.guard';
 
 import { MetaGuard } from '@ngx-meta/core';
-import { PasswordResetGuard } from './password-reset/password-reset.guard';
-import { PasswordResetCompleteComponent } from './password-reset/password-reset-complete/password-reset-complete.component';
 
 const routes: Routes = [
     {
@@ -62,7 +62,7 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         canActivate: [DashboardGuard, MetaGuard],
-        resolve: {user: DashboardResolveService},
+        resolve: {_user: DashboardResolveService},
         data: {
             meta: {
                 title: 'dashboard.title'

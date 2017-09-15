@@ -22,13 +22,11 @@ import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
 import { Logger } from './core/logger/logger';
 import { StaticPagesModule } from './static-pages/static-pages.module';
 import { LangService } from './core/lang/lang.service';
+import { PasswordResetModule } from './password-reset/password-reset.module';
 import { metaFactory } from './meta-factory';
-import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { HelpModule } from './help/help.module';
-import { PasswordResetResolverService } from './password-reset/password-reset-resolver.service';
 
 import { MetaModule, MetaLoader } from '@ngx-meta/core';
-import { PasswordResetModule } from './password-reset/password-reset.module';
 
 @NgModule({
     imports: [
