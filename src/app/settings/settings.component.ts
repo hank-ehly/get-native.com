@@ -39,7 +39,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     // half of main width - half of dropdown width
     dropdownLeft = 300 - (232 / 2) + 'px';
-    dropdownTop = '80px';
+    dropdownTop = '-30px';
 
     cropperSettings: CropperSettings = _.assign(new CropperSettings(), {
         width: 110,
