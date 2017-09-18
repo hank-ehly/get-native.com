@@ -1,12 +1,7 @@
 @import '../../../styles/core';
 
-:host {
-  position: absolute;
-}
-
 .wrapper {
-  //position: absolute;
-  position: relative;
+  position: absolute;
   box-shadow: 0 1px 4px rgba($black, 0.25);
   background: $white;
   box-sizing: border-box;
