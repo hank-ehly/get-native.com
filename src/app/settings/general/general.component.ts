@@ -189,7 +189,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
     private onSelectDefaultStudyLanguageNext(code: LanguageCode): void {
         this.updateDefaultStudyLanguageError = null;
         this.flags.processing.selectDefaultStudyLanguage = false;
-        this.userService.updateCache({
+        this.userService.update({
             default_study_language: this.lang.languageForCode(code)
         });
     }
@@ -213,7 +213,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     private onSelectInterfaceLanguageNext(code: LanguageCode): void {
         this.updateInterfaceLanguageError = null;
-        this.userService.updateCache({interface_language: this.lang.languageForCode(code)});
+        this.userService.update({interface_language: this.lang.languageForCode(code)});
     }
 
     private onSelectInterfaceLanguageError(errors: APIErrors): void {

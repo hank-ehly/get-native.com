@@ -27,7 +27,7 @@ export class DashboardResolveService implements Resolve<void> {
             this.localStorage.setItem(kAuthToken, route.queryParams['token']);
             this.localStorage.setItem(kAuthTokenExpire, route.queryParams['expires']);
             return this.http.request(APIHandle.ME).map((user: User) => {
-                this.user.updateCache(user);
+                this.user.update(user);
             });
         }
         return Observable.of(null);

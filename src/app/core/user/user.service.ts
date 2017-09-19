@@ -7,18 +7,21 @@
 
 import { Injectable } from '@angular/core';
 
-import { kCurrentUser, kAuthToken, kAuthTokenExpire, kAcceptLocalStorage, kCurrentStudySession } from '../local-storage/local-storage-keys';
+import {
+    kCurrentUser,
+    kAuthToken,
+    kAuthTokenExpire,
+    kAcceptLocalStorage,
+    kCurrentStudySession,
+    kCurrentStudyLanguage
+} from '../local-storage/local-storage-keys';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { LangService } from '../lang/lang.service';
-import { HttpService } from '../http/http.service';
-import { APIHandle } from '../http/api-handle';
 import { Language } from '../typings/language';
-import { APIErrors } from '../http/api-error';
 import { Logger } from '../logger/logger';
 import { User } from '../entities/user';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/concatMap';
@@ -32,43 +35,27 @@ import * as _ from 'lodash';
 @Injectable()
 export class UserService {
 
-    authenticated$        = new BehaviorSubject<boolean>(false);
-    current$              = new BehaviorSubject<User>(this.localStorage.getItem(kCurrentUser));
-    currentStudyLanguage$ = new ReplaySubject<Language>(1);
-    compliant$            = new BehaviorSubject<boolean>(this.localStorage.getItem(kAcceptLocalStorage) || false);
-    logout$               = new Subject<void>();
+    current$ = new BehaviorSubject<User>(this.localStorage.getItem(kCurrentUser));
+    authenticated$ = new BehaviorSubject<boolean>(false);
+    compliant$ = new BehaviorSubject<boolean>(this.localStorage.getItem(kAcceptLocalStorage) || false);
+    logout$ = new Subject<void>();
+    currentStudyLanguage$ = new BehaviorSubject<Language>(this.localStorage.getItem(kCurrentStudyLanguage) || null);
 
-    $setEmailNotificationsEnabled = new Subject<boolean>();
-    $setBrowserNotificationsEnabled = new Subject<boolean>();
-
-    constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger, private http: HttpService) {
-        // todo: Don't change the current study language every time you change the default study language
-        // this.current$.filter(_.isObject).pluck('default_study_language').subscribe();
-        this.currentStudyLanguage$.next(this.lang.languageForCode('en'));
-
-        this.current$.filter(_.isObject).filter(this.isAuthenticated.bind(this)).mapTo(true).subscribe(this.authenticated$);
-        this.logout$.mapTo(false).subscribe(this.authenticated$);
-        this.current$.filter(_.isObject).mapTo(true).subscribe(this.compliant$);
-
-        this.$setEmailNotificationsEnabled.distinctUntilChanged().concatMap((value: boolean) => {
-            return this.http.request(APIHandle.UPDATE_USER, {body: {email_notifications_enabled: value}});
-        }, (value: boolean) => {
-            this.updateCache({email_notifications_enabled: value});
-        }).subscribe(null, (errors: APIErrors) => {
-            // this is the error handler
+    constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger) {
+        this.current$.filter(_.isObject).filter(this.isAuthenticated.bind(this)).subscribe((u: User) => {
+            this.authenticated$.next(true);
+            this.compliant$.next(true);
+            this.currentStudyLanguage$.next(_.defaultTo(this.currentStudyLanguage$.getValue(), u.default_study_language));
         });
 
-        this.$setBrowserNotificationsEnabled.distinctUntilChanged().concatMap((value: boolean) => {
-            return this.http.request(APIHandle.UPDATE_USER, {body: {browser_notifications_enabled: value}});
-        }, (value: boolean) => {
-            this.updateCache({browser_notifications_enabled: value});
-        }).subscribe(null, (errors: APIErrors) => {
-            // this is the error handler
+        this.logout$.subscribe(() => {
+            this.authenticated$.next(false);
         });
     }
 
-    updateCache(user: User): void {
+    update(user: User): void {
         if (!_.isObject(user)) {
+            this.logger.debug(this, 'user is not an object', user);
             return;
         }
 
@@ -76,26 +63,24 @@ export class UserService {
             user.picture_url = 'https://storage.googleapis.com/stg.getnativelearning.com/assets/images/silhouette-avatar.jpg';
         }
 
-        const cache = _.defaultTo(this.localStorage.getItem(kCurrentUser), {});
-
-        this.logger.debug(this, 'Updating cached user', user);
-
+        const cache: User = _.defaultTo(this.localStorage.getItem(kCurrentUser), {});
         _.assign(cache, user);
+
+        if (!this.localStorage.hasItem(kCurrentStudyLanguage) && _.has(cache, 'default_study_language.code')) {
+            this.setCurrentStudyLanguage(cache.default_study_language);
+        }
+
+        this.comply();
+
         this.localStorage.setItem(kCurrentUser, cache);
-
-        // this only needs to be done once
-        this.localStorage.setItem(kAcceptLocalStorage, true);
-
         this.current$.next(cache);
     }
 
     logout(): void {
         this.logger.debug(this, 'logout');
 
-        this.localStorage.removeItem(kAuthToken);
-        this.localStorage.removeItem(kAuthTokenExpire);
-        this.localStorage.removeItem(kCurrentUser);
-        this.localStorage.removeItem(kCurrentStudySession);
+        const keysToRemove = [kAuthToken, kAuthTokenExpire, kCurrentUser, kCurrentStudySession, kCurrentStudyLanguage];
+        _.each(keysToRemove, this.localStorage.removeItem);
 
         this.logout$.next();
     }
@@ -106,16 +91,10 @@ export class UserService {
         this.compliant$.next(true);
     }
 
-    update(user: User): void {
-        this.logger.debug(this, 'update', user);
-
-        if (_.has(user, 'email_notifications_enabled')) {
-            this.$setEmailNotificationsEnabled.next(user.email_notifications_enabled);
-        }
-
-        if (_.has(user, 'browser_notifications_enabled')) {
-            this.$setBrowserNotificationsEnabled.next(user.browser_notifications_enabled);
-        }
+    setCurrentStudyLanguage(language: Language): void {
+        this.logger.debug(this, 'setting current study language');
+        this.localStorage.setItem(kCurrentStudyLanguage, language);
+        this.currentStudyLanguage$.next(language);
     }
 
     isAuthenticated(): boolean {

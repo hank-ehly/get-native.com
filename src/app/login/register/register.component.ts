@@ -81,7 +81,7 @@ export class RegisterComponent implements OnDestroy {
     }
 
     private onCreateUserNext(user: User): void {
-        this.user.updateCache(user);
+        this.user.update(user);
         this.router.navigate([{outlets: {modal: null}}]).then(() => {
             return this.router.navigate(['/dashboard']);
         }).catch(e => {

@@ -7,16 +7,15 @@
 
 import { Injectable } from '@angular/core';
 
-import { LocalStorageItem } from './local-storage-item';
 import { Logger } from '../logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class LocalStorageService {
+
     storageEvent$ = new Subject<StorageEvent>();
     clear$        = new Subject();
-    setItem$      = new Subject<LocalStorageItem>();
 
     constructor(private logger: Logger) {
         this.clear$.subscribe(() => localStorage.clear());
@@ -33,9 +32,7 @@ export class LocalStorageService {
     }
 
     get length(): number {
-        const retVal = localStorage.length;
-        this.logger.debug(this, `get length() - ${retVal}`);
-        return retVal;
+        return localStorage.length;
     }
 
     /* Todo: Encrypt all stored data */
@@ -48,7 +45,6 @@ export class LocalStorageService {
         }
 
         localStorage.setItem(key, data);
-        this.setItem$.next({key: key, data: data});
     }
 
     getItem(key: string): any {
@@ -66,8 +62,7 @@ export class LocalStorageService {
     }
 
     removeItem(key: string): void {
-        this.logger.debug(this, `removeItem('${key}')`);
         localStorage.removeItem(key);
-        this.setItem$.next({key: key, data: null});
     }
+
 }
