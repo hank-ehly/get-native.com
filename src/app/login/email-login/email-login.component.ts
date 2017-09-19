@@ -68,7 +68,7 @@ export class EmailLoginComponent implements OnDestroy {
     }
 
     private onCreateSessionNext(user: User): void {
-        this.user.updateCache(user);
+        this.user.update(user);
         this.router.navigate([{outlets: {modal: null}}]).then(() => {
             return this.router.navigate(['/dashboard']);
         }).catch(e => {

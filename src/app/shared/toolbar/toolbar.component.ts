@@ -16,6 +16,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/observable/of';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-toolbar',
@@ -40,6 +41,7 @@ import 'rxjs/add/observable/of';
     ]
 })
 export class ToolbarComponent {
+
     language$ = Observable.of<Language[]>(Languages);
     isTooltipVisible$ = new BehaviorSubject<boolean>(false);
     authenticated$ = this.user.authenticated$;
@@ -58,7 +60,7 @@ export class ToolbarComponent {
     }
 
     onClickLanguage(language: Language): void {
-        this.user.currentStudyLanguage$.next(language);
+        this.user.setCurrentStudyLanguage(language);
     }
 
     onClickSelectedLanguageLabel(): void {
@@ -68,4 +70,5 @@ export class ToolbarComponent {
     onMouseEnterSelectedLanguageLabel(): void {
         this.isTooltipVisible$.next(true);
     }
+
 }

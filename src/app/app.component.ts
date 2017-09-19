@@ -125,8 +125,10 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     private updateUserCacheIfNeeded(): void {
-        if (this.user.authenticated$.getValue()) {
-            this.http.request(APIHandle.ME).do(this.user.updateCache);
+        if (this.user.isAuthenticated()) {
+            this.http.request(APIHandle.ME).takeUntil(this.OnDestroy$).subscribe((u: User) => {
+                this.user.update(u);
+            });
         }
     }
 

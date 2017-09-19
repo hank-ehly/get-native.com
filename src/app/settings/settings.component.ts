@@ -177,7 +177,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
         this.cropper.reset();
         this.flags.processing.uploadProfileImage = false;
         _.assign(user, {is_silhouette_picture: false});
-        this.userService.updateCache(user);
+        this.userService.update(user);
         this.cropper.reset();
     }
 
@@ -189,7 +189,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     private onDeleteProfileImageSuccess(): void {
         this.flags.processing.deleteProfileImage = false;
         this.isThumbnailDropdownVisible = false;
-        this.userService.updateCache({is_silhouette_picture: true});
+        this.userService.update({is_silhouette_picture: true});
     }
 
     private onDeleteProfileImageError(e: APIErrors): void {
