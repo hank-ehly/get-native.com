@@ -1,15 +1,17 @@
 <div class="row">
     <h6 i18n="The title for the user email notification preference setting@@749d1f0ba6eb4d27fa9f3e8b07afe64d">Email Notifications</h6>
+    <p class="paragraph paragraph--error-message" *ngIf="errors.emailNotificationsEnabled">{{ errors.emailNotificationsEnabled.message }}</p>
     <div class="label-button-row">
         <p class="paragraph" i18n="A description about the email notification preference setting@@5d243f345cb9deefd35d0c3420bc4304">Receive emails from time to time about getnative updates and changes. To enable or disable this feature, you must first verify your email address.</p>
-        <gn-switch (toggleEmitted$)="updateEmailPreference($event)" [on]="isEmailVerificationsOn()" [disabled]="!user.email_verified"></gn-switch>
+        <gn-switch (toggleEmitted$)="updateEmailPreference($event)" [on]="isEmailVerificationsOn()" [disabled]="!user.email_verified || flags.processing.emailNotificationsEnabled"></gn-switch>
     </div>
 </div>
 
 <div class="row">
     <h6 i18n="The title for the browser notifications preference setting@@3f270018de7eeace6516b3904d5bc788">Browser Notifications</h6>
+    <p class="paragraph paragraph--error-message" *ngIf="errors.browserNotificationsEnabled">{{ errors.browserNotificationsEnabled.message }}</p>
     <div class="label-button-row">
         <p class="paragraph" i18n="A description about the browser notifications preference setting@@5279a07d9de4abf0573155e349b9f169">Allow getnative to display browser notifications.</p>
-        <gn-switch (toggleEmitted$)="updateBrowserPreference($event)" [on]="user?.browser_notifications_enabled"></gn-switch>
+        <gn-switch (toggleEmitted$)="updateBrowserPreference($event)" [on]="user?.browser_notifications_enabled" [disabled]="flags.processing.browserNotificationsEnabled"></gn-switch>
     </div>
 </div>

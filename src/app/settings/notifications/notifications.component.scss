@@ -26,3 +26,10 @@
     align-self: center;
   }
 }
+
+.paragraph--error-message {
+  @include font-weight-bold();
+  font-size: $font-size-small;
+  color: $error-message-color;
+  margin-top: 5px;
+}
