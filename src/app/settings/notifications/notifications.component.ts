@@ -5,8 +5,10 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 
+import { NotificationService } from '../../core/notification/notification.service';
+import { SwitchComponent } from '../../shared/switch/switch.component';
 import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
 import { APIHandle } from '../../core/http/api-handle';
@@ -25,6 +27,7 @@ import * as _ from 'lodash';
 })
 export class NotificationsComponent implements OnDestroy {
 
+    @ViewChild('browserNotificationSwitch') browserNotificationSwitch: SwitchComponent;
     user: User = this.userService.current$.getValue();
     OnDestroy$ = new Subject<void>();
 
@@ -40,7 +43,12 @@ export class NotificationsComponent implements OnDestroy {
         }
     };
 
-    constructor(private userService: UserService, private http: HttpService, private logger: Logger) {
+    browserNotificationDisabled = !this.notification.supported || this.flags.processing.browserNotificationsEnabled;
+    browserNotificationGranted = false;
+
+    constructor(private userService: UserService, private http: HttpService, private logger: Logger,
+                private notification: NotificationService) {
+        this.browserNotificationGranted = this.user.browser_notifications_enabled && this.notification.permission$.getValue() === 'granted';
     }
 
     ngOnDestroy(): void {
@@ -59,13 +67,24 @@ export class NotificationsComponent implements OnDestroy {
     }
 
     updateBrowserPreference(value: boolean) {
-        this.flags.processing.browserNotificationsEnabled = true;
-        this.http.request(APIHandle.UPDATE_USER, {body: {browser_notifications_enabled: value}})
-            .takeUntil(this.OnDestroy$)
-            .subscribe(
-                this.onUpdateBrowserNotificationsEnabledNext.bind(this, value),
-                this.onUpdateBrowserNotificationsEnabledError.bind(this)
-            );
+        if (!value) {
+            if (this.user.browser_notifications_enabled) {
+                this.persistBrowserNotificationPreference(false);
+            }
+        } else {
+            this.notification.requestPermission()
+                .takeUntil(this.OnDestroy$)
+                .subscribe(this.onRequestNotificationPermissionNext.bind(this));
+        }
+    }
+
+    private onRequestNotificationPermissionNext(status: NotificationPermission): void {
+        if (status === 'granted') {
+            this.persistBrowserNotificationPreference(true);
+        } else {
+            alert('Please re-enable permissions in your browser settings');
+            this.browserNotificationSwitch.on = false;
+        }
     }
 
     isEmailVerificationsOn(): boolean {
@@ -84,6 +103,16 @@ export class NotificationsComponent implements OnDestroy {
         } else {
             this.errors.emailNotificationsEnabled = {code: 'Unknown', message: 'Unknown error'};
         }
+    }
+
+    private persistBrowserNotificationPreference(value: boolean): void {
+        this.flags.processing.browserNotificationsEnabled = true;
+        this.http.request(APIHandle.UPDATE_USER, {body: {browser_notifications_enabled: value}})
+            .takeUntil(this.OnDestroy$)
+            .subscribe(
+                this.onUpdateBrowserNotificationsEnabledNext.bind(this, value),
+                this.onUpdateBrowserNotificationsEnabledError.bind(this)
+            );
     }
 
     private onUpdateBrowserNotificationsEnabledNext(value: boolean): void {

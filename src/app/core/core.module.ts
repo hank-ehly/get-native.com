@@ -28,6 +28,7 @@ import { ConfirmEmailUpdateResolver } from './auth/confirm-email-update-resolver
 import { FacebookService } from './facebook/facebook.service';
 import { DOMService } from './dom/dom.service';
 import { ImageService } from './image.service';
+import { NotificationService } from './notification/notification.service';
 
 @NgModule({
     imports: [
@@ -53,7 +54,8 @@ import { ImageService } from './image.service';
         WordCountService,
         FacebookService,
         DOMService,
-        ImageService
+        ImageService,
+        NotificationService
     ]
 })
 export class CoreModule {

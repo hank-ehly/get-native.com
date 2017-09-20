@@ -18,6 +18,7 @@ import 'rxjs/add/operator/debounceTime';
     styleUrls: ['switch.component.scss']
 })
 export class SwitchComponent {
+
     @Input() on = false;
     @Input() disabled = false;
 
@@ -32,4 +33,5 @@ export class SwitchComponent {
     toggle(): void {
         this.toggle$.next(this.on);
     }
+
 }

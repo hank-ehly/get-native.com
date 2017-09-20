@@ -9,9 +9,8 @@
 
 <div class="row">
     <h6 i18n="The title for the browser notifications preference setting@@3f270018de7eeace6516b3904d5bc788">Browser Notifications</h6>
-    <p class="paragraph paragraph--error-message" *ngIf="errors.browserNotificationsEnabled">{{ errors.browserNotificationsEnabled.message }}</p>
     <div class="label-button-row">
         <p class="paragraph" i18n="A description about the browser notifications preference setting@@5279a07d9de4abf0573155e349b9f169">Allow getnative to display browser notifications.</p>
-        <gn-switch (toggleEmitted$)="updateBrowserPreference($event)" [on]="user?.browser_notifications_enabled" [disabled]="flags.processing.browserNotificationsEnabled"></gn-switch>
+        <gn-switch #browserNotificationSwitch (toggleEmitted$)="updateBrowserPreference($event)" [on]="browserNotificationGranted" [disabled]="browserNotificationDisabled"></gn-switch>
     </div>
 </div>
