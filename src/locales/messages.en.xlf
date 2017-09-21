@@ -293,6 +293,24 @@
                 </context-group>
                 <note priority="1" from="description">Time-left progress bar label</note>
             </trans-unit>
+            <trans-unit id="775e074d282e85a2e48217b9b8a0d61a" datatype="html">
+                <source>OFF</source>
+                <target>OFF</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/switch/switch.component.ts</context>
+                    <context context-type="linenumber">5</context>
+                </context-group>
+                <note priority="1" from="description">switch title for OFF state</note>
+            </trans-unit>
+            <trans-unit id="13194e5cb2a6e8acceceec58ddf15915" datatype="html">
+                <source>ON</source>
+                <target>ON</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/switch/switch.component.ts</context>
+                    <context context-type="linenumber">6</context>
+                </context-group>
+                <note priority="1" from="description">switch title for ON state</note>
+            </trans-unit>
             <trans-unit id="2928b4e8fa3f0345bacfaabe6ca854ac" datatype="html">
                 <source>settings</source>
                 <target>settings</target>
@@ -3206,6 +3224,15 @@
                     <context context-type="linenumber">10</context>
                 </context-group>
                 <note priority="1" from="description">The title for the browser notifications preference setting</note>
+            </trans-unit>
+            <trans-unit id="5fae4aff11692415f644bfa8c3f97c10" datatype="html">
+                <source>It looks like you&apos;ve blocked browser notifications from getnative. Please enable them in your web browser preferences.</source>
+                <target>It looks like you&apos;ve blocked browser notifications from getnative. Please enable them in your web browser preferences.</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/settings/notifications/notifications.component.ts</context>
+                    <context context-type="linenumber">13</context>
+                </context-group>
+                <note priority="1" from="description">Browser notifications permission denied error message</note>
             </trans-unit>
             <trans-unit id="5279a07d9de4abf0573155e349b9f169" datatype="html">
                 <source>Allow getnative to display browser notifications.</source>
