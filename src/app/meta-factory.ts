@@ -153,5 +153,5 @@ const metaKeyValues = {
 };
 
 export function translateMetaKey(code: LanguageCode, key: string): string {
-    return _.defaultTo(_.get(metaKeyValues, [code, key].join('.')), key);
+    return <string>_.defaultTo(_.get(metaKeyValues, [code, key].join('.')), key);
 }
