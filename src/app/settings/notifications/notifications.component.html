@@ -9,8 +9,10 @@
 
 <div class="row">
     <h6 i18n="The title for the browser notifications preference setting@@3f270018de7eeace6516b3904d5bc788">Browser Notifications</h6>
+    <p class="paragraph paragraph--error-message" *ngIf="errors.browserNotificationsEnabled">{{ errors.browserNotificationsEnabled.message }}</p>
+    <p class="paragraph paragraph--error-message" *ngIf="flags.notificationPermissionDenied" i18n="Browser notifications permission denied error message@@5fae4aff11692415f644bfa8c3f97c10">It looks like you've blocked browser notifications from getnative. Please enable them in your web browser preferences.</p>
     <div class="label-button-row">
         <p class="paragraph" i18n="A description about the browser notifications preference setting@@5279a07d9de4abf0573155e349b9f169">Allow getnative to display browser notifications.</p>
-        <gn-switch #browserNotificationSwitch (toggleEmitted$)="updateBrowserPreference($event)" [on]="browserNotificationGranted" [disabled]="browserNotificationDisabled"></gn-switch>
+        <gn-switch #browserNotificationSwitch (toggleEmitted$)="updateBrowserPreference($event)" [on]="browserNotificationGranted" [disabled]="notificationUnsupported || flags.processing.browserNotificationsEnabled"></gn-switch>
     </div>
 </div>

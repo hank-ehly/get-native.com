@@ -37,23 +37,28 @@ export class NotificationsComponent implements OnDestroy {
     };
 
     flags = {
+        notificationPermissionDenied: false,
         processing: {
             browserNotificationsEnabled: false,
             emailNotificationsEnabled: false
         }
     };
 
-    browserNotificationDisabled = !this.notification.supported || this.flags.processing.browserNotificationsEnabled;
-    browserNotificationGranted = false;
+    notificationUnsupported = !this.notification.supported;
+    browserNotificationGranted = this.userService.current$.getValue().browser_notifications_enabled &&
+        this.notification.permission$.getValue() === 'granted';
 
     constructor(private userService: UserService, private http: HttpService, private logger: Logger,
                 private notification: NotificationService) {
-        this.browserNotificationGranted = this.user.browser_notifications_enabled && this.notification.permission$.getValue() === 'granted';
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
         this.OnDestroy$.next();
+    }
+
+    isEmailVerificationsOn(): boolean {
+        return this.user.email_verified ? this.user.email_notifications_enabled : false;
     }
 
     updateEmailPreference(value: boolean) {
@@ -64,31 +69,6 @@ export class NotificationsComponent implements OnDestroy {
                 this.onUpdateEmailNotificationsEnabledNext.bind(this, value),
                 this.onUpdateEmailNotificationsEnabledError.bind(this)
             );
-    }
-
-    updateBrowserPreference(value: boolean) {
-        if (!value) {
-            if (this.user.browser_notifications_enabled) {
-                this.persistBrowserNotificationPreference(false);
-            }
-        } else {
-            this.notification.requestPermission()
-                .takeUntil(this.OnDestroy$)
-                .subscribe(this.onRequestNotificationPermissionNext.bind(this));
-        }
-    }
-
-    private onRequestNotificationPermissionNext(status: NotificationPermission): void {
-        if (status === 'granted') {
-            this.persistBrowserNotificationPreference(true);
-        } else {
-            alert('Please re-enable permissions in your browser settings');
-            this.browserNotificationSwitch.on = false;
-        }
-    }
-
-    isEmailVerificationsOn(): boolean {
-        return this.user.email_verified ? this.user.email_notifications_enabled : false;
     }
 
     private onUpdateEmailNotificationsEnabledNext(value: boolean): void {
@@ -102,6 +82,20 @@ export class NotificationsComponent implements OnDestroy {
             this.errors.emailNotificationsEnabled = _.first(errors);
         } else {
             this.errors.emailNotificationsEnabled = {code: 'Unknown', message: 'Unknown error'};
+        }
+    }
+
+    updateBrowserPreference(value: boolean) {
+        if (!value) {
+            if (this.userService.current$.getValue().browser_notifications_enabled) {
+                this.persistBrowserNotificationPreference(false);
+            } else {
+                this.logger.debug(this, '`browser_notifications_enabled = false` is synchronized on client/server.');
+            }
+        } else {
+            this.notification.requestPermission()
+                .takeUntil(this.OnDestroy$)
+                .subscribe(this.onRequestNotificationPermissionNext.bind(this));
         }
     }
 
@@ -126,6 +120,17 @@ export class NotificationsComponent implements OnDestroy {
             this.errors.browserNotificationsEnabled = _.first(errors);
         } else {
             this.errors.browserNotificationsEnabled = {code: 'Unknown', message: 'Unknown error'};
+        }
+    }
+
+    private onRequestNotificationPermissionNext(status: NotificationPermission): void {
+        if (status === 'granted') {
+            this.flags.notificationPermissionDenied = false;
+            this.persistBrowserNotificationPreference(true);
+        } else {
+            this.flags.notificationPermissionDenied = true;
+            this.browserNotificationSwitch.on = false;
+            this.browserNotificationSwitch.toggle();
         }
     }
 
