@@ -16,7 +16,6 @@ import {
     kCurrentStudyLanguage
 } from '../local-storage/local-storage-keys';
 import { LocalStorageService } from '../local-storage/local-storage.service';
-import { LangService } from '../lang/lang.service';
 import { Language } from '../typings/language';
 import { Logger } from '../logger/logger';
 import { User } from '../entities/user';
@@ -41,16 +40,25 @@ export class UserService {
     logout$ = new Subject<void>();
     currentStudyLanguage$ = new BehaviorSubject<Language>(this.localStorage.getItem(kCurrentStudyLanguage) || null);
 
-    constructor(private lang: LangService, private localStorage: LocalStorageService, private logger: Logger) {
-        this.current$.filter(_.isObject).filter(this.isAuthenticated.bind(this)).subscribe((u: User) => {
-            this.authenticated$.next(true);
-            this.compliant$.next(true);
-            this.currentStudyLanguage$.next(_.defaultTo(this.currentStudyLanguage$.getValue(), u.default_study_language));
-        });
+    constructor(private localStorage: LocalStorageService, private logger: Logger) {
+        this.current$
+            .filter(this.isAuthenticated.bind(this))
+            .mapTo(true)
+            .subscribe(this.authenticated$);
 
-        this.logout$.subscribe(() => {
-            this.authenticated$.next(false);
-        });
+        this.current$
+            .filter(this.isAuthenticated.bind(this))
+            .mapTo(true)
+            .subscribe(this.compliant$);
+
+        this.logout$
+            .mapTo(false)
+            .subscribe(this.authenticated$);
+
+        this.current$
+            .filter(this.isAuthenticated.bind(this))
+            .map((u: User) => _.defaultTo(this.currentStudyLanguage$.getValue(), u.default_study_language))
+            .subscribe(this.currentStudyLanguage$);
     }
 
     update(user: User): void {

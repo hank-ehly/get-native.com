@@ -35,7 +35,6 @@ import { ResultsResolver } from './study/results/results-resolver.service';
 import { WritingResolver } from './study/writing/writing-resolver.service';
 import { WritingGuard } from './study/writing/writing-guard.service';
 import { DashboardGuard } from './dashboard/dashboard-guard.service';
-import { DashboardResolveService } from './dashboard/dashboard-resolve.service';
 import { ConfirmEmailUpdateResolver } from './core/auth/confirm-email-update-resolver.service';
 import { LoginComponent } from './login/login.component';
 import { ActivityComponent } from './settings/activity/activity.component';
@@ -47,6 +46,7 @@ import { PasswordResetCompleteComponent } from './password-reset/password-reset-
 import { PasswordResetGuard } from './password-reset/password-reset.guard';
 
 import { MetaGuard } from '@ngx-meta/core';
+import { OAuthResolver } from './core/auth/oauth-resolver.service';
 
 const routes: Routes = [
     {
@@ -62,7 +62,6 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         canActivate: [DashboardGuard, MetaGuard],
-        resolve: {_user: DashboardResolveService},
         data: {
             meta: {
                 title: 'dashboard.title'
@@ -205,6 +204,9 @@ const routes: Routes = [
     },
     {
         path: 'confirm_email', resolve: {_: ConfirmEmailResolver}, component: DashboardComponent
+    },
+    {
+        path: 'oauth', resolve: {_: OAuthResolver}, component: DashboardComponent
     },
     {
         path: 'confirm_email_update', resolve: {_: ConfirmEmailUpdateResolver}, component: SettingsComponent
