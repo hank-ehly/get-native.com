@@ -59,7 +59,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     OnDestroy$ = new Subject<void>();
     maxAnswerId: number = null;
-    // user: User;
 
     filterAnswers = new Subject<number>();
     loadMoreAnswers = new Subject<number>();

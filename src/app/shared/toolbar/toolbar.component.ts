@@ -16,7 +16,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/observable/of';
-import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-toolbar',
