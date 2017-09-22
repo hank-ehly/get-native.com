@@ -16,7 +16,6 @@ import { Video } from '../../core/entities/video';
 import * as _ from 'lodash';
 
 @Component({
-
     selector: 'gn-video-panel-list',
     templateUrl: 'video-panel-list.component.html',
     styleUrls: ['video-panel-list.component.scss'],
@@ -30,6 +29,7 @@ import * as _ from 'lodash';
     ]
 })
 export class VideoPanelListComponent {
+
     get videos(): Video[] {
         return this._videos;
     }
@@ -53,6 +53,7 @@ export class VideoPanelListComponent {
 
     @Input() navigates = false;
     @Input() controls = false;
+    @Input() disabled = false;
 
     @Output() begin = new EventEmitter<StudySession>();
 
@@ -75,4 +76,5 @@ export class VideoPanelListComponent {
     onBegin(studySession: StudySession) {
         this.begin.emit(studySession);
     }
+
 }

@@ -16,12 +16,14 @@ import { StudySession } from '../../core/entities/study-session';
     styleUrls: ['video-panel.component.scss']
 })
 export class VideoPanelComponent {
+
     @Input() controls: boolean;
     @Input() video: Video;
+    @Input() disabled = false;
     @Output() begin = new EventEmitter<StudySession>();
     @Output() clickOverlay = new EventEmitter();
 
-    time = 15;
+    time = 10;
     min = 4;
     max = 60;
 
@@ -34,18 +36,21 @@ export class VideoPanelComponent {
     }
 
     onClickMinuteButtonIncrement(): void {
-        if (this.time < this.max) {
+        if (!this.disabled && this.time < this.max) {
             this.time = this.time + 1;
         }
     }
 
     onClickMinuteButtonDecrement(): void {
-        if (this.time > this.min) {
+        if (!this.disabled && this.time > this.min) {
             this.time = this.time - 1;
         }
     }
 
     onClickOverlay(): void {
-        this.clickOverlay.emit();
+        if (!this.disabled) {
+            this.clickOverlay.emit();
+        }
     }
+
 }
