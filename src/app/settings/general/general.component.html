@@ -44,6 +44,10 @@
 
 <section>
     <form class="form password-form" #passwordForm="ngForm" (submit)="onSubmitPassword()" [gnMatch]="['new-password', 'confirm-password']">
+        <div class="form__group" *ngIf="passwordFormError">
+            <p class="paragraph paragraph--error-message">{{ passwordFormError.message }}</p>
+        </div>
+
         <div class="form__group">
             <label for="current-password" class="label" i18n="The label text for the current password input field@@a0b0162ac3b793da796b69e9a980a78f">Current Password</label>
             <input id="current-password" class="input" type="password" name="current-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.current">
@@ -59,10 +63,6 @@
         <div class="form__group">
             <label for="confirm-password" class="label" i18n="The label text for the confirm new password input field@@4733a1332d97eac914f73c262c6201a3">Confirm New Password</label>
             <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.confirm">
-        </div>
-
-        <div class="form__group" *ngIf="passwordFormError">
-            <p class="paragraph paragraph--error-message">{{ passwordFormError.message }}</p>
         </div>
 
         <button class="button button--opaque form__button" [disabled]="passwordForm.invalid || flags.processing.updatePassword" i18n="The submit button text for the general settings update password form@@14674c0f8817bb7e37470b6bc7ff73b6">UPDATE</button>
