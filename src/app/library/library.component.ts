@@ -35,6 +35,7 @@ import { Logger } from '../core/logger/logger';
     ]
 })
 export class LibraryComponent extends VideoSearchComponent implements OnInit {
+
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
                 protected categoryList: CategoryListService, protected dom: DOMService, protected lang: LangService,
                 @Inject(LOCALE_ID) protected localeId: string) {
@@ -44,4 +45,5 @@ export class LibraryComponent extends VideoSearchComponent implements OnInit {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
     }
+
 }

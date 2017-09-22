@@ -37,6 +37,7 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
+import { APIErrors } from '../core/http/api-error';
 
 @Component({
     selector: 'gn-dashboard',
@@ -63,6 +64,14 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
     filterAnswers = new Subject<number>();
     loadMoreAnswers = new Subject<number>();
     answerFilterStream$ = this.filterAnswers.startWith(30).distinctUntilChanged();
+    flags = {
+        processing: {
+            beginStudySession: false
+        }
+    };
+    errors = {
+        createStudySession: null
+    };
 
     answers$ = this.studyLanguageCode$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
@@ -113,9 +122,24 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
     }
 
     onBegin(studySession: StudySession): void {
-        this.session.create(studySession).takeUntil(this.OnDestroy$).subscribe(() => {
-            this.session.transition(StudySessionSection.Listening);
-        });
+        this.flags.processing.beginStudySession = true;
+        this.session.create(studySession)
+            .takeUntil(this.OnDestroy$)
+            .subscribe(this.onCreateStudySessionNext.bind(this), this.onCreateStudySessionError.bind(this));
+    }
+
+    private onCreateStudySessionNext(): void {
+        this.flags.processing.beginStudySession = false;
+        this.session.transition(StudySessionSection.Listening);
+    }
+
+    private onCreateStudySessionError(errors: APIErrors): void {
+        this.flags.processing.beginStudySession = false;
+        if (errors && errors.length) {
+            this.errors.createStudySession = _.first(errors);
+        } else {
+            this.errors.createStudySession = {code: 'Unknown', message: 'An unknown error occurred'};
+        }
     }
 
     private updateMaxAnswerId(records?: WritingAnswer[]): void {

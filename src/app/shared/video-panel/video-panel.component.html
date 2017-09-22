@@ -1,12 +1,12 @@
-<div class="video-panel">
+<div class="video-panel" [ngClass]="{'video-panel--disabled': disabled}">
     <img [src]="video?.picture_url" alt="video-thumbnail" class="video-panel__img">
 
     <div class="video-panel__overlay" [ngClass]="{'video-panel__overlay_link': !controls}" (click)="onClickOverlay()">
         <div class="controls" *ngIf="controls">
             <div class="controls__row">
                 <div class="controls__minute-button-frame">
-                    <div class="controls__minute-button" (click)="onClickMinuteButtonIncrement()"></div>
-                    <div class="controls__minute-button" (click)="onClickMinuteButtonDecrement()"></div>
+                    <div class="controls__minute-button" [ngClass]="{'controls__minute-button--disabled': disabled}" (click)="onClickMinuteButtonIncrement()"></div>
+                    <div class="controls__minute-button" [ngClass]="{'controls__minute-button--disabled': disabled}" (click)="onClickMinuteButtonDecrement()"></div>
                 </div>
 
                 <label for="time" class="sr-only" i18n="Label for describing length of video@@3067b8f10b568beca0402c9954728763">Time</label>
@@ -16,7 +16,7 @@
                 </ng-container>
             </div>
             <div class="controls__row">
-                <button class="controls__button" (click)="onBegin()" i18n="The text for the begin study session button@@d6f6f018e3af2b307e2e4577b59c42cc">Begin</button>
+                <button class="controls__button" (click)="onBegin()" i18n="The text for the begin study session button@@d6f6f018e3af2b307e2e4577b59c42cc" [disabled]="disabled">Begin</button>
             </div>
         </div>
     </div>
