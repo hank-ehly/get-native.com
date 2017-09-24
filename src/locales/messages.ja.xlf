@@ -3659,8 +3659,8 @@
                 <note priority="1" from="description">example writing answer title</note>
             </trans-unit>
             <trans-unit id="6b5b9bbe603b68a2ccbe9ab7a5e00442" datatype="html">
-                <source>Collocation Occurrences</source>
-                <target>コロケーションの発生</target>
+                <source>Use these expressions:</source>
+                <target>以下の表現を使ってください：</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/writing/writing.component.ts</context>
                     <context context-type="linenumber">20</context>
