@@ -8,13 +8,14 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
+import { CollocationOccurrence } from '../../core/entities/collocation-occurrence';
+import { TranscriptComponent } from '../../shared/transcript/transcript.component';
 import { StudySessionSection } from '../../core/typings/study-session-section';
 import { Transcript } from '../../core/entities/transcript';
 import { Entities } from '../../core/entities/entities';
 import { Logger } from '../../core/logger/logger';
-import { CollocationOccurrence } from '../../core/entities/collocation-occurrence';
+
 import * as _ from 'lodash';
-import { TranscriptComponent } from '../../shared/transcript/transcript.component';
 
 @Component({
     templateUrl: 'speaking.component.html',
@@ -68,7 +69,7 @@ export class SpeakingComponent implements OnInit, OnDestroy {
 
     private nextOccurrence(): void {
         if (this.currentIndex === this.occurrences.length - 1) {
-            this.current = this.occurrences[0];
+            this.current = _.first(this.occurrences);
         } else {
             this.current = this.occurrences[this.currentIndex + 1];
         }
