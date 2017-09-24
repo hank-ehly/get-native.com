@@ -21,6 +21,15 @@ import * as _ from 'lodash';
     styleUrls: ['transcript.component.scss']
 })
 export class TranscriptComponent implements OnInit, OnDestroy {
+
+    get selectedCollocationOccurrence(): CollocationOccurrence {
+        return this._selectedCollocationOccurrence;
+    }
+
+    set selectedCollocationOccurrence(value: CollocationOccurrence) {
+        this._selectedCollocationOccurrence = value;
+    }
+
     @ViewChild('tabEls') tabEls: ElementRef;
 
     get transcripts(): Entities<Transcript> {
@@ -42,7 +51,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
         });
 
         this.selectedTranscript = _.first(transcripts.records);
-        this.selectedCollocationOccurrence = <CollocationOccurrence>_.first(this.selectedTranscript.collocation_occurrences.records);
+        this._selectedCollocationOccurrence = <CollocationOccurrence>_.first(this.selectedTranscript.collocation_occurrences.records);
 
         /* Hack to access first LI element after setting transcripts */
         setTimeout(() => this.selectedTab$.next(<HTMLLIElement>_.first(this.tabEls.nativeElement.children)), 0);
@@ -59,7 +68,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
     });
 
     selectedTranscript: Transcript;
-    selectedCollocationOccurrence: CollocationOccurrence;
+    private _selectedCollocationOccurrence: CollocationOccurrence;
 
     private _transcripts: Entities<Transcript>;
 
@@ -78,8 +87,8 @@ export class TranscriptComponent implements OnInit, OnDestroy {
         const className = (<HTMLElement>e.target).className;
         const id = _.toNumber((<HTMLElement>e.target).id);
         if (className.indexOf('collocation-occurrence') !== -1 && id) {
-            this.selectedCollocationOccurrence = _.find(this.selectedTranscript.collocation_occurrences.records, {id: id});
-            this.logger.debug(this, this.selectedCollocationOccurrence);
+            this._selectedCollocationOccurrence = _.find(this.selectedTranscript.collocation_occurrences.records, {id: id});
+            this.logger.debug(this, this._selectedCollocationOccurrence);
         }
     }
 
@@ -91,9 +100,9 @@ export class TranscriptComponent implements OnInit, OnDestroy {
 
         if (this.selectedTranscript.collocation_occurrences.records.length) {
             /* todo: if previous selection exists, use that */
-            this.selectedCollocationOccurrence = _.first(this.selectedTranscript.collocation_occurrences.records);
+            this._selectedCollocationOccurrence = _.first(this.selectedTranscript.collocation_occurrences.records);
         } else {
-            this.selectedCollocationOccurrence = null;
+            this._selectedCollocationOccurrence = null;
         }
     }
 
@@ -109,7 +118,7 @@ export class TranscriptComponent implements OnInit, OnDestroy {
             const occurrence = _.find(this.selectedTranscript.collocation_occurrences.records, {text: unwrappedText});
             if (occurrence && occurrence.id) {
                 const className = ['collocation-occurrence'];
-                if (occurrence.id === this.selectedCollocationOccurrence.id) {
+                if (occurrence.id === this._selectedCollocationOccurrence.id) {
                     className.push('collocation-occurrence--selected');
                 }
                 text = _.replace(text, match, `<span id="${occurrence.id}" class="${className.join(' ')}">${unwrappedText}</span>`);
@@ -129,4 +138,5 @@ export class TranscriptComponent implements OnInit, OnDestroy {
 
         return _.pad(startEndTagsReplaceText, startEndTagsReplaceText.length + 2, '"');
     }
+
 }
