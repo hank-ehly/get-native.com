@@ -213,6 +213,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
 
     private onSelectInterfaceLanguageNext(code: LanguageCode): void {
         this.updateInterfaceLanguageError = null;
+        this.flags.processing.selectInterfaceLanguage = false;
         this.userService.update({interface_language: this.lang.languageForCode(code)});
     }
 
