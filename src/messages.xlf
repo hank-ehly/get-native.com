@@ -2780,7 +2780,7 @@
         <source>Current Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <note priority="1" from="description">The label text for the current password input field</note>
       </trans-unit>
@@ -2788,7 +2788,7 @@
         <source>I forgot my password.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">54</context>
         </context-group>
         <note priority="1" from="description">I forgot my password link text in general settings</note>
       </trans-unit>
@@ -2796,7 +2796,7 @@
         <source>New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">58</context>
         </context-group>
         <note priority="1" from="description">The label text for the new password input field</note>
       </trans-unit>
@@ -2804,7 +2804,7 @@
         <source>Confirm New Password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/settings/general/general.component.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <note priority="1" from="description">The label text for the confirm new password input field</note>
       </trans-unit>
@@ -3057,7 +3057,7 @@
         <note priority="1" from="description">example writing answer title</note>
       </trans-unit>
       <trans-unit id="6b5b9bbe603b68a2ccbe9ab7a5e00442" datatype="html">
-        <source>Collocation Occurrences</source>
+        <source>Use these expressions:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/writing/writing.component.ts</context>
           <context context-type="linenumber">20</context>
@@ -3076,7 +3076,7 @@
         <source>Completed</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/speaking/speaking.component.ts</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <note priority="1" from="description">label for describing number of collocations spoken</note>
       </trans-unit>
@@ -3084,7 +3084,7 @@
         <source>NEXT</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/speaking/speaking.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <note priority="1" from="description">next collocation occurrence button</note>
       </trans-unit>
@@ -3092,7 +3092,7 @@
         <source>SKIP</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/speaking/speaking.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">15</context>
         </context-group>
         <note priority="1" from="description">skip collocation occurrence button</note>
       </trans-unit>
