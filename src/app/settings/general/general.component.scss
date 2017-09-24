@@ -26,6 +26,11 @@
   flex: 2 100%;
 }
 
+.paragraph--info {
+  margin-top: 12px;
+  font-size: $font-size-small;
+}
+
 .resend-confirmation-email--error-message-container {
   margin-top: 30px;
 }
