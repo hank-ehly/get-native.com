@@ -10,5 +10,5 @@
         <span class="next-exercise" i18n="Writing study section title@@6259097bfb4f85fe16085711bc833b39" *ngSwitchCase="'writing'">WRITING</span>
     </ng-container>
 
-    <button class="button button--continue" (click)="onClickContinue()" i18n="Continue study button title@@2ec29e5e4a7683837552b5e2bae26242">CONTINUE</button>
+    <button class="button button--continue" (click)="onClickContinue()" [disabled]="flags.processing.navigate" i18n="Continue study button title@@2ec29e5e4a7683837552b5e2bae26242">CONTINUE</button>
 </main>

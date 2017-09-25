@@ -25,6 +25,12 @@ export class TransitionComponent implements OnInit {
 
     sectionName = this.session.sectionName;
 
+    flags = {
+        processing: {
+            navigate: false
+        }
+    };
+
     constructor(private logger: Logger, private router: Router, private session: StudySessionService) {
     }
 
@@ -34,7 +40,14 @@ export class TransitionComponent implements OnInit {
     }
 
     onClickContinue(): void {
-        this.router.navigate(['/study/' + this.sectionName]);
+        this.flags.processing.navigate = true;
+        this.router.navigate(['/study/' + this.sectionName])
+            .then(this.onNavigateFinish.bind(this))
+            .catch(this.onNavigateFinish.bind(this));
+    }
+
+    private onNavigateFinish(): void {
+        this.flags.processing.navigate = false;
     }
 
 }
