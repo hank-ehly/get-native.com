@@ -20,6 +20,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 import * as _ from 'lodash';
+import { NavbarService } from '../navbar/navbar.service';
 
 @Injectable()
 export class StudySessionService {
@@ -61,7 +62,8 @@ export class StudySessionService {
 
     private sectionTimer: NodeJS.Timer;
 
-    constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router) {
+    constructor(private http: HttpService, private localStorage: LocalStorageService, private logger: Logger, private router: Router,
+                private navbar: NavbarService) {
         this.timerStoppedSource = new Subject<void>();
         this.timerStoppedEmitted$ = this.timerStoppedSource.asObservable();
 
@@ -116,11 +118,13 @@ export class StudySessionService {
     }
 
     end(): void {
+        this.navbar.hideProgressBar();
         this.stopSectionTimer();
         this.localStorage.removeItem(kCurrentStudySession);
     }
 
     forceSectionEnd(): void {
+        this.logger.debug(this, 'force timeLeft to 0');
         clearInterval(this.sectionTimer);
         this.timeLeftSource.next(0);
     }
