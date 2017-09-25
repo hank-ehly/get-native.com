@@ -10,7 +10,6 @@ import { Injectable } from '@angular/core';
 
 import { StudySessionService } from '../core/study-session/study-session.service';
 import { LocalStorageService } from '../core/local-storage/local-storage.service';
-import { kCurrentStudySession } from '../core/local-storage/local-storage-keys';
 import { StudyComponent } from './study.component';
 import { Logger } from '../core/logger/logger';
 

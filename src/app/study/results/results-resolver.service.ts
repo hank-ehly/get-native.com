@@ -21,7 +21,7 @@ export class ResultsResolver implements Resolve<any> {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
-        this.session.end();
+        this.session.stopSectionTimer();
         return this.http.request(APIHandle.COMPLETE_STUDY_SESSION, {
             body: {
                 id: this.session.current.session.id

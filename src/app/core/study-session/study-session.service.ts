@@ -120,6 +120,11 @@ export class StudySessionService {
         this.localStorage.removeItem(kCurrentStudySession);
     }
 
+    forceSectionEnd(): void {
+        clearInterval(this.sectionTimer);
+        this.timeLeftSource.next(0);
+    }
+
     private onStartStudySession(studySession: StudySession) {
         this.current = {session: studySession};
         this.resetSectionTimer();
