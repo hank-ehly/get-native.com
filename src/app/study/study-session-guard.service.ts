@@ -9,13 +9,12 @@ import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@ang
 import { Injectable } from '@angular/core';
 
 import { StudySessionService } from '../core/study-session/study-session.service';
-import { LocalStorageService } from '../core/local-storage/local-storage.service';
 import { StudyComponent } from './study.component';
 import { Logger } from '../core/logger/logger';
 
 @Injectable()
 export class StudySessionGuard implements CanDeactivate<StudyComponent> {
-    constructor(private logger: Logger, private session: StudySessionService, private localStorage: LocalStorageService) {
+    constructor(private logger: Logger, private session: StudySessionService) {
     }
 
     canDeactivate(component: StudyComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot,

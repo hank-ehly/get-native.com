@@ -15,6 +15,8 @@ import { Transcript } from '../../core/entities/transcript';
 import { Entities } from '../../core/entities/entities';
 import { Logger } from '../../core/logger/logger';
 
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/takeUntil';
 import * as _ from 'lodash';
 
 @Component({
@@ -34,6 +36,8 @@ export class SpeakingComponent implements OnInit, OnDestroy {
         return _.findIndex(this.occurrences, this.current);
     }
 
+    private OnDestroy$ = new Subject<void>();
+
     constructor(private logger: Logger, private session: StudySessionService) {
         this.occurrences = _.find(this.transcripts.records, <Transcript>{
             language: {code: this.session.current.video.language.code}
@@ -44,13 +48,15 @@ export class SpeakingComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
         this.session.startSectionTimer();
-        this.session.timeLeftEmitted$.filter(time => time === 0).subscribe(() => {
+        this.session.timeLeftEmitted$.takeUntil(this.OnDestroy$).filter(time => time === 0).subscribe(() => {
+            this.logger.debug(this, 'speaking time finished');
             this.session.transition(StudySessionSection.Writing);
         });
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
+        this.OnDestroy$.next();
     }
 
     onClickNext(): void {

@@ -11,8 +11,6 @@ import { StudySessionService } from '../core/study-session/study-session.service
 import { NavbarService } from '../core/navbar/navbar.service';
 import { environment } from '../../environments/environment';
 import { Logger } from '../core/logger/logger';
-import { StudySessionSection } from '../core/typings/study-session-section';
-import { Router } from '@angular/router';
 
 @Component({
     templateUrl: 'study.component.html',
@@ -21,7 +19,7 @@ import { Router } from '@angular/router';
 export class StudyComponent implements OnInit, OnDestroy {
     isProd: boolean = environment.production;
 
-    constructor(private logger: Logger, private navbar: NavbarService, private session: StudySessionService, private router: Router) {
+    constructor(private logger: Logger, private navbar: NavbarService, private session: StudySessionService) {
     }
 
     ngOnInit(): void {
@@ -35,10 +33,7 @@ export class StudyComponent implements OnInit, OnDestroy {
     }
 
     onClickSkip(): void {
-        if (this.session.current === StudySessionSection.Writing) {
-            this.router.navigate(['/study/results']);
-        } else {
-            this.session.forceSectionEnd();
-        }
+        this.logger.debug(this, 'skipping to next section');
+        this.session.forceSectionEnd();
     }
 }

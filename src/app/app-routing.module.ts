@@ -33,7 +33,6 @@ import { ListeningResolver } from './study/listening/listening-resolver.service'
 import { StudySessionGuard } from './study/study-session-guard.service';
 import { ResultsResolver } from './study/results/results-resolver.service';
 import { WritingResolver } from './study/writing/writing-resolver.service';
-import { WritingGuard } from './study/writing/writing-guard.service';
 import { DashboardGuard } from './dashboard/dashboard-guard.service';
 import { ConfirmEmailUpdateResolver } from './core/auth/confirm-email-update-resolver.service';
 import { LoginComponent } from './login/login.component';
@@ -153,7 +152,6 @@ const routes: Routes = [
                 path: 'writing',
                 component: WritingComponent,
                 resolve: {question: WritingResolver},
-                canDeactivate: [WritingGuard],
                 data: {
                     meta: {
                         title: 'study.writing.title'
