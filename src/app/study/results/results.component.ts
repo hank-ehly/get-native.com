@@ -22,6 +22,7 @@ import * as _ from 'lodash';
     styleUrls: ['results.component.scss']
 })
 export class ResultsComponent implements OnInit, OnDestroy {
+
     stats$: Observable<{ maximum_words: number, maximum_wpm: number, total_time_studied: number }> = this.route.data.pluck('stats');
 
     currentSession = this.session.current;
