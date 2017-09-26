@@ -17,7 +17,7 @@ import { StudySession } from '../../core/entities/study-session';
 })
 export class VideoPanelComponent {
 
-    @Input() controls: boolean;
+    @Input() controls = false;
     @Input() video: Video;
     @Input() disabled = false;
     @Output() begin = new EventEmitter<StudySession>();
@@ -26,13 +26,11 @@ export class VideoPanelComponent {
     time = 10;
     min = 4;
     max = 60;
-
-    constructor() {
-        this.controls = false;
-    }
+    isBeginTarget = false;
 
     onBegin(): void {
         this.begin.emit({video_id: this.video.id, study_time: this.time * 60});
+        this.isBeginTarget = true;
     }
 
     onClickMinuteButtonIncrement(): void {
