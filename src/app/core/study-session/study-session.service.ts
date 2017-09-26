@@ -33,6 +33,10 @@ export class StudySessionService {
         return this.localStorage.getItem(kCurrentStudySession);
     }
 
+    get isComplete(): boolean {
+        return this.current.session.is_completed;
+    }
+
     get sectionName(): string {
         let name: string;
         switch (this.current.section) {
@@ -118,13 +122,14 @@ export class StudySessionService {
     }
 
     end(): void {
+        this.logger.debug(this, 'ending study session');
         this.navbar.hideProgressBar();
         this.stopSectionTimer();
         this.localStorage.removeItem(kCurrentStudySession);
     }
 
     forceSectionEnd(): void {
-        this.logger.debug(this, 'force timeLeft to 0');
+        this.logger.debug(this, 'force end of section');
         clearInterval(this.sectionTimer);
         this.timeLeftSource.next(0);
     }

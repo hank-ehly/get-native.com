@@ -28,12 +28,12 @@ export class StudyProgressComponent implements OnInit, OnDestroy {
 
     constructor(private logger: Logger, private session: StudySessionService) {
         this.sectionTime = _.floor(this.session.current.session.study_time / 4);
-        this.timeLeft = this.sectionTime;
+        this.timeLeft = this.session.isComplete ? 0 : this.sectionTime;
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-        this.logger.debug(this, 'this.session.current', this.session.current);
+
         this.session.timeLeftEmitted$.takeUntil(this.OnDestroy$).subscribe((timeLeft) => {
             this.timeLeft = timeLeft;
         });
@@ -57,11 +57,11 @@ export class StudyProgressComponent implements OnInit, OnDestroy {
     }
 
     isComplete(section: StudySessionSection): boolean {
-        return this.progressForSection(section) === 100;
+        return this.session.isComplete ? true : this.progressForSection(section) === 100;
     }
 
-    private currentSectionProgress() {
-        return 100 - ((this.timeLeft / this.sectionTime) * 100);
+    private currentSectionProgress(): number {
+        return this.session.isComplete ? 100 : 100 - ((this.timeLeft / this.sectionTime) * 100);
     }
 
 }
