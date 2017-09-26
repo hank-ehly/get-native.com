@@ -37,6 +37,7 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/scan';
 import 'rxjs/observable/timer';
 import * as _ from 'lodash';
+import { LoadingState } from './loading-state.enum';
 
 @Component({
     template: '<!-- overridden -->'
@@ -54,28 +55,28 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     studyLanguageCode$ = this.user.currentStudyLanguage$.pluck('code').distinctUntilChanged();
 
     maxVideoId: number;
-    cuedOnly = false;
-    hasCompletedInitialLoad = false;
+
     flags = {
+        cuedOnly: false,
         hasReachedLastResult: false,
+        hasCompletedInitialLoad: false,
         processing: {}
     };
 
-    loading$ = new BehaviorSubject<boolean>(false);
-
     loadMoreVideos$ = new Subject<number>();
+    currentLoadingState: LoadingState;
+    loadingState = LoadingState;
 
     protected query$ = this.navbar.query$.startWith('').debounce(() => {
-        return this.hasCompletedInitialLoad ? this.debounceTimer : this.noDebounceTimer;
+        return this.flags.hasCompletedInitialLoad ? this.debounceTimer : this.noDebounceTimer;
     }).distinctUntilChanged();
 
     videos$ = this.studyLanguageCode$.combineLatest(this.categoryFilter$, this.query$)
         .switchMap(([lang, filter, query]: [LanguageCode, CategoryFilter, string]) => {
             return this.loadMoreVideos$.startWith(null).distinctUntilChanged().do(() => {
-                this.flags.hasReachedLastResult = false;
-                this.loading$.next(true);
+                this.currentLoadingState = LoadingState.Loading;
             }).concatMap((maxId?: number) => {
-                this.hasCompletedInitialLoad = true;
+                this.flags.hasCompletedInitialLoad = true;
 
                 const search = new URLSearchParams();
 
@@ -97,7 +98,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                     search.set('q', query);
                 }
 
-                if (this.cuedOnly) {
+                if (this.flags.cuedOnly) {
                     search.set('cued_only', 'true');
                 }
 
@@ -111,10 +112,12 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                 return this.http.request(APIHandle.VIDEOS, {search: search});
             }, (unused: any, videos: Entities<Video>) => videos.records)
                 .do(this.updateMaxVideoId.bind(this))
-                .scan(this.concatVideos.bind(this), [])
                 .do(() => {
-                    this.loading$.next(false);
-                });
+                    if (this.currentLoadingState !== LoadingState.ReachedLastResult) {
+                        this.currentLoadingState = LoadingState.CanLoadMore;
+                    }
+                })
+                .scan(this.concatVideos.bind(this), []);
         }).share();
 
     private debounceTimer = new TimerObservable(300);
@@ -178,7 +181,9 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         }
 
         if (acc.length && !records.length) {
-            this.flags.hasReachedLastResult = true;
+            this.currentLoadingState = LoadingState.ReachedLastResult;
+        } else if (!acc.length && !records.length) {
+            this.currentLoadingState = LoadingState.NoResults;
         }
 
         return _.unionWith(acc, records, _.isEqual);

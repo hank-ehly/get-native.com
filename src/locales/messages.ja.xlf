@@ -767,6 +767,15 @@
                 </context-group>
                 <note priority="1" from="description">alt text for dashboard loading icon</note>
             </trans-unit>
+            <trans-unit id="02822797d7d2ae66c9d2c0ff5b8d85af" datatype="html">
+                <source>No more results</source>
+                <target>これ以上の結果はありません</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">33</context>
+                </context-group>
+                <note priority="1" from="description">No more results label for dashboard video list</note>
+            </trans-unit>
             <trans-unit id="3e06f80500768c1b0dcb8b51e59bea2d" datatype="html">
                 <source>Stats</source>
                 <target>統計</target>
@@ -940,7 +949,7 @@
             </trans-unit>
             <trans-unit id="471a2d1c23aa850f1ee84ea4e6c055d0" datatype="html">
                 <source>No more results</source>
-                <target>これ以上、結果はありません</target>
+                <target>これ以上の結果はありません</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library.component.ts</context>
                     <context context-type="linenumber">34</context>
@@ -949,7 +958,7 @@
             </trans-unit>
             <trans-unit id="331d558742a5c1254c378d55fb4b9e70" datatype="html">
                 <source>Whoops! No videos exist for this category yet..</source>
-                <target>あらら、、選択中のカテゴリーの動画がまだないようです。</target>
+                <target>あら、、選択中のカテゴリーの動画がまだないようです。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library.component.ts</context>
                     <context context-type="linenumber">37</context>

@@ -105,7 +105,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
                 private dateService: UTCDateService, private session: StudySessionService, protected categoryList: CategoryListService,
                 protected dom: DOMService, protected lang: LangService, @Inject(LOCALE_ID) protected localeId: string) {
         super(logger, http, navbar, user, categoryList, dom, lang, localeId);
-        this.cuedOnly = true;
+        this.flags.cuedOnly = true;
         this.flags.processing.beginStudySession = false;
     }
 

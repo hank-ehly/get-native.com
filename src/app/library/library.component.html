@@ -16,25 +16,23 @@
 
         <gn-video-panel-list [disabled]="loading$ | async" [videos]="videos$ | async" [navigates]="true"></gn-video-panel-list>
 
-        <button
-                class="button section__button"
-                *ngIf="!(loading$ | async) && (videos$ | async)?.length && !flags.hasReachedLastResult"
-                [ngClass]="{'button--loading': loading$ | async}"
-                (click)="loadMoreVideos$.next(maxVideoId)"
-                i18n="The text for the load more button of the Library page videos section@@dc5e40c592f0ce0f2b4cb80d13ea4e88">LOAD MORE</button>
+        <ng-container [ngSwitch]="currentLoadingState">
+            <button class="button section__button"
+                    *ngSwitchDefault
+                    (click)="loadMoreVideos$.next(maxVideoId)"
+                    i18n="The text for the load more button of the Library page videos section@@dc5e40c592f0ce0f2b4cb80d13ea4e88">LOAD MORE</button>
 
-        <img
-                src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/spinner.gif"
-                class="button__activity-indicator"
-                alt="loading"
-                *ngIf="(loading$ | async) && !flags.hasReachedLastResult"
-                [ngClass]="{'button__activity-indicator--centered': !hasCompletedInitialLoad}"
-                i18n-alt="loading icon@@a91e51cea70873729bbf8c93e9acde65">
+            <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/spinner.gif"
+                 class="button__activity-indicator"
+                 alt="loading"
+                 *ngSwitchCase="loadingState.Loading"
+                 i18n-alt="loading icon@@a91e51cea70873729bbf8c93e9acde65">
 
-        <p class="section__paragraph section__paragraph--no-more-results" *ngIf="flags.hasReachedLastResult" i18n="No more results label for library video list@@471a2d1c23aa850f1ee84ea4e6c055d0">No more results</p>
+            <p class="section__paragraph section__paragraph--no-more-results"
+               *ngSwitchCase="loadingState.ReachedLastResult"
+               i18n="No more results label for library video list@@471a2d1c23aa850f1ee84ea4e6c055d0">No more results</p>
 
-        <ng-container *ngIf="!(loading$ | async) && !(videos$ | async)?.length">
-            <div class="section__error">
+            <div class="section__error" *ngSwitchCase="loadingState.NoResults">
                 <p class="emoji">🤦</p>
                 <p i18n="No videos for category message@@331d558742a5c1254c378d55fb4b9e70">Whoops! No videos exist for this category yet..</p>
             </div>
