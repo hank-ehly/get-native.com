@@ -64,11 +64,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
     filterAnswers = new Subject<number>();
     loadMoreAnswers = new Subject<number>();
     answerFilterStream$ = this.filterAnswers.startWith(30).distinctUntilChanged();
-    flags = {
-        processing: {
-            beginStudySession: false
-        }
-    };
+    flags: any;
     errors = {
         createStudySession: null
     };
@@ -110,6 +106,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
                 protected dom: DOMService, protected lang: LangService, @Inject(LOCALE_ID) protected localeId: string) {
         super(logger, http, navbar, user, categoryList, dom, lang, localeId);
         this.cuedOnly = true;
+        this.flags.processing.beginStudySession = false;
     }
 
     ngOnInit(): void {

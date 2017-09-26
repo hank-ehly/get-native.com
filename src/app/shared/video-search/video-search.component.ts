@@ -56,6 +56,10 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     maxVideoId: number;
     cuedOnly = false;
     hasCompletedInitialLoad = false;
+    flags = {
+        hasReachedLastResult: false,
+        processing: {}
+    };
 
     loading$ = new BehaviorSubject<boolean>(false);
 
@@ -68,6 +72,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     videos$ = this.studyLanguageCode$.combineLatest(this.categoryFilter$, this.query$)
         .switchMap(([lang, filter, query]: [LanguageCode, CategoryFilter, string]) => {
             return this.loadMoreVideos$.startWith(null).distinctUntilChanged().do(() => {
+                this.flags.hasReachedLastResult = false;
                 this.loading$.next(true);
             }).concatMap((maxId?: number) => {
                 this.hasCompletedInitialLoad = true;
@@ -106,7 +111,7 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                 return this.http.request(APIHandle.VIDEOS, {search: search});
             }, (unused: any, videos: Entities<Video>) => videos.records)
                 .do(this.updateMaxVideoId.bind(this))
-                .scan(this.concatVideos, [])
+                .scan(this.concatVideos.bind(this), [])
                 .do(() => {
                     this.loading$.next(false);
                 });
@@ -168,7 +173,15 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     }
 
     private concatVideos(acc: Video[], records: Video[]) {
-        return records ? _.unionWith(acc, records, _.isEqual) : [];
+        if (!records) {
+            return [];
+        }
+
+        if (acc.length && !records.length) {
+            this.flags.hasReachedLastResult = true;
+        }
+
+        return _.unionWith(acc, records, _.isEqual);
     }
 
 }
