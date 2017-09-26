@@ -768,6 +768,15 @@
                 </context-group>
                 <note priority="1" from="description">alt text for dashboard loading icon</note>
             </trans-unit>
+            <trans-unit id="02822797d7d2ae66c9d2c0ff5b8d85af" datatype="html">
+                <source>No more results</source>
+                <target>No more results</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">33</context>
+                </context-group>
+                <note priority="1" from="description">No more results label for dashboard video list</note>
+            </trans-unit>
             <trans-unit id="3e06f80500768c1b0dcb8b51e59bea2d" datatype="html">
                 <source>Stats</source>
                 <target>Stats</target>

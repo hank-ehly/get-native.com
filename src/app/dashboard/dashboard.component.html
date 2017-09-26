@@ -16,9 +16,24 @@
 
         <gn-video-panel-list [videos]="videos$ | async" [controls]="!flags.processing.beginStudySession" [disabled]="flags.processing.beginStudySession" (begin)="onBegin($event)"></gn-video-panel-list>
 
-        <button class="button section__button" *ngIf="(videos$ | async)?.length && !(loading$ | async)" (click)="loadMoreVideos$.next(maxVideoId)" i18n="The text for the dashboard load more videos button@@da62c06d98499331f85421b712823185">LOAD MORE</button>
-        <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/spinner.gif" i18n-alt="alt text for dashboard loading icon@@0640631ad34e1ca9e417997625656fd8" alt="loading" class="button__activity-indicator" *ngIf="loading$ | async">
-        <p *ngIf="!(loading$ | async) && !(videos$ | async)?.length">Videos saved from the <a class="link" [routerLink]="['/library']">library</a> appear here!</p>
+        <ng-container [ngSwitch]="currentLoadingState">
+            <button class="button section__button"
+                    *ngSwitchDefault
+                    (click)="loadMoreVideos$.next(maxVideoId)"
+                    i18n="The text for the dashboard load more videos button@@da62c06d98499331f85421b712823185">LOAD MORE</button>
+
+            <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/spinner.gif"
+                 i18n-alt="alt text for dashboard loading icon@@0640631ad34e1ca9e417997625656fd8"
+                 alt="loading"
+                 class="button__activity-indicator"
+                 *ngSwitchCase="loadingState.Loading">
+
+            <p class="section__paragraph section__paragraph--no-more-results"
+               *ngSwitchCase="loadingState.ReachedLastResult"
+               i18n="No more results label for dashboard video list@@02822797d7d2ae66c9d2c0ff5b8d85af">No more results</p>
+
+            <p *ngSwitchCase="loadingState.NoResults">Videos saved from the <a class="link" [routerLink]="['/library']">library</a> appear here!</p>
+        </ng-container>
     </section>
 
     <hr>

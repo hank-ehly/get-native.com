@@ -668,7 +668,7 @@
         <source>LOAD MORE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">23</context>
         </context-group>
         <note priority="1" from="description">The text for the dashboard load more videos button</note>
       </trans-unit>
@@ -676,15 +676,23 @@
         <source>loading</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <note priority="1" from="description">alt text for dashboard loading icon</note>
+      </trans-unit>
+      <trans-unit id="02822797d7d2ae66c9d2c0ff5b8d85af" datatype="html">
+        <source>No more results</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">No more results label for dashboard video list</note>
       </trans-unit>
       <trans-unit id="3e06f80500768c1b0dcb8b51e59bea2d" datatype="html">
         <source>Stats</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">43</context>
         </context-group>
         <note priority="1" from="description">The title for the dashboard stats section</note>
       </trans-unit>
@@ -692,7 +700,7 @@
         <source>Answers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">53</context>
         </context-group>
         <note priority="1" from="description">The title for the dashboard answers section</note>
       </trans-unit>
@@ -700,7 +708,7 @@
         <source>LAST 30 DAYS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">Answers from last 30 days</note>
       </trans-unit>
@@ -708,7 +716,7 @@
         <source>LAST 60 DAYS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <note priority="1" from="description">Answers from last 60 days</note>
       </trans-unit>
@@ -716,7 +724,7 @@
         <source>LAST YEAR</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">57</context>
         </context-group>
         <note priority="1" from="description">Answers from last year</note>
       </trans-unit>
@@ -724,7 +732,7 @@
         <source>ALL TIME</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">58</context>
         </context-group>
         <note priority="1" from="description">All from any time</note>
       </trans-unit>
@@ -732,7 +740,7 @@
         <source>LOAD MORE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">73</context>
         </context-group>
         <note priority="1" from="description">The text for the dashboard answers section load more button</note>
       </trans-unit>
@@ -820,7 +828,7 @@
         <source>LOAD MORE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/library/library.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">23</context>
         </context-group>
         <note priority="1" from="description">The text for the load more button of the Library page videos section</note>
       </trans-unit>
@@ -828,7 +836,7 @@
         <source>loading</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/library/library.component.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <note priority="1" from="description">loading icon</note>
       </trans-unit>
@@ -836,7 +844,7 @@
         <source>No more results</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/library/library.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <note priority="1" from="description">No more results label for library video list</note>
       </trans-unit>
@@ -844,7 +852,7 @@
         <source>Whoops! No videos exist for this category yet..</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/library/library.component.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">37</context>
         </context-group>
         <note priority="1" from="description">No videos for category message</note>
       </trans-unit>
