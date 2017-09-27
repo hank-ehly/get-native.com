@@ -16,7 +16,7 @@
 
         <gn-video-panel-list [videos]="videos$ | async"
                              [controls]="!flags.processing.beginStudySession"
-                             [disabled]="currentLoadingState == loadingState.Loading || flags.processing.beginStudySession"
+                             [disabled]="currentLoadingState === loadingState.Loading || flags.processing.beginStudySession"
                              (begin)="onBegin($event)"></gn-video-panel-list>
 
         <ng-container [ngSwitch]="currentLoadingState">
