@@ -98,6 +98,7 @@
   align-self: center;
   display: flex;
   font-size: $font-size-x-small;
+  -webkit-font-smoothing: antialiased;
 }
 
 .player-controls__time-elapsed {
