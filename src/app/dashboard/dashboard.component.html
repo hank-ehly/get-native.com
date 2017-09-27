@@ -21,7 +21,7 @@
 
         <div class="section_video-panels__body">
             <gn-video-panel-list [videos]="videos$ | async"
-                                 [controls]="currentLoadingState !== loadingState.Loading && !flags.processing.beginStudySession"
+                                 [controls]="!flags.processing.beginStudySession && currentLoadingState !== loadingState.Loading"
                                  [disabled]="currentLoadingState === loadingState.Loading || flags.processing.beginStudySession"
                                  (begin)="onBegin($event)"></gn-video-panel-list>
 
@@ -69,19 +69,34 @@
             </ul>
         </header>
 
-        <ul class="answers">
-            <li *ngFor="let record of answers$ | async; let even = even" [ngClass]='{"answers__answer_striped": even}' class="answers__answer">
-                <div class="answers__answer-body">
-                    <h6 class="answers__answer-title">{{ record?.writing_question?.text }}</h6>
-                    <p>{{ record?.answer }}</p>
-                </div>
+        <div class="section_answers__body">
+            <ul class="answers">
+                <li *ngFor="let record of answers$ | async; let even = even" [ngClass]='{"answers__answer_striped": even}' class="answers__answer">
+                    <div class="answers__answer-body">
+                        <h6 class="answers__answer-title">{{ record?.writing_question?.text }}</h6>
+                        <p>{{ record?.answer }}</p>
+                    </div>
 
-                <span class="answers__answer-date">{{ record?.created_at | gnDate }}</span>
-            </li>
-        </ul>
+                    <span class="answers__answer-date">{{ record?.created_at | gnDate }}</span>
+                </li>
+            </ul>
 
-        <button *ngIf="(answers$ | async)?.length" class="button section__button" (click)="loadMoreAnswers.next(maxAnswerId)" i18n="The text for the dashboard answers section load more button@@d4d96c1a160bc58db2b6142d2806507e">LOAD MORE</button>
+            <ng-container [ngSwitch]="answersLoadingState">
+                <button class="button section__button"
+                        (click)="onLoadMoreAnswers(maxAnswerId)"
+                        *ngSwitchDefault
+                        i18n="The text for the dashboard answers section load more button@@d4d96c1a160bc58db2b6142d2806507e">LOAD MORE</button>
 
-        <p *ngIf="!(answers$ | async)?.length">Answers to past timed writing exercises appear here!</p>
+                <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/spinner.gif"
+                     i18n-alt="alt text for dashboard answers loading icon@@71814539e1eb430acca4d7f4c2de92b8"
+                     alt="loading"
+                     class="button__activity-indicator"
+                     *ngSwitchCase="loadingState.Loading">
+
+                <p class="section__paragraph section__paragraph--no-more-results"
+                   *ngSwitchCase="loadingState.ReachedLastResult"
+                   i18n="No more results label for dashboard answers list@@d61bcee2ada20f252bd801ec2167f468">No more results</p>
+            </ng-container>
+        </div>
     </section>
 </main>

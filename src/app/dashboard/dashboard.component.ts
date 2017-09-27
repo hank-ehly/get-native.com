@@ -38,6 +38,7 @@ import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 import { APIErrors } from '../core/http/api-error';
+import { LoadingState } from '../shared/video-search/loading-state.enum';
 
 @Component({
     selector: 'gn-dashboard',
@@ -62,12 +63,14 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
     maxAnswerId: number = null;
 
     filterAnswers = new Subject<number>();
-    loadMoreAnswers = new Subject<number>();
     answerFilterStream$ = this.filterAnswers.startWith(30).distinctUntilChanged();
     flags: any;
+    answersLoadingState: LoadingState;
     errors = {
         createStudySession: null
     };
+
+    private loadMoreAnswers = new Subject<number>();
 
     answers$ = this.studyLanguageCode$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
@@ -88,9 +91,16 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
                 }
             };
 
+            this.answersLoadingState = LoadingState.Loading;
             return this.http.request(APIHandle.WRITING_ANSWERS, options);
         }, (unused: any, answers: Entities<WritingAnswer>) => answers.records)
-            .do(this.updateMaxAnswerId.bind(this)).scan(this.concatWritingAnswers, []);
+            .do(this.updateMaxAnswerId.bind(this))
+            .do(() => {
+                if (this.answersLoadingState !== LoadingState.ReachedLastResult) {
+                    this.answersLoadingState = LoadingState.CanLoadMore;
+                }
+            })
+            .scan(this.concatWritingAnswers.bind(this), []);
     }).share();
 
     stats$ = this.studyLanguageCode$.concatMap((lang: LanguageCode) => {
@@ -125,6 +135,10 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
             .subscribe(this.onCreateStudySessionNext.bind(this), this.onCreateStudySessionError.bind(this));
     }
 
+    onLoadMoreAnswers(maxId: number): void {
+        this.loadMoreAnswers.next(maxId);
+    }
+
     private onCreateStudySessionNext(): void {
         this.flags.processing.beginStudySession = false;
         this.session.transition(StudySessionSection.Listening);
@@ -146,7 +160,17 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
     }
 
     private concatWritingAnswers(acc: WritingAnswer[], records: WritingAnswer[]) {
-        return records ? _.unionWith(acc, records, _.isEqual) : [];
+        if (!records) {
+            return [];
+        }
+
+        if (acc.length && !records.length) {
+            this.answersLoadingState = LoadingState.ReachedLastResult;
+        } else if (!acc.length && !records.length) {
+            this.answersLoadingState = LoadingState.NoResults;
+        }
+
+        return _.unionWith(acc, records, _.isEqual);
     }
 
 }
