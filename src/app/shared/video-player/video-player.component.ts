@@ -14,6 +14,7 @@ import { Logger } from '../../core/logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'gn-video-player',
@@ -68,8 +69,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit(): void {
         this.logger.debug(this, 'AfterViewInit');
-        this.currentTimeAsPercentEmitted$ = this.player.currentTimeEmitted$.takeUntil(this.OnDestroy$)
-            .map(timeInSeconds => timeInSeconds / this.player.duration);
+        this.currentTimeAsPercentEmitted$ = this.player.currentTimeEmitted$.map(timeInSeconds => timeInSeconds / this.player.duration);
     }
 
     onClickToggleButton(): void {
