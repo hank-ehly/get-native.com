@@ -14,7 +14,10 @@
             <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
         </header>
 
-        <gn-video-panel-list [videos]="videos$ | async" [controls]="!flags.processing.beginStudySession" [disabled]="flags.processing.beginStudySession" (begin)="onBegin($event)"></gn-video-panel-list>
+        <gn-video-panel-list [videos]="videos$ | async"
+                             [controls]="!flags.processing.beginStudySession"
+                             [disabled]="currentLoadingState == loadingState.Loading || flags.processing.beginStudySession"
+                             (begin)="onBegin($event)"></gn-video-panel-list>
 
         <ng-container [ngSwitch]="currentLoadingState">
             <button class="button section__button"
