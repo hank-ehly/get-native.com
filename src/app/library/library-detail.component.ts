@@ -106,14 +106,14 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
             .mergeMap(handle => this.http.request(handle, requestOptions))
             .map(() => this.queued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
-            .subscribe(this.navbar.queueButtonState$);
+            .subscribe((state: QueueButtonState) => this.navbar.queueButtonState$.next(state));
 
         this.video$
             .takeUntil(this.OnDestroy$)
             .pluck('cued')
             .do((cued: boolean) => this.queued = cued)
             .map((cued: boolean) => cued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
-            .subscribe(this.navbar.queueButtonState$);
+            .subscribe((state: QueueButtonState) => this.navbar.queueButtonState$.next(state));
     }
 
     ngOnDestroy(): void {
