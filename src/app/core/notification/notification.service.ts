@@ -22,7 +22,7 @@ export class NotificationService {
         }
 
         return Observable.create(function(observer) {
-            Notification.requestPermission().then(function(permission) {
+            Notification.requestPermission(function(permission) {
                 observer.next(permission);
                 observer.complete();
             });

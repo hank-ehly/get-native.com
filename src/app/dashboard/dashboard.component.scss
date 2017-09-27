@@ -72,17 +72,11 @@ hr {
 $section-button-height: 34px;
 $video-panels-vertical-margin: 50px;
 
-.section_video-panels__body {
+.section_video-panels__body, .section_answers__body {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   min-height: $video-panel-height + $video-panels-vertical-margin + $section-button-margin-top + $section-button-height;
-}
-
-.section_answers__body {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
 }
 
 .answers {

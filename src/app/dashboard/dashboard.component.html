@@ -61,7 +61,7 @@
     <section class="section section_answers">
         <header class="section-header">
             <h1 class="section-header__title" i18n="The title for the dashboard answers section@@bd47e707a777e51ac0f4981e513adf06">Answers</h1>
-            <ul class="section-header__toggle-button-frame" *ngIf="(answers$ | async)?.length">
+            <ul class="section-header__toggle-button-frame">
                 <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 30}" (click)="filterAnswers.next(30)" i18n="Answers from last 30 days@@ae49e7a78da9ed248fba4f55ba70c101">LAST 30 DAYS</li>
                 <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 60}" (click)="filterAnswers.next(60)" i18n="Answers from last 60 days@@f6bc286cddc198146488c8f3cbcfd98b">LAST 60 DAYS</li>
                 <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 365}" (click)="filterAnswers.next(365)" i18n="Answers from last year@@a2359e2fb9cb31060fcb81f1bffcbd8f">LAST YEAR</li>
@@ -96,6 +96,9 @@
                 <p class="section__paragraph section__paragraph--no-more-results"
                    *ngSwitchCase="loadingState.ReachedLastResult"
                    i18n="No more results label for dashboard answers list@@d61bcee2ada20f252bd801ec2167f468">No more results</p>
+
+                <p *ngSwitchCase="loadingState.NoResults"
+                   i18n="Dashboard message for when no answers can be found@@09ce245b85816c06597141187f5f7f4d">Complete a study session to view past writing answers.</p>
             </ng-container>
         </div>
     </section>

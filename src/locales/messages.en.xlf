@@ -840,6 +840,33 @@
                 </context-group>
                 <note priority="1" from="description">The text for the dashboard answers section load more button</note>
             </trans-unit>
+            <trans-unit id="71814539e1eb430acca4d7f4c2de92b8" datatype="html">
+                <source>loading</source>
+                <target>loading</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">92</context>
+                </context-group>
+                <note priority="1" from="description">alt text for dashboard answers loading icon</note>
+            </trans-unit>
+            <trans-unit id="d61bcee2ada20f252bd801ec2167f468" datatype="html">
+                <source>No more results</source>
+                <target>No more results</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">98</context>
+                </context-group>
+                <note priority="1" from="description">No more results label for dashboard answers list</note>
+            </trans-unit>
+            <trans-unit id="09ce245b85816c06597141187f5f7f4d" datatype="html">
+                <source>Complete a study session to view past writing answers.</source>
+                <target>Complete a study session to view past writing answers.</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">101</context>
+                </context-group>
+                <note priority="1" from="description">Dashboard message for when no answers can be found</note>
+            </trans-unit>
             <trans-unit id="227bdf07ff892ecd94e958f804bd5b07" datatype="html">
                 <source><x id="INTERPOLATION"/> days</source>
                 <target><x id="INTERPOLATION"/> days</target>
