@@ -7,7 +7,7 @@
         <div class="play-bar">
             <progress class="play-bar__progress" [value]="player.progress"></progress>
             <label for="play-bar__input" class="sr-only">Seek</label>
-            <input type="range" class="play-bar__input" id="play-bar__input" max="1" step="0.01" #input [value]="(currentTimeAsPercentEmitted$ | async) || 0" (input)="onInputCurrentTime(input.value)">
+            <input type="range" class="play-bar__input" id="play-bar__input" max="1" step="0.01" #input [value]="currentTimeAsPercentEmitted$ | async" (input)="onInputCurrentTime(input.value)">
         </div>
 
 
