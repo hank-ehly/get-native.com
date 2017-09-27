@@ -1,6 +1,8 @@
 @import '../../styles/core';
 @import './dashboard.component.debug';
 
+$section-button-margin-top: 20px;
+
 .section-header {
   display: flex;
   justify-content: space-between;
@@ -58,7 +60,7 @@ hr {
 }
 
 .section__button {
-  margin-top: 20px;
+  margin-top: $section-button-margin-top;
 }
 
 .section__paragraph--no-more-results {
@@ -66,11 +68,15 @@ hr {
   font-style: italic;
 }
 
+/* May need to be adjusted */
+$section-button-height: 34px;
+$video-panels-vertical-margin: 50px;
+
 .section_video-panels__body, .section_answers {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  min-height: 394px;
+  min-height: $video-panel-height + $video-panels-vertical-margin + $section-button-margin-top + $section-button-height;
 }
 
 .answers {
