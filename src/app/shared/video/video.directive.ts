@@ -87,7 +87,7 @@ export class VideoDirective {
     }
 
     private onProgress(e: Event): void {
-        if (this.videoEl.readyState < this.videoEl.HAVE_CURRENT_DATA) {
+        if (this.videoEl.readyState < this.videoEl.HAVE_ENOUGH_DATA) {
             return;
         }
 
