@@ -61,8 +61,8 @@ export class VideoDirective {
         return this.videoEl.volume;
     }
 
-    get progress(): number {
-        return this.progressSource.getValue();
+    get progress(): Observable<number> {
+        return this.progressSource.asObservable();
     }
 
     set currentTime(time: number) {
@@ -87,7 +87,7 @@ export class VideoDirective {
     }
 
     private onProgress(e: Event): void {
-        if (this.videoEl.readyState < this.videoEl.HAVE_ENOUGH_DATA) {
+        if (this.videoEl.readyState < this.videoEl.HAVE_FUTURE_DATA) {
             return;
         }
 
@@ -95,7 +95,6 @@ export class VideoDirective {
         const loaded = +(endTime / this.duration).toFixed(2);
 
         this.progressSource.next(loaded);
-
         this.logger.debug(this, e.type, loaded);
     }
 

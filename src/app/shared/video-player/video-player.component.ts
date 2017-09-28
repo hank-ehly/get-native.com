@@ -12,8 +12,8 @@ import { UnitInterval } from '../../core/typings/unit-interval';
 import { VideoDirective } from '../video/video.directive';
 import { Logger } from '../../core/logger/logger';
 
-import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -71,6 +71,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     ngAfterViewInit(): void {
         this.logger.debug(this, 'AfterViewInit');
         this.currentTimeAsPercentEmitted$ = this.player.currentTimeEmitted$
+            .filter(() => !isNaN(this.player.duration))
             .map(timeInSeconds => timeInSeconds / this.player.duration);
     }
 
