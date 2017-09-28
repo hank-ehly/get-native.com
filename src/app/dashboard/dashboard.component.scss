@@ -79,6 +79,11 @@ $video-panels-vertical-margin: 50px;
   min-height: $video-panel-height + $video-panels-vertical-margin + $section-button-margin-top + $section-button-height;
 }
 
+.section_answers__body {
+  /* Height of single answer row */
+  min-height: 182px;
+}
+
 .answers {
   margin-top: 40px;
   width: 100%;
