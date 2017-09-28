@@ -5,9 +5,9 @@
         <button class="player-controls__toggle-button" (click)="onClickToggleButton()" [ngClass]="{'player-controls__toggle-button_paused': player.paused}"></button>
 
         <div class="play-bar">
-            <progress class="play-bar__progress" [value]="player.progress"></progress>
+            <progress class="play-bar__progress" [value]="player.progress | async"></progress>
             <label for="play-bar__input" class="sr-only">Seek</label>
-            <input type="range" class="play-bar__input" id="play-bar__input" max="1" step="0.01" #input [value]="currentTimeAsPercentEmitted$ | async" (input)="onInputCurrentTime(input.value)">
+            <input type="range" class="play-bar__input" id="play-bar__input" max="1" step="0.01" #input [value]="(currentTimeAsPercentEmitted$ | async) || 0" (input)="onInputCurrentTime(input.value)">
         </div>
 
 
@@ -30,7 +30,7 @@
     </div>
 
     <div class="tracker" *ngIf="controlsHidden" [@fadeInOut]>
-        <progress class="tracker__progress" [value]="player.progress"></progress>
+        <progress class="tracker__progress" [value]="player.progress | async"></progress>
         <progress class="tracker__current-time" [value]="currentTimeAsPercentEmitted$ | async"></progress>
     </div>
 </div>
