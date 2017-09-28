@@ -32,6 +32,7 @@ import 'rxjs/add/operator/map';
     ]
 })
 export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
+
     @Input() loop: boolean;
     @Input() src: string;
     @Input() autoplay: boolean;
@@ -69,7 +70,8 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit(): void {
         this.logger.debug(this, 'AfterViewInit');
-        this.currentTimeAsPercentEmitted$ = this.player.currentTimeEmitted$.map(timeInSeconds => timeInSeconds / this.player.duration);
+        this.currentTimeAsPercentEmitted$ = this.player.currentTimeEmitted$
+            .map(timeInSeconds => timeInSeconds / this.player.duration);
     }
 
     onClickToggleButton(): void {
@@ -149,4 +151,5 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     private hideTooltip(delay?: number): void {
         this.tooltipTimeout = setTimeout(() => this.tooltipHidden = true, delay || 0);
     }
+
 }
