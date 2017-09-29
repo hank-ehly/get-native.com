@@ -26,11 +26,14 @@ export class VideoPanelComponent {
     time = 10;
     min = 4;
     max = 60;
-    isBeginTarget = false;
+
+    flags = {
+        isBeginTarget: false
+    };
 
     onBegin(): void {
         this.begin.emit({video_id: this.video.id, study_time: this.time * 60});
-        this.isBeginTarget = true;
+        this.flags.isBeginTarget = true;
     }
 
     onClickMinuteButtonIncrement(): void {
