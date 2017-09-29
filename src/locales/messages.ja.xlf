@@ -3694,6 +3694,15 @@
                 </context-group>
                 <note priority="1" from="description">max wpm result label</note>
             </trans-unit>
+            <trans-unit id="27dc978df34e66fadc913269bf0948fd" datatype="html">
+                <source>Back to Dashboard</source>
+                <target>ダッシュボードに戻る</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/study/results/results.component.ts</context>
+                    <context context-type="linenumber">44</context>
+                </context-group>
+                <note priority="1" from="description">Title of button link taking user back to the dashboard page</note>
+            </trans-unit>
             <trans-unit id="73909473aa35b23b4b87df8910e31fa4" datatype="html">
                 <source>Example Answer:</source>
                 <target>回答例：</target>
