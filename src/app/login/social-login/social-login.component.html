@@ -6,20 +6,20 @@
     <p class="paragraph" i18n="Instructions for logging in with a social auth provider@@3beaa5b9ffee8628958a37a39f3e1fff">Sign in to getnative with any of the following providers.</p>
 
     <section class="modal__body">
-        <a class="modal__button modal__button_facebook tabbable" tabindex="1" [href]="e.facebookLoginUrl">
+        <button class="modal__button modal__button_facebook tabbable" tabindex="1" (click)="onClickSocialButton(providers.FACEBOOK)" [disabled]="flags.processing.navigation">
             <img class="modal__button-icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/social-facebook.svg" alt="facebook">
             <span class="modal__button-text" i18n="The text for the facebook login button@@d044128bbff3292ecaf2f8cf912c1087">Continue with Facebook</span>
-        </a>
+        </button>
 
-        <a class="modal__button modal__button_twitter tabbable" tabindex="2" [href]="e.twitterLoginUrl">
+        <button class="modal__button modal__button_twitter tabbable" tabindex="2" (click)="onClickSocialButton(providers.TWITTER)" [disabled]="flags.processing.navigation">
             <img class="modal__button-icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/social-twitter.svg" alt="twitter">
             <span class="modal__button-text" i18n="The text for the twitter login button@@275b57166664b52ab2893e535a768bad">Continue with Twitter</span>
-        </a>
+        </button>
 
-        <a class="modal__button modal__button_google tabbable" tabindex="3" [href]="e.googleLoginUrl">
+        <button class="modal__button modal__button_google tabbable" tabindex="3" (click)="onClickSocialButton(providers.GOOGLE)" [disabled]="flags.processing.navigation">
             <img class="modal__button-icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/social-google.svg" alt="gmail">
             <span class="modal__button-text" i18n="The text for the gmail login button@@2f4d49eb0db1ce638fe4ef8209cb9b77">Continue with Gmail</span>
-        </a>
+        </button>
     </section>
 
     <footer class="footer">
