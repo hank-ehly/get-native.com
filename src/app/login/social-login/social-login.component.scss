@@ -21,18 +21,29 @@
 }
 
 .modal__button {
-  @include border-radius();
+  @include border-radius;
+  @include font-weight-regular;
   color: $white;
-  width: 360px;
+  cursor: pointer;
   height: 60px;
   display: flex;
+  font-size: $font-size-regular;
+  justify-content: flex-start;
   margin-top: 10px;
   outline: none;
-  cursor: pointer;
-  justify-content: flex-start;
-  font-size: $font-size-regular;
+  padding: 0;
   text-decoration: none;
   transition: 100ms;
+  width: 360px;
+
+  &:hover {
+    transform: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
 
 .modal__button-icon, .modal__button-icon-frame {
@@ -43,6 +54,9 @@
 .modal__button-text {
   align-self: center;
   margin-left: 26px;
+
+  /* Hack to center the text */
+  height: 15px;
 }
 
 .modal__button_facebook {
@@ -53,6 +67,14 @@
   &:hover, &:focus {
     background: $chambray-dark;
   }
+
+  &:hover:disabled {
+    background: $chambray;
+  }
+}
+
+.modal__button_facebook .modal__button-text {
+  margin-left: 24px;
 }
 
 .modal__button_facebook .modal__button-icon {
@@ -68,6 +90,10 @@
   &:hover, &:focus {
     background: $picton-blue-dark;
   }
+
+  &:hover:disabled {
+    background: $picton-blue;
+  }
 }
 
 .modal__button_twitter .modal__button-icon {
@@ -81,6 +107,10 @@
 
   &:hover, &:focus {
     border-color: $aqua-haze-dark;
+  }
+
+  &:hover:disabled {
+    border-color: $aqua-haze;
   }
 }
 
