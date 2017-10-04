@@ -1,3 +1,5 @@
+<gn-alert *ngIf="alertMessage"><p class="paragraph paragraph--alert">{{ alertMessage }}</p></gn-alert>
+
 <gn-navbar [authenticated]="authenticated$ | async" [showSearchIcon]="showNavbarSearchIconEmitted$ | async"></gn-navbar>
 
 <gn-side-menu *ngIf="authenticated$ | async"></gn-side-menu>

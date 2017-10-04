@@ -9,10 +9,12 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LoginModalService } from '../core/login-modal/login-modal.service';
+import { DOMService } from '../core/dom/dom.service';
 import { Logger } from '../core/logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-login',
@@ -20,25 +22,27 @@ import 'rxjs/add/operator/takeUntil';
     styleUrls: ['login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+
     OnDestroy$ = new Subject<void>();
     activeView: string;
 
-    constructor(private logger: Logger, private loginModal: LoginModalService, private router: Router) {
+    constructor(private logger: Logger, private loginModal: LoginModalService, private router: Router, private dom: DOMService) {
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
+        this.dom.enableScroll(false);
         this.loginModal.setActiveView$.takeUntil(this.OnDestroy$).subscribe((view: any) => this.activeView = view);
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
+        this.dom.enableScroll(true);
         this.OnDestroy$.next();
     }
 
     onClickClose(e: MouseEvent): void {
-        const t = <HTMLElement>e.target;
-        if (['overlay', 'modal-frame__close-button'].indexOf(t.className) !== -1) {
+        if (_.includes(['overlay', 'modal-frame__close-button'], (<HTMLElement>e.target).className)) {
             this.router.navigate([{outlets: {modal: null}}]);
         }
     }

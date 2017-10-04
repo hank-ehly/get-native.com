@@ -111,7 +111,7 @@ export class HttpService {
         try {
             err = response.json();
         } catch (e) {
-            err =  {code: 'unknown', message: 'Failed to parse error response.'};
+            err =  [{code: 'unknown', message: 'Failed to parse error response.'}];
         }
         return Observable.throw(err);
     }

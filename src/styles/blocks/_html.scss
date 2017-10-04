@@ -6,3 +6,7 @@ html {
   position: relative;
   min-height: 100%;
 }
+
+html.scrolling-disabled {
+  overflow: hidden;
+}

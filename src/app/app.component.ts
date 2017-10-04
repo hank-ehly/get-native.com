@@ -6,7 +6,7 @@
  */
 
 import { Component, OnInit, HostListener, OnDestroy, HostBinding, LOCALE_ID, Inject } from '@angular/core';
-import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { animate, AnimationTriggerMetadata, keyframes, style, transition, trigger } from '@angular/animations';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 import { LocalStorageService } from './core/local-storage/local-storage.service';
@@ -16,6 +16,7 @@ import { environment } from '../environments/environment';
 import { HttpService } from './core/http/http.service';
 import { LangService } from './core/lang/lang.service';
 import { UserService } from './core/user/user.service';
+import { DOMService } from './core/dom/dom.service';
 import { APIHandle } from './core/http/api-handle';
 import { translateMetaKey } from './meta-factory';
 import { Logger } from './core/logger/logger';
@@ -30,56 +31,80 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/map';
 
+const animations: AnimationTriggerMetadata[] = [
+    trigger('enterUpLeaveDown', [
+        transition(':enter', [
+            animate(300, keyframes([
+                style({opacity: 0, transform: 'translateY(100%)', offset: 0}),
+                style({opacity: 1, transform: 'translateY(-10px)', offset: 0.7}),
+                style({opacity: 1, transform: 'translateY(0)', offset: 1.0})
+            ]))
+        ]),
+        transition(':leave', [
+            animate(200, keyframes([
+                style({opacity: 1, transform: 'translateY(0)', offset: 0}),
+                style({opacity: 1, transform: 'translateY(-10px)', offset: 0.7}),
+                style({opacity: 0, transform: 'translateY(100%)', offset: 1.0})
+            ]))
+        ])
+    ])
+];
+
 @Component({
     selector: 'gn-app',
     templateUrl: 'app.component.html',
-    animations: [
-        trigger('enterUpLeaveDown', [
-            transition(':enter', [
-                animate(300, keyframes([
-                    style({opacity: 0, transform: 'translateY(100%)', offset: 0}),
-                    style({opacity: 1, transform: 'translateY(-10px)', offset: 0.7}),
-                    style({opacity: 1, transform: 'translateY(0)', offset: 1.0})
-                ]))
-            ]),
-            transition(':leave', [
-                animate(200, keyframes([
-                    style({opacity: 1, transform: 'translateY(0)', offset: 0}),
-                    style({opacity: 1, transform: 'translateY(-10px)', offset: 0.7}),
-                    style({opacity: 0, transform: 'translateY(100%)', offset: 1.0})
-                ]))
-            ])
-        ])
-    ]
+    animations: animations,
+    styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
 
+    alertMessage: string;
     authenticated$ = this.user.authenticated$;
+    compliant$ = this.user.compliant$;
+    displayMobileOverlay$ = new Subject<boolean>();
+    flags = {isShowingMobileOverlay: false};
+    OnDestroy$ = new Subject<void>();
+    routeDataEmitted$: Observable<any>;
     showToolbar$: Observable<boolean>;
     showNavbarSearchIconEmitted$: Observable<boolean>;
-    compliant$ = this.user.compliant$;
-    OnDestroy$ = new Subject<void>();
-    displayMobileOverlay$ = new Subject<boolean>();
 
-    routeDataEmitted$ = this.router.events.filter(e => e instanceof NavigationEnd).mapTo(this.route).map(route => {
-        while (route.firstChild) {
-            route = route.firstChild;
-        }
-        return route;
-    }).filter(route => route.outlet === 'primary').mergeMap(route => route.data);
-
-    /* For footer display */
     @HostBinding('style.margin-bottom') get styleMarginBottom(): string {
         return (this.user.isAuthenticated() ? 50 : 240) + 'px';
     }
 
-    @HostBinding('style.display') display = 'block';
+    constructor(private logger: Logger,
+                private localStorage: LocalStorageService,
+                private router: Router,
+                private user: UserService,
+                private facebook: FacebookService,
+                private route: ActivatedRoute,
+                private lang: LangService,
+                private navbar: NavbarService,
+                @Inject(LOCALE_ID)
+                private localeId: string,
+                private http: HttpService,
+                private dom: DOMService) {
+        this.displayMobileOverlay$
+            .takeUntil(this.OnDestroy$)
+            .subscribe(this.onDisplayMobileOverlayChanged.bind(this));
 
-    constructor(private logger: Logger, private localStorage: LocalStorageService, private router: Router, private user: UserService,
-                private facebook: FacebookService, private route: ActivatedRoute, private lang: LangService, private navbar: NavbarService,
-                @Inject(LOCALE_ID) private localeId: string, private http: HttpService) {
+        this.routeDataEmitted$ = this.router.events
+            .filter(e => e instanceof NavigationEnd)
+            .mapTo(this.route)
+            .map(r => {
+                while (r.firstChild) {
+                    r = r.firstChild;
+                }
+                return r;
+            })
+            .filter(r => r.outlet === 'primary')
+            .mergeMap(r => r.data);
+
         this.showToolbar$ = this.routeDataEmitted$.pluck('showToolbar');
+
         this.showNavbarSearchIconEmitted$ = this.routeDataEmitted$.pluck('showNavbarSearchIcon');
+
+        this.dom.alertMessage$.takeUntil(this.OnDestroy$).subscribe((m) => this.alertMessage = m);
     }
 
     @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
@@ -121,7 +146,16 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     private displayMobileOverlayIfNeeded(): void {
-        this.displayMobileOverlay$.next(window.innerWidth < 768);
+        if (this.flags.isShowingMobileOverlay && window.innerWidth >= 768) {
+            this.displayMobileOverlay$.next(false);
+        } else if (!this.flags.isShowingMobileOverlay && window.innerWidth < 768) {
+            this.displayMobileOverlay$.next(true);
+        }
+    }
+
+    private onDisplayMobileOverlayChanged(display: boolean): void {
+        this.dom.enableScroll(!display);
+        this.flags.isShowingMobileOverlay = display;
     }
 
     private updateUserCacheIfNeeded(): void {
