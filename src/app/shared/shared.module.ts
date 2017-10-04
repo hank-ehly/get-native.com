@@ -37,6 +37,7 @@ import { SafeHtmlPipe } from './safe-html/safe-html.pipe';
 import { ActivityDropdownComponent } from './navbar/activity-dropdown.component';
 import { FromNowPipe } from './from-now/from-now.pipe';
 import { DropdownComponent } from './dropdown/dropdown.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
     imports: [
@@ -71,7 +72,8 @@ import { DropdownComponent } from './dropdown/dropdown.component';
         SafeHtmlPipe,
         ActivityDropdownComponent,
         FromNowPipe,
-        DropdownComponent
+        DropdownComponent,
+        AlertComponent
 
     ],
     exports: [
@@ -103,7 +105,8 @@ import { DropdownComponent } from './dropdown/dropdown.component';
         SafeHtmlPipe,
         ActivityDropdownComponent,
         FromNowPipe,
-        DropdownComponent
+        DropdownComponent,
+        AlertComponent
     ]
 })
 export class SharedModule {
