@@ -17,7 +17,7 @@
                 <a class="link dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}"  i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
                 <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail($event)">
             </label>
-            <a class="link dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</a>
+            <a class="link dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage || (isSilhouettePicture$ | async)}" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</a>
             <span class="dropdown-divider"></span>
             <a class="link dropdown-link dropdown-link--cancel" (click)="onClickCancelDropdown()" i18n="Cancel thumbnail dropdown button title@@18e0be2c661eaee7e8d5e06c3bedb620">Cancel</a>
         </gn-dropdown>

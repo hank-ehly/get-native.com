@@ -130,6 +130,7 @@
   text-align: center;
   margin: auto;
   min-width: 220px;
+  user-select: none;
   &:hover {
     background-color: #0295f4;
     color: $white;
