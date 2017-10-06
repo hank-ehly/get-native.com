@@ -73,6 +73,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     };
 
     pictureUrl$ = this.userService.current$.pluck('picture_url');
+    isSilhouettePicture$ = this.userService.current$.pluck('is_silhouette_picture');
 
     constructor(private logger: Logger, private router: Router, private userService: UserService, private http: HttpService,
                 private imageService: ImageService) {
@@ -103,7 +104,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
     }
 
     onClickRemovePhoto(): void {
-        if (this.flags.processing.deleteProfileImage || this.flags.processing.uploadProfileImage) {
+        if (this.flags.processing.deleteProfileImage || this.flags.processing.uploadProfileImage ||
+            this.userService.current$.getValue().is_silhouette_picture) {
             return;
         }
 
