@@ -5,8 +5,8 @@
  * Created by henryehly on 2017/01/05.
  */
 
-import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 import { UserService } from '../user/user.service';
 import { Logger } from '../logger/logger';
