@@ -24,26 +24,24 @@ import * as _ from 'lodash';
 @Injectable()
 export class ConfirmEmailResolver implements Resolve<any> {
 
-    constructor(private http: HttpService, private router: Router, private user: UserService, private logger: Logger,
-                private dom: DOMService) {
+    constructor(private http: HttpService, private router: Router, private user: UserService, private dom: DOMService) {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> {
-        const options = {body: {token: route.queryParams['token']}};
-        return this.http.request(APIHandle.CONFIRM_EMAIL, options)
+        return this.http.request(APIHandle.CONFIRM_EMAIL, {body: {token: route.queryParams['token']}})
             .map(this.onConfirmEmailSuccess.bind(this))
             .toPromise()
             .catch(this.onConfirmEmailError.bind(this));
     }
 
-    private onConfirmEmailSuccess(user: User): void {
+    private onConfirmEmailSuccess(user: User) {
         this.user.update(user);
         this.router.navigate(['/dashboard']).then(() => {
-            this.dom.alert('Email successfully confirmed.');
+            this.dom.alert('Your email address has been successfully confirmed.');
         });
     }
 
-    private onConfirmEmailError(errors: APIErrors): void {
+    private onConfirmEmailError(errors: APIErrors) {
         this.router.navigate(['']).then(() => {
             this.dom.alert(_.first(errors).message);
         });
