@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, ViewChild } from '@angular/core';
 
 import { NotificationService } from '../../core/notification/notification.service';
 import { SwitchComponent } from '../../shared/switch/switch.component';
@@ -37,6 +37,7 @@ export class NotificationsComponent implements OnDestroy {
     };
 
     flags = {
+        notificationUnsupported: !this.notification.supported,
         notificationPermissionDenied: false,
         processing: {
             browserNotificationsEnabled: false,
@@ -49,7 +50,7 @@ export class NotificationsComponent implements OnDestroy {
         this.notification.permission$.getValue() === 'granted';
 
     constructor(private userService: UserService, private http: HttpService, private logger: Logger,
-                private notification: NotificationService) {
+                private notification: NotificationService, private changeDetectorRef: ChangeDetectorRef) {
     }
 
     ngOnDestroy(): void {
@@ -99,8 +100,12 @@ export class NotificationsComponent implements OnDestroy {
         }
     }
 
+    /* Browser bug: When updating off -> on, the switch component doesn't become disabled during the http request.
+    * To deal with the problem, I force the component to check for changes using ChangeDetectorRef.detectChanges();
+    * https://stackoverflow.com/questions/34827334/triggering-angular2-change-detection-manually */
     private persistBrowserNotificationPreference(value: boolean): void {
         this.flags.processing.browserNotificationsEnabled = true;
+        this.changeDetectorRef.detectChanges();
         this.http.request(APIHandle.UPDATE_USER, {body: {browser_notifications_enabled: value}})
             .takeUntil(this.OnDestroy$)
             .subscribe(
@@ -111,11 +116,13 @@ export class NotificationsComponent implements OnDestroy {
 
     private onUpdateBrowserNotificationsEnabledNext(value: boolean): void {
         this.flags.processing.browserNotificationsEnabled = false;
+        this.changeDetectorRef.detectChanges();
         this.userService.update({browser_notifications_enabled: value});
     }
 
     private onUpdateBrowserNotificationsEnabledError(errors: APIErrors): void {
         this.flags.processing.browserNotificationsEnabled = false;
+        this.changeDetectorRef.detectChanges();
         if (errors && errors.length) {
             this.errors.browserNotificationsEnabled = _.first(errors);
         } else {
