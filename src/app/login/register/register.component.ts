@@ -12,6 +12,7 @@ import { LoginModalService } from '../../core/login-modal/login-modal.service';
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
 import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
+import { DOMService } from '../../core/dom/dom.service';
 import { APIHandle } from '../../core/http/api-handle';
 import { APIErrors } from '../../core/http/api-error';
 import { Logger } from '../../core/logger/logger';
@@ -19,6 +20,7 @@ import { User } from '../../core/entities/user';
 
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-register',
@@ -44,7 +46,7 @@ export class RegisterComponent implements OnDestroy {
     errors: APIErrors = [];
 
     constructor(private logger: Logger, private loginModal: LoginModalService, private http: HttpService, private router: Router,
-                private user: UserService) {
+                private user: UserService, private dom: DOMService) {
     }
 
     ngOnDestroy(): void {
@@ -84,8 +86,10 @@ export class RegisterComponent implements OnDestroy {
         this.user.update(user);
         this.router.navigate([{outlets: {modal: null}}]).then(() => {
             return this.router.navigate(['/dashboard']);
-        }).catch(e => {
-            this.logger.info(this, 'Navigation to Dashboard failed', e);
+        }).then(() => {
+            this.dom.alert(`Welcome ${this.model.email}! Your account has been successfully created.`);
+        }).catch((errors: APIErrors) => {
+            this.dom.alert(`An unknown error has occurred. Please try logging in again.`);
         });
     }
 

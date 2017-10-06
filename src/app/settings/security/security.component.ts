@@ -11,6 +11,7 @@ import { APIError, APIErrors } from '../../core/http/api-error';
 import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
 import { Entities } from '../../core/entities/entities';
+import { DOMService } from '../../core/dom/dom.service';
 import { APIHandle } from '../../core/http/api-handle';
 import { Entity } from '../../core/entities/entity';
 import { Logger } from '../../core/logger/logger';
@@ -35,7 +36,7 @@ export class SecurityComponent implements OnInit, OnDestroy {
     isModalVisibleEmitted$: Observable<boolean>;
     private isModalVisibleSource: BehaviorSubject<boolean>;
 
-    constructor(private logger: Logger, private http: HttpService, private user: UserService) {
+    constructor(private logger: Logger, private http: HttpService, private user: UserService, private dom: DOMService) {
         this.isModalVisibleSource = new BehaviorSubject<boolean>(false);
         this.isModalVisibleEmitted$ = this.isModalVisibleSource.asObservable();
     }
@@ -75,12 +76,11 @@ export class SecurityComponent implements OnInit, OnDestroy {
     private onDeleteUserNext(): void {
         this.processing = false;
         this.user.logout();
+        this.dom.alert('Your account has been deleted from our system.'); // todo: i18n
     }
 
     private onDeleteUserError(errors: APIErrors): void {
         this.processing = false;
-        if (errors.length) {
-            this.deleteUserError = _.first(errors);
-        }
+        this.deleteUserError = _.first(errors);
     }
 }
