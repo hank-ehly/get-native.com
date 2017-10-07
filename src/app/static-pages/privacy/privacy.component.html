@@ -1,21 +1,21 @@
 <main>
     <h1 class="header" i18n="The text for the quick links section of the privacy policy page@@9948f086c086f0ef30a7171e749bb9c0">Quick Links</h1>
     <ul class="list list_unordered list_top">
-        <li><a class="link" [routerLink]="['/privacy']" fragment="information-collection" i18n="Privacy policy quick link for Information Collection section@@1c3f8c410c7f55dc98344d96875a7ae3">Information Collection</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="information-usage" i18n="Privacy policy quick link for Information Usage section@@118111d06e5268cf5a6bca3bfc177fae">Information Usage</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="information-protection" i18n="Privacy policy quick link for Information Protection section@@b114ffe4b1907ad261014fdd1f3fc484">Information Protection</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="cookie-usage" i18n="Privacy policy quick link for Cookie Usage section@@16bcd1462c20347ea1940d75fd965919">Cookie Usage</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="third-party-disclosure" i18n="Privacy policy quick link for 3rd Party Disclosure section@@62a47b9c79945ae50e79b72e58c4ab08">3rd Party Disclosure</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="third-party-links" i18n="Privacy policy quick link for 3rd Party Links section@@ca25d43e9fbb44dd08877c45fd3a1338">3rd Party Links</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="google-adsense" i18n="Privacy policy quick link for Google AdSense section@@1080a58369fc6b6192933f9de6e8cd07">Google AdSense</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="fair-information-practices" i18n="Privacy policy quick link for Fair Information Practices section@@37791691c20bdc9d42172d61666dabdd">Fair Information Practices</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="coppa" i18n="Privacy policy quick link for COPPA section@@1fe9871e08b33788fee2d0f6210683a9">COPPA</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="caloppa" i18n="Privacy policy quick link for CalOPPA section@@b3e83fd8cda76382522313f7cbf3cd06">CalOPPA</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="privacy-policy-changes" i18n="Privacy policy quick link for Privacy Policy changes section@@13781ea09ebb04e3117a40e695df2df3">Privacy Policy changes</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="canspam" i18n="Privacy policy quick link for CAN SPAM Act section@@d2db8e84e6d023a34bb26bf087c4e885">CAN SPAM Act</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="do-not-track-signals" i18n="Privacy policy quick link for Handling of Do-Not-Track signals section@@abd2b2e74327f98b300c145273e0594a">Handling of Do-Not-Track signals</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="third-party-behavioral-tracking" i18n="Privacy policy quick link for Third-party behavioral tracking section@@ec79c9e926c900c2f6c18a48678dd05f">Third-party behavioral tracking</a></li>
-        <li><a class="link" [routerLink]="['/privacy']" fragment="contact-information" i18n="Privacy policy quick link for Our Contact Information section@@c8b9b8be3b4957f61f93e97dfd2d8056">Our Contact Information</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="information-collection" (click)="jumpTo('information-collection')" i18n="Privacy policy quick link for Information Collection section@@1c3f8c410c7f55dc98344d96875a7ae3">Information Collection</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="information-usage" (click)="jumpTo('information-usage')" i18n="Privacy policy quick link for Information Usage section@@118111d06e5268cf5a6bca3bfc177fae">Information Usage</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="information-protection" (click)="jumpTo('information-protection')" i18n="Privacy policy quick link for Information Protection section@@b114ffe4b1907ad261014fdd1f3fc484">Information Protection</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="cookie-usage" (click)="jumpTo('cookie-usage')" i18n="Privacy policy quick link for Cookie Usage section@@16bcd1462c20347ea1940d75fd965919">Cookie Usage</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="third-party-disclosure" (click)="jumpTo('third-party-disclosure')" i18n="Privacy policy quick link for 3rd Party Disclosure section@@62a47b9c79945ae50e79b72e58c4ab08">3rd Party Disclosure</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="third-party-links" (click)="jumpTo('third-party-links')" i18n="Privacy policy quick link for 3rd Party Links section@@ca25d43e9fbb44dd08877c45fd3a1338">3rd Party Links</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="google-adsense" (click)="jumpTo('google-adsense')" i18n="Privacy policy quick link for Google AdSense section@@1080a58369fc6b6192933f9de6e8cd07">Google AdSense</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="fair-information-practices" (click)="jumpTo('fair-information-practices')" i18n="Privacy policy quick link for Fair Information Practices section@@37791691c20bdc9d42172d61666dabdd">Fair Information Practices</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="coppa" (click)="jumpTo('coppa')" i18n="Privacy policy quick link for COPPA section@@1fe9871e08b33788fee2d0f6210683a9">COPPA</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="caloppa" (click)="jumpTo('caloppa')" i18n="Privacy policy quick link for CalOPPA section@@b3e83fd8cda76382522313f7cbf3cd06">CalOPPA</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="privacy-policy-changes" (click)="jumpTo('privacy-policy-changes')" i18n="Privacy policy quick link for Privacy Policy changes section@@13781ea09ebb04e3117a40e695df2df3">Privacy Policy changes</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="canspam" (click)="jumpTo('canspam')" i18n="Privacy policy quick link for CAN SPAM Act section@@d2db8e84e6d023a34bb26bf087c4e885">CAN SPAM Act</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="do-not-track-signals" (click)="jumpTo('do-not-track-signals')" i18n="Privacy policy quick link for Handling of Do-Not-Track signals section@@abd2b2e74327f98b300c145273e0594a">Handling of Do-Not-Track signals</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="third-party-behavioral-tracking" (click)="jumpTo('third-party-behavioral-tracking')" i18n="Privacy policy quick link for Third-party behavioral tracking section@@ec79c9e926c900c2f6c18a48678dd05f">Third-party behavioral tracking</a></li>
+        <li><a class="link" [routerLink]="['/privacy']" fragment="contact-information" (click)="jumpTo('contact-information')" i18n="Privacy policy quick link for Our Contact Information section@@c8b9b8be3b4957f61f93e97dfd2d8056">Our Contact Information</a></li>
     </ul>
 
     <h1 class="header" i18n="intro section@@1f42111bf745bf1e345726f02bf6e985">getnative Privacy Policy</h1>
