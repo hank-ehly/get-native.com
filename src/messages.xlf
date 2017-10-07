@@ -2496,107 +2496,11 @@
         </context-group>
         <note priority="1" from="description">First small feature description about using getnative with multiple languages</note>
       </trans-unit>
-      <trans-unit id="f041abb679493c7cc3705618fc830284" datatype="html">
-        <source>Open-source</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">56</context>
-        </context-group>
-        <note priority="1" from="description">Alternative text for second small homepage feature</note>
-      </trans-unit>
-      <trans-unit id="a9dbbc57ac75c6c7efe20372def211c2" datatype="html">
-        <source>Open Source</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">57</context>
-        </context-group>
-        <note priority="1" from="description">Open-source small feature title</note>
-      </trans-unit>
-      <trans-unit id="89609c2553a04bf2845e79d4ef4c6bcd" datatype="html">
-        <source>xxxx xxxxxx xxxxxx xxxxx xxxx xxxxxx xxxxx xxxx xxxxxx xxxxx</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">58</context>
-        </context-group>
-        <note priority="1" from="description">Open-source small feature description</note>
-      </trans-unit>
-      <trans-unit id="11115428e93492fb7d468a12f92c72a4" datatype="html">
-        <source>Better Security</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">62</context>
-        </context-group>
-        <note priority="1" from="description">Alternative text for third small homepage feature</note>
-      </trans-unit>
-      <trans-unit id="25ae55cf7088e62afff8719e11dd9c1c" datatype="html">
-        <source>Better Security</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">63</context>
-        </context-group>
-        <note priority="1" from="description">Security small feature title</note>
-      </trans-unit>
-      <trans-unit id="c18bbb62e2d47da151dbc5794a2d730a" datatype="html">
-        <source>Your data is protected by the latest web application security standards.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">64</context>
-        </context-group>
-        <note priority="1" from="description">Security small feature description</note>
-      </trans-unit>
-      <trans-unit id="d21e6ec19aadec899196fb80ea88d509" datatype="html">
-        <source>Intuitive Design</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">68</context>
-        </context-group>
-        <note priority="1" from="description">Alternative text for fourth small homepage feature</note>
-      </trans-unit>
-      <trans-unit id="39d0472c40a4afd2c94909429c53a8ac" datatype="html">
-        <source>Intuitive Design</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">69</context>
-        </context-group>
-        <note priority="1" from="description">Easy-to-use interface small feature title</note>
-      </trans-unit>
-      <trans-unit id="d999dc80d833746fe5275ef7f87607b1" datatype="html">
-        <source>getnative has an elegant interface that is easy to use and understand.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">70</context>
-        </context-group>
-        <note priority="1" from="description">Easy-to-use interface small feature description</note>
-      </trans-unit>
-      <trans-unit id="35c5528d0ca434c4bff0e602e8bfaebc" datatype="html">
-        <source>Support</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">74</context>
-        </context-group>
-        <note priority="1" from="description">Alternative text for fifth small homepage feature</note>
-      </trans-unit>
-      <trans-unit id="6a68b2966295df786ccd4271be635569" datatype="html">
-        <source>Support</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">75</context>
-        </context-group>
-        <note priority="1" from="description">Q&amp;A small feature title</note>
-      </trans-unit>
-      <trans-unit id="bee91d91bacd446731eae12b466d5733" datatype="html">
-        <source>We’re available directly by email for and questions or comments.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">76</context>
-        </context-group>
-        <note priority="1" from="description">Q&amp;A small feature description</note>
-      </trans-unit>
       <trans-unit id="6b3305bf07712acfab42744cfa74a94f" datatype="html">
         <source>Simple Registration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <note priority="1" from="description">Alternative text for sixth small homepage feature</note>
       </trans-unit>
@@ -2604,7 +2508,7 @@
         <source>Simple Registration</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">57</context>
         </context-group>
         <note priority="1" from="description">Simple registration small feature title</note>
       </trans-unit>
@@ -2612,9 +2516,105 @@
         <source>Create an account in seconds using Email, Facebook, Twitter or Google.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">58</context>
         </context-group>
         <note priority="1" from="description">Simple registration small feature description</note>
+      </trans-unit>
+      <trans-unit id="35c5528d0ca434c4bff0e602e8bfaebc" datatype="html">
+        <source>Support</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <note priority="1" from="description">Alternative text for fifth small homepage feature</note>
+      </trans-unit>
+      <trans-unit id="6a68b2966295df786ccd4271be635569" datatype="html">
+        <source>Support</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <note priority="1" from="description">Q&amp;A small feature title</note>
+      </trans-unit>
+      <trans-unit id="bee91d91bacd446731eae12b466d5733" datatype="html">
+        <source>We’re available directly by email for and questions or comments.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <note priority="1" from="description">Q&amp;A small feature description</note>
+      </trans-unit>
+      <trans-unit id="11115428e93492fb7d468a12f92c72a4" datatype="html">
+        <source>Better Security</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <note priority="1" from="description">Alternative text for third small homepage feature</note>
+      </trans-unit>
+      <trans-unit id="25ae55cf7088e62afff8719e11dd9c1c" datatype="html">
+        <source>Better Security</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <note priority="1" from="description">Security small feature title</note>
+      </trans-unit>
+      <trans-unit id="c18bbb62e2d47da151dbc5794a2d730a" datatype="html">
+        <source>Your data is protected by the latest web application security standards.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <note priority="1" from="description">Security small feature description</note>
+      </trans-unit>
+      <trans-unit id="d21e6ec19aadec899196fb80ea88d509" datatype="html">
+        <source>Intuitive Design</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <note priority="1" from="description">Alternative text for fourth small homepage feature</note>
+      </trans-unit>
+      <trans-unit id="39d0472c40a4afd2c94909429c53a8ac" datatype="html">
+        <source>Intuitive Design</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+        <note priority="1" from="description">Easy-to-use interface small feature title</note>
+      </trans-unit>
+      <trans-unit id="d999dc80d833746fe5275ef7f87607b1" datatype="html">
+        <source>getnative has an elegant interface that is easy to use and understand.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+        <note priority="1" from="description">Easy-to-use interface small feature description</note>
+      </trans-unit>
+      <trans-unit id="f041abb679493c7cc3705618fc830284" datatype="html">
+        <source>Open-source</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+        <note priority="1" from="description">Alternative text for second small homepage feature</note>
+      </trans-unit>
+      <trans-unit id="a9dbbc57ac75c6c7efe20372def211c2" datatype="html">
+        <source>Active Maintenance</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <note priority="1" from="description">Open-source small feature title</note>
+      </trans-unit>
+      <trans-unit id="89609c2553a04bf2845e79d4ef4c6bcd" datatype="html">
+        <source>getnative is actively maintained to deliver a bug free experience.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+        <note priority="1" from="description">Open-source small feature description</note>
       </trans-unit>
       <trans-unit id="beb769a747c4efb1ba5ffa1c564dd23c" datatype="html">
         <source>Sign up for free</source>

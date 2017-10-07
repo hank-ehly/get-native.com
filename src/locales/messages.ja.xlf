@@ -3018,20 +3018,20 @@
                 <note priority="1" from="description">Alternative text for second small homepage feature</note>
             </trans-unit>
             <trans-unit id="a9dbbc57ac75c6c7efe20372def211c2" datatype="html">
-                <source>Open Source</source>
-                <target>Open Source</target>
+                <source>Active Maintenance</source>
+                <target>Active Maintenance</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-                    <context context-type="linenumber">57</context>
+                    <context context-type="linenumber">81</context>
                 </context-group>
                 <note priority="1" from="description">Open-source small feature title</note>
             </trans-unit>
             <trans-unit id="89609c2553a04bf2845e79d4ef4c6bcd" datatype="html">
-                <source>xxxx xxxxxx xxxxxx xxxxx xxxx xxxxxx xxxxx xxxx xxxxxx xxxxx</source>
-                <target>xxxx xxxxxx xxxxxx xxxxx xxxx xxxxxx xxxxx xxxx xxxxxx xxxxx</target>
+                <source>getnative is actively maintained to deliver a bug free experience.</source>
+                <target>getnativeは、バグなくご利用いただけるように頻繁にメンテナンスを行っています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
-                    <context context-type="linenumber">58</context>
+                    <context context-type="linenumber">82</context>
                 </context-group>
                 <note priority="1" from="description">Open-source small feature description</note>
             </trans-unit>
