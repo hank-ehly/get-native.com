@@ -15,10 +15,16 @@ import { Logger } from '../../core/logger/logger';
     styleUrls: ['privacy.component.scss']
 })
 export class PrivacyComponent implements OnInit {
+
     constructor(private logger: Logger) {
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
     }
+
+    jumpTo(fragment: string) {
+        document.querySelector('#' + fragment).scrollIntoView();
+    }
+
 }

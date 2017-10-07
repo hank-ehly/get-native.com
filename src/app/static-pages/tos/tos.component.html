@@ -1,15 +1,15 @@
 <main>
     <h1 class="header" i18n="terms of service quick links section title@@14a244e9f868c3b2a43cf27710b0e5d3">Quick Links</h1>
     <ul class="list list_unordered list_top">
-        <li><a class="link" [routerLink]="['/tos']" fragment="cookies" i18n="terms of service Cookies quick link title@@4e8f8c05c880f2650ee87e7aae0acdc1">Cookies</a></li>
-        <li><a class="link" [routerLink]="['/tos']" fragment="license" i18n="terms of service License quick link title@@d4165e85e52ac44f0d456c345181ce4a">License</a></li>
-        <li><a class="link" [routerLink]="['/tos']" fragment="user-comments" i18n="terms of service User Comments quick link title@@08e1ce4bb5d1f208e0365072d36476b3">User Comments</a></li>
-        <li><a class="link" [routerLink]="['/tos']" fragment="hyperlinking" i18n="terms of service Hyperlinking to our Content quick link title@@cd3146ebc112ccf51b7ef9caa18252b7">Hyperlinking to our Content</a></li>
-        <li><a class="link" [routerLink]="['/tos']" fragment="iframes" i18n="terms of service Iframes quick link title@@2904b2e8f1d9fc38d8077ab03cc76191">Iframes</a></li>
-        <li><a class="link" [routerLink]="['/tos']" fragment="content-liability" i18n="terms of service Content Liability quick link title@@e02a3aa053c5c2a96787bed8aeabd81f">Content Liability</a></li>
-        <li><a class="link" [routerLink]="['/tos']" fragment="reservation-of-rights" i18n="terms of service Reservation of Rights quick link title@@4cc19d7e46b4c5181b48562787b1f1e0">Reservation of Rights</a></li>
-        <li><a class="link" [routerLink]="['/tos']" fragment="removal-of-links" i18n="terms of service Reservation of Rights quick link title@@ab43c66f332168cd3c88f052adf7f7a7">Removal of Links</a></li>
-        <li><a class="link" [routerLink]="['/tos']" fragment="disclaimer" i18n="terms of service Disclaimer quick link title@@b8a1b0feca187c63cc0cf3813b5b3744">Disclaimer</a></li>
+        <li><a class="link" [routerLink]="['/tos']" fragment="cookies" (click)="jumpTo('cookies')" i18n="terms of service Cookies quick link title@@4e8f8c05c880f2650ee87e7aae0acdc1">Cookies</a></li>
+        <li><a class="link" [routerLink]="['/tos']" fragment="license" (click)="jumpTo('license')" i18n="terms of service License quick link title@@d4165e85e52ac44f0d456c345181ce4a">License</a></li>
+        <li><a class="link" [routerLink]="['/tos']" fragment="user-comments" (click)="jumpTo('user-comments')" i18n="terms of service User Comments quick link title@@08e1ce4bb5d1f208e0365072d36476b3">User Comments</a></li>
+        <li><a class="link" [routerLink]="['/tos']" fragment="hyperlinking" (click)="jumpTo('hyperlinking')" i18n="terms of service Hyperlinking to our Content quick link title@@cd3146ebc112ccf51b7ef9caa18252b7">Hyperlinking to our Content</a></li>
+        <li><a class="link" [routerLink]="['/tos']" fragment="iframes" (click)="jumpTo('iframes')" i18n="terms of service Iframes quick link title@@2904b2e8f1d9fc38d8077ab03cc76191">Iframes</a></li>
+        <li><a class="link" [routerLink]="['/tos']" fragment="content-liability" (click)="jumpTo('content-liability')" i18n="terms of service Content Liability quick link title@@e02a3aa053c5c2a96787bed8aeabd81f">Content Liability</a></li>
+        <li><a class="link" [routerLink]="['/tos']" fragment="reservation-of-rights" (click)="jumpTo('reservation-of-rights')" i18n="terms of service Reservation of Rights quick link title@@4cc19d7e46b4c5181b48562787b1f1e0">Reservation of Rights</a></li>
+        <li><a class="link" [routerLink]="['/tos']" fragment="removal-of-links" (click)="jumpTo('removal-of-links')" i18n="terms of service Reservation of Rights quick link title@@ab43c66f332168cd3c88f052adf7f7a7">Removal of Links</a></li>
+        <li><a class="link" [routerLink]="['/tos']" fragment="disclaimer" (click)="jumpTo('disclaimer')" i18n="terms of service Disclaimer quick link title@@b8a1b0feca187c63cc0cf3813b5b3744">Disclaimer</a></li>
     </ul>
 
     <section id="introduction">
