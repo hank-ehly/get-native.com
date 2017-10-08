@@ -17,8 +17,6 @@ import { environment } from '../../../environments/environment';
 })
 export class SocialLoginComponent {
 
-    e = environment;
-
     providers = {
         FACEBOOK: 0,
         TWITTER: 1,
@@ -46,11 +44,11 @@ export class SocialLoginComponent {
     private OAuthURLForProvider(provider: number): string {
         switch (provider) {
             case this.providers.FACEBOOK:
-                return this.e.facebookLoginUrl;
+                return environment.facebookLoginUrl;
             case this.providers.TWITTER:
-                return this.e.twitterLoginUrl;
+                return environment.twitterLoginUrl;
             case this.providers.GOOGLE:
-                return this.e.googleLoginUrl;
+                return environment.googleLoginUrl;
             default:
                 throw new Error(`provider ${provider} is not a valid provider.`);
         }

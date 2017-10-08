@@ -15,6 +15,7 @@ import { NavbarService } from '../../core/navbar/navbar.service';
 import { UserService } from '../../core/user/user.service';
 import { DOMService } from '../../core/dom/dom.service';
 import { Logger } from '../../core/logger/logger';
+import { User } from '../../core/entities/user';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
@@ -24,6 +25,7 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/do';
+import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-navbar',
@@ -65,7 +67,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
     displayNotificationDropdown$ = new BehaviorSubject<boolean>(false);
     OnDestroy$           = new Subject<void>();
-    pictureUrl$          = this.user.current$.pluck('picture_url');
+
+    pictureUrl$ = new BehaviorSubject<string>(
+        'https://storage.googleapis.com/stg.getnativelearning.com/assets/images/silhouette-avatar.jpg'
+    );
 
     queueButtonSaveState = QueueButtonState.SAVE;
     queueButtonRemoveState = QueueButtonState.REMOVE;
@@ -100,9 +105,23 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        const navigationEnd$ = this.router.events.takeUntil(this.OnDestroy$).filter((e: any) => e instanceof NavigationEnd);
-        navigationEnd$.mapTo(false).subscribe(this.navbar.searchBarVisible$);
-        navigationEnd$.mapTo('').subscribe(this.navbar.query$);
+        const navigationEnd$ = this.router.events
+            .takeUntil(this.OnDestroy$)
+            .filter((e: any) => e instanceof NavigationEnd);
+
+        navigationEnd$
+            .mapTo(false)
+            .subscribe(this.navbar.searchBarVisible$);
+
+        navigationEnd$
+            .mapTo('')
+            .subscribe(this.navbar.query$);
+
+        this.user.current$
+            .takeUntil(this.OnDestroy$)
+            .filter((user: User) => _.has(user, 'picture_url'))
+            .pluck('picture_url')
+            .subscribe(this.pictureUrl$);
     }
 
     ngOnDestroy(): void {
