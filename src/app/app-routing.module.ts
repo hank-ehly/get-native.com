@@ -43,9 +43,9 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { PasswordResetResolverService } from './password-reset/password-reset-resolver.service';
 import { PasswordResetCompleteComponent } from './password-reset/password-reset-complete/password-reset-complete.component';
 import { PasswordResetGuard } from './password-reset/password-reset.guard';
+import { OAuthGuard } from './core/auth/oauth.guard';
 
 import { MetaGuard } from '@ngx-meta/core';
-import { OAuthResolver } from './core/auth/oauth-resolver.service';
 
 const routes: Routes = [
     {
@@ -60,8 +60,7 @@ const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [DashboardGuard, MetaGuard],
-        resolve: {_: OAuthResolver},
+        canActivate: [DashboardGuard, MetaGuard, OAuthGuard],
         data: {
             meta: {
                 title: 'dashboard.title'

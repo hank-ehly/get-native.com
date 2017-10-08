@@ -57,7 +57,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     @Input() authenticated: boolean;
     @Input() showSearchIcon: boolean;
 
-    title$               = this.navbar.title$;
+    title: string;
     backButtonTitle$     = this.navbar.backButtonTitle$;
     queueButtonState$    = this.navbar.queueButtonState$;
     studyOptionsVisible$ = this.navbar.studyOptionsVisible$;
@@ -120,6 +120,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
             .filter((user: User) => _.has(user, 'picture_url'))
             .pluck('picture_url')
             .subscribe(this.pictureUrl$);
+
+        this.navbar.title$
+            .takeUntil(this.OnDestroy$)
+            .subscribe(t => this.title = t);
     }
 
     ngOnDestroy(): void {
