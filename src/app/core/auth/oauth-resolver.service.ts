@@ -24,8 +24,7 @@ export class OAuthResolver implements Resolve<any> {
         const expectedKeys = ['token', 'expires'];
         const queryParams = <any>_.pick(route.queryParams, expectedKeys);
         if (_.size(queryParams) !== expectedKeys.length) {
-            this.onUserDetailError([{code: 'Unknown', message: 'An unknown error occurred. Please try again later.'}]);
-            return null;
+            return Promise.resolve({});
         }
 
         this.localStorage.setItem(kAuthToken, route.queryParams['token']);
@@ -39,7 +38,7 @@ export class OAuthResolver implements Resolve<any> {
 
     private onUserDetailNext(user: User) {
         this.user.update(user);
-        this.router.navigate(['/dashboard']);
+        return Promise.resolve({});
     }
 
     private onUserDetailError(errors: APIErrors) {

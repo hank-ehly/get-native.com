@@ -42,9 +42,7 @@ export class UserService {
 
     constructor(private localStorage: LocalStorageService, private logger: Logger) {
         this.current$
-            .filter(this.isAuthenticated.bind(this))
-            .mapTo(true)
-            .subscribe(this.authenticated$);
+            .subscribe(() => this.authenticated$.next(true));
 
         this.current$
             .filter(this.isAuthenticated.bind(this))
@@ -52,8 +50,7 @@ export class UserService {
             .subscribe(this.compliant$);
 
         this.logout$
-            .mapTo(false)
-            .subscribe(this.authenticated$);
+            .subscribe(() => this.authenticated$.next(false));
 
         this.current$
             .filter(this.isAuthenticated.bind(this))

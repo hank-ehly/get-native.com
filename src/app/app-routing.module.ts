@@ -61,6 +61,7 @@ const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         canActivate: [DashboardGuard, MetaGuard],
+        resolve: {_: OAuthResolver},
         data: {
             meta: {
                 title: 'dashboard.title'
@@ -202,9 +203,6 @@ const routes: Routes = [
     },
     {
         path: 'confirm_email', resolve: {_: ConfirmEmailResolver}, component: DashboardComponent
-    },
-    {
-        path: 'oauth', resolve: {_: OAuthResolver}, component: DashboardComponent
     },
     {
         path: 'confirm_email_update', resolve: {_: ConfirmEmailUpdateResolver}, component: SettingsComponent
