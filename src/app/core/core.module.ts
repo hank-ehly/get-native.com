@@ -29,7 +29,7 @@ import { FacebookService } from './facebook/facebook.service';
 import { DOMService } from './dom/dom.service';
 import { ImageService } from './image.service';
 import { NotificationService } from './notification/notification.service';
-import { OAuthResolver } from './auth/oauth-resolver.service';
+import { OAuthGuard } from './auth/oauth.guard';
 
 @NgModule({
     imports: [
@@ -57,7 +57,7 @@ import { OAuthResolver } from './auth/oauth-resolver.service';
         DOMService,
         ImageService,
         NotificationService,
-        OAuthResolver
+        OAuthGuard
     ]
 })
 export class CoreModule {
