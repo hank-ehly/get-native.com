@@ -42,6 +42,7 @@ export class UserService {
 
     constructor(private localStorage: LocalStorageService, private logger: Logger) {
         this.current$
+            .filter(this.isAuthenticated.bind(this))
             .subscribe(() => this.authenticated$.next(true));
 
         this.current$

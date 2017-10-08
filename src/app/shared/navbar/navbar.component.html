@@ -4,7 +4,7 @@
     </div>
 
     <ng-container *ngIf="!authenticated">
-        <div class="navbar__menu navbar__menu_center" [@fadeInOut]>
+        <div class="navbar__menu navbar__menu_center" [@fadeIn]>
             <span class="page-title">{{ title$ | async }}</span>
         </div>
 
@@ -20,7 +20,7 @@
             <input type="search" name="search" class="input search-bar" id="search-bar" placeholder="Search..." [gnFocus]="searchBarVisible$ | async" maxlength="100" (input)="updateQuery($event)">
         </div>
 
-        <div class="navbar__menu navbar__menu_center" *ngIf="!(searchBarVisible$ | async)" [@fadeInOut]>
+        <div class="navbar__menu navbar__menu_center" *ngIf="!(searchBarVisible$ | async)" [@fadeIn]>
             <div class="back-button-frame" *ngIf="backButtonTitle$ | async">
                 <img class="navbar__menu-icon navbar__menu-icon_back" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/arrow-back.svg" i18n-alt="Alt text for navbar back button image@@ea3712afdf8cac823ca20f19e995c610" alt="back" (click)="onClickBack()">
                 <span class="back-button-label">{{ backButtonTitle$ | async }}</span>

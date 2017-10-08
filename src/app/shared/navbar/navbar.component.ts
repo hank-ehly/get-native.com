@@ -27,32 +27,30 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
 
+const animations = [
+    trigger('slideInLeftOutRight', [
+        transition(':enter', [
+            style({opacity: 0, transform: 'translateX(300px)'}),
+            animate('500ms ease', style({opacity: 1, transform: 'none'}))
+        ]),
+        transition(':leave', [
+            style({opacity: 1, transform: 'none'}),
+            animate('400ms ease', style({opacity: 0, transform: 'translateX(300px)'}))
+        ])
+    ]),
+    trigger('fadeIn', [
+        transition(':enter', [
+            style({opacity: 0}),
+            animate('500ms ease', style({opacity: 1}))
+        ])
+    ])
+];
+
 @Component({
     selector: 'gn-navbar',
     templateUrl: 'navbar.component.html',
     styleUrls: ['navbar.component.scss'],
-    animations: [
-        trigger('slideInLeftOutRight', [
-            transition(':enter', [
-                style({opacity: 0, transform: 'translateX(300px)'}),
-                animate('500ms ease', style({opacity: 1, transform: 'none'}))
-            ]),
-            transition(':leave', [
-                style({opacity: 1, transform: 'none'}),
-                animate('400ms ease', style({opacity: 0, transform: 'translateX(300px)'}))
-            ])
-        ]),
-        trigger('fadeInOut', [
-            transition(':enter', [
-                style({opacity: 0}),
-                animate('500ms ease', style({opacity: 1}))
-            ]),
-            transition(':leave', [
-                style({opacity: 1}),
-                animate('400ms ease', style({opacity: 0}))
-            ])
-        ])
-    ]
+    animations: animations
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
