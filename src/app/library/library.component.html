@@ -16,7 +16,7 @@
 
         <gn-video-panel-list [disabled]="currentLoadingState === loadingState.Loading" [videos]="videos$ | async" [navigates]="true"></gn-video-panel-list>
 
-        <ng-container [ngSwitch]="currentLoadingState">
+        <div [ngSwitch]="currentLoadingState" [ngClass]="{'loading-section--no-videos': !(videos$ | async)?.length}">
             <button class="button section__button"
                     *ngSwitchDefault
                     (click)="loadMoreVideos$.next(maxVideoId)"
@@ -36,6 +36,6 @@
                 <p class="emoji">🤦</p>
                 <p i18n="No videos for category message@@331d558742a5c1254c378d55fb4b9e70">Whoops! No videos exist for this category yet..</p>
             </div>
-        </ng-container>
+        </div>
     </section>
 </main>

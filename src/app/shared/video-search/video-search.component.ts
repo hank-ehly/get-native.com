@@ -19,6 +19,7 @@ import { Category } from '../../core/entities/category';
 import { DOMService } from '../../core/dom/dom.service';
 import { Entities } from '../../core/entities/entities';
 import { APIHandle } from '../../core/http/api-handle';
+import { LoadingState } from './loading-state.enum';
 import { CategoryFilter } from './category-filter';
 import { Video } from '../../core/entities/video';
 import { Logger } from '../../core/logger/logger';
@@ -37,7 +38,6 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/scan';
 import 'rxjs/observable/timer';
 import * as _ from 'lodash';
-import { LoadingState } from './loading-state.enum';
 
 @Component({
     template: '<!-- overridden -->'
