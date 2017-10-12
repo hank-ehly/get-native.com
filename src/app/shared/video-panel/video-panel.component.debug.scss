@@ -1,0 +1,21 @@
+@import '../../../styles/core';
+
+.video-panel                             { @include debug-background-color($dc01); }
+.footer                                  { @include debug-background-color($dc02); }
+.options__minute-button-frame            { @include debug-background-color($dc03); }
+.video-stats                             { @include debug-background-color($dc04); }
+.footer__video-title                     { @include debug-background-color($dc05); }
+.footer__video-speaker                   { @include debug-background-color($dc06); }
+.video-stats__length                     { @include debug-background-color($dc07); }
+.video-stats__length .video-stats__icon  { @include debug-background-color($dc08); }
+.video-stats__length .video-stats__label { @include debug-background-color($dc09); }
+.video-stats__views                      { @include debug-background-color($dc10); }
+.video-stats__views .video-stats__icon   { @include debug-background-color($dc11); }
+.video-stats__views .video-stats__label  { @include debug-background-color($dc12); }
+.video-stats__created-on                 { @include debug-background-color($dc01); }
+.controls                                { @include debug-background-color($dc02); }
+.controls__minute-button-frame           { @include debug-background-color($dc04); }
+.controls__input                         { @include debug-background-color($dc05); }
+.controls__minutes-label                 { @include debug-background-color($dc06); }
+.controls__row:first-child               { @include debug-background-color($dc07); }
+.controls__row:last-child                { @include debug-background-color($dc09); }

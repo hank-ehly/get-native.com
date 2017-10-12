@@ -1,0 +1,7 @@
+@import '../core';
+
+.textarea {
+  @extend %text-input;
+  padding: 10px;
+  resize: none;
+}

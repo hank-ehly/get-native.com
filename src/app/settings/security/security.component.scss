@@ -1,0 +1,34 @@
+@import '../../../styles/core';
+@import './security.component.debug';
+
+.title, .paragraph, .textarea--container, .error-message-container {
+  margin-top: 30px;
+}
+
+.paragraph {
+  color: $regent-gray;
+}
+
+.modal__content {
+  box-sizing: border-box;
+  padding: 40px;
+  width: 400px;
+}
+
+.modal__content .paragraph {
+  margin-top: 0;
+}
+
+.paragraph--modal {
+  color: $pale-sky;
+}
+
+.paragraph--error-message {
+  @include font-weight-bold();
+  color: $error-message-color;
+}
+
+.button--delete, .button--cancel {
+  display: block;
+  margin: 20px auto 0;
+}

@@ -1,0 +1,53 @@
+@import '../../../styles/core';
+
+:host {
+  height: 30px;
+}
+
+.switch {
+  @include border-radius(30px);
+  background: $aqua-haze;
+  cursor: pointer;
+  display: inline-block;
+  height: 30px;
+  position: relative;
+  width: 70px;
+}
+
+.switch.switch--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.switch__input {
+  display: none;
+}
+
+.switch__slider {
+  @include border-radius(30px);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: 100ms;
+  right: 0;
+}
+
+.switch__title {
+  @include border-radius(30px);
+  @include font-weight-bold;
+  background-color: $regent-gray;
+  color: $white;
+  font-size: 11px;
+  line-height: 30px;
+  position: absolute;
+  text-align: center;
+  transition: 100ms;
+  width: 50px;
+}
+
+.switch__input:checked + .switch__title {
+  background: $shamrock;
+  transform: translateX(20px);
+  transition: 100ms;
+}

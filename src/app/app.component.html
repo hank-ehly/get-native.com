@@ -1,0 +1,14 @@
+<gn-alert *ngIf="alertMessage"><p class="paragraph paragraph--alert">{{ alertMessage }}</p></gn-alert>
+
+<gn-navbar [authenticated]="authenticated$ | async" [showSearchIcon]="showNavbarSearchIconEmitted$ | async"></gn-navbar>
+
+<gn-side-menu *ngIf="authenticated$ | async"></gn-side-menu>
+<gn-toolbar *ngIf="showToolbar$ | async"></gn-toolbar>
+
+<router-outlet></router-outlet>
+<router-outlet name="modal"></router-outlet>
+
+<gn-footer *ngIf="!(authenticated$ | async)"></gn-footer>
+<gn-compliance *ngIf="!(compliant$ | async)" [@enterUpLeaveDown]></gn-compliance>
+
+<gn-mobile-overlay *ngIf="displayMobileOverlay$ | async"></gn-mobile-overlay>

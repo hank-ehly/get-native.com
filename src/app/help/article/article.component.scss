@@ -1,0 +1,15 @@
+@import '../../../styles/core';
+
+:host /deep/ {
+  h2 {
+    font-size: $font-size-large;
+  }
+
+  .section {
+    margin-top: 60px;
+  }
+
+  .section .paragraph {
+    margin-top: 16px;
+  }
+}

@@ -1,0 +1,7 @@
+@import '../../../styles/core';
+
+.toolbar                          { @include debug-background-color($dc01); }
+.toolbar__tooltip-languages       { @include debug-background-color($dc02); }
+.toolbar__language-label_selected { @include debug-background-color($dc03); }
+.toolbar__links                   { @include debug-background-color($dc04); }
+.toolbar__tooltip-language        { @include debug-background-color($dc05); }

@@ -1,0 +1,19 @@
+<main class="main">
+    <div class="collocation-occurrence-frame">
+        <label for="collocation-occurrence" i18n="speaking instructions label@@b88d3d34dc61c76ff8d4dd6db116bcd0">Speak out loud</label>
+        <input type="text" id="collocation-occurrence" class="input" [ngModel]="current?.text" readonly>
+    </div>
+
+    <span class="completed">
+        <ng-container i18n="label for describing number of collocations spoken@@98cc2eaefdc054be711d3446c1f957d0">Completed</ng-container>
+        ({{ completed.size }}/{{ occurrences?.length }})
+        <ng-container *ngIf="overflow">+{{ overflow }}</ng-container>
+    </span>
+
+    <div class="button-group">
+        <button class="button button--opaque" (click)="onClickNext()" i18n="next collocation occurrence button@@cdf9f2e0677923528ae74349ff39caa6">NEXT</button>
+        <button class="button button--hollow" (click)="onClickSkip()" i18n="skip collocation occurrence button@@e9e94a8a56ba7bd9a1d1ca6c046ae6a5">SKIP</button>
+    </div>
+
+    <gn-transcript [transcripts]="transcripts"></gn-transcript>
+</main>

@@ -1,0 +1,12 @@
+@import '../core';
+
+html {
+  @include font-weight-regular;
+  overflow-y: scroll;
+  position: relative;
+  min-height: 100%;
+}
+
+html.scrolling-disabled {
+  overflow: hidden;
+}

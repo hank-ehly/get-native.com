@@ -1,0 +1,25 @@
+@import '../../../styles/core';
+
+:host {
+  display: block;
+  position: fixed;
+  z-index: 3;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.main {
+  width: 550px;
+  background: $white;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px 0 rgba($black, 0.2);
+  padding: 20px;
+}
+
+.img {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 10px;
+}

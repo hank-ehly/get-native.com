@@ -1,0 +1,124 @@
+@import '../../../styles/core';
+
+.modal__header {
+  @include border-top-radius();
+  background: $shamrock;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+}
+
+.modal__logo {
+  height: 30px;
+  align-self: center;
+}
+
+.modal__body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.modal__button {
+  @include border-radius;
+  @include font-weight-regular;
+  color: $white;
+  cursor: pointer;
+  height: 60px;
+  display: flex;
+  font-size: $font-size-regular;
+  justify-content: flex-start;
+  margin-top: 10px;
+  outline: none;
+  padding: 0;
+  text-decoration: none;
+  transition: 100ms;
+  width: 360px;
+
+  &:hover {
+    transform: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.modal__button-icon, .modal__button-icon-frame {
+  align-self: center;
+  margin-left: 15px;
+}
+
+.modal__button-text {
+  align-self: center;
+  margin-left: 26px;
+
+  /* Hack to center the text */
+  height: 15px;
+}
+
+.modal__button_facebook {
+  background: $chambray;
+  border: none;
+  border-bottom: 1px solid $chambray-dark;
+
+  &:hover, &:focus {
+    background: $chambray-dark;
+  }
+
+  &:hover:disabled {
+    background: $chambray;
+  }
+}
+
+.modal__button_facebook .modal__button-text {
+  margin-left: 24px;
+}
+
+.modal__button_facebook .modal__button-icon {
+  height: 30px;
+  width: 30px;
+}
+
+.modal__button_twitter {
+  background: $picton-blue;
+  border: none;
+  border-bottom: 1px solid $picton-blue-dark;
+
+  &:hover, &:focus {
+    background: $picton-blue-dark;
+  }
+
+  &:hover:disabled {
+    background: $picton-blue;
+  }
+}
+
+.modal__button_twitter .modal__button-icon {
+  height: 28px;
+  width: 28px;
+}
+
+.modal__button_google {
+  background: $white;
+  border: 2px solid $aqua-haze;
+
+  &:hover, &:focus {
+    border-color: $aqua-haze-dark;
+  }
+
+  &:hover:disabled {
+    border-color: $aqua-haze;
+  }
+}
+
+.modal__button_google .modal__button-text {
+  color: $regent-gray;
+}
+
+.modal__button_google .modal__button-icon {
+  height: 34px;
+  width: 34px;
+}

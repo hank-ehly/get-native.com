@@ -1,0 +1,6 @@
+@import '../../../styles/core';
+
+.goals      {  @include debug-background-color($dc07);  }
+.goal       {  @include debug-background-color($dc08);  }
+.goal-value {  @include debug-background-color($dc09);  }
+.goal-key   {  @include debug-background-color($dc10);  }

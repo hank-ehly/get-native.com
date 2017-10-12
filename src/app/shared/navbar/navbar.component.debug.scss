@@ -1,0 +1,13 @@
+@import '../../../styles/core';
+
+.navbar                 { @include debug-background-color($dc01); };
+.navbar__logo           { @include debug-background-color($dc02); };
+.navbar__nav            { @include debug-background-color($dc03); };
+.navbar__logo-frame     { @include debug-background-color($dc04); };
+.navbar__menu_center    { @include debug-background-color($dc05); };
+.navbar__menu--authenticated     { @include debug-background-color($dc06); };
+.back-button-frame      { @include debug-background-color($dc07); };
+.navbar__menu-icon_back { @include debug-background-color($dc08); };
+.back-button-label      { @include debug-background-color($dc09); };
+.page-title             { @include debug-background-color($dc10); };
+.study-options          { @include debug-background-color($dc11); };

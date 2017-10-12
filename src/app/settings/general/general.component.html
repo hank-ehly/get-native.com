@@ -1,0 +1,79 @@
+<section>
+    <form class="form email-form" #emailForm="ngForm" (submit)="onSubmitEmail()">
+        <div class="form__group">
+            <label for="email" class="label" i18n="User email label text@@6ba4ecb46a685bbc07ce71dbd5580a48">Email</label>
+
+            <p class="paragraph paragraph--email-form paragraph--info" *ngIf="sentEmailUpdateConfirmationEmailEmitted$ | async" i18n="Message displayed after submitting an updated email address@@180be2f944682713f759b6615288cbe3">An email has been sent to {{ submittedEmailAddress }}. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</p>
+            <p class="paragraph paragraph--email-form paragraph--info" *ngIf="flags.hasResentConfirmationEmail" i18n="Message displayed after resending email confirmation email in general settings@@a156df53e81a3c26ab5082455077ab09">An email has been sent to {{ user?.email }}. Please click the enclosed link to complete the email confirmation process.</p>
+            <p class="paragraph paragraph--email-form paragraph--error-message" *ngIf="resendConfirmationEmailError">{{ resendConfirmationEmailError.message }}</p>
+            <p class="paragraph paragraph--email-form paragraph--error-message" *ngIf="editEmailError">{{ editEmailError.message }}</p>
+
+            <input id="email" type="email" name="email" class="input" [readonly]="!(isEditingEmailAddress$ | async)" [placeholder]="user?.email" [(ngModel)]="emailModel" required [pattern]="emailRegex" [gnFocus]="isEditingEmailAddress$ | async">
+
+            <div class="form__button-group" *ngIf="user.email_verified && !(isEditingEmailAddress$ | async)">
+                <button class="button button--opaque" (click)="onClickEditEmailAddress()" i18n="The title text of general settings button for enabling email editing@@e19141a6936b94673dedaf85e0ebdd98">EDIT</button>
+            </div>
+
+            <div class="form__button-group" *ngIf="!user.email_verified">
+                <button (click)="onClickResendConfirmationEmail()" class="button button--opaque" [disabled]="flags.processing.resendConfirmationEmail || flags.hasResentConfirmationEmail" i18n="The text for the button allowing users to resend their account confirmation email@@d10991fa81cf964182d36b780db8aab3">Resend Confirmation Email</button>
+            </div>
+
+            <div class="form__button-group" *ngIf="isEditingEmailAddress$ | async">
+                <button class="button button--opaque" type="submit" [disabled]="!emailForm.valid || flags.processing.editEmail" i18n="The text for the general settings save email button@@3ab339c5820f8680c1f7740e43a15337">SAVE</button>
+                <button class="button button--hollow form__cancel-button" [disabled]="flags.processing.editEmail" (click)="onClickCancelEmailEditing()" i18n="The title for the general settings cancel email modifications button@@be053fa70b16fd97c1fa6c44f705d9eb">CANCEL</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <div class="default-study-language">
+        <label class="label default-study-language__label" i18n="The text for the label denoting the user default study language select box@@a3da8af7fc23ec0108242a67658095e0">Default Study Language</label>
+        <p class="paragraph--error-message" *ngIf="updateDefaultStudyLanguageError">{{ updateDefaultStudyLanguageError.message }}</p>
+        <gn-select (selection$)="onSelectDefaultStudyLanguage($event)" [options]="studyLanguageOptions" [selected]="user?.default_study_language?.code" [disabled]="flags.processing.selectDefaultStudyLanguage"></gn-select>
+    </div>
+
+    <div class="interface-language">
+        <label class="label interface-language__label" i18n="The text for the label denoting the user interface language preference select box@@3fd49dede7fd589daa904a81db2541f1">Interface Language</label>
+        <p class="paragraph--error-message" *ngIf="updateInterfaceLanguageError">{{ updateInterfaceLanguageError.message }}</p>
+        <gn-select (selection$)="onSelectInterfaceLanguage($event)" [options]="interfaceLanguageOptions" [selected]="user?.interface_language?.code" [disabled]="flags.processing.selectInterfaceLanguage"></gn-select>
+    </div>
+</section>
+
+<hr>
+
+<section>
+    <form class="form password-form" #passwordForm="ngForm" (submit)="onSubmitPassword()" [gnMatch]="['new-password', 'confirm-password']">
+        <div class="form__group" *ngIf="passwordFormError">
+            <p class="paragraph paragraph--error-message">{{ passwordFormError.message }}</p>
+        </div>
+
+        <div class="form__group">
+            <label for="current-password" class="label" i18n="The label text for the current password input field@@a0b0162ac3b793da796b69e9a980a78f">Current Password</label>
+            <input id="current-password" class="input" type="password" name="current-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.current">
+            <a class="link current-password__forgot-password-link" (click)="onClickForgotPassword()" i18n="I forgot my password link text in general settings@@59463247ed2c4aed1b1236c13785c44c">I forgot my password.</a>
+        </div>
+
+        <div class="form__group">
+            <label for="new-password" class="label" i18n="The label text for the new password input field@@424d76341775773f988203365281b42c">New Password</label>
+            <input id="new-password" class="input" type="password" name="new-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.replace">
+            <gn-password-strength [password]="passwordModel.replace"></gn-password-strength>
+        </div>
+
+        <div class="form__group">
+            <label for="confirm-password" class="label" i18n="The label text for the confirm new password input field@@4733a1332d97eac914f73c262c6201a3">Confirm New Password</label>
+            <input id="confirm-password" class="input" type="password" name="confirm-password" minlength="8" maxlength="50" required [(ngModel)]="passwordModel.confirm">
+        </div>
+
+        <button class="button button--opaque form__button" [disabled]="passwordForm.invalid || flags.processing.updatePassword" i18n="The submit button text for the general settings update password form@@14674c0f8817bb7e37470b6bc7ff73b6">UPDATE</button>
+    </form>
+</section>
+
+<gn-modal [isVisible]="isPresentingForgotPasswordModal$ | async" (close)="onClickCloseForgotPasswordModal()">
+    <div class="modal__content modal__content--password-reset-link">
+        <p i18n="Instructions for sending password reset link@@97616c403b249ae0f7ea97779c552106">Click the below button to send a password reset link to your registered email address. You can eliminate the need to remember a password by instead logging in with Facebook, Twitter or Google.</p>
+        <p class="paragraph--success-message" *ngIf="flags.hasSentPasswordResetLink" i18n="Success message for password reset link form in general settings page@@4630aa25a2a0bf7cabdf9ab4d5ad2f36">A password reset link has been sent to {{ user.email }}!</p>
+        <p class="paragraph paragraph--error-message" *ngIf="passwordResetLinkError">{{ passwordResetLinkError.message }}</p>
+        <button class="button button--opaque" (click)="onClickSendPasswordResetLink()" [disabled]="flags.processing.sendPasswordResetLink || flags.hasSentPasswordResetLink" i18n="Send password reset link button text@@f3528d2ad9986f24ebc8884fd56e759a">SEND PASSWORD RESET LINK</button>
+    </div>
+</gn-modal>

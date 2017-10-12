@@ -1,0 +1,61 @@
+@import '../../styles/core';
+@import './library.component.debug';
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.section-header__title {
+  align-self: center;
+}
+
+.dropdown-toggle {
+  align-self: center;
+}
+
+.dropdown-toggle__icon {
+  cursor: pointer;
+  margin-left: 5px;
+  width: 12px;
+}
+
+.dropdown-toggle__icon--close {
+  width: 10px;
+}
+
+.section__button {
+  margin-top: 20px;
+}
+
+.section__paragraph--no-more-results {
+  margin-top: 30px;
+  font-style: italic;
+}
+
+.section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  z-index: 1;
+}
+
+.emoji {
+  text-align: center;
+  font-size: $font-size-x-large * 2;
+}
+
+.loading-section--no-videos {
+  display: flex;
+  flex-direction: column;
+  height: $video-panel-height * 2;
+  justify-content: center;
+}

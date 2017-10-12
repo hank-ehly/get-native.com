@@ -1,0 +1,97 @@
+@import '../../../styles/core';
+@import './study-progress.component.debug';
+
+.main {
+  display: flex;
+  flex-flow: row nowrap;
+  width: inherit;
+}
+
+.time-label, .progress-frame, .progress, .circle {
+  align-self: center;
+}
+
+.time-label {
+  @include font-weight-bold;
+  color: $regent-gray;
+  letter-spacing: $uppercase-label-letter-spacing;
+  font-size: $font-size-x-small;
+  white-space: nowrap;
+}
+
+.circle {
+  @include border-radius(50%);
+  background: $regent-gray;
+  border: 4px solid $white;
+  height: 8px;
+  width: 8px;
+}
+
+.circle--large {
+  border: none;
+  display: flex;
+  height: 16px;
+  justify-content: center;
+  width: 16px;
+}
+
+.progress-frame {
+  display: flex;
+  height: 6px;
+  margin-left: 10px;
+  position: relative;
+}
+
+.progress {
+  appearance: none;
+  height: inherit;
+  width: 36px;
+}
+
+.progress::-webkit-progress-bar {
+  background: $periwinkle-gray;
+}
+
+.progress--listening::-webkit-progress-value {
+  background: linear-gradient(to right, $robin-egg-blue, #0DCCBF);
+}
+
+.progress--shadowing::-webkit-progress-value {
+  background: linear-gradient(to right, #0DCCBF, #1ACCB3);
+}
+
+.progress--speaking::-webkit-progress-value {
+  background: linear-gradient(to right, #1ACCB3, #26CCA6);
+}
+
+.progress--writing::-webkit-progress-value {
+  background: linear-gradient(to right, #26CCA6, $shamrock);
+}
+
+.circle--large {
+  background: $robin-egg-blue;
+}
+
+.circle--listening.circle--complete {
+  background: #0DCCBF;
+}
+
+.circle--shadowing.circle--complete {
+  background: #1ACCB3;
+}
+
+.circle--speaking.circle--complete {
+  background: #26CCA6;
+}
+
+.circle--writing.circle--complete {
+  background: $shamrock;
+}
+
+.check-mark {
+  position: absolute;
+  color: $white;
+  align-self: center;
+  padding-top: 2px;
+  font-size: 10px;
+}

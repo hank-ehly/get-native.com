@@ -1,0 +1,5 @@
+@import '../../../styles/core';
+
+.table             { @include debug-background-color($dc01); };
+.table__data_key   { @include debug-background-color($dc02); };
+.table__data_value { @include debug-background-color($dc03); };

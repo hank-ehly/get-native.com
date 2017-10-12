@@ -1,0 +1,112 @@
+@import '../../styles/core';
+@import './dashboard.component.debug';
+
+$section-button-margin-top: 20px;
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+.dropdown {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  z-index: 1;
+}
+
+.dropdown-toggle {
+  align-self: center;
+}
+
+.dropdown-toggle__icon {
+  cursor: pointer;
+  margin-left: 5px;
+  width: 12px;
+}
+
+.dropdown-toggle__icon--close {
+  width: 10px;
+}
+
+hr {
+  margin: 50px auto;
+}
+
+.section-header__title {
+  align-self: center;
+  width: 310px;
+}
+
+.section-header__toggle-button-frame {
+  align-self: center;
+  display: flex;
+  width: $main-width - 310px;
+}
+
+.section-header__menu-item {
+  @include font-weight-bold;
+  color: $regent-gray;
+  cursor: pointer;
+  font-size: $font-size-x-small;
+  letter-spacing: $uppercase-label-letter-spacing;
+  margin-right: 20px;
+}
+
+.section-header__menu-item_active, .section-header__menu-item:hover {
+  color: $default-color;
+}
+
+.section__button {
+  margin-top: $section-button-margin-top;
+}
+
+.section__paragraph--no-more-results {
+  margin-top: 30px;
+  font-style: italic;
+}
+
+/* May need to be adjusted */
+$section-button-height: 34px;
+$video-panels-vertical-margin: 50px;
+
+.section_video-panels__body, .section_answers__body {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  min-height: $video-panel-height + $video-panels-vertical-margin + $section-button-margin-top + $section-button-height;
+}
+
+.section_answers__body {
+  /* Height of single answer row */
+  min-height: 182px;
+}
+
+.answers {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.answers__answer {
+  display: flex;
+  padding: 20px;
+}
+
+.answers__answer_striped {
+  background: $aqua-haze;
+}
+
+.answers__answer-body {
+  max-width: 700px;
+}
+
+.answers__answer-title {
+  color: $shamrock;
+}
+
+.answers__answer-date {
+  color: $regent-gray;
+  margin-left: auto;
+}

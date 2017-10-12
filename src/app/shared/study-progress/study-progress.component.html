@@ -1,0 +1,19 @@
+<main class="main">
+    <span class="time-label" i18n="Time-left progress bar label@@041680e74045d822b14408222599a8c6">{{ timeLeft | digitalTime }} LEFT</span>
+
+    <div class="progress-frame">
+        <div class="circle circle--large"><span class="check-mark">&#x2713;</span></div>
+
+        <progress max="100" [value]="progressForSection(section.Listening)" class="progress progress--listening"></progress>
+        <div class="circle circle--listening" [ngClass]="{'circle--complete': isComplete(section.Listening)}"></div>
+
+        <progress max="100" [value]="progressForSection(section.Shadowing)" class="progress progress--shadowing"></progress>
+        <div class="circle circle--shadowing" [ngClass]="{'circle--complete': isComplete(section.Shadowing)}"></div>
+
+        <progress max="100" [value]="progressForSection(section.Speaking)" class="progress progress--speaking"></progress>
+        <div class="circle circle--speaking" [ngClass]="{'circle--complete': isComplete(section.Speaking)}"></div>
+
+        <progress max="100" [value]="progressForSection(section.Writing)" class="progress progress--writing"></progress>
+        <div class="circle circle--writing" [ngClass]="{'circle--complete': isComplete(section.Writing)}"></div>
+    </div>
+</main>

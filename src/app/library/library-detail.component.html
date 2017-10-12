@@ -1,0 +1,58 @@
+<main class="main">
+    <section class="section section--video-detail">
+        <div class="column column_video">
+            <gn-video-player [src]="(video$ | async)?.video_url"></gn-video-player>
+
+            <section class="column__row">
+                <h6 i18n="The title for the video description section@@b1196fd06b5f3630fdc21acb30697b8d">About this video:</h6>
+                <p class="paragraph">{{ (video$ | async)?.description }}</p>
+            </section>
+
+            <div class="column__row video-stats">
+                <div class="video-stats__group video-stats__group_views">
+                    <img class="video-stats__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/view-circle.svg" i18n-alt="number of views@@45189b700729bdfdb4201330d27efd52" alt="views">
+                    <span class="video-stats__label" i18n="view count label@@f93e0c2af148ade90f69131ac7d8181e">{{((video$ | async)?.loop_count | fuzzy) || 0 }} views</span>
+                </div>
+                <div class="video-stats__group video-stats__group_likes">
+                    <button class="video-stats__button" (click)="likedChange$.next(!liked)" [disabled]="!(video$ | async)">
+                        <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/like.svg" i18n-alt="like icon@@68a055af2e55ddb10b6b633eb0d175e2" alt="like" *ngIf="!liked">
+                        <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/liked.svg" i18n-alt="unlike icon@@4fbf86a961cf5d045f4bfc6321039763" alt="unlike" *ngIf="liked">
+                    </button>
+
+                    <span class="video-stats__label">{{(likeCount | fuzzy) || 0 }}</span>
+                </div>
+            </div>
+
+            <div class="column__row share-buttons">
+                <button class="share-button share-button_facebook" (click)="onClickShareFacebook()" title="Share on Facebook" i18n-title="Facebook share button title@@9b0393d7b88304b861fa97f9e7704542"></button>
+                <button class="share-button share-button_twitter" [disabled]="!twitterShareHref" (click)="onClickShareTwitter()" title="Share on Twitter" i18n-title="Twitter share button title@@00729d836b028f8ab589bfbf5687195c"></button>
+                <button class="share-button share-button_email" [disabled]="!emailShareHref" (click)="onClickShareEmail()" title="Share via Email" i18n-title="Email share button title@@e3e10b774ed09799abdde89063af56bc"></button>
+            </div>
+
+            <hr>
+
+            <div class="column__row speaker__row">
+                <img class="speaker-thumbnail" [src]="((video$ | async)?.speaker).picture_url || ''" [alt]="((video$ | async)?.speaker)?.name">
+                <div class="speaker__info">
+                    <h6 class="speaker__name-header">{{ ((video$ | async)?.speaker)?.name }}</h6>
+                    <div class="speaker__description-text">{{ ((video$ | async)?.speaker)?.description }}</div>
+                    <button class="button speaker__follow-button" i18n="The text of the button that allows users to follow speakers@@fbebe975e795984a60905b8317d103b5">FOLLOW</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="column column_transcript">
+            <gn-transcript [transcripts]="(video$ | async)?.transcripts"></gn-transcript>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="section section_related-videos">
+        <header class="section-header">
+            <h1 class="section-header__title" i18n="The title for the related videos section@@4a9ef0462e8ed4901c46790d5a2e55df">Related Videos</h1>
+        </header>
+
+        <gn-video-panel-list [videos]="(video$ | async)?.related_videos?.records" [navigates]="true"></gn-video-panel-list>
+    </section>
+</main>

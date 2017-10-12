@@ -1,0 +1,56 @@
+<main class="main">
+    <header class="header">
+        <div class="header__thumbnail-picker">
+            <div class="header__thumbnail-container" [ngClass]="{selected: isThumbnailDropdownVisible}" (click)="onClickThumbnail()">
+                <img class="header__thumbnail" *ngIf="!data.image" [src]="pictureUrl$ | async" alt="">
+                <img class="header__thumbnail" *ngIf="data.image" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight" i18n-alt="Alt text for settings page user thumbnail image@@9f55b08839a180df1d65398a9079d37e" alt="user picture">
+            </div>
+        </div>
+
+        <div class="header__thumbnail-upload-buttons" *ngIf="data.image">
+            <button class="button" (click)="onClickCancelUpload()" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" i18n="Cancel thumbnail upload button title@@a06bd93b44304b29b00b2f7538435fdc">CANCEL</button>
+            <button class="button button--opaque" (click)="onClickUpload()" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" i18n="Upload thumbnail button title@@edd2f93006443c842ce451c9ca301f3c">UPLOAD</button>
+        </div>
+
+        <gn-dropdown *ngIf="isThumbnailDropdownVisible" [left]="dropdownLeft" [top]="dropdownTop">
+            <label>
+                <a class="link dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}"  i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
+                <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail($event)">
+            </label>
+            <a class="link dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage || (isSilhouettePicture$ | async)}" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</a>
+            <span class="dropdown-divider"></span>
+            <a class="link dropdown-link dropdown-link--cancel" (click)="onClickCancelDropdown()" i18n="Cancel thumbnail dropdown button title@@18e0be2c661eaee7e8d5e06c3bedb620">Cancel</a>
+        </gn-dropdown>
+
+        <ng-container [ngSwitch]="selectedTab">
+            <h6 class="header__title" *ngSwitchDefault i18n="General settings page description@@b95a9f64b954582c56cb0033abf73084">View and update your login credentials.</h6>
+            <h6 class="header__title" *ngSwitchCase="'security'" i18n="Security settings page description@@0f10119abc4c5cba9c48416f43cb3c9c">Manage your account privacy settings.</h6>
+            <h6 class="header__title" *ngSwitchCase="'notifications'" i18n="Notification settings page description@@76f4626e88c7b90a7027b3c2bb87e96b">Specify how getnative should be able to notify you.</h6>
+            <h6 class="header__title" *ngSwitchCase="'activity'" i18n="Activity settings page description@@dc86fc47fec36acfb7124c6559cc554b">View updates and recent activity on getnative.</h6>
+        </ng-container>
+    </header>
+
+    <ul class="tabs">
+        <li class="tab" [routerLink]="['/settings']" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}" (click)="setSelectedTab('general')" i18n="The general settings page tab label@@d68d03febd04b44e73cacd22418e0b52">GENERAL</li>
+        <li class="tab" [routerLink]="['/settings/security']" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}" (click)="setSelectedTab('security')" i18n="The security settings page tab label@@bd5ba99c6cd0d5033177ce7073b8ce70">SECURITY</li>
+        <li class="tab" [routerLink]="['/settings/notifications']" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}" (click)="setSelectedTab('notifications')" i18n="The notifications settings page tab label@@ecc74de91783b4d3af04e190cfea171c">NOTIFICATIONS</li>
+        <li class="tab" [routerLink]="['/settings/activity']" routerLinkActive="tab_active" [routerLinkActiveOptions]="{exact: true}" (click)="setSelectedTab('activity')" i18n="The activity page tab label@@8de0f7071b7a00591528e97b1ce41a26">ACTIVITY</li>
+    </ul>
+
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+</main>
+
+<gn-modal [isVisible]="isCropperModalVisible">
+    <div class="modal-content">
+        <header class="header">
+            <h2 i18n="Thumbnail crop header message@@23bf0c14e2fc6cb762fabf9b9fdc5309">Position and crop your photo</h2>
+        </header>
+        <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+        <footer class="footer">
+            <button class="button button--hollow" (click)="onClickCancelCrop()" i18n="Cancel thumbnail crop button title@@a61078592b960ef19807e60790795aec">Cancel</button>
+            <button class="button button--opaque" (click)="onClickApplyCrop()" i18n="Apply thumbnail crop button title@@e3735089b346ea8eef209b48899bbbb0">Apply</button>
+        </footer>
+    </div>
+</gn-modal>

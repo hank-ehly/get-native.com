@@ -1,0 +1,41 @@
+<main>
+    <section class="section">
+        <header class="section-header">
+            <h1 class="section-header__title" i18n="The title for the videos section of the Library page@@ff43f4457e32be874087e47b5fa57de9">Videos</h1>
+
+            <div class="dropdown-toggle">
+                <span class="dropdown-toggle__text" *ngIf="(categoryFilter$ | async)?.value">{{ categoryFilter$.pluck('text') | async }}</span>
+                <span class="dropdown-toggle__text" *ngIf="!(categoryFilter$ | async)?.value" i18n="The label for the default search category of all videos@@39ae7f4a334778f4c7f2b2003d4f7202">All videos</span>
+                <img class="dropdown-toggle__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/arrow-down.svg" i18n-alt="expand category dropdown@@9fc1e4b44da73e049a77018162a5fd12" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
+                <img class="dropdown-toggle__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/arrow-up.svg" i18n-alt="collapse category dropdown@@0ce9f3e4a465a29ca15eb50a01f21508" alt="collapse" *ngIf="(isDropdownVisible$ | async)  && !(categoryFilter$ | async).value" (click)="showDropdown$.next(false)">
+                <img class="dropdown-toggle__icon dropdown-toggle__icon--close" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/close-green.svg" i18n-alt="reset category selection@@1eeed920b5a45b3678de786bf2e0748a" alt="reset" *ngIf="(categoryFilter$ | async).value" (click)="onClickResetDropdownSelection()">
+            </div>
+
+            <gn-category-list *ngIf="isDropdownVisible$ | async" (category$)="onSelectCategory($event)" (subcategory$)="onSelectSubcategory($event)" [categories]="categories$ | async" class="dropdown" [@dropdown]></gn-category-list>
+        </header>
+
+        <gn-video-panel-list [disabled]="currentLoadingState === loadingState.Loading" [videos]="videos$ | async" [navigates]="true"></gn-video-panel-list>
+
+        <div [ngSwitch]="currentLoadingState" [ngClass]="{'loading-section--no-videos': !(videos$ | async)?.length}">
+            <button class="button section__button"
+                    *ngSwitchDefault
+                    (click)="loadMoreVideos$.next(maxVideoId)"
+                    i18n="The text for the load more button of the Library page videos section@@dc5e40c592f0ce0f2b4cb80d13ea4e88">LOAD MORE</button>
+
+            <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/spinner.gif"
+                 class="button__activity-indicator"
+                 alt="loading"
+                 *ngSwitchCase="loadingState.Loading"
+                 i18n-alt="loading icon@@a91e51cea70873729bbf8c93e9acde65">
+
+            <p class="section__paragraph section__paragraph--no-more-results"
+               *ngSwitchCase="loadingState.ReachedLastResult"
+               i18n="No more results label for library video list@@471a2d1c23aa850f1ee84ea4e6c055d0">No more results</p>
+
+            <div class="section__error" *ngSwitchCase="loadingState.NoResults">
+                <p class="emoji">🤦</p>
+                <p i18n="No videos for category message@@331d558742a5c1254c378d55fb4b9e70">Whoops! No videos exist for this category yet..</p>
+            </div>
+        </div>
+    </section>
+</main>

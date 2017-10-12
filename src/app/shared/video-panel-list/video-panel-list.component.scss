@@ -1,0 +1,17 @@
+@import '../../../styles/core';
+
+:host {
+  width: 100%;
+}
+
+.video-panels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.video-panels__flex-panel {
+  height: 100%;
+  width: ($main-width - 60px) / 3;
+}

@@ -1,0 +1,42 @@
+<div class="video-panel" [ngClass]="{'video-panel--disabled': disabled}">
+    <img [src]="video?.picture_url" alt="video-thumbnail" class="video-panel__img">
+
+    <div class="video-panel__overlay" [ngClass]="{'video-panel__overlay_link': !controls}" (click)="onClickOverlay()">
+        <div class="controls" *ngIf="controls || flags.isBeginTarget">
+            <div class="controls__row">
+                <div class="controls__minute-button-frame">
+                    <div class="controls__minute-button" [ngClass]="{'controls__minute-button--disabled': disabled}" (click)="onClickMinuteButtonIncrement()"></div>
+                    <div class="controls__minute-button" [ngClass]="{'controls__minute-button--disabled': disabled}" (click)="onClickMinuteButtonDecrement()"></div>
+                </div>
+
+                <label for="time" class="sr-only" i18n="Label for describing length of video@@3067b8f10b568beca0402c9954728763">Time</label>
+                <ng-container i18n="Number of minutes@@dfe84b58c71ace0e2d684bf3231b81f3">
+                    <input id="time" class="controls__input" [(ngModel)]="time" type="number" [min]="min" step="1" [max]="max" readonly>
+                    <span class="controls__minutes-label">minutes</span>
+                </ng-container>
+            </div>
+            <div class="controls__row">
+                <button class="controls__button" (click)="onBegin()" i18n="The text for the begin study session button@@d6f6f018e3af2b307e2e4577b59c42cc" [disabled]="disabled">Begin</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <h5 class="footer__video-title">{{ video?.subcategory?.name }}</h5>
+        <span class="footer__video-speaker">{{ video?.speaker?.name }}</span>
+
+        <div class="video-stats">
+            <div class="video-stats__length">
+                <img class="video-stats__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/time.svg" i18n-alt="Alt text for video panel clock icon@@64a786d1ea99adcc3e7e1db0e0f2dd34" alt="time">
+                <span class="video-stats__label">{{ video?.length | digitalTime }}</span>
+            </div>
+
+            <div class="video-stats__views">
+                <img class="video-stats__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/view.svg" i18n-alt="Alt text for video panel views icon@@d56810aa9d2f59f731324d710cc64908" alt="views">
+                <span class="video-stats__label">{{ video?.loop_count | fuzzy }}</span>
+            </div>
+
+            <span class="video-stats__label video-stats__created-at">{{ video?.created_at | gnDate }}</span>
+        </div>
+    </footer>
+</div>

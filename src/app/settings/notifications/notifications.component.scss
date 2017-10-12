@@ -1,0 +1,35 @@
+@import '../../../styles/core';
+@import './notifications.component.debug';
+
+.row {
+  margin-top: 50px;
+}
+
+.row:first-child {
+  margin-top: 30px;
+}
+
+.label-button-row {
+  margin-top: 30px;
+}
+
+.paragraph {
+  color: $regent-gray;
+  padding-right: 20px;
+}
+
+.label-button-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  > * {
+    align-self: center;
+  }
+}
+
+.paragraph--error-message {
+  @include font-weight-bold();
+  font-size: $font-size-small;
+  color: $error-message-color;
+  margin-top: 5px;
+}

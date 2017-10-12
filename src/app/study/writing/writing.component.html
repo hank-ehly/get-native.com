@@ -1,0 +1,25 @@
+<main class="main">
+    <section class="section section_answer">
+        <form class="answer-form">
+            <div class="answer-form__group">
+                <label for="answer" class="label">{{ question?.text }}</label>
+                <textarea name="answer" id="answer" class="textarea section_answer__textarea" (input)="onInput($event)"></textarea>
+            </div>
+            <span class="section_answer__word-count">{{ wordCount }}</span>
+        </form>
+
+        <hr>
+
+        <div class="example-answer">
+            <label for="example-answer" class="label" i18n="example writing answer title@@73909473aa35b23b4b87df8910e31fa4">Example Answer:</label>
+            <textarea id="example-answer" class="textarea example-answer__textarea" readonly gnAutosizeTextarea>{{ question?.example_answer }}</textarea>
+        </div>
+    </section>
+
+    <section class="section section_collocation-occurrences">
+        <h6 i18n="collocations list title@@6b5b9bbe603b68a2ccbe9ab7a5e00442">Use these expressions:</h6>
+        <ul class="collocation-occurrences">
+            <li class="collocation-occurrence" *ngFor="let collocationOccurrence of transcript?.collocation_occurrences?.records">{{ collocationOccurrence?.text }}</li>
+        </ul>
+    </section>
+</main>
