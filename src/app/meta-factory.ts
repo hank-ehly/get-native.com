@@ -42,8 +42,10 @@ export function metaFactory(localeId: string, lang: LangService): MetaLoader {
 const metaKeyValues = {
     en: {
         'default': {
-            title: 'getnative. Break the barrier between fluid and native-like.',
-            description: 'getnative is a language learning resource for advanced speakers'
+            title: 'getnative. Break the barrier between "proficient" and "native-like."',
+            description: `getnative is a free online language learning tool that uses the imitation of native speakers as a way to improve
+            pronunciation and general language usage. Using high quality videos of real native speakers, getnative guides users through an
+            automated, intensive study routine. You only decide how much time to spend.`
         },
         dashboard: {
             title: 'Dashboard'
@@ -97,8 +99,9 @@ const metaKeyValues = {
     },
     ja: {
         'default': {
-            title: 'getnative. ネーティブな話し方を目指せ',
-            description: 'getnativeは、上級者向けの言語学習リソースです。'
+            title: 'getnative.「上手」と「ネイティヴみたい」の壁を壊しましょう…',
+            description: `getnativeは、ネイティヴのような発音や言い回しを自然と身につける手段としてネイティブスピーカーのインタービュー動画を使用する無料のオンライン言語
+            学習ツールです。本当のネイティブスピーカーの高品質ビデオを使用してユーザーの学習ルーチンを自動化することで、短時間で効率よく勉強できるようになりました。`
         },
         dashboard: {
             title: 'ダッシュボード'
