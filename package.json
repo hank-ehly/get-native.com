@@ -17,7 +17,9 @@
         "i18n": "ng xi18n",
         "rhash": "node -e \"console.log(require('crypto').randomBytes(16).toString('hex'))\"",
         "cors:set:staging": "gsutil cors set gs-cors.json gs://stg.getnativelearning.com",
-        "cors:get:staging": "gsutil cors get gs://stg.getnativelearning.com | jq"
+        "cors:get:staging": "gsutil cors get gs://stg.getnativelearning.com",
+        "cors:set:production": "gsutil cors set gs-cors.json gs://getnativelearning.com",
+        "cors:get:production": "gsutil cors get gs://getnativelearning.com"
     },
     "private": true,
     "dependencies": {
