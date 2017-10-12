@@ -1,0 +1,20 @@
+<footer class="footer">
+    <ul class="footer__row footer__row_app-links">
+        <li><a class="link" [routerLink]="['/']" i18n="The text of the link to the home page@@306bb300824ac2610485aeb98792db49">Home</a></li>
+        <li><a class="link" [routerLink]="['/library']" i18n="The text of the link to the library page@@c03bb9862ecc4f156867371af921a4c4">Library</a></li>
+        <li><a class="link" [routerLink]="['/help']" i18n="The text of link to the contact-us page@@ff90d3c15ff7ee8f4c66e31493c71ace">Contact</a></li>
+    </ul>
+    <div class="footer__row footer__row_copyright" i18n="The footer copyright text@@6335345ee212a722ca9838616830a7f6">© {{ year }} getnative</div>
+    <div class="footer__row footer__row_legal-links">
+        <a class="footer__legal-link" [routerLink]="['/tos']" i18n="The text of the footer link to the terms of service page@@0efb113302c2a6dec65aac8751dcde55">Terms of Service</a>
+        <span class="footer__legal-link-separator">&</span>
+        <a class="footer__legal-link" [routerLink]="['/privacy']" i18n="The text of the footer link to the privacy policy page@@f98f365a0f204f89f9044c8c006dc5f8">Privacy Policy</a>
+    </div>
+    <div class="footer__row">
+        <ul class="footer__row__language-links">
+            <li *ngFor="let link of langLinks$ | async">
+                <a [href]="link.url" class="link">{{ link.label }}</a>
+            </li>
+        </ul>
+    </div>
+</footer>

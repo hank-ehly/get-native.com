@@ -1,0 +1,56 @@
+@import "../../../styles/core";
+@import "./footer.component.debug";
+
+.footer {
+  padding: 0 0 50px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer__row {
+  display: flex;
+  justify-content: space-around;
+  margin: 6px auto 0;
+  max-width: $main-width / 3;
+}
+
+.footer__row_app-links {
+  @include font-weight-bold;
+  justify-content: center;
+}
+
+.footer__row_app-links .link {
+  padding: 0 5px;
+}
+
+.footer__row_copyright {
+  color: $grey;
+}
+
+.footer__row_legal-links {
+  color: $grey;
+  justify-content: center;
+}
+
+.footer__legal-link {
+  color: inherit;
+  text-decoration-color: $grey;
+
+  &:hover {
+    color: $default-color;
+  }
+}
+
+.footer__legal-link-separator {
+  padding: 0 5px;
+}
+
+.footer__row__language-links li {
+  display: inline-block;
+  padding-left: 10px;
+  &:first-child {
+    padding-left: 0;
+  }
+}

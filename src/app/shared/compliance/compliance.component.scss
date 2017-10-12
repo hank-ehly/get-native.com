@@ -1,0 +1,35 @@
+@import "../../../styles/core";
+@import "./compliance.component.debug";
+
+:host {
+  display: block;
+  height: 25px;
+  left: 30px;
+  position: fixed;
+  min-width: $main-width;
+  bottom: 30px;
+  padding: 15px;
+  right: 30px;
+}
+
+.dialog {
+  @include border-radius();
+  background: $wild-sand;
+  bottom: 30px;
+  display: flex;
+  left: 30px;
+  min-width: $main-width;
+  padding: 15px;
+  position: fixed;
+  right: 30px;
+  opacity: 0.95;
+}
+
+.dialog__link_tos {
+  color: $default-color;
+  padding-left: 5px;
+}
+
+.dialog__link_close {
+  margin-left: auto;
+}

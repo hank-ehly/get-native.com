@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="no-activity-block" *ngIf="!activityItems.length">
+        <span class="emoji">👷</span>
+        <p i18n="Message saying that activity feature is still in development@@b22c9ff9e3bf611b3fd86fa13f57b904">This feature is still in development..</p>
+        <p i18n="Message telling user to check the in-development feature again later@@37fcbb9ff4109864546ef01f59c58130">Check back later!</p>
+    </div>
+    <ng-container *ngIf="activityItems.length">
+        <ul class="activity-list">
+            <li class="list-item" *ngFor="let item of activityItems">
+                <header class="list-item__header">
+                    <h5 class="list-item__title">{{ item.title }}</h5>
+                    <span class="list-item__time-since">{{ item.created_at | fromNow }}</span>
+                </header>
+                <section class="list-item__body" [innerHtml]="item.body | safeHtml"></section>
+                <footer class="list-item__footer" *ngIf="item.footer" [innerHtml]="item.footer | safeHtml"></footer>
+            </li>
+        </ul>
+        <button class="button button--load-more" i18n="Load more activity items button@@de0c4cf200c80f7aee9796e3b63aa518">LOAD MORE</button>
+    </ng-container>
+</div>

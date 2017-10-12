@@ -1,0 +1,55 @@
+<main class="main">
+    <section class="section section--faqs">
+        <header class="section-header">
+            <div class="section-header__icon-frame">
+                <img class="section-header__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/help-faqs.svg" i18n-alt="faq section icon alternative text@@327ad2dded8e635e33cbe52854e7d9a7" alt="faqs">
+            </div>
+            <h3 class="section-header__title" i18n="The header title for the help page FAQ section@@b6f21c54a7d0d1f946a944795be5c914">Frequently Asked Questions</h3>
+        </header>
+
+        <ul class="faqs">
+            <li class="faqs__faq">
+                <div class="faqs__faq-header">
+                    <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/chevron.svg" i18n-alt="toggle faq visibility icon alternative text@@b91de74cb8d0742dba9c80ca10276d02" alt="toggle" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(0)" [@rotation]="chevronRotationForFaqAtIndex(0)">
+                    <span class="faqs__faq-number" (click)="toggleFaqAtIndex(0)">01</span>
+                    <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(0)" i18n="FAQ (1) Question@@821bdafc53e0c1ea132ad4e91542cae2">Is getnative free?</span>
+                </div>
+                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(0)" [@visible]="isFaqExpandedAtIndex(0)" i18n="FAQ (1) Answer@@c11c85dfe124e49b2c76f8a0701c6de5">Yes! getnative is a free online language learning resource.</p>
+            </li>
+            <li class="faqs__faq">
+                <div class="faqs__faq-header">
+                    <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/chevron.svg" i18n-alt="toggle faq visibility icon alternative text@@b91de74cb8d0742dba9c80ca10276d02" alt="toggle" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(1)" [@rotation]="chevronRotationForFaqAtIndex(1)">
+                    <span class="faqs__faq-number" (click)="toggleFaqAtIndex(1)">02</span>
+                    <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(1)" i18n="FAQ (2) Question@@4e9b3d243b51f1d33a396b7f0aa4ada1">How do I begin a study session?</span>
+                </div>
+                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(1)" [@visible]="isFaqExpandedAtIndex(1)" i18n="FAQ (2) Answer@@de24fb60b24f97090d63ed8c3c9517e3">You can start a new study session in one of 2 ways. First, you can click the "start" button at the top of any video page. Second, you can click the "begin" button from a video saved to your dashboard queue.</p>
+            </li>
+            <li class="faqs__faq">
+                <div class="faqs__faq-header">
+                    <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/chevron.svg" i18n-alt="toggle faq visibility icon alternative text@@b91de74cb8d0742dba9c80ca10276d02" alt="toggle" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(2)" [@rotation]="chevronRotationForFaqAtIndex(2)">
+                    <span class="faqs__faq-number" (click)="toggleFaqAtIndex(2)">03</span>
+                    <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(2)" i18n="FAQ (3) Question@@2cd1a6d5f04c97e634388ab5ce1e3329">Who created this website?</span>
+                </div>
+                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(2)" [@visible]="isFaqExpandedAtIndex(2)" i18n="FAQ (3) Answer@@f6a6c83477afd406e5318b99212d2e8b"><a href="https://hankehly.com" target="_blank" class="link">Hank Ehly</a> had the initial idea and wrote the code. <a href="https://twitter.com/micheleangeloro" target="_blank" class="link">Michele Angeloro</a> created the design.</p>
+            </li>
+            <li class="faqs__faq">
+                <div class="faqs__faq-header">
+                    <img src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/chevron.svg" i18n-alt="toggle faq visibility icon alternative text@@b91de74cb8d0742dba9c80ca10276d02" alt="toggle" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(3)" [@rotation]="chevronRotationForFaqAtIndex(3)">
+                    <span class="faqs__faq-number" (click)="toggleFaqAtIndex(3)">04</span>
+                    <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(3)" i18n="FAQ (4) Question@@6efab6159aac1ee9af28bf983eb49589">How do I set a password if I sign in via SNS?</span>
+                </div>
+                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(3)" [@visible]="isFaqExpandedAtIndex(3)" i18n="FAQ (4) Answer@@f970ac9af488b2f9b4f649d2a2de80f3">If you logged in via Facebook, Twitter or Google, then you can create a password by going through the <a [routerLink]="['/help', '20170825']" class="link">password reset process</a>.</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="section section_contact">
+        <header class="section-header">
+            <div class="section-header__icon-frame">
+                <img class="section-header__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/help-mail.svg" i18n-alt="contact-us icon alternative text@@f1b1ac46406bc8d0449168435069b724" alt="contact">
+            </div>
+            <h3 class="section-header__title" i18n="The header title for the help page contact-us section@@84a90cc1f49cf547398d42148f47b1dd">Contact</h3>
+        </header>
+        <p class="section__paragraph" i18n="Help page contact-us section instructions@@c05d50ea8308c63cbac4b93cf2e14b4e">For all inquiries, please contact us at <a class="link" href="mailto:contact@getnativelearning.com">contact@getnativelearning.com</a>.</p>
+    </section>
+</main>

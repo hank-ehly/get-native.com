@@ -1,0 +1,62 @@
+@import '../../../styles/core';
+@import './writing.component.debug';
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section_answer {
+  width: 590px;
+}
+
+.answer-form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.answer-form__group {
+  flex-basis: 100%;
+  margin-top: 0;
+}
+
+.section_answer__textarea {
+  height: 200px;
+}
+
+.section_answer__button, .section_answer__word-count {
+  align-self: center;
+  margin-top: 24px;
+}
+
+.section_answer__word-count {
+  color: $regent-gray;
+}
+
+.answer-form + hr {
+  margin: 30px 0;
+}
+
+.section_collocation-occurrences {
+  width: 280px;
+}
+
+.collocation-occurrences {
+  line-height: 34px;
+  padding-top: 6px;
+  list-style: none;
+}
+
+.collocation-occurrence:before {
+  content: '•';
+  color: $shamrock;
+  padding-right: 16px;
+}
+
+.example-answer__textarea {
+  background: transparent;
+  color: $regent-gray;
+  overflow: hidden;
+  padding: 0;
+}

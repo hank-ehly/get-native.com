@@ -1,0 +1,185 @@
+@import '../../../styles/core';
+@import './navbar.component.debug';
+
+.navbar {
+  display: flex;
+  height: 90px;
+}
+
+.navbar__logo-frame {
+  display: flex;
+  height: 90px;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  padding-left: 20px;
+  user-select: none;
+  z-index: 2;
+}
+
+.navbar__logo {
+  align-self: center;
+  cursor: pointer;
+  height: 30px;
+  outline: none;
+}
+
+.navbar__nav {
+  display: flex;
+  position: fixed;
+  height: 90px;
+  right: 0;
+  padding: 0 30px;
+  white-space: nowrap;
+}
+
+.navbar__link {
+  align-self: center;
+}
+
+.navbar__link_help {
+  color: $default-color;
+  margin-right: 15px;
+  &:hover {
+    border-color: lighten($default-color, 50%);
+  }
+}
+
+.navbar__menu {
+  display: flex;
+  align-self: center;
+  height: inherit;
+  line-height: 90px;
+  width: $main-width;
+}
+
+.navbar__menu_center {
+  margin: 0 auto;
+  position: absolute;
+  left: 150px;
+  transform: none;
+  @media screen and (min-width: $breakpoint-md) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.navbar__menu_center > div,
+.navbar__menu_center > span {
+  width: $main-width/3;
+}
+
+.back-button-frame {
+  display: flex;
+  justify-content: flex-start;
+  left: 0;
+  overflow: hidden;
+}
+
+.page-title {
+  @include font-weight-bold();
+  left: $main-width/3;
+  text-align: center;
+  position: absolute;
+}
+
+.navbar__menu-icon_back, .back-button-label {
+  align-self: center;
+}
+
+.back-button-label {
+  padding-top: 1px;
+  transform: translateX(20px);
+}
+
+.navbar__menu-icon {
+  cursor: pointer;
+  user-select: none;
+  width: 30px;
+}
+
+.study-options, .study-progress-frame {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  align-self: center;
+  left: $main-width - ($main-width/3);
+}
+
+.study-option {
+  align-self: center;
+}
+
+.study-option_start {
+  transform: translateX(-20px);
+}
+
+.navbar__menu--right {
+  z-index: 1;
+  @media screen and (max-width: $breakpoint-md) {
+    left: $breakpoint-md - 160px
+  }
+}
+
+.navbar__menu--authenticated {
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 0 30px 0 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 160px;
+  z-index: 2;
+}
+
+.navbar__menu--authenticated .navbar__menu-icon {
+  cursor: pointer;
+  vertical-align: middle;
+  width: 18px;
+}
+
+.navbar__menu--authenticated .navbar__menu-icon.navbar__menu-icon_account {
+  @include border-radius(50%);
+  height: 30px;
+  object-fit: cover;
+  outline: none;
+  width: 30px;
+}
+
+.navbar__menu-icon-frame {
+  position: relative;
+}
+
+.notification-indicator {
+  @include border-radius(50%);
+  position: absolute;
+  top: -3px;
+  background: $regent-gray;
+  height: 6px;
+  width: 6px;
+  right: -2px;
+  transition: background-color 200ms;
+}
+
+.notification-indicator--unread {
+  background: $red-orange;
+}
+
+.navbar__menu_center .search-bar {
+  -webkit-appearance: none;
+  align-self: center;
+  background: rgba(255, 255, 255, 0);
+  color: $regent-gray;
+  margin: 0;
+  padding: 0;
+}
+
+gn-activity-dropdown {
+  position: fixed;
+  right: 60px;
+  top: 68px;
+  z-index: 1;
+  @media screen and (max-width: $breakpoint-md) {
+    left: $breakpoint-md - (290px + 60px)
+  }
+}

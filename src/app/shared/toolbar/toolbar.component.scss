@@ -1,0 +1,70 @@
+@import '../../../styles/core';
+@import './toolbar.component.debug';
+
+.toolbar {
+  @include font-weight-bold;
+  bottom: 30px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  font-size: $font-size-x-small;
+  margin-right: 30px;
+  position: fixed;
+  right: 0;
+  width: 120px;
+  z-index: 1;
+  @media screen and (max-width: $breakpoint-md) {
+    left: $breakpoint-md - 150px
+  }
+}
+
+.toolbar__tooltip-languages {
+  @include border-radius();
+  background: $shamrock;
+  color: $white;
+  display: flex;
+  flex-flow: column wrap;
+  letter-spacing: $uppercase-label-letter-spacing;
+  line-height: 24px;
+  margin-right: -10px;
+  margin-left: 10px;
+  padding: 10px;
+  text-align: right;
+}
+
+.toolbar__language-label {
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.toolbar__language-label_selected {
+  align-self: flex-end;
+  color: $regent-gray;
+  cursor: pointer;
+  letter-spacing: $uppercase-label-letter-spacing;
+  margin-top: 16px;
+  user-select: none;
+}
+
+.toolbar__links {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.toolbar__link {
+  margin-left: 20px;
+}
+
+.toolbar_link-icon {
+  cursor: pointer;
+  height: auto;
+  width: 20px;
+  transform: rotate(0deg);
+  transition: 150ms ease-in-out;
+  user-select: none;
+}
+
+.toolbar__link--settings:hover .toolbar_link-icon {
+  transform: rotate(45deg);
+}

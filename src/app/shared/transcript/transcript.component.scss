@@ -1,0 +1,92 @@
+@import '../../../styles/core';
+@import './transcript.component.debug';
+
+.tabs-frame {
+  position: relative;
+}
+
+.tabs {
+  @include border-radius();
+  background: $aqua-haze;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 50px;
+}
+
+.tabs__tab {
+  @include font-weight-bold;
+  align-self: center;
+  color: $regent-gray;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: color 0.2s;
+}
+
+.tabs__tab_active {
+  color: $default-color;
+}
+
+.tab-slider {
+  background: $shamrock;
+  bottom: 0;
+  height: 3px;
+  left: 20px;
+  position: absolute;
+  transition: .2s;
+  width: 0;
+}
+
+.tab-content {
+  line-height: 30px;
+  margin-top: 20px;
+}
+
+.tab-content .content {
+  display: none;
+}
+
+.tab-content .content.active {
+  display: block;
+}
+
+:host /deep/ .collocation-occurrence {
+  color: $orange-peel;
+}
+
+/* To apply style to innerHtml contents */
+:host /deep/ .tab-content .content .collocation-occurrence {
+  border-bottom: 2px solid $orange-peel;
+  color: $default-color;
+  cursor: pointer;
+
+  &:hover, &:focus, &.collocation-occurrence--selected {
+    color: $orange-peel;
+  }
+}
+
+hr {
+  margin: 30px 0;
+}
+
+.usage-examples-section__header {
+  line-height: 30px;
+}
+
+.usage-examples-section__header-title {
+  @include font-weight-bold;
+  font-size: $font-size-x-small;
+}
+
+.usage-examples-section__header-collocation-occurrence {
+  @include font-weight-regular;
+}
+
+.usage-examples-section__header-phonetic {
+  color: $regent-gray;
+  margin-left: 5px;
+}
+
+.usage-example {
+  margin-top: 8px;
+  line-height: 30px;
+}

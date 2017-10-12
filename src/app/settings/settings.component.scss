@@ -1,0 +1,152 @@
+@import '../../styles/core';
+@import './settings.component.debug';
+
+.main {
+  width: $main-width * (2/3);
+}
+
+.header {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.header__thumbnail-picker {
+  @include border-radius(50%);
+  align-self: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.header__thumbnail-upload-buttons {
+  align-self: center;
+  margin-top: 30px;
+
+  > button:last-child {
+    margin-left: 6px;
+  }
+}
+
+.header__thumbnail-container {
+  @include border-radius(50%);
+  cursor: pointer;
+  display: block;
+  height: 110px;
+  width: 110px;
+  transition: all 0.5s;
+  user-select: none;
+}
+
+.header__thumbnail-container:hover:after,
+.header__thumbnail-container.selected:after {
+  @include border-radius(50%);
+  background: rgba($black, 0.2) url('https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/avatar.svg') no-repeat center;
+  background-size: 30px;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.header__file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.header__thumbnail {
+  @include border-radius(50%);
+  object-fit: cover;
+  width: inherit;
+  height: inherit;
+}
+
+.header__title {
+  @include font-weight-regular;
+  align-self: center;
+  color: $regent-gray;
+  margin-top: 30px;
+  width: 260px;
+  text-align: center;
+}
+
+.tabs {
+  border-bottom: 2px solid $aqua-haze;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  margin-top: 50px;
+  padding-bottom: 20px;
+}
+
+.tab {
+  @include font-weight-bold;
+  color: $regent-gray;
+  cursor: pointer;
+  font-size: $font-size-x-small;
+  margin-left: 30px;
+  outline: none;
+}
+
+.tab_active {
+  color: $default-color;
+}
+
+:host /deep/ {
+  .canvas {
+    display: block;
+    margin: 16px auto;
+  }
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-content .header h2 {
+  font-size: $font-size-medium;
+  text-align: center;
+}
+
+.modal-content .footer {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-content .footer .button {
+  margin: 0 5px;
+}
+
+.dropdown-link {
+  background: $white;
+  border: none;
+  display: block;
+  line-height: $font-size-large;
+  padding: 6px;
+  text-align: center;
+  margin: auto;
+  min-width: 220px;
+  user-select: none;
+  &:hover {
+    background-color: $azure-radiance;
+    color: $white;
+    &.link--disabled {
+      background: $white;
+      color: $regent-gray;
+    }
+  }
+}
+
+.dropdown-divider {
+  display: block;
+  position: relative;
+  float: none;
+  line-height: inherit;
+  padding-top: 1px;
+  margin: 5px 1px 6px;
+  border-bottom: 1px solid $gallery;
+}

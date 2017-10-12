@@ -1,0 +1,7 @@
+<main>
+    <ng-container [ngSwitch]="articleId">
+        <gn-help-article-20170818 *ngSwitchCase="20170818"></gn-help-article-20170818>
+        <gn-help-article-20170825 *ngSwitchCase="20170825"></gn-help-article-20170825>
+        <div *ngSwitchDefault>No article found..</div>
+    </ng-container>
+</main>

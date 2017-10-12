@@ -1,0 +1,60 @@
+@import '../../../styles/core';
+
+:host {
+  display: block;
+  position: absolute;
+}
+
+.activity-items {
+  width: 290px;
+  background: $white;
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px 0 rgba($black, 0.2);
+  z-index: 1;
+}
+
+.item, .see-more-activities {
+  padding-bottom: 16px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-bottom: 1px solid $iron;
+}
+
+.see-more-activities {
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: none;
+}
+
+.item__unread-indicator {
+  @include border-radius(50%);
+  position: absolute;
+  background: $red-orange;
+  left: 8px;
+  margin-top: 26px;
+  height: 6px;
+  width: 6px;
+}
+
+.item__title {
+  margin-top: 16px;
+  display: inline-block;
+}
+
+.item__title small {
+  @include font-weight-regular();
+}
+
+.item__time-since-label {
+  color: $regent-gray;
+  display: block;
+  font-size: $font-size-small;
+}
+
+.see-more-activities__count-label {
+  display: inline-block;
+  font-size: $font-size-x-small;
+  color: $regent-gray;
+}

@@ -1,0 +1,25 @@
+@import '../../../styles/core';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10001;
+  background: $shamrock;
+  overflow-y: scroll;
+  display: block;
+  opacity: 1;
+}
+
+.overlay--message {
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: $font-size-large;
+}

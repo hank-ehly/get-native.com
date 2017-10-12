@@ -1,0 +1,22 @@
+@import '../../../styles/core';
+
+.main {
+  width: $main-width * (2/3);
+}
+
+.instructions-link {
+  color: $regent-gray;
+  display: inline-block;
+  font-size: $font-size-small;
+  height: 18px;
+  margin-top: 20px;
+
+  &:hover {
+    border-bottom-color: $aqua-haze-dark;
+  }
+}
+
+.paragraph {
+  color: $pale-sky;
+  padding: 40px;
+}

@@ -1,0 +1,40 @@
+@import '../../../styles/core';
+@import './transition.component.debug';
+
+.main {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.adsense--medium-rectangle {
+  background: $shamrock;
+  color: $white;
+  cursor: pointer;
+  height: 250px;
+  margin: 0 auto;
+  width: 300px;
+  line-height: 260px;
+}
+
+.next-exercise-label, .next-exercise {
+  @include font-weight-bold;
+  display: block;
+  font-size: $font-size-x-small;
+}
+
+.next-exercise-label {
+  margin-top: 28px;
+}
+
+.next-exercise {
+  margin-top: 6px;
+  color: $shamrock;
+}
+
+.button--continue {
+  display: block;
+  margin: 40px auto 0;
+}

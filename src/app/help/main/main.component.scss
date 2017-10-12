@@ -1,0 +1,83 @@
+@import "../../../styles/core";
+@import "./main.component.debug";
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 90px;
+}
+
+.section  {
+  width: ($main-width / 2) - 15px;
+}
+
+.section-header {
+  align-items: center;
+  display: flex;
+}
+
+.section-header__icon-frame {
+  @include border-radius(50%);
+  display: flex;
+  border: 2px solid #e1e1e6;
+  width: 70px;
+  height: 70px;
+  justify-content: center;
+}
+
+.section-header__icon {
+  width: 45%;
+  align-self: center;
+}
+
+.section-header__title {
+  font-size: $font-size-medium;
+  padding-left: 20px;
+}
+
+.faqs {
+  margin-top: 30px;
+}
+
+/* TODO: To fix the padding issue, use flex-box instead */
+.faqs__faq-header {
+  font-size: 0;
+}
+
+.faqs__faq-number, .faqs__faq-title {
+  font-size: $font-size-regular;
+}
+
+.faqs__faq {
+  margin-top: 20px;
+}
+
+.faqs__chevron-icon {
+  max-width: 6px;
+}
+
+.faqs__chevron-icon, .faqs__faq-number {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.faqs__faq-number {
+  color: $grey;
+}
+
+.faqs__faq-detail {
+  @include border-radius();
+  background: $white-lilac;
+  border: 2px solid $athens-gray;
+  font-size: $font-size-small;
+  margin-top: 30px;
+  padding: 24px;
+}
+
+.faqs__faq-detail .link {
+  font-size: $font-size-small;
+}
+
+.section__paragraph {
+  margin-top: 30px;
+}

@@ -1,0 +1,209 @@
+@import '../../../styles/core';
+@import './video-player.component.debug';
+
+.player-frame {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100% * (2/3);
+  width: 100%;
+}
+
+.video {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.player-controls {
+  background: rgba($black, 0.7);
+  bottom: 0;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  position: absolute;
+  transition: opacity 0.2s;
+  width: 100%;
+}
+
+.player-controls__toggle-button {
+  background: $black url('https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/pause.svg') no-repeat center;
+  background-size: 28%;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  outline: none;
+  width: 50px;
+}
+
+.player-controls__toggle-button.player-controls__toggle-button_paused {
+  background-image: url('https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/play.svg');
+}
+
+.play-bar {
+  @include border-radius(4px);
+  align-self: center;
+  background: $black;
+  cursor: pointer;
+  height: 8px;
+  overflow: hidden;
+  position: relative;
+  width: 55%;
+}
+
+.play-bar__progress {
+  appearance: none;
+  position: absolute;
+  height: inherit;
+  width: 100%;
+}
+
+.play-bar__progress::-webkit-progress-bar {
+  background: #000;
+  border-radius: 4px;
+}
+
+.play-bar__progress::-webkit-progress-value {
+  background: $regent-gray;
+  border-radius: 4px;
+}
+
+.play-bar__input[type=range] {
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: inherit;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.play-bar__input[type=range]::-webkit-slider-thumb {
+  @include border-radius(4px);
+  appearance: none;
+  background: $white;
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
+}
+
+.play-bar__input[type=range]:focus {
+  outline: none;
+}
+
+.player-controls__time {
+  align-self: center;
+  display: flex;
+  font-size: $font-size-x-small;
+  -webkit-font-smoothing: antialiased;
+}
+
+.player-controls__time-elapsed {
+  color: $white;
+  user-select: none;
+  width: 22px;
+}
+
+.player-controls__time-total {
+  color: $regent-gray;
+  user-select: none;
+  padding-left: 8px;
+}
+
+.volume-control {
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 50px;
+}
+
+.volume-control__icon {
+  align-self: center;
+  user-select: none;
+  width: 16px;
+}
+
+.volume-control__tooltip {
+  @include border-radius(10px);
+  background: $black;
+  cursor: auto;
+  height: 80px;
+  position: absolute;
+  top: -70px;
+  width: 20px;
+  right: 15px;
+}
+
+.volume-control__label {
+  height: 6px;
+  left: -20px;
+  overflow: hidden;
+  position: absolute;
+  transform: rotate(-90deg) translateX(-37px);
+  width: 60px;
+}
+
+.volume-control__input {
+  border: none;
+  height: 6px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+
+  /* So that the fill color matches the mouse position,
+  increase the width of the input by the diameter of the slider-thumb */
+  transform: translateX(-7.5px);
+  width: 75px;
+}
+
+.volume-control__input::-webkit-slider-runnable-track {
+  background: $tundora;
+  height: 6px;
+  width: 60px;
+}
+
+.volume-control__input::-webkit-slider-thumb {
+  appearance: none;
+}
+
+.volume-control__fill {
+  background: $white;
+  display: block;
+  height: 6px;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+}
+
+.tracker {
+  background: transparent;
+  bottom: 0;
+  height: 3px;
+  position: absolute;
+  transition: opacity 0.2s;
+  width: 100%;
+}
+
+.tracker__current-time, .tracker__progress {
+  appearance: none;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.tracker__current-time::-webkit-progress-bar, .tracker__progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+.tracker__progress::-webkit-progress-value {
+  background: $black;
+}
+
+.tracker__current-time::-webkit-progress-value {
+  background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
+}

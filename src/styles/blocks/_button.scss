@@ -1,0 +1,92 @@
+@import '../core';
+
+.button {
+  @include font-weight-bold;
+  @include border-radius(20px);
+  background: $white;
+  border: 2px solid $periwinkle-gray;
+  color: $regent-gray;
+  cursor: pointer;
+  font-size: $font-size-x-small;
+  letter-spacing: $uppercase-label-letter-spacing / 2;
+  outline: none;
+  padding: 6px 30px;
+  transition: 100ms;
+  user-select: none;
+  max-height: 37px;
+
+  &:hover {
+    border-color: $shamrock;
+    color: $shamrock;
+    transform: scale(1.05);
+    transition: scale, border, color, background-color 0s;
+  }
+
+  &:focus {
+    border-color: darken($shamrock, 5%);
+    color: darken($shamrock, 5%);
+  }
+
+  &:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.5;
+
+    &:hover, &:focus {
+      border-color: $periwinkle-gray;
+      color: $regent-gray;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+.button--hollow {
+  border-color: transparent;
+
+  &:hover, &:focus, &:disabled:hover {
+    border-color: transparent;
+  }
+}
+
+.button--opaque {
+  background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
+  border-color: transparent;
+  color: $white;
+  transition: 100ms;
+
+  &:hover {
+    /* This is necessary to prevent flickering in Chrome */
+    background: linear-gradient(to right, $shamrock, $shamrock);
+
+    border-color: transparent;
+    color: $white;
+  }
+
+  &:focus {
+    background: linear-gradient(to right, darken($shamrock, 5%), darken($shamrock, 5%));
+    color: $white;
+  }
+
+  &:disabled {
+    background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
+    opacity: inherit;
+
+    &:hover, &:focus {
+      background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);;
+      border-color: transparent;
+      color: $white;
+    }
+  }
+}
+
+// todo: accomplish with angular animations
+.button--loading {
+  opacity: 0;
+}
+
+// todo: get activity indicator from michele
+.button__activity-indicator {
+  display: block;
+  margin-top: 20px;
+  height: 34px;
+}

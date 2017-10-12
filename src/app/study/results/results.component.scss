@@ -1,0 +1,26 @@
+@import '../../../styles/core';
+@import './results.component.debug';
+
+.table__row {
+  border-bottom: 2px solid $aqua-haze;
+}
+
+.table__data {
+  padding: 30px 0;
+  width: $main-width/2;
+}
+
+.table__data_key {
+  @include font-weight-bold;
+  font-size: $font-size-x-small;
+  letter-spacing: $uppercase-label-letter-spacing;
+}
+
+.table__data_value {
+  color: $shamrock;
+}
+
+.button__container {
+  margin-top: 60px;
+  text-align: center;
+}

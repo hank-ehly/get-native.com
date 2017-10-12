@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/getnativelearning.com
+    docker:
+      - image: circleci/ruby:2.3-node-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: getnativelearning.com-{{ .Branch }}-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          key: getnativelearning.com-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - "node_modules"
+      - run: xvfb-run -a npm run lint -- --type-check
+      - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
+      - deploy:
+          name: Deploy
+          command: .circleci/deploy.sh ${CIRCLE_BRANCH}

@@ -1,0 +1,10 @@
+@import '../../../styles/core';
+
+/* Override to offset password strength indicator height */
+.form__group_confirm-password {
+  padding-top: 12px;
+}
+
+.footer {
+  flex-direction: column;
+}

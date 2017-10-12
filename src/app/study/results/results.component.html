@@ -1,0 +1,46 @@
+<main class="main">
+    <table class="table">
+        <tbody>
+        <tr class="table__row">
+            <td class="table__data table__data_key" i18n="language result label@@3a9315497767db8f497599d712b6723b">LANGUAGE</td>
+            <td class="table__data table__data_value">{{ language }}</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__data table__data_key" i18n="time studied result label@@450ccbd243f8822748b676a63198be82">TIME STUDIED</td>
+            <td class="table__data table__data_value">{{ timeStudied }} minutes</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__data table__data_key" i18n="total time studied result label@@7e2a6046404a19be271359d2612949ac">TOTAL TIME STUDIED</td>
+            <td class="table__data table__data_value">{{ totalTimeStudied$ | async }} minutes</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__data table__data_key" i18n="writing prompt result label@@90d0681b124c805c8fe3f123c0f96b9d">WRITING PROMPT</td>
+            <td class="table__data table__data_value">{{ currentSession?.writingAnswer?.writing_question?.text }}</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__data table__data_key" i18n="user answer result label@@5e2205aa95cc5b377db9df04264de03c">YOUR ANSWER</td>
+            <td class="table__data table__data_value">{{ currentSession?.writingAnswer?.answer }}</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__data table__data_key" i18n="words typed result label@@63350bc607cf3b28b17582a26862721a">WORDS TYPED</td>
+            <td class="table__data table__data_value">{{ currentSession?.writingAnswer?.word_count }}</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__data table__data_key" i18n="wpm result label@@44a844e5e02e7fdee54d411470c82af7">WORDS PER MINUTE</td>
+            <td class="table__data table__data_value">{{ currentSession?.writingAnswer?.words_per_minute }}</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__data table__data_key" i18n="max words typed result label@@d175a1a4909d2484a8d587c12ba17482">MAXIMUM WORDS TYPED</td>
+            <td class="table__data table__data_value">{{ (stats$ | async)?.maximum_words }} words</td>
+        </tr>
+        <tr class="table__row">
+            <td class="table__data table__data_key" i18n="max wpm result label@@581db78b69856cf3cb18cc0cd73d7dea">MAXIMUM WORDS PER MINUTE</td>
+            <td class="table__data table__data_value">{{ (stats$ | async)?.maximum_wpm }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="button__container">
+        <button class="button button--hollow" [routerLink]="['/dashboard']" i18n="Title of button link taking user back to the dashboard page@@27dc978df34e66fadc913269bf0948fd">Back to Dashboard</button>
+    </div>
+</main>
