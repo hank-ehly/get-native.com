@@ -11,5 +11,6 @@ export const environment = {
     facebookLoginUrl: 'https://api.stg.getnativelearning.com/oauth/facebook',
     twitterLoginUrl: 'https://api.stg.getnativelearning.com/oauth/twitter',
     googleLoginUrl: 'https://api.stg.getnativelearning.com/oauth/google',
-    facebookAppId: '215585938915345'
+    facebookAppId: '215585938915345',
+    googleStorageUrl: 'https://storage.googleapis.com/stg.getnativelearning.com'
 };

@@ -11,5 +11,6 @@ export const environment = {
     facebookLoginUrl: 'http://localhost:3000/oauth/facebook',
     twitterLoginUrl: 'http://localhost:3000/oauth/twitter',
     googleLoginUrl: 'http://localhost:3000/oauth/google',
-    facebookAppId: '215586025582003'
+    facebookAppId: '215586025582003',
+    googleStorageUrl: 'https://storage.googleapis.com/stg.getnativelearning.com'
 };

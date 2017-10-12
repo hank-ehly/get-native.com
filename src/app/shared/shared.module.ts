@@ -38,6 +38,7 @@ import { ActivityDropdownComponent } from './navbar/activity-dropdown.component'
 import { FromNowPipe } from './from-now/from-now.pipe';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { AlertComponent } from './alert/alert.component';
+import { GoogleStorageImageDirective } from './google-storage-image/google-storage-image.directive';
 
 @NgModule({
     imports: [
@@ -73,7 +74,8 @@ import { AlertComponent } from './alert/alert.component';
         ActivityDropdownComponent,
         FromNowPipe,
         DropdownComponent,
-        AlertComponent
+        AlertComponent,
+        GoogleStorageImageDirective
 
     ],
     exports: [
@@ -106,7 +108,8 @@ import { AlertComponent } from './alert/alert.component';
         ActivityDropdownComponent,
         FromNowPipe,
         DropdownComponent,
-        AlertComponent
+        AlertComponent,
+        GoogleStorageImageDirective
     ]
 })
 export class SharedModule {

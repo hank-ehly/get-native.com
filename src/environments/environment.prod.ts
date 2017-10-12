@@ -6,5 +6,6 @@ export const environment = {
     facebookLoginUrl: 'https://api.getnativelearning.com/oauth/facebook',
     twitterLoginUrl: 'https://api.getnativelearning.com/oauth/twitter',
     googleLoginUrl: 'https://api.getnativelearning.com/oauth/google',
-    facebookAppId: '215585858915353'
+    facebookAppId: '215585858915353',
+    googleStorageUrl: 'https://storage.googleapis.com/getnativelearning.com'
 };
