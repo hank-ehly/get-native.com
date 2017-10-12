@@ -17,8 +17,8 @@
         </div>
 
         <div class="volume-control" (click)="onClickVolumeControl($event)" (mouseenter)="onMouseEnterVolumeControl()" (mouseleave)="onMouseLeaveVolumeControl()">
-            <img class="volume-control__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/volume.svg" i18n-alt="Alt text for video player volume icon@@29cc2fd26ffd856fbbf40089abbddef6" alt="volume" *ngIf="player.volume">
-            <img class="volume-control__icon" src="https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/mute.svg" i18n-alt="Alt text for video player mute icon@@b2f9c3fbeab42998732fcf3fee63329a" alt="mute" *ngIf="!player.volume">
+            <img class="volume-control__icon" gnGoogleStorageImage="/assets/icons/volume.svg" i18n-alt="Alt text for video player volume icon@@29cc2fd26ffd856fbbf40089abbddef6" alt="volume" *ngIf="player.volume">
+            <img class="volume-control__icon" gnGoogleStorageImage="/assets/icons/mute.svg" i18n-alt="Alt text for video player mute icon@@b2f9c3fbeab42998732fcf3fee63329a" alt="mute" *ngIf="!player.volume">
 
             <div class="volume-control__tooltip" *ngIf="!tooltipHidden">
                 <label class="volume-control__label">
