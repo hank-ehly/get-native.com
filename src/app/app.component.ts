@@ -89,6 +89,7 @@ export class AppComponent implements OnInit, OnDestroy {
             .subscribe(this.onDisplayMobileOverlayChanged.bind(this));
 
         this.routeDataEmitted$ = this.router.events
+            .takeUntil(this.OnDestroy$)
             .filter(e => e instanceof NavigationEnd)
             .mapTo(this.route)
             .map(r => {
@@ -167,18 +168,21 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     private observeInterfaceLanguage(): void {
-        this.user.current$.takeUntil(this.OnDestroy$).subscribe((u: User) => {
-            if (!u || environment.development || u.interface_language.code === this.lang.languageForLocaleId(this.localeId).code) {
-                return;
-            }
+        this.user.current$.takeUntil(this.OnDestroy$)
+            .filter(() => this.user.isAuthenticated())
+            .subscribe((u: User) => {
+                if (!u || environment.development || u.interface_language.code === this.lang.languageForLocaleId(this.localeId).code) {
+                    return;
+                }
 
-            const split = window.location.pathname.split('/');
-            const pathname = split.slice(2, split.length).join('');
+                const l = window.location;
+                const split = l.pathname.split('/');
+                const pathname = split.slice(2, split.length).join('');
 
-            this.logger.debug(this, pathname);
+                this.logger.debug(this, pathname);
 
-            window.location.href = window.location.protocol + '//' + [window.location.host, u.interface_language.code, pathname].join('/');
-        });
+                l.href = l.protocol + '//' + [l.host, u.interface_language.code, pathname].join('/');
+            });
     }
 
     private observeLogout(): void {
