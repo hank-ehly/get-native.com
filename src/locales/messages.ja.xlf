@@ -3019,7 +3019,7 @@
             </trans-unit>
             <trans-unit id="a9dbbc57ac75c6c7efe20372def211c2" datatype="html">
                 <source>Active Maintenance</source>
-                <target>Active Maintenance</target>
+                <target>継続的なメンテナンス</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">81</context>
