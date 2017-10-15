@@ -41,7 +41,7 @@
                    *ngSwitchCase="loadingState.ReachedLastResult"
                    i18n="No more results label for dashboard video list@@02822797d7d2ae66c9d2c0ff5b8d85af">No more results</p>
 
-                <p *ngSwitchCase="loadingState.NoResults">Videos saved from the <a class="link" [routerLink]="['/library']">library</a> appear here!</p>
+                <p *ngSwitchCase="loadingState.NoResults" i18n="Message that appears when no videos have been added to the Dashboard yet@@4f5129e1e4a82021b09f91a595cf0efe">Videos saved from the <a class="link" [routerLink]="['/library']">library</a> appear here!</p>
             </ng-container>
         </div>
     </section>

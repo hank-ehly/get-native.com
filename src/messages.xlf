@@ -119,7 +119,7 @@
         <source>SAVE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <note priority="1" from="description">Video detail page SAVE button title</note>
       </trans-unit>
@@ -127,7 +127,7 @@
         <source>REMOVE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">39</context>
         </context-group>
         <note priority="1" from="description">Video detail page REMOVE button title</note>
       </trans-unit>
@@ -135,7 +135,7 @@
         <source>search</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar magnifying glass search icon</note>
       </trans-unit>
@@ -143,7 +143,7 @@
         <source>Search</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <note priority="1" from="description">Title for magnifying glass search icon</note>
       </trans-unit>
@@ -151,7 +151,7 @@
         <source>close</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar close-search button icon</note>
       </trans-unit>
@@ -159,7 +159,7 @@
         <source>Close</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <note priority="1" from="description">Title of X icon to close search bar</note>
       </trans-unit>
@@ -167,7 +167,7 @@
         <source>notifications</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar notifications icon</note>
       </trans-unit>
@@ -175,7 +175,7 @@
         <source>Notifications</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">Title for navbar notifications icon</note>
       </trans-unit>
@@ -183,7 +183,7 @@
         <source>settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar settings icon</note>
       </trans-unit>
@@ -191,7 +191,7 @@
         <source>Settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="description">Title for user settings navbar icon</note>
       </trans-unit>
@@ -687,6 +687,14 @@
           <context context-type="linenumber">42</context>
         </context-group>
         <note priority="1" from="description">No more results label for dashboard video list</note>
+      </trans-unit>
+      <trans-unit id="4f5129e1e4a82021b09f91a595cf0efe" datatype="html">
+        <source>Videos saved from the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/> appear here!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <note priority="1" from="description">Message that appears when no videos have been added to the Dashboard yet</note>
       </trans-unit>
       <trans-unit id="3e06f80500768c1b0dcb8b51e59bea2d" datatype="html">
         <source>Stats</source>

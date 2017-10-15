@@ -777,6 +777,15 @@
                 </context-group>
                 <note priority="1" from="description">No more results label for dashboard video list</note>
             </trans-unit>
+            <trans-unit id="4f5129e1e4a82021b09f91a595cf0efe" datatype="html">
+                <source>Videos saved from the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/> appear here!</source>
+                <target>Videos saved from the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/> appear here!</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">44</context>
+                </context-group>
+                <note priority="1" from="description">Message that appears when no videos have been added to the Dashboard yet</note>
+            </trans-unit>
             <trans-unit id="3e06f80500768c1b0dcb8b51e59bea2d" datatype="html">
                 <source>Stats</source>
                 <target>Stats</target>
