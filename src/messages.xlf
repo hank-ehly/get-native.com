@@ -115,6 +115,14 @@
         </context-group>
         <note priority="1" from="description">Alt text for navbar back button image</note>
       </trans-unit>
+      <trans-unit id="ef82319856d1501afda43802a3348b83" datatype="html">
+        <source>Back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">Back button title text</note>
+      </trans-unit>
       <trans-unit id="38a221a305676dc90cd98ce5db0eb04e" datatype="html">
         <source>SAVE</source>
         <context-group purpose="location">
@@ -3435,6 +3443,81 @@
           <context context-type="linenumber">2</context>
         </context-group>
         <note priority="1" from="description">Message asking user to view website in larger browser window</note>
+      </trans-unit>
+      <trans-unit id="419be8b36dfa3b9ed970e6715687d55a" datatype="html">
+        <source>How to reset your password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Password reset guide title</note>
+      </trans-unit>
+      <trans-unit id="3b84c95ea082baa179ba970b4ca21275" datatype="html">
+        <source>When logged out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out section title</note>
+      </trans-unit>
+      <trans-unit id="aa9563e8df6bbb183cbe9c367e690cd8" datatype="html">
+        <source>1. Open the Sign in / Sign up dialog by clicking the link at the top right of any page.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out step 1</note>
+      </trans-unit>
+      <trans-unit id="4945572dc194bac49d653e7d27ae9c09" datatype="html">
+        <source>2. At the bottom of the dialog window, click &quot;Sign in with email&quot; then &quot;Forgot password&quot; to display the password reset screen.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out step 2</note>
+      </trans-unit>
+      <trans-unit id="29b76aaed1b446fc3d882f49e83c553d" datatype="html">
+        <source>3. Enter your email address and click &quot;send&quot; and a password reset link with the appropriate credentials attached to it will be sent to the given email address.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out step 3</note>
+      </trans-unit>
+      <trans-unit id="49cd22ff75b72d2eb80465de250bffac" datatype="html">
+        <source>when-logged-out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6723aa469c781c3cb02263d70668afce" datatype="html">
+        <source>When logged in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="766b546ea517e19a40f4ad4af7e75239" datatype="html">
+        <source>1. Open the <x id="START_LINK" ctype="x-a"/>general settings<x id="CLOSE_LINK" ctype="x-a"/> page and scroll to the bottom to find the password update form.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b3e151f08864d67241cb3de02411a1c5" datatype="html">
+        <source>2. Enter the required information and click &quot;send&quot; to reset your password. If you can&apos;t recall your original password, or you login through Facebook, Twitter or Google, it is possible to set a new password for your account by clicking &quot;I forgot my password&quot; and sending yourself a password reset link.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="aa9135e1833cc655edcfbaeebb5724ed" datatype="html">
+        <source>when-logged-in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
       </trans-unit>
     </body>
   </file>
