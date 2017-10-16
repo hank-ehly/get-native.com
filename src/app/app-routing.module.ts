@@ -184,7 +184,10 @@ const routes: Routes = [
                 component: HelpArticleComponent,
                 canActivate: [MetaGuard]
             }
-        ]
+        ],
+        data: {
+            showToolbar: true
+        }
     },
     {
         path: 'privacy', component: PrivacyComponent, canActivate: [MetaGuard], data: {
