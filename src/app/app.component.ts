@@ -30,6 +30,8 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/map';
+import * as moment from 'moment';
+import * as _ from 'lodash';
 
 const animations: AnimationTriggerMetadata[] = [
     trigger('enterUpLeaveDown', [
@@ -67,6 +69,7 @@ export class AppComponent implements OnInit, OnDestroy {
     routeDataEmitted$: Observable<any>;
     showToolbar$: Observable<boolean>;
     showNavbarSearchIconEmitted$: Observable<boolean>;
+    fbConfig = {appId: environment.facebookAppId, autoLogAppEvents: true, xfbml: false, cookie: false, version: 'v2.10'};
 
     @HostBinding('style.margin-bottom') get styleMarginBottom(): string {
         return (this.user.isAuthenticated() ? 50 : 240) + 'px';
@@ -127,13 +130,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.observeInterfaceLanguage();
         this.observeLogout();
         this.initNavbarTitle();
-
-        this.facebook.init({
-            appId: environment.facebookAppId,
-            autoLogAppEvents: true,
-            xfbml: false,
-            cookie: false,
-            version: 'v2.10'
+        this.facebook.init(this.fbConfig);
+        moment.locale('ja', {
+            monthsShort: _.map(_.range(1, 12), v => v + '月')
         });
     }
 
