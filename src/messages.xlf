@@ -2385,7 +2385,7 @@
         <note priority="1" from="description">contact-information section 3</note>
       </trans-unit>
       <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
-        <source>getnative is a free online language learning tool to help you speak more &quot;native-like&quot;</source>
+        <source>getnative is a free online language learning tool</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">2</context>
