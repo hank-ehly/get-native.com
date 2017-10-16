@@ -115,11 +115,19 @@
         </context-group>
         <note priority="1" from="description">Alt text for navbar back button image</note>
       </trans-unit>
+      <trans-unit id="ef82319856d1501afda43802a3348b83" datatype="html">
+        <source>Back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">Back button title text</note>
+      </trans-unit>
       <trans-unit id="38a221a305676dc90cd98ce5db0eb04e" datatype="html">
         <source>SAVE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <note priority="1" from="description">Video detail page SAVE button title</note>
       </trans-unit>
@@ -127,7 +135,7 @@
         <source>REMOVE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">39</context>
         </context-group>
         <note priority="1" from="description">Video detail page REMOVE button title</note>
       </trans-unit>
@@ -135,7 +143,7 @@
         <source>search</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar magnifying glass search icon</note>
       </trans-unit>
@@ -143,7 +151,7 @@
         <source>Search</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <note priority="1" from="description">Title for magnifying glass search icon</note>
       </trans-unit>
@@ -151,7 +159,7 @@
         <source>close</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar close-search button icon</note>
       </trans-unit>
@@ -159,7 +167,7 @@
         <source>Close</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <note priority="1" from="description">Title of X icon to close search bar</note>
       </trans-unit>
@@ -167,7 +175,7 @@
         <source>notifications</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar notifications icon</note>
       </trans-unit>
@@ -175,7 +183,7 @@
         <source>Notifications</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <note priority="1" from="description">Title for navbar notifications icon</note>
       </trans-unit>
@@ -183,7 +191,7 @@
         <source>settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="description">Alt text for navbar settings icon</note>
       </trans-unit>
@@ -191,7 +199,7 @@
         <source>Settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">60</context>
         </context-group>
         <note priority="1" from="description">Title for user settings navbar icon</note>
       </trans-unit>
@@ -687,6 +695,14 @@
           <context context-type="linenumber">42</context>
         </context-group>
         <note priority="1" from="description">No more results label for dashboard video list</note>
+      </trans-unit>
+      <trans-unit id="4f5129e1e4a82021b09f91a595cf0efe" datatype="html">
+        <source>Videos saved from the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/> appear here!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <note priority="1" from="description">Message that appears when no videos have been added to the Dashboard yet</note>
       </trans-unit>
       <trans-unit id="3e06f80500768c1b0dcb8b51e59bea2d" datatype="html">
         <source>Stats</source>
@@ -3427,6 +3443,86 @@
           <context context-type="linenumber">2</context>
         </context-group>
         <note priority="1" from="description">Message asking user to view website in larger browser window</note>
+      </trans-unit>
+      <trans-unit id="419be8b36dfa3b9ed970e6715687d55a" datatype="html">
+        <source>How to reset your password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Password reset guide title</note>
+      </trans-unit>
+      <trans-unit id="3b84c95ea082baa179ba970b4ca21275" datatype="html">
+        <source>When logged out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out section title</note>
+      </trans-unit>
+      <trans-unit id="aa9563e8df6bbb183cbe9c367e690cd8" datatype="html">
+        <source>1. Open the Sign in / Sign up dialog by clicking the link at the top right of any page.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out step 1</note>
+      </trans-unit>
+      <trans-unit id="4945572dc194bac49d653e7d27ae9c09" datatype="html">
+        <source>2. At the bottom of the dialog window, click &quot;Sign in with email&quot; then &quot;Forgot password&quot; to display the password reset screen.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out step 2</note>
+      </trans-unit>
+      <trans-unit id="29b76aaed1b446fc3d882f49e83c553d" datatype="html">
+        <source>3. Enter your email address and click &quot;send&quot; and a password reset link with the appropriate credentials attached to it will be sent to the given email address.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out step 3</note>
+      </trans-unit>
+      <trans-unit id="49cd22ff75b72d2eb80465de250bffac" datatype="html">
+        <source>when-logged-out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out image alt-text</note>
+      </trans-unit>
+      <trans-unit id="6723aa469c781c3cb02263d70668afce" datatype="html">
+        <source>When logged in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged in section title</note>
+      </trans-unit>
+      <trans-unit id="766b546ea517e19a40f4ad4af7e75239" datatype="html">
+        <source>1. Open the <x id="START_LINK" ctype="x-a"/>general settings<x id="CLOSE_LINK" ctype="x-a"/> page and scroll to the bottom to find the password update form.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out step 1</note>
+      </trans-unit>
+      <trans-unit id="b3e151f08864d67241cb3de02411a1c5" datatype="html">
+        <source>2. Enter the required information and click &quot;send&quot; to reset your password. If you can&apos;t recall your original password, or you login through Facebook, Twitter or Google, it is possible to set a new password for your account by clicking &quot;I forgot my password&quot; and sending yourself a password reset link.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged out step 2</note>
+      </trans-unit>
+      <trans-unit id="aa9135e1833cc655edcfbaeebb5724ed" datatype="html">
+        <source>when-logged-in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">Password reset when logged in image alt-text</note>
       </trans-unit>
     </body>
   </file>

@@ -110,6 +110,15 @@
                 </context-group>
                 <note priority="1" from="description">Alt text for navbar back button image</note>
             </trans-unit>
+            <trans-unit id="ef82319856d1501afda43802a3348b83" datatype="html">
+                <source>Back</source>
+                <target>戻る</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
+                    <context context-type="linenumber">26</context>
+                </context-group>
+                <note priority="1" from="description">Back button title text</note>
+            </trans-unit>
             <trans-unit id="38a221a305676dc90cd98ce5db0eb04e" datatype="html">
                 <source>SAVE</source>
                 <target>キューに保存</target>
@@ -391,7 +400,7 @@
             </trans-unit>
             <trans-unit id="d6f6f018e3af2b307e2e4577b59c42cc" datatype="html">
                 <source>Begin</source>
-                <target>始める</target>
+                <target>勉強を開始</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/video-panel/video-panel.component.ts</context>
                     <context context-type="linenumber">19</context>
@@ -490,7 +499,7 @@
             </trans-unit>
             <trans-unit id="150a5352d88ca1a7a86bd5eb012547ae" datatype="html">
                 <source>Sign in with email</source>
-                <target>Emailで続ける</target>
+                <target>Emailでログイン</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/login/social-login/social-login.component.ts</context>
                     <context context-type="linenumber">26</context>
@@ -776,6 +785,15 @@
                 </context-group>
                 <note priority="1" from="description">No more results label for dashboard video list</note>
             </trans-unit>
+            <trans-unit id="4f5129e1e4a82021b09f91a595cf0efe" datatype="html">
+                <source>Videos saved from the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/> appear here!</source>
+                <target><x id="START_LINK" ctype="x-a"/>ライブラリー<x id="CLOSE_LINK" ctype="x-a"/>から動画をキューに保存できます！</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
+                    <context context-type="linenumber">44</context>
+                </context-group>
+                <note priority="1" from="description">Message that appears when no videos have been added to the Dashboard yet</note>
+            </trans-unit>
             <trans-unit id="3e06f80500768c1b0dcb8b51e59bea2d" datatype="html">
                 <source>Stats</source>
                 <target>統計</target>
@@ -787,7 +805,7 @@
             </trans-unit>
             <trans-unit id="bd47e707a777e51ac0f4981e513adf06" datatype="html">
                 <source>Answers</source>
-                <target>回答</target>
+                <target>ライティング回答</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
                     <context context-type="linenumber">35</context>
@@ -859,7 +877,7 @@
             </trans-unit>
             <trans-unit id="09ce245b85816c06597141187f5f7f4d" datatype="html">
                 <source>Complete a study session to view past writing answers.</source>
-                <target>勉強が終わると、ライティングの回答がここに表示されます。</target>
+                <target>勉強が終わると過去の「ライティング」の回答が表示されます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
                     <context context-type="linenumber">101</context>
@@ -985,7 +1003,7 @@
             </trans-unit>
             <trans-unit id="331d558742a5c1254c378d55fb4b9e70" datatype="html">
                 <source>Whoops! No videos exist for this category yet..</source>
-                <target>あら、、選択中のカテゴリーの動画がまだないようです。</target>
+                <target>選択中のカテゴリーの動画がまだないようです。。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library.component.ts</context>
                     <context context-type="linenumber">37</context>
@@ -1057,7 +1075,7 @@
             </trans-unit>
             <trans-unit id="e3e10b774ed09799abdde89063af56bc" datatype="html">
                 <source>Share via Email</source>
-                <target>Emailで共有する</target>
+                <target>Eメールで共有する</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library-detail.component.ts</context>
                     <context context-type="linenumber">29</context>
@@ -2713,7 +2731,7 @@
             </trans-unit>
             <trans-unit id="4e9b3d243b51f1d33a396b7f0aa4ada1" datatype="html">
                 <source>How do I begin a study session?</source>
-                <target>どのように勉強を始めるのですか？</target>
+                <target>どのように勉強を始めますか？</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">23</context>
@@ -2722,7 +2740,7 @@
             </trans-unit>
             <trans-unit id="de24fb60b24f97090d63ed8c3c9517e3" datatype="html">
                 <source>You can start a new study session in one of 2 ways. First, you can click the &quot;start&quot; button at the top of any video page. Second, you can click the &quot;begin&quot; button from a video saved to your dashboard queue.</source>
-                <target>2つの方法のいずれかで新しい学習セッションを開始することができます。まず、ビデオページの先頭にあるスタートボタンをクリックします。次に、ダッシュボードのキューに保存されているビデオから「開始」ボタンをクリックします。</target>
+                <target>勉強を始める方法は2つあります。①動画の詳細画面の右上の「スタート」ボタンをクリックすると10分間の勉強セッションが始まります。②ダッシュボードのキューに保存されているビデオの「勉強を開始」ボタンをクリックします。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">25</context>
@@ -2740,7 +2758,7 @@
             </trans-unit>
             <trans-unit id="f6a6c83477afd406e5318b99212d2e8b" datatype="html">
                 <source><x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/> had the initial idea and wrote the code. <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/> created the design.</source>
-                <target><x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/>は最初のアイディアを持ち、コードを書いた。 <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/>がこのデザインを制作しました。</target>
+                <target><x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/>はアイディアを持ち、コードを書いた。デザインは<x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/>が作成しました。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">33</context>
@@ -2758,7 +2776,7 @@
             </trans-unit>
             <trans-unit id="f970ac9af488b2f9b4f649d2a2de80f3" datatype="html">
                 <source>If you logged in via Facebook, Twitter or Google, then you can create a password by going through the <x id="START_LINK" ctype="x-a"/>password reset process<x id="CLOSE_LINK" ctype="x-a"/>.</source>
-                <target>Facebook、Twitter、Google経由でログインした場合は、<x id="START_LINK" ctype="x-a"/>パスワードリセットプロセス<x id="CLOSE_LINK" ctype="x-a"/>を経てパスワードを作成することができます。</target>
+                <target>アカウント登録時にFacebook、Twitter、Googleを使用した場合は、パスワードが設定されません。パスワードを作成するには、<x id="START_LINK" ctype="x-a"/>パスワードリセット<x id="CLOSE_LINK" ctype="x-a"/>を行ってください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">41</context>
@@ -2785,7 +2803,7 @@
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
                 <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
-                <target>すべてのお問い合わせについては、<x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>までご連絡ください。</target>
+                <target>すべてのお問い合わせについては<x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>までご連絡ください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
                     <context context-type="linenumber">29</context>
@@ -3019,7 +3037,7 @@
             </trans-unit>
             <trans-unit id="a9dbbc57ac75c6c7efe20372def211c2" datatype="html">
                 <source>Active Maintenance</source>
-                <target>Active Maintenance</target>
+                <target>継続的なメンテナンス</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">81</context>
@@ -3172,7 +3190,7 @@
             </trans-unit>
             <trans-unit id="0357a5943ddb5239fad8867b230ba805" datatype="html">
                 <source>Deactivate Your Account</source>
-                <target>あなたのアカウントを無効にします</target>
+                <target>アカウントを削除する</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">1</context>
@@ -3181,7 +3199,7 @@
             </trans-unit>
             <trans-unit id="b3d8b8a036eb66525c6e88c13794c2ec" datatype="html">
                 <source>You can deactivate your account by clicking the link below. If you&apos;re confused or have questions about how the website works, try taking a look at the <x id="START_LINK" ctype="x-a"/>frequently asked questions<x id="CLOSE_LINK" ctype="x-a"/> before deciding once and for all to deactivate your account. All statistics and data will be lost. This action can be performed once and cannot be undone.</source>
-                <target>下のリンクをクリックすると、アカウントを無効にすることができます。混乱している場合やウェブサイトの仕組みについて質問がある場合は、<x id="START_LINK" ctype="x-a"/>よくある質問<x id="CLOSE_LINK" ctype="x-a"/>を見てから、アカウントを無効にしてください。すべての統計とデータが失われます。このアクションは1回実行でき、元に戻すことはできません。</target>
+                <target>下記のリンクをクリックすると、アカウントを削除することができます。操作に困っている場合やサイトについて質問がある場合は、<x id="START_LINK" ctype="x-a"/>よくある質問<x id="CLOSE_LINK" ctype="x-a"/>を一度ご確認ください。なお、アカウント削除の際に今までの学習の統計データが削除されます。アカウント削除は1回のみ実行可能で、復旧することはできませんのでご注意ください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">2</context>
@@ -3199,7 +3217,7 @@
             </trans-unit>
             <trans-unit id="b64a08650d7341412cb703f052fc5c46" datatype="html">
                 <source>Could you give us a brief description about why you&apos;re leaving? We read and consider every reason seriously.</source>
-                <target>getnativeを退会する理由について一言頂けませんか？ユーザーから頂いた意見をすべて丁寧に読み、真剣に検討します。</target>
+                <target>getnativeを退会する理由について一言頂けませんか？ユーザーから頂いたメッセージをすべて読んでいます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">5</context>
@@ -3217,7 +3235,7 @@
             </trans-unit>
             <trans-unit id="002c02bc6429cd28b56cda11eec2ab28" datatype="html">
                 <source>I don&apos;t understand how to..</source>
-                <target>〇〇のやり方が分からなくて、</target>
+                <target>〇〇のやり方が分からない。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">8</context>
@@ -3244,7 +3262,7 @@
             </trans-unit>
             <trans-unit id="749d1f0ba6eb4d27fa9f3e8b07afe64d" datatype="html">
                 <source>Email Notifications</source>
-                <target>電子メール通知</target>
+                <target>Eメール通知</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/notifications/notifications.component.ts</context>
                     <context context-type="linenumber">2</context>
@@ -3253,7 +3271,7 @@
             </trans-unit>
             <trans-unit id="5d243f345cb9deefd35d0c3420bc4304" datatype="html">
                 <source>Receive emails from time to time about getnative updates and changes. To enable or disable this feature, you must first verify your email address.</source>
-                <target>getnativeの更新や変更については、随時メールを受け取ります。この機能を有効または無効にするには、まず電子メールアドレスを確認する必要があります。</target>
+                <target>getnativeに関する最新情報とアップデートについて、今後メールを送信する予定です。お手数ですが、この設定を変更するにはEメールアドレスの確認を済ます必要があります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/notifications/notifications.component.ts</context>
                     <context context-type="linenumber">4</context>
@@ -3343,7 +3361,7 @@
             </trans-unit>
             <trans-unit id="a156df53e81a3c26ab5082455077ab09" datatype="html">
                 <source>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed link to complete the email confirmation process.</source>
-                <target>認証メールが<x id="INTERPOLATION"/>に送信されました。同封のリンクをクリックして、電子メール確認プロセスを完了してください。</target>
+                <target>認証メールが<x id="INTERPOLATION"/>に送信されました。同封のリンクをクリックするとEメール確認が完了します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">7</context>
@@ -3362,7 +3380,7 @@
             </trans-unit>
             <trans-unit id="a3da8af7fc23ec0108242a67658095e0" datatype="html">
                 <source>Default Study Language</source>
-                <target>デフォルト学習言語</target>
+                <target>ログイン時の学習言語</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">28</context>
@@ -3390,7 +3408,7 @@
             </trans-unit>
             <trans-unit id="59463247ed2c4aed1b1236c13785c44c" datatype="html">
                 <source>I forgot my password.</source>
-                <target>パスワードを忘れました。</target>
+                <target>パスワードをお忘れですか</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">50</context>
@@ -3633,7 +3651,7 @@
             </trans-unit>
             <trans-unit id="7e2a6046404a19be271359d2612949ac" datatype="html">
                 <source>TOTAL TIME STUDIED</source>
-                <target>勉強した総時間</target>
+                <target>勉強した総合時間</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/results/results.component.ts</context>
                     <context context-type="linenumber">13</context>
@@ -3642,7 +3660,7 @@
             </trans-unit>
             <trans-unit id="90d0681b124c805c8fe3f123c0f96b9d" datatype="html">
                 <source>WRITING PROMPT</source>
-                <target>書き出しプロンプト</target>
+                <target>ライティング質問</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/results/results.component.ts</context>
                     <context context-type="linenumber">17</context>
@@ -3651,7 +3669,7 @@
             </trans-unit>
             <trans-unit id="5e2205aa95cc5b377db9df04264de03c" datatype="html">
                 <source>YOUR ANSWER</source>
-                <target>あなたの答え</target>
+                <target>ライティング回答</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/results/results.component.ts</context>
                     <context context-type="linenumber">21</context>
@@ -3660,7 +3678,7 @@
             </trans-unit>
             <trans-unit id="63350bc607cf3b28b17582a26862721a" datatype="html">
                 <source>WORDS TYPED</source>
-                <target>入力された文字数</target>
+                <target>文字数</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/results/results.component.ts</context>
                     <context context-type="linenumber">25</context>
@@ -3669,7 +3687,7 @@
             </trans-unit>
             <trans-unit id="44a844e5e02e7fdee54d411470c82af7" datatype="html">
                 <source>WORDS PER MINUTE</source>
-                <target>1分あたりの文字</target>
+                <target>1分あたりの単語数</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/results/results.component.ts</context>
                     <context context-type="linenumber">29</context>
@@ -3678,7 +3696,7 @@
             </trans-unit>
             <trans-unit id="d175a1a4909d2484a8d587c12ba17482" datatype="html">
                 <source>MAXIMUM WORDS TYPED</source>
-                <target>入力された最大文字数</target>
+                <target>最大単語数</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/results/results.component.ts</context>
                     <context context-type="linenumber">33</context>
@@ -3687,7 +3705,7 @@
             </trans-unit>
             <trans-unit id="581db78b69856cf3cb18cc0cd73d7dea" datatype="html">
                 <source>MAXIMUM WORDS PER MINUTE</source>
-                <target>1分あたりの最大ワード数</target>
+                <target>1分あたりの最大単語数</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/results/results.component.ts</context>
                     <context context-type="linenumber">37</context>
@@ -3723,7 +3741,7 @@
             </trans-unit>
             <trans-unit id="b88d3d34dc61c76ff8d4dd6db116bcd0" datatype="html">
                 <source>Speak out loud</source>
-                <target>声を出してください</target>
+                <target>次のフレーズを使用して口頭で話してください</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/speaking/speaking.component.ts</context>
                     <context context-type="linenumber">3</context>
@@ -3750,7 +3768,7 @@
             </trans-unit>
             <trans-unit id="e9e94a8a56ba7bd9a1d1ca6c046ae6a5" datatype="html">
                 <source>SKIP</source>
-                <target>スキップ</target>
+                <target>パス</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/speaking/speaking.component.ts</context>
                     <context context-type="linenumber">11</context>
@@ -3831,7 +3849,7 @@
             </trans-unit>
             <trans-unit id="b22c9ff9e3bf611b3fd86fa13f57b904" datatype="html">
                 <source>This feature is still in development..</source>
-                <target>アクティビティ機能はまだ開発中です。。</target>
+                <target>アクティビティ機能はただいま開発中です。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
                     <context context-type="linenumber">4</context>
@@ -3840,7 +3858,7 @@
             </trans-unit>
             <trans-unit id="37fcbb9ff4109864546ef01f59c58130" datatype="html">
                 <source>Check back later!</source>
-                <target>後でまたチェックしてみてください！</target>
+                <target>また今度チェックしてみてください！</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
                     <context context-type="linenumber">5</context>
@@ -3864,6 +3882,91 @@
                     <context context-type="linenumber">2</context>
                 </context-group>
                 <note priority="1" from="description">Message asking user to view website in larger browser window</note>
+            </trans-unit>
+            <trans-unit id="419be8b36dfa3b9ed970e6715687d55a" datatype="html">
+                <source>How to reset your password</source>
+                <target>パスワードをリセットする方法</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">1</context>
+                </context-group>
+                <note priority="1" from="description">Password reset guide title</note>
+            </trans-unit>
+            <trans-unit id="3b84c95ea082baa179ba970b4ca21275" datatype="html">
+                <source>When logged out</source>
+                <target>ログインしていない場合</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+                <note priority="1" from="description">Password reset when logged out section title</note>
+            </trans-unit>
+            <trans-unit id="aa9563e8df6bbb183cbe9c367e690cd8" datatype="html">
+                <source>1. Open the Sign in / Sign up dialog by clicking the link at the top right of any page.</source>
+                <target>1. 画面右上の「サインイン/サインアップ」リンクをクリックします。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">5</context>
+                </context-group>
+                <note priority="1" from="description">Password reset when logged out step 1</note>
+            </trans-unit>
+            <trans-unit id="4945572dc194bac49d653e7d27ae9c09" datatype="html">
+                <source>2. At the bottom of the dialog window, click &quot;Sign in with email&quot; then &quot;Forgot password&quot; to display the password reset screen.</source>
+                <target>2. ログイン吹き出しの下に「Eメールで共有する」をクリックします。その後「パスワードをお忘れですか」クリックし、パスワードリセット画面が表示されます。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">6</context>
+                </context-group>
+                <note priority="1" from="description">Password reset when logged out step 2</note>
+            </trans-unit>
+            <trans-unit id="29b76aaed1b446fc3d882f49e83c553d" datatype="html">
+                <source>3. Enter your email address and click &quot;send&quot; and a password reset link with the appropriate credentials attached to it will be sent to the given email address.</source>
+                <target>3. パスワードをリセットする対象アカウントのメールアドレスを入力し「送信」ボタンをクリックすると、パスワードリセットのリンクが送信されます。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">Password reset when logged out step 3</note>
+            </trans-unit>
+            <trans-unit id="49cd22ff75b72d2eb80465de250bffac" datatype="html">
+                <source>when-logged-out</source>
+                <target>ログインしていない場合</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">9</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="6723aa469c781c3cb02263d70668afce" datatype="html">
+                <source>When logged in</source>
+                <target>ログイン中の場合</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">13</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="766b546ea517e19a40f4ad4af7e75239" datatype="html">
+                <source>1. Open the <x id="START_LINK" ctype="x-a"/>general settings<x id="CLOSE_LINK" ctype="x-a"/> page and scroll to the bottom to find the password update form.</source>
+                <target>1.　<x id="START_LINK" ctype="x-a"/>一般設定画面<x id="CLOSE_LINK" ctype="x-a"/>の下までスクロールします。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">14</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="b3e151f08864d67241cb3de02411a1c5" datatype="html">
+                <source>2. Enter the required information and click &quot;send&quot; to reset your password. If you can&apos;t recall your original password, or you login through Facebook, Twitter or Google, it is possible to set a new password for your account by clicking &quot;I forgot my password&quot; and sending yourself a password reset link.</source>
+                <target>2. フォームに必要な情報を入力し、送信します。現在のパスワードが思い出せない場合は、またはFacebook、TwitterやGoogleでアカウント登録した場合は「パスワードをお忘れですか」リンクをクリックしてパスワードリセットのリンクを自分のメールアドレス宛に送信できます。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">15</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="aa9135e1833cc655edcfbaeebb5724ed" datatype="html">
+                <source>when-logged-in</source>
+                <target>ログイン中の場合</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
+                    <context context-type="linenumber">17</context>
+                </context-group>
             </trans-unit>
         </body>
     </file>
