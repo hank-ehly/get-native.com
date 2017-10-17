@@ -15,6 +15,7 @@ import { Logger } from '../../core/logger/logger';
     styleUrls: ['modal.component.scss']
 })
 export class ModalComponent {
+
     @Input() isVisible: boolean;
     @Output() close = new EventEmitter();
 
@@ -24,9 +25,10 @@ export class ModalComponent {
     onClickClose(e: MouseEvent): void {
         const t = <HTMLElement>e.target;
         if (['overlay', 'modal-frame__close-button'].indexOf(t.className) !== -1) {
-            this.logger.debug(this, 'onClickClose()');
+            this.logger.debug(this, 'onClickClose');
             this.isVisible = false;
             this.close.emit();
         }
     }
+
 }
