@@ -3224,6 +3224,30 @@
         </context-group>
         <note priority="1" from="description">Continue study button title</note>
       </trans-unit>
+      <trans-unit id="11ca639b44e685575284168afe273768" datatype="html">
+        <source>Quitting the study session early will erase your progress. Continue?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/study/study.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Quit study session confirm message</note>
+      </trans-unit>
+      <trans-unit id="b0a687cb02246797570fd887ae59df5e" datatype="html">
+        <source>QUIT</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/study/study.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Quit study session modal quit button label</note>
+      </trans-unit>
+      <trans-unit id="21114f2da1038f44a081dd5e37d17c5c" datatype="html">
+        <source>CANCEL</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/study/study.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Quit study session modal cancel button label</note>
+      </trans-unit>
       <trans-unit id="b22c9ff9e3bf611b3fd86fa13f57b904" datatype="html">
         <source>This feature is still in development..</source>
         <context-group purpose="location">

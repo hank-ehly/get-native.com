@@ -14,13 +14,22 @@ import { Logger } from '../core/logger/logger';
 
 @Injectable()
 export class StudySessionGuard implements CanDeactivate<StudyComponent> {
+
     constructor(private logger: Logger, private session: StudySessionService) {
     }
 
     canDeactivate(component: StudyComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot,
                   nextState?: RouterStateSnapshot): boolean {
-        this.logger.debug(this, 'canDeactivate');
+        this.logger.debug(this, 'canDeactivate', nextState);
+
+        if (!component.flags.isModalVisible) {
+            component.quitURL = nextState.url;
+            component.flags.isModalVisible = true;
+            return false;
+        }
+
         this.session.end();
         return true;
     }
+
 }

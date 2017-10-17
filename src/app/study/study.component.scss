@@ -5,3 +5,13 @@
   display: block;
   margin: 40px auto 0;
 }
+
+:host gn-modal .wrapper {
+  max-width: $main-width / 3;
+  padding: 40px;
+
+  .button {
+    display: block;
+    margin: 16px auto 0;
+  }
+}
