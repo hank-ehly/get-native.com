@@ -2883,7 +2883,7 @@
                 <note priority="1" from="description">Contact link text on password reset complete page</note>
             </trans-unit>
             <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
-                <source>getnative is a free online language learning tool to help you speak more &quot;native-like&quot;</source>
+                <source>getnative is a free online language learning tool</source>
                 <target>getnativeは無料のオンライン言語学習ツールです</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
@@ -3846,6 +3846,33 @@
                     <context context-type="linenumber">13</context>
                 </context-group>
                 <note priority="1" from="description">Continue study button title</note>
+            </trans-unit>
+            <trans-unit id="11ca639b44e685575284168afe273768" datatype="html">
+                <source>Quitting the study session early will erase your progress. Continue?</source>
+                <target>学習をやめた場合は進行状況が保存されません。続けるには「辞める」ボタンをクリックしてください。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/study/study.component.ts</context>
+                    <context context-type="linenumber">5</context>
+                </context-group>
+                <note priority="1" from="description">Quit study session confirm message</note>
+            </trans-unit>
+            <trans-unit id="b0a687cb02246797570fd887ae59df5e" datatype="html">
+                <source>QUIT</source>
+                <target>辞める</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/study/study.component.ts</context>
+                    <context context-type="linenumber">6</context>
+                </context-group>
+                <note priority="1" from="description">Quit study session modal quit button label</note>
+            </trans-unit>
+            <trans-unit id="21114f2da1038f44a081dd5e37d17c5c" datatype="html">
+                <source>CANCEL</source>
+                <target>キャンセル</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/study/study.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">Quit study session modal cancel button label</note>
             </trans-unit>
             <trans-unit id="b22c9ff9e3bf611b3fd86fa13f57b904" datatype="html">
                 <source>This feature is still in development..</source>

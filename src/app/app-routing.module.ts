@@ -174,20 +174,17 @@ const routes: Routes = [
                 component: HelpMainComponent,
                 canActivate: [MetaGuard],
                 data: {
-                    meta: {
-                        title: 'help.title'
-                    }
+                    showToolbar: true,
+                    meta: {title: 'help.title'}
                 }
             },
             {
                 path: ':id',
                 component: HelpArticleComponent,
-                canActivate: [MetaGuard]
+                canActivate: [MetaGuard],
+                data: {showToolbar: true}
             }
-        ],
-        data: {
-            showToolbar: true
-        }
+        ]
     },
     {
         path: 'privacy', component: PrivacyComponent, canActivate: [MetaGuard], data: {
