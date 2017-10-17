@@ -126,14 +126,12 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
 
+        this.facebook.init(this.fbConfig);
+        this.initMoment();
         this.updateUserCacheIfNeeded();
         this.observeInterfaceLanguage();
         this.observeLogout();
         this.initNavbarTitle();
-        this.facebook.init(this.fbConfig);
-        moment.locale('ja', {
-            monthsShort: _.map(_.range(1, 12), v => v + '月')
-        });
     }
 
     ngOnDestroy(): void {
@@ -194,7 +192,26 @@ export class AppComponent implements OnInit, OnDestroy {
             .map((data: any) => data.hideNavbarTitle ? {meta: {title: ''}} : data)
             .pluck('meta', 'title')
             .map((key: string) => translateMetaKey(this.lang.languageForLocaleId(this.localeId).code, key))
-            .subscribe(this.navbar.title$);
+            .subscribe(t => this.navbar.title$.next(t));
+    }
+
+    private initMoment(): void {
+        const defLongDateFormat = {
+            LT: 'HH:mm',
+            LTS: 'HH:mm:ss',
+            L: 'DD/MM/YYYY',
+            LL: 'YYYY MMMM Do',
+            LLL: 'D MMMM YYYY HH:mm',
+            LLLL: 'dddd D MMMM YYYY HH:mm'
+        };
+
+        moment.locale('ja', {
+            longDateFormat: _.assign(defLongDateFormat, {ll: 'YYYY年M月D日'})
+        });
+
+        moment.updateLocale('en', {
+            longDateFormat: _.assign(defLongDateFormat, {ll: 'D MMM YYYY'})
+        });
     }
 
 }
