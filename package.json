@@ -10,6 +10,7 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve --port 5555 --host 0.0.0.0",
+        "start:ja": "ng serve --port 5555 --host 0.0.0.0 --aot --locale ja --i18n-format xlf --i18n-file src/locales/messages.ja.xlf --missing-translation error",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
