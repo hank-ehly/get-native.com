@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import * as moment from 'moment';
 import { UTCDateService } from '../../core/utc-date/utc-date.service';
+
+import * as moment from 'moment';
 
 @Pipe({
     name: 'fromNow'

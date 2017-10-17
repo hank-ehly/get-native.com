@@ -14,7 +14,7 @@
 
 .banner__title {
   text-align: center;
-  margin: 130px auto 0;
+  margin: 150px auto 0;
   width: 600px;
 }
 
@@ -38,6 +38,7 @@
   padding-top: 9px;
   padding-bottom: 7px;
   margin-top: 40px;
+  max-height: none;
   &:hover {
     border-color: lighten($shamrock, 20%);
     color: lighten($shamrock, 20%);

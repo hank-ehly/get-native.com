@@ -172,7 +172,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
             this.resendConfirmationEmailError = _.first(errors);
         } else {
             // todo: default i18n
-            this.resendConfirmationEmailError = {code: '500', message: 'HTTP (500)'};
+            this.resendConfirmationEmailError = {code: '500', message: 'Error 55283 -- Please contact the admin if problem persists.'};
         }
     }
 
