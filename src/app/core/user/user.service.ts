@@ -48,7 +48,7 @@ export class UserService {
         this.current$
             .filter(this.isAuthenticated.bind(this))
             .mapTo(true)
-            .subscribe(this.compliant$);
+            .subscribe(c => this.compliant$.next(c));
 
         this.logout$
             .subscribe(() => this.authenticated$.next(false));
@@ -56,7 +56,7 @@ export class UserService {
         this.current$
             .filter(this.isAuthenticated.bind(this))
             .map((u: User) => _.defaultTo(this.currentStudyLanguage$.getValue(), u.default_study_language))
-            .subscribe(this.currentStudyLanguage$);
+            .subscribe(l => this.currentStudyLanguage$.next(l));
     }
 
     update(user: User): void {

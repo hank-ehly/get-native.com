@@ -45,7 +45,7 @@ export class ToolbarComponent {
     isTooltipVisible$ = new BehaviorSubject<boolean>(false);
     authenticated$ = this.user.authenticated$;
 
-    currentStudyLanguageName$ = this.user.currentStudyLanguage$.pluck('name');
+    currentStudyLanguageName$ = this.user.currentStudyLanguage$.filter(n => !!n).pluck('name');
 
     constructor(public user: UserService) {
     }
