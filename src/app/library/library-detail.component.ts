@@ -7,7 +7,6 @@
 
 import { Component, OnInit, OnDestroy, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { URLSearchParams } from '@angular/http';
 
 import { QueueButtonState } from '../core/navbar/queue-button-state';
 import { FacebookService } from '../core/facebook/facebook.service';
@@ -47,23 +46,15 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     likeCount: number;
     emailShareHref: string;
     twitterShareHref: string;
-
-    video$: Observable<any> = this.route.params.pluck('id').map(_.toNumber).switchMap(id => {
-        const options = {params: {id: id}};
-        if (!this.user.isAuthenticated()) {
-            const search = new URLSearchParams();
-            search.set('lang', this.lang.languageForLocaleId(this.localeId).code);
-            _.set(options, 'search', search);
-        }
-        return this.http.request(APIHandle.VIDEO, options);
-    }).share().do((v: Video) => {
-        this.liked = v.liked;
-        this.likeCount = v.like_count;
-    });
+    video: Video = null;
+    video$: Observable<Video> = this.route.data.pluck('video');
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
                 private facebook: FacebookService, private meta: MetaService, private user: UserService, private lang: LangService,
                 @Inject(LOCALE_ID) private localeId: string) {
+        this.route.data.subscribe(x => {
+            this.logger.debug(this, x);
+        });
     }
 
     ngOnInit() {
@@ -79,7 +70,13 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.navbar.studyOptionsVisible$.next(true);
 
         this.video$
-            .takeUntil(this.OnDestroy$)
+            .subscribe(v => {
+                this.video = v;
+                this.liked = v.liked;
+                this.likeCount = v.like_count;
+            });
+
+        this.video$
             .pluck('subcategory', 'name')
             .subscribe((t: string) => {
                 this.emailShareHref = `mailto:?subject=getnative - ${t}&body=${window.location.href}`;
@@ -109,7 +106,6 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             .subscribe((state: QueueButtonState) => this.navbar.queueButtonState$.next(state));
 
         this.video$
-            .takeUntil(this.OnDestroy$)
             .pluck('cued')
             .do((cued: boolean) => this.queued = cued)
             .map((cued: boolean) => cued ? QueueButtonState.REMOVE : QueueButtonState.SAVE)
