@@ -46,6 +46,7 @@ import { PasswordResetGuard } from './password-reset/password-reset.guard';
 import { OAuthGuard } from './core/auth/oauth.guard';
 
 import { MetaGuard } from '@ngx-meta/core';
+import { LibraryDetailResolverService } from './library/library-detail-resolver.service';
 
 const routes: Routes = [
     {
@@ -118,7 +119,13 @@ const routes: Routes = [
         }
     },
     {
-        path: 'library/:id', component: LibraryDetailComponent, canActivate: [MetaGuard], data: {
+        path: 'library/:id',
+        component: LibraryDetailComponent,
+        canActivate: [MetaGuard],
+        resolve: {
+            video: LibraryDetailResolverService
+        },
+        data: {
             showToolbar: true
         }
     },
