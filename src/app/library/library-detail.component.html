@@ -1,7 +1,7 @@
 <main class="main">
     <section class="section section--video-detail">
         <div class="column column_video">
-            <gn-video-player [src]="(video$ | async)?.video_url"></gn-video-player>
+            <gn-video-player [src]="(video$ | async)?.video_url" [poster]="(video$ | async)?.picture_url"></gn-video-player>
 
             <section class="column__row">
                 <h6 i18n="The title for the video description section@@b1196fd06b5f3630fdc21acb30697b8d">About this video:</h6>
