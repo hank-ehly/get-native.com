@@ -1,5 +1,6 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
+import { URLSearchParams } from '@angular/http';
 
 import { HttpService } from '../core/http/http.service';
 import { LangService } from '../core/lang/lang.service';
