@@ -5,13 +5,14 @@
  * Created by henryehly on 2016/11/06.
  */
 
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Languages } from '../../core/lang/languages';
 import { Logger } from '../../core/logger/logger';
 
-import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
 interface LocalizedLink {
@@ -25,25 +26,37 @@ interface LocalizedLink {
     styleUrls: ['footer.component.scss']
 })
 export class FooterComponent implements OnInit, OnDestroy {
+
+    OnDestroy$ = new Subject<void>();
     year = new Date().getFullYear();
     languages = Languages;
+    langLinks: LocalizedLink[] = [];
+    // currLoc = window.location.host;
 
-    langLinks$: Observable<LocalizedLink[]> = this.router.events.filter(e => e instanceof NavigationEnd).pluck('url').map(u => {
-        const urls = [];
-        for (const lang of this.languages) {
-            urls.push({label: lang.name, url: ['/', lang.code, u].join('')});
-        }
-        return urls;
-    });
-
-    constructor(private logger: Logger, private router: Router) {
+    constructor(private logger: Logger, private router: Router, private route: ActivatedRoute, private location: Location) {
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
+
+        this.router.events
+            .takeUntil(this.OnDestroy$)
+            .map(() => this.location.path() !== '' ? this.location.path() : '/')
+            .map(path => {
+                const urls = [];
+                for (const lang of this.languages) {
+                    urls.push({label: lang.name, url: ['/', lang.code, path].join('')});
+                }
+                return urls;
+            })
+            .subscribe(urls => {
+                this.langLinks = urls;
+            });
     }
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
+        this.OnDestroy$.next();
     }
+
 }
