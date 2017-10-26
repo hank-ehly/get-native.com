@@ -7,6 +7,7 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { environment } from '../environments/environment';
 
 import { ConfirmEmailResolver } from './core/auth/confirm-email-resolver.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -43,10 +44,10 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { PasswordResetResolverService } from './password-reset/password-reset-resolver.service';
 import { PasswordResetCompleteComponent } from './password-reset/password-reset-complete/password-reset-complete.component';
 import { PasswordResetGuard } from './password-reset/password-reset.guard';
+import { LibraryDetailResolverService } from './library/library-detail-resolver.service';
 import { OAuthGuard } from './core/auth/oauth.guard';
 
 import { MetaGuard } from '@ngx-meta/core';
-import { LibraryDetailResolverService } from './library/library-detail-resolver.service';
 
 const routes: Routes = [
     {
@@ -235,7 +236,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {enableTracing: environment.development})],
     exports: [RouterModule]
 })
 export class AppRoutingModule {
