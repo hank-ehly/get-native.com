@@ -22,13 +22,12 @@ import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
 import { Logger } from './core/logger/logger';
 import { StaticPagesModule } from './static-pages/static-pages.module';
 import { LangService } from './core/lang/lang.service';
-import { RollbarErrorHandler, rollbarFactory } from './core/rollbar-error-handler.service';
+import { RollbarErrorHandler, rollbarFactory, RollbarService } from './core/rollbar.service';
 import { PasswordResetModule } from './password-reset/password-reset.module';
 import { metaFactory } from './meta-factory';
 import { HelpModule } from './help/help.module';
 
 import { MetaModule, MetaLoader } from '@ngx-meta/core';
-import * as Rollbar from 'rollbar';
 
 @NgModule({
     imports: [
@@ -56,7 +55,7 @@ import * as Rollbar from 'rollbar';
     ],
     providers: [
         { provide: ErrorHandler, useClass: RollbarErrorHandler },
-        { provide: Rollbar,  useFactory: rollbarFactory },
+        { provide: RollbarService,  useFactory: rollbarFactory },
         {provide: LogLevelToken, useValue: LogLevelValue.DEBUG},
         Logger
     ],

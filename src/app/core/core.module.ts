@@ -30,7 +30,7 @@ import { DOMService } from './dom/dom.service';
 import { ImageService } from './image.service';
 import { NotificationService } from './notification/notification.service';
 import { OAuthGuard } from './auth/oauth.guard';
-import { RollbarErrorHandler } from './rollbar-error-handler.service';
+import { RollbarErrorHandler } from './rollbar.service';
 
 @NgModule({
     imports: [
