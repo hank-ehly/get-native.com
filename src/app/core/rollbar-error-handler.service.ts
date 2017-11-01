@@ -1,15 +1,13 @@
-import * as Rollbar from 'rollbar';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler, Injectable, Injector } from '@angular/core';
+import { ErrorHandler, Injectable, Injector } from '@angular/core';
 
-const rollbarConfig = {
-    accessToken: '3337152065794868a793603b1bf573fa',
-    captureUncaught: true,
-    captureUnhandledRejections: true,
-};
+import * as Rollbar from 'rollbar';
 
 export function rollbarFactory() {
-    return new Rollbar(rollbarConfig);
+    return new Rollbar({
+        accessToken: 'd924194b4e9d4a36b9c8954a2af303f6',
+        captureUncaught: true,
+        captureUnhandledRejections: true,
+    });
 }
 
 @Injectable()
