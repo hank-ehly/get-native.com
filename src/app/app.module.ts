@@ -7,7 +7,7 @@
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -22,11 +22,13 @@ import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
 import { Logger } from './core/logger/logger';
 import { StaticPagesModule } from './static-pages/static-pages.module';
 import { LangService } from './core/lang/lang.service';
+import { RollbarErrorHandler, rollbarFactory } from './core/rollbar-error-handler.service';
 import { PasswordResetModule } from './password-reset/password-reset.module';
 import { metaFactory } from './meta-factory';
 import { HelpModule } from './help/help.module';
 
 import { MetaModule, MetaLoader } from '@ngx-meta/core';
+import * as Rollbar from 'rollbar';
 
 @NgModule({
     imports: [
@@ -53,6 +55,8 @@ import { MetaModule, MetaLoader } from '@ngx-meta/core';
         AppComponent
     ],
     providers: [
+        { provide: ErrorHandler, useClass: RollbarErrorHandler },
+        { provide: Rollbar,  useFactory: rollbarFactory },
         {provide: LogLevelToken, useValue: LogLevelValue.DEBUG},
         Logger
     ],
