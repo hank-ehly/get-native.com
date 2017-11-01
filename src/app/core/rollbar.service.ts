@@ -16,11 +16,10 @@ export class RollbarErrorHandler implements ErrorHandler {
     rollbar: any;
 
     constructor(private injector: Injector) {
-        this.rollbar = injector.get(Rollbar);
+        this.rollbar = injector.get(RollbarService);
     }
 
     handleError(err: any): void {
-        console.log(err);
         this.rollbar.error(err.originalError || err);
     }
 
