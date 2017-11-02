@@ -30,6 +30,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
+import { GoogleAnalyticsEventsService } from '../core/google-analytics-events.service';
 
 @Component({
     selector: 'gn-library-detail',
@@ -51,7 +52,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
                 private facebook: FacebookService, private meta: MetaService, private user: UserService, private lang: LangService,
-                @Inject(LOCALE_ID) private localeId: string) {
+                @Inject(LOCALE_ID) private localeId: string, private googleAnalyticsEventService: GoogleAnalyticsEventsService) {
         this.route.data.subscribe(x => {
             this.logger.debug(this, x);
         });
@@ -92,6 +93,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             .do(this.updateLiked.bind(this))
             .debounceTime(500)
             .distinctUntilChanged()
+            .do(() => this.googleAnalyticsEventService.emitEvent(this.constructor.name, 'Click', 'Like Button'))
             .map(liked => liked ? APIHandle.LIKE_VIDEO : APIHandle.UNLIKE_VIDEO)
             .mergeMap(handle => this.http.request(handle, requestOptions))
             .subscribe();
@@ -99,6 +101,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.navbar.onClickQueue$
             .takeUntil(this.OnDestroy$)
             .do(() => this.queued = !this.queued)
+            .do(() => this.googleAnalyticsEventService.emitEvent(this.constructor.name, 'Clicked Queue Button'))
             .do(() => this.navbar.queueButtonState$.next(QueueButtonState.DEFAULT))
             .map(() => this.queued ? APIHandle.QUEUE_VIDEO : APIHandle.DEQUEUE_VIDEO)
             .mergeMap(handle => this.http.request(handle, requestOptions))
@@ -121,16 +124,21 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     }
 
     onClickShareFacebook(): void {
+        this.googleAnalyticsEventService.emitEvent(this.constructor.name, 'Clicked Share on Facebook');
         this.facebook.share();
     }
 
     onClickShareTwitter(): void {
+        this.googleAnalyticsEventService.emitEvent(this.constructor.name, 'Clicked Share on Twitter');
+
         if (this.twitterShareHref) {
             window.open(this.twitterShareHref);
         }
     }
 
     onClickShareEmail(): void {
+        this.googleAnalyticsEventService.emitEvent(this.constructor.name, 'Clicked Share via Email');
+
         if (this.emailShareHref) {
             window.location.href = this.emailShareHref;
         }

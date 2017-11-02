@@ -30,6 +30,7 @@ import { DOMService } from './dom/dom.service';
 import { ImageService } from './image.service';
 import { NotificationService } from './notification/notification.service';
 import { OAuthGuard } from './auth/oauth.guard';
+import { GoogleAnalyticsEventsService } from './google-analytics-events.service';
 
 @NgModule({
     imports: [
@@ -57,7 +58,8 @@ import { OAuthGuard } from './auth/oauth.guard';
         DOMService,
         ImageService,
         NotificationService,
-        OAuthGuard
+        OAuthGuard,
+        GoogleAnalyticsEventsService
     ]
 })
 export class CoreModule {
