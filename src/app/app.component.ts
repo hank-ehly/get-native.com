@@ -104,11 +104,6 @@ export class AppComponent implements OnInit, OnDestroy {
             .filter(r => r.outlet === 'primary')
             .mergeMap(r => r.data);
 
-        this.router.events
-            .takeUntil(this.OnDestroy$)
-            .filter(e => e instanceof NavigationEnd)
-            .subscribe(this.sendPageView.bind(this));
-
         this.showToolbar$ = this.routeDataEmitted$.pluck('showToolbar');
 
         this.showNavbarSearchIconEmitted$ = this.routeDataEmitted$.pluck('showNavbarSearchIcon');
@@ -137,6 +132,12 @@ export class AppComponent implements OnInit, OnDestroy {
         this.observeInterfaceLanguage();
         this.observeLogout();
         this.initNavbarTitle();
+
+        this.router.events
+            .takeUntil(this.OnDestroy$)
+            .filter(e => e instanceof NavigationEnd)
+            .filter(() => _.has(window, 'ga'))
+            .subscribe(this.sendPageView.bind(this));
     }
 
     ngOnDestroy(): void {
