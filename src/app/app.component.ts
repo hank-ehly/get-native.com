@@ -104,6 +104,11 @@ export class AppComponent implements OnInit, OnDestroy {
             .filter(r => r.outlet === 'primary')
             .mergeMap(r => r.data);
 
+        this.router.events
+            .takeUntil(this.OnDestroy$)
+            .filter(e => e instanceof NavigationEnd)
+            .subscribe(this.sendPageView.bind(this));
+
         this.showToolbar$ = this.routeDataEmitted$.pluck('showToolbar');
 
         this.showNavbarSearchIconEmitted$ = this.routeDataEmitted$.pluck('showNavbarSearchIcon');
@@ -212,6 +217,12 @@ export class AppComponent implements OnInit, OnDestroy {
         moment.updateLocale('en', {
             longDateFormat: _.assign(defLongDateFormat, {ll: 'D MMM YYYY'})
         });
+    }
+
+    private sendPageView(event: NavigationEnd) {
+        this.logger.debug(this, 'Sending pageview', event.urlAfterRedirects);
+        ga('set', 'page', event.urlAfterRedirects);
+        ga('send', 'pageview');
     }
 
 }
