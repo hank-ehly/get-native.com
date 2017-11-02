@@ -30,7 +30,6 @@ import { DOMService } from './dom/dom.service';
 import { ImageService } from './image.service';
 import { NotificationService } from './notification/notification.service';
 import { OAuthGuard } from './auth/oauth.guard';
-import { RollbarErrorHandler } from './rollbar.service';
 
 @NgModule({
     imports: [
@@ -58,8 +57,7 @@ import { RollbarErrorHandler } from './rollbar.service';
         DOMService,
         ImageService,
         NotificationService,
-        OAuthGuard,
-        RollbarErrorHandler
+        OAuthGuard
     ]
 })
 export class CoreModule {

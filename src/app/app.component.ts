@@ -5,8 +5,8 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { Component, OnInit, HostListener, OnDestroy, HostBinding, LOCALE_ID, Inject } from '@angular/core';
 import { animate, AnimationTriggerMetadata, keyframes, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit, HostListener, OnDestroy, HostBinding, LOCALE_ID, Inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 import { LocalStorageService } from './core/local-storage/local-storage.service';
