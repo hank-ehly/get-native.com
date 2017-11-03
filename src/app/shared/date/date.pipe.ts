@@ -15,6 +15,7 @@ import * as moment from 'moment';
     name: 'gnDate'
 })
 export class DatePipe implements PipeTransform {
+
     constructor(private dateService: UTCDateService, @Inject(LOCALE_ID) private localeId: string) {
     }
 
@@ -22,4 +23,5 @@ export class DatePipe implements PipeTransform {
         const date = this.dateService.parse(value);
         return moment(date).locale(this.localeId).format('ll');
     }
+
 }
