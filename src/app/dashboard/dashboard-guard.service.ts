@@ -8,6 +8,7 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class DashboardGuard implements CanActivate {
+
     constructor(private logger: Logger, private user: UserService) {
         this.logger.debug(this, 'constructor');
     }
@@ -19,4 +20,5 @@ export class DashboardGuard implements CanActivate {
         this.logger.debug(this, 'canActivate', canActivate);
         return canActivate;
     }
+
 }

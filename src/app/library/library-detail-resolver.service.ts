@@ -11,9 +11,11 @@ import { Video } from '../core/entities/video';
 
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
+import { Entities } from '../core/entities/entities';
+import { Entity } from '../core/entities/entity';
 
 @Injectable()
-export class LibraryDetailResolverService implements Resolve<Video> {
+export class LibraryDetailResolverService implements Resolve<Entity | Entities<Entity>> {
 
     constructor(private user: UserService,
                 private lang: LangService,
@@ -22,7 +24,7 @@ export class LibraryDetailResolverService implements Resolve<Video> {
                 private logger: Logger) {
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Video> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Entity | Entities<Entity>> {
         const id = _.toNumber(_.get(route.params, 'id'));
 
         if (!id) {

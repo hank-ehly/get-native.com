@@ -8,6 +8,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -33,11 +34,7 @@ import { MetaModule, MetaLoader } from '@ngx-meta/core';
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        MetaModule.forRoot({
-            provide: MetaLoader,
-            useFactory: metaFactory,
-            deps: [LOCALE_ID, LangService]
-        }),
+        MetaModule.forRoot({provide: MetaLoader, useFactory: metaFactory, deps: [LOCALE_ID, LangService]}),
         CoreModule,
         SharedModule,
         DashboardModule,
@@ -53,7 +50,7 @@ import { MetaModule, MetaLoader } from '@ngx-meta/core';
         AppComponent
     ],
     providers: [
-        {provide: LogLevelToken, useValue: LogLevelValue.DEBUG},
+        {provide: LogLevelToken, useValue: environment.production ? LogLevelValue.OFF : LogLevelValue.DEBUG},
         Logger
     ],
     bootstrap: [
