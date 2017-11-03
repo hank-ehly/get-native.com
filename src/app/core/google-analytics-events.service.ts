@@ -6,6 +6,7 @@
  */
 
 import { Injectable } from '@angular/core';
+
 import { Logger } from './logger/logger';
 
 @Injectable()
