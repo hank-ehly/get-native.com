@@ -11,6 +11,7 @@ import { APIErrors } from '../http/api-error';
 import { User } from '../entities/user';
 
 import * as _ from 'lodash';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class OAuthGuard implements CanActivate {
@@ -19,7 +20,7 @@ export class OAuthGuard implements CanActivate {
                 private dom: DOMService) {
     }
 
-    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
+    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
         const expectedKeys = ['token', 'expires'];
         const queryParams = <any>_.pick(next.queryParams, expectedKeys);
         if (_.size(queryParams) !== expectedKeys.length) {
@@ -31,8 +32,8 @@ export class OAuthGuard implements CanActivate {
 
         return this.http.request(APIHandle.ME)
             .map(this.onUserDetailNext.bind(this))
-            .toPromise()
-            .catch(this.onUserDetailError.bind(this));
+            .catch(this.onUserDetailError.bind(this))
+            .map(user => !_.isUndefined(user));
     }
 
     private onUserDetailNext(user: User) {
@@ -41,9 +42,7 @@ export class OAuthGuard implements CanActivate {
     }
 
     private onUserDetailError(errors: APIErrors) {
-        this.router.navigate(['']).then(() => {
-            this.dom.alert(_.first(errors).message);
-        });
+        this.router.navigate(['']).then(() => this.dom.alert(_.first(errors).message));
     }
 
 }

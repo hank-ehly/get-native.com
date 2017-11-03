@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AuthGuard } from './auth/auth-guard.service';
@@ -31,6 +31,7 @@ import { ImageService } from './image.service';
 import { NotificationService } from './notification/notification.service';
 import { OAuthGuard } from './auth/oauth.guard';
 import { GoogleAnalyticsEventsService } from './google-analytics-events.service';
+import { GlobalErrorHandler } from './global-error-handler';
 
 @NgModule({
     imports: [
@@ -59,7 +60,8 @@ import { GoogleAnalyticsEventsService } from './google-analytics-events.service'
         ImageService,
         NotificationService,
         OAuthGuard,
-        GoogleAnalyticsEventsService
+        GoogleAnalyticsEventsService,
+        // {provide: ErrorHandler, useClass: GlobalErrorHandler}
     ]
 })
 export class CoreModule {

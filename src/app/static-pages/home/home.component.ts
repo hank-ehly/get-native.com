@@ -7,8 +7,6 @@
 
 import { Component, HostListener, OnInit } from '@angular/core';
 
-import { Logger } from '../../core/logger/logger';
-
 import * as _ from 'lodash';
 
 @Component({
@@ -32,9 +30,6 @@ export class HomeComponent implements OnInit {
     @HostListener('window:resize') onResize() {
         this.updateLargeFeatureImagePosition();
         this.updateBannerPosition();
-    }
-
-    constructor(private logger: Logger) {
     }
 
     ngOnInit(): void {
