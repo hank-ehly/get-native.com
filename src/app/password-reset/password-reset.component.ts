@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-
-import { Logger } from '../core/logger/logger';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { APIError, APIErrors } from '../core/http/api-error';
 import { HttpService } from '../core/http/http.service';
+import { APIHandle } from '../core/http/api-handle';
+import { Logger } from '../core/logger/logger';
+
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
-import { APIHandle } from '../core/http/api-handle';
 import * as _ from 'lodash';
 
 @Component({

@@ -30,7 +30,7 @@ export class WritingResolver implements Resolve<WritingQuestion> {
         }
 
         this.logger.debug(this, 'no cached writing question present. requesting from API');
-        const options = {params: {id: this.session.current.video.id}};
+        const options = {replace: {id: this.session.current.video.id}};
         return this.http.request(APIHandle.WRITING_QUESTIONS, options).map((questions: Entities<WritingQuestion>) => {
             const question = _.sample(questions.records);
             this.session.updateCurrentSessionCache({writingQuestion: question});

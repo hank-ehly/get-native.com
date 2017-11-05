@@ -6,7 +6,7 @@
  */
 
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
-import { URLSearchParams } from '@angular/http';
+import { HttpParams } from '@angular/common/http';
 
 import { HttpService } from '../http/http.service';
 import { UserService } from '../user/user.service';
@@ -33,9 +33,9 @@ export class CategoryListService {
             if (this.user.isAuthenticated()) {
                 request = this.http.request(APIHandle.CATEGORIES);
             } else {
-                const searchParams = new URLSearchParams();
+                const searchParams = new HttpParams();
                 searchParams.set('lang', this.lang.languageForLocaleId(this.localeId).code);
-                request = this.http.request(APIHandle.CATEGORIES, {search: searchParams});
+                request = this.http.request(APIHandle.CATEGORIES, {params: searchParams});
             }
             request.subscribe(this.onFetchSuccess.bind(this), this.onFetchError.bind(this));
         }

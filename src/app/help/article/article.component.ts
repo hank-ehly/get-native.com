@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./article.component.scss']
 })
 export class HelpArticleComponent {
+
     articleId: number;
 
     constructor(private route: ActivatedRoute) {

@@ -40,7 +40,7 @@ export class UserService {
     logout$ = new Subject<void>();
     currentStudyLanguage$ = new BehaviorSubject<Language>(this.localStorage.getItem(kCurrentStudyLanguage) || null);
 
-    constructor(private localStorage: LocalStorageService, private logger: Logger) {
+    constructor(private localStorage: LocalStorageService/*, private logger: Logger*/) {
         this.current$
             .filter(this.isAuthenticated.bind(this))
             .subscribe(() => this.authenticated$.next(true));
@@ -61,7 +61,7 @@ export class UserService {
 
     update(user: User): void {
         if (!_.isObject(user)) {
-            this.logger.debug(this, 'user is not an object', user);
+            // this.logger.debug(this, 'user is not an object', user);
             return;
         }
 
@@ -83,7 +83,7 @@ export class UserService {
     }
 
     logout(): void {
-        this.logger.debug(this, 'logout');
+        // this.logger.debug(this, 'logout');
 
         const keysToRemove = [kAuthToken, kAuthTokenExpire, kCurrentUser, kCurrentStudySession, kCurrentStudyLanguage];
         _.each(keysToRemove, this.localStorage.removeItem);
@@ -92,13 +92,13 @@ export class UserService {
     }
 
     comply(): void {
-        this.logger.debug(this, 'comply');
+        // this.logger.debug(this, 'comply');
         this.localStorage.setItem(kAcceptLocalStorage, true);
         this.compliant$.next(true);
     }
 
     setCurrentStudyLanguage(language: Language): void {
-        this.logger.debug(this, 'setting current study language');
+        // this.logger.debug(this, 'setting current study language');
         this.localStorage.setItem(kCurrentStudyLanguage, language);
         this.currentStudyLanguage$.next(language);
     }

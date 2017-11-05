@@ -39,7 +39,7 @@ export class ResultsResolver implements Resolve<any> {
         };
 
         const studyStatsOptions = {
-            params: {
+            replace: {
                 lang: this.session.current.video.language.code
             }
         };

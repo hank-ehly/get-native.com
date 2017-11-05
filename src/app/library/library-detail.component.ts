@@ -8,6 +8,7 @@
 import { Component, OnInit, OnDestroy, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { GoogleAnalyticsEventsService } from '../core/google-analytics-events.service';
 import { QueueButtonState } from '../core/navbar/queue-button-state';
 import { FacebookService } from '../core/facebook/facebook.service';
 import { GNRequestOptions } from '../core/http/gn-request-options';
@@ -30,7 +31,6 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
-import { GoogleAnalyticsEventsService } from '../core/google-analytics-events.service';
 
 @Component({
     selector: 'gn-library-detail',
@@ -62,7 +62,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
         this.logger.debug(this, 'OnInit');
 
         const requestOptions: GNRequestOptions = {
-            params: {
+            replace: {
                 id: this.videoId
             }
         };

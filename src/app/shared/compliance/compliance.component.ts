@@ -15,10 +15,12 @@ import { UserService } from '../../core/user/user.service';
     styleUrls: ['compliance.component.scss']
 })
 export class ComplianceComponent {
+
     constructor(private user: UserService) {
     }
 
     onClickClose(): void {
         this.user.comply();
     }
+
 }

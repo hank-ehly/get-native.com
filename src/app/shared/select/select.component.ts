@@ -15,6 +15,7 @@ import { Subject } from 'rxjs/Subject';
     styleUrls: ['select.component.scss']
 })
 export class SelectComponent {
+
     @Input() options: {value: string, title: string}[];
     @Input() selected: string;
     @Input() disabled: boolean;
@@ -26,4 +27,5 @@ export class SelectComponent {
         const selectedOption = <HTMLOptionElement>target.options[target.selectedIndex];
         this.selection$.next(selectedOption.value);
     }
+
 }

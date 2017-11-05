@@ -6,7 +6,7 @@
  */
 
 import { ErrorHandler, NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './auth/auth-guard.service';
 import { CategoryListService } from './category-list/category-list.service';
@@ -35,7 +35,7 @@ import { GlobalErrorHandler } from './global-error-handler';
 
 @NgModule({
     imports: [
-        HttpModule
+        HttpClientModule
     ],
     providers: [
         AuthGuard,
