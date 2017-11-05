@@ -21,6 +21,7 @@ import * as _ from 'lodash';
     styleUrls: ['category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit, OnChanges, OnDestroy {
+
     @Input() categories: Entities<Category>;
 
     @Output() category$    = new Subject<Category>();
@@ -53,4 +54,5 @@ export class CategoryListComponent implements OnInit, OnChanges, OnDestroy {
         this.rows = _.chunk(filledRows, rowSize);
         this.logger.debug(this, 'onCategoriesChange()', this.rows);
     }
+
 }

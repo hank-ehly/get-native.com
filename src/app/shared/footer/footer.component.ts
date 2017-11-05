@@ -5,9 +5,9 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { Languages } from '../../core/lang/languages';
 import { Logger } from '../../core/logger/logger';
@@ -31,9 +31,8 @@ export class FooterComponent implements OnInit, OnDestroy {
     year = new Date().getFullYear();
     languages = Languages;
     langLinks: LocalizedLink[] = [];
-    // currLoc = window.location.host;
 
-    constructor(private logger: Logger, private router: Router, private route: ActivatedRoute, private location: Location) {
+    constructor(private logger: Logger, private router: Router, private location: Location) {
     }
 
     ngOnInit(): void {

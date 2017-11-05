@@ -6,7 +6,7 @@
  */
 
 import { Component, HostListener, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
-import { URLSearchParams } from '@angular/http';
+import { HttpParams } from '@angular/common/http';
 
 import { CategoryListService } from '../../core/category-list/category-list.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
@@ -78,38 +78,38 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
             }).concatMap((maxId?: number) => {
                 this.flags.hasCompletedInitialLoad = true;
 
-                const search = new URLSearchParams();
+                const params = new HttpParams();
 
                 if (filter.value && filter.type === 'Subcategory') {
-                    search.set('subcategory_id', filter.value.toString());
+                    params.set('subcategory_id', filter.value.toString());
                 } else if (filter.value && filter.type === 'Category') {
-                    search.set('category_id', filter.value.toString());
+                    params.set('category_id', filter.value.toString());
                 }
 
                 if (maxId) {
-                    search.set('max_id', maxId.toString());
+                    params.set('max_id', maxId.toString());
                 }
 
                 if (lang) {
-                    search.set('lang', lang);
+                    params.set('lang', lang);
                 }
 
                 if (query) {
-                    search.set('q', query);
+                    params.set('q', query);
                 }
 
                 if (this.flags.cuedOnly) {
-                    search.set('cued_only', 'true');
+                    params.set('cued_only', 'true');
                 }
 
                 if (!this.user.isAuthenticated()) {
-                    search.set('interface_lang', this.lang.languageForLocaleId(this.localeId).code);
+                    params.set('interface_lang', this.lang.languageForLocaleId(this.localeId).code);
                 }
 
-                search.set('time_zone_offset', new Date().getTimezoneOffset().toString());
-                search.set('count', `${9}`);
+                params.set('time_zone_offset', new Date().getTimezoneOffset().toString());
+                params.set('count', `${9}`);
 
-                return this.http.request(APIHandle.VIDEOS, {search: search});
+                return this.http.request(APIHandle.VIDEOS, {params: params});
             }, (unused: any, videos: Entities<Video>) => videos.records)
                 .do(this.updateMaxVideoId.bind(this))
                 .do(() => {

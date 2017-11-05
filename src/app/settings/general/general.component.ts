@@ -113,7 +113,7 @@ export class GeneralComponent implements OnInit, OnDestroy {
         this.logger.debug(this, 'onSubmitEmail');
 
         const options: GNRequestOptions = {
-            params: {
+            replace: {
                 id: this.user.id
             },
             body: {

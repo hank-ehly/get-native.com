@@ -16,6 +16,7 @@ import { matchValidator } from './match-validator';
     providers: [{provide: NG_VALIDATORS, useExisting: MatchDirective, multi: true}]
 })
 export class MatchDirective implements Validator, OnChanges {
+
     @Input('gnMatch') selectors: string[];
 
     private valFn = Validators.nullValidator;
@@ -32,4 +33,5 @@ export class MatchDirective implements Validator, OnChanges {
     validate(c: AbstractControl): ValidationErrors|any {
         return this.valFn(c);
     }
+
 }

@@ -5,10 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'safeHtml'
 })
 export class SafeHtmlPipe implements PipeTransform {
+
     constructor(private sanitizer: DomSanitizer) {
     }
 
     transform(value: any, args?: any): any {
         return this.sanitizer.bypassSecurityTrustHtml(value);
     }
+
 }

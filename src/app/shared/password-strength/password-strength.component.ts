@@ -15,6 +15,7 @@ import { PasswordService } from '../../core/password/password.service';
     styleUrls: ['password-strength.component.scss']
 })
 export class PasswordStrengthComponent implements OnChanges {
+
     @Input() password: string;
     score = 0;
 
@@ -26,4 +27,5 @@ export class PasswordStrengthComponent implements OnChanges {
             this.score = this.passwordService.calculateStrength(changes['password'].currentValue);
         }
     }
+
 }

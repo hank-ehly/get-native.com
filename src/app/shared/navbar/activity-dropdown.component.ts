@@ -8,6 +8,7 @@ import { Subject } from 'rxjs/Subject';
     styleUrls: ['./activity-dropdown.component.scss']
 })
 export class ActivityDropdownComponent {
+
     private clickSeeAllActivitySource = new Subject();
     @Output() clickSeeAllActivityEmitted$ = this.clickSeeAllActivitySource.asObservable();
     newCount = 0;
@@ -15,4 +16,5 @@ export class ActivityDropdownComponent {
     onClickSeeAllActivity(): void {
         this.clickSeeAllActivitySource.next();
     }
+
 }

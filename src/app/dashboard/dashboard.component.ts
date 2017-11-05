@@ -7,12 +7,13 @@
 
 import { trigger, style, transition, animate } from '@angular/animations';
 import { Component, Inject, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
-import { URLSearchParams } from '@angular/http';
+import { HttpParams } from '@angular/common/http';
 
 import { VideoSearchComponent } from '../shared/video-search/video-search.component';
 import { CategoryListService } from '../core/category-list/category-list.service';
 import { StudySessionService } from '../core/study-session/study-session.service';
 import { StudySessionSection } from '../core/typings/study-session-section';
+import { LoadingState } from '../shared/video-search/loading-state.enum';
 import { UTCDateService } from '../core/utc-date/utc-date.service';
 import { WritingAnswer } from '../core/entities/writing-answer';
 import { NavbarService } from '../core/navbar/navbar.service';
@@ -24,6 +25,7 @@ import { UserService } from '../core/user/user.service';
 import { DOMService } from '../core/dom/dom.service';
 import { Entities } from '../core/entities/entities';
 import { APIHandle } from '../core/http/api-handle';
+import { APIErrors } from '../core/http/api-error';
 import { Logger } from '../core/logger/logger';
 
 import { Subject } from 'rxjs/Subject';
@@ -37,8 +39,6 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { APIErrors } from '../core/http/api-error';
-import { LoadingState } from '../shared/video-search/loading-state.enum';
 
 @Component({
     selector: 'gn-dashboard',
@@ -74,7 +74,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     answers$ = this.studyLanguageCode$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
-            const search = new URLSearchParams();
+            const search = new HttpParams();
 
             if (since) {
                 search.set('since', this.dateService.getDaysAgoFromDate(since).toString());
@@ -85,8 +85,8 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
             }
 
             const options = {
-                search: search,
-                params: {
+                params: search,
+                replace: {
                     lang: lang
                 }
             };
@@ -105,7 +105,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     stats$ = this.studyLanguageCode$.concatMap((lang: LanguageCode) => {
         return this.http.request(APIHandle.STUDY_STATS, {
-            params: {
+            replace: {
                 lang: lang
             }
         });

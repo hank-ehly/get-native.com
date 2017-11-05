@@ -15,10 +15,12 @@ import { Logger } from '../../core/logger/logger';
     styleUrls: ['page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
+
     constructor(private logger: Logger) {
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
     }
+
 }

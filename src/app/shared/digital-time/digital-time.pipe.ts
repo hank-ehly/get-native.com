@@ -15,6 +15,7 @@ import * as _ from 'lodash';
     name: 'digitalTime'
 })
 export class DigitalTimePipe implements PipeTransform {
+
     constructor(private dateService: UTCDateService) {
     }
 
@@ -28,4 +29,5 @@ export class DigitalTimePipe implements PipeTransform {
 
         return `${date.getUTCMinutes()}:${this.dateService.getUTCPaddedSeconds(date)}`;
     }
+
 }

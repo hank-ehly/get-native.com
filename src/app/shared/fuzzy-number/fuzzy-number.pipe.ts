@@ -13,6 +13,7 @@ import * as _ from 'lodash';
     name: 'fuzzy'
 })
 export class FuzzyNumberPipe implements PipeTransform {
+
     transform(value: any, ...args: any[]): any {
         let result = '';
 
@@ -30,4 +31,5 @@ export class FuzzyNumberPipe implements PipeTransform {
 
         return result;
     }
+
 }

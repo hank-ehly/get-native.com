@@ -15,5 +15,7 @@ import { Stats } from './stats';
     styleUrls: ['stats.component.scss']
 })
 export class StatsComponent {
+
     @Input() stats: Stats;
+
 }
