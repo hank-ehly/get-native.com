@@ -10,6 +10,7 @@ import { Language } from '../typings/language';
 import { User } from '../entities/user';
 
 export class STUBUserService extends UserService {
+
     get current(): Promise<User> {
         return new Promise(resolve => resolve({}));
     }
@@ -17,4 +18,5 @@ export class STUBUserService extends UserService {
     get defaultStudyLanguage(): Promise<Language> {
         return new Promise((resolve) => resolve({code: 'en', name: 'English'}));
     }
+
 }

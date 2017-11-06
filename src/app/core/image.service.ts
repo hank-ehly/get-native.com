@@ -3,9 +3,6 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ImageService {
 
-    constructor() {
-    }
-
     convertDataURIToBlob(uri: string): Blob {
         const parts = uri.split(',');
         const type = parts[0].match(/([A-Za-z]+\/[A-Za-z]+)/)[0];

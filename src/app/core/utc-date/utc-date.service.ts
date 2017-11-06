@@ -13,6 +13,7 @@ import { MONTHS } from './months';
 
 @Injectable()
 export class UTCDateService {
+
     parse(datetime: DateTime): Date {
         const units: string[] = datetime.split(' ');
 
@@ -51,4 +52,5 @@ export class UTCDateService {
         const sinceDate = since ? since : new Date();
         return sinceDate.getTime() - daysAgo;
     }
+
 }
