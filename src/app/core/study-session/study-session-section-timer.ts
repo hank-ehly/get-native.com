@@ -11,9 +11,11 @@ import 'rxjs/add/operator/take';
 import * as _ from 'lodash';
 
 export class StudySessionSectionTimer extends Observable<number> {
+
     constructor(studyTime: number) {
         super();
         const seconds = _.floor(studyTime / 4);
         return TimerObservable.create(0, 1000).map((i: number) => _.round(((i + 1) / seconds) * 100)).take(seconds);
     }
+
 }

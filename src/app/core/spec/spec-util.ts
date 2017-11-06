@@ -10,6 +10,7 @@ import { ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 export class SpecUtil {
+
     constructor(private fixture: ComponentFixture<any>) {
     }
 
@@ -20,4 +21,5 @@ export class SpecUtil {
     getNativeEl(selector: string): HTMLElement {
         return this.getDebugEl(selector).nativeElement;
     }
+
 }

@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class StringService {
+
     containsSymbol(char: string): boolean {
         return /[^a-zA-Z0-9_]/g.test(char);
     }
@@ -24,4 +25,5 @@ export class StringService {
     containsAlphaUC(char: string): boolean {
         return /[A-Z]/g.test(char);
     }
+
 }

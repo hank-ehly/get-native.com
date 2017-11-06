@@ -13,6 +13,7 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class WordCountService {
+
     count(input: string, languageCode: LanguageCode = 'en'): number {
         let count: number;
         switch (languageCode) {
@@ -34,4 +35,5 @@ export class WordCountService {
     private countWordsInJapanese(input: string): number {
         return _.words(input, /[\u3040-\u309f\u30a0-\u30ff\u4e00-\u9faf]/g).length;
     }
+
 }
