@@ -6,7 +6,7 @@
  * Created by henryehly on 2017/01/29.
  */
 
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Logger } from '../logger/logger';
@@ -75,22 +75,24 @@ export class HttpService {
             }
         }
 
-        const request = new HttpRequest(req.method, req.url, {
+        this.logger.debug(this, '[REQ]', req.url);
+
+        const requestOptions: any = {
+            body: req.body,
             headers: req.headers,
             reportProgress: false,
+            observe: 'response',
             params: req.params,
-            responseType: 'json'
-        });
+            responseType: 'json',
+        };
 
-        this.logger.debug(this, '[REQ]', request.url, request.body);
-
-        return this.http.request(request)
+        return this.http.request(req.method, req.url, requestOptions)
             .delay(environment.production ? 0 : _.random(3, 12) * 100)
             .map(this.handleResponse.bind(this))
             .catch(this.handleError.bind(this));
     }
 
-    private handleResponse(response: HttpResponse<any>): Entities<Entity>|Entity {
+    private handleResponse(response: HttpResponse<Object>): Entities<Entity>|Entity {
         this.logger.debug(this, `[RES:${response.status}]`, response.url, response.body);
 
         if (response.headers.has('x-gn-auth-token')) {
@@ -109,12 +111,15 @@ export class HttpService {
     }
 
     private handleError(response: HttpErrorResponse): Observable<APIErrors> {
-        this.logger.debug(this, `[ERROR:${response.status}]`, response.url, response.message);
-        let err;
-        try {
+        let err: APIErrors;
+        if (response.error instanceof Error) {
+            this.logger.debug(this, '[ERROR]', response.error);
+            err =  [{code: 'Unknown', message: response.error.message}];
+        } else if (response.status === 0) {
+            err =  [{code: 'Unknown', message: 'Please check your internet connection.'}];
+        } else {
+            this.logger.debug(this, '[ERROR]', response);
             err = response.error;
-        } catch (e) {
-            err =  [{code: 'unknown', message: 'Failed to parse error response.'}];
         }
         return Observable.throw(err);
     }

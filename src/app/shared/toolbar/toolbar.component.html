@@ -1,6 +1,6 @@
 <div class="toolbar" (mouseleave)="onMouseLeaveToolbar()">
     <ul class="toolbar__tooltip-languages" *ngIf="isTooltipVisible$ | async" [@enterUpLeaveDown]>
-        <li class="toolbar__language-label" *ngFor="let language of language$ | async" (click)="onClickLanguage(language)">{{ language.name }}</li>
+        <li class="toolbar__language-label" *ngFor="let language of languages$ | async" (click)="onClickLanguage(language)">{{ language.name }}</li>
     </ul>
 
     <span class="toolbar__language-label toolbar__language-label_selected" *ngIf="currentStudyLanguageName$ | async" (click)="onClickSelectedLanguageLabel()" (mouseenter)="onMouseEnterSelectedLanguageLabel()">{{ currentStudyLanguageName$ | async }}</span>

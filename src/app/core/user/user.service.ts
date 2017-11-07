@@ -30,6 +30,7 @@ import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
+import { Languages } from '../lang/languages';
 
 @Injectable()
 export class UserService {
@@ -38,9 +39,11 @@ export class UserService {
     authenticated$ = new BehaviorSubject<boolean>(false);
     compliant$ = new BehaviorSubject<boolean>(this.localStorage.getItem(kAcceptLocalStorage) || false);
     logout$ = new Subject<void>();
-    currentStudyLanguage$ = new BehaviorSubject<Language>(this.localStorage.getItem(kCurrentStudyLanguage) || null);
+    currentStudyLanguage$ = new BehaviorSubject<Language>(
+        this.localStorage.getItem(kCurrentStudyLanguage) || _.find(Languages, {code: 'en'})
+    );
 
-    constructor(private localStorage: LocalStorageService/*, private logger: Logger*/) {
+    constructor(private localStorage: LocalStorageService, private logger: Logger) {
         this.current$
             .filter(this.isAuthenticated.bind(this))
             .subscribe(() => this.authenticated$.next(true));
@@ -57,11 +60,15 @@ export class UserService {
             .filter(this.isAuthenticated.bind(this))
             .map((u: User) => _.defaultTo(this.currentStudyLanguage$.getValue(), u.default_study_language))
             .subscribe(l => this.currentStudyLanguage$.next(l));
+
+        this.currentStudyLanguage$.subscribe((s) => {
+            this.logger.debug(this, 'Current Study Language', s);
+        });
     }
 
     update(user: User): void {
         if (!_.isObject(user)) {
-            // this.logger.debug(this, 'user is not an object', user);
+            this.logger.debug(this, 'user is not an object', user);
             return;
         }
 
@@ -83,7 +90,7 @@ export class UserService {
     }
 
     logout(): void {
-        // this.logger.debug(this, 'logout');
+        this.logger.debug(this, 'logout');
 
         const keysToRemove = [kAuthToken, kAuthTokenExpire, kCurrentUser, kCurrentStudySession, kCurrentStudyLanguage];
         _.each(keysToRemove, this.localStorage.removeItem);
@@ -92,13 +99,13 @@ export class UserService {
     }
 
     comply(): void {
-        // this.logger.debug(this, 'comply');
+        this.logger.debug(this, 'comply');
         this.localStorage.setItem(kAcceptLocalStorage, true);
         this.compliant$.next(true);
     }
 
     setCurrentStudyLanguage(language: Language): void {
-        // this.logger.debug(this, 'setting current study language');
+        this.logger.debug(this, 'setting current study language');
         this.localStorage.setItem(kCurrentStudyLanguage, language);
         this.currentStudyLanguage$.next(language);
     }

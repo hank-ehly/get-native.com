@@ -40,8 +40,7 @@ export class LibraryDetailResolverService implements Resolve<Entity | Entities<E
 
         if (!this.user.isAuthenticated()) {
             const params = new HttpParams();
-            params.set('lang', this.lang.languageForLocaleId(this.localeId).code);
-            options.params = params;
+            options.params = params.set('lang', this.lang.languageForLocaleId(this.localeId).code);
         }
 
         return this.http.request(APIHandle.VIDEO, options);
