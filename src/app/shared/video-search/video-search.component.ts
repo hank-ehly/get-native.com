@@ -52,7 +52,9 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
     showDropdown$ = new BehaviorSubject<boolean>(false);
     isDropdownVisible$ = this.showDropdown$.distinctUntilChanged();
 
-    studyLanguageCode$ = this.user.currentStudyLanguage$.pluck('code').distinctUntilChanged();
+    studyLanguageCode$ = this.user.currentStudyLanguage$
+        .pluck('code')
+        .distinctUntilChanged();
 
     maxVideoId: number;
 
@@ -78,39 +80,39 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
             }).concatMap((maxId?: number) => {
                 this.flags.hasCompletedInitialLoad = true;
 
-                const params = new HttpParams();
+                let params = new HttpParams();
 
                 if (filter.value && filter.type === 'Subcategory') {
-                    params.set('subcategory_id', filter.value.toString());
+                    params = params.set('subcategory_id', filter.value.toString());
                 } else if (filter.value && filter.type === 'Category') {
-                    params.set('category_id', filter.value.toString());
+                    params = params.set('category_id', filter.value.toString());
                 }
 
                 if (maxId) {
-                    params.set('max_id', maxId.toString());
+                    params = params.set('max_id', maxId.toString());
                 }
 
                 if (lang) {
-                    params.set('lang', lang);
+                    params = params.set('lang', lang);
                 }
 
                 if (query) {
-                    params.set('q', query);
+                    params = params.set('q', query);
                 }
 
                 if (this.flags.cuedOnly) {
-                    params.set('cued_only', 'true');
+                    params = params.set('cued_only', 'true');
                 }
 
                 if (!this.user.isAuthenticated()) {
-                    params.set('interface_lang', this.lang.languageForLocaleId(this.localeId).code);
+                    params = params.set('interface_lang', this.lang.languageForLocaleId(this.localeId).code);
                 }
 
-                params.set('time_zone_offset', new Date().getTimezoneOffset().toString());
-                params.set('count', `${9}`);
+                params = params.set('time_zone_offset', new Date().getTimezoneOffset().toString());
+                params = params.set('count', `${9}`);
 
                 return this.http.request(APIHandle.VIDEOS, {params: params});
-            }, (unused: any, videos: Entities<Video>) => videos.records)
+            }, (unused: any, videos: any) => videos.records)
                 .do(this.updateMaxVideoId.bind(this))
                 .do(() => {
                     if (this.currentLoadingState !== LoadingState.ReachedLastResult) {

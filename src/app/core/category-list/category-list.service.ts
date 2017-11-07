@@ -33,9 +33,9 @@ export class CategoryListService {
             if (this.user.isAuthenticated()) {
                 request = this.http.request(APIHandle.CATEGORIES);
             } else {
-                const searchParams = new HttpParams();
-                searchParams.set('lang', this.lang.languageForLocaleId(this.localeId).code);
-                request = this.http.request(APIHandle.CATEGORIES, {params: searchParams});
+                let params = new HttpParams();
+                params = params.set('lang', this.lang.languageForLocaleId(this.localeId).code);
+                request = this.http.request(APIHandle.CATEGORIES, {params: params});
             }
             request.subscribe(this.onFetchSuccess.bind(this), this.onFetchError.bind(this));
         }

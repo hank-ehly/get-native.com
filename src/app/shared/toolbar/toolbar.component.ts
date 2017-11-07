@@ -41,11 +41,13 @@ import 'rxjs/add/observable/of';
 })
 export class ToolbarComponent {
 
-    language$ = Observable.of<Language[]>(Languages);
+    languages$ = Observable.of<Language[]>(Languages);
     isTooltipVisible$ = new BehaviorSubject<boolean>(false);
     authenticated$ = this.user.authenticated$;
 
-    currentStudyLanguageName$ = this.user.currentStudyLanguage$.filter(n => !!n).pluck('name');
+    currentStudyLanguageName$ = this.user.currentStudyLanguage$
+        .pluck('name')
+        .distinctUntilChanged();
 
     constructor(public user: UserService) {
     }

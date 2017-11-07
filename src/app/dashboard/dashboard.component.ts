@@ -74,18 +74,18 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     answers$ = this.studyLanguageCode$.combineLatest(this.answerFilterStream$).switchMap(([lang, since]: [LanguageCode, number]) => {
         return this.loadMoreAnswers.startWith(null).distinctUntilChanged().concatMap((maxId?: number) => {
-            const search = new HttpParams();
+            let params = new HttpParams();
 
             if (since) {
-                search.set('since', this.dateService.getDaysAgoFromDate(since).toString());
+                params = params.set('since', this.dateService.getDaysAgoFromDate(since).toString());
             }
 
             if (maxId) {
-                search.set('max_id', maxId.toString());
+                params = params.set('max_id', maxId.toString());
             }
 
             const options = {
-                params: search,
+                params: params,
                 replace: {
                     lang: lang
                 }
