@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109024844-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -10,9 +9,9 @@
         gtag('config', 'UA-109024844-1');
     </script>
     <meta charset="utf-8">
+    <base href="/">
     <title>getnative. Break the barrier between "proficient" and "native-like."</title>
     <meta name="description" content="getnative is a free online language learning tool that uses the imitation of native speakers as a way to improve pronunciation and general language usage. Using high quality videos of real native speakers, getnative guides users through an automated, intensive study routine. You only decide how much time to spend.">
-    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="https://storage.googleapis.com/getnativelearning.com/assets/icons/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="https://storage.googleapis.com/getnativelearning.com/assets/icons/favicon-32x32.png" sizes="32x32">
@@ -35,12 +34,122 @@
             text-align: center;
             transform: translate(-50%, -50%);
         }
-        .pre-loading .spinner {
-            width: 90px;
+
+        @keyframes lds-wedges {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes lds-wedges {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        .lds-wedges {
+            position: relative;
+        }
+
+        .lds-wedges > div > div {
+            -webkit-transform-origin: 100px 100px;
+            transform-origin: 100px 100px;
+            -webkit-animation: lds-wedges 3s linear infinite;
+            animation: lds-wedges 3s linear infinite;
+            opacity: 0.8;
+        }
+
+        .lds-wedges > div > div > div {
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 70px 0 0 0;
+            -webkit-transform-origin: 100px 100px;
+            transform-origin: 100px 100px;
+        }
+
+        .lds-wedges > div div:nth-child(1) > div {
+            background: #33cc99;
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        .lds-wedges > div div:nth-child(1) {
+            -webkit-animation-duration: 0.75s;
+            animation-duration: 0.75s;
+        }
+
+        .lds-wedges > div div:nth-child(2) > div {
+            background: #00CCCC;
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        .lds-wedges > div div:nth-child(2) {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+        }
+
+        .lds-wedges > div div:nth-child(3) > div {
+            background: #33cc99;
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        .lds-wedges > div div:nth-child(3) {
+            -webkit-animation-duration: 1.5s;
+            animation-duration: 1.5s;
+        }
+
+        .lds-wedges > div div:nth-child(4) > div {
+            background: #F0F5F7;
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        .lds-wedges > div div:nth-child(4) {
+            -webkit-animation-duration: 3s;
+            animation-duration: 3s;
+        }
+
+        .lds-wedges {
+            width: 200px !important;
+            height: 200px !important;
+            -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+            transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
         }
     </style>
     <div class="pre-loading">
-        <img src="https://storage.googleapis.com/getnativelearning.com/assets/icons/spinner.svg" alt="loading" class="spinner">
+        <div class="lds-css ng-scope">
+            <div style="width:100%;height:100%" class="lds-wedges">
+                <div>
+                    <div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </gn-app>
 </body>
