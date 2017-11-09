@@ -13,6 +13,7 @@ jobs:
           key: getnativelearning.com-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
+      - run: npm rebuild node-sass --force
       - run: xvfb-run -a npm run lint -- --type-check
       - run: xvfb-run -a npm run test -- --single-run --no-progress --browser=ChromeNoSandbox
       - deploy:
