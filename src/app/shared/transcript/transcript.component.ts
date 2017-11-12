@@ -133,8 +133,8 @@ export class TranscriptComponent implements OnInit, OnDestroy {
             return;
         }
 
-        const startTagReplacedText = _.replace(text, '{', '<span class="collocation-occurrence">');
-        const startEndTagsReplaceText = _.replace(startTagReplacedText, '}', '</span>');
+        const startTagReplacedText = _.replace(text, /{/g, '<span class="collocation-occurrence">');
+        const startEndTagsReplaceText = _.replace(startTagReplacedText, /}/g, '</span>');
 
         return _.pad(startEndTagsReplaceText, startEndTagsReplaceText.length + 2, '"');
     }
