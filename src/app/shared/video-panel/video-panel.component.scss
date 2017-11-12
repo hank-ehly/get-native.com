@@ -31,15 +31,16 @@
   opacity: 1;
 }
 
-.video-panel__overlay_link {
+.video-panel__overlay.video-panel__overlay_link {
   cursor: pointer;
+  transition: opacity 100ms;
 }
 
 .video-panel.video-panel--disabled .video-panel__overlay {
   background: rgba($white, 0.4) none;
   opacity: 1;
   z-index: 1;
-  transition: opacity, background-color 100ms;
+  transition: opacity 100ms, background-color 100ms;
 }
 
 .controls__input {
