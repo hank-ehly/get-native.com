@@ -3,8 +3,8 @@
     <file source-language="en" target-language="en" datatype="plaintext" original="ng2.template">
         <body>
             <trans-unit id="06afdb0c3f027180c8ed811ed00ecc28" datatype="html">
-                <source>This site uses <x id="START_LINK" ctype="x-a"/>local storage<x id="CLOSE_LINK" ctype="x-a"/>. By continuing to browse this site you are agreeing to our terms of service.</source>
-                <target>This site uses <x id="START_LINK" ctype="x-a"/>local storage<x id="CLOSE_LINK" ctype="x-a"/>. By continuing to browse this site you are agreeing to our terms of service.</target>
+                <source>This site uses <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>local storage<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. By continuing to browse this site you are agreeing to our terms of service.</source>
+                <target>This site uses <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>local storage<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. By continuing to browse this site you are agreeing to our terms of service.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/compliance/compliance.component.ts</context>
                     <context context-type="linenumber">2</context>
@@ -57,8 +57,8 @@
                 <note priority="1" from="description">The text of link to the contact-us page</note>
             </trans-unit>
             <trans-unit id="6335345ee212a722ca9838616830a7f6" datatype="html">
-                <source>© <x id="INTERPOLATION"/> getnative</source>
-                <target>© <x id="INTERPOLATION"/> getnative</target>
+                <source>© <x id="INTERPOLATION" equiv-text="{{ year }}"/> getnative</source>
+                <target>© <x id="INTERPOLATION" equiv-text="{{ year }}"/> getnative</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
                     <context context-type="linenumber">6</context>
@@ -294,8 +294,8 @@
                 <note priority="1" from="meaning">side-menu library link</note>
             </trans-unit>
             <trans-unit id="041680e74045d822b14408222599a8c6" datatype="html">
-                <source><x id="INTERPOLATION"/> LEFT</source>
-                <target><x id="INTERPOLATION"/> LEFT</target>
+                <source><x id="INTERPOLATION" equiv-text="{{ timeLeft | digitalTime }}"/> LEFT</source>
+                <target><x id="INTERPOLATION" equiv-text="{{ timeLeft | digitalTime }}"/> LEFT</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/study-progress/study-progress.component.ts</context>
                     <context context-type="linenumber">2</context>
@@ -385,13 +385,12 @@
             </trans-unit>
             <trans-unit id="dfe84b58c71ace0e2d684bf3231b81f3" datatype="html">
                 <source>
-                    <x id="TAG_INPUT" ctype="x-input"/>
-                    <x id="START_TAG_SPAN" ctype="x-span"/>minutes<x id="CLOSE_TAG_SPAN" ctype="x-span"/>
+                    <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input/&gt;"/>
+                    <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>minutes<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
                 </source>
                 <target>
-                    <x id="TAG_INPUT" ctype="x-input"/>
-                    <x id="START_TAG_SPAN" ctype="x-span"/>minutes
-                    <x id="CLOSE_TAG_SPAN" ctype="x-span"/>
+                    <x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input/&gt;"/>
+                    <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>minutes<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
                 </target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/video-panel/video-panel.component.ts</context>
@@ -445,8 +444,8 @@
                 <note priority="1" from="description">See all activity link title</note>
             </trans-unit>
             <trans-unit id="7b6af02921d2754063a428f52b713b45" datatype="html">
-                <source><x id="INTERPOLATION"/> NEW</source>
-                <target><x id="INTERPOLATION"/> NEW</target>
+                <source><x id="INTERPOLATION" equiv-text="{{ newCount }}"/> NEW</source>
+                <target><x id="INTERPOLATION" equiv-text="{{ newCount }}"/> NEW</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/navbar/activity-dropdown.component.ts</context>
                     <context context-type="linenumber">17</context>
@@ -643,8 +642,8 @@
                 <note priority="1" from="description">The text for the link redirecting users to the email login form</note>
             </trans-unit>
             <trans-unit id="a03f3ed9078abe28dbc5aaa91d39a82f" datatype="html">
-                <source>By signing up, you are agreeing to the <x id="START_LINK" ctype="x-a"/>privacy policy<x id="CLOSE_LINK" ctype="x-a"/> and <x id="START_LINK_1" ctype="x-a"/>terms of service<x id="CLOSE_LINK" ctype="x-a"/></source>
-                <target>By signing up, you are agreeing to the <x id="START_LINK" ctype="x-a"/>privacy policy<x id="CLOSE_LINK" ctype="x-a"/> and <x id="START_LINK_1" ctype="x-a"/>terms of service<x id="CLOSE_LINK" ctype="x-a"/></target>
+                <source>By signing up, you are agreeing to the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>privacy policy<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> and <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>terms of service<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+                <target>By signing up, you are agreeing to the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>privacy policy<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> and <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>terms of service<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/login/register/register.component.ts</context>
                     <context context-type="linenumber">34</context>
@@ -661,8 +660,8 @@
                 <note priority="1" from="description">User instructions for filling out the forgot password form</note>
             </trans-unit>
             <trans-unit id="86bb724db5b8034ce5e98b88850c9a09" datatype="html">
-                <source>A password reset link has been sent to <x id="INTERPOLATION"/>!</source>
-                <target>A password reset link has been sent to <x id="INTERPOLATION"/>!</target>
+                <source>A password reset link has been sent to <x id="INTERPOLATION" equiv-text="{{ submittedEmail }}"/>!</source>
+                <target>A password reset link has been sent to <x id="INTERPOLATION" equiv-text="{{ submittedEmail }}"/>!</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/login/forgot-password/forgot-password.component.ts</context>
                     <context context-type="linenumber">12</context>
@@ -787,8 +786,8 @@
                 <note priority="1" from="description">No more results label for dashboard video list</note>
             </trans-unit>
             <trans-unit id="4f5129e1e4a82021b09f91a595cf0efe" datatype="html">
-                <source>Videos saved from the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/> appear here!</source>
-                <target>Videos saved from the <x id="START_LINK" ctype="x-a"/>library<x id="CLOSE_LINK" ctype="x-a"/> appear here!</target>
+                <source>Videos saved from the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>library<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> appear here!</source>
+                <target>Videos saved from the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>library<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> appear here!</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
                     <context context-type="linenumber">44</context>
@@ -886,8 +885,8 @@
                 <note priority="1" from="description">Dashboard message for when no answers can be found</note>
             </trans-unit>
             <trans-unit id="227bdf07ff892ecd94e958f804bd5b07" datatype="html">
-                <source><x id="INTERPOLATION"/> days</source>
-                <target><x id="INTERPOLATION"/> days</target>
+                <source><x id="INTERPOLATION" equiv-text="{{ stats?.consecutive_days || 0 }}"/> days</source>
+                <target><x id="INTERPOLATION" equiv-text="{{ stats?.consecutive_days || 0 }}"/> days</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/stats/stats.component.ts</context>
                     <context context-type="linenumber">3</context>
@@ -913,8 +912,8 @@
                 <note priority="1" from="description">The title for the user total study sessions stat</note>
             </trans-unit>
             <trans-unit id="cac8d7cae367c8d2658f121a0690756e" datatype="html">
-                <source><x id="INTERPOLATION"/> days</source>
-                <target><x id="INTERPOLATION"/> days</target>
+                <source><x id="INTERPOLATION" equiv-text="{{ stats?.longest_consecutive_days || 0 }}"/> days</source>
+                <target><x id="INTERPOLATION" equiv-text="{{ stats?.longest_consecutive_days || 0 }}"/> days</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/stats/stats.component.ts</context>
                     <context context-type="linenumber">13</context>
@@ -1030,8 +1029,8 @@
                 <note priority="1" from="description">number of views</note>
             </trans-unit>
             <trans-unit id="f93e0c2af148ade90f69131ac7d8181e" datatype="html">
-                <source><x id="INTERPOLATION"/> views</source>
-                <target><x id="INTERPOLATION"/> views</target>
+                <source><x id="INTERPOLATION" equiv-text="{{(video?.loop_count | fuzzy) || 0 }}"/> views</source>
+                <target><x id="INTERPOLATION" equiv-text="{{(video?.loop_count | fuzzy) || 0 }}"/> views</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/library/library-detail.component.ts</context>
                     <context context-type="linenumber">14</context>
@@ -1219,8 +1218,8 @@
                 <note priority="1" from="description">tos introduction section text (2)</note>
             </trans-unit>
             <trans-unit id="4db2ee4f54c4b567cdfbdfc05bfb31bd" datatype="html">
-                <source>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</source>
-                <target>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</target>
+                <source>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</source>
+                <target>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">19</context>
@@ -1588,8 +1587,8 @@
                 <note priority="1" from="description">tos hyperlinking section text (26)</note>
             </trans-unit>
             <trans-unit id="4ccbcabf2c522b6fe612b915c23b2611" datatype="html">
-                <source>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</source>
-                <target>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</target>
+                <source>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</source>
+                <target>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
                     <context context-type="linenumber">97</context>
@@ -1903,8 +1902,8 @@
                 <note priority="1" from="description">Privacy policy quick link for Google AdSense section</note>
             </trans-unit>
             <trans-unit id="6180b0b4361ae1d08e4b9af3bfff6bad" datatype="html">
-                <source>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a"/>. They are put in place to provide a positive experience for users.</source>
-                <target>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a"/>. They are put in place to provide a positive experience for users.</target>
+                <source>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. They are put in place to provide a positive experience for users.</source>
+                <target>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. They are put in place to provide a positive experience for users.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">81</context>
@@ -2236,8 +2235,8 @@
                 <note priority="1" from="description">third-party-disclosure section</note>
             </trans-unit>
             <trans-unit id="5c7e83e98ecf87459a72f348a0c75858" datatype="html">
-                <source>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it&apos;s release is appropriate to comply with the law, enforce our site policies, or protect ours or others&apos; rights, property or safety. <x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/> However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.</source>
-                <target>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it&apos;s release is appropriate to comply with the law, enforce our site policies, or protect ours or others&apos; rights, property or safety. <x id="LINE_BREAK" ctype="lb"/><x id="LINE_BREAK" ctype="lb"/> However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.</target>
+                <source>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it&apos;s release is appropriate to comply with the law, enforce our site policies, or protect ours or others&apos; rights, property or safety. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.</source>
+                <target>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it&apos;s release is appropriate to comply with the law, enforce our site policies, or protect ours or others&apos; rights, property or safety. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">70</context>
@@ -2632,8 +2631,8 @@
                 <note priority="1" from="description">canspam section 9</note>
             </trans-unit>
             <trans-unit id="ad63846c24f80d759bdf9b5e9cd141ae" datatype="html">
-                <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
-                <target>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</target>
+                <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+                <target>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">161</context>
@@ -2668,8 +2667,8 @@
                 <note priority="1" from="description">contact-information section 1</note>
             </trans-unit>
             <trans-unit id="9b3c772655ccd06f35b7728b7f02510f" datatype="html">
-                <source>getnativelearning.com<x id="LINE_BREAK" ctype="lb"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</source>
-                <target>getnativelearning.com<x id="LINE_BREAK" ctype="lb"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb"/>111-0032<x id="LINE_BREAK" ctype="lb"/>Japan</target>
+                <source>getnativelearning.com<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</source>
+                <target>getnativelearning.com<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">168</context>
@@ -2758,8 +2757,8 @@
                 <note priority="1" from="description">FAQ (3) Question</note>
             </trans-unit>
             <trans-unit id="f6a6c83477afd406e5318b99212d2e8b" datatype="html">
-                <source><x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/> had the initial idea and wrote the code. <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/> created the design.</source>
-                <target><x id="START_LINK" ctype="x-a"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a"/> had the initial idea and wrote the code. <x id="START_LINK_1" ctype="x-a"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a"/> created the design.</target>
+                <source><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> had the initial idea and wrote the code. <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> created the design.</source>
+                <target><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Hank Ehly<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> had the initial idea and wrote the code. <x id="START_LINK_1" ctype="x-a" equiv-text="&lt;a&gt;"/>Michele Angeloro<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> created the design.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">33</context>
@@ -2776,8 +2775,8 @@
                 <note priority="1" from="description">FAQ (4) Question</note>
             </trans-unit>
             <trans-unit id="f970ac9af488b2f9b4f649d2a2de80f3" datatype="html">
-                <source>If you logged in via Facebook, Twitter or Google, then you can create a password by going through the <x id="START_LINK" ctype="x-a"/>password reset process<x id="CLOSE_LINK" ctype="x-a"/>.</source>
-                <target>If you logged in via Facebook, Twitter or Google, then you can create a password by going through the <x id="START_LINK" ctype="x-a"/>password reset process<x id="CLOSE_LINK" ctype="x-a"/>.</target>
+                <source>If you logged in via Facebook, Twitter or Google, then you can create a password by going through the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>password reset process<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+                <target>If you logged in via Facebook, Twitter or Google, then you can create a password by going through the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>password reset process<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">41</context>
@@ -2803,8 +2802,8 @@
                 <note priority="1" from="description">The header title for the help page contact-us section</note>
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-                <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</source>
-                <target>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a"/>.</target>
+                <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+                <target>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
                     <context context-type="linenumber">29</context>
@@ -3199,8 +3198,8 @@
                 <note priority="1" from="description">The title of the account deactivation setting</note>
             </trans-unit>
             <trans-unit id="b3d8b8a036eb66525c6e88c13794c2ec" datatype="html">
-                <source>You can deactivate your account by clicking the link below. If you&apos;re confused or have questions about how the website works, try taking a look at the <x id="START_LINK" ctype="x-a"/>frequently asked questions<x id="CLOSE_LINK" ctype="x-a"/> before deciding once and for all to deactivate your account. All statistics and data will be lost. This action can be performed once and cannot be undone.</source>
-                <target>You can deactivate your account by clicking the link below. If you&apos;re confused or have questions about how the website works, try taking a look at the <x id="START_LINK" ctype="x-a"/>frequently asked questions<x id="CLOSE_LINK" ctype="x-a"/> before deciding once and for all to deactivate your account. All statistics and data will be lost. This action can be performed once and cannot be undone.</target>
+                <source>You can deactivate your account by clicking the link below. If you&apos;re confused or have questions about how the website works, try taking a look at the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>frequently asked questions<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> before deciding once and for all to deactivate your account. All statistics and data will be lost. This action can be performed once and cannot be undone.</source>
+                <target>You can deactivate your account by clicking the link below. If you&apos;re confused or have questions about how the website works, try taking a look at the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>frequently asked questions<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> before deciding once and for all to deactivate your account. All statistics and data will be lost. This action can be performed once and cannot be undone.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">2</context>
@@ -3352,8 +3351,8 @@
                 <note priority="1" from="description">The title for the general settings cancel email modifications button</note>
             </trans-unit>
             <trans-unit id="180be2f944682713f759b6615288cbe3" datatype="html">
-                <source>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</source>
-                <target>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</target>
+                <source>An email has been sent to <x id="INTERPOLATION" equiv-text="{{ submittedEmailAddress }}"/>. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</source>
+                <target>An email has been sent to <x id="INTERPOLATION" equiv-text="{{ submittedEmailAddress }}"/>. Please click the enclosed confirmation link to complete the email update process. Your current email settings will remain unchanged until email verification is complete.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">18</context>
@@ -3361,8 +3360,8 @@
                 <note priority="1" from="description">Message displayed after submitting an updated email address</note>
             </trans-unit>
             <trans-unit id="a156df53e81a3c26ab5082455077ab09" datatype="html">
-                <source>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed link to complete the email confirmation process.</source>
-                <target>An email has been sent to <x id="INTERPOLATION"/>. Please click the enclosed link to complete the email confirmation process.</target>
+                <source>An email has been sent to <x id="INTERPOLATION" equiv-text="{{ user?.email }}"/>. Please click the enclosed link to complete the email confirmation process.</source>
+                <target>An email has been sent to <x id="INTERPOLATION" equiv-text="{{ user?.email }}"/>. Please click the enclosed link to complete the email confirmation process.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">7</context>
@@ -3471,8 +3470,8 @@
                 <note priority="1" from="description">User friendly message before password reset link error message</note>
             </trans-unit>
             <trans-unit id="4630aa25a2a0bf7cabdf9ab4d5ad2f36" datatype="html">
-                <source>A password reset link has been sent to <x id="INTERPOLATION"/>!</source>
-                <target>A password reset link has been sent to <x id="INTERPOLATION"/>!</target>
+                <source>A password reset link has been sent to <x id="INTERPOLATION" equiv-text="{{ user.email }}"/>!</source>
+                <target>A password reset link has been sent to <x id="INTERPOLATION" equiv-text="{{ user.email }}"/>!</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/general/general.component.ts</context>
                     <context context-type="linenumber">70</context>
@@ -3786,8 +3785,8 @@
                 <note priority="1" from="description">shadowing instructions popup label</note>
             </trans-unit>
             <trans-unit id="bbd8d629521dfecde4c66501dd9010f8" datatype="html">
-                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque delectus dicta earum eligendi <x id="START_TAG_SPAN" ctype="x-span"/>eum illum<x id="CLOSE_TAG_SPAN" ctype="x-span"/> inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.</source>
-                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque delectus dicta earum eligendi <x id="START_TAG_SPAN" ctype="x-span"/>eum illum<x id="CLOSE_TAG_SPAN" ctype="x-span"/> inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.</target>
+                <source>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque delectus dicta earum eligendi <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>eum illum<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.</source>
+                <target>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consectetur consequuntur, culpa cum cumque delectus dicta earum eligendi <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>eum illum<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/> inventore iste itaque labore magni nam suscipit vero? Commodi, deleniti.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/study/shadowing/shadowing.component.ts</context>
                     <context context-type="linenumber">6</context>
@@ -3973,8 +3972,8 @@
                 </context-group>
             </trans-unit>
             <trans-unit id="766b546ea517e19a40f4ad4af7e75239" datatype="html">
-                <source>1. Open the <x id="START_LINK" ctype="x-a"/>general settings<x id="CLOSE_LINK" ctype="x-a"/> page and scroll to the bottom to find the password update form.</source>
-                <target>1. Open the <x id="START_LINK" ctype="x-a"/>general settings<x id="CLOSE_LINK" ctype="x-a"/> page and scroll to the bottom to find the password update form.</target>
+                <source>1. Open the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>general settings<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> page and scroll to the bottom to find the password update form.</source>
+                <target>1. Open the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>general settings<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> page and scroll to the bottom to find the password update form.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/article/20170825/20170825.component.ts</context>
                     <context context-type="linenumber">14</context>
