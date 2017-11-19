@@ -2758,7 +2758,7 @@
             </trans-unit>
             <trans-unit id="de24fb60b24f97090d63ed8c3c9517e3" datatype="html">
                 <source>Save a video to your dashboard by clicking the &quot;save&quot; button at the top of a video page. In your dashboard, click the &quot;begin&quot; button on the video to begin a study session.</source>
-                <source>Save a video to your dashboard by clicking the &quot;save&quot; button at the top of a video page. In your dashboard, click the &quot;begin&quot; button on the video to begin a study session.</source>
+                <target>Save a video to your dashboard by clicking the &quot;save&quot; button at the top of a video page. In your dashboard, click the &quot;begin&quot; button on the video to begin a study session.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">25</context>
