@@ -22,7 +22,7 @@
                     <span class="faqs__faq-number" (click)="toggleFaqAtIndex(1)">02</span>
                     <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(1)" i18n="FAQ (2) Question@@4e9b3d243b51f1d33a396b7f0aa4ada1">How do I begin a study session?</span>
                 </div>
-                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(1)" [@visible]="isFaqExpandedAtIndex(1)" i18n="FAQ (2) Answer@@de24fb60b24f97090d63ed8c3c9517e3">You can start a new study session in one of 2 ways. First, you can click the "start" button at the top of any video page. Second, you can click the "begin" button from a video saved to your dashboard queue.</p>
+                <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(1)" [@visible]="isFaqExpandedAtIndex(1)" i18n="FAQ (2) Answer@@de24fb60b24f97090d63ed8c3c9517e3">Save a video to your dashboard by clicking the "save" button at the top of a video page. In your dashboard, click the "begin" button on the video to begin a study session.</p>
             </li>
             <li class="faqs__faq">
                 <div class="faqs__faq-header">
@@ -32,14 +32,14 @@
                 </div>
                 <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(2)" [@visible]="isFaqExpandedAtIndex(2)" i18n="FAQ (3) Answer@@f6a6c83477afd406e5318b99212d2e8b"><a href="https://hankehly.com" target="_blank" class="link">Hank Ehly</a> had the initial idea and wrote the code. <a href="https://twitter.com/micheleangeloro" target="_blank" class="link">Michele Angeloro</a> created the design.</p>
             </li>
-            <li class="faqs__faq">
+            <!--<li class="faqs__faq">
                 <div class="faqs__faq-header">
                     <img gnGoogleStorageImage="/assets/icons/chevron.svg" i18n-alt="toggle faq visibility icon alternative text@@b91de74cb8d0742dba9c80ca10276d02" alt="toggle" class="faqs__chevron-icon" (click)="toggleFaqAtIndex(3)" [@rotation]="chevronRotationForFaqAtIndex(3)">
                     <span class="faqs__faq-number" (click)="toggleFaqAtIndex(3)">04</span>
                     <span class="link faqs__faq-title" (click)="toggleFaqAtIndex(3)" i18n="FAQ (4) Question@@6efab6159aac1ee9af28bf983eb49589">How do I set a password if I sign in via SNS?</span>
                 </div>
                 <p class="faqs__faq-detail" *ngIf="isFaqExpandedAtIndex(3)" [@visible]="isFaqExpandedAtIndex(3)" i18n="FAQ (4) Answer@@f970ac9af488b2f9b4f649d2a2de80f3">If you logged in via Facebook, Twitter or Google, then you can create a password by going through the <a [routerLink]="['/help', '20170825']" class="link">password reset process</a>.</p>
-            </li>
+            </li>-->
         </ul>
     </section>
 

@@ -1190,6 +1190,15 @@
                 </context-group>
                 <note priority="1" from="description">terms of service Disclaimer quick link title</note>
             </trans-unit>
+            <trans-unit id="4a22090675e41a2faba49c88c3fcc6e8" datatype="html">
+                <source>※ This agreement is based on English as the official text, and translation to Japanese and other languages ​​is only for the convenience for user. If the content of the English version differs from the content of the other languages, the contents of the English version shall be given priority.</source>
+                <target>※ 本資料は英語を正文とし、日本語その他の言語への翻訳はユーザーの便宜を図ることのみを目的とします。英語版と他の言語版の内容が一致しない場合は、英語版の内容を優先させるものとします。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="linenumber">15</context>
+                </context-group>
+                <note priority="1" from="description">tos intro section language difference agreement</note>
+            </trans-unit>
             <trans-unit id="f264beb3b0836e851ccdb20b9b2ace1d" datatype="html">
                 <source>Welcome to getnative!</source>
                 <target>getnativeへようこそ！</target>
@@ -1982,6 +1991,15 @@
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Our Contact Information section</note>
             </trans-unit>
+            <trans-unit id="5f5a3e49d6ef79990da4c3655ee31dfe" datatype="html">
+                <source>※ This agreement is based on English as the official text, and translation to Japanese and other languages ​​is only for the convenience for user. If the content of the English version differs from the content of the other languages, the contents of the English version shall be given priority.</source>
+                <target>※ 本資料は英語を正文とし、日本語その他の言語への翻訳はユーザーの便宜を図ることのみを目的とします。英語版と他の言語版の内容が一致しない場合は、英語版の内容を優先させるものとします。</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="linenumber">21</context>
+                </context-group>
+                <note priority="1" from="description">privacy intro section language difference agreement</note>
+            </trans-unit>
             <trans-unit id="1f42111bf745bf1e345726f02bf6e985" datatype="html">
                 <source>getnative Privacy Policy</source>
                 <target>getnativeプライバシーポリシー</target>
@@ -2739,8 +2757,8 @@
                 <note priority="1" from="description">FAQ (2) Question</note>
             </trans-unit>
             <trans-unit id="de24fb60b24f97090d63ed8c3c9517e3" datatype="html">
-                <source>You can start a new study session in one of 2 ways. First, you can click the &quot;start&quot; button at the top of any video page. Second, you can click the &quot;begin&quot; button from a video saved to your dashboard queue.</source>
-                <target>勉強を始める方法は2つあります。①動画の詳細画面の右上の「スタート」ボタンをクリックすると10分間の勉強セッションが始まります。②ダッシュボードのキューに保存されているビデオの「勉強を開始」ボタンをクリックします。</target>
+                <source>Save a video to your dashboard by clicking the &quot;save&quot; button at the top of a video page. In your dashboard, click the &quot;begin&quot; button on the video to begin a study session.</source>
+                <target>勉強したい動画の詳細画面右上の「保存」ボタンをクリックしてダッシュボードに保存してください。その後、ダッシュボードの動画リストに保存された動画をマウスオーバーし「勉強を開始」ボタンをクリックしてください。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">25</context>
