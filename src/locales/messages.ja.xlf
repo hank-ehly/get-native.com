@@ -121,7 +121,7 @@
             </trans-unit>
             <trans-unit id="38a221a305676dc90cd98ce5db0eb04e" datatype="html">
                 <source>SAVE</source>
-                <target>キューに保存</target>
+                <target>お気に入りに保存</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
                     <context context-type="linenumber">26</context>
@@ -130,7 +130,7 @@
             </trans-unit>
             <trans-unit id="b41db422db43acef3114a978c939d702" datatype="html">
                 <source>REMOVE</source>
-                <target>キューから削除</target>
+                <target>お気に入りから削除</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/shared/navbar/navbar.component.ts</context>
                     <context context-type="linenumber">27</context>
@@ -715,7 +715,7 @@
             </trans-unit>
             <trans-unit id="fc02fa317c34e59f8d4661c007200756" datatype="html">
                 <source>Queue</source>
-                <target>キュー</target>
+                <target>お気に入り</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
                     <context context-type="linenumber">4</context>
@@ -787,7 +787,7 @@
             </trans-unit>
             <trans-unit id="4f5129e1e4a82021b09f91a595cf0efe" datatype="html">
                 <source>Videos saved from the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>library<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> appear here!</source>
-                <target><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>ライブラリー<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>から動画をキューに保存できます！</target>
+                <target><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>ライブラリー<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>から動画をお気に入りに保存できます！</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
                     <context context-type="linenumber">44</context>
@@ -2740,7 +2740,7 @@
             </trans-unit>
             <trans-unit id="c11c85dfe124e49b2c76f8a0701c6de5" datatype="html">
                 <source>Yes! getnative is a free online language learning resource.</source>
-                <target>はい！ getnativeは無料のオンライン言語学習リソースです。</target>
+                <target>はい！getnativeは無料でご利用頂けるオンライン言語学習ツールです。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/help/main/main.component.ts</context>
                     <context context-type="linenumber">17</context>
@@ -2902,7 +2902,7 @@
             </trans-unit>
             <trans-unit id="431efa4827f2666c07cb2986934f7ec4" datatype="html">
                 <source>getnative is a free online language learning tool</source>
-                <target>getnativeは無料でご利用できる言語学習ツールです</target>
+                <target>getnativeは無料でご利用頂けるオンライン言語学習ツールです</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">2</context>
@@ -2911,7 +2911,7 @@
             </trans-unit>
             <trans-unit id="63ab48fc4aa50ea5685abb76ddc54794" datatype="html">
                 <source>Optimize your language learning</source>
-                <target>言語学習を最適化する</target>
+                <target>勉強の最適化へ</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">7</context>
@@ -2920,7 +2920,7 @@
             </trans-unit>
             <trans-unit id="1e18db402c99d2bf94ad552a5f0228f6" datatype="html">
                 <source>Using high quality videos of real native speakers, getnative guides you through an automated, intensive study routine. You only decide how much time to spend.</source>
-                <target>ネイティブスピーカーの高品質なインタビュー動画</target>
+                <target>ネイティブスピーカーの話し方を細かく確認できる高品質なインタビュー動画をご提供します。勉強機能と合わせて、より聞きやすい発音と分かりやすい言い回しを身につけましょう。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">8</context>
@@ -2947,7 +2947,7 @@
             </trans-unit>
             <trans-unit id="fb658a869160db95975603149cb0661d" datatype="html">
                 <source>For your learning purposes, getnative provides a library of high quality videos of real native speakers speaking off the top of their heads. Each video comes with an accurate transcription of the original language, as well as various translations.</source>
-                <target>getnativeは、ネイティブスピーカーの高品質なインタビュー動画を提供します。そして、話した言葉がそのまま記載されるため、自然な話し方を細かく確認することができます。</target>
+                <target>getnativeは、ネイティブスピーカーの高品質なインタビュー動画を提供し、話された言葉を事細かく記載しますので、文字と発音が簡単に結びつけることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">18</context>
@@ -2956,7 +2956,7 @@
             </trans-unit>
             <trans-unit id="da9431dac46430ad694352ca7bb4d6e7" datatype="html">
                 <source>Study quickly &amp; effectively</source>
-                <target>時間で効果良く勉強する</target>
+                <target>短時間で効率よく勉強</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">29</context>
@@ -2965,7 +2965,7 @@
             </trans-unit>
             <trans-unit id="f25fc28ef1ce003a1d2e2b74c4edf503" datatype="html">
                 <source>Study quickly &amp; effectively</source>
-                <target>短い時間で効果良く勉強する</target>
+                <target>短時間で効率よく勉強</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">27</context>
@@ -2974,7 +2974,7 @@
             </trans-unit>
             <trans-unit id="a77cb5d4f5ba2526709496556d8aa4be" datatype="html">
                 <source>getnative guides you through a series of learning exercises optimized to help you learn the most in the shortest time possible. A single study session can take as little as 5 minutes to complete.</source>
-                <target>getnativeは、リスニング・シャドーイング・スピーキング・ライティングの4つの練習を順番に行える機能をご提供します。たった5分だけでも、様々な練習ができ、勉強の準備にかかる時間を大幅に下げます。</target>
+                <target>リスニング・シャドーイング・スピーキング・ライティングの4つの練習を順番に行える勉強機能をご提供し、勉強の準備にかかる時間を大幅に下げます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">28</context>
@@ -3001,7 +3001,7 @@
             </trans-unit>
             <trans-unit id="929c28ca424552020939e6af075621ff" datatype="html">
                 <source>getnative focuses on actively using the language — not memorizing grammar or vocabulary — to naturally lead you toward using the language in a way similar to that of a native speaker.</source>
-                <target>文法や単語を暗記するだけで、ネイティヴスピーカーと勘違いされるほどスラスラ話せるようになりません。getnativeは、ネイティブスピーカーの話し方を真似る「能動的」な練習を重視し、ネイティヴスピーカーと自分とで話す速さと使う表現のギャップを縮めようとします。</target>
+                <target>文法や単語を暗記するだけで、ネイティヴスピーカーのようにスラスラと話せるようにはなれません。getnativeは「能動的」にネイティブスピーカーの話し方を真似させ、聞きやすい発音や分かりやすい言い回しを使わせようとします。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">38</context>
@@ -3010,7 +3010,7 @@
             </trans-unit>
             <trans-unit id="2cd5d943017487b4035bb1951f66f72a" datatype="html">
                 <source>That&apos;s not all..</source>
-                <target>そして..</target>
+                <target>まだまだあります..</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">60</context>
@@ -3037,7 +3037,7 @@
             </trans-unit>
             <trans-unit id="50ba40aa73787d637c8548536fdc80a5" datatype="html">
                 <source>Easily switch between multiple target languages from the global menu.</source>
-                <target>グローバルメニューから簡単に複数のターゲット言語に切り替えることができます。</target>
+                <target>簡単に複数のターゲット言語に切り替えることができます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">52</context>
@@ -3064,7 +3064,7 @@
             </trans-unit>
             <trans-unit id="89609c2553a04bf2845e79d4ef4c6bcd" datatype="html">
                 <source>getnative is actively maintained to deliver a bug free experience.</source>
-                <target>getnativeは、バグなくご利用頂けるとようにメンテナンスを頻繁に行っています。</target>
+                <target>getnativeをバグなくご利用頂けるためにメンテナンスを継続的に行っています。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">82</context>
@@ -3091,7 +3091,7 @@
             </trans-unit>
             <trans-unit id="c18bbb62e2d47da151dbc5794a2d730a" datatype="html">
                 <source>Your data is protected by the latest web application security standards.</source>
-                <target>ユーザーデータは最新のWebアプリケーションセキュリティ基準によって保護されています。</target>
+                <target>最新のWebアプリケーションセキュリティ基準に基づくプログラムがあなたのデータを守ります。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">64</context>
@@ -3118,7 +3118,7 @@
             </trans-unit>
             <trans-unit id="d999dc80d833746fe5275ef7f87607b1" datatype="html">
                 <source>getnative has an elegant interface that is easy to use and understand.</source>
-                <target>getnativeには使いやすく理解しやすい洗練されたインタフェースがあります。</target>
+                <target>分かりやすさと見えやすさを重視したデザインをご提供します。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">70</context>
@@ -3145,7 +3145,7 @@
             </trans-unit>
             <trans-unit id="bee91d91bacd446731eae12b466d5733" datatype="html">
                 <source>We’re available directly by email for and questions or comments.</source>
-                <target>ご質問・ご不明点などをEメールでお問い合わせ頂けます。</target>
+                <target>ご不明点・ご質問などは随時Eメールで受け付けております。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">76</context>
@@ -3172,7 +3172,7 @@
             </trans-unit>
             <trans-unit id="7f31334d10f103ad7bf166bd7eaf2135" datatype="html">
                 <source>Create an account in seconds using Email, Facebook, Twitter or Google.</source>
-                <target>Eメール、Facebook、TwitterやGoogleで登録が簡単にできちゃいます。</target>
+                <target>Eメール、Facebook、Twitter、Googleなどで数秒でユーザー登録できます。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">82</context>
@@ -3190,7 +3190,7 @@
             </trans-unit>
             <trans-unit id="9c6d5f890ec8e6bd73277ac9ab8686d0" datatype="html">
                 <source>Click the following button to continue to the registration screen. getnative is a free online language learning resource and does not require payment to use.</source>
-                <target>以下のボタンをクリックしますと登録画面が表示されます。 getnativeは、無料でご利用頂けるオンライン言語学習ツールですので、支払い情報は一切求められません。</target>
+                <target>以下のボタンをクリックしますと登録画面が表示されます。 getnativeは、無料でご利用頂けるオンライン言語学習ツールですので、支払い情報が要求されることはございません。</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">91</context>
