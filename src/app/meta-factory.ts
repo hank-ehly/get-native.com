@@ -7,6 +7,7 @@
 
 import { LanguageCode } from './core/typings/language-code';
 import { LangService } from './core/lang/lang.service';
+import { environment } from '../environments/environment';
 
 import { MetaLoader, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
 import * as _ from 'lodash';
@@ -21,9 +22,9 @@ export function metaFactory(localeId: string, lang: LangService): MetaLoader {
         defaults: {
             title: 'default.title',
             description: 'default.description',
-            'og:image': 'https://getnativelearning.com/assets/images/og.png', // todo: i18n && change per page
-            'og:image:url': 'https://getnativelearning.com/assets/images/og.png', // todo: i18n && change per page
-            'og:image:secure_url': 'https://getnativelearning.com/assets/images/og.png', // todo: i18n && change per page
+            'og:image': environment.googleStorageUrl + '/assets/images/og.png', // todo: i18n && change per page
+            'og:image:url': environment.googleStorageUrl + '/assets/images/og.png', // todo: i18n && change per page
+            'og:image:secure_url': environment.googleStorageUrl + '/assets/images/og.png', // todo: i18n && change per page
             'og:image:type': 'image/png',
             'og:image:width': '1200', // todo: change per page
             'og:image:height': '630', // todo: change per page
@@ -34,7 +35,7 @@ export function metaFactory(localeId: string, lang: LangService): MetaLoader {
             'og:url': 'https://getnativelearning.com', // todo: i18n & change per page
             'twitter:title': 'getnative', // todo: change per page (library detail)
             'twitter:description': 'default.description',
-            'twitter:image:src': 'https://getnativelearning.com/assets/images/og.png' // todo: change per page
+            'twitter:image:src': environment.googleStorageUrl + '/assets/images/og.png' // todo: change per page
         }
     });
 }
