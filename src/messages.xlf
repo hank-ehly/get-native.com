@@ -1280,6 +1280,14 @@
         </context-group>
         <note priority="1" from="description">information collection section 1</note>
       </trans-unit>
+      <trans-unit id="1ca90afe6b8ef14699b33add421d2dc0" datatype="html">
+        <source>When do we collect information?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <note priority="1" from="description">information collection section header</note>
+      </trans-unit>
       <trans-unit id="852b8bc7c1aee4ef80f1bafdae233737" datatype="html">
         <source>We collect information from you when you register on our site, Open a Support Ticket or enter information on our site.</source>
         <context-group purpose="location">
