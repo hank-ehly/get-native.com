@@ -29,6 +29,7 @@
 
 .video-panel:hover .video-panel__overlay {
   opacity: 1;
+  transition: opacity 100ms;
 }
 
 .video-panel__overlay.video-panel__overlay_link {
