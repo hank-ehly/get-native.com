@@ -15,11 +15,6 @@
             <li *ngFor="let link of langLinks">
                 <a [href]="link.url" class="link">{{ link.label }}</a>
             </li>
-            <!--<ng-container *ngIf="!langLinks.length">
-                <li *ngFor="let language of languages">
-                    <a [href]="[currLoc, language.code].join('/')" class="link">{{ [currLoc, language.code].join('/') }}</a>
-                </li>
-            </ng-container>-->
         </ul>
     </div>
 </footer>
