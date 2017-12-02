@@ -4,7 +4,7 @@
 
 <gn-modal [isVisible]="isModalVisibleEmitted$ | async" (close)="onClickCloseModal()">
     <div class="modal__content">
-        <p class="paragraph paragraph--modal" i18n="Confirmation message for users about to delete their account@@b64a08650d7341412cb703f052fc5c46">Could you give us a brief description about why you're leaving? We read and consider every reason seriously.</p>
+        <p class="paragraph paragraph--modal" i18n="Confirmation message for users about to delete their account@@b64a08650d7341412cb703f052fc5c46">Could you give us a brief description about why you're leaving? We read and consider every reason.</p>
 
         <div class="error-message-container" *ngIf="deleteUserError">
             <p class="paragraph--error-message">{{ deleteUserError.message }}</p>
