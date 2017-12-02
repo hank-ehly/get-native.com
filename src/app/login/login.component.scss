@@ -42,7 +42,7 @@
 }
 
 :host /deep/ {
-  .modal {
+  .gn-modal {
     @include border-radius();
     box-shadow: 0 1px 2px rgba($black, 0.5);
     width: 100%;
@@ -104,7 +104,8 @@
   }
 
   .error-messages {
-    @include font-weight-bold();
+    @include list-unstyled;
+    font-family: $headings-font-family;
     color: red;
     font-size: 14px;
     padding-left: 30px;

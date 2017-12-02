@@ -42,6 +42,7 @@ $column-width: ($main-width - 30px) / 2;
   background: transparent;
   border: none;
   cursor: pointer;
+  line-height: normal;
   outline: none;
   padding: 0;
   height: 14px;
@@ -49,6 +50,10 @@ $column-width: ($main-width - 30px) / 2;
 
   &:disabled {
     cursor: not-allowed;
+  }
+
+  img {
+    vertical-align: baseline;
   }
 }
 

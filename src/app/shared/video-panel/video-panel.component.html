@@ -16,13 +16,13 @@
                 </ng-container>
             </div>
             <div class="controls__row">
-                <button class="controls__button" (click)="onBegin()" i18n="The text for the begin study session button@@d6f6f018e3af2b307e2e4577b59c42cc" [disabled]="disabled">Begin</button>
+                <button class="btn controls__button" (click)="onBegin()" i18n="The text for the begin study session button@@d6f6f018e3af2b307e2e4577b59c42cc" [disabled]="disabled">Begin</button>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <h5 class="footer__video-title">{{ video?.subcategory?.name }}</h5>
+        <h6 class="footer__video-title">{{ video?.subcategory?.name }}</h6>
         <span class="footer__video-speaker">{{ video?.speaker?.name }}</span>
 
         <div class="video-stats">

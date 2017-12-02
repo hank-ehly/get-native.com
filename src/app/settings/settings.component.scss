@@ -66,7 +66,6 @@
 }
 
 .header__title {
-  @include font-weight-regular;
   align-self: center;
   color: $regent-gray;
   margin-top: 30px;
@@ -75,6 +74,7 @@
 }
 
 .tabs {
+  @include list-unstyled;
   border-bottom: 2px solid $aqua-haze;
   display: flex;
   flex-flow: row nowrap;
@@ -84,10 +84,10 @@
 }
 
 .tab {
-  @include font-weight-bold;
+  font-family: $headings-font-family;
   color: $regent-gray;
   cursor: pointer;
-  font-size: $font-size-x-small;
+  font-size: $font-size-xs;
   margin-left: 30px;
   outline: none;
 }
@@ -108,7 +108,7 @@
 }
 
 .modal-content .header h2 {
-  font-size: $font-size-medium;
+
   text-align: center;
 }
 
@@ -125,7 +125,7 @@
   background: $white;
   border: none;
   display: block;
-  line-height: $font-size-large;
+  line-height: $font-size-lg;
   padding: 6px;
   text-align: center;
   margin: auto;
@@ -141,12 +141,19 @@
   }
 }
 
-.dropdown-divider {
-  display: block;
-  position: relative;
-  float: none;
-  line-height: inherit;
-  padding-top: 1px;
-  margin: 5px 1px 6px;
-  border-bottom: 1px solid $gallery;
+.dropdown-menu li[role='menuitem'] {
+  cursor: pointer;
+  .dropdown-item {
+    cursor: inherit;
+  }
 }
+
+//.dropdown-divider {
+//  display: block;
+//  position: relative;
+//  float: none;
+//  line-height: inherit;
+//  padding-top: 1px;
+//  margin: 5px 1px 6px;
+//  border-bottom: 1px solid $gallery;
+//}

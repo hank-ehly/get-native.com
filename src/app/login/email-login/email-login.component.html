@@ -1,4 +1,4 @@
-<div class="modal modal_email-login">
+<div class="gn-modal modal_email-login">
     <header>
         <p class="paragraph modal_email-login__paragraph" i18n="The user instruction for logging in via email@@1c5b78eace07597d143a9649259a0f84">Enter your email address and password to sign in.</p>
     </header>
@@ -18,7 +18,7 @@
             <input id="password" type="password" class="input tabbable" name="password" [(ngModel)]="model.password" tabindex="2" minlength="8" required>
         </div>
 
-        <button tabindex="3" class="button button--opaque form__button tabbable" [disabled]="form.invalid || flags.processing.login" i18n="The text for the email login form submit button@@2efa36dd7f07f7e0beb2afd97e4a8693">SIGN IN</button>
+        <button tabindex="3" type="submit" class="btn btn-sm btn-primary btn-gradient-primary form__button tabbable" [disabled]="form.invalid || flags.processing.login" i18n="The text for the email login form submit button@@2efa36dd7f07f7e0beb2afd97e4a8693">SIGN IN</button>
     </form>
 
     <footer class="footer">

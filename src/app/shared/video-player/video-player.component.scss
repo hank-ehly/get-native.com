@@ -97,7 +97,7 @@
 .player-controls__time {
   align-self: center;
   display: flex;
-  font-size: $font-size-x-small;
+  font-size: $font-size-xs;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -205,5 +205,5 @@
 }
 
 .tracker__current-time::-webkit-progress-value {
-  background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
+  background-image: linear-gradient(to right, $robin-egg-blue, $primary);
 }

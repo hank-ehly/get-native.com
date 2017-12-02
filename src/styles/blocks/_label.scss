@@ -1,6 +1,6 @@
 @import '../core';
 
 .label {
-  @include font-weight-bold;
+  font-family: $headings-font-family;
   cursor: pointer;
 }

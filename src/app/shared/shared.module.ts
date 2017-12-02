@@ -76,7 +76,6 @@ import { GoogleStorageImageDirective } from './google-storage-image/google-stora
         DropdownComponent,
         AlertComponent,
         GoogleStorageImageDirective
-
     ],
     exports: [
         AutosizeTextareaDirective,

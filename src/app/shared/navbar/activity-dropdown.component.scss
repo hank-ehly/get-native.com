@@ -6,10 +6,11 @@
 }
 
 .activity-items {
-  width: 290px;
+  @include list-unstyled;
   background: $white;
   box-sizing: border-box;
   box-shadow: 0 5px 10px 0 rgba($black, 0.2);
+  width: 290px;
   z-index: 1;
 }
 
@@ -39,22 +40,19 @@
 }
 
 .item__title {
-  margin-top: 16px;
   display: inline-block;
-}
-
-.item__title small {
-  @include font-weight-regular();
+  margin-top: 16px;
+  margin-bottom: 0;
 }
 
 .item__time-since-label {
   color: $regent-gray;
   display: block;
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
 }
 
 .see-more-activities__count-label {
   display: inline-block;
-  font-size: $font-size-x-small;
+  font-size: $font-size-xs;
   color: $regent-gray;
 }

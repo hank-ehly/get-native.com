@@ -28,8 +28,8 @@
 }
 
 .paragraph--error-message {
-  @include font-weight-bold();
-  font-size: $font-size-small;
+  font-family: $headings-font-family;
+  font-size: $font-size-sm;
   color: $error-message-color;
   margin-top: 5px;
 }

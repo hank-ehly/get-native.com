@@ -31,21 +31,13 @@
 }
 
 .section-header__title {
-  font-size: $font-size-medium;
+
   padding-left: 20px;
 }
 
 .faqs {
+  @include list-unstyled;
   margin-top: 30px;
-}
-
-/* TODO: To fix the padding issue, use flex-box instead */
-.faqs__faq-header {
-  font-size: 0;
-}
-
-.faqs__faq-number, .faqs__faq-title {
-  font-size: $font-size-regular;
 }
 
 .faqs__faq {
@@ -69,13 +61,13 @@
   @include border-radius();
   background: $white-lilac;
   border: 2px solid $athens-gray;
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
   margin-top: 30px;
   padding: 24px;
 }
 
 .faqs__faq-detail .link {
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
 }
 
 .section__paragraph {

@@ -1,8 +1,8 @@
 @import '../../../styles/core';
 
 .modal__header {
-  @include border-top-radius();
-  background: $shamrock;
+  @include border-top-radius($border-radius);
+  background: $primary;
   display: flex;
   justify-content: center;
   height: 100px;
@@ -22,12 +22,12 @@
 
 .modal__button {
   @include border-radius;
-  @include font-weight-regular;
+
   color: $white;
   cursor: pointer;
   height: 60px;
   display: flex;
-  font-size: $font-size-regular;
+
   justify-content: flex-start;
   margin-top: 10px;
   outline: none;

@@ -89,8 +89,13 @@ export class SettingsComponent implements OnInit, OnDestroy {
         this.OnDestroy$.next();
     }
 
-    onClickThumbnail(): void {
-        this.isThumbnailDropdownVisible = !this.isThumbnailDropdownVisible;
+    onClickThumbnail($event: MouseEvent): void {
+        if ((<HTMLElement>$event.target).hasAttribute('dropdown')) {
+            this.logger.debug(this, 'onClickThumbnail');
+            $event.preventDefault();
+            $event.stopPropagation();
+            this.isThumbnailDropdownVisible = !this.isThumbnailDropdownVisible;
+        }
     }
 
     onChangeThumbnail(e: Event): void {
@@ -135,7 +140,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
             );
     }
 
-    onClickCancelDropdown(): void {
+    onClickCancelDropdown($event: MouseEvent): void {
+        this.logger.debug(this, 'onClickCancelDropdown');
+        $event.preventDefault();
+        $event.stopPropagation();
         this.cropper.reset();
         this.isThumbnailDropdownVisible = false;
     }

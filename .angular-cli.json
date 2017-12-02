@@ -18,7 +18,6 @@
             "testTsconfig": "tsconfig.spec.json",
             "prefix": "gn",
             "styles": [
-                "../node_modules/reset-css/reset.css",
                 "styles.scss"
             ],
             "scripts": [

@@ -39,6 +39,10 @@
   }
 }
 
+.subcategories-list {
+  @include list-unstyled;
+}
+
 .subcategory {
   margin-top: 10px;
 }

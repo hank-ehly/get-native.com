@@ -1,15 +1,16 @@
 @import '../core';
 
 .link {
-  color: $shamrock;
+  color: $primary;
   cursor: pointer;
-  font-size: $font-size-regular;
   outline: none;
   text-decoration: none;
   border-bottom: 1px solid transparent;
 
   &:hover, &:focus {
+    color: $primary;
     border-bottom-color: $iceberg;
+    text-decoration: none;
   }
 }
 

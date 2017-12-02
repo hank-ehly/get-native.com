@@ -18,7 +18,7 @@
     <section class="usage-examples-section" *ngIf="selectedCollocationOccurrence">
         <header class="usage-examples-section__header">
             <h6 class="usage-examples-section__header-title" i18n="The text for the transcript collocation usage example section@@e38dd392d27f3101e4ac25a47c6242e6">USAGE EXAMPLES</h6>
-            <h4 class="usage-examples-section__header-collocation-occurrence collocation-occurrence">{{ selectedCollocationOccurrence.text }} <small class="usage-examples-section__header-phonetic" *ngIf="selectedCollocationOccurrence.ipa_spelling">({{ selectedCollocationOccurrence.ipa_spelling }})</small></h4>
+            <h6 class="usage-examples-section__header-collocation-occurrence collocation-occurrence">{{ selectedCollocationOccurrence.text }} <small class="usage-examples-section__header-phonetic" *ngIf="selectedCollocationOccurrence.ipa_spelling">({{ selectedCollocationOccurrence.ipa_spelling }})</small></h6>
         </header>
         <ul class="usage-examples" *ngIf="selectedCollocationOccurrence.usage_examples.count">
             <li class="usage-example" *ngFor="let example of selectedCollocationOccurrence.usage_examples.records" [innerHtml]="addMarkupToUsageExampleText(example.text) | safeHtml"></li>

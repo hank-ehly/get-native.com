@@ -34,4 +34,8 @@
   src: url('https://storage.googleapis.com/stg.getnativelearning.com/assets/fonts/326C07_5_0.eot?#iefix') format('embedded-opentype'), url('https://storage.googleapis.com/stg.getnativelearning.com/assets/fonts/326C07_5_0.woff2') format('woff2'), url('https://storage.googleapis.com/stg.getnativelearning.com/assets/fonts/326C07_5_0.woff') format('woff'), url('https://storage.googleapis.com/stg.getnativelearning.com/assets/fonts/326C07_5_0.ttf') format('truetype');
 }
 
+/* App specific scss */
 @import "./styles/index";
+
+/* Bootstrap */
+@import '../node_modules/bootstrap/scss/bootstrap';

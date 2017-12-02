@@ -35,7 +35,7 @@
 
 .switch__title {
   @include border-radius(30px);
-  @include font-weight-bold;
+  font-family: $headings-font-family;
   background-color: $regent-gray;
   color: $white;
   font-size: 11px;
@@ -47,7 +47,7 @@
 }
 
 .switch__input:checked + .switch__title {
-  background: $shamrock;
+  background: $primary;
   transform: translateX(20px);
   transition: 100ms;
 }

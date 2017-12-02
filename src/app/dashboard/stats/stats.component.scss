@@ -2,6 +2,7 @@
 @import './stats.component.debug';
 
 .stats {
+  @include list-unstyled;
   display: flex;
   margin-top: 40px;
 }
@@ -11,12 +12,12 @@
 }
 
 .stat-value {
-  color: $shamrock;
+  color: $primary;
   font-size: 30px;
 }
 
 .stat-key {
-  @include font-weight-bold;
-  font-size: $font-size-x-small;
+  font-family: $headings-font-family;
+  font-size: $font-size-xs;
   letter-spacing: $uppercase-label-letter-spacing;
 }
