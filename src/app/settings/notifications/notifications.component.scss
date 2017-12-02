@@ -1,12 +1,16 @@
 @import '../../../styles/core';
 @import './notifications.component.debug';
 
-.row {
+.section {
   margin-top: 50px;
 }
 
-.row:first-child {
+.section:first-child {
   margin-top: 30px;
+}
+
+.header {
+  margin-bottom: 0;
 }
 
 .label-button-row {

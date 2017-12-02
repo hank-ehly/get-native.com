@@ -43,9 +43,9 @@
 }
 
 .collocation-occurrences {
+  @include list-unstyled;
   line-height: 34px;
   padding-top: 6px;
-  list-style: none;
 }
 
 .collocation-occurrence:before {

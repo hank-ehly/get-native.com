@@ -4,16 +4,16 @@
     <div class="progress-frame">
         <div class="circle circle--large"><span class="check-mark">&#x2713;</span></div>
 
-        <progress max="100" [value]="progressForSection(section.Listening)" class="progress progress--listening"></progress>
+        <progress max="100" [value]="progressForSection(section.Listening)" class="gn-progress progress--listening"></progress>
         <div class="circle circle--listening" [ngClass]="{'circle--complete': isComplete(section.Listening)}"></div>
 
-        <progress max="100" [value]="progressForSection(section.Shadowing)" class="progress progress--shadowing"></progress>
+        <progress max="100" [value]="progressForSection(section.Shadowing)" class="gn-progress progress--shadowing"></progress>
         <div class="circle circle--shadowing" [ngClass]="{'circle--complete': isComplete(section.Shadowing)}"></div>
 
-        <progress max="100" [value]="progressForSection(section.Speaking)" class="progress progress--speaking"></progress>
+        <progress max="100" [value]="progressForSection(section.Speaking)" class="gn-progress progress--speaking"></progress>
         <div class="circle circle--speaking" [ngClass]="{'circle--complete': isComplete(section.Speaking)}"></div>
 
-        <progress max="100" [value]="progressForSection(section.Writing)" class="progress progress--writing"></progress>
+        <progress max="100" [value]="progressForSection(section.Writing)" class="gn-progress progress--writing"></progress>
         <div class="circle circle--writing" [ngClass]="{'circle--complete': isComplete(section.Writing)}"></div>
     </div>
 </main>

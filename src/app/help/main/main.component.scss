@@ -20,8 +20,8 @@
   @include border-radius(50%);
   display: flex;
   border: 2px solid #e1e1e6;
-  width: 70px;
-  height: 70px;
+  width: 74px;
+  height: 74px;
   justify-content: center;
 }
 
@@ -31,7 +31,6 @@
 }
 
 .section-header__title {
-
   padding-left: 20px;
 }
 
@@ -44,6 +43,12 @@
   margin-top: 20px;
 }
 
+.faqs__faq-header {
+  display: flex;
+  flex-direction: row;
+  height: 22px;
+}
+
 .faqs__chevron-icon {
   max-width: 6px;
 }
@@ -51,6 +56,7 @@
 .faqs__chevron-icon, .faqs__faq-number {
   cursor: pointer;
   margin-right: 10px;
+  vertical-align: baseline;
 }
 
 .faqs__faq-number {
