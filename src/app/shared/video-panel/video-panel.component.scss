@@ -19,7 +19,7 @@
   @include border-right-radius(10px);
   // prevents Safari flickering during hover
   -webkit-transform: translateZ(0);
-  background-image: linear-gradient(to right, rgba($shamrock, 0.8), rgba($robin-egg-blue, 0.8));
+  background-image: linear-gradient(to right, rgba($primary, 0.8), rgba($robin-egg-blue, 0.8));
   height: 100%;
   position: absolute;
   opacity: 0;
@@ -48,10 +48,11 @@
   background: transparent;
   border: none;
   color: $white;
-  font-size: $font-size-regular;
+
   padding: 0;
   text-align: center;
   align-self: center;
+  padding-top: 2px;
 }
 
 .controls__input::-webkit-inner-spin-button,
@@ -74,6 +75,7 @@
 }
 
 .controls__row {
+  line-height: $line-height-sm;
   display: flex;
   justify-content: flex-start;
 }
@@ -105,7 +107,7 @@
 
 .controls__minute-button:first-child::after {
   top: 3px;
-  border-bottom: 4px solid $shamrock;
+  border-bottom: 4px solid $primary;
 }
 
 .controls__minute-button--disabled.controls__minute-button:first-child::after {
@@ -114,7 +116,7 @@
 
 .controls__minute-button:last-child::after {
   top: 15px;
-  border-top: 4px solid $shamrock;
+  border-top: 4px solid $primary;
 }
 
 .controls__minute-button--disabled.controls__minute-button:last-child::after {
@@ -132,24 +134,17 @@
 .controls__minutes-label {
   align-self: center;
   color: $white;
-  height: 18px;
-  padding-bottom: 1px;
+  padding-top: 2px;
 }
 
 .controls__button {
-  @include border-radius();
-  background: $white;
-  border: 0;
-  color: $shamrock;
-  cursor: pointer;
-  display: block;
-  font-size: $font-size-regular;
+  @include border-radius;
+  border: none;
+  color: $primary;
   height: 40px;
   margin-top: 12px;
-  outline: none;
   width: 150px;
   &:disabled {
-    cursor: not-allowed;
     color: $regent-gray;
   }
 }
@@ -160,7 +155,7 @@
   bottom: 0;
   box-sizing: border-box;
   color: $white;
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
   height: 100px;
   padding: 16px 18px;
   position: absolute;
@@ -168,14 +163,16 @@
 }
 
 .footer .footer__video-title {
+  font-size: $font-size-sm;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  margin-bottom: 0;
 }
 
 .footer .video-stats {
   display: flex;
-  font-size: $font-size-x-small;
+  font-size: $font-size-xs;
   height: 16px;
   margin-top: 8px;
   overflow: hidden;

@@ -1,4 +1,4 @@
-<div class="modal modal_register">
+<div class="gn-modal modal_register">
 
     <header>
         <p class="paragraph" i18n="The instructions for filling out the registration form@@c14750e82b80f8b3e0cfdee86c8c42c3">Register via email by filling out the following information.</p>
@@ -25,7 +25,7 @@
             <input id="password-confirm" type="password" name="password-confirm" tabindex="3" class="input tabbable" [(ngModel)]="model.passwordConfirm" minlength="8" required>
         </div>
 
-        <button tabindex="4" class="button button--opaque form__button tabbable" [disabled]="form.invalid || flags.processing.createUser" i18n="The text for the submit button of the user registration form@@76547a2df32997f1cb7ee0dc185a421c">SIGN UP</button>
+        <button tabindex="4" class="btn btn-primary btn-gradient-primary form__button tabbable" [disabled]="form.invalid || flags.processing.createUser" i18n="The text for the submit button of the user registration form@@76547a2df32997f1cb7ee0dc185a421c">SIGN UP</button>
     </form>
 
     <footer class="footer">

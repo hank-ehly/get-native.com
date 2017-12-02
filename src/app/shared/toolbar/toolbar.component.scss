@@ -2,25 +2,26 @@
 @import './toolbar.component.debug';
 
 .toolbar {
-  @include font-weight-bold;
+  font-family: $headings-font-family;
   bottom: 30px;
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-end;
-  font-size: $font-size-x-small;
+  font-size: $font-size-xs;
   margin-right: 30px;
   position: fixed;
   right: 0;
   width: 120px;
   z-index: 1;
-  @media screen and (max-width: $breakpoint-md) {
-    left: $breakpoint-md - 150px
+  @include media-breakpoint-down(lg) {
+    left: map_get($grid-breakpoints, 'xl') - 150px;
   }
 }
 
 .toolbar__tooltip-languages {
   @include border-radius();
-  background: $shamrock;
+  @include list-unstyled;
+  background: $primary;
   color: $white;
   display: flex;
   flex-flow: column wrap;

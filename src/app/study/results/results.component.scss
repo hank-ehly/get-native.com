@@ -11,13 +11,13 @@
 }
 
 .table__data_key {
-  @include font-weight-bold;
-  font-size: $font-size-x-small;
+  font-family: $headings-font-family;
+  font-size: $font-size-xs;
   letter-spacing: $uppercase-label-letter-spacing;
 }
 
 .table__data_value {
-  color: $shamrock;
+  color: $primary;
 }
 
 .button__container {

@@ -14,7 +14,11 @@ $vertical-gutter-height: 36px;
 }
 
 .emoji {
-  font-size: $font-size-x-large * 2;
+  font-size: $font-size-xl * 2;
+}
+
+.activity-list {
+  @include list-unstyled;
 }
 
 .list-item {
@@ -30,7 +34,7 @@ $vertical-gutter-height: 36px;
 
 .list-item__time-since {
   color: $regent-gray;
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
 }
 
 .list-item__body {

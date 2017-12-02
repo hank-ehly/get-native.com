@@ -1,32 +1,123 @@
-/* border-radius */
-$default-border-radius: 5px;
+/* Colors */
+$alto:                  #D6D6D6;
+$aqua-haze:             #F0F5F7;
+$aqua-haze-dark:        darken($aqua-haze, 5%);
+$atlantis:              #80CC33;
+$athens-gray:           #E7E6EB;
+$azure-radiance:        #0295F4;
+$black:                 #000000;
+$catskill-white:        #ECF5F7;
+$chambray:              #3A589A;
+$chambray-dark:         #324b80;
+$cod-gray:              #1A1A1A;
+$gallery:               #EEEEEE;
+$grey:                  #B8B8B8;
+$iceberg:               #D9F3E8;
+$iron:                  #E1E2E4;
+$malachite:             #00CC33;
+$mercury:               #E6E6E6;
+$orange:                #FF661A;
+$orange-peel:           #FF9900;
+$pale-canary:           #FFFF99;
+$pale-sky:              #6C7680;
+$periwinkle-gray:       #C3D4E5;
+$periwinkle-gray-dark:  darken($periwinkle-gray, 5%);
+$picton-blue:           #50AAF0;
+$picton-blue-dark:      darken($picton-blue, 5%);
+$red:                   #FF0000;
+$red-orange:            #FF3333;
+$regent-gray:           #8F9AA6;
+$robin-egg-blue:        #00CCCC;
+$primary:               #33CC99;
+$sunglow:               #FFCC33;
+$tundora:               #4D4D4D;
+$white:                 #FFFFFF;
+$white-lilac:           #F6F5FB;
+$wild-sand:             #F5F5F5;
+
+/* Feature */
+$default-color:         $cod-gray;
+$error-message-color:   $red;
+$success-message-color: $malachite;
+
+/* Debug */
+$dc01:                  #0048BA;
+$dc02:                  #B0BF1A;
+$dc03:                  #7CB9E8;
+$dc04:                  #AF002A;
+$dc05:                  #84DE02;
+$dc06:                  #C46210;
+$dc07:                  #E52B50;
+$dc08:                  #E32636;
+$dc09:                  #FF7E00;
+$dc10:                  #6E7F80;
+$dc11:                  #FDEE00;
+$dc12:                  #568203;
+
+@import '../../../node_modules/bootstrap/scss/mixins/lists';
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+
+/* Bootstrap overrides */
+$font-family-base: ProximaNova-Regular, "Helvetica Neue", Helvetica, sans-serif;
+
+$headings-line-height: 1.5;
+$headings-font-family: ProximaNova-Semibold, "Helvetica Neue", Helvetica, sans-serif;
+
+$hr-border-color: $gallery;
+$hr-border-width: 2px;
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background and border color.
+
+$input-btn-padding-y:         .375rem;
+$input-btn-padding-x:         1.875rem;
+$input-btn-line-height:       $line-height-base;
+
+$input-btn-focus-width:       .2rem;
+$input-btn-focus-color:       rgba(theme-color("primary"), .25);
+$input-btn-focus-box-shadow:  0 0 0 $input-btn-focus-width $input-btn-focus-color;
+
+$input-btn-padding-y-sm:      .375rem;
+$input-btn-padding-x-sm:      1.875rem;
+$input-btn-line-height-sm:    $line-height-sm;
+
+$input-btn-padding-y-lg:      .5rem;
+$input-btn-padding-x-lg:      1rem;
+$input-btn-line-height-lg:    $line-height-lg;
+
+$btn-font-weight:             $font-weight-normal;
+$btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075);
+$btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125);
+
+$btn-link-disabled-color:     $gray-600;
+
+$btn-block-spacing-y:         .5rem;
+
+$btn-border-radius:           1.2rem;
+$btn-border-radius-lg:        $btn-border-radius;
+$btn-border-radius-sm:        $btn-border-radius;
+
+$btn-transition:              background-color 100ms ease-in-out, border-color 100ms ease-in-out, box-shadow 100ms ease-in-out, color 100ms;
+
+$input-btn-border-width: 2px;
+
 
 /* font-size */
-$font-size-x-small:    12px;
-$font-size-small:      14px;
-$font-size-regular:    16px;
-$font-size-medium:     18px;
-$font-size-large:      20px;
-$font-size-x-large:    26px;
-
-/* height */
-$navbar-height:        90px;
-$video-panel-height:   290px;
+$font-size-xs:         $font-size-base * .75;
+$font-size-large:      $font-size-lg;
+$font-size-xl:         $font-size-base * 1.5;
 
 /* letter-spacing */
 $uppercase-label-letter-spacing: 0.1em;
 
 /* line-height */
-$line-height-regular:  1.5;
+$line-height-sm: $line-height-base * 0.875;
 
-/* padding */
-$padding-unit-x-small: 10px;
-$padding-unit-small:   20px;
-$padding-unit-regular: 30px;
-$padding-unit-x-large: 60px;
+/* height */
+$navbar-height:        90px;
+$video-panel-height:   290px;
 
 /* width */
 $main-width:           900px;
-
-/* breakpoints */
-$breakpoint-md:        1200px;

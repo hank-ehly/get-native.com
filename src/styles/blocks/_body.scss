@@ -1,11 +1,9 @@
 @import '../core';
 
 body {
-  font-size: $font-size-regular;
   color: $default-color;
-  line-height: $line-height-regular;
   box-sizing: border-box;
-  min-width: $breakpoint-md;
+  min-width: map_get($grid-breakpoints, 'xl');
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {

@@ -30,27 +30,15 @@
 }
 
 .headline__button {
-  @include font-weight-regular;
-  background: $white;
-  border-color: $shamrock;
-  color: $shamrock;
-  font-size: $font-size-small;
-  padding-top: 9px;
-  padding-bottom: 7px;
-  margin-top: 40px;
-  max-height: none;
-  &:hover {
-    border-color: lighten($shamrock, 20%);
-    color: lighten($shamrock, 20%);
-  }
+  margin-top: 30px;
 }
 
-.headline_large-features {
+.section_large-features, .headline_large-features {
   margin-top: 100px;
 }
 
-.section_large-features {
-  margin-top: 100px;
+.feature {
+  @include list-unstyled;
 }
 
 .feature.feature--large {
@@ -71,8 +59,8 @@
 }
 
 .feature.feature--large .feature__title {
-  @include font-weight-regular;
-  color: $shamrock;
+  font-family: $font-family-base;
+  color: $primary;
 }
 
 .feature.feature--large .feature__paragraph {
@@ -104,11 +92,12 @@ hr {
 }
 
 .feature.feature--small .feature__title {
-  font-size: $font-size-regular;
+
   margin-top: 30px;
 }
 
 .feature.feature--small .feature__paragraph {
   color: $pale-sky;
   margin-top: 35px;
+  margin-bottom: 0;
 }

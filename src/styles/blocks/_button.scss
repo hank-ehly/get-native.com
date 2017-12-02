@@ -1,13 +1,45 @@
 @import '../core';
 
+.btn {
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.btn.btn-primary {
+  font-family: $headings-font-family;
+  font-size: $font-size-xs;
+}
+
+.btn.btn-primary.btn-gradient-primary {
+  background-image: linear-gradient(to right, $robin-egg-blue, $primary);
+  color: $white;
+  border-color: transparent;
+
+  &:not([disabled]):not(.disabled):hover {
+    /* This is necessary to prevent flickering in Chrome */
+    background: linear-gradient(to right, darken($primary, 5%), darken($primary, 5%));
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    border-color: transparent;
+  }
+
+  &:disabled {
+    background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
+    opacity: inherit;
+  }
+}
+
 .button {
-  @include font-weight-bold;
+  font-family: $headings-font-family;
   @include border-radius(20px);
   background: $white;
   border: 2px solid $periwinkle-gray;
   color: $regent-gray;
   cursor: pointer;
-  font-size: $font-size-x-small;
+  font-size: $font-size-xs;
   letter-spacing: $uppercase-label-letter-spacing / 2;
   outline: none;
   padding: 6px 30px;
@@ -16,15 +48,15 @@
   max-height: 37px;
 
   &:hover {
-    border-color: $shamrock;
-    color: $shamrock;
+    border-color: $primary;
+    color: $primary;
     transform: scale(1.05);
     transition: scale, border, color, background-color 0s;
   }
 
   &:focus {
-    border-color: darken($shamrock, 5%);
-    color: darken($shamrock, 5%);
+    border-color: darken($primary, 5%);
+    color: darken($primary, 5%);
   }
 
   &:disabled {
@@ -49,21 +81,21 @@
 }
 
 .button--opaque {
-  background-image: linear-gradient(to right, $robin-egg-blue, $shamrock);
+  background-image: linear-gradient(to right, $robin-egg-blue, $primary);
   border-color: transparent;
   color: $white;
   transition: 100ms;
 
   &:hover {
     /* This is necessary to prevent flickering in Chrome */
-    background: linear-gradient(to right, $shamrock, $shamrock);
+    background: linear-gradient(to right, $primary, $primary);
 
     border-color: transparent;
     color: $white;
   }
 
   &:focus {
-    background: linear-gradient(to right, darken($shamrock, 5%), darken($shamrock, 5%));
+    background: linear-gradient(to right, darken($primary, 5%), darken($primary, 5%));
     color: $white;
   }
 
@@ -72,7 +104,7 @@
     opacity: inherit;
 
     &:hover, &:focus {
-      background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);;
+      background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
       border-color: transparent;
       color: $white;
     }

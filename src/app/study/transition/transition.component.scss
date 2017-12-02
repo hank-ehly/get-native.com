@@ -10,7 +10,7 @@
 }
 
 .adsense--medium-rectangle {
-  background: $shamrock;
+  background: $primary;
   color: $white;
   cursor: pointer;
   height: 250px;
@@ -20,9 +20,9 @@
 }
 
 .next-exercise-label, .next-exercise {
-  @include font-weight-bold;
+  font-family: $headings-font-family;
   display: block;
-  font-size: $font-size-x-small;
+  font-size: $font-size-xs;
 }
 
 .next-exercise-label {
@@ -31,7 +31,7 @@
 
 .next-exercise {
   margin-top: 6px;
-  color: $shamrock;
+  color: $primary;
 }
 
 .button--continue {

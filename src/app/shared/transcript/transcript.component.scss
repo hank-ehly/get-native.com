@@ -6,7 +6,8 @@
 }
 
 .tabs {
-  @include border-radius();
+  @include border-radius;
+  @include list-unstyled;
   background: $aqua-haze;
   display: flex;
   flex-flow: row nowrap;
@@ -14,7 +15,7 @@
 }
 
 .tabs__tab {
-  @include font-weight-bold;
+  font-family: $headings-font-family;
   align-self: center;
   color: $regent-gray;
   cursor: pointer;
@@ -27,7 +28,7 @@
 }
 
 .tab-slider {
-  background: $shamrock;
+  background: $primary;
   bottom: 0;
   height: 3px;
   left: 20px;
@@ -37,6 +38,7 @@
 }
 
 .tab-content {
+  @include list-unstyled;
   line-height: 30px;
   margin-top: 20px;
 }
@@ -68,17 +70,21 @@ hr {
   margin: 30px 0;
 }
 
+.usage-examples {
+  @include list-unstyled;
+}
+
 .usage-examples-section__header {
   line-height: 30px;
 }
 
 .usage-examples-section__header-title {
-  @include font-weight-bold;
-  font-size: $font-size-x-small;
+  //font-family: $headings-font-family;
+  font-size: $font-size-xs;
 }
 
 .usage-examples-section__header-collocation-occurrence {
-  @include font-weight-regular;
+  font-family: $font-family-base;
 }
 
 .usage-examples-section__header-phonetic {

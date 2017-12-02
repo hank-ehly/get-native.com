@@ -1,9 +1,9 @@
 <main>
     <section class="section section_video-panels">
         <header class="section-header">
-            <h1 class="section-header__title" i18n="The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Queue</h1>
+            <h3 class="section-header__title" i18n="The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Queue</h3>
 
-            <div class="dropdown-toggle">
+            <div class="gn-dropdown-toggle">
                 <span class="dropdown-toggle__text" *ngIf="(categoryFilter$ | async)?.value">{{ categoryFilter$.pluck('text') | async }}</span>
                 <span class="dropdown-toggle__text" *ngIf="!(categoryFilter$ | async)?.value" i18n="Dashboard category dropdown All videos label@@d2fa34a72514b69f9e2697247f4c2234">All videos</span>
                 <img class="dropdown-toggle__icon" gnGoogleStorageImage="/assets/icons/arrow-down.svg" i18n-alt="expand dropdown@@14bd1e219636451e28b4f0d20069ea1b" alt="expand" *ngIf="!(isDropdownVisible$ | async) && !(categoryFilter$ | async).value" (click)="showDropdown$.next(true)">
@@ -50,7 +50,7 @@
 
     <section class="section section_goals">
         <header class="section-header">
-            <h1 class="section-header__title" i18n="The title for the dashboard stats section@@3e06f80500768c1b0dcb8b51e59bea2d">Stats</h1>
+            <h3 class="section-header__title" i18n="The title for the dashboard stats section@@3e06f80500768c1b0dcb8b51e59bea2d">Stats</h3>
         </header>
 
         <gn-stats [stats]="stats$ | async"></gn-stats>
@@ -60,7 +60,7 @@
 
     <section class="section section_answers">
         <header class="section-header">
-            <h1 class="section-header__title" i18n="The title for the dashboard answers section@@bd47e707a777e51ac0f4981e513adf06">Answers</h1>
+            <h3 class="section-header__title" i18n="The title for the dashboard answers section@@bd47e707a777e51ac0f4981e513adf06">Answers</h3>
             <ul class="section-header__toggle-button-frame">
                 <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 30}" (click)="filterAnswers.next(30)" i18n="Answers from last 30 days@@ae49e7a78da9ed248fba4f55ba70c101">LAST 30 DAYS</li>
                 <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 60}" (click)="filterAnswers.next(60)" i18n="Answers from last 60 days@@f6bc286cddc198146488c8f3cbcfd98b">LAST 60 DAYS</li>

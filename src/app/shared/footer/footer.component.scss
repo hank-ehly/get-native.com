@@ -17,7 +17,8 @@
 }
 
 .footer__row_app-links {
-  @include font-weight-bold;
+  @include list-unstyled;
+  font-family: $headings-font-family;
   justify-content: center;
 }
 
@@ -45,6 +46,10 @@
 
 .footer__legal-link-separator {
   padding: 0 5px;
+}
+
+.footer__row__language-links {
+  @include list-unstyled;
 }
 
 .footer__row__language-links li {

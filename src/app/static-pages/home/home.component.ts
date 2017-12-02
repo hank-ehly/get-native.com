@@ -7,6 +7,7 @@
 
 import { Component, HostListener, OnInit } from '@angular/core';
 
+import { TourService } from 'ngx-tour-ngx-bootstrap';
 import * as _ from 'lodash';
 
 @Component({
@@ -32,8 +33,22 @@ export class HomeComponent implements OnInit {
         this.updateBannerPosition();
     }
 
+    constructor(private tourService: TourService) {
+        this.tourService.initialize([{
+            anchorId: 'start.tour',
+            content: 'some content',
+            title: 'First',
+        }]);
+        this.tourService.start();
+    }
+
     ngOnInit(): void {
         this.updateBannerPosition();
+    }
+
+    onClickFoo() {
+        console.log('CLICKED');
+        this.tourService.toggle();
     }
 
     private updateLargeFeatureImagePosition(): void {

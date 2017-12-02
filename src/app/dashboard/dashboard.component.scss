@@ -17,7 +17,7 @@ $section-button-margin-top: 20px;
   z-index: 1;
 }
 
-.dropdown-toggle {
+.gn-dropdown-toggle {
   align-self: center;
 }
 
@@ -41,16 +41,17 @@ hr {
 }
 
 .section-header__toggle-button-frame {
+  @include list-unstyled;
   align-self: center;
   display: flex;
   width: $main-width - 310px;
 }
 
 .section-header__menu-item {
-  @include font-weight-bold;
+  font-family: $headings-font-family;
   color: $regent-gray;
   cursor: pointer;
-  font-size: $font-size-x-small;
+  font-size: $font-size-xs;
   letter-spacing: $uppercase-label-letter-spacing;
   margin-right: 20px;
 }
@@ -85,6 +86,7 @@ $video-panels-vertical-margin: 50px;
 }
 
 .answers {
+  @include list-unstyled;
   margin-top: 40px;
   width: 100%;
 }
@@ -103,7 +105,7 @@ $video-panels-vertical-margin: 50px;
 }
 
 .answers__answer-title {
-  color: $shamrock;
+  color: $primary;
 }
 
 .answers__answer-date {

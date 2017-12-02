@@ -13,10 +13,12 @@ import { SecurityComponent } from './security/security.component';
 import { GeneralComponent } from './general/general.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ActivityComponent } from './activity/activity.component';
+
 import { ImageCropperModule } from 'ng2-img-cropper';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
-    imports: [SharedModule, ImageCropperModule],
+    imports: [SharedModule, ImageCropperModule, BsDropdownModule.forRoot()],
     declarations: [SettingsComponent, SecurityComponent, GeneralComponent, NotificationsComponent, ActivityComponent],
     exports: [SettingsComponent]
 })

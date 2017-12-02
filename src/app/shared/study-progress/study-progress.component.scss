@@ -12,10 +12,10 @@
 }
 
 .time-label {
-  @include font-weight-bold;
+  font-family: $headings-font-family;
   color: $regent-gray;
   letter-spacing: $uppercase-label-letter-spacing;
-  font-size: $font-size-x-small;
+  font-size: $font-size-xs;
   white-space: nowrap;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .progress--writing::-webkit-progress-value {
-  background: linear-gradient(to right, #26CCA6, $shamrock);
+  background: linear-gradient(to right, #26CCA6, $primary);
 }
 
 .circle--large {
@@ -85,7 +85,7 @@
 }
 
 .circle--writing.circle--complete {
-  background: $shamrock;
+  background: $primary;
 }
 
 .check-mark {

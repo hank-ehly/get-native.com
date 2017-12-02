@@ -2,7 +2,7 @@
     <div class="row" *ngFor="let row of rows">
         <div class="row-group" *ngFor="let category of row" [ngClass]='{"row-group--placeholder": !category?.name}'>
             <h6 class="link category-name" *ngIf="category?.name" (click)="category$.next(category)">{{ category?.name }}</h6>
-            <ul>
+            <ul class="subcategories-list">
                 <li class="subcategory" *ngFor="let subcategory of category?.subcategories?.records">
                     <span class="link subcategory-name" (click)="subcategory$.next(subcategory)">{{ subcategory?.name }}</span>
                 </li>
