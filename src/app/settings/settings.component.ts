@@ -38,7 +38,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     imageFile: File;
 
     // half of main width - half of dropdown width
-    dropdownLeft = 300 - (232 / 2) + 'px';
+    dropdownLeft = 300 - (220 / 2) + 'px';
     dropdownTop = '-30px';
 
     cropperSettings: CropperSettings = _.assign(new CropperSettings(), {
