@@ -13,7 +13,7 @@
         </div>
 
         <gn-dropdown *ngIf="isThumbnailDropdownVisible" [left]="dropdownLeft" [top]="dropdownTop">
-            <label>
+            <label class="label">
                 <a class="link gn-dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
                 <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail($event)">
             </label>
