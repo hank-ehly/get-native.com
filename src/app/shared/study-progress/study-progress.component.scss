@@ -7,8 +7,9 @@
   width: inherit;
 }
 
-.time-label, .progress-frame, .progress, .circle {
+.time-label, .progress-frame, .gn-progress, .circle {
   align-self: center;
+  box-sizing: initial;
 }
 
 .time-label {
@@ -42,13 +43,13 @@
   position: relative;
 }
 
-.progress {
+.gn-progress {
   appearance: none;
   height: inherit;
   width: 36px;
 }
 
-.progress::-webkit-progress-bar {
+.gn-progress::-webkit-progress-bar {
   background: $periwinkle-gray;
 }
 

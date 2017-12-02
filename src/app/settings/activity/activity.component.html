@@ -1,8 +1,7 @@
 <div class="container">
     <div class="no-activity-block" *ngIf="!activityItems.length">
         <span class="emoji">👷</span>
-        <p i18n="Message saying that activity feature is still in development@@b22c9ff9e3bf611b3fd86fa13f57b904">This feature is still in development..</p>
-        <p i18n="Message telling user to check the in-development feature again later@@37fcbb9ff4109864546ef01f59c58130">Check back later!</p>
+        <p i18n="Message saying that activity feature is still in development@@b22c9ff9e3bf611b3fd86fa13f57b904">This feature is still in development..<br>Check back later!</p>
     </div>
     <ng-container *ngIf="activityItems.length">
         <ul class="activity-list">

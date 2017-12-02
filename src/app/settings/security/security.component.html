@@ -15,7 +15,7 @@
             <textarea class="textarea" rows="7" id="delete-reason" i18n-placeholder="Placeholder text for reason-for-leaving textarea@@002c02bc6429cd28b56cda11eec2ab28" placeholder="I don't understand how to.." [(ngModel)]="reason"></textarea>
         </div>
 
-        <button class="button button--hollow button--delete" (click)="onClickDelete()" [disabled]="processing" i18n="Delete account button text@@6ef919952bfa48eba0fc4fb34efa9867">DELETE MY ACCOUNT</button>
-        <button class="button button--opaque button--cancel" (click)="onClickCloseModal()" [disabled]="processing" i18n="Cancel button text@@ac411b26cbc9a35516ee41baf1aa7d47">CANCEL</button>
+        <button class="btn btn-light button--delete" (click)="onClickDelete()" [disabled]="processing" i18n="Delete account button text@@6ef919952bfa48eba0fc4fb34efa9867">DELETE MY ACCOUNT</button>
+        <button class="btn btn-primary btn-gradient-primary button--cancel" (click)="onClickCloseModal()" [disabled]="processing" i18n="Cancel button text@@ac411b26cbc9a35516ee41baf1aa7d47">CANCEL</button>
     </div>
 </gn-modal>

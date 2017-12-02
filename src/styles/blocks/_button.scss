@@ -2,112 +2,74 @@
 
 .btn {
   cursor: pointer;
+  font-family: $headings-font-family;
+  font-size: $font-size-xs !important;
+  letter-spacing: $uppercase-label-letter-spacing / 2;
+  max-height: 34px;
+
   &:disabled {
     cursor: not-allowed;
   }
 }
 
 .btn.btn-primary {
-  font-family: $headings-font-family;
-  font-size: $font-size-xs;
-}
-
-.btn.btn-primary.btn-gradient-primary {
-  background-image: linear-gradient(to right, $robin-egg-blue, $primary);
-  color: $white;
   border-color: transparent;
+  color: $white;
 
   &:not([disabled]):not(.disabled):hover {
-    /* This is necessary to prevent flickering in Chrome */
-    background: linear-gradient(to right, darken($primary, 5%), darken($primary, 5%));
+    border-color: transparent;
   }
 
   &:not([disabled]):not(.disabled):active {
     border-color: transparent;
   }
-
-  &:disabled {
-    background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
-    opacity: inherit;
-  }
 }
 
-.button {
-  font-family: $headings-font-family;
-  @include border-radius(20px);
-  background: $white;
-  border: 2px solid $periwinkle-gray;
-  color: $regent-gray;
-  cursor: pointer;
-  font-size: $font-size-xs;
-  letter-spacing: $uppercase-label-letter-spacing / 2;
-  outline: none;
-  padding: 6px 30px;
-  transition: 100ms;
-  user-select: none;
-  max-height: 37px;
-
-  &:hover {
-    border-color: $primary;
-    color: $primary;
-    transform: scale(1.05);
-    transition: scale, border, color, background-color 0s;
-  }
-
-  &:focus {
-    border-color: darken($primary, 5%);
-    color: darken($primary, 5%);
-  }
-
-  &:disabled {
-    cursor: not-allowed !important;
-    opacity: 0.5;
-
-    &:hover, &:focus {
-      border-color: $periwinkle-gray;
-      color: $regent-gray;
-      transform: none;
-      transition: none;
-    }
-  }
-}
-
-.button--hollow {
-  border-color: transparent;
-
-  &:hover, &:focus, &:disabled:hover {
-    border-color: transparent;
-  }
-}
-
-.button--opaque {
+.btn.btn-primary.btn-gradient-primary {
   background-image: linear-gradient(to right, $robin-egg-blue, $primary);
   border-color: transparent;
-  color: $white;
-  transition: 100ms;
 
-  &:hover {
+  &:not([disabled]):not(.disabled):hover, &:not([disabled]):not(.disabled):focus {
     /* This is necessary to prevent flickering in Chrome */
-    background: linear-gradient(to right, $primary, $primary);
-
-    border-color: transparent;
-    color: $white;
-  }
-
-  &:focus {
-    background: linear-gradient(to right, darken($primary, 5%), darken($primary, 5%));
-    color: $white;
+    background: linear-gradient(to right, darken($robin-egg-blue, 5%), darken($primary, 5%));
   }
 
   &:disabled {
     background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
     opacity: inherit;
+  }
+}
 
-    &:hover, &:focus {
-      background: linear-gradient(to right, lighten($regent-gray, 7%), $regent-gray);
-      border-color: transparent;
-      color: $white;
-    }
+.btn.btn-outline--grey {
+  border-color: $periwinkle-gray;
+  color: $regent-gray;
+
+  &:not([disabled]):not(.disabled):hover {
+    border-color: $primary;
+    color: $primary;
+  }
+
+  &:not([disabled]):not(.disabled):focus {
+    box-shadow: 0 0 0 0.2rem rgba($periwinkle-gray, 0.25);
+  }
+}
+
+.btn.btn-light {
+  background: transparent;
+  border-color: transparent;
+  color: $regent-gray;
+
+  &:not([disabled]):not(.disabled):hover {
+    background: transparent;
+    border-color: transparent;
+    color: $primary;
+  }
+
+  &:not([disabled]):not(.disabled):focus {
+    color: darken($primary, 5%);
+    box-shadow: none;
+    background: transparent;
+    border-color: transparent;
   }
 }
 

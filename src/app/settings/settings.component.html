@@ -4,29 +4,23 @@
             <div class="header__thumbnail-container" [ngClass]="{selected: isThumbnailDropdownVisible}" dropdown placement="top right" [isOpen]="isThumbnailDropdownVisible" (click)="onClickThumbnail($event)">
                 <img class="header__thumbnail" *ngIf="!data.image" [src]="pictureUrl$ | async" alt="">
                 <img class="header__thumbnail" *ngIf="data.image" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight" i18n-alt="Alt text for settings page user thumbnail image@@9f55b08839a180df1d65398a9079d37e" alt="user picture">
-
-                <ul *dropdownMenu class="dropdown-menu" role="menu">
-                    <li role="menuitem">
-                        <label class="dropdown-item">
-                            <a [ngClass]="{'disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}"  i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
-                            <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail($event)">
-                        </label>
-                    </li>
-                    <li role="menuitem">
-                        <a class="dropdown-item" *ngIf="!(isSilhouettePicture$ | async)" [ngClass]="{'disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</a>
-                    </li>
-                    <li class="divider dropdown-divider"></li>
-                    <li role="menuitem">
-                        <a class="dropdown-item" (click)="onClickCancelDropdown($event)" i18n="Cancel thumbnail dropdown button title@@18e0be2c661eaee7e8d5e06c3bedb620">Cancel</a>
-                    </li>
-                </ul>
             </div>
         </div>
 
         <div class="header__thumbnail-upload-buttons" *ngIf="data.image">
-            <button class="button" (click)="onClickCancelUpload()" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" i18n="Cancel thumbnail upload button title@@a06bd93b44304b29b00b2f7538435fdc">CANCEL</button>
-            <button class="button button--opaque" (click)="onClickUpload()" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" i18n="Upload thumbnail button title@@edd2f93006443c842ce451c9ca301f3c">UPLOAD</button>
+            <button class="btn btn-outline--grey" (click)="onClickCancelUpload()" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" i18n="Cancel thumbnail upload button title@@a06bd93b44304b29b00b2f7538435fdc">CANCEL</button>
+            <button class="btn btn-primary btn-gradient-primary" (click)="onClickUpload()" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" i18n="Upload thumbnail button title@@edd2f93006443c842ce451c9ca301f3c">UPLOAD</button>
         </div>
+
+        <gn-dropdown *ngIf="isThumbnailDropdownVisible" [left]="dropdownLeft" [top]="dropdownTop">
+            <label>
+                <a class="link gn-dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
+                <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail($event)">
+            </label>
+            <a class="link gn-dropdown-link" *ngIf="!(isSilhouettePicture$ | async)" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</a>
+            <span class="gn-dropdown-divider"></span>
+            <a class="link gn-dropdown-link dropdown-link--cancel" (click)="onClickCancelDropdown()" i18n="Cancel thumbnail dropdown button title@@18e0be2c661eaee7e8d5e06c3bedb620">Cancel</a>
+        </gn-dropdown>
 
         <ng-container [ngSwitch]="selectedTab">
             <p class="header__title" *ngSwitchDefault i18n="General settings page description@@b95a9f64b954582c56cb0033abf73084">View and update your login credentials.</p>
@@ -51,12 +45,12 @@
 <gn-modal [isVisible]="isCropperModalVisible">
     <div class="modal-content">
         <header class="header">
-            <h2 i18n="Thumbnail crop header message@@23bf0c14e2fc6cb762fabf9b9fdc5309">Position and crop your photo</h2>
+            <h3 i18n="Thumbnail crop header message@@23bf0c14e2fc6cb762fabf9b9fdc5309">Position and crop your photo</h3>
         </header>
         <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper>
         <footer class="footer">
-            <button class="button button--hollow" (click)="onClickCancelCrop()" i18n="Cancel thumbnail crop button title@@a61078592b960ef19807e60790795aec">Cancel</button>
-            <button class="button button--opaque" (click)="onClickApplyCrop()" i18n="Apply thumbnail crop button title@@e3735089b346ea8eef209b48899bbbb0">Apply</button>
+            <button class="btn btn-light" (click)="onClickCancelCrop()" i18n="Cancel thumbnail crop button title@@a61078592b960ef19807e60790795aec">Cancel</button>
+            <button class="btn btn-primary btn-gradient-primary" (click)="onClickApplyCrop()" i18n="Apply thumbnail crop button title@@e3735089b346ea8eef209b48899bbbb0">Apply</button>
         </footer>
     </div>
 </gn-modal>

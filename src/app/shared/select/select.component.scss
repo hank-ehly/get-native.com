@@ -2,6 +2,7 @@
 
 .label {
   position: relative;
+  display: inline;
 }
 
 .label:after {
@@ -23,4 +24,9 @@
   max-width: 125px;
   min-width: 50px;
   cursor: pointer;
+}
+
+select {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
 }

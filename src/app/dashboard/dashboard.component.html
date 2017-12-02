@@ -26,7 +26,7 @@
                                  (begin)="onBegin($event)"></gn-video-panel-list>
 
             <ng-container [ngSwitch]="currentLoadingState">
-                <button class="button section__button"
+                <button class="btn btn-outline--grey section__button"
                         *ngSwitchDefault
                         (click)="loadMoreVideos$.next(maxVideoId)"
                         i18n="The text for the dashboard load more videos button@@da62c06d98499331f85421b712823185">LOAD MORE</button>
@@ -82,7 +82,7 @@
             </ul>
 
             <ng-container [ngSwitch]="answersLoadingState">
-                <button class="button section__button"
+                <button class="btn btn-outline--grey section__button"
                         (click)="onLoadMoreAnswers(maxAnswerId)"
                         *ngSwitchDefault
                         i18n="The text for the dashboard answers section load more button@@d4d96c1a160bc58db2b6142d2806507e">LOAD MORE</button>
