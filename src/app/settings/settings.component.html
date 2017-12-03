@@ -1,7 +1,7 @@
 <main class="main">
     <header class="header">
         <div class="header__thumbnail-picker">
-            <div class="header__thumbnail-container" [ngClass]="{selected: isThumbnailDropdownVisible}" dropdown placement="top right" [isOpen]="isThumbnailDropdownVisible" (click)="onClickThumbnail($event)">
+            <div class="header__thumbnail-container" [ngClass]="{selected: isThumbnailDropdownVisible}" dropdown placement="top right" [isOpen]="isThumbnailDropdownVisible" (click)="onClickThumbnail()">
                 <img class="header__thumbnail" *ngIf="!data.image" [src]="pictureUrl$ | async" alt="">
                 <img class="header__thumbnail" *ngIf="data.image" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight" i18n-alt="Alt text for settings page user thumbnail image@@9f55b08839a180df1d65398a9079d37e" alt="user picture">
             </div>
@@ -15,7 +15,7 @@
         <gn-dropdown *ngIf="isThumbnailDropdownVisible" [left]="dropdownLeft" [top]="dropdownTop">
             <label class="label">
                 <a class="link gn-dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
-                <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail($event)">
+                <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail()">
             </label>
             <a class="link gn-dropdown-link" *ngIf="!(isSilhouettePicture$ | async)" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</a>
             <span class="gn-dropdown-divider"></span>
