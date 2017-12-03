@@ -3243,8 +3243,8 @@
                 <note priority="1" from="description">The text for the link allowing users to deactivate their account</note>
             </trans-unit>
             <trans-unit id="b64a08650d7341412cb703f052fc5c46" datatype="html">
-                <source>Could you give us a brief description about why you&apos;re leaving? We read and consider every reason.</source>
-                <target>Could you give us a brief description about why you&apos;re leaving? We read and consider every reason.</target>
+                <source>Could you give us a brief description about why you&apos;re leaving? We read and consider every reason seriously.</source>
+                <target>Could you give us a brief description about why you&apos;re leaving? We read and consider every reason seriously.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/security/security.component.ts</context>
                     <context context-type="linenumber">5</context>
@@ -3902,8 +3902,8 @@
                 <note priority="1" from="description">Quit study session modal cancel button label</note>
             </trans-unit>
             <trans-unit id="b22c9ff9e3bf611b3fd86fa13f57b904" datatype="html">
-                <source>This feature is still in development..<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Check back later!</source>
-                <target>This feature is still in development..<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Check back later!</target>
+                <source>This feature is still in development..</source>
+                <target>This feature is still in development..</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/settings/activity/activity.component.ts</context>
                     <context context-type="linenumber">4</context>
