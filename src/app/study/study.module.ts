@@ -20,9 +20,12 @@ import { StudySessionGuard } from './study-session-guard.service';
 import { ResultsResolver } from './results/results-resolver.service';
 import { WritingResolver } from './writing/writing-resolver.service';
 
+import { AdsenseModule } from 'ng2-adsense';
+
 @NgModule({
     imports: [
-        SharedModule
+        SharedModule,
+        AdsenseModule.forRoot()
     ],
     declarations: [
         StudyComponent,
