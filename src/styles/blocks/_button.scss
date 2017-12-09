@@ -12,6 +12,16 @@
   }
 }
 
+.btn.btn-outline-primary {
+  &:not([disabled]):not(.disabled):focus {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($primary, 25%);
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($primary, 15%);
+  }
+}
+
 .btn.btn-primary {
   border-color: transparent;
   color: $white;
@@ -20,8 +30,14 @@
     border-color: transparent;
   }
 
+  &:not([disabled]):not(.disabled):focus {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($primary, 25%);
+  }
+
   &:not([disabled]):not(.disabled):active {
+    background-color: darken($primary, 5%);
     border-color: transparent;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($primary, 15%);
   }
 }
 
@@ -29,9 +45,15 @@
   background-image: linear-gradient(to right, $robin-egg-blue, $primary);
   border-color: transparent;
 
-  &:not([disabled]):not(.disabled):hover, &:not([disabled]):not(.disabled):focus {
+  &:not([disabled]):not(.disabled):hover,
+  &:not([disabled]):not(.disabled):focus {
     /* This is necessary to prevent flickering in Chrome */
     background: linear-gradient(to right, darken($robin-egg-blue, 5%), darken($primary, 5%));
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    background: linear-gradient(to right, darken($robin-egg-blue, 7%), darken($primary, 7%));
+    //box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($primary, 15%); // gradient
   }
 
   &:disabled {
@@ -50,7 +72,17 @@
   }
 
   &:not([disabled]):not(.disabled):focus {
-    box-shadow: 0 0 0 0.2rem rgba($periwinkle-gray, 0.25);
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($periwinkle-gray, 10%);
+    &:hover {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($primary, 25%);
+    }
+  }
+
+  &:not([disabled]):not(.disabled):active {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($periwinkle-gray, 8%);
+    &:hover {
+      box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($primary, 15%);
+    }
   }
 }
 
@@ -68,6 +100,11 @@
   &:not([disabled]):not(.disabled):focus {
     color: darken($primary, 5%);
     box-shadow: none;
+    background: transparent;
+    border-color: transparent;
+  }
+
+  &:disabled {
     background: transparent;
     border-color: transparent;
   }

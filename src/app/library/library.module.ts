@@ -12,8 +12,10 @@ import { SharedModule } from '../shared/shared.module';
 import { LibraryDetailComponent } from './library-detail.component';
 import { LibraryDetailResolverService } from './library-detail-resolver.service';
 
+import { AdsenseModule } from 'ng2-adsense';
+
 @NgModule({
-    imports: [SharedModule],
+    imports: [SharedModule, AdsenseModule.forRoot()],
     declarations: [LibraryComponent, LibraryDetailComponent],
     exports: [LibraryComponent, LibraryDetailComponent],
     providers: [LibraryDetailResolverService]
