@@ -28,9 +28,10 @@ import { APIHandle } from '../core/http/api-handle';
 import { APIErrors } from '../core/http/api-error';
 import { Logger } from '../core/logger/logger';
 
-import { Subject } from 'rxjs/Subject';
+import { TourService } from 'ngx-tour-ngx-bootstrap';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/combineLatest';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/concatMap';
@@ -113,10 +114,28 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     constructor(protected logger: Logger, protected http: HttpService, protected navbar: NavbarService, protected user: UserService,
                 private dateService: UTCDateService, private session: StudySessionService, protected categoryList: CategoryListService,
-                protected dom: DOMService, protected lang: LangService, @Inject(LOCALE_ID) protected localeId: string) {
+                protected dom: DOMService, protected lang: LangService, @Inject(LOCALE_ID) protected localeId: string,
+                public tourService: TourService) {
         super(logger, http, navbar, user, categoryList, dom, lang, localeId);
         this.flags.cuedOnly = true;
         this.flags.processing.beginStudySession = false;
+        this.tourService.initialize([{
+            anchorId: 'some.anchor.id',
+            content: 'Videos you\'ve saved from the library or displayed in this section of the dashboard.',
+            title: 'Saved Videos',
+            placement: 'right'
+        }, {
+            anchorId: 'some.other.id',
+            content: 'Statistics gathered from your study sessions are displayed here.',
+            title: 'Study Session Stats',
+            placement: 'right'
+        }, {
+            anchorId: 'some.last.id',
+            content: 'Answers you\'ve given to writing prompts are displayed here.',
+            title: 'Writing Prompt Answers',
+            placement: 'right'
+        }]);
+        // this.tourService.start();
     }
 
     ngOnInit(): void {
