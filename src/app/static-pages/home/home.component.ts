@@ -5,19 +5,27 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 
-import { TourService } from 'ngx-tour-ngx-bootstrap';
+import { LoginModalService } from '../../login/login-modal.service';
+import { LoginComponent } from '../../login/login.component';
+
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { Subject } from 'rxjs/Subject';
 import * as _ from 'lodash';
+import { Logger } from '../../core/logger/logger';
 
 @Component({
     selector: 'gn-home',
     templateUrl: 'home.component.html',
     styleUrls: ['home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
     bannerBackgroundPositionY: number;
+    bsModalRef: BsModalRef;
+    OnDestroy$ = new Subject<void>();
 
     startY = [100, 450, 800];
     xOffset = [0, 0, 0];
@@ -33,22 +41,26 @@ export class HomeComponent implements OnInit {
         this.updateBannerPosition();
     }
 
-    constructor(private tourService: TourService) {
-        this.tourService.initialize([{
-            anchorId: 'start.tour',
-            content: 'some content',
-            title: 'First',
-        }]);
-        this.tourService.start();
+    constructor(private modalService: BsModalService, private loginModal: LoginModalService, private logger: Logger) {
     }
 
     ngOnInit(): void {
+        this.logger.debug(this, 'OnInit');
         this.updateBannerPosition();
+        this.loginModal.closeEmitted.takeUntil(this.OnDestroy$).subscribe(this.onCloseLoginModal.bind(this));
     }
 
-    onClickFoo() {
-        console.log('CLICKED');
-        this.tourService.toggle();
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
+        this.OnDestroy$.next();
+    }
+
+    openModalWithComponent(): void {
+        this.bsModalRef = this.modalService.show(LoginComponent);
+    }
+
+    private onCloseLoginModal(): void {
+        this.bsModalRef.hide();
     }
 
     private updateLargeFeatureImagePosition(): void {

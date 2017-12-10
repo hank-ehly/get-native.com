@@ -1,9 +1,9 @@
 <main class="main">
     <header class="header">
         <div class="header__thumbnail-picker">
-            <div class="header__thumbnail-container" [ngClass]="{selected: isThumbnailDropdownVisible}" dropdown placement="top right" [isOpen]="isThumbnailDropdownVisible" (click)="onClickThumbnail()">
+            <div class="header__thumbnail-container" [ngClass]="{selected: isThumbnailDropdownVisible}" (click)="onClickThumbnail()">
                 <img class="header__thumbnail" *ngIf="!data.image" [src]="pictureUrl$ | async" alt="">
-                <img class="header__thumbnail" *ngIf="data.image" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight" i18n-alt="Alt text for settings page user thumbnail image@@9f55b08839a180df1d65398a9079d37e" alt="user picture">
+                <img class="header__thumbnail" *ngIf="data.image" [src]="data.image" [width]="data.width" [height]="data.height" i18n-alt="Alt text for settings page user thumbnail image@@9f55b08839a180df1d65398a9079d37e" alt="user picture">
             </div>
         </div>
 
@@ -14,12 +14,12 @@
 
         <gn-dropdown *ngIf="isThumbnailDropdownVisible" [left]="dropdownLeft" [top]="dropdownTop">
             <label class="label">
-                <a class="link gn-dropdown-link" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
-                <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail()">
+                <a class="link gn-dropdown-link" [ngClass]="{'disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" i18n="Upload photo dropdown link title@@fd38b3fcdcef348c9b650e268f8bfe2f">Upload Photo</a>
+                <input id="file" type="file" name="file" class="header__file-input" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (change)="onChangeThumbnail($event)">
             </label>
-            <a class="link gn-dropdown-link" *ngIf="!(isSilhouettePicture$ | async)" [ngClass]="{'link--disabled': flags.processing.deleteProfileImage || flags.processing.uploadProfileImage}" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</a>
+            <button class="gn-dropdown-button" *ngIf="!(isSilhouettePicture$ | async)" [disabled]="flags.processing.deleteProfileImage || flags.processing.uploadProfileImage" (click)="onClickRemovePhoto()" i18n="Remove current thumbnail button title@@2dc402aff425bb19122fc218a9c1ad3b">Remove</button>
             <span class="gn-dropdown-divider"></span>
-            <a class="link gn-dropdown-link dropdown-link--cancel" (click)="onClickCancelDropdown()" i18n="Cancel thumbnail dropdown button title@@18e0be2c661eaee7e8d5e06c3bedb620">Cancel</a>
+            <button class="gn-dropdown-button" (click)="onClickCancelDropdown()" i18n="Cancel thumbnail dropdown button title@@18e0be2c661eaee7e8d5e06c3bedb620">Cancel</button>
         </gn-dropdown>
 
         <ng-container [ngSwitch]="selectedTab">
@@ -41,16 +41,3 @@
         <router-outlet></router-outlet>
     </section>
 </main>
-
-<gn-modal [isVisible]="isCropperModalVisible">
-    <div class="modal-content">
-        <header class="header">
-            <h5 i18n="Thumbnail crop header message@@23bf0c14e2fc6cb762fabf9b9fdc5309">Position and crop your photo</h5>
-        </header>
-        <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper>
-        <footer class="footer">
-            <button class="btn btn-light" (click)="onClickCancelCrop()" i18n="Cancel thumbnail crop button title@@a61078592b960ef19807e60790795aec">Cancel</button>
-            <button class="btn btn-primary btn-gradient-primary" (click)="onClickApplyCrop()" i18n="Apply thumbnail crop button title@@e3735089b346ea8eef209b48899bbbb0">Apply</button>
-        </footer>
-    </div>
-</gn-modal>

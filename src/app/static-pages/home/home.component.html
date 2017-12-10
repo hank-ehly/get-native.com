@@ -44,9 +44,6 @@
         <h3 class="headline__title" i18n="The title eluding to additional feature descriptions@@2cd5d943017487b4035bb1951f66f72a">That's not all..</h3>
     </div>
 
-    <!--<button class="button" tourAnchor="start.tour" (click)="onClickFoo()">CLICK ME!</button>
-    <tour-step-template></tour-step-template>-->
-
     <section class="section section_small-features">
         <ul class="small-features">
             <li class="feature feature--small">
@@ -92,6 +89,6 @@
     <div class="headline">
         <h3 class="headline__title" i18n="The title leading users to sign up@@beb769a747c4efb1ba5ffa1c564dd23c">Sign up for free</h3>
         <p class="headline__paragraph" i18n="A short description about signing up@@9c6d5f890ec8e6bd73277ac9ab8686d0">Click the following button to continue to the registration screen. getnative is a free online language learning resource and does not require payment to use.</p>
-        <button type="button" class="btn btn-outline-primary headline__button" [routerLink]="[{outlets: {modal: 'login'}}]" i18n="The title for the sign up button@@e5b7634ee07ba35dbd442c8a53fbeb1a">Sign in / Sign up</button>
+        <button type="button" class="btn btn-outline-primary headline__button" (click)="openModalWithComponent()" i18n="The title for the sign up button@@e5b7634ee07ba35dbd442c8a53fbeb1a">Sign in / Sign up</button>
     </div>
 </main>

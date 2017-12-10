@@ -8,13 +8,12 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginModalService } from '../core/login-modal/login-modal.service';
+import { LoginModalService } from './login-modal.service';
 import { DOMService } from '../core/dom/dom.service';
 import { Logger } from '../core/logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
-import * as _ from 'lodash';
 
 @Component({
     selector: 'gn-login',
@@ -32,7 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
         this.dom.enableScroll(false);
-        this.loginModal.setActiveView$.takeUntil(this.OnDestroy$).subscribe((view: any) => this.activeView = view);
+        this.loginModal.setActiveViewEmitted.takeUntil(this.OnDestroy$).subscribe((view: any) => this.activeView = view);
     }
 
     ngOnDestroy(): void {
@@ -41,10 +40,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.OnDestroy$.next();
     }
 
-    onClickClose(e: MouseEvent): void {
-        if (_.includes(['overlay', 'modal-frame__close-button'], (<HTMLElement>e.target).className)) {
-            this.router.navigate([{outlets: {modal: null}}]);
-        }
+    onCloseModal(): void {
+        this.logger.debug(this, 'onCloseModal');
+        this.loginModal.close();
     }
 
     @HostListener('document:keydown', ['$event']) onKeyDown(e: KeyboardEvent): void {

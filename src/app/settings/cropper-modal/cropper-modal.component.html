@@ -1,0 +1,16 @@
+<div class="modal-frame">
+    <div class="modal-frame__close-button-frame">
+        <button class="modal-frame__close-button" (click)="onCloseModal()"></button>
+    </div>
+
+    <div class="gn-modal-content">
+        <header class="header">
+            <h5 i18n="Thumbnail crop header message@@23bf0c14e2fc6cb762fabf9b9fdc5309">Position and crop your photo</h5>
+        </header>
+        <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+        <footer class="footer">
+            <button class="btn btn-light" (click)="onClickCancelCrop()" i18n="Cancel thumbnail crop button title@@a61078592b960ef19807e60790795aec">Cancel</button>
+            <button class="btn btn-primary btn-gradient-primary" (click)="onClickApplyCrop()" i18n="Apply thumbnail crop button title@@e3735089b346ea8eef209b48899bbbb0">Apply</button>
+        </footer>
+    </div>
+</div>

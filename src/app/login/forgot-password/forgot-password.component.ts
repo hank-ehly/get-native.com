@@ -7,15 +7,16 @@
 
 import { Component, OnDestroy } from '@angular/core';
 
-import { Logger } from '../../core/logger/logger';
+import { GNRequestOptions } from '../../core/http/gn-request-options';
+import { APIError, APIErrors } from '../../core/http/api-error';
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
-import { LoginModalService } from '../../core/login-modal/login-modal.service';
-import { Subject } from 'rxjs/Subject';
+import { LoginModalService } from '../login-modal.service';
 import { HttpService } from '../../core/http/http.service';
 import { APIHandle } from '../../core/http/api-handle';
-import { APIError, APIErrors } from '../../core/http/api-error';
+import { Logger } from '../../core/logger/logger';
+
+import { Subject } from 'rxjs/Subject';
 import * as _ from 'lodash';
-import { GNRequestOptions } from '../../core/http/gn-request-options';
 
 @Component({
     selector: 'gn-forgot-password',

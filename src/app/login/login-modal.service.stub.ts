@@ -10,5 +10,5 @@ import { LoginModalService } from './login-modal.service';
 import { Subject } from 'rxjs/Subject';
 
 export const STUBLoginModalService: LoginModalService = <LoginModalService>{
-    setActiveView$: new Subject<string>().asObservable()
+    setActiveViewEmitted: new Subject<string>().asObservable()
 };

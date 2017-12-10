@@ -7,7 +7,7 @@
 
 import { Component } from '@angular/core';
 
-import { LoginModalService } from '../../core/login-modal/login-modal.service';
+import { LoginModalService } from '../login-modal.service';
 import { environment } from '../../../environments/environment';
 
 @Component({

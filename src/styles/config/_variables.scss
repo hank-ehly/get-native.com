@@ -106,15 +106,15 @@ $btn-border-radius:           1.2rem;
 $btn-border-radius-lg:        $btn-border-radius;
 $btn-border-radius-sm:        $btn-border-radius;
 
-$btn-transition:              background-color 100ms ease-in-out, border-color 100ms ease-in-out, box-shadow 100ms ease-in-out, color 100ms;
+$btn-transition:              border-color 100ms ease-in-out, box-shadow 100ms ease-in-out;
 
-$input-btn-border-width: 2px;
+$input-btn-border-width:      2px;
 
 
 /* font-size */
-$font-size-xs:         $font-size-base * .75;
-$font-size-large:      $font-size-lg;
-$font-size-xl:         $font-size-base * 1.5;
+$font-size-xs:                $font-size-base * .75;
+$font-size-large:             $font-size-lg;
+$font-size-xl:                $font-size-base * 1.5;
 
 /* letter-spacing */
 $uppercase-label-letter-spacing: 0.1em;
@@ -123,8 +123,8 @@ $uppercase-label-letter-spacing: 0.1em;
 $line-height-sm: $line-height-base * 0.875;
 
 /* height */
-$navbar-height:        90px;
-$video-panel-height:   290px;
+$navbar-height:               90px;
+$video-panel-height:          290px;
 
 /* width */
-$main-width:           900px;
+$main-width:                  900px;

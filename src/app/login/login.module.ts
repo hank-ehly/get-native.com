@@ -14,11 +14,13 @@ import { SocialLoginComponent } from './social-login/social-login.component';
 import { EmailLoginComponent } from './email-login/email-login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { LoginModalService } from './login-modal.service';
 
 @NgModule({
     imports: [SharedModule, FormsModule],
     declarations: [LoginComponent, SocialLoginComponent, EmailLoginComponent, RegisterComponent, ForgotPasswordComponent],
-    exports: [LoginComponent]
+    exports: [LoginComponent],
+    providers: [LoginModalService]
 })
 export class LoginModule {
 }

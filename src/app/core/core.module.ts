@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth/auth-guard.service';
 import { CategoryListService } from './category-list/category-list.service';
 import { LocalStorageService } from './local-storage/local-storage.service';
-import { LoginModalService } from './login-modal/login-modal.service';
 import { URIService } from './http/uri.service';
 import { HttpService } from './http/http.service';
 import { NavbarService } from './navbar/navbar.service';
@@ -31,7 +30,6 @@ import { ImageService } from './image.service';
 import { NotificationService } from './notification/notification.service';
 import { OAuthGuard } from './auth/oauth.guard';
 import { GoogleAnalyticsEventsService } from './google-analytics-events.service';
-import { GlobalErrorHandler } from './global-error-handler';
 
 @NgModule({
     imports: [
@@ -41,7 +39,6 @@ import { GlobalErrorHandler } from './global-error-handler';
         AuthGuard,
         CategoryListService,
         LocalStorageService,
-        LoginModalService,
         URIService,
         HttpService,
         NavbarService,
@@ -60,8 +57,7 @@ import { GlobalErrorHandler } from './global-error-handler';
         ImageService,
         NotificationService,
         OAuthGuard,
-        GoogleAnalyticsEventsService,
-        // {provide: ErrorHandler, useClass: GlobalErrorHandler}
+        GoogleAnalyticsEventsService
     ]
 })
 export class CoreModule {

@@ -26,6 +26,9 @@ import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { LoginModalService } from '../../login/login-modal.service';
+import { LoginComponent } from '../../login/login.component';
 
 const animations = [
     trigger('slideInLeftOutRight', [
@@ -65,6 +68,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     searchBarVisible$    = this.navbar.searchBarVisible$.share();
     displayNotificationDropdown$ = new BehaviorSubject<boolean>(false);
     OnDestroy$           = new Subject<void>();
+    bsModalRef: BsModalRef;
 
     pictureUrl$ = new BehaviorSubject<string>(
         'https://storage.googleapis.com/stg.getnativelearning.com/assets/images/silhouette-avatar.jpg'
@@ -99,7 +103,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     constructor(private logger: Logger, private navbar: NavbarService, private location: Location, private router: Router,
-                private dom: DOMService, private user: UserService) {
+                private dom: DOMService, private user: UserService, private loginModal: LoginModalService,
+                private modalService: BsModalService) {
     }
 
     ngOnInit(): void {
@@ -124,6 +129,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.navbar.title$
             .takeUntil(this.OnDestroy$)
             .subscribe(t => this.title = t);
+
+        this.loginModal.closeEmitted.takeUntil(this.OnDestroy$).subscribe(this.onCloseLoginModal.bind(this));
     }
 
     ngOnDestroy(): void {
@@ -134,6 +141,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     updateQuery(e: Event): void {
         const target = <HTMLInputElement>e.target;
         this.navbar.updateQuery(target.value);
+    }
+
+    onClickOpenLoginModal(): void {
+        this.bsModalRef = this.modalService.show(LoginComponent);
+    }
+
+    onCloseLoginModal(): void {
+        this.bsModalRef.hide();
     }
 
     onClickBack(): void {
