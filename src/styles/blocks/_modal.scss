@@ -22,6 +22,9 @@
   height: 20px;
   outline: none;
   width: 20px;
+  &:focus {
+    outline: none;
+  }
 }
 
 .modal-frame {
