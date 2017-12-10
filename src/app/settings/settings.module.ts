@@ -13,14 +13,18 @@ import { SecurityComponent } from './security/security.component';
 import { GeneralComponent } from './general/general.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ActivityComponent } from './activity/activity.component';
+import { CropperModalComponent } from './cropper-modal/cropper-modal.component';
+import { CropperModalService } from './cropper-modal/cropper-modal.service';
 
 import { ImageCropperModule } from 'ng2-img-cropper';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
-    imports: [SharedModule, ImageCropperModule, BsDropdownModule.forRoot()],
-    declarations: [SettingsComponent, SecurityComponent, GeneralComponent, NotificationsComponent, ActivityComponent],
-    exports: [SettingsComponent]
+    imports: [SharedModule, ImageCropperModule],
+    declarations: [
+        SettingsComponent, SecurityComponent, GeneralComponent, NotificationsComponent, ActivityComponent, CropperModalComponent],
+    exports: [SettingsComponent],
+    providers: [CropperModalService],
+    entryComponents: [CropperModalComponent]
 })
 
 export class SettingsModule {

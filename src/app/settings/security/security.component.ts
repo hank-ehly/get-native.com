@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 
 import { APIError, APIErrors } from '../../core/http/api-error';
 import { HttpService } from '../../core/http/http.service';
@@ -22,6 +22,9 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 import * as _ from 'lodash';
 
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
+
 @Component({
     selector: 'gn-security',
     templateUrl: 'security.component.html',
@@ -29,6 +32,7 @@ import * as _ from 'lodash';
 })
 export class SecurityComponent implements OnInit, OnDestroy {
 
+    bsModalRef: BsModalRef;
     reason = '';
     processing = false;
     deleteUserError: APIError;
@@ -36,7 +40,8 @@ export class SecurityComponent implements OnInit, OnDestroy {
     isModalVisibleEmitted$: Observable<boolean>;
     private isModalVisibleSource: BehaviorSubject<boolean>;
 
-    constructor(private logger: Logger, private http: HttpService, private user: UserService, private dom: DOMService) {
+    constructor(private logger: Logger, private http: HttpService, private user: UserService, private dom: DOMService,
+                private modalService: BsModalService) {
         this.isModalVisibleSource = new BehaviorSubject<boolean>(false);
         this.isModalVisibleEmitted$ = this.isModalVisibleSource.asObservable();
     }
@@ -65,12 +70,12 @@ export class SecurityComponent implements OnInit, OnDestroy {
         request.takeUntil(this.OnDestroy$).subscribe(this.onDeleteUserNext.bind(this), this.onDeleteUserError.bind(this));
     }
 
-    onClickShowModal(): void {
-        this.isModalVisibleSource.next(true);
+    onClickShowModal(modal: TemplateRef<any>): void {
+        this.bsModalRef = this.modalService.show(modal);
     }
 
     onClickCloseModal(): void {
-        this.isModalVisibleSource.next(false);
+        this.bsModalRef.hide();
     }
 
     private onDeleteUserNext(): void {

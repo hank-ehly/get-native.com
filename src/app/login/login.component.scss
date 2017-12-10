@@ -1,54 +1,6 @@
 @import '../../styles/core';
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10001;
-  background: rgba($black, 0.8);
-  background: radial-gradient(ellipse closest-side, rgba($black, 0.7) 1%, rgba($black, 0.8) 100%);
-  overflow-y: scroll;
-  display: block;
-  opacity: 1;
-}
-
-.modal-frame {
-  position: relative;
-  left: 50%;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  width: 400px;
-  margin-left: -200px;
-}
-
-.modal-frame__close-button-frame {
-  background: transparent;
-  height: 40px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.modal-frame__close-button {
-  align-self: flex-start;
-  background: transparent url("https://storage.googleapis.com/stg.getnativelearning.com/assets/icons/close.svg");
-  border: 0;
-  cursor: pointer;
-  padding: 0;
-  height: 20px;
-  outline: none;
-  width: 20px;
-}
-
 :host /deep/ {
-  .gn-modal {
-    @include border-radius();
-    box-shadow: 0 1px 2px rgba($black, 0.5);
-    width: 100%;
-    background: $white;
-  }
-
   .paragraph {
     text-align: center;
     margin: 0 auto;
@@ -85,9 +37,6 @@
     display: flex;
     justify-content: space-around;
     padding-bottom: 48px;
-  }
-
-  .modal_email-login .footer, .modal_register .footer, .modal--forgot-password .footer {
     padding-left: 30px;
     padding-right: 30px;
     flex-direction: column;
@@ -101,6 +50,10 @@
       margin: 0;
       width: 100%;
     }
+
+    &.footer-inline {
+      flex-direction: row;
+    }
   }
 
   .error-messages {
@@ -112,4 +65,8 @@
     padding-right: 30px;
     padding-top: 20px;
   }
+}
+
+.modal-frame {
+  width: 400px;
 }

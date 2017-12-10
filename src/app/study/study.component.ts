@@ -5,13 +5,14 @@
  * Created by henryehly on 2016/12/11.
  */
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 
 import { StudySessionService } from '../core/study-session/study-session.service';
 import { NavbarService } from '../core/navbar/navbar.service';
 import { environment } from '../../environments/environment';
 import { Logger } from '../core/logger/logger';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 
 @Component({
     templateUrl: 'study.component.html',
@@ -24,9 +25,12 @@ export class StudyComponent implements OnInit, OnDestroy {
         isModalVisible: false
     };
 
+    bsModalRef: BsModalRef;
+    @ViewChild('modal') modalTemplateRef: TemplateRef<any>;
     quitURL: string;
 
-    constructor(private logger: Logger, private navbar: NavbarService, private session: StudySessionService, private router: Router) {
+    constructor(private logger: Logger, private navbar: NavbarService, private session: StudySessionService, private router: Router,
+                private modalService: BsModalService) {
     }
 
     ngOnInit(): void {
@@ -44,7 +48,13 @@ export class StudyComponent implements OnInit, OnDestroy {
         this.session.forceSectionEnd();
     }
 
+    displayConfirmationModal(): void {
+        this.bsModalRef = this.modalService.show(this.modalTemplateRef);
+        this.flags.isModalVisible = true;
+    }
+
     onClickCloseModal(): void {
+        this.bsModalRef.hide();
         this.flags.isModalVisible = false;
     }
 
@@ -56,11 +66,13 @@ export class StudyComponent implements OnInit, OnDestroy {
             return;
         }
 
+        this.bsModalRef.hide();
         this.router.navigateByUrl(this.quitURL);
     }
 
     onClickCancel(): void {
         this.logger.debug(this, 'onClickCancel');
+        this.bsModalRef.hide();
         this.flags.isModalVisible = false;
     }
 

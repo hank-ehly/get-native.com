@@ -11,7 +11,6 @@ import { StudySessionService } from '../../core/study-session/study-session.serv
 import { StudySessionSection } from '../../core/typings/study-session-section';
 import { Logger } from '../../core/logger/logger';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 
@@ -21,9 +20,7 @@ import 'rxjs/add/operator/takeUntil';
 })
 export class ShadowingComponent implements OnInit, OnDestroy {
 
-    isModalPresented$ = new BehaviorSubject<boolean>(false);
     src = this.session.current.video.video_url;
-
     private OnDestroy$ = new Subject<void>();
 
     constructor(private logger: Logger, private session: StudySessionService) {
@@ -43,11 +40,4 @@ export class ShadowingComponent implements OnInit, OnDestroy {
         this.OnDestroy$.next();
     }
 
-    onClickOpenModal(): void {
-        this.isModalPresented$.next(true);
-    }
-
-    onCloseModal(): void {
-        this.isModalPresented$.next(false);
-    }
 }

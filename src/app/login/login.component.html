@@ -1,15 +1,12 @@
-<div class="overlay" (click)="onClickClose($event)">
-    <div class="modal-frame">
+<div class="modal-frame">
+    <div class="modal-frame__close-button-frame">
+        <button class="modal-frame__close-button" (click)="onCloseModal()"></button>
+    </div>
 
-        <div class="modal-frame__close-button-frame">
-            <button class="modal-frame__close-button" (click)="onClickClose($event)"></button>
-        </div>
-
-        <div [ngSwitch]="activeView">
-            <gn-social-login *ngSwitchDefault></gn-social-login>
-            <gn-email-login *ngSwitchCase="'email'"></gn-email-login>
-            <gn-register *ngSwitchCase="'register'"></gn-register>
-            <gn-forgot-password *ngSwitchCase="'forgot-password'"></gn-forgot-password>
-        </div>
+    <div class="gn-modal-content" [ngSwitch]="activeView">
+        <gn-social-login *ngSwitchDefault></gn-social-login>
+        <gn-email-login *ngSwitchCase="'email'"></gn-email-login>
+        <gn-register *ngSwitchCase="'register'"></gn-register>
+        <gn-forgot-password *ngSwitchCase="'forgot-password'"></gn-forgot-password>
     </div>
 </div>

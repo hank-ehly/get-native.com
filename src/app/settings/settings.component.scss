@@ -97,11 +97,6 @@
 }
 
 :host /deep/ {
-  .canvas {
-    display: block;
-    margin: 16px auto;
-  }
-
   .label {
     font-family: $font-family-base;
     margin-bottom: 0;
@@ -126,6 +121,29 @@
   margin: 0 5px;
 }
 
+.gn-dropdown-button {
+  outline: none;
+  border: none;
+  display: block;
+  color: $primary;
+  margin: auto;
+  cursor: pointer;
+  user-select: none;
+  min-width: 220px;
+  padding: 6px;
+  line-height: $font-size-large;
+
+  &:disabled {
+    color: $regent-gray;
+    cursor: not-allowed;
+  }
+
+  &:hover:not([disabled]) {
+    background: $azure-radiance;
+    color: $white;
+  }
+}
+
 .gn-dropdown-link {
   background: $white;
   border: none;
@@ -141,18 +159,18 @@
   /* Override bootstrap */
   &:not([href]):not([tabindex]) {
     color: $primary;
-    &:hover {
+    &:hover:not(.disabled) {
       color: $white;
+    }
+
+    &.disabled {
+      color: $regent-gray;
+      cursor: not-allowed;
     }
   }
 
-  &:hover {
+  &:hover:not(.disabled) {
     background-color: $azure-radiance;
-    color: $white;
-    &.link--disabled {
-      background: $white;
-      color: $regent-gray;
-    }
   }
 }
 

@@ -1,22 +1,8 @@
 @import '../../../styles/core';
 @import './security.component.debug';
 
-.title, .paragraph, .textarea--container, .error-message-container {
-  margin-top: 30px;
-}
-
 .paragraph {
   color: $regent-gray;
-}
-
-.modal__content {
-  box-sizing: border-box;
-  padding: 40px;
-  width: 400px;
-}
-
-.modal__content .paragraph {
-  margin-top: 0;
 }
 
 .paragraph--modal {
@@ -35,4 +21,12 @@
 
 .link:not([href]):not([tabindex]) {
   color: $primary;
+}
+
+.gn-modal-content {
+  padding: 30px;
+}
+
+.modal-frame {
+  width: 400px;
 }

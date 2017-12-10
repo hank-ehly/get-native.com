@@ -13,12 +13,10 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { TOSComponent } from './tos/tos.component';
 import { SharedModule } from '../shared/shared.module';
 import { MobileOverlayComponent } from './mobile-overlay/mobile-overlay.component';
-import { TourNgxBootstrapModule } from 'ngx-tour-ngx-bootstrap';
 
 @NgModule({
     imports: [
-        SharedModule,
-        TourNgxBootstrapModule.forRoot()
+        SharedModule
     ],
     exports: [
         HomeComponent,

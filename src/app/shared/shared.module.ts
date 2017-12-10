@@ -19,7 +19,6 @@ import { FuzzyNumberPipe } from './fuzzy-number/fuzzy-number.pipe';
 import { MatchDirective } from './match/match.directive';
 import { DigitalTimePipe } from './digital-time/digital-time.pipe';
 import { FocusDirective } from './focus/focus.directive';
-import { ModalComponent } from './modal/modal.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PasswordStrengthComponent } from './password-strength/password-strength.component';
 import { SelectComponent } from './select/select.component';
@@ -39,12 +38,14 @@ import { FromNowPipe } from './from-now/from-now.pipe';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { AlertComponent } from './alert/alert.component';
 import { GoogleStorageImageDirective } from './google-storage-image/google-storage-image.directive';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
-        FormsModule
+        FormsModule,
+        ModalModule.forRoot()
     ],
     declarations: [
         AutosizeTextareaDirective,
@@ -56,7 +57,6 @@ import { GoogleStorageImageDirective } from './google-storage-image/google-stora
         MatchDirective,
         DigitalTimePipe,
         FocusDirective,
-        ModalComponent,
         NavbarComponent,
         PasswordStrengthComponent,
         SelectComponent,
@@ -90,7 +90,6 @@ import { GoogleStorageImageDirective } from './google-storage-image/google-stora
         MatchDirective,
         DigitalTimePipe,
         FocusDirective,
-        ModalComponent,
         NavbarComponent,
         PasswordStrengthComponent,
         SelectComponent,

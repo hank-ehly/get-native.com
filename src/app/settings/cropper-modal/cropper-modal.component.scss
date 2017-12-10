@@ -1,0 +1,16 @@
+.gn-modal-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gn-modal-content .header h5 {
+  margin-bottom: 0;
+}
+:host /deep/ {
+  .canvas {
+    display: block;
+    margin: 16px auto;
+  }
+}

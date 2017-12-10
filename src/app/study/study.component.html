@@ -1,9 +1,16 @@
 <router-outlet></router-outlet>
 <button class="btn btn-outline--grey button--debug-skip" (click)="onClickSkip()" *ngIf="!flags.isProd">SKIP</button>
-<gn-modal [isVisible]="flags.isModalVisible" (close)="onClickCloseModal()">
-    <div class="wrapper">
-        <p i18n="Quit study session confirm message@@11ca639b44e685575284168afe273768">Quitting the study session early will erase your progress. Continue?</p>
-        <button class="btn btn-light" (click)="onClickQuit()" i18n="Quit study session modal quit button label@@b0a687cb02246797570fd887ae59df5e">QUIT</button>
-        <button class="btn btn-primary btn-gradient-primary" (click)="onClickCancel()" i18n="Quit study session modal cancel button label@@21114f2da1038f44a081dd5e37d17c5c">CANCEL</button>
+
+<ng-template #modal>
+    <div class="modal-frame">
+        <div class="modal-frame__close-button-frame">
+            <button class="modal-frame__close-button" (click)="onClickCloseModal()"></button>
+        </div>
+
+        <div class="gn-modal-content">
+            <p i18n="Quit study session confirm message@@11ca639b44e685575284168afe273768">Quitting the study session early will erase your progress. Continue?</p>
+            <button class="btn btn-light" (click)="onClickQuit()" i18n="Quit study session modal quit button label@@b0a687cb02246797570fd887ae59df5e">QUIT</button>
+            <button class="btn btn-primary btn-gradient-primary" (click)="onClickCancel()" i18n="Quit study session modal cancel button label@@21114f2da1038f44a081dd5e37d17c5c">CANCEL</button>
+        </div>
     </div>
-</gn-modal>
+</ng-template>

@@ -24,7 +24,7 @@ export class StudySessionGuard implements CanDeactivate<StudyComponent> {
 
         if (!component.flags.isModalVisible) {
             component.quitURL = nextState.url;
-            component.flags.isModalVisible = true;
+            component.displayConfirmationModal();
             return false;
         }
 

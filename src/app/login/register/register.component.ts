@@ -8,7 +8,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginModalService } from '../../core/login-modal/login-modal.service';
+import { LoginModalService } from '../login-modal.service';
 import { EMAIL_REGEX } from '../../core/typings/email-regex';
 import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';

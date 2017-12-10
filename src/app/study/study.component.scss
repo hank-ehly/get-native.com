@@ -6,9 +6,9 @@
   margin: 40px auto 0;
 }
 
-:host gn-modal .wrapper {
-  max-width: $main-width / 3;
-  padding: 40px;
+.gn-modal-content {
+  width: 400px;
+  padding: 30px;
 
   .btn {
     display: block;
