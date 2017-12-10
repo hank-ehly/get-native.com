@@ -148,7 +148,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     onCloseLoginModal(): void {
-        this.bsModalRef.hide();
+        this.logger.debug(this, 'onCloseLoginModal', this.bsModalRef);
+        if (this.bsModalRef) {
+            this.bsModalRef.hide();
+        }
     }
 
     onClickBack(): void {
