@@ -60,7 +60,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     private onCloseLoginModal(): void {
-        this.bsModalRef.hide();
+        this.logger.debug(this, 'onCloseLoginModal', this.bsModalRef);
+        if (this.bsModalRef) {
+            this.bsModalRef.hide();
+        }
     }
 
     private updateLargeFeatureImagePosition(): void {
