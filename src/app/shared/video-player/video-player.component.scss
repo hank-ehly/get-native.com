@@ -4,7 +4,7 @@
 .player-frame {
   position: relative;
   overflow: hidden;
-  padding-bottom: 100% * (2/3);
+  //padding-bottom: 100% * (2/3);
   width: 100%;
 }
 
@@ -20,7 +20,7 @@
 
 .player-controls {
   background: rgba($black, 0.7);
-  bottom: 0;
+  bottom: 8px;
   display: flex;
   height: 50px;
   justify-content: space-between;
@@ -181,7 +181,7 @@
 
 .tracker {
   background: transparent;
-  bottom: 0;
+  bottom: 8px;
   height: 3px;
   position: absolute;
   transition: opacity 0.2s;

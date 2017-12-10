@@ -39,6 +39,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { AlertComponent } from './alert/alert.component';
 import { GoogleStorageImageDirective } from './google-storage-image/google-storage-image.directive';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { YoutubePlayerDirective } from './youtube-player.directive';
 
 @NgModule({
     imports: [
@@ -75,7 +76,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
         FromNowPipe,
         DropdownComponent,
         AlertComponent,
-        GoogleStorageImageDirective
+        GoogleStorageImageDirective,
+        YoutubePlayerDirective
     ],
     exports: [
         AutosizeTextareaDirective,

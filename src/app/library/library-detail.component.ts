@@ -51,7 +51,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     video$: Observable<Video> = this.route.data.pluck('video');
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
-                private facebook: FacebookService, private meta: MetaService, private user: UserService, private lang: LangService,
+                private facebook: FacebookService, private meta: MetaService,
                 @Inject(LOCALE_ID) private localeId: string, private googleAnalyticsEventService: GoogleAnalyticsEventsService) {
         this.route.data.subscribe(x => {
             this.logger.debug(this, x);
@@ -75,6 +75,9 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 this.video = v;
                 this.liked = v.liked;
                 this.likeCount = v.like_count;
+                this.meta.setTag('og:image', v.picture_url);
+                this.meta.setTag('og:image:url', v.picture_url);
+                this.meta.setTag('og:image:secure_url', v.picture_url);
             });
 
         this.video$
