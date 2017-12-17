@@ -144,7 +144,7 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy,
                 loop: this.loop ? 1 : 0,
                 autoplay: this.autoplay ? 1 : 0,
                 playlist: this.videoId,
-                hl: this.langService.languageForLocaleId(this.localeId)
+                hl: this.langService.languageForLocaleId(this.localeId).code
             },
             events: {
                 'onReady': this.onPlayerReady.bind(this),
