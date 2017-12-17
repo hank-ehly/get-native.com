@@ -13,9 +13,8 @@ import { QueueButtonState } from '../core/navbar/queue-button-state';
 import { FacebookService } from '../core/facebook/facebook.service';
 import { GNRequestOptions } from '../core/http/gn-request-options';
 import { NavbarService } from '../core/navbar/navbar.service';
+import { environment } from '../../environments/environment';
 import { HttpService } from '../core/http/http.service';
-import { LangService } from '../core/lang/lang.service';
-import { UserService } from '../core/user/user.service';
 import { APIHandle } from '../core/http/api-handle';
 import { Logger } from '../core/logger/logger';
 import { Video } from '../core/entities/video';
@@ -39,6 +38,7 @@ import * as _ from 'lodash';
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {
 
+    isProd = environment.production;
     OnDestroy$ = new Subject<void>();
     likedChange$ = new Subject<boolean>();
     liked: boolean;
@@ -72,6 +72,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
         this.video$
             .subscribe(v => {
+                this.logger.debug(this, 'Video changed', v);
                 this.video = v;
                 this.liked = v.liked;
                 this.likeCount = v.like_count;

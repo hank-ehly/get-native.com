@@ -6,8 +6,7 @@
  */
 
 import {
-    Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy, ChangeDetectorRef, AfterViewChecked,
-    ChangeDetectionStrategy
+    Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy, ChangeDetectorRef, AfterViewChecked, ChangeDetectionStrategy
 } from '@angular/core';
 import { trigger, animate, style, transition } from '@angular/animations';
 
@@ -15,11 +14,9 @@ import { YoutubePlayerDirective } from '../youtube-player.directive';
 import { UnitInterval } from '../../core/typings/unit-interval';
 import { Logger } from '../../core/logger/logger';
 
-import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
-import * as _ from 'lodash';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -90,7 +87,6 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy, A
     }
 
     ngAfterViewChecked(): void {
-        this.logger.debug(this, 'AfterViewChecked');
         this.changeDetectorRef.detectChanges();
     }
 

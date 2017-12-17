@@ -1,6 +1,6 @@
 <div class="player-frame" (mouseleave)="onMouseLeavePlayerFrame()" (mouseenter)="onMouseEnterPlayerFrame()" (dblclick)="onDoubleClickVideoFrame()">
 
-    <div gnYoutubeVideo id="player" [height]="280" [width]="435" [videoId]="youtubeVideoId" [loop]="true"></div>
+    <div gnYoutubePlayer id="gn-youtube-player" [height]="280" [width]="435" [videoId]="youtubeVideoId" [loop]="true"></div>
 
     <div class="player-controls" *ngIf="!controlsHidden" [@fadeInOut]>
         <button class="player-controls__toggle-button" (click)="onClickToggleButton()" [ngClass]="{'player-controls__toggle-button_paused': isPaused}"></button>
