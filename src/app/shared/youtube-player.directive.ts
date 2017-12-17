@@ -1,14 +1,14 @@
-import { AfterViewInit, Directive, ElementRef, Inject, Input, LOCALE_ID, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 
 import { LangService } from '../core/lang/lang.service';
-
 import { Logger } from '../core/logger/logger';
+
 import * as _ from 'lodash';
 
 @Directive({
-    selector: '[gnYoutubeVideo]'
+    selector: '[gnYoutubePlayer]'
 })
-export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy {
+export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy, OnChanges {
 
     api: any;
 
@@ -28,14 +28,14 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy 
 
     get buffered(): number {
         if (_.has(this, 'api.getVideoLoadedFraction')) {
-            return this.api.getVideoLoadedFraction();
+            return this.api.getVideoLoadedFraction() || 0;
         }
         return 0;
     }
 
     get seek(): number {
         if (_.has(this, 'api.getCurrentTime') && _.has(this, 'api.getDuration')) {
-            return this.api.getCurrentTime() / this.api.getDuration();
+            return (this.api.getCurrentTime() / this.api.getDuration()) || 0;
         }
         return 0;
     }
@@ -76,6 +76,33 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy 
 
     constructor(private el: ElementRef, private logger: Logger, @Inject(LOCALE_ID) private localeId: string,
                 private langService: LangService) {
+        (<any>window).onYouTubeIframeAPIReady = this.onYouTubeIframeAPIReady.bind(this);
+    }
+
+    ngOnInit(): void {
+        this.logger.debug(this, 'OnInit');
+    }
+
+    ngAfterViewInit(): void {
+        this.logger.debug(this, 'AfterViewInit');
+        this.loadYouTubeIframeAPIIfNeeded();
+    }
+
+    ngOnDestroy(): void {
+        this.logger.debug(this, 'OnDestroy');
+        if (_.has(this, 'api.destroy')) {
+            this.api.destroy();
+        }
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        this.logger.debug(this, 'OnChanges', changes);
+
+        if (changes['videoId'] && _.has(this, 'api.loadVideoById')) {
+            setTimeout(() => {
+                this.api.loadVideoById(changes['videoId'].currentValue, 0);
+            }, 0);
+        }
     }
 
     seekTo(value: number): void {
@@ -84,24 +111,27 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy 
         }
     }
 
-    ngOnInit(): void {
-        (<any>window).onYouTubeIframeAPIReady = this.onYouTubeIframeAPIReady.bind(this);
-    }
-
-    ngAfterViewInit(): void {
-        const tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/iframe_api';
-        document.body.appendChild(tag);
-    }
-
-    ngOnDestroy(): void {
-        this.logger.debug(this, 'OnDestroy');
-        /*if (_.has(this, 'api.destroy')) {
-            this.api.destroy();
-        }*/
+    private loadYouTubeIframeAPIIfNeeded() {
+        const iframeAPIScriptTagID = 'youtube-iframe-api';
+        if (document.getElementById(iframeAPIScriptTagID)) {
+            this.logger.debug(this, 'YouTube Iframe API is already loaded');
+            this.onYouTubeIframeAPIReady();
+        } else {
+            this.logger.debug(this, 'Loading YouTube Iframe API');
+            const tag = document.createElement('script');
+            tag.type = 'text/javascript';
+            tag.src = 'https://www.youtube.com/iframe_api';
+            tag.id = iframeAPIScriptTagID;
+            document.body.appendChild(tag);
+        }
     }
 
     private onYouTubeIframeAPIReady(): void {
+        if (!window['YT']) {
+            return;
+        }
+
+        this.logger.debug(this, 'onYouTubeIframeAPIReady');
         this.api = new YT.Player(this.el.nativeElement.id, {
             height: this.height,
             width: this.width,
