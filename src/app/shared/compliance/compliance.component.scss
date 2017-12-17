@@ -13,7 +13,7 @@
   z-index: 1;
 }
 
-.dialog {
+.compliance-dialog {
   @include border-radius();
   background: $wild-sand;
   bottom: 30px;
@@ -24,6 +24,10 @@
   position: fixed;
   right: 30px;
   opacity: 0.95;
+}
+
+.dialog__paragraph {
+  margin-bottom: 0;
 }
 
 .dialog__link_tos {
