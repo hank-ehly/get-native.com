@@ -6,19 +6,22 @@
  * Created by henryehly on 2017/01/29.
  */
 
-import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Logger } from '../logger/logger';
-import { LocalStorageService } from '../local-storage/local-storage.service';
-import { Entity } from '../entities/entity';
-import { GNRequestOptions } from './gn-request-options';
-import { APIHandle } from './api-handle';
-import { APIConfig } from './api-config';
-import { URIService } from './uri.service';
 import { kAuthToken, kAuthTokenExpire } from '../local-storage/local-storage-keys';
-import { Entities } from '../entities/entities';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 import { environment } from '../../../environments/environment';
+import { GNRequestOptions } from './gn-request-options';
+import { UserService } from '../user/user.service';
+import { LangService } from '../lang/lang.service';
+import { DOMService } from '../dom/dom.service';
+import { Entities } from '../entities/entities';
+import { Entity } from '../entities/entity';
+import { URIService } from './uri.service';
+import { Logger } from '../logger/logger';
+import { APIConfig } from './api-config';
+import { APIHandle } from './api-handle';
 import { APIErrors } from './api-error';
 
 import { Observable } from 'rxjs/Observable';
@@ -34,7 +37,10 @@ export class HttpService {
     constructor(private http: HttpClient,
                 private logger: Logger,
                 private localStorage: LocalStorageService,
-                private uriService: URIService) {
+                private uriService: URIService,
+                private user: UserService,
+                private dom: DOMService,
+                private lang: LangService) {
     }
 
     request(handle: APIHandle, options?: GNRequestOptions): Observable<Entities<Entity>|Entity> {
@@ -112,15 +118,22 @@ export class HttpService {
 
     private handleError(response: HttpErrorResponse): Observable<APIErrors> {
         let err: APIErrors;
-        if (response.error instanceof Error) {
+
+        if (response.status === 401) {
+            this.user.logout();
+            const message = this.lang.i18n('ErrorMessage.SessionExpired');
+            this.dom.alert(message);
+            err =  [{code: 'SessionExpired', message: message}];
+        } else if (response.error instanceof Error) {
             this.logger.debug(this, '[ERROR]', response.error);
             err =  [{code: 'Unknown', message: response.error.message}];
         } else if (response.status === 0) {
-            err =  [{code: 'Unknown', message: 'Please check your internet connection.'}];
+            err =  [{code: 'Unknown', message: this.lang.i18n('ErrorMessage.CheckConnection')}];
         } else {
             this.logger.debug(this, '[ERROR]', response);
             err = response.error;
         }
+
         return Observable.throw(err);
     }
 }

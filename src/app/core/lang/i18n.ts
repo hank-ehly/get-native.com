@@ -1,0 +1,20 @@
+/**
+ * i18n
+ * getnativelearning.com
+ *
+ * Created by henryehly on 2017/12/17.
+ */
+
+export const i18n = {
+    ErrorMessage: {
+        CheckConnection: {
+            en: 'Please check your internet connection.',
+            ja: 'インターネット接続を確認してください。'
+        },
+
+        SessionExpired: {
+            en: 'Your session has been inactive for over 1 hour. Please login again to continue browsing.',
+            ja: '1時間以上動きがありませんでしたので、自動ログアウトされました。お手数ですが、もう一度ログインしてください。'
+        }
+    }
+};

@@ -91,10 +91,7 @@ export class UserService {
 
     logout(): void {
         this.logger.debug(this, 'logout');
-
-        const keysToRemove = [kAuthToken, kAuthTokenExpire, kCurrentUser, kCurrentStudySession, kCurrentStudyLanguage];
-        _.each(keysToRemove, this.localStorage.removeItem);
-
+        _.each([kAuthToken, kAuthTokenExpire, kCurrentUser, kCurrentStudySession, kCurrentStudyLanguage], this.localStorage.removeItem);
         this.logout$.next();
     }
 
