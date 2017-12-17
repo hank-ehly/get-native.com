@@ -14,7 +14,7 @@ describe('LangService', () => {
     let service: LangService;
 
     beforeAll(() => {
-        service = new LangService();
+        service = new LangService('en-US');
     });
 
     it('should convert \'en\' to \'English\'', () => {
