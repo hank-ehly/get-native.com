@@ -14,6 +14,7 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy 
 
     @Input() width: number;
     @Input() height: number;
+    @Input() loop: boolean;
     @Input() videoId: string;
     @Input() playerVars: any;
     @Input() events: any;
@@ -95,9 +96,9 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy 
 
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
-        if (_.has(this, 'api.destroy')) {
+        /*if (_.has(this, 'api.destroy')) {
             this.api.destroy();
-        }
+        }*/
     }
 
     private onYouTubeIframeAPIReady(): void {
@@ -111,7 +112,7 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy 
                 controls: 0,
                 enablejsapi: 1,
                 rel: 0,
-                loop: 1,
+                loop: this.loop ? 1 : 0,
                 autoplay: 1,
                 playlist: this.videoId,
                 hl: this.langService.languageForLocaleId(this.localeId)

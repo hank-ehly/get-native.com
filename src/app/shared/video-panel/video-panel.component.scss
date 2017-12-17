@@ -11,8 +11,11 @@
 }
 
 .video-panel__img {
-  width: 102%;
-  transform: translateX(-1%);
+  width: 145%;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
 }
 
 .video-panel__overlay {

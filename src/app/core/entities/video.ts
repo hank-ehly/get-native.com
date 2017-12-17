@@ -23,8 +23,7 @@ export interface Video extends Entity {
     loop_velocity?: number;
     related_videos?: Entities<Video>;
     speaker?: Speaker;
-    picture_url?: string;
+    youtube_video_id?: string;
     subcategory?: Subcategory;
     transcripts?: Entities<Transcript>;
-    video_url?: string;
 }
