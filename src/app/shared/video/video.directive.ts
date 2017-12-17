@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/16.
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core';
 
 import { UnitInterval } from '../../core/typings/unit-interval';
 import { Logger } from '../../core/logger/logger';
@@ -26,7 +26,7 @@ export class VideoDirective {
     private loadedMetadataSource: Subject<Event>;
     private progressSource: BehaviorSubject<number>;
 
-    private videoEl: HTMLVideoElement;
+    videoEl: HTMLVideoElement;
     private previousStepTime: number;
 
     constructor(private el: ElementRef, private logger: Logger) {
@@ -54,7 +54,7 @@ export class VideoDirective {
     }
 
     get duration(): number {
-        return this.videoEl.duration;
+        return Math.max(0, this.videoEl.duration);
     }
 
     get volume(): number {

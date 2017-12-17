@@ -5,18 +5,21 @@
  * Created by henryehly on 2016/12/07.
  */
 
-import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy } from '@angular/core';
+import {
+    Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy, ChangeDetectorRef, AfterViewChecked, ChangeDetectionStrategy
+} from '@angular/core';
 import { trigger, animate, style, transition } from '@angular/animations';
 
+import { YoutubePlayerDirective } from '../youtube-player.directive';
 import { UnitInterval } from '../../core/typings/unit-interval';
-import { VideoDirective } from '../video/video.directive';
 import { Logger } from '../../core/logger/logger';
 
-import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'gn-video-player',
     templateUrl: 'video-player.component.html',
     styleUrls: ['video-player.component.scss'],
@@ -31,17 +34,16 @@ import 'rxjs/add/operator/map';
         ])
     ]
 })
-export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
+export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy, AfterViewChecked {
 
     @Input() loop: boolean;
-    @Input() src: string;
+    @Input() youtubeVideoId: string;
     @Input() autoplay: boolean;
-    @Input() poster: string;
 
-    @ViewChild(VideoDirective) player: VideoDirective;
+    @ViewChild(YoutubePlayerDirective) player: YoutubePlayerDirective;
+    @ViewChild('seekInput') seekInput: HTMLInputElement;
 
     OnDestroy$: Subject<void>;
-    currentTimeAsPercentEmitted$: Observable<number>;
 
     tooltipHidden: boolean;
     controlsHidden: boolean;
@@ -49,15 +51,26 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     private tooltipTimeout: NodeJS.Timer;
     private previousVolume: UnitInterval;
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private changeDetectorRef: ChangeDetectorRef) {
         this.OnDestroy$ = new Subject<void>();
         this.controlsHidden = false;
         this.tooltipHidden = true;
     }
 
     get volumeControlFillStyle(): { width: string } {
-        const volumePercentString = [this.player.volume * 100, '%'].join('');
-        return {width: volumePercentString};
+        return {width: this.player.volume + '%'};
+    }
+
+    get isPaused(): boolean {
+        return this.player.playerState === 2;
+    }
+
+    get showMutedIcon(): boolean {
+        return this.player.muted || this.player.volume === 0;
+    }
+
+    onSeekChange(e: Event): void {
+        this.player.seekTo(this.player.duration * +(<HTMLInputElement>e.target).value);
     }
 
     ngOnInit(): void {
@@ -71,9 +84,10 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit(): void {
         this.logger.debug(this, 'AfterViewInit');
-        this.currentTimeAsPercentEmitted$ = this.player.currentTimeEmitted$
-            .filter(() => !isNaN(this.player.duration))
-            .map(timeInSeconds => timeInSeconds / this.player.duration);
+    }
+
+    ngAfterViewChecked(): void {
+        this.changeDetectorRef.detectChanges();
     }
 
     onClickToggleButton(): void {
@@ -84,10 +98,6 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
         this.controlsHidden = false;
     }
 
-    onContextMenu(): boolean {
-        return false;
-    }
-
     onDoubleClickVideoFrame(): void {
         this.togglePlayback();
     }
@@ -95,9 +105,13 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     onMouseLeavePlayerFrame(): void {
         this.hideTooltip();
 
-        if (!this.player.paused) {
+        if (!this.isPaused) {
             this.controlsHidden = true;
         }
+    }
+
+    onInputVolume(e: Event): void {
+        this.player.volume = +(<HTMLInputElement>e.target).value;
     }
 
     onClickVolumeControl(e: MouseEvent): void {
@@ -121,7 +135,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
         } else if (this.previousVolume) {
             this.player.volume = this.previousVolume;
         } else {
-            this.player.volume = 1;
+            this.player.volume = 100;
         }
     }
 
@@ -135,12 +149,12 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
         this.hideTooltip(400);
     }
 
-    onInputCurrentTime(time: string) {
-        this.player.currentTime = this.player.duration * +time;
-    }
-
     private togglePlayback(): void {
-        this.player.paused ? this.player.play() : this.player.pause();
+        if (this.player.api.getPlayerState() === 1) {
+            this.player.api.pauseVideo();
+        } else {
+            this.player.api.playVideo();
+        }
     }
 
     private showTooltip(): void {

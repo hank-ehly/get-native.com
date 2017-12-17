@@ -13,9 +13,8 @@ import { QueueButtonState } from '../core/navbar/queue-button-state';
 import { FacebookService } from '../core/facebook/facebook.service';
 import { GNRequestOptions } from '../core/http/gn-request-options';
 import { NavbarService } from '../core/navbar/navbar.service';
+import { environment } from '../../environments/environment';
 import { HttpService } from '../core/http/http.service';
-import { LangService } from '../core/lang/lang.service';
-import { UserService } from '../core/user/user.service';
 import { APIHandle } from '../core/http/api-handle';
 import { Logger } from '../core/logger/logger';
 import { Video } from '../core/entities/video';
@@ -39,6 +38,7 @@ import * as _ from 'lodash';
 })
 export class LibraryDetailComponent implements OnInit, OnDestroy {
 
+    isProd = environment.production;
     OnDestroy$ = new Subject<void>();
     likedChange$ = new Subject<boolean>();
     liked: boolean;
@@ -51,7 +51,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     video$: Observable<Video> = this.route.data.pluck('video');
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
-                private facebook: FacebookService, private meta: MetaService, private user: UserService, private lang: LangService,
+                private facebook: FacebookService, private meta: MetaService,
                 @Inject(LOCALE_ID) private localeId: string, private googleAnalyticsEventService: GoogleAnalyticsEventsService) {
         this.route.data.subscribe(x => {
             this.logger.debug(this, x);
@@ -72,9 +72,14 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
         this.video$
             .subscribe(v => {
+                this.logger.debug(this, 'Video changed', v);
                 this.video = v;
                 this.liked = v.liked;
                 this.likeCount = v.like_count;
+                const pictureUrl = `https://i.ytimg.com/vi/${v.youtube_video_id}/maxresdefault.jpg`;
+                this.meta.setTag('og:image', pictureUrl);
+                this.meta.setTag('og:image:url', pictureUrl);
+                this.meta.setTag('og:image:secure_url', pictureUrl);
             });
 
         this.video$

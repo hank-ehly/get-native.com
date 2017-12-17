@@ -65,7 +65,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                     },
                     created_at: 'Tue Jun 9 12:00:00 +0000 2015',
                     cued: true,
-                    picture_url: 'https://example.com',
+                    youtube_video_id: 'ri6Pip_w6HM',
                     language: {
                         name: 'English',
                         code: 'en'
@@ -140,8 +140,7 @@ export const STUBResponses = new Map<APIHandle, any>([
                     id: 456
                 },
                 loop_count: 1011,
-                picture_url: 'https://example.com',
-                video_url: 'https://example.com',
+                youtube_video_id: 'ri6Pip_w6HM',
                 length: 73
             }
         ]
