@@ -12,12 +12,11 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy,
 
     api: any;
 
-    @Input() width: number;
-    @Input() height: number;
-    @Input() loop: boolean;
+    @Input() width = 435;
+    @Input() height = 280;
+    @Input() loop = true;
+    @Input() autoplay = true;
     @Input() videoId: string;
-    @Input() playerVars: any;
-    @Input() events: any;
 
     get playerState(): number {
         if (_.has(this, 'api.getPlayerState')) {
@@ -143,7 +142,7 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy,
                 enablejsapi: 1,
                 rel: 0,
                 loop: this.loop ? 1 : 0,
-                autoplay: 1,
+                autoplay: this.autoplay ? 1 : 0,
                 playlist: this.videoId,
                 hl: this.langService.languageForLocaleId(this.localeId)
             },

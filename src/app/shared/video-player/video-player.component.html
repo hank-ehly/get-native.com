@@ -1,6 +1,6 @@
 <div class="player-frame" (mouseleave)="onMouseLeavePlayerFrame()" (mouseenter)="onMouseEnterPlayerFrame()" (dblclick)="onDoubleClickVideoFrame()">
 
-    <div gnYoutubePlayer id="gn-youtube-player" [height]="280" [width]="435" [videoId]="youtubeVideoId" [loop]="true"></div>
+    <div gnYoutubePlayer id="gn-youtube-player" [height]="height" [width]="width" [videoId]="youtubeVideoId" [loop]="true" [autoplay]="autoplay"></div>
 
     <div class="player-controls" *ngIf="!controlsHidden" [@fadeInOut]>
         <button class="player-controls__toggle-button" (click)="onClickToggleButton()" [ngClass]="{'player-controls__toggle-button_paused': isPaused}"></button>
@@ -10,7 +10,6 @@
             <label for="play-bar__input" class="sr-only">Seek</label>
             <input type="range" class="play-bar__input" id="play-bar__input" max="1" step="0.01" [value]="player.seek" (input)="onSeekChange($event)">
         </div>
-
 
         <div class="player-controls__time">
             <span class="player-controls__time-elapsed">{{ player.currentTime | digitalTime }}</span>

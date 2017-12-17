@@ -39,6 +39,8 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy, A
     @Input() loop: boolean;
     @Input() youtubeVideoId: string;
     @Input() autoplay: boolean;
+    @Input() width: number;
+    @Input() height: number;
 
     @ViewChild(YoutubePlayerDirective) player: YoutubePlayerDirective;
     @ViewChild('seekInput') seekInput: HTMLInputElement;
@@ -53,7 +55,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy, A
 
     constructor(private logger: Logger, private changeDetectorRef: ChangeDetectorRef) {
         this.OnDestroy$ = new Subject<void>();
-        this.controlsHidden = false;
+        this.controlsHidden = true;
         this.tooltipHidden = true;
     }
 

@@ -20,7 +20,7 @@ import 'rxjs/add/operator/takeUntil';
 })
 export class ShadowingComponent implements OnInit, OnDestroy {
 
-    src = this.session.current.video.video_url;
+    youtubeVideoId = this.session.current.video.youtube_video_id;
     private OnDestroy$ = new Subject<void>();
 
     constructor(private logger: Logger, private session: StudySessionService) {

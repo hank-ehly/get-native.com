@@ -22,6 +22,7 @@ export class ListeningComponent implements OnInit, OnDestroy {
 
     src = this.session.current.video.video_url;
     transcripts = this.session.current.video.transcripts;
+    youtubeVideoId = this.session.current.video.youtube_video_id;
 
     private OnDestroy$ = new Subject<void>();
 

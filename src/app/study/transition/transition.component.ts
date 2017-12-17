@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { StudySessionService } from '../../core/study-session/study-session.service';
+import { environment } from '../../../environments/environment';
 import { Logger } from '../../core/logger/logger';
 
 import 'rxjs/add/operator/switchMap';
@@ -24,6 +25,7 @@ import 'rxjs/observable/never';
 export class TransitionComponent implements OnInit {
 
     sectionName = this.session.sectionName;
+    isProd = environment.production;
 
     flags = {
         processing: {
