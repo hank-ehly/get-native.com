@@ -5,7 +5,10 @@
  * Created by henryehly on 2016/12/07.
  */
 
-import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy } from '@angular/core';
+import {
+    Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy, ChangeDetectorRef, AfterViewChecked,
+    ChangeDetectionStrategy
+} from '@angular/core';
 import { trigger, animate, style, transition } from '@angular/animations';
 
 import { YoutubePlayerDirective } from '../youtube-player.directive';
@@ -19,6 +22,7 @@ import 'rxjs/add/operator/map';
 import * as _ from 'lodash';
 
 @Component({
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'gn-video-player',
     templateUrl: 'video-player.component.html',
     styleUrls: ['video-player.component.scss'],
@@ -33,14 +37,14 @@ import * as _ from 'lodash';
         ])
     ]
 })
-export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
+export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy, AfterViewChecked {
 
     @Input() loop: boolean;
-    @Input() src: string;
+    @Input() youtubeVideoId: string;
     @Input() autoplay: boolean;
-    @Input() poster: string;
 
     @ViewChild(YoutubePlayerDirective) player: YoutubePlayerDirective;
+    @ViewChild('seekInput') seekInput: HTMLInputElement;
 
     OnDestroy$: Subject<void>;
 
@@ -50,7 +54,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     private tooltipTimeout: NodeJS.Timer;
     private previousVolume: UnitInterval;
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, private changeDetectorRef: ChangeDetectorRef) {
         this.OnDestroy$ = new Subject<void>();
         this.controlsHidden = false;
         this.tooltipHidden = true;
@@ -83,6 +87,11 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit(): void {
         this.logger.debug(this, 'AfterViewInit');
+    }
+
+    ngAfterViewChecked(): void {
+        this.logger.debug(this, 'AfterViewChecked');
+        this.changeDetectorRef.detectChanges();
     }
 
     onClickToggleButton(): void {

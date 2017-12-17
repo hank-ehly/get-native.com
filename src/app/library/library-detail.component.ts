@@ -75,9 +75,10 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 this.video = v;
                 this.liked = v.liked;
                 this.likeCount = v.like_count;
-                this.meta.setTag('og:image', v.picture_url);
-                this.meta.setTag('og:image:url', v.picture_url);
-                this.meta.setTag('og:image:secure_url', v.picture_url);
+                const pictureUrl = `https://i.ytimg.com/vi/${v.youtube_video_id}/maxresdefault.jpg`;
+                this.meta.setTag('og:image', pictureUrl);
+                this.meta.setTag('og:image:url', pictureUrl);
+                this.meta.setTag('og:image:secure_url', pictureUrl);
             });
 
         this.video$
