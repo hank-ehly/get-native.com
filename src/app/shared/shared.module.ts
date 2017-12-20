@@ -38,15 +38,18 @@ import { FromNowPipe } from './from-now/from-now.pipe';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { AlertComponent } from './alert/alert.component';
 import { GoogleStorageImageDirective } from './google-storage-image/google-storage-image.directive';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { YoutubePlayerDirective } from './youtube-player.directive';
+
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
         FormsModule,
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        AdsenseModule.forRoot()
     ],
     declarations: [
         AutosizeTextareaDirective,

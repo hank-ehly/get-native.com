@@ -72,7 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
     fbConfig = {appId: environment.facebookAppId, autoLogAppEvents: true, xfbml: false, cookie: false, version: 'v2.10'};
 
     @HostBinding('style.margin-bottom') get styleMarginBottom(): string {
-        return (this.user.isAuthenticated() ? 50 : 240) + 'px';
+        return (this.user.isAuthenticated() ? 50 : (240 + 336)) + 'px';
     }
 
     constructor(private logger: Logger,

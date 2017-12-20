@@ -9,6 +9,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { environment } from '../../../environments/environment';
 import { Languages } from '../../core/lang/languages';
 import { Logger } from '../../core/logger/logger';
 
@@ -31,6 +32,7 @@ export class FooterComponent implements OnInit, OnDestroy {
     year = new Date().getFullYear();
     languages = Languages;
     langLinks: LocalizedLink[] = [];
+    isProd = environment.production;
 
     constructor(private logger: Logger, private router: Router, private location: Location) {
     }

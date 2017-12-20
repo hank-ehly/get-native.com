@@ -1,4 +1,15 @@
 <footer class="footer">
+    <div class="adsense-container">
+        <ng-adsense
+                *ngIf="isProd"
+                [adClient]="'ca-pub-1368572370439551'"
+                [adSlot]="9643350728"
+                [display]="'inline-block'"
+                [width]="336"
+                [height]="280">
+        </ng-adsense>
+    </div>
+
     <ul class="footer__row footer__row_app-links">
         <li><a class="link" [routerLink]="['/']" i18n="The text of the link to the home page@@306bb300824ac2610485aeb98792db49">Home</a></li>
         <li><a class="link" [routerLink]="['/library']" i18n="The text of the link to the library page@@c03bb9862ecc4f156867371af921a4c4">Library</a></li>
