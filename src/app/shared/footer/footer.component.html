@@ -1,7 +1,6 @@
 <footer class="footer">
-    <div class="adsense-container">
+    <div class="adsense-container" *ngIf="isProd">
         <ng-adsense
-                *ngIf="isProd"
                 [adClient]="'ca-pub-1368572370439551'"
                 [adSlot]="9643350728"
                 [display]="'inline-block'"
