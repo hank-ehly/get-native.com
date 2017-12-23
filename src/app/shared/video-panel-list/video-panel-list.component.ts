@@ -62,15 +62,13 @@ export class VideoPanelListComponent {
     constructor(private logger: Logger, private router: Router) {
     }
 
-    onClickOverlay(video: Video): void {
+    async onClickOverlay(video: Video) {
         if (!this.navigates) {
             return;
         }
 
         this.logger.debug(this, `onClickOverlay(${video.id})`);
-        this.router.navigate(['library', video.id]).then(isFulfilled => {
-            this.logger.debug(this, `navigation fulfilled = ${isFulfilled}`);
-        });
+        await this.router.navigate(['library', video.id]);
     }
 
     onBegin(studySession: StudySession) {

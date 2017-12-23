@@ -17,7 +17,6 @@ import { LangService } from '../../core/lang/lang.service';
 import { UserService } from '../../core/user/user.service';
 import { Category } from '../../core/entities/category';
 import { DOMService } from '../../core/dom/dom.service';
-import { Entities } from '../../core/entities/entities';
 import { APIHandle } from '../../core/http/api-handle';
 import { LoadingState } from './loading-state.enum';
 import { CategoryFilter } from './category-filter';

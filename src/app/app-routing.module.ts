@@ -56,7 +56,8 @@ const routes: Routes = [
                 title: 'default.title',
                 override: true
             },
-            hideNavbarTitle: true
+            hideNavbarTitle: true,
+            state: 'home'
         }
     },
     {
@@ -68,20 +69,22 @@ const routes: Routes = [
                 title: 'dashboard.title'
             },
             showToolbar: true,
-            showNavbarSearchIcon: false
+            showNavbarSearchIcon: false,
+            state: 'dashboard'
         }
     },
     {
         path: 'login', component: LoginComponent, outlet: 'modal'
     },
     {
-        path: 'settings', component: SettingsComponent, canActivateChild: [AuthGuard, MetaGuard], children: [
+        path: 'settings', component: SettingsComponent, canActivateChild: [AuthGuard, MetaGuard], data: {state: 'settings'}, children: [
             {
                 path: '', component: GeneralComponent, data: {
                     meta: {
                         title: 'settings.general.title'
                     },
-                    showToolbar: true
+                    showToolbar: true,
+                    state: 'settings-general'
                 }
             },
             {
@@ -89,7 +92,8 @@ const routes: Routes = [
                     meta: {
                         title: 'settings.notification.title'
                     },
-                    showToolbar: true
+                    showToolbar: true,
+                    state: 'settings-notification'
                 }
             },
             {
@@ -97,7 +101,8 @@ const routes: Routes = [
                     meta: {
                         title: 'settings.security.title'
                     },
-                    showToolbar: true
+                    showToolbar: true,
+                    state: 'settings-security'
                 }
             },
             {
@@ -105,7 +110,8 @@ const routes: Routes = [
                     meta: {
                         title: 'settings.activity.title'
                     },
-                    showToolbar: true
+                    showToolbar: true,
+                    state: 'settings-activity'
                 }
             }
         ]
@@ -116,7 +122,8 @@ const routes: Routes = [
                 title: 'library.title'
             },
             showToolbar: true,
-            showNavbarSearchIcon: false
+            showNavbarSearchIcon: false,
+            state: 'library'
         }
     },
     {
@@ -127,7 +134,8 @@ const routes: Routes = [
             video: LibraryDetailResolverService
         },
         data: {
-            showToolbar: true
+            showToolbar: true,
+            state: 'library-detail'
         }
     },
     {

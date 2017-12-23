@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/09.
  */
 
-import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, ViewChild, ElementRef, HostBinding } from '@angular/core';
 
 import { CollocationOccurrence } from '../../core/entities/collocation-occurrence';
 import { Transcript } from '../../core/entities/transcript';
@@ -34,6 +34,10 @@ export class TranscriptComponent implements OnInit, OnDestroy {
 
     get transcripts(): Entities<Transcript> {
         return this._transcripts;
+    }
+
+    @HostBinding('style.display') get display(): string {
+        return 'block';
     }
 
     @Input() set transcripts(transcripts: Entities<Transcript>) {

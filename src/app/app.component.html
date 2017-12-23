@@ -5,7 +5,10 @@
 <gn-side-menu *ngIf="authenticated$ | async"></gn-side-menu>
 <gn-toolbar *ngIf="showToolbar$ | async"></gn-toolbar>
 
-<router-outlet></router-outlet>
+<div [@routerTransition]="getState(o)">
+    <router-outlet #o="outlet"></router-outlet>
+</div>
+
 <router-outlet name="modal"></router-outlet>
 
 <gn-footer *ngIf="!(authenticated$ | async)"></gn-footer>

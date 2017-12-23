@@ -1,6 +1,7 @@
 @import '../core';
 
 .btn {
+  background: $white;
   cursor: pointer;
   font-family: $headings-font-family;
   font-size: $font-size-xs !important;
@@ -53,7 +54,6 @@
 
   &:not([disabled]):not(.disabled):active {
     background: linear-gradient(to right, darken($robin-egg-blue, 7%), darken($primary, 7%));
-    //box-shadow: 0 0 0 2px #fff, 0 0 0 4px lighten($primary, 15%); // gradient
   }
 
   &:disabled {

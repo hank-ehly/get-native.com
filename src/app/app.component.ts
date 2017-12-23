@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { animate, AnimationTriggerMetadata, keyframes, style, transition, trigger } from '@angular/animations';
+import { animate, AnimationTriggerMetadata, keyframes, query, style, transition, trigger, group, stagger } from '@angular/animations';
 import { Component, OnInit, HostListener, OnDestroy, HostBinding, LOCALE_ID, Inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
@@ -16,6 +16,7 @@ import { environment } from '../environments/environment';
 import { HttpService } from './core/http/http.service';
 import { LangService } from './core/lang/lang.service';
 import { UserService } from './core/user/user.service';
+import { routerTransition } from './router.animations';
 import { DOMService } from './core/dom/dom.service';
 import { APIHandle } from './core/http/api-handle';
 import { translateMetaKey } from './meta-factory';
@@ -34,6 +35,7 @@ import * as moment from 'moment';
 import * as _ from 'lodash';
 
 const animations: AnimationTriggerMetadata[] = [
+    routerTransition,
     trigger('enterUpLeaveDown', [
         transition(':enter', [
             animate(300, keyframes([
@@ -143,6 +145,10 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.logger.debug(this, 'OnDestroy');
         this.OnDestroy$.next();
+    }
+
+    getState(outlet) {
+        return outlet.activatedRouteData.state;
     }
 
     private async onLogout() {
