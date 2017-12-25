@@ -7,16 +7,16 @@
 
 import { Injectable } from '@angular/core';
 
-import { Logger } from '../logger/logger';
-import { StringService } from '../string/string.service';
 import { PasswordBlacklist as Blacklist } from './password-blacklist';
+import { StringService } from '../string/string.service';
+import { Logger } from '../logger/logger';
 
 import * as _ from 'lodash';
 
 @Injectable()
 export class PasswordService {
 
-    constructor(/*private logger: Logger, */private stringService: StringService) {
+    constructor(private logger: Logger, private stringService: StringService) {
     }
 
     /* Algorithm taken from http://www.passwordmeter.com */
@@ -192,7 +192,7 @@ export class PasswordService {
             score = 0;
         }
 
-        // this.logger.debug(this, `Password Strength: ${score}`);
+        this.logger.debug(this, `Password Strength: ${score}`);
         return score;
     }
 
