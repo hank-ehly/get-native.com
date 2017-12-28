@@ -15,7 +15,7 @@ describe('PasswordService', () => {
     let passwordStrengthService: PasswordService;
 
     beforeEach(() => {
-        passwordStrengthService = new PasswordService(/*STUBLogger, */new StringService());
+        passwordStrengthService = new PasswordService(STUBLogger, new StringService());
     });
 
     it('should recognize a VERY WEAK password', () => {
