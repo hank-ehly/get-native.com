@@ -51,17 +51,22 @@
   background: transparent;
   border: none;
   color: $white;
-
-  padding: 0;
   text-align: center;
   align-self: center;
-  padding-top: 2px;
+  -webkit-align-self: center;
+  padding: 2px 0 0;
+  width: 20px;
 }
 
 .controls__input::-webkit-inner-spin-button,
 .controls__input::-webkit-outer-spin-button {
   appearance: none;
+  -webkit-appearance: none;
   margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 .controls__input:focus {
@@ -75,16 +80,20 @@
   position: absolute;
   top: 33%;
   transform: translate(-50%, -50%);
+  width: 150px;
 }
 
 .controls__row {
   line-height: $line-height-sm;
   display: flex;
   justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  width: 100%;
 }
 
 .controls__minute-button-frame {
   align-self: center;
+  -webkit-align-self: center;
   height: 22px;
   margin-right: 12px;
   width: 20px;
@@ -136,6 +145,7 @@
 
 .controls__minutes-label {
   align-self: center;
+  -webkit-align-self: center;
   color: $white;
   padding-top: 2px;
 }
@@ -146,7 +156,7 @@
   color: $primary;
   height: 40px;
   margin-top: 12px;
-  width: 150px;
+  width: 100%;
   &:disabled {
     color: $regent-gray;
   }
@@ -199,6 +209,7 @@
 
 .video-stats__icon, .video-stats__label {
   align-self: center;
+  -webkit-align-self: center;
 }
 
 .video-stats__length .video-stats__icon {
