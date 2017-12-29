@@ -23,7 +23,7 @@
         <div class="navbar__menu navbar__menu_center" *ngIf="!(searchBarVisible$ | async)" [@fadeIn]>
             <div class="back-button-frame" *ngIf="backButtonTitle$ | async">
                 <img class="navbar__menu-icon navbar__menu-icon_back" gnGoogleStorageImage="/assets/icons/arrow-back.svg" i18n-alt="Alt text for navbar back button image@@ea3712afdf8cac823ca20f19e995c610" alt="back" (click)="onClickBack()">
-                <span class="back-button-label" i18n="Back button title text@@ef82319856d1501afda43802a3348b83">Back</span>
+                <span class="back-button-label" (click)="onClickBack()" i18n="Back button title text@@ef82319856d1501afda43802a3348b83">Back</span>
             </div>
 
             <span class="page-title">{{ title }}</span>
