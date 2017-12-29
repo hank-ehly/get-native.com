@@ -27,7 +27,7 @@
 
             <ng-container [ngSwitch]="currentLoadingState">
                 <button class="btn btn-outline--grey section__button"
-                        *ngSwitchDefault
+                        *ngSwitchCase="loadingState.CanLoadMore"
                         (click)="loadMoreVideos$.next(maxVideoId)"
                         i18n="The text for the dashboard load more videos button@@da62c06d98499331f85421b712823185">LOAD MORE</button>
 
@@ -35,7 +35,7 @@
                      i18n-alt="alt text for dashboard loading icon@@0640631ad34e1ca9e417997625656fd8"
                      alt="loading"
                      class="button__activity-indicator"
-                     *ngSwitchCase="loadingState.Loading">
+                     *ngSwitchDefault>
 
                 <p class="section__paragraph section__paragraph--no-more-results"
                    *ngSwitchCase="loadingState.ReachedLastResult"
