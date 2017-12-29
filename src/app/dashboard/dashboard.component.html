@@ -1,7 +1,7 @@
 <main>
     <section class="section section_video-panels">
         <header class="section-header">
-            <h3 tourAnchor="some.anchor.id" class="section-header__title" i18n="The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Queue</h3>
+            <h3 class="section-header__title" i18n="The title for the dashboard videos section@@fc02fa317c34e59f8d4661c007200756">Queue</h3>
 
             <div class="gn-dropdown-toggle">
                 <span class="dropdown-toggle__text" *ngIf="(categoryFilter$ | async)?.value">{{ categoryFilter$.pluck('text') | async }}</span>
@@ -55,7 +55,7 @@
 
     <section class="section section_goals">
         <header class="section-header">
-            <h3 tourAnchor="some.other.id" class="section-header__title" i18n="The title for the dashboard stats section@@3e06f80500768c1b0dcb8b51e59bea2d">Stats</h3>
+            <h3 class="section-header__title" i18n="The title for the dashboard stats section@@3e06f80500768c1b0dcb8b51e59bea2d">Stats</h3>
         </header>
 
         <gn-stats [stats]="stats$ | async"></gn-stats>
@@ -65,7 +65,7 @@
 
     <section class="section section_answers">
         <header class="section-header">
-            <h3 tourAnchor="some.last.id" class="section-header__title" i18n="The title for the dashboard answers section@@bd47e707a777e51ac0f4981e513adf06">Answers</h3>
+            <h3 class="section-header__title" i18n="The title for the dashboard answers section@@bd47e707a777e51ac0f4981e513adf06">Answers</h3>
             <ul class="section-header__toggle-button-frame">
                 <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 30}" (click)="filterAnswers.next(30)" i18n="Answers from last 30 days@@ae49e7a78da9ed248fba4f55ba70c101">LAST 30 DAYS</li>
                 <li class="section-header__menu-item" [ngClass]="{'section-header__menu-item_active': (answerFilterStream$ | async) === 60}" (click)="filterAnswers.next(60)" i18n="Answers from last 60 days@@f6bc286cddc198146488c8f3cbcfd98b">LAST 60 DAYS</li>
@@ -108,17 +108,3 @@
         </div>
     </section>
 </main>
-
-<tour-step-template>
-    <ng-template let-step="step">
-        <button class="btn--end" (click)="tourService.end()">
-            <img gnGoogleStorageImage="/assets/icons/close-green.svg">
-        </button>
-
-        <p class="tour-step-content">{{ step?.content }}</p>
-        <div class="tour-step-navigation">
-            <button [disabled]="!tourService.hasPrev(step)" class="btn btn-sm btn-light" (click)="tourService.prev()">Prev</button>
-            <button [disabled]="!tourService.hasNext(step)" class="btn btn-sm btn-light" (click)="tourService.next()">Next</button>
-        </div>
-    </ng-template>
-</tour-step-template>
