@@ -25,6 +25,7 @@ import { Logger } from '../../core/logger/logger';
 
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/combineLatest';
@@ -62,6 +63,10 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
         hasReachedLastResult: false,
         hasCompletedInitialLoad: false,
         processing: {}
+    };
+
+    errors = {
+        videos: null
     };
 
     loadMoreVideos$ = new Subject<number>();
@@ -118,7 +123,12 @@ export class VideoSearchComponent implements OnInit, OnDestroy {
                         this.currentLoadingState = LoadingState.CanLoadMore;
                     }
                 })
-                .scan(this.concatVideos.bind(this), []);
+                .scan(this.concatVideos.bind(this), [])
+                .catch((error, caught) => {
+                    this.currentLoadingState = LoadingState.Error;
+                    this.errors.videos = error[0];
+                    return Observable.of(null);
+                });
         }).share();
 
     private debounceTimer = new TimerObservable(300);

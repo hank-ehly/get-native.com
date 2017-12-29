@@ -67,9 +67,6 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
     answerFilterStream$ = this.filterAnswers.startWith(30).distinctUntilChanged();
     flags: any;
     answersLoadingState: LoadingState;
-    errors = {
-        createStudySession: null
-    };
 
     private loadMoreAnswers = new Subject<number>();
 
@@ -117,6 +114,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
                 protected dom: DOMService, protected lang: LangService, @Inject(LOCALE_ID) protected localeId: string,
                 public tourService: TourService) {
         super(logger, http, navbar, user, categoryList, dom, lang, localeId);
+        this.errors['createStudySession'] = null;
         this.flags.cuedOnly = true;
         this.flags.processing.beginStudySession = false;
         this.tourService.initialize([{
@@ -165,11 +163,7 @@ export class DashboardComponent extends VideoSearchComponent implements OnInit, 
 
     private onCreateStudySessionError(errors: APIErrors): void {
         this.flags.processing.beginStudySession = false;
-        if (errors && errors.length) {
-            this.errors.createStudySession = _.first(errors);
-        } else {
-            this.errors.createStudySession = {code: 'Unknown', message: 'An unknown error occurred'};
-        }
+        this.errors['createStudySession'] = _.first(errors);
     }
 
     private updateMaxAnswerId(records?: WritingAnswer[]): void {

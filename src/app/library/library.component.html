@@ -36,6 +36,11 @@
                 <p class="emoji">🤦</p>
                 <p i18n="No videos for category message@@331d558742a5c1254c378d55fb4b9e70">Whoops! No videos exist for this category yet..</p>
             </div>
+
+            <div class="section__error" *ngSwitchCase="loadingState.Error">
+                <p class="emoji">⚠️</p>
+                <p>{{ errors.videos.message }}</p>
+            </div>
         </div>
     </section>
 </main>

@@ -6,8 +6,9 @@
  */
 
 export interface APIError {
-    message: string;
-    code: string;
+    message?: string;
+    code?: string;
+    status?: number;
 }
 
 export type APIErrors = APIError[];

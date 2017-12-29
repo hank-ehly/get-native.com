@@ -22,7 +22,7 @@ import { URIService } from './uri.service';
 import { Logger } from '../logger/logger';
 import { APIConfig } from './api-config';
 import { APIHandle } from './api-handle';
-import { APIErrors } from './api-error';
+import { APIError, APIErrors } from './api-error';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
@@ -117,23 +117,26 @@ export class HttpService {
     }
 
     private handleError(response: HttpErrorResponse): Observable<APIErrors> {
-        let err: APIErrors;
+        const e: APIError = {status: response.status};
 
         if (response.status === 401) {
             this.user.logout();
             const message = this.lang.i18n('ErrorMessage.SessionExpired');
             this.dom.alert(message);
-            err =  [{code: 'SessionExpired', message: message}];
+            e.message = message;
+            e.code = 'SessionExpired';
         } else if (response.error instanceof Error) {
-            this.logger.debug(this, '[ERROR]', response.error);
-            err =  [{code: 'Unknown', message: response.error.message}];
+            e.code = 'ServerError';
+            e.message = _.defaultTo(response.error.message, this.lang.i18n('ErrorMessage.ServerError'));
         } else if (response.status === 0) {
-            err =  [{code: 'Unknown', message: this.lang.i18n('ErrorMessage.CheckConnection')}];
+            e.code = 'CheckConnection';
+            e.message = this.lang.i18n('ErrorMessage.CheckConnection');
         } else {
-            this.logger.debug(this, '[ERROR]', response);
-            err = response.error;
+            e.code = 'UnknownError';
+            e.message = this.lang.i18n('ErrorMessage.UnknownError');
         }
 
-        return Observable.throw(err);
+        this.logger.debug(this, '[ERROR]', response);
+        return Observable.throw([e]);
     }
 }
