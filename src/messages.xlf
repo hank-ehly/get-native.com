@@ -30,7 +30,7 @@
         <source>Home</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">13</context>
         </context-group>
         <note priority="1" from="description">The text of the link to the home page</note>
       </trans-unit>
@@ -38,7 +38,7 @@
         <source>Library</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <note priority="1" from="description">The text of the link to the library page</note>
       </trans-unit>
@@ -46,7 +46,7 @@
         <source>Contact</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">15</context>
         </context-group>
         <note priority="1" from="description">The text of link to the contact-us page</note>
       </trans-unit>
@@ -54,7 +54,7 @@
         <source>© <x id="INTERPOLATION" equiv-text="{{ year }}"/> getnative</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">17</context>
         </context-group>
         <note priority="1" from="description">The footer copyright text</note>
       </trans-unit>
@@ -62,7 +62,7 @@
         <source>Terms of Service</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">19</context>
         </context-group>
         <note priority="1" from="description">The text of the footer link to the terms of service page</note>
       </trans-unit>
@@ -70,7 +70,7 @@
         <source>Privacy Policy</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/footer/footer.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <note priority="1" from="description">The text of the footer link to the privacy policy page</note>
       </trans-unit>
@@ -321,7 +321,7 @@
         <source>mute</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/video-player/video-player.component.ts</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <note priority="1" from="description">Alt text for video player mute icon</note>
       </trans-unit>
@@ -329,7 +329,7 @@
         <source>volume</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/shared/video-player/video-player.component.ts</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <note priority="1" from="description">Alt text for video player volume icon</note>
       </trans-unit>
@@ -476,7 +476,7 @@
         <source>Stats</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">58</context>
         </context-group>
         <note priority="1" from="description">The title for the dashboard stats section</note>
       </trans-unit>
@@ -484,7 +484,7 @@
         <source>Answers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">68</context>
         </context-group>
         <note priority="1" from="description">The title for the dashboard answers section</note>
       </trans-unit>
@@ -492,7 +492,7 @@
         <source>LAST 30 DAYS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <note priority="1" from="description">Answers from last 30 days</note>
       </trans-unit>
@@ -500,7 +500,7 @@
         <source>LAST 60 DAYS</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">71</context>
         </context-group>
         <note priority="1" from="description">Answers from last 60 days</note>
       </trans-unit>
@@ -508,7 +508,7 @@
         <source>LAST YEAR</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">72</context>
         </context-group>
         <note priority="1" from="description">Answers from last year</note>
       </trans-unit>
@@ -516,7 +516,7 @@
         <source>ALL TIME</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">73</context>
         </context-group>
         <note priority="1" from="description">All from any time</note>
       </trans-unit>
@@ -524,7 +524,7 @@
         <source>LOAD MORE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">88</context>
+          <context context-type="linenumber">93</context>
         </context-group>
         <note priority="1" from="description">The text for the dashboard answers section load more button</note>
       </trans-unit>
@@ -532,7 +532,7 @@
         <source>loading</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">97</context>
         </context-group>
         <note priority="1" from="description">alt text for dashboard answers loading icon</note>
       </trans-unit>
@@ -540,7 +540,7 @@
         <source>No more results</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">98</context>
+          <context context-type="linenumber">103</context>
         </context-group>
         <note priority="1" from="description">No more results label for dashboard answers list</note>
       </trans-unit>
@@ -548,7 +548,7 @@
         <source>Complete a study session to view past writing answers.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/dashboard/dashboard.component.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">106</context>
         </context-group>
         <note priority="1" from="description">Dashboard message for when no answers can be found</note>
       </trans-unit>
@@ -1065,7 +1065,7 @@
         <note priority="1" from="description">Alternative text for second small homepage feature</note>
       </trans-unit>
       <trans-unit id="a9dbbc57ac75c6c7efe20372def211c2" datatype="html">
-        <source>Active Maintenance</source>
+        <source>Open Source</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">81</context>
@@ -1073,7 +1073,7 @@
         <note priority="1" from="description">Open-source small feature title</note>
       </trans-unit>
       <trans-unit id="89609c2553a04bf2845e79d4ef4c6bcd" datatype="html">
-        <source>getnative is actively maintained to deliver a bug free experience.</source>
+        <source>getnative is built with angular and node.js. View the source on <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>GitHub<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
           <context context-type="linenumber">82</context>
@@ -3084,7 +3084,7 @@
         <source>NEXT EXERCISE:</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <note priority="1" from="description">next exercise label</note>
       </trans-unit>
@@ -3092,7 +3092,7 @@
         <source>LISTENING</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">14</context>
         </context-group>
         <note priority="1" from="description">Listening study section title</note>
       </trans-unit>
@@ -3100,7 +3100,7 @@
         <source>SHADOWING</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">15</context>
         </context-group>
         <note priority="1" from="description">Shadowing study section title</note>
       </trans-unit>
@@ -3108,7 +3108,7 @@
         <source>SPEAKING</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">16</context>
         </context-group>
         <note priority="1" from="description">Speaking study section title</note>
       </trans-unit>
@@ -3116,7 +3116,7 @@
         <source>WRITING</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">17</context>
         </context-group>
         <note priority="1" from="description">Writing study section title</note>
       </trans-unit>
@@ -3124,7 +3124,7 @@
         <source>CONTINUE</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/study/transition/transition.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <note priority="1" from="description">Continue study button title</note>
       </trans-unit>

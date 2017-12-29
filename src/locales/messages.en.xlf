@@ -3063,8 +3063,8 @@
                 <note priority="1" from="description">Alternative text for second small homepage feature</note>
             </trans-unit>
             <trans-unit id="a9dbbc57ac75c6c7efe20372def211c2" datatype="html">
-                <source>Active Maintenance</source>
-                <target>Active Maintenance</target>
+                <source>Open Source</source>
+                <target>Open Source</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">81</context>
@@ -3072,8 +3072,8 @@
                 <note priority="1" from="description">Open-source small feature title</note>
             </trans-unit>
             <trans-unit id="89609c2553a04bf2845e79d4ef4c6bcd" datatype="html">
-                <source>getnative is actively maintained to deliver a bug free experience.</source>
-                <target>getnative is actively maintained to deliver a bug free experience.</target>
+                <source>getnative is built with angular and node.js. View the source on <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>GitHub<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+                <target>getnative is built with angular and node.js. View the source on <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>GitHub<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
                 <context-group purpose="location">
                     <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
                     <context context-type="linenumber">82</context>
