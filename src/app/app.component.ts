@@ -147,10 +147,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.OnDestroy$.next();
     }
 
-    getState(outlet) {
-        return outlet.activatedRouteData.state;
-    }
-
     private async onLogout() {
         await this.router.navigate(['']);
     }
