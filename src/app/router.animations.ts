@@ -120,39 +120,6 @@ const SCROLL_LEFT = [
 ];
 
 export const routerTransition = trigger('routerTransition', [
-    transition('dashboard => library', SCROLL_UP),
-    transition('library => dashboard', SCROLL_DOWN),
     transition('library => library-detail', SCROLL_RIGHT),
-    transition('library-detail => library', SCROLL_LEFT),
-    transition('library-detail => dashboard', SCROLL_DOWN),
-
-    transition('* => settings', [
-        group([
-            query(':enter, :leave', style({position: 'fixed', width: '100%'})
-                , {optional: true}),
-            query(':enter', [
-                style({opacity: '0'}),
-                animate('0.3s ease-in-out', style({opacity: '1'}))
-            ], {optional: true}),
-            query(':leave', [
-                style({opacity: '1'}),
-                animate('0.3s ease-in-out', style({opacity: '0'}))
-            ], {optional: true}),
-        ])
-    ]),
-
-    transition('settings => *', [
-        group([
-            query(':enter, :leave', style({position: 'fixed', width: '100%'})
-                , {optional: true}),
-            query(':enter', [
-                style({opacity: '0'}),
-                animate('0.3s ease-in-out', style({opacity: '1'}))
-            ], {optional: true}),
-            query(':leave', [
-                style({opacity: '1'}),
-                animate('0.3s ease-in-out', style({opacity: '0'}))
-            ], {optional: true}),
-        ])
-    ])
+    transition('library-detail => library', SCROLL_LEFT)
 ]);
