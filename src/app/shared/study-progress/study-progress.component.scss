@@ -45,6 +45,8 @@
 
 .gn-progress {
   appearance: none;
+  -webkit-appearance: none;
+  border: none;
   height: inherit;
   width: 36px;
 }
@@ -57,7 +59,15 @@
   background: linear-gradient(to right, $robin-egg-blue, #0DCCBF);
 }
 
+.progress--listening[value]::-moz-progress-bar {
+  background: linear-gradient(to right, $robin-egg-blue, #0DCCBF);
+}
+
 .progress--shadowing::-webkit-progress-value {
+  background: linear-gradient(to right, #0DCCBF, #1ACCB3);
+}
+
+.progress--shadowing[value]::-moz-progress-bar {
   background: linear-gradient(to right, #0DCCBF, #1ACCB3);
 }
 
@@ -65,7 +75,15 @@
   background: linear-gradient(to right, #1ACCB3, #26CCA6);
 }
 
+.progress--speaking[value]::-moz-progress-bar {
+  background: linear-gradient(to right, #1ACCB3, #26CCA6);
+}
+
 .progress--writing::-webkit-progress-value {
+  background: linear-gradient(to right, #26CCA6, $primary);
+}
+
+.progress--writing[value]::-moz-progress-bar {
   background: linear-gradient(to right, #26CCA6, $primary);
 }
 
