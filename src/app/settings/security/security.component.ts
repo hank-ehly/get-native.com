@@ -10,6 +10,7 @@ import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { APIError, APIErrors } from '../../core/http/api-error';
 import { HttpService } from '../../core/http/http.service';
 import { UserService } from '../../core/user/user.service';
+import { LangService } from '../../core/lang/lang.service';
 import { Entities } from '../../core/entities/entities';
 import { DOMService } from '../../core/dom/dom.service';
 import { APIHandle } from '../../core/http/api-handle';
@@ -41,7 +42,7 @@ export class SecurityComponent implements OnInit, OnDestroy {
     private isModalVisibleSource: BehaviorSubject<boolean>;
 
     constructor(private logger: Logger, private http: HttpService, private user: UserService, private dom: DOMService,
-                private modalService: BsModalService) {
+                private modalService: BsModalService, private lang: LangService) {
         this.isModalVisibleSource = new BehaviorSubject<boolean>(false);
         this.isModalVisibleEmitted$ = this.isModalVisibleSource.asObservable();
     }
@@ -79,9 +80,10 @@ export class SecurityComponent implements OnInit, OnDestroy {
     }
 
     private onDeleteUserNext(): void {
+        this.bsModalRef.hide();
         this.processing = false;
         this.user.logout();
-        this.dom.alert('Your account has been deleted from our system.'); // todo: i18n
+        this.dom.alert(this.lang.i18n('SuccessMessage.AccountDeleted'));
     }
 
     private onDeleteUserError(errors: APIErrors): void {

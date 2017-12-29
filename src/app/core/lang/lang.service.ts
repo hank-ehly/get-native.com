@@ -55,7 +55,7 @@ export class LangService {
 
     // A temporary method until https://github.com/angular/angular/issues/11405 is implemented
     i18n(key: string): string {
-        return _.get(i18n, [key, this.languageForLocaleId(this.localeId).code].join('.'));
+        return _.defaultTo(_.get(i18n, [key, this.languageForLocaleId(this.localeId).code].join('.')), key);
     }
 
 }

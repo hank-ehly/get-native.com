@@ -26,5 +26,12 @@ export const i18n = {
             en: 'An unknown error has occurred. Please try again later.',
             ja: '予想外のエラーが発生しました。お手数ですが、少し時間を置いてから再度実行してください。'
         }
+    },
+
+    SuccessMessage: {
+        AccountDeleted: {
+            en: 'Your account has been deleted.',
+            ja: 'アカウントが削除されました。'
+        }
     }
 };
