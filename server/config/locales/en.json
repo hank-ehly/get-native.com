@@ -1,0 +1,83 @@
+{
+    "confirmEmailUpdate": {
+        "subject": "Confirm Email Update",
+        "title": "Please confirm your email address.",
+        "instructionsLineOne": "Please click the below button to verify your email address.",
+        "instructionsLineTwo": "Your previous email address will continue to be used",
+        "instructionsLineThree": "until confirmation is complete.",
+        "confirmButtonTitle": "VERIFY YOUR EMAIL"
+    },
+    "deleteAccountReason": {
+        "subject": "Deleted Account",
+        "description": "A user has left getnative."
+    },
+    "emailUpdateSuccess": {
+        "subject": "Email Updated Successfully",
+        "title": "Your email address has been updated!",
+        "messageLineOne": "Your email address has been successfully updated.",
+        "messageLineTwo": "If you didn't intend for this to happen,",
+        "messageLineThree": "please <a style=\"color:#33CC99;text-decoration:underline;\" title=\"{contact}\" href=\"mailto:{contact}\">notify us</a> as soon as possible."
+    },
+    "errors": {
+        "Auth": "Auth",
+        "CreateResourceFailure": "Failed to create resource",
+        "EmailAlreadyConfirmed": "Your email address has already been confirmed.",
+        "EmailAlreadyUpdated": "That email address can no longer be confirmed.",
+        "EmailConfirmPeriodExpired": "The link you clicked has expired. Please issue a new link from the settings page. You must confirm your email within 24 hours.",
+        "EmailUpdatePeriodExpired": "The link you clicked has expired. Please try updating your email again within 24 hours.",
+        "FileMissing": "Required file missing from request",
+        "ForeignKeyConstraintError": "Failed to take the specified action on the requested resource due to foreign key constraint",
+        "JWT": "An error occurred while processing JWT",
+        "MetadataMissing": "No metadata was provided in the request",
+        "MetadataFormat": "The provided metadata is not parsable JSON",
+        "PasswordIncorrect": "That username/password is incorrect",
+        "PasswordResetPeriodExpired": "The link you clicked has expired. Please try resetting your password again within 24 hours.",
+        "PasswordResetAlreadyComplete": "The link you clicked has already been used to reset your password.",
+        "RequestParam": "Request param is invalid",
+        "ResourceNotFound": "No resource was found for the given conditions",
+        "TokenExpired": "Token has expired",
+        "UserNamePasswordIncorrect": "Username or password is incorrect",
+        "UserAlreadyExists": "User already exists",
+        "UserMissing": "No user with this email exists",
+        "UserAlreadyVerified": "This user is already verified",
+        "YouTubeVideoDoesNotExist": "The specified youtube video does not exist."
+    },
+    "lang": "en",
+    "notifyEmailUpdate": {
+        "subject": "Notification Of Email Update",
+        "title": "Your email address was changed!",
+        "message": "Your email address for <strong>getnative</strong> has been updated to <strong>{updatedEmail}</strong>. This email address will no longer receive messages from getnative. If you think this is a mistake, please <a style=\"color:#33cc99;text-decoration:underline;\" title=\"{contact}\" href=\"mailto:{contact}\">contact us</a> immediately."
+    },
+    "passwordUpdated": {
+        "subject": "Password Updated",
+        "title": "Your password has been updated.",
+        "messageOne": "Your password for signing in to <strong>getnative</strong> was recently changed. If you did this yourself, then there's nothing to worry about. If you did not make this change, please <a style=\"color:#33CC99;text-decoration:underline;\" title=\"{contact}\" href=\"mailto:{contact}\">notify us</a>.",
+        "messageTwo": "Either way, feel free to reach out with any questions you might have. We're here to help!",
+        "messageThree": "getnative"
+    },
+    "registrationEmailConfirmed": {
+        "subject": "Email Address Confirmed",
+        "title": "Your email address has been verified!",
+        "messageOne": "Thank you for signing up with <strong>getnative</strong>!",
+        "messageTwo": "Your email address has successfully been confirmed."
+    },
+    "welcome": {
+        "subject": "Welcome to getnative!",
+        "title": "You're almost there!",
+        "instructionsLineOne": "Please click the below button to verify your email address.",
+        "instructionsLineTwo": "Thank you for signing up with getnative.",
+        "instructionsLineThree": "Happy learning!",
+        "confirmButtonTitle": "VERIFY YOUR EMAIL"
+    },
+    "passwordResetLink": {
+        "subject": "Password Reset Link",
+        "title": "Here's a link to reset your password",
+        "instructionsLineOne": "Please click the below button to reset your password.",
+        "instructionsLineTwo": "If you have any questions, we're here to help!",
+        "confirmButtonTitle": "RESET PASSWORD"
+    },
+    "emailDefault": {
+        "copyright": "Copyright © 2017 getnative. All rights reserved.",
+        "footer": "Didn't expect to receive an email from us? Please <a style=\"color:#33cc99;text-decoration:underline;\" title=\"{contact}\" href=\"mailto:{contact}\" target=\"_blank\" rel=\"noopener noreferrer\">let us know</a>."
+    }
+}

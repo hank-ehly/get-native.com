@@ -1,0 +1,192 @@
+{
+    "API": {
+        "Port": "API_PORT",
+        "Hostname": "API_HOSTNAME"
+    },
+    "Attr": {
+        "Answer": "answer",
+        "Location": "location",
+        "UserId": "user_id",
+        "BrowserNotificationsEnabled": "browser_notifications_enabled",
+        "Code": "code",
+        "CollocationOccurrenceId": "collocation_occurrence_id",
+        "CurrentPassword": "current_password",
+        "CreatedAt": "created_at",
+        "DefaultStudyLanguageCode": "default_study_language_code",
+        "DefaultStudyLanguage": "default_study_language",
+        "InterfaceLanguage": "interface_language",
+        "Role": "role",
+        "Description": "description",
+        "Email": "email",
+        "EmailNotificationsEnabled": "email_notifications_enabled",
+        "EmailVerified": "email_verified",
+        "ExampleAnswer": "example_answer",
+        "GenderId": "gender_id",
+        "Id": "id",
+        "IsCompleted": "is_completed",
+        "IsPublic": "is_public",
+        "IPASpelling": "ipa_spelling",
+        "IsSilhouettePicture": "is_silhouette_picture",
+        "LanguageId": "language_id",
+        "LanguageCode": "language_code",
+        "Length": "length",
+        "LoopCount": "loop_count",
+        "Name": "name",
+        "NewPassword": "new_password",
+        "Password": "password",
+        "PictureUrl": "picture_url",
+        "SpeakerId": "speaker_id",
+        "StudySessionId": "study_session_id",
+        "StudyTime": "study_time",
+        "SubcategoryId": "subcategory_id",
+        "Text": "text",
+        "Token": "token",
+        "UpdatedAt": "updated_at",
+        "VideoId": "video_id",
+        "WordCount": "word_count",
+        "WordsPerMinute": "words_per_minute",
+        "WritingQuestionId": "writing_question_id",
+        "YouTubeVideoId": "youtube_video_id"
+    },
+    "Client": {
+        "Host": "kClientHost",
+        "Protocol": "kClientProtocol",
+        "BaseURI": "kClientBaseURI"
+    },
+    "Debug": "DEBUG",
+    "DefaultLocale": "kDefaultLocale",
+    "Email": {
+        "Welcome": "Welcome",
+        "ResetPassword": "ResetPassword"
+    },
+    "EmailAddress": {
+        "Contact": "kEmailAddressContact",
+        "NoReply": "kEmailAddressNoReply"
+    },
+    "Error": {
+        "Auth": "Auth",
+        "CreateResourceFailure": "CreateResourceFailure",
+        "EmailAlreadyConfirmed": "EmailAlreadyConfirmed",
+        "EmailAlreadyUpdated": "EmailAlreadyUpdated",
+        "EmailConfirmPeriodExpired": "EmailConfirmPeriodExpired",
+        "EmailUpdatePeriodExpired": "EmailUpdatePeriodExpired",
+        "FileMissing": "FileMissing",
+        "ForeignKeyConstraintError": "ForeignKeyConstraintError",
+        "JWT": "JWT",
+        "MetadataMissing": "MetadataMissing",
+        "MetadataFormat": "MetadataFormat",
+        "PasswordIncorrect": "PasswordIncorrect",
+        "PasswordResetPeriodExpired": "PasswordResetPeriodExpired",
+        "PasswordResetAlreadyComplete": "PasswordResetAlreadyComplete",
+        "RequestParam": "RequestParam",
+        "ResourceNotFound": "ResourceNotFound",
+        "TokenExpired": "TokenExpired",
+        "UserMissing": "UserMissing",
+        "UserAlreadyVerified": "UserAlreadyVerified",
+        "UserDoesNotExist": "UserDoesNotExist",
+        "UserNamePasswordIncorrect": "UserNamePasswordIncorrect",
+        "UserAlreadyExists": "UserAlreadyExists",
+        "VerificationTokenExpired": "VerificationTokenExpired",
+        "VerificationTokenDoesNotExist": "VerificationTokenDoesNotExist",
+        "YouTubeVideoDoesNotExist": "YouTubeVideoDoesNotExist"
+    },
+    "ENVIRONMENT": "kENVIRONMENT",
+    "Env": {
+        "Development": "development",
+        "Test": "test",
+        "CircleCI": "circle_ci",
+        "Production": "production",
+        "Staging": "staging"
+    },
+    "ImageFileExtension": "kImageFileExtension",
+    "Header": {
+        "AccessControlAllowOrigin": "allow-origin",
+        "AuthExpire": "x-gn-auth-expire",
+        "AuthToken": "x-gn-auth-token",
+        "Authorization": "authorization",
+        "Location": "location"
+    },
+    "Model": {
+        "AuthAdapterType": "AuthAdapterType",
+        "Identity": "Identity",
+        "WritingAnswer": "WritingAnswer",
+        "UserRole": "UserRole",
+        "Credential": "Credential",
+        "EmailChangeRequest": "EmailChangeRequest",
+        "Gender": "Gender",
+        "Language": "Language",
+        "WritingQuestion": "WritingQuestion",
+        "WritingQuestionLocalized": "WritingQuestionLocalized",
+        "CuedVideo": "CuedVideo",
+        "Like": "Like",
+        "Follower": "Follower",
+        "StudySession": "StudySession",
+        "User": "User",
+        "Role": "Role",
+        "Subcategory": "Subcategory",
+        "SubcategoryLocalized": "SubcategoryLocalized",
+        "Speaker": "Speaker",
+        "SpeakerLocalized": "SpeakerLocalized",
+        "Category": "Category",
+        "CategoryLocalized": "CategoryLocalized",
+        "Video": "Video",
+        "Transcript": "Transcript",
+        "CollocationOccurrence": "CollocationOccurrence",
+        "UsageExample": "UsageExample",
+        "VerificationToken": "VerificationToken",
+        "Notification": "Notification"
+    },
+    "NODE_ENV": "NODE_ENV",
+    "OAuth": {
+        "Google": {
+            "ClientID": "kOAuthGoogleClientID",
+            "ClientSecret": "kOAuthGoogleClientSecret",
+            "CallbackURL": "kOAuthGoogleCallbackURL"
+        },
+        "Facebook": {
+            "ClientID": "kOAuthFacebookClientID",
+            "ClientSecret": "kOAuthFacebookClientSecret",
+            "CallbackURL": "kOAuthFacebookCallbackURL"
+        },
+        "Twitter": {
+            "ConsumerKey": "kOAuthTwitterConsumerKey",
+            "ConsumerSecret": "kOAuthTwitterConsumerSecret",
+            "CallbackURL": "kOAuthTwitterCallbackURL"
+        }
+    },
+    "GoogleCloud": {
+        "ProjectId": "kGoogleCloudProjectId",
+        "KeyFilename": "kGoogleCloudKeyFilename",
+        "StorageBucketName": "kGoogleCloudStorageBucketName",
+        "APIKey": "kGoogleCloudAPIKey"
+    },
+    "PrivateKey": "kPrivateKey",
+    "PublicKey": "kPublicKey",
+    "DKIMPrivateKey": "kDKIMPrivateKey",
+    "UserRole": {
+        "Admin": "admin",
+        "User": "user"
+    },
+    "SMTP": {
+        "Port": "smtp:port",
+        "Host": "smtp:host"
+    },
+    "SNS": {
+        "TwitterPageURL": "kSNSTwitterPageURL",
+        "FacebookPageURL": "kFacebookPageURL",
+        "YouTubeChannelURL": "kYouTubeChannelURL"
+    },
+    "Templates": {
+        "ConfirmEmailUpdate": "01",
+        "DeleteAccountReason": "02",
+        "RegistrationEmailConfirmed": "03",
+        "NotifyEmailUpdate": "04",
+        "EmailUpdateSuccess": "05",
+        "PasswordUpdated": "06",
+        "Welcome": "07",
+        "PasswordResetLink": "08"
+    },
+    "TempDir": "kTempDir",
+    "VideoFileExtension": "kVideoFileExtension",
+    "VideoLanguageCodes": "kVideoLanguageCodes"
+}
