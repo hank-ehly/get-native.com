@@ -23,7 +23,7 @@ enableProdMode();
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
-const LOCALES = ['en', 'ja'].map(loc => {
+const LOCALES = _.map(['en', 'ja'], loc => {
     return {
         id: loc,
         engine: ngExpressEngine({
@@ -48,7 +48,7 @@ LOCALES.forEach(loc => {
 });
 
 app.get('*', (req, res) => {
-    res.redirect([req.locale, req.url].join('').replace(/\/+/g, '/'));
+    res.redirect([req.locale || 'en', req.url].join('').replace(/\/+/g, '/'));
 });
 
 app.listen(PORT, () => {
