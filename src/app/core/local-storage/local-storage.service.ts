@@ -17,8 +17,10 @@ export class LocalStorageService {
 
     storageEvent$ = new Subject<StorageEvent>();
     clear$ = new Subject();
+    isBrowser: boolean;
 
     constructor(private logger: Logger, @Inject(PLATFORM_ID) private platformId: Object) {
+        this.isBrowser = isPlatformBrowser(this.platformId);
         this.clear$.subscribe(this.onClear.bind(this));
     }
 
@@ -33,31 +35,25 @@ export class LocalStorageService {
     }
 
     get length(): number {
-        if (isPlatformServer(this.platformId)) {
-            return 0;
-        }
-
-        return localStorage.length;
+        return this.isBrowser ? localStorage.length : 0;
     }
 
     /* Todo: Encrypt all stored data */
     setItem(key: string, data: any): void {
-        if (isPlatformServer(this.platformId)) {
-            return;
-        }
+        if (this.isBrowser) {
+            if (data === null || data === undefined) {
+                /* Todo: ErrorService */
+                throw new Error('Cannot store a null or undefined value.');
+            } else if (typeof data !== 'string') {
+                data = JSON.stringify(data);
+            }
 
-        if (data === null || data === undefined) {
-            /* Todo: ErrorService */
-            throw new Error('Cannot store a null or undefined value.');
-        } else if (typeof data !== 'string') {
-            data = JSON.stringify(data);
+            localStorage.setItem(key, data);
         }
-
-        localStorage.setItem(key, data);
     }
 
     getItem(key: string): any {
-        if (isPlatformServer(this.platformId)) {
+        if (!this.isBrowser) {
             return {};
         }
 
@@ -75,13 +71,13 @@ export class LocalStorageService {
     }
 
     removeItem(key: string): void {
-        if (isPlatformBrowser(this.platformId)) {
+        if (this.isBrowser) {
             localStorage.removeItem(key);
         }
     }
 
     onClear(): void {
-        if (isPlatformBrowser(this.platformId)) {
+        if (this.isBrowser) {
             localStorage.clear();
         }
     }

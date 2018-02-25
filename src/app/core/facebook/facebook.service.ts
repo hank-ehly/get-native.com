@@ -8,9 +8,6 @@ declare const FB: any;
 @Injectable()
 export class FacebookService {
     constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-        if (isPlatformBrowser(this.platformId)) {
-            FB.AppEvents.logPageView();
-        }
     }
 
     init(params: InitParams): Promise<any> {
@@ -50,5 +47,11 @@ export class FacebookService {
                 reject(e);
             }
         });
+    }
+
+    logPageView(): void {
+        if (isPlatformBrowser(this.platformId)) {
+            FB.AppEvents.logPageView();
+        }
     }
 }

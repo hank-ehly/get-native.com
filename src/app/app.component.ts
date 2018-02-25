@@ -87,10 +87,9 @@ export class AppComponent implements OnInit, OnDestroy {
                 private route: ActivatedRoute,
                 private lang: LangService,
                 private navbar: NavbarService,
-                @Inject(LOCALE_ID)
-                private localeId: string,
                 private http: HttpService,
                 private dom: DOMService,
+                @Inject(LOCALE_ID) private localeId: string,
                 @Inject(PLATFORM_ID) private platformId: Object) {
         this.displayMobileOverlay$
             .takeUntil(this.OnDestroy$)
@@ -135,6 +134,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.logger.debug(this, 'OnInit');
 
         this.facebook.init(this.fbConfig);
+        this.facebook.logPageView();
         this.initMoment();
         this.updateUserCacheIfNeeded();
         this.observeInterfaceLanguage();
