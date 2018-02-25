@@ -14,7 +14,7 @@ if [ "${1}" == "develop" ]; then
 			--output-hashing=all \
 			--sourcemaps=false \
 			--extract-css=true \
-			--output-path=dist/browser/${locale} \
+			--output-path=dist/${locale} \
 			--bh "/${locale}/" \
 			--i18n-file=src/locales/messages.${locale}.xlf \
 			--i18n-format=xlf \

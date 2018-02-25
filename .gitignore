@@ -40,10 +40,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-/server/config/secrets/*
-!**/.gitkeep
-npm-debug.log*
-/server/config/database.json
-maildev/
-/server/upload_*

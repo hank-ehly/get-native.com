@@ -31,7 +31,7 @@ import { MetaModule, MetaLoader } from '@ngx-meta/core';
 
 @NgModule({
     imports: [
-        BrowserModule.withServerTransition({appId: 'gn-app'}),
+        BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
         MetaModule.forRoot({provide: MetaLoader, useFactory: metaFactory, deps: [LOCALE_ID, LangService]}),
