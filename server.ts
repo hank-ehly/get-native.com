@@ -12,24 +12,31 @@ import { renderModuleFactory } from '@angular/platform-server';
 import { enableProdMode } from '@angular/core';
 
 import * as express from 'express';
+import * as locale from 'locale';
 import { join } from 'path';
 import { readFileSync } from 'fs';
 
 enableProdMode();
 
 const app = express();
+app.use(locale(['en', 'en_US', 'ja'], 'en'));
 
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
-const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
+const englishTemplate = readFileSync(join(DIST_FOLDER, 'browser', 'en', 'index.html')).toString();
+const japaneseTemplate = readFileSync(join(DIST_FOLDER, 'browser', 'ja', 'index.html')).toString();
+
+function templateForLocale(lc) {
+    return lc === 'ja' ? japaneseTemplate : englishTemplate;
+}
 
 const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/server/main.bundle');
 const {provideModuleMap} = require('@nguniversal/module-map-ngfactory-loader');
 
 app.engine('html', (_, options, callback) => {
     renderModuleFactory(AppServerModuleNgFactory, {
-        document: template,
+        document: templateForLocale(options.req.locale),
         url: options.req.url,
         extraProviders: [
             provideModuleMap(LAZY_MODULE_MAP)
