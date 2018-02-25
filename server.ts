@@ -24,8 +24,8 @@ const DIST_FOLDER = join(process.cwd(), 'dist');
 const LOCALES = ['en', 'ja'];
 
 const engine = ngExpressEngine({
-    bootstrap: require('src/main.server').AppServerModuleNgFactory,
-    providers: [provideModuleMap(require('src/main.server').LAZY_MODULE_MAP)]
+    bootstrap: require('./dist/server/main.bundle').AppServerModuleNgFactory,
+    providers: [provideModuleMap(require('./dist/server/main.bundle').LAZY_MODULE_MAP)]
 });
 
 const app = express();
