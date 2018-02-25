@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "getnativelearning.com-dev",
+            "name": "client",
             "script": "dist/server.js",
             "cwd": ".",
             "error_file": "logs/error.log",
@@ -14,11 +14,25 @@
             }
         },
         {
-            "name": "getnativelearning.com-prod",
-            "script": "/var/www/getnativelearning.com/current/dist/server.js",
-            "cwd": "/var/www/getnativelearning.com/current",
-            "error_file": "/var/log/pm2/getnativelearning.com-prod-error.log",
-            "out_file": "/var/log/pm2/getnativelearning.com-prod-out.log",
+            "name": "stg.getnativelearning.com",
+            "script": "/var/www/getnativelearning.com/staging/current/dist/server.js",
+            "cwd": "/var/www/getnativelearning.com/staging/current",
+            "error_file": "/var/log/pm2/stg.getnativelearning.com-error.log",
+            "out_file": "/var/log/pm2/stg.getnativelearning.com-out.log",
+            "pid_file": "/run/pm2/stg.getnativelearning.com.pid",
+            "exec_mode": "cluster",
+            "combine_logs": true,
+            "interpreter": "/usr/local/nodejs-binary/bin/node",
+            "env": {
+                "NODE_ENV": "staging"
+            }
+        },
+        {
+            "name": "getnativelearning.com",
+            "script": "/var/www/getnativelearning.com/production/current/dist/server.js",
+            "cwd": "/var/www/getnativelearning.com/production/current",
+            "error_file": "/var/log/pm2/getnativelearning.com-error.log",
+            "out_file": "/var/log/pm2/getnativelearning.com-out.log",
             "pid_file": "/run/pm2/getnativelearning.com-prod.pid",
             "exec_mode": "cluster",
             "combine_logs": true,
