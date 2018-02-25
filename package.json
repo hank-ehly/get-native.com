@@ -9,18 +9,17 @@
     },
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --port 5555 --host 0.0.0.0",
-        "start:ja": "ng serve --port 5555 --host 0.0.0.0 --aot --locale ja --i18n-format xlf --i18n-file src/locales/messages.ja.xlf --missing-translation error",
         "build": "ng build",
-        "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
-        "serve:ssr": "node dist/server.js",
-        "build:client-and-server-bundles": "ng build --prod && ng build --prod --app 1 --output-hashing=false",
-        "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
+        "start": "ng serve --port 5555",
+        "start:ja": "ng serve --port 5555 --aot --locale ja --i18n-format xlf --i18n-file src/locales/messages.ja.xlf --missing-translation error",
+        "serve:ssr": "pm2 startOrReload ecosystem.config.json -i max --only getnativelearning.com-dev",
+        "serve:ssr:prod": "pm2 startOrReload ecosystem.config.json -i max --only getnativelearning.com-prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "i18n": "ng xi18n",
-        "rhash": "node -e \"console.log(require('crypto').randomBytes(16).toString('hex'))\""
+        "rhash": "node -e \"console.log(require('crypto').randomBytes(16).toString('hex'))\"",
+        "webpack": "webpack"
     },
     "private": true,
     "dependencies": {
@@ -69,6 +68,7 @@
         "karma-coverage-istanbul-reporter": "^1.2.1",
         "karma-jasmine": "~1.1.0",
         "karma-jasmine-html-reporter": "^0.2.2",
+        "pm2": "^2.10.1",
         "protractor": "~5.1.2",
         "ts-node": "~4.1.0",
         "tslint": "~5.9.1",
