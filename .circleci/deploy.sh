@@ -14,7 +14,7 @@ if [ "${1}" == "develop" ]; then
 	
 		for locale in en ja; do
 			npm run build -- \
-				--app ${app}
+				--app ${app} \
 				--env stg \
 				--aot \
 				--output-hashing=${oh} \
