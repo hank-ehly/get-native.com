@@ -15,7 +15,7 @@ import * as express from 'express';
 import { join } from 'path';
 import * as _ from 'lodash';
 
-const locale = require('locale');
+// const locale = require('locale');
 
 const {provideModuleMap} = require('@nguniversal/module-map-ngfactory-loader');
 
@@ -34,7 +34,7 @@ const LOCALES = _.map(['en', 'ja'], loc => {
 });
 
 const app = express();
-app.use(locale(_.map(LOCALES, 'id'), 'en'));
+// app.use(locale(_.map(LOCALES, 'id'), 'en'));
 
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
@@ -48,7 +48,7 @@ LOCALES.forEach(loc => {
 });
 
 app.get('*', (req, res) => {
-    res.redirect([req.locale || 'en', req.url].join('').replace(/\/+/g, '/'));
+    res.redirect(['en', req.url].join('').replace(/\/+/g, '/'));
 });
 
 app.listen(PORT, () => {
