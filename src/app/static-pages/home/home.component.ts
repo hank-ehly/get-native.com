@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/06.
  */
 
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 
 import { LoginModalService } from '../../login/login-modal.service';
 import { LoginComponent } from '../../login/login.component';
@@ -15,6 +15,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs/Subject';
 import * as _ from 'lodash';
 import { Logger } from '../../core/logger/logger';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'gn-home',
@@ -31,17 +32,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     xOffset = [0, 0, 0];
     opacity = [0, 0, 0];
 
-    @HostListener('window:scroll') onScroll() {
+    @HostListener('window:scroll')
+    onScroll() {
         this.updateLargeFeatureImagePosition();
         this.updateBannerPosition();
     }
 
-    @HostListener('window:resize') onResize() {
+    @HostListener('window:resize')
+    onResize() {
         this.updateLargeFeatureImagePosition();
         this.updateBannerPosition();
     }
 
-    constructor(private modalService: BsModalService, private loginModal: LoginModalService, private logger: Logger) {
+    constructor(private modalService: BsModalService, private loginModal: LoginModalService, private logger: Logger,
+                @Inject(PLATFORM_ID) private platformId: Object) {
     }
 
     ngOnInit(): void {
@@ -67,21 +71,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     private updateLargeFeatureImagePosition(): void {
-        const xMovement = 30;
-        const span = 800;
-        for (let i = 0; i < this.startY.length; i++) {
-            const startY = this.startY[i];
-            const endY = startY + span;
-            const percent = this.findPercentageOfXBetweenAAndB(<number>window.scrollY, startY, endY);
-            this.xOffset[i] = this.findPointOfPercentageBetweenAAndB(percent, 0, xMovement) - xMovement;
-            this.opacity[i] = percent / 100;
+        if (isPlatformBrowser(this.platformId)) {
+            const xMovement = 30;
+            const span = 800;
+            for (let i = 0; i < this.startY.length; i++) {
+                const startY = this.startY[i];
+                const endY = startY + span;
+                const percent = this.findPercentageOfXBetweenAAndB(<number>window.scrollY, startY, endY);
+                this.xOffset[i] = this.findPointOfPercentageBetweenAAndB(percent, 0, xMovement) - xMovement;
+                this.opacity[i] = percent / 100;
+            }
         }
     }
 
     private updateBannerPosition(): void {
-        // bias should increase relative to window width
-        const bias = _.floor(window.innerWidth / 7.5);
-        this.bannerBackgroundPositionY = (window.pageYOffset * 0.5) - bias;
+        if (isPlatformBrowser(this.platformId)) {
+            // bias should increase relative to window width
+            const bias = _.floor(window.innerWidth / 7.5);
+            this.bannerBackgroundPositionY = (window.pageYOffset * 0.5) - bias;
+        }
     }
 
     private findPercentageOfXBetweenAAndB(x: number, a: number, b: number): number {

@@ -1,9 +1,10 @@
-import { Injectable, Renderer2, RendererFactory2, ViewEncapsulation } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, Renderer2, RendererFactory2, ViewEncapsulation } from '@angular/core';
 
 import { Logger } from '../logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 import * as _ from 'lodash';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class DOMService {
@@ -12,19 +13,21 @@ export class DOMService {
     htmlTag: HTMLHtmlElement;
     renderer: Renderer2;
 
-    constructor(private rendererFactory: RendererFactory2, private logger: Logger) {
-        this.htmlTag = <HTMLHtmlElement>_.first(document.children);
+    constructor(private rendererFactory: RendererFactory2, private logger: Logger, @Inject(PLATFORM_ID) private platformId: Object) {
+        if (isPlatformBrowser(this.platformId)) {
+            this.htmlTag = <HTMLHtmlElement>_.first(document.children);
 
-        if (this.htmlTag.tagName.toLowerCase() !== 'html') {
-            throw new Error('Could not find HTML tag in DOMService');
+            if (this.htmlTag.tagName.toLowerCase() !== 'html') {
+                throw new Error('Could not find HTML tag in DOMService');
+            }
+
+            this.renderer = rendererFactory.createRenderer(this.htmlTag, {
+                id: 'gn',
+                encapsulation: ViewEncapsulation.None,
+                styles: [],
+                data: {}
+            });
         }
-
-        this.renderer = rendererFactory.createRenderer(this.htmlTag, {
-            id: 'gn',
-            encapsulation: ViewEncapsulation.None,
-            styles: [],
-            data: {}
-        });
     }
 
     pathForMouseEvent(e: MouseEvent): any[] {

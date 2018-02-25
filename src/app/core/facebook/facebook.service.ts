@@ -1,25 +1,38 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { InitParams } from './init-params';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 declare const FB: any;
 
 @Injectable()
 export class FacebookService {
-    constructor() {
-        // FB.AppEvents.logPageView();
+    constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+        if (isPlatformBrowser(this.platformId)) {
+            FB.AppEvents.logPageView();
+        }
     }
 
     init(params: InitParams): Promise<any> {
-        try {
-            return Promise.resolve(FB.init(params));
-        } catch (e) {
-            return Promise.reject(e);
-        }
+        return new Promise<any>(((resolve, reject) => {
+            if (isPlatformServer(this.platformId)) {
+                return reject();
+            }
+
+            try {
+                resolve(FB.init(params));
+            } catch (e) {
+                reject(e);
+            }
+        }));
     }
 
     share(href?: string): Promise<any> {
         return new Promise<any>((resolve, reject) => {
+            if (isPlatformServer(this.platformId)) {
+                return reject();
+            }
+
             try {
                 FB.ui({
                     method: 'share',

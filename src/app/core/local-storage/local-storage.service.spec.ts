@@ -13,7 +13,7 @@ describe('LocalStorageService', () => {
 
     beforeEach(() => {
         localStorage.clear();
-        localStorageService = new LocalStorageService(STUBLogger);
+        localStorageService = new LocalStorageService(STUBLogger, '');
     });
 
     it('should be able to set a key/value pair', () => {

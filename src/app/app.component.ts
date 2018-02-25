@@ -5,9 +5,10 @@
  * Created by henryehly on 2016/11/08.
  */
 
-import { animate, AnimationTriggerMetadata, keyframes, query, style, transition, trigger, group, stagger } from '@angular/animations';
-import { Component, OnInit, HostListener, OnDestroy, HostBinding, LOCALE_ID, Inject } from '@angular/core';
+import { animate, AnimationTriggerMetadata, keyframes, query, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit, HostListener, OnDestroy, HostBinding, LOCALE_ID, Inject, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 import { LocalStorageService } from './core/local-storage/local-storage.service';
 import { FacebookService } from './core/facebook/facebook.service';
@@ -73,7 +74,8 @@ export class AppComponent implements OnInit, OnDestroy {
     showNavbarSearchIconEmitted$: Observable<boolean>;
     fbConfig = {appId: environment.facebookAppId, autoLogAppEvents: true, xfbml: false, cookie: false, version: 'v2.10'};
 
-    @HostBinding('style.margin-bottom') get styleMarginBottom(): string {
+    @HostBinding('style.margin-bottom')
+    get styleMarginBottom(): string {
         return (this.user.isAuthenticated() ? 50 : (240 + 336)) + 'px';
     }
 
@@ -88,7 +90,8 @@ export class AppComponent implements OnInit, OnDestroy {
                 @Inject(LOCALE_ID)
                 private localeId: string,
                 private http: HttpService,
-                private dom: DOMService) {
+                private dom: DOMService,
+                @Inject(PLATFORM_ID) private platformId: Object) {
         this.displayMobileOverlay$
             .takeUntil(this.OnDestroy$)
             .subscribe(this.onDisplayMobileOverlayChanged.bind(this));
@@ -113,15 +116,18 @@ export class AppComponent implements OnInit, OnDestroy {
         this.dom.alertMessage$.takeUntil(this.OnDestroy$).subscribe((m) => this.alertMessage = m);
     }
 
-    @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
+    @HostListener('window:storage', ['$event'])
+    onStorageEvent(e: StorageEvent) {
         this.localStorage.broadcastStorageEvent(e);
     }
 
-    @HostListener('window:load') onLoad() {
+    @HostListener('window:load')
+    onLoad() {
         this.displayMobileOverlayIfNeeded();
     }
 
-    @HostListener('window:resize') onResize() {
+    @HostListener('window:resize')
+    onResize() {
         this.displayMobileOverlayIfNeeded();
     }
 
@@ -138,6 +144,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.router.events
             .takeUntil(this.OnDestroy$)
             .filter(e => e instanceof NavigationEnd)
+            .filter(() => isPlatformBrowser(this.platformId))
             .filter(() => _.has(window, 'ga'))
             .subscribe(this.sendPageView.bind(this));
     }
@@ -152,10 +159,12 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     private displayMobileOverlayIfNeeded(): void {
-        if (this.flags.isShowingMobileOverlay && window.innerWidth >= 768) {
-            this.displayMobileOverlay$.next(false);
-        } else if (!this.flags.isShowingMobileOverlay && window.innerWidth < 768) {
-            this.displayMobileOverlay$.next(true);
+        if (isPlatformBrowser(this.platformId)) {
+            if (this.flags.isShowingMobileOverlay && window.innerWidth >= 768) {
+                this.displayMobileOverlay$.next(false);
+            } else if (!this.flags.isShowingMobileOverlay && window.innerWidth < 768) {
+                this.displayMobileOverlay$.next(true);
+            }
         }
     }
 
@@ -175,6 +184,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private observeInterfaceLanguage(): void {
         this.user.current$.takeUntil(this.OnDestroy$)
             .filter(() => this.user.isAuthenticated())
+            .filter(() => isPlatformBrowser(this.platformId))
             .subscribe((u: User) => {
                 if (!u || environment.development || u.interface_language.code === this.lang.languageForLocaleId(this.localeId).code) {
                     return;
@@ -213,7 +223,7 @@ export class AppComponent implements OnInit, OnDestroy {
             LLLL: 'dddd D MMMM YYYY HH:mm'
         };
 
-        moment.locale('ja', {
+        moment.updateLocale('ja', {
             longDateFormat: _.assign(defLongDateFormat, {ll: 'YYYY年M月D日'})
         });
 

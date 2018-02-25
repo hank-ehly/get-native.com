@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/12/05.
  */
 
-import { Component, OnInit, OnDestroy, Inject, LOCALE_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, LOCALE_ID, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { GoogleAnalyticsEventsService } from '../core/google-analytics-events.service';
@@ -30,6 +30,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'gn-library-detail',
@@ -52,7 +53,8 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
                 private facebook: FacebookService, private meta: MetaService,
-                @Inject(LOCALE_ID) private localeId: string, private googleAnalyticsEventService: GoogleAnalyticsEventsService) {
+                @Inject(LOCALE_ID) private localeId: string, private googleAnalyticsEventService: GoogleAnalyticsEventsService,
+                @Inject(PLATFORM_ID) private platformId: Object) {
         this.route.data.subscribe(x => {
             this.logger.debug(this, x);
         });
@@ -84,6 +86,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
         this.video$
             .pluck('subcategory', 'name')
+            .filter(() => isPlatformBrowser(this.platformId))
             .subscribe((t: string) => {
                 this.emailShareHref = `mailto:?subject=getnative - ${t}&body=${window.location.href}`;
                 this.twitterShareHref = `https://twitter.com/intent/tweet?text=getnative - ${t}&url=${window.location.href}`;
@@ -136,7 +139,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     onClickShareTwitter(): void {
         this.googleAnalyticsEventService.emitEvent(this.constructor.name, 'Clicked Share on Twitter');
 
-        if (this.twitterShareHref) {
+        if (isPlatformBrowser(this.platformId) && this.twitterShareHref) {
             window.open(this.twitterShareHref);
         }
     }
@@ -144,7 +147,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     onClickShareEmail(): void {
         this.googleAnalyticsEventService.emitEvent(this.constructor.name, 'Clicked Share via Email');
 
-        if (this.emailShareHref) {
+        if (isPlatformBrowser(this.platformId) && this.emailShareHref) {
             window.location.href = this.emailShareHref;
         }
     }
