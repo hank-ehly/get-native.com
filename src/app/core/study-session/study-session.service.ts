@@ -12,6 +12,7 @@ import { LocalStorageService } from '../local-storage/local-storage.service';
 import { kCurrentStudySession } from '../local-storage/local-storage-keys';
 import { StudySessionSection } from '../typings/study-session-section';
 import { StudySession } from '../entities/study-session';
+import { NavbarService } from '../navbar/navbar.service';
 import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
 import { Logger } from '../logger/logger';
@@ -20,7 +21,6 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
 import * as _ from 'lodash';
-import { NavbarService } from '../navbar/navbar.service';
 
 @Injectable()
 export class StudySessionService {
@@ -82,7 +82,7 @@ export class StudySessionService {
         seconds--;
         this.timeLeftSource.next(seconds);
 
-        this.sectionTimer = setInterval(() => {
+        this.sectionTimer = <NodeJS.Timer>setInterval(() => {
             seconds--;
 
             this.timeLeftSource.next(seconds);

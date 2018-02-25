@@ -17,6 +17,7 @@ import { Logger } from '../../core/logger/logger';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
+import * as _ from 'lodash';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -122,7 +123,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy, A
 
         let found = false;
         for (const className of classNameArr) {
-            if (validTargets.includes(className)) {
+            if (_.includes(validTargets, className)) {
                 found = true;
             }
         }
@@ -167,7 +168,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy, A
     }
 
     private hideTooltip(delay?: number): void {
-        this.tooltipTimeout = setTimeout(() => this.tooltipHidden = true, delay || 0);
+        this.tooltipTimeout = <NodeJS.Timer>setTimeout(() => this.tooltipHidden = true, delay || 0);
     }
 
 }
