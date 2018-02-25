@@ -13,7 +13,7 @@ import { enableProdMode } from '@angular/core';
 
 import * as express from 'express';
 import { join } from 'path';
-import * as locale from 'locale';
+const locale = require('locale');
 
 const {provideModuleMap} = require('@nguniversal/module-map-ngfactory-loader');
 
