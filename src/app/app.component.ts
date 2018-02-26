@@ -133,8 +133,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
 
-        this.facebook.init(this.fbConfig);
-        this.facebook.logPageView();
+        this.facebook.init(this.fbConfig).then(() => this.facebook.logPageView());
         this.initMoment();
         this.updateUserCacheIfNeeded();
         this.observeInterfaceLanguage();

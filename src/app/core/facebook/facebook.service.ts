@@ -11,40 +11,44 @@ export class FacebookService {
     }
 
     init(params: InitParams): Promise<any> {
-        return new Promise<any>(((resolve, reject) => {
+        return new Promise<any>((resolve, reject) => {
             if (isPlatformServer(this.platformId)) {
-                return reject();
+                reject();
             }
 
-            try {
-                resolve(FB.init(params));
-            } catch (e) {
-                reject(e);
+            if (isPlatformBrowser(this.platformId)) {
+                try {
+                    resolve(FB.init(params));
+                } catch (e) {
+                    reject(e);
+                }
             }
-        }));
+        });
     }
 
     share(href?: string): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             if (isPlatformServer(this.platformId)) {
-                return reject();
+                reject();
             }
 
-            try {
-                FB.ui({
-                    method: 'share',
-                    href: href || window.location.href
-                }, (response: any) => {
-                    if (!response) {
-                        reject();
-                    } else if (response.error) {
-                        reject(response.error);
-                    } else {
-                        resolve(response);
-                    }
-                });
-            } catch (e) {
-                reject(e);
+            if (isPlatformBrowser(this.platformId)) {
+                try {
+                    FB.ui({
+                        method: 'share',
+                        href: href || window.location.href
+                    }, (response: any) => {
+                        if (!response) {
+                            reject();
+                        } else if (response.error) {
+                            reject(response.error);
+                        } else {
+                            resolve(response);
+                        }
+                    });
+                } catch (e) {
+                    reject(e);
+                }
             }
         });
     }
