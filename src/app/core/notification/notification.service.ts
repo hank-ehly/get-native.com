@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Observable';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class NotificationService {
@@ -10,10 +11,14 @@ export class NotificationService {
     permission$ = new BehaviorSubject<NotificationPermission>(this.supported ? (<any>Notification).permission : 'denied');
 
     get supported(): boolean {
-        return 'Notification' in window;
+        if (isPlatformBrowser(this.platformId)) {
+            return 'Notification' in window;
+        }
+
+        return false;
     }
 
-    constructor() {
+    constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     }
 
     requestPermission(): Observable<NotificationPermission> {
@@ -21,8 +26,8 @@ export class NotificationService {
             return Observable.of(<NotificationPermission>'denied');
         }
 
-        return Observable.create(function(observer) {
-            Notification.requestPermission(function(permission) {
+        return Observable.create(function (observer) {
+            Notification.requestPermission(function (permission) {
                 observer.next(permission);
                 observer.complete();
             });

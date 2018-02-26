@@ -1,9 +1,13 @@
-import { AfterViewInit, Directive, ElementRef, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import {
+    AfterViewInit, Directive, ElementRef, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, PLATFORM_ID,
+    SimpleChanges
+} from '@angular/core';
 
 import { LangService } from '../core/lang/lang.service';
 import { Logger } from '../core/logger/logger';
 
 import * as _ from 'lodash';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Directive({
     selector: '[gnYoutubePlayer]'
@@ -74,8 +78,10 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy,
     }
 
     constructor(private el: ElementRef, private logger: Logger, @Inject(LOCALE_ID) private localeId: string,
-                private langService: LangService) {
-        (<any>window).onYouTubeIframeAPIReady = this.onYouTubeIframeAPIReady.bind(this);
+                private langService: LangService, @Inject(PLATFORM_ID) private platformId: Object) {
+        if (isPlatformBrowser(this.platformId)) {
+            (<any>window).onYouTubeIframeAPIReady = this.onYouTubeIframeAPIReady.bind(this);
+        }
     }
 
     ngOnInit(): void {
@@ -111,23 +117,27 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy,
     }
 
     private loadYouTubeIframeAPIIfNeeded() {
-        const iframeAPIScriptTagID = 'youtube-iframe-api';
-        if (document.getElementById(iframeAPIScriptTagID)) {
-            this.logger.debug(this, 'YouTube Iframe API is already loaded');
-            this.onYouTubeIframeAPIReady();
-        } else {
-            this.logger.debug(this, 'Loading YouTube Iframe API');
-            const tag = document.createElement('script');
-            tag.type = 'text/javascript';
-            tag.src = 'https://www.youtube.com/iframe_api';
-            tag.id = iframeAPIScriptTagID;
-            document.body.appendChild(tag);
+        if (isPlatformBrowser(this.platformId)) {
+            const iframeAPIScriptTagID = 'youtube-iframe-api';
+            if (document.getElementById(iframeAPIScriptTagID)) {
+                this.logger.debug(this, 'YouTube Iframe API is already loaded');
+                this.onYouTubeIframeAPIReady();
+            } else {
+                this.logger.debug(this, 'Loading YouTube Iframe API');
+                const tag = document.createElement('script');
+                tag.type = 'text/javascript';
+                tag.src = 'https://www.youtube.com/iframe_api';
+                tag.id = iframeAPIScriptTagID;
+                document.body.appendChild(tag);
+            }
         }
     }
 
     private onYouTubeIframeAPIReady(): void {
-        if (!window['YT']) {
-            return;
+        if (isPlatformBrowser(this.platformId)) {
+            if (!window['YT']) {
+                return;
+            }
         }
 
         this.logger.debug(this, 'onYouTubeIframeAPIReady');

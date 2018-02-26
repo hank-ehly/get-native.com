@@ -5,9 +5,10 @@
  * Created by henryehly on 2016/11/07.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 
 import { Logger } from '../../core/logger/logger';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'gn-privacy',
@@ -16,7 +17,7 @@ import { Logger } from '../../core/logger/logger';
 })
 export class PrivacyComponent implements OnInit {
 
-    constructor(private logger: Logger) {
+    constructor(private logger: Logger, @Inject(PLATFORM_ID) private platformId: Object) {
     }
 
     ngOnInit(): void {
@@ -24,7 +25,9 @@ export class PrivacyComponent implements OnInit {
     }
 
     jumpTo(fragment: string) {
-        document.querySelector('#' + fragment).scrollIntoView();
+        if (isPlatformBrowser(this.platformId)) {
+            document.querySelector('#' + fragment).scrollIntoView();
+        }
     }
 
 }

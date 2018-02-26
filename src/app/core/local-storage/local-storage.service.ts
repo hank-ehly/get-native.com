@@ -5,7 +5,8 @@
  * Created by henryehly on 2016/11/20.
  */
 
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { Logger } from '../logger/logger';
 
@@ -15,10 +16,12 @@ import { Subject } from 'rxjs/Subject';
 export class LocalStorageService {
 
     storageEvent$ = new Subject<StorageEvent>();
-    clear$        = new Subject();
+    clear$ = new Subject();
+    isBrowser: boolean;
 
-    constructor(private logger: Logger) {
-        this.clear$.subscribe(() => localStorage.clear());
+    constructor(private logger: Logger, @Inject(PLATFORM_ID) private platformId: Object) {
+        this.isBrowser = isPlatformBrowser(this.platformId);
+        this.clear$.subscribe(this.onClear.bind(this));
     }
 
     broadcastStorageEvent(ev: StorageEvent): void {
@@ -32,22 +35,28 @@ export class LocalStorageService {
     }
 
     get length(): number {
-        return localStorage.length;
+        return this.isBrowser ? localStorage.length : 0;
     }
 
     /* Todo: Encrypt all stored data */
     setItem(key: string, data: any): void {
-        if (data === null || data === undefined) {
-            /* Todo: ErrorService */
-            throw new Error('Cannot store a null or undefined value.');
-        } else if (typeof data !== 'string') {
-            data = JSON.stringify(data);
-        }
+        if (this.isBrowser) {
+            if (data === null || data === undefined) {
+                /* Todo: ErrorService */
+                throw new Error('Cannot store a null or undefined value.');
+            } else if (typeof data !== 'string') {
+                data = JSON.stringify(data);
+            }
 
-        localStorage.setItem(key, data);
+            localStorage.setItem(key, data);
+        }
     }
 
     getItem(key: string): any {
+        if (!this.isBrowser) {
+            return {};
+        }
+
         const retVal = localStorage.getItem(key);
 
         try {
@@ -62,7 +71,15 @@ export class LocalStorageService {
     }
 
     removeItem(key: string): void {
-        localStorage.removeItem(key);
+        if (this.isBrowser) {
+            localStorage.removeItem(key);
+        }
+    }
+
+    onClear(): void {
+        if (this.isBrowser) {
+            localStorage.clear();
+        }
     }
 
 }

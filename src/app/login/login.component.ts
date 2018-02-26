@@ -5,7 +5,7 @@
  * Created by henryehly on 2016/11/13.
  */
 
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LoginModalService } from './login-modal.service';
@@ -14,6 +14,7 @@ import { Logger } from '../core/logger/logger';
 
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Component({
     selector: 'gn-login',
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     OnDestroy$ = new Subject<void>();
     activeView: string;
 
-    constructor(private logger: Logger, private loginModal: LoginModalService, private router: Router, private dom: DOMService) {
+    constructor(private logger: Logger, private loginModal: LoginModalService, private router: Router, private dom: DOMService,
+                @Inject(PLATFORM_ID) private platformId: Object) {
     }
 
     ngOnInit(): void {
@@ -82,6 +84,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     selectNextTabbable(e?: KeyboardEvent) {
+        if (isPlatformServer(this.platformId)) {
+            return;
+        }
+
         const tabbables = document.querySelectorAll('.tabbable');
         const first: HTMLElement = <HTMLElement>tabbables[0];
         const last: HTMLElement = <HTMLElement>tabbables[tabbables.length - 1];

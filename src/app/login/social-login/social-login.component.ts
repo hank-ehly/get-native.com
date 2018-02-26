@@ -5,10 +5,11 @@
  * Created by henryehly on 2016/11/23.
  */
 
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 
-import { LoginModalService } from '../login-modal.service';
 import { environment } from '../../../environments/environment';
+import { LoginModalService } from '../login-modal.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'gn-social-login',
@@ -29,7 +30,7 @@ export class SocialLoginComponent {
         }
     };
 
-    constructor(private loginModal: LoginModalService) {
+    constructor(private loginModal: LoginModalService, @Inject(PLATFORM_ID) private platformId: Object) {
     }
 
     onSetModalView(view: string): void {
@@ -38,7 +39,10 @@ export class SocialLoginComponent {
 
     onClickSocialButton(provider: number): void {
         this.flags.processing.navigation = true;
-        window.location.href = this.OAuthURLForProvider(provider);
+
+        if (isPlatformBrowser(this.platformId)) {
+            window.location.href = this.OAuthURLForProvider(provider);
+        }
     }
 
     private OAuthURLForProvider(provider: number): string {
