@@ -9,7 +9,7 @@
     },
     "scripts": {
         "ng": "ng",
-        "build": "ng build",
+        "build": "./bin/build.sh",
         "start": "ng serve --port 5555",
         "start:ja": "ng serve --port 5555 --aot --locale ja --i18n-format xlf --i18n-file src/locales/messages.ja.xlf --missing-translation error",
         "serve:ssr": "pm2 startOrReload ecosystem.config.json -i max --only client",
