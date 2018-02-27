@@ -1,5 +1,11 @@
 @import '../core';
 
+.modal-dialog {
+  @include media-breakpoint-up(sm) {
+    max-width: 400px;
+  }
+}
+
 .modal-dialog .modal-content {
   align-items: center;
   background-color: rgba(0, 0, 0, 0);
