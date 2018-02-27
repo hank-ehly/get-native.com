@@ -10,8 +10,8 @@
 
             <input id="email" type="email" name="email" class="input" [readonly]="!(isEditingEmailAddress$ | async)" [placeholder]="user?.email" [(ngModel)]="emailModel" required [pattern]="emailRegex" [gnFocus]="isEditingEmailAddress$ | async">
 
-            <div class="form__button-group" *ngIf="user.email_verified && !(isEditingEmailAddress$ | async)">
-                <button class="button button--opaque" (click)="onClickEditEmailAddress()" i18n="The title text of general settings button for enabling email editing@@e19141a6936b94673dedaf85e0ebdd98">EDIT</button>
+            <div class="form__button-group" *ngIf="user.email_verified && !isEditingEmailAddress$.getValue()">
+                <button class="btn btn-primary btn-gradient-primary" (click)="onClickEditEmailAddress()" i18n="The title text of general settings button for enabling email editing@@e19141a6936b94673dedaf85e0ebdd98">EDIT</button>
             </div>
 
             <div class="form__button-group" *ngIf="!user.email_verified">
@@ -19,8 +19,8 @@
             </div>
 
             <div class="form__button-group" *ngIf="isEditingEmailAddress$ | async">
-                <button class="button button--opaque" type="submit" [disabled]="!emailForm.valid || flags.processing.editEmail" i18n="The text for the general settings save email button@@3ab339c5820f8680c1f7740e43a15337">SAVE</button>
-                <button class="button button--hollow form__cancel-button" [disabled]="flags.processing.editEmail" (click)="onClickCancelEmailEditing()" i18n="The title for the general settings cancel email modifications button@@be053fa70b16fd97c1fa6c44f705d9eb">CANCEL</button>
+                <button class="btn btn-primary btn-gradient-primary" type="submit" [disabled]="emailForm.invalid || flags.processing.editEmail" i18n="The text for the general settings save email button@@3ab339c5820f8680c1f7740e43a15337">SAVE</button>
+                <button class="btn btn-outline--grey form__cancel-button" [disabled]="flags.processing.editEmail" (click)="onClickCancelEmailEditing()" i18n="The title for the general settings cancel email modifications button@@be053fa70b16fd97c1fa6c44f705d9eb">CANCEL</button>
             </div>
         </div>
     </form>
