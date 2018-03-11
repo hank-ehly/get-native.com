@@ -8,7 +8,7 @@
             "out_file": "logs/out.log",
             "exec_mode": "cluster",
             "merge_logs": true,
-            "interpreter": "~/.nvm/versions/node/v8.9.4/bin/node",
+            "interpreter": "~/.nvm/versions/node/v8.10.0/bin/node",
             "env": {
                 "NODE_ENV": "development"
             }
