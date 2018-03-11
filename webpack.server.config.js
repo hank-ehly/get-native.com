@@ -8,8 +8,6 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const locales = ['en', 'ja'];
-
 const config = {
     entry: {
         server: './server.ts'
@@ -20,7 +18,6 @@ const config = {
     },
     target: 'node',
     externals: [/(node_modules|main\..*\.js)/],
-    // externals: [nodeExternals()],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js'
@@ -41,6 +38,8 @@ const config = {
         ), new webpack.ContextReplacementPlugin(/(.+)?express(\\|\/)(.+)?/, path.join(__dirname, 'src'), {})
     ]
 };
+
+const locales = ['en', 'ja'];
 
 for (let i = 0; i < locales.length; i++) {
     config.resolve.alias[`main.server.${locales[i].toLowerCase()}`] = path.join(__dirname, 'dist', 'server', locales[i].toLowerCase(), 'main.bundle.js')
