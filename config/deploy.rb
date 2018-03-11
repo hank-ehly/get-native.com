@@ -7,7 +7,7 @@ set :deploy_to, "/var/www/#{fetch(:application)}/#{fetch(:stage)}"
 set :keep_releases, 5
 
 set :default_env, {
-        NODE_ENV: fetch(:stage)
+        NODE_ENV: fetch(:stage).to_s
 }
 
 server '139.162.114.38',
@@ -18,17 +18,6 @@ server '139.162.114.38',
                auth_methods: %w(publickey)
        }
 
-def short_stage_name
-    stages_map = {production: 'prod', staging: 'stg'}
-    key = fetch(:stage).to_sym
-
-    if stages_map.key?(key)
-        stages_map[key]
-    else
-        raise CommandError.new('An error that should abort and rollback deployment')
-    end
-end
-
 namespace :deploy do
     after :updated, :build do
         on roles(:web) do
@@ -36,14 +25,10 @@ namespace :deploy do
                 execute :npm, '--production=false', 'install'
 
                 execute :mkdir, 'dist' if test('[ ! -d dist ]')
-                execute :npm, :run, :build, '--', fetch(:stage)
+                execute :npm, :run, :build, '--', fetch(:stage).to_s
 
                 execute :npm, :run, 'webpack', '--', '--config', 'webpack.server.config.js'
-                execute :npm, :run, ['serve', 'ssr', short_stage_name].join(':')
-            end
-
-            %w(npm:install npm:build npm:webpack npm:ssr).each do |t|
-                invoke t
+                execute :npm, :run, ['serve', 'ssr', fetch(:stage).to_s].join(':')
             end
         end
     end
