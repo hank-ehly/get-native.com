@@ -52,10 +52,14 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     video: Video = null;
     video$: Observable<Video> = this.route.data.pluck('video');
 
-    constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
-                private facebook: FacebookService, private meta: Meta,
-                @Inject(LOCALE_ID) private localeId: string, private googleAnalyticsEventService: GoogleAnalyticsEventsService,
-                @Inject(PLATFORM_ID) private platformId: Object, private titleService: Title) {
+    constructor(private logger: Logger,
+                private navbar: NavbarService,
+                private http: HttpService,
+                private route: ActivatedRoute,
+                private facebook: FacebookService,
+                private googleAnalyticsEventService: GoogleAnalyticsEventsService,
+                @Inject(LOCALE_ID) private localeId: string,
+                @Inject(PLATFORM_ID) private platformId: Object) {
     }
 
     ngOnInit() {
@@ -76,20 +80,15 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 this.video = v;
                 this.liked = v.liked;
                 this.likeCount = v.like_count;
-                const pictureUrl = `https://i.ytimg.com/vi/${v.youtube_video_id}/maxresdefault.jpg`;
-                this.meta.updateTag({content: pictureUrl}, `name='og:image'`);
-                this.meta.updateTag({content: pictureUrl}, `name='og:image:url'`);
-                this.meta.updateTag({content: pictureUrl}, `name='og:image:secure_url'`);
             });
 
         this.video$
             .pluck('subcategory', 'name')
             .filter(() => isPlatformBrowser(this.platformId))
-            .subscribe((t: string) => {
-                this.emailShareHref = `mailto:?subject=getnative - ${t}&body=${window.location.href}`;
-                this.twitterShareHref = `https://twitter.com/intent/tweet?text=getnative - ${t}&url=${window.location.href}`;
-                this.navbar.title$.next(t);
-                this.titleService.setTitle('getnative | ' + t);
+            .subscribe((name: string) => {
+                this.emailShareHref = `mailto:?subject=getnative - ${name}&body=${window.location.href}`;
+                this.twitterShareHref = `https://twitter.com/intent/tweet?text=getnative - ${name}&url=${window.location.href}`;
+                this.navbar.title$.next(name);
             });
 
         this.likedChange$

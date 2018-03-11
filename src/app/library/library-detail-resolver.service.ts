@@ -1,5 +1,6 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { HttpParams } from '@angular/common/http';
 
 import { GNRequestOptions } from '../core/http/gn-request-options';
@@ -10,6 +11,7 @@ import { Entities } from '../core/entities/entities';
 import { APIHandle } from '../core/http/api-handle';
 import { Entity } from '../core/entities/entity';
 import { Logger } from '../core/logger/logger';
+import { Video } from '../core/entities/video';
 
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
@@ -21,7 +23,9 @@ export class LibraryDetailResolverService implements Resolve<Entity | Entities<E
                 private lang: LangService,
                 @Inject(LOCALE_ID) private localeId: string,
                 private http: HttpService,
-                private logger: Logger) {
+                private logger: Logger,
+                private meta: Meta,
+                private titleService: Title) {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Entity | Entities<Entity>> {
@@ -43,7 +47,16 @@ export class LibraryDetailResolverService implements Resolve<Entity | Entities<E
             options.params = params.set('lang', this.lang.languageForLocaleId(this.localeId).code);
         }
 
-        return this.http.request(APIHandle.VIDEO, options);
+        return this.http.request(APIHandle.VIDEO, options).do(this.updateMetaWithVideo.bind(this));
+    }
+
+    private updateMetaWithVideo(video: Video): void {
+        const imageUrl = `https://i.ytimg.com/vi/${video.youtube_video_id}/maxresdefault.jpg`;
+        this.meta.updateTag({content: imageUrl}, `name='og:image'`);
+        this.meta.updateTag({content: imageUrl}, `name='og:image:url'`);
+        this.meta.updateTag({content: imageUrl}, `name='og:image:secure_url'`);
+
+        this.titleService.setTitle('getnative | ' + video.subcategory.name);
     }
 
 }
