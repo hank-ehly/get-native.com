@@ -7,7 +7,6 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { environment } from '../environments/environment';
 
 import { ConfirmEmailResolver } from './core/auth/confirm-email-resolver.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -46,28 +45,30 @@ import { PasswordResetCompleteComponent } from './password-reset/password-reset-
 import { PasswordResetGuard } from './password-reset/password-reset.guard';
 import { LibraryDetailResolverService } from './library/library-detail-resolver.service';
 import { OAuthGuard } from './core/auth/oauth.guard';
-
-import { MetaGuard } from '@ngx-meta/core';
+import { MetaGuard } from './core/meta.guard';
+import { TitleGuard } from './core/title.guard';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
     {
-        path: '', canActivate: [AuthGuard, MetaGuard], component: HomeComponent, data: {
-            meta: {
-                title: 'default.title',
-                override: true
-            },
-            hideNavbarTitle: true,
-            state: 'home'
+        path: '', canActivate: [AuthGuard, TitleGuard, MetaGuard], component: HomeComponent, data: {
+        title: 'default.title', hideNavbarTitle: true, overrideTitle: true, meta: {
+            'og:image:width': 1200,
+            'og:image:height': 630,
+            'og:image': environment.googleStorageUrl + '/assets/images/og.jpg',
+            'og:image:url': environment.googleStorageUrl + '/assets/images/og.jpg',
+            'og:image:secure_url': environment.googleStorageUrl + '/assets/images/og.jpg',
+            'twitter:image:src': environment.googleStorageUrl + '/assets/images/og.png',
+            'twitter:description': 'default.description'
         }
+    }
     },
     {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [DashboardGuard, MetaGuard, OAuthGuard],
+        canActivate: [DashboardGuard, TitleGuard, MetaGuard, OAuthGuard],
         data: {
-            meta: {
-                title: 'dashboard.title'
-            },
+            title: 'dashboard.title',
             showToolbar: true,
             showNavbarSearchIcon: false,
             state: 'dashboard'
@@ -77,59 +78,61 @@ const routes: Routes = [
         path: 'login', component: LoginComponent, outlet: 'modal'
     },
     {
-        path: 'settings', component: SettingsComponent, canActivateChild: [AuthGuard, MetaGuard], data: {state: 'settings'}, children: [
+        path: 'settings',
+        component: SettingsComponent,
+        canActivateChild: [AuthGuard, TitleGuard, MetaGuard],
+        data: {state: 'settings'},
+        children: [
             {
                 path: '', component: GeneralComponent, data: {
-                    meta: {
-                        title: 'settings.general.title'
-                    },
-                    showToolbar: true,
-                    state: 'settings-general'
-                }
+                title: 'settings.general.title',
+                showToolbar: true,
+                state: 'settings-general'
+            }
             },
             {
                 path: 'notifications', component: NotificationsComponent, data: {
-                    meta: {
-                        title: 'settings.notification.title'
-                    },
-                    showToolbar: true,
-                    state: 'settings-notification'
-                }
+                title: 'settings.notification.title',
+                showToolbar: true,
+                state: 'settings-notification'
+            }
             },
             {
                 path: 'security', component: SecurityComponent, data: {
-                    meta: {
-                        title: 'settings.security.title'
-                    },
-                    showToolbar: true,
-                    state: 'settings-security'
-                }
+                title: 'settings.security.title',
+                showToolbar: true,
+                state: 'settings-security'
+            }
             },
             {
                 path: 'activity', component: ActivityComponent, data: {
-                    meta: {
-                        title: 'settings.activity.title'
-                    },
-                    showToolbar: true,
-                    state: 'settings-activity'
-                }
+                title: 'settings.activity.title',
+                showToolbar: true,
+                state: 'settings-activity'
+            }
             }
         ]
     },
     {
-        path: 'library', component: LibraryComponent, canActivate: [MetaGuard], data: {
-            meta: {
-                title: 'library.title'
-            },
-            showToolbar: true,
-            showNavbarSearchIcon: false,
-            state: 'library'
-        }
+        path: 'library', component: LibraryComponent, canActivate: [TitleGuard, MetaGuard], data: {
+        title: 'library.title',
+        meta: {
+            'og:image': environment.googleStorageUrl + '/assets/images/feature01.jpg',
+            'og:image:url': environment.googleStorageUrl + '/assets/images/feature01.jpg',
+            'og:image:secure_url': environment.googleStorageUrl + '/assets/images/feature01.jpg',
+            'twitter:image:src': environment.googleStorageUrl + '/assets/images/feature01.png',
+            'og:image:width': 435,
+            'og:image:height': 270
+        },
+        showToolbar: true,
+        showNavbarSearchIcon: false,
+        state: 'library'
+    }
     },
     {
         path: 'library/:id',
         component: LibraryDetailComponent,
-        canActivate: [MetaGuard],
+        canActivate: [TitleGuard, MetaGuard],
         resolve: {
             video: LibraryDetailResolverService
         },
@@ -139,82 +142,76 @@ const routes: Routes = [
         }
     },
     {
-        path: 'study', component: StudyComponent, canActivateChild: [AuthGuard, MetaGuard], canDeactivate: [StudySessionGuard], children: [
+        path: 'study',
+        component: StudyComponent,
+        canActivateChild: [AuthGuard, TitleGuard, MetaGuard],
+        canDeactivate: [StudySessionGuard],
+        children: [
             {
                 path: '', component: TransitionComponent
             },
             {
                 path: 'listening', resolve: {video: ListeningResolver}, component: ListeningComponent, data: {
-                    meta: {
-                        title: 'study.listening.title'
-                    }
-                }
+                title: 'study.listening.title'
+            }
             },
             {
                 path: 'shadowing', component: ShadowingComponent, data: {
-                    meta: {
-                        title: 'study.shadowing.title'
-                    }
-                }
+                title: 'study.shadowing.title'
+            }
             },
             {
                 path: 'speaking', component: SpeakingComponent, data: {
-                    meta: {
-                        title: 'study.speaking.title'
-                    }
-                }
+                title: 'study.speaking.title'
+            }
             },
             {
                 path: 'writing',
                 component: WritingComponent,
                 resolve: {question: WritingResolver},
                 data: {
-                    meta: {
-                        title: 'study.writing.title'
-                    }
+                    title: 'study.writing.title'
                 }
             },
             {
                 path: 'results', component: ResultsComponent, resolve: {stats: ResultsResolver}, data: {
-                    meta: {
-                        title: 'study.results.title'
-                    }
-                }
+                title: 'study.results.title'
+            }
             }
         ]
     },
     {
         path: 'help', component: HelpComponent, children: [
-            {
-                path: '',
-                component: HelpMainComponent,
-                canActivate: [MetaGuard],
-                data: {
-                    showToolbar: true,
-                    meta: {title: 'help.title'}
-                }
-            },
-            {
-                path: ':id',
-                component: HelpArticleComponent,
-                canActivate: [MetaGuard],
-                data: {showToolbar: true}
+        {
+            path: '',
+            component: HelpMainComponent,
+            canActivate: [TitleGuard, MetaGuard],
+            data: {
+                showToolbar: true,
+                title: 'help.title'
             }
-        ]
-    },
-    {
-        path: 'privacy', component: PrivacyComponent, canActivate: [MetaGuard], data: {
-            meta: {
-                title: 'privacy.title'
+        },
+        {
+            path: ':id',
+            component: HelpArticleComponent,
+            canActivate: [TitleGuard, MetaGuard],
+            data: {
+                showToolbar: true
             }
         }
+    ]
     },
     {
-        path: 'tos', component: TOSComponent, canActivate: [MetaGuard], data: {
-            meta: {
-                title: 'tos.title'
-            }
-        }
+        path: 'privacy', component: PrivacyComponent, canActivate: [TitleGuard, MetaGuard], data: {
+        title: 'privacy.title'
+
+    }
+    },
+    {
+        path: 'tos', component: TOSComponent, canActivate: [TitleGuard, MetaGuard], data: {
+        title: 'tos.title'
+
+    }
     },
     {
         path: 'confirm_email', resolve: {_: ConfirmEmailResolver}, component: DashboardComponent
@@ -224,22 +221,20 @@ const routes: Routes = [
     },
     {
         path: 'reset_password', component: PasswordResetComponent, resolve: {token: PasswordResetResolverService}, data: {
-            showToolbar: false,
-            showNavbarSearchIcon: false
-        }, canDeactivate: [PasswordResetGuard]
+        showToolbar: false,
+        showNavbarSearchIcon: false
+    }, canDeactivate: [PasswordResetGuard]
     },
     {
         path: 'reset_password_complete', component: PasswordResetCompleteComponent, data: {
-            showToolbar: false,
-            showNavbarSearchIcon: false
-        }
+        showToolbar: false,
+        showNavbarSearchIcon: false
+    }
     },
     {
         path: '**', component: PageNotFoundComponent, data: {
-            meta: {
-                title: 'pageNotFound.title'
-            }
-        }
+        title: 'pageNotFound.title'
+    }
     }
 ];
 
