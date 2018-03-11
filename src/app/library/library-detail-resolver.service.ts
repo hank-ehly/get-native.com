@@ -1,6 +1,6 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
 import { HttpParams } from '@angular/common/http';
 
 import { GNRequestOptions } from '../core/http/gn-request-options';
@@ -52,11 +52,19 @@ export class LibraryDetailResolverService implements Resolve<Entity | Entities<E
 
     private updateMetaWithVideo(video: Video): void {
         const imageUrl = `https://i.ytimg.com/vi/${video.youtube_video_id}/maxresdefault.jpg`;
-        this.meta.updateTag({content: imageUrl}, `name='og:image'`);
-        this.meta.updateTag({content: imageUrl}, `name='og:image:url'`);
-        this.meta.updateTag({content: imageUrl}, `name='og:image:secure_url'`);
+        this.updateOrAdd({content: imageUrl, name: 'og:image'}, `name='og:image'`);
+        this.updateOrAdd({content: imageUrl, name: 'og:image:url'}, `name='og:image:url'`);
+        this.updateOrAdd({content: imageUrl, name: 'og:image:secure_url'}, `name='og:image:secure_url'`);
 
         this.titleService.setTitle('getnative | ' + video.subcategory.name);
+    }
+
+    private updateOrAdd(tag: MetaDefinition, selector?: string): void {
+        if (this.meta.getTag(selector)) {
+            this.meta.updateTag(tag, selector);
+        } else {
+            this.meta.addTag(tag);
+        }
     }
 
 }
