@@ -91,7 +91,9 @@ export class UserService {
 
     logout(): void {
         this.logger.debug(this, 'logout');
-        _.each([kAuthToken, kAuthTokenExpire, kCurrentUser, kCurrentStudySession, kCurrentStudyLanguage], this.localStorage.removeItem);
+        _.each([kAuthToken, kAuthTokenExpire, kCurrentUser, kCurrentStudySession, kCurrentStudyLanguage], key => {
+            this.localStorage.removeItem(key);
+        });
         this.logout$.next();
     }
 
