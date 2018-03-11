@@ -25,7 +25,7 @@
             "interpreter": "/usr/local/nodejs-binary/bin/node",
             "env": {
                 "NODE_ENV": "staging",
-                "PORT": "4005"
+                "PORT": 4005
             }
         },
         {
@@ -40,7 +40,7 @@
             "interpreter": "/usr/local/nodejs-binary/bin/node",
             "env": {
                 "NODE_ENV": "production",
-                "PORT": "4000"
+                "PORT": 4000
             }
         }
     ]
