@@ -17,6 +17,7 @@ import { HttpService } from '../http/http.service';
 import { APIHandle } from '../http/api-handle';
 import { Logger } from '../logger/logger';
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
@@ -58,11 +59,21 @@ export class StudySessionService {
         return name;
     }
 
-    private timeLeftSource: Subject<number>;
+    get secondsRemaining(): number {
+        return this.timeLeftSource.getValue();
+    }
+
+    private timeLeftSource: BehaviorSubject<number>;
     timeLeftEmitted$: Observable<number>;
 
     private timerStoppedSource: Subject<void>;
     timerStoppedEmitted$: Observable<void>;
+
+    private sectionTimerPausedSource: Subject<void>;
+    sectionTimerPausedEmitted$: Observable<void>;
+
+    private sectionTimerResumedSource: Subject<void>;
+    sectionTimerResumedEmitted$: Observable<void>;
 
     private sectionTimer: NodeJS.Timer;
 
@@ -71,12 +82,18 @@ export class StudySessionService {
         this.timerStoppedSource = new Subject<void>();
         this.timerStoppedEmitted$ = this.timerStoppedSource.asObservable();
 
-        this.timeLeftSource = new Subject<number>();
+        this.timeLeftSource = new BehaviorSubject<number>(0);
         this.timeLeftEmitted$ = this.timeLeftSource.asObservable().takeUntil(this.timerStoppedEmitted$);
+
+        this.sectionTimerPausedSource = new Subject<void>();
+        this.sectionTimerPausedEmitted$ = this.sectionTimerPausedSource.asObservable();
+
+        this.sectionTimerResumedSource = new Subject<void>();
+        this.sectionTimerResumedEmitted$ = this.sectionTimerResumedSource.asObservable();
     }
 
-    startSectionTimer(): void {
-        let seconds = _.floor(this.current.session.study_time / 4);
+    startSectionTimer(secondsRemaining?: number): void {
+        let seconds = secondsRemaining || _.floor(this.current.session.study_time / 4);
         this.logger.debug(this, 'startSectionTimer', seconds);
 
         seconds--;
@@ -97,6 +114,18 @@ export class StudySessionService {
         this.logger.debug(this, 'stop section timer');
         clearInterval(this.sectionTimer);
         this.timerStoppedSource.next();
+    }
+
+    pauseSectionTimer(): void {
+        this.logger.debug(this, 'pause section timer');
+        clearInterval(this.sectionTimer);
+        this.sectionTimerPausedSource.next();
+    }
+
+    resumeSectionTimer(): void {
+        this.logger.debug(this, 'resume section timer');
+        this.startSectionTimer(this.secondsRemaining);
+        this.sectionTimerResumedSource.next();
     }
 
     resetSectionTimer(): void {

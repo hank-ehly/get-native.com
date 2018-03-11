@@ -20,7 +20,7 @@ import { UserService } from './core/user/user.service';
 import { routerTransition } from './router.animations';
 import { DOMService } from './core/dom/dom.service';
 import { APIHandle } from './core/http/api-handle';
-import { translateMetaKey } from './meta-factory';
+import { translateKey } from './meta-factory';
 import { Logger } from './core/logger/logger';
 import { User } from './core/entities/user';
 
@@ -206,9 +206,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private initNavbarTitle(): void {
         this.routeDataEmitted$
             .takeUntil(this.OnDestroy$)
-            .map((data: any) => data.hideNavbarTitle ? {meta: {title: ''}} : data)
-            .pluck('meta', 'title')
-            .map((key: string) => translateMetaKey(this.lang.languageForLocaleId(this.localeId).code, key))
+            .map((data: any) => data.hideNavbarTitle ? {title: ''} : data)
+            .pluck('title')
+            .map((key: string) => translateKey(this.lang.languageForLocaleId(this.localeId).code, key))
             .subscribe(t => this.navbar.title$.next(t));
     }
 

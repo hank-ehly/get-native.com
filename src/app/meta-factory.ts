@@ -6,41 +6,10 @@
  */
 
 import { LanguageCode } from './core/typings/language-code';
-import { LangService } from './core/lang/lang.service';
-import { environment } from '../environments/environment';
 
-import { MetaLoader, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
 import * as _ from 'lodash';
 
-export function metaFactory(localeId: string, lang: LangService): MetaLoader {
-    return new MetaStaticLoader({
-        callback: (key: string) => translateMetaKey(lang.languageForLocaleId(localeId).code, key),
-        pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
-        applicationName: 'getnative',
-        pageTitleSeparator: ' | ',
-        applicationUrl: 'https://getnativelearning.com',
-        defaults: {
-            title: 'default.title',
-            description: 'default.description',
-            'og:image': environment.googleStorageUrl + '/assets/images/og.png', // todo: i18n && change per page
-            'og:image:url': environment.googleStorageUrl + '/assets/images/og.png', // todo: i18n && change per page
-            'og:image:secure_url': environment.googleStorageUrl + '/assets/images/og.png', // todo: i18n && change per page
-            'og:image:type': 'image/png',
-            'og:image:width': '1200', // todo: change per page
-            'og:image:height': '630', // todo: change per page
-            'og:locale': 'en_US',
-            'og:locale:alternate': 'en_US,ja_JP',
-            'og:site_name': 'getnative',
-            'og:type': 'website',
-            'og:url': 'https://getnativelearning.com', // todo: i18n & change per page
-            'twitter:title': 'getnative', // todo: change per page (library detail)
-            'twitter:description': 'default.description',
-            'twitter:image:src': environment.googleStorageUrl + '/assets/images/og.png' // todo: change per page
-        }
-    });
-}
-
-const metaKeyValues = {
+const translationConfig = {
     en: {
         'default': {
             title: 'getnative. Break the barrier between "proficient" and "native-like."',
@@ -67,6 +36,11 @@ const metaKeyValues = {
         },
         library: {
             title: 'Library'
+        },
+        libraryDetail: {
+            buttons: {
+                back: 'Back'
+            }
         },
         study: {
             listening: {
@@ -124,6 +98,11 @@ const metaKeyValues = {
         library: {
             title: 'ライブラリ'
         },
+        libraryDetail: {
+            buttons: {
+                back: '戻る'
+            }
+        },
         study: {
             listening: {
                 title: 'リスニング'
@@ -156,6 +135,6 @@ const metaKeyValues = {
     }
 };
 
-export function translateMetaKey(code: LanguageCode, key: string): string {
-    return <string>_.defaultTo(_.get(metaKeyValues, [code, key].join('.')), key);
+export function translateKey(code: LanguageCode, key: string): string {
+    return <string>_.defaultTo(_.get(translationConfig, [code, key].join('.')), key);
 }

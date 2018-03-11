@@ -7,6 +7,7 @@
 
 import { Component, OnInit, OnDestroy, Inject, LOCALE_ID, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { GoogleAnalyticsEventsService } from '../core/google-analytics-events.service';
 import { QueueButtonState } from '../core/navbar/queue-button-state';
@@ -19,7 +20,6 @@ import { APIHandle } from '../core/http/api-handle';
 import { Logger } from '../core/logger/logger';
 import { Video } from '../core/entities/video';
 
-import { MetaService } from '@ngx-meta/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -31,6 +31,7 @@ import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/share';
 import * as _ from 'lodash';
 import { isPlatformBrowser } from '@angular/common';
+import { translateKey } from '../meta-factory';
 
 @Component({
     selector: 'gn-library-detail',
@@ -52,12 +53,9 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
     video$: Observable<Video> = this.route.data.pluck('video');
 
     constructor(private logger: Logger, private navbar: NavbarService, private http: HttpService, private route: ActivatedRoute,
-                private facebook: FacebookService, private meta: MetaService,
+                private facebook: FacebookService, private meta: Meta,
                 @Inject(LOCALE_ID) private localeId: string, private googleAnalyticsEventService: GoogleAnalyticsEventsService,
-                @Inject(PLATFORM_ID) private platformId: Object) {
-        this.route.data.subscribe(x => {
-            this.logger.debug(this, x);
-        });
+                @Inject(PLATFORM_ID) private platformId: Object, private titleService: Title) {
     }
 
     ngOnInit() {
@@ -69,7 +67,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
             }
         };
 
-        this.navbar.backButtonTitle$.next('Back');
+        this.navbar.backButtonTitle$.next(translateKey(this.localeId, 'libraryDetail.buttons.back'));
         this.navbar.studyOptionsVisible$.next(true);
 
         this.video$
@@ -79,9 +77,9 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 this.liked = v.liked;
                 this.likeCount = v.like_count;
                 const pictureUrl = `https://i.ytimg.com/vi/${v.youtube_video_id}/maxresdefault.jpg`;
-                this.meta.setTag('og:image', pictureUrl);
-                this.meta.setTag('og:image:url', pictureUrl);
-                this.meta.setTag('og:image:secure_url', pictureUrl);
+                this.meta.updateTag({content: pictureUrl}, `name='og:image'`);
+                this.meta.updateTag({content: pictureUrl}, `name='og:image:url'`);
+                this.meta.updateTag({content: pictureUrl}, `name='og:image:secure_url'`);
             });
 
         this.video$
@@ -91,7 +89,7 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
                 this.emailShareHref = `mailto:?subject=getnative - ${t}&body=${window.location.href}`;
                 this.twitterShareHref = `https://twitter.com/intent/tweet?text=getnative - ${t}&url=${window.location.href}`;
                 this.navbar.title$.next(t);
-                this.meta.setTitle(t);
+                this.titleService.setTitle('getnative | ' + t);
             });
 
         this.likedChange$

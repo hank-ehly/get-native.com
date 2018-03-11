@@ -30,6 +30,8 @@ import { ImageService } from './image.service';
 import { NotificationService } from './notification/notification.service';
 import { OAuthGuard } from './auth/oauth.guard';
 import { GoogleAnalyticsEventsService } from './google-analytics-events.service';
+import { MetaGuard } from './meta.guard';
+import { TitleGuard } from './title.guard';
 
 @NgModule({
     imports: [
@@ -57,7 +59,9 @@ import { GoogleAnalyticsEventsService } from './google-analytics-events.service'
         ImageService,
         NotificationService,
         OAuthGuard,
-        GoogleAnalyticsEventsService
+        GoogleAnalyticsEventsService,
+        MetaGuard,
+        TitleGuard
     ]
 })
 export class CoreModule {

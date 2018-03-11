@@ -22,14 +22,16 @@ export class StudySessionGuard implements CanDeactivate<StudyComponent> {
                   nextState?: RouterStateSnapshot): boolean {
         this.logger.debug(this, 'canDeactivate', nextState);
 
-        if (!component.flags.isModalVisible) {
-            component.quitURL = nextState.url;
-            component.displayConfirmationModal();
-            return false;
+        if (component.flags.isModalVisible || currentState.url.indexOf('/study/results') === 0) {
+            this.session.end();
+
+            return true;
         }
 
-        this.session.end();
-        return true;
+        component.quitURL = nextState.url;
+        component.displayConfirmationModal();
+
+        return false;
     }
 
 }
