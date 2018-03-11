@@ -152,11 +152,19 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit, OnDestroy, A
         this.hideTooltip(400);
     }
 
+    play(): void {
+        this.player.playVideo();
+    }
+
+    pause(): void {
+        this.player.pauseVideo();
+    }
+
     private togglePlayback(): void {
-        if (this.player.api.getPlayerState() === 1) {
-            this.player.api.pauseVideo();
+        if (this.player.playerState === 1) {
+            this.player.pauseVideo();
         } else {
-            this.player.api.playVideo();
+            this.player.playVideo();
         }
     }
 

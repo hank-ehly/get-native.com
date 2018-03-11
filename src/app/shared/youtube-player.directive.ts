@@ -7,7 +7,7 @@ import { LangService } from '../core/lang/lang.service';
 import { Logger } from '../core/logger/logger';
 
 import * as _ from 'lodash';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
     selector: '[gnYoutubePlayer]'
@@ -113,6 +113,18 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy,
     seekTo(value: number): void {
         if (_.has(this, 'api.seekTo')) {
             this.api.seekTo(_.floor(value), true);
+        }
+    }
+
+    playVideo(): void {
+        if (_.has(this, 'api.playVideo')) {
+            this.api.playVideo();
+        }
+    }
+
+    pauseVideo(): void {
+        if (_.has(this, 'api.pauseVideo')) {
+            this.api.pauseVideo();
         }
     }
 
