@@ -7,7 +7,7 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { Logger } from '../../core/logger/logger';
+import { Logger } from '../core/logger/logger';
 
 @Component({
     selector: 'gn-page-not-found',

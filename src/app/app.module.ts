@@ -21,10 +21,13 @@ import { SettingsModule } from './settings/settings.module';
 import { StudyModule } from './study/study.module';
 import { LogLevelToken, LogLevelValue } from './core/logger/log-level';
 import { Logger } from './core/logger/logger';
-import { StaticPagesModule } from './static-pages/static-pages.module';
-import { LangService } from './core/lang/lang.service';
 import { PasswordResetModule } from './password-reset/password-reset.module';
 import { HelpModule } from './help/help.module';
+import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MobileOverlayComponent } from './mobile-overlay/mobile-overlay.component';
+import { TOSComponent } from './tos/tos.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 @NgModule({
     imports: [
@@ -38,12 +41,16 @@ import { HelpModule } from './help/help.module';
         LibraryModule,
         SettingsModule,
         StudyModule,
-        StaticPagesModule,
         HelpModule,
         PasswordResetModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        HomeComponent,
+        PageNotFoundComponent,
+        PrivacyComponent,
+        TOSComponent,
+        MobileOverlayComponent
     ],
     providers: [
         {provide: LogLevelToken, useValue: environment.production ? LogLevelValue.OFF : LogLevelValue.DEBUG},

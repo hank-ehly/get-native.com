@@ -6,9 +6,9 @@
  */
 
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-
-import { Logger } from '../../core/logger/logger';
 import { isPlatformBrowser } from '@angular/common';
+
+import { Logger } from '../core/logger/logger';
 
 @Component({
     selector: 'gn-privacy',
