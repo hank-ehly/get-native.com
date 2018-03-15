@@ -31,6 +31,10 @@ export class VideoPanelComponent {
         isBeginTarget: false
     };
 
+    get panelTitle(): string {
+        return this.video.speaker.name + ' - ' + this.video.subcategory.name;
+    }
+
     onBegin(): void {
         this.begin.emit({video_id: this.video.id, study_time: this.time * 60});
         this.flags.isBeginTarget = true;
