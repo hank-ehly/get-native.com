@@ -5,8 +5,7 @@
  * Created by henryehly on 2016/11/10.
  */
 
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 import { Logger } from '../core/logger/logger';
 
@@ -17,17 +16,11 @@ import { Logger } from '../core/logger/logger';
 })
 export class TOSComponent implements OnInit {
 
-    constructor(private logger: Logger, @Inject(PLATFORM_ID) private platformId: Object) {
+    constructor(private logger: Logger) {
     }
 
     ngOnInit(): void {
         this.logger.debug(this, 'OnInit');
-    }
-
-    jumpTo(fragment: string) {
-        if (isPlatformBrowser(this.platformId)) {
-            document.querySelector('#' + fragment).scrollIntoView();
-        }
     }
 
 }
