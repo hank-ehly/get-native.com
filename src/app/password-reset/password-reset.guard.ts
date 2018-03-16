@@ -18,15 +18,12 @@ export class PasswordResetGuard implements CanDeactivate<PasswordResetComponent>
             return true;
         } else if (component.canDeactivate) {
             return true;
-        } else if (component.model.password || component.model.confirm) {
-            if (isPlatformBrowser(this.platformId)) {
-                if (window.confirm('You have unsaved data on this page. Exiting will erase this data.')) {
-                    this.hasBeenConfirmed = true;
-                    return true;
-                } else {
-                    return false;
-                }
+        } else if ((component.model.password || component.model.confirm) && isPlatformBrowser(this.platformId)) {
+            if (window.confirm('You have unsaved data on this page. Exiting will erase this data.')) {
+                this.hasBeenConfirmed = true;
+                return true;
             }
+            return false;
         }
         return true;
     }

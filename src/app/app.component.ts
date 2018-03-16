@@ -74,8 +74,7 @@ export class AppComponent implements OnInit, OnDestroy {
     showNavbarSearchIconEmitted$: Observable<boolean>;
     fbConfig = {appId: environment.facebookAppId, autoLogAppEvents: true, xfbml: false, cookie: false, version: 'v2.10'};
 
-    @HostBinding('style.margin-bottom')
-    get styleMarginBottom(): string {
+    @HostBinding('style.margin-bottom') get styleMarginBottom(): string {
         return (this.user.isAuthenticated() ? 50 : (240 + 336)) + 'px';
     }
 
@@ -115,18 +114,15 @@ export class AppComponent implements OnInit, OnDestroy {
         this.dom.alertMessage$.takeUntil(this.OnDestroy$).subscribe((m) => this.alertMessage = m);
     }
 
-    @HostListener('window:storage', ['$event'])
-    onStorageEvent(e: StorageEvent) {
+    @HostListener('window:storage', ['$event']) onStorageEvent(e: StorageEvent) {
         this.localStorage.broadcastStorageEvent(e);
     }
 
-    @HostListener('window:load')
-    onLoad() {
+    @HostListener('window:load') onLoad() {
         this.displayMobileOverlayIfNeeded();
     }
 
-    @HostListener('window:resize')
-    onResize() {
+    @HostListener('window:resize') onResize() {
         this.displayMobileOverlayIfNeeded();
     }
 
@@ -140,12 +136,13 @@ export class AppComponent implements OnInit, OnDestroy {
         this.observeLogout();
         this.initNavbarTitle();
 
-        this.router.events
+        const $browserNavigationEnd = this.router.events
             .takeUntil(this.OnDestroy$)
             .filter(e => e instanceof NavigationEnd)
-            .filter(() => isPlatformBrowser(this.platformId))
-            .filter(() => _.has(window, 'ga'))
-            .subscribe(this.sendPageView.bind(this));
+            .filter(() => isPlatformBrowser(this.platformId));
+
+        $browserNavigationEnd.subscribe(this.sendPageView.bind(this));
+        $browserNavigationEnd.subscribe(this.scrollToTop.bind(this));
     }
 
     ngOnDestroy(): void {
@@ -232,9 +229,23 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     private sendPageView(event: NavigationEnd) {
-        this.logger.debug(this, 'Sending pageview', event.urlAfterRedirects);
-        ga('set', 'page', event.urlAfterRedirects);
-        ga('send', 'pageview');
+        if (_.has(window, 'ga')) {
+            this.logger.debug(this, 'Sending pageview', event.urlAfterRedirects);
+            ga('set', 'page', event.urlAfterRedirects);
+            ga('send', 'pageview');
+        }
+    }
+
+    private scrollToTop(e): void {
+        this.logger.debug(this, e);
+
+        const urlTree = this.router.parseUrl(e.url);
+
+        if (urlTree.fragment) {
+            document.querySelector('#' + urlTree.fragment).scrollIntoView();
+        } else {
+            window.scrollTo(0, 0);
+        }
     }
 
 }

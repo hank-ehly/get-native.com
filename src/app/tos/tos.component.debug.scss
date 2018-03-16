@@ -1,4 +1,4 @@
-@import "../../../styles/core";
+@import "../../styles/core";
 
 .list      { @include debug-background-color($dc01); }
 .header    { @include debug-background-color($dc02); }

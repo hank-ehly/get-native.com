@@ -6,16 +6,16 @@
  */
 
 import { Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
-import { LoginModalService } from '../../login/login-modal.service';
-import { LoginComponent } from '../../login/login.component';
+import { LoginModalService } from '../login/login-modal.service';
+import { LoginComponent } from '../login/login.component';
+import { Logger } from '../core/logger/logger';
 
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs/Subject';
 import * as _ from 'lodash';
-import { Logger } from '../../core/logger/logger';
-import { isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'gn-home',

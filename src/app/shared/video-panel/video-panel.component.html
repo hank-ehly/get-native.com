@@ -1,7 +1,7 @@
 <div class="video-panel" [ngClass]="{'video-panel--disabled': disabled}">
     <img [src]="'https://i.ytimg.com/vi/' + video?.youtube_video_id + '/hqdefault.jpg'" alt="video-thumbnail" class="video-panel__img">
 
-    <div class="video-panel__overlay" [ngClass]="{'video-panel__overlay_link': !controls}" (click)="onClickOverlay()">
+    <div class="video-panel__overlay" [ngClass]="{'video-panel__overlay_link': !controls}" (click)="onClickOverlay()" [title]="panelTitle">
         <div class="controls" *ngIf="controls || flags.isBeginTarget">
             <div class="controls__row">
                 <div class="controls__minute-button-frame">
