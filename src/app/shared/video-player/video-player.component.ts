@@ -1,6 +1,6 @@
 /**
  * video-player.component
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2016/12/07.
  */

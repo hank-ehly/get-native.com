@@ -1,6 +1,6 @@
 /**
  * video-search.component
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2017/02/11.
  */

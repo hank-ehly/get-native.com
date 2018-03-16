@@ -1,11 +1,11 @@
 {
-    "name": "getnativelearning.com",
-    "author": "Hank Ehly <admin@getnativelearning.com>",
-    "description": "Source code of getnativelearning.com user website",
+    "name": "getnative.org",
+    "author": "Hank Ehly <admin@getnative.org>",
+    "description": "Source code of getnative.org user website",
     "version": "0.0.1",
     "license": "UNLICENSED",
     "repository": {
-        "url": "https://github.com/hank-ehly/getnativelearning.com"
+        "url": "https://github.com/hank-ehly/getnative.org"
     },
     "scripts": {
         "ng": "ng",
@@ -13,8 +13,8 @@
         "start": "ng serve --port 5555",
         "start:ja": "ng serve --port 5555 --aot --locale ja --i18n-format xlf --i18n-file src/locales/messages.ja.xlf --missing-translation error",
         "serve:ssr": "pm2 startOrRestart ecosystem.config.json -i max --only client",
-        "serve:ssr:staging": "pm2 startOrRestart ecosystem.config.json -i max --only stg.getnativelearning.com",
-        "serve:ssr:production": "pm2 startOrRestart ecosystem.config.json -i max --only getnativelearning.com",
+        "serve:ssr:staging": "pm2 startOrRestart ecosystem.config.json -i max --only stg.getnative.org",
+        "serve:ssr:production": "pm2 startOrRestart ecosystem.config.json -i max --only getnative.org",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",

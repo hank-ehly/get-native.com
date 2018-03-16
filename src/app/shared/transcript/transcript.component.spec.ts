@@ -1,6 +1,6 @@
 /**
  * transcript.component.spec
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2016/12/29.
  */

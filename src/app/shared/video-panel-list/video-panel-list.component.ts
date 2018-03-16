@@ -1,6 +1,6 @@
 /**
  * video-panel-list.component
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2017/01/12.
  */
