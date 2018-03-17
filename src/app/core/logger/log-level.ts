@@ -1,6 +1,6 @@
 /**
  * log-level
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2016/12/24.
  */

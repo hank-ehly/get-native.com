@@ -1,7 +1,7 @@
 ///<reference path="../../../../node_modules/rxjs/Observable.d.ts"/>
 /**
  * http.service
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2017/01/29.
  */

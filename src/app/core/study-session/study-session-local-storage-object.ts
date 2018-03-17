@@ -1,6 +1,6 @@
 /**
  * study-session-local-storage-object
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2017/06/08.
  */

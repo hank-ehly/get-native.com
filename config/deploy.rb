@@ -1,7 +1,7 @@
 lock '~> 3.10.1'
 
-set :application, 'getnativelearning.com'
-set :repo_url, 'git@github.com:hank-ehly/getnativelearning.com.git'
+set :application, 'getnative.org'
+set :repo_url, 'git@github.com:hank-ehly/getnative.org.git'
 set :deploy_to, "/var/www/#{fetch(:application)}/#{fetch(:stage)}"
 
 set :keep_releases, 5

@@ -1,6 +1,6 @@
 /**
  * user.service
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2017/02/19.
  */
@@ -16,7 +16,9 @@ import {
     kCurrentStudyLanguage
 } from '../local-storage/local-storage-keys';
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { environment } from '../../../environments/environment';
 import { Language } from '../typings/language';
+import { Languages } from '../lang/languages';
 import { Logger } from '../logger/logger';
 import { User } from '../entities/user';
 
@@ -30,7 +32,6 @@ import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { Languages } from '../lang/languages';
 
 @Injectable()
 export class UserService {
@@ -73,7 +74,7 @@ export class UserService {
         }
 
         if (user.is_silhouette_picture) {
-            user.picture_url = 'https://storage.googleapis.com/getnativelearning.com/assets/images/silhouette-avatar.jpg';
+            user.picture_url = environment.googleStorageUrl + '/assets/images/silhouette-avatar.jpg';
         }
 
         const cache: User = _.defaultTo(this.localStorage.getItem(kCurrentUser), {});

@@ -1,6 +1,6 @@
 /**
  * navbar.component
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2016/11/06.
  */
@@ -11,12 +11,15 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { QueueButtonState } from '../../core/navbar/queue-button-state';
+import { LoginModalService } from '../../login/login-modal.service';
 import { NavbarService } from '../../core/navbar/navbar.service';
+import { LoginComponent } from '../../login/login.component';
 import { UserService } from '../../core/user/user.service';
 import { DOMService } from '../../core/dom/dom.service';
 import { Logger } from '../../core/logger/logger';
 import { User } from '../../core/entities/user';
 
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';
@@ -26,9 +29,7 @@ import 'rxjs/add/operator/mapTo';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/do';
 import * as _ from 'lodash';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap';
-import { LoginModalService } from '../../login/login-modal.service';
-import { LoginComponent } from '../../login/login.component';
+import { environment } from '../../../environments/environment';
 
 const animations = [
     trigger('slideInLeftOutRight', [
@@ -71,14 +72,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     bsModalRef: BsModalRef;
 
     pictureUrl$ = new BehaviorSubject<string>(
-        'https://storage.googleapis.com/getnativelearning.com/assets/images/silhouette-avatar.jpg'
+        environment.googleStorageUrl + '/assets/images/silhouette-avatar.jpg'
     );
 
     queueButtonSaveState = QueueButtonState.SAVE;
     queueButtonRemoveState = QueueButtonState.REMOVE;
 
     hasUnreadNotifications = false;
-    settingsLinkImgSrc = 'https://storage.googleapis.com/getnativelearning.com/assets/images/silhouette-avatar.jpg';
+    settingsLinkImgSrc = environment.googleStorageUrl + '/assets/images/silhouette-avatar.jpg';
 
     @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
         let found = false;

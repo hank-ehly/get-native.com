@@ -3,10 +3,10 @@ export const environment = {
     staging: false,
     development: false,
     name: 'production',
-    apiBaseUrl: 'https://api.getnativelearning.com',
-    facebookLoginUrl: 'https://api.getnativelearning.com/oauth/facebook',
-    twitterLoginUrl: 'https://api.getnativelearning.com/oauth/twitter',
-    googleLoginUrl: 'https://api.getnativelearning.com/oauth/google',
+    apiBaseUrl: 'https://api.getnative.org',
+    facebookLoginUrl: 'https://api.getnative.org/oauth/facebook',
+    twitterLoginUrl: 'https://api.getnative.org/oauth/twitter',
+    googleLoginUrl: 'https://api.getnative.org/oauth/google',
     facebookAppId: '215585858915353',
     googleStorageUrl: 'https://storage.googleapis.com/getnativelearning.com'
 };

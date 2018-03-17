@@ -1104,7 +1104,7 @@
                 <source>Quick Links</source>
                 <target>Quick Links</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">2</context>
                 </context-group>
                 <note priority="1" from="description">terms of service quick links section title</note>
@@ -1113,7 +1113,7 @@
                 <source>Cookies</source>
                 <target>Cookies</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">4</context>
                 </context-group>
                 <note priority="1" from="description">terms of service Cookies quick link title</note>
@@ -1122,7 +1122,7 @@
                 <source>License</source>
                 <target>License</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">5</context>
                 </context-group>
                 <note priority="1" from="description">terms of service License quick link title</note>
@@ -1131,7 +1131,7 @@
                 <source>User Comments</source>
                 <target>User Comments</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">6</context>
                 </context-group>
                 <note priority="1" from="description">terms of service User Comments quick link title</note>
@@ -1140,7 +1140,7 @@
                 <source>Hyperlinking to our Content</source>
                 <target>Hyperlinking to our Content</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">7</context>
                 </context-group>
                 <note priority="1" from="description">terms of service Hyperlinking to our Content quick link title</note>
@@ -1149,7 +1149,7 @@
                 <source>Iframes</source>
                 <target>Iframes</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">8</context>
                 </context-group>
                 <note priority="1" from="description">terms of service Iframes quick link title</note>
@@ -1158,7 +1158,7 @@
                 <source>Content Liability</source>
                 <target>Content Liability</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">9</context>
                 </context-group>
                 <note priority="1" from="description">terms of service Content Liability quick link title</note>
@@ -1167,7 +1167,7 @@
                 <source>Reservation of Rights</source>
                 <target>Reservation of Rights</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">10</context>
                 </context-group>
                 <note priority="1" from="description">terms of service Reservation of Rights quick link title</note>
@@ -1176,7 +1176,7 @@
                 <source>Removal of Links</source>
                 <target>Removal of Links</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">11</context>
                 </context-group>
                 <note priority="1" from="description">terms of service Reservation of Rights quick link title</note>
@@ -1185,7 +1185,7 @@
                 <source>Disclaimer</source>
                 <target>Disclaimer</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">12</context>
                 </context-group>
                 <note priority="1" from="description">terms of service Disclaimer quick link title</note>
@@ -1194,7 +1194,7 @@
                 <source>※ This agreement is based on English as the official text, and translation to Japanese and other languages ​​is only for the convenience of the user. If the content of the English version differs from that of other languages, the content of the English version shall be given priority.</source>
                 <target>※ This agreement is based on English as the official text, and translation to Japanese and other languages ​​is only for the convenience of the user. If the content of the English version differs from that of other languages, the content of the English version shall be given priority.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">15</context>
                 </context-group>
                 <note priority="1" from="description">tos intro section language difference agreement</note>
@@ -1203,7 +1203,7 @@
                 <source>Welcome to getnative!</source>
                 <target>Welcome to getnative!</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">16</context>
                 </context-group>
                 <note priority="1" from="description">tos introduction section header</note>
@@ -1212,7 +1212,7 @@
                 <source>These terms and conditions outline the rules and regulations for the use of getnative&apos;s Website.</source>
                 <target>These terms and conditions outline the rules and regulations for the use of getnative&apos;s Website.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">17</context>
                 </context-group>
                 <note priority="1" from="description">tos introduction section text (1)</note>
@@ -1221,7 +1221,7 @@
                 <source>getnative is located at:</source>
                 <target>getnative is located at:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">18</context>
                 </context-group>
                 <note priority="1" from="description">tos introduction section text (2)</note>
@@ -1230,7 +1230,7 @@
                 <source>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</source>
                 <target>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">19</context>
                 </context-group>
                 <note priority="1" from="description">tos introduction section text (3)</note>
@@ -1239,7 +1239,7 @@
                 <source>By accessing this website we assume you accept these terms and conditions in full. Do not continue to use getnative&apos;s website if you do not accept all of the terms and conditions stated on this page.</source>
                 <target>By accessing this website we assume you accept these terms and conditions in full. Do not continue to use getnative&apos;s website if you do not accept all of the terms and conditions stated on this page.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">26</context>
                 </context-group>
                 <note priority="1" from="description">tos introduction section text (4)</note>
@@ -1248,7 +1248,7 @@
                 <source>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: &quot;Client&quot;, &quot;You&quot; and &quot;Your&quot; refers to you, the person accessing this website and accepting the Company&apos;s terms and conditions. &quot;The Company&quot;, &quot;Ourselves&quot;, &quot;We&quot;, &quot;Our&quot; and &quot;Us&quot;, refers to our Company. &quot;Party&quot;, &quot;Parties&quot;, or &quot;Us&quot;, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client&apos;s needs in respect of provision of the Company&apos;s stated services/products, in accordance with and subject to, prevailing law of Japan. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.</source>
                 <target>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: &quot;Client&quot;, &quot;You&quot; and &quot;Your&quot; refers to you, the person accessing this website and accepting the Company&apos;s terms and conditions. &quot;The Company&quot;, &quot;Ourselves&quot;, &quot;We&quot;, &quot;Our&quot; and &quot;Us&quot;, refers to our Company. &quot;Party&quot;, &quot;Parties&quot;, or &quot;Us&quot;, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client&apos;s needs in respect of provision of the Company&apos;s stated services/products, in accordance with and subject to, prevailing law of Japan. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">27</context>
                 </context-group>
                 <note priority="1" from="description">tos introduction section text (5)</note>
@@ -1257,7 +1257,7 @@
                 <source>Cookies</source>
                 <target>Cookies</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">31</context>
                 </context-group>
                 <note priority="1" from="description">tos cookies section header</note>
@@ -1266,7 +1266,7 @@
                 <source>We employ the use of cookies. By using getnative&apos;s website you consent to the use of cookies in accordance with getnative&apos;s privacy policy. Most of the modern day interactive web sites use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.</source>
                 <target>We employ the use of cookies. By using getnative&apos;s website you consent to the use of cookies in accordance with getnative&apos;s privacy policy. Most of the modern day interactive web sites use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">32</context>
                 </context-group>
                 <note priority="1" from="description">tos cookies section text (1)</note>
@@ -1275,16 +1275,16 @@
                 <source>License</source>
                 <target>License</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">36</context>
                 </context-group>
                 <note priority="1" from="description">tos introduction section header</note>
             </trans-unit>
             <trans-unit id="6f212e0ab04a5b1bf38d3a30208e6be1" datatype="html">
-                <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative. All intellectual property rights are reserved. You may view and/or print pages from getnativelearning.com for your own personal use subject to restrictions set in these terms and conditions.</source>
-                <target>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative. All intellectual property rights are reserved. You may view and/or print pages from getnativelearning.com for your own personal use subject to restrictions set in these terms and conditions.</target>
+                <source>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative. All intellectual property rights are reserved. You may view and/or print pages from getnative.org for your own personal use subject to restrictions set in these terms and conditions.</source>
+                <target>Unless otherwise stated, getnative and/or it&apos;s licensors own the intellectual property rights for all material on getnative. All intellectual property rights are reserved. You may view and/or print pages from getnative.org for your own personal use subject to restrictions set in these terms and conditions.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">37</context>
                 </context-group>
                 <note priority="1" from="description">tos license section text (1)</note>
@@ -1293,34 +1293,34 @@
                 <source>You must not:</source>
                 <target>You must not:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">38</context>
                 </context-group>
                 <note priority="1" from="description">tos license section text (2)</note>
             </trans-unit>
             <trans-unit id="f813a8293dd4bb806af988aa90fd5927" datatype="html">
-                <source>Republish material from getnativelearning.com</source>
-                <target>Republish material from getnativelearning.com</target>
+                <source>Republish material from getnative.org</source>
+                <target>Republish material from getnative.org</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">40</context>
                 </context-group>
                 <note priority="1" from="description">tos license section text (3)</note>
             </trans-unit>
             <trans-unit id="c154ea0af51566537ce538ccb9752545" datatype="html">
-                <source>Sell, rent or sub-license material from getnativelearning.com</source>
-                <target>Sell, rent or sub-license material from getnativelearning.com</target>
+                <source>Sell, rent or sub-license material from getnative.org</source>
+                <target>Sell, rent or sub-license material from getnative.org</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">41</context>
                 </context-group>
                 <note priority="1" from="description">tos license section text (4)</note>
             </trans-unit>
             <trans-unit id="c0e4c9676a8242279d2a784128801550" datatype="html">
-                <source>Reproduce, duplicate or copy material from getnativelearning.com</source>
-                <target>Reproduce, duplicate or copy material from getnativelearning.com</target>
+                <source>Reproduce, duplicate or copy material from getnative.org</source>
+                <target>Reproduce, duplicate or copy material from getnative.org</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">42</context>
                 </context-group>
                 <note priority="1" from="description">tos license section text (5)</note>
@@ -1329,7 +1329,7 @@
                 <source>Redistribute content from getnative (unless content is specifically made for redistribution).</source>
                 <target>Redistribute content from getnative (unless content is specifically made for redistribution).</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">43</context>
                 </context-group>
                 <note priority="1" from="description">tos license section text (6)</note>
@@ -1338,7 +1338,7 @@
                 <source>User Comments</source>
                 <target>User Comments</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">48</context>
                 </context-group>
                 <note priority="1" from="description">tos user-comments section header</note>
@@ -1347,7 +1347,7 @@
                 <source>This Agreement shall begin on the date hereof. Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data (&apos;Comments&apos;) in areas of the website. getnative does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of getnative, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws getnative shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. getnative reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions. You warrant and represent that: You are entitled to post the Comments on our website and have all necessary licenses and consents to do so; The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party; The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity. You hereby grant to getnative a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</source>
                 <target>This Agreement shall begin on the date hereof. Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data (&apos;Comments&apos;) in areas of the website. getnative does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of getnative, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws getnative shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. getnative reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions. You warrant and represent that: You are entitled to post the Comments on our website and have all necessary licenses and consents to do so; The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party; The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity. You hereby grant to getnative a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">49</context>
                 </context-group>
                 <note priority="1" from="description">tos user-comments section text (1)</note>
@@ -1356,7 +1356,7 @@
                 <source>Hyperlinking to our Content</source>
                 <target>Hyperlinking to our Content</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">53</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section header</note>
@@ -1365,7 +1365,7 @@
                 <source>The following organizations may link to our Web site without prior written approval:</source>
                 <target>The following organizations may link to our Web site without prior written approval:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">55</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (1)</note>
@@ -1374,7 +1374,7 @@
                 <source>Government agencies</source>
                 <target>Government agencies</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">57</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (2)</note>
@@ -1383,7 +1383,7 @@
                 <source>Search engines</source>
                 <target>Search engines</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">58</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (3)</note>
@@ -1392,7 +1392,7 @@
                 <source>News organizations</source>
                 <target>News organizations</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">59</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (4)</note>
@@ -1401,7 +1401,7 @@
                 <source>Online directory distributors when they list us in the directory may link to our Web site in the same manner as they hyperlink to the Web sites of other listed businesses</source>
                 <target>Online directory distributors when they list us in the directory may link to our Web site in the same manner as they hyperlink to the Web sites of other listed businesses</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">60</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (5)</note>
@@ -1410,7 +1410,7 @@
                 <source>Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site</source>
                 <target>Systemwide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">61</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (6)</note>
@@ -1419,7 +1419,7 @@
                 <source>These organizations may link to our home page, to publications or to other Web site information so long as the link:</source>
                 <target>These organizations may link to our home page, to publications or to other Web site information so long as the link:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">64</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (7)</note>
@@ -1428,7 +1428,7 @@
                 <source>is not in any way misleading</source>
                 <target>is not in any way misleading</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">66</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (8)</note>
@@ -1437,7 +1437,7 @@
                 <source>does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services</source>
                 <target>does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">67</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (9)</note>
@@ -1446,7 +1446,7 @@
                 <source>fits within the context of the linking party&apos;s site.</source>
                 <target>fits within the context of the linking party&apos;s site.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">68</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (10)</note>
@@ -1455,7 +1455,7 @@
                 <source>We may consider and approve in our sole discretion other link requests from the following types of organizations:</source>
                 <target>We may consider and approve in our sole discretion other link requests from the following types of organizations:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">71</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (11)</note>
@@ -1464,7 +1464,7 @@
                 <source>commonly-known consumer and/or business information sources such as Chambers of Commerce, American Automobile Association, AARP and Consumers Union</source>
                 <target>commonly-known consumer and/or business information sources such as Chambers of Commerce, American Automobile Association, AARP and Consumers Union</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">73</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (12)</note>
@@ -1473,7 +1473,7 @@
                 <source>dot.com community sites</source>
                 <target>dot.com community sites</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">74</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (13)</note>
@@ -1482,7 +1482,7 @@
                 <source>associations or other groups representing charities, including charity giving sites, online directory distributors</source>
                 <target>associations or other groups representing charities, including charity giving sites, online directory distributors</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">75</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (14)</note>
@@ -1491,7 +1491,7 @@
                 <source>internet portals</source>
                 <target>internet portals</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">76</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (15)</note>
@@ -1500,7 +1500,7 @@
                 <source>accounting, law and consulting firms whose primary clients are businesses</source>
                 <target>accounting, law and consulting firms whose primary clients are businesses</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">77</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (16)</note>
@@ -1509,7 +1509,7 @@
                 <source>educational institutions and trade associations</source>
                 <target>educational institutions and trade associations</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">78</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (17)</note>
@@ -1518,7 +1518,7 @@
                 <source>We will approve link requests from these organizations if we determine that</source>
                 <target>We will approve link requests from these organizations if we determine that</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">81</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (18)</note>
@@ -1527,7 +1527,7 @@
                 <source>the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link)</source>
                 <target>the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link)</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">84</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (19)</note>
@@ -1536,7 +1536,7 @@
                 <source>the organization does not have an unsatisfactory record with us</source>
                 <target>the organization does not have an unsatisfactory record with us</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">85</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (20)</note>
@@ -1545,7 +1545,7 @@
                 <source>the benefit to us from the visibility associated with the hyperlink outweighs the absence of getnative</source>
                 <target>the benefit to us from the visibility associated with the hyperlink outweighs the absence of getnative</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">86</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (21)</note>
@@ -1554,7 +1554,7 @@
                 <source>where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization</source>
                 <target>where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">87</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (22)</note>
@@ -1563,7 +1563,7 @@
                 <source>These organizations may link to our home page, to publications or to other Web site information so long as the link:</source>
                 <target>These organizations may link to our home page, to publications or to other Web site information so long as the link:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">90</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (23)</note>
@@ -1572,7 +1572,7 @@
                 <source>is not in any way misleading</source>
                 <target>is not in any way misleading</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">92</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (24)</note>
@@ -1581,7 +1581,7 @@
                 <source>does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services</source>
                 <target>does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">93</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (25)</note>
@@ -1590,16 +1590,16 @@
                 <source>fits within the context of the linking party&apos;s site</source>
                 <target>fits within the context of the linking party&apos;s site</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">94</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (26)</note>
             </trans-unit>
             <trans-unit id="4ccbcabf2c522b6fe612b915c23b2611" datatype="html">
-                <source>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</source>
-                <target>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</target>
+                <source>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnative.org<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</source>
+                <target>If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnative.org<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">97</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (27)</note>
@@ -1608,7 +1608,7 @@
                 <source>Approved organizations may hyperlink to our Web site as follows:</source>
                 <target>Approved organizations may hyperlink to our Web site as follows:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">100</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (28)</note>
@@ -1617,7 +1617,7 @@
                 <source>By use of our corporate name; or</source>
                 <target>By use of our corporate name; or</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">102</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (29)</note>
@@ -1626,7 +1626,7 @@
                 <source>By use of the uniform resource locator (Web address) being linked to; or</source>
                 <target>By use of the uniform resource locator (Web address) being linked to; or</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">103</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (30)</note>
@@ -1635,7 +1635,7 @@
                 <source>By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party&apos;s site.</source>
                 <target>By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party&apos;s site.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">104</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (31)</note>
@@ -1644,7 +1644,7 @@
                 <source>No use of getnative&apos;s logo or other artwork will be allowed for linking absent a trademark license agreement.</source>
                 <target>No use of getnative&apos;s logo or other artwork will be allowed for linking absent a trademark license agreement.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">106</context>
                 </context-group>
                 <note priority="1" from="description">tos hyperlinking section text (32)</note>
@@ -1653,7 +1653,7 @@
                 <source>Iframes</source>
                 <target>Iframes</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">110</context>
                 </context-group>
                 <note priority="1" from="description">tos iframes section header</note>
@@ -1662,7 +1662,7 @@
                 <source>Without prior approval and express written permission, you may not create frames around our Web pages or use other techniques that alter in any way the visual presentation or appearance of our Web site.</source>
                 <target>Without prior approval and express written permission, you may not create frames around our Web pages or use other techniques that alter in any way the visual presentation or appearance of our Web site.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">111</context>
                 </context-group>
                 <note priority="1" from="description">tos iframes section text (1)</note>
@@ -1671,7 +1671,7 @@
                 <source>Content Liability</source>
                 <target>Content Liability</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">115</context>
                 </context-group>
                 <note priority="1" from="description">tos content-liability section header</note>
@@ -1680,7 +1680,7 @@
                 <source>We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any page on your Web site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</source>
                 <target>We shall have no responsibility or liability for any content appearing on your Web site. You agree to indemnify and defend us against all claims arising out of or based upon your Website. No link(s) may appear on any page on your Web site or within any context containing content or materials that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">116</context>
                 </context-group>
                 <note priority="1" from="description">tos content-liability section text (1)</note>
@@ -1689,7 +1689,7 @@
                 <source>Reservation of Rights</source>
                 <target>Reservation of Rights</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">120</context>
                 </context-group>
                 <note priority="1" from="description">tos reservation-of-rights section header</note>
@@ -1698,7 +1698,7 @@
                 <source>We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.</source>
                 <target>We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site, you agree to be bound to and abide by these linking terms and conditions.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">121</context>
                 </context-group>
                 <note priority="1" from="description">tos reservation-of-rights section text (1)</note>
@@ -1707,7 +1707,7 @@
                 <source>Removal of links from our website</source>
                 <target>Removal of links from our website</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">125</context>
                 </context-group>
                 <note priority="1" from="description">tos removal-of-links section header</note>
@@ -1716,7 +1716,7 @@
                 <source>If you find any link on our Web site or any linked web site objectionable for any reason, you may contact us about this. We will consider requests to remove links but will have no obligation to do so or to respond directly to you.</source>
                 <target>If you find any link on our Web site or any linked web site objectionable for any reason, you may contact us about this. We will consider requests to remove links but will have no obligation to do so or to respond directly to you.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">126</context>
                 </context-group>
                 <note priority="1" from="description">tos removal-of-links section text (1)</note>
@@ -1725,7 +1725,7 @@
                 <source>Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.</source>
                 <target>Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">127</context>
                 </context-group>
                 <note priority="1" from="description">tos removal-of-links section text (2)</note>
@@ -1734,7 +1734,7 @@
                 <source>Disclaimer</source>
                 <target>Disclaimer</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">131</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section header</note>
@@ -1743,7 +1743,7 @@
                 <source>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill).</source>
                 <target>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website (including, without limitation, any warranties implied by law in respect of satisfactory quality, fitness for purpose and/or the use of reasonable care and skill).</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">132</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (1)</note>
@@ -1752,7 +1752,7 @@
                 <source>Nothing in this disclaimer will:</source>
                 <target>Nothing in this disclaimer will:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">133</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (2)</note>
@@ -1761,7 +1761,7 @@
                 <source>limit or exclude our or your liability for death or personal injury resulting from negligence;</source>
                 <target>limit or exclude our or your liability for death or personal injury resulting from negligence;</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">135</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (3)</note>
@@ -1770,7 +1770,7 @@
                 <source>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</source>
                 <target>limit or exclude our or your liability for fraud or fraudulent misrepresentation;</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">136</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (4)</note>
@@ -1779,7 +1779,7 @@
                 <source>limit any of our or your liabilities in any way that is not permitted under applicable law; or</source>
                 <target>limit any of our or your liabilities in any way that is not permitted under applicable law; or</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">137</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (5)</note>
@@ -1788,7 +1788,7 @@
                 <source>exclude any of our or your liabilities that may not be excluded under applicable law.</source>
                 <target>exclude any of our or your liabilities that may not be excluded under applicable law.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">138</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (6)</note>
@@ -1797,7 +1797,7 @@
                 <source>The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer:</source>
                 <target>The limitations and exclusions of liability set out in this Section and elsewhere in this disclaimer:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">141</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (7)</note>
@@ -1806,7 +1806,7 @@
                 <source>are subject to the preceding paragraph</source>
                 <target>are subject to the preceding paragraph</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">144</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (8)</note>
@@ -1815,7 +1815,7 @@
                 <source>govern all liabilities arising under the disclaimer or in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty.</source>
                 <target>govern all liabilities arising under the disclaimer or in relation to the subject matter of this disclaimer, including liabilities arising in contract, in tort (including negligence) and for breach of statutory duty.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">145</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (9)</note>
@@ -1824,7 +1824,7 @@
                 <source>To the extent that the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</source>
                 <target>To the extent that the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">148</context>
                 </context-group>
                 <note priority="1" from="description">tos disclaimer section text (10)</note>
@@ -1833,7 +1833,7 @@
                 <source>Last Edited on 2016-11-11</source>
                 <target>Last Edited on 2016-11-11</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/tos/tos.component.ts</context>
+                    <context context-type="sourcefile">app/tos/tos.component.ts</context>
                     <context context-type="linenumber">151</context>
                 </context-group>
                 <note priority="1" from="description">tos last edited text</note>
@@ -1842,7 +1842,7 @@
                 <source>Quick Links</source>
                 <target>Quick Links</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">2</context>
                 </context-group>
                 <note priority="1" from="description">The text for the quick links section of the privacy policy page</note>
@@ -1851,7 +1851,7 @@
                 <source>Information Collection</source>
                 <target>Information Collection</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">4</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Information Collection section</note>
@@ -1860,7 +1860,7 @@
                 <source>Information Usage</source>
                 <target>Information Usage</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">5</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Information Usage section</note>
@@ -1869,7 +1869,7 @@
                 <source>Information Protection</source>
                 <target>Information Protection</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">6</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Information Protection section</note>
@@ -1878,7 +1878,7 @@
                 <source>Cookie Usage</source>
                 <target>Cookie Usage</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">7</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Cookie Usage section</note>
@@ -1887,7 +1887,7 @@
                 <source>3rd Party Disclosure</source>
                 <target>3rd Party Disclosure</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">8</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for 3rd Party Disclosure section</note>
@@ -1896,7 +1896,7 @@
                 <source>3rd Party Links</source>
                 <target>3rd Party Links</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">9</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for 3rd Party Links section</note>
@@ -1905,7 +1905,7 @@
                 <source>Google AdSense</source>
                 <target>Google AdSense</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">10</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Google AdSense section</note>
@@ -1914,7 +1914,7 @@
                 <source>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. They are put in place to provide a positive experience for users.</source>
                 <target>Google&apos;s advertising requirements can be summed up by <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>Google&apos;s Advertising Principles<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. They are put in place to provide a positive experience for users.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">81</context>
                 </context-group>
                 <note priority="1" from="description">Google Adsense section 1</note>
@@ -1923,7 +1923,7 @@
                 <source>Fair Information Practices</source>
                 <target>Fair Information Practices</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">11</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Fair Information Practices section</note>
@@ -1932,7 +1932,7 @@
                 <source>COPPA</source>
                 <target>COPPA</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">12</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for COPPA section</note>
@@ -1941,7 +1941,7 @@
                 <source>CalOPPA</source>
                 <target>CalOPPA</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">13</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for CalOPPA section</note>
@@ -1950,7 +1950,7 @@
                 <source>Privacy Policy changes</source>
                 <target>Privacy Policy changes</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">14</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Privacy Policy changes section</note>
@@ -1959,7 +1959,7 @@
                 <source>CAN SPAM Act</source>
                 <target>CAN SPAM Act</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">15</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for CAN SPAM Act section</note>
@@ -1968,7 +1968,7 @@
                 <source>Handling of Do-Not-Track signals</source>
                 <target>Handling of Do-Not-Track signals</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">16</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Handling of Do-Not-Track signals section</note>
@@ -1977,7 +1977,7 @@
                 <source>Third-party behavioral tracking</source>
                 <target>Third-party behavioral tracking</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">17</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Third-party behavioral tracking section</note>
@@ -1986,7 +1986,7 @@
                 <source>Our Contact Information</source>
                 <target>Our Contact Information</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">18</context>
                 </context-group>
                 <note priority="1" from="description">Privacy policy quick link for Our Contact Information section</note>
@@ -1995,7 +1995,7 @@
                 <source>※ This agreement is based on English as the official text, and translation to Japanese and other languages ​​is only for the convenience of the user. If the content of the English version differs from that of other languages, the content of the English version shall be given priority.</source>
                 <target>※ This agreement is based on English as the official text, and translation to Japanese and other languages ​​is only for the convenience of the user. If the content of the English version differs from that of other languages, the content of the English version shall be given priority.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">21</context>
                 </context-group>
                 <note priority="1" from="description">privacy intro section language difference agreement</note>
@@ -2004,7 +2004,7 @@
                 <source>getnative Privacy Policy</source>
                 <target>getnative Privacy Policy</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">21</context>
                 </context-group>
                 <note priority="1" from="description">intro section</note>
@@ -2013,7 +2013,7 @@
                 <source>This privacy policy has been compiled to better serve those who are concerned with how their &apos;Personally Identifiable Information&apos; (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.</source>
                 <target>This privacy policy has been compiled to better serve those who are concerned with how their &apos;Personally Identifiable Information&apos; (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">22</context>
                 </context-group>
                 <note priority="1" from="description">intro section 1</note>
@@ -2022,7 +2022,7 @@
                 <source>What personal information do we collect from the people that visit our blog, website or app?</source>
                 <target>What personal information do we collect from the people that visit our blog, website or app?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">25</context>
                 </context-group>
                 <note priority="1" from="description">information collection section</note>
@@ -2031,7 +2031,7 @@
                 <source>When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address or other details to help you with your experience.</source>
                 <target>When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address or other details to help you with your experience.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">26</context>
                 </context-group>
                 <note priority="1" from="description">information collection section 1</note>
@@ -2040,7 +2040,7 @@
                 <source>When do we collect information?</source>
                 <target>When do we collect information?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">30</context>
                 </context-group>
                 <note priority="1" from="description">information collection section header</note>
@@ -2049,7 +2049,7 @@
                 <source>We collect information from you when you register on our site, Open a Support Ticket or enter information on our site.</source>
                 <target>We collect information from you when you register on our site, Open a Support Ticket or enter information on our site.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">29</context>
                 </context-group>
                 <note priority="1" from="description">information collection section 2</note>
@@ -2058,7 +2058,7 @@
                 <source>Provide us with feedback on our products or services</source>
                 <target>Provide us with feedback on our products or services</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">30</context>
                 </context-group>
                 <note priority="1" from="description">information collection section 3</note>
@@ -2067,7 +2067,7 @@
                 <source>How do we use your information?</source>
                 <target>How do we use your information?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">34</context>
                 </context-group>
                 <note priority="1" from="description">information usage section</note>
@@ -2076,7 +2076,7 @@
                 <source>We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website or use certain other site features in the following ways:</source>
                 <target>We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website or use certain other site features in the following ways:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">35</context>
                 </context-group>
                 <note priority="1" from="description">information usage section 1</note>
@@ -2085,7 +2085,7 @@
                 <source>To personalize your experience and to allow us to deliver the type of content and product offerings in which you are most interested.</source>
                 <target>To personalize your experience and to allow us to deliver the type of content and product offerings in which you are most interested.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">37</context>
                 </context-group>
                 <note priority="1" from="description">information usage section 2</note>
@@ -2094,7 +2094,7 @@
                 <source>To improve our website in order to better serve you.</source>
                 <target>To improve our website in order to better serve you.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">38</context>
                 </context-group>
                 <note priority="1" from="description">information usage section 3</note>
@@ -2103,7 +2103,7 @@
                 <source>To allow us to better service you in responding to your customer service requests.</source>
                 <target>To allow us to better service you in responding to your customer service requests.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">39</context>
                 </context-group>
                 <note priority="1" from="description">information usage section 4</note>
@@ -2112,7 +2112,7 @@
                 <source>To send periodic emails regarding your order or other products and services.</source>
                 <target>To send periodic emails regarding your order or other products and services.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">40</context>
                 </context-group>
                 <note priority="1" from="description">information usage section 5</note>
@@ -2121,7 +2121,7 @@
                 <source>How do we protect your information?</source>
                 <target>How do we protect your information?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">45</context>
                 </context-group>
                 <note priority="1" from="description">information protection section</note>
@@ -2130,7 +2130,7 @@
                 <source>We do not use vulnerability scanning and/or scanning to PCI standards.</source>
                 <target>We do not use vulnerability scanning and/or scanning to PCI standards.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">46</context>
                 </context-group>
                 <note priority="1" from="description">information protection section 1</note>
@@ -2139,7 +2139,7 @@
                 <source>We only provide sections and information. We never ask for credit card numbers.</source>
                 <target>We only provide sections and information. We never ask for credit card numbers.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">47</context>
                 </context-group>
                 <note priority="1" from="description">information protection section 2</note>
@@ -2148,7 +2148,7 @@
                 <source>We do not use Malware Scanning.</source>
                 <target>We do not use Malware Scanning.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">48</context>
                 </context-group>
                 <note priority="1" from="description">information protection section 3</note>
@@ -2157,7 +2157,7 @@
                 <source>Your personal information is contained behind secured networks and is only accessible by a limited number of persons who have special access rights to such systems, and are required to keep the information confidential. In addition, all sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology.</source>
                 <target>Your personal information is contained behind secured networks and is only accessible by a limited number of persons who have special access rights to such systems, and are required to keep the information confidential. In addition, all sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">49</context>
                 </context-group>
                 <note priority="1" from="description">information protection section 4</note>
@@ -2166,7 +2166,7 @@
                 <source>We implement a variety of security measures when a user enters, submits, or accesses their information to maintain the safety of your personal information.</source>
                 <target>We implement a variety of security measures when a user enters, submits, or accesses their information to maintain the safety of your personal information.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">50</context>
                 </context-group>
                 <note priority="1" from="description">information protection section 5</note>
@@ -2175,7 +2175,7 @@
                 <source>All transactions are processed through a gateway provider and are not stored or processed on our servers.</source>
                 <target>All transactions are processed through a gateway provider and are not stored or processed on our servers.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">51</context>
                 </context-group>
                 <note priority="1" from="description">information protection section 6</note>
@@ -2184,7 +2184,7 @@
                 <source>Do we use &apos;cookies&apos;?</source>
                 <target>Do we use &apos;cookies&apos;?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">55</context>
                 </context-group>
                 <note priority="1" from="description">cookie usage section</note>
@@ -2193,7 +2193,7 @@
                 <source>Yes. Cookies are small files that a site or its service provider transfers to your computer&apos;s hard drive through your Web browser (if you allow) that enables the site&apos;s or service provider&apos;s systems to recognize your browser and capture and remember certain information. For instance, we use cookies to help us remember and process the items in your shopping cart. They are also used to help us understand your preferences based on previous or current site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future.</source>
                 <target>Yes. Cookies are small files that a site or its service provider transfers to your computer&apos;s hard drive through your Web browser (if you allow) that enables the site&apos;s or service provider&apos;s systems to recognize your browser and capture and remember certain information. For instance, we use cookies to help us remember and process the items in your shopping cart. They are also used to help us understand your preferences based on previous or current site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">56</context>
                 </context-group>
                 <note priority="1" from="description">cookie usage section 1</note>
@@ -2202,7 +2202,7 @@
                 <source>We use cookies to:</source>
                 <target>We use cookies to:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">58</context>
                 </context-group>
                 <note priority="1" from="description">cookie usage section 2</note>
@@ -2211,7 +2211,7 @@
                 <source>Understand and save user&apos;s preferences for future visits.</source>
                 <target>Understand and save user&apos;s preferences for future visits.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">60</context>
                 </context-group>
                 <note priority="1" from="description">cookie usage section 3</note>
@@ -2220,7 +2220,7 @@
                 <source>Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools in the future. We may also use trusted third-party services that track this information on our behalf.</source>
                 <target>Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools in the future. We may also use trusted third-party services that track this information on our behalf.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">61</context>
                 </context-group>
                 <note priority="1" from="description">cookie usage section 4</note>
@@ -2229,7 +2229,7 @@
                 <source>You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser settings. Since browser is a little different, look at your browser&apos;s Help Menu to learn the correct way to modify your cookies.</source>
                 <target>You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser settings. Since browser is a little different, look at your browser&apos;s Help Menu to learn the correct way to modify your cookies.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">63</context>
                 </context-group>
                 <note priority="1" from="description">cookie usage section 5</note>
@@ -2238,7 +2238,7 @@
                 <source>If you turn cookies off, some features will be disabled. It won&apos;t affect the user&apos;s experience that make your site experience more efficient and may not function properly.</source>
                 <target>If you turn cookies off, some features will be disabled. It won&apos;t affect the user&apos;s experience that make your site experience more efficient and may not function properly.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">64</context>
                 </context-group>
                 <note priority="1" from="description">cookie usage section 6</note>
@@ -2247,7 +2247,7 @@
                 <source>However, you will still be able to place orders.</source>
                 <target>However, you will still be able to place orders.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">65</context>
                 </context-group>
                 <note priority="1" from="description">cookie usage section 7</note>
@@ -2256,7 +2256,7 @@
                 <source>Third-party disclosure</source>
                 <target>Third-party disclosure</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">69</context>
                 </context-group>
                 <note priority="1" from="description">third-party-disclosure section</note>
@@ -2265,7 +2265,7 @@
                 <source>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it&apos;s release is appropriate to comply with the law, enforce our site policies, or protect ours or others&apos; rights, property or safety. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.</source>
                 <target>We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it&apos;s release is appropriate to comply with the law, enforce our site policies, or protect ours or others&apos; rights, property or safety. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">70</context>
                 </context-group>
                 <note priority="1" from="description">third-party-disclosure section 1</note>
@@ -2274,7 +2274,7 @@
                 <source>Third-party links</source>
                 <target>Third-party links</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">74</context>
                 </context-group>
                 <note priority="1" from="description">Third-party links section</note>
@@ -2283,7 +2283,7 @@
                 <source>We do not include or offer third-party products or services on our website.</source>
                 <target>We do not include or offer third-party products or services on our website.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">75</context>
                 </context-group>
                 <note priority="1" from="description">Third-party links section 1</note>
@@ -2292,7 +2292,7 @@
                 <source>Google</source>
                 <target>Google</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">79</context>
                 </context-group>
                 <note priority="1" from="description">Google Adsense section</note>
@@ -2301,7 +2301,7 @@
                 <source>We use Google AdSense Advertising on our website.</source>
                 <target>We use Google AdSense Advertising on our website.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">82</context>
                 </context-group>
                 <note priority="1" from="description">Google Adsense section 2</note>
@@ -2310,7 +2310,7 @@
                 <source>Google, as a third-party vendor, uses cookies to serve ads on our site. Google&apos;s use of the DART cookie enables it to serve ads to our users based on previous visits to our site and other sites on the Internet. Users may opt-out of the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.</source>
                 <target>Google, as a third-party vendor, uses cookies to serve ads on our site. Google&apos;s use of the DART cookie enables it to serve ads to our users based on previous visits to our site and other sites on the Internet. Users may opt-out of the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">83</context>
                 </context-group>
                 <note priority="1" from="description">Google Adsense section 3</note>
@@ -2319,7 +2319,7 @@
                 <source>We have implemented the following:</source>
                 <target>We have implemented the following:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">84</context>
                 </context-group>
                 <note priority="1" from="description">Google Adsense section 4</note>
@@ -2328,7 +2328,7 @@
                 <source>Demographics and InterestsReporting</source>
                 <target>Demographics and InterestsReporting</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">86</context>
                 </context-group>
                 <note priority="1" from="description">Google Adsense section 5</note>
@@ -2337,7 +2337,7 @@
                 <source>We, along with third-party vendors such as Google use first-party cookies (such as the Google Analytics cookies) and third-party cookies (such as the DoubleClick cookie) or other third-party identifiers together to compile data regarding user interactions with ad impressions and other ad service functions as they relate to our website.</source>
                 <target>We, along with third-party vendors such as Google use first-party cookies (such as the Google Analytics cookies) and third-party cookies (such as the DoubleClick cookie) or other third-party identifiers together to compile data regarding user interactions with ad impressions and other ad service functions as they relate to our website.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">89</context>
                 </context-group>
                 <note priority="1" from="description">Google Adsense section 6</note>
@@ -2346,7 +2346,7 @@
                 <source>Opting out: Users can set preferences for how Google advertises to you using the Google Ad Settings page. Alternatively, you can opt out by visiting the Network Advertising Initiative Opt Out page or by using the Google Analytics Opt Out Browser add on.</source>
                 <target>Opting out: Users can set preferences for how Google advertises to you using the Google Ad Settings page. Alternatively, you can opt out by visiting the Network Advertising Initiative Opt Out page or by using the Google Analytics Opt Out Browser add on.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">90</context>
                 </context-group>
                 <note priority="1" from="description">Google Adsense section 7</note>
@@ -2355,7 +2355,7 @@
                 <source>Fair Information Practices</source>
                 <target>Fair Information Practices</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">94</context>
                 </context-group>
                 <note priority="1" from="description">Fair Information Practices section</note>
@@ -2364,7 +2364,7 @@
                 <source>The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts they include have played a significant role in the development of data protection laws around the globe. Understanding the Fair Information Practice Principles and how they should be implemented is critical to comply with the various privacy laws that protect personal information.</source>
                 <target>The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts they include have played a significant role in the development of data protection laws around the globe. Understanding the Fair Information Practice Principles and how they should be implemented is critical to comply with the various privacy laws that protect personal information.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">96</context>
                 </context-group>
                 <note priority="1" from="description">Fair Information Practices section 1</note>
@@ -2373,7 +2373,7 @@
                 <source>In order to be in line with Fair Information Practices we will take the following responsive action, should a data breach occur:</source>
                 <target>In order to be in line with Fair Information Practices we will take the following responsive action, should a data breach occur:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">97</context>
                 </context-group>
                 <note priority="1" from="description">Fair Information Practices section 2</note>
@@ -2382,7 +2382,7 @@
                 <source>We will notify you via email within 7 business days</source>
                 <target>We will notify you via email within 7 business days</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">99</context>
                 </context-group>
                 <note priority="1" from="description">Fair Information Practices section 3</note>
@@ -2391,7 +2391,7 @@
                 <source>We will notify the users via in-site notification within 7 business days</source>
                 <target>We will notify the users via in-site notification within 7 business days</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">100</context>
                 </context-group>
                 <note priority="1" from="description">Fair Information Practices section 4</note>
@@ -2400,7 +2400,7 @@
                 <source>We also agree to the Individual Redress Principle which requires that individuals have the right to legally pursue enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or government agencies to investigate and/or prosecute non-compliance by data processors.</source>
                 <target>We also agree to the Individual Redress Principle which requires that individuals have the right to legally pursue enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or government agencies to investigate and/or prosecute non-compliance by data processors.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">103</context>
                 </context-group>
                 <note priority="1" from="description">Fair Information Practices section 5</note>
@@ -2409,7 +2409,7 @@
                 <source>COPPA (Children Online Privacy Protection Act)</source>
                 <target>COPPA (Children Online Privacy Protection Act)</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">107</context>
                 </context-group>
                 <note priority="1" from="description">COPPA section</note>
@@ -2418,7 +2418,7 @@
                 <source>When it comes to the collection of personal information from children under the age of 13 years old, the Children&apos;s Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, United States&apos; consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children&apos;s privacy and safety online.</source>
                 <target>When it comes to the collection of personal information from children under the age of 13 years old, the Children&apos;s Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, United States&apos; consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children&apos;s privacy and safety online.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">108</context>
                 </context-group>
                 <note priority="1" from="description">COPPA section 1</note>
@@ -2427,7 +2427,7 @@
                 <source>We do not specifically market to children under the age of 13 years old.</source>
                 <target>We do not specifically market to children under the age of 13 years old.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">109</context>
                 </context-group>
                 <note priority="1" from="description">COPPA section 2</note>
@@ -2436,7 +2436,7 @@
                 <source>California Online Privacy Protection Act</source>
                 <target>California Online Privacy Protection Act</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">113</context>
                 </context-group>
                 <note priority="1" from="description">caloppa section</note>
@@ -2445,7 +2445,7 @@
                 <source>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law&apos;s reach stretches well beyond California to require any person or company in the United States (and conceivably the world) that operates websites collecting Personally Identifiable Information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals or companies with whom it is being shared. - See more at: http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf</source>
                 <target>CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law&apos;s reach stretches well beyond California to require any person or company in the United States (and conceivably the world) that operates websites collecting Personally Identifiable Information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals or companies with whom it is being shared. - See more at: http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">114</context>
                 </context-group>
                 <note priority="1" from="description">caloppa section 1</note>
@@ -2454,7 +2454,7 @@
                 <source>According to CalOPPA, we agree to the following:</source>
                 <target>According to CalOPPA, we agree to the following:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">115</context>
                 </context-group>
                 <note priority="1" from="description">caloppa section 2</note>
@@ -2463,7 +2463,7 @@
                 <source>Users can visit our site anonymously.</source>
                 <target>Users can visit our site anonymously.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">117</context>
                 </context-group>
                 <note priority="1" from="description">caloppa section 3</note>
@@ -2472,7 +2472,7 @@
                 <source>Once this privacy policy is created, we will add a link to it on our home page or as a minimum, on the first significant page after entering our website.</source>
                 <target>Once this privacy policy is created, we will add a link to it on our home page or as a minimum, on the first significant page after entering our website.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">118</context>
                 </context-group>
                 <note priority="1" from="description">caloppa section 4</note>
@@ -2481,7 +2481,7 @@
                 <source>Our Privacy Policy link includes the word &apos;Privacy&apos; and can easily be found on the page specified above.</source>
                 <target>Our Privacy Policy link includes the word &apos;Privacy&apos; and can easily be found on the page specified above.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">119</context>
                 </context-group>
                 <note priority="1" from="description">caloppa section 5</note>
@@ -2490,7 +2490,7 @@
                 <source>Will I be notified of any Privacy Policy changes?</source>
                 <target>Will I be notified of any Privacy Policy changes?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">124</context>
                 </context-group>
                 <note priority="1" from="description">privacy-policy-changes section 1</note>
@@ -2499,7 +2499,7 @@
                 <source>You will be notified of any Privacy Policy changes on our Privacy Policy Page.</source>
                 <target>You will be notified of any Privacy Policy changes on our Privacy Policy Page.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">125</context>
                 </context-group>
                 <note priority="1" from="description">privacy-policy-changes section 1 - 1</note>
@@ -2508,7 +2508,7 @@
                 <source>How can I change my personal information?</source>
                 <target>How can I change my personal information?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">129</context>
                 </context-group>
                 <note priority="1" from="description">privacy-policy-changes section 2</note>
@@ -2517,7 +2517,7 @@
                 <source>You can change your personal information by logging in to your account.</source>
                 <target>You can change your personal information by logging in to your account.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">130</context>
                 </context-group>
                 <note priority="1" from="description">privacy-policy-changes section 2 - 1</note>
@@ -2526,7 +2526,7 @@
                 <source>How does our site handle Do Not Track signals?</source>
                 <target>How does our site handle Do Not Track signals?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">134</context>
                 </context-group>
                 <note priority="1" from="description">do-not-track-signals section</note>
@@ -2535,7 +2535,7 @@
                 <source>We honor Do Not Track signals and Do Not Track, plant cookies, or use advertising when a Do Not Track (DNT) browser mechanism is in place.</source>
                 <target>We honor Do Not Track signals and Do Not Track, plant cookies, or use advertising when a Do Not Track (DNT) browser mechanism is in place.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">135</context>
                 </context-group>
                 <note priority="1" from="description">do-not-track-signals section 1</note>
@@ -2544,7 +2544,7 @@
                 <source>Does our site allow third-party behavioral tracking?</source>
                 <target>Does our site allow third-party behavioral tracking?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">139</context>
                 </context-group>
                 <note priority="1" from="description">third-party-behavioral-tracking section</note>
@@ -2553,7 +2553,7 @@
                 <source>It&apos;s also important to note that we do not allow third-party behavioral tracking</source>
                 <target>It&apos;s also important to note that we do not allow third-party behavioral tracking</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">140</context>
                 </context-group>
                 <note priority="1" from="description">third-party-behavioral-tracking section 1</note>
@@ -2562,7 +2562,7 @@
                 <source>CAN SPAM Act</source>
                 <target>CAN SPAM Act</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">144</context>
                 </context-group>
                 <note priority="1" from="description">canspam section</note>
@@ -2571,7 +2571,7 @@
                 <source>The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for violations.</source>
                 <target>The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for violations.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">145</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 1</note>
@@ -2580,7 +2580,7 @@
                 <source>We collect your email address in order to:</source>
                 <target>We collect your email address in order to:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">146</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 2</note>
@@ -2589,7 +2589,7 @@
                 <source>Market to our mailing list or continue to send emails to our clients after the original transaction has occurred.</source>
                 <target>Market to our mailing list or continue to send emails to our clients after the original transaction has occurred.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">148</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 3</note>
@@ -2598,7 +2598,7 @@
                 <source>To be in accordance with CANSPAM, we agree to the following:</source>
                 <target>To be in accordance with CANSPAM, we agree to the following:</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">151</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 3</note>
@@ -2607,7 +2607,7 @@
                 <source>Not use false or misleading subjects or email addresses.</source>
                 <target>Not use false or misleading subjects or email addresses.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">153</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 4</note>
@@ -2616,7 +2616,7 @@
                 <source>Identify the message as an advertisement in some reasonable way.</source>
                 <target>Identify the message as an advertisement in some reasonable way.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">154</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 5</note>
@@ -2625,7 +2625,7 @@
                 <source>Include the physical address of our business or site headquarters.</source>
                 <target>Include the physical address of our business or site headquarters.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">155</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 6</note>
@@ -2634,7 +2634,7 @@
                 <source>Monitor third-party email marketing services for compliance, if one is used.</source>
                 <target>Monitor third-party email marketing services for compliance, if one is used.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">156</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 7</note>
@@ -2643,7 +2643,7 @@
                 <source>Honor opt-out/unsubscribe requests quickly.</source>
                 <target>Honor opt-out/unsubscribe requests quickly.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">157</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 8</note>
@@ -2652,16 +2652,16 @@
                 <source>Allow users to unsubscribe by using the link at the bottom of each email.</source>
                 <target>Allow users to unsubscribe by using the link at the bottom of each email.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">158</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 9</note>
             </trans-unit>
             <trans-unit id="ad63846c24f80d759bdf9b5e9cd141ae" datatype="html">
-                <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
-                <target>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
+                <source>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnative.org<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+                <target>If at any time you would like to unsubscribe from receiving future emails, you can email us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnative.org<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">161</context>
                 </context-group>
                 <note priority="1" from="description">Instructions for how to unsubscribe from getnative emails</note>
@@ -2670,7 +2670,7 @@
                 <source>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.</source>
                 <target>Follow the instructions at the bottom of each email and we will promptly remove you from ALL correspondence.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">162</context>
                 </context-group>
                 <note priority="1" from="description">canspam section 10</note>
@@ -2679,7 +2679,7 @@
                 <source>Contacting Us</source>
                 <target>Contacting Us</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">166</context>
                 </context-group>
                 <note priority="1" from="description">contact-information section</note>
@@ -2688,16 +2688,16 @@
                 <source>If there are any questions regarding this privacy policy, you may contact us using the information below.</source>
                 <target>If there are any questions regarding this privacy policy, you may contact us using the information below.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">167</context>
                 </context-group>
                 <note priority="1" from="description">contact-information section 1</note>
             </trans-unit>
             <trans-unit id="9b3c772655ccd06f35b7728b7f02510f" datatype="html">
-                <source>getnativelearning.com<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</source>
-                <target>getnativelearning.com<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</target>
+                <source>getnative.org<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</source>
+                <target>getnative.org<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Kuresunto 403 Asakusa 2-34-4<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Taito Ward, Tokyo<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>111-0032<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Japan</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">168</context>
                 </context-group>
                 <note priority="1" from="description">contact-information section 2</note>
@@ -2706,7 +2706,7 @@
                 <source>Last Edited on 2016-11-07</source>
                 <target>Last Edited on 2016-11-07</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/privacy/privacy.component.ts</context>
+                    <context context-type="sourcefile">app/privacy/privacy.component.ts</context>
                     <context context-type="linenumber">178</context>
                 </context-group>
                 <note priority="1" from="description">contact-information section 3</note>
@@ -2715,7 +2715,7 @@
                 <source>faqs</source>
                 <target>faqs</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="sourcefile">app/help/help.component.ts</context>
                     <context context-type="linenumber">5</context>
                 </context-group>
                 <note priority="1" from="description">faq section icon alternative text</note>
@@ -2724,7 +2724,7 @@
                 <source>Frequently Asked Questions</source>
                 <target>Frequently Asked Questions</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="sourcefile">app/help/help.component.ts</context>
                     <context context-type="linenumber">7</context>
                 </context-group>
                 <note priority="1" from="description">The header title for the help page FAQ section</note>
@@ -2733,7 +2733,7 @@
                 <source>toggle</source>
                 <target>toggle</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="sourcefile">app/help/help.component.ts</context>
                     <context context-type="linenumber">13</context>
                 </context-group>
                 <note priority="1" from="description">toggle faq visibility icon alternative text</note>
@@ -2742,7 +2742,7 @@
                 <source>Is getnative free?</source>
                 <target>Is getnative free?</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="sourcefile">app/help/help.component.ts</context>
                     <context context-type="linenumber">15</context>
                 </context-group>
                 <note priority="1" from="description">FAQ (1) Question</note>
@@ -2751,7 +2751,7 @@
                 <source>Yes! getnative is a free online language learning resource.</source>
                 <target>Yes! getnative is a free online language learning resource.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="sourcefile">app/help/help.component.ts</context>
                     <context context-type="linenumber">17</context>
                 </context-group>
                 <note priority="1" from="description">FAQ (1) Answer</note>
@@ -2814,7 +2814,7 @@
                 <source>contact</source>
                 <target>contact</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="sourcefile">app/help/help.component.ts</context>
                     <context context-type="linenumber">25</context>
                 </context-group>
                 <note priority="1" from="description">contact-us icon alternative text</note>
@@ -2823,16 +2823,16 @@
                 <source>Contact</source>
                 <target>Contact</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="sourcefile">app/help/help.component.ts</context>
                     <context context-type="linenumber">27</context>
                 </context-group>
                 <note priority="1" from="description">The header title for the help page contact-us section</note>
             </trans-unit>
             <trans-unit id="c05d50ea8308c63cbac4b93cf2e14b4e" datatype="html">
-                <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
-                <target>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnativelearning.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
+                <source>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnative.org<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+                <target>For all inquiries, please contact us at <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>contact@getnative.org<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/help/help.component.ts</context>
+                    <context context-type="sourcefile">app/help/help.component.ts</context>
                     <context context-type="linenumber">29</context>
                 </context-group>
                 <note priority="1" from="description">Help page contact-us section instructions</note>
@@ -2913,7 +2913,7 @@
                 <source>getnative is a free online language learning tool</source>
                 <target>getnative is a free online language learning tool</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">2</context>
                 </context-group>
                 <note priority="1" from="description">A one sentence description of the purpose of the website</note>
@@ -2922,7 +2922,7 @@
                 <source>Optimize your language learning</source>
                 <target>Optimize your language learning</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">7</context>
                 </context-group>
                 <note priority="1" from="description">A short description of the purpose of the website</note>
@@ -2931,7 +2931,7 @@
                 <source>Using high quality videos of real native speakers, getnative guides you through an automated, intensive study routine. You only decide how much time to spend.</source>
                 <target>Using high quality videos of real native speakers, getnative guides you through an automated, intensive study routine. You only decide how much time to spend.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">8</context>
                 </context-group>
                 <note priority="1" from="description">A brief description of the purpose of the website</note>
@@ -2940,7 +2940,7 @@
                 <source>Video database</source>
                 <target>Video database</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">14</context>
                 </context-group>
                 <note priority="1" from="description">Alternative text for image of first large homepage feature</note>
@@ -2949,7 +2949,7 @@
                 <source>Video Library</source>
                 <target>Video Library</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">17</context>
                 </context-group>
                 <note priority="1" from="description">The title of the video database feature description</note>
@@ -2958,7 +2958,7 @@
                 <source>For your learning purposes, getnative provides a library of high quality videos of real native speakers speaking off the top of their heads. Each video comes with an accurate transcription of the original language, as well as various translations.</source>
                 <target>For your learning purposes, getnative provides a library of high quality videos of real native speakers speaking off the top of their heads. Each video comes with an accurate transcription of the original language, as well as various translations.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">18</context>
                 </context-group>
                 <note priority="1" from="description">The description of the video database feature</note>
@@ -2967,7 +2967,7 @@
                 <source>Study like the pros</source>
                 <target>Study like the pros</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">29</context>
                 </context-group>
                 <note priority="1" from="description">Alternative text for image of second large homepage feature</note>
@@ -2976,7 +2976,7 @@
                 <source>Study quickly &amp; effectively</source>
                 <target>Study quickly &amp; effectively</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">32</context>
                 </context-group>
                 <note priority="1" from="description">The title of the study session feature description</note>
@@ -2985,7 +2985,7 @@
                 <source>getnative guides you through a series of learning exercises optimized to help you learn the most in the shortest time possible. A single study session can take as little as 5 minutes to complete.</source>
                 <target>getnative guides you through a series of learning exercises optimized to help you learn the most in the shortest time possible. A single study session can take as little as 5 minutes to complete.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">33</context>
                 </context-group>
                 <note priority="1" from="description">The description of the study session feature</note>
@@ -2994,7 +2994,7 @@
                 <source>A tool for advanced language learners</source>
                 <target>A tool for advanced language learners</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">44</context>
                 </context-group>
                 <note priority="1" from="description">Alternative text for image of third large homepage feature</note>
@@ -3003,7 +3003,7 @@
                 <source>Active Learning</source>
                 <target>Active Learning</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">47</context>
                 </context-group>
                 <note priority="1" from="description">The title for the advanced material feature description</note>
@@ -3012,7 +3012,7 @@
                 <source>getnative focuses on actively using the language — not memorizing grammar or vocabulary — to naturally lead you toward using the language in a way similar to that of a native speaker.</source>
                 <target>getnative focuses on actively using the language — not memorizing grammar or vocabulary — to naturally lead you toward using the language in a way similar to that of a native speaker.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">48</context>
                 </context-group>
                 <note priority="1" from="description">The description for the advanced material feature</note>
@@ -3021,7 +3021,7 @@
                 <source>That&apos;s not all..</source>
                 <target>That&apos;s not all..</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">60</context>
                 </context-group>
                 <note priority="1" from="description">The title eluding to additional feature descriptions</note>
@@ -3030,7 +3030,7 @@
                 <source>Perfect for polyglots</source>
                 <target>Perfect for polyglots</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">66</context>
                 </context-group>
                 <note priority="1" from="description">Alternative text for first small homepage feature</note>
@@ -3039,7 +3039,7 @@
                 <source>Perfect for Polyglots</source>
                 <target>Perfect for Polyglots</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">67</context>
                 </context-group>
                 <note priority="1" from="description">The title for the polyglots feature description</note>
@@ -3048,7 +3048,7 @@
                 <source>Easily switch between multiple target languages from the global menu.</source>
                 <target>Easily switch between multiple target languages from the global menu.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">68</context>
                 </context-group>
                 <note priority="1" from="description">First small feature description about using getnative with multiple languages</note>
@@ -3057,7 +3057,7 @@
                 <source>Open-source</source>
                 <target>Open-source</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">72</context>
                 </context-group>
                 <note priority="1" from="description">Alternative text for second small homepage feature</note>
@@ -3066,7 +3066,7 @@
                 <source>Open Source</source>
                 <target>Open Source</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">81</context>
                 </context-group>
                 <note priority="1" from="description">Open-source small feature title</note>
@@ -3075,7 +3075,7 @@
                 <source>getnative is built with angular and node.js. View the source on <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>GitHub<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
                 <target>getnative is built with angular and node.js. View the source on <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>GitHub<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">82</context>
                 </context-group>
                 <note priority="1" from="description">Open-source small feature description</note>
@@ -3084,7 +3084,7 @@
                 <source>Better security</source>
                 <target>Better security</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">78</context>
                 </context-group>
                 <note priority="1" from="description">Alternative text for third small homepage feature</note>
@@ -3093,7 +3093,7 @@
                 <source>Better Security</source>
                 <target>Better Security</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">79</context>
                 </context-group>
                 <note priority="1" from="description">Security small feature title</note>
@@ -3102,7 +3102,7 @@
                 <source>Your data is protected by the latest web application security standards.</source>
                 <target>Your data is protected by the latest web application security standards.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">80</context>
                 </context-group>
                 <note priority="1" from="description">Security small feature description</note>
@@ -3111,7 +3111,7 @@
                 <source>Easy-to-use interface</source>
                 <target>Easy-to-use interface</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">84</context>
                 </context-group>
                 <note priority="1" from="description">Alternative text for fourth small homepage feature</note>
@@ -3120,7 +3120,7 @@
                 <source>Intuitive Design</source>
                 <target>Intuitive Design</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">85</context>
                 </context-group>
                 <note priority="1" from="description">Easy-to-use interface small feature title</note>
@@ -3129,7 +3129,7 @@
                 <source>getnative has an elegant interface that is easy to use and understand.</source>
                 <target>getnative has an elegant interface that is easy to use and understand.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">86</context>
                 </context-group>
                 <note priority="1" from="description">Easy-to-use interface small feature description</note>
@@ -3138,7 +3138,7 @@
                 <source>Support</source>
                 <target>Support</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">90</context>
                 </context-group>
                 <note priority="1" from="description">Alternative text for fifth small homepage feature</note>
@@ -3147,7 +3147,7 @@
                 <source>Support</source>
                 <target>Support</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">91</context>
                 </context-group>
                 <note priority="1" from="description">Q&amp;A small feature title</note>
@@ -3156,7 +3156,7 @@
                 <source>We’re available directly by email for and questions or comments.</source>
                 <target>We’re available directly by email for and questions or comments.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">92</context>
                 </context-group>
                 <note priority="1" from="description">Q&amp;A small feature description</note>
@@ -3165,7 +3165,7 @@
                 <source>Simple registration</source>
                 <target>Simple registration</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">96</context>
                 </context-group>
                 <note priority="1" from="description">Alternative text for sixth small homepage feature</note>
@@ -3174,7 +3174,7 @@
                 <source>Simple Registration</source>
                 <target>Simple Registration</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">97</context>
                 </context-group>
                 <note priority="1" from="description">Simple registration small feature title</note>
@@ -3183,7 +3183,7 @@
                 <source>Create an account in seconds using Email, Facebook, Twitter or Google.</source>
                 <target>Create an account in seconds using Email, Facebook, Twitter or Google.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">98</context>
                 </context-group>
                 <note priority="1" from="description">Simple registration small feature description</note>
@@ -3192,7 +3192,7 @@
                 <source>Sign up for free</source>
                 <target>Sign up for free</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">106</context>
                 </context-group>
                 <note priority="1" from="description">The title leading users to sign up</note>
@@ -3201,7 +3201,7 @@
                 <source>Click the following button to continue to the registration screen. getnative is a free online language learning resource and does not require payment to use.</source>
                 <target>Click the following button to continue to the registration screen. getnative is a free online language learning resource and does not require payment to use.</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">107</context>
                 </context-group>
                 <note priority="1" from="description">A short description about signing up</note>
@@ -3210,10 +3210,73 @@
                 <source>Sign in / Sign up</source>
                 <target>Sign in / Sign up</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/home/home.component.ts</context>
+                    <context context-type="sourcefile">app/home/home.component.ts</context>
                     <context context-type="linenumber">108</context>
                 </context-group>
                 <note priority="1" from="description">The title for the sign up button</note>
+            </trans-unit>
+            <trans-unit id="ecadd53686433f21e240c03c827ff1c7" datatype="html">
+                <source>Page Not Found</source>
+                <target>Page Not Found</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/page-not-found/page-not-found.component.ts</context>
+                    <context context-type="linenumber">2</context>
+                </context-group>
+                <note priority="1" from="description">Page not found view title</note>
+            </trans-unit>
+            <trans-unit id="65479f4d701ac85e68dcbf3e66cdce96" datatype="html">
+                <source>Perhaps you were looking for one of the following:</source>
+                <target>Perhaps you were looking for one of the following:</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/page-not-found/page-not-found.component.ts</context>
+                    <context context-type="linenumber">3</context>
+                </context-group>
+                <note priority="1" from="description">Page not found view help block</note>
+            </trans-unit>
+            <trans-unit id="a8eb6d2144b7cc1897b009cb900515dd" datatype="html">
+                <source>Library</source>
+                <target>Library</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/page-not-found/page-not-found.component.ts</context>
+                    <context context-type="linenumber">5</context>
+                </context-group>
+                <note priority="1" from="description">Page not found view Library link text</note>
+            </trans-unit>
+            <trans-unit id="06a76e96bd5fc81a13e1a7d1636f3841" datatype="html">
+                <source>Dashboard</source>
+                <target>Dashboard</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/page-not-found/page-not-found.component.ts</context>
+                    <context context-type="linenumber">6</context>
+                </context-group>
+                <note priority="1" from="description">Page not found view Dashboard link text</note>
+            </trans-unit>
+            <trans-unit id="094e8b288de210d969903b60fe6af6f4" datatype="html">
+                <source>Frequently Asked Questions &amp; Contact</source>
+                <target>Frequently Asked Questions &amp; Contact</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/page-not-found/page-not-found.component.ts</context>
+                    <context context-type="linenumber">7</context>
+                </context-group>
+                <note priority="1" from="description">Page not found view FAQ link text</note>
+            </trans-unit>
+            <trans-unit id="65fb9a268da69bdd66076b0c3eb92d35" datatype="html">
+                <source>Terms of Service</source>
+                <target>Terms of Service</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/page-not-found/page-not-found.component.ts</context>
+                    <context context-type="linenumber">8</context>
+                </context-group>
+                <note priority="1" from="description">Page not found view TOS link text</note>
+            </trans-unit>
+            <trans-unit id="a4bc630a012bf37d7d34ab434b875f68" datatype="html">
+                <source>Privacy Policy</source>
+                <target>Privacy Policy</target>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">app/page-not-found/page-not-found.component.ts</context>
+                    <context context-type="linenumber">9</context>
+                </context-group>
+                <note priority="1" from="description">Page not found view Privacy Policy link text</note>
             </trans-unit>
             <trans-unit id="0357a5943ddb5239fad8867b230ba805" datatype="html">
                 <source>Deactivate Your Account</source>
@@ -3932,7 +3995,7 @@
                 <source>Please try viewing getnative from a larger browser window</source>
                 <target>Please try viewing getnative from a larger browser window</target>
                 <context-group purpose="location">
-                    <context context-type="sourcefile">app/static-pages/mobile-overlay/mobile-overlay.component.ts</context>
+                    <context context-type="sourcefile">app/mobile-overlay/mobile-overlay.component.ts</context>
                     <context context-type="linenumber">2</context>
                 </context-group>
                 <note priority="1" from="description">Message asking user to view website in larger browser window</note>

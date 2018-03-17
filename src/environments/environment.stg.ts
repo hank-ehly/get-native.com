@@ -8,10 +8,10 @@ export const environment = {
     staging: true,
     development: false,
     name: 'staging',
-    apiBaseUrl: 'http://api.stg.getnativelearning.com',
-    facebookLoginUrl: 'http://api.stg.getnativelearning.com/oauth/facebook',
-    twitterLoginUrl: 'http://api.stg.getnativelearning.com/oauth/twitter',
-    googleLoginUrl: 'http://api.stg.getnativelearning.com/oauth/google',
+    apiBaseUrl: 'http://api.stg.getnative.org',
+    facebookLoginUrl: 'http://api.stg.getnative.org/oauth/facebook',
+    twitterLoginUrl: 'http://api.stg.getnative.org/oauth/twitter',
+    googleLoginUrl: 'http://api.stg.getnative.org/oauth/google',
     facebookAppId: '215585938915345',
     googleStorageUrl: 'http://storage.googleapis.com/stg.getnativelearning.com'
 };

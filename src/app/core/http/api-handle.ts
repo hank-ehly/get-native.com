@@ -1,6 +1,6 @@
 /**
  * endpoint
- * getnativelearning.com
+ * getnative.org
  *
  * Created by henryehly on 2017/01/29.
  */
