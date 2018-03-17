@@ -73,7 +73,7 @@ export class UserService {
         }
 
         if (user.is_silhouette_picture) {
-            user.picture_url = 'https://storage.googleapis.com/getnative.org/assets/images/silhouette-avatar.jpg';
+            user.picture_url = 'https://storage.googleapis.com/getnativelearning.com/assets/images/silhouette-avatar.jpg';
         }
 
         const cache: User = _.defaultTo(this.localStorage.getItem(kCurrentUser), {});

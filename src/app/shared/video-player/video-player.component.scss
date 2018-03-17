@@ -31,7 +31,7 @@
 }
 
 .player-controls__toggle-button {
-  background: $black url('https://storage.googleapis.com/stg.getnative.org/assets/icons/pause.svg') no-repeat center;
+  background: $black url('https://storage.googleapis.com/getnativelearning.com/assets/icons/pause.svg') no-repeat center;
   background-size: 28%;
   border: none;
   cursor: pointer;
@@ -41,7 +41,7 @@
 }
 
 .player-controls__toggle-button.player-controls__toggle-button_paused {
-  background-image: url('https://storage.googleapis.com/stg.getnative.org/assets/icons/play.svg');
+  background-image: url('https://storage.googleapis.com/getnativelearning.com/assets/icons/play.svg');
 }
 
 .play-bar {

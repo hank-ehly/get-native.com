@@ -71,14 +71,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     bsModalRef: BsModalRef;
 
     pictureUrl$ = new BehaviorSubject<string>(
-        'https://storage.googleapis.com/getnative.org/assets/images/silhouette-avatar.jpg'
+        'https://storage.googleapis.com/getnativelearning.com/assets/images/silhouette-avatar.jpg'
     );
 
     queueButtonSaveState = QueueButtonState.SAVE;
     queueButtonRemoveState = QueueButtonState.REMOVE;
 
     hasUnreadNotifications = false;
-    settingsLinkImgSrc = 'https://storage.googleapis.com/getnative.org/assets/images/silhouette-avatar.jpg';
+    settingsLinkImgSrc = 'https://storage.googleapis.com/getnativelearning.com/assets/images/silhouette-avatar.jpg';
 
     @HostListener('document:mousedown', ['$event']) onMouseDown(e: MouseEvent) {
         let found = false;
