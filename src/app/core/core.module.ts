@@ -32,6 +32,7 @@ import { OAuthGuard } from './auth/oauth.guard';
 import { GoogleAnalyticsEventsService } from './google-analytics-events.service';
 import { MetaGuard } from './meta.guard';
 import { TitleGuard } from './title.guard';
+import { GlobalErrorHandler } from './global-error-handler';
 
 @NgModule({
     imports: [
@@ -61,7 +62,8 @@ import { TitleGuard } from './title.guard';
         OAuthGuard,
         GoogleAnalyticsEventsService,
         MetaGuard,
-        TitleGuard
+        TitleGuard,
+        {provide: ErrorHandler, useClass: GlobalErrorHandler}
     ]
 })
 export class CoreModule {
