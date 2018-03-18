@@ -19,8 +19,6 @@ export class GlobalErrorHandler implements ErrorHandler {
     handleError(error) {
         const message = this.extractMessage(error);
 
-        console.log('**********', error, message);
-
         const location = this.injector.get(LocationStrategy);
         const url = location instanceof PathLocationStrategy ? location.path() : '';
 
