@@ -55,9 +55,9 @@ const routes: Routes = [
         title: 'default.title', hideNavbarTitle: true, overrideTitle: true, meta: {
             'og:image:width': 1200,
             'og:image:height': 630,
-            'og:image': environment.googleStorageUrl + '/assets/images/og.jpg',
-            'og:image:url': environment.googleStorageUrl + '/assets/images/og.jpg',
-            'og:image:secure_url': environment.googleStorageUrl + '/assets/images/og.jpg',
+            'og:image': environment.googleStorageUrl + '/assets/images/og.png',
+            'og:image:url': environment.googleStorageUrl + '/assets/images/og.png',
+            'og:image:secure_url': environment.googleStorageUrl + '/assets/images/og.png',
             'twitter:image:src': environment.googleStorageUrl + '/assets/images/og.png',
             'twitter:description': 'default.description'
         }
