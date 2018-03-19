@@ -39,7 +39,7 @@
 .header__thumbnail-container:hover:after,
 .header__thumbnail-container.selected:after {
   @include border-radius(50%);
-  background: rgba($black, 0.2) url('https://storage.googleapis.com/getnativelearning.com/assets/icons/avatar.svg') no-repeat center;
+  background: rgba($black, 0.2) url('https://storage.googleapis.com/getnative.org/assets/icons/avatar.svg') no-repeat center;
   background-size: 30px;
   content: '';
   height: 100%;
