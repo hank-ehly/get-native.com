@@ -8,5 +8,5 @@ export const environment = {
     twitterLoginUrl: 'https://api.getnative.org/oauth/twitter',
     googleLoginUrl: 'https://api.getnative.org/oauth/google',
     facebookAppId: '215585858915353',
-    googleStorageUrl: 'https://storage.googleapis.com/getnativelearning.com'
+    googleStorageUrl: 'https://storage.googleapis.com/getnative.org'
 };
