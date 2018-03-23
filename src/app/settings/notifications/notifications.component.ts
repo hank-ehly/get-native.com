@@ -59,7 +59,11 @@ export class NotificationsComponent implements OnDestroy {
     }
 
     isEmailVerificationsOn(): boolean {
-        return this.user.email_verified ? this.user.email_notifications_enabled : false;
+        if (this.user.email_verified) {
+            return this.user.email_notifications_enabled;
+        }
+
+        return false;
     }
 
     updateEmailPreference(value: boolean) {
@@ -79,11 +83,7 @@ export class NotificationsComponent implements OnDestroy {
 
     private onUpdateEmailNotificationsEnabledError(errors: APIErrors): void {
         this.flags.processing.emailNotificationsEnabled = false;
-        if (errors && errors.length) {
-            this.errors.emailNotificationsEnabled = _.first(errors);
-        } else {
-            this.errors.emailNotificationsEnabled = {code: 'Unknown', message: 'Unknown error'};
-        }
+        this.errors.emailNotificationsEnabled = _.first(errors);
     }
 
     updateBrowserPreference(value: boolean) {
@@ -101,8 +101,8 @@ export class NotificationsComponent implements OnDestroy {
     }
 
     /* Browser bug: When updating off -> on, the switch component doesn't become disabled during the http request.
-    * To deal with the problem, I force the component to check for changes using ChangeDetectorRef.detectChanges();
-    * https://stackoverflow.com/questions/34827334/triggering-angular2-change-detection-manually */
+     * To deal with the problem, I force the component to check for changes using ChangeDetectorRef.detectChanges();
+     * https://stackoverflow.com/questions/34827334/triggering-angular2-change-detection-manually */
     private persistBrowserNotificationPreference(value: boolean): void {
         this.flags.processing.browserNotificationsEnabled = true;
         this.changeDetectorRef.detectChanges();

@@ -10,7 +10,7 @@ const webpack = require('webpack');
 
 const config = {
     entry: {
-        server: './server.ts'
+        server: ['staging', 'production'].includes(process.env.NODE_ENV) ? './server.ts' : './server.dev.ts'
     },
     resolve: {
         extensions: ['.js', '.ts'],
@@ -39,10 +39,13 @@ const config = {
     ]
 };
 
-const locales = ['en', 'ja'];
+if (['staging', 'production'].includes(process.env.NODE_ENV)) {
+    const locales = ['en', 'ja'];
 
-for (let i = 0; i < locales.length; i++) {
-    config.resolve.alias[`main.server.${locales[i].toLowerCase()}`] = path.join(__dirname, 'dist', 'server', locales[i].toLowerCase(), 'main.bundle.js')
+    for (let i = 0; i < locales.length; i++) {
+        const locale = locales[i].toLowerCase();
+        config.resolve.alias[`main.server.${locale}`] = path.join(__dirname, 'dist', 'server', locale, 'main.bundle.js')
+    }
 }
 
 module.exports = config;
