@@ -45,10 +45,12 @@ export class MetaGuard implements CanActivate {
     }
 
     private updateOrAdd(tag: MetaDefinition, selector?: string): void {
-        if (this.meta.getTag(selector)) {
-            this.meta.updateTag(tag, selector);
-        } else {
-            this.meta.addTag(tag);
+        if (isPlatformBrowser(this.platformId)) {
+            if (this.meta.getTag(selector)) {
+                this.meta.updateTag(tag, selector);
+            } else {
+                this.meta.addTag(tag);
+            }
         }
     }
 

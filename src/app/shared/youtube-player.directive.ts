@@ -1,13 +1,12 @@
 import {
-    AfterViewInit, Directive, ElementRef, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, PLATFORM_ID,
-    SimpleChanges
+    AfterViewInit, Directive, ElementRef, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, PLATFORM_ID, SimpleChanges
 } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { LangService } from '../core/lang/lang.service';
 import { Logger } from '../core/logger/logger';
 
 import * as _ from 'lodash';
-import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
     selector: '[gnYoutubePlayer]'
@@ -77,8 +76,11 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy,
         }
     }
 
-    constructor(private el: ElementRef, private logger: Logger, @Inject(LOCALE_ID) private localeId: string,
-                private langService: LangService, @Inject(PLATFORM_ID) private platformId: Object) {
+    constructor(private el: ElementRef,
+                private logger: Logger,
+                private langService: LangService,
+                @Inject(LOCALE_ID) private localeId: string,
+                @Inject(PLATFORM_ID) private platformId: Object) {
         if (isPlatformBrowser(this.platformId)) {
             (<any>window).onYouTubeIframeAPIReady = this.onYouTubeIframeAPIReady.bind(this);
         }
@@ -146,6 +148,10 @@ export class YoutubePlayerDirective implements OnInit, AfterViewInit, OnDestroy,
     }
 
     private onYouTubeIframeAPIReady(): void {
+        if (isPlatformServer(this.platformId)) {
+            return;
+        }
+
         if (isPlatformBrowser(this.platformId)) {
             if (!window['YT']) {
                 return;

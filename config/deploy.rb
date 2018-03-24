@@ -25,9 +25,9 @@ namespace :deploy do
                 execute :npm, '--production=false', 'install'
 
                 execute :mkdir, 'dist' if test('[ ! -d dist ]')
-                execute :npm, :run, :build, '--', fetch(:stage).to_s
+                execute :npm, :run, ['build', 'ssr', fetch(:stage).to_s].join(':')
 
-                execute :npm, :run, 'webpack', '--', '--config', 'webpack.server.config.js'
+                execute :npm, :run, 'webpack:server'
                 execute :npm, :run, ['serve', 'ssr', fetch(:stage).to_s].join(':')
             end
         end

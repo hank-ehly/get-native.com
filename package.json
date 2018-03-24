@@ -8,19 +8,22 @@
         "url": "https://github.com/hank-ehly/getnative.org"
     },
     "scripts": {
+        "build": "ng build",
+        "build:ssr": "ng build --prod --env=dev && ng build --prod --app 1 --env=dev --output-hashing=false && npm run webpack:server",
+        "build:ssr:staging": "./bin/build.sh staging",
+        "build:ssr:production": "./bin/build.sh production",
+        "e2e": "ng e2e",
+        "i18n": "ng xi18n",
+        "lint": "ng lint",
         "ng": "ng",
-        "build": "./bin/build.sh",
+        "rhash": "node -e \"console.log(require('crypto').randomBytes(16).toString('hex'))\"",
         "start": "ng serve --port 5555",
         "start:ja": "ng serve --port 5555 --aot --locale ja --i18n-format xlf --i18n-file src/locales/messages.ja.xlf --missing-translation error",
-        "serve:ssr": "pm2 startOrRestart ecosystem.config.json -i max --only client",
+        "serve:ssr": "node dist/server",
         "serve:ssr:staging": "pm2 startOrRestart ecosystem.config.json -i max --only stg.getnative.org",
         "serve:ssr:production": "pm2 startOrRestart ecosystem.config.json -i max --only getnative.org",
         "test": "ng test",
-        "lint": "ng lint",
-        "e2e": "ng e2e",
-        "i18n": "ng xi18n",
-        "rhash": "node -e \"console.log(require('crypto').randomBytes(16).toString('hex'))\"",
-        "webpack": "webpack"
+        "webpack:server": "webpack --config webpack.server.config.js"
     },
     "private": true,
     "dependencies": {

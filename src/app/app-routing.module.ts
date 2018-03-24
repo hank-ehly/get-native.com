@@ -51,17 +51,23 @@ import { environment } from '../environments/environment';
 
 const routes: Routes = [
     {
-        path: '', canActivate: [AuthGuard, TitleGuard, MetaGuard], component: HomeComponent, data: {
-        title: 'default.title', hideNavbarTitle: true, overrideTitle: true, meta: {
-            'og:image:width': 1200,
-            'og:image:height': 630,
-            'og:image': environment.googleStorageUrl + '/assets/images/og.png',
-            'og:image:url': environment.googleStorageUrl + '/assets/images/og.png',
-            'og:image:secure_url': environment.googleStorageUrl + '/assets/images/og.png',
-            'twitter:image:src': environment.googleStorageUrl + '/assets/images/og.png',
-            'twitter:description': 'default.description'
+        path: '',
+        canActivate: [AuthGuard, TitleGuard, MetaGuard],
+        component: HomeComponent,
+        data: {
+            title: 'default.title',
+            hideNavbarTitle: true,
+            overrideTitle: true,
+            meta: {
+                'og:image:width': 1200,
+                'og:image:height': 630,
+                'og:image': environment.googleStorageUrl + '/assets/images/og.png',
+                'og:image:url': environment.googleStorageUrl + '/assets/images/og.png',
+                'og:image:secure_url': environment.googleStorageUrl + '/assets/images/og.png',
+                'twitter:image:src': environment.googleStorageUrl + '/assets/images/og.png',
+                'twitter:description': 'default.description'
+            }
         }
-    }
     },
     {
         path: 'dashboard',
@@ -81,53 +87,66 @@ const routes: Routes = [
         path: 'settings',
         component: SettingsComponent,
         canActivateChild: [AuthGuard, TitleGuard, MetaGuard],
-        data: {state: 'settings'},
+        data: {
+            state: 'settings'
+        },
         children: [
             {
-                path: '', component: GeneralComponent, data: {
-                title: 'settings.general.title',
-                showToolbar: true,
-                state: 'settings-general'
-            }
+                path: '',
+                component: GeneralComponent,
+                data: {
+                    title: 'settings.general.title',
+                    showToolbar: true,
+                    state: 'settings-general'
+                }
             },
             {
-                path: 'notifications', component: NotificationsComponent, data: {
-                title: 'settings.notification.title',
-                showToolbar: true,
-                state: 'settings-notification'
-            }
+                path: 'notifications',
+                component: NotificationsComponent,
+                data: {
+                    title: 'settings.notification.title',
+                    showToolbar: true,
+                    state: 'settings-notification'
+                }
             },
             {
-                path: 'security', component: SecurityComponent, data: {
-                title: 'settings.security.title',
-                showToolbar: true,
-                state: 'settings-security'
-            }
+                path: 'security',
+                component: SecurityComponent,
+                data: {
+                    title: 'settings.security.title',
+                    showToolbar: true,
+                    state: 'settings-security'
+                }
             },
             {
-                path: 'activity', component: ActivityComponent, data: {
-                title: 'settings.activity.title',
-                showToolbar: true,
-                state: 'settings-activity'
-            }
+                path: 'activity',
+                component: ActivityComponent,
+                data: {
+                    title: 'settings.activity.title',
+                    showToolbar: true,
+                    state: 'settings-activity'
+                }
             }
         ]
     },
     {
-        path: 'library', component: LibraryComponent, canActivate: [TitleGuard, MetaGuard], data: {
-        title: 'library.title',
-        meta: {
-            'og:image': environment.googleStorageUrl + '/assets/images/feature01.jpg',
-            'og:image:url': environment.googleStorageUrl + '/assets/images/feature01.jpg',
-            'og:image:secure_url': environment.googleStorageUrl + '/assets/images/feature01.jpg',
-            'twitter:image:src': environment.googleStorageUrl + '/assets/images/feature01.png',
-            'og:image:width': 435,
-            'og:image:height': 270
-        },
-        showToolbar: true,
-        showNavbarSearchIcon: false,
-        state: 'library'
-    }
+        path: 'library',
+        component: LibraryComponent,
+        canActivate: [TitleGuard, MetaGuard],
+        data: {
+            title: 'library.title',
+            meta: {
+                'og:image': environment.googleStorageUrl + '/assets/images/feature01.jpg',
+                'og:image:url': environment.googleStorageUrl + '/assets/images/feature01.jpg',
+                'og:image:secure_url': environment.googleStorageUrl + '/assets/images/feature01.jpg',
+                'twitter:image:src': environment.googleStorageUrl + '/assets/images/feature01.png',
+                'og:image:width': 435,
+                'og:image:height': 270
+            },
+            showToolbar: true,
+            showNavbarSearchIcon: false,
+            state: 'library'
+        }
     },
     {
         path: 'library/:id',
@@ -148,35 +167,52 @@ const routes: Routes = [
         canDeactivate: [StudySessionGuard],
         children: [
             {
-                path: '', component: TransitionComponent
+                path: '',
+                component: TransitionComponent
             },
             {
-                path: 'listening', resolve: {video: ListeningResolver}, component: ListeningComponent, data: {
-                title: 'study.listening.title'
-            }
+                path: 'listening',
+                resolve: {
+                    video: ListeningResolver
+                },
+                component: ListeningComponent,
+                data: {
+                    title: 'study.listening.title'
+                }
             },
             {
-                path: 'shadowing', component: ShadowingComponent, data: {
-                title: 'study.shadowing.title'
-            }
+                path: 'shadowing',
+                component: ShadowingComponent,
+                data: {
+                    title: 'study.shadowing.title'
+                }
             },
             {
-                path: 'speaking', component: SpeakingComponent, data: {
-                title: 'study.speaking.title'
-            }
+                path: 'speaking',
+                component: SpeakingComponent,
+                data: {
+                    title: 'study.speaking.title'
+                }
             },
             {
                 path: 'writing',
                 component: WritingComponent,
-                resolve: {question: WritingResolver},
+                resolve: {
+                    question: WritingResolver
+                },
                 data: {
                     title: 'study.writing.title'
                 }
             },
             {
-                path: 'results', component: ResultsComponent, resolve: {stats: ResultsResolver}, data: {
-                title: 'study.results.title'
-            }
+                path: 'results',
+                component: ResultsComponent,
+                resolve: {
+                    stats: ResultsResolver
+                },
+                data: {
+                    title: 'study.results.title'
+                }
             }
         ]
     },
@@ -202,39 +238,63 @@ const routes: Routes = [
     ]
     },
     {
-        path: 'privacy', component: PrivacyComponent, canActivate: [TitleGuard, MetaGuard], data: {
-        title: 'privacy.title'
+        path: 'privacy',
+        component: PrivacyComponent,
+        canActivate: [TitleGuard, MetaGuard],
+        data: {
+            title: 'privacy.title'
 
-    }
+        }
     },
     {
-        path: 'tos', component: TOSComponent, canActivate: [TitleGuard, MetaGuard], data: {
-        title: 'tos.title'
+        path: 'tos',
+        component: TOSComponent,
+        canActivate: [TitleGuard, MetaGuard],
+        data: {
+            title: 'tos.title'
 
-    }
+        }
     },
     {
-        path: 'confirm_email', resolve: {_: ConfirmEmailResolver}, component: DashboardComponent
+        path: 'confirm_email',
+        resolve: {
+            _: ConfirmEmailResolver
+        },
+        component: DashboardComponent
     },
     {
-        path: 'confirm_email_update', resolve: {_: ConfirmEmailUpdateResolver}, component: SettingsComponent
+        path: 'confirm_email_update',
+        resolve: {
+            _: ConfirmEmailUpdateResolver
+        },
+        component: SettingsComponent
     },
     {
-        path: 'reset_password', component: PasswordResetComponent, resolve: {token: PasswordResetResolverService}, data: {
-        showToolbar: false,
-        showNavbarSearchIcon: false
-    }, canDeactivate: [PasswordResetGuard]
+        path: 'reset_password',
+        component: PasswordResetComponent,
+        resolve: {
+            token: PasswordResetResolverService
+        },
+        data: {
+            showToolbar: false,
+            showNavbarSearchIcon: false
+        },
+        canDeactivate: [PasswordResetGuard]
     },
     {
-        path: 'reset_password_complete', component: PasswordResetCompleteComponent, data: {
-        showToolbar: false,
-        showNavbarSearchIcon: false
-    }
+        path: 'reset_password_complete',
+        component: PasswordResetCompleteComponent,
+        data: {
+            showToolbar: false,
+            showNavbarSearchIcon: false
+        }
     },
     {
-        path: '**', component: PageNotFoundComponent, data: {
-        title: 'pageNotFound.title'
-    }
+        path: '**',
+        component: PageNotFoundComponent,
+        data: {
+            title: 'pageNotFound.title'
+        }
     }
 ];
 
