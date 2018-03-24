@@ -6,7 +6,7 @@
  */
 
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { Logger } from '../logger/logger';
 
@@ -17,8 +17,10 @@ export class LocalStorageService {
 
     storageEvent$ = new Subject<StorageEvent>();
     clear$ = new Subject();
+    isBrowser: boolean;
 
     constructor(private logger: Logger, @Inject(PLATFORM_ID) private platformId: Object) {
+        this.isBrowser = isPlatformBrowser(this.platformId);
         this.clear$.subscribe(this.onClear.bind(this));
     }
 
@@ -33,12 +35,12 @@ export class LocalStorageService {
     }
 
     get length(): number {
-        return isPlatformBrowser(this.platformId) ? localStorage.length : 0;
+        return this.isBrowser ? localStorage.length : 0;
     }
 
     /* Todo: Encrypt all stored data */
     setItem(key: string, data: any): void {
-        if (isPlatformBrowser(this.platformId)) {
+        if (this.isBrowser) {
             if (data === null || data === undefined) {
                 /* Todo: ErrorService */
                 throw new Error('Cannot store a null or undefined value.');
@@ -51,7 +53,7 @@ export class LocalStorageService {
     }
 
     getItem(key: string): any {
-        if (!isPlatformBrowser(this.platformId)) {
+        if (!this.isBrowser) {
             return {};
         }
 
@@ -69,13 +71,13 @@ export class LocalStorageService {
     }
 
     removeItem(key: string): void {
-        if (isPlatformBrowser(this.platformId)) {
+        if (this.isBrowser) {
             localStorage.removeItem(key);
         }
     }
 
     onClear(): void {
-        if (isPlatformBrowser(this.platformId)) {
+        if (this.isBrowser) {
             localStorage.clear();
         }
     }
