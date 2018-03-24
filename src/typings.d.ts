@@ -5,3 +5,4 @@ interface NodeModule {
 }
 declare var ga: any;
 declare var YT: any;
+declare var FB: any;

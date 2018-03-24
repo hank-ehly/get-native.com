@@ -130,7 +130,12 @@ export class LibraryDetailComponent implements OnInit, OnDestroy {
 
     onClickShareFacebook(): void {
         this.googleAnalyticsEventService.emitEvent(this.constructor.name, 'Clicked Share on Facebook');
-        this.facebook.share();
+
+        this.facebook.share().then((response: any) => {
+            this.logger.debug(this, 'facebook share success', response);
+        }).catch((error: any) => {
+            this.logger.debug(this, 'facebook share error', error);
+        });
     }
 
     onClickShareTwitter(): void {
