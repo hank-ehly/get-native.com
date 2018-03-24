@@ -14,7 +14,6 @@ describe('LocalStorageService', () => {
     beforeEach(() => {
         localStorage.clear();
         localStorageService = new LocalStorageService(STUBLogger, {});
-        localStorageService.isBrowser = true;
     });
 
     it('should be able to set a key/value pair', () => {
