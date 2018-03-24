@@ -1,6 +1,7 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Inject, Injectable, LOCALE_ID } from '@angular/core';
+import { Inject, Injectable, LOCALE_ID, PLATFORM_ID } from '@angular/core';
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 import { HttpParams } from '@angular/common/http';
 
 import { GNRequestOptions } from '../core/http/gn-request-options';
@@ -22,6 +23,7 @@ export class LibraryDetailResolverService implements Resolve<Entity | Entities<E
     constructor(private user: UserService,
                 private lang: LangService,
                 @Inject(LOCALE_ID) private localeId: string,
+                @Inject(PLATFORM_ID) private platformId: Object,
                 private http: HttpService,
                 private logger: Logger,
                 private meta: Meta,
@@ -50,6 +52,7 @@ export class LibraryDetailResolverService implements Resolve<Entity | Entities<E
         return this.http.request(APIHandle.VIDEO, options).do(this.updateMetaWithVideo.bind(this));
     }
 
+    /* Try moving this to onInit and see if that makes a difference on stg/prd */
     private updateMetaWithVideo(video: Video): void {
         const imageUrl = `https://i.ytimg.com/vi/${video.youtube_video_id}/maxresdefault.jpg`;
         this.updateOrAdd({content: imageUrl, name: 'og:image'}, `name='og:image'`);
@@ -60,10 +63,12 @@ export class LibraryDetailResolverService implements Resolve<Entity | Entities<E
     }
 
     private updateOrAdd(tag: MetaDefinition, selector?: string): void {
-        if (this.meta.getTag(selector)) {
-            this.meta.updateTag(tag, selector);
-        } else {
-            this.meta.addTag(tag);
+        if (isPlatformBrowser(this.platformId)) {
+            if (this.meta.getTag(selector)) {
+                this.meta.updateTag(tag, selector);
+            } else {
+                this.meta.addTag(tag);
+            }
         }
     }
 
