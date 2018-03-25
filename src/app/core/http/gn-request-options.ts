@@ -13,5 +13,5 @@ export interface GNRequestOptions {
     params?: HttpParams;
     replace?: Object;
     url?: string;
-    method?: 'DELETE' | 'GET' | 'HEAD' | 'JSONP' | 'OPTIONS';
+    method?: 'DELETE' | 'GET' | 'HEAD' | 'JSONP' | 'OPTIONS' | 'POST';
 }
