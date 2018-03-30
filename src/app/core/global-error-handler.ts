@@ -9,24 +9,29 @@ import { isPlatformBrowser, LocationStrategy, PathLocationStrategy } from '@angu
 import { ErrorHandler, Inject, Injectable, Injector, PLATFORM_ID } from '@angular/core';
 
 import * as _ from 'lodash';
+import { HttpService } from './http/http.service';
+import { APIHandle } from './http/api-handle';
+import { HttpParams } from '@angular/common/http';
+import { Logger } from './logger/logger';
+import { GNRequestOptions } from './http/gn-request-options';
 
 @Injectable()
-export class GlobalErrorHandler implements ErrorHandler {
+export class GlobalErrorHandler extends ErrorHandler {
 
-    constructor(private injector: Injector, @Inject(PLATFORM_ID) private platformId: Object) {
+    constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpService, private logger: Logger) {
+        super();
     }
 
     handleError(error) {
         const message = this.extractMessage(error);
 
-        const location = this.injector.get(LocationStrategy);
-        const url = location instanceof PathLocationStrategy ? location.path() : '';
-
         if (isPlatformBrowser(this.platformId) && _.has(window, 'ga')) {
             ga('send', 'exception', {exDescription: message});
         }
 
-        throw error;
+        // this.logToStackDriver(error);
+
+        super.handleError(error);
     }
 
     private extractMessage(error): string {
@@ -41,5 +46,39 @@ export class GlobalErrorHandler implements ErrorHandler {
         }
 
         return message;
+    }
+
+    private logToStackDriver(error) {
+        if (!_.isError(error)) {
+            return;
+        }
+
+        const url = 'https://clouderrorreporting.googleapis.com/v1beta1/projects/get-native/events:report?key=';
+
+        const body = {
+            message: error.stack
+        };
+
+        if (isPlatformBrowser(this.platformId)) {
+            body['context'] = {
+                httpRequest: {
+                    method: 'GET',
+                    url: window.location.href,
+                    userAgent: window.navigator.userAgent
+                }
+            };
+        }
+
+        const options: GNRequestOptions = {
+            method: 'POST',
+            url: url,
+            body: body
+        };
+
+        this.http.requestBasic(options).subscribe(() => {
+            this.logger.debug(this, 'Logged error to StackDriver');
+        }, (e) => {
+            this.logger.debug(this, 'Failed to log error to StackDriver', e);
+        });
     }
 }

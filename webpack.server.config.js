@@ -8,9 +8,11 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const isStgOrPrd = ['staging', 'production'].includes(process.env.NODE_ENV);
+
 const config = {
     entry: {
-        server: ['staging', 'production'].includes(process.env.NODE_ENV) ? './server.ts' : './server.dev.ts'
+        server: isStgOrPrd ? './server.ts' : './server.dev.ts'
     },
     resolve: {
         extensions: ['.js', '.ts'],
@@ -39,7 +41,7 @@ const config = {
     ]
 };
 
-if (['staging', 'production'].includes(process.env.NODE_ENV)) {
+if (isStgOrPrd) {
     const locales = ['en', 'ja'];
 
     for (let i = 0; i < locales.length; i++) {

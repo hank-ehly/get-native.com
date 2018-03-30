@@ -43,6 +43,10 @@ export class HttpService {
                 private lang: LangService) {
     }
 
+    requestBasic(options: GNRequestOptions) {
+        return this.http.request(options.method, options.url, options);
+    }
+
     request(handle: APIHandle, options?: GNRequestOptions): Observable<Entities<Entity>|Entity> {
         if (!APIConfig.has(handle)) {
             throw new Error(`Endpoint '${handle}' not found in APIConfig.`);
